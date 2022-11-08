@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import Alamofire
 
-struct RegistrationModel: Decodable {
-    
+struct RegistrationModel: Codable, EmptyResponse {
+    static func emptyValue() -> RegistrationModel {
+        return RegistrationModel.init()
+    }
 }
