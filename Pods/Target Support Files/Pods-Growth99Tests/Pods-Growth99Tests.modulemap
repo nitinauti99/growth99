@@ -1,0 +1,6 @@
+framework module Pods_Growth99Tests {
+  umbrella header "Pods-Growth99Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,223 @@
+{
+  "menuList": [
+    {
+      "title": "userProfile",
+      "imageName": "userProfile"
+    },
+    {
+      "title": "MyProfile",
+      "imageName": "MyProfile",
+      "subMenuList": [
+        {
+          "title": "Profile",
+          "imageName": "Profile"
+        },
+        {
+          "title": "Appointments",
+          "imageName": "Appointments"
+        },
+        {
+          "title": "Working Schedule",
+          "imageName": "WorkingSchedule"
+        },
+        {
+          "title": "Vacation Schedule ",
+          "imageName": "Vacation Schedule "
+        },
+        {
+          "title": "Change Password",
+          "imageName": "ChangePassword"
+        }
+      ]
+    },
+    {
+      "title": "Account And Setting",
+      "imageName": "Account And Setting",
+      "subMenuList": [
+        {
+          "title": "Business",
+          "imageName": "Business"
+        },
+        {
+          "title": "Clinics",
+          "imageName": "Clinics"
+        },
+        {
+          "title": "Categories",
+          "imageName": "Categories"
+        },
+        {
+          "title": "Services",
+          "imageName": "Services"
+        },
+        {
+          "title": "Contact From",
+          "imageName": "ContactFrom"
+        },
+        {
+          "title": "Users",
+          "imageName": "Users"
+        }
+      ]
+    },
+    {
+      "title": "Appointments",
+      "imageName": "MyProfile",
+      "subMenuList": [
+        {
+          "title": "Calendar",
+          "imageName": "Calendar"
+        },
+        {
+          "title": "Booking History",
+          "imageName": "BookingHistory"
+        },
+        {
+          "title": "Payment",
+          "imageName": "Payment"
+        }
+      ]
+    },
+    {
+      "title": "Patients",
+      "imageName": "Patients",
+      "subMenuList": [
+        {
+          "title": "Patients",
+          "imageName": "Patients"
+        },
+        {
+          "title": "Patients Tags",
+          "imageName": "PatientsTags"
+        }
+      ]
+    },
+    {
+      "title": "Tasks",
+      "imageName": "Tasks"
+    },
+    {
+      "title": "Triggers",
+      "imageName": "Triggers"
+    },
+    {
+      "title": "Landing Pages",
+      "imageName": "LandingPages"
+    },
+    {
+      "title": "Website Consultation",
+      "imageName": "WebsiteConsultation "
+    },
+    {
+      "title": "Form Builder ",
+      "imageName": "FormBuilder"
+    },
+    {
+      "title": "Templates",
+      "imageName": "Templates",
+      "subMenuList": [
+        {
+          "title": "Email Templates",
+          "imageName": "EmailTemplates"
+        },
+        {
+          "title": "SMS Templates",
+          "imageName": "SMSTemplates"
+        },
+        {
+          "title": "Consents",
+          "imageName": "Consents"
+        },
+        {
+          "title": "Questionnaires",
+          "imageName": "Questionnaires"
+        }
+      ]
+    },
+    {
+      "title": "Leads",
+      "imageName": "Leads",
+      "subMenuList": [
+        {
+          "title": "Leads",
+          "imageName": "Leads"
+        },
+        {
+          "title": "Leads Tags",
+          "imageName": "LeadsTags"
+        },
+        {
+          "title": "Deleted Leads",
+          "imageName": "Deleted Leads"
+        },
+        {
+          "title": "Lead Source URLs",
+          "imageName": "LeadSourceURLs"
+        }
+      ]
+    },
+    {
+      "title": "Markting",
+      "imageName": "Markting",
+      "subMenuList": [
+        {
+          "title": "Mass Email and SMS",
+          "imageName": "MassEmailandSMS"
+        }
+      ]
+    },
+    {
+      "title": "Social Media Manager",
+      "imageName": "SocialMediaManager ",
+      "subMenuList": [
+        {
+          "title": "Social Profile",
+          "imageName": "SocialProfile"
+        },
+        {
+          "title": "Labels",
+          "imageName": "Labels"
+        },
+        {
+          "title": "Posts",
+          "imageName": "Post Calende"
+        }
+      ]
+    },
+    {
+      "title": "Chatbot",
+      "imageName": "Chatbot",
+      "subMenuList": [
+        {
+          "title": "Chat Configuration",
+          "imageName": "ChatConfiguration "
+        },
+        {
+          "title": "Chat Session",
+          "imageName": "ChatSession"
+        },
+        {
+          "title": "Unanswered",
+          "imageName": "Unanswered"
+        }
+      ]
+    },
+    {
+      "title": "Announcement",
+      "imageName": "Announcement"
+    },
+    {
+      "title": "Help and Training",
+      "imageName": "HelpandTraining"
+    },
+    {
+      "title": "Contact Support",
+      "imageName": "ContactSupport"
+    },
+    {
+      "title": "Logout",
+      "imageName": "Logout"
+    },
+    
+  ]
+}

@@ -1,0 +1,48 @@
+//
+//  Constant.swift
+//  Growth99
+//
+//  Created by nitin auti on 03/11/22.
+//
+
+import Foundation
+
+struct Constant {
+    
+    struct Login {
+        static let emailEmptyError = "Email is required"
+        static let emailInvalidError = "Email is Invalid"
+        static let passwordEmptyError = "Password is Required"
+        static let passwordInvalidError = "Password is Invalide"
+        static let termsConditionsUrl = "https://growth99.com/terms-and-conditions/"
+        static let privacyPolicyUrl = "https://growth99.com/privacy-policy/"
+    }
+    
+    struct Registration{
+        static let privacyText = "I agree to Growth99 Terms & Conditions and Privacy Policy"
+        static let firstNameEmptyError = "First Name is required."
+        static let lastNameEmptyError = "Last Name is required."
+        static let emailEmptyError = "Email is required."
+        static let emailInvalidError = "Email is Invalid."
+        static let phoneNumberEmptyError = "Phone number is required."
+        static let phoneNumberInvalidError = "Phone number is Invalide"
+        static let passwordEmptyError = "Password is Required."
+        static let passwordInvalidError = "Password is Invalide."
+        static let repeatPasswordEmptyError = "Repeat password is Required."
+        static let repeatPasswordInvalidError = "Repeat password is Invalide."
+        static let businessnameEmptyError = "Business name is required."
+    }
+    
+    struct VerifyForgotPassword {
+        static let emailEmptyError = "Email is required"
+        static let emailInvalidError = "Email is Invalid"
+        static let passwordEmptyError = "Password is Required"
+        static let passwordInvalidError = "Password is Invalide"
+        static let confirmPasswordEmptyError = "Confirm password is Required."
+        static let ConfirmPasswordInvalidError = "Confirm password is Invalide."
+        static let PasswordMissmatchError = "Password must match."
+        static let ConfirmationCodeInvalidError = "ConfirmationCode is Required."
+
+     }
+    
+}
