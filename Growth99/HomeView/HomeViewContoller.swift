@@ -20,6 +20,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
+    @IBOutlet weak var userProvider: UISwitch!
+    @IBOutlet weak var userProviderViewHight: NSLayoutConstraint!
+    @IBOutlet weak var userProviderView: UIView!
+
     let appDel = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var dropDown: DropDown!
     var viewModel: HomeViewModelProtocol?
@@ -27,13 +31,15 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = HomeViewModel(delegate: self)
+        self.userProviderViewHight.constant = 0
+        self.userProviderView.isHidden = true
         self.view.ShowSpinner()
+        self.setupTexFieldValidstion()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
         self.setUpMenuButton()
         dropDown.optionArray = ["Option 1", "Option 2", "Option 3", "Option 11", "Option 111", "Option 12", "Option 13"]
         dropDown.optionIds = [1,23,54,22]
         dropDown.isSearchEnable = true
-
         // Image Array its optional
        // dropDown.ImageArray = [👩🏻‍🦳,🙊,🥞]
 
@@ -41,14 +47,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         dropDown.didSelect{(selectedText , index ,id) in
             print("Selected String: \(selectedText) \n index: \(index)")
           }
-        
-        //  UINavigationBar.appearance().backgroundColor = .green
-        //  backgorund color with gradient
-        //  or
-        //  UINavigationBar.appearance().barTintColor = .green  // solid color
-        //  UIBarButtonItem.appearance().tintColor = .magenta
-        //  UINavigationBar.appearance().titleTextAttributes =        [NSAttributedString.Key.foregroundColor : UIColor.blue]
-        //  UITabBar.appearance().barTintColor = .yellow
     }
     
     func setUpMenuButton(){
@@ -62,19 +60,45 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     }
     
     func userDataRecived() {
-         self.view.HideSpinner()
-         self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
-         self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
-         self.emailTextField.text = viewModel?.getUserProfileData.email
-         self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
-         self.phoneNumberTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-        self.lastNameTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-         self.firsNameTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-
+        self.view.HideSpinner()
+        userProvider.setOn(false, animated: false)
+        if viewModel?.getUserProfileData.isProvider ?? false {
+            userProvider.setOn(true, animated: false)
+            self.userProviderViewHight.constant = 300
+            self.userProviderView.isHidden = false
+        }
+        self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
+        self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
+        self.emailTextField.text = viewModel?.getUserProfileData.email
+        self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+    }
+    
+    @IBAction func switchIsChanged(sender: UISwitch) {
+        if sender.isOn {
+            self.userProviderViewHight.constant = 300
+            self.userProviderView.isHidden = false
+            self.view.layoutIfNeeded()
+        } else {
+            self.userProviderViewHight.constant = 0
+            self.userProviderView.isHidden = true
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func setupTexFieldValidstion() {
+        self.phoneNumberTextField.addTarget(self, action:
+                                            #selector(HomeViewContoller.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.lastNameTextField.addTarget(self, action:
+                                            #selector(HomeViewContoller.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.firsNameTextField.addTarget(self, action:
+                                            #selector(HomeViewContoller.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-       
+        
         if textField == firsNameTextField,  textField.text == "" {
             firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
         }
@@ -128,5 +152,4 @@ extension HomeViewContoller: UITextFieldDelegate {
         }
         return true
     }
-  
 }

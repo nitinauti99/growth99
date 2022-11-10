@@ -9,23 +9,27 @@ import Foundation
 import UIKit
 
 extension UIView {
+    
     public func ShowSpinner() {
-        let spinnerActivity = MBProgressHUD.showAdded(to: self, animated: true)
-        spinnerActivity.mode = MBProgressHUDMode.indeterminate
-       // spinnerActivity.bezelView.color = UIColor.init(hexString: "#009EDE")
-     //   spinnerActivity.bezelView.style = .solidColor
-        spinnerActivity.label.text = "Loading"
-        //spinnerActivity.label.textColor = .white
-//        spinnerActivity.detailsLabel.text = "Please Wait!!"
-        spinnerActivity.isUserInteractionEnabled = false
+        self.LoaderConfiguration()
+        SwiftLoader.show(title: "Loading...", animated: true)
+    }
+    
+    func LoaderConfiguration(){
+         var config : SwiftLoader.Config = SwiftLoader.Config()
+         config.size = 150
+         config.spinnerColor = .red
+         config.titleTextColor = UIColor.init(hexString: "#009EDE")
+         config.foregroundColor = UIColor.init(hexString: "#009EDE")
+         config.foregroundAlpha = 0.5
     }
 
     public func HideSpinner(){
-        MBProgressHUD.hide(for: self, animated: true)
+        SwiftLoader.hide()
     }
     
     func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: 50, y: self.frame.size.height-100, width: self.frame.size.width - 100, height: 35))
+        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-100, width: self.frame.size.width - 60, height: 50))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = UIFont(name: "Avenir Next Medium", size: 15)

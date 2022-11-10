@@ -52,8 +52,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="vlO-iI-NBf"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                                <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6m-y4-Ss1" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -77,8 +77,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="Fdy-iX-vBw"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PrH-CK-VSH" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -102,8 +102,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="4It-m6-9YV"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xK2-Ow-9AJ" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -127,8 +127,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="9SU-uV-lcG"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMQ-i8-B13" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -149,8 +149,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="jAi-ud-8r9"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="APe-32-nCE" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -175,7 +175,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="iS8-jb-0Op"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IvZ-uA-jkD" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -197,7 +197,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="ZFi-Yx-ypV"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v9b-TU-Yr5" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -262,7 +262,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User is a Provider?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u00-6U-w6x">
                                                                 <rect key="frame" x="25" y="737.33333333333337" width="203" height="20.666666666666629"/>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-jb-JJb">
@@ -271,6 +271,9 @@
                                                                     <constraint firstAttribute="height" constant="31" id="UwT-FG-YFw"/>
                                                                     <constraint firstAttribute="width" constant="47" id="Zde-Q7-v6Y"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="switchIsChangedWithSender:" destination="Y6W-OH-hqX" eventType="valueChanged" id="fhV-r9-9Dr"/>
+                                                                </connections>
                                                             </switch>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p11-Gv-F8h" userLabel="userProviderView">
                                                                 <rect key="frame" x="0.0" y="778" width="330" height="300"/>
@@ -281,7 +284,7 @@
                                                                             <constraint firstAttribute="height" constant="20" id="FBi-sy-4e0"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                                        <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4x5-gH-una" userLabel="Clinics" customClass="DropDown" customModule="Growth99" customModuleProvider="target">
@@ -309,7 +312,7 @@
                                                                             <constraint firstAttribute="height" constant="20" id="0eg-dR-mpK"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                                        <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y99-7r-W8b" userLabel="ServiceCategory" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -331,7 +334,7 @@
                                                                             <constraint firstAttribute="height" constant="20" id="WwK-W4-rLD"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                                        <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rbX-Yr-W9I" userLabel="Service" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -351,6 +354,7 @@
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="y99-7r-W8b" firstAttribute="top" secondItem="UrM-OZ-ymM" secondAttribute="bottom" constant="6" id="27r-ML-hgu"/>
+                                                                    <constraint firstAttribute="height" constant="300" id="2G4-zO-Rwh"/>
                                                                     <constraint firstItem="4x5-gH-una" firstAttribute="leading" secondItem="vhW-ux-bdU" secondAttribute="leading" id="AZX-XR-Nok"/>
                                                                     <constraint firstItem="rbX-Yr-W9I" firstAttribute="top" secondItem="VTg-SZ-fpt" secondAttribute="bottom" constant="6" id="Bi6-Wf-Ysi"/>
                                                                     <constraint firstItem="VTg-SZ-fpt" firstAttribute="trailing" secondItem="y99-7r-W8b" secondAttribute="trailing" id="Flg-2E-7VM"/>
@@ -399,7 +403,6 @@
                                                             <constraint firstItem="MMQ-i8-B13" firstAttribute="top" secondItem="ufG-u2-Uw6" secondAttribute="bottom" constant="6" id="NHj-in-IFn"/>
                                                             <constraint firstItem="LMg-8F-4g9" firstAttribute="trailing" secondItem="v9b-TU-Yr5" secondAttribute="trailing" id="PwV-yZ-TY1"/>
                                                             <constraint firstItem="ufG-u2-Uw6" firstAttribute="trailing" secondItem="APe-32-nCE" secondAttribute="trailing" id="QQy-91-6Lt"/>
-                                                            <constraint firstAttribute="height" constant="1200" id="Qyo-vn-4ll"/>
                                                             <constraint firstItem="GFB-gF-cDX" firstAttribute="trailing" secondItem="W6m-y4-Ss1" secondAttribute="trailing" id="RGz-9D-M6n"/>
                                                             <constraint firstItem="rNO-zn-YOv" firstAttribute="leading" secondItem="MMQ-i8-B13" secondAttribute="leading" id="Rda-kk-jXG"/>
                                                             <constraint firstItem="nFw-jb-JJb" firstAttribute="top" secondItem="IvZ-uA-jkD" secondAttribute="bottom" constant="23" id="S15-lY-CBi"/>
@@ -481,6 +484,9 @@
                         <outlet property="firsNameTextField" destination="W6m-y4-Ss1" id="Vga-3g-1MP"/>
                         <outlet property="lastNameTextField" destination="xK2-Ow-9AJ" id="UF5-7y-ukq"/>
                         <outlet property="phoneNumberTextField" destination="APe-32-nCE" id="E7V-FD-qkt"/>
+                        <outlet property="userProvider" destination="nFw-jb-JJb" id="Mog-k2-8cm"/>
+                        <outlet property="userProviderView" destination="p11-Gv-F8h" id="kXo-dE-Mqk"/>
+                        <outlet property="userProviderViewHight" destination="2G4-zO-Rwh" id="mKC-J4-kcZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -490,31 +496,31 @@
     </scenes>
     <designables>
         <designable name="APe-32-nCE">
-            <size key="intrinsicContentSize" width="14" height="46"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="IvZ-uA-jkD">
-            <size key="intrinsicContentSize" width="14" height="46"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="MMQ-i8-B13">
-            <size key="intrinsicContentSize" width="14" height="44.333333333333336"/>
+            <size key="intrinsicContentSize" width="4" height="20"/>
         </designable>
         <designable name="PrH-CK-VSH">
-            <size key="intrinsicContentSize" width="14" height="46"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="W6m-y4-Ss1">
-            <size key="intrinsicContentSize" width="14" height="46"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="rbX-Yr-W9I">
-            <size key="intrinsicContentSize" width="14" height="46"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="v9b-TU-Yr5">
-            <size key="intrinsicContentSize" width="14" height="44.333333333333336"/>
+            <size key="intrinsicContentSize" width="4" height="20"/>
         </designable>
         <designable name="xK2-Ow-9AJ">
-            <size key="intrinsicContentSize" width="14" height="46"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="y99-7r-W8b">
-            <size key="intrinsicContentSize" width="14" height="44.333333333333336"/>
+            <size key="intrinsicContentSize" width="4" height="20"/>
         </designable>
     </designables>
     <resources>

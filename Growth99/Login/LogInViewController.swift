@@ -23,11 +23,13 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     let appDel = UIApplication.shared.delegate as! AppDelegate
     var viewModel: LogInViewModelProtocol?
     let emailMessage = NSLocalizedString("Email is required.", comment: "")
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginView.addBottomShadow(color: .gray,opacity: 0.5)
-        viewModel = LogInViewModel(delegate: self)
+        self.viewModel = LogInViewModel(delegate: self)
+        self.setupTexFieldValidstion()
+        emailTextField.text = "nitinauti999@gmail.com"
+        passwordTextField.text = "Password1@!"
         self.setUpUI()
     }
 
@@ -37,7 +39,6 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
         loginSignUpLbl.updateHyperLinkText { _ in
             self.openRegistrationView()
         }
-
         forgotPasswoardLbl.updateHyperLinkText { _ in
             self.openForgotPasswordView()
         }
@@ -46,35 +47,73 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     func LoaginDataRecived() {
         self.view.HideSpinner()
         self.openHomeView()
-        
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)
     }
+    
+    private func setupTexFieldValidstion() {
+        self.emailTextField.addTarget(self, action:
+                                            #selector(LogInViewController.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.passwordTextField.addTarget(self, action:
+                                            #selector(LogInViewController.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == emailTextField,  textField.text == "" {
+            emailTextField.showError(message: Constant.Login.emailEmptyError)
+        }
+        
+        if textField == passwordTextField, textField.text == "" {
+            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
+        }
+
+        if textField == emailTextField, textField.text != "" , let emailValidate = viewModel?.isValidEmail(emailTextField.text ?? ""), emailValidate == false {
+            emailTextField.showError(message: Constant.Login.emailInvalidError)
+        }
+        
+        if textField == passwordTextField, textField.text != "" , let passwrdValidate = viewModel?.isValidPassword(passwordTextField.text ?? ""), passwrdValidate == false {
+            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
+        }
+    }
  
     @IBAction func logIn(sender: UIButton){
-//        guard let email = emailTextField.text, !email.isEmpty else {
-//            emailTextField.showError(message: Constant.Login.emailEmptyError)
-//            return
-//        }
-//        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-//            emailTextField.showError(message: Constant.Login.emailInvalidError)
-//            return
-//        }
-//
-//        guard let password = passwordTextField.text, !password.isEmpty else {
-//            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
-//            return
-//        }
-//        guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
-//            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
-//            return
-//        }
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailTextField.showError(message: Constant.Login.emailEmptyError)
+            return
+        }
+        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
+            emailTextField.showError(message: Constant.Login.emailInvalidError)
+            return
+        }
+
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
+            return
+        }
+        guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
+            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
+            return
+        }
         self.view.ShowSpinner()
          viewModel?.loginValidate(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
+    
+    @IBAction func showPassword(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            passwordTextField.isSecureTextEntry = true
+        }else {
+            passwordTextField.isSecureTextEntry = false
+            sender.isSelected = true
+        }
+    }
+    
     
     func openRegistrationView(){
         print("openRegistrationView")

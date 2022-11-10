@@ -45,6 +45,7 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
     
     func LoaginDataRecived() {
         self.view.HideSpinner()
+        self.openVerifyPasswordView()
     }
     
     func errorReceived(error: String) {
@@ -64,8 +65,6 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
         }
          self.view.ShowSpinner()
          viewModel?.sendRequestGetPassword(email: emailTextField.text ?? "")
-        self.openVerifyPasswordView()
-        
     }
     
     func openVerifyPasswordView(){

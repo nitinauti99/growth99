@@ -11,20 +11,18 @@ import UIKit
 @IBDesignable
 open class CustomTextField: UITextField {
 
-    fileprivate var lblFloatPlaceholder:UILabel             = UILabel()
-    fileprivate var lblError:UILabel                        = UILabel()
-    fileprivate let paddingX:CGFloat                        = 5.0
-    
-    fileprivate let paddingHeight:CGFloat                   = 10.0
-    fileprivate var borderLayer:CALayer                     = CALayer()
-    public var dtLayer:CALayer                              = CALayer()
-    public var borderWidth:CGFloat                          = 0.5{
+    fileprivate var lblError: UILabel = UILabel()
+    fileprivate let paddingX: CGFloat = 5.0
+    fileprivate let paddingHeight:CGFloat = 0
+    fileprivate var borderLayer:CALayer = CALayer()
+    public var dtLayer:CALayer = CALayer()
+    public var borderWidth: CGFloat = 0.5{
         didSet{
             let borderStyle = dtborderStyle;
             dtborderStyle = borderStyle
         }
     }
-    
+
     public var dtborderStyle:DTBorderStyle = .rounded {
         didSet{
             borderLayer.removeFromSuperlayer()
@@ -78,13 +76,6 @@ open class CustomTextField: UITextField {
         }
     }
     
-    public var floatPlaceholderFont = UIFont.systemFont(ofSize: 12.0){
-        didSet{
-            lblFloatPlaceholder.font = floatPlaceholderFont
-            invalidateIntrinsicContentSize()
-        }
-    }
-    
     public var paddingYFloatLabel:CGFloat = 3.0 {
         didSet{ invalidateIntrinsicContentSize() }
     }
@@ -115,7 +106,7 @@ open class CustomTextField: UITextField {
         }
     }
     
-    public var placeholderColor:UIColor?{
+    public var placeholderColor:UIColor? {
         didSet{
             guard let color = placeholderColor else { return }
             attributedPlaceholder = NSAttributedString(string: placeholderFinal,
@@ -124,11 +115,9 @@ open class CustomTextField: UITextField {
     }
     
     fileprivate var x:CGFloat {
-        
         if let leftView = leftView {
             return leftView.frame.origin.x + leftView.bounds.size.width - paddingX
         }
-        
         return paddingX
     }
     
@@ -182,16 +171,11 @@ open class CustomTextField: UITextField {
         didSet{
             
             guard let color = placeholderColor else {
-                lblFloatPlaceholder.text = placeholderFinal
                 return
             }
             attributedPlaceholder = NSAttributedString(string: placeholderFinal,
                                                        attributes: [NSAttributedString.Key.foregroundColor:color])
         }
-    }
-    
-    override public var attributedPlaceholder: NSAttributedString?{
-        didSet{ lblFloatPlaceholder.text = placeholderFinal }
     }
     
     override public init(frame: CGRect) {
@@ -226,13 +210,8 @@ open class CustomTextField: UITextField {
     }
     
     fileprivate func commonInit() {
-        dtborderStyle               = .rounded
+       // dtborderStyle               = .rounded
         dtLayer.backgroundColor     = UIColor.white.cgColor
-        lblFloatPlaceholder.frame   = CGRect.zero
-        lblFloatPlaceholder.alpha   = 0.0
-        lblFloatPlaceholder.font    = floatPlaceholderFont
-        lblFloatPlaceholder.text    = placeholderFinal
-        addSubview(lblFloatPlaceholder)
         SetupErroLabelFrame()
         layer.insertSublayer(dtLayer, at: 0)
     }
@@ -280,15 +259,7 @@ open class CustomTextField: UITextField {
         
         return CGRect(x: newX, y: floor(textY), width: rect.size.width - newX - paddingX, height: rect.size.height)
     }
-    
-    fileprivate func insetRectForBounds(rect:CGRect) -> CGRect {
-        
-        guard let placeholderText = lblFloatPlaceholder.text,!placeholderText.isEmptyStr  else {
-            return insetRectForEmptyBounds(rect: rect)
-        }
-        return insetRectForEmptyBounds(rect: rect)
-    }
-    
+
     @objc fileprivate func textFieldTextChanged(){
         guard hideErrorWhenEditing && showErrorLabel else { return }
         showErrorLabel = false
@@ -300,25 +271,14 @@ open class CustomTextField: UITextField {
         let textFieldIntrinsicContentSize = super.intrinsicContentSize
         
         if showErrorLabel {
-            lblFloatPlaceholder.sizeToFit()
             return CGSize(width: textFieldIntrinsicContentSize.width,
-                          height: textFieldIntrinsicContentSize.height + paddingYFloatLabel + paddingYErrorLabel + lblFloatPlaceholder.bounds.size.height + lblError.bounds.size.height + paddingHeight)
+                          height: textFieldIntrinsicContentSize.height + paddingYFloatLabel + paddingYErrorLabel + lblError.bounds.size.height + paddingHeight)
         }else{
             return CGSize(width: textFieldIntrinsicContentSize.width,
-                          height: textFieldIntrinsicContentSize.height + paddingYFloatLabel + lblFloatPlaceholder.bounds.size.height + paddingHeight)
+                          height: textFieldIntrinsicContentSize.height + paddingYFloatLabel + paddingHeight)
         }
     }
-    
-    override public func textRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.textRect(forBounds: bounds)
-        return insetRectForBounds(rect: rect)
-    }
-    
-    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.editingRect(forBounds: bounds)
-        return insetRectForBounds(rect: rect)
-    }
-    
+
     fileprivate func insetForSideView(forBounds bounds: CGRect) -> CGRect{
         var rect = bounds
         rect.origin.y = 0
@@ -347,7 +307,7 @@ open class CustomTextField: UITextField {
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        dtLayer.frame = CGRect(x: bounds.origin.x,
+        dtLayer.frame = CGRect(x: bounds.origin.x - 10,
                                y: bounds.origin.y,
                                width: bounds.width,
                                height: bounds.height)
@@ -356,18 +316,10 @@ open class CustomTextField: UITextField {
         CATransaction.commit()
         
         if showErrorLabel {
-            
             var lblErrorFrame = lblError.frame
             lblErrorFrame.origin.y = dtLayer.frame.origin.y + dtLayer.frame.size.height + paddingYErrorLabel
             lblError.frame = lblErrorFrame
         }
-        
-        let floatingLabelSize = lblFloatPlaceholder.sizeThatFits(lblFloatPlaceholder.superview!.bounds.size)
-        
-        lblFloatPlaceholder.frame = CGRect(x: x, y: lblFloatPlaceholder.frame.origin.y,
-                                           width: floatingLabelSize.width,
-                                           height: floatingLabelSize.height)
-        
         setErrorLabelAlignment()
     }
 }

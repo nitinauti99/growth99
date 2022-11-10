@@ -34,8 +34,7 @@ class LogInViewModel {
                 self.SetUpUserData()
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                self.delegate?.errorReceived(error: "Authentication failed")
             }
         }
     }
@@ -71,7 +70,6 @@ extension LogInViewModel : LogInViewModelProtocol {
         return false
     }
 }
-
 
 //requet using normal url session
 //NetworkManager.connect(httpMethod: .post, request: ApiRouter.getLogin("yogesh123@growth99.com", "Password1@!").urlRequest, responseType: LoginModel.self) { result in

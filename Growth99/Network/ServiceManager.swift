@@ -12,7 +12,7 @@ class ServiceManager {
     
     static func request<ResponseType: Decodable>(request: URLRequest, responseType: ResponseType.Type, completion: @escaping (Result<ResponseType, Error>) -> Void) {
         
-        AF.request(request).validate().responseDecodable(of: responseType.self) { (response) in
+        AF.request(request).validate().responseDecodable(of: responseType.self) { response in
             self.DataToJSON(data: response.data ?? Data())
             switch response.result {
             case .success(let response):
