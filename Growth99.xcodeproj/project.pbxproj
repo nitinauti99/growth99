@@ -58,6 +58,9 @@
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
 		8497A04428FF122D00CBA26C /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497A04328FF122D00CBA26C /* EnvironmentManager.swift */; };
+		84995ABF291BD13000D11B24 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995ABE291BD13000D11B24 /* NetworkingService.swift */; };
+		84995AC1291BD88500D11B24 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC0291BD88500D11B24 /* LoginService.swift */; };
+		84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC3291CBCCE00D11B24 /* UserProfile.swift */; };
 		84B2E59F291375C300BAA535 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E59E291375C300BAA535 /* Constant.swift */; };
 		84B2E5AF2913A34900BAA535 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5AE2913A34800BAA535 /* MBProgressHUD.m */; };
 		84B2E5B12914303400BAA535 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B02914303400BAA535 /* RegistrationModel.swift */; };
@@ -158,6 +161,9 @@
 		8497A03C28FF11E200CBA26C /* Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Staging.plist; sourceTree = "<group>"; };
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
 		8497A04328FF122D00CBA26C /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
+		84995ABE291BD13000D11B24 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		84995AC0291BD88500D11B24 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		84995AC3291CBCCE00D11B24 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		84B2E59E291375C300BAA535 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
 		84B2E5AD2913A34600BAA535 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -314,6 +320,7 @@
 		848F4DC628F1CFC8007AC421 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				84995ABE291BD13000D11B24 /* NetworkingService.swift */,
 				848F4DB128F1C207007AC421 /* ApiRouter.swift */,
 				8497A03528FF063900CBA26C /* EndPoints.swift */,
 				848F4DB728F1C2AB007AC421 /* Reachability.swift */,
@@ -348,6 +355,7 @@
 				848F4DD028F1E53A007AC421 /* LogInViewModel.swift */,
 				848F4D8128F1C160007AC421 /* LogInViewController.swift */,
 				848F4D8328F1C160007AC421 /* LogInViewController.storyboard */,
+				84995AC0291BD88500D11B24 /* LoginService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -457,6 +465,7 @@
 				84EDDFCC291639FA00614A87 /* HomeViewContoller.swift */,
 				84EDDFCE29163C5C00614A87 /* HomeViewContoller.storyboard */,
 				84872B14291A89150063DD3B /* HomeViewModel.swift */,
+				84995AC3291CBCCE00D11B24 /* UserProfile.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -760,11 +769,14 @@
 				847CCCA82912AC7E005C8DE9 /* SpinnerView.swift in Sources */,
 				848F4DCE28F1E19C007AC421 /* UITextFieldExtension.swift in Sources */,
 				84EDDFCA291638D500614A87 /* KYEmbedMainControllerSegue.swift in Sources */,
+				84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */,
 				848F4DC428F1CCC7007AC421 /* KeychainItemAccessibility.swift in Sources */,
 				8497A03628FF063900CBA26C /* EndPoints.swift in Sources */,
 				848F4DD528F330B3007AC421 /* HyperLinkLabel.swift in Sources */,
 				84EDDFD129163D9400614A87 /* DrawerViewContoller.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
+				84995AC1291BD88500D11B24 /* LoginService.swift in Sources */,
+				84995ABF291BD13000D11B24 /* NetworkingService.swift in Sources */,
 				84B2E59F291375C300BAA535 /* Constant.swift in Sources */,
 				848F4DB828F1C2AB007AC421 /* Reachability.swift in Sources */,
 				84EDDFD72916712900614A87 /* CustomNavaigationContoller.swift in Sources */,

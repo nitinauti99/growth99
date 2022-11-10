@@ -17,9 +17,10 @@ class User {
     private static let refreshToken = "refreshToken"
     private static let primaryEmailId = "primaryEmailId"
     private static let isUserLoged = "isUserLoged"
-    private static let sessionCookie = "sessionCookie"
+    private static let Xtenantid = "Xtenantid"
     private static let roles = "roles"
-    
+    private static let userId = "userId"
+
     var authToken: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.authToken)
@@ -47,6 +48,15 @@ class User {
         }
     }
     
+    var userId: Int? {
+         get {
+             KeychainWrapper.standard.integer(forKey: User.userId)
+         }
+         set {
+             applyNewValueInKeyChain(value: newValue, key: User.userId)
+         }
+     }
+    
     var roles: String? {
          get {
              KeychainWrapper.standard.string(forKey: User.roles)
@@ -55,6 +65,7 @@ class User {
              applyNewValueInKeyChain(value: newValue, key: User.roles)
          }
      }
+    
     
     var profilePictureUrl: String? {
         get {
@@ -102,12 +113,12 @@ class User {
         }
     }
 
-    var sessionCookie: String? {
+    var Xtenantid: String? {
         get {
-            KeychainWrapper.standard.string(forKey: User.sessionCookie)
+            KeychainWrapper.standard.string(forKey: User.Xtenantid)
         }
         set {
-            applyNewValueInKeyChain(value: newValue, key: User.sessionCookie)
+            applyNewValueInKeyChain(value: newValue, key: User.Xtenantid)
         }
     }
     
@@ -119,7 +130,8 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.primaryMobileNumber)
         KeychainWrapper.standard.removeObject(forKey: User.refreshToken)
         KeychainWrapper.standard.removeObject(forKey: User.primaryEmailId)
-        KeychainWrapper.standard.removeObject(forKey: User.sessionCookie)
+        KeychainWrapper.standard.removeObject(forKey: User.Xtenantid)
+        KeychainWrapper.standard.removeObject(forKey: User.userId)
     }
 
     private func applyNewValueInKeyChain(value: Any?, key: String) {

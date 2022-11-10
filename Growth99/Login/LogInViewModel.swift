@@ -25,21 +25,8 @@ class LogInViewModel {
     }
    
     func loginValidate(email: String, password: String) {
-        ///// working stage normale
-       
-//        NetworkManager.connect(httpMethod: .post, request: ApiRouter.getLogin("yogesh123@growth99.com", "Password1@!").urlRequest, responseType: LoginModel.self) { result in
-//            switch result {
-//            case .success(let loginData):
-//                print(loginData)
-//                self.delegate?.LoaginDataRecived()
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-
         /// request with alamofire
-        struct Body: Codable {}
-        ServiceManager.request(httpMethod: .post, request: ApiRouter.getLogin(email, password).urlRequest, responseType: LoginModel.self, body: Body()) { result in
+        ServiceManager.request(request: ApiRouter.getLogin(email, password).urlRequest, responseType: LoginModel.self) { result in
             switch result {
             case .success(let logInData):
                 self.LogInData = logInData
@@ -56,11 +43,13 @@ class LogInViewModel {
     func SetUpUserData(){
         self.user.firstName = LogInData?.firstName
         self.user.lastName = LogInData?.lastName
-        self.user.authToken = LogInData?.accessToken
+        self.user.authToken = LogInData?.idToken
         self.user.refreshToken = LogInData?.refreshToken
         self.user.profilePictureUrl = LogInData?.logoUrl
         self.user.roles = LogInData?.roles
-    }
+        self.user.Xtenantid = LogInData?.businessId
+        self.user.userId = LogInData?.id
+     }
 }
 
 extension LogInViewModel : LogInViewModelProtocol {
@@ -84,5 +73,13 @@ extension LogInViewModel : LogInViewModelProtocol {
 }
 
 
-
-
+//requet using normal url session
+//NetworkManager.connect(httpMethod: .post, request: ApiRouter.getLogin("yogesh123@growth99.com", "Password1@!").urlRequest, responseType: LoginModel.self) { result in
+//    switch result {
+//    case .success(let loginData):
+//        print(loginData)
+//        self.delegate?.LoaginDataRecived()
+//    case .failure(let error):
+//        print(error.localizedDescription)
+//    }
+//}

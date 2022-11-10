@@ -11,12 +11,16 @@ public enum ContentType: String {
     case key = "Content-Type", value = "application/json"
 }
 
+//public enum TokenType: String {
+//    case Token = "Authorization", TokenValue = "Bearer \(UserRepository.shared.id)"
+//}
 enum ApiRouter: URLRequestConvertible {
     
     case getLogin(String, String)
     case sendRequesRegistration(String, String, String, String, String, String, String, Bool)
     case sendRequestForgotPassword(String)
     case sendRequesVerifyForgotPassword(String, String, String, String)
+    case getRequestForUserProfile(Int)
 
 
     var stringValue: String {
@@ -29,6 +33,8 @@ enum ApiRouter: URLRequestConvertible {
             return ApiUrl.forgotPassword
         case .sendRequesVerifyForgotPassword(_, _, _, _):
             return ApiUrl.VerifyforgotPassword
+        case .getRequestForUserProfile(_):
+            return ApiUrl.userProfile
         }
     }
     
@@ -41,24 +47,14 @@ enum ApiRouter: URLRequestConvertible {
                ]
            case .sendRequesRegistration(let firstName, let lastName, let email, let phone, let password, let confirmPassword, let businessName, let agreeTerms):
                return [
-//                   "firstName": firstName,
-//                   "lastName": lastName,
-//                   "email": email,
-//                   "phone": phone,
-//                   "password": password,
-//                   "confirmPassword": confirmPassword,
-//                   "businessName": businessName,
-//                   "agreeTerms": agreeTerms,
-//                   "address": "Punee Rd, Koloa, HI 96756, USA"
-                   "firstName": "test",
-                   "lastName": "test",
-                   "email": "tes123gdtet@test.com",
-                   "password": "Password1@!",
-                   "confirmPassword": "Password1@!",
-                   "phone": "1111111111",
-                   "businessName": "test business 123",
-                   "agreeTerms": true,
-                   "address": "Geeding Str, Gratis, OH 45381, USA"
+                   "firstName": firstName,
+                   "lastName": lastName,
+                   "email": email,
+                   "phone": phone,
+                   "password": password,
+                   "confirmPassword": confirmPassword,
+                   "businessName": businessName,
+                   "agreeTerms": agreeTerms
                ]
            case .sendRequestForgotPassword(let email):
                return ["username":email]
@@ -69,6 +65,8 @@ enum ApiRouter: URLRequestConvertible {
                 "confirmPassword":confirmPassword,
                 "confirmationCode":confirmationCode
                ]
+           case .getRequestForUserProfile(_):
+               return [:]
            }
        }
     
@@ -105,6 +103,14 @@ enum ApiRouter: URLRequestConvertible {
            let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
            request.httpBody = jsonData
            request.method = .put
+           return request
+       case .getRequestForUserProfile(let userId):
+           let components = URLComponents(string: ApiUrl.userProfile.appending("\(userId)"))
+           var request = URLRequest(url: (components?.url)!)
+           request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
+           request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
+           request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")           
+           request.method = .get
            return request
        }
     }

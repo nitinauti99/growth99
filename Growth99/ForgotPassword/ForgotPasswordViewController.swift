@@ -54,16 +54,16 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
     
     
     @IBAction func sendRequestButton(sender: UIButton){
-//        guard let email = emailTextField.text, !email.isEmpty else {
-//            emailTextField.showError(message: Constant.Login.emailEmptyError)
-//            return
-//        }
-//        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-//            emailTextField.showError(message: Constant.Login.emailInvalidError)
-//            return
-//        }
-//         self.view.ShowSpinner()
-//         viewModel?.sendRequestGetPassword(email: emailTextField.text ?? "")
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailTextField.showError(message: Constant.Login.emailEmptyError)
+            return
+        }
+        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
+            emailTextField.showError(message: Constant.Login.emailInvalidError)
+            return
+        }
+         self.view.ShowSpinner()
+         viewModel?.sendRequestGetPassword(email: emailTextField.text ?? "")
         self.openVerifyPasswordView()
         
     }

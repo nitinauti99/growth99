@@ -46,6 +46,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     func LoaginDataRecived() {
         self.view.HideSpinner()
         self.openHomeView()
+        
     }
     
     func errorReceived(error: String) {
@@ -54,23 +55,23 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     }
  
     @IBAction func logIn(sender: UIButton){
-        guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.Login.emailEmptyError)
-            return
-        }
-        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.Login.emailInvalidError)
-            return
-        }
-
-        guard let password = passwordTextField.text, !password.isEmpty else {
-            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
-            return
-        }
-        guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
-            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
-            return
-        }
+//        guard let email = emailTextField.text, !email.isEmpty else {
+//            emailTextField.showError(message: Constant.Login.emailEmptyError)
+//            return
+//        }
+//        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
+//            emailTextField.showError(message: Constant.Login.emailInvalidError)
+//            return
+//        }
+//
+//        guard let password = passwordTextField.text, !password.isEmpty else {
+//            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
+//            return
+//        }
+//        guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
+//            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
+//            return
+//        }
         self.view.ShowSpinner()
          viewModel?.loginValidate(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }

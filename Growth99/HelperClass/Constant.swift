@@ -45,4 +45,13 @@ struct Constant {
 
      }
     
+    /// Required  Server status from requests url configured for what ever is needed
+    struct status {
+            static let OK = "OK"
+            static let NOK = "NOK"
+            static let REQUEST_FAIL = "FAIL"
+            static let NETWORK_UNAVAILABLE = "NETWORK_UNAVAILABLE"
+            static let RESOURCE_UNAVAILABLE = "RESOURCE_UNAVAILABLE"
+    }
+        
 }

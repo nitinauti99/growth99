@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 
-class HomeViewContoller: UIViewController, UITextFieldDelegate {
-    
+protocol HomeViewContollerProtocool {
+    func userDataRecived()
+    func errorReceived(error: String)
+}
+
+class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
+   
     @IBOutlet weak var firsNameTextField: CustomTextField!
     @IBOutlet weak var lastNameTextField: CustomTextField!
     @IBOutlet weak var emailTextField: CustomTextField!
@@ -17,19 +22,15 @@ class HomeViewContoller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: CustomTextField!
     let appDel = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var dropDown: DropDown!
+    var viewModel: HomeViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let menuButton = UIButton()
-        menuButton.setImage(UIImage(named: "menu"), for: .normal)
-        menuButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        menuButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
-        let BarButtonItem = UIBarButtonItem()
-        BarButtonItem.customView = menuButton
-        self.navigationItem.rightBarButtonItems = [BarButtonItem]
-        // The list of array to display. Can be changed dynamically
+        viewModel = HomeViewModel(delegate: self)
+        self.view.ShowSpinner()
+        viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
+        self.setUpMenuButton()
         dropDown.optionArray = ["Option 1", "Option 2", "Option 3", "Option 11", "Option 111", "Option 12", "Option 13"]
-        // Its Id Values and its optional
         dropDown.optionIds = [1,23,54,22]
         dropDown.isSearchEnable = true
 
@@ -40,7 +41,6 @@ class HomeViewContoller: UIViewController, UITextFieldDelegate {
         dropDown.didSelect{(selectedText , index ,id) in
             print("Selected String: \(selectedText) \n index: \(index)")
           }
-     
         
         //  UINavigationBar.appearance().backgroundColor = .green
         //  backgorund color with gradient
@@ -50,10 +50,52 @@ class HomeViewContoller: UIViewController, UITextFieldDelegate {
         //  UINavigationBar.appearance().titleTextAttributes =        [NSAttributedString.Key.foregroundColor : UIColor.blue]
         //  UITabBar.appearance().barTintColor = .yellow
     }
+    
+    func setUpMenuButton(){
+        let menuButton = UIButton()
+        menuButton.setImage(UIImage(named: "menu"), for: .normal)
+        menuButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+        menuButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
+        let BarButtonItem = UIBarButtonItem()
+        BarButtonItem.customView = menuButton
+        self.navigationItem.rightBarButtonItems = [BarButtonItem]
+    }
+    
+    func userDataRecived() {
+         self.view.HideSpinner()
+         self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
+         self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
+         self.emailTextField.text = viewModel?.getUserProfileData.email
+         self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+         self.phoneNumberTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.lastNameTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+         self.firsNameTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
-//    @IBAction func menuPressed(){
-//        appDel.drawerController.setDrawerState(.opened, animated: true)
-//    }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+       
+        if textField == firsNameTextField,  textField.text == "" {
+            firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
+        }
+        
+        if textField == lastNameTextField, textField.text == "" {
+            lastNameTextField.showError(message: Constant.Registration.lastNameEmptyError)
+        }
+        
+        if textField == phoneNumberTextField, textField.text == "" {
+            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberEmptyError)
+         }
+        
+        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
+            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberInvalidError)
+        }
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+    }
+    
     
     @objc func myTargetFunction(textField: UITextField) {
         print("touchDown for \(textField.tag)")
@@ -71,3 +113,20 @@ class HomeViewContoller: UIViewController, UITextFieldDelegate {
     }
 }
 
+extension HomeViewContoller: UITextFieldDelegate {
+   
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = Int()
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+
+        if  textField == phoneNumberTextField {
+            maxLength = 10
+            phoneNumberTextField.hideError()
+            return newString.length <= maxLength
+        }
+        return true
+    }
+  
+}

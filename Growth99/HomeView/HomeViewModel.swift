@@ -9,57 +9,56 @@ import Foundation
 import Alamofire
 
 protocol HomeViewModelProtocol {
-    func isValidEmail(_ email: String) -> Bool
+    func isValidFirstName(_ firstName: String) -> Bool
     func isValidPassword(_ password: String) -> Bool
-    func loginValidate(email: String, password: String)
+    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    func getUserData(userId: Int)
+    var getUserProfileData:UserProfile { get }
 }
 
 class HomeViewModel {
+    var delegate: HomeViewContollerProtocool?
+    var userData: UserProfile?
     
-    var delegate: LogInViewControllerProtocol?
-    var LogInData: LoginModel?
-    let user = UserRepository.shared
-    
-    init(delegate: LogInViewControllerProtocol? = nil) {
+    init(delegate: HomeViewContollerProtocool? = nil) {
         self.delegate = delegate
     }
    
-    func loginValidate(email: String, password: String) {
-        struct Body: Codable {}
+    func getUserData(userId: Int) {
        
-        ServiceManager.request(httpMethod: .post, request: ApiRouter.getLogin(email, password).urlRequest, responseType: LoginModel.self, body: Body()) { result in
+        ServiceManager.request(request: ApiRouter.getRequestForUserProfile(userId).urlRequest, responseType: UserProfile.self) { result in
             switch result {
-            case .success(let logInData):
-                self.LogInData = logInData
-                self.user.isUserLoged = true
-                self.SetUpUserData()
-                self.delegate?.LoaginDataRecived()
+            case .success(let userData):
+                self.userData = userData
+                self.delegate?.userDataRecived()
             case .failure(let error):
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }
-
-    func SetUpUserData(){
-        self.user.firstName = LogInData?.firstName
-        self.user.lastName = LogInData?.lastName
-        self.user.authToken = LogInData?.accessToken
-        self.user.refreshToken = LogInData?.refreshToken
-        self.user.profilePictureUrl = LogInData?.logoUrl
-        self.user.roles = LogInData?.roles
+    
+    var getUserProfileData: UserProfile {
+        return self.userData!
     }
 }
 
 extension HomeViewModel : HomeViewModelProtocol {
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
+    func isValidFirstName(_ firstName: String) -> Bool {
+        if firstName.count > 0 {
+            return true
+        }
+        return false
     }
     
+    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        if phoneNumber.count < 10 {
+            return false
+        }
+        return true
+    }
+
     func isValidPassword(_ password: String) -> Bool {
         let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
         let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)

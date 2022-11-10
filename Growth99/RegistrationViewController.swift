@@ -54,11 +54,12 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     }
     
     func LoaginDataRecived() {
-        
+        self.view.HideSpinner()
+        self.openLogIInView()
     }
     
     func errorReceived(error: String) {
-        
+        self.view.HideSpinner()
     }
     
     @IBAction func registration(sender: UIButton){
@@ -106,7 +107,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
             bussinessNameTextField.showError(message: Constant.Login.passwordEmptyError)
             return
         }
-        
+        self.view.ShowSpinner()
         viewModel?.registration(firstName: firsName, lastName: lastName, emial: email, phoneNumber: phoneNumber, password: password, repeatPassword: repeatPassword, businesName: bussinessName, agreeTerms: true)
         
     }

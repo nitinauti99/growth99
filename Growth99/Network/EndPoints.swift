@@ -13,6 +13,8 @@ struct EndPoints {
     static let register = "/account/register"
     static let forgotPassword = "/public/users/forgot-password"
     static let VerifyforgotPassword = "/public/users/forgot-password"
+    static let userProfile = "/v1/user/"
+
 }
 
 struct ApiUrl {
@@ -20,5 +22,5 @@ struct ApiUrl {
     static let register = EndPoints.baseURL.appending(EndPoints.register)
     static let forgotPassword = EndPoints.baseURL.appending(EndPoints.forgotPassword)
     static let VerifyforgotPassword = EndPoints.baseURL.appending(EndPoints.VerifyforgotPassword)
-
+    static let userProfile = EndPoints.baseURL.appending(EndPoints.userProfile)
 }

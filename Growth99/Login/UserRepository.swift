@@ -38,6 +38,15 @@ public class UserRepository {
         }
     }
     
+    public var userId: Int? {
+        get {
+            user.userId
+        }
+        set {
+            user.userId = newValue
+        }
+    }
+    
     public var profilePictureUrl: String? {
         get {
             user.profilePictureUrl
@@ -94,12 +103,12 @@ public class UserRepository {
         }
     }
 
-    public var sessionCookie: String? {
+    public var Xtenantid: String? {
         get {
-            user.sessionCookie
+            user.Xtenantid
         }
         set {
-            user.sessionCookie = newValue
+            user.Xtenantid = newValue
         }
     }
 }

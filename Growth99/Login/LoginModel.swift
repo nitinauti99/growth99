@@ -11,6 +11,7 @@ struct LoginModel: Codable {
     let tokenType: String?
     let accessToken: String?
     let refreshToken: String?
+    let idToken: String?
     let id: Int?
     let firstName: String?
     let lastName: String?
