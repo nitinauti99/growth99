@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
+		843902E2291DFB1000308E8F /* YBTextPickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843902D9291DFB1000308E8F /* YBTextPickerDataModel.swift */; };
+		843902E3291DFB1000308E8F /* YBTextPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843902DB291DFB1000308E8F /* YBTextPickerCell.xib */; };
+		843902E4291DFB1000308E8F /* YBTextPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843902DC291DFB1000308E8F /* YBTextPickerCell.swift */; };
+		843902E5291DFB1000308E8F /* YBTextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843902DD291DFB1000308E8F /* YBTextPicker.swift */; };
+		843902E8291DFB1000308E8F /* YBTextPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843902E1291DFB1000308E8F /* YBTextPicker.xib */; };
 		84737BA028F81A0D0017F14D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84737B9F28F81A0D0017F14D /* ForgotPasswordViewController.swift */; };
 		84737BA228F81A5D0017F14D /* ForgotPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84737BA128F81A5D0017F14D /* ForgotPasswordViewController.storyboard */; };
 		847CCCA82912AC7E005C8DE9 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CCCA72912AC7E005C8DE9 /* SpinnerView.swift */; };
@@ -51,6 +56,7 @@
 		848F4DD728F333E6007AC421 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DD628F333E6007AC421 /* UILabelExtension.swift */; };
 		848F4DDA28F3D095007AC421 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DD928F3D095007AC421 /* RegistrationViewController.swift */; };
 		848F4DDC28F3D15D007AC421 /* RegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848F4DDB28F3D15D007AC421 /* RegistrationViewController.storyboard */; };
+		8494EDCF291D4F5E00E420EC /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494EDCE291D4F5E00E420EC /* SwiftLoader.swift */; };
 		8497A03428FEABAC00CBA26C /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497A03328FEABAC00CBA26C /* ServiceManager.swift */; };
 		8497A03628FF063900CBA26C /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497A03528FF063900CBA26C /* EndPoints.swift */; };
 		8497A03E28FF11E200CBA26C /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03A28FF11E200CBA26C /* Production.plist */; };
@@ -62,7 +68,6 @@
 		84995AC1291BD88500D11B24 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC0291BD88500D11B24 /* LoginService.swift */; };
 		84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC3291CBCCE00D11B24 /* UserProfile.swift */; };
 		84B2E59F291375C300BAA535 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E59E291375C300BAA535 /* Constant.swift */; };
-		84B2E5AF2913A34900BAA535 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5AE2913A34800BAA535 /* MBProgressHUD.m */; };
 		84B2E5B12914303400BAA535 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B02914303400BAA535 /* RegistrationModel.swift */; };
 		84B2E5B42915674300BAA535 /* VerifyForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B32915674300BAA535 /* VerifyForgotPasswordViewController.swift */; };
 		84B2E5B62915677100BAA535 /* VerifyForgotPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B2E5B52915677100BAA535 /* VerifyForgotPasswordViewController.storyboard */; };
@@ -104,6 +109,11 @@
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
+		843902D9291DFB1000308E8F /* YBTextPickerDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBTextPickerDataModel.swift; sourceTree = "<group>"; };
+		843902DB291DFB1000308E8F /* YBTextPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPickerCell.xib; sourceTree = "<group>"; };
+		843902DC291DFB1000308E8F /* YBTextPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBTextPickerCell.swift; sourceTree = "<group>"; };
+		843902DD291DFB1000308E8F /* YBTextPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBTextPicker.swift; sourceTree = "<group>"; };
+		843902E1291DFB1000308E8F /* YBTextPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YBTextPicker.xib; sourceTree = "<group>"; };
 		84737B9F28F81A0D0017F14D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		84737BA128F81A5D0017F14D /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
 		847CCCA72912AC7E005C8DE9 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -153,6 +163,7 @@
 		848F4DD628F333E6007AC421 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		848F4DD928F3D095007AC421 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		848F4DDB28F3D15D007AC421 /* RegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationViewController.storyboard; sourceTree = "<group>"; };
+		8494EDCE291D4F5E00E420EC /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftLoader.swift; path = "../../../../Downloads/SwiftLoader-master/src/SwiftLoader/SwiftLoader.swift"; sourceTree = "<group>"; };
 		8497A03028F9CC9300CBA26C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8497A03328FEABAC00CBA26C /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		8497A03528FF063900CBA26C /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
@@ -166,8 +177,6 @@
 		84995AC3291CBCCE00D11B24 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		84B2E59E291375C300BAA535 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
-		84B2E5AD2913A34600BAA535 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		84B2E5AE2913A34800BAA535 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		84B2E5B02914303400BAA535 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		84B2E5B32915674300BAA535 /* VerifyForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		84B2E5B52915677100BAA535 /* VerifyForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VerifyForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
@@ -217,6 +226,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843902D8291DFB1000308E8F /* YBTextPicker */ = {
+			isa = PBXGroup;
+			children = (
+				843902D9291DFB1000308E8F /* YBTextPickerDataModel.swift */,
+				843902DA291DFB1000308E8F /* YBTextPickerCell */,
+				843902DD291DFB1000308E8F /* YBTextPicker.swift */,
+				843902E1291DFB1000308E8F /* YBTextPicker.xib */,
+			);
+			path = YBTextPicker;
+			sourceTree = "<group>";
+		};
+		843902DA291DFB1000308E8F /* YBTextPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				843902DC291DFB1000308E8F /* YBTextPickerCell.swift */,
+				843902DB291DFB1000308E8F /* YBTextPickerCell.xib */,
+			);
+			path = YBTextPickerCell;
+			sourceTree = "<group>";
+		};
 		84872B042917BD930063DD3B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,9 +437,8 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				8494EDCE291D4F5E00E420EC /* SwiftLoader.swift */,
 				84EDDFD62916712900614A87 /* CustomNavaigationContoller.swift */,
-				84B2E5AD2913A34600BAA535 /* MBProgressHUD.h */,
-				84B2E5AE2913A34800BAA535 /* MBProgressHUD.m */,
 				8497A04328FF122D00CBA26C /* EnvironmentManager.swift */,
 				847CCCA72912AC7E005C8DE9 /* SpinnerView.swift */,
 				84B2E59E291375C300BAA535 /* Constant.swift */,
@@ -462,6 +490,7 @@
 		84EDDFD42916633200614A87 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				843902D8291DFB1000308E8F /* YBTextPicker */,
 				84EDDFCC291639FA00614A87 /* HomeViewContoller.swift */,
 				84EDDFCE29163C5C00614A87 /* HomeViewContoller.storyboard */,
 				84872B14291A89150063DD3B /* HomeViewModel.swift */,
@@ -611,6 +640,7 @@
 				84EDDFD329163DBE00614A87 /* DrawerViewContoller.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				84EDDFDB2916730100614A87 /* SubMenuTableViewCell.xib in Resources */,
+				843902E3291DFB1000308E8F /* YBTextPickerCell.xib in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				84737BA228F81A5D0017F14D /* ForgotPasswordViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
@@ -620,6 +650,7 @@
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
 				847E1F232916DA6000C221C0 /* HeaderViewTableViewCell.xib in Resources */,
 				84872AFF291791360063DD3B /* MenuTableViewCell.xib in Resources */,
+				843902E8291DFB1000308E8F /* YBTextPicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,11 +781,13 @@
 				848EA56628F83872002265DE /* ForgotPasswordViewModel.swift in Sources */,
 				848F4DBE28F1CC1D007AC421 /* UserRepository.swift in Sources */,
 				84872B112919464F0063DD3B /* iOSDropDown.swift in Sources */,
+				843902E4291DFB1000308E8F /* YBTextPickerCell.swift in Sources */,
 				84737BA028F81A0D0017F14D /* ForgotPasswordViewController.swift in Sources */,
 				848F4DAE28F1C1A3007AC421 /* NetworkManager.swift in Sources */,
 				84EDDFCD291639FA00614A87 /* HomeViewContoller.swift in Sources */,
 				848F4DB428F1C224007AC421 /* ErrorDetails.swift in Sources */,
 				8497A03428FEABAC00CBA26C /* ServiceManager.swift in Sources */,
+				8494EDCF291D4F5E00E420EC /* SwiftLoader.swift in Sources */,
 				847E1F222916DA6000C221C0 /* HeaderViewTableViewCell.swift in Sources */,
 				84872B0129179D790063DD3B /* MenuModel.swift in Sources */,
 				848F4DD328F32960007AC421 /* UITapGestureRecognizerExtension.swift in Sources */,
@@ -766,6 +799,7 @@
 				848F4DD128F1E53A007AC421 /* LogInViewModel.swift in Sources */,
 				848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */,
 				84EDDFC9291638D500614A87 /* KYDrawerController.swift in Sources */,
+				843902E2291DFB1000308E8F /* YBTextPickerDataModel.swift in Sources */,
 				847CCCA82912AC7E005C8DE9 /* SpinnerView.swift in Sources */,
 				848F4DCE28F1E19C007AC421 /* UITextFieldExtension.swift in Sources */,
 				84EDDFCA291638D500614A87 /* KYEmbedMainControllerSegue.swift in Sources */,
@@ -776,6 +810,7 @@
 				84EDDFD129163D9400614A87 /* DrawerViewContoller.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84995AC1291BD88500D11B24 /* LoginService.swift in Sources */,
+				843902E5291DFB1000308E8F /* YBTextPicker.swift in Sources */,
 				84995ABF291BD13000D11B24 /* NetworkingService.swift in Sources */,
 				84B2E59F291375C300BAA535 /* Constant.swift in Sources */,
 				848F4DB828F1C2AB007AC421 /* Reachability.swift in Sources */,
@@ -787,7 +822,6 @@
 				848F4DCA28F1DA20007AC421 /* ViewExtension.swift in Sources */,
 				848F4DC028F1CC61007AC421 /* User.swift in Sources */,
 				848F4DCC28F1DAB0007AC421 /* UIColorExtension.swift in Sources */,
-				84B2E5AF2913A34900BAA535 /* MBProgressHUD.m in Sources */,
 				848EA56828F83888002265DE /* RegistrationViewModel.swift in Sources */,
 				84872B032917BBD30063DD3B /* DrawerViewModel.swift in Sources */,
 				8497A04428FF122D00CBA26C /* EnvironmentManager.swift in Sources */,

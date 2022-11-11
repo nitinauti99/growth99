@@ -7,47 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0491BADB-0B5F-4B5B-86AC-78C4E2965B4C"
+            uuid = "9C15BF38-524E-4DFD-BEF4-AF85F0707358"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Growth99/RegistrationViewModel.swift"
+            filePath = "Growth99/HelperClass/YBTextPicker/YBTextPicker.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "registration(firstName:lastName:emial:phoneNumber:password:repeatPassword:businesName:agreeTerms:)"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0491BADB-0B5F-4B5B-86AC-78C4E2965B4C - 534657ca964239a"
+                  uuid = "9C15BF38-524E-4DFD-BEF4-AF85F0707358 - 3933255ed378693a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Growth99.RegistrationViewModel.registration(firstName: Swift.String, lastName: Swift.String, emial: Swift.String, phoneNumber: Swift.String, password: Swift.String, repeatPassword: Swift.String, businesName: Swift.String, agreeTerms: Swift.Bool) -&gt; ()"
+                  symbolName = "Growth99.YBTextPicker.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
                   moduleName = "Growth99"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Documents/growth99/Growth99/RegistrationViewModel.swift"
+                  urlString = "file:///Users/admin/Documents/growth99/Growth99/HelperClass/YBTextPicker/YBTextPicker.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "502">
+                  startingLineNumber = "281"
+                  endingLineNumber = "281"
+                  offsetFromSymbolStart = "741">
                </Location>
                <Location
-                  uuid = "0491BADB-0B5F-4B5B-86AC-78C4E2965B4C - ef2ed178e6d8c3ed"
+                  uuid = "9C15BF38-524E-4DFD-BEF4-AF85F0707358 - 3933255ed378693a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in Growth99.RegistrationViewModel.registration(firstName: Swift.String, lastName: Swift.String, emial: Swift.String, phoneNumber: Swift.String, password: Swift.String, repeatPassword: Swift.String, businesName: Swift.String, agreeTerms: Swift.Bool) -&gt; ()"
+                  symbolName = "Growth99.YBTextPicker.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
                   moduleName = "Growth99"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Documents/growth99/Growth99/RegistrationViewModel.swift"
+                  urlString = "file:///Users/admin/Documents/growth99/Growth99/HelperClass/YBTextPicker/YBTextPicker.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "231">
+                  startingLineNumber = "281"
+                  endingLineNumber = "281"
+                  offsetFromSymbolStart = "993">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -55,129 +55,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "192764D1-33FA-41A2-A1DB-31589B08CDED"
+            uuid = "2C96D688-34AB-4CA2-AA16-6F3F090C11C8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Growth99/RegistrationViewModel.swift"
+            filePath = "Growth99/HelperClass/YBTextPicker/YBTextPicker.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "registration(firstName:lastName:emial:phoneNumber:password:repeatPassword:businesName:agreeTerms:)"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F24E7095-369A-45FE-AB32-A7CF432AE417"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Growth99/RegistrationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "registration(firstName:lastName:emial:phoneNumber:password:repeatPassword:businesName:agreeTerms:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F17AFBE0-F114-4F0D-B851-912409EAED40"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Growth99/Network/ApiRouter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "urlRequest"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A7A0B3C8-C81B-42FE-BD16-AD6AB26F1D6D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Growth99/Network/ApiRouter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "stringValue"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "679CD82E-E418-443B-BD6C-4E5AC7614A3D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Growth99/Network/ApiRouter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "stringValue"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C30EB876-524F-4EA3-921C-AE077D3F58D9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Growth99/HomeView/HomeViewContoller.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "textFieldDidChange(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C30EB876-524F-4EA3-921C-AE077D3F58D9 - bac1e57022f3954"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Growth99.HomeViewContoller.textFieldDidChange(__C.UITextField) -&gt; ()"
-                  moduleName = "Growth99"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Documents/growth99/Growth99/HomeView/HomeViewContoller.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "4434">
-               </Location>
-               <Location
-                  uuid = "C30EB876-524F-4EA3-921C-AE077D3F58D9 - bac1e57022f3954"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Growth99.HomeViewContoller.textFieldDidChange(__C.UITextField) -&gt; ()"
-                  moduleName = "Growth99"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Documents/growth99/Growth99/HomeView/HomeViewContoller.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "5634">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

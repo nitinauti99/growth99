@@ -30,7 +30,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.viewModel =  DrawerViewModel(delegate: self)
         self.mainMenuList = viewModel?.loadJson() ?? []
         self.hiddenSections = Set(0...mainMenuList.count)
-        self.userInfo = UserInfo(title: "medical", imageName: "logo", bussinessTitle: "Admin")
         
         /// used for show userInfo
         self.tableView.register(UINib(nibName: "HeaderViewTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderViewTableViewCell")

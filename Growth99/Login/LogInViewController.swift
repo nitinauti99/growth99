@@ -28,7 +28,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
         self.loginView.addBottomShadow(color: .gray,opacity: 0.5)
         self.viewModel = LogInViewModel(delegate: self)
         self.setupTexFieldValidstion()
-        emailTextField.text = "nitinauti999@gmail.com"
+        emailTextField.text = "nitinauti99@gmail.com"
         passwordTextField.text = "Password1@!"
         self.setUpUI()
     }

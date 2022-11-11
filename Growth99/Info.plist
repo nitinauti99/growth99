@@ -19,5 +19,11 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Font Awesome 6 Brands-Regular-400</string>
+		<string>Font Awesome 6 Free-Regular-400</string>
+		<string>Font Awesome 6 Free-Solid-900</string>
+	</array>
 </dict>
 </plist>
