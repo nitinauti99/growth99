@@ -31,6 +31,7 @@
 		848C92B0291F6AA000502956 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C92A3291F6A9F00502956 /* Enums.swift */; };
 		848C92B1291F6AA000502956 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C92A5291F6A9F00502956 /* ViewControllerExtension.swift */; };
 		848C92B4291FB68D00502956 /* ClinicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C92B3291FB68D00502956 /* ClinicsModel.swift */; };
+		848C92B6291FD0D000502956 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C92B5291FD0D000502956 /* SwiftLoader.swift */; };
 		848EA56628F83872002265DE /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EA56528F83872002265DE /* ForgotPasswordViewModel.swift */; };
 		848EA56828F83888002265DE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EA56728F83888002265DE /* RegistrationViewModel.swift */; };
 		848EA56A28F84BEE002265DE /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EA56928F84BEE002265DE /* LoginModel.swift */; };
@@ -62,7 +63,6 @@
 		848F4DD728F333E6007AC421 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DD628F333E6007AC421 /* UILabelExtension.swift */; };
 		848F4DDA28F3D095007AC421 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DD928F3D095007AC421 /* RegistrationViewController.swift */; };
 		848F4DDC28F3D15D007AC421 /* RegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848F4DDB28F3D15D007AC421 /* RegistrationViewController.storyboard */; };
-		8494EDCF291D4F5E00E420EC /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494EDCE291D4F5E00E420EC /* SwiftLoader.swift */; };
 		8497A03428FEABAC00CBA26C /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497A03328FEABAC00CBA26C /* ServiceManager.swift */; };
 		8497A03628FF063900CBA26C /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497A03528FF063900CBA26C /* EndPoints.swift */; };
 		8497A03E28FF11E200CBA26C /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03A28FF11E200CBA26C /* Production.plist */; };
@@ -141,6 +141,7 @@
 		848C92A5291F6A9F00502956 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		848C92A7291F6A9F00502956 /* RSSelectionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSelectionMenu.h; sourceTree = "<group>"; };
 		848C92B3291FB68D00502956 /* ClinicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsModel.swift; sourceTree = "<group>"; };
+		848C92B5291FD0D000502956 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftLoader.swift; path = Growth99/HelperClass/SwiftLoader.swift; sourceTree = SOURCE_ROOT; };
 		848EA56528F83872002265DE /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		848EA56728F83888002265DE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		848EA56928F84BEE002265DE /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -176,7 +177,6 @@
 		848F4DD628F333E6007AC421 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		848F4DD928F3D095007AC421 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		848F4DDB28F3D15D007AC421 /* RegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationViewController.storyboard; sourceTree = "<group>"; };
-		8494EDCE291D4F5E00E420EC /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftLoader.swift; path = "../../../../Downloads/SwiftLoader-master/src/SwiftLoader/SwiftLoader.swift"; sourceTree = "<group>"; };
 		8497A03028F9CC9300CBA26C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8497A03328FEABAC00CBA26C /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		8497A03528FF063900CBA26C /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
@@ -274,6 +274,7 @@
 				848C9299291F6A9F00502956 /* Source */,
 				848C92A1291F6A9F00502956 /* Utilities */,
 				848C92A7291F6A9F00502956 /* RSSelectionMenu.h */,
+				848C92B5291FD0D000502956 /* SwiftLoader.swift */,
 			);
 			path = RSSelectionMenu;
 			sourceTree = "<group>";
@@ -473,7 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				848C9298291F6A9F00502956 /* RSSelectionMenu */,
-				8494EDCE291D4F5E00E420EC /* SwiftLoader.swift */,
 				84EDDFD62916712900614A87 /* CustomNavaigationContoller.swift */,
 				8497A04328FF122D00CBA26C /* EnvironmentManager.swift */,
 				847CCCA72912AC7E005C8DE9 /* SpinnerView.swift */,
@@ -823,7 +823,6 @@
 				84EDDFCD291639FA00614A87 /* HomeViewContoller.swift in Sources */,
 				848F4DB428F1C224007AC421 /* ErrorDetails.swift in Sources */,
 				8497A03428FEABAC00CBA26C /* ServiceManager.swift in Sources */,
-				8494EDCF291D4F5E00E420EC /* SwiftLoader.swift in Sources */,
 				847E1F222916DA6000C221C0 /* HeaderViewTableViewCell.swift in Sources */,
 				84872B0129179D790063DD3B /* MenuModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
@@ -840,6 +839,7 @@
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
 				848F4DCE28F1E19C007AC421 /* UITextFieldExtension.swift in Sources */,
 				848C92B4291FB68D00502956 /* ClinicsModel.swift in Sources */,
+				848C92B6291FD0D000502956 /* SwiftLoader.swift in Sources */,
 				84EDDFCA291638D500614A87 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */,
 				848F4DC428F1CCC7007AC421 /* KeychainItemAccessibility.swift in Sources */,

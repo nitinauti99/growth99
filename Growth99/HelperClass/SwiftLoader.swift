@@ -76,7 +76,8 @@ public class SwiftLoader: UIView {
         
         if (loader.superview == nil) {
             loader.coverView = UIView(frame: currentWindow.bounds)
-            loader.coverView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            loader.coverView?.backgroundColor = .black.withAlphaComponent(0.5)
+            
             currentWindow.addSubview(loader.coverView!)
             currentWindow.addSubview(loader)
             loader.start()
