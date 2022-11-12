@@ -22,9 +22,9 @@ class NetworkingService: NSObject {
     private override init(){}
     
     /// api calling request using alamofire
-    func request<ResponseType: Decodable>(requestUrl: String, method: Alamofire.HTTPMethod, parameters: [String: Any]?,  headers: HTTPHeaders,  success: @escaping (Result<ResponseType, Error>) -> Void) {
+    func request(requestUrl: String, method: Alamofire.HTTPMethod, parameters: [String: Any]?,  headers: HTTPHeaders,  success: @escaping ((_ responseObject: AnyObject?) -> Void), failure: @escaping ((_ error: NSError?) -> Void)) {
         
-        AF.request(requestUrl, method: method, parameters: parameters,encoding:JSONEncoding.default ,headers: headers).responseDecodable(of: ResponseType.self) { response in
+        AF.request(requestUrl, method: method, parameters: parameters,encoding:JSONEncoding.default ,headers: headers).response { response in
             
             let statusCode = response.response?.statusCode
             
@@ -34,11 +34,11 @@ class NetworkingService: NSObject {
             print("API response: \(response.value  as AnyObject)")
             
             switch response.result {
-            case .success(let response):
+            case .success(_ ):
                 if (statusCode == 401){
                     // self.requestForRefreshToken(RequestModule:RequestModule, success:success, failure:failure)
                 } else {
-                    success(.success(response))
+                    success(response.value as AnyObject?)
                 }
                 
             case .failure(_):
@@ -47,7 +47,7 @@ class NetworkingService: NSObject {
                 }
                 let userInfo: [AnyHashable : Any] = [ "message" : "There was an error. Please try again later"]
                 let error =  NSError(domain:"", code:URLError.notConnectedToInternet.rawValue, userInfo:userInfo as? [String : Any])
-                success(.failure(error))
+                success(error)
             }
         }
     }

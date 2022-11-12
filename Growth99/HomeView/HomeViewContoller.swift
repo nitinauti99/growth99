@@ -11,6 +11,7 @@ import UIKit
 protocol HomeViewContollerProtocool {
     func userDataRecived()
     func errorReceived(error: String)
+    func clinicsRecived()
 }
 
 class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
@@ -21,6 +22,9 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet weak var clincsTextField: CustomTextField!
+    @IBOutlet weak var servicesTextField: CustomTextField!
+    @IBOutlet weak var serviceCategoriesTextField: CustomTextField!
+
     @IBOutlet weak var userProvider: UISwitch!
     @IBOutlet weak var userProviderViewHight: NSLayoutConstraint!
     @IBOutlet weak var userProviderView: UIView!
@@ -31,6 +35,15 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     let boldFont = UIFont.boldSystemFont(ofSize: 16)
 
     @IBOutlet weak var dropDown: DropDown!
+    var selectedDataArray = [String]()
+//    var dataArray <T: Equatable> = [T]
+    var selectedId = [Any]()
+    
+    var selectedServiceCategoriesId = [Any]()
+    var selectedServiceCategoriesName = [String]()
+
+    var selectedServiceId = [Any]()
+    var selectedServiceName = [String]()
     
     var viewModel: HomeViewModelProtocol?
     var roleArray: [String]?
@@ -44,9 +57,9 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
         self.setUpMenuButton()
         dropDown.isSearchEnable = true
-        dropDown.didSelect{(selectedText , index ,id) in
+        dropDown.didSelect{ (selectedText , index ,id) in
             print("Selected String: \(selectedText) \n index: \(index)")
-          }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +94,9 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     }
     
     func userDataRecived() {
-        self.view.HideSpinner()
+        viewModel?.getallClinics()
+
+        //self.view.HideSpinner()
         userProvider.setOn(false, animated: false)
         if viewModel?.getUserProfileData.isProvider ?? false {
             userProvider.setOn(true, animated: false)
@@ -97,6 +112,25 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
         self.emailTextField.text = viewModel?.getUserProfileData.email
         self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+        self.selectedDataArray = ["Medical"]
+        self.clincsTextField.text = viewModel?.getUserProfileData.clinics?[0].name
+        let serviceCategoriesArray = viewModel?.getUserProfileData.userServiceCategories
+       
+        for serviceCategories in serviceCategoriesArray ?? [] {
+            selectedServiceCategoriesName.append(serviceCategories.name ?? "")
+        }
+        self.serviceCategoriesTextField.text = selectedServiceCategoriesName.joined(separator: ", ")
+       
+        let servicesArray = viewModel?.getUserProfileData.services
+       
+        for serviceCategories in servicesArray ?? [] {
+            selectedServiceName.append(serviceCategories.name ?? "")
+        }
+        self.servicesTextField.text = selectedServiceName.joined(separator: ", ")
+    }
+    
+    func clinicsRecived() {
+        self.view.HideSpinner()
     }
     
     @IBAction func switchIsChanged(sender: UISwitch) {
@@ -112,53 +146,104 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     }
     
     @objc func textFieldOpenDropDown(_ textField: UITextField) {
-        let greenColor = UIColor.green
-
-        let greenAppearance = YBTextPickerAppearanceManager.init(
-            pickerTitle         : "Select Countries",
-            titleFont           : boldFont,
-            titleTextColor      : .white,
-            titleBackground     : greenColor,
-            searchBarFont       : regularFont,
-            searchBarPlaceholder: "Search Countries",
-            closeButtonTitle    : "Cancel",
-            closeButtonColor    : .darkGray,
-            closeButtonFont     : regularFont,
-            doneButtonTitle     : "Okay",
-            doneButtonColor     : greenColor,
-            doneButtonFont      : boldFont,
-            itemCheckedImage    : UIImage(named:"green_ic_checked"),
-            itemUncheckedImage  : UIImage(named:"green_ic_unchecked"),
-            itemColor           : .black,
-            itemFont            : regularFont
-        )
-        let countries = ["India", "Bangladesh", "Sri-Lanka", "Japan", "United States", "United Kingdom", "United Arab Emirates"]
-        let picker = YBTextPicker.init(with: countries, appearance: greenAppearance,
-            onCompletion: { (selectedIndexes, selectedValues) in
-             if selectedValues.count > 0 {
-                var values = [String]()
-                for index in selectedIndexes{
-                    values.append(countries[index])
-                }
-                //self.btnCountyPicker.setTitle(values.joined(separator: ", "), for: .normal)
-            }else {
-               // self.btnCountyPicker.setTitle("Select Countries", for: .normal)
-              }
-            },
-            onCancel: {
-                print("Cancelled")
-            }
-        )
-//        if let title = btnCountyPicker.title(for: .normal){
-//            if title.contains(","){
-//                picker.preSelectedValues = title.components(separatedBy: ", ")
-//            }
-//        }
-        picker.allowMultipleSelection = true
-        
-        picker.show(withAnimation: .Fade)
+        let dataArray = viewModel?.getUserProfileData.clinics ?? []
+        let dataList =  dataArray.map({$0.name ?? ""})
+        self.selectedDataArray = dataList
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataList, cellType: .subTitle) { (cell, name, indexPath) in
+            cell.textLabel?.text = name.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
+            self?.selectedDataArray = selectedList
+            self?.clincsTextField.text = selectedList.joined(separator: ", ")
+          //  self?.addId()
+         //   self?.removeId()
+           // self?.tableView.reloadData()
+          
+        }
+        // search bar
+        selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in
+            return dataList.filter({ $0.lowercased().starts(with: searchText.lowercased()) })
+        }
+        selectionMenu.showEmptyDataLabel(text: "No Player Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        // size = nil (auto adjust size)
+        let count : Double = Double(dataArray.count)
+        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 50))
+        selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
     }
     
+//    func addId() {
+//        for clinics in self.dataArray {
+//            if self.selectedDataArray.contains(clinics.name ?? "") {
+//                selectedId.append(clinics.id ?? 0)
+//            }
+//        }
+//    }
+//    func removeId(){
+//        for name in self.dataArray {
+//            if self.selectedDataArray.contains(name.name ?? "") {
+//                selectedId.append(name.id ?? 0)
+//            }
+//        }
+//    }
+
+    
+    @objc func textFieldOpenDropDownServiceCategories(_ textField: UITextField) {
+        let dataArray = viewModel?.getUserProfileData.userServiceCategories ?? []
+        self.selectedDataArray = self.selectedServiceCategoriesName
+        let dataList = dataArray.map({$0.name ?? ""})
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataList, cellType: .subTitle) { (cell, name, indexPath) in
+            cell.textLabel?.text = name.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
+            self?.selectedDataArray = selectedList
+            self?.serviceCategoriesTextField.text = selectedList.joined(separator: ", ")
+            //self?.addId()
+           // self?.removeId()
+           // self?.tableView.reloadData()
+          
+        }
+        // search bar
+        selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in
+            return dataList.filter({ $0.lowercased().starts(with: searchText.lowercased()) })
+        }
+        selectionMenu.showEmptyDataLabel(text: "No Player Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        // size = nil (auto adjust size)
+        let count : Double = Double(dataArray.count)
+        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 50))
+        selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
+    }
+    
+    @objc func textFieldOpenDropDownServices(_ textField: UITextField) {
+        let dataArray = viewModel?.getUserProfileData.services ?? []
+        self.selectedDataArray = self.selectedServiceName
+
+        let dataList =  dataArray.map({$0.name ?? ""})
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataList, cellType: .subTitle) { (cell, name, indexPath) in
+            cell.textLabel?.text = name.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
+            self?.selectedDataArray = selectedList
+            self?.servicesTextField.text = selectedList.joined(separator: ", ")
+           // self?.addId()
+           // self?.removeId()
+           // self?.tableView.reloadData()
+          
+        }
+        // search bar
+        selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in
+            return dataList.filter({ $0.lowercased().starts(with: searchText.lowercased()) })
+        }
+        selectionMenu.showEmptyDataLabel(text: "No Player Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        // size = nil (auto adjust size)
+        let count : Double = Double(dataArray.count)
+        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 50))
+        selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
+    }
+    
+   
     private func setupTexFieldValidstion() {
         self.phoneNumberTextField.addTarget(self, action:
                                             #selector(HomeViewContoller.textFieldDidChange(_:)),
@@ -170,6 +255,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
                                             #selector(HomeViewContoller.textFieldDidChange(_:)),
                                             for: UIControl.Event.editingChanged)
         self.clincsTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDown(_:)), for: .touchDown)
+        
+        self.serviceCategoriesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServiceCategories(_:)), for: .touchDown)
+      
+        self.servicesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServices(_:)), for: .touchDown)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

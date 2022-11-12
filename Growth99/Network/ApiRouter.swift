@@ -21,6 +21,7 @@ enum ApiRouter: URLRequestConvertible {
     case sendRequestForgotPassword(String)
     case sendRequesVerifyForgotPassword(String, String, String, String)
     case getRequestForUserProfile(Int)
+    case getRequestForAllClinics
 
 
     var stringValue: String {
@@ -35,6 +36,8 @@ enum ApiRouter: URLRequestConvertible {
             return ApiUrl.VerifyforgotPassword
         case .getRequestForUserProfile(_):
             return ApiUrl.userProfile
+        case .getRequestForAllClinics:
+            return ""
         }
     }
     
@@ -66,6 +69,8 @@ enum ApiRouter: URLRequestConvertible {
                 "confirmationCode":confirmationCode
                ]
            case .getRequestForUserProfile(_):
+               return [:]
+           case .getRequestForAllClinics:
                return [:]
            }
        }
@@ -110,6 +115,14 @@ enum ApiRouter: URLRequestConvertible {
            request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
            request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
            request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")           
+           request.method = .get
+           return request
+       case .getRequestForAllClinics:
+           let components = URLComponents(string: ApiUrl.allClinics)
+           var request = URLRequest(url: (components?.url)!)
+           request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
+           request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
+           request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
            request.method = .get
            return request
        }
