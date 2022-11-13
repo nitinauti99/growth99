@@ -6,217 +6,221 @@
     },
     {
       "title": "MyProfile",
-      "imageName": "MyProfile",
+      "imageName": "fa-user-md",
       "subMenuList": [
         {
           "title": "Profile",
-          "imageName": "Profile"
+          "imageName": "fa-user-md"
         },
         {
           "title": "Appointments",
-          "imageName": "Appointments"
+          "imageName": "fa-calendar-check"
         },
         {
           "title": "Working Schedule",
-          "imageName": "WorkingSchedule"
+          "imageName": "fa-calendar-plus"
         },
         {
           "title": "Vacation Schedule ",
-          "imageName": "Vacation Schedule "
+          "imageName": "fa-calendar-minus"
         },
         {
           "title": "Change Password",
-          "imageName": "ChangePassword"
+          "imageName": "fa-key"
         }
       ]
     },
     {
       "title": "Account And Setting",
-      "imageName": "Account And Setting",
+      "imageName": "fa-cogs",
       "subMenuList": [
         {
           "title": "Business",
-          "imageName": "Business"
+          "imageName": "fa-briefcase"
         },
         {
           "title": "Clinics",
-          "imageName": "Clinics"
+          "imageName": "fa-spa"
         },
         {
           "title": "Categories",
-          "imageName": "Categories"
+          "imageName": "fa-th-large"
         },
         {
           "title": "Services",
-          "imageName": "Services"
+          "imageName": "fa-medkit"
         },
         {
           "title": "Contact From",
-          "imageName": "ContactFrom"
+          "imageName": "fa-edit"
         },
         {
           "title": "Users",
-          "imageName": "Users"
+          "imageName": "fa-users"
         }
       ]
     },
     {
       "title": "Appointments",
-      "imageName": "MyProfile",
+      "imageName": "fa-calendar-check",
       "subMenuList": [
         {
           "title": "Calendar",
-          "imageName": "Calendar"
+          "imageName": "fa-calendar-alt"
         },
         {
           "title": "Booking History",
-          "imageName": "BookingHistory"
+          "imageName": "fa-address-card"
         },
         {
           "title": "Payment",
-          "imageName": "Payment"
+          "imageName": "fa-money-bill-alt"
         }
       ]
     },
     {
       "title": "Patients",
-      "imageName": "Patients",
+      "imageName": "fa-bed",
       "subMenuList": [
         {
           "title": "Patients",
-          "imageName": "Patients"
+          "imageName": "fa-bed"
         },
         {
           "title": "Patients Tags",
-          "imageName": "PatientsTags"
+          "imageName": "fa-tags"
         }
       ]
     },
     {
       "title": "Tasks",
-      "imageName": "Tasks"
+      "imageName": "fa-tasks"
     },
     {
       "title": "Triggers",
-      "imageName": "Triggers"
+      "imageName": "fa-directions"
     },
     {
       "title": "Landing Pages",
-      "imageName": "LandingPages"
+      "imageName": "fa-plane-arrival"
     },
     {
       "title": "Website Consultation",
-      "imageName": "WebsiteConsultation "
+      "imageName": "fa-laptop"
     },
     {
-      "title": "Form Builder ",
-      "imageName": "FormBuilder"
+      "title": "Form Builder",
+      "imageName": "fa-diagnoses"
     },
     {
       "title": "Templates",
-      "imageName": "Templates",
+      "imageName": "fa-envelope",
       "subMenuList": [
         {
           "title": "Email Templates",
-          "imageName": "EmailTemplates"
+          "imageName": "fa-envelope"
         },
         {
           "title": "SMS Templates",
-          "imageName": "SMSTemplates"
+          "imageName": "fa-comment-dots"
         },
         {
           "title": "Consents",
-          "imageName": "Consents"
+          "imageName": "fa-file-signature"
         },
         {
           "title": "Questionnaires",
-          "imageName": "Questionnaires"
+          "imageName": "fa-paperclip"
         }
       ]
     },
     {
       "title": "Leads",
-      "imageName": "Leads",
+      "imageName": "fa-list-ol",
       "subMenuList": [
         {
           "title": "Leads",
-          "imageName": "Leads"
+          "imageName": "fa-list-ol"
         },
         {
           "title": "Leads Tags",
-          "imageName": "LeadsTags"
+          "imageName": "fa-tags"
         },
         {
           "title": "Deleted Leads",
-          "imageName": "Deleted Leads"
+          "imageName": "fa-trash-alt"
         },
         {
           "title": "Lead Source URLs",
-          "imageName": "LeadSourceURLs"
+          "imageName": "fa-sun"
         }
       ]
     },
     {
       "title": "Markting",
-      "imageName": "Markting",
+      "imageName": "fa-book",
       "subMenuList": [
         {
           "title": "Mass Email and SMS",
-          "imageName": "MassEmailandSMS"
+          "imageName": "fa-envelope"
         }
       ]
     },
     {
       "title": "Social Media Manager",
-      "imageName": "SocialMediaManager ",
+      "imageName": "fa-hashtag",
       "subMenuList": [
         {
           "title": "Social Profile",
-          "imageName": "SocialProfile"
+          "imageName": "fa-facebook"
         },
         {
           "title": "Labels",
-          "imageName": "Labels"
+          "imageName": "fa-tag"
         },
         {
           "title": "Posts",
-          "imageName": "Post Calende"
+          "imageName": "fa-hashtag"
+        },
+        {
+          "title": "Post Calender",
+          "imageName": "fa-calendar-alt"
         }
       ]
     },
     {
       "title": "Chatbot",
-      "imageName": "Chatbot",
+      "imageName": "fa-robot",
       "subMenuList": [
         {
           "title": "Chat Configuration",
-          "imageName": "ChatConfiguration "
+          "imageName": "fa-user-cog"
         },
         {
           "title": "Chat Session",
-          "imageName": "ChatSession"
+          "imageName": "fa-comments"
         },
         {
           "title": "Unanswered",
-          "imageName": "Unanswered"
+          "imageName": "fa-comment-slash"
         }
       ]
     },
     {
       "title": "Announcement",
-      "imageName": "Announcement"
+      "imageName": "fa-bullhorn"
     },
     {
       "title": "Help and Training",
-      "imageName": "HelpandTraining"
+      "imageName": "fa-graduation-cap"
     },
     {
       "title": "Contact Support",
-      "imageName": "ContactSupport"
+      "imageName": "fa-at"
     },
     {
       "title": "Logout",
-      "imageName": "Logout"
+      "imageName": "fa-power-off"
     },
     
   ]

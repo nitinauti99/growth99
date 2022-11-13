@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class SubMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var menuIcon: UIImageView!
@@ -14,7 +15,6 @@ class SubMenuTableViewCell: UITableViewCell {
 
     func configure(titleData: menuList, row: Int){
         self.menuTitle.text = titleData.subMenuList?[row].title
-        let image: UIImage = UIImage(named: titleData.subMenuList?[row].imageName ?? "") ?? UIImage(named: "Logo")!
-        self.menuIcon.image = image
+        menuIcon.image = UIImage.fontAwesomeIcon(code: titleData.subMenuList?[row].imageName ?? "", style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
     }
 }

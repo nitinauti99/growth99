@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 protocol SubMenuTableViewCellDelegate {
     func tappedSection(cell: MenuTableViewCell, section: Int, title: String)
@@ -35,8 +36,7 @@ class MenuTableViewCell: UITableViewHeaderFooterView {
         self.delegate = delegate
         self.title = mainMenuList.title
         self.menuTitle.text = mainMenuList.title
-        let image: UIImage = UIImage(named: mainMenuList.imageName ?? "") ?? UIImage(named: "Logo")!
-        self.menuIcon.image = image
+        menuIcon.image = UIImage.fontAwesomeIcon(code: mainMenuList.imageName ?? "", style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
         if mainMenuList.subMenuList?.count == nil {
             self.forwordArrow.isHidden = true
         } else{

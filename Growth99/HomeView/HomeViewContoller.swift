@@ -16,19 +16,19 @@ protocol HomeViewContollerProtocool {
 
 class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
    
-    @IBOutlet weak var firsNameTextField: CustomTextField!
-    @IBOutlet weak var lastNameTextField: CustomTextField!
-    @IBOutlet weak var emailTextField: CustomTextField!
-    @IBOutlet weak var phoneNumberTextField: CustomTextField!
-    @IBOutlet weak var passwordTextField: CustomTextField!
-    @IBOutlet weak var clincsTextField: CustomTextField!
-    @IBOutlet weak var servicesTextField: CustomTextField!
-    @IBOutlet weak var serviceCategoriesTextField: CustomTextField!
+    @IBOutlet private weak var firsNameTextField: CustomTextField!
+    @IBOutlet private weak var lastNameTextField: CustomTextField!
+    @IBOutlet private weak var emailTextField: CustomTextField!
+    @IBOutlet private weak var phoneNumberTextField: CustomTextField!
+    @IBOutlet private weak var passwordTextField: CustomTextField!
+    @IBOutlet private weak var clincsTextField: CustomTextField!
+    @IBOutlet private weak var servicesTextField: CustomTextField!
+    @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
 
-    @IBOutlet weak var userProvider: UISwitch!
-    @IBOutlet weak var userProviderViewHight: NSLayoutConstraint!
-    @IBOutlet weak var userProviderView: UIView!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var userProvider: UISwitch!
+    @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
+    @IBOutlet private weak var userProviderView: UIView!
+    @IBOutlet private weak var descriptionTextView: UITextView!
 
     let appDel = UIApplication.shared.delegate as! AppDelegate
     let regularFont = UIFont.systemFont(ofSize: 16)
@@ -36,7 +36,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
 
     @IBOutlet weak var dropDown: DropDown!
     var selectedDataArray = [String]()
-//    var dataArray <T: Equatable> = [T]
     var selectedId = [Any]()
     
     var selectedServiceCategoriesId = [Any]()
