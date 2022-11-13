@@ -13,8 +13,8 @@ class HeaderViewTableViewCell: UITableViewCell {
     @IBOutlet weak var bussinessTitle: UILabel!
     @IBOutlet weak var profileIcon: UIImageView!
     @IBOutlet weak var role: UILabel!
-
-    func configure(){
+    
+    func configure() {
         bussinessTitle.text = "Medical"
         role.text = UserRepository.shared.roles
         guard let image = self.profileIcon.image else { return }

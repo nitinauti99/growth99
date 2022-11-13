@@ -26,18 +26,14 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     
     func setUpUI() {
         setUpMenuButton()
+        
         saveButton.layer.cornerRadius = 12
         cancelButton.layer.cornerRadius = 12
     }
     
-    func setUpMenuButton(){
-        let menuButton = UIButton()
-        menuButton.setImage(UIImage(named: "menu"), for: .normal)
-        menuButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        menuButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
-        let BarButtonItem = UIBarButtonItem()
-        BarButtonItem.customView = menuButton
-        self.navigationItem.rightBarButtonItems = [BarButtonItem]
+    func setUpMenuButton() {
+        navigationItem.leftBarButtonItems = UIBarButtonItem.createApplicationLogo(target: self)
+        navigationItem.rightBarButtonItem = UIBarButtonItem.createMenu(target: self, action: #selector(logoutUser))
     }
     
     @objc func logoutUser(){

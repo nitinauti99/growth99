@@ -64,14 +64,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     }
     
     func setUpUI() {
-        let logoImage = UIImage.init(named: "Logo")
-        let logoImageView = UIImageView.init(image: logoImage)
-        logoImageView.frame = CGRect(x: -40, y: 0, width: 150, height: 25)
-        logoImageView.contentMode = .scaleAspectFit
-        let imageItem = UIBarButtonItem.init(customView: logoImageView)
-        let negativeSpacer = UIBarButtonItem.init(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        negativeSpacer.width = -25
-        navigationItem.leftBarButtonItems = [negativeSpacer, imageItem]
+        navigationItem.leftBarButtonItems = UIBarButtonItem.createApplicationLogo(target: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,14 +88,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.view.frame.origin.y = 0
     }
     
-    func setUpMenuButton(){
-        let menuButton = UIButton()
-        menuButton.setImage(UIImage(named: "menu"), for: .normal)
-        menuButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        menuButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
-        let BarButtonItem = UIBarButtonItem()
-        BarButtonItem.customView = menuButton
-        self.navigationItem.rightBarButtonItems = [BarButtonItem]
+    func setUpMenuButton() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.createMenu(target: self, action: #selector(logoutUser))
     }
     
     @objc func logoutUser(){

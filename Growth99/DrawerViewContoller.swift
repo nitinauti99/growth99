@@ -14,12 +14,12 @@ protocol DrawerViewContollerProtocol {
 
 class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, DrawerViewContollerProtocol {
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
     private var mainMenuList = [menuList]()
     var viewModel: DrawerViewModelProtocol?
     private var hiddenSections = Set<Int>()
     let appDel = UIApplication.shared.delegate as! AppDelegate
-
+    
     var userInfo: UserInfo?
     var section: Int = 0
     
@@ -32,7 +32,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.hiddenSections = Set(0...mainMenuList.count)
         
         /// used for show userInfo
-        self.tableView.register(UINib(nibName: "HeaderViewTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderViewTableViewCell")
+        //        self.tableView.register(UINib(nibName: "HeaderViewTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderViewTableViewCell")
         
         /// used for showing menutitle
         self.tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "MenuTableViewCell")
@@ -40,7 +40,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         ///used for showing subMenuTitle
         self.tableView.register(UINib(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuTableViewCell")
     }
-  
+    
     private func hideSection(section: Int) {
         func indexPathsForSection() -> [IndexPath] {
             var indexPaths = [IndexPath]()
@@ -62,23 +62,23 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.tableView.endUpdates()
         self.tableView.reloadData()
     }
+    
     public func tappedSection(cell: MenuTableViewCell, section: Int, title: String) {
         self.hideSection(section: section)
         self.selection(cell: cell,title: title, section: section)
     }
- 
-   private func selection(cell: MenuTableViewCell, title: String,  section: Int) {
+    
+    private func selection(cell: MenuTableViewCell, title: String, section: Int) {
         if self.section == section {
-           cell.menuTitle.textColor = .red
+            cell.menuTitle.textColor = .red
         }
-       if title == "Logout" {
-           UserRepository.shared.isUserLoged =  false
-           let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
-           let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
-           mainVcIntial.isNavigationBarHidden = true
-           appDel.window?.rootViewController = mainVcIntial
-       }
-       // self.tableView.reloadData()
+        if title == "Logout" {
+            UserRepository.shared.isUserLoged =  false
+            let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
+            let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
+            mainVcIntial.isNavigationBarHidden = true
+            appDel.window?.rootViewController = mainVcIntial
+        }
     }
 }
 
@@ -94,52 +94,37 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource {
         return  mainMenuList[section].subMenuList?.count ?? 0
     }
     
-   public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            var cell = HeaderViewTableViewCell()
-            cell = tableView.dequeueReusableCell(withIdentifier: "HeaderViewTableViewCell") as! HeaderViewTableViewCell
-            cell.configure()
-            return cell
-            
-        } else {
-            var menuCell = MenuTableViewCell()
-            menuCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
-            menuCell.forwordArrow.transform = .identity
-            if !self.hiddenSections.contains(section) {
-               menuCell.forwordArrow.transform = menuCell.forwordArrow.transform.rotated(by: CGFloat.pi/2)
-            }
-            menuCell.configure(mainMenuList: self.mainMenuList[section], section: section, delegate: self)
-            return menuCell
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var menuCell = MenuTableViewCell()
+        menuCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
+        menuCell.forwordArrow.transform = .identity
+        if !self.hiddenSections.contains(section) {
+            menuCell.forwordArrow.transform = menuCell.forwordArrow.transform.rotated(by: CGFloat.pi/2)
         }
+        menuCell.configure(mainMenuList: self.mainMenuList[section], section: section, delegate: self)
+        return menuCell
     }
     
-   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = SubMenuTableViewCell()
         cell = tableView.dequeueReusableCell(withIdentifier: "SubMenuTableViewCell", for: indexPath) as! SubMenuTableViewCell
-       cell.configure(titleData: self.mainMenuList[indexPath.section], row: indexPath.row)
-       
-       return cell
+        cell.configure(titleData: self.mainMenuList[indexPath.section], row: indexPath.row)
+        return cell
     }
     
-   public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 44
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
     
-   public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 300
-        }else {
-            return 60
-        }
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
     
-   public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       tableView.deselectRow(at: indexPath, animated: false)
-       self.tableView.beginUpdates()
-       tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .fade)
-       tableView.endUpdates()
-
-        let appDel = UIApplication.shared.delegate as! AppDelegate
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        self.tableView.beginUpdates()
+        tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .fade)
+        tableView.endUpdates()
         switch indexPath.row {
         case 0:
             let mainViewController = UIStoryboard(name: "HomeViewContoller", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller")
@@ -157,12 +142,3 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource {
         appDel.drawerController.setDrawerState(.closed, animated: true)
     }
 }
-
-//        mainMenuList[section].isOpened = !(mainMenuList[section].isOpened ?? false)
-//
-//        tableView.beginUpdates()
-//        for i in 0 ..< (mainMenuList[section].subMenuList?.count ?? 0) {
-//            tableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
-//        }
-//        tableView.endUpdates()
-//

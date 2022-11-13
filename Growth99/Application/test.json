@@ -1,10 +1,6 @@
 {
   "menuList": [
     {
-      "title": "userProfile",
-      "imageName": "userProfile"
-    },
-    {
       "title": "MyProfile",
       "imageName": "fa-user-md",
       "subMenuList": [

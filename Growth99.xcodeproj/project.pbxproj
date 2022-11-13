@@ -75,6 +75,7 @@
 		84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC3291CBCCE00D11B24 /* UserProfile.swift */; };
 		849DC6E02920BBDF00827FAB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */; };
 		849DC6E12920BBDF00827FAB /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */; };
+		849DC6E52921093100827FAB /* GRBarbuttonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6E42921093100827FAB /* GRBarbuttonItem.swift */; };
 		84B2E59F291375C300BAA535 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E59E291375C300BAA535 /* Constant.swift */; };
 		84B2E5B12914303400BAA535 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B02914303400BAA535 /* RegistrationModel.swift */; };
 		84B2E5B42915674300BAA535 /* VerifyForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B32915674300BAA535 /* VerifyForgotPasswordViewController.swift */; };
@@ -192,6 +193,7 @@
 		84995AC3291CBCCE00D11B24 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		849DC6E42921093100827FAB /* GRBarbuttonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRBarbuttonItem.swift; sourceTree = "<group>"; };
 		84B2E59E291375C300BAA535 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
 		84B2E5B02914303400BAA535 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				8497A04328FF122D00CBA26C /* EnvironmentManager.swift */,
 				847CCCA72912AC7E005C8DE9 /* SpinnerView.swift */,
 				84B2E59E291375C300BAA535 /* Constant.swift */,
+				849DC6E42921093100827FAB /* GRBarbuttonItem.swift */,
 			);
 			path = HelperClass;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				8497A03428FEABAC00CBA26C /* ServiceManager.swift in Sources */,
 				847E1F222916DA6000C221C0 /* HeaderViewTableViewCell.swift in Sources */,
 				84872B0129179D790063DD3B /* MenuModel.swift in Sources */,
+				849DC6E52921093100827FAB /* GRBarbuttonItem.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				848F4DD328F32960007AC421 /* UITapGestureRecognizerExtension.swift in Sources */,
 				84872AFE291791360063DD3B /* MenuTableViewCell.swift in Sources */,

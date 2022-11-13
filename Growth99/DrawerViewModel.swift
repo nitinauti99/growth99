@@ -31,6 +31,6 @@ class DrawerViewModel: DrawerViewModelProtocol {
             }
         }
         return []
-    }    
+    }
     
 }

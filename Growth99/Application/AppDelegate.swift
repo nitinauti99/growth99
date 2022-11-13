@@ -12,14 +12,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isUserLoged: Bool = false
     let user = UserRepository.shared
-
+    
     var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.8 * (UIScreen.main.bounds.width))
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setUpHomeVC()
         return true
     }
-
+    
     func setUpHomeVC() {
         
         if user.isUserLoged {
@@ -34,14 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = drawerController
             window?.makeKeyAndVisible()
-       
-        }else{
+            
+        } else {
             let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
             let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
             mainVcIntial.isNavigationBarHidden = true
             self.window?.rootViewController = mainVcIntial
         }
-        
     }
 }
 
