@@ -15,7 +15,8 @@ open class RSSelectionMenuSearchDelegate: NSObject {
         super.init()
         searchBar = UISearchBar()
         searchBar?.placeholder = placeHolder
-        searchBar?.barTintColor = barTintColor
+        searchBar?.barTintColor = UIColor.white
+//        searchBar?.backgroundColor = UIColor.clear
         searchBar?.sizeToFit()
         searchBar?.delegate = self
         searchBar?.enablesReturnKeyAutomatically = false

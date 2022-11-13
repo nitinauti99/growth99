@@ -16,9 +16,12 @@ protocol HomeViewModelProtocol {
     var getUserProfileData: UserProfile { get }
     func getallClinics()
     var getAllClinicsData: [Clinics] { get }
+    
     func getallServiceCategories(SelectedClinics: [Any])
-    var getAllSelectedServiceCategories: [Clinics] { get }
-
+    var getAllServiceCategories: [Clinics] { get }
+   
+    func getallService(SelectedCategories: [Any])
+    var getAllService: [Clinics] { get }
 }
 
 class HomeViewModel {
@@ -26,14 +29,14 @@ class HomeViewModel {
     var userData: UserProfile?
     let service = NetworkingService.shared
     var allClinics: [Clinics]?
-    var selectedServiceCategories: [Clinics]?
+    var allserviceCategories: [Clinics]?
+    var allServices: [Clinics]?
 
     init(delegate: HomeViewContollerProtocool? = nil) {
         self.delegate = delegate
     }
    
     func getUserData(userId: Int) {
-       
         ServiceManager.request(request: ApiRouter.getRequestForUserProfile(userId).urlRequest, responseType: UserProfile.self) { result in
             switch result {
             case .success(let userData):
@@ -60,12 +63,11 @@ class HomeViewModel {
     }
     
     func getallServiceCategories(SelectedClinics: [Any]){
-        //https://api.growthemr.com/api/v1/clinics/serviceCategories?clinicId=1875,1765,1876
         ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
             switch result {
-            case .success(let allClinics):
-                self.selectedServiceCategories = allClinics
-                self.delegate?.clinicsRecived()
+            case .success(let allserviceCategories):
+                self.allserviceCategories = allserviceCategories
+                self.delegate?.serviceCategoriesRecived()
             case .failure(let error):
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -73,8 +75,25 @@ class HomeViewModel {
         }
     }
     
-    var getAllSelectedServiceCategories: [Clinics] {
-        return self.selectedServiceCategories!
+    func getallService(SelectedCategories: [Any]) {
+        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
+            switch result {
+            case .success(let categories):
+                self.allServices = categories
+                self.delegate?.serviceRecived()
+            case .failure(let error):
+                print(error)
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var getAllService: [Clinics] {
+        return self.allServices ?? []
+    }
+    
+    var getAllServiceCategories: [Clinics] {
+        return self.allserviceCategories ?? []
     }
     
     var getUserProfileData: UserProfile {
@@ -82,13 +101,13 @@ class HomeViewModel {
     }
     
     var getAllClinicsData: [Clinics] {
-        return self.allClinics!
+        return self.allClinics ?? []
     }
     
 }
 
 extension HomeViewModel : HomeViewModelProtocol {
-
+    
     func isValidFirstName(_ firstName: String) -> Bool {
         if firstName.count > 0 {
             return true

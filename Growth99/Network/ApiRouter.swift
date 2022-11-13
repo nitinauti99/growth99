@@ -24,6 +24,7 @@ enum ApiRouter: URLRequestConvertible {
     case getRequestForUserProfile(Int)
     case getRequestForAllClinics
     case getRequesServiceCategoriesForSelectedClinics(Array<Any>)
+    case getRequesServiceSelectedCategories(Array<Any>)
 
 
     var stringValue: String {
@@ -43,8 +44,10 @@ enum ApiRouter: URLRequestConvertible {
         case .getRequestForAllClinics:
             return ""
        case .getRequesServiceCategoriesForSelectedClinics(_ ):
-        return ApiUrl.serviceCategories
-       }
+           return ApiUrl.serviceCategories
+       case .getRequesServiceSelectedCategories(_):
+          return  ApiUrl.serviceCategories
+        }
     }
     
     var parameters: [String : Any] {
@@ -88,7 +91,10 @@ enum ApiRouter: URLRequestConvertible {
            case .getRequesServiceCategoriesForSelectedClinics(let serviceCategories):
                print((serviceCategories as NSArray).componentsJoined(by: ","))
                return ["clinicId": (serviceCategories as NSArray).componentsJoined(by: ",")]
-        }
+           case .getRequesServiceSelectedCategories(let services):
+               print((services as NSArray).componentsJoined(by: ","))
+               return ["categoryId": (services as NSArray).componentsJoined(by: ",")]
+           }
     }
     
     var urlRequest: URLRequest {
@@ -143,25 +149,33 @@ enum ApiRouter: URLRequestConvertible {
            request.method = .get
            return request
        case .getRequestForAllClinics:
-           var components = URLComponents(string: ApiUrl.allClinics)
+           let components = URLComponents(string: ApiUrl.allClinics)
            var request = URLRequest(url: (components?.url)!)
            request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
            request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
            request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
            request.method = .get
            return request
-       case .getRequesServiceCategoriesForSelectedClinics(let serviceCategories):
+       case .getRequesServiceCategoriesForSelectedClinics(_ ):
            var components = URLComponents(string: ApiUrl.serviceCategories)
            components?.queryItems = parameters.map { element in URLQueryItem(name: element.key, value: element.value as? String) }
-
                  var request = URLRequest(url: (components?.url)!)
                  request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
                  request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
                  request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
                  request.method = .get
                  return request
-             }
-       }
+       case .getRequesServiceSelectedCategories(_):
+             var components = URLComponents(string: ApiUrl.service)
+             components?.queryItems = parameters.map { element in URLQueryItem(name: element.key, value: element.value as? String) }
+                 var request = URLRequest(url: (components?.url)!)
+                 request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
+                 request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
+                 request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
+                 request.method = .get
+                 return request
+            }
+      }
     
     func numberOfDigits(_ num: Int) -> Int {
         var number2 = 0

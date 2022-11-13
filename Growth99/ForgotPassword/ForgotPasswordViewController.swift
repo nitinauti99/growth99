@@ -80,5 +80,4 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
     func openLoginView(){
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
