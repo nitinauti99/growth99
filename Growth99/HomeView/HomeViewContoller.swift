@@ -13,6 +13,7 @@ protocol HomeViewContollerProtocool {
     func errorReceived(error: String)
     func clinicsRecived()
     func serviceCategoriesRecived()
+    func serviceRecived()
 }
 
 class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
@@ -49,8 +50,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     var roleArray: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        navigationItem.leftBarButtonItems = UIBarButtonItem.createApplicationLogo(target: self)
         viewModel = HomeViewModel(delegate: self)
+        descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
+        descriptionTextView.layer.borderWidth = 1.0;
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
         self.view.ShowSpinner()
@@ -63,9 +66,59 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         }
         
     }
+
+    fileprivate func setUpUI() {
+        self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
+        self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
+        self.emailTextField.text = viewModel?.getUserProfileData.email
+        self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+    }
     
-    func setUpUI() {
-        navigationItem.leftBarButtonItems = UIBarButtonItem.createApplicationLogo(target: self)
+    func userDataRecived() {
+        viewModel?.getallClinics()
+        userProvider.setOn(false, animated: false)
+        if viewModel?.getUserProfileData.isProvider ?? false {
+            userProvider.setOn(true, animated: false)
+            self.userProviderViewHight.constant = 300
+            self.userProviderView.isHidden = false
+        }
+        let name = viewModel?.getUserProfileData.roles?.name ?? ""
+        let id = viewModel?.getUserProfileData.roles?.id ?? 0
+        dropDown.optionArray = [name]
+        dropDown.optionIds = [id]
+        setUpUI()
+    }
+    
+    func clinicsRecived() {
+        let selectedClincs = viewModel?.getUserProfileData.clinics ?? []
+        self.clincsTextField.text = selectedClincs.map({$0.name ?? ""}).joined(separator: ", ")
+        let selectedList = selectedClincs.map({$0.id ?? 0})
+        self.viewModel?.getallServiceCategories(SelectedClinics: selectedList)
+    }
+    
+    func serviceCategoriesRecived() {
+        let selectedCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
+        self.serviceCategoriesTextField.text = selectedCategories.map({$0.name ?? ""}).joined(separator: ", ")
+        let selectedList = selectedCategories.map({$0.id ?? 0})
+        self.viewModel?.getallService(SelectedCategories: selectedList)
+    }
+    
+    func serviceRecived() {
+        self.view.HideSpinner()
+        let selectedCategories = viewModel?.getUserProfileData.services ?? []
+        self.servicesTextField.text = selectedCategories.map({$0.name ?? ""}).joined(separator: ", ")
+     }
+   
+    @IBAction func switchIsChanged(sender: UISwitch) {
+        if sender.isOn {
+            self.userProviderViewHight.constant = 300
+            self.userProviderView.isHidden = false
+            self.view.layoutIfNeeded()
+        } else {
+            self.userProviderViewHight.constant = 0
+            self.userProviderView.isHidden = true
+            self.view.layoutIfNeeded()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,65 +150,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         appDel.drawerController.setDrawerState(.opened, animated: true)
     }
     
-    func userDataRecived() {
-        viewModel?.getallClinics()
-
-        //self.view.HideSpinner()
-        userProvider.setOn(false, animated: false)
-        if viewModel?.getUserProfileData.isProvider ?? false {
-            userProvider.setOn(true, animated: false)
-            self.userProviderViewHight.constant = 300
-            self.userProviderView.isHidden = false
-        }
-        
-        let name = viewModel?.getUserProfileData.roles?.name ?? ""
-        let id = viewModel?.getUserProfileData.roles?.id ?? 0
-        dropDown.optionArray = [name]
-        dropDown.optionIds = [id]
-        self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
-        self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
-        self.emailTextField.text = viewModel?.getUserProfileData.email
-        self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
-        self.selectedDataArray = ["Medical"]
-        self.clincsTextField.text = viewModel?.getUserProfileData.clinics?[0].name
-        let serviceCategoriesArray = viewModel?.getUserProfileData.userServiceCategories
-       
-        for serviceCategories in serviceCategoriesArray ?? [] {
-            selectedServiceCategoriesName.append(serviceCategories.name ?? "")
-        }
-        self.serviceCategoriesTextField.text = selectedServiceCategoriesName.joined(separator: ", ")
-       
-        let servicesArray = viewModel?.getUserProfileData.services
-       
-        for serviceCategories in servicesArray ?? [] {
-            selectedServiceName.append(serviceCategories.name ?? "")
-        }
-        self.servicesTextField.text = selectedServiceName.joined(separator: ", ")
-    }
-    
-    func clinicsRecived() {
-        self.view.HideSpinner()
-    }
-    
-    func serviceCategoriesRecived() {
-        self.view.HideSpinner()
-
-    }
-    
-   
-    @IBAction func switchIsChanged(sender: UISwitch) {
-        if sender.isOn {
-            self.userProviderViewHight.constant = 300
-            self.userProviderView.isHidden = false
-            self.view.layoutIfNeeded()
-        } else {
-            self.userProviderViewHight.constant = 0
-            self.userProviderView.isHidden = true
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    @objc func textFieldOpenDropDown(_ textField: UITextField) {
+    @IBAction func textFieldOpenDropDownClinincs(sender: UIButton) {
         
         let dataArray = viewModel?.getUserProfileData.clinics ?? []
         let allClinics = viewModel?.getAllClinicsData ?? []
@@ -167,10 +162,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         selectionMenu.setSelectedItems(items: dataArray) { [weak self] (text, index, selected, selectedList) in
               self?.selectedDataArray = selectedList.map({$0.name ?? ""})
               self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
-            let selectedIdArray = selectedList.map({$0.id ?? 0})
-            self?.view.ShowSpinner()
-            self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
-        }
+              let selectedIdArray = selectedList.map({$0.id ?? 0})
+              self?.view.ShowSpinner()
+              self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
+         }
         
         selectionMenu.reloadInputViews()
 
@@ -178,21 +173,20 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
             return allClinics.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
         }
-        selectionMenu.showEmptyDataLabel(text: "No Player Found")
+        selectionMenu.showEmptyDataLabel(text: "No Clinincs Found")
         selectionMenu.cellSelectionStyle = .checkbox
         // size = nil (auto adjust size)
         let count : Double = Double(allClinics.count)
-        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 10))
-        selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
+        selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
+        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
     }
 
     
-    @objc func textFieldOpenDropDownServiceCategories(_ textField: UITextField) {
+    @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
+       
         let serviceCategoriesSelected = viewModel?.getUserProfileData.userServiceCategories ?? []
-        let serviceCategories = viewModel?.getAllSelectedServiceCategories ?? []
-        //self.selectedDataArray = self.selectedServiceCategoriesName
-       // let dataList = dataArray.map({$0.name ?? ""})
-        
+        let serviceCategories = viewModel?.getAllServiceCategories ?? []
+       
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: serviceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
             cell.textLabel?.text = serviceCategories.name?.components(separatedBy: " ").first
         }
@@ -201,46 +195,44 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
           self?.selectedDataArray = selectedList.map({$0.name ?? ""})
           self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
           let selectedIdArray = selectedList.map({$0.id ?? 0})
-          self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
-            //self?.addId()
-           // self?.removeId()
-           // self?.tableView.reloadData()
-          
+          self?.view.ShowSpinner()
+            self?.viewModel?.getallService(SelectedCategories: selectedIdArray)
         }
         // search bar
         selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
             return serviceCategories.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
         }
-        selectionMenu.showEmptyDataLabel(text: "No Player Found")
+        selectionMenu.showEmptyDataLabel(text: "No ServiceCategories Found")
         selectionMenu.cellSelectionStyle = .checkbox
         // size = nil (auto adjust size)
         let count : Double = Double(serviceCategories.count)
-        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 10))
-        selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
+        selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
+        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
     }
     
-    @objc func textFieldOpenDropDownServices(_ textField: UITextField) {
-        let dataArray = viewModel?.getUserProfileData.services ?? []
-        self.selectedDataArray = self.selectedServiceName
+    @IBAction func textFieldOpenDropDownServices(sender: UIButton) {
+        
+        let servicesSelected = viewModel?.getUserProfileData.services ?? []
+      
+        let allServices = viewModel?.getAllService ?? []
 
-        let dataList =  dataArray.map({$0.name ?? ""})
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataList, cellType: .subTitle) { (cell, name, indexPath) in
-            cell.textLabel?.text = name.components(separatedBy: " ").first
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
+            cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
         }
-        selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
-            self?.selectedDataArray = selectedList
-            self?.servicesTextField.text = selectedList.joined(separator: ", ")
+        selectionMenu.setSelectedItems(items: servicesSelected) { [weak self] (text, index, selected, selectedList) in
+            self?.selectedDataArray =  selectedList.map({$0.name ?? ""})
+            self?.servicesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
         }
         // search bar
-        selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in
-            return dataList.filter({ $0.lowercased().starts(with: searchText.lowercased()) })
+        selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
+            return allServices.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
         }
-        selectionMenu.showEmptyDataLabel(text: "No Player Found")
+        selectionMenu.showEmptyDataLabel(text: "No Services Found")
         selectionMenu.cellSelectionStyle = .checkbox
         // size = nil (auto adjust size)
-        let count : Double = Double(dataArray.count)
-        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 50))
-        selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
+        let count : Double = Double(allServices.count)
+        selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
+        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
     }
     
    
@@ -254,13 +246,13 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.firsNameTextField.addTarget(self, action:
                                             #selector(HomeViewContoller.textFieldDidChange(_:)),
                                             for: UIControl.Event.editingChanged)
-        self.clincsTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDown(_:)), for: .touchDown)
+//        self.clincsTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownClinincs(_:)), for: .touchDown)
         
-        self.serviceCategoriesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServiceCategories(_:)), for: .touchDown)
+//        self.serviceCategoriesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServiceCategories(_:)), for: .touchDown)
       
-        self.servicesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServices(_:)), for: .touchDown)
+//        self.servicesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServices(_:)), for: .touchDown)
     }
-    
+
     @objc func textFieldDidChange(_ textField: UITextField) {
         
         if textField == firsNameTextField,  textField.text == "" {

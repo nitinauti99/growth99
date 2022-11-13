@@ -12,7 +12,7 @@ struct UserProfile: Codable {
     let lastName: String?
     let clinics: [Clinics]?
     let roles: Roles?
-    let services: [Services]?
+    let services: [Clinics]?
     let firstName: String?
     let phone: String?
     let userServiceCategories: [Clinics]?
