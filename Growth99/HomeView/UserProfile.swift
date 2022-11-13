@@ -15,7 +15,7 @@ struct UserProfile: Codable {
     let services: [Services]?
     let firstName: String?
     let phone: String?
-    let userServiceCategories: [UserServiceCategories]?
+    let userServiceCategories: [Clinics]?
     let id: Int?
     let designation: String?
     let profileImageUrl: String?

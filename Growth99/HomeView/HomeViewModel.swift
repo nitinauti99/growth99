@@ -15,14 +15,18 @@ protocol HomeViewModelProtocol {
     func getUserData(userId: Int)
     var getUserProfileData: UserProfile { get }
     func getallClinics()
-    var getAllClinicsData: [ClinicsModel] { get }
+    var getAllClinicsData: [Clinics] { get }
+    func getallServiceCategories(SelectedClinics: [Any])
+    var getAllSelectedServiceCategories: [Clinics] { get }
+
 }
 
 class HomeViewModel {
     var delegate: HomeViewContollerProtocool?
     var userData: UserProfile?
     let service = NetworkingService.shared
-    var allClinics: [ClinicsModel]?
+    var allClinics: [Clinics]?
+    var selectedServiceCategories: [Clinics]?
 
     init(delegate: HomeViewContollerProtocool? = nil) {
         self.delegate = delegate
@@ -43,7 +47,7 @@ class HomeViewModel {
     }
     
     func getallClinics(){
-        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [ClinicsModel].self) { result in
+        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [Clinics].self) { result in
             switch result {
             case .success(let allClinics):
                 self.allClinics = allClinics
@@ -55,11 +59,29 @@ class HomeViewModel {
         }
     }
     
+    func getallServiceCategories(SelectedClinics: [Any]){
+        //https://api.growthemr.com/api/v1/clinics/serviceCategories?clinicId=1875,1765,1876
+        ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
+            switch result {
+            case .success(let allClinics):
+                self.selectedServiceCategories = allClinics
+                self.delegate?.clinicsRecived()
+            case .failure(let error):
+                print(error)
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var getAllSelectedServiceCategories: [Clinics] {
+        return self.selectedServiceCategories!
+    }
+    
     var getUserProfileData: UserProfile {
         return self.userData!
     }
     
-    var getAllClinicsData: [ClinicsModel] {
+    var getAllClinicsData: [Clinics] {
         return self.allClinics!
     }
     

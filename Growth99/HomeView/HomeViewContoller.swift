@@ -12,10 +12,11 @@ protocol HomeViewContollerProtocool {
     func userDataRecived()
     func errorReceived(error: String)
     func clinicsRecived()
+    func serviceCategoriesRecived()
 }
 
 class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
-   
+    
     @IBOutlet private weak var firsNameTextField: CustomTextField!
     @IBOutlet private weak var lastNameTextField: CustomTextField!
     @IBOutlet private weak var emailTextField: CustomTextField!
@@ -136,6 +137,12 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.view.HideSpinner()
     }
     
+    func serviceCategoriesRecived() {
+        self.view.HideSpinner()
+
+    }
+    
+   
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
             self.userProviderViewHight.constant = 300
@@ -149,72 +156,66 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     }
     
     @objc func textFieldOpenDropDown(_ textField: UITextField) {
+        
         let dataArray = viewModel?.getUserProfileData.clinics ?? []
-        let dataList =  dataArray.map({$0.name ?? ""})
-        self.selectedDataArray = dataList
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataList, cellType: .subTitle) { (cell, name, indexPath) in
-            cell.textLabel?.text = name.components(separatedBy: " ").first
+        let allClinics = viewModel?.getAllClinicsData ?? []
+  
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
-        selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
-            self?.selectedDataArray = selectedList
-            self?.clincsTextField.text = selectedList.joined(separator: ", ")
-          //  self?.addId()
-         //   self?.removeId()
-           // self?.tableView.reloadData()
-          
+        
+        selectionMenu.setSelectedItems(items: dataArray) { [weak self] (text, index, selected, selectedList) in
+              self?.selectedDataArray = selectedList.map({$0.name ?? ""})
+              self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            let selectedIdArray = selectedList.map({$0.id ?? 0})
+            self?.view.ShowSpinner()
+            self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
         }
+        
+        selectionMenu.reloadInputViews()
+
         // search bar
-        selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in
-            return dataList.filter({ $0.lowercased().starts(with: searchText.lowercased()) })
+        selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
+            return allClinics.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
         }
         selectionMenu.showEmptyDataLabel(text: "No Player Found")
         selectionMenu.cellSelectionStyle = .checkbox
         // size = nil (auto adjust size)
-        let count : Double = Double(dataArray.count)
-        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 50))
+        let count : Double = Double(allClinics.count)
+        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 10))
         selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
     }
-    
-//    func addId() {
-//        for clinics in self.dataArray {
-//            if self.selectedDataArray.contains(clinics.name ?? "") {
-//                selectedId.append(clinics.id ?? 0)
-//            }
-//        }
-//    }
-//    func removeId(){
-//        for name in self.dataArray {
-//            if self.selectedDataArray.contains(name.name ?? "") {
-//                selectedId.append(name.id ?? 0)
-//            }
-//        }
-//    }
 
     
     @objc func textFieldOpenDropDownServiceCategories(_ textField: UITextField) {
-        let dataArray = viewModel?.getUserProfileData.userServiceCategories ?? []
-        self.selectedDataArray = self.selectedServiceCategoriesName
-        let dataList = dataArray.map({$0.name ?? ""})
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataList, cellType: .subTitle) { (cell, name, indexPath) in
-            cell.textLabel?.text = name.components(separatedBy: " ").first
+        let serviceCategoriesSelected = viewModel?.getUserProfileData.userServiceCategories ?? []
+        let serviceCategories = viewModel?.getAllSelectedServiceCategories ?? []
+        //self.selectedDataArray = self.selectedServiceCategoriesName
+       // let dataList = dataArray.map({$0.name ?? ""})
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: serviceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
+            cell.textLabel?.text = serviceCategories.name?.components(separatedBy: " ").first
         }
-        selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
-            self?.selectedDataArray = selectedList
-            self?.serviceCategoriesTextField.text = selectedList.joined(separator: ", ")
+        selectionMenu.setSelectedItems(items: serviceCategoriesSelected) { [weak self] (text, index, selected, selectedList) in
+            
+          self?.selectedDataArray = selectedList.map({$0.name ?? ""})
+          self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+          let selectedIdArray = selectedList.map({$0.id ?? 0})
+          self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
             //self?.addId()
            // self?.removeId()
            // self?.tableView.reloadData()
           
         }
         // search bar
-        selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in
-            return dataList.filter({ $0.lowercased().starts(with: searchText.lowercased()) })
+        selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
+            return serviceCategories.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
         }
         selectionMenu.showEmptyDataLabel(text: "No Player Found")
         selectionMenu.cellSelectionStyle = .checkbox
         // size = nil (auto adjust size)
-        let count : Double = Double(dataArray.count)
-        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 50))
+        let count : Double = Double(serviceCategories.count)
+        selectionMenu.preferredContentSize = CGSize(width: textField.frame.width, height: (count * 50 + 10))
         selectionMenu.show(style: .popover(sourceView: textField, size: nil), from: self)
     }
     
@@ -229,10 +230,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         selectionMenu.setSelectedItems(items: self.selectedDataArray) { [weak self] (text, index, selected, selectedList) in
             self?.selectedDataArray = selectedList
             self?.servicesTextField.text = selectedList.joined(separator: ", ")
-           // self?.addId()
-           // self?.removeId()
-           // self?.tableView.reloadData()
-          
         }
         // search bar
         selectionMenu.showSearchBar { [weak self] (searchText) -> ([String]) in

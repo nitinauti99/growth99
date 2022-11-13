@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClinicsModel: Codable, Equatable {
-    let name: String?
-    let id: Int?
-}
+//struct ClinicsModel: Codable, Equatable {
+//    let name: String?
+//    let id: Int?
+//}

@@ -23,6 +23,7 @@ enum ApiRouter: URLRequestConvertible {
     case sendRequestChangePassword(String, String, String, String)
     case getRequestForUserProfile(Int)
     case getRequestForAllClinics
+    case getRequesServiceCategoriesForSelectedClinics(Array<Any>)
 
 
     var stringValue: String {
@@ -41,7 +42,9 @@ enum ApiRouter: URLRequestConvertible {
             return ApiUrl.userProfile
         case .getRequestForAllClinics:
             return ""
-        }
+       case .getRequesServiceCategoriesForSelectedClinics(_ ):
+        return ApiUrl.serviceCategories
+       }
     }
     
     var parameters: [String : Any] {
@@ -82,8 +85,11 @@ enum ApiRouter: URLRequestConvertible {
                return [:]
            case .getRequestForAllClinics:
                return [:]
-           }
-       }
+           case .getRequesServiceCategoriesForSelectedClinics(let serviceCategories):
+               print((serviceCategories as NSArray).componentsJoined(by: ","))
+               return ["clinicId": (serviceCategories as NSArray).componentsJoined(by: ",")]
+        }
+    }
     
     var urlRequest: URLRequest {
        switch self {
@@ -137,16 +143,35 @@ enum ApiRouter: URLRequestConvertible {
            request.method = .get
            return request
        case .getRequestForAllClinics:
-           let components = URLComponents(string: ApiUrl.allClinics)
+           var components = URLComponents(string: ApiUrl.allClinics)
            var request = URLRequest(url: (components?.url)!)
            request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
            request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
            request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
            request.method = .get
            return request
-       }
-    }
+       case .getRequesServiceCategoriesForSelectedClinics(let serviceCategories):
+           var components = URLComponents(string: ApiUrl.serviceCategories)
+           components?.queryItems = parameters.map { element in URLQueryItem(name: element.key, value: element.value as? String) }
 
+                 var request = URLRequest(url: (components?.url)!)
+                 request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
+                 request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
+                 request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
+                 request.method = .get
+                 return request
+             }
+       }
+    
+    func numberOfDigits(_ num: Int) -> Int {
+        var number2 = 0
+        var number = num
+        while number > 0 {
+            number2 = number
+            number += number2
+        }
+        return number
+    }
 }
 
 protocol URLRequestConvertible {
