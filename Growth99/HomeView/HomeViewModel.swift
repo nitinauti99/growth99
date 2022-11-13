@@ -13,16 +13,17 @@ protocol HomeViewModelProtocol {
     func isValidPassword(_ password: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func getUserData(userId: Int)
-    var getUserProfileData:UserProfile { get }
+    var getUserProfileData: UserProfile { get }
     func getallClinics()
-
+    var getAllClinicsData: [ClinicsModel] { get }
 }
 
 class HomeViewModel {
     var delegate: HomeViewContollerProtocool?
     var userData: UserProfile?
     let service = NetworkingService.shared
-    
+    var allClinics: [ClinicsModel]?
+
     init(delegate: HomeViewContollerProtocool? = nil) {
         self.delegate = delegate
     }
@@ -42,11 +43,11 @@ class HomeViewModel {
     }
     
     func getallClinics(){
-        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: ClinicsModel.self) { result in
+        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [ClinicsModel].self) { result in
             switch result {
-            case .success(let userData):
-               // self.userData = userData
-                self.delegate?.userDataRecived()
+            case .success(let allClinics):
+                self.allClinics = allClinics
+                self.delegate?.clinicsRecived()
             case .failure(let error):
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -57,6 +58,11 @@ class HomeViewModel {
     var getUserProfileData: UserProfile {
         return self.userData!
     }
+    
+    var getAllClinicsData: [ClinicsModel] {
+        return self.allClinics!
+    }
+    
 }
 
 extension HomeViewModel : HomeViewModelProtocol {

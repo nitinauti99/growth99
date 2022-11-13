@@ -13,7 +13,6 @@ open class RSSelectionMenuSearchDelegate: NSObject {
     // MARK: - Initialize
     init(placeHolder: String, barTintColor: UIColor) {
         super.init()
-        
         searchBar = UISearchBar()
         searchBar?.placeholder = placeHolder
         searchBar?.barTintColor = barTintColor

@@ -23,7 +23,7 @@ struct UserProfile: Codable {
     let description: String?
 }
 
-struct Clinics: Codable {
+struct Clinics: Codable, Equatable {
     let isDefault: Bool?
     let name: String?
     let id: Int?
@@ -34,12 +34,12 @@ struct Roles: Codable {
     let id: Int?
 }
 
-struct Services: Codable {
+struct Services: Codable, Equatable {
     let name: String?
     let id: Int?
 }
 
-struct UserServiceCategories: Codable {
+struct UserServiceCategories: Codable, Equatable {
     let name: String?
     let id: Int?
 }
