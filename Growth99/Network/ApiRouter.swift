@@ -20,6 +20,7 @@ enum ApiRouter: URLRequestConvertible {
     case sendRequesRegistration(String, String, String, String, String, String, String, Bool)
     case sendRequestForgotPassword(String)
     case sendRequesVerifyForgotPassword(String, String, String, String)
+    case sendRequestChangePassword(String, String, String, String)
     case getRequestForUserProfile(Int)
     case getRequestForAllClinics
 
@@ -34,6 +35,8 @@ enum ApiRouter: URLRequestConvertible {
             return ApiUrl.forgotPassword
         case .sendRequesVerifyForgotPassword(_, _, _, _):
             return ApiUrl.VerifyforgotPassword
+        case .sendRequestChangePassword(_, _, _, _):
+            return ApiUrl.changeUserPassword
         case .getRequestForUserProfile(_):
             return ApiUrl.userProfile
         case .getRequestForAllClinics:
@@ -68,6 +71,13 @@ enum ApiRouter: URLRequestConvertible {
                 "confirmPassword":confirmPassword,
                 "confirmationCode":confirmationCode
                ]
+           case .sendRequestChangePassword(let email, let oldPassword, let newPassword, let verifyNewPassword):
+               return [
+                "userName": email,
+                "oldPassword": oldPassword,
+                "newPassword": newPassword,
+                "confirmPassword": verifyNewPassword
+               ]
            case .getRequestForUserProfile(_):
                return [:]
            case .getRequestForAllClinics:
@@ -100,7 +110,6 @@ enum ApiRouter: URLRequestConvertible {
            request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
            request.method = .get
            return request
-
        case .sendRequesVerifyForgotPassword(_, _, _, _):
            let components = URLComponents(string: ApiUrl.VerifyforgotPassword)
            var request = URLRequest(url: (components?.url)!)
@@ -108,6 +117,16 @@ enum ApiRouter: URLRequestConvertible {
            let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
            request.httpBody = jsonData
            request.method = .put
+           return request
+       case .sendRequestChangePassword(_, _, _, _):
+           let components = URLComponents(string: ApiUrl.changeUserPassword)
+           var request = URLRequest(url: (components?.url)!)
+           request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
+           request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
+           request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
+           let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+           request.httpBody = jsonData
+           request.method = .post
            return request
        case .getRequestForUserProfile(let userId):
            let components = URLComponents(string: ApiUrl.userProfile.appending("\(userId)"))

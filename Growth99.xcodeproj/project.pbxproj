@@ -73,6 +73,8 @@
 		84995ABF291BD13000D11B24 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995ABE291BD13000D11B24 /* NetworkingService.swift */; };
 		84995AC1291BD88500D11B24 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC0291BD88500D11B24 /* LoginService.swift */; };
 		84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC3291CBCCE00D11B24 /* UserProfile.swift */; };
+		849DC6E02920BBDF00827FAB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */; };
+		849DC6E12920BBDF00827FAB /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */; };
 		84B2E59F291375C300BAA535 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E59E291375C300BAA535 /* Constant.swift */; };
 		84B2E5B12914303400BAA535 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B02914303400BAA535 /* RegistrationModel.swift */; };
 		84B2E5B42915674300BAA535 /* VerifyForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B32915674300BAA535 /* VerifyForgotPasswordViewController.swift */; };
@@ -188,6 +190,8 @@
 		84995ABE291BD13000D11B24 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		84995AC0291BD88500D11B24 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		84995AC3291CBCCE00D11B24 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		84B2E59E291375C300BAA535 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
 		84B2E5B02914303400BAA535 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				848F4DD828F3D060007AC421 /* Registration */,
 				848F4DDD28F81859007AC421 /* ForgotPassword */,
 				84B2E5B2291566F700BAA535 /* VerifyForgotPassword */,
+				849DC6DD2920BBAF00827FAB /* ChangePassword */,
 			);
 			path = Growth99;
 			sourceTree = "<group>";
@@ -492,6 +497,15 @@
 				847E1F1E2916B39200C221C0 /* test.json */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		849DC6DD2920BBAF00827FAB /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */,
+				849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */,
+			);
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		84B2E5B2291566F700BAA535 /* VerifyForgotPassword */ = {
@@ -670,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
+				849DC6E12920BBDF00827FAB /* ChangePasswordViewController.xib in Resources */,
 				84EDDFCF29163C5C00614A87 /* HomeViewContoller.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				84B2E5B62915677100BAA535 /* VerifyForgotPasswordViewController.storyboard in Resources */,
@@ -855,6 +870,7 @@
 				848F4DB828F1C2AB007AC421 /* Reachability.swift in Sources */,
 				84EDDFD72916712900614A87 /* CustomNavaigationContoller.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
+				849DC6E02920BBDF00827FAB /* ChangePasswordViewController.swift in Sources */,
 				848F4DB028F1C1D8007AC421 /* RefreshTokenRequest.swift in Sources */,
 				84B2E5B8291567D800BAA535 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,

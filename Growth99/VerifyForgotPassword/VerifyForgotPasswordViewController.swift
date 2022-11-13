@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 protocol VerifyForgotPasswordViewProtocol: AnyObject {
-    func LoaginDataRecived()
+    func LoaginDataRecived(responseMessage: String)
     func errorReceived(error: String)
+    
 }
 
 class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPasswordViewProtocol {
@@ -44,7 +45,7 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
         }
     }
     
-    func LoaginDataRecived() {
+    func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
     }
     

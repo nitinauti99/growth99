@@ -15,6 +15,7 @@ struct EndPoints {
     static let VerifyforgotPassword = "/public/users/forgot-password"
     static let userProfile = "/v1/user/"
     static let allClinics = "/v1/clinics/allClinics"
+    static let changePassword = "/users/change-password"
 }
 
 struct ApiUrl {
@@ -24,4 +25,5 @@ struct ApiUrl {
     static let VerifyforgotPassword = EndPoints.baseURL.appending(EndPoints.VerifyforgotPassword)
     static let userProfile = EndPoints.baseURL.appending(EndPoints.userProfile)
     static let allClinics = EndPoints.baseURL.appending(EndPoints.allClinics)
+    static let changeUserPassword = EndPoints.baseURL.appending(EndPoints.changePassword)
 }

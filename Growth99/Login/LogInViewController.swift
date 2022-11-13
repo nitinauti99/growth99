@@ -29,7 +29,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
         self.viewModel = LogInViewModel(delegate: self)
         self.setupTexFieldValidstion()
         emailTextField.text = "nitinauti99@gmail.com"
-        passwordTextField.text = "Password1@!"
+        passwordTextField.text = "Password7@!"
         self.setUpUI()
     }
 

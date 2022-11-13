@@ -146,6 +146,11 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource {
             let navController = UINavigationController(rootViewController: mainViewController)
             appDel.drawerController.mainViewController = navController
             break
+        case 4:
+            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
+            let navController = UINavigationController(rootViewController: vc)
+            appDel.drawerController.mainViewController = navController
+            break
         default:
             break
         }

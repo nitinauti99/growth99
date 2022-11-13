@@ -48,6 +48,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     var roleArray: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
         viewModel = HomeViewModel(delegate: self)
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
@@ -59,6 +60,18 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         dropDown.didSelect{ (selectedText , index ,id) in
             print("Selected String: \(selectedText) \n index: \(index)")
         }
+        
+    }
+    
+    func setUpUI() {
+        let logoImage = UIImage.init(named: "Logo")
+        let logoImageView = UIImageView.init(image: logoImage)
+        logoImageView.frame = CGRect(x: -40, y: 0, width: 150, height: 25)
+        logoImageView.contentMode = .scaleAspectFit
+        let imageItem = UIBarButtonItem.init(customView: logoImageView)
+        let negativeSpacer = UIBarButtonItem.init(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -25
+        navigationItem.leftBarButtonItems = [negativeSpacer, imageItem]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +103,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         let BarButtonItem = UIBarButtonItem()
         BarButtonItem.customView = menuButton
         self.navigationItem.rightBarButtonItems = [BarButtonItem]
+    }
+    
+    @objc func logoutUser(){
+        appDel.drawerController.setDrawerState(.opened, animated: true)
     }
     
     func userDataRecived() {
@@ -290,9 +307,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
 
     }
     
-    @objc func logoutUser(){
-        appDel.drawerController.setDrawerState(.opened, animated: true)
-    }
     
    @IBAction func openForgotPasswordView(){
         let forgotPasswordVC = UIStoryboard(name: "ForgotPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController")

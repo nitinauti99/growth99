@@ -42,16 +42,23 @@ struct Constant {
         static let ConfirmPasswordInvalidError = "Confirm password is Invalide."
         static let PasswordMissmatchError = "Password must match."
         static let ConfirmationCodeInvalidError = "ConfirmationCode is Required."
-
-     }
+        
+    }
+    
+    struct ChangePassword {
+        static let oldPasswordEmptyError = "Old Password is required."
+        static let newPasswordEmptyError = "Password is required."
+        static let confirmPasswordEmptyError = "Confirm password is required."
+        static let passwordMissmatchError = "Password must match."
+    }
     
     /// Required  Server status from requests url configured for what ever is needed
     struct status {
-            static let OK = "OK"
-            static let NOK = "NOK"
-            static let REQUEST_FAIL = "FAIL"
-            static let NETWORK_UNAVAILABLE = "NETWORK_UNAVAILABLE"
-            static let RESOURCE_UNAVAILABLE = "RESOURCE_UNAVAILABLE"
+        static let OK = "OK"
+        static let NOK = "NOK"
+        static let REQUEST_FAIL = "FAIL"
+        static let NETWORK_UNAVAILABLE = "NETWORK_UNAVAILABLE"
+        static let RESOURCE_UNAVAILABLE = "RESOURCE_UNAVAILABLE"
     }
-        
+    
 }
