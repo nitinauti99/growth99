@@ -20,6 +20,7 @@ struct menuList : Decodable {
 struct SubMenu: Decodable {
     let title: String?
     let imageName: String?
+    let viewController: String?
 }
 
 

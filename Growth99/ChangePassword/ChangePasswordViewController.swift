@@ -43,6 +43,7 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func errorReceived(error: String) {
