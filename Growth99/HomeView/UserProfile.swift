@@ -29,7 +29,7 @@ struct Clinics: Codable, Equatable {
     let id: Int?
 }
 
-struct Roles: Codable {
+struct Roles: Codable, Equatable {
     let name: String?
     let id: Int?
 }

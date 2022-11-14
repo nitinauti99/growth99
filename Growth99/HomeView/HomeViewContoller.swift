@@ -26,23 +26,19 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
+    @IBOutlet private weak var rolesTextField: CustomTextField!
 
     @IBOutlet private weak var userProvider: UISwitch!
     @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
     @IBOutlet private weak var userProviderView: UIView!
     @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
 
     let appDel = UIApplication.shared.delegate as! AppDelegate
     let regularFont = UIFont.systemFont(ofSize: 16)
     let boldFont = UIFont.boldSystemFont(ofSize: 16)
-
-    @IBOutlet weak var dropDown: DropDown!
-    var selectedDataArray = [String]()
     var selectedId = [Any]()
-    
-    var selectedServiceCategoriesId = [Any]()
-    var selectedServiceCategoriesName = [String]()
-
     var selectedServiceId = [Any]()
     var selectedServiceName = [String]()
     
@@ -60,11 +56,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.setupTexFieldValidstion()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
         self.setUpMenuButton()
-        dropDown.isSearchEnable = true
-        dropDown.didSelect{ (selectedText , index ,id) in
-            print("Selected String: \(selectedText) \n index: \(index)")
-        }
-        
     }
 
     fileprivate func setUpUI() {
@@ -72,6 +63,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
         self.emailTextField.text = viewModel?.getUserProfileData.email
         self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+        self.saveButton.layer.cornerRadius = 12
+        self.saveButton.clipsToBounds = true
+        self.cancelButton.layer.cornerRadius = 12
+        self.cancelButton.clipsToBounds = true
     }
     
     func userDataRecived() {
@@ -82,10 +77,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
             self.userProviderViewHight.constant = 300
             self.userProviderView.isHidden = false
         }
-        let name = viewModel?.getUserProfileData.roles?.name ?? ""
         let id = viewModel?.getUserProfileData.roles?.id ?? 0
-        dropDown.optionArray = [name]
-        dropDown.optionIds = [id]
+        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? ""
         setUpUI()
     }
     
@@ -150,23 +143,34 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         appDel.drawerController.setDrawerState(.opened, animated: true)
     }
     
+    @IBAction func openAdminMenuDropDwon(sender: UIButton) {
+        let dataArray = [viewModel?.getUserProfileData.roles?.name]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics?.components(separatedBy: " ").first
+            self.rolesTextField.text  = allClinics?.components(separatedBy: " ").first
+           // self.closeMenu(selectionMenu: selectionMenu)
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+            selectionMenu.dismissAutomatically = true
+         }
+        let count : Double = Double(dataArray.count)
+        selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 10))
+        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
+    }
+    
     @IBAction func textFieldOpenDropDownClinincs(sender: UIButton) {
-        
         let dataArray = viewModel?.getUserProfileData.clinics ?? []
         let allClinics = viewModel?.getAllClinicsData ?? []
-  
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
         
         selectionMenu.setSelectedItems(items: dataArray) { [weak self] (text, index, selected, selectedList) in
-              self?.selectedDataArray = selectedList.map({$0.name ?? ""})
               self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
               let selectedIdArray = selectedList.map({$0.id ?? 0})
               self?.view.ShowSpinner()
               self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
          }
-        
         selectionMenu.reloadInputViews()
 
         // search bar
@@ -192,7 +196,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         }
         selectionMenu.setSelectedItems(items: serviceCategoriesSelected) { [weak self] (text, index, selected, selectedList) in
             
-          self?.selectedDataArray = selectedList.map({$0.name ?? ""})
           self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
           let selectedIdArray = selectedList.map({$0.id ?? 0})
           self?.view.ShowSpinner()
@@ -220,7 +223,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
             cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: servicesSelected) { [weak self] (text, index, selected, selectedList) in
-            self?.selectedDataArray =  selectedList.map({$0.name ?? ""})
             self?.servicesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
         }
         // search bar
@@ -275,15 +277,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     func errorReceived(error: String) {
         self.view.HideSpinner()
     }
-    
-    
-    @objc func myTargetFunction(textField: UITextField) {
-        print("touchDown for \(textField.tag)")
-        dropDown?.showList()  // To show the Drop Down Menu
-
-    }
-    
-    
+   
    @IBAction func openForgotPasswordView(){
         let forgotPasswordVC = UIStoryboard(name: "ForgotPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController")
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
@@ -306,3 +300,35 @@ extension HomeViewContoller: UITextFieldDelegate {
         return true
     }
 }
+//
+//class MyCustomView: UIView {
+//    var label: UILabel = UILabel()
+//    var myNames = ["dipen","laxu","anis","aakash","santosh","raaa","ggdds","house"]
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        self.addCustomView()
+//    }
+//
+//    required init(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    func addCustomView() {
+//        label.frame = CGRectMake(10, 5, 40, 30)
+//        label.textAlignment = NSTextAlignment.center
+//        label.text = "test"
+//        label.textColor = .white
+//        self.addSubview(label)
+//
+//        let btn: UIButton = UIButton(type: .custom)
+//        btn.frame = CGRectMake(60, 10, 20, 20)
+//        btn.setTitle("X", for: .normal)
+//        self.addSubview(btn)
+//    }
+//
+//}
+//let x =  90
+//let customView = MyCustomView(frame: CGRect(x: self?.viewWidth ?? 0, y: 5, width: 80, height: 40))
+//customView.backgroundColor =  UIColor.init(hexString: "#009EDE")
+//self?.viewWidth += x

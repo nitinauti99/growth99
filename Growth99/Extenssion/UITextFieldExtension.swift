@@ -23,6 +23,42 @@ open class CustomTextField: UITextField {
         }
     }
 
+    // Provides left padding for images
+    open override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        var textRect = super.rightViewRect(forBounds: bounds)
+        textRect.origin.x -= leftPadding
+         return textRect
+       }
+       
+    @IBInspectable var rightImage: UIImage? {
+           didSet {
+               updateView()
+           }
+       }
+       
+    @IBInspectable var leftPadding: CGFloat = 0
+       
+    @IBInspectable var color: UIColor = UIColor.lightGray {
+           didSet {
+               updateView()
+           }
+       }
+       
+    func updateView() {
+       if let image = rightImage {
+           rightViewMode = UITextField.ViewMode.always
+           let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+           imageView.contentMode = .scaleAspectFit
+           imageView.image = image
+           imageView.tintColor = color
+           rightView = imageView
+       } else {
+           rightViewMode = UITextField.ViewMode.never
+           leftView = nil
+       }
+       attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: color])
+   }
+    
     public var dtborderStyle:DTBorderStyle = .rounded {
         didSet{
             borderLayer.removeFromSuperlayer()
@@ -306,10 +342,11 @@ open class CustomTextField: UITextField {
         return insetForSideView(forBounds: rect)
     }
     
-    override public func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-        let rect = super.rightViewRect(forBounds: bounds)
-        return insetForSideView(forBounds: rect)
-    }
+//    override public func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+//        let rect = super.rightViewRect(forBounds: bounds)
+//
+//        return insetForSideView(forBounds: rect)
+//    }
     
     override public func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.clearButtonRect(forBounds: bounds)

@@ -113,14 +113,28 @@
                                                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMQ-i8-B13" userLabel="userNsme" customClass="DropDown" customModule="Growth99" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMQ-i8-B13" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                                 <rect key="frame" x="25" y="415" width="280" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="JkG-kP-y3S"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="dropDown"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NC-FF-cMa">
+                                                                <rect key="frame" x="25" y="415" width="280" height="45"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="openAdminMenuDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GAY-OC-1av"/>
+                                                                </connections>
+                                                            </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufG-u2-Uw6" userLabel="password">
                                                                 <rect key="frame" x="25" y="389" width="280" height="20"/>
                                                                 <constraints>
@@ -175,6 +189,9 @@
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                         <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ziy-Tb-ONS">
@@ -196,9 +213,6 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                 </state>
-                                                                <connections>
-                                                                    <action selector="openForgotPasswordView" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lEJ-5c-MT5"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UPH-nM-Z3A">
                                                                 <rect key="frame" x="220" y="1112" width="100" height="46"/>
@@ -219,9 +233,6 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                 </state>
-                                                                <connections>
-                                                                    <action selector="openForgotPasswordView" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PN1-2C-zTa"/>
-                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User is a Provider?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u00-6U-w6x">
                                                                 <rect key="frame" x="15" y="745.33333333333337" width="213" height="20.333333333333371"/>
@@ -262,6 +273,10 @@
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
                                                                             <action selector="openForgotPasswordView" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VSW-rH-5MC"/>
@@ -296,6 +311,10 @@
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
                                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="fgO-DR-PMq"/>
@@ -328,6 +347,10 @@
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                                <real key="value" value="15"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
@@ -404,6 +427,7 @@
                                                             <constraint firstItem="xK2-Ow-9AJ" firstAttribute="leading" secondItem="bHV-H5-M90" secondAttribute="leading" id="B0F-mL-rsc"/>
                                                             <constraint firstItem="M23-gz-BfB" firstAttribute="leading" secondItem="xK2-Ow-9AJ" secondAttribute="leading" id="BA7-MG-NKl"/>
                                                             <constraint firstItem="ya8-49-Mdx" firstAttribute="top" secondItem="PrH-CK-VSH" secondAttribute="bottom" constant="20" id="CKY-hm-2vR"/>
+                                                            <constraint firstItem="8NC-FF-cMa" firstAttribute="trailing" secondItem="MMQ-i8-B13" secondAttribute="trailing" id="FDo-J6-VPL"/>
                                                             <constraint firstItem="GFB-gF-cDX" firstAttribute="top" secondItem="RVv-7Q-BaS" secondAttribute="top" constant="25" id="FLA-PF-1uD"/>
                                                             <constraint firstItem="GFB-gF-cDX" firstAttribute="leading" secondItem="RVv-7Q-BaS" secondAttribute="leading" constant="25" id="G5r-bu-asC"/>
                                                             <constraint firstItem="YUx-cV-q3A" firstAttribute="top" secondItem="LMg-8F-4g9" secondAttribute="bottom" constant="15" id="IFw-Cm-LFK"/>
@@ -414,15 +438,18 @@
                                                             <constraint firstItem="LMg-8F-4g9" firstAttribute="leading" secondItem="v9b-TU-Yr5" secondAttribute="leading" id="MfR-Ie-jJu"/>
                                                             <constraint firstItem="APe-32-nCE" firstAttribute="leading" secondItem="ya8-49-Mdx" secondAttribute="leading" id="N2L-j1-OWd"/>
                                                             <constraint firstItem="MMQ-i8-B13" firstAttribute="top" secondItem="ufG-u2-Uw6" secondAttribute="bottom" constant="6" id="NHj-in-IFn"/>
+                                                            <constraint firstItem="8NC-FF-cMa" firstAttribute="top" secondItem="MMQ-i8-B13" secondAttribute="top" id="PfD-6R-93o"/>
                                                             <constraint firstItem="LMg-8F-4g9" firstAttribute="trailing" secondItem="v9b-TU-Yr5" secondAttribute="trailing" id="PwV-yZ-TY1"/>
                                                             <constraint firstItem="nFw-jb-JJb" firstAttribute="trailing" secondItem="YUx-cV-q3A" secondAttribute="trailing" id="QIR-a6-WTs"/>
                                                             <constraint firstItem="ufG-u2-Uw6" firstAttribute="trailing" secondItem="APe-32-nCE" secondAttribute="trailing" id="QQy-91-6Lt"/>
+                                                            <constraint firstItem="8NC-FF-cMa" firstAttribute="bottom" secondItem="MMQ-i8-B13" secondAttribute="bottom" id="Qxa-x7-xfl"/>
                                                             <constraint firstItem="GFB-gF-cDX" firstAttribute="trailing" secondItem="W6m-y4-Ss1" secondAttribute="trailing" id="RGz-9D-M6n"/>
                                                             <constraint firstItem="rNO-zn-YOv" firstAttribute="leading" secondItem="MMQ-i8-B13" secondAttribute="leading" id="Rda-kk-jXG"/>
                                                             <constraint firstItem="LMg-8F-4g9" firstAttribute="top" secondItem="v9b-TU-Yr5" secondAttribute="bottom" constant="20" id="UUV-kp-FcS"/>
                                                             <constraint firstItem="bHV-H5-M90" firstAttribute="top" secondItem="W6m-y4-Ss1" secondAttribute="bottom" constant="20" id="Xxq-Yv-MHb"/>
                                                             <constraint firstItem="u00-6U-w6x" firstAttribute="centerY" secondItem="nFw-jb-JJb" secondAttribute="centerY" id="YPD-LL-E00"/>
                                                             <constraint firstItem="ufG-u2-Uw6" firstAttribute="leading" secondItem="APe-32-nCE" secondAttribute="leading" id="Yub-w4-V2q"/>
+                                                            <constraint firstItem="8NC-FF-cMa" firstAttribute="leading" secondItem="MMQ-i8-B13" secondAttribute="leading" id="Znq-Yr-DxJ"/>
                                                             <constraint firstItem="nFw-jb-JJb" firstAttribute="leading" secondItem="u00-6U-w6x" secondAttribute="trailing" constant="30" id="Zzi-vv-XZ0"/>
                                                             <constraint firstItem="v9b-TU-Yr5" firstAttribute="trailing" secondItem="rNO-zn-YOv" secondAttribute="trailing" id="cGd-Sq-Lwq"/>
                                                             <constraint firstItem="ufG-u2-Uw6" firstAttribute="top" secondItem="APe-32-nCE" secondAttribute="bottom" constant="20" id="ceH-g8-fjj"/>
@@ -490,13 +517,15 @@
                     <navigationItem key="navigationItem" id="vhE-Ja-OWj"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="cancelButton" destination="UPH-nM-Z3A" id="Rf4-wa-ubm"/>
                         <outlet property="clincsTextField" destination="4x5-gH-una" id="0uV-t4-ePr"/>
                         <outlet property="descriptionTextView" destination="YUx-cV-q3A" id="7ix-b2-Svj"/>
-                        <outlet property="dropDown" destination="MMQ-i8-B13" id="4Z5-PY-zCF"/>
                         <outlet property="emailTextField" destination="PrH-CK-VSH" id="vyC-pm-6dw"/>
                         <outlet property="firsNameTextField" destination="W6m-y4-Ss1" id="Vga-3g-1MP"/>
                         <outlet property="lastNameTextField" destination="xK2-Ow-9AJ" id="UF5-7y-ukq"/>
                         <outlet property="phoneNumberTextField" destination="APe-32-nCE" id="E7V-FD-qkt"/>
+                        <outlet property="rolesTextField" destination="MMQ-i8-B13" id="OI7-a6-UC2"/>
+                        <outlet property="saveButton" destination="Ziy-Tb-ONS" id="62m-XL-xII"/>
                         <outlet property="serviceCategoriesTextField" destination="y99-7r-W8b" id="HPC-Tr-qQl"/>
                         <outlet property="servicesTextField" destination="rbX-Yr-W9I" id="X0x-Vo-jJ3"/>
                         <outlet property="userProvider" destination="nFw-jb-JJb" id="Mog-k2-8cm"/>
@@ -511,10 +540,13 @@
     </scenes>
     <designables>
         <designable name="4x5-gH-una">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="19" height="21.666666666666668"/>
         </designable>
         <designable name="APe-32-nCE">
             <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+        </designable>
+        <designable name="MMQ-i8-B13">
+            <size key="intrinsicContentSize" width="19" height="21.666666666666668"/>
         </designable>
         <designable name="PrH-CK-VSH">
             <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
@@ -523,7 +555,7 @@
             <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="rbX-Yr-W9I">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="19" height="21.666666666666668"/>
         </designable>
         <designable name="v9b-TU-Yr5">
             <size key="intrinsicContentSize" width="4" height="20"/>
@@ -532,10 +564,11 @@
             <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="y99-7r-W8b">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="19" height="21.666666666666668"/>
         </designable>
     </designables>
     <resources>
+        <image name="dropDown" width="15" height="24"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

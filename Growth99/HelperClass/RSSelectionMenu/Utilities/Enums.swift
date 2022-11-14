@@ -46,7 +46,6 @@ public enum CellType {
 
 /// Cell Selection Style
 public enum CellSelectionStyle {
-    case tickmark
     case checkbox
 }
 

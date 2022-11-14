@@ -51,7 +51,7 @@ open class RSSelectionMenu<T: Equatable>: UIViewController, UIPopoverPresentatio
     public var rightBarButtonTitle: String?
     
     /// cell selection style
-    public var cellSelectionStyle: CellSelectionStyle = .tickmark {
+    public var cellSelectionStyle: CellSelectionStyle = .checkbox {
         didSet {
             self.tableView?.setCellSelectionStyle(cellSelectionStyle)
         }

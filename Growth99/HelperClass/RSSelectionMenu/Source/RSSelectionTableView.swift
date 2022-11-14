@@ -52,7 +52,7 @@ open class RSSelectionTableView<T: Equatable>: UITableView {
     var cellType: CellType = .basic
     
     /// cell selection style - default is 'tickmark'
-    var cellSelectionStyle: CellSelectionStyle = .tickmark
+    var cellSelectionStyle: CellSelectionStyle = .checkbox
     
     /// first row selection
     var firstRowSelection: RSFirstRowSelection?
