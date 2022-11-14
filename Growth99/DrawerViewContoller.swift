@@ -127,18 +127,29 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource {
         tableView.endUpdates()
         switch indexPath.row {
         case 0:
-            let mainViewController = UIStoryboard(name: "HomeViewContoller", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller")
-            let navController = UINavigationController(rootViewController: mainViewController)
-            appDel.drawerController.mainViewController = navController
+            pushViewControllerFromDrawerMenu(pusedViewController: "HomeViewContoller")
+            break
+        case 1:
+            pushViewControllerFromDrawerMenu(pusedViewController: "AppointmentsViewController")
+            break
+        case 2:
+            pushViewControllerFromDrawerMenu(pusedViewController: "WorkingScheduleViewController")
+            break
+        case 3:
+            pushViewControllerFromDrawerMenu(pusedViewController: "VacationScheduleViewController")
             break
         case 4:
-            let vc = ChangePasswordViewController(nibName: "ChangePasswordViewController", bundle: nil)
-            let navController = UINavigationController(rootViewController: vc)
-            appDel.drawerController.mainViewController = navController
+            pushViewControllerFromDrawerMenu(pusedViewController: "ChangePasswordViewController")
             break
         default:
             break
         }
         appDel.drawerController.setDrawerState(.closed, animated: true)
+    }
+    
+    func pushViewControllerFromDrawerMenu(pusedViewController: String) {
+        let mainViewController = UIStoryboard(name: pusedViewController, bundle: nil).instantiateViewController(withIdentifier: pusedViewController)
+        let navController = UINavigationController(rootViewController: mainViewController)
+        appDel.drawerController.mainViewController = navController
     }
 }

@@ -74,8 +74,15 @@
 		84995AC1291BD88500D11B24 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC0291BD88500D11B24 /* LoginService.swift */; };
 		84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995AC3291CBCCE00D11B24 /* UserProfile.swift */; };
 		849DC6E02920BBDF00827FAB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */; };
-		849DC6E12920BBDF00827FAB /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */; };
 		849DC6E52921093100827FAB /* GRBarbuttonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6E42921093100827FAB /* GRBarbuttonItem.swift */; };
+		849DC6EA292134AF00827FAB /* VacationScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6E8292134AF00827FAB /* VacationScheduleViewController.swift */; };
+		849DC6EE292134C200827FAB /* WorkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6EC292134C200827FAB /* WorkingScheduleViewController.swift */; };
+		849DC6F3292135CB00827FAB /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC6F1292135CB00827FAB /* AppointmentsViewController.swift */; };
+		849DC6F8292139B800827FAB /* HomeViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6F7292139B800827FAB /* HomeViewContoller.storyboard */; };
+		849DC6FA292139E400827FAB /* ChangePasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6F9292139E400827FAB /* ChangePasswordViewController.storyboard */; };
+		849DC6FC29213B1B00827FAB /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6FB29213B1B00827FAB /* AppointmentsViewController.storyboard */; };
+		849DC6FE29213B3B00827FAB /* VacationScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6FD29213B3B00827FAB /* VacationScheduleViewController.storyboard */; };
+		849DC70029213B5300827FAB /* WorkingScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849DC6FF29213B5300827FAB /* WorkingScheduleViewController.storyboard */; };
 		84B2E59F291375C300BAA535 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E59E291375C300BAA535 /* Constant.swift */; };
 		84B2E5B12914303400BAA535 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B02914303400BAA535 /* RegistrationModel.swift */; };
 		84B2E5B42915674300BAA535 /* VerifyForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2E5B32915674300BAA535 /* VerifyForgotPasswordViewController.swift */; };
@@ -85,7 +92,6 @@
 		84EDDFC9291638D500614A87 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDDFC5291638D500614A87 /* KYDrawerController.swift */; };
 		84EDDFCA291638D500614A87 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDDFC6291638D500614A87 /* KYEmbedMainControllerSegue.swift */; };
 		84EDDFCD291639FA00614A87 /* HomeViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDDFCC291639FA00614A87 /* HomeViewContoller.swift */; };
-		84EDDFCF29163C5C00614A87 /* HomeViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EDDFCE29163C5C00614A87 /* HomeViewContoller.storyboard */; };
 		84EDDFD129163D9400614A87 /* DrawerViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDDFD029163D9400614A87 /* DrawerViewContoller.swift */; };
 		84EDDFD329163DBE00614A87 /* DrawerViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EDDFD229163DBE00614A87 /* DrawerViewContoller.storyboard */; };
 		84EDDFD72916712900614A87 /* CustomNavaigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDDFD62916712900614A87 /* CustomNavaigationContoller.swift */; };
@@ -192,8 +198,15 @@
 		84995AC0291BD88500D11B24 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		84995AC3291CBCCE00D11B24 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		849DC6E42921093100827FAB /* GRBarbuttonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRBarbuttonItem.swift; sourceTree = "<group>"; };
+		849DC6E8292134AF00827FAB /* VacationScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationScheduleViewController.swift; sourceTree = "<group>"; };
+		849DC6EC292134C200827FAB /* WorkingScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewController.swift; sourceTree = "<group>"; };
+		849DC6F1292135CB00827FAB /* AppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
+		849DC6F7292139B800827FAB /* HomeViewContoller.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeViewContoller.storyboard; sourceTree = "<group>"; };
+		849DC6F9292139E400827FAB /* ChangePasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePasswordViewController.storyboard; sourceTree = "<group>"; };
+		849DC6FB29213B1B00827FAB /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
+		849DC6FD29213B3B00827FAB /* VacationScheduleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VacationScheduleViewController.storyboard; sourceTree = "<group>"; };
+		849DC6FF29213B5300827FAB /* WorkingScheduleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorkingScheduleViewController.storyboard; sourceTree = "<group>"; };
 		84B2E59E291375C300BAA535 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
 		84B2E5B02914303400BAA535 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
@@ -205,7 +218,6 @@
 		84EDDFC5291638D500614A87 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		84EDDFC6291638D500614A87 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
 		84EDDFCC291639FA00614A87 /* HomeViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewContoller.swift; sourceTree = "<group>"; };
-		84EDDFCE29163C5C00614A87 /* HomeViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewContoller.storyboard; sourceTree = "<group>"; };
 		84EDDFD029163D9400614A87 /* DrawerViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewContoller.swift; sourceTree = "<group>"; };
 		84EDDFD229163DBE00614A87 /* DrawerViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrawerViewContoller.storyboard; sourceTree = "<group>"; };
 		84EDDFD62916712900614A87 /* CustomNavaigationContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavaigationContoller.swift; sourceTree = "<group>"; };
@@ -348,6 +360,9 @@
 				8497A04528FF126000CBA26C /* Application */,
 				848F4D8B28F1C164007AC421 /* Info.plist */,
 				84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */,
+				849DC6F0292135BF00827FAB /* Appointments */,
+				849DC6E62921349000827FAB /* Vacation Schedule */,
+				849DC6E72921349000827FAB /* Working Schedule */,
 				848F4DC528F1CD9A007AC421 /* KeyChain */,
 				8497A04228FF121A00CBA26C /* HelperClass */,
 				848F4DC828F1D8BA007AC421 /* Extenssion */,
@@ -506,9 +521,36 @@
 			isa = PBXGroup;
 			children = (
 				849DC6DE2920BBDF00827FAB /* ChangePasswordViewController.swift */,
-				849DC6DF2920BBDF00827FAB /* ChangePasswordViewController.xib */,
+				849DC6F9292139E400827FAB /* ChangePasswordViewController.storyboard */,
 			);
 			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		849DC6E62921349000827FAB /* Vacation Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				849DC6E8292134AF00827FAB /* VacationScheduleViewController.swift */,
+				849DC6FD29213B3B00827FAB /* VacationScheduleViewController.storyboard */,
+			);
+			path = "Vacation Schedule";
+			sourceTree = "<group>";
+		};
+		849DC6E72921349000827FAB /* Working Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				849DC6EC292134C200827FAB /* WorkingScheduleViewController.swift */,
+				849DC6FF29213B5300827FAB /* WorkingScheduleViewController.storyboard */,
+			);
+			path = "Working Schedule";
+			sourceTree = "<group>";
+		};
+		849DC6F0292135BF00827FAB /* Appointments */ = {
+			isa = PBXGroup;
+			children = (
+				849DC6F1292135CB00827FAB /* AppointmentsViewController.swift */,
+				849DC6FB29213B1B00827FAB /* AppointmentsViewController.storyboard */,
+			);
+			path = Appointments;
 			sourceTree = "<group>";
 		};
 		84B2E5B2291566F700BAA535 /* VerifyForgotPassword */ = {
@@ -544,7 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				84EDDFCC291639FA00614A87 /* HomeViewContoller.swift */,
-				84EDDFCE29163C5C00614A87 /* HomeViewContoller.storyboard */,
+				849DC6F7292139B800827FAB /* HomeViewContoller.storyboard */,
 				84872B14291A89150063DD3B /* HomeViewModel.swift */,
 				84995AC3291CBCCE00D11B24 /* UserProfile.swift */,
 				848C92B3291FB68D00502956 /* ClinicsModel.swift */,
@@ -687,17 +729,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
-				849DC6E12920BBDF00827FAB /* ChangePasswordViewController.xib in Resources */,
-				84EDDFCF29163C5C00614A87 /* HomeViewContoller.storyboard in Resources */,
+				849DC6FE29213B3B00827FAB /* VacationScheduleViewController.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				84B2E5B62915677100BAA535 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				84EDDFD329163DBE00614A87 /* DrawerViewContoller.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				84EDDFDB2916730100614A87 /* SubMenuTableViewCell.xib in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
+				849DC70029213B5300827FAB /* WorkingScheduleViewController.storyboard in Resources */,
 				84737BA228F81A5D0017F14D /* ForgotPasswordViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
+				849DC6FA292139E400827FAB /* ChangePasswordViewController.storyboard in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
+				849DC6FC29213B1B00827FAB /* AppointmentsViewController.storyboard in Resources */,
+				849DC6F8292139B800827FAB /* HomeViewContoller.storyboard in Resources */,
 				848F4DDC28F3D15D007AC421 /* RegistrationViewController.storyboard in Resources */,
 				848F4D8528F1C160007AC421 /* LogInViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
@@ -862,6 +907,7 @@
 				84EDDFCA291638D500614A87 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84995AC4291CBCCE00D11B24 /* UserProfile.swift in Sources */,
 				848F4DC428F1CCC7007AC421 /* KeychainItemAccessibility.swift in Sources */,
+				849DC6EA292134AF00827FAB /* VacationScheduleViewController.swift in Sources */,
 				8497A03628FF063900CBA26C /* EndPoints.swift in Sources */,
 				848F4DD528F330B3007AC421 /* HyperLinkLabel.swift in Sources */,
 				84EDDFD129163D9400614A87 /* DrawerViewContoller.swift in Sources */,
@@ -875,10 +921,12 @@
 				84EDDFD72916712900614A87 /* CustomNavaigationContoller.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				849DC6E02920BBDF00827FAB /* ChangePasswordViewController.swift in Sources */,
+				849DC6F3292135CB00827FAB /* AppointmentsViewController.swift in Sources */,
 				848F4DB028F1C1D8007AC421 /* RefreshTokenRequest.swift in Sources */,
 				84B2E5B8291567D800BAA535 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,
 				848F4DDA28F3D095007AC421 /* RegistrationViewController.swift in Sources */,
+				849DC6EE292134C200827FAB /* WorkingScheduleViewController.swift in Sources */,
 				84B2E5B42915674300BAA535 /* VerifyForgotPasswordViewController.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
 				848F4DCA28F1DA20007AC421 /* ViewExtension.swift in Sources */,
