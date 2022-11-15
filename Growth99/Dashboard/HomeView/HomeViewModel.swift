@@ -22,6 +22,7 @@ protocol HomeViewModelProtocol {
    
     func getallService(SelectedCategories: [Any])
     var getAllService: [Clinics] { get }
+    func updateProfileInfo(firstName: String, lastName:String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String)
 }
 
 class HomeViewModel {
@@ -86,6 +87,50 @@ class HomeViewModel {
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
+    }
+    
+    func Headers()-> [String:String] {
+        return ["Authorization": "Bearer " + (UserRepository.shared.authToken ?? ""),
+                "Content-Type":  "application/json",
+                "x-tenantid":    UserRepository.shared.Xtenantid ?? ""
+        ]
+    }
+    
+    func updateProfileInfo(firstName: String, lastName: String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String) {
+        
+        let parameter: [String : Any] = ["firstName": firstName,
+                                    "lastName": lastName,
+                                    "email": email,
+                                    "phone": phone,
+                                    "roleId": roleId,
+                                    "clinicIds": clinicIds,
+                                    "serviceCategoryIds": serviceCategoryIds,
+                                    "serviceIds": serviceIds,
+                                    "isProvider": isProvider,
+                                    "description": description,
+        ]
+     
+        NetworkRequestManager(url: "https://api.growthemr.com/api/users/22955", parameters: parameter, headers: self.Headers(), method: .put).executeQuery() {
+                   (result: Result<UpdateUserProfile,Error>) in
+                   switch result{
+                   case .success(let userData):
+                       print(userData)
+                       self.delegate?.profileDataUpdated()
+                   case .failure(let error):
+                       print(error)
+                       self.delegate?.profileDataUpdated()
+                   }
+        }
+//        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
+//            switch result {
+//            case .success(let categories):
+//                self.allServices = categories
+//                self.delegate?.serviceRecived()
+//            case .failure(let error):
+//                print(error)
+//                self.delegate?.errorReceived(error: error.localizedDescription)
+//            }
+//        }
     }
     
     var getAllService: [Clinics] {

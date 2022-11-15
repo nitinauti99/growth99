@@ -52,7 +52,7 @@ class NetworkingService: NSObject {
         }
     }
     /// sendding common header parameter from here
-    func Headers()->HTTPHeaders{
+    func Headers()-> HTTPHeaders {
         return ["Authorization" : "Bearer "+(UserRepository.shared.authToken ?? ""),
                 "Content-Type": "application/json",
                 "x-tenantid": UserRepository.shared.Xtenantid ?? ""

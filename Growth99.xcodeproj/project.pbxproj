@@ -97,6 +97,8 @@
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
+		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
+		84D1EE3E2923BB8300AAAF26 /* UpdateUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3D2923BB8300AAAF26 /* UpdateUserProfile.swift */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 /* End PBXBuildFile section */
@@ -223,6 +225,8 @@
 		8497A03C28FF11E200CBA26C /* Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Staging.plist; sourceTree = "<group>"; };
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
+		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
+		84D1EE3D2923BB8300AAAF26 /* UpdateUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserProfile.swift; sourceTree = "<group>"; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				845C39C9292276AF00D934C5 /* NetworkingService.swift */,
 				845C39CA292276AF00D934C5 /* ErrorResponse.swift */,
 				845C39CB292276AF00D934C5 /* ErrorDetails.swift */,
+				84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				845C3A0A292276C000D934C5 /* HomeViewModel.swift */,
 				845C3A0B292276C000D934C5 /* HomeViewContoller.swift */,
 				845C3A0E292276C000D934C5 /* HomeViewContoller.storyboard */,
+				84D1EE3D2923BB8300AAAF26 /* UpdateUserProfile.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -569,9 +575,9 @@
 				84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */,
 				8497A04528FF126000CBA26C /* Application */,
 				8497A03928FF11E200CBA26C /* Environment */,
+				8497A04228FF121A00CBA26C /* HelperClass */,
 				845C3A08292276C000D934C5 /* Dashboard */,
 				845C3986292273B800D934C5 /* MyProfile */,
-				8497A04228FF121A00CBA26C /* HelperClass */,
 				845C39F1292276C000D934C5 /* Welcome Screens */,
 			);
 			path = Growth99;
@@ -916,6 +922,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845C3A1B292276C000D934C5 /* LoginModel.swift in Sources */,
+				84D1EE3E2923BB8300AAAF26 /* UpdateUserProfile.swift in Sources */,
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				845C3A11292276C000D934C5 /* RegistrationViewModel.swift in Sources */,
 				845C39E9292276B000D934C5 /* RefreshTokenRequest.swift in Sources */,
@@ -973,6 +980,7 @@
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
 				845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
+				84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */,
 				845C3997292273B800D934C5 /* ChangePasswordViewController.swift in Sources */,
 				845C3993292273B800D934C5 /* AppointmentsViewController.swift in Sources */,
 				845C3A14292276C000D934C5 /* ForgotPasswordViewController.swift in Sources */,

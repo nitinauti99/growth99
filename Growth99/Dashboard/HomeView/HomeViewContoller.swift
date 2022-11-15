@@ -14,6 +14,7 @@ protocol HomeViewContollerProtocool {
     func clinicsRecived()
     func serviceCategoriesRecived()
     func serviceRecived()
+    func profileDataUpdated()
 }
 
 class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
@@ -41,7 +42,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     var selectedId = [Any]()
     var selectedServiceId = [Any]()
     var selectedServiceName = [String]()
-    
+    var clinicIds = [Int]()
+    var serviceCategoryIds = [Int]()
+    var serviceIds = [Int]()
+
     var viewModel: HomeViewModelProtocol?
     var roleArray: [String]?
     override func viewDidLoad() {
@@ -86,6 +90,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         let selectedClincs = viewModel?.getUserProfileData.clinics ?? []
         self.clincsTextField.text = selectedClincs.map({$0.name ?? ""}).joined(separator: ", ")
         let selectedList = selectedClincs.map({$0.id ?? 0})
+        self.clinicIds = selectedList
         self.viewModel?.getallServiceCategories(SelectedClinics: selectedList)
     }
     
@@ -93,15 +98,22 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         let selectedCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
         self.serviceCategoriesTextField.text = selectedCategories.map({$0.name ?? ""}).joined(separator: ", ")
         let selectedList = selectedCategories.map({$0.id ?? 0})
+        self.serviceCategoryIds = selectedList
         self.viewModel?.getallService(SelectedCategories: selectedList)
     }
     
     func serviceRecived() {
         self.view.HideSpinner()
-        let selectedCategories = viewModel?.getUserProfileData.services ?? []
-        self.servicesTextField.text = selectedCategories.map({$0.name ?? ""}).joined(separator: ", ")
+        let selectedService = viewModel?.getUserProfileData.services ?? []
+        let selectedList = selectedService.map({$0.id ?? 0})
+        self.serviceIds = selectedList
+        self.servicesTextField.text = selectedService.map({$0.name ?? ""}).joined(separator: ", ")
      }
-   
+    
+    func profileDataUpdated(){
+        self.view.HideSpinner()
+    }
+
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
             self.userProviderViewHight.constant = 300
@@ -148,7 +160,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: dataArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics?.components(separatedBy: " ").first
             self.rolesTextField.text  = allClinics?.components(separatedBy: " ").first
-           // self.closeMenu(selectionMenu: selectionMenu)
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
@@ -167,12 +178,12 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         
         selectionMenu.setSelectedItems(items: dataArray) { [weak self] (text, index, selected, selectedList) in
               self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
-              let selectedIdArray = selectedList.map({$0.id ?? 0})
+              let selectedId = selectedList.map({$0.id ?? 0})
+              self?.clinicIds = selectedId
               self?.view.ShowSpinner()
-              self?.viewModel?.getallServiceCategories(SelectedClinics: selectedIdArray)
+              self?.viewModel?.getallServiceCategories(SelectedClinics: selectedId)
          }
         selectionMenu.reloadInputViews()
-
         // search bar
         selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
             return allClinics.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
@@ -196,10 +207,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         }
         selectionMenu.setSelectedItems(items: serviceCategoriesSelected) { [weak self] (text, index, selected, selectedList) in
             
-          self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
-          let selectedIdArray = selectedList.map({$0.id ?? 0})
-          self?.view.ShowSpinner()
-            self?.viewModel?.getallService(SelectedCategories: selectedIdArray)
+        self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+        let selectedId = selectedList.map({$0.id ?? 0})
+        self?.serviceCategoryIds = selectedId
+        self?.view.ShowSpinner()
+        self?.viewModel?.getallService(SelectedCategories: selectedId)
         }
         // search bar
         selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
@@ -207,22 +219,20 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         }
         selectionMenu.showEmptyDataLabel(text: "No ServiceCategories Found")
         selectionMenu.cellSelectionStyle = .checkbox
-        // size = nil (auto adjust size)
         let count : Double = Double(serviceCategories.count)
         selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
         selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
     }
     
     @IBAction func textFieldOpenDropDownServices(sender: UIButton) {
-        
         let servicesSelected = viewModel?.getUserProfileData.services ?? []
-      
         let allServices = viewModel?.getAllService ?? []
-
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
             cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: servicesSelected) { [weak self] (text, index, selected, selectedList) in
+            let selectedId = selectedList.map({$0.id ?? 0})
+            self?.serviceIds = selectedId
             self?.servicesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
         }
         // search bar
@@ -248,11 +258,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.firsNameTextField.addTarget(self, action:
                                             #selector(HomeViewContoller.textFieldDidChange(_:)),
                                             for: UIControl.Event.editingChanged)
-//        self.clincsTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownClinincs(_:)), for: .touchDown)
-        
-//        self.serviceCategoriesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServiceCategories(_:)), for: .touchDown)
-      
-//        self.servicesTextField.addTarget(self, action: #selector(HomeViewContoller.textFieldOpenDropDownServices(_:)), for: .touchDown)
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -260,18 +265,20 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         if textField == firsNameTextField,  textField.text == "" {
             firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
         }
-        
         if textField == lastNameTextField, textField.text == "" {
             lastNameTextField.showError(message: Constant.Registration.lastNameEmptyError)
         }
-        
         if textField == phoneNumberTextField, textField.text == "" {
             phoneNumberTextField.showError(message: Constant.Registration.phoneNumberEmptyError)
          }
-        
         if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.Registration.phoneNumberInvalidError)
         }
+    }
+    
+    @IBAction func saveUserProfile(){
+        self.view.ShowSpinner()
+        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: viewModel?.getUserProfileData.designation ?? "", clinicIds: clinicIds, serviceCategoryIds: serviceCategoryIds, serviceIds: serviceIds, isProvider: userProvider.isOn, description: viewModel?.getUserProfileData.designation ?? "")
     }
     
     func errorReceived(error: String) {
