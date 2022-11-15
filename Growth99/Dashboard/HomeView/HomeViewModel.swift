@@ -22,6 +22,7 @@ protocol HomeViewModelProtocol {
    
     func getallService(SelectedCategories: [Any])
     var getAllService: [Clinics] { get }
+    func updateProfileInfo(firstName: String, lastName:String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String)
 }
 
 class HomeViewModel {
@@ -85,6 +86,33 @@ class HomeViewModel {
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
+        }
+    }
+
+    func updateProfileInfo(firstName: String, lastName: String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String) {
+        
+    let parameter: [String : Any] = ["firstName": firstName,
+                                    "lastName": lastName,
+                                    "email": email,
+                                    "phone": phone,
+                                    "roleId": roleId,
+                                    "clinicIds": clinicIds,
+                                    "serviceCategoryIds": serviceCategoryIds,
+                                    "serviceIds": serviceIds,
+                                    "isProvider": isProvider,
+                                    "description": description,
+        ]
+        let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
+        
+        NetworkRequestManager(url: url, parameters: parameter, headers: NetworkRequestManager.shared.Headers(), method: .put).executeQuery() { (result: Result<UpdateUserProfile,Error>) in
+                   switch result{
+                   case .success(let userData):
+                       print(userData)
+                       self.delegate?.profileDataUpdated()
+                   case .failure(let error):
+                       print(error)
+                       self.delegate?.profileDataUpdated()
+                   }
         }
     }
     
