@@ -88,17 +88,10 @@ class HomeViewModel {
             }
         }
     }
-    
-    func Headers()-> [String:String] {
-        return ["Authorization": "Bearer " + (UserRepository.shared.authToken ?? ""),
-                "Content-Type":  "application/json",
-                "x-tenantid":    UserRepository.shared.Xtenantid ?? ""
-        ]
-    }
-    
+
     func updateProfileInfo(firstName: String, lastName: String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String) {
         
-        let parameter: [String : Any] = ["firstName": firstName,
+    let parameter: [String : Any] = ["firstName": firstName,
                                     "lastName": lastName,
                                     "email": email,
                                     "phone": phone,
@@ -109,9 +102,9 @@ class HomeViewModel {
                                     "isProvider": isProvider,
                                     "description": description,
         ]
-     
-        NetworkRequestManager(url: "https://api.growthemr.com/api/users/22955", parameters: parameter, headers: self.Headers(), method: .put).executeQuery() {
-                   (result: Result<UpdateUserProfile,Error>) in
+        let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
+        
+        NetworkRequestManager(url: url, parameters: parameter, headers: NetworkRequestManager.shared.Headers(), method: .put).executeQuery() { (result: Result<UpdateUserProfile,Error>) in
                    switch result{
                    case .success(let userData):
                        print(userData)
@@ -121,16 +114,6 @@ class HomeViewModel {
                        self.delegate?.profileDataUpdated()
                    }
         }
-//        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
-//            switch result {
-//            case .success(let categories):
-//                self.allServices = categories
-//                self.delegate?.serviceRecived()
-//            case .failure(let error):
-//                print(error)
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//            }
-//        }
     }
     
     var getAllService: [Clinics] {

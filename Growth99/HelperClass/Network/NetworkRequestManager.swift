@@ -9,6 +9,10 @@ import Foundation
 import Alamofire
 
 class NetworkRequestManager: NSObject {
+    
+      static let shared = NetworkRequestManager()
+      private override init(){}
+
        var parameters = Parameters()
        var headers = HTTPHeaders()
        var method: HTTPMethod!
@@ -17,7 +21,6 @@ class NetworkRequestManager: NSObject {
     
     init(url: String?, parameters: [String:Any] = [:], headers: [String: String] = [:], method: HTTPMethod = .post, isJSONRequest: Bool = true) {
             super.init()
-           
            parameters.forEach{self.parameters.updateValue($0.value, forKey: $0.key)}
            headers.forEach({self.headers.add(name: $0.key, value: $0.value)})
          
@@ -55,7 +58,14 @@ class NetworkRequestManager: NSObject {
                 case .failure(let error):
                     completion(.failure(error))
                 }
-            })
+        })
+    }
+    
+    func Headers()-> [String:String] {
+        return ["Authorization": "Bearer " + (UserRepository.shared.authToken ?? ""),
+                "Content-Type":  "application/json",
+                "x-tenantid":    UserRepository.shared.Xtenantid ?? ""
+        ]
     }
 }
 

@@ -112,6 +112,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     
     func profileDataUpdated(){
         self.view.HideSpinner()
+        self.view.showToast(message: "data updated successfully")
+        self.openUserListView()
     }
 
     @IBAction func switchIsChanged(sender: UISwitch) {
@@ -285,9 +287,9 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.view.HideSpinner()
     }
    
-   @IBAction func openForgotPasswordView(){
-        let forgotPasswordVC = UIStoryboard(name: "ForgotPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController")
-        self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
+    func openUserListView(){
+        let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
+        self.navigationController?.pushViewController(userListVC, animated: true)
     }
 }
 
