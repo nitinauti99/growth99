@@ -23,16 +23,21 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     let appDel = UIApplication.shared.delegate as! AppDelegate
     var viewModel: LogInViewModelProtocol?
     let emailMessage = NSLocalizedString("Email is required.", comment: "")
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginView.addBottomShadow(color: .gray,opacity: 0.5)
         self.viewModel = LogInViewModel(delegate: self)
         self.setupTexFieldValidstion()
-        emailTextField.text = "nitinauti99@gmail.com"
-        passwordTextField.text = "Password7@!"
         self.setUpUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
+    }
+    
     func setUpUI(){
         self.loginButton.layer.cornerRadius = 12
         self.loginButton.clipsToBounds = true

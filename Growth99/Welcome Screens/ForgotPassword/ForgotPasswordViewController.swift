@@ -31,6 +31,11 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
         self.setUpUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.emailTextField.text = ""
+    }
+    
     func setUpUI(){
         self.sendRequestButton.layer.cornerRadius = 12
         self.sendRequestButton.clipsToBounds = true

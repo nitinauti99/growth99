@@ -184,7 +184,7 @@
                                                                     <constraint firstAttribute="height" constant="45" id="9dd-Rd-eem"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                         <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -236,6 +236,9 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="cancelUserProfile" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ie0-Du-Z3l"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User is a Provider?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u00-6U-w6x">
                                                                 <rect key="frame" x="15" y="745.33333333333337" width="213" height="20.333333333333371"/>
@@ -522,6 +525,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="UPH-nM-Z3A" id="Rf4-wa-ubm"/>
                         <outlet property="clincsTextField" destination="4x5-gH-una" id="0uV-t4-ePr"/>
+                        <outlet property="degignationTextField" destination="v9b-TU-Yr5" id="bnp-Ee-gnR"/>
                         <outlet property="descriptionTextView" destination="YUx-cV-q3A" id="7ix-b2-Svj"/>
                         <outlet property="emailTextField" destination="PrH-CK-VSH" id="vyC-pm-6dw"/>
                         <outlet property="firsNameTextField" destination="W6m-y4-Ss1" id="Vga-3g-1MP"/>
@@ -561,7 +565,7 @@
             <size key="intrinsicContentSize" width="19" height="21.666666666666668"/>
         </designable>
         <designable name="v9b-TU-Yr5">
-            <size key="intrinsicContentSize" width="4" height="20"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="xK2-Ow-9AJ">
             <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>

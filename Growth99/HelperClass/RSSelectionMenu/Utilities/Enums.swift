@@ -14,7 +14,7 @@ public enum PresentationStyle {
     case present       // default
     case push
     case formSheet(size: CGSize?)
-    case popover(sourceView: UIView, size: CGSize?, arrowDirection: UIPopoverArrowDirection = .up, hideNavBar: Bool = false)
+    case popover(sourceView: UIView, size: CGSize?, arrowDirection: UIPopoverArrowDirection = .down, hideNavBar: Bool = false)
     case alert(title: String?, action: String?, height: Double?)
     case actionSheet(title: String?, action: String?, height: Double?)
     case bottomSheet(barButton: UIBarButtonItem, height: Double?)

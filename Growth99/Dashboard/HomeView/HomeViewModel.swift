@@ -101,6 +101,7 @@ class HomeViewModel {
                                     "serviceIds": serviceIds,
                                     "isProvider": isProvider,
                                     "description": description,
+                                     "designation": designation
         ]
         let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
         

@@ -28,6 +28,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
     @IBOutlet private weak var rolesTextField: CustomTextField!
+    @IBOutlet private weak var degignationTextField: CustomTextField!
 
     @IBOutlet private weak var userProvider: UISwitch!
     @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
@@ -67,6 +68,9 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
         self.emailTextField.text = viewModel?.getUserProfileData.email
         self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+        self.degignationTextField.text = viewModel?.getUserProfileData.designation
+        self.descriptionTextView.text = viewModel?.getUserProfileData.description
+        
         self.saveButton.layer.cornerRadius = 12
         self.saveButton.clipsToBounds = true
         self.cancelButton.layer.cornerRadius = 12
@@ -115,6 +119,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         self.view.showToast(message: "data updated successfully")
         self.openUserListView()
     }
+    
 
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
@@ -195,8 +200,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         // size = nil (auto adjust size)
         let count : Double = Double(allClinics.count)
         selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
-        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
-    }
+        if self.clinicIds.count >= 3 {
+            selectionMenu.show(style: .popover(sourceView: sender, size: nil, arrowDirection: .down), from: self)
+        }else{
+            selectionMenu.show(style: .popover(sourceView: sender, size: nil, arrowDirection: .up), from: self)
+        }    }
 
     
     @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
@@ -223,7 +231,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         selectionMenu.cellSelectionStyle = .checkbox
         let count : Double = Double(serviceCategories.count)
         selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
-        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
+        if self.selectedServiceId.count >= 5 {
+            selectionMenu.show(style: .popover(sourceView: sender, size: nil, arrowDirection: .down), from: self)
+        }else{
+            selectionMenu.show(style: .popover(sourceView: sender, size: nil, arrowDirection: .up), from: self)
+        }
     }
     
     @IBAction func textFieldOpenDropDownServices(sender: UIButton) {
@@ -246,7 +258,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
         // size = nil (auto adjust size)
         let count : Double = Double(allServices.count)
         selectionMenu.preferredContentSize = CGSize(width: sender.frame.width, height: (count * 50 + 50))
-        selectionMenu.show(style: .popover(sourceView: sender, size: nil), from: self)
+        if self.serviceIds.count >= 1 {
+            selectionMenu.show(style: .popover(sourceView: sender, size: nil, arrowDirection: .down), from: self)
+        }else{
+            selectionMenu.show(style: .popover(sourceView: sender, size: nil, arrowDirection: .up), from: self)
+        }
     }
     
    
@@ -280,7 +296,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     
     @IBAction func saveUserProfile(){
         self.view.ShowSpinner()
-        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: viewModel?.getUserProfileData.designation ?? "", clinicIds: clinicIds, serviceCategoryIds: serviceCategoryIds, serviceIds: serviceIds, isProvider: userProvider.isOn, description: viewModel?.getUserProfileData.designation ?? "")
+        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: self.degignationTextField.text ?? "", clinicIds: clinicIds, serviceCategoryIds: serviceCategoryIds, serviceIds: serviceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
+    }
+    
+    @IBAction func cancelUserProfile(){
+        self.openUserListView()
     }
     
     func errorReceived(error: String) {

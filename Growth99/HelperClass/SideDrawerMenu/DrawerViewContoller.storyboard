@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,6 +85,9 @@
                                     <constraint firstItem="6pL-KB-6Sg" firstAttribute="top" secondItem="V0p-6f-E6r" secondAttribute="top" id="fLt-YN-95o"/>
                                     <constraint firstItem="6pL-KB-6Sg" firstAttribute="leading" secondItem="V0p-6f-E6r" secondAttribute="leading" id="ue6-iE-0JP"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="nz8-nO-UrC"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -98,6 +101,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="bussinessTitile" destination="Ol5-HZ-mll" id="Hyo-jy-3A6"/>
+                        <outlet property="roles" destination="ao0-ez-PGC" id="k4a-4d-ZSW"/>
+                        <outlet property="scrollViewHight" destination="rX9-rZ-gqW" id="dmA-VP-sow"/>
+                        <outlet property="scrollview" destination="V0p-6f-E6r" id="uIR-If-o4H"/>
                         <outlet property="tableView" destination="YRd-Ti-J54" id="7aU-Zg-q66"/>
                     </connections>
                 </viewController>

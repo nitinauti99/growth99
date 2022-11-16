@@ -24,6 +24,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     @IBOutlet weak var repeatPasswordTextField: CustomTextField!
     @IBOutlet weak var bussinessNameTextField: CustomTextField!
     @IBOutlet weak var registrationButton: UIButton!
+    @IBOutlet weak var selectionButton: UIButton!
 
     @IBOutlet weak var hyperlinkTexview: UITextView!
     var viewModel: RegistrationViewModelProtocol?
@@ -50,6 +51,16 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
         ]
         regiistraionSignUpLbl.updateHyperLinkText { _ in
             self.openLogIInView()
+        }
+    }
+    
+    @IBAction func selectionButton(sender: UIButton) {
+        if sender.isSelected {
+            self.selectionButton.setImage(UIImage(named: "tickselected"), for: .selected)
+            sender.isSelected = false
+        }else{
+            self.selectionButton.setImage(UIImage(named: "tickdefault"), for: .normal)
+            sender.isSelected = true
         }
     }
     
@@ -113,7 +124,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     }
     
     func openLogIInView(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 

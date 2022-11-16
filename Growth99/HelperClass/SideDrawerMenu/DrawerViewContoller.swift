@@ -19,10 +19,18 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     var viewModel: DrawerViewModelProtocol?
     private var hiddenSections = Set<Int>()
     let appDel = UIApplication.shared.delegate as! AppDelegate
-    
+    @IBOutlet private var scrollViewHight: NSLayoutConstraint!
+    @IBOutlet private var scrollview: UIScrollView!
+    @IBOutlet private var roles: UILabel!
+    @IBOutlet private var bussinessTitile: UILabel!
+    @IBOutlet private var profileImage: UIImageView!
+
     var userInfo: UserInfo?
     var section: Int = 0
-    
+    var tableViewHeight: CGFloat {
+        tableView.layoutIfNeeded()
+        return tableView.contentSize.height
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -30,6 +38,10 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.viewModel =  DrawerViewModel(delegate: self)
         self.mainMenuList = viewModel?.loadJson() ?? []
         self.hiddenSections = Set(0...mainMenuList.count)
+        self.roles.text = UserRepository.shared.roles
+        self.bussinessTitile.text = "Medical"
+
+        scrollview.delegate = self
         
         /// used for show userInfo
         //        self.tableView.register(UINib(nibName: "HeaderViewTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderViewTableViewCell")
@@ -82,7 +94,16 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     }
 }
 
-extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource {
+extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewHight.constant = tableViewHeight + 300
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewHight.constant = tableViewHeight + 300
+    }
+
     public func numberOfSections(in tableView: UITableView) -> Int {
         return mainMenuList.count
     }
