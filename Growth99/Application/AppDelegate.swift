@@ -21,27 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setUpHomeVC() {
-        
-        if user.isUserLoged {
-            let drawerViewController = UIStoryboard(name: "DrawerViewContoller", bundle: nil).instantiateViewController(withIdentifier: "Drawer")
-            let mainViewController = UIStoryboard(name: "HomeViewContoller", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller")
-            
-            let navController = UINavigationController(rootViewController: mainViewController)
-            drawerController.mainViewController = navController
-            drawerController.drawerViewController = drawerViewController
-            self.window?.rootViewController = drawerController
-            
-            window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = drawerController
-            window?.makeKeyAndVisible()
-       
-        } else{
-            let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
-            let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
-            mainVcIntial.isNavigationBarHidden = true
-            self.window?.rootViewController = mainVcIntial
-        }
-        
+        let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
+        let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
+        mainVcIntial.isNavigationBarHidden = true
+        self.window?.rootViewController = mainVcIntial
     }
 }
 

@@ -34,8 +34,8 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.emailTextField.text = ""
-        self.passwordTextField.text = ""
+        self.emailTextField.text = "nitinauti99@gmail.com"
+        self.passwordTextField.text = "Password13@!"
     }
     
     func setUpUI(){
@@ -133,17 +133,10 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     }
     
     func openHomeView(){
-        let drawerViewController = UIStoryboard(name: "DrawerViewContoller", bundle: nil).instantiateViewController(withIdentifier: "Drawer")
-       
-        let mainViewController = UIStoryboard(name: "HomeViewContoller", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller")
-        
-        let navController = UINavigationController(rootViewController: mainViewController)
-        appDel.drawerController.mainViewController = navController
-        
-        appDel.drawerController.drawerViewController = drawerViewController
-       
-        appDel.window?.rootViewController = appDel.drawerController
-//      appDel.window?.makeKeyAndVisible()
+        guard let tabbarController = UIViewController.loadStoryboard("BaseTabbar", "tabbarScreen") as? BaseTabbarViewController else {
+            fatalError("Failed to load BaseTabbarViewController from storyboard.")
+        }
+        self.view.window?.rootViewController = tabbarController
     }
 }
 

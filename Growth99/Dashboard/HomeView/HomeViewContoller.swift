@@ -36,6 +36,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
+    
+    private var menuVC = SidemenuController()
 
     let appDel = UIApplication.shared.delegate as! AppDelegate
     let regularFont = UIFont.systemFont(ofSize: 16)
@@ -51,17 +53,28 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     var roleArray: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItems = UIBarButtonItem.createApplicationLogo(target: self)
+        
+        menuVC = storyboard?.instantiateViewController(withIdentifier: "MENU") as? SidemenuController ?? SidemenuController()
+        let logoImage = UIImage.init(named: "Logo")
+        let logoImageView = UIImageView(image: logoImage)
+        self.navigationItem.titleView = logoImageView
+
         viewModel = HomeViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
         self.view.ShowSpinner()
+        self.navigationItem.leftBarButtonItem =
+            UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
         self.setupTexFieldValidstion()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
-        self.setUpMenuButton()
     }
+    
+    @objc func sideMenuTapped(_ sender: UIButton) {
+        menuVC.revealSideMenu()
+    }
+    
 
     fileprivate func setUpUI() {
         self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
@@ -153,14 +166,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @objc func keyboardWillHide(notification:Notification) {
         self.view.frame.origin.y = 0
     }
-    
-    func setUpMenuButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.createMenu(target: self, action: #selector(logoutUser))
-    }
-    
-    @objc func logoutUser(){
-        appDel.drawerController.setDrawerState(.opened, animated: true)
-    }
+
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
         let dataArray = [viewModel?.getUserProfileData.roles?.name]
