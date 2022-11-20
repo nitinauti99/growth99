@@ -23,10 +23,16 @@ class LogInViewModel {
     init(delegate: LogInViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
-   
+    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
     func loginValidate(email: String, password: String) {
-        /// request with alamofire
-        ServiceManager.request(request: ApiRouter.getLogin(email, password).urlRequest, responseType: LoginModel.self) { result in
+        let parameter: Parameters = ["email": email,
+                                     "password": password,
+        ]
+        
+        self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, FargoNetworkError>) in
+            
             switch result {
             case .success(let logInData):
                 self.LogInData = logInData
@@ -34,11 +40,12 @@ class LogInViewModel {
                 self.SetUpUserData()
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: "Authentication failed")
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }
-
+    
     func SetUpUserData(){
         self.user.firstName = LogInData?.firstName
         self.user.lastName = LogInData?.lastName
@@ -48,7 +55,7 @@ class LogInViewModel {
         self.user.roles = LogInData?.roles
         self.user.Xtenantid = LogInData?.businessId
         self.user.userId = LogInData?.id
-     }
+    }
 }
 
 extension LogInViewModel : LogInViewModelProtocol {

@@ -26,30 +26,52 @@ class VerifyForgotPasswordViewModel {
         self.delegate = delegate
     }
     
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
     func verifyChangePasswordRequest(email: String, oldPassword: String, newPassword: String, verifyNewPassword: String) {
-        struct responseType: Codable {}
-        struct body: Codable {}
-        AF.request(ApiRouter.sendRequestChangePassword(email, oldPassword, newPassword, verifyNewPassword).urlRequest).validate(statusCode: 200 ..< 600).responseData { response in
-            if response.response?.statusCode == 200 {
+        
+        let parameter: Parameters = [
+            "userName": email,
+            "oldPassword": oldPassword,
+            "newPassword": newPassword,
+            "confirmPassword": verifyNewPassword
+        ]
+        
+        self.requestManager.request(forPath: ApiUrl.changeUserPassword, method: .GET,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
                 self.delegate?.LoaginDataRecived(responseMessage: "Password changes sucessfully")
-            }else {
-                self.delegate?.errorReceived(error: response.error?.localizedDescription ?? "")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }
     
+    
+    
     func verifyForgotPasswordRequest(email: String,  password: String, confirmPassword: String, confirmationPCode: String) {
-        struct responseType: Codable {}
-        struct body: Codable {}
-        AF.request(ApiRouter.sendRequesVerifyForgotPassword(email, password, confirmPassword, confirmationPCode).urlRequest).validate(statusCode: 200 ..< 299).responseData { response in
-            if response.response?.statusCode == 200 {
+        let parameter: Parameters = [
+            "username": email,
+            "password": password,
+            "confirmPassword": confirmPassword,
+            "confirmationCode": confirmationPCode
+           ]
+       
+        self.requestManager.request(forPath: ApiUrl.VerifyforgotPassword, method: .GET,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
                 self.delegate?.LoaginDataRecived(responseMessage: "")
-            }else {
-                self.delegate?.errorReceived(error: response.error?.localizedDescription ?? "")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription )
             }
         }
     }
 }
+
 
 extension VerifyForgotPasswordViewModel : VerifyForgotPasswordViewModelProtocol {
 

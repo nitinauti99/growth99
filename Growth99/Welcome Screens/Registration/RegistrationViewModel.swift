@@ -13,26 +13,40 @@ protocol RegistrationViewModelProtocol {
     func isValidPassword(_ password: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidPasswordAndReapeatPassword(_ password: String, _ repeatPassword: String) -> Bool
-    func registration(firstName: String, lastName: String, emial: String, phoneNumber: String, password: String, repeatPassword: String, businesName: String, agreeTerms: Bool)
+    func registration(firstName: String, lastName: String, email: String, phoneNumber: String, password: String, repeatPassword: String, businesName: String, agreeTerms: Bool)
 }
 
 class RegistrationViewModel {
     
     var delegate: RegistrationViewControllerProtocol?
-
+    
     init(delegate: RegistrationViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
-    struct logModel: Decodable {}
-
-    // request with alamofire
-    func registration(firstName: String, lastName: String, emial: String, phoneNumber: String, password: String, repeatPassword: String, businesName: String, agreeTerms: Bool) {
+    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    func registration(firstName: String, lastName: String, email: String, phoneNumber: String, password: String, repeatPassword: String, businesName: String, agreeTerms: Bool) {
         
-        AF.request(ApiRouter.sendRequesRegistration(firstName, lastName, emial, phoneNumber, password, repeatPassword, businesName, agreeTerms).urlRequest).validate(statusCode: 200 ..< 299).responseData { response in
-            if response.response?.statusCode == 200 {
+        let parameter: Parameters = ["firstName": firstName,
+                                     "lastName": lastName,
+                                     "email": email,
+                                     "phone": phoneNumber,
+                                     "password": password,
+                                     "confirmPassword": repeatPassword,
+                                     "businessName": businesName,
+                                     "agreeTerms": agreeTerms
+        ]
+        
+        self.requestManager.request(forPath: ApiUrl.register, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
                 self.delegate?.LoaginDataRecived()
-            }else {
-                self.delegate?.errorReceived(error: response.error?.localizedDescription ?? "")
+                print("Successful Response", response)
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }

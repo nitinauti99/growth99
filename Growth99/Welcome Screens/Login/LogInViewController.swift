@@ -119,7 +119,6 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
         }
     }
     
-    
     func openRegistrationView(){
         print("openRegistrationView")
         let registrationVC = UIStoryboard(name: "RegistrationViewController", bundle: nil).instantiateViewController(withIdentifier: "RegistrationViewController")
@@ -127,7 +126,6 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     }
     
     func openForgotPasswordView() {
-        let firstname = UserRepository.shared.firstName
         let forgotPasswordVC = UIStoryboard(name: "ForgotPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController")
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
     }

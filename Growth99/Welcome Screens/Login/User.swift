@@ -151,21 +151,21 @@ class User {
     }
 }
 
-@propertyWrapper
-public struct Device {
-
-    private let deviceID = "deviceID"
-
-    public var wrappedValue: String? {
-        var id = KeychainWrapper.standard.string(forKey: deviceID)
-        if id == nil {
-            id = UIDevice.current.identifierForVendor?.uuidString
-            if id != nil {
-                KeychainWrapper.standard.set(id!, forKey: deviceID)
-            }
-        }
-        return id
-    }
-
-    public init() { }
-}
+//@propertyWrapper
+//public struct Device {
+//
+//    private let deviceID = "deviceID"
+//
+//    public var wrappedValue: String? {
+//        var id = KeychainWrapper.standard.string(forKey: deviceID)
+//        if id == nil {
+//            id = UIDevice.current.identifierForVendor?.uuidString
+//            if id != nil {
+//                KeychainWrapper.standard.set(id!, forKey: deviceID)
+//            }
+//        }
+//        return id
+//    }
+//
+//    public init() { }
+//}

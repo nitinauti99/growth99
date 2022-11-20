@@ -21,46 +21,24 @@ class ForgotPasswordViewModel {
     init(delegate: ForgotPasswordViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
-   
+    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
     func sendRequestGetPassword(email: String) {
-        struct responseType: Codable {}
-        struct body: Codable {}
-        AF.request(ApiRouter.sendRequestForgotPassword(email).urlRequest).validate(statusCode: 200 ..< 299).responseData { response in
-                if response.response?.statusCode == 200 {
-                    self.delegate?.LoaginDataRecived()
-                }else {
-                    self.delegate?.errorReceived(error: response.error?.localizedDescription ?? "")
-                }
+        let parameter: Parameters = ["email": email,
+        ]
+        self.requestManager.request(forPath: ApiUrl.forgotPassword, method: .GET,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
+                self.delegate?.LoaginDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription )
             }
         }
-        
-        
-//        ServiceManager.request(httpMethod: .get, request: ApiRouter.sendRequestForgotPassword("nitinauti99@gmail.com").urlRequest, responseType: EmptyEntity.self, body: body()) { result in
-//            switch result {
-//            case .success(let loginData):
-//                print(loginData)
-//                self.delegate?.LoaginDataRecived()
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-
-        
-//        /// request with alamofire
-//        struct Body: Codable {}
-//        ServiceManager.request(httpMethod: .post, request: ApiRouter.getNewsList(email, password).urlRequest, responseType: LoginModel.self, body: Body()) { result in
-//            switch result {
-//            case .success(let logInData):
-//                self.LogInData = logInData
-//                self.delegate?.LoaginDataRecived()
-//            case .failure(let error):
-//                print(error)
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//            }
-//        }
     }
-
-
+}
 
 extension ForgotPasswordViewModel : ForgotPasswordViewModelProtocol {
     
@@ -80,3 +58,26 @@ struct EmptyEntity: Codable, EmptyResponse {
 }
 
 
+//        ServiceManager.request(httpMethod: .get, request: ApiRouter.sendRequestForgotPassword("nitinauti99@gmail.com").urlRequest, responseType: EmptyEntity.self, body: body()) { result in
+//            switch result {
+//            case .success(let loginData):
+//                print(loginData)
+//                self.delegate?.LoaginDataRecived()
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+
+
+//        /// request with alamofire
+//        struct Body: Codable {}
+//        ServiceManager.request(httpMethod: .post, request: ApiRouter.getNewsList(email, password).urlRequest, responseType: LoginModel.self, body: Body()) { result in
+//            switch result {
+//            case .success(let logInData):
+//                self.LogInData = logInData
+//                self.delegate?.LoaginDataRecived()
+//            case .failure(let error):
+//                print(error)
+//                self.delegate?.errorReceived(error: error.localizedDescription)
+//            }
+//        }

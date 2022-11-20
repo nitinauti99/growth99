@@ -13,7 +13,7 @@ class UserListViewContoller: UIViewController {
     let appDel = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpMenuButton()
+       // setUpMenuButton()
     }
     
     func setUpMenuButton() {

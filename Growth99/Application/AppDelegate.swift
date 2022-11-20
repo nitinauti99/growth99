@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.8 * (UIScreen.main.bounds.width))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        setUpHomeVC()
+        if user.isUserLoged == true {
+            openHomeView()
+        } else {
+            setUpHomeVC()
+        }
         return true
     }
 
@@ -26,5 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainVcIntial.isNavigationBarHidden = true
         self.window?.rootViewController = mainVcIntial
     }
+    
+    func openHomeView(){
+        guard let tabbarController = UIViewController.loadStoryboard("BaseTabbar", "tabbarScreen") as? BaseTabbarViewController else {
+            fatalError("Failed to load BaseTabbarViewController from storyboard.")
+        }
+        self.window?.rootViewController = tabbarController
+    }
+    
 }
 

@@ -119,8 +119,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
             return
         }
         self.view.ShowSpinner()
-        viewModel?.registration(firstName: firsName, lastName: lastName, emial: email, phoneNumber: phoneNumber, password: password, repeatPassword: repeatPassword, businesName: bussinessName, agreeTerms: true)
-        
+        viewModel?.registration(firstName: firsName, lastName: lastName, email: email, phoneNumber: phoneNumber, password: password, repeatPassword: repeatPassword, businesName: bussinessName, agreeTerms: true)
     }
     
     func openLogIInView(){

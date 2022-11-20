@@ -32,11 +32,14 @@ class HomeViewModel {
     var allClinics: [Clinics]?
     var allserviceCategories: [Clinics]?
     var allServices: [Clinics]?
-
+    
     init(delegate: HomeViewContollerProtocool? = nil) {
         self.delegate = delegate
     }
-   
+    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    
     func getUserData(userId: Int) {
         ServiceManager.request(request: ApiRouter.getRequestForUserProfile(userId).urlRequest, responseType: UserProfile.self) { result in
             switch result {
@@ -88,32 +91,33 @@ class HomeViewModel {
             }
         }
     }
-
+    
     func updateProfileInfo(firstName: String, lastName: String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String) {
         
-    let parameter: [String : Any] = ["firstName": firstName,
-                                    "lastName": lastName,
-                                    "email": email,
-                                    "phone": phone,
-                                    "roleId": roleId,
-                                    "clinicIds": clinicIds,
-                                    "serviceCategoryIds": serviceCategoryIds,
-                                    "serviceIds": serviceIds,
-                                    "isProvider": isProvider,
-                                    "description": description,
-                                     "designation": designation
+        let parameter: [String : Any] = ["firstName": firstName,
+                                         "lastName": lastName,
+                                         "email": email,
+                                         "phone": phone,
+                                         "roleId": roleId,
+                                         "clinicIds": clinicIds,
+                                         "serviceCategoryIds": serviceCategoryIds,
+                                         "serviceIds": serviceIds,
+                                         "isProvider": isProvider,
+                                         "description": description,
+                                         "designation": designation
         ]
         let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
         
-        NetworkRequestManager(url: url, parameters: parameter, headers: NetworkRequestManager.shared.Headers(), method: .put).executeQuery() { (result: Result<UpdateUserProfile,Error>) in
-                   switch result{
-                   case .success(let userData):
-                       print(userData)
-                       self.delegate?.profileDataUpdated()
-                   case .failure(let error):
-                       print(error)
-                       self.delegate?.profileDataUpdated()
-                   }
+        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, FargoNetworkError>) in
+            
+            switch result {
+            case .success(let userData):
+                self.delegate?.profileDataUpdated()
+                print("Successful Response", userData)
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                self.delegate?.profileDataUpdated()
+            }
         }
     }
     
@@ -161,11 +165,3 @@ extension HomeViewModel : HomeViewModelProtocol {
         return false
     }
 }
-
-
-struct parameters: Encodable {
-    let email: String
-    let password: String
-}
-
-
