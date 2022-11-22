@@ -53,19 +53,17 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     var roleArray: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let LogInVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = LogInVC as! DrawerViewContoller
         
-//        storyboard?.instantiateViewController(withIdentifier: "DrawerViewContoller") as? SidemenuController ?? SidemenuController()
-        let logoImage = UIImage.init(named: "Logo")
-        let logoImageView = UIImageView(image: logoImage)
-        self.navigationItem.titleView = logoImageView
+        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
+        menuVC = sidemenuVC as! DrawerViewContoller
+       
         viewModel = HomeViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
         self.view.ShowSpinner()
+        self.navigationItem.titleView = UIImageView.navigationBarLogo()
         self.navigationItem.leftBarButtonItem =
             UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
         self.setupTexFieldValidstion()

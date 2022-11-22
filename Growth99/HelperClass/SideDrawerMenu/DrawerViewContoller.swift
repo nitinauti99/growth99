@@ -27,7 +27,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
 
     // MARK: - DECLARATIONS
     var section: Int = 0
-    
+    let appDel = UIApplication.shared.delegate as! AppDelegate
+
     var tableViewHeight: CGFloat {
         tableView.layoutIfNeeded()
         return tableView.contentSize.height
@@ -181,31 +182,34 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         self.tableView.beginUpdates()
         tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .fade)
         tableView.endUpdates()
-        switch indexPath.row {
-        case 0:
-            pushViewControllerFromDrawerMenu(pusedViewController: "HomeViewContoller")
-            break
-        case 1:
-            pushViewControllerFromDrawerMenu(pusedViewController: "AppointmentsViewController")
-            break
-        case 2:
-            pushViewControllerFromDrawerMenu(pusedViewController: "WorkingScheduleViewController")
-            break
-        case 3:
-            pushViewControllerFromDrawerMenu(pusedViewController: "VacationScheduleViewController")
-            break
-        case 4:
-            pushViewControllerFromDrawerMenu(pusedViewController: "ChangePasswordViewController")
-            break
-        default:
-            break
+        print("index section \(indexPath.section) and \(indexPath.row)")
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "HomeViewContoller")
+                break
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "AppointmentsViewController", pusedViewController: "AppointmentsViewController")
+            case 2:
+                pushViewControllerFromDrawerMenu(identifier: "WorkingScheduleViewController", pusedViewController: "WorkingScheduleViewController")
+            case 3:
+                pushViewControllerFromDrawerMenu(identifier: "VacationScheduleViewController", pusedViewController: "VacationScheduleViewController")
+            case 4:
+                pushViewControllerFromDrawerMenu(identifier: "ChangePasswordViewController", pusedViewController: "ChangePasswordViewController")
+                break
+            default:
+                break
+            }
+        } else if indexPath.section == 1 {
+            
+        } else {
+            
         }
-//        appDel.drawerController.setDrawerState(.closed, animated: true)
     }
     
-    func pushViewControllerFromDrawerMenu(pusedViewController: String) {
-        let mainViewController = UIStoryboard(name: pusedViewController, bundle: Bundle.main).instantiateViewController(withIdentifier: pusedViewController)
-        let navController = UINavigationController(rootViewController: mainViewController)
-//        appDel.drawerController.mainViewController = navController
+    func pushViewControllerFromDrawerMenu(identifier: String, pusedViewController: String) {
+        let mainViewController = UIStoryboard(name: identifier, bundle: Bundle.main).instantiateViewController(withIdentifier: pusedViewController)
+        (BaseTabbarViewController.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(mainViewController, animated: true)
+        self.hideSideMenu()
     }
 }

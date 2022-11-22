@@ -31,3 +31,13 @@ extension UIBarButtonItem {
         return [negativeSpacer, imageItem]
     }
 }
+
+extension UIImageView {
+    
+    class func navigationBarLogo() -> UIImageView {
+        let logoImage = UIImage.init(named: "Logo")
+        let logoImageView = UIImageView(image: logoImage)
+        return logoImageView
+    }
+    
+}

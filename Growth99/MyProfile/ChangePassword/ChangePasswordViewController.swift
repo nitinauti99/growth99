@@ -17,28 +17,27 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     @IBOutlet weak var newPasswordTextField: CustomTextField!
     @IBOutlet weak var verifyPasswordTextField: CustomTextField!
     
-    let appDel = UIApplication.shared.delegate as! AppDelegate
+    private var menuVC = DrawerViewContoller()
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = VerifyForgotPasswordViewModel(delegate: self)
-        setUpUI()
+        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
+        menuVC = sidemenuVC as! DrawerViewContoller
+        setUpNavigationBar()
     }
     
-    func setUpUI() {
-        setUpMenuButton()
-        
+    func setUpNavigationBar() {
         saveButton.layer.cornerRadius = 12
         cancelButton.layer.cornerRadius = 12
+        self.navigationItem.titleView = UIImageView.navigationBarLogo()
+        navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
     
-    func setUpMenuButton() {
-        navigationItem.leftBarButtonItems = UIBarButtonItem.createApplicationLogo(target: self)
-        navigationItem.rightBarButtonItem = UIBarButtonItem.createMenu(target: self, action: #selector(logoutUser))
+    @objc func sideMenuTapped(_ sender: UIButton) {
+        menuVC.revealSideMenu()
     }
     
-    @objc func logoutUser(){
-        appDel.drawerController.setDrawerState(.opened, animated: true)
-    }
+
     
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
