@@ -37,7 +37,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     
-    private var menuVC = SidemenuController()
+    private var menuVC = DrawerViewContoller()
 
     let appDel = UIApplication.shared.delegate as! AppDelegate
     let regularFont = UIFont.systemFont(ofSize: 16)
@@ -53,12 +53,13 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     var roleArray: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        let LogInVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
+        menuVC = LogInVC as! DrawerViewContoller
         
-        menuVC = storyboard?.instantiateViewController(withIdentifier: "MENU") as? SidemenuController ?? SidemenuController()
+//        storyboard?.instantiateViewController(withIdentifier: "DrawerViewContoller") as? SidemenuController ?? SidemenuController()
         let logoImage = UIImage.init(named: "Logo")
         let logoImageView = UIImageView(image: logoImage)
         self.navigationItem.titleView = logoImageView
-
         viewModel = HomeViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;

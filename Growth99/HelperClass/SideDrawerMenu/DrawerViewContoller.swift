@@ -18,19 +18,22 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     private var mainMenuList = [menuList]()
     var viewModel: DrawerViewModelProtocol?
     private var hiddenSections = Set<Int>()
-    let appDel = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet private var scrollViewHight: NSLayoutConstraint!
     @IBOutlet private var scrollview: UIScrollView!
     @IBOutlet private var roles: UILabel!
     @IBOutlet private var bussinessTitile: UILabel!
     @IBOutlet private var profileImage: UIImageView!
 
-    var userInfo: UserInfo?
+
+    // MARK: - DECLARATIONS
     var section: Int = 0
+    
     var tableViewHeight: CGFloat {
         tableView.layoutIfNeeded()
         return tableView.contentSize.height
     }
+    
+    // MARK: - VIEW_METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -42,17 +45,49 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.bussinessTitile.text = "Medical"
 
         scrollview.delegate = self
-        
-        /// used for show userInfo
-        //        self.tableView.register(UINib(nibName: "HeaderViewTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderViewTableViewCell")
-        
-        /// used for showing menutitle
+
         self.tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "MenuTableViewCell")
         
         ///used for showing subMenuTitle
         self.tableView.register(UINib(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuTableViewCell")
     }
-    
+
+    // MARK: - FUNCTIONS
+    func hideSideMenu() {
+        self.view.backgroundColor = .clear
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        }, completion: nil)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first!.view == self.view {
+            hideSideMenu()
+        }
+    }
+
+    func revealSideMenu() {
+        UIApplication.shared.keyWindow?.addSubview(self.view)
+        self.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        }, completion: { (_) in
+            UIView.animate(withDuration: 0.5) {
+                self.view.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+            }
+        })
+        self.view.layoutIfNeeded()
+    }
+
+    // MARK: - BUTTON_ACTIONS
+
+    @IBAction func signInTapped(_ sender: UIButton) {
+    }
+
+    @IBAction func logoutMenuTapped(_ sender: UIBarButtonItem) {
+        self.hideSideMenu()
+    }
+
     private func hideSection(section: Int) {
         func indexPathsForSection() -> [IndexPath] {
             var indexPaths = [IndexPath]()
@@ -89,7 +124,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
             let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
             mainVcIntial.isNavigationBarHidden = true
-            appDel.window?.rootViewController = mainVcIntial
+           // appDel.window?.rootViewController = mainVcIntial
         }
     }
 }
@@ -165,12 +200,12 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         default:
             break
         }
-        appDel.drawerController.setDrawerState(.closed, animated: true)
+//        appDel.drawerController.setDrawerState(.closed, animated: true)
     }
     
     func pushViewControllerFromDrawerMenu(pusedViewController: String) {
-        let mainViewController = UIStoryboard(name: pusedViewController, bundle: nil).instantiateViewController(withIdentifier: pusedViewController)
+        let mainViewController = UIStoryboard(name: pusedViewController, bundle: Bundle.main).instantiateViewController(withIdentifier: pusedViewController)
         let navController = UINavigationController(rootViewController: mainViewController)
-        appDel.drawerController.mainViewController = navController
+//        appDel.drawerController.mainViewController = navController
     }
 }

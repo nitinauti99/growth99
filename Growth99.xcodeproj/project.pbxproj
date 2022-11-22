@@ -102,15 +102,6 @@
 		84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */; };
 		84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */; };
 		84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28029255487003B3C06 /* UIViewController+Extension.swift */; };
-		84EFC29429255A58003B3C06 /* DS_SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28729255A58003B3C06 /* DS_SideMenuViewModel.swift */; };
-		84EFC29529255A58003B3C06 /* DS_SideMenuStaticRepositoryPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28929255A58003B3C06 /* DS_SideMenuStaticRepositoryPattern.swift */; };
-		84EFC29629255A58003B3C06 /* DS_SideMenuRemoteRepositoryPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28A29255A58003B3C06 /* DS_SideMenuRemoteRepositoryPattern.swift */; };
-		84EFC29729255A58003B3C06 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28C29255A58003B3C06 /* SideMenuModel.swift */; };
-		84EFC29829255A58003B3C06 /* DS_DropdownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EFC28F29255A58003B3C06 /* DS_DropdownTableViewCell.xib */; };
-		84EFC29929255A58003B3C06 /* MenuCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EFC29029255A58003B3C06 /* MenuCVCell.xib */; };
-		84EFC29A29255A58003B3C06 /* MenuCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC29129255A58003B3C06 /* MenuCVCell.swift */; };
-		84EFC29B29255A58003B3C06 /* DS_DropdownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC29229255A58003B3C06 /* DS_DropdownTableViewCell.swift */; };
-		84EFC29C29255A58003B3C06 /* SidemenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC29329255A58003B3C06 /* SidemenuController.swift */; };
 		84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC29F29256166003B3C06 /* UIButton+Extension.swift */; };
 		84F610B5292A71AA00B1FB69 /* Claims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6101A292A71A400B1FB69 /* Claims.swift */; };
 		84F610B6292A71AA00B1FB69 /* HMACCryptoSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6101B292A71A400B1FB69 /* HMACCryptoSwift.swift */; };
@@ -372,15 +363,6 @@
 		84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaseTabbar.storyboard; sourceTree = "<group>"; };
 		84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabbarViewController.swift; sourceTree = "<group>"; };
 		84EFC28029255487003B3C06 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		84EFC28729255A58003B3C06 /* DS_SideMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DS_SideMenuViewModel.swift; sourceTree = "<group>"; };
-		84EFC28929255A58003B3C06 /* DS_SideMenuStaticRepositoryPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DS_SideMenuStaticRepositoryPattern.swift; sourceTree = "<group>"; };
-		84EFC28A29255A58003B3C06 /* DS_SideMenuRemoteRepositoryPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DS_SideMenuRemoteRepositoryPattern.swift; sourceTree = "<group>"; };
-		84EFC28C29255A58003B3C06 /* SideMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
-		84EFC28F29255A58003B3C06 /* DS_DropdownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DS_DropdownTableViewCell.xib; sourceTree = "<group>"; };
-		84EFC29029255A58003B3C06 /* MenuCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCVCell.xib; sourceTree = "<group>"; };
-		84EFC29129255A58003B3C06 /* MenuCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCVCell.swift; sourceTree = "<group>"; };
-		84EFC29229255A58003B3C06 /* DS_DropdownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DS_DropdownTableViewCell.swift; sourceTree = "<group>"; };
-		84EFC29329255A58003B3C06 /* SidemenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidemenuController.swift; sourceTree = "<group>"; };
 		84EFC29F29256166003B3C06 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		84F6101A292A71A400B1FB69 /* Claims.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Claims.swift; sourceTree = "<group>"; };
 		84F6101B292A71A400B1FB69 /* HMACCryptoSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACCryptoSwift.swift; sourceTree = "<group>"; };
@@ -858,8 +840,6 @@
 			children = (
 				848F4D8B28F1C164007AC421 /* Info.plist */,
 				84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */,
-				84EFC28429255A58003B3C06 /* SideMenu */,
-				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				8497A04528FF126000CBA26C /* Application */,
 				8497A03928FF11E200CBA26C /* Environment */,
 				8497A04228FF121A00CBA26C /* HelperClass */,
@@ -915,6 +895,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				84F61018292A71A400B1FB69 /* GrowthCore */,
 				84F61083292A71A900B1FB69 /* GrowthNetwork */,
 				845C39C2292276AF00D934C5 /* Network */,
@@ -956,8 +937,7 @@
 			children = (
 				84EFC27B2925531B003B3C06 /* View */,
 			);
-			name = BaseTabberScreen;
-			path = "Welcome Screens/BaseTabberScreen";
+			path = BaseTabberScreen;
 			sourceTree = "<group>";
 		};
 		84EFC27B2925531B003B3C06 /* View */ = {
@@ -967,70 +947,6 @@
 				84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		84EFC28429255A58003B3C06 /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28529255A58003B3C06 /* SideMenuScreen */,
-			);
-			path = SideMenu;
-			sourceTree = "<group>";
-		};
-		84EFC28529255A58003B3C06 /* SideMenuScreen */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28629255A58003B3C06 /* ViewModel */,
-				84EFC28829255A58003B3C06 /* SidemenuRepositoryPattern */,
-				84EFC28B29255A58003B3C06 /* Model */,
-				84EFC28D29255A58003B3C06 /* View */,
-			);
-			path = SideMenuScreen;
-			sourceTree = "<group>";
-		};
-		84EFC28629255A58003B3C06 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28729255A58003B3C06 /* DS_SideMenuViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84EFC28829255A58003B3C06 /* SidemenuRepositoryPattern */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28929255A58003B3C06 /* DS_SideMenuStaticRepositoryPattern.swift */,
-				84EFC28A29255A58003B3C06 /* DS_SideMenuRemoteRepositoryPattern.swift */,
-			);
-			path = SidemenuRepositoryPattern;
-			sourceTree = "<group>";
-		};
-		84EFC28B29255A58003B3C06 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28C29255A58003B3C06 /* SideMenuModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84EFC28D29255A58003B3C06 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28E29255A58003B3C06 /* CustomCells */,
-				84EFC29329255A58003B3C06 /* SidemenuController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84EFC28E29255A58003B3C06 /* CustomCells */ = {
-			isa = PBXGroup;
-			children = (
-				84EFC28F29255A58003B3C06 /* DS_DropdownTableViewCell.xib */,
-				84EFC29029255A58003B3C06 /* MenuCVCell.xib */,
-				84EFC29129255A58003B3C06 /* MenuCVCell.swift */,
-				84EFC29229255A58003B3C06 /* DS_DropdownTableViewCell.swift */,
-			);
-			path = CustomCells;
 			sourceTree = "<group>";
 		};
 		84F61018292A71A400B1FB69 /* GrowthCore */ = {
@@ -1450,7 +1366,6 @@
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				845C3A18292276C000D934C5 /* VerifyForgotPasswordViewController.storyboard in Resources */,
-				84EFC29829255A58003B3C06 /* DS_DropdownTableViewCell.xib in Resources */,
 				845C3A10292276C000D934C5 /* RegistrationViewController.storyboard in Resources */,
 				845C3998292273B800D934C5 /* ChangePasswordViewController.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
@@ -1464,7 +1379,6 @@
 				845C3996292273B800D934C5 /* WorkingScheduleViewController.storyboard in Resources */,
 				845C3A13292276C000D934C5 /* ForgotPasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
-				84EFC29929255A58003B3C06 /* MenuCVCell.xib in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1628,7 +1542,6 @@
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F61112292A71AB00B1FB69 /* UserNotificationsUI.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
-				84EFC29429255A58003B3C06 /* DS_SideMenuViewModel.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* FargoNetworkError.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
@@ -1645,7 +1558,6 @@
 				84E2C91F2923D93300F79DFA /* UserListViewContoller.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
 				84F61106292A71AB00B1FB69 /* FargoDumpStringConvertible.swift in Sources */,
-				84EFC29629255A58003B3C06 /* DS_SideMenuRemoteRepositoryPattern.swift in Sources */,
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
@@ -1653,7 +1565,6 @@
 				845C3A22292276C000D934C5 /* UserProfile.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
-				84EFC29C29255A58003B3C06 /* SidemenuController.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
 				84F6110F292A71AB00B1FB69 /* UIKit.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
@@ -1712,7 +1623,6 @@
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
-				84EFC29B29255A58003B3C06 /* DS_DropdownTableViewCell.swift in Sources */,
 				845C3A17292276C000D934C5 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* String+Fargo.swift in Sources */,
@@ -1773,12 +1683,10 @@
 				84F6110B292A71AB00B1FB69 /* CoreMotion.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
-				84EFC29729255A58003B3C06 /* SideMenuModel.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* Dictionary+Fargo.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
-				84EFC29A29255A58003B3C06 /* MenuCVCell.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
 				84F610BB292A71AA00B1FB69 /* JWT.swift in Sources */,
 				84F61104292A71AB00B1FB69 /* FargoDumpRepresentable.swift in Sources */,
@@ -1792,7 +1700,6 @@
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
-				84EFC29529255A58003B3C06 /* DS_SideMenuStaticRepositoryPattern.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
 				84F6110C292A71AB00B1FB69 /* UserNotifications.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* Array+Fargo.swift in Sources */,
