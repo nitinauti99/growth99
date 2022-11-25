@@ -61,4 +61,8 @@ struct Constant {
         static let RESOURCE_UNAVAILABLE = "RESOURCE_UNAVAILABLE"
     }
     
+    struct Profile {
+        static let vacationTitle = "Vacantion Schedule"
+    }
+    
 }

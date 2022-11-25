@@ -38,6 +38,10 @@ public extension String {
               range: nil,
               locale: nil) != nil
     }
+    
+    static var blank: String {
+        return ""
+    }
 
     static func ~= (lhs: String, rhs: String) -> Bool {
         guard let regex = try? NSRegularExpression(pattern: rhs) else { return false }

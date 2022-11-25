@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             setUpHomeVC()
         }
+//        UINavigationBar.appearance().tintColor = UIColor.init(hexString: "009EDE")
+//        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        UINavigationBar.appearance().titleTextAttributes = textAttributes
         return true
     }
 
