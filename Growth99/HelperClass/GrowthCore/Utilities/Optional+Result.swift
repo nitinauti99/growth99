@@ -1,16 +1,4 @@
-//
-//  Optional+ResultType.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 3/28/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
-/**
- * Error which is used when converting Optional values to Result
- *
- * - noValue: The Optional is nil when converting to Result
- */
 public enum OptionalError: Error {
     case noValue
 }

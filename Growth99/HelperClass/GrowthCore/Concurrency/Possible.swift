@@ -1,15 +1,4 @@
-//
-//  Possible.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 5/6/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
-/**
- * Describes an interface which can represent a completed state with a wrapped value
- * or a cancelled state.
- */
 public protocol Possibly {
     /// The type this Possibly wrappes around
     associatedtype Wrapped

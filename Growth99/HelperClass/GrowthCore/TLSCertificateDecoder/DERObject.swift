@@ -1,9 +1,3 @@
-//
-//  DERObject.swift
-//  FargoCore
-//
-//  Created by SopanSharma on 4/9/20.
-//
 
 import Foundation
 

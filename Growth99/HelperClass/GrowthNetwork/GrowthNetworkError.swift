@@ -1,18 +1,7 @@
-//
-//  NetworkError.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/18/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
-/**
- Represents errors that may occur when making network calls.
-*/
-/// - Tag: FargoNetworkErrorTag
-public enum FargoNetworkError: Error {
+public enum GrowthNetworkError: Error {
 
     /// Encoding failed
     case encodingFailed
@@ -67,9 +56,9 @@ public enum FargoNetworkError: Error {
 
 }
 
-public extension FargoNetworkError {
+public extension GrowthNetworkError {
 
-    /// [Response](x-source-tag://ResponseTag) associated to a `FargoNetworkError`.
+    /// [Response](x-source-tag://ResponseTag) associated to a `GrowthNetworkError`.
     var response: Response? {
         switch self {
         case .encodingFailed:
@@ -110,7 +99,6 @@ public extension FargoNetworkError {
 
     }
 
-    /// The underlying error (if any) for the FargoNetworkError
     internal var underlyingError: Swift.Error? {
         switch self {
         case .encodingFailed:
@@ -145,9 +133,9 @@ public extension FargoNetworkError {
 
 }
 
-extension FargoNetworkError: LocalizedError {
+extension GrowthNetworkError: LocalizedError {
 
-    /// Error description associated to a `FargoNetworkError`.
+    /// Error description associated to a `GrowthNetworkError`.
     public var errorDescription: String? {
         switch self {
         case .encodingFailed:
@@ -189,7 +177,7 @@ extension FargoNetworkError: LocalizedError {
 
 }
 
-extension FargoNetworkError: CustomNSError {
+extension GrowthNetworkError: CustomNSError {
 
     /// The user-info dictionary.
     public var errorUserInfo: [String: Any] {
@@ -201,19 +189,9 @@ extension FargoNetworkError: CustomNSError {
 
 }
 
-extension FargoNetworkError: Equatable {
+extension GrowthNetworkError: Equatable {
 
-    /**
-    Returns a Boolean value indicating whether two `FargoNetworkError` types are equal.
-    
-    Equality is the inverse of inequality. For any `FargoNetworkError` types `a` and `b`,
-    `a == b` implies that `a != b` is `false`.
-    
-    - Parameters:
-      - lhs: A `FargoNetworkError` to compare.
-      - rhs: Another `FargoNetworkError` to compare.     
-    */
-    public static func == (lhs: FargoNetworkError, rhs: FargoNetworkError) -> Bool {
+    public static func == (lhs: GrowthNetworkError, rhs: GrowthNetworkError) -> Bool {
         switch (lhs, rhs) {
         case (let .jsonMapping(lhsResponse), let .jsonMapping(rhsResponse)):
             return lhsResponse.statusCode == rhsResponse.statusCode

@@ -1,14 +1,7 @@
-//
-//  CertificatePinningPolicy.swift
-//  FargoNetwork
-//
-//  Created by Arun on 9/24/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
-/// Different pinning techniques supported by FargoHTTPNetwork
+/// Different pinning techniques supported by GrowthHTTPNetwork
 public enum PinningType: Equatable {
 
     /// Compare the local certificate against the server certificate (byte by byte)
@@ -104,7 +97,7 @@ public struct PinningPolicy {
 
         // Host validation
         guard status == errSecSuccess else {
-            return .failure(FargoNetworkError.policyValidationFailed)
+            return .failure(GrowthNetworkError.policyValidationFailed)
         }
 
         let pinnedCertificates = self.pinnedCertificates()
@@ -120,7 +113,7 @@ public struct PinningPolicy {
             if let cfError = cfError {
                 return .failure(cfError)
             } else {
-                return .failure(FargoNetworkError.pinningFailed)
+                return .failure(GrowthNetworkError.pinningFailed)
             }
         }
 
@@ -174,13 +167,13 @@ struct CertificatePinningEvaluator: TrustEvaluating {
             let pinnedCertificateOIDList = self.oidList(oid.rawValue, from: self.pinnedCertificates)
 
             if Set(pinnedCertificateOIDList).isDisjoint(with: serverCertificateOIDList) {
-                return .failure(FargoNetworkError.pinningFailed)
+                return .failure(GrowthNetworkError.pinningFailed)
             } else {
                return .success(true)
             }
         } else {
             if Set(self.pinnedCertificates).isDisjoint(with: serverCertificates) {
-                return .failure(FargoNetworkError.pinningFailed)
+                return .failure(GrowthNetworkError.pinningFailed)
             } else {
                 return .success(true)
             }
@@ -241,7 +234,7 @@ struct PublicKeyPinningEvaluator: TrustEvaluating {
             }
         }
 
-        return .failure(FargoNetworkError.pinningFailed)
+        return .failure(GrowthNetworkError.pinningFailed)
     }
 
 }

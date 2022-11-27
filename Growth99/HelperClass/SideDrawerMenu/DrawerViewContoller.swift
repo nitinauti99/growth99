@@ -125,7 +125,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
             let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
             mainVcIntial.isNavigationBarHidden = true
-           // appDel.window?.rootViewController = mainVcIntial
+            appDel.window?.rootViewController = mainVcIntial
         }
     }
 }

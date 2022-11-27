@@ -1,11 +1,3 @@
-//
-//  LockedCollection.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 1/10/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
-
 public struct LockedCollection<Element>: RangeReplaceableCollection, ExpressibleByArrayLiteral, CustomStringConvertible {
     public typealias Index = Int
 

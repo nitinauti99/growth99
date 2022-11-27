@@ -1,10 +1,3 @@
-//
-//  Promise.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 7/5/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 /**
  A promise can be used to generate a future which can be completed at a

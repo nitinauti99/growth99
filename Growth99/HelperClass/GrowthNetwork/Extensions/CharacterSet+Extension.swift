@@ -1,10 +1,3 @@
-//
-//  CharacterSet+Extension.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 10/18/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 

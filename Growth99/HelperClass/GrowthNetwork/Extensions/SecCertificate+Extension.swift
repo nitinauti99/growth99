@@ -1,9 +1,3 @@
-//
-//  SecCertificate+Extension.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 4/23/20.
-//
 
 import Foundation
 

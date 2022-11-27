@@ -9,7 +9,7 @@ internal class NetworkQueueManager {
     var underlyingQueue: DispatchQueue?
     let networkRequestOperationQueue: OperationQueue = {
         let operationQueue = OperationQueue()
-        operationQueue.name = "FargoHTTPNetworkRequestQueue"
+        operationQueue.name = "GrowthHTTPNetworkRequestQueue"
         operationQueue.maxConcurrentOperationCount = 5
         return operationQueue
     }()
@@ -18,12 +18,12 @@ internal class NetworkQueueManager {
     /// sort of auth mechanism.
     let safeNetworkRequestOperationQueue: OperationQueue = {
         let operationQueue = OperationQueue()
-        operationQueue.name = "FargoHTTPNetworkSafeRequestQueue"
+        operationQueue.name = "GrowthHTTPNetworkSafeRequestQueue"
         operationQueue.maxConcurrentOperationCount = 5
         return operationQueue
     }()
 
-    private let requestsSuspendedRWLock = ReadersWriterLock(label: "com.apple.FargoHTTPNetwork.requestsSuspended")
+    private let requestsSuspendedRWLock = ReadersWriterLock(label: "com.apple.GrowthHTTPNetwork.requestsSuspended")
     private var _areRequestsSuspended = false
 
     /// Variable to set and get requests suspension

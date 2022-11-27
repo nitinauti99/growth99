@@ -1,10 +1,3 @@
-//
-//  String+Fargo.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 3/17/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 import Foundation
 

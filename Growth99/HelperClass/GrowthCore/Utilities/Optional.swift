@@ -1,9 +1,3 @@
-//
-//  Optional+CustomOperators.swift
-//  FargoCore-iOS
-//
-//  Created by Adam Mork on 12/10/19.
-//
 
 import Foundation
 

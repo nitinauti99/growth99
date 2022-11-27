@@ -1,10 +1,3 @@
-//
-//  ParameterEncoder.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/17/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
@@ -62,7 +55,7 @@ public struct JSONParameterEncoder: ParameterEncoder {
                 urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             }
         } catch {
-            throw FargoNetworkError.encodingFailed
+            throw GrowthNetworkError.encodingFailed
         }
     }
 
@@ -119,7 +112,7 @@ public struct URLParameterEncoder: ParameterEncoder {
     }
 
     public func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
-        guard let url = urlRequest.url else { throw FargoNetworkError.missingURL }
+        guard let url = urlRequest.url else { throw GrowthNetworkError.missingURL }
 
         if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {
             let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + self.query(parameters)

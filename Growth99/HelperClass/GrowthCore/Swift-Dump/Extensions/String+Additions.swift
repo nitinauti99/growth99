@@ -1,10 +1,3 @@
-//
-//  String+Additions.swift
-//  FargoCore-iOS
-//
-//  Created by Kushal Jogi on 9/27/21.
-//
-
 import Foundation
 
 public extension String {

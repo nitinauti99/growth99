@@ -1,13 +1,6 @@
-//
-//  DERError.swift
-//  FargoCore-iOS
-//
-//  Created by SopanSharma on 4/14/20.
-//
 
 import Foundation
 
-/// Different Error types which could crop up while decoding
 enum DERError: LocalizedError {
 
     case badOID

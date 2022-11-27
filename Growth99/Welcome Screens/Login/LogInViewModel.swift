@@ -30,7 +30,7 @@ class LogInViewModel {
         let parameter: Parameters = ["email": email,
                                      "password": password]
         
-        self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, FargoNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, GrowthNetworkError>) in
             
             switch result {
             case .success(let logInData):

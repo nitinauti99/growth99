@@ -1,23 +1,13 @@
-//
-//  ASN1Tag.swift
-//  FargoCore-iOS
-//
-//  Created by SopanSharma on 4/7/20.
-//
 
 import Foundation
 
-/// Type containing ASN.1 tag syntax information
-// https://ldap.com/ldapv3-wire-protocol-reference-asn1-ber/
 struct ASN1Tag {
-    //https://en.wikipedia.org/wiki/X.690#BER_encoding
     enum TagClass: UInt8 {
         case universal = 0x00
         case application = 0x40
         case contextSpecific = 0x80
         case `private` = 0xC0
     }
-    //https://en.wikipedia.org/wiki/X.690#BER_encoding
     enum TagType: UInt8 {
         case endOfContent = 0x00
         case boolean = 0x01
@@ -49,22 +39,7 @@ struct ASN1Tag {
 }
 
 extension ASN1Tag {
-
-    /**
-     DER (or rather BER) tag is constructed as follows:
-     
-     -------------------------------------------------------
-     
-     Bits              8    7                          6                               5    4    3    2    1
-     Purpose      Class        Primitive or Constructed?            Tag Number
-     
-     -------------------------------------------------------
-     
-     In order to figure out whether the tag is primitive or constructed we
-     would need to validate if the 6th bit is set and we could do that using
-     bitwise '&' operator with "0x20" which is nothing but "100000"
-     */
-
+    
     var isPrimitive: Bool {
         (rawValue & 0x20) == 0
     }

@@ -1,10 +1,3 @@
-//
-//  DispatchTime.swift
-//  Dispatch3.0-only
-//
-//  Created by Robin van Dijke on 9/2/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 import Dispatch
 import Foundation

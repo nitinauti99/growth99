@@ -1,10 +1,3 @@
-//
-//  PeekableIterator.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 6/1/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 public struct PeekableIterator<Iterator: IteratorProtocol>: IteratorProtocol {
     var iterator: Iterator

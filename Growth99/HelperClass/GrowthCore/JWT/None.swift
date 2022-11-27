@@ -1,8 +1,4 @@
-
-
 import Foundation
-
-/// No Algorithm, i-e, insecure
 
 public final class NoneAlgorithm: JWA, SignAlgorithm, VerifyAlgorithm {
 

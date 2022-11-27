@@ -19,7 +19,7 @@ class VacationViewModel {
         self.delegate = delegate
     }
 
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     func getallClinicsforVacation(completion: @escaping([Clinics]?, Error?) -> Void) {
         ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [Clinics].self) { response in
@@ -40,7 +40,7 @@ class VacationViewModel {
              .custom(key: "Content-Type", value: "application/json"),
              .authorization("Bearer "+(UserRepository.shared.authToken ?? ""))]
         }
-        self.requestManager.request(forPath: apiURL, method: .POST, headers: headerFields, task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, FargoNetworkError>) in
+        self.requestManager.request(forPath: apiURL, method: .POST, headers: headerFields, task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 print(response)

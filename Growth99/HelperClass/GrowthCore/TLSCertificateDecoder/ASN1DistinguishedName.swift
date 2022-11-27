@@ -1,9 +1,3 @@
-//
-//  DERDistinguishNames.swift
-//  FargoCore
-//
-//  Created by SopanSharma on 4/10/20.
-//
 
 import Foundation
 

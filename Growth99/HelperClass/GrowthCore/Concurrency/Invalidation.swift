@@ -1,16 +1,5 @@
-//
-//  Invalidation.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 5/6/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
-
 import Foundation
 
-/**
- * Objects conforming to Invalidatable can be invalidated.
- */
 public protocol Invalidatable {
 
     /// Returns whether this instance is still valid

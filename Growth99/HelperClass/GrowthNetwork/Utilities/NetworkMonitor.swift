@@ -1,10 +1,3 @@
-//
-//  NetworkMonitor.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/20/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 import Network
@@ -38,7 +31,7 @@ public class NetworkMonitor {
     private var monitor = NWPathMonitor()
 
     /// Serial queue where network monitoring will happen
-    private let monitorQueue = DispatchQueue(label: "com.apple.ist.fargoNetwork.monitorQueue")
+    private let monitorQueue = DispatchQueue(label: "com.apple.ist.GrowthNetwork.monitorQueue")
 
     public init() {}
 

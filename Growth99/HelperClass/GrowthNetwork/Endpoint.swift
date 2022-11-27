@@ -1,11 +1,3 @@
-//
-//  Endpoint.swift
-//  FargoNetwork
-//  
-//
-//  Created by SopanSharma on 9/26/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
@@ -81,7 +73,7 @@ extension Endpoint {
     */
     internal func urlRequest() throws -> URLRequest {
         guard let url = URL(string: self.path) else {
-            throw FargoNetworkError.requestMapping(self.path)
+            throw GrowthNetworkError.requestMapping(self.path)
         }
 
         var request = URLRequest(url: url)
@@ -115,7 +107,7 @@ extension Endpoint {
             case .jsonEncoding:
                 try encoding.encode(urlRequest: &request, bodyParameters: parameters, urlParameters: nil)
             default:
-                throw FargoNetworkError.requestMapping("Error while performing \(encoding) with current parameters")
+                throw GrowthNetworkError.requestMapping("Error while performing \(encoding) with current parameters")
             }
 
             return request

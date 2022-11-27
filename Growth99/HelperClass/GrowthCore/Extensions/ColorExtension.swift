@@ -1,10 +1,4 @@
-//
-//  Color+Fargo.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 9/6/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
+
 
 #if os(iOS)
 import UIKit

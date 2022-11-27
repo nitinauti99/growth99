@@ -1,14 +1,7 @@
-//
-//  FargoSortDescriptor.swift
-//  FargoCore
-//
-//  Created by Michael Rubin on 2/22/17.
-//
-//
 
 import Foundation
 
-public struct FargoSortDescriptor<T> {
+public struct SortDescriptor<T> {
     let comparator: (T, T) -> ComparisonResult
     let ascending: Bool
 

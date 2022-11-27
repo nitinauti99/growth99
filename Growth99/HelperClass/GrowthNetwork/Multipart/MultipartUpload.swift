@@ -1,9 +1,3 @@
-//
-//  MultipartUpload.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 5/15/20.
-//
 
 import Foundation
 

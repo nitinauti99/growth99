@@ -1,10 +1,3 @@
-//
-//  String+Extension.swift
-//  FargoCore
-//
-//  Created by Arun on 12/9/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
@@ -38,7 +31,7 @@ public extension String {
               range: nil,
               locale: nil) != nil
     }
-    
+
     static var blank: String {
         return ""
     }
@@ -49,7 +42,7 @@ public extension String {
         let range = NSRange(location: 0, length: lhs.utf16.count)
         return regex.firstMatch(in: lhs, options: [], range: range) != nil
     }
-    
+
     func indexInt(of char: Character) -> Int? {
         return firstIndex(of: char)?.utf16Offset(in: self)
     }

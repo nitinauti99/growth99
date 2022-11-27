@@ -1,9 +1,4 @@
-//
-//  NetworkManager+Stub.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 2/10/21.
-//
+
 
 import Foundation
 
@@ -12,7 +7,7 @@ extension NetworkManager {
     @discardableResult
     func stubRequest(stub: Stub,
                      completionQueue: DispatchQueue = DispatchQueue.main,
-                     completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                     completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
         guard self.session != nil else { return CancellableWrapper() }
 
         let cancellableToken = CancellableWrapper()
@@ -39,7 +34,7 @@ extension NetworkManager {
         return cancellableToken
     }
 
-    private func createStubFunction(stubResponse: StubResponse, completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> (() -> Void) {
+    private func createStubFunction(stubResponse: StubResponse, completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> (() -> Void) {
         // swiftlint:disable
         return {
             switch stubResponse {
@@ -59,7 +54,7 @@ extension NetworkManager {
                     let response = Response(statusCode: statusCode, data: data)
                     completion(.success(response))
                 } catch {
-                    completion(.failure(FargoNetworkError.invalidResponse))
+                    completion(.failure(GrowthNetworkError.invalidResponse))
                 }
             case .networkError(let error):
                 completion(.failure(error))

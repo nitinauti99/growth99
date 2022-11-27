@@ -23,7 +23,7 @@ class ForgotPasswordViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func sendRequestGetPassword(email: String) {
         let parameter: Parameters = ["email": email,

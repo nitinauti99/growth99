@@ -1,9 +1,3 @@
-//
-//  Logger.swift
-//  FargoNetwork
-//
-//  Created by Stevil on 11/25/19.
-//
 
 import Foundation
 

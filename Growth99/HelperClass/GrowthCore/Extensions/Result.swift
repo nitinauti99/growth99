@@ -1,9 +1,3 @@
-//
-//  Result+Fargo.swift
-//  FargoCore
-//
-//  Created by SopanSharma on 3/30/20.
-//
 
 import Foundation
 

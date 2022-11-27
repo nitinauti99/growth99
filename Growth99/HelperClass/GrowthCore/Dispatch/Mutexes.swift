@@ -1,15 +1,11 @@
 
-
 import Foundation
 
-/// A basic mutex protocol that requires nothing more than "performing work inside the mutex".
 public protocol ScopedMutex {
-    /// Perform work inside the mutex
     func sync<R>(execute work: () throws -> R) rethrows -> R
     func trySync<R>(execute work: () throws -> R) rethrows -> R?
 }
 
-/// A more specific kind of mutex that assume an underlying primitive and unbalanced lock/trylock/unlock operators
 public protocol RawMutex: ScopedMutex {
     associatedtype MutexPrimitive
 

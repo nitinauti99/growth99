@@ -1,10 +1,3 @@
-//
-//  TLSPublicKey.swift
-//  FargoCore
-//
-//  Created by SopanSharma on 4/10/20.
-//
-
 import Foundation
 
 public class TLSPublicKey {

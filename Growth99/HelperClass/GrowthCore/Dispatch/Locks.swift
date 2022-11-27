@@ -1,22 +1,6 @@
-//
-//  Locks.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 1/10/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 import Foundation
 
-/**
- * A lock can be used to protect a resource which
- * is used on multiple threads (a shared resource). Another
- * use-case is an area of code which is only allowed to be
- * accessed by one thread at the same time.
- *
- * The `Lock` protocol defines the basic functionality
- * to perform reads and writes using the `Dispatch.Block` type
- */
 public protocol Lock {
     /**
      * Schedules a block on the lock which is allowed

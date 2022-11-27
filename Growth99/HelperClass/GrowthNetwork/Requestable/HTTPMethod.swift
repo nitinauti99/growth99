@@ -1,17 +1,6 @@
-//
-//  HTTPMethod.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/17/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
-/**
-    The request methods HTTP request are represented in the `HTTPMethod` enum
-*/
-/// - Tag: HTTPMethodTag
 public enum HTTPMethod: String {
 
     /// The **CONNECT** method starts two-way communications with the requested resource.

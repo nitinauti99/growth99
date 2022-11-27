@@ -1,9 +1,3 @@
-//
-//  URL+Extension.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 5/15/20.
-//
 
 import Foundation
 #if os(iOS) || os(watchOS) || os(tvOS)

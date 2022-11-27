@@ -1,9 +1,3 @@
-//
-//  OSLogger.swift
-//  FargoNetwork
-//
-//  Created by Stevil on 11/25/19.
-//
 
 import Foundation
 import os
@@ -39,7 +33,7 @@ extension OSLogger: Logger {
 
     public func log(_ entry: LogEntry) {
         let log = OSLog(
-            subsystem: "com.apple.FargoNetwork",
+            subsystem: "com.apple.GrowthNetwork",
             category: entry.category
         )
         let formattedText: String = OSLogger.format(

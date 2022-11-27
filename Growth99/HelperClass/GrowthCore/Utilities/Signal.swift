@@ -1,9 +1,3 @@
-//
-//  Signal.swift
-//  FargoCore
-//
-//  Created by SopanSharma on 8/29/18.
-//
 
 import Foundation
 

@@ -1,64 +1,21 @@
-//
-//  Keychain.swift
-//  FargoCore
-//
-//  Created by Vashishtha Jogi on 7/25/17.
-//  Copyright © 2017 Apple Inc. All rights reserved.
-//  Contributions by Sopan Sharma
+
 
 import Foundation
 import Security
 
-public enum FargoKeychainAccessOptions {
+public enum GrowthKeychainAccessOptions {
 
-    /**
-
-      The data in the keychain item can be accessed only while the device is unlocked by the user.
-
-      This is recommended for items that need to be accessible only while the application is in the foreground. Items with this attribute migrate to a new device when using encrypted backups.
-
-      This is the default value for keychain items added without explicitly setting an accessibility constant.
-
-      */
     case accessibleWhenUnlocked
 
-    /**
-
-      The data in the keychain item can be accessed only while the device is unlocked by the user.
-
-      This is recommended for items that need to be accessible only while the application is in the foreground. Items with this attribute do not migrate to a new device. Thus, after restoring from a backup of a different device, these items will not be present.
-
-      */
     case accessibleWhenUnlockedThisDeviceOnly
 
-    /**
-
-      The data in the keychain item cannot be accessed after a restart until the device has been unlocked once by the user.
-
-      After the first unlock, the data remains accessible until the next restart. This is recommended for items that need to be accessed by background applications. Items with this attribute migrate to a new device when using encrypted backups.
-
-      */
     case accessibleAfterFirstUnlock
-
-    /**
-
-      The data in the keychain item cannot be accessed after a restart until the device has been unlocked once by the user.
-
-      After the first unlock, the data remains accessible until the next restart. This is recommended for items that need to be accessed by background applications. Items with this attribute do not migrate to a new device. Thus, after restoring from a backup of a different device, these items will not be present.
-
-      */
+    
     case accessibleAfterFirstUnlockThisDeviceOnly
 
-    /**
-
-      The data in the keychain can only be accessed when the device is unlocked. Only available if a passcode is set on the device.
-
-      This is recommended for items that only need to be accessible while the application is in the foreground. Items with this attribute never migrate to a new device. After a backup is restored to a new device, these items are missing. No items can be stored in this class on devices without a passcode. Disabling the device passcode causes all items in this class to be deleted.
-
-      */
     case accessibleWhenPasscodeSetThisDeviceOnly
 
-    static var defaultOption: FargoKeychainAccessOptions {
+    static var defaultOption: GrowthKeychainAccessOptions {
         .accessibleWhenUnlocked
     }
 
@@ -83,12 +40,6 @@ public enum FargoKeychainAccessOptions {
 
 }
 
-/// Errors encountered when during read/write of keychain items
-///
-/// - noPassword: No password found in the Keychain.
-/// - unexpectedPasswordData: Unable to parse password data from the Keychain. Expected String but was something else.
-/// - invalidPassword: Invalid password. Expecting a valid UTF-8 String.
-/// - genericError: For a generic OSStatus which is not any of above 3 errors.
 public enum KeychainError: LocalizedError {
 
     case noPassword
@@ -164,7 +115,7 @@ public class Keychain {
     /// - Throws: `KeychainError` if it encounters any error
     public func save(value: String,
                      forKey key: String,
-                     option access: FargoKeychainAccessOptions? = nil) throws {
+                     option access: GrowthKeychainAccessOptions? = nil) throws {
         // Encode the password into an Data object.
         guard let encodedPassword = value.data(using: .utf8) else {
             throw KeychainError.invalidPassword
@@ -228,12 +179,12 @@ extension Keychain {
     private func buildQuery(service: String,
                             account: String? = nil,
                             group: String? = nil,
-                            option access: FargoKeychainAccessOptions? = nil) -> [String: Any] {
+                            option access: GrowthKeychainAccessOptions? = nil) -> [String: Any] {
         var query: [String: Any] = [:]
         query[String(kSecClass)] = kSecClassGenericPassword
         query[String(kSecAttrService)] = service
 
-        let accessOption = access?.value ?? FargoKeychainAccessOptions.defaultOption.value
+        let accessOption = access?.value ?? GrowthKeychainAccessOptions.defaultOption.value
         query[String(kSecAttrAccessible)] = accessOption
 
         if let account = account {

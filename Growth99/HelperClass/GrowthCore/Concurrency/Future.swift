@@ -1,10 +1,3 @@
-//
-//  Future.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 4/19/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 import Foundation
 

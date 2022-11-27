@@ -1,10 +1,3 @@
-//
-//  DownloadTaskOperation.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 10/3/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 

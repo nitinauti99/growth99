@@ -1,10 +1,3 @@
-//
-//  Authenticator.swift
-//  FargoNetwork
-//
-//  Created by Arun on 10/8/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 

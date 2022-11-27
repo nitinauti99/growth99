@@ -1,10 +1,3 @@
-//
-//  DataTaskOperation.swift
-//  FargoNetwork
-//
-//  Created by Arun on 9/30/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
@@ -22,7 +15,7 @@ protocol DataTaskOperationProtocol: AnyObject {
 
  class DataTaskOperation: Operation, Cancellable {
 
-    private let dataTaskLock = ReadersWriterLock(label: "com.apple.ist.remobile.fargoHTTPNetwork.dataTaskOperation")
+    private let dataTaskLock = ReadersWriterLock(label: "com.apple.ist.remobile.GrowthHTTPNetwork.dataTaskOperation")
 
     private(set) var request: URLRequest
     let completionQueue: DispatchQueue

@@ -1,9 +1,3 @@
-//
-//  CollectionDifference+Additions.swift
-//  FargoCore-iOS
-//
-//  Created by Kushal Jogi on 9/27/21.
-//
 
 @available(macOS 10.15, iOS 13, *)
 extension CollectionDifference.Change {

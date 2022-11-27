@@ -1,10 +1,3 @@
-//
-//  NetworkManager+Internal.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/30/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
@@ -14,7 +7,7 @@ extension NetworkManager {
     func internalRequest(request: Requestable,
                          completionQueue: DispatchQueue = DispatchQueue.main,
                          progressBlock: ((Progress) -> Void)? = nil,
-                         completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                         completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
         switch request.stub.behavior {
         case .never:
             switch request.task {
@@ -46,7 +39,7 @@ extension NetworkManager {
     func dataRequest(request: Requestable,
                      completionQueue: DispatchQueue = DispatchQueue.main,
                      progressBlock: ((Progress) -> Void)? = nil,
-                     completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                     completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
         let endpoint = self.endpointMapping(for: request)
         let result = self.requestMapping(for: endpoint)
 
@@ -67,7 +60,7 @@ extension NetworkManager {
 
             dataTaskOperation.completionBlock = { [weak self] in
                 guard let self = self else {
-                    completionQueue.async { completion(.failure(FargoNetworkError.encodingFailed)) }
+                    completionQueue.async { completion(.failure(GrowthNetworkError.encodingFailed)) }
                     return
                 }
 
@@ -102,7 +95,7 @@ extension NetworkManager {
                        multipartFormHeader: HTTPHeader? = nil,
                        completionQueue: DispatchQueue = DispatchQueue.main,
                        progressBlock: ((Progress) -> Void)? = nil,
-                       completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                       completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
         let endpoint = self.endpointMapping(for: request, multipartFormHeader: multipartFormHeader)
         let result = self.requestMapping(for: endpoint)
 
@@ -121,7 +114,7 @@ extension NetworkManager {
 
             uploadTaskOperation.completionBlock = { [weak self] in
                 guard let self = self else {
-                    completionQueue.async { completion(.failure(FargoNetworkError.encodingFailed)) }
+                    completionQueue.async { completion(.failure(GrowthNetworkError.encodingFailed)) }
                     return
                 }
 
@@ -154,7 +147,7 @@ extension NetworkManager {
                          downloadLocation: URL,
                          completionQueue: DispatchQueue = DispatchQueue.main,
                          progressBlock: ((Progress) -> Void)? = nil,
-                         completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                         completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
         let endpoint = self.endpointMapping(for: request)
         let result = self.requestMapping(for: endpoint)
 
@@ -172,7 +165,7 @@ extension NetworkManager {
             downloadTaskOperation.delegate = self
             downloadTaskOperation.completionBlock = { [weak self] in
                 guard let self = self else {
-                    completionQueue.async { completion(.failure(FargoNetworkError.encodingFailed)) }
+                    completionQueue.async { completion(.failure(GrowthNetworkError.encodingFailed)) }
                     return
                 }
 
@@ -200,7 +193,7 @@ extension NetworkManager {
         }
     }
 
-    private func createResponse(for request: URLRequest, operation: DataTaskOperation) -> Result<Response, FargoNetworkError> {
+    private func createResponse(for request: URLRequest, operation: DataTaskOperation) -> Result<Response, GrowthNetworkError> {
         self.remove(operation: operation)
 
         if operation.isCancelled {
@@ -214,9 +207,9 @@ extension NetworkManager {
         }
 
         if let networkError = operationResponse.error {
-            if let fargoNetworkError = networkError as? FargoNetworkError {
-                Log.error("Response Error: \(fargoNetworkError)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
-                return .failure(fargoNetworkError)
+            if let GrowthNetworkError = networkError as? GrowthNetworkError {
+                Log.error("Response Error: \(GrowthNetworkError)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
+                return .failure(GrowthNetworkError)
             } else {
                 Log.error("Response Error: \(networkError)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
                 return .failure(.unknown(networkError))
@@ -252,16 +245,16 @@ extension NetworkManager {
         return Endpoint(path: path, method: updatedRequest.method, task: updatedRequest.task, httpHeaderFields: updatedRequest.headerFields)
     }
 
-    func requestMapping(for endpoint: Endpoint) -> Result<URLRequest, FargoNetworkError> {
+    func requestMapping(for endpoint: Endpoint) -> Result<URLRequest, GrowthNetworkError> {
         do {
             let urlRequest = try endpoint.urlRequest()
             return .success(urlRequest)
-        } catch FargoNetworkError.requestMapping(let url) {
-            return .failure(FargoNetworkError.requestMapping(url))
-        } catch FargoNetworkError.parameterEncoding(let error) {
-            return .failure(FargoNetworkError.parameterEncoding(error))
+        } catch GrowthNetworkError.requestMapping(let url) {
+            return .failure(GrowthNetworkError.requestMapping(url))
+        } catch GrowthNetworkError.parameterEncoding(let error) {
+            return .failure(GrowthNetworkError.parameterEncoding(error))
         } catch {
-            return .failure(FargoNetworkError.unknown(error))
+            return .failure(GrowthNetworkError.unknown(error))
         }
     }
 

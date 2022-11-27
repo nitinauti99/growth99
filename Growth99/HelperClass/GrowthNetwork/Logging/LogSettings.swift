@@ -1,10 +1,3 @@
-//
-//  LogSettings.swift
-//  FargoNetwork
-//
-//  Created by Arun on 10/17/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 

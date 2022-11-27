@@ -1,10 +1,3 @@
-//
-//  DispatchIO.swift
-//  Dispatch3.0-only
-//
-//  Created by Robin van Dijke on 9/2/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
 
 import Dispatch
 
@@ -34,23 +27,8 @@ public extension DispatchIO {
         ioPointer.initialize(to: self)
     }
 
-    /**
-     * Defines a (intermittent) read progress
-     *
-     * The given result contains data which is read or a failure. Done is set to
-     * true when all requested data has been read
-     */
     typealias ReadProgress = (Result<DispatchData, Error>, done: Bool)
 
-    /**
-     * Reads a specific range from the IO instance. Every time a piece of the data is read, the `handler` will
-     * be called on the given `handlerQueue`.
-     *
-     * - parameters:
-     *  - range: The range to read
-     *  - queue: The queue to call the handler on
-     *  - handler: Handler which contains a ReadProgress with read data
-     */
     func read(range: Range<Int64>, handlerQueue queue: DispatchQueue, handler: @escaping (ReadProgress) -> Void) {
         self.read(offset: range.lowerBound, length: range.count, queue: queue) { done, data, error in
             let progress: ReadProgress
@@ -67,24 +45,8 @@ public extension DispatchIO {
         }
     }
 
-    /**
-     * Defines a (intermittent) write progress
-     *
-     * The given result contains data how many data is left to write or a failure. Done is set to
-     * true when all requested data has been written
-     */
     typealias WriteProgress = (Result<Int, Error>, done: Bool)
 
-    /**
-     * Writes data to this IO instance. Every time a piece of data is written, the `handler` will be called on
-     * the given `handlerQueue`.
-     *
-     * - parameters:
-     *  - data: The data to write
-     *  - offset: The offset to start writing from
-     *  - handlerQueue: The queue to call the handler on
-     *  - handler: The handler to call, contains the remaining data to write
-     */
     func write(data: DispatchData, offset: Int64, handlerQueue queue: DispatchQueue, handler: @escaping (WriteProgress) -> Void) {
         self.write(offset: offset, data: data, queue: queue) { done, data, error in
             let progress: WriteProgress

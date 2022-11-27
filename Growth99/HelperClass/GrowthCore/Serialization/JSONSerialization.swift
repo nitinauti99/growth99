@@ -1,12 +1,5 @@
-
-
 import Foundation
 
-/**
- * Errors which can be thrown during JSONSerialization
- *
- * - notSerializable: Very generic, but means that the current object/value cannot be serialized or contains an object/value which cannot be serialized
- */
 public enum JSONSerializationError: Error {
     case notSerializable
 }

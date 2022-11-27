@@ -1,9 +1,3 @@
-//
-//  Stub.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 2/9/21.
-//
 
 import Foundation
 
@@ -76,7 +70,7 @@ public enum StubResponse {
     case fileResponse(Int, URL)
 
     /// The network failed to send the request, or failed to retrieve a response (eg a timeout).
-    case networkError(FargoNetworkError)
+    case networkError(GrowthNetworkError)
 }
 
 /// - Tag: Stub

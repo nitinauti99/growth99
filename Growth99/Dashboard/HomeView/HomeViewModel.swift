@@ -37,7 +37,7 @@ class HomeViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     
     func getUserData(userId: Int) {
@@ -108,7 +108,7 @@ class HomeViewModel {
         ]
         let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
         
-        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, FargoNetworkError>) in
+        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
             
             switch result {
             case .success(let userData):

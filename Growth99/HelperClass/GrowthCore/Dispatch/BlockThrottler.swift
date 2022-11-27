@@ -1,21 +1,6 @@
-//
-//  BlockThrottler.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 5/9/16.
-//  Copyright © 2016 Apple. All rights reserved.
-//
+
 
 import Foundation
-
-/**
- * A BlockThrottler instance can be used to store blocks which take
- * `Value` as a parameter. Every time the property `value` changes the
- * blocks may be called with the new value. An internal Dispatch.Source determines
- * whether the mainthread has room left for calling the blocks. When there is no room
- * at the moment, the blocks will be executed at a later moment.
- * Note: This class is not thread-safe and should be used from a single thread
- */
 open class BlockThrottler<Value> {
 
     fileprivate let queue = DispatchQueue(kind: .serial, label: "BlockThrottler queue")

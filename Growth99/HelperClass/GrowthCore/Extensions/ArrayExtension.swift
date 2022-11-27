@@ -1,10 +1,4 @@
-//
-//  Array+Fargo.swift
-//  Fargo
-//
-//  Created by Robin van Dijke on 12/14/15.
-//  Copyright © 2015 Apple. All rights reserved.
-//
+
 
 public extension Array where Element: Equatable {
     mutating func remove(_ element: Element) {
@@ -39,7 +33,7 @@ public extension Array {
         return nil
     }
 
-    mutating func sort(by descriptors: [FargoSortDescriptor<Element>]) {
+    mutating func sort(by descriptors: [SortDescriptor<Element>]) {
         self.sort(by: { lhs, rhs in
             for descriptor in descriptors {
                 switch descriptor.comparator(lhs, rhs) {
@@ -56,7 +50,7 @@ public extension Array {
         })
     }
 
-    func sorted(by descriptors: [FargoSortDescriptor<Element>]) -> [Element] {
+    func sorted(by descriptors: [SortDescriptor<Element>]) -> [Element] {
         self.sorted(by: { lhs, rhs in
             for descriptor in descriptors {
                 switch descriptor.comparator(lhs, rhs) {

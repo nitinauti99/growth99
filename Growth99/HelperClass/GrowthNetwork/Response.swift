@@ -1,17 +1,6 @@
-//
-//  Response.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/18/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
 
-/**
- Type responsible for handling response semantics
-*/
-/// - Tag: ResponseTag
 public final class Response: CustomDebugStringConvertible {
 
     /// The status code of the response.
@@ -136,7 +125,7 @@ public extension Response {
      */
     func filter<R: RangeExpression>(statusCodes: R) throws -> Response where R.Bound == Int {
         guard statusCodes.contains(statusCode) else {
-            throw FargoNetworkError.statusCode(self)
+            throw GrowthNetworkError.statusCode(self)
         }
         return self
     }
@@ -151,7 +140,7 @@ public extension Response {
     */
     func filter(statusCodes: Set<Int>) throws -> Response {
         guard statusCodes.contains(self.statusCode) else {
-            throw FargoNetworkError.statusCode(self)
+            throw GrowthNetworkError.statusCode(self)
         }
         return self
     }
@@ -196,7 +185,7 @@ public extension Response {
             if data.count < 1 && !failsOnEmptyData {
                 return NSNull()
             }
-            throw FargoNetworkError.jsonMapping(self)
+            throw GrowthNetworkError.jsonMapping(self)
         }
     }
 
@@ -213,14 +202,14 @@ public extension Response {
             do {
                 return try JSONSerialization.data(withJSONObject: jsonObject)
             } catch {
-                throw FargoNetworkError.jsonMapping(self)
+                throw GrowthNetworkError.jsonMapping(self)
             }
         }
         let jsonData: Data
         keyPathCheck: if let keyPath = keyPath {
             guard let jsonObject = (try mapJSON(failsOnEmptyData: failsOnEmptyData) as? NSDictionary)?.value(forKeyPath: keyPath), !(jsonObject is NSNull) else {
                 if failsOnEmptyData {
-                    throw FargoNetworkError.jsonSerializationNoDataAtKeyPath(keyPath)
+                    throw GrowthNetworkError.jsonSerializationNoDataAtKeyPath(keyPath)
                 } else {
                     jsonData = data
                     break keyPathCheck
@@ -235,12 +224,12 @@ public extension Response {
                 if let data = try serializeToData(wrappedJsonObject) {
                     wrappedJsonData = data
                 } else {
-                    throw FargoNetworkError.jsonMapping(self)
+                    throw GrowthNetworkError.jsonMapping(self)
                 }
                 do {
                     return try decoder.decode(DecodableWrapper<T>.self, from: wrappedJsonData).value
                 } catch let error {
-                    throw FargoNetworkError.objectMapping(error, self)
+                    throw GrowthNetworkError.objectMapping(error, self)
                 }
             }
         } else {
@@ -256,7 +245,7 @@ public extension Response {
             }
             return try decoder.decode(T.self, from: jsonData)
         } catch let error {
-            throw FargoNetworkError.objectMapping(error, self)
+            throw GrowthNetworkError.objectMapping(error, self)
         }
     }
 

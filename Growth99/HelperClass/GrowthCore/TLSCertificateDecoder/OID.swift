@@ -1,10 +1,3 @@
-//
-//  OID.swift
-//  FargoCore
-//
-//  Created by SopanSharma on 4/9/20.
-//
-
 import Foundation
 
 // http://www.umich.edu/~x509/ssleay/asn1-oids.html

@@ -1,13 +1,5 @@
-//
-//  NetworkManager.swift
-//  FargoNetwork
-//
-//  Created by SopanSharma on 9/18/19.
-//  Copyright © 2019 Apple Inc. All rights reserved.
-//
 
 import Foundation
-
 
 /// Type responsible for managing network requests for the specified URLSession
 open class NetworkManager: NSObject {
@@ -31,7 +23,7 @@ open class NetworkManager: NSObject {
     internal let networkQueueManager = NetworkQueueManager()
 
     /// Queue responsible for read-write operation for taskToOperation property.
-    internal let taskToOperationRWLock = ReadersWriterLock(label: "com.apple.FargoHTTPNetwork.taskToOperation")
+    internal let taskToOperationRWLock = ReadersWriterLock(label: "com.apple.GrowthHTTPNetwork.taskToOperation")
 
     /// Certificate `Bundle` directory provided to grab all the certificates.
     public private(set) var pinningPolicy: PinningPolicy?
@@ -100,7 +92,7 @@ open class NetworkManager: NSObject {
     public func request(requestable: Requestable,
                         completionQueue: DispatchQueue = DispatchQueue.main,
                         progressBlock: ((Progress) -> Void)? = nil,
-                        completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                        completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
 
         var cancellable: Cancellable = CancellableWrapper()
 
@@ -150,7 +142,7 @@ open class NetworkManager: NSObject {
     public func request<T: Decodable>(requestable: Requestable,
                                       completionQueue: DispatchQueue = DispatchQueue.main,
                                       progressBlock: ((Progress) -> Void)? = nil,
-                                      completion: @escaping (Result<T, FargoNetworkError>) -> Void) -> Cancellable {
+                                      completion: @escaping (Result<T, GrowthNetworkError>) -> Void) -> Cancellable {
         self.request(requestable: requestable, completionQueue: completionQueue, progressBlock: progressBlock) { result in
             switch result {
             case .success(let response):
@@ -158,10 +150,10 @@ open class NetworkManager: NSObject {
                     let mappedResponse = try response.map(T.self)
                     completion(.success(mappedResponse))
                 } catch let error {
-                    if let fargoNetworkError = error as? FargoNetworkError {
-                        completion(.failure(fargoNetworkError))
+                    if let GrowthNetworkError = error as? GrowthNetworkError {
+                        completion(.failure(GrowthNetworkError))
                     } else {
-                        completion(.failure(FargoNetworkError.objectMapping(error, response)))
+                        completion(.failure(GrowthNetworkError.objectMapping(error, response)))
                     }
                 }
             case .failure(let error):
@@ -193,7 +185,7 @@ open class NetworkManager: NSObject {
                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                         completionQueue: DispatchQueue = DispatchQueue.main,
                         progressBlock: ((Progress) -> Void)? = nil,
-                        completion: @escaping (Result<Response, FargoNetworkError>) -> Void) -> Cancellable {
+                        completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
         let requestable = RequestableType(path: path, method: method, task: task, headerFields: headers, mode: mode, stub: stub)
 
         return self.request(requestable: requestable, completionQueue: completionQueue, progressBlock: progressBlock, completion: completion)
@@ -222,7 +214,7 @@ open class NetworkManager: NSObject {
                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                       completionQueue: DispatchQueue = DispatchQueue.main,
                                       progressBlock: ((Progress) -> Void)? = nil,
-                                      completion: @escaping (Result<T, FargoNetworkError>) -> Void) -> Cancellable {
+                                      completion: @escaping (Result<T, GrowthNetworkError>) -> Void) -> Cancellable {
         let requestable = RequestableType(path: path, method: method, task: task, headerFields: headers, mode: mode, stub: stub)
 
         return self.request(requestable: requestable, progressBlock: progressBlock, completion: completion)

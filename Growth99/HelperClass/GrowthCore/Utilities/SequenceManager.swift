@@ -1,10 +1,3 @@
-//
-//  Sequence
-//  Sequence
-//
-//  Created by Lloyd Newman on 4/21/16.
-//  Copyright © 2016 Lloyd Newman. All rights reserved.
-//
 
 import Foundation
 
