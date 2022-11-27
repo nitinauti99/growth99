@@ -21,4 +21,85 @@ struct AddTimeModel {
     let timeToHeight: CGFloat
 }
 
+struct ResponseModel : Codable {
+    let message : String?
+    let status : Int?
 
+    enum CodingKeys: String, CodingKey {
+        case message = "message"
+        case status = "status"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        status = try values.decodeIfPresent(Int.self, forKey: .status)
+    }
+
+}
+
+struct VacationParamModel: Codable {
+    let providerId: Int?
+    let clinicId: Int?
+    let vacationSchedules: [VacationSchedules]?
+    
+    func toDict() -> [String:Any] {
+        var dictionary = [String:Any]()
+        if providerId != nil {
+            dictionary["providerId"] = providerId
+        }
+        if clinicId != nil {
+            dictionary["clinicId"] = clinicId
+        }
+        if vacationSchedules != nil {
+            var arrOfDict = [[String: Any]]()
+            for item in vacationSchedules! {
+                arrOfDict.append(item.toDict())
+            }
+            dictionary["vacationSchedules"] = arrOfDict
+        }
+        return dictionary
+    }
+
+}
+
+struct VacationSchedules: Codable {
+    let startDate: String?
+    let endDate: String?
+    let time: [Time]?
+    
+    func toDict() -> [String:Any] {
+        var dictionary = [String:Any]()
+        if startDate != nil {
+            dictionary["startDate"] = startDate
+        }
+        if endDate != nil {
+            dictionary["endDate"] = endDate
+        }
+        if time != nil {
+            var arrOfDict = [[String:Any]]()
+            for item in time! {
+                arrOfDict.append(item.toDict())
+            }
+            dictionary["time"] = arrOfDict
+        }
+        return dictionary
+    }
+}
+
+
+struct Time: Codable {
+    let startTime: String?
+    let endTime: String?
+    
+    func toDict() -> [String: Any] {
+        var dictionary = [String:Any]()
+        if startTime != nil {
+            dictionary["startTime"] = startTime
+        }
+        if endTime != nil {
+            dictionary["endTime"] = endTime
+        }
+        return dictionary
+    }
+}

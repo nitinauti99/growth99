@@ -7,7 +7,12 @@
 
 import UIKit
 
-class VacationScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol VacationScheduleViewControllerCProtocol: AnyObject {
+    func apiResponseRecived(apiResponse: ResponseModel)
+    func apiErrorReceived(error: String)
+}
+
+class VacationScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, VacationScheduleViewControllerCProtocol {
 
     @IBOutlet private weak var userNameTextField: CustomTextField!
     @IBOutlet private weak var dateFromTextField: CustomTextField!
@@ -48,37 +53,56 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var addTimeBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addVacationBtnTopConstraint: NSLayoutConstraint!
 
-
+    let timePicker = UIDatePicker()
+    var vacationViewModel = VacationViewModel()
     var clinicDataArr = [String]()
     var menuSelection: [Int] = []
     var listSelection: Bool = false
     private var menuVC = DrawerViewContoller()
+    var viewModel: VacationScheduleViewControllerCProtocol?
+    var allClinicsForVacation: [Clinics]?
+    var selectedClinicId: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
+        
+        self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
+        vacationViewModel = VacationViewModel(delegate: self)
+
         dateFromTextField.tintColor = .clear
-        dateFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed))
+        dateToTextField.tintColor = .clear
+        timeFromTextField.tintColor = .clear
+        timeToTextField.tintColor = .clear
+
+        dateFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .date)
+        dateToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .date)
+        timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed2), mode: .time)
+        timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed3), mode: .time)
+
     }
     
     @objc func doneButtonPressed() {
-        if let  datePicker = dateFromTextField.inputView as? UIDatePicker {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            let todaysDate = Date()
-            datePicker.minimumDate = todaysDate
-            dateFromTextField.text = dateFormatter.string(from: datePicker.date)
-            dateFromTextField.resignFirstResponder()
-        }
+        dateFromTextField.text = vacationViewModel.dateFormatterString(textField: dateFromTextField)
+    }
+    
+    @objc func doneButtonPressed1() {
+        dateToTextField.text = vacationViewModel.dateFormatterString(textField: dateToTextField)
+    }
+    
+    @objc func doneButtonPressed2() {
+        timeFromTextField.text = vacationViewModel.timeFormatterString(textField: timeFromTextField)
+    }
+    
+    @objc func doneButtonPressed3() {
+        timeToTextField.text = vacationViewModel.timeFormatterString(textField: timeToTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        clinicDataArr = ["Home", "Orders", "Favorite Products"]
-        clinicTextLabel.text = clinicDataArr[0]
         self.listExpandHeightConstraint.constant = 31
         self.aulaSeparator.backgroundColor = .clear
     }
@@ -102,12 +126,16 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func getDataDropDown() {
-//        viewModel.getuserRolesPractices { (response, error, _) in
-//            if error == nil && response != nil {
-//                self.removeSpinner()
-//                self.dashboardTableView.reloadData()
-//            }
-//        }
+        vacationViewModel.getallClinicsforVacation { (response, error) in
+            if error == nil && response != nil {
+                self.view.HideSpinner()
+                self.allClinicsForVacation = response
+                self.clinicTextLabel.text = self.allClinicsForVacation?[0].name ?? String.blank
+                self.clinicSelectionTableView.reloadData()
+            } else {
+                self.view.HideSpinner()
+            }
+        }
     }
     
     @objc func sideMenuTapped(_ sender: UIButton) {
@@ -115,7 +143,25 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func saveVacationButtonAction(sender: UIButton) {
+        self.view.ShowSpinner()
         
+        var arrTime = [Time]()
+        arrTime.append(Time(startTime: "09:30", endTime: "08:34"))
+        let arrVacation = VacationSchedules.init(startDate: "2022-12-16 00:00:00 +0530", endDate: "2022-12-14 00:00:00 +0530", time: arrTime)
+        
+        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: [arrVacation])
+        let parameters: [String: Any]  = body.toDict()
+        vacationViewModel.sendRequestforVacation(vacationParams: parameters)
+    }
+    
+    func apiResponseRecived(apiResponse: ResponseModel) {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Vacation schedule updated sucessfully")
+    }
+    
+    func apiErrorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     @IBAction func addTimeButtonAction(sender: UIButton) {
@@ -148,19 +194,19 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func showClinicDropDown() {
-        self.listExpandHeightConstraint.constant = CGFloat(44 * clinicDataArr.count + 31)
+        self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForVacation?.count ?? 0) + 31)
         self.aulaSeparator.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
         listSelection = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clinicDataArr.count
+        return allClinicsForVacation?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCustomTableViewCell", for: indexPath) as? DropDownCustomTableViewCell else { fatalError("Unexpected Error") }
         cell.selectionStyle = .none
-        cell.lblDropDownTitle.text = clinicDataArr[indexPath.row]
+        cell.lblDropDownTitle.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
         return cell
     }
 
@@ -169,7 +215,8 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        clinicTextLabel.text = clinicDataArr[indexPath.row]
+        clinicTextLabel.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
+        selectedClinicId = allClinicsForVacation?[indexPath.row].id ?? 0
         hideClinicDropDown()
     }
     

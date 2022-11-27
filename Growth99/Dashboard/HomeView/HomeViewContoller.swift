@@ -54,6 +54,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
        

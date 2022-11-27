@@ -25,7 +25,7 @@ enum ApiRouter: URLRequestConvertible {
     case getRequestForAllClinics
     case getRequesServiceCategoriesForSelectedClinics(Array<Any>)
     case getRequesServiceSelectedCategories(Array<Any>)
-
+    case sendRequestForvacation(String, String, String, String, String, String)
 
     var stringValue: String {
         switch self {
@@ -39,6 +39,8 @@ enum ApiRouter: URLRequestConvertible {
             return ApiUrl.VerifyforgotPassword
         case .sendRequestChangePassword(_, _, _, _):
             return ApiUrl.changeUserPassword
+        case .sendRequestForvacation(_, _, _, _, _, _):
+            return ApiUrl.vacationSubmit
         case .getRequestForUserProfile(_):
             return ApiUrl.userProfile
         case .getRequestForAllClinics:
@@ -83,6 +85,18 @@ enum ApiRouter: URLRequestConvertible {
                 "oldPassword": oldPassword,
                 "newPassword": newPassword,
                 "confirmPassword": verifyNewPassword
+               ]
+           case .sendRequestForvacation(let clinicId, let providerId, let endDate, let startDate, let endTime, let startTime):
+               return [
+                "clinicId": clinicId,
+                "providerId": providerId,
+                "vacationSchedules": [
+                    ["endDate": endDate,
+                     "startDate": startDate,
+                     "time": [["endTime": endTime,
+                               "startTime": startTime]]
+                    ]
+                ]
                ]
            case .getRequestForUserProfile(_):
                return [:]
@@ -132,6 +146,16 @@ enum ApiRouter: URLRequestConvertible {
            return request
        case .sendRequestChangePassword(_, _, _, _):
            let components = URLComponents(string: ApiUrl.changeUserPassword)
+           var request = URLRequest(url: (components?.url)!)
+           request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
+           request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")
+           request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
+           let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+           request.httpBody = jsonData
+           request.method = .post
+           return request
+       case .sendRequestForvacation(_, _, _, _, _, _):
+           let components = URLComponents(string: ApiUrl.vacationSubmit)
            var request = URLRequest(url: (components?.url)!)
            request.addValue(ContentType.value.rawValue, forHTTPHeaderField: ContentType.key.rawValue)
            request.addValue("Bearer " + (UserRepository.shared.authToken ?? ""), forHTTPHeaderField: "Authorization")

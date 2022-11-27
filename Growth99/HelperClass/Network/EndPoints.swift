@@ -18,6 +18,7 @@ struct EndPoints {
     static let changePassword = "/users/change-password"
     static let serviceCategories = "/v1/clinics/serviceCategories"
     static let service = "/v1/services/serviceCategories"
+    static let vacationSendRequest = "/provider/"
 
 }
 
@@ -31,4 +32,5 @@ struct ApiUrl {
     static let changeUserPassword = EndPoints.baseURL.appending(EndPoints.changePassword)
     static let serviceCategories = EndPoints.baseURL.appending(EndPoints.serviceCategories)
     static let service = EndPoints.baseURL.appending(EndPoints.service)
+    static let vacationSubmit = EndPoints.baseURL.appending(EndPoints.vacationSendRequest)
 }

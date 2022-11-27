@@ -28,8 +28,7 @@ class LogInViewModel {
     
     func loginValidate(email: String, password: String) {
         let parameter: Parameters = ["email": email,
-                                     "password": password,
-        ]
+                                     "password": password]
         
         self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, FargoNetworkError>) in
             
@@ -62,7 +61,7 @@ extension LogInViewModel : LogInViewModelProtocol {
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
+        
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
@@ -70,7 +69,7 @@ extension LogInViewModel : LogInViewModelProtocol {
     func isValidPassword(_ password: String) -> Bool {
         let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
         let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-
+        
         if passwordPred.evaluate(with: password) && password.count >= 8 {
             return true
         }

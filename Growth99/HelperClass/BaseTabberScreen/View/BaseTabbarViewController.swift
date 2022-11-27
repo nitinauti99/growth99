@@ -15,6 +15,7 @@ class BaseTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         BaseTabbarViewController.currentInstance = self
+        
     }
 
 }

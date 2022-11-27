@@ -99,6 +99,7 @@
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
 		84B2293229314464006E8292 /* VacationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293129314464006E8292 /* VacationModel.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
+		84BE749029327CB900398CC0 /* VacationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE748F29327CB900398CC0 /* VacationViewModel.swift */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
 		84D1EE3E2923BB8300AAAF26 /* UpdateUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3D2923BB8300AAAF26 /* UpdateUserProfile.swift */; };
 		84E2C91F2923D93300F79DFA /* UserListViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2C91E2923D93200F79DFA /* UserListViewContoller.swift */; };
@@ -364,6 +365,7 @@
 		84B2293129314464006E8292 /* VacationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationModel.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
+		84BE748F29327CB900398CC0 /* VacationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationViewModel.swift; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
 		84D1EE3D2923BB8300AAAF26 /* UpdateUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserProfile.swift; sourceTree = "<group>"; };
 		84E2C91E2923D93200F79DFA /* UserListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewContoller.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 		84025F71293122F30051F51B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				84BE748F29327CB900398CC0 /* VacationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1635,6 +1638,7 @@
 				84F610E0292A71AB00B1FB69 /* Optional+CustomOperators.swift in Sources */,
 				84F610FE292A71AB00B1FB69 /* FargoDump.swift in Sources */,
 				845C3A19292276C000D934C5 /* UserRepository.swift in Sources */,
+				84BE749029327CB900398CC0 /* VacationViewModel.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* Collection+Fargo.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,

@@ -16,6 +16,7 @@ protocol ForgotPasswordViewModelProtocol {
 class ForgotPasswordViewModel {
     
     var delegate: ForgotPasswordViewControllerProtocol?
+    
     var LogInData: LoginModel?
     
     init(delegate: ForgotPasswordViewControllerProtocol? = nil) {

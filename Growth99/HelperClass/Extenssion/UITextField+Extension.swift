@@ -10,11 +10,11 @@ import UIKit
 
 extension UITextField {
 
-    func addInputViewDatePicker(target: Any, selector: Selector) {
+    func addInputViewDatePicker(target: Any, selector: Selector, mode: UIDatePicker.Mode) {
         let screenWidth = UIScreen.main.bounds.width
         //Add DatePicker as inputView
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = mode
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
         } else {
