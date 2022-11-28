@@ -9,6 +9,7 @@ import UIKit
 
 protocol VacationScheduleViewControllerCProtocol: AnyObject {
     func apiResponseRecived(apiResponse: ResponseModel)
+    func vacationsListResponseRecived(apiResponse: [VacationsListModel])
     func apiErrorReceived(error: String)
 }
 
@@ -62,6 +63,9 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     var viewModel: VacationScheduleViewControllerCProtocol?
     var allClinicsForVacation: [Clinics]?
     var selectedClinicId: Int = 0
+    let group = DispatchGroup()
+    var string: String = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,16 +125,14 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
         
         clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
         getDataDropDown()
-        mangeAddDateView(dateViewConstant: AddDateModel.init(dateFromLabelHeight: 0, dateFromHeight: 0, dateToLabelHeight: 0, dateToHeight: 0), addtimeButtonHeight: 0, addDateViewHeight: 0, addVacationBtnTop: 0)
-        manageAddTimeView(timeViewConstant: AddTimeModel(timeFromLabelHeight: 0, timeFromHeight: 0, timeToLabelHeight: 0, timeToHeight: 0), addtimeViewHeight: 0, addDateViewHeight: 0)
     }
     
     func getDataDropDown() {
         vacationViewModel.getallClinicsforVacation { (response, error) in
             if error == nil && response != nil {
-                self.view.HideSpinner()
                 self.allClinicsForVacation = response
                 self.clinicTextLabel.text = self.allClinicsForVacation?[0].name ?? String.blank
+                self.vacationViewModel.getVacationDeatils(selectedClinicId: self.allClinicsForVacation?[0].id ?? 0)
                 self.clinicSelectionTableView.reloadData()
             } else {
                 self.view.HideSpinner()
@@ -162,6 +164,31 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     func apiErrorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)
+    }
+    
+    func vacationsListResponseRecived(apiResponse: [VacationsListModel]) {
+        self.view.HideSpinner()
+        if apiResponse.count == 0 {
+            hideVacationView()
+        } else {
+            print("dfjhg \(serverToLocal(date: apiResponse[0].fromDate ?? String.blank))")
+        }
+    }
+    
+    func serverToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd 00:00:00 XXXXX"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+//        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let dateFromString = dateFormatter.date(from: date.components(separatedBy: " ").first ?? String.blank) ?? Date()
+        return dateFormatter.string(from: dateFromString)
+        
+    }
+    
+    func hideVacationView() {
+        mangeAddDateView(dateViewConstant: AddDateModel.init(dateFromLabelHeight: 0, dateFromHeight: 0, dateToLabelHeight: 0, dateToHeight: 0), addtimeButtonHeight: 0, addDateViewHeight: 0, addVacationBtnTop: 0)
+        manageAddTimeView(timeViewConstant: AddTimeModel(timeFromLabelHeight: 0, timeFromHeight: 0, timeToLabelHeight: 0, timeToHeight: 0), addtimeViewHeight: 0, addDateViewHeight: 0)
     }
     
     @IBAction func addTimeButtonAction(sender: UIButton) {
