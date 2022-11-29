@@ -19,7 +19,6 @@ struct EndPoints {
     static let serviceCategories = "/v1/clinics/serviceCategories"
     static let service = "/v1/services/serviceCategories"
     static let vacationSendRequest = "/provider/"
-
 }
 
 struct ApiUrl {
