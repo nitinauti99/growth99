@@ -28,7 +28,6 @@ protocol HomeViewModelProtocol {
 class HomeViewModel {
     var delegate: HomeViewContollerProtocool?
     var userData: UserProfile?
-    let service = NetworkingService.shared
     var allClinics: [Clinics]?
     var allserviceCategories: [Clinics]?
     var allServices: [Clinics]?
@@ -39,9 +38,10 @@ class HomeViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
-    
     func getUserData(userId: Int) {
-        ServiceManager.request(request: ApiRouter.getRequestForUserProfile(userId).urlRequest, responseType: UserProfile.self) { result in
+
+        let url = ApiUrl.userProfile.appending("\(userId)")
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<UserProfile, GrowthNetworkError>) in
             switch result {
             case .success(let userData):
                 self.userData = userData
@@ -54,7 +54,7 @@ class HomeViewModel {
     }
     
     func getallClinics(){
-        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [Clinics].self) { result in
+        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
             case .success(let allClinics):
                 self.allClinics = allClinics
@@ -109,7 +109,6 @@ class HomeViewModel {
         let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
         
         self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
-            
             switch result {
             case .success(let userData):
                 self.delegate?.profileDataUpdated()

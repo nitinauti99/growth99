@@ -16,56 +16,56 @@ struct requestModel {
 	   var parameters: [String: Any]?
 	   var headers: HTTPHeaders
 }
-class NetworkingService: NSObject {
-    
-    static let shared = NetworkingService()
-    private override init(){}
-    
-    /// api calling request using alamofire
-    func request(requestUrl: String, method: Alamofire.HTTPMethod, parameters: [String: Any]?,  headers: HTTPHeaders,  success: @escaping ((_ responseObject: AnyObject?) -> Void), failure: @escaping ((_ error: NSError?) -> Void)) {
-        
-        AF.request(requestUrl, method: method, parameters: parameters,encoding:JSONEncoding.default ,headers: headers).response { response in
-            
-            let statusCode = response.response?.statusCode
-            
-            print("statusCode: \(statusCode ?? 200)")
-            print("API request: \(response.request as Any)")
-            print("API params: \(parameters  as AnyObject)")
-            print("API response: \(response.value  as AnyObject)")
-            
-            switch response.result {
-            case .success(_ ):
-                if (statusCode == 401){
-                    // self.requestForRefreshToken(RequestModule:RequestModule, success:success, failure:failure)
-                } else {
-                    success(response.value as AnyObject?)
-                }
-                
-            case .failure(_):
-                if (statusCode == 401){
-                    // self.requestForRefreshToken(RequestModule:RequestModule, success:success, failure:failure)
-                }
-                let userInfo: [AnyHashable : Any] = [ "message" : "There was an error. Please try again later"]
-                let error =  NSError(domain:"", code:URLError.notConnectedToInternet.rawValue, userInfo:userInfo as? [String : Any])
-                success(error)
-            }
-        }
-    }
-    /// sendding common header parameter from here
-    func Headers()-> HTTPHeaders {
-        return ["Authorization" : "Bearer "+(UserRepository.shared.authToken ?? ""),
-                "Content-Type": "application/json",
-                "x-tenantid": UserRepository.shared.Xtenantid ?? ""
-        ] as HTTPHeaders
-    }
-    
-    /// sendding common header parameter from here
-    func PublicHeaders()->HTTPHeaders{
-        return ["Content-Type": "application/json"
-        ] as HTTPHeaders
-    }
-    
-}
+//class NetworkingService: NSObject {
+//    
+//    static let shared = NetworkingService()
+//    private override init(){}
+//    
+//    /// api calling request using alamofire
+//    func request(requestUrl: String, method: Alamofire.HTTPMethod, parameters: [String: Any]?,  headers: HTTPHeaders,  success: @escaping ((_ responseObject: AnyObject?) -> Void), failure: @escaping ((_ error: NSError?) -> Void)) {
+//        
+//        AF.request(requestUrl, method: method, parameters: parameters,encoding:JSONEncoding.default ,headers: headers).response { response in
+//            
+//            let statusCode = response.response?.statusCode
+//            
+//            print("statusCode: \(statusCode ?? 200)")
+//            print("API request: \(response.request as Any)")
+//            print("API params: \(parameters  as AnyObject)")
+//            print("API response: \(response.value  as AnyObject)")
+//            
+//            switch response.result {
+//            case .success(_ ):
+//                if (statusCode == 401){
+//                    // self.requestForRefreshToken(RequestModule:RequestModule, success:success, failure:failure)
+//                } else {
+//                    success(response.value as AnyObject?)
+//                }
+//                
+//            case .failure(_):
+//                if (statusCode == 401){
+//                    // self.requestForRefreshToken(RequestModule:RequestModule, success:success, failure:failure)
+//                }
+//                let userInfo: [AnyHashable : Any] = [ "message" : "There was an error. Please try again later"]
+//                let error =  NSError(domain:"", code:URLError.notConnectedToInternet.rawValue, userInfo:userInfo as? [String : Any])
+//                success(error)
+//            }
+//        }
+//    }
+////    /// sendding common header parameter from here
+////    func Headers()-> HTTPHeaders {
+////        return ["Authorization" : "Bearer "+(UserRepository.shared.authToken ?? ""),
+////                "Content-Type": "application/json",
+////                "x-tenantid": UserRepository.shared.Xtenantid ?? ""
+////        ] as HTTPHeaders
+////    }
+////
+////    /// sendding common header parameter from here
+////    func PublicHeaders()->HTTPHeaders{
+////        return ["Content-Type": "application/json"
+////        ] as HTTPHeaders
+////    }
+//    
+//}
 
 // checking internet connectivity 
 class Connectivity {

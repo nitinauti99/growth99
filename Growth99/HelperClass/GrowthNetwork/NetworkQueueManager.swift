@@ -89,5 +89,4 @@ internal class NetworkQueueManager {
         self.networkRequestOperationQueue.cancelAllOperations()
         self.safeNetworkRequestOperationQueue.cancelAllOperations()
     }
-
 }
