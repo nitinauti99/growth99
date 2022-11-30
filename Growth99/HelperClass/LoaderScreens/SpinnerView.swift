@@ -29,7 +29,7 @@ extension UIView {
     }
     
     func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-100, width: self.frame.size.width - 60, height: 50))
+        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-150, width: self.frame.size.width - 60, height: 50))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = UIFont(name: "Avenir Next Medium", size: 15)

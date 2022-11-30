@@ -44,6 +44,7 @@ class WorkingScheduleViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func setupUI() {
+        
         userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
         userNameTextField.isUserInteractionEnabled = false
         clinicTextView.layer.cornerRadius = 4.5
@@ -55,8 +56,10 @@ class WorkingScheduleViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func getDataDropDown() {
+        self.view.ShowSpinner()
         workingScheduleViewModel.getallClinicsforWorkingSchedule { (response, error) in
             if error == nil && response != nil {
+                self.view.HideSpinner()
                 self.allClinicsForWorkingSchedule = response
                 self.clinicTextLabel.text = self.allClinicsForWorkingSchedule?[0].name ?? String.blank
                 self.clinicSelectionTableView.reloadData()
@@ -67,7 +70,7 @@ class WorkingScheduleViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func setUpNavigationBar() {
-        self.navigationItem.titleView = UIImageView.navigationBarLogo()
+        self.navigationItem.title = Constant.Profile.workingScheduleTitle
         navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
     

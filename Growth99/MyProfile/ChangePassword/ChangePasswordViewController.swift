@@ -29,7 +29,7 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     func setUpNavigationBar() {
         saveButton.layer.cornerRadius = 12
         cancelButton.layer.cornerRadius = 12
-        self.navigationItem.titleView = UIImageView.navigationBarLogo()
+        self.navigationItem.title = Constant.Profile.changePasswordTitle
         navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
     

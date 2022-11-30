@@ -146,15 +146,59 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         self.view.ShowSpinner()
         
+        if selectedClinicId == 0 {
+            selectedClinicId = allClinicsForVacation?[0].id ?? 0
+        }
         var arrTime = [Time]()
-        arrTime.append(Time(startTime: "09:30", endTime: "08:34"))
-        let arrVacation = VacationSchedules.init(startDate: "2022-12-16 00:00:00 +0530", endDate: "2022-12-14 00:00:00 +0530", time: arrTime)
-        
+        arrTime.append(Time(startTime: serverToLocalTimeInput(timeString: timeFromTextField.text ?? String.blank), endTime: serverToLocalTimeInput(timeString: timeToTextField.text ?? String.blank)))
+        let arrVacation = VacationSchedules.init(startDate: serverToLocalInput(date: dateFromTextField.text ?? String.blank), endDate: serverToLocalInput(date: dateToTextField.text ?? String.blank), time: arrTime)
         let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: [arrVacation])
         let parameters: [String: Any]  = body.toDict()
         vacationViewModel.sendRequestforVacation(vacationParams: parameters)
     }
     
+    func serverToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: date! as Date)
+    }
+    
+    func serverToLocalTime(timeString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "hh:mm:ss"
+        let date = dateFormatter.date(from: timeString) ?? Date()
+        dateFormatter.dateFormat = "HH:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let date24 = dateFormatter.string(from: date)
+        return date24
+    }
+        
+    func serverToLocalInput(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: date! as Date)
+    }
+    
+    func serverToLocalTimeInput(timeString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "hh:mm a"
+        let date = dateFormatter.date(from: timeString) ?? Date()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let date24 = dateFormatter.string(from: date)
+        return date24
+    }
+  
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
         self.view.showToast(message: "Vacation schedule updated sucessfully")
@@ -170,19 +214,11 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
         if apiResponse.count == 0 {
             hideVacationView()
         } else {
-            print("dfjhg \(serverToLocal(date: apiResponse[0].fromDate ?? String.blank))")
+            dateFromTextField.text = serverToLocal(date: apiResponse[0].fromDate ?? String.blank)
+                                                   dateToTextField.text = serverToLocal(date: apiResponse[0].toDate ?? String.blank)
+            timeFromTextField.text = serverToLocalTime(timeString: apiResponse[0].userScheduleTimings?[0].timeFromDate ?? String.blank)
+            timeToTextField.text = serverToLocalTime(timeString: apiResponse[0].userScheduleTimings?[0].timeToDate ?? String.blank)
         }
-    }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd 00:00:00 XXXXX"
-        dateFormatter.calendar = Calendar(identifier: .gregorian)
-//        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        let dateFromString = dateFormatter.date(from: date.components(separatedBy: " ").first ?? String.blank) ?? Date()
-        return dateFormatter.string(from: dateFromString)
-        
     }
     
     func hideVacationView() {

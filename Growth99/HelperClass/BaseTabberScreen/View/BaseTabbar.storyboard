@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,7 +80,7 @@
         <scene sceneID="Fjo-8f-2Fu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XGg-ZP-wjA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home_tab" id="Yty-kb-Tgc"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="Yty-kb-Tgc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7lg-uU-S05">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -753,7 +753,6 @@
         <image name="calendar_check_tab" width="18" height="20"/>
         <image name="dropDown" width="15" height="24"/>
         <image name="home" width="18" height="20"/>
-        <image name="home_tab" width="18" height="20"/>
         <image name="lead_tab" width="18" height="20"/>
         <image name="lead_tab 1" width="18" height="20"/>
         <image name="menu" width="18" height="12"/>
