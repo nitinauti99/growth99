@@ -156,7 +156,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         menuCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
         menuCell.forwordArrow.transform = .identity
         if !self.hiddenSections.contains(section) {
-            menuCell.forwordArrow.transform = menuCell.forwordArrow.transform.rotated(by: CGFloat.pi/2)
+            menuCell.forwordArrow.transform = menuCell.forwordArrow.transform.rotated(by: CGFloat.pi)
         }
         menuCell.configure(mainMenuList: self.mainMenuList[section], section: section, delegate: self)
         return menuCell
