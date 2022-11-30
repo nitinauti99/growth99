@@ -34,7 +34,6 @@ class VacationViewModel {
         
     func sendRequestforVacation(vacationParams: [String: Any]) {
         let apiURL = ApiUrl.vacationSubmit.appending("\(UserRepository.shared.userId ?? 0)/vacation-schedules")
-      
         self.requestManager.request(forPath: apiURL, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
@@ -48,12 +47,7 @@ class VacationViewModel {
     
     func getVacationDeatils(selectedClinicId: Int) {
         let apiURL = ApiUrl.userProfile.appending("\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/vacation")
-        var headerFields: [HTTPHeader] {
-            [.custom(key: "x-tenantid", value: UserRepository.shared.Xtenantid ?? String.blank),
-             .custom(key: "Content-Type", value: "application/json"),
-             .authorization("Bearer "+(UserRepository.shared.authToken ?? ""))]
-        }
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: headerFields) { (result: Result<[VacationsListModel], FargoNetworkError>) in
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 self.delegate?.vacationsListResponseRecived(apiResponse: response)

@@ -14,8 +14,6 @@
 		84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */; };
 		845C3993292273B800D934C5 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3988292273B800D934C5 /* AppointmentsViewController.swift */; };
 		845C3994292273B800D934C5 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845C3989292273B800D934C5 /* AppointmentsViewController.storyboard */; };
-		845C3995292273B800D934C5 /* WorkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C398B292273B800D934C5 /* WorkingScheduleViewController.swift */; };
-		845C3996292273B800D934C5 /* WorkingScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845C398C292273B800D934C5 /* WorkingScheduleViewController.storyboard */; };
 		845C3997292273B800D934C5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C398E292273B800D934C5 /* ChangePasswordViewController.swift */; };
 		845C3998292273B800D934C5 /* ChangePasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845C398F292273B800D934C5 /* ChangePasswordViewController.storyboard */; };
 		845C39CC292276AF00D934C5 /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399D292276AF00D934C5 /* iOSDropDown.swift */; };
@@ -97,6 +95,9 @@
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
+		84B0E7ED293729CF00245135 /* WorkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0E7EB293729CF00245135 /* WorkingScheduleViewController.swift */; };
+		84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */; };
+		84B0E7F029372A3B00245135 /* WorkingScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */; };
 		84B2293229314464006E8292 /* VacationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293129314464006E8292 /* VacationModel.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
 		84BE749029327CB900398CC0 /* VacationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE748F29327CB900398CC0 /* VacationViewModel.swift */; };
@@ -251,8 +252,6 @@
 		84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCustomTableViewCell.xib; sourceTree = "<group>"; };
 		845C3988292273B800D934C5 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		845C3989292273B800D934C5 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
-		845C398B292273B800D934C5 /* WorkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewController.swift; sourceTree = "<group>"; };
-		845C398C292273B800D934C5 /* WorkingScheduleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkingScheduleViewController.storyboard; sourceTree = "<group>"; };
 		845C398E292273B800D934C5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		845C398F292273B800D934C5 /* ChangePasswordViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChangePasswordViewController.storyboard; sourceTree = "<group>"; };
 		845C399D292276AF00D934C5 /* iOSDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
@@ -343,6 +342,9 @@
 		8497A03B28FF11E200CBA26C /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		8497A03C28FF11E200CBA26C /* Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Staging.plist; sourceTree = "<group>"; };
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
+		84B0E7EB293729CF00245135 /* WorkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewController.swift; sourceTree = "<group>"; };
+		84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkingScheduleViewController.storyboard; sourceTree = "<group>"; };
+		84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewModel.swift; sourceTree = "<group>"; };
 		84B2293129314464006E8292 /* VacationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationModel.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -556,8 +558,9 @@
 		845C398A292273B800D934C5 /* Working Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				845C398B292273B800D934C5 /* WorkingScheduleViewController.swift */,
-				845C398C292273B800D934C5 /* WorkingScheduleViewController.storyboard */,
+				84B0E7E8293729CE00245135 /* Model */,
+				84B0E7EA293729CF00245135 /* View */,
+				84B0E7E9293729CE00245135 /* ViewModel */,
 			);
 			path = "Working Schedule";
 			sourceTree = "<group>";
@@ -930,6 +933,30 @@
 				848F4D8628F1C164007AC421 /* Assets.xcassets */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		84B0E7E8293729CE00245135 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84B0E7E9293729CE00245135 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84B0E7EA293729CF00245135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84B0E7EB293729CF00245135 /* WorkingScheduleViewController.swift */,
+				84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		84D10A2E2935195700959861 /* Leads */ = {
@@ -1340,6 +1367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */,
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
@@ -1358,7 +1386,6 @@
 				84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */,
 				84E2C9212923D94200F79DFA /* UserListViewContoller.storyboard in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
-				845C3996292273B800D934C5 /* WorkingScheduleViewController.storyboard in Resources */,
 				845C3A13292276C000D934C5 /* ForgotPasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
@@ -1577,7 +1604,6 @@
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
-				845C3995292273B800D934C5 /* WorkingScheduleViewController.swift in Sources */,
 				84F610CB292A71AA00B1FB69 /* Dispatch.swift in Sources */,
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
@@ -1593,6 +1619,7 @@
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
+				84B0E7F029372A3B00245135 /* WorkingScheduleViewModel.swift in Sources */,
 				845C3A17292276C000D934C5 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				84025F7E2931307F0051F51B /* DropDownCustomTableViewCell.swift in Sources */,
@@ -1655,6 +1682,7 @@
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
+				84B0E7ED293729CF00245135 /* WorkingScheduleViewController.swift in Sources */,
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,

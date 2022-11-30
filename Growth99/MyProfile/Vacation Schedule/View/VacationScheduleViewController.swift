@@ -25,7 +25,6 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet private weak var addVacationButton: UIButton!
     @IBOutlet private weak var saveVacationTimeButton: UIButton!
     @IBOutlet private weak var clinicTextView: UIView!
-
     
     @IBOutlet private weak var clinicTextLabel: UILabel!
     @IBOutlet weak var clinicSelectonButton: UIButton!
