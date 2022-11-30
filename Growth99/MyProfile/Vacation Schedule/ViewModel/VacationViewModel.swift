@@ -53,7 +53,7 @@ class VacationViewModel {
              .custom(key: "Content-Type", value: "application/json"),
              .authorization("Bearer "+(UserRepository.shared.authToken ?? ""))]
         }
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: headerFields) { (result: Result<[VacationsListModel], FargoNetworkError>) in
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: headerFields) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 self.delegate?.vacationsListResponseRecived(apiResponse: response)

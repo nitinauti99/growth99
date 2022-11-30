@@ -12,6 +12,10 @@
 		84025F76293122F30051F51B /* VacationScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84025F74293122F30051F51B /* VacationScheduleViewController.swift */; };
 		84025F7E2931307F0051F51B /* DropDownCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84025F7C2931307F0051F51B /* DropDownCustomTableViewCell.swift */; };
 		84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */; };
+		844BB33329365047003AFA52 /* LeadHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */; };
+		844BB33429365047003AFA52 /* LeadHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */; };
+		844BB337293664F9003AFA52 /* LeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BB335293664F9003AFA52 /* LeadTableViewCell.swift */; };
+		844BB338293664F9003AFA52 /* LeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844BB336293664F9003AFA52 /* LeadTableViewCell.xib */; };
 		845C3993292273B800D934C5 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3988292273B800D934C5 /* AppointmentsViewController.swift */; };
 		845C3994292273B800D934C5 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845C3989292273B800D934C5 /* AppointmentsViewController.storyboard */; };
 		845C3995292273B800D934C5 /* WorkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C398B292273B800D934C5 /* WorkingScheduleViewController.swift */; };
@@ -249,6 +253,10 @@
 		84025F74293122F30051F51B /* VacationScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VacationScheduleViewController.swift; sourceTree = "<group>"; };
 		84025F7C2931307F0051F51B /* DropDownCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCustomTableViewCell.swift; sourceTree = "<group>"; };
 		84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCustomTableViewCell.xib; sourceTree = "<group>"; };
+		844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		844BB335293664F9003AFA52 /* LeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTableViewCell.swift; sourceTree = "<group>"; };
+		844BB336293664F9003AFA52 /* LeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadTableViewCell.xib; sourceTree = "<group>"; };
 		845C3988292273B800D934C5 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		845C3989292273B800D934C5 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
 		845C398B292273B800D934C5 /* WorkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewController.swift; sourceTree = "<group>"; };
@@ -936,6 +944,10 @@
 			isa = PBXGroup;
 			children = (
 				84D10A2F29351A4B00959861 /* leadViewController.swift */,
+				844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */,
+				844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */,
+				844BB335293664F9003AFA52 /* LeadTableViewCell.swift */,
+				844BB336293664F9003AFA52 /* LeadTableViewCell.xib */,
 			);
 			path = Leads;
 			sourceTree = "<group>";
@@ -1346,6 +1358,7 @@
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				845C3A18292276C000D934C5 /* VerifyForgotPasswordViewController.storyboard in Resources */,
+				844BB33429365047003AFA52 /* LeadHeaderTableViewCell.xib in Resources */,
 				845C3A10292276C000D934C5 /* RegistrationViewController.storyboard in Resources */,
 				845C3998292273B800D934C5 /* ChangePasswordViewController.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
@@ -1362,6 +1375,7 @@
 				845C3A13292276C000D934C5 /* ForgotPasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
+				844BB338293664F9003AFA52 /* LeadTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1498,6 +1512,7 @@
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
 				84D1EE3E2923BB8300AAAF26 /* UpdateUserProfile.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
+				844BB337293664F9003AFA52 /* LeadTableViewCell.swift in Sources */,
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				845C3A11292276C000D934C5 /* RegistrationViewModel.swift in Sources */,
 				84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */,
@@ -1671,6 +1686,7 @@
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
+				844BB33329365047003AFA52 /* LeadHeaderTableViewCell.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,
 				84F610FC292A71AB00B1FB69 /* TLSCertificate.swift in Sources */,
@@ -1849,6 +1865,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1886,6 +1903,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
