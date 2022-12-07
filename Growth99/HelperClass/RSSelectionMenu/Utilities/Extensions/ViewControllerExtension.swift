@@ -30,7 +30,7 @@ import UIKit
 extension UIViewController {
     
     /// Check if ViewController is presented
-    open func isPresented() -> Bool {
+    public func isPresented() -> Bool {
         if self.presentingViewController != nil {
             return true
         } else if self.navigationController?.presentingViewController?.presentedViewController == self.navigationController  {

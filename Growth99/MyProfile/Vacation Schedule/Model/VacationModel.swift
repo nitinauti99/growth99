@@ -45,30 +45,7 @@ struct VacationsListModel: Codable {
     let fromDate: String?
     let toDate: String?
     let scheduleType: String?
-    let userScheduleTimings: [UserScheduleTimings]?
-
-    enum CodingKeys: String, CodingKey {
-
-        case id = "id"
-        case clinicId = "clinicId"
-        case providerId = "providerId"
-        case fromDate = "fromDate"
-        case toDate = "toDate"
-        case scheduleType = "scheduleType"
-        case userScheduleTimings = "userScheduleTimings"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decodeIfPresent(Int.self, forKey: .id)
-        clinicId = try values.decodeIfPresent(Int.self, forKey: .clinicId)
-        providerId = try values.decodeIfPresent(Int.self, forKey: .providerId)
-        fromDate = try values.decodeIfPresent(String.self, forKey: .fromDate)
-        toDate = try values.decodeIfPresent(String.self, forKey: .toDate)
-        scheduleType = try values.decodeIfPresent(String.self, forKey: .scheduleType)
-        userScheduleTimings = try values.decodeIfPresent([UserScheduleTimings].self, forKey: .userScheduleTimings)
-    }
-
+    var userScheduleTimings: [UserScheduleTimings]?
 }
 
 struct UserScheduleTimings: Codable {
@@ -76,23 +53,6 @@ struct UserScheduleTimings: Codable {
     let timeFromDate: String?
     let timeToDate: String?
     let days: String?
-
-    enum CodingKeys: String, CodingKey {
-
-        case id = "id"
-        case timeFromDate = "timeFromDate"
-        case timeToDate = "timeToDate"
-        case days = "days"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decodeIfPresent(Int.self, forKey: .id)
-        timeFromDate = try values.decodeIfPresent(String.self, forKey: .timeFromDate)
-        timeToDate = try values.decodeIfPresent(String.self, forKey: .timeToDate)
-        days = try values.decodeIfPresent(String.self, forKey: .days)
-    }
-
 }
 
 

@@ -1,0 +1,32 @@
+[{
+    "id": 4722,
+    "clinicId": 1765,
+    "providerId": 22955,
+    "fromDate": "2022-12-03T00:00:00.000+0000",
+    "toDate": "2022-12-06T00:00:00.000+0000",
+    "scheduleType": "vacation",
+    "userScheduleTimings": [{
+        "id": 5301,
+        "timeFromDate": "20:53:00",
+        "timeToDate": "06:50:00",
+        "days": null
+    }, {
+        "id": 5302,
+        "timeFromDate": "21:52:00",
+        "timeToDate": "11:52:00",
+        "days": null
+    }]
+}, {
+    "id": 4723,
+    "clinicId": 1765,
+    "providerId": 22955,
+    "fromDate": "2022-12-16T00:00:00.000+0000",
+    "toDate": "2022-12-21T00:00:00.000+0000",
+    "scheduleType": "vacation",
+    "userScheduleTimings": [{
+        "id": 5303,
+        "timeFromDate": "13:52:00",
+        "timeToDate": "05:52:00",
+        "days": null
+    }]
+}]
