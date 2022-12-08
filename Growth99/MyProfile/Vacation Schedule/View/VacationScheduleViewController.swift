@@ -46,18 +46,19 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     var arrayOfVacations = [VacationSchedules]()
     var arrTime = [Time]()
 
+    var isEmptyResponse: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
         
-       // self.view.ShowSpinner()
+       self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
         vacationViewModel = VacationViewModel(delegate: self)
         vacationScrollview.delegate = self
-        vacationsListModel = readJSONFromFile(fileName: "MockResponse")
+//        vacationsListModel = readJSONFromFile(fileName: "MockResponse")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,14 +79,13 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
-//        clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
+        clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
         vacationsListTableView.register(UINib(nibName: "VacationsHeadeView", bundle: nil), forHeaderFooterViewReuseIdentifier: "VacationsHeadeView")
         
-
         vacationsListTableView.register(UINib(nibName: "VacationsCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "VacationsCustomTableViewCell")
         vacationsListTableView.tableFooterView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
 
-       //getDataDropDown()
+       getDataDropDown()
     }
     
     func getDataDropDown() {
@@ -117,7 +117,12 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     func vacationsListResponseRecived(apiResponse: [VacationsListModel]) {
         self.view.HideSpinner()
         vacationsListModel = apiResponse
-      //  self.clinicSelectionTableView.reloadData()
+        if vacationsListModel?.count == 0 {
+            isEmptyResponse = true
+        } else {
+            isEmptyResponse = false
+        }
+        self.clinicSelectionTableView.reloadData()
         self.vacationsListTableView.reloadData()
     }
     
@@ -126,39 +131,39 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         if selectedClinicId == 0 {
             selectedClinicId = allClinicsForVacation?[0].id ?? 0
         }
-
-        for (key, value) in vacationsListModel?.count {
-            let cellIndexPath = IndexPath(item: key., section: indexPath.section)
-            arrayOfVacations.append(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: i.toDate ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: i.fromDate ?? String.blank), time: arrTime))
-            for j in i.userScheduleTimings ?? [] {
-                arrTime.append(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: j.timeFromDate ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: j.timeToDate ?? String.blank)))
+        
+        for indexValue in 0..<(vacationsListModel?.count ?? 0) {
+            for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
+                let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
+                if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
+                    arrTime.insert(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
+                }
             }
-        }
-        
-        if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-            vacationCell.updateTimeToTextField(with: self.vacationViewModel.timeFormatterString(textField: cell.timeToTextField))
-        }
-        
+            
+            if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
+                arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
+                arrTime.removeAll()
+            }
 
-        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
+        }
+        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: 1765, vacationSchedules: arrayOfVacations)
         let parameters: [String: Any]  = body.toDict()
         print("Params::: \(parameters)")
         vacationViewModel.sendRequestforVacation(vacationParams: parameters)
     }
     
     @IBAction func addVacationButtonAction(sender: UIButton) {
-        let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "", toDate: "", scheduleType: "", userScheduleTimings: [])
+        let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
         vacationsListModel?.append(date2)
         vacationsListTableView?.reloadData()
     }
     
     @IBAction func clinicSelectionButton(sender: UIButton) {
-        // need to work this logic
-//        if listSelection == true {
-//            hideClinicDropDown()
-//        } else {
-//            showClinicDropDown()
-//        }
+        if listSelection == true {
+            hideClinicDropDown()
+        } else {
+            showClinicDropDown()
+        }
     }
     
     func hideClinicDropDown() {
@@ -191,7 +196,5 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         }
         return []
     }
-    
-    
 }
 

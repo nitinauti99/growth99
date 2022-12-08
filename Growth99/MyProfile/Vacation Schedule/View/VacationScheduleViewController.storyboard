@@ -100,6 +100,10 @@
                                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-LL-i8W">
                                                                         <rect key="frame" x="10" y="30" width="310" height="1"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="UyW-YX-Mmh"/>
+                                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="MF2-Fe-Lb0"/>
+                                                                        </connections>
                                                                     </tableView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,6 +278,7 @@
                     </view>
                     <connections>
                         <outlet property="aulaSeparator" destination="s4F-yq-V4T" id="1BN-Do-kFW"/>
+                        <outlet property="clinicSelectionTableView" destination="UVY-LL-i8W" id="21k-GI-sX2"/>
                         <outlet property="clinicSelectonButton" destination="2xK-5g-DS9" id="UyS-vQ-pHT"/>
                         <outlet property="clinicTextLabel" destination="QJu-y1-QCl" id="QRx-W7-Wa9"/>
                         <outlet property="clinicTextView" destination="nod-cL-OlC" id="0yQ-aE-UiY"/>
@@ -291,7 +296,7 @@
     </scenes>
     <designables>
         <designable name="Nfm-bQ-EBC">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

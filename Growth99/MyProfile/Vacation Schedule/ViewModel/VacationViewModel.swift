@@ -93,7 +93,7 @@ class VacationViewModel {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "hh:mm:ss"
         let date = dateFormatter.date(from: timeString) ?? Date()
-        dateFormatter.dateFormat = "HH:mm a"
+        dateFormatter.dateFormat = "hh:mm a"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
         let date24 = dateFormatter.string(from: date)
