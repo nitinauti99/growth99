@@ -78,5 +78,47 @@ class VacationViewModel {
         timePicker.reloadInputViews()
         return formatter.string(from: timePicker.date)
     }
+    
+    func serverToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: date! as Date)
+    }
+    
+    func serverToLocalTime(timeString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "hh:mm:ss"
+        let date = dateFormatter.date(from: timeString) ?? Date()
+        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let date24 = dateFormatter.string(from: date)
+        return date24
+    }
+        
+    func serverToLocalInput(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: date! as Date)
+    }
+    
+    func serverToLocalTimeInput(timeString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "hh:mm a"
+        let date = dateFormatter.date(from: timeString) ?? Date()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let date24 = dateFormatter.string(from: date)
+        return date24
+    }
 
 }

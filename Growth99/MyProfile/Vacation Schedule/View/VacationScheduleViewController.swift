@@ -13,13 +13,9 @@ protocol VacationScheduleViewControllerCProtocol: AnyObject {
     func apiErrorReceived(error: String)
 }
 
-class VacationScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, VacationScheduleViewControllerCProtocol {
+class VacationScheduleViewController: UIViewController, VacationScheduleViewControllerCProtocol, CellSubclassDelegate {
 
     @IBOutlet private weak var userNameTextField: CustomTextField!
-    @IBOutlet private weak var dateFromTextField: CustomTextField!
-    @IBOutlet private weak var dateToTextField: CustomTextField!
-    @IBOutlet private weak var timeFromTextField: CustomTextField!
-    @IBOutlet private weak var timeToTextField: CustomTextField!
     @IBOutlet private weak var addTimeButton: UIButton!
     @IBOutlet private weak var removeTimeButton: UIButton!
     @IBOutlet private weak var addVacationButton: UIButton!
@@ -30,30 +26,12 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var clinicSelectonButton: UIButton!
     @IBOutlet weak var listExpandHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var clinicSelectionTableView: UITableView!
+    @IBOutlet weak var vacationsListTableView: UITableView!
     @IBOutlet weak var aulaSeparator: UIView!
     
-    @IBOutlet weak var addDateView: UIView!
-    @IBOutlet weak var addTimeView: UIView!
-    
-    @IBOutlet weak var addDateViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTimeViewHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var dateFromLabelHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dateFromHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var dateToLabelHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dateToHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var vacationScrollViewHight: NSLayoutConstraint!
+    @IBOutlet var vacationScrollview: UIScrollView!
 
-    @IBOutlet weak var timeFromLabelHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var timeFromHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var timeToLabelHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var timeToHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var addTimeBtnHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addVacationBtnTopConstraint: NSLayoutConstraint!
-
-    let timePicker = UIDatePicker()
     var vacationViewModel = VacationViewModel()
     var clinicDataArr = [String]()
     var menuSelection: [Int] = []
@@ -61,47 +39,26 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     private var menuVC = DrawerViewContoller()
     var viewModel: VacationScheduleViewControllerCProtocol?
     var allClinicsForVacation: [Clinics]?
+    var vacationsListModel =  [VacationsListModel]?([])
     var selectedClinicId: Int = 0
-    let group = DispatchGroup()
-    var string: String = ""
+    var headerView = VacationsHeadeView()
+    
+    var arrayOfVacations = [VacationSchedules]()
+    var arrTime = [Time]()
 
+    var isEmptyResponse: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
         
-        self.view.ShowSpinner()
+       self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
         vacationViewModel = VacationViewModel(delegate: self)
-
-        dateFromTextField.tintColor = .clear
-        dateToTextField.tintColor = .clear
-        timeFromTextField.tintColor = .clear
-        timeToTextField.tintColor = .clear
-
-        dateFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .date)
-        dateToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .date)
-        timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed2), mode: .time)
-        timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed3), mode: .time)
-
-    }
-    
-    @objc func doneButtonPressed() {
-        dateFromTextField.text = vacationViewModel.dateFormatterString(textField: dateFromTextField)
-    }
-    
-    @objc func doneButtonPressed1() {
-        dateToTextField.text = vacationViewModel.dateFormatterString(textField: dateToTextField)
-    }
-    
-    @objc func doneButtonPressed2() {
-        timeFromTextField.text = vacationViewModel.timeFormatterString(textField: timeFromTextField)
-    }
-    
-    @objc func doneButtonPressed3() {
-        timeToTextField.text = vacationViewModel.timeFormatterString(textField: timeToTextField)
+        vacationScrollview.delegate = self
+//        vacationsListModel = readJSONFromFile(fileName: "MockResponse")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,7 +80,12 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
         clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
-        getDataDropDown()
+        vacationsListTableView.register(UINib(nibName: "VacationsHeadeView", bundle: nil), forHeaderFooterViewReuseIdentifier: "VacationsHeadeView")
+        
+        vacationsListTableView.register(UINib(nibName: "VacationsCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "VacationsCustomTableViewCell")
+        vacationsListTableView.tableFooterView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
+
+       getDataDropDown()
     }
     
     func getDataDropDown() {
@@ -132,7 +94,6 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
                 self.allClinicsForVacation = response
                 self.clinicTextLabel.text = self.allClinicsForVacation?[0].name ?? String.blank
                 self.vacationViewModel.getVacationDeatils(selectedClinicId: self.allClinicsForVacation?[0].id ?? 0)
-                self.clinicSelectionTableView.reloadData()
             } else {
                 self.view.HideSpinner()
             }
@@ -141,62 +102,6 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     
     @objc func sideMenuTapped(_ sender: UIButton) {
         menuVC.revealSideMenu()
-    }
-    
-    @IBAction func saveVacationButtonAction(sender: UIButton) {
-        self.view.ShowSpinner()
-        
-        if selectedClinicId == 0 {
-            selectedClinicId = allClinicsForVacation?[0].id ?? 0
-        }
-        var arrTime = [Time]()
-        arrTime.append(Time(startTime: serverToLocalTimeInput(timeString: timeFromTextField.text ?? String.blank), endTime: serverToLocalTimeInput(timeString: timeToTextField.text ?? String.blank)))
-        let arrVacation = VacationSchedules.init(startDate: serverToLocalInput(date: dateFromTextField.text ?? String.blank), endDate: serverToLocalInput(date: dateToTextField.text ?? String.blank), time: arrTime)
-        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: [arrVacation])
-        let parameters: [String: Any]  = body.toDict()
-        vacationViewModel.sendRequestforVacation(vacationParams: parameters)
-    }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
-    }
-    
-    func serverToLocalTime(timeString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "hh:mm:ss"
-        let date = dateFormatter.date(from: timeString) ?? Date()
-        dateFormatter.dateFormat = "HH:mm a"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        let date24 = dateFormatter.string(from: date)
-        return date24
-    }
-        
-    func serverToLocalInput(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        return dateFormatter.string(from: date! as Date)
-    }
-    
-    func serverToLocalTimeInput(timeString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "hh:mm a"
-        let date = dateFormatter.date(from: timeString) ?? Date()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        let date24 = dateFormatter.string(from: date)
-        return date24
     }
   
     func apiResponseRecived(apiResponse: ResponseModel) {
@@ -211,37 +116,49 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
     
     func vacationsListResponseRecived(apiResponse: [VacationsListModel]) {
         self.view.HideSpinner()
-        if apiResponse.count == 0 {
-            hideVacationView()
+        vacationsListModel = apiResponse
+        if vacationsListModel?.count == 0 {
+            isEmptyResponse = true
         } else {
-            dateFromTextField.text = serverToLocal(date: apiResponse[0].fromDate ?? String.blank)
-                                                   dateToTextField.text = serverToLocal(date: apiResponse[0].toDate ?? String.blank)
-            timeFromTextField.text = serverToLocalTime(timeString: apiResponse[0].userScheduleTimings?[0].timeFromDate ?? String.blank)
-            timeToTextField.text = serverToLocalTime(timeString: apiResponse[0].userScheduleTimings?[0].timeToDate ?? String.blank)
+            isEmptyResponse = false
         }
+        self.clinicSelectionTableView.reloadData()
+        self.vacationsListTableView.reloadData()
     }
     
-    func hideVacationView() {
-        mangeAddDateView(dateViewConstant: AddDateModel.init(dateFromLabelHeight: 0, dateFromHeight: 0, dateToLabelHeight: 0, dateToHeight: 0), addtimeButtonHeight: 0, addDateViewHeight: 0, addVacationBtnTop: 0)
-        manageAddTimeView(timeViewConstant: AddTimeModel(timeFromLabelHeight: 0, timeFromHeight: 0, timeToLabelHeight: 0, timeToHeight: 0), addtimeViewHeight: 0, addDateViewHeight: 0)
-    }
-    
-    @IBAction func addTimeButtonAction(sender: UIButton) {
-        manageAddTimeView(timeViewConstant: AddTimeModel(timeFromLabelHeight: 21, timeFromHeight: 45, timeToLabelHeight: 21, timeToHeight: 45), addtimeViewHeight: 182, addDateViewHeight: 450)
-    }
-    
-    @IBAction func removeTimeButtonAction(sender: UIButton) {
-        manageAddTimeView(timeViewConstant: AddTimeModel(timeFromLabelHeight: 0, timeFromHeight: 0, timeToLabelHeight: 0, timeToHeight: 0), addtimeViewHeight: 0, addDateViewHeight: 270)
+    @IBAction func saveVacationButtonAction(sender: UIButton) {
+        self.view.ShowSpinner()
+        if selectedClinicId == 0 {
+            selectedClinicId = allClinicsForVacation?[0].id ?? 0
+        }
+        
+        for indexValue in 0..<(vacationsListModel?.count ?? 0) {
+            for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
+                let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
+                if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
+                    arrTime.insert(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
+                }
+            }
+            
+            if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
+                arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
+                arrTime.removeAll()
+            }
+
+        }
+        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: 1765, vacationSchedules: arrayOfVacations)
+        let parameters: [String: Any]  = body.toDict()
+        print("Params::: \(parameters)")
+        vacationViewModel.sendRequestforVacation(vacationParams: parameters)
     }
     
     @IBAction func addVacationButtonAction(sender: UIButton) {
-        mangeAddDateView(dateViewConstant: AddDateModel.init(dateFromLabelHeight: 21, dateFromHeight: 45, dateToLabelHeight: 21, dateToHeight: 45), addtimeButtonHeight: 50, addDateViewHeight: 450, addVacationBtnTop: 30)
-        manageAddTimeView(timeViewConstant: AddTimeModel(timeFromLabelHeight: 21, timeFromHeight: 45, timeToLabelHeight: 21, timeToHeight: 45), addtimeViewHeight: 182, addDateViewHeight: 450)
+        let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
+        vacationsListModel?.append(date2)
+        vacationsListTableView?.reloadData()
     }
     
-    
     @IBAction func clinicSelectionButton(sender: UIButton) {
-        // need to work this logic
         if listSelection == true {
             hideClinicDropDown()
         } else {
@@ -261,51 +178,23 @@ class VacationScheduleViewController: UIViewController, UITableViewDelegate, UIT
         listSelection = true
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allClinicsForVacation?.count ?? 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCustomTableViewCell", for: indexPath) as? DropDownCustomTableViewCell else { fatalError("Unexpected Error") }
-        cell.selectionStyle = .none
-        cell.lblDropDownTitle.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        clinicTextLabel.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
-        selectedClinicId = allClinicsForVacation?[indexPath.row].id ?? 0
-        hideClinicDropDown()
+    var vacationTableViewHeight: CGFloat {
+        vacationsListTableView.layoutIfNeeded()
+        return vacationsListTableView.contentSize.height
     }
     
-    func mangeAddDateView(dateViewConstant: AddDateModel, addtimeButtonHeight: CGFloat, addDateViewHeight: CGFloat, addVacationBtnTop: CGFloat) {
-        dateFromLabelHeightConstraint.constant = dateViewConstant.dateToLabelHeight
-        dateFromHeightConstraint.constant = dateViewConstant.dateFromHeight
-        dateToLabelHeightConstraint.constant = dateViewConstant.dateToLabelHeight
-        dateToHeightConstraint.constant = dateViewConstant.dateToHeight
-        addTimeBtnHeightConstraint.constant = addtimeButtonHeight
-        addDateViewHeightConstraint.constant = addDateViewHeight
-        addVacationBtnTopConstraint.constant = addVacationBtnTop
-    }
-    
-    func manageAddTimeView(timeViewConstant: AddTimeModel, addtimeViewHeight: CGFloat, addDateViewHeight: CGFloat) {
-        timeFromLabelHeightConstraint.constant = timeViewConstant.timeFromLabelHeight
-        timeFromHeightConstraint.constant = timeViewConstant.timeFromHeight
-        timeToLabelHeightConstraint.constant = timeViewConstant.timeToLabelHeight
-        timeToHeightConstraint.constant = timeViewConstant.timeToHeight
-        addTimeViewHeightConstraint.constant = addtimeViewHeight
-        addDateViewHeightConstraint.constant = addDateViewHeight
-    }
-
-}
-
-extension VacationScheduleViewController: UITextFieldDelegate {
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        false
+    private func readJSONFromFile(fileName: String) -> [VacationsListModel] {
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
+                let fileUrl = URL(fileURLWithPath: path)
+                let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+                let result = try JSONDecoder().decode([VacationsListModel].self, from: data)
+                return result
+            } catch {
+                print(error)
+            }
+        }
+        return []
     }
 }
+

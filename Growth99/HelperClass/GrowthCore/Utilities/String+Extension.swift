@@ -46,5 +46,4 @@ public extension String {
     func indexInt(of char: Character) -> Int? {
         return firstIndex(of: char)?.utf16Offset(in: self)
     }
-
 }
