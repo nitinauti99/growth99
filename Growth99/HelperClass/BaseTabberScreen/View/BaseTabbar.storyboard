@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,31 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-NK-FWT">
-                                <rect key="frame" x="0.0" y="162" width="414" height="651"/>
-                                <color key="backgroundColor" red="1" green="0.32313191320000001" blue="0.28954046620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="LBF-ol-tIj" id="Wmd-oW-SCD"/>
                                     <outlet property="delegate" destination="LBF-ol-tIj" id="yiH-hc-dN3"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-hv-sq7">
-                                <rect key="frame" x="308" y="92" width="96" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="qMo-zr-DFg"/>
-                                    <constraint firstAttribute="width" constant="96" id="uOz-Yu-FLv"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add Lead"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ACH-z3-qjh"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="r1Q-NK-FWT" firstAttribute="bottom" secondItem="ACH-z3-qjh" secondAttribute="bottom" id="0lJ-zw-eWm"/>
                             <constraint firstItem="ACH-z3-qjh" firstAttribute="trailing" secondItem="r1Q-NK-FWT" secondAttribute="trailing" id="7qr-fd-EMf"/>
-                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="0jf-hv-sq7" secondAttribute="bottom" constant="35" id="Jep-GW-WCz"/>
-                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="ACH-z3-qjh" secondAttribute="top" constant="70" id="kbM-rp-H1A"/>
-                            <constraint firstItem="ACH-z3-qjh" firstAttribute="trailing" secondItem="0jf-hv-sq7" secondAttribute="trailing" constant="10" id="t2h-e7-rUf"/>
+                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="ACH-z3-qjh" secondAttribute="top" id="kbM-rp-H1A"/>
                             <constraint firstItem="r1Q-NK-FWT" firstAttribute="leading" secondItem="ACH-z3-qjh" secondAttribute="leading" id="xVg-3m-gIi"/>
                         </constraints>
                     </view>

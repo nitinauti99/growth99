@@ -19,6 +19,7 @@ struct EndPoints {
     static let serviceCategories = "/v1/clinics/serviceCategories"
     static let service = "/v1/services/serviceCategories"
     static let vacationSendRequest = "/provider/"
+    static let getLeadList = "/questionnaire/contact-submissions/filter/pagination"
 }
 
 struct ApiUrl {
@@ -32,4 +33,6 @@ struct ApiUrl {
     static let serviceCategories = EndPoints.baseURL.appending(EndPoints.serviceCategories)
     static let service = EndPoints.baseURL.appending(EndPoints.service)
     static let vacationSubmit = EndPoints.baseURL.appending(EndPoints.vacationSendRequest)
+    static let getLeadList = EndPoints.baseURL.appending(EndPoints.getLeadList)
+
 }
