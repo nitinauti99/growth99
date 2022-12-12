@@ -19,14 +19,26 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJV-ZA-pla">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Date from *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-Nb-34r" userLabel="password">
-                            <rect key="frame" x="16" y="12" width="259" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-Nb-34r" userLabel="password">
+                            <rect key="frame" x="20" y="10" width="255" height="21"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Date from ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" metaFont="system" size="17"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="*">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" metaFont="system" size="17"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JU5-8c-E99" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                            <rect key="frame" x="26" y="43" width="278" height="45"/>
+                            <rect key="frame" x="30" y="41" width="270" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="pxh-4r-F5t"/>
                             </constraints>
@@ -43,19 +55,34 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                     <real key="value" value="20"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                    <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="bFS-sd-YsG"/>
                             </connections>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Date to *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ED-6z-mYd" userLabel="password">
-                            <rect key="frame" x="16" y="98" width="259" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ED-6z-mYd" userLabel="password">
+                            <rect key="frame" x="20" y="96" width="255" height="21"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Date to ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" metaFont="system" size="17"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="*">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" metaFont="system" size="17"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sa-cX-NhE" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                            <rect key="frame" x="26" y="129" width="278" height="45"/>
+                            <rect key="frame" x="30" y="127" width="270" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="qXf-DP-gj7"/>
                             </constraints>
@@ -72,13 +99,16 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                     <real key="value" value="20"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                    <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="Pic-BN-Hvi"/>
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pib-is-ago">
-                            <rect key="frame" x="16" y="190" width="120" height="50"/>
+                            <rect key="frame" x="20" y="188" width="120" height="50"/>
                             <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="4yh-tD-HXc"/>
@@ -110,23 +140,23 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.78039215689999997" green="0.93725490199999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.78039215689999997" green="0.93725490199999995" blue="1" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="1sa-cX-NhE" firstAttribute="leading" secondItem="9ED-6z-mYd" secondAttribute="leading" constant="10" id="04E-E9-7L3"/>
                         <constraint firstItem="9ED-6z-mYd" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="leading" id="0bz-xD-VuO"/>
                         <constraint firstItem="9ED-6z-mYd" firstAttribute="trailing" secondItem="Ivy-Nb-34r" secondAttribute="trailing" id="1gi-tR-Dij"/>
                         <constraint firstAttribute="trailing" secondItem="BKs-fu-m3g" secondAttribute="trailing" constant="10" id="2V4-DD-egu"/>
-                        <constraint firstAttribute="trailing" secondItem="JU5-8c-E99" secondAttribute="trailing" constant="16" id="6H2-iU-EK4"/>
+                        <constraint firstAttribute="trailing" secondItem="JU5-8c-E99" secondAttribute="trailing" constant="20" id="6H2-iU-EK4"/>
                         <constraint firstItem="Pib-is-ago" firstAttribute="top" secondItem="1sa-cX-NhE" secondAttribute="bottom" constant="16" id="7ok-vE-FVX"/>
                         <constraint firstItem="9ED-6z-mYd" firstAttribute="top" secondItem="JU5-8c-E99" secondAttribute="bottom" constant="10" id="A3x-Fn-Yxw"/>
                         <constraint firstItem="Pib-is-ago" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="leading" id="GgA-e9-fjS"/>
                         <constraint firstItem="JU5-8c-E99" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="leading" constant="10" id="Lhy-oX-oDv"/>
                         <constraint firstItem="1sa-cX-NhE" firstAttribute="trailing" secondItem="JU5-8c-E99" secondAttribute="trailing" id="Wwz-Oo-ekX"/>
                         <constraint firstItem="BKs-fu-m3g" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="trailing" constant="5" id="aR4-47-IAt"/>
-                        <constraint firstItem="Ivy-Nb-34r" firstAttribute="top" secondItem="qJV-ZA-pla" secondAttribute="top" constant="12" id="bFa-Hl-xge"/>
                         <constraint firstItem="BKs-fu-m3g" firstAttribute="top" secondItem="qJV-ZA-pla" secondAttribute="top" constant="5" id="glR-zS-DNT"/>
                         <constraint firstItem="JU5-8c-E99" firstAttribute="top" secondItem="Ivy-Nb-34r" secondAttribute="bottom" constant="10" id="hmg-OS-nVL"/>
-                        <constraint firstItem="Ivy-Nb-34r" firstAttribute="leading" secondItem="qJV-ZA-pla" secondAttribute="leading" constant="16" id="wHr-zn-KTk"/>
+                        <constraint firstItem="Ivy-Nb-34r" firstAttribute="top" secondItem="BKs-fu-m3g" secondAttribute="top" constant="5" id="wEF-5g-rGb"/>
+                        <constraint firstItem="Ivy-Nb-34r" firstAttribute="leading" secondItem="qJV-ZA-pla" secondAttribute="leading" constant="20" id="wHr-zn-KTk"/>
                         <constraint firstItem="1sa-cX-NhE" firstAttribute="top" secondItem="9ED-6z-mYd" secondAttribute="bottom" constant="10" id="wsJ-tM-FYv"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

@@ -78,6 +78,10 @@
 		845C3A21292276C000D934C5 /* HomeViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3A0B292276C000D934C5 /* HomeViewContoller.swift */; };
 		845C3A22292276C000D934C5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3A0C292276C000D934C5 /* UserProfile.swift */; };
 		845C3A23292276C000D934C5 /* ClinicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3A0D292276C000D934C5 /* ClinicsModel.swift */; };
+		845C56BB29479E4B000FC363 /* WorkingScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C56BA29479E4B000FC363 /* WorkingScheduleModel.swift */; };
+		845C56BD2947A1EE000FC363 /* WorkingScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C56BC2947A1EE000FC363 /* WorkingScheduleViewController+Extension.swift */; };
+		845C56C12947A906000FC363 /* WorkingCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C56BF2947A906000FC363 /* WorkingCustomTableViewCell.swift */; };
+		845C56C22947A906000FC363 /* WorkingCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C56C02947A906000FC363 /* WorkingCustomTableViewCell.xib */; };
 		8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */; };
 		8466F4B82944C7AB00B49893 /* AddLeadsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F4B72944C7AB00B49893 /* AddLeadsModel.swift */; };
 		847570FE293B827700C4E140 /* VacationsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847570FC293B827700C4E140 /* VacationsCustomTableViewCell.swift */; };
@@ -340,6 +344,10 @@
 		845C3A0B292276C000D934C5 /* HomeViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewContoller.swift; sourceTree = "<group>"; };
 		845C3A0C292276C000D934C5 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		845C3A0D292276C000D934C5 /* ClinicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicsModel.swift; sourceTree = "<group>"; };
+		845C56BA29479E4B000FC363 /* WorkingScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingScheduleModel.swift; sourceTree = "<group>"; };
+		845C56BC2947A1EE000FC363 /* WorkingScheduleViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkingScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
+		845C56BF2947A906000FC363 /* WorkingCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingCustomTableViewCell.swift; sourceTree = "<group>"; };
+		845C56C02947A906000FC363 /* WorkingCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkingCustomTableViewCell.xib; sourceTree = "<group>"; };
 		8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenssion.swift; sourceTree = "<group>"; };
 		8466F4B72944C7AB00B49893 /* AddLeadsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLeadsModel.swift; sourceTree = "<group>"; };
 		847570FC293B827700C4E140 /* VacationsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationsCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -612,6 +620,7 @@
 		845C398A292273B800D934C5 /* Working Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				845C56BE2947A8ED000FC363 /* CustomTableViewCell */,
 				84B0E7E8293729CE00245135 /* Model */,
 				84B0E7EA293729CF00245135 /* View */,
 				84B0E7E9293729CE00245135 /* ViewModel */,
@@ -837,6 +846,15 @@
 			path = HomeView;
 			sourceTree = "<group>";
 		};
+		845C56BE2947A8ED000FC363 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				845C56BF2947A906000FC363 /* WorkingCustomTableViewCell.swift */,
+				845C56C02947A906000FC363 /* WorkingCustomTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
 		84865D33293CC609003C8CD9 /* list */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1050,7 @@
 		84B0E7E8293729CE00245135 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				845C56BA29479E4B000FC363 /* WorkingScheduleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1048,6 +1067,7 @@
 			isa = PBXGroup;
 			children = (
 				84B0E7EB293729CF00245135 /* WorkingScheduleViewController.swift */,
+				845C56BC2947A1EE000FC363 /* WorkingScheduleViewController+Extension.swift */,
 				84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */,
 			);
 			path = View;
@@ -1482,6 +1502,7 @@
 				844BB33429365047003AFA52 /* LeadHeaderTableViewCell.xib in Resources */,
 				845C3A10292276C000D934C5 /* RegistrationViewController.storyboard in Resources */,
 				845C3998292273B800D934C5 /* ChangePasswordViewController.storyboard in Resources */,
+				845C56C22947A906000FC363 /* WorkingCustomTableViewCell.xib in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				845C3A1D292276C000D934C5 /* LogInViewController.storyboard in Resources */,
 				845C3994292273B800D934C5 /* AppointmentsViewController.storyboard in Resources */,
@@ -1679,6 +1700,7 @@
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				84E2C91F2923D93300F79DFA /* UserListViewContoller.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
+				845C56BB29479E4B000FC363 /* WorkingScheduleModel.swift in Sources */,
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
 				847570FE293B827700C4E140 /* VacationsCustomTableViewCell.swift in Sources */,
@@ -1721,6 +1743,7 @@
 				84F610FD292A71AB00B1FB69 /* TLSCertificateBlock.swift in Sources */,
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
+				845C56C12947A906000FC363 /* WorkingCustomTableViewCell.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
 				84F610CB292A71AA00B1FB69 /* Dispatch.swift in Sources */,
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
@@ -1798,6 +1821,7 @@
 				84F610C3292A71AA00B1FB69 /* JWTDecoder.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
 				845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */,
+				845C56BD2947A1EE000FC363 /* WorkingScheduleViewController+Extension.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
