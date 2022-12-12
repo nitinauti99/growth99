@@ -136,7 +136,7 @@
                                                             <constraint firstItem="gx2-X3-9Y6" firstAttribute="top" secondItem="nod-cL-OlC" secondAttribute="top" constant="7" id="vV6-c5-tmR"/>
                                                         </constraints>
                                                     </view>
-                                                    <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-zr-vgw">
+                                                    <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-zr-vgw">
                                                         <rect key="frame" x="30" y="210" width="330" height="416"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
@@ -144,7 +144,7 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="scn-dy-cC9"/>
                                                         </connections>
                                                     </tableView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFy-hw-P0X">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFy-hw-P0X">
                                                         <rect key="frame" x="30" y="646" width="330" height="100"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IgD-G2-vKT">
@@ -158,7 +158,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD VACATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-hf-1Gk">
-                                                                        <rect key="frame" x="100" y="14.666666666666629" width="120" height="21"/>
+                                                                        <rect key="frame" x="100" y="14.666666666666686" width="120" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8f-T6-fCu">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8f-T6-fCu">
                                                         <rect key="frame" x="30" y="766" width="120" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -240,7 +240,6 @@
                                                     <constraint firstItem="331-NL-OQJ" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="gnk-Yj-AQB"/>
                                                     <constraint firstItem="JUz-wm-XXo" firstAttribute="leading" secondItem="Cxy-50-6tD" secondAttribute="leading" constant="30" id="oyI-zI-Cds"/>
                                                     <constraint firstItem="mMp-zr-vgw" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="tEv-vU-szY"/>
-                                                    <constraint firstAttribute="bottom" secondItem="t8f-T6-fCu" secondAttribute="bottom" constant="50" id="tKP-NT-6ZS"/>
                                                     <constraint firstItem="331-NL-OQJ" firstAttribute="top" secondItem="Nfm-bQ-EBC" secondAttribute="bottom" constant="16" id="vKy-zm-7Hz"/>
                                                     <constraint firstItem="t8f-T6-fCu" firstAttribute="leading" secondItem="mFy-hw-P0X" secondAttribute="leading" id="wUm-gR-UR9"/>
                                                 </constraints>
@@ -296,7 +295,7 @@
     </scenes>
     <designables>
         <designable name="Nfm-bQ-EBC">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>
