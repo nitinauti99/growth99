@@ -105,7 +105,6 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             
             if isEmptyResponse != true {
                 if vacationsListModel?.count ?? 0 > 0 {
-                    manageAddTimeButton(section: section)
                     headerView.dateFromTextField.text = vacationViewModel.serverToLocal(date: vacationsListModel?[section].fromDate ?? String.blank)
                     headerView.dateToTextField.text = vacationViewModel.serverToLocal(date: vacationsListModel?[section].toDate ?? String.blank)
                 }
@@ -170,6 +169,7 @@ extension VacationScheduleViewController: UIScrollViewDelegate {
 }
 
 extension VacationScheduleViewController: VacationsHeadeViewDelegate {
+    
     func addTimeButton(view: VacationsHeadeView) {
         let section = view.tag
         let date1 = UserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: "")
@@ -180,5 +180,14 @@ extension VacationScheduleViewController: VacationsHeadeViewDelegate {
         manageAddTimeButton(section: section)
         vacationsListTableView.endUpdates()
         
+    }
+    
+    func delateSectionButtonTapped(view: VacationsHeadeView) {
+        let section = view.tag
+        vacationsListTableView.beginUpdates()
+        vacationsListModel?.remove(at: section)
+        vacationsListTableView.deleteSections([section], with: .fade)
+        vacationsListTableView.reloadData()
+        vacationsListTableView.endUpdates()
     }
 }

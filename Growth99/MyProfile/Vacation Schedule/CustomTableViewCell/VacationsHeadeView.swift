@@ -9,6 +9,7 @@ import UIKit
 
 protocol VacationsHeadeViewDelegate: AnyObject {
     func addTimeButton(view: VacationsHeadeView)
+    func delateSectionButtonTapped(view: VacationsHeadeView)
 }
 
 class VacationsHeadeView: UITableViewHeaderFooterView {
@@ -25,6 +26,10 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
     
     @IBAction func addTimeButtonAction(sender: UIButton) {
         delegate?.addTimeButton(view: self)
+    }
+    
+    @IBAction func deleteSectionButtonAction(sender: UIButton) {
+        delegate?.delateSectionButtonTapped(view: self)
     }
     
     override func awakeFromNib() {
