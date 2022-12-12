@@ -14,10 +14,14 @@ class LeadTableViewCell: UITableViewCell {
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var phoneNumber: UILabel!
     @IBOutlet private weak var createdAt: UILabel!
+    @IBOutlet private weak var subView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.subView.createBorderForView(redius: 8, width: 1)
+        self.subView.addBottomShadow(color:.gray)
+
     }
 
     func configureCell(leadVM: leadViewModelProtocol?, index: IndexPath) {
@@ -32,7 +36,6 @@ class LeadTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

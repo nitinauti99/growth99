@@ -11,7 +11,7 @@ import QuartzCore
 
 public extension UIView {
     
-    func dropShadow(color: UIColor = UIColor.borderColor,opacity: Float = 0.5, offset: CGSize = CGSize.zero, redius: CGFloat = 4, scale: Bool = true){
+    func dropShadow(color: UIColor = UIColor.borderColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, redius: CGFloat = 4, scale: Bool = true){
         self.layer.masksToBounds = false
         let cgColor: CGColor = color.cgColor
         self.layer.borderColor = cgColor

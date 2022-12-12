@@ -9,14 +9,15 @@ import Foundation
 
 protocol leadViewModelProtocol {
     func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
-    var LeadUserData: [leadModel]? { get }
+    var leadUserData: [leadModel] { get }
     func leadDataAtIndex(index: Int) -> leadModel
 
 }
 
 class leadViewModel {
     var delegate: leadViewControllerProtocol?
-    var LeadData =  [leadModel]()
+    var leadData: [leadModel] = []
+    var leadPeginationListData: [leadModel] = []
     
     init(delegate: leadViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -40,7 +41,8 @@ class leadViewModel {
             
             switch result {
             case .success(let LeadData):
-                self.LeadData = LeadData
+                self.leadData = LeadData
+                self.setPaginationData()
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -49,15 +51,22 @@ class leadViewModel {
         }
     }
     
+    func setPaginationData(){
+        if self.leadPeginationListData.count == 0 {
+            self.leadPeginationListData = self.leadData
+        } else {
+            self.leadPeginationListData.append(contentsOf: leadData)
+        }
+    }
+    
     func leadDataAtIndex(index: Int)-> leadModel {
-        return self.LeadData[index]
+        return self.leadPeginationListData[index]
     }
     
 }
 
 extension leadViewModel: leadViewModelProtocol {
-
-    var LeadUserData: [leadModel]? {
-        return self.LeadData
+    var leadUserData: [leadModel] {
+        return self.leadPeginationListData
     }
 }

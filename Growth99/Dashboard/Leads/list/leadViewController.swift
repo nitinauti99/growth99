@@ -16,14 +16,53 @@ protocol leadViewControllerProtocol: AnyObject {
 class leadViewController: UIViewController, leadViewControllerProtocol {
    
     @IBOutlet private weak var leadListTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+
     var viewModel: leadViewModelProtocol?
+    var refreshControl : UIRefreshControl!
+    var isSearch : Bool = false
+    var filteredTableData:[String] = []
+    var currentPage : Int = 0
+    var isLoadingList : Bool = true
+    var totalCount: Int? = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableView()
         self.viewModel = leadViewModel(delegate: self)
         self.getLeadList()
+        self.view.ShowSpinner()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.LeadList), name: Notification.Name("NotificationLeadList"), object: nil)
         self.setUpUI()
+        addSerchBar()
+     }
+    
+    func addSerchBar(){
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = " Search..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+    }
+    @objc func LeadList() {
+        self.view.ShowSpinner()
+        self.getLeadList()
+    }
+    func getListFromServer(_ pageNumber: Int){
+        self.view.ShowSpinner()
+        isLoadingList = false
+        viewModel?.getLeadList(page: pageNumber, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
+
+    }
+    
+    func loadMoreItemsForList(){
+        let leadCount = ((viewModel?.leadUserData.count ?? 0) - 1)
+        if leadCount == totalCount {
+            return
+        }
+         currentPage += 1
+         getListFromServer(currentPage)
      }
     
     func registerTableView() {
@@ -34,7 +73,22 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
     }
     
     func setUpUI(){
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.backgroundColor = UIColor.clear
+        self.refreshControl.tintColor = UIColor.black
+//        self.refreshControl.addTarget(self, action: #selector(pullToRefresh), for: UIControl.Event.valueChanged)
+//        self.leadListTableView.addSubview(self.refreshControl)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(creatLead))
+    }
+    
+    @IBAction func serachLeadList(sender: UIButton) {
+        self.view.ShowSpinner()
+        viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
+    }
+    
+   @objc func pullToRefresh(sender:AnyObject) {
+        self.refreshControl?.beginRefreshing()
+        self.getLeadList()
     }
     
     @objc func creatLead() {
@@ -42,12 +96,13 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.present(createLeadVC, animated: true)
     }
     
-    func getLeadList(){
-        self.view.ShowSpinner()
-        viewModel?.getLeadList(page: 0, size: 50, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
+    @objc func getLeadList(){
+        viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
     }
     
     func LeadDataRecived() {
+        totalCount = viewModel?.leadUserData.last?.totalCount
+        self.refreshControl?.endRefreshing()
         self.view.HideSpinner()
         self.leadListTableView.reloadData()
     }
@@ -64,7 +119,7 @@ extension leadViewController: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ((viewModel?.LeadUserData?.count ?? 0) - 1)
+        return ((viewModel?.leadUserData.count ?? 0) - 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,9 +135,38 @@ extension leadViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
-       // detailController?.delegate = self
         detailController.LeadData = viewModel?.leadDataAtIndex(index: indexPath.row)
         navigationController?.pushViewController(detailController, animated: true)
     }
     
 }
+
+extension leadViewController:  UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == "" {
+            self.view.ShowSpinner()
+            self.getLeadList()
+        }
+     }
+
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.view.ShowSpinner()
+        self.getLeadList()
+    }
+}
+extension leadViewController:  UIScrollViewDelegate {
+     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isLoadingList = false
+    }
+        
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if ((leadListTableView.contentOffset.y + leadListTableView.frame.size.height) >= leadListTableView.contentSize.height) {
+            self.loadMoreItemsForList()
+            self.isLoadingList = true
+        }
+    }
+}
+

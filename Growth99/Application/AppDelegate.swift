@@ -16,24 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.8 * (UIScreen.main.bounds.width))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        if #available(iOS 13.0, *) {
-            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithDefaultBackground()
-            tabBarAppearance.backgroundColor = UIColor.white
-            UITabBar.appearance().standardAppearance = tabBarAppearance
-            if #available(iOS 15.0, *) {
-                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
-        }
+        self.setUpTabBarProperty()
+        self.window = UIWindow()
         if user.isUserLoged == true {
             openHomeView()
         } else {
             setUpHomeVC()
         }
-//        UINavigationBar.appearance().tintColor = UIColor.init(hexString: "009EDE")
-//        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        UINavigationBar.appearance().titleTextAttributes = textAttributes
         return true
     }
 
@@ -51,5 +40,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabbarController
     }
     
+    func setUpTabBarProperty(){
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            tabBarAppearance.backgroundColor = UIColor.white
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+        }
+        //        UINavigationBar.appearance().tintColor = UIColor.init(hexString: "009EDE")
+        //        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //        UINavigationBar.appearance().titleTextAttributes = textAttributes
+    }
 }
 

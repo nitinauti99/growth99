@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CreateLeadViewModelProtocol {
-    func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
+    func createLead(questionnaireId: Int, patientQuestionAnswers: [String: Any])
     var LeadUserData: [leadModel]? { get }
     func leadDataAtIndex(index: Int) -> leadModel
 
@@ -24,23 +24,14 @@ class CreateLeadViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String) {
-        let urlParameter: Parameters = ["page": page,
-                                        "size": size,
-                                        "statusFilter": statusFilter,
-                                        "sourceFilter": sourceFilter,
-                                        "search": search,
-                                        "leadTagFilter": leadTagFilter
-        ]
-        var components = URLComponents(string: ApiUrl.getLeadList)
-        components?.queryItems = self.requestManager.queryItems(from: urlParameter)
-        let url = (components?.url)!
+    func createLead(questionnaireId: Int, patientQuestionAnswers:[String: Any]) {
+        let finaleUrl = ApiUrl.createLead + "\(questionnaireId)"
         
-        self.requestManager.request(forPath: url.absoluteString, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[leadModel], GrowthNetworkError>) in
-            
+        self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let LeadData):
-                self.LeadData = LeadData
+            case .success(let data):
+                print(data)
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

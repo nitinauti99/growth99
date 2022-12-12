@@ -36,15 +36,8 @@ open class NetworkManager: NSObject {
     /// Network log settings to provide varied degree of logging options.
     public var logSettings: LogSettings
 
-    /**
-     Initializer to create NetworkManager object for specified configuration, queue and bundle
-        
-     - parameters:
-         - configuration: urlSessionConfiguration object, defaults to .default.
-         - rootQueue: queue on which requests would be called, defualts to nil.
-         - authenticator: protocol to handle refresh token functionality.
-         - certificateBundle: bundle which would be used by library to look for certs for pinning, defaults to nil which means cert pinning would be off by default.
-    */
+    public var window: UIWindow?
+
     public init(configuration: URLSessionConfiguration = .default,
                 rootQueue: DispatchQueue? = nil,
                 logger: Logger = OSLogger.shared,
@@ -129,15 +122,6 @@ open class NetworkManager: NSObject {
         return cancellable
     }
 
-    /**
-     Make a fetch request for a requestable type which responds back with a ```Result``` type containing a decodable type ```<T>``` and ```Error```
-     
-     - parameters:
-         - requestable: any [Requestable](x-source-tag://RequestableTag) type to contain path, method, task, baseUrl.
-         - completionQueue: queue on which the completionBlock will be called.
-         - progressBlock: block to send the progress back for every request.
-         - completion: completion block sending back a Result type containing the decodable type requested.
-    */
     @discardableResult
     public func request<T: Decodable>(requestable: Requestable,
                                       completionQueue: DispatchQueue = DispatchQueue.main,
@@ -162,19 +146,6 @@ open class NetworkManager: NSObject {
         }
     }
 
-    /**
-     Make a fetch request by directly providing all the separate param which responds back with a ```Result``` type containing a decodable type ```Response``` and ```Error```
-    
-     - parameters:
-         - path: complete path of the request containing baseURL.
-         - method: [HTTPMethod](x-source-tag://HTTPMethodTag) type, defaults to GET.
-         - headers: [HTTPHeader](x-source-tag://HTTPHeaderTag) which would be part of the request.
-         - task: identify the [Task](x-source-tag://TaskTag) to be performed, defaults to requestPlain.
-         - mode: [Mode](x-source-tag://RequestModeTag) choose between auth, noAuth requestMode, defaults to noAuth.
-         - completionQueue: queue on which the completionBlock will be called.
-         - progressBlock: block to send the progress back for every request.
-         - completion: completion block which would contain a Result type.
-    */
     @discardableResult
     public func request(forPath path: String,
                         method: HTTPMethod = .GET,
@@ -191,19 +162,7 @@ open class NetworkManager: NSObject {
         return self.request(requestable: requestable, completionQueue: completionQueue, progressBlock: progressBlock, completion: completion)
     }
 
-    /**
-     Make a fetch request by directly providing all the separate param which responds back with a ```Result``` type containing a decodable type ```<T>``` and ```Error```
-        
-     - parameters:
-         - path: complete path of the request containing baseURL.
-         - method: [HTTPMethod](x-source-tag://HTTPMethodTag) type, defaults to GET.
-         - headers: [HTTPHeader](x-source-tag://HTTPHeaderTag) which would be part of the request.
-         - task: identify the [Task](x-source-tag://TaskTag) to be performed, defaults to requestPlain.
-         - mode: [Mode](x-source-tag://RequestModeTag) choose between auth, noAuth requestMode, defaults to noAuth.
-         - completionQueue: queue on which the completionBlock will be called.
-         - progressBlock: block to send the progress back for every request.
-         - completion: completion block sending back a Result type containing the decodable type requested.
-    */
+
     @discardableResult
     public func request<T: Decodable>(forPath path: String,
                                       method: HTTPMethod = .GET,
@@ -220,11 +179,6 @@ open class NetworkManager: NSObject {
         return self.request(requestable: requestable, progressBlock: progressBlock, completion: completion)
     }
 
-    /**
-     Cancels all queued and executing requests.
-     
-     All the different [modes](x-source-tag://RequestModeTag) of Request would be cancelled.
-    */
     public func cancelAllRequests() {
         self.networkQueueManager.cancelAllRequests()
     }

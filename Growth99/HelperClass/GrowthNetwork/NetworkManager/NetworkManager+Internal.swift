@@ -67,7 +67,13 @@ extension NetworkManager {
                 switch self.createResponse(for: dataTaskOperation.request, operation: dataTaskOperation) {
                 case .success(let networkResponse):
                     Log.info(networkResponse.responseDescription(for: self.logSettings), logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
-                    completionQueue.async { completion(.success(networkResponse)) }
+                    completionQueue.async {
+                        if networkResponse.statusCode == 403 {
+                            (UIApplication.shared.delegate as! AppDelegate).setUpHomeVC()
+                        }
+                        completion(.success(networkResponse))
+
+                    }
                 case .failure(let error):
                     completionQueue.async { completion(.failure(error)) }
                     return

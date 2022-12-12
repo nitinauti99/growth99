@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,26 +18,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-NK-FWT">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="LBF-ol-tIj" id="Wmd-oW-SCD"/>
                                     <outlet property="delegate" destination="LBF-ol-tIj" id="yiH-hc-dN3"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMo-7z-F93">
+                                <rect key="frame" x="333" y="98" width="69" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="MjN-TB-tg9"/>
+                                    <constraint firstAttribute="height" constant="31" id="yqv-2J-xwh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="serachLeadListWithSender:" destination="LBF-ol-tIj" eventType="touchUpInside" id="iQy-Yb-aoW"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UL-kV-9ZP">
+                                <rect key="frame" x="0.0" y="88" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Fsi-l2-9mH"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="LBF-ol-tIj" id="KVK-72-rWX"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ACH-z3-qjh"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="r1Q-NK-FWT" firstAttribute="bottom" secondItem="ACH-z3-qjh" secondAttribute="bottom" id="0lJ-zw-eWm"/>
+                            <constraint firstItem="ACH-z3-qjh" firstAttribute="trailing" secondItem="XMo-7z-F93" secondAttribute="trailing" constant="12" id="7TM-9T-YYu"/>
                             <constraint firstItem="ACH-z3-qjh" firstAttribute="trailing" secondItem="r1Q-NK-FWT" secondAttribute="trailing" id="7qr-fd-EMf"/>
-                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="ACH-z3-qjh" secondAttribute="top" id="kbM-rp-H1A"/>
+                            <constraint firstItem="XMo-7z-F93" firstAttribute="top" secondItem="ACH-z3-qjh" secondAttribute="top" constant="10" id="8A4-od-1jb"/>
+                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="5UL-kV-9ZP" secondAttribute="bottom" constant="10" id="Cae-AS-ACF"/>
+                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="XMo-7z-F93" secondAttribute="bottom" constant="19" id="Vkz-AZ-3u6"/>
+                            <constraint firstItem="5UL-kV-9ZP" firstAttribute="top" secondItem="5R0-uG-Pec" secondAttribute="topMargin" id="WKd-sz-Loa"/>
+                            <constraint firstItem="5UL-kV-9ZP" firstAttribute="trailing" secondItem="ACH-z3-qjh" secondAttribute="trailing" constant="-80" id="X39-nW-a4Y"/>
+                            <constraint firstItem="r1Q-NK-FWT" firstAttribute="top" secondItem="ACH-z3-qjh" secondAttribute="top" constant="60" id="kbM-rp-H1A"/>
+                            <constraint firstItem="5UL-kV-9ZP" firstAttribute="leading" secondItem="ACH-z3-qjh" secondAttribute="leading" id="tPa-si-1xZ"/>
                             <constraint firstItem="r1Q-NK-FWT" firstAttribute="leading" secondItem="ACH-z3-qjh" secondAttribute="leading" id="xVg-3m-gIi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T4I-oA-JWw"/>
                     <connections>
                         <outlet property="leadListTableView" destination="r1Q-NK-FWT" id="WSm-6p-k2r"/>
+                        <outlet property="searchBar" destination="5UL-kV-9ZP" id="UjB-Pg-lD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yS-T6-sZu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -72,7 +109,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="Yty-kb-Tgc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7lg-uU-S05">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -91,7 +128,7 @@
                     <tabBarItem key="tabBarItem" title="Leads" image="lead_tab 1" selectedImage="lead_tab" id="BS5-mA-kT4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uNk-jv-1Cx">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -661,7 +698,7 @@
                     <tabBarItem key="tabBarItem" title="Appointment" image="calendar_check_tab" id="bjP-dp-rVo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cAE-M9-Xu4">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -696,7 +733,7 @@
                     <tabBarItem key="tabBarItem" title="Notifications" image="notification_tab" id="zhT-iu-Vv6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0T7-bU-lGg">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -747,7 +784,7 @@
         <image name="menu" width="18" height="12"/>
         <image name="notification_tab" width="18" height="20"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

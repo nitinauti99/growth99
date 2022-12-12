@@ -23,6 +23,7 @@ struct leadModel: Codable {
     let Gender: String?
     let landingPage: String?
     let sourceUrl: String?
+    let totalCount: Int?
 }
 
 private enum CodingKeys : String, CodingKey {
