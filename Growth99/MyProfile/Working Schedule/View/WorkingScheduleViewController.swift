@@ -135,12 +135,18 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         self.workingListTableView.reloadData()
     }
     
-    @IBAction func saveVacationButtonAction(sender: UIButton) {
+    @IBAction func saveWorkingButtonAction(sender: UIButton) {
        
     }
     
-    @IBAction func addVacationButtonAction(sender: UIButton) {
-      
+    @IBAction func addWorkingButtonAction(sender: UIButton) {
+        let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: [""])
+        workingListModel?[0].userScheduleTimings?.append(date1)
+        workingListTableView.beginUpdates()
+        isEmptyResponse = true
+        let indexPath = IndexPath(row: 0 , section: 0)
+        workingListTableView.insertRows(at: [indexPath], with: .fade)
+        workingListTableView.endUpdates()
     }
     
     @IBAction func clinicSelectionButton(sender: UIButton) {

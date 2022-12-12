@@ -54,4 +54,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     func updateTimeToTextField(with content: String) {
         timeToTextField.text = content
     }
+    
+    @IBAction func deleteWorkingButtonAction(sender: UIButton) {
+    }
 }

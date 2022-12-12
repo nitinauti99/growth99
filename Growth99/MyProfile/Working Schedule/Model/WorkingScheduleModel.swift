@@ -14,7 +14,7 @@ struct WorkingScheduleListModel: Codable {
     let fromDate: String?
     let toDate: String?
     let scheduleType: String?
-    let userScheduleTimings: [WorkingUserScheduleTimings]?
+    var userScheduleTimings: [WorkingUserScheduleTimings]?
 }
 
 struct WorkingUserScheduleTimings: Codable {

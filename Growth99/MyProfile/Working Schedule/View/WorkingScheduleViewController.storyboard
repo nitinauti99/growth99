@@ -152,7 +152,7 @@
                                                         </constraints>
                                                     </view>
                                                     <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-zr-vgw">
-                                                        <rect key="frame" x="30" y="394" width="330" height="232"/>
+                                                        <rect key="frame" x="20" y="394" width="350" height="232"/>
                                                         <connections>
                                                             <outlet property="dataSource" destination="Y6W-OH-hqX" id="u1G-y7-RQm"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="TqB-lm-yc9"/>
@@ -191,6 +191,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va0-vs-TvZ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="100"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="addWorkingButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iVg-Xb-1kU"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -227,6 +230,9 @@
                                                                 <integer key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="saveWorkingButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TpQ-bR-qrl"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf4-Xr-0r8" userLabel="userName">
                                                         <rect key="frame" x="30" y="210" width="330" height="21"/>
@@ -325,7 +331,7 @@
                                                     <constraint firstItem="Z0G-IV-CWt" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="2IA-Mh-fJL"/>
                                                     <constraint firstItem="Z0G-IV-CWt" firstAttribute="top" secondItem="Dkv-5T-p7r" secondAttribute="bottom" constant="16" id="4ma-QR-VF9"/>
                                                     <constraint firstItem="FFz-uq-R17" firstAttribute="trailing" secondItem="Z0G-IV-CWt" secondAttribute="trailing" constant="10" id="67z-pV-3Xq"/>
-                                                    <constraint firstItem="mMp-zr-vgw" firstAttribute="trailing" secondItem="JUz-wm-XXo" secondAttribute="trailing" id="6TN-5i-Qdf"/>
+                                                    <constraint firstItem="mMp-zr-vgw" firstAttribute="trailing" secondItem="JUz-wm-XXo" secondAttribute="trailing" constant="10" id="6TN-5i-Qdf"/>
                                                     <constraint firstItem="mFy-hw-P0X" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="9gK-XA-4jc"/>
                                                     <constraint firstItem="Nfm-bQ-EBC" firstAttribute="trailing" secondItem="JUz-wm-XXo" secondAttribute="trailing" constant="10" id="BA6-G9-7j0"/>
                                                     <constraint firstItem="JUz-wm-XXo" firstAttribute="top" secondItem="Cxy-50-6tD" secondAttribute="top" constant="20" id="CoM-kH-9rE"/>
@@ -351,7 +357,7 @@
                                                     <constraint firstItem="331-NL-OQJ" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="gnk-Yj-AQB"/>
                                                     <constraint firstItem="Dkv-5T-p7r" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" constant="10" id="ngi-Dm-f2k"/>
                                                     <constraint firstItem="JUz-wm-XXo" firstAttribute="leading" secondItem="Cxy-50-6tD" secondAttribute="leading" constant="30" id="oyI-zI-Cds"/>
-                                                    <constraint firstItem="mMp-zr-vgw" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="tEv-vU-szY"/>
+                                                    <constraint firstItem="mMp-zr-vgw" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" constant="-10" id="tEv-vU-szY"/>
                                                     <constraint firstItem="331-NL-OQJ" firstAttribute="top" secondItem="Nfm-bQ-EBC" secondAttribute="bottom" constant="16" id="vKy-zm-7Hz"/>
                                                     <constraint firstItem="FFz-uq-R17" firstAttribute="leading" secondItem="Z0G-IV-CWt" secondAttribute="leading" constant="10" id="wDH-8W-79D"/>
                                                     <constraint firstItem="t8f-T6-fCu" firstAttribute="leading" secondItem="mFy-hw-P0X" secondAttribute="leading" id="wUm-gR-UR9"/>
