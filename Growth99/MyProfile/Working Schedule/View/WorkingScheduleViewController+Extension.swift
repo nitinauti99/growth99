@@ -35,14 +35,38 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingCustomTableViewCell", for: indexPath) as? WorkingCustomTableViewCell else { fatalError("Unexpected Error") }
             if isEmptyResponse == false {
-                print("Index:::: \(indexPath.section) :::: \(indexPath.row)")
+                cell.updateTextLabel(with: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days)
                 cell.updateTimeFromTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
                 cell.updateTimeToTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
             }
+            cell.delegate = self
             return cell
         }
     }
+
+    func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell) {
+        guard let indexPath = workingListTableView.indexPath(for: cell) else {
+            return
+        }
+        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
+        if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
+            vacationCell.updateTimeFromTextField(with: workingScheduleViewModel.timeFormatterString(textField: cell.timeFromTextField))
+        }
+    }
     
+    func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell) {
+        guard let indexPath = workingListTableView.indexPath(for: cell) else {
+            return
+        }
+        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
+        if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
+            vacationCell.updateTimeToTextField(with: workingScheduleViewModel.timeFormatterString(textField: cell.timeToTextField))
+        }
+    }
+    
+    func deleteWorkingSectionButtonTapped(view: WorkingCustomTableViewCell) {
+       
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isUserLoged: Bool = false
     let user = UserRepository.shared
+    let mycontext: LAContext = LAContext()
 
     var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.8 * (UIScreen.main.bounds.width))
 
@@ -54,5 +56,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         //        UINavigationBar.appearance().titleTextAttributes = textAttributes
     }
+    
+    func authenticateWithBioMetrics(completion: @escaping (Bool) -> Void) {
+        let authContext = LAContext()
+        let localizedReasonString = "Identify yourself!"
+        var authError: NSError?
+
+        if authContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) { // use & in front of authError to pass the error data back to authError variable
+            authContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: localizedReasonString) { (success, evalError) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.openHomeView()
+                        completion(true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        guard let evalErrorString = evalError?.localizedDescription else { return }
+                        self.alertUser(withMessage: evalErrorString)
+                        completion(false)
+                    }
+                }
+            }
+        } else {
+            guard let authErrorString = authError?.localizedDescription else { return }
+            alertUser(withMessage: authErrorString)
+            completion(false)
+        }
+    }
+    
+    func alertUser(withMessage message: String) {
+        let alert = UIAlertController(title: "Authentication failed!", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
 }
 

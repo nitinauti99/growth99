@@ -416,13 +416,13 @@
     </scenes>
     <designables>
         <designable name="Dkv-5T-p7r">
-            <size key="intrinsicContentSize" width="30" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
         <designable name="FFz-uq-R17">
-            <size key="intrinsicContentSize" width="30" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
         <designable name="Nfm-bQ-EBC">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

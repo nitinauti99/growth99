@@ -13,6 +13,8 @@
 		84025F7E2931307F0051F51B /* DropDownCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84025F7C2931307F0051F51B /* DropDownCustomTableViewCell.swift */; };
 		84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */; };
 		841B1B21293FB71300D408CC /* VacationScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B1B20293FB71300D408CC /* VacationScheduleViewController+Extension.swift */; };
+		84309A7329485C1700912670 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309A7129485C1600912670 /* CustomCell.swift */; };
+		84309A7429485C1700912670 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84309A7229485C1600912670 /* CustomCell.xib */; };
 		844BB33329365047003AFA52 /* LeadHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */; };
 		844BB33429365047003AFA52 /* LeadHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */; };
 		844BB337293664F9003AFA52 /* LeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BB335293664F9003AFA52 /* LeadTableViewCell.swift */; };
@@ -278,6 +280,8 @@
 		84025F7C2931307F0051F51B /* DropDownCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCustomTableViewCell.swift; sourceTree = "<group>"; };
 		84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCustomTableViewCell.xib; sourceTree = "<group>"; };
 		841B1B20293FB71300D408CC /* VacationScheduleViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VacationScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
+		84309A7129485C1600912670 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		84309A7229485C1600912670 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		844BB335293664F9003AFA52 /* LeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTableViewCell.swift; sourceTree = "<group>"; };
@@ -849,6 +853,8 @@
 		845C56BE2947A8ED000FC363 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				84309A7129485C1600912670 /* CustomCell.swift */,
+				84309A7229485C1600912670 /* CustomCell.xib */,
 				845C56BF2947A906000FC363 /* WorkingCustomTableViewCell.swift */,
 				845C56C02947A906000FC363 /* WorkingCustomTableViewCell.xib */,
 			);
@@ -1500,6 +1506,7 @@
 				845C3A18292276C000D934C5 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				84865D39293CC8A3003C8CD9 /* CreateLeadViewController.storyboard in Resources */,
 				844BB33429365047003AFA52 /* LeadHeaderTableViewCell.xib in Resources */,
+				84309A7429485C1700912670 /* CustomCell.xib in Resources */,
 				845C3A10292276C000D934C5 /* RegistrationViewController.storyboard in Resources */,
 				845C3998292273B800D934C5 /* ChangePasswordViewController.storyboard in Resources */,
 				845C56C22947A906000FC363 /* WorkingCustomTableViewCell.xib in Resources */,
@@ -1717,6 +1724,7 @@
 				845C39E1292276B000D934C5 /* UITextFieldExtension.swift in Sources */,
 				84F610E8292A71AB00B1FB69 /* Device.swift in Sources */,
 				845C39D0292276AF00D934C5 /* KeychainItemAccessibility.swift in Sources */,
+				84309A7329485C1700912670 /* CustomCell.swift in Sources */,
 				845C39E6292276B000D934C5 /* HyperLinkLabel.swift in Sources */,
 				84F610F0292A71AB00B1FB69 /* Possible.swift in Sources */,
 				845C39D1292276AF00D934C5 /* KYEmbedDrawerControllerSegue.swift in Sources */,

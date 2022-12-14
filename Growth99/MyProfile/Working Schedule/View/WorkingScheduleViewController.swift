@@ -13,39 +13,28 @@ protocol WorkingScheduleViewControllerCProtocol: AnyObject {
     func apiErrorReceived(error: String)
 }
 
-class WorkingScheduleViewController: UIViewController, WorkingScheduleViewControllerCProtocol {
+class WorkingScheduleViewController: UIViewController, WorkingScheduleViewControllerCProtocol, WorkingCellSubclassDelegate {
     
     @IBOutlet private weak var userNameTextField: CustomTextField!
     @IBOutlet weak var workingDateFromTextField: CustomTextField!
     @IBOutlet weak var workingDateToTextField: CustomTextField!
-
-    @IBOutlet private weak var addWorkingScheduleButton: UIButton!
-    @IBOutlet private weak var saveWorkingScheduleTimeButton: UIButton!
     @IBOutlet private weak var clinicTextView: UIView!
-    
     @IBOutlet weak var clinicTextLabel: UILabel!
     @IBOutlet weak var clinicSelectonButton: UIButton!
     @IBOutlet weak var listExpandHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var clinicSelectionTableView: UITableView!
     @IBOutlet weak var workingListTableView: UITableView!
     @IBOutlet weak var aulaSeparator: UIView!
-    
     @IBOutlet var workingScrollViewHight: NSLayoutConstraint!
     @IBOutlet var workingscrollview: UIScrollView!
 
     var workingScheduleViewModel = WorkingScheduleViewModel()
-    var clinicDataArr = [String]()
-    var menuSelection: [Int] = []
     var listSelection: Bool = false
     private var menuVC = DrawerViewContoller()
-    var viewModel: WorkingScheduleViewControllerCProtocol?
     var allClinicsForWorkingSchedule: [Clinics]?
     var workingListModel =  [WorkingScheduleListModel]?([])
     var selectedClinicId: Int = 0
-    
-    var arrayOfWorking = [WorkingScheduleListModel]()
-    var arrTime = [Time]()
-
+    var selectedSlots = [SelectedSlots]()
     var isEmptyResponse: Bool = false
     
     override func viewDidLoad() {
@@ -66,7 +55,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     @objc func dateFromButtonPressed() {
         workingDateFromTextField.text = workingScheduleViewModel.dateFormatterString(textField: workingDateFromTextField)
-
     }
     
     @objc func dateToButtonPressed1() {
@@ -136,7 +124,22 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     @IBAction func saveWorkingButtonAction(sender: UIButton) {
-       
+        self.view.ShowSpinner()
+        if selectedClinicId == 0 {
+            selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
+        }
+        
+            for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
+                let cellIndexPath = IndexPath(item: childIndex, section: 0)
+                if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
+                    selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank), days: ["SUNDAY, SATURDAY"]), at: childIndex)
+                }
+            }
+
+        let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
+        let parameters: [String: Any]  = body.toDict()
+        print("Params::: \(parameters)")
+        workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
     }
     
     @IBAction func addWorkingButtonAction(sender: UIButton) {

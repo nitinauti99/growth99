@@ -65,5 +65,6 @@ struct Constant {
         static let vacationTitle = "Vacantion Schedule"
         static let workingScheduleTitle = "Working Schedule"
         static let changePasswordTitle = "Change Password"
+        static let workingSchedule = "working"
     }
 }

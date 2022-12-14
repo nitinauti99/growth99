@@ -146,7 +146,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             }
 
         }
-        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: 1765, vacationSchedules: arrayOfVacations)
+        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
         let parameters: [String: Any]  = body.toDict()
         print("Params::: \(parameters)")
         vacationViewModel.sendRequestforVacation(vacationParams: parameters)

@@ -33,7 +33,7 @@ class WorkingScheduleViewModel {
     }
         
     func sendRequestforWorkingSchedule(vacationParams: [String: Any]) {
-        let apiURL = ApiUrl.vacationSubmit.appending("\(UserRepository.shared.userId ?? 0)/vacation-schedules")
+        let apiURL = ApiUrl.vacationSubmit.appending("\(UserRepository.shared.userId ?? 0)/schedules")
         self.requestManager.request(forPath: apiURL, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
@@ -88,6 +88,25 @@ class WorkingScheduleViewModel {
         return dateFormatter.string(from: date! as Date)
     }
     
+    
+    func serverToLocalInput(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: date! as Date)
+    }
+    
+    func serverToLocalInputWorking(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter.string(from: date! as Date)
+    }
+    
     func serverToLocalTime(timeString: String) -> String {
         let inFormatter = DateFormatter()
         inFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -101,16 +120,6 @@ class WorkingScheduleViewModel {
 
         let date = inFormatter.date(from: timeString) ?? Date()
         return outFormatter.string(from: date)
-    }
-    
-    
-    func serverToLocalInput(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        return dateFormatter.string(from: date! as Date)
     }
     
     func serverToLocalTimeInput(timeString: String) -> String {
@@ -127,3 +136,32 @@ class WorkingScheduleViewModel {
 
 }
 
+
+class ViewModelItem {
+    private var item: WorkingDaysModel
+    var isSelected = false
+    
+    var title: String {
+        return item.title
+    }
+    
+    init(item: WorkingDaysModel) {
+        self.item = item
+    }
+}
+
+class WorkingDaysViewModel: NSObject {
+    
+    let daysArray = [WorkingDaysModel(title: "Monday"), WorkingDaysModel(title: "Tuesday"), WorkingDaysModel(title: "Wednasday"), WorkingDaysModel(title: "Thursday"), WorkingDaysModel(title: "Friday"), WorkingDaysModel(title: "Saturday"), WorkingDaysModel(title: "Sunday")]
+
+    var items = [ViewModelItem]()
+    
+    var selectedItems: [ViewModelItem] {
+        return items.filter { return $0.isSelected }
+    }
+    
+    override init() {
+        super.init()
+        items = daysArray.map { ViewModelItem(item: $0) }
+    }
+}
