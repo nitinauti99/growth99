@@ -147,7 +147,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         workingListModel?[0].userScheduleTimings?.append(date1)
         workingListTableView.beginUpdates()
         isEmptyResponse = true
-        let indexPath = IndexPath(row: 0 , section: 0)
+        let indexPath = IndexPath(row: (workingListModel?[0].userScheduleTimings?.count ?? 0) - 1, section: 0)
         workingListTableView.insertRows(at: [indexPath], with: .fade)
         workingListTableView.endUpdates()
     }
