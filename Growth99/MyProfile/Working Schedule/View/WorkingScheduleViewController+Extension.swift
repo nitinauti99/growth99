@@ -39,9 +39,19 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
                 cell.updateTimeFromTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
                 cell.updateTimeToTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
             }
+            cell.buttoneRemoveDaysTapCallback = {
+                self.deleteDaysRow(selectedSection: indexPath, selectedIndex: indexPath.row)
+            }
             cell.delegate = self
             return cell
         }
+    }
+    
+    @objc func deleteDaysRow(selectedSection: IndexPath, selectedIndex: Int) {
+        workingListTableView.beginUpdates()
+        workingListModel?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
+        workingListTableView.deleteRows(at: [selectedSection], with: .fade)
+        workingListTableView.endUpdates()
     }
 
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell) {
@@ -62,10 +72,6 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
             vacationCell.updateTimeToTextField(with: workingScheduleViewModel.timeFormatterString(textField: cell.timeToTextField))
         }
-    }
-    
-    func deleteWorkingSectionButtonTapped(view: WorkingCustomTableViewCell) {
-       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

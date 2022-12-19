@@ -11,7 +11,6 @@ import UIKit
 protocol WorkingCellSubclassDelegate: AnyObject {
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell)
     func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell)
-    func deleteWorkingSectionButtonTapped(view: WorkingCustomTableViewCell)
 }
 
 class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -29,6 +28,8 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     var workingListSelection: Bool = false
     var userScheduleTimings: [UserScheduleTimings]?
     var daysViewModel = WorkingDaysViewModel()
+    
+    var buttoneRemoveDaysTapCallback: () -> ()  = { }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,7 +73,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
     
     @IBAction func deleteWorkingButtonAction(sender: UIButton) {
-        delegate?.deleteWorkingSectionButtonTapped(view: self)
+        buttoneRemoveDaysTapCallback()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,20 +104,25 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
     
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        string.removeAll()
         daysViewModel.items[indexPath.row].isSelected = true
-        for i in daysViewModel.selectedItems {
-            string.append("\(i.title), ")
-            if daysViewModel.selectedItems.count > 3 {
-                workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
-            } else {
-                workingClinicTextLabel.text = string
-            }
+        if daysViewModel.selectedItems.count == 0 {
+            workingClinicTextLabel.text = "Select day"
+        } else if daysViewModel.selectedItems.count > 3 {
+            workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
+        } else {
+            workingClinicTextLabel.text = daysViewModel.selectedItems.map({$0.title}).joined(separator: ", ")
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         daysViewModel.items[indexPath.row].isSelected = false
+        if daysViewModel.selectedItems.count == 0 {
+            workingClinicTextLabel.text = "Select day"
+        } else if daysViewModel.selectedItems.count > 3 {
+            workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
+        } else {
+            workingClinicTextLabel.text = daysViewModel.selectedItems.map({$0.title}).joined(separator: ", ")
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
