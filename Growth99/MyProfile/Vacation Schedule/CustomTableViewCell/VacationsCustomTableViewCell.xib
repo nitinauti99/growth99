@@ -22,17 +22,29 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-Bo-lqL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time from *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-vN-wte" userLabel="password">
-                                <rect key="frame" x="16" y="10" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-vN-wte" userLabel="password">
+                                <rect key="frame" x="20" y="10" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="z6A-jl-bYt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Time from ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="*">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZZ-Mm-RJd" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="41" width="278" height="45"/>
+                                <rect key="frame" x="30" y="41" width="270" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="1e7-EO-k2o"/>
                                 </constraints>
@@ -49,22 +61,37 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="b4N-gw-dU5" id="9oA-Il-UaJ"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time to *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-G7-7ED" userLabel="password">
-                                <rect key="frame" x="16" y="96" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-G7-7ED" userLabel="password">
+                                <rect key="frame" x="20" y="96" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="j6w-4l-V6Y"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Time to ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="*">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72s-jM-X3a" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="127" width="278" height="45"/>
+                                <rect key="frame" x="30" y="127" width="270" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DIP-Ry-qmr"/>
                                 </constraints>
@@ -81,13 +108,16 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="b4N-gw-dU5" id="8J3-3Y-tfX"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c96-4m-krF">
-                                <rect key="frame" x="16" y="192" width="120" height="50"/>
+                                <rect key="frame" x="20" y="192" width="120" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XpC-2y-0zW"/>
@@ -107,7 +137,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87W-6p-6xI">
-                                <rect key="frame" x="163" y="192" width="120" height="50"/>
+                                <rect key="frame" x="150" y="192" width="120" height="50"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="pfO-dq-StM"/>
@@ -127,12 +157,12 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hcN-Pd-MOW"/>
-                        <color key="backgroundColor" red="0.7803921568627451" green="0.93725490196078431" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.7803921568627451" green="0.93725490196078431" blue="1" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tZZ-Mm-RJd" firstAttribute="top" secondItem="Tzx-vN-wte" secondAttribute="bottom" constant="10" id="56W-Fq-odi"/>
-                            <constraint firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="16" id="9cd-7L-39Y"/>
+                            <constraint firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="20" id="9cd-7L-39Y"/>
                             <constraint firstItem="tZZ-Mm-RJd" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" constant="10" id="GO0-72-dcV"/>
-                            <constraint firstItem="87W-6p-6xI" firstAttribute="leading" secondItem="c96-4m-krF" secondAttribute="trailing" constant="27" id="Hgd-Ek-hLU"/>
+                            <constraint firstItem="87W-6p-6xI" firstAttribute="leading" secondItem="c96-4m-krF" secondAttribute="trailing" constant="10" id="Hgd-Ek-hLU"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="JpJ-Xi-Mng"/>
                             <constraint firstItem="87W-6p-6xI" firstAttribute="height" secondItem="c96-4m-krF" secondAttribute="height" id="KCm-rw-bxW"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="top" secondItem="aQy-Bo-lqL" secondAttribute="top" constant="10" id="Qdr-zm-tc4"/>
@@ -140,7 +170,7 @@
                             <constraint firstItem="72s-jM-X3a" firstAttribute="top" secondItem="Wvb-G7-7ED" secondAttribute="bottom" constant="10" id="UNA-zI-QIr"/>
                             <constraint firstItem="87W-6p-6xI" firstAttribute="top" secondItem="c96-4m-krF" secondAttribute="top" id="XxA-i5-ueL"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="leading" secondItem="Wvb-G7-7ED" secondAttribute="leading" constant="10" id="dV5-7Y-FEU"/>
-                            <constraint firstItem="Tzx-vN-wte" firstAttribute="leading" secondItem="aQy-Bo-lqL" secondAttribute="leading" constant="16" id="md3-RP-rFW"/>
+                            <constraint firstItem="Tzx-vN-wte" firstAttribute="leading" secondItem="aQy-Bo-lqL" secondAttribute="leading" constant="20" id="md3-RP-rFW"/>
                             <constraint firstAttribute="height" constant="260" id="nB6-YM-20P"/>
                             <constraint firstItem="c96-4m-krF" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="oVJ-kC-fyC"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="trailing" secondItem="Wvb-G7-7ED" secondAttribute="trailing" id="ryH-2o-J5O"/>

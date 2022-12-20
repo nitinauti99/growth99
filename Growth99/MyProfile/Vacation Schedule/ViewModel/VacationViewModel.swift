@@ -89,17 +89,21 @@ class VacationViewModel {
     }
     
     func serverToLocalTime(timeString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "hh:mm:ss"
-        let date = dateFormatter.date(from: timeString) ?? Date()
-        dateFormatter.dateFormat = "hh:mm a"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        let date24 = dateFormatter.string(from: date)
-        return date24
+        let inFormatter = DateFormatter()
+        inFormatter.locale = Locale(identifier: "en_US_POSIX")
+        inFormatter.dateFormat = "HH:mm:ss"
+
+        let outFormatter = DateFormatter()
+        outFormatter.locale = Locale(identifier: "en_US_POSIX")
+        outFormatter.dateFormat = "hh:mm a"
+        outFormatter.amSymbol = "AM"
+        outFormatter.pmSymbol = "PM"
+
+        let date = inFormatter.date(from: timeString) ?? Date()
+        return outFormatter.string(from: date)
     }
-        
+    
+    
     func serverToLocalInput(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")

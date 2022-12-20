@@ -101,12 +101,12 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
-            self.tableView.insertRows(at: indexPathsForSection(), with: .fade)
+            self.tableView.insertRows(at: indexPathsForSection(), with: .none)
         } else {
             self.hiddenSections.insert(section)
-            self.tableView.deleteRows(at: indexPathsForSection(), with: .fade)
+            self.tableView.deleteRows(at: indexPathsForSection(), with: .none)
         }
-        self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+        self.tableView.reloadSections(IndexSet(integer: section), with: .none)
         self.tableView.endUpdates()
         self.tableView.reloadData()
     }
@@ -177,10 +177,14 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         return 44
     }
     
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         self.tableView.beginUpdates()
-        tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .fade)
+        tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .none)
         tableView.endUpdates()
         print("index section \(indexPath.section) and \(indexPath.row)")
         if indexPath.section == 0 {

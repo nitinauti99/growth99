@@ -22,7 +22,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     @IBOutlet private weak var saveVacationTimeButton: UIButton!
     @IBOutlet private weak var clinicTextView: UIView!
     
-    @IBOutlet private weak var clinicTextLabel: UILabel!
+    @IBOutlet weak var clinicTextLabel: UILabel!
     @IBOutlet weak var clinicSelectonButton: UIButton!
     @IBOutlet weak var listExpandHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var clinicSelectionTableView: UITableView!
@@ -46,7 +46,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     var arrayOfVacations = [VacationSchedules]()
     var arrTime = [Time]()
 
-    var isEmptyResponse: Bool = true
+    var isEmptyResponse: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +146,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             }
 
         }
-        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: 1765, vacationSchedules: arrayOfVacations)
+        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
         let parameters: [String: Any]  = body.toDict()
         print("Params::: \(parameters)")
         vacationViewModel.sendRequestforVacation(vacationParams: parameters)
@@ -155,6 +155,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     @IBAction func addVacationButtonAction(sender: UIButton) {
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
         vacationsListModel?.append(date2)
+        isEmptyResponse = true
         vacationsListTableView?.reloadData()
     }
     
@@ -181,20 +182,6 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     var vacationTableViewHeight: CGFloat {
         vacationsListTableView.layoutIfNeeded()
         return vacationsListTableView.contentSize.height
-    }
-    
-    private func readJSONFromFile(fileName: String) -> [VacationsListModel] {
-        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
-            do {
-                let fileUrl = URL(fileURLWithPath: path)
-                let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
-                let result = try JSONDecoder().decode([VacationsListModel].self, from: data)
-                return result
-            } catch {
-                print(error)
-            }
-        }
-        return []
     }
 }
 
