@@ -52,6 +52,10 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         workingListModel?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
         workingListTableView.deleteRows(at: [selectedSection], with: .fade)
         workingListTableView.endUpdates()
+        if workingListModel?[selectedSection.section].userScheduleTimings?.count ?? 0 == 0 {
+            workingListModel?.removeAll()
+        }
+        workingListTableView.reloadData()
     }
 
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell) {

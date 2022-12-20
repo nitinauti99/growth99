@@ -16,15 +16,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkingCustomTableViewCell" rowHeight="280" id="b4N-gw-dU5" customClass="WorkingCustomTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkingCustomTableViewCell" rowHeight="320" id="b4N-gw-dU5" customClass="WorkingCustomTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b4N-gw-dU5" id="1HD-BI-YrH">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-Bo-lqL">
-                        <rect key="frame" x="5" y="5" width="310" height="280"/>
+                        <rect key="frame" x="5" y="5" width="310" height="310"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-vN-wte" userLabel="password">
                                 <rect key="frame" x="16" y="16" width="249" height="21"/>
@@ -34,15 +34,15 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Days ">
                                         <attributes>
-                                            <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="*">
                                         <attributes>
                                             <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -50,29 +50,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-G7-7ED" userLabel="password">
-                                <rect key="frame" x="16" y="102" width="249" height="21"/>
+                                <rect key="frame" x="16" y="112" width="249" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="j6w-4l-V6Y"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Time from">
+                                    <fragment content="Time from ">
                                         <attributes>
-                                            <color key="NSColor" red="0.23529" green="0.25881999999999999" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="*">
                                         <attributes>
                                             <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
@@ -80,7 +73,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72s-jM-X3a" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="133" width="274" height="45"/>
+                                <rect key="frame" x="26" y="143" width="274" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DIP-Ry-qmr"/>
                                 </constraints>
@@ -106,28 +99,28 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzh-yo-KIA" userLabel="password">
-                                <rect key="frame" x="16" y="188" width="249" height="21"/>
+                                <rect key="frame" x="16" y="208" width="249" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Hv6-6G-oiH"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Time to ">
                                         <attributes>
-                                            <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Medium"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="*">
                                         <attributes>
                                             <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Medium"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n9F-aQ-qaW" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="219" width="268" height="45"/>
+                                <rect key="frame" x="26" y="239" width="274" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FM2-Te-9tY"/>
                                 </constraints>
@@ -247,16 +240,16 @@
                             <constraint firstItem="72s-jM-X3a" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" constant="6" id="TFL-0B-yyR"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="top" secondItem="Wvb-G7-7ED" secondAttribute="bottom" constant="10" id="UNA-zI-QIr"/>
                             <constraint firstItem="7Xq-8Z-VMn" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="10" id="Yt8-Np-6Tk"/>
-                            <constraint firstItem="n9F-aQ-qaW" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" id="Z6A-Of-12S"/>
+                            <constraint firstItem="n9F-aQ-qaW" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" constant="6" id="Z6A-Of-12S"/>
                             <constraint firstItem="7Xq-8Z-VMn" firstAttribute="top" secondItem="hcN-Pd-MOW" secondAttribute="top" constant="5" id="amm-we-QGL"/>
                             <constraint firstItem="Fzh-yo-KIA" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="cWX-cc-v51"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="leading" secondItem="Wvb-G7-7ED" secondAttribute="leading" constant="10" id="dV5-7Y-FEU"/>
                             <constraint firstItem="RTi-qY-rgQ" firstAttribute="leading" secondItem="ebG-GZ-hVG" secondAttribute="leading" id="fIb-3c-kWN"/>
-                            <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="ebG-GZ-hVG" secondAttribute="bottom" constant="10" id="j7n-t4-LWI"/>
+                            <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="ebG-GZ-hVG" secondAttribute="bottom" constant="20" id="j7n-t4-LWI"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="leading" secondItem="aQy-Bo-lqL" secondAttribute="leading" constant="16" id="md3-RP-rFW"/>
-                            <constraint firstAttribute="height" constant="280" id="nB6-YM-20P"/>
+                            <constraint firstAttribute="height" constant="310" id="nB6-YM-20P"/>
                             <constraint firstItem="hcN-Pd-MOW" firstAttribute="trailing" secondItem="7Xq-8Z-VMn" secondAttribute="trailing" constant="5" id="rme-NB-jlF"/>
-                            <constraint firstItem="Fzh-yo-KIA" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="10" id="rxG-26-5yA"/>
+                            <constraint firstItem="Fzh-yo-KIA" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="20" id="rxG-26-5yA"/>
                         </constraints>
                     </view>
                 </subviews>
