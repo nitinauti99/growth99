@@ -10,15 +10,16 @@ import Foundation
 protocol leadViewModelProtocol {
     func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
     var leadUserData: [leadModel] { get }
-    func leadDataAtIndex(index: Int) -> leadModel
+    var leadTotalCount: Int { get }
+    func leadDataAtIndex(index: Int) -> leadModel?
 
 }
 
 class leadViewModel {
     var delegate: leadViewControllerProtocol?
     var leadData: [leadModel] = []
-    var leadPeginationListData: [leadModel] = []
-    
+    var leadPeginationListData: [leadModel]?
+    var totalCount: Int = 0
     init(delegate: leadViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -26,6 +27,7 @@ class leadViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String) {
+    
         let urlParameter: Parameters = ["page": page,
                                         "size": size,
                                         "statusFilter": statusFilter,
@@ -41,8 +43,10 @@ class leadViewModel {
             
             switch result {
             case .success(let LeadData):
-                self.leadData = LeadData
-                self.setPaginationData()
+                if search != "" || page == 0 {
+                    self.leadPeginationListData = []
+                }
+                self.setUpData(leadData: LeadData)
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -51,22 +55,28 @@ class leadViewModel {
         }
     }
     
-    func setPaginationData(){
-        if self.leadPeginationListData.count == 0 {
-            self.leadPeginationListData = self.leadData
-        } else {
-            self.leadPeginationListData.append(contentsOf: leadData)
+    func setUpData(leadData: [leadModel]) {
+         for item in leadData {
+            if item.totalCount == nil {
+                self.leadPeginationListData?.append(item)
+            }else{
+                self.totalCount = item.totalCount ?? 0
+            }
         }
     }
     
-    func leadDataAtIndex(index: Int)-> leadModel {
-        return self.leadPeginationListData[index]
+    func leadDataAtIndex(index: Int)-> leadModel? {
+        return self.leadPeginationListData?[index]
     }
-    
 }
 
 extension leadViewModel: leadViewModelProtocol {
+   
+    var leadTotalCount: Int {
+        return totalCount
+    }
+    
     var leadUserData: [leadModel] {
-        return self.leadPeginationListData
+        return self.leadPeginationListData ?? []
     }
 }

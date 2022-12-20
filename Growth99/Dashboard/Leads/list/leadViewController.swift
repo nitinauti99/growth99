@@ -57,8 +57,7 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
     }
     
     func loadMoreItemsForList(){
-        let leadCount = ((viewModel?.leadUserData.count ?? 0) - 1)
-        if leadCount == totalCount {
+        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
             return
         }
          currentPage += 1
@@ -76,18 +75,21 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.backgroundColor = UIColor.clear
         self.refreshControl.tintColor = UIColor.black
-//        self.refreshControl.addTarget(self, action: #selector(pullToRefresh), for: UIControl.Event.valueChanged)
-//        self.leadListTableView.addSubview(self.refreshControl)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(creatLead))
+        self.refreshControl.addTarget(self, action: #selector(pullToRefresh), for: UIControl.Event.valueChanged)
+        self.leadListTableView.addSubview(self.refreshControl)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add  ", style: .plain, target: self, action: #selector(creatLead))
     }
     
     @IBAction func serachLeadList(sender: UIButton) {
         self.view.ShowSpinner()
-        viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
+        currentPage = 0
+        viewModel?.getLeadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
     }
     
    @objc func pullToRefresh(sender:AnyObject) {
         self.refreshControl?.beginRefreshing()
+        currentPage = 0
+        searchBar.text = ""
         self.getLeadList()
     }
     
@@ -97,11 +99,10 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
     }
     
     @objc func getLeadList(){
-        viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
+        viewModel?.getLeadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
     }
     
     func LeadDataRecived() {
-        totalCount = viewModel?.leadUserData.last?.totalCount
         self.refreshControl?.endRefreshing()
         self.view.HideSpinner()
         self.leadListTableView.reloadData()
@@ -119,7 +120,7 @@ extension leadViewController: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ((viewModel?.leadUserData.count ?? 0) - 1)
+        return viewModel?.leadUserData.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,6 +147,7 @@ extension leadViewController:  UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == "" {
             self.view.ShowSpinner()
+            currentPage = 0
             self.getLeadList()
         }
      }
@@ -153,6 +155,7 @@ extension leadViewController:  UISearchBarDelegate {
     func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         self.view.ShowSpinner()
+        currentPage = 0
         self.getLeadList()
     }
 }

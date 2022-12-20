@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -335,6 +335,15 @@
                             <constraint firstItem="pmr-ZK-i78" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="uvO-1m-ekg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ammountTextField" destination="pEf-ug-FVU" id="dZj-iw-Dsj"/>
+                        <outlet property="emailTextField" destination="SG2-Bj-68Q" id="afs-5E-heR"/>
+                        <outlet property="idTextField" destination="Tfy-Kk-CG5" id="EgV-Z7-Qts"/>
+                        <outlet property="leadStatusTextField" destination="SdW-Vh-wEH" id="0nE-z4-Q6H"/>
+                        <outlet property="nameTextField" destination="wZO-p6-Lpj" id="wdG-9E-esj"/>
+                        <outlet property="phoneNumberTextField" destination="kF6-r0-M2u" id="iLh-bd-NAf"/>
+                        <outlet property="sourceTextField" destination="Shw-eJ-wpg" id="mh6-cU-67W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

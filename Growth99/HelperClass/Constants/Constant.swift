@@ -66,4 +66,13 @@ struct Constant {
         static let workingScheduleTitle = "Working Schedule"
         static let changePasswordTitle = "Change Password"
     }
+    
+    struct CreateLead {
+        static let emailEmptyError = "The Email field is required."
+        static let emailInvalidError = "Please Input Valid Email!"
+        static let firstNameEmptyError = "The First Name field is required."
+        static let lastNameEmptyError = "The Last Name field is required."
+        static let phoneNumberEmptyError = "The Phone Number field is required."
+        static let phoneNumberInvalidError = "Please Input Valid Number!"
+    }
 }
