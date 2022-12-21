@@ -10,6 +10,7 @@ import UIKit
 protocol EditLeadViewControllerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
+    func updateLeadAmmountSaved()
 }
 
 class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
@@ -24,6 +25,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     @IBOutlet weak var saveButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
 
+    var LeadData: leadModel?
     var patientQuestionAnswers = Array<Any>()
     var viewModel: EditLeadViewModelProtocol?
    
@@ -53,7 +55,20 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
    private func setUpUI(){
        saveButton.roundCorners(corners: [.allCorners], radius: 10)
        CancelButton.roundCorners(corners: [.allCorners], radius: 10)
+       idTextField.text = "\(LeadData?.id ?? 0)"
+       nameTextField.text = LeadData?.fullName
+       phoneNumberTextField.text = LeadData?.PhoneNumber
+       emailTextField.text = LeadData?.Email
+       ammountTextField.text = "\(LeadData?.amount ?? 0)"
+       leadStatusTextField.text = LeadData?.leadStatus
+       sourceTextField.text = LeadData?.leadSource
     }
+    
+    func updateLeadAmmountSaved() {
+        let id = Int(idTextField.text ?? "") ?? 0
+        viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? "", email: emailTextField.text ?? "", phoneNumber: phoneNumberTextField.text ?? "", leadStatus: leadStatusTextField.text ?? "")
+    }
+
     
     @IBAction func submitButtonClicked() {
         
@@ -80,108 +95,12 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberInvalidError)
             return
         }
-        setFirstName()
-        setLastName()
-        setEmail()
-        setPhoneNumber()
-        setMessage()
-        let patientQuestionAnswers: [String: Any] = [
-               "id": 1234,
-               "questionnaireId": 7996,
-               "source": "Manual",
-               "patientQuestionAnswers": patientQuestionAnswers
-        ]
+        
+        guard let ammount = ammountTextField.text, !ammount.isEmpty else {
+            ammountTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
+            return
+        }
         view.ShowSpinner()
-        viewModel?.updateLead(questionnaireId: 7996, patientQuestionAnswers: patientQuestionAnswers)
-    }
-    
-    func setFirstName(){
-        let patientQuestion: [String : Any] = [
-            "questionId": 64792,
-            "questionName": "First Name",
-            "questionType": "Input",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": nameTextField.text ?? "",
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
-        ]
-        patientQuestionAnswers.insert(patientQuestion, at: 0)
-    }
-    
-    func setLastName(){
-//        let patientQuestion: [String : Any] = [
-//            "questionId": 64793,
-//            "questionName": "Last Name",
-//            "questionType": "Input",
-//            "allowMultipleSelection": false,
-//            "preSelectCheckbox": false,
-//            "answer": "",
-//            "answerText": lastNameTextField.text ?? "",
-//            "answerComments": "",
-//            "patientQuestionChoices": [],
-//            "required": true,
-//            "hidden": false,
-//            "showDropDown": false
-//        ]
-//        patientQuestionAnswers.insert(patientQuestion, at: 1)
-    }
-    
-    func setEmail(){
-        let patientQuestion: [String : Any] = [
-            "questionId": 64794,
-            "questionName": "Email",
-            "questionType": "Input",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": emailTextField.text ?? "",
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
-        ]
-        patientQuestionAnswers.insert(patientQuestion, at: 2)
-    }
-    
-    func setPhoneNumber(){
-        let patientQuestion: [String : Any] = [
-            "questionId": 64795,
-            "questionName": "Phone Number",
-            "questionType": "Input",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": phoneNumberTextField.text ?? "",
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
-        ]
-        patientQuestionAnswers.insert(patientQuestion, at: 3)
-    }
-    
-    func setMessage(){
-//        let patientQuestion: [String : Any] = [
-//            "questionId": 64796,
-//            "questionName": "Message",
-//            "questionType": "Input",
-//            "allowMultipleSelection": false,
-//            "preSelectCheckbox": false,
-//            "answer": "",
-//            "answerText": messageTextField.text ?? "",
-//            "answerComments": "",
-//            "patientQuestionChoices": [],
-//            "required": true,
-//            "hidden": false,
-//            "showDropDown": false
-//        ]
-//        patientQuestionAnswers.insert(patientQuestion, at: 4)
+        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammount) ?? 0)
     }
 }

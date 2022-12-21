@@ -23,7 +23,8 @@ struct EndPoints {
     static let createLead = "/public/popup/questionnaire/"
     static let getQuestionnaireId = "/public/questionnaire"
     static let getQuestionnaireList = "/public/questionnaire/"
-
+    static let updateQuestionnaireSubmissionAmmount = "/questionnaire-submission/lead/"
+    static let updateQuestionnaireSubmission = "questionnaire-submission/lead/"
 
 }
 
@@ -42,5 +43,7 @@ struct ApiUrl {
     static let createLead = EndPoints.baseURL.appending(EndPoints.createLead)
     static let getQuestionnaireId = EndPoints.baseURL.appending(EndPoints.getQuestionnaireId)
     static let getQuestionnaireList = EndPoints.baseURL.appending(EndPoints.getQuestionnaireList)
+    static let updateQuestionnaireSubmissionAmmount = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmissionAmmount)
+    static let updateQuestionnaireSubmission = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmission)
 
 }

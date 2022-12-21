@@ -67,7 +67,7 @@
                                                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tfy-Kk-CG5" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tfy-Kk-CG5" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="25" y="46" width="340" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="9gx-RU-Xe8"/>
@@ -178,7 +178,7 @@
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Button">
                                                             <attributedString key="attributedTitle">
-                                                                <fragment content="Submit">
+                                                                <fragment content="Save">
                                                                     <attributes>
                                                                         <font key="NSFont" size="16" name="AvenirNext-Medium"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -186,6 +186,9 @@
                                                                 </fragment>
                                                             </attributedString>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="submitButtonClicked" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7OB-cW-o4H"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eso-mT-yAv">
                                                         <rect key="frame" x="210" y="702" width="155" height="46"/>
@@ -206,7 +209,7 @@
                                                             </attributedString>
                                                         </state>
                                                     </button>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-eJ-wpg" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-eJ-wpg" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="25" y="476" width="340" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="JTh-U9-Gx4"/>
@@ -336,12 +339,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="CancelButton" destination="eso-mT-yAv" id="wj6-RF-OZa"/>
                         <outlet property="ammountTextField" destination="pEf-ug-FVU" id="dZj-iw-Dsj"/>
                         <outlet property="emailTextField" destination="SG2-Bj-68Q" id="afs-5E-heR"/>
                         <outlet property="idTextField" destination="Tfy-Kk-CG5" id="EgV-Z7-Qts"/>
                         <outlet property="leadStatusTextField" destination="SdW-Vh-wEH" id="0nE-z4-Q6H"/>
                         <outlet property="nameTextField" destination="wZO-p6-Lpj" id="wdG-9E-esj"/>
                         <outlet property="phoneNumberTextField" destination="kF6-r0-M2u" id="iLh-bd-NAf"/>
+                        <outlet property="saveButton" destination="bDf-sM-ZYq" id="WSe-ga-oOi"/>
                         <outlet property="sourceTextField" destination="Shw-eJ-wpg" id="mh6-cU-67W"/>
                     </connections>
                 </viewController>

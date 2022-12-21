@@ -8,7 +8,8 @@
 import Foundation
 
 protocol EditLeadViewModelProtocol {
-    func updateLead(questionnaireId: Int, patientQuestionAnswers: [String: Any])
+    func updateLead(questionnaireId: Int, name: String, email: String, phoneNumber: String, leadStatus: String)
+    func updateLeadAmmount(questionnaireId: Int, ammount: Int)
     func leadDataAtIndex(index: Int) -> leadModel
     var LeadUserData: [leadModel]? { get }
     func isValidEmail(_ email: String) -> Bool
@@ -28,10 +29,33 @@ class EditLeadViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func updateLead(questionnaireId: Int, patientQuestionAnswers:[String: Any]) {
-        let finaleUrl = ApiUrl.createLead + "\(questionnaireId)"
+    func updateLeadAmmount(questionnaireId: Int, ammount: Int) {
+        let finaleUrl = ApiUrl.updateQuestionnaireSubmissionAmmount + "\(questionnaireId)" + "/amount?amount=" + "\(ammount)"
+    
+        self.requestManager.request(forPath: finaleUrl, method: .OPTIONS, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.updateLeadAmmountSaved()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
+    func updateLead(questionnaireId: Int, name: String, email: String, phoneNumber: String, leadStatus: String) {
+        let finaleUrl = ApiUrl.updateQuestionnaireSubmission + "\(questionnaireId)"
         
-        self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
+        let patientQuestionAnswers: [String: Any] = [
+               "name": name,
+               "email": email,
+               "phoneNumber": phoneNumber,
+               "leadStatus": leadStatus
+        ]
+        
+        self.requestManager.request(forPath: finaleUrl, method: .OPTIONS, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):

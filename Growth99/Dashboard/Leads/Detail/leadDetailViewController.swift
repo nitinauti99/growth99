@@ -37,6 +37,7 @@ class leadDetailViewController: UIViewController {
    
     @objc func updateLeadInfo() {
         let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
+        editLeadVC.LeadData = LeadData
         self.present(editLeadVC, animated: true)
     }
 
