@@ -32,13 +32,22 @@ class leadDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(updateLeadInfo))
-        self.setUpUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
     }
    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setUpUI()
+    }
+    
     @objc func updateLeadInfo() {
         let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
         editLeadVC.LeadData = LeadData
         self.present(editLeadVC, animated: true)
+    }
+    
+    @objc func updateUI(){
+        self.navigationController?.popViewController(animated: true)
     }
 
     func setUpUI(){

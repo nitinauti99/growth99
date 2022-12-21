@@ -10,6 +10,7 @@ import Foundation
 protocol EditLeadViewModelProtocol {
     func updateLead(questionnaireId: Int, name: String, email: String, phoneNumber: String, leadStatus: String)
     func updateLeadAmmount(questionnaireId: Int, ammount: Int)
+    func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
     func leadDataAtIndex(index: Int) -> leadModel
     var LeadUserData: [leadModel]? { get }
     func isValidEmail(_ email: String) -> Bool
@@ -22,7 +23,9 @@ protocol EditLeadViewModelProtocol {
 class EditLeadViewModel {
     var delegate: EditLeadViewControllerProtocol?
     var LeadData =  [leadModel]()
-    
+    var leadPeginationListData: [leadModel]?
+    var totalCount: Int = 0
+
     init(delegate: EditLeadViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -32,7 +35,7 @@ class EditLeadViewModel {
     func updateLeadAmmount(questionnaireId: Int, ammount: Int) {
         let finaleUrl = ApiUrl.updateQuestionnaireSubmissionAmmount + "\(questionnaireId)" + "/amount?amount=" + "\(ammount)"
     
-        self.requestManager.request(forPath: finaleUrl, method: .OPTIONS, headers: self.requestManager.Headers()) {  [weak self] result in
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -55,7 +58,7 @@ class EditLeadViewModel {
                "leadStatus": leadStatus
         ]
         
-        self.requestManager.request(forPath: finaleUrl, method: .OPTIONS, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
+        self.requestManager.request(forPath: finaleUrl, method: .PATCH, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -68,6 +71,41 @@ class EditLeadViewModel {
         }
     }
     
+    func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String) {
+        let urlParameter: Parameters = ["page": page,
+                                        "size": size,
+                                        "statusFilter": statusFilter,
+                                        "sourceFilter": sourceFilter,
+                                        "search": search,
+                                        "leadTagFilter": leadTagFilter
+        ]
+        var components = URLComponents(string: ApiUrl.getLeadList)
+        components?.queryItems = self.requestManager.queryItems(from: urlParameter)
+        let url = (components?.url)!
+        
+        self.requestManager.request(forPath: url.absoluteString, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[leadModel], GrowthNetworkError>) in
+            
+            switch result {
+            case .success(let LeadData):
+                self.setUpData(leadData: LeadData)
+                self.delegate?.updateLeadDadaRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func setUpData(leadData: [leadModel]) {
+         for item in leadData {
+            if item.totalCount == nil {
+                self.leadPeginationListData?.append(item)
+            }else{
+                self.totalCount = item.totalCount ?? 0
+            }
+        }
+    }
+
     func leadDataAtIndex(index: Int)-> leadModel {
         return self.LeadData[index]
     }

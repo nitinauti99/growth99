@@ -132,6 +132,7 @@
 		84A1BA4E293B920C00546A3B /* leadDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A1BA4D293B920C00546A3B /* leadDetailViewController.storyboard */; };
 		84A1BA50293B929E00546A3B /* leadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1BA4F293B929E00546A3B /* leadViewModel.swift */; };
 		84A1BA52293BB36100546A3B /* leadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1BA51293BB36100546A3B /* leadModel.swift */; };
+		84A62C9A29534E6A00B8923A /* leadDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A62C9929534E6A00B8923A /* leadDetailViewModel.swift */; };
 		84B0E7ED293729CF00245135 /* WorkingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0E7EB293729CF00245135 /* WorkingScheduleViewController.swift */; };
 		84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */; };
 		84B0E7F029372A3B00245135 /* WorkingScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */; };
@@ -421,6 +422,7 @@
 		84A1BA4D293B920C00546A3B /* leadDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = leadDetailViewController.storyboard; sourceTree = "<group>"; };
 		84A1BA4F293B929E00546A3B /* leadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadViewModel.swift; sourceTree = "<group>"; };
 		84A1BA51293BB36100546A3B /* leadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadModel.swift; sourceTree = "<group>"; };
+		84A62C9929534E6A00B8923A /* leadDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadDetailViewModel.swift; sourceTree = "<group>"; };
 		84B0E7EB293729CF00245135 /* WorkingScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewController.swift; sourceTree = "<group>"; };
 		84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkingScheduleViewController.storyboard; sourceTree = "<group>"; };
 		84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -903,6 +905,7 @@
 			children = (
 				84A1BA4B293B91E300546A3B /* leadDetailViewController.swift */,
 				84A1BA4D293B920C00546A3B /* leadDetailViewController.storyboard */,
+				84A62C9929534E6A00B8923A /* leadDetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1753,6 +1756,7 @@
 				845C3A21292276C000D934C5 /* HomeViewContoller.swift in Sources */,
 				8466F4B82944C7AB00B49893 /* AddLeadsModel.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
+				84A62C9A29534E6A00B8923A /* leadDetailViewModel.swift in Sources */,
 				84025F76293122F30051F51B /* VacationScheduleViewController.swift in Sources */,
 				84865D3E293DD849003C8CD9 /* EditLeadViewController.swift in Sources */,
 				845C3A1C292276C000D934C5 /* User.swift in Sources */,

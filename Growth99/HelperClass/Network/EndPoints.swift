@@ -24,7 +24,7 @@ struct EndPoints {
     static let getQuestionnaireId = "/public/questionnaire"
     static let getQuestionnaireList = "/public/questionnaire/"
     static let updateQuestionnaireSubmissionAmmount = "/questionnaire-submission/lead/"
-    static let updateQuestionnaireSubmission = "questionnaire-submission/lead/"
+    static let updateQuestionnaireSubmission = "/questionnaire-submission/lead/"
 
 }
 

@@ -11,9 +11,12 @@ protocol EditLeadViewControllerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
     func updateLeadAmmountSaved()
+    func updateLeadDadaRecived()
+
 }
 
 class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
+  
     @IBOutlet weak var idTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
@@ -32,6 +35,10 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = EditLeadViewModel(delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setUpUI()
     }
     
@@ -40,16 +47,21 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     }
     
     func LeadDataRecived() {
-        view.HideSpinner()
+        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammountTextField.text ?? "") ?? 0)
         do {
-            sleep(5)
+           sleep(5)
         }
         self.dismiss(animated: true)
+        viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
+    }
+    
+    func updateLeadDadaRecived() {
+        self.view.HideSpinner()
         NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
     }
     
     func errorReceived(error: String) {
-        
+        self.view.HideSpinner()
     }
     
    private func setUpUI(){
@@ -65,8 +77,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     }
     
     func updateLeadAmmountSaved() {
-        let id = Int(idTextField.text ?? "") ?? 0
-        viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? "", email: emailTextField.text ?? "", phoneNumber: phoneNumberTextField.text ?? "", leadStatus: leadStatusTextField.text ?? "")
+        
     }
 
     
@@ -101,6 +112,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             return
         }
         view.ShowSpinner()
-        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammount) ?? 0)
-    }
+        let id = Int(idTextField.text ?? "") ?? 0
+        viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? "", email: emailTextField.text ?? "", phoneNumber: phoneNumberTextField.text ?? "", leadStatus: leadStatusTextField.text ?? "")
+     }
 }
