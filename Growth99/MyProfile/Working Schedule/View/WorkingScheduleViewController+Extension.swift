@@ -56,6 +56,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             workingListModel?.removeAll()
         }
         workingListTableView.reloadData()
+        workingScrollViewHight.constant = tableViewHeight + 650
     }
 
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell) {
@@ -94,17 +95,6 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: selectedClinicId)
             hideClinicDropDown()
         }
-    }
-}
-
-extension WorkingScheduleViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        workingScrollViewHight.constant = vacationTableViewHeight + 650
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        workingScrollViewHight.constant = vacationTableViewHeight + 650
     }
 }
 

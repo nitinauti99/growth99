@@ -37,11 +37,16 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     var selectedSlots = [SelectedSlots]()
     var isEmptyResponse: Bool = false
     
+    var tableViewHeight: CGFloat {
+        workingListTableView.layoutIfNeeded()
+        return workingListTableView.contentSize.height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
-        
+        workingscrollview.delegate = self
        self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
@@ -120,23 +125,23 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         }
         self.clinicSelectionTableView.reloadData()
         self.workingListTableView.reloadData()
+        scrollViewHeight()
     }
     
     @IBAction func saveWorkingButtonAction(sender: UIButton) {
-        if workingListModel?.count ?? 0 > 0 {
-            self.view.ShowSpinner()
-            
-            if selectedClinicId == 0 {
-                selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
-            }
-            
+        self.view.ShowSpinner()
+        
+        if selectedClinicId == 0 {
+            selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
+        }
+       if workingListModel?.count ?? 0 > 0 {
+
             for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
                 let cellIndexPath = IndexPath(item: childIndex, section: 0)
                 if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
                     selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank), days: [vacationCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
                 }
             }
-            
             let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
             let parameters: [String: Any]  = body.toDict()
             workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
@@ -156,11 +161,13 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         let indexPath = IndexPath(row: (workingListModel?[0].userScheduleTimings?.count ?? 0) - 1, section: 0)
         workingListTableView.insertRows(at: [indexPath], with: .fade)
         workingListTableView.endUpdates()
+        scrollViewHeight()
     }
     
     @IBAction func clinicSelectionButton(sender: UIButton) {
         if listSelection == true {
             hideClinicDropDown()
+            scrollViewHeight()
         } else {
             showClinicDropDown()
         }
@@ -173,13 +180,25 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     func showClinicDropDown() {
+        workingScrollViewHight.constant = tableViewHeight + 650 + CGFloat(44 * (allClinicsForWorkingSchedule?.count ?? 0) + 31)
         self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForWorkingSchedule?.count ?? 0) + 31)
         self.aulaSeparator.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
         listSelection = true
     }
     
-    var vacationTableViewHeight: CGFloat {
-        workingListTableView.layoutIfNeeded()
-        return workingListTableView.contentSize.height
+    func scrollViewHeight() {
+        workingScrollViewHight.constant = tableViewHeight + 650
+    }
+
+}
+
+extension WorkingScheduleViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+       scrollViewHeight()
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewHeight()
     }
 }
