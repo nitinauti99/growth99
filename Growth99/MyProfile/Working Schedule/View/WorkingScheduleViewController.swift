@@ -124,26 +124,32 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     @IBAction func saveWorkingButtonAction(sender: UIButton) {
-        
-        self.view.ShowSpinner()
-        
-        if selectedClinicId == 0 {
-            selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
-        }
-        
-        for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
-            let cellIndexPath = IndexPath(item: childIndex, section: 0)
-            if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank), days: [vacationCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
+        if workingListModel?.count ?? 0 > 0 {
+            self.view.ShowSpinner()
+            
+            if selectedClinicId == 0 {
+                selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
             }
+            
+            for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
+                let cellIndexPath = IndexPath(item: childIndex, section: 0)
+                if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
+                    selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank), days: [vacationCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
+                }
+            }
+            
+            let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
+            let parameters: [String: Any]  = body.toDict()
+            workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
         }
-        
-        let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
-        let parameters: [String: Any]  = body.toDict()
-        workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
     }
     
     @IBAction func addWorkingButtonAction(sender: UIButton) {
+        if workingListModel?.count ?? 0 == 0 {
+            let parm = WorkingScheduleListModel(id: 1, clinicId: 1, providerId: 1, fromDate: "", toDate: "", scheduleType: "", userScheduleTimings: [])
+            workingListModel?.append(parm)
+            workingListTableView.reloadData()
+        }
         let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: [""])
         workingListModel?[0].userScheduleTimings?.append(date1)
         workingListTableView.beginUpdates()

@@ -127,29 +127,31 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     }
     
     @IBAction func saveVacationButtonAction(sender: UIButton) {
-        self.view.ShowSpinner()
-        if selectedClinicId == 0 {
-            selectedClinicId = allClinicsForVacation?[0].id ?? 0
-        }
-        
-        for indexValue in 0..<(vacationsListModel?.count ?? 0) {
-            for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
-                let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
-                if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-                    arrTime.insert(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
-                }
+        if vacationsListModel?.count ?? 0 > 0 {
+            self.view.ShowSpinner()
+            if selectedClinicId == 0 {
+                selectedClinicId = allClinicsForVacation?[0].id ?? 0
             }
             
-            if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
-                arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
-                arrTime.removeAll()
+            for indexValue in 0..<(vacationsListModel?.count ?? 0) {
+                for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
+                    let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
+                    if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
+                        arrTime.insert(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
+                    }
+                }
+                
+                if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
+                    arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
+                    arrTime.removeAll()
+                }
+                
             }
-
+            let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
+            let parameters: [String: Any]  = body.toDict()
+            print("Params::: \(parameters)")
+            vacationViewModel.sendRequestforVacation(vacationParams: parameters)
         }
-        let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
-        let parameters: [String: Any]  = body.toDict()
-        print("Params::: \(parameters)")
-        vacationViewModel.sendRequestforVacation(vacationParams: parameters)
     }
     
     @IBAction func addVacationButtonAction(sender: UIButton) {
