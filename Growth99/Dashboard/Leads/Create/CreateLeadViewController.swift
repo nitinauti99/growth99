@@ -116,6 +116,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 yPosition +=  Int(MultipleSelectionlabel.frame.height + 10)
                 let posX = 20
                 item.patientQuestionChoices?.forEach { item in
+                        i += 1
                         let button1 = PassableUIButton(frame: CGRect(x: posX, y: yPosition, width: 100, height: 20))
                         button1.setTitleColor(UIColor.black, for: .normal)
                         let title = " " + (item.choiceName ?? "")
@@ -125,6 +126,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                         button1.setImage(UIImage(named: "tickselected")!, for: .selected)
                         button1.addTarget(self, action: #selector(CreateLeadViewController.webButtonTouched(_:)), for:.touchUpInside)
                         button1.tag = i
+                        print("multiselcted button", button1.tag)
                         button1.params[i] = item
                         self.customView.addSubview(button1)
                         patientQuestionChoices.append(button1)
@@ -235,27 +237,44 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                     self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: txtView.isSelected)
                     print(txtView.isSelected)
               }
-            } else if(item.questionType == "Multiple_Selection_Text" ){
-                if let passableUIButton = self.customView.viewWithTag(i) as? PassableUIButton {
-                    var pationt = item.patientQuestionChoices?[i]
-                    pationt?.selected = passableUIButton.isSelected
-                   self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, answerText: passableUIButton.isSelected)
-                }
-            }
+            } else if(item.questionType == "Multiple_Selection_Text" ) {
+                var patientQuestionChoicesList: [Any] = []
+                for item in item.patientQuestionChoices ?? [] {
+                    i += 1
+                    if let passableUIButton = self.customView.viewWithTag(i) as? PassableUIButton {
+                        print(passableUIButton.tag)
+                        print(passableUIButton.isSelected)
+                        let list  = self.patientQuestionChoicesList(patientQuestionChoices: item, selected: passableUIButton.isSelected)
+                        patientQuestionChoicesList.append(list)
+                    }
+                 }
+                print(patientQuestionChoicesList)
+               self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, patientQuestionList: patientQuestionChoicesList)
+             }
          }
-        print(patientQuestionAnswers)
         let patientQuestionAnswers: [String: Any] = [
                "id": 1234,
                "questionnaireId": 7996,
                "source": "Manual",
                "patientQuestionAnswers": patientQuestionAnswers
         ]
-        view.ShowSpinner()
-        viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
+        print(patientQuestionAnswers)
+
+      //  view.ShowSpinner()
+      //  viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
+    }
+    
+    func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
+         let patientQuestionChoices: [String : Any] = [
+                "choiceName": patientQuestionChoices.choiceName ?? 0,
+                "choiceId": patientQuestionChoices.choiceId ?? 0,
+                "selected": selected
+            ]
+        return patientQuestionChoices
     }
     
     
-    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
+    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any]){
        
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
@@ -264,9 +283,9 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             "allowMultipleSelection": false,
             "preSelectCheckbox": false,
             "answer": "",
-            "answerText": answerText,
+            "answerText": patientQuestionAnswersList.answerText ?? "",
             "answerComments": "",
-            "patientQuestionChoices": setPatientQuestionChoicesList(patientQuestionChoices: patientQuestionAnswersList.patientQuestionChoices ?? [], selected: answerText),
+            "patientQuestionChoices": patientQuestionList,
             "required": true,
             "hidden": false,
             "showDropDown": false
@@ -274,19 +293,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         patientQuestionAnswers.append(patientQuestion)
     }
     
-    func setPatientQuestionChoicesList(patientQuestionChoices : [PatientQuestionChoices], selected : Bool) -> [Any] {
-        var patientQuestionChoicesList: [Any] = []
-
-        for item in patientQuestionChoices {
-            let patientQuestionChoices: [String : Any] = [
-                "choiceName": item.choiceName ?? 0,
-                "choiceId": item.choiceId ?? 0,
-                "selected": selected
-            ]
-            patientQuestionChoicesList.append(patientQuestionChoices)
-        }
-        return patientQuestionChoicesList
-    }
+    
     
     func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String){
        
