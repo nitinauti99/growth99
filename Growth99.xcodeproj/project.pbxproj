@@ -15,6 +15,7 @@
 		841B1B21293FB71300D408CC /* VacationScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B1B20293FB71300D408CC /* VacationScheduleViewController+Extension.swift */; };
 		84309A7329485C1700912670 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309A7129485C1600912670 /* CustomCell.swift */; };
 		84309A7429485C1700912670 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84309A7229485C1600912670 /* CustomCell.xib */; };
+		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
 		844BB33329365047003AFA52 /* LeadHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */; };
 		844BB33429365047003AFA52 /* LeadHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */; };
 		844BB337293664F9003AFA52 /* LeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BB335293664F9003AFA52 /* LeadTableViewCell.swift */; };
@@ -296,6 +297,7 @@
 		841B1B20293FB71300D408CC /* VacationScheduleViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VacationScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
 		84309A7129485C1600912670 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		84309A7229485C1600912670 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
 		844BB33129365047003AFA52 /* LeadHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		844BB33229365047003AFA52 /* LeadHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		844BB335293664F9003AFA52 /* LeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTableViewCell.swift; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 				845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */,
 				84EFC28029255487003B3C06 /* UIViewController+Extension.swift */,
 				84EFC29F29256166003B3C06 /* UIButton+Extension.swift */,
+				843801512954836C00CEA664 /* PassableUIButton.swift */,
 			);
 			path = Extenssion;
 			sourceTree = "<group>";
@@ -1871,6 +1874,7 @@
 				845C3A23292276C000D934C5 /* ClinicsModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
+				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				84A1BA4C293B91E400546A3B /* leadDetailViewController.swift in Sources */,
 				841B1B21293FB71300D408CC /* VacationScheduleViewController+Extension.swift in Sources */,

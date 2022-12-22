@@ -34,5 +34,6 @@ struct PatientQuestionAnswersList: Codable {
 struct PatientQuestionChoices: Codable {
     let choiceName: String?
     let choiceId: Int?
-    let selected: Bool?
+    var selected: Bool?
+    let id: Int?
 }

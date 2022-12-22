@@ -15,7 +15,8 @@ class InputTypeTableViewCell: UITableViewCell, UITextFieldDelegate {
     var tagNumber : Int = 0
     var tableview : UITableView?
     private var viewModel: CreateLeadViewModelProtocol?
-    
+    var leadUserQuestionnairefinalList =  [PatientQuestionAnswersList]()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -48,10 +49,9 @@ class InputTypeTableViewCell: UITableViewCell, UITextFieldDelegate {
         if textField.text == "", !self.isValidTextFieldData(textField.text ?? "", regex: leadVM?.regex ?? "") {
             inputTextField.showError(message: leadVM?.validationMessage)
         }else{
-            var leadUserQuestionnairefinalList =  [PatientQuestionAnswersList]()
-            leadVM?.answerText = textField.text
-            leadUserQuestionnairefinalList.insert(leadVM!, at: textField.tag)
-            print(leadUserQuestionnairefinalList)
+//            leadVM?.answerText = textField.text
+//            leadUserQuestionnairefinalList.insert(leadVM!, at: textField.tag)
+//            print(leadUserQuestionnairefinalList)
         } 
         return true
     }

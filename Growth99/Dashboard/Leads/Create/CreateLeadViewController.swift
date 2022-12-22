@@ -31,16 +31,18 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
    private var viewModel: CreateLeadViewModelProtocol?
    private var patientQuestionList = [PatientQuestionAnswersList]()
 
-    var txtField: UITextField = CustomTextField()
     var yPosition  = 20
-
+    var buttons = [UIButton]()
+    var patientQuestionChoices = [UIButton]()
+    
+    var buttonLastTag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLeadViewModel(delegate: self)
         setUpUI()
         self.view.ShowSpinner()
         viewModel?.getQuestionnaireId()
-        self.reegisterCell()
+       // self.reegisterCell()
     }
     
     func reegisterCell() {
@@ -54,20 +56,126 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func QuestionnaireListRecived() {
         view.HideSpinner()
         patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
-        leadListTableView.reloadData()
-      //  self.setUpUiElement()
+      //  leadListTableView.reloadData()
+        self.setUpUiElement()
     }
 
-//    func setUpUiElement(){
-//        for item in patientQuestionList {
-//            if item.questionType == "Input" {
-//                self.txtField.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
-//                self.customView.addSubview(self.txtField)
-//                yPosition = yPosition +  Int(self.txtField.frame.height + 20)
+    func setUpUiElement(){
+        var i = 0
+        patientQuestionList.forEach { item in
+            i += 1
+            if item.questionType == "Input" {
+                 let textField: UITextField = CustomTextField()
+                 textField.tag = i
+                 print("Input type", textField.tag)
+                 textField.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
+                 self.customView.addSubview(textField)
+                 yPosition +=  Int(textField.frame.height + 20)
+            } else if (item.questionType == "Text") {
+                let textView : UITextField = CustomTextField()
+                textView.tag = i
+                print("Text type", textView.tag)
+                textView.frame = CGRect(x: 20, y: yPosition, width: 300, height: 80)
+                self.customView.addSubview(textView)
+                yPosition +=  Int(textView.frame.height + 20)
+            } else if (item.questionType ==  "Yes_No") {
+                let label : UILabel = UILabel()
+                print("Yes_No", label.tag)
+                label.text = item.questionName
+                label.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
+                self.customView.addSubview(label)
+                yPosition +=  Int(label.frame.height + 10)
+                let posX = 20
+                let button1 = UIButton(frame: CGRect(x: posX, y: yPosition, width: 70, height: 20))
+                button1.setTitleColor(UIColor.black, for: .normal)
+                button1.setTitle("  YES", for: .normal)
+                button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
+                button1.setImage(UIImage(named: "tickselected")!, for: .selected)
+                button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+                button1.tag = i
+                self.customView.addSubview(button1)
+                buttons.append(button1)
+
+                let button2 = UIButton(frame: CGRect(x: Int(button1.frame.width)  + posX, y: yPosition, width: 70, height: 20))
+                button2.setTitleColor(UIColor.black, for: .normal)
+                button2.setTitle("  NO", for: .normal)
+                button2.setImage(UIImage(named: "tickdefault")!, for: .normal)
+                button2.setImage(UIImage(named: "tickselected")!, for: .selected)
+                button2.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+                button2.tag = i
+                self.customView.addSubview(button2)
+                buttons.append(button2)
+                yPosition +=  Int(button2.frame.height + 20)
+
+            } else if (item.questionType == "Multiple_Selection_Text") {
+                let MultipleSelectionlabel : UILabel = UILabel()
+                print("Yes_No", MultipleSelectionlabel.tag)
+                MultipleSelectionlabel.text = item.questionName
+                MultipleSelectionlabel.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
+                self.customView.addSubview(MultipleSelectionlabel)
+                yPosition +=  Int(MultipleSelectionlabel.frame.height + 10)
+                let posX = 20
+                item.patientQuestionChoices?.forEach { item in
+                        let button1 = PassableUIButton(frame: CGRect(x: posX, y: yPosition, width: 100, height: 20))
+                        button1.setTitleColor(UIColor.black, for: .normal)
+                        let title = " " + (item.choiceName ?? "")
+                        button1.setTitle(title , for: .normal)
+                        button1.contentHorizontalAlignment = .left
+                        button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
+                        button1.setImage(UIImage(named: "tickselected")!, for: .selected)
+                        button1.addTarget(self, action: #selector(CreateLeadViewController.webButtonTouched(_:)), for:.touchUpInside)
+                        button1.tag = i
+                        button1.params[i] = item
+                        self.customView.addSubview(button1)
+                        patientQuestionChoices.append(button1)
+                        yPosition +=  Int(button1.frame.height + 10)
+                  }
+              }
+        }
+    }
+   
+    @IBAction func webButtonTouched(_ sender: PassableUIButton) {
+        print(sender.params[sender.tag] ?? "")
+        if sender.isSelected {
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
+        }else{
+            sender.isSelected = true
+            sender.setImage(UIImage(named: "tickselected")!, for: .selected)
+        }
+    }
+    
+   
+   
+    @objc func buttonAction(sender: UIButton!){
+        let buttonIndex = buttons.index(of: sender)
+        print(buttonIndex)
+        sender.isSelected = true
+
+//        if buttonLastTag == sender.tag {
+//            buttonLastTag = sender.tag
+//            for button in buttons {
+//                button.isSelected = false
 //            }
+//            sender.isSelected = true
+//        } else {
+//            buttonLastTag = sender.tag
+//            for button in buttons {
+//                button.isSelected = false
+//            }
+//            sender.isSelected = true
 //        }
-//
-//    }
+    }
+    
+    @objc func button2Action(sender: UIButton!){
+         if sender.isSelected {
+            sender.isSelected = false
+          } else {
+            sender.isSelected = true
+          }
+        // you may need to know which button to trigger some action
+    }
+    
     func LeadDataRecived() {
         view.HideSpinner()
         do {
@@ -101,40 +209,41 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
     
     @IBAction func submitButtonClicked() {
-        
-        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
-            firstNameTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
-            return
-        }
-        
-        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
-            lastNameTextField.showError(message: Constant.CreateLead.lastNameEmptyError)
-            return
-        }
-        
-        guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.CreateLead.emailEmptyError)
-            return
-        }
-        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.CreateLead.emailInvalidError)
-            return
-        }
-        
-        guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberEmptyError)
-            return
-        }
-        
-        guard let phoneNumberIsValid = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberIsValid else {
-            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberInvalidError)
-            return
-        }
-        setFirstName()
-        setLastName()
-        setEmail()
-        setPhoneNumber()
-        setMessage()
+        var i = 0
+        patientQuestionList.forEach { item in
+            i += 1
+            if item.questionType == "Input" {
+                if let txtField = self.customView.viewWithTag(i) as? CustomTextField {
+                    if txtField.text == "" {
+                        txtField.showError(message: item.validationMessage)
+                    }
+                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: txtField.text ?? "")
+                    print(txtField.text!)
+                }
+            } else if(item.questionType == "Text" ){
+                if let txtView = self.customView.viewWithTag(i) as? CustomTextField {
+                    if txtView.text == "" {
+                        txtView.showError(message: item.validationMessage)
+                    }
+                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: txtView.text ?? "")
+                    print(txtView.text!)
+              }
+            }
+            
+            else if(item.questionType == "Yes_No" ){
+                if let txtView = self.customView.viewWithTag(i) as? UIButton {
+                    self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: txtView.isSelected)
+                    print(txtView.isSelected)
+              }
+            } else if(item.questionType == "Multiple_Selection_Text" ){
+                if let passableUIButton = self.customView.viewWithTag(i) as? PassableUIButton {
+                    var pationt = item.patientQuestionChoices?[i]
+                    pationt?.selected = passableUIButton.isSelected
+                   self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, answerText: passableUIButton.isSelected)
+                }
+            }
+         }
+        print(patientQuestionAnswers)
         let patientQuestionAnswers: [String: Any] = [
                "id": 1234,
                "questionnaireId": 7996,
@@ -145,95 +254,78 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
     }
     
-    func setFirstName(){
+    
+    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
+       
         let patientQuestion: [String : Any] = [
-            "questionId": 64792,
-            "questionName": "First Name",
-            "questionType": "Input",
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? "",
+            "questionType": patientQuestionAnswersList.questionType ?? "",
             "allowMultipleSelection": false,
             "preSelectCheckbox": false,
             "answer": "",
-            "answerText": firstNameTextField.text ?? "",
+            "answerText": answerText,
             "answerComments": "",
-            "patientQuestionChoices": [],
+            "patientQuestionChoices": setPatientQuestionChoicesList(patientQuestionChoices: patientQuestionAnswersList.patientQuestionChoices ?? [], selected: answerText),
             "required": true,
             "hidden": false,
             "showDropDown": false
         ]
-        patientQuestionAnswers.insert(patientQuestion, at: 0)
+        patientQuestionAnswers.append(patientQuestion)
     }
     
-    func setLastName(){
-        let patientQuestion: [String : Any] = [
-            "questionId": 64793,
-            "questionName": "Last Name",
-            "questionType": "Input",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": lastNameTextField.text ?? "",
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
-        ]
-        patientQuestionAnswers.insert(patientQuestion, at: 1)
+    func setPatientQuestionChoicesList(patientQuestionChoices : [PatientQuestionChoices], selected : Bool) -> [Any] {
+        var patientQuestionChoicesList: [Any] = []
+
+        for item in patientQuestionChoices {
+            let patientQuestionChoices: [String : Any] = [
+                "choiceName": item.choiceName ?? 0,
+                "choiceId": item.choiceId ?? 0,
+                "selected": selected
+            ]
+            patientQuestionChoicesList.append(patientQuestionChoices)
+        }
+        return patientQuestionChoicesList
     }
     
-    func setEmail(){
+    func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String){
+       
         let patientQuestion: [String : Any] = [
-            "questionId": 64794,
-            "questionName": "Email",
-            "questionType": "Input",
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? "",
+            "questionType": patientQuestionAnswersList.questionType ?? "",
             "allowMultipleSelection": false,
             "preSelectCheckbox": false,
             "answer": "",
-            "answerText": emailTextField.text ?? "",
+            "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
             "required": true,
             "hidden": false,
             "showDropDown": false
         ]
-        patientQuestionAnswers.insert(patientQuestion, at: 2)
+        patientQuestionAnswers.append(patientQuestion)
+    }
+  
+    func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
+       
+        let patientQuestion: [String : Any] = [
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? "",
+            "questionType": patientQuestionAnswersList.questionType ?? "",
+            "allowMultipleSelection": false,
+            "preSelectCheckbox": false,
+            "answer": "",
+            "answerText": answerText,
+            "answerComments": "",
+            "patientQuestionChoices": [],
+            "required": true,
+            "hidden": false,
+            "showDropDown": false
+        ]
+        patientQuestionAnswers.append(patientQuestion)
     }
     
-    func setPhoneNumber(){
-        let patientQuestion: [String : Any] = [
-            "questionId": 64795,
-            "questionName": "Phone Number",
-            "questionType": "Input",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": phoneNumberTextField.text ?? "",
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
-        ]
-        patientQuestionAnswers.insert(patientQuestion, at: 3)
-    }
-    
-    func setMessage(){
-        let patientQuestion: [String : Any] = [
-            "questionId": 64796,
-            "questionName": "Message",
-            "questionType": "Input",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": messageTextField.text ?? "",
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
-        ]
-        patientQuestionAnswers.insert(patientQuestion, at: 4)
-    }
 }
 
 
@@ -285,3 +377,37 @@ extension CreateLeadViewController : UITableViewDelegate, UITableViewDataSource 
         }
     }
 }
+
+//        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
+//            firstNameTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
+//            return
+//        }
+//
+//        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
+//            lastNameTextField.showError(message: Constant.CreateLead.lastNameEmptyError)
+//            return
+//        }
+//
+//        guard let email = emailTextField.text, !email.isEmpty else {
+//            emailTextField.showError(message: Constant.CreateLead.emailEmptyError)
+//            return
+//        }
+//        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
+//            emailTextField.showError(message: Constant.CreateLead.emailInvalidError)
+//            return
+//        }
+//
+//        guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
+//            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberEmptyError)
+//            return
+//        }
+//
+//        guard let phoneNumberIsValid = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberIsValid else {
+//            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberInvalidError)
+//            return
+//        }
+//        setFirstName()
+//        setLastName()
+//        setEmail()
+//        setPhoneNumber()
+//        setMessage()
