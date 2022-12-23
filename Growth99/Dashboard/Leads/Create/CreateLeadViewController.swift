@@ -101,6 +101,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 button2.setImage(UIImage(named: "tickselected")!, for: .selected)
                 button2.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 button2.tag = i
+                buttonLastTag =  button1.tag
                 self.customView.addSubview(button2)
                 yPosition +=  Int(button2.frame.height + 20)
 
@@ -201,19 +202,18 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         }
     }
    
-    @objc func buttonAction(sender: UIButton!){
-        sender.isSelected = true
+    @objc func buttonAction(sender: UIButton){
+        if buttonLastTag == sender.tag {
+            if sender.isSelected {
+               sender.isSelected = false
+               sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
+            }else {
+               sender.isSelected = true
+               sender.setImage(UIImage(named: "tickselected")!, for: .selected)
+            }
+        }
     }
-    
-    @objc func button2Action(sender: UIButton!){
-         if sender.isSelected {
-            sender.isSelected = false
-          } else {
-            sender.isSelected = true
-          }
-        // you may need to know which button to trigger some action
-    }
-    
+ 
     func LeadDataRecived() {
         view.HideSpinner()
         do {
@@ -224,7 +224,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
     
     func errorReceived(error: String) {
-        
+        view.HideSpinner()
     }
     
    private func setUpUI(){
