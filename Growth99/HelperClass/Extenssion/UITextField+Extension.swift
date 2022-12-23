@@ -8,7 +8,17 @@
 import Foundation
 import UIKit
 
-extension UITextField {
+extension CustomTextField {
+    
+    func setOnTextChangeListener(onTextChanged :@escaping () -> Void){
+        if #available(iOS 14.0, *) {
+            self.addAction(UIAction() { action in
+                
+            }, for: .editingChanged)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
 
     func addInputViewDatePicker(target: Any, selector: Selector, mode: UIDatePicker.Mode) {
         let screenWidth = UIScreen.main.bounds.width

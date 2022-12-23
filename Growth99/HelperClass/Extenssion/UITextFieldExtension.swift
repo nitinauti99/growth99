@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable
-open class CustomTextField: UITextField {
+@IBDesignable open class CustomTextField: UITextField {
 
     fileprivate var lblError: UILabel = UILabel()
     fileprivate let paddingX: CGFloat = 5.0
@@ -22,6 +21,7 @@ open class CustomTextField: UITextField {
             dtborderStyle = borderStyle
         }
     }
+    var params: Dictionary<Int, Any>
 
     // Provides left padding for images
     open override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
@@ -91,21 +91,6 @@ open class CustomTextField: UITextField {
             }
         }
     }
-    
-//    open override func caretRect(for position: UITextPosition) -> CGRect {
-//           return CGRect.zero
-//       }
-//      
-//    open override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
-//           return []
-//       }
-//      
-//    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-//           if action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.selectAll(_:)) || action == #selector(UIResponderStandardEditActions.paste(_:)) {
-//          return false
-//        }
-//      return super.canPerformAction(action, withSender: sender)
-//    }
     
     public var errorMessage:String = ""{
         didSet{ lblError.text = errorMessage }
@@ -230,11 +215,13 @@ open class CustomTextField: UITextField {
     }
     
     override public init(frame: CGRect) {
+        self.params = [:]
         super.init(frame: frame)
         commonInit()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        self.params = [:]
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -341,12 +328,6 @@ open class CustomTextField: UITextField {
         let rect = super.leftViewRect(forBounds: bounds)
         return insetForSideView(forBounds: rect)
     }
-    
-//    override public func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-//        let rect = super.rightViewRect(forBounds: bounds)
-//
-//        return insetForSideView(forBounds: rect)
-//    }
     
     override public func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.clearButtonRect(forBounds: bounds)

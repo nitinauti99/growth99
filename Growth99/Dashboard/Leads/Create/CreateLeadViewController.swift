@@ -16,42 +16,32 @@ protocol CreateLeadViewControllerProtocol: AnyObject {
 }
 
 class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtocol {
-    
-    @IBOutlet weak var firstNameTextField: CustomTextField!
-    @IBOutlet weak var lastNameTextField: CustomTextField!
-    @IBOutlet weak var emailTextField: CustomTextField!
-    @IBOutlet weak var phoneNumberTextField: CustomTextField!
-    @IBOutlet weak var messageTextField: CustomTextField!
+
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
-    @IBOutlet weak var leadListTableView : UITableView!
     @IBOutlet weak var customViewHight : NSLayoutConstraint!
+    private var viewModel: CreateLeadViewModelProtocol?
+    private var patientQuestionAnswers = Array<Any>()
+    private var patientQuestionList = [PatientQuestionAnswersList]()
 
-   private var patientQuestionAnswers = Array<Any>()
-   private var viewModel: CreateLeadViewModelProtocol?
-   private var patientQuestionList = [PatientQuestionAnswersList]()
-
-   private var yPosition  = 20
-   private var xPosition  = 30
-   private var widthPosition  = 300
-   private lazy var inputTypeTextField: CustomTextField = {
+    private var yPosition  = 20
+    private var xPosition  = 30
+    private var widthPosition  = 300
+    var buttonLastTag = 0
+    
+    private lazy var inputTypeTextField: CustomTextField = {
         let textField = CustomTextField()
         return textField
     }()
-
-
-    var buttons = [UIButton]()
-    var patientQuestionChoices = [UIButton]()
     
-    var buttonLastTag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLeadViewModel(delegate: self)
-        setUpUI()
         self.view.ShowSpinner()
         viewModel?.getQuestionnaireId()
         self.widthPosition = Int((self.view.frame.width - 40))
+        setUpUI()
     }
 
     func QuestionnaireIdRecived() {
@@ -103,7 +93,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 button1.tag = i
                 self.customView.addSubview(button1)
-                buttons.append(button1)
 
                 let button2 = UIButton(frame: CGRect(x: Int(button1.frame.width)  + posX, y: yPosition, width: 70, height: 20))
                 button2.setTitleColor(UIColor.black, for: .normal)
@@ -113,7 +102,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 button2.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 button2.tag = i
                 self.customView.addSubview(button2)
-                buttons.append(button2)
                 yPosition +=  Int(button2.frame.height + 20)
 
             } else if (item.questionType == "Multiple_Selection_Text") {
@@ -138,14 +126,70 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                         print("multiselcted button", button1.tag)
                         button1.params[i] = item
                         self.customView.addSubview(button1)
-                        patientQuestionChoices.append(button1)
                         yPosition +=  Int(button1.frame.height + 10)
                   }
-              }
+                yPosition +=  Int(20)
+            } else if (item.questionType == "Date") {
+                inputTypeTextField = CustomTextField()
+                let label : UILabel = UILabel()
+                label.text = item.questionName
+                label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 25)
+                self.customView.addSubview(label)
+                yPosition +=  Int(label.frame.height + 5)
+                inputTypeTextField.tag = i
+                print("Input type", inputTypeTextField.tag)
+                inputTypeTextField.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
+                let datePicker = UIDatePicker()
+                datePicker.datePickerMode = .date
+                datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
+                datePicker.frame.size = CGSize(width: 0, height: 300)
+                if #available(iOS 13.4, *) {
+                    datePicker.preferredDatePickerStyle = .wheels
+                } else {
+                    // Fallback on earlier versions
+                }
+                datePicker.minimumDate = Date()
+                datePicker.tag = inputTypeTextField.tag
+                let toolBar = UIToolbar()
+                toolBar.barStyle = UIBarStyle.default
+                toolBar.isTranslucent = true
+                toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+                toolBar.sizeToFit()
+                let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+                let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+                let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.donePicker))
+         
+                toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+                toolBar.isUserInteractionEnabled = true
+                doneButton.tag = inputTypeTextField.tag
+                cancelButton.tag = inputTypeTextField.tag
+                inputTypeTextField.inputView = datePicker
+                inputTypeTextField.inputAccessoryView = toolBar
+                self.customView.addSubview(inputTypeTextField)
+                yPosition +=  Int(inputTypeTextField.frame.height + 20)
+            }
         }
         customViewHight.constant = CGFloat(yPosition + 150)
     }
-
+    
+    @objc func donePicker( _ sender: UIBarButtonItem) {
+        if let inputTypeTxtField = self.customView.viewWithTag(sender.tag) as? CustomTextField {
+            inputTypeTxtField.resignFirstResponder()
+         }
+    }
+     
+     @objc func dateChange(datePicker: UIDatePicker) {
+         if let inputTypeTxtField = self.customView.viewWithTag(datePicker.tag) as? CustomTextField {
+             inputTypeTxtField.text = formatDate(date: datePicker.date)
+          }
+     }
+                                                     
+    func formatDate(date: Date) -> String  {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter.string(from: date)
+    }
+    
     @IBAction func webButtonTouched(_ sender: PassableUIButton) {
         print(sender.params[sender.tag] ?? "")
         if sender.isSelected {
@@ -158,23 +202,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
    
     @objc func buttonAction(sender: UIButton!){
-        let buttonIndex = buttons.index(of: sender)
-        print(buttonIndex)
         sender.isSelected = true
-
-//        if buttonLastTag == sender.tag {
-//            buttonLastTag = sender.tag
-//            for button in buttons {
-//                button.isSelected = false
-//            }
-//            sender.isSelected = true
-//        } else {
-//            buttonLastTag = sender.tag
-//            for button in buttons {
-//                button.isSelected = false
-//            }
-//            sender.isSelected = true
-//        }
     }
     
     @objc func button2Action(sender: UIButton!){
@@ -207,31 +235,22 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     @IBAction func closeButtonClicked() {
         self.dismiss(animated: true)
     }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        let leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag)
-      if let cell = textField.next(ofType: InputTypeTableViewCell.self) {
-
-        if textField.text == "", !cell.isValidTextFieldData(textField.text ?? "", regex: leadVM?.regex ?? "") {
-            cell.inputTextField.showError(message: leadVM?.validationMessage)
-        }
-      }
-    }
-    
+  
     @IBAction func submitButtonClicked() {
         var inputType: Bool =  false
         var inputTypePresent: Bool =  false
         var TextType: Bool =  false
         var TextTypePresent: Bool =  false
+        var dateTypePresent: Bool = false
+        var dateType: Bool = false
 
         var i = 0
         patientQuestionList.forEach { item in
             i += 1
-           
+
             if item.questionType == "Input" {
                 inputTypePresent = true
                 if let inputTypeTxtField = self.customView.viewWithTag(i) as? CustomTextField {
-                   
                     guard let txtField = inputTypeTxtField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
                         inputTypeTxtField.showError(message: item.validationMessage)
                         inputType = false
@@ -241,7 +260,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                    inputType = true
                }
             }
-           
+
             if(item.questionType == "Text" ){
                 TextTypePresent =  true
                 if let txtView = self.customView.viewWithTag(i) as? CustomTextField {
@@ -272,6 +291,22 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 }
                 self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, patientQuestionList: patientQuestionChoicesList)
             }
+            if (item.questionType == "Date") {
+                dateTypePresent = true
+                if let inputTypeTxtField = self.customView.viewWithTag(i) as? CustomTextField {
+                    guard let txtField = inputTypeTxtField.text, txtField != "" else {
+                        if item.validationMessage == nil {
+                            inputTypeTxtField.showError(message: "The date selection field is required.")
+                        }else{
+                            inputTypeTxtField.showError(message: item.validationMessage)
+                        }
+                        dateType = false
+                        return
+                    }
+                   self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: inputTypeTxtField.text ?? "")
+                    dateType = true
+               }
+            }
         }
             let patientQuestionAnswers: [String: Any] = [
                 "id": 1234,
@@ -279,8 +314,9 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 "source": "Manual",
                 "patientQuestionAnswers": patientQuestionAnswers
             ]
-            if TextTypePresent || inputTypePresent {
-                if inputType == true || TextType == true {
+
+           if TextTypePresent || inputTypePresent || dateTypePresent{
+                if inputType == true || TextType == true || dateType == true {
                     view.ShowSpinner()
                     viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
                     print("all condtion meet")
@@ -297,9 +333,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         return patientQuestionChoices
     }
     
-    
     func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any]){
-       
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
             "questionName": patientQuestionAnswersList.questionName ?? "",
@@ -310,15 +344,14 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             "answerText": patientQuestionAnswersList.answerText ?? "",
             "answerComments": "",
             "patientQuestionChoices": patientQuestionList,
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
+            "required": patientQuestionAnswersList.required ?? "",
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]
         patientQuestionAnswers.append(patientQuestion)
     }
     
     func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String){
-       
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
             "questionName": patientQuestionAnswersList.questionName ?? "",
@@ -329,15 +362,14 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
+            "required": patientQuestionAnswersList.required ?? "",
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]
         patientQuestionAnswers.append(patientQuestion)
     }
   
     func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
-       
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
             "questionName": patientQuestionAnswersList.questionName ?? "",
@@ -348,37 +380,10 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
-            "required": true,
-            "hidden": false,
-            "showDropDown": false
+            "required": patientQuestionAnswersList.required ?? "",
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]
         patientQuestionAnswers.append(patientQuestion)
     }
-    
 }
-
-//extension CreateLeadViewController: UITextFieldDelegate {
-//
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag - 1)
-//
-//        guard let txtField = textField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: leadVM?.regex ?? "") , isValid else {
-//            inputTypeTextField.tag.showError(message: leadVM?.validationMessage)
-//            return false
-//        }
-//        return true
-//    }
-////    func textFieldDidBeginEditing(_ textField: UITextField) {
-////        let leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag)
-////
-////        if textField.text == "", !(viewModel?.isValidTextFieldData(textField.text ?? "", regex: leadVM?.regex ?? "") ?? false) {
-////            //inputTextField.showError(message: leadVM?.validationMessage)
-////        }
-////    }
-////
-////    func textFieldDidEndEditing(_ textField: UITextField) {
-////        var leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag)
-////        leadVM?.answerText = textField.text
-////
-////    }
-//}
