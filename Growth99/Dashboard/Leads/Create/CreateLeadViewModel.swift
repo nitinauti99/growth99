@@ -20,8 +20,7 @@ protocol CreateLeadViewModelProtocol {
     func isValidMessage(_ message: String) -> Bool
     var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
     func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
-//    var leadUserQuestionnairefinalList: [PatientQuestionAnswersList]? { get }
-
+    func isValidTextFieldData(_ textField: String, regex: String) -> Bool
 }
 
 class CreateLeadViewModel {
@@ -101,11 +100,11 @@ class CreateLeadViewModel {
 }
 
 extension CreateLeadViewModel: CreateLeadViewModelProtocol {
-   
-//    var leadUserQuestionnairefinalList: [PatientQuestionAnswersList]? {
-//        return self.questionnaireFilterList
-//    }
-    
+
+    func isValidTextFieldData(_ textField: String, regex: String) -> Bool {
+        let textFieldValidation = NSPredicate(format:"SELF MATCHES %@", regex)
+        return textFieldValidation.evaluate(with: textField)
+    }
    
     var leadUserQuestionnaireList: [PatientQuestionAnswersList]? {
         return self.questionnaireFilterList

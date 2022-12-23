@@ -26,12 +26,21 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
     @IBOutlet weak var leadListTableView : UITableView!
+    @IBOutlet weak var customViewHight : NSLayoutConstraint!
 
    private var patientQuestionAnswers = Array<Any>()
    private var viewModel: CreateLeadViewModelProtocol?
    private var patientQuestionList = [PatientQuestionAnswersList]()
 
-    var yPosition  = 20
+   private var yPosition  = 20
+   private var xPosition  = 30
+   private var widthPosition  = 300
+   private lazy var inputTypeTextField: CustomTextField = {
+        let textField = CustomTextField()
+        return textField
+    }()
+
+
     var buttons = [UIButton]()
     var patientQuestionChoices = [UIButton]()
     
@@ -42,13 +51,9 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         setUpUI()
         self.view.ShowSpinner()
         viewModel?.getQuestionnaireId()
-       // self.reegisterCell()
+        self.widthPosition = Int((self.view.frame.width - 40))
     }
-    
-    func reegisterCell() {
-        leadListTableView.register(UINib(nibName: "InputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "InputTypeTableViewCell")
-    }
-    
+
     func QuestionnaireIdRecived() {
         viewModel?.getQuestionnaireList()
     }
@@ -56,7 +61,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func QuestionnaireListRecived() {
         view.HideSpinner()
         patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
-      //  leadListTableView.reloadData()
         self.setUpUiElement()
     }
 
@@ -65,24 +69,29 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         patientQuestionList.forEach { item in
             i += 1
             if item.questionType == "Input" {
-                 let textField: UITextField = CustomTextField()
-                 textField.tag = i
-                 print("Input type", textField.tag)
-                 textField.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
-                 self.customView.addSubview(textField)
-                 yPosition +=  Int(textField.frame.height + 20)
+                 inputTypeTextField = CustomTextField()
+                 let label : UILabel = UILabel()
+                 label.text = item.questionName
+                 label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 25)
+                 self.customView.addSubview(label)
+                 yPosition +=  Int(label.frame.height + 5)
+                 inputTypeTextField.tag = i
+                 print("Input type", inputTypeTextField.tag)
+                 inputTypeTextField.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
+                 self.customView.addSubview(inputTypeTextField)
+                 yPosition +=  Int(inputTypeTextField.frame.height + 20)
             } else if (item.questionType == "Text") {
                 let textView : UITextField = CustomTextField()
                 textView.tag = i
                 print("Text type", textView.tag)
-                textView.frame = CGRect(x: 20, y: yPosition, width: 300, height: 80)
+                textView.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 80)
                 self.customView.addSubview(textView)
                 yPosition +=  Int(textView.frame.height + 20)
             } else if (item.questionType ==  "Yes_No") {
                 let label : UILabel = UILabel()
                 print("Yes_No", label.tag)
                 label.text = item.questionName
-                label.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
+                label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
                 self.customView.addSubview(label)
                 yPosition +=  Int(label.frame.height + 10)
                 let posX = 20
@@ -111,10 +120,10 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 let MultipleSelectionlabel : UILabel = UILabel()
                 print("Yes_No", MultipleSelectionlabel.tag)
                 MultipleSelectionlabel.text = item.questionName
-                MultipleSelectionlabel.frame = CGRect(x: 20, y: yPosition, width: 300, height: 40)
+                MultipleSelectionlabel.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
                 self.customView.addSubview(MultipleSelectionlabel)
                 yPosition +=  Int(MultipleSelectionlabel.frame.height + 10)
-                let posX = 20
+                let posX = 30
                 item.patientQuestionChoices?.forEach { item in
                         i += 1
                         let button1 = PassableUIButton(frame: CGRect(x: posX, y: yPosition, width: 100, height: 20))
@@ -134,8 +143,9 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                   }
               }
         }
+        customViewHight.constant = CGFloat(yPosition + 150)
     }
-   
+
     @IBAction func webButtonTouched(_ sender: PassableUIButton) {
         print(sender.params[sender.tag] ?? "")
         if sender.isSelected {
@@ -146,8 +156,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             sender.setImage(UIImage(named: "tickselected")!, for: .selected)
         }
     }
-    
-   
    
     @objc func buttonAction(sender: UIButton!){
         let buttonIndex = buttons.index(of: sender)
@@ -211,57 +219,73 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
     
     @IBAction func submitButtonClicked() {
+        var inputType: Bool =  false
+        var inputTypePresent: Bool =  false
+        var TextType: Bool =  false
+        var TextTypePresent: Bool =  false
+
         var i = 0
         patientQuestionList.forEach { item in
             i += 1
+           
             if item.questionType == "Input" {
-                if let txtField = self.customView.viewWithTag(i) as? CustomTextField {
-                    if txtField.text == "" {
-                        txtField.showError(message: item.validationMessage)
+                inputTypePresent = true
+                if let inputTypeTxtField = self.customView.viewWithTag(i) as? CustomTextField {
+                   
+                    guard let txtField = inputTypeTxtField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                        inputTypeTxtField.showError(message: item.validationMessage)
+                        inputType = false
+                        return
                     }
-                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: txtField.text ?? "")
-                    print(txtField.text!)
-                }
-            } else if(item.questionType == "Text" ){
+                   self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: inputTypeTxtField.text ?? "")
+                   inputType = true
+               }
+            }
+           
+            if(item.questionType == "Text" ){
+                TextTypePresent =  true
                 if let txtView = self.customView.viewWithTag(i) as? CustomTextField {
-                    if txtView.text == "" {
+                    if txtView.text == "", let isValid = viewModel?.isValidTextFieldData(txtView.text ?? "", regex: item.regex ?? "") , isValid {
                         txtView.showError(message: item.validationMessage)
+                        TextType = false
+                        return
                     }
                     self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: txtView.text ?? "")
-                    print(txtView.text!)
-              }
+                    TextType = true
+
+                }
             }
-            
-            else if(item.questionType == "Yes_No" ){
+            if(item.questionType == "Yes_No" ){
                 if let txtView = self.customView.viewWithTag(i) as? UIButton {
                     self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: txtView.isSelected)
                     print(txtView.isSelected)
-              }
-            } else if(item.questionType == "Multiple_Selection_Text" ) {
+                }
+            }
+            if(item.questionType == "Multiple_Selection_Text" ) {
                 var patientQuestionChoicesList: [Any] = []
                 for item in item.patientQuestionChoices ?? [] {
                     i += 1
                     if let passableUIButton = self.customView.viewWithTag(i) as? PassableUIButton {
-                        print(passableUIButton.tag)
-                        print(passableUIButton.isSelected)
                         let list  = self.patientQuestionChoicesList(patientQuestionChoices: item, selected: passableUIButton.isSelected)
                         patientQuestionChoicesList.append(list)
                     }
-                 }
-                print(patientQuestionChoicesList)
-               self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, patientQuestionList: patientQuestionChoicesList)
-             }
-         }
-        let patientQuestionAnswers: [String: Any] = [
-               "id": 1234,
-               "questionnaireId": 7996,
-               "source": "Manual",
-               "patientQuestionAnswers": patientQuestionAnswers
-        ]
-        print(patientQuestionAnswers)
-
-      //  view.ShowSpinner()
-      //  viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
+                }
+                self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, patientQuestionList: patientQuestionChoicesList)
+            }
+        }
+            let patientQuestionAnswers: [String: Any] = [
+                "id": 1234,
+                "questionnaireId": 7996,
+                "source": "Manual",
+                "patientQuestionAnswers": patientQuestionAnswers
+            ]
+            if TextTypePresent || inputTypePresent {
+                if inputType == true || TextType == true {
+                    view.ShowSpinner()
+                    viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
+                    print("all condtion meet")
+                }
+            }
     }
     
     func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
@@ -292,8 +316,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         ]
         patientQuestionAnswers.append(patientQuestion)
     }
-    
-    
     
     func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String){
        
@@ -335,86 +357,28 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     
 }
 
-
-extension CreateLeadViewController : UITableViewDelegate, UITableViewDataSource {
-   
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patientQuestionList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-
-        let item = patientQuestionList[indexPath.row]
-        if item.questionType == "Input" {
-            guard let cell1 = tableView.dequeueReusableCell(withIdentifier: "InputTypeTableViewCell") as? InputTypeTableViewCell else {
-                return UITableViewCell()
-            }
-            cell1.configureCell(leadVM: viewModel, index: indexPath, tableview: leadListTableView)
-            return cell1
-
-        } else if item.questionType == "Text" {
-            cell.contentView.backgroundColor = .red
-
-        } else if item.questionType == "Date" {
-            cell.contentView.backgroundColor = .orange
-
-        } else if item.questionType == "Yes_No" {
-            cell.contentView.backgroundColor = .gray
-
-        } else if item.questionType == "Multiple_Selection_Text" {
-            cell.contentView.backgroundColor = .green
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = patientQuestionList[indexPath.row]
-        if item.questionType == "Input" {
-            return 130
-        }else{
-            return 100
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = patientQuestionList[indexPath.row]
-        if item.questionType == "Input" {
-            let cell = leadListTableView.cellForRow(at: indexPath) as! InputTypeTableViewCell
-        }
-    }
-}
-
-//        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
-//            firstNameTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
-//            return
-//        }
+//extension CreateLeadViewController: UITextFieldDelegate {
 //
-//        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
-//            lastNameTextField.showError(message: Constant.CreateLead.lastNameEmptyError)
-//            return
-//        }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag - 1)
 //
-//        guard let email = emailTextField.text, !email.isEmpty else {
-//            emailTextField.showError(message: Constant.CreateLead.emailEmptyError)
-//            return
+//        guard let txtField = textField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: leadVM?.regex ?? "") , isValid else {
+//            inputTypeTextField.tag.showError(message: leadVM?.validationMessage)
+//            return false
 //        }
-//        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-//            emailTextField.showError(message: Constant.CreateLead.emailInvalidError)
-//            return
-//        }
-//
-//        guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-//            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberEmptyError)
-//            return
-//        }
-//
-//        guard let phoneNumberIsValid = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberIsValid else {
-//            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberInvalidError)
-//            return
-//        }
-//        setFirstName()
-//        setLastName()
-//        setEmail()
-//        setPhoneNumber()
-//        setMessage()
+//        return true
+//    }
+////    func textFieldDidBeginEditing(_ textField: UITextField) {
+////        let leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag)
+////
+////        if textField.text == "", !(viewModel?.isValidTextFieldData(textField.text ?? "", regex: leadVM?.regex ?? "") ?? false) {
+////            //inputTextField.showError(message: leadVM?.validationMessage)
+////        }
+////    }
+////
+////    func textFieldDidEndEditing(_ textField: UITextField) {
+////        var leadVM = self.viewModel?.leadUserQuestionnaireListAtIndex(index: textField.tag)
+////        leadVM?.answerText = textField.text
+////
+////    }
+//}

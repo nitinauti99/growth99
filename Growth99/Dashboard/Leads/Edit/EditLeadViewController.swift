@@ -12,7 +12,6 @@ protocol EditLeadViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
     func updateLeadAmmountSaved()
     func updateLeadDadaRecived()
-
 }
 
 class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
