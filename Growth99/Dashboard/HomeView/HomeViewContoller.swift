@@ -72,7 +72,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     @objc func sideMenuTapped(_ sender: UIButton) {
         menuVC.revealSideMenu()
     }
-    
 
     fileprivate func setUpUI() {
         self.firsNameTextField.text = viewModel?.getUserProfileData.firstName

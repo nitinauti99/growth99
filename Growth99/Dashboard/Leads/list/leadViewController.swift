@@ -31,7 +31,7 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.viewModel = leadViewModel(delegate: self)
         self.getLeadList()
         self.view.ShowSpinner()
-        
+        self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
      }
     
@@ -40,12 +40,21 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.setUpUI()
         addSerchBar()
         self.registerTableView()
+        self.navigationController?.title = "Lead List"
+    }
+    
+    func setBarButton(){
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "add"), for: .normal)
+        button.addTarget(self, action:  #selector(creatLead), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     @objc func updateUI(){
         self.getLeadList()
         self.view.ShowSpinner()
-
     }
     
     func addSerchBar(){
@@ -64,7 +73,6 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.view.ShowSpinner()
         isLoadingList = false
         viewModel?.getLeadList(page: pageNumber, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
-
     }
     
     func loadMoreItemsForList(){
@@ -88,10 +96,12 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.refreshControl.tintColor = UIColor.black
         self.refreshControl.addTarget(self, action: #selector(pullToRefresh), for: UIControl.Event.valueChanged)
         self.leadListTableView.addSubview(self.refreshControl)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add  ", style: .plain, target: self, action: #selector(creatLead))
     }
     
     @IBAction func serachLeadList(sender: UIButton) {
+        if searchBar.text == "" {
+            return
+        }
         self.view.ShowSpinner()
         currentPage = 0
         viewModel?.getLeadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
@@ -142,7 +152,7 @@ extension leadViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -150,7 +160,6 @@ extension leadViewController: UITableViewDelegate, UITableViewDataSource {
         detailController.LeadData = viewModel?.leadDataAtIndex(index: indexPath.row)
         navigationController?.pushViewController(detailController, animated: true)
     }
-    
 }
 
 extension leadViewController:  UISearchBarDelegate {

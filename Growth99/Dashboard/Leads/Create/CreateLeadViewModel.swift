@@ -13,11 +13,6 @@ protocol CreateLeadViewModelProtocol {
     func createLead(patientQuestionAnswers: [String: Any])
     func leadDataAtIndex(index: Int) -> leadModel
     var leadUserData: [leadModel]? { get }
-    func isValidEmail(_ email: String) -> Bool
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
-    func isValidFirstName(_ firstName: String) -> Bool
-    func isValidLastName(_ lastName: String) -> Bool
-    func isValidMessage(_ message: String) -> Bool
     var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
     func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool

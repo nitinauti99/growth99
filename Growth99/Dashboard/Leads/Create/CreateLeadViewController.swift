@@ -203,14 +203,12 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
    
     @objc func buttonAction(sender: UIButton){
-        if buttonLastTag == sender.tag {
-            if sender.isSelected {
-               sender.isSelected = false
-               sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
-            }else {
-               sender.isSelected = true
-               sender.setImage(UIImage(named: "tickselected")!, for: .selected)
-            }
+        if sender.isSelected {
+           sender.isSelected = false
+           sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
+        }else {
+           sender.isSelected = true
+           sender.setImage(UIImage(named: "tickselected")!, for: .selected)
         }
     }
  
@@ -247,7 +245,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         var i = 0
         patientQuestionList.forEach { item in
             i += 1
-
             if item.questionType == "Input" {
                 inputTypePresent = true
                 if let inputTypeTxtField = self.customView.viewWithTag(i) as? CustomTextField {
