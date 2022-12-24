@@ -29,7 +29,9 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     private var xPosition  = 30
     private var widthPosition  = 300
     var buttonLastTag = 0
-    
+    var buttonYesTag = 0
+    var buttonNoTag = 0
+
     private lazy var inputTypeTextField: CustomTextField = {
         let textField = CustomTextField()
         return textField
@@ -56,8 +58,10 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
 
     func setUpUiElement(){
         var i = 0
+       
         patientQuestionList.forEach { item in
             i += 1
+           
             if item.questionType == "Input" {
                  inputTypeTextField = CustomTextField()
                  let label : UILabel = UILabel()
@@ -70,6 +74,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                  inputTypeTextField.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
                  self.customView.addSubview(inputTypeTextField)
                  yPosition +=  Int(inputTypeTextField.frame.height + 20)
+          
             } else if (item.questionType == "Text") {
                 let textView : UITextField = CustomTextField()
                 textView.tag = i
@@ -77,6 +82,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 textView.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 80)
                 self.customView.addSubview(textView)
                 yPosition +=  Int(textView.frame.height + 20)
+           
             } else if (item.questionType ==  "Yes_No") {
                 let label : UILabel = UILabel()
                 print("Yes_No", label.tag)
@@ -84,27 +90,27 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
                 self.customView.addSubview(label)
                 yPosition +=  Int(label.frame.height + 10)
-                let posX = 20
-                let button1 = UIButton(frame: CGRect(x: posX, y: yPosition, width: 70, height: 20))
+
+                let button1 = UIButton(frame: CGRect(x: 20, y: yPosition, width: 70, height: 20))
                 button1.setTitleColor(UIColor.black, for: .normal)
                 button1.setTitle("  YES", for: .normal)
                 button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
                 button1.setImage(UIImage(named: "tickselected")!, for: .selected)
-                button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+                button1.addTarget(self, action: #selector(btnOnlineAction), for: .touchUpInside)
                 button1.tag = i
-                self.customView.addSubview(button1)
-
-                let button2 = UIButton(frame: CGRect(x: Int(button1.frame.width)  + posX, y: yPosition, width: 70, height: 20))
+                
+                let button2 = UIButton(frame: CGRect(x: Int(button1.frame.width) + 10, y: yPosition, width: 70, height: 20))
                 button2.setTitleColor(UIColor.black, for: .normal)
                 button2.setTitle("  NO", for: .normal)
                 button2.setImage(UIImage(named: "tickdefault")!, for: .normal)
                 button2.setImage(UIImage(named: "tickselected")!, for: .selected)
-                button2.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+                button2.addTarget(self, action: #selector(btnCodAction), for: .touchUpInside)
                 button2.tag = i
-                buttonLastTag =  button1.tag
+                
+                self.customView.addSubview(button1)
                 self.customView.addSubview(button2)
                 yPosition +=  Int(button2.frame.height + 20)
-
+           
             } else if (item.questionType == "Multiple_Selection_Text") {
                 let MultipleSelectionlabel : UILabel = UILabel()
                 print("Yes_No", MultipleSelectionlabel.tag)
@@ -130,6 +136,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                         yPosition +=  Int(button1.frame.height + 10)
                   }
                 yPosition +=  Int(20)
+            
             } else if (item.questionType == "Date") {
                 inputTypeTextField = CustomTextField()
                 let label : UILabel = UILabel()
@@ -191,6 +198,43 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         return formatter.string(from: date)
     }
     
+    @IBAction func btnOnlineAction(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
+            if let button = self.customView.viewWithTag(sender.tag + 1) as? UIButton {
+                button.setImage(UIImage(named: "tickselected")!, for: .selected)
+                button.isSelected = true
+            }
+        } else {
+            sender.setImage(UIImage(named: "tickselected")!, for: .selected)
+            sender.isSelected = true
+            if let button = self.customView.viewWithTag(sender.tag + 1) as? UIButton {
+                button.setImage(UIImage(named: "tickdefault")!, for: .normal)
+                button.isSelected = false
+            }
+        }
+    }
+
+  
+    @IBAction func btnCodAction(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
+            if let button = self.customView.viewWithTag(sender.tag - 1) as? UIButton {
+                button.setImage(UIImage(named: "tickselected")!, for: .selected)
+                button.isSelected = true
+            }
+        } else {
+            sender.setImage(UIImage(named: "tickselected")!, for: .selected)
+            sender.isSelected = true
+            if let button = self.customView.viewWithTag(sender.tag - 1) as? UIButton {
+                button.setImage(UIImage(named: "tickdefault")!, for: .normal)
+                button.isSelected = false
+            }
+        }
+    }
+    
     @IBAction func webButtonTouched(_ sender: PassableUIButton) {
         print(sender.params[sender.tag] ?? "")
         if sender.isSelected {
@@ -202,15 +246,14 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         }
     }
    
-    @objc func buttonAction(sender: UIButton){
-        if sender.isSelected {
-           sender.isSelected = false
-           sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
-        }else {
-           sender.isSelected = true
-           sender.setImage(UIImage(named: "tickselected")!, for: .selected)
-        }
-    }
+//    @objc func buttonAction(sender: UIButton){
+//            if sender.isSelected {
+//               sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
+//            }else {
+//             sender.setImage(UIImage(named: "tickselected")!, for: .selected)
+//           }
+//        sender.isSelected = !sender.isSelected
+//    }
  
     func LeadDataRecived() {
         view.HideSpinner()
