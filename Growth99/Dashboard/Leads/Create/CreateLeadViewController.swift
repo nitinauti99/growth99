@@ -198,8 +198,6 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         return formatter.string(from: date)
     }
     
-    
-   
     @IBAction func btnOnlineAction(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false

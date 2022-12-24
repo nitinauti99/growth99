@@ -8,23 +8,24 @@
 import Foundation
 
 struct EndPoints {
-    static let baseURL = "https://api.growthemr.com/api"
-    static let auth = "/auth"
-    static let register = "/account/register"
-    static let forgotPassword = "/public/users/forgot-password"
-    static let VerifyforgotPassword = "/public/users/forgot-password"
-    static let userProfile = "/v1/user/"
-    static let allClinics = "/v1/clinics/allClinics"
-    static let changePassword = "/users/change-password"
-    static let serviceCategories = "/v1/clinics/serviceCategories"
-    static let service = "/v1/services/serviceCategories"
-    static let vacationSendRequest = "/provider/"
-    static let getLeadList = "/questionnaire/contact-submissions/filter/pagination"
-    static let createLead = "/public/popup/questionnaire/"
-    static let getQuestionnaireId = "/public/questionnaire"
-    static let getQuestionnaireList = "/public/questionnaire/"
-    static let updateQuestionnaireSubmissionAmmount = "/questionnaire-submission/lead/"
-    static let updateQuestionnaireSubmission = "/questionnaire-submission/lead/"
+    static let baseURL = "https://api.growthemr.com"
+    static let auth = "/api/auth"
+    static let register = "/api/account/register"
+    static let forgotPassword = "/api/public/users/forgot-password"
+    static let VerifyforgotPassword = "/api/public/users/forgot-password"
+    static let userProfile = "/api/v1/user/"
+    static let allClinics = "/api/v1/clinics/allClinics"
+    static let changePassword = "/api/users/change-password"
+    static let serviceCategories = "/api/v1/clinics/serviceCategories"
+    static let service = "/api/v1/services/serviceCategories"
+    static let vacationSendRequest = "/api/provider/"
+    static let getLeadList = "/api/questionnaire/contact-submissions/filter/pagination"
+    static let createLead = "/api/public/popup/questionnaire/"
+    static let getQuestionnaireId = "/api/public/questionnaire"
+    static let getQuestionnaireList = "/api/public/questionnaire/"
+    static let updateQuestionnaireSubmissionAmmount = "/api/questionnaire-submission/lead/"
+    static let updateQuestionnaireSubmission = "/api/questionnaire-submission/lead/"
+    static let userList = "/api/v1/users/all"
 
 }
 
@@ -45,5 +46,6 @@ struct ApiUrl {
     static let getQuestionnaireList = EndPoints.baseURL.appending(EndPoints.getQuestionnaireList)
     static let updateQuestionnaireSubmissionAmmount = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmissionAmmount)
     static let updateQuestionnaireSubmission = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmission)
+    static let getUserList = EndPoints.baseURL.appending(EndPoints.userList)
 
 }

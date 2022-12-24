@@ -84,6 +84,12 @@
 		845C56C12947A906000FC363 /* WorkingCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C56BF2947A906000FC363 /* WorkingCustomTableViewCell.swift */; };
 		845C56C22947A906000FC363 /* WorkingCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C56C02947A906000FC363 /* WorkingCustomTableViewCell.xib */; };
 		8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */; };
+		8469A0F4295735B6005C25BD /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469A0F3295735B6005C25BD /* UserListViewModel.swift */; };
+		8469A0F629573785005C25BD /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469A0F529573785005C25BD /* UserListModel.swift */; };
+		8469A0F929573B5A005C25BD /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469A0F729573B5A005C25BD /* UserListTableViewCell.swift */; };
+		8469A0FA29573B5A005C25BD /* UserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469A0F829573B5A005C25BD /* UserListTableViewCell.xib */; };
+		8469A0FD29574542005C25BD /* UserCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469A0FC29574542005C25BD /* UserCreateViewController.swift */; };
+		8469A0FF2957455F005C25BD /* UserCreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8469A0FE2957455F005C25BD /* UserCreateViewController.storyboard */; };
 		847570FE293B827700C4E140 /* VacationsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847570FC293B827700C4E140 /* VacationsCustomTableViewCell.swift */; };
 		847570FF293B827700C4E140 /* VacationsCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847570FD293B827700C4E140 /* VacationsCustomTableViewCell.xib */; };
 		847E1F1F2916B39200C221C0 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 847E1F1E2916B39200C221C0 /* test.json */; };
@@ -354,6 +360,12 @@
 		845C56BF2947A906000FC363 /* WorkingCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingCustomTableViewCell.swift; sourceTree = "<group>"; };
 		845C56C02947A906000FC363 /* WorkingCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkingCustomTableViewCell.xib; sourceTree = "<group>"; };
 		8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenssion.swift; sourceTree = "<group>"; };
+		8469A0F3295735B6005C25BD /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
+		8469A0F529573785005C25BD /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
+		8469A0F729573B5A005C25BD /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
+		8469A0F829573B5A005C25BD /* UserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListTableViewCell.xib; sourceTree = "<group>"; };
+		8469A0FC29574542005C25BD /* UserCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreateViewController.swift; sourceTree = "<group>"; };
+		8469A0FE2957455F005C25BD /* UserCreateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserCreateViewController.storyboard; sourceTree = "<group>"; };
 		847570FC293B827700C4E140 /* VacationsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		847570FD293B827700C4E140 /* VacationsCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VacationsCustomTableViewCell.xib; sourceTree = "<group>"; };
 		847E1F1E2916B39200C221C0 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
@@ -866,6 +878,19 @@
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
+		8469A0FB29574500005C25BD /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				8469A0F3295735B6005C25BD /* UserListViewModel.swift */,
+				84E2C91E2923D93200F79DFA /* UserListViewContoller.swift */,
+				84E2C9202923D94200F79DFA /* UserListViewContoller.storyboard */,
+				8469A0F529573785005C25BD /* UserListModel.swift */,
+				8469A0F729573B5A005C25BD /* UserListTableViewCell.swift */,
+				8469A0F829573B5A005C25BD /* UserListTableViewCell.xib */,
+			);
+			path = UserList;
+			sourceTree = "<group>";
+		};
 		84865D33293CC609003C8CD9 /* list */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,8 +1127,9 @@
 		84E2C91D2923D8C600F79DFA /* Account And Setting */ = {
 			isa = PBXGroup;
 			children = (
-				84E2C91E2923D93200F79DFA /* UserListViewContoller.swift */,
-				84E2C9202923D94200F79DFA /* UserListViewContoller.storyboard */,
+				8469A0FB29574500005C25BD /* UserList */,
+				8469A0FC29574542005C25BD /* UserCreateViewController.swift */,
+				8469A0FE2957455F005C25BD /* UserCreateViewController.storyboard */,
 			);
 			path = "Account And Setting";
 			sourceTree = "<group>";
@@ -1504,6 +1530,7 @@
 				84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */,
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				84E5CF88293CF57900DC552D /* VacationsHeadeView.xib in Resources */,
+				8469A0FF2957455F005C25BD /* UserCreateViewController.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
@@ -1523,6 +1550,7 @@
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
 				84025F75293122F30051F51B /* VacationScheduleViewController.storyboard in Resources */,
 				84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */,
+				8469A0FA29573B5A005C25BD /* UserListTableViewCell.xib in Resources */,
 				84E2C9212923D94200F79DFA /* UserListViewContoller.storyboard in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
 				84E5CF8C293CFAB200DC552D /* VacationsFooterView.xib in Resources */,
@@ -1668,6 +1696,7 @@
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
+				8469A0F4295735B6005C25BD /* UserListViewModel.swift in Sources */,
 				84D1EE3E2923BB8300AAAF26 /* UpdateUserProfile.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
 				844BB337293664F9003AFA52 /* LeadTableViewCell.swift in Sources */,
@@ -1704,6 +1733,7 @@
 				845C3A21292276C000D934C5 /* HomeViewContoller.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				84A62C9A29534E6A00B8923A /* leadDetailViewModel.swift in Sources */,
+				8469A0F629573785005C25BD /* UserListModel.swift in Sources */,
 				84025F76293122F30051F51B /* VacationScheduleViewController.swift in Sources */,
 				84865D3E293DD849003C8CD9 /* EditLeadViewController.swift in Sources */,
 				845C3A1C292276C000D934C5 /* User.swift in Sources */,
@@ -1721,6 +1751,7 @@
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
 				845C3A22292276C000D934C5 /* UserProfile.swift in Sources */,
+				8469A0FD29574542005C25BD /* UserCreateViewController.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
@@ -1817,6 +1848,7 @@
 				845C3A23292276C000D934C5 /* ClinicsModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
+				8469A0F929573B5A005C25BD /* UserListTableViewCell.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				84A1BA4C293B91E400546A3B /* leadDetailViewController.swift in Sources */,

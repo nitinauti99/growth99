@@ -1,0 +1,168 @@
+//
+//  UserListViewContoller.swift
+//  Growth99
+//
+//  Created by nitin auti on 15/11/22.
+//
+
+import Foundation
+import UIKit
+
+protocol UserListViewContollerProtocol: AnyObject {
+    func LeadDataRecived()
+    func errorReceived(error: String)
+}
+
+class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
+   
+    @IBOutlet private weak var userListTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+
+    var viewModel: UserListViewModelProtocol?
+    var refreshControl : UIRefreshControl!
+    var isSearch : Bool = false
+    var filteredTableData:[String] = []
+    var currentPage : Int = 0
+    var isLoadingList : Bool = true
+    var totalCount: Int? = 0
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewModel = UserListViewModel(delegate: self)
+        self.getUserList()
+        self.setBarButton()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
+     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addSerchBar()
+        self.registerTableView()
+    }
+    
+    func setBarButton(){
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "add"), for: .normal)
+        button.addTarget(self, action:  #selector(creatUser), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func updateUI(){
+        self.getUserList()
+        self.view.ShowSpinner()
+    }
+    
+    func addSerchBar(){
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = " Search..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+    }
+    @objc func LeadList() {
+        self.view.ShowSpinner()
+        self.getUserList()
+    }
+    func getListFromServer(_ pageNumber: Int){
+        self.view.ShowSpinner()
+        isLoadingList = false
+        viewModel?.getUserList()
+    }
+//
+//    func loadMoreItemsForList(){
+//        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
+//            return
+//        }
+//         currentPage += 1
+//         getListFromServer(currentPage)
+//     }
+    
+    func registerTableView() {
+        self.userListTableView.delegate = self
+        self.userListTableView.dataSource = self
+        userListTableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
+    }
+
+    @objc func creatUser() {
+        let createUserVC = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
+        self.present(createUserVC, animated: true)
+    }
+    
+    @objc func getUserList(){
+        self.view.ShowSpinner()
+        viewModel?.getUserList()
+    }
+    
+    func LeadDataRecived() {
+        self.refreshControl?.endRefreshing()
+        self.view.HideSpinner()
+        self.userListTableView.reloadData()
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+    }
+}
+
+extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.UserData.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UserListTableViewCell()
+        cell = userListTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as! UserListTableViewCell
+        cell.configureCell(userVM: viewModel, index: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension UserListViewContoller:  UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == "" {
+            self.view.ShowSpinner()
+            currentPage = 0
+            self.getUserList()
+        }
+     }
+
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.view.ShowSpinner()
+        currentPage = 0
+        self.getUserList()
+    }
+}
+
+extension UserListViewContoller:  UIScrollViewDelegate {
+     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isLoadingList = false
+    }
+        
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if ((leadListTableView.contentOffset.y + leadListTableView.frame.size.height) >= leadListTableView.contentSize.height) {
+//            self.loadMoreItemsForList()
+//            self.isLoadingList = true
+//        }
+//    }
+}
+
+
