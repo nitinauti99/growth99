@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Calender View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CalenderViewController" id="Y6W-OH-hqX" customClass="CalenderViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2in-OS-mLP">
+                                <rect key="frame" x="20" y="109" width="353" height="340"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ht-TT-Esu" customClass="FSCalendar">
+                                        <rect key="frame" x="24" y="20" width="305" height="300"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="Ima-du-wy5"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="SpF-3O-rAU"/>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="MOu-wH-FfM"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9ht-TT-Esu" secondAttribute="trailing" constant="24" id="Ebq-G8-Me4"/>
+                                    <constraint firstAttribute="height" constant="340" id="HbQ-Ci-nUy"/>
+                                    <constraint firstItem="9ht-TT-Esu" firstAttribute="top" secondItem="2in-OS-mLP" secondAttribute="top" constant="20" id="HgM-gj-pQy"/>
+                                    <constraint firstItem="9ht-TT-Esu" firstAttribute="leading" secondItem="2in-OS-mLP" secondAttribute="leading" constant="24" id="v9C-3E-LPe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ymv-sG-EGP">
+                                <rect key="frame" x="20" y="459" width="353" height="310"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" textLabel="nwO-7f-4bg" imageView="rrV-9J-6Po" style="IBUITableViewCellStyleDefault" id="iDC-dN-lcw">
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="353" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iDC-dN-lcw" id="jd2-34-Vc6">
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Lorem ipsum dolor sit er elit lamet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nwO-7f-4bg">
+                                                    <rect key="frame" x="53.5" y="0.0" width="279.5" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_cat" id="rrV-9J-6Po">
+                                                    <rect key="frame" x="20" y="14" width="18.5" height="15.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.92941176470588238" green="0.94117647058823528" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ymv-sG-EGP" secondAttribute="bottom" id="09o-ZJ-2Jp"/>
+                            <constraint firstItem="2in-OS-mLP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="RJm-C9-ogg"/>
+                            <constraint firstItem="Ymv-sG-EGP" firstAttribute="top" secondItem="2in-OS-mLP" secondAttribute="bottom" constant="10" id="VW5-Yg-Jun"/>
+                            <constraint firstItem="2in-OS-mLP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="g06-9l-tWR"/>
+                            <constraint firstAttribute="trailing" secondItem="2in-OS-mLP" secondAttribute="trailing" constant="20" id="kdV-SZ-gAV"/>
+                            <constraint firstItem="Ymv-sG-EGP" firstAttribute="trailing" secondItem="2in-OS-mLP" secondAttribute="trailing" id="pJ9-fL-sF0"/>
+                            <constraint firstItem="Ymv-sG-EGP" firstAttribute="leading" secondItem="2in-OS-mLP" secondAttribute="leading" id="wMI-BI-Zf1"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="calendar" destination="9ht-TT-Esu" id="eZQ-bi-UPW"/>
+                        <outlet property="calendarHeightConstraint" destination="Ima-du-wy5" id="OSJ-Sx-TRy"/>
+                        <outlet property="calendarViewHeightConstraint" destination="HbQ-Ci-nUy" id="odK-5z-3ez"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17.557251908396946" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_cat" width="18.5" height="15.5"/>
+    </resources>
+</document>

@@ -206,8 +206,13 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             }
         } else if indexPath.section == 1 {
             
-        } else {
-            
+        } else if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "CalenderViewController", pusedViewController: "CalenderViewController")
+            default:
+                break
+            }
         }
     }
     

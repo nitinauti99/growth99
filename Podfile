@@ -9,6 +9,7 @@ target 'Growth99' do
   pod 'SDWebImage', '~> 5.0'
   pod 'Alamofire'
   pod 'FontAwesome.swift'
+  pod 'FSCalendar'
 
   target 'Growth99Tests' do
     inherit! :search_paths
