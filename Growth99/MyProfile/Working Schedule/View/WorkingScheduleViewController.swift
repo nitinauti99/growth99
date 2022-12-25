@@ -152,12 +152,15 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
             let cellIndexPath = IndexPath(item: childIndex, section: 0)
             if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                if vacationCell.timeToTextField.text == ""{
+                if vacationCell.timeFromTextField.text == ""{
+                    isValidateArray.insert(false, at: childIndex)
+                    vacationCell.timeFromTextField.showError(message: Constant.Login.emailEmptyError)
+                    return
+                }
+                if (vacationCell.timeToTextField.text == "") {
                     isValidateArray.insert(false, at: childIndex)
                     vacationCell.timeToTextField.showError(message: Constant.Login.emailEmptyError)
-                } else if (vacationCell.timeToTextField.text == "") {
-                    isValidateArray.insert(false, at: childIndex)
-                    vacationCell.timeToTextField.showError(message: Constant.Login.emailEmptyError)
+                    return
                 } else {
                     isValidateArray.insert(true, at: childIndex)
                     selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank), days: [vacationCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
@@ -186,6 +189,10 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         workingListTableView.beginUpdates()
         isEmptyResponse = true
         let indexPath = IndexPath(row: (workingListModel?[0].userScheduleTimings?.count ?? 0) - 1, section: 0)
+        if let vacationCell = workingListTableView.cellForRow(at: indexPath) as? WorkingCustomTableViewCell {
+            vacationCell.timeToTextField.text = ""
+            vacationCell.timeFromTextField.text = ""
+        }
         workingListTableView.insertRows(at: [indexPath], with: .fade)
         workingListTableView.endUpdates()
         scrollViewHeight()
