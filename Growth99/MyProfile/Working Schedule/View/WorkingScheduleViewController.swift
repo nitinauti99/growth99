@@ -195,10 +195,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         workingListTableView.beginUpdates()
         isEmptyResponse = true
         let indexPath = IndexPath(row: (workingListModel?[0].userScheduleTimings?.count ?? 0) - 1, section: 0)
-        if let vacationCell = workingListTableView.cellForRow(at: indexPath) as? WorkingCustomTableViewCell {
-            vacationCell.timeToTextField.text = ""
-            vacationCell.timeFromTextField.text = ""
-        }
         workingListTableView.insertRows(at: [indexPath], with: .fade)
         workingListTableView.endUpdates()
         scrollViewHeight()

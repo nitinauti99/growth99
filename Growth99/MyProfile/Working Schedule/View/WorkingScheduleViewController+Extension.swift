@@ -38,6 +38,10 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
                 cell.updateTextLabel(with: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days)
                 cell.updateTimeFromTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
                 cell.updateTimeToTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
+            } else {
+                cell.timeFromTextField.text = ""
+                cell.timeToTextField.text = ""
+                cell.workingClinicTextLabel.text = "Select day"
             }
             cell.buttoneRemoveDaysTapCallback = {
                 self.deleteDaysRow(selectedSection: indexPath, selectedIndex: indexPath.row)
