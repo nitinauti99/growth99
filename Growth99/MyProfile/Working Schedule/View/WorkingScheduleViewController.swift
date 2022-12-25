@@ -68,6 +68,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     @objc func dateToButtonPressed1() {
         workingDateToTextField.text = workingScheduleViewModel.dateFormatterString(textField: workingDateToTextField)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.listExpandHeightConstraint.constant = 31

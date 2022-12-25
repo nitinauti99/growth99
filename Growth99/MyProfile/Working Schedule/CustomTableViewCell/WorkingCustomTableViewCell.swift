@@ -138,7 +138,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 34
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -159,8 +159,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
     
     func workingShowClinicDropDown() {
-        
-        workingListTableViewHeightConstraint.constant = CGFloat(21 * (daysViewModel.items.count))
+        workingListTableViewHeightConstraint.constant = CGFloat(21 * (daysViewModel.items.count) + 90)
         workingListSelection = true
     }
 }
