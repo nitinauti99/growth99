@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -50,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-G7-7ED" userLabel="password">
-                                <rect key="frame" x="16" y="112" width="249" height="21"/>
+                                <rect key="frame" x="16" y="116.33333333333333" width="249" height="20.999999999999986"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="j6w-4l-V6Y"/>
                                 </constraints>
@@ -73,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72s-jM-X3a" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="143" width="274" height="45"/>
+                                <rect key="frame" x="26" y="147.33333333333334" width="274" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DIP-Ry-qmr"/>
                                 </constraints>
@@ -99,7 +100,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzh-yo-KIA" userLabel="password">
-                                <rect key="frame" x="16" y="208" width="249" height="21"/>
+                                <rect key="frame" x="16" y="212.33333333333334" width="249" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Hv6-6G-oiH"/>
                                 </constraints>
@@ -120,7 +121,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n9F-aQ-qaW" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="239" width="274" height="45"/>
+                                <rect key="frame" x="26" y="243.33333333333337" width="274" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FM2-Te-9tY"/>
                                 </constraints>
@@ -222,6 +223,12 @@
                                     <action selector="deleteWorkingButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="93o-zW-v0v"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please select day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRW-ly-0GA" userLabel="password">
+                                <rect key="frame" x="26" y="98" width="239" height="13.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hcN-Pd-MOW"/>
                         <color key="backgroundColor" red="0.78039215689999997" green="0.93725490199999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -231,12 +238,16 @@
                             <constraint firstItem="RTi-qY-rgQ" firstAttribute="top" secondItem="ebG-GZ-hVG" secondAttribute="bottom" id="7cC-UI-go8"/>
                             <constraint firstItem="n9F-aQ-qaW" firstAttribute="leading" secondItem="Fzh-yo-KIA" secondAttribute="leading" constant="10" id="86e-bn-b5T"/>
                             <constraint firstItem="ebG-GZ-hVG" firstAttribute="top" secondItem="Tzx-vN-wte" secondAttribute="bottom" constant="10" id="8r7-3q-rgd"/>
+                            <constraint firstItem="rRW-ly-0GA" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" constant="10" id="AjX-3P-c2V"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="EfL-Lm-kKy"/>
+                            <constraint firstItem="rRW-ly-0GA" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="Ejj-Ow-iap"/>
+                            <constraint firstItem="rRW-ly-0GA" firstAttribute="top" secondItem="RTi-qY-rgQ" secondAttribute="bottom" constant="5" id="Jm2-JN-MRH"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="JpJ-Xi-Mng"/>
                             <constraint firstItem="Fzh-yo-KIA" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="L6V-Iv-HDY"/>
                             <constraint firstItem="RTi-qY-rgQ" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" id="LeK-eW-8yC"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="top" secondItem="aQy-Bo-lqL" secondAttribute="top" constant="16" id="Qdr-zm-tc4"/>
                             <constraint firstItem="hcN-Pd-MOW" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" constant="16" id="QfM-kH-LID"/>
+                            <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="rRW-ly-0GA" secondAttribute="bottom" constant="5" id="SeY-Q4-yYK"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" constant="6" id="TFL-0B-yyR"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="top" secondItem="Wvb-G7-7ED" secondAttribute="bottom" constant="10" id="UNA-zI-QIr"/>
                             <constraint firstItem="7Xq-8Z-VMn" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="10" id="Yt8-Np-6Tk"/>
@@ -245,7 +256,6 @@
                             <constraint firstItem="Fzh-yo-KIA" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="cWX-cc-v51"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="leading" secondItem="Wvb-G7-7ED" secondAttribute="leading" constant="10" id="dV5-7Y-FEU"/>
                             <constraint firstItem="RTi-qY-rgQ" firstAttribute="leading" secondItem="ebG-GZ-hVG" secondAttribute="leading" id="fIb-3c-kWN"/>
-                            <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="ebG-GZ-hVG" secondAttribute="bottom" constant="20" id="j7n-t4-LWI"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="leading" secondItem="aQy-Bo-lqL" secondAttribute="leading" constant="16" id="md3-RP-rFW"/>
                             <constraint firstAttribute="height" constant="330" id="nB6-YM-20P"/>
                             <constraint firstItem="hcN-Pd-MOW" firstAttribute="trailing" secondItem="7Xq-8Z-VMn" secondAttribute="trailing" constant="5" id="rme-NB-jlF"/>
@@ -265,6 +275,8 @@
             <connections>
                 <outlet property="timeFromTextField" destination="72s-jM-X3a" id="dkd-oz-OJI"/>
                 <outlet property="timeToTextField" destination="n9F-aQ-qaW" id="3tO-VG-mzH"/>
+                <outlet property="workingCellRowDelete" destination="7Xq-8Z-VMn" id="reF-4k-UYV"/>
+                <outlet property="workingClinicErrorTextLabel" destination="rRW-ly-0GA" id="f7l-ND-u6I"/>
                 <outlet property="workingClinicSelectionTableView" destination="RTi-qY-rgQ" id="srV-bZ-4Kt"/>
                 <outlet property="workingClinicSelectonButton" destination="dan-xa-cbY" id="vo4-vK-c7w"/>
                 <outlet property="workingClinicTextLabel" destination="AxF-y9-y6a" id="FtF-bG-Cg7"/>
@@ -287,5 +299,8 @@
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="crossWithoutBorderIcon" width="30" height="30"/>
         <image name="dropDown" width="15" height="24"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

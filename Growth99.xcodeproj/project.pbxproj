@@ -258,6 +258,9 @@
 		84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B4292A71A900B1FB69 /* Endpoint.swift */; };
 		84FDC1AC29572CDC002821BB /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDC1AB29572CDC002821BB /* CalenderViewController.swift */; };
 		84FDC1AE29572CF4002821BB /* CalenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FDC1AD29572CF4002821BB /* CalenderViewController.storyboard */; };
+		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
+		84FDC1B429587346002821BB /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDC1B329587346002821BB /* EventsTableViewCell.swift */; };
+		84FDC1B62958868A002821BB /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FDC1B52958868A002821BB /* EventsTableViewCell.xib */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 /* End PBXBuildFile section */
@@ -546,6 +549,9 @@
 		84FDC1AB29572CDC002821BB /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		84FDC1AD29572CF4002821BB /* CalenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalenderViewController.storyboard; sourceTree = "<group>"; };
 		84FDC1B029573831002821BB /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
+		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		84FDC1B329587346002821BB /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		84FDC1B52958868A002821BB /* EventsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableViewCell.xib; sourceTree = "<group>"; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -557,6 +563,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */,
 				689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1040,6 +1047,7 @@
 		8497A01128F9CB3300CBA26C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FDC1B129586E3A002821BB /* LocalAuthentication.framework */,
 				84872B082917D7FF0063DD3B /* SDWebImage.framework */,
 				84872B052917D61F0063DD3B /* AlamofireImage.framework */,
 				8497A03028F9CC9300CBA26C /* Alamofire.framework */,
@@ -1455,6 +1463,8 @@
 			children = (
 				84FDC1AB29572CDC002821BB /* CalenderViewController.swift */,
 				84FDC1AD29572CF4002821BB /* CalenderViewController.storyboard */,
+				84FDC1B329587346002821BB /* EventsTableViewCell.swift */,
+				84FDC1B52958868A002821BB /* EventsTableViewCell.xib */,
 				84FDC1B029573831002821BB /* Growth99-Bridging-Header.h */,
 			);
 			path = View;
@@ -1614,6 +1624,7 @@
 				845C3A13292276C000D934C5 /* ForgotPasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
 				847570FF293B827700C4E140 /* VacationsCustomTableViewCell.xib in Resources */,
+				84FDC1B62958868A002821BB /* EventsTableViewCell.xib in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 				84A1BA4E293B920C00546A3B /* leadDetailViewController.storyboard in Resources */,
 				844BB338293664F9003AFA52 /* LeadTableViewCell.xib in Resources */,
@@ -1901,6 +1912,7 @@
 				84B2293229314464006E8292 /* VacationModel.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
+				84FDC1B429587346002821BB /* EventsTableViewCell.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				845C3A23292276C000D934C5 /* ClinicsModel.swift in Sources */,

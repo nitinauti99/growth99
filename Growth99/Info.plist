@@ -27,5 +27,7 @@
 	</array>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Access your calender</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Authentication with TouchId or FaceID</string>
 </dict>
 </plist>

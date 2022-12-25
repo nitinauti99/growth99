@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LocalAuthentication
 
 protocol HomeViewContollerProtocool {
     func userDataRecived()
@@ -67,6 +68,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
             UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
         self.setupTexFieldValidstion()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
+        
+
     }
     
     @objc func sideMenuTapped(_ sender: UIButton) {
@@ -331,6 +334,11 @@ extension HomeViewContoller: UITextFieldDelegate {
         }
         return true
     }
+}
+
+
+extension HomeViewContoller {
+    
 }
 //
 //class MyCustomView: UIView {

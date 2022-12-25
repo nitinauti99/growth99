@@ -18,17 +18,20 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
     @IBOutlet weak var workingClinicTextLabel: UILabel!
+    @IBOutlet weak var workingClinicErrorTextLabel: UILabel!
     @IBOutlet weak var workingClinicSelectonButton: UIButton!
     @IBOutlet weak var workingListExpandHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var workingClinicSelectionTableView: UITableView!
     @IBOutlet weak var workingListTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var workingTextView: UIView!
-    
+    @IBOutlet weak var workingCellRowDelete: UIButton!
+
     var string = String.blank
     var workingListSelection: Bool = false
     var userScheduleTimings: [UserScheduleTimings]?
     var daysViewModel = WorkingDaysViewModel()
-    
+    var daySelectionArray: [String] = []
+
     var buttoneRemoveDaysTapCallback: () -> ()  = { }
     
     override func awakeFromNib() {
@@ -52,6 +55,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
         self.delegate = nil
     }
     
+    
     @objc func doneButtonPressed() {
         self.delegate?.buttonWorkingtimeFromTapped(cell: self)
     }
@@ -69,7 +73,12 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
     
     func updateTextLabel(with content: [String]?) {
-        workingClinicTextLabel.text = content?.first
+        if content?.count ?? 0 > 3 {
+            workingClinicTextLabel.text = "\(content?.count ?? 0) days"
+        } else {
+            let sentence = content?.joined(separator: ", ")
+            workingClinicTextLabel.text = sentence
+        }
     }
     
     @IBAction func deleteWorkingButtonAction(sender: UIButton) {
@@ -87,7 +96,6 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell {
             cell.item = daysViewModel.items[indexPath.row]
-            // select/deselect the cell
             if daysViewModel.items[indexPath.row].isSelected {
                 if !cell.isSelected {
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
@@ -97,7 +105,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
                     tableView.deselectRow(at: indexPath, animated: false)
                 }
             }
-            
+
             return cell
         }
         return UITableViewCell()
@@ -109,8 +117,10 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
             workingClinicTextLabel.text = "Select day"
         } else if daysViewModel.selectedItems.count > 3 {
             workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
+            workingClinicErrorTextLabel.isHidden = true
         } else {
             workingClinicTextLabel.text = daysViewModel.selectedItems.map({$0.title}).joined(separator: ", ")
+            workingClinicErrorTextLabel.isHidden = true
         }
     }
     
@@ -120,8 +130,10 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
             workingClinicTextLabel.text = "Select day"
         } else if daysViewModel.selectedItems.count > 3 {
             workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
+            workingClinicErrorTextLabel.isHidden = true
         } else {
             workingClinicTextLabel.text = daysViewModel.selectedItems.map({$0.title}).joined(separator: ", ")
+            workingClinicErrorTextLabel.isHidden = true
         }
     }
     

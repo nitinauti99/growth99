@@ -108,7 +108,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
   
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: "Vacation schedule updated sucessfully")
+        self.view.showToast(message: "Working schedule updated sucessfully")
     }
     
     func apiErrorReceived(error: String) {
@@ -136,46 +136,52 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         isValidateArray = []
        
         guard let dateFrom = workingDateFromTextField.text, !dateFrom.isEmpty else {
-            workingDateFromTextField.showError(message: Constant.Login.emailEmptyError)
+            workingDateFromTextField.showError(message: "Please choose from Date")
             return
         }
         
         guard let dateTo = workingDateToTextField.text, !dateTo.isEmpty else {
-            workingDateToTextField.showError(message: Constant.Login.emailEmptyError)
+            workingDateToTextField.showError(message: "Please choose to Date")
             return
         }
         
         if selectedClinicId == 0 {
             selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
         }
-        
-        for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
-            let cellIndexPath = IndexPath(item: childIndex, section: 0)
-            if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                if vacationCell.timeFromTextField.text == ""{
-                    isValidateArray.insert(false, at: childIndex)
-                    vacationCell.timeFromTextField.showError(message: Constant.Login.emailEmptyError)
-                    return
-                }
-                if (vacationCell.timeToTextField.text == "") {
-                    isValidateArray.insert(false, at: childIndex)
-                    vacationCell.timeToTextField.showError(message: Constant.Login.emailEmptyError)
-                    return
-                } else {
-                    isValidateArray.insert(true, at: childIndex)
-                    selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank), days: [vacationCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
+        if workingListModel?.count ?? 0 > 0 {
+            for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
+                let cellIndexPath = IndexPath(item: childIndex, section: 0)
+                if let workingCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
+                    if workingCell.workingClinicTextLabel.text == "Select day" {
+                        isValidateArray.insert(false, at: childIndex)
+                        workingCell.workingClinicErrorTextLabel.isHidden = false
+                        return
+                    }
+                    if workingCell.timeFromTextField.text == "" {
+                        isValidateArray.insert(false, at: childIndex)
+                        workingCell.timeFromTextField.showError(message: "Please choose from time")
+                        return
+                    }
+                    if (workingCell.timeToTextField.text == "") {
+                        isValidateArray.insert(false, at: childIndex)
+                        workingCell.timeToTextField.showError(message: "Please choose to time")
+                        return
+                    } else {
+                        workingCell.workingClinicErrorTextLabel.isHidden = true
+                        isValidateArray.insert(true, at: childIndex)
+                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeToTextField.text ?? String.blank), days: [workingCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
+                    }
                 }
             }
-        }
-        
-        if isValidateArray.contains(false) {
-            return
-        }
-        self.view.ShowSpinner()
-        let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
-        let parameters: [String: Any]  = body.toDict()
-        workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
             
+            if isValidateArray.contains(false) {
+                return
+            }
+            self.view.ShowSpinner()
+            let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
+            let parameters: [String: Any]  = body.toDict()
+            workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
+        }
     }
     
     @IBAction func addWorkingButtonAction(sender: UIButton) {

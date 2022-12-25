@@ -93,6 +93,8 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             clinicTextLabel.text = allClinicsForWorkingSchedule?[indexPath.row].name ?? String.blank
             selectedClinicId = allClinicsForWorkingSchedule?[indexPath.row].id ?? 0
             workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: selectedClinicId)
+            workingDateFromTextField.text = ""
+            workingDateToTextField.text = ""
             hideClinicDropDown()
         }
     }

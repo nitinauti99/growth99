@@ -152,7 +152,7 @@ class ViewModelItem {
 
 class WorkingDaysViewModel: NSObject {
     
-    let daysArray = [WorkingDaysModel(title: "Monday"), WorkingDaysModel(title: "Tuesday"), WorkingDaysModel(title: "Wednasday"), WorkingDaysModel(title: "Thursday"), WorkingDaysModel(title: "Friday"), WorkingDaysModel(title: "Saturday"), WorkingDaysModel(title: "Sunday")]
+    let daysArray = [WorkingDaysModel(title: "MONDAY"), WorkingDaysModel(title: "TUESDAY"), WorkingDaysModel(title: "WEDNASDAY"), WorkingDaysModel(title: "THURSDAY"), WorkingDaysModel(title: "FRIDAY"), WorkingDaysModel(title: "SATURDAY"), WorkingDaysModel(title: "SUNDAY")]
 
     var items = [ViewModelItem]()
     
