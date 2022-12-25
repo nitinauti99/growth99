@@ -50,7 +50,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
         workingscrollview.delegate = self
-       self.view.ShowSpinner()
+        self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
         workingScheduleViewModel = WorkingScheduleViewModel(delegate: self)

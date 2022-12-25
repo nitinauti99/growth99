@@ -57,7 +57,7 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         timeToTextField.text = content
     }
     
-    @IBAction func addTimeButtonAction(sender: UIButton) {
+    @IBAction func addTimeButtonAction(sFender: UIButton) {
         didTapAddTimeButton()
     }
     
