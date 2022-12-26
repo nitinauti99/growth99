@@ -8,14 +8,10 @@
 import UIKit
 
 protocol VacationsHeadeViewDelegate: AnyObject {
-    func addTimeButton(view: VacationsHeadeView)
     func delateSectionButtonTapped(view: VacationsHeadeView)
 }
 
 class VacationsHeadeView: UITableViewHeaderFooterView {
-    @IBOutlet weak var addTimeButton: UIButton!
-    @IBOutlet weak var addTimeButtonHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTimeButtonTopHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateFromTextField: CustomTextField!
     @IBOutlet weak var dateToTextField: CustomTextField!
 
@@ -51,11 +47,7 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         dateToTextField.text = content
     }
     
-    // MARK: - Add and delete section from headerview
-    @IBAction func addTimeButtonAction(sender: UIButton) {
-        delegate?.addTimeButton(view: self)
-    }
-    
+    // MARK: - Delete section from headerview
     @IBAction func deleteSectionButtonAction(sender: UIButton) {
         delegate?.delateSectionButtonTapped(view: self)
     }

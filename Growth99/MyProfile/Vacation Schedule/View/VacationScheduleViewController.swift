@@ -36,6 +36,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     var clinicDataArr = [String]()
     var menuSelection: [Int] = []
     var listSelection: Bool = false
+    var isValidateVacationArray = [Bool]()
+
     private var menuVC = DrawerViewContoller()
     var viewModel: VacationScheduleViewControllerCProtocol?
     var allClinicsForVacation: [Clinics]?
@@ -160,8 +162,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
+        isValidateVacationArray = []
         if vacationsListModel?.count ?? 0 > 0 {
-            self.view.ShowSpinner()
             if selectedClinicId == 0 {
                 selectedClinicId = allClinicsForVacation?[0].id ?? 0
             }
@@ -170,16 +172,53 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                 for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
                     let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
                     if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-                        arrTime.insert(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
+                        if vacationCell.timeFromTextField.text == "" {
+                            if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                                isValidateVacationArray.insert(false, at: childIndex - 1)
+                            } else {
+                                isValidateVacationArray.insert(false, at: childIndex)
+                            }
+                            vacationCell.timeFromTextField.showError(message: "Please choose from time")
+                            return
+                        }
+                        if vacationCell.timeToTextField.text == "" {
+                            if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                                isValidateVacationArray.insert(false, at: childIndex - 1)
+                            } else {
+                                isValidateVacationArray.insert(false, at: childIndex)
+                            }
+                            vacationCell.timeToTextField.showError(message: "Please choose to time")
+                            return
+                        } else {
+                            isValidateVacationArray.insert(true, at: childIndex)
+                            arrTime.insert(Time(startTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
+                        }
                     }
                 }
                 
                 if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
-                    arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
-                    arrTime.removeAll()
+                    if headerView.dateFromTextField.text == "" {
+                        isValidateVacationArray.insert(false, at: indexValue)
+                        headerView.dateFromTextField.showError(message: "Please choose from Date")
+                        return
+                    }
+                    if headerView.dateToTextField.text == "" {
+                        isValidateVacationArray.insert(false, at: indexValue)
+                        headerView.dateToTextField.showError(message: "Please choose to Date")
+                        return
+                    } else {
+                        isValidateVacationArray.insert(true, at: indexValue)
+                        arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
+                        arrTime.removeAll()
+                    }
                 }
                 
             }
+            
+            if isValidateVacationArray.contains(false) {
+                return
+            }
+            self.view.ShowSpinner()
             let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
             let parameters: [String: Any]  = body.toDict()
             print("Params::: \(parameters)")
@@ -189,9 +228,19 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     // MARK: - Add Vacations method
     @IBAction func addVacationButtonAction(sender: UIButton) {
+        
+        let vacationCount = vacationsListModel?.count ?? 0
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
         vacationsListModel?.append(date2)
+        vacationsListTableView.beginUpdates()
         isEmptyResponse = true
-        vacationsListTableView?.reloadData()
+        let indexSet = IndexSet(integer: (vacationsListModel?.count ?? 0) - 1)
+        vacationsListTableView.insertSections(indexSet, with: .fade)
+        let date1 = UserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: "")
+        vacationsListModel?[vacationCount].userScheduleTimings?.append(date1)
+        let indexPath = IndexPath(row: 0, section: vacationCount)
+        vacationsListTableView.insertRows(at: [indexPath], with: .fade)
+        vacationsListTableView.endUpdates()
+        vacationScrollViewHight.constant = vacationTableViewHeight + 500
     }
 }

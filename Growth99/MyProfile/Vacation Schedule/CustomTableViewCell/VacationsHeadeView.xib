@@ -13,11 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="VacationsHeadeView" id="iN0-l3-epB" customClass="VacationsHeadeView" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJV-ZA-pla">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-Nb-34r" userLabel="password">
                             <rect key="frame" x="20" y="10" width="255" height="21"/>
@@ -107,26 +107,6 @@
                                 <outlet property="delegate" destination="iN0-l3-epB" id="Pic-BN-Hvi"/>
                             </connections>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pib-is-ago">
-                            <rect key="frame" x="20" y="188" width="120" height="50"/>
-                            <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="120" id="4yh-tD-HXc"/>
-                                <constraint firstAttribute="height" constant="50" id="S2q-JD-2u9"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                            <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="+  Add Time"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="12"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="addTimeButtonActionWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="uWx-2f-hdP"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKs-fu-m3g">
                             <rect key="frame" x="280" y="5" width="30" height="30"/>
                             <constraints>
@@ -147,9 +127,7 @@
                         <constraint firstItem="9ED-6z-mYd" firstAttribute="trailing" secondItem="Ivy-Nb-34r" secondAttribute="trailing" id="1gi-tR-Dij"/>
                         <constraint firstAttribute="trailing" secondItem="BKs-fu-m3g" secondAttribute="trailing" constant="10" id="2V4-DD-egu"/>
                         <constraint firstAttribute="trailing" secondItem="JU5-8c-E99" secondAttribute="trailing" constant="20" id="6H2-iU-EK4"/>
-                        <constraint firstItem="Pib-is-ago" firstAttribute="top" secondItem="1sa-cX-NhE" secondAttribute="bottom" constant="16" id="7ok-vE-FVX"/>
                         <constraint firstItem="9ED-6z-mYd" firstAttribute="top" secondItem="JU5-8c-E99" secondAttribute="bottom" constant="10" id="A3x-Fn-Yxw"/>
-                        <constraint firstItem="Pib-is-ago" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="leading" id="GgA-e9-fjS"/>
                         <constraint firstItem="JU5-8c-E99" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="leading" constant="10" id="Lhy-oX-oDv"/>
                         <constraint firstItem="1sa-cX-NhE" firstAttribute="trailing" secondItem="JU5-8c-E99" secondAttribute="trailing" id="Wwz-Oo-ekX"/>
                         <constraint firstItem="BKs-fu-m3g" firstAttribute="leading" secondItem="Ivy-Nb-34r" secondAttribute="trailing" constant="5" id="aR4-47-IAt"/>
@@ -176,9 +154,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="addTimeButton" destination="Pib-is-ago" id="VhS-p1-iXk"/>
-                <outlet property="addTimeButtonHeightConstraint" destination="S2q-JD-2u9" id="ZI8-pG-Awn"/>
-                <outlet property="addTimeButtonTopHeightConstraint" destination="7ok-vE-FVX" id="J8e-LL-CNu"/>
                 <outlet property="dateFromTextField" destination="JU5-8c-E99" id="1N3-nM-AMy"/>
                 <outlet property="dateToTextField" destination="1sa-cX-NhE" id="2Nk-Fn-YCs"/>
             </connections>

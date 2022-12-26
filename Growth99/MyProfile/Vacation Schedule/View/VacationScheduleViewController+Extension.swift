@@ -38,6 +38,11 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             if isEmptyResponse == false {
                 cell.updateTimeFromTextField(with: vacationViewModel.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
                 cell.updateTimeToTextField(with: vacationViewModel.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
+                if vacationsListModel?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
+                    cell.removeTimeButton.isHidden = false
+                } else {
+                    cell.removeTimeButton.isHidden = true
+                }
             } else {
                 cell.updateTimeFromTextField(with: String.blank)
                 cell.updateTimeToTextField(with: String.blank)
@@ -71,7 +76,6 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             headerView.tag = section
             
             if isEmptyResponse == false {
-                manageAddTimeButton(section: section)
                 headerView.dateFromTextField.text = vacationViewModel.serverToLocal(date: vacationsListModel?[section].fromDate ?? String.blank)
                 headerView.dateToTextField.text = vacationViewModel.serverToLocal(date: vacationsListModel?[section].toDate ?? String.blank)
             } else {
@@ -115,25 +119,14 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         }
      }
     
-    // MARK: - Manage add time method
-    func manageAddTimeButton(section: Int) {
-        if vacationsListModel?[section].userScheduleTimings?.count == 0 {
-            headerView.addTimeButtonHeightConstraint.constant = 50
-            headerView.addTimeButtonTopHeightConstraint.constant = 16
-            headerView.addTimeButton.isHidden = false
-        } else {
-            headerView.addTimeButtonHeightConstraint.constant = 0
-            headerView.addTimeButtonTopHeightConstraint.constant = 0
-            headerView.addTimeButton.isHidden = true
-        }
-    }
-    
     // MARK: - Delete vacations row method
     @objc func deleteRow(selectedSection: IndexPath, selectedIndex: Int) {
         vacationsListTableView.beginUpdates()
         vacationsListModel?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
-        vacationsListTableView.deleteRows(at: [selectedSection], with: .fade)
+        vacationsListTableView.deleteRows(at: [selectedSection], with: .none)
         vacationsListTableView.endUpdates()
+        vacationsListTableView.reloadRows(at: [selectedSection], with: .none)
+        vacationScrollViewHight.constant = vacationTableViewHeight + 500
     }
     
     // MARK: - Add vacations row method
@@ -145,6 +138,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         let indexPath = IndexPath(row: selectedIndex + 1, section: selectedSection.section)
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
+        vacationScrollViewHight.constant = vacationTableViewHeight + 500
     }
     
     // MARK: - Time from button tapped
@@ -190,26 +184,13 @@ extension VacationScheduleViewController: UIScrollViewDelegate {
 
 extension VacationScheduleViewController: VacationsHeadeViewDelegate {
     
-    // MARK: - Add time from headerview
-    func addTimeButton(view: VacationsHeadeView) {
-        let section = view.tag
-        let date1 = UserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: "")
-        vacationsListModel?[section].userScheduleTimings?.append(date1)
-        vacationsListTableView.beginUpdates()
-        isEmptyResponse = true
-        let indexPath = IndexPath(row: 0, section: section)
-        vacationsListTableView.insertRows(at: [indexPath], with: .fade)
-        manageAddTimeButton(section: section)
-        vacationsListTableView.endUpdates()
-    }
-    
     // MARK: - delete section from headerview
     func delateSectionButtonTapped(view: VacationsHeadeView) {
         let section = view.tag
         vacationsListTableView.beginUpdates()
         vacationsListModel?.remove(at: section)
-        vacationsListTableView.deleteSections([section], with: .fade)
-        vacationsListTableView.reloadData()
+        vacationsListTableView.deleteSections([section], with: .none)
         vacationsListTableView.endUpdates()
+        vacationScrollViewHight.constant = vacationTableViewHeight + 500
     }
 }
