@@ -191,7 +191,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
             workingListModel?.append(parm)
             workingListTableView.reloadData()
         }
-        let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: [""])
+        let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: [])
         workingListModel?[0].userScheduleTimings?.append(date1)
         workingListTableView.beginUpdates()
         isEmptyResponse = true

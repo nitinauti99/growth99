@@ -63,7 +63,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func myTargetFunction(sender: UIButton) {
-        let daysArray = ["MONDAY","TUESDAY","WEDNASDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
       
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.components(separatedBy: " ").first
@@ -71,14 +71,22 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         let row = sender.tag % 1000
         let section = sender.tag / 1000
         
-        var selectedArray = workingListModel?[section].userScheduleTimings?[row].days
-        selectedArray?.removeFirst()
+        let selectedArray = workingListModel?[section].userScheduleTimings?[row].days
+        print(selectedArray)
         
         selectionMenu.setSelectedItems(items: selectedArray ?? []) { [weak self] (selectedItem, index, selected, selectedList) in
             print(selectedList)
             let cellIndexPath = IndexPath(item: row, section: 0)
             if let workingCell = self?.workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                workingCell.updateTextLabel(with: selectedList)
+                if selectedList.count == 0 {
+                    workingCell.workingClinicTextLabel.text = "Select day"
+                }
+                else if selectedList.count > 3 {
+                    workingCell.workingClinicTextLabel.text = "\(selectedList.count) days"
+                } else {
+                    let sentence = selectedList.joined(separator: ", ")
+                    workingCell.workingClinicTextLabel.text = sentence
+                }
             }
          }
         
