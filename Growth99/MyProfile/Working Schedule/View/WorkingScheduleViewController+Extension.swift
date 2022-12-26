@@ -34,10 +34,21 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingCustomTableViewCell", for: indexPath) as? WorkingCustomTableViewCell else { fatalError("Unexpected Error") }
+            
+            cell.workingClinicSelectonButton.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
+            cell.workingClinicSelectonButton.tag = (indexPath.section * 1000) + indexPath.row
+
             if isEmptyResponse == false {
-                cell.updateTextLabel(with: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days)
-                cell.updateTimeFromTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
-                cell.updateTimeToTextField(with: workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
+              
+                let item = workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days
+                cell.updateTextLabel(with: item)
+
+                cell.workingClinicSelectonButton.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
+
+                cell.timeToTextField.text = workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
+                
+                cell.timeFromTextField.text = workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
+                
             } else {
                 cell.timeFromTextField.text = ""
                 cell.timeToTextField.text = ""
@@ -49,6 +60,32 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             cell.delegate = self
             return cell
         }
+    }
+    
+    @objc func myTargetFunction(sender: UIButton) {
+        let daysArray = ["MONDAY","TUESDAY","WEDNASDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+      
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+        }
+        let row = sender.tag % 1000
+        let section = sender.tag / 1000
+        
+        var selectedArray = workingListModel?[section].userScheduleTimings?[row].days
+        selectedArray?.removeFirst()
+        
+        selectionMenu.setSelectedItems(items: selectedArray ?? []) { [weak self] (selectedItem, index, selected, selectedList) in
+            print(selectedList)
+            let cellIndexPath = IndexPath(item: row, section: 0)
+            if let workingCell = self?.workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
+                workingCell.updateTextLabel(with: selectedList)
+            }
+         }
+        
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(daysArray.count * 30))), arrowDirection: .up), from: self)
     }
     
     @objc func deleteDaysRow(selectedSection: IndexPath, selectedIndex: Int) {

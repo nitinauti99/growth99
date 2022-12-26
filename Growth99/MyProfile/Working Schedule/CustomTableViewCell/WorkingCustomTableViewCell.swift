@@ -25,6 +25,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     @IBOutlet weak var workingListTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var workingTextView: UIView!
     @IBOutlet weak var workingCellRowDelete: UIButton!
+    @IBOutlet weak var subView: UIView!
 
     var string = String.blank
     var workingListSelection: Bool = false
@@ -33,7 +34,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     var daySelectionArray: [String] = []
 
     var buttoneRemoveDaysTapCallback: () -> ()  = { }
-        
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -46,6 +47,10 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
         workingTextView.layer.cornerRadius = 4.5
         workingTextView.layer.borderWidth = 1
         workingTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        
+        subView.layer.borderWidth = 1
+        subView.layer.borderColor = UIColor.red.cgColor
+
     }
     
     weak var delegate: WorkingCellSubclassDelegate?
@@ -145,11 +150,12 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
 
     @IBAction func workingClinicSelectionButton(sender: UIButton) {
-        if workingListSelection == true {
-            workingHideClinicDropDown()
-        } else {
-            workingShowClinicDropDown()
-        }
+//        if workingListSelection == true {
+//            workingHideClinicDropDown()
+//        } else {
+//            workingShowClinicDropDown()
+//        }
+        
     }
     
     func workingHideClinicDropDown() {
