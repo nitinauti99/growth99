@@ -180,7 +180,7 @@ open class RSSelectionMenu<T: Equatable>: UIViewController, UIPopoverPresentatio
         backgroundView.backgroundColor = UIColor.clear
         
         if case .formSheet = menuPresentationStyle {
-            backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            backgroundView.backgroundColor = UIColor.clear
             addTapGesture()
         }
         

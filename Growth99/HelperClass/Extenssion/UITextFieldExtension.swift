@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable open class CustomTextField: UITextField {
 
     fileprivate var lblError: UILabel = UILabel()
-    fileprivate let paddingX: CGFloat = 5.0
+    fileprivate let paddingX: CGFloat = 0
     fileprivate let paddingHeight:CGFloat = 0
     fileprivate var borderLayer:CALayer = CALayer()
     public var dtLayer:CALayer = CALayer()

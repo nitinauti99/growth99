@@ -34,6 +34,8 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
 
     var buttoneRemoveDaysTapCallback: () -> ()  = { }
     
+    let growthDropDownViewController = GrowthDropDownViewController()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -105,7 +107,6 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
                     tableView.deselectRow(at: indexPath, animated: false)
                 }
             }
-
             return cell
         }
         return UITableViewCell()
@@ -146,11 +147,14 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
 
     @IBAction func workingClinicSelectionButton(sender: UIButton) {
-        if workingListSelection == true {
-            workingHideClinicDropDown()
-        } else {
-            workingShowClinicDropDown()
-        }
+//        if workingListSelection == true {
+//            workingHideClinicDropDown()
+//        } else {
+//            workingShowClinicDropDown()
+//        }
+        growthDropDownViewController.view.frame = CGRect(x: sender.frame.minX , y: sender.frame.minY, width: sender.frame.width, height: 300)
+        self.workingClinicSelectonButton.addSubview(growthDropDownViewController.view)
+        self.workingClinicSelectonButton.superview?.bringSubviewToFront(growthDropDownViewController.view)
     }
     
     func workingHideClinicDropDown() {

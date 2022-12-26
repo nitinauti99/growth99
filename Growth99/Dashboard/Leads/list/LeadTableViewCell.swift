@@ -16,13 +16,13 @@ class LeadTableViewCell: UITableViewCell {
     @IBOutlet private weak var createdAt: UILabel!
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var leadStatusImage: UIImageView!
+    @IBOutlet private weak var amount: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
-
     }
 
     func configureCell(leadVM: leadViewModelProtocol?, index: IndexPath) {
@@ -32,15 +32,13 @@ class LeadTableViewCell: UITableViewCell {
         id.text = String(leadVM?.id ?? 0)
         phoneNumber.text = leadVM?.PhoneNumber
         createdAt.text =  self.serverToLocal(date: leadVM?.createdAt ?? "")
+        amount.text = String(leadVM?.amount ?? 0)
         let movement = leadVM?.leadStatus
         leadStatusImage.image = UIImage(named: movement ?? "")
     }
     
-   
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func serverToLocal(date: String) -> String {

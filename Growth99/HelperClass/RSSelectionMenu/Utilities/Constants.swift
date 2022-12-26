@@ -44,7 +44,7 @@ public let defaultEmptyDataString      = "No data found"
 public let defaultSearchBarTintColor   = UIColor(white: 0.9, alpha: 0.9)
 
 /// Constants
-public let defaultHeaderHeight         = CGFloat(50)
+public let defaultHeaderHeight         = CGFloat(44)
 
 
 

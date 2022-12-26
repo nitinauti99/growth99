@@ -258,7 +258,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func LeadDataRecived() {
         view.HideSpinner()
         do {
-            sleep(5)
+            sleep(8)
         }
         self.dismiss(animated: true)
         NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
