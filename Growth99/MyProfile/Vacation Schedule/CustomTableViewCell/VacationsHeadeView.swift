@@ -18,19 +18,10 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
     @IBOutlet weak var addTimeButtonTopHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateFromTextField: CustomTextField!
     @IBOutlet weak var dateToTextField: CustomTextField!
-    
-    weak var delegate: VacationsHeadeViewDelegate?
-    
+
+    weak var delegate: VacationsHeadeViewDelegate?    
     var buttondateFromTextFieldCallback: (CustomTextField) -> ()  = { _ in }
     var buttondateToTextFieldCallback: (CustomTextField) -> ()  = { _ in }
-    
-    @IBAction func addTimeButtonAction(sender: UIButton) {
-        delegate?.addTimeButton(view: self)
-    }
-    
-    @IBAction func deleteSectionButtonAction(sender: UIButton) {
-        delegate?.delateSectionButtonTapped(view: self)
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,19 +32,31 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         dateToTextField.addInputViewDatePicker(target: self, selector: #selector(dateToButtonPressed1), mode: .date)
     }
     
+    // MARK: - Date from picker done method
     @objc func dateFromButtonPressed() {
         buttondateFromTextFieldCallback(dateFromTextField)
     }
     
+    // MARK: - Date from picker done method
     @objc func dateToButtonPressed1() {
        buttondateToTextFieldCallback(dateToTextField)
     }
     
+    // MARK: - Update textfield methos
     func updateDateFromTextField(with content: String) {
         dateFromTextField.text = content
     }
     
     func updateDateToTextField(with content: String) {
         dateToTextField.text = content
+    }
+    
+    // MARK: - Add and delete section from headerview
+    @IBAction func addTimeButtonAction(sender: UIButton) {
+        delegate?.addTimeButton(view: self)
+    }
+    
+    @IBAction func deleteSectionButtonAction(sender: UIButton) {
+        delegate?.delateSectionButtonTapped(view: self)
     }
 }

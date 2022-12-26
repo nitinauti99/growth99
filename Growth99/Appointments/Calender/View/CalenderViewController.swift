@@ -77,8 +77,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     end: oneMonthAfter,
                     calendars: [calendar]
                 )
-                
-                
                 eventForDates = eventStore.events(matching: predicate)
             }
         }

@@ -48,6 +48,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
 
     var isEmptyResponse: Bool = false
     
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
@@ -61,17 +62,25 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
 //        vacationsListModel = readJSONFromFile(fileName: "MockResponse")
     }
     
+    // MARK: - viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.listExpandHeightConstraint.constant = 31
         self.aulaSeparator.backgroundColor = .clear
     }
 
+    // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.vacationTitle
         navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
     
+    
+    @objc func sideMenuTapped(_ sender: UIButton) {
+        menuVC.revealSideMenu()
+    }
+    
+    // MARK: - setupDefaultUI
     func setupUI() {
         userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
         userNameTextField.isUserInteractionEnabled = false
@@ -81,13 +90,12 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         
         clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
         vacationsListTableView.register(UINib(nibName: "VacationsHeadeView", bundle: nil), forHeaderFooterViewReuseIdentifier: "VacationsHeadeView")
-        
         vacationsListTableView.register(UINib(nibName: "VacationsCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "VacationsCustomTableViewCell")
         vacationsListTableView.tableFooterView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
-
        getDataDropDown()
     }
     
+    // MARK: - Clinic Dropdown API Calling method
     func getDataDropDown() {
         vacationViewModel.getallClinicsforVacation { (response, error) in
             if error == nil && response != nil {
@@ -99,11 +107,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             }
         }
     }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
-    }
-  
+
+    // MARK: - Clinic Dropdown API Response method
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
         self.view.showToast(message: "Vacation schedule updated sucessfully")
@@ -114,6 +119,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         self.view.showToast(message: error)
     }
     
+    // MARK: - Vacations List API Response method
     func vacationsListResponseRecived(apiResponse: [VacationsListModel]) {
         self.view.HideSpinner()
         vacationsListModel = apiResponse
@@ -126,6 +132,33 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         self.vacationsListTableView.reloadData()
     }
     
+    // MARK: - Clinic dropdown selection mrthod
+    @IBAction func clinicSelectionButton(sender: UIButton) {
+        if listSelection == true {
+            hideClinicDropDown()
+        } else {
+            showClinicDropDown()
+        }
+    }
+    
+    func hideClinicDropDown() {
+        listSelection = false
+        self.listExpandHeightConstraint.constant = 31
+        self.aulaSeparator.backgroundColor = .clear
+    }
+    
+    func showClinicDropDown() {
+        self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForVacation?.count ?? 0) + 31)
+        self.aulaSeparator.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+        listSelection = true
+    }
+    
+    var vacationTableViewHeight: CGFloat {
+        vacationsListTableView.layoutIfNeeded()
+        return vacationsListTableView.contentSize.height
+    }
+    
+    // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         if vacationsListModel?.count ?? 0 > 0 {
             self.view.ShowSpinner()
@@ -154,36 +187,11 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         }
     }
     
+    // MARK: - Add Vacations method
     @IBAction func addVacationButtonAction(sender: UIButton) {
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
         vacationsListModel?.append(date2)
         isEmptyResponse = true
         vacationsListTableView?.reloadData()
     }
-    
-    @IBAction func clinicSelectionButton(sender: UIButton) {
-        if listSelection == true {
-            hideClinicDropDown()
-        } else {
-            showClinicDropDown()
-        }
-    }
-    
-    func hideClinicDropDown() {
-        listSelection = false
-        self.listExpandHeightConstraint.constant = 31
-        self.aulaSeparator.backgroundColor = .clear
-    }
-    
-    func showClinicDropDown() {
-        self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForVacation?.count ?? 0) + 31)
-        self.aulaSeparator.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
-        listSelection = true
-    }
-    
-    var vacationTableViewHeight: CGFloat {
-        vacationsListTableView.layoutIfNeeded()
-        return vacationsListTableView.contentSize.height
-    }
 }
-

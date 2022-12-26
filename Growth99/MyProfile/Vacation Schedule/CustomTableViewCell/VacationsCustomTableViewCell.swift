@@ -20,35 +20,37 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
 
-    var userScheduleTimings: [UserScheduleTimings]?
-
+    // MARK: - Button closures
     var buttonRemoveTapCallback: () -> ()  = { }
     var buttonAddTimeTapCallback: () -> ()  = { }
-    
+    var userScheduleTimings: [UserScheduleTimings]?
+    weak var delegate: CellSubclassDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         timeFromTextField.tintColor = .clear
         timeToTextField.tintColor = .clear
-        timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .time)
-        timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .time)
+        timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromDoneButtonPressed), mode: .time)
+        timeToTextField.addInputViewDatePicker(target: self, selector: #selector(timeToDoneButtonPressed), mode: .time)
     }
-    
-    weak var delegate: CellSubclassDelegate?
 
     override func prepareForReuse() {
         super.prepareForReuse()
         self.delegate = nil
     }
     
-    @objc func doneButtonPressed() {
+    // MARK: - Time from picker done method
+    @objc func timeFromDoneButtonPressed() {
         self.delegate?.buttontimeFromTapped(cell: self)
     }
     
-    @objc func doneButtonPressed1() {
+    // MARK: - Time to picker done method
+    @objc func timeToDoneButtonPressed() {
         self.delegate?.buttontimeToTapped(cell: self)
     }
     
+    // MARK: - Update textfield methos
     func updateTimeFromTextField(with content: String) {
         timeFromTextField.text = content
     }
@@ -57,19 +59,12 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         timeToTextField.text = content
     }
     
+    // MARK: - Add and remove time methods
     @IBAction func addTimeButtonAction(sFender: UIButton) {
-        didTapAddTimeButton()
-    }
-    
-    @IBAction func removeTimeButtonAction(sender: UIButton) {
-        buttonRemoveTapCallback()
-    }
-    
-    @objc func didTapAddTimeButton() {
         buttonAddTimeTapCallback()
     }
     
-    @objc func didTapRemoveTimeButton() {
+    @IBAction func removeTimeButtonAction(sender: UIButton) {
         buttonRemoveTapCallback()
     }
 }

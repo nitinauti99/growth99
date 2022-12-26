@@ -133,7 +133,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addTimeButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="J9b-xO-RJJ"/>
+                                    <action selector="addTimeButtonActionWithSFender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="C9r-wx-7ec"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87W-6p-6xI">
@@ -152,7 +152,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="removeTimeButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="Rvr-US-Dwn"/>
+                                    <action selector="removeTimeButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="Ztp-sw-4S2"/>
                                 </connections>
                             </button>
                         </subviews>
