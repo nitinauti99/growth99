@@ -68,8 +68,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
             UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
         self.setupTexFieldValidstion()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
-        
-
     }
     
     @objc func sideMenuTapped(_ sender: UIButton) {
@@ -284,21 +282,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
                                             for: UIControl.Event.editingChanged)
     }
 
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        
-        if textField == firsNameTextField,  textField.text == "" {
-            firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
-        }
-        if textField == lastNameTextField, textField.text == "" {
-            lastNameTextField.showError(message: Constant.Registration.lastNameEmptyError)
-        }
-        if textField == phoneNumberTextField, textField.text == "" {
-            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberEmptyError)
-         }
-        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
-            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberInvalidError)
-        }
-    }
+   
     
     @IBAction func saveUserProfile(){
         self.view.ShowSpinner()
@@ -334,41 +318,20 @@ extension HomeViewContoller: UITextFieldDelegate {
         }
         return true
     }
-}
-
-
-extension HomeViewContoller {
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == firsNameTextField,  textField.text == "" {
+            firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
+        }
+        if textField == lastNameTextField, textField.text == "" {
+            lastNameTextField.showError(message: Constant.Registration.lastNameEmptyError)
+        }
+        if textField == phoneNumberTextField, textField.text == "" {
+            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberEmptyError)
+         }
+        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
+            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberInvalidError)
+        }
+    }
 }
-//
-//class MyCustomView: UIView {
-//    var label: UILabel = UILabel()
-//    var myNames = ["dipen","laxu","anis","aakash","santosh","raaa","ggdds","house"]
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        self.addCustomView()
-//    }
-//
-//    required init(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    func addCustomView() {
-//        label.frame = CGRectMake(10, 5, 40, 30)
-//        label.textAlignment = NSTextAlignment.center
-//        label.text = "test"
-//        label.textColor = .white
-//        self.addSubview(label)
-//
-//        let btn: UIButton = UIButton(type: .custom)
-//        btn.frame = CGRectMake(60, 10, 20, 20)
-//        btn.setTitle("X", for: .normal)
-//        self.addSubview(btn)
-//    }
-//
-//}
-//let x =  90
-//let customView = MyCustomView(frame: CGRect(x: self?.viewWidth ?? 0, y: 5, width: 80, height: 40))
-//customView.backgroundColor =  UIColor.init(hexString: "#009EDE")
-//self?.viewWidth += x
