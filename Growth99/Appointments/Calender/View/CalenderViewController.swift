@@ -45,7 +45,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         // For UITest
         self.calendar.accessibilityIdentifier = "calendar"
         eventListView.register(UINib(nibName: "EventsTableViewCell", bundle: nil), forCellReuseIdentifier: "EventsTableViewCell")
-
+        
         fetchEventsFromCalendar()
     }
     
@@ -76,6 +76,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     calendars: [calendar]
                 )
                 eventForDates = eventStore.events(matching: predicate)
+                eventListView.reloadData()
             }
         }
         // Print the event titles so check if everything works correctly
@@ -165,6 +166,9 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        if action.rawValue == 1 {
+            fetchEventsFromCalendar()
+        }
         controller.dismiss(animated: true, completion: nil)
     }
     
