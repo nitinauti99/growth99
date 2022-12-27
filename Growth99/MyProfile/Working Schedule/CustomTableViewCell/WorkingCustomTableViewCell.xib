@@ -223,7 +223,7 @@
                                     <constraint firstAttribute="height" constant="30" id="iaq-c5-Sce"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="" image="crossWithoutBorderIcon"/>
+                                <state key="normal" title="" image="CloseIcon"/>
                                 <connections>
                                     <action selector="deleteWorkingButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="93o-zW-v0v"/>
                                 </connections>
@@ -308,8 +308,8 @@
         </designable>
     </designables>
     <resources>
+        <image name="CloseIcon" width="24.666666030883789" height="24.666666030883789"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="crossWithoutBorderIcon" width="30" height="30"/>
         <image name="dropDown" width="15" height="24"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

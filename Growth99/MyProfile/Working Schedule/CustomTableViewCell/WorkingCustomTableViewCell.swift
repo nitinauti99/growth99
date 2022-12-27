@@ -50,8 +50,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
         workingTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
         subView.layer.borderWidth = 1
-        subView.layer.borderColor = UIColor.red.cgColor
-
+        subView.layer.borderColor = UIColor.init(hexString: "#009EDE").cgColor
     }
     
     weak var delegate: WorkingCellSubclassDelegate?
