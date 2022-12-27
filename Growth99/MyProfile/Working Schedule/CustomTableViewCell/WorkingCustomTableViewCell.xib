@@ -225,24 +225,12 @@
                                     <action selector="deleteWorkingButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="93o-zW-v0v"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RTi-qY-rgQ">
-                                <rect key="frame" x="16" y="96" width="278" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="dvB-Yi-SXr"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="b4N-gw-dU5" id="S3k-rC-ssm"/>
-                                    <outlet property="delegate" destination="b4N-gw-dU5" id="Lz5-t7-vkh"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hcN-Pd-MOW"/>
                         <color key="backgroundColor" red="0.92941176470588238" green="0.98039215686274506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n9F-aQ-qaW" firstAttribute="top" secondItem="Fzh-yo-KIA" secondAttribute="bottom" constant="10" id="0pN-5o-bPD"/>
                             <constraint firstItem="ebG-GZ-hVG" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="1C5-65-Zya"/>
-                            <constraint firstItem="RTi-qY-rgQ" firstAttribute="top" secondItem="ebG-GZ-hVG" secondAttribute="bottom" id="7cC-UI-go8"/>
                             <constraint firstItem="n9F-aQ-qaW" firstAttribute="leading" secondItem="Fzh-yo-KIA" secondAttribute="leading" constant="10" id="86e-bn-b5T"/>
                             <constraint firstItem="ebG-GZ-hVG" firstAttribute="top" secondItem="Tzx-vN-wte" secondAttribute="bottom" constant="10" id="8r7-3q-rgd"/>
                             <constraint firstItem="rRW-ly-0GA" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" constant="10" id="AjX-3P-c2V"/>
@@ -250,7 +238,6 @@
                             <constraint firstItem="rRW-ly-0GA" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="Ejj-Ow-iap"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="JpJ-Xi-Mng"/>
                             <constraint firstItem="Fzh-yo-KIA" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="L6V-Iv-HDY"/>
-                            <constraint firstItem="RTi-qY-rgQ" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" id="LeK-eW-8yC"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="top" secondItem="aQy-Bo-lqL" secondAttribute="top" constant="20" id="Qdr-zm-tc4"/>
                             <constraint firstItem="hcN-Pd-MOW" firstAttribute="trailing" secondItem="ebG-GZ-hVG" secondAttribute="trailing" constant="16" id="QfM-kH-LID"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="rRW-ly-0GA" secondAttribute="bottom" constant="10" id="SeY-Q4-yYK"/>
@@ -262,7 +249,6 @@
                             <constraint firstItem="Fzh-yo-KIA" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="cWX-cc-v51"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="leading" secondItem="Wvb-G7-7ED" secondAttribute="leading" constant="10" id="dV5-7Y-FEU"/>
                             <constraint firstItem="rRW-ly-0GA" firstAttribute="top" secondItem="ebG-GZ-hVG" secondAttribute="bottom" constant="5" id="eTH-o6-kEr"/>
-                            <constraint firstItem="RTi-qY-rgQ" firstAttribute="leading" secondItem="ebG-GZ-hVG" secondAttribute="leading" id="fIb-3c-kWN"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="leading" secondItem="aQy-Bo-lqL" secondAttribute="leading" constant="16" id="md3-RP-rFW"/>
                             <constraint firstAttribute="height" constant="330" id="nB6-YM-20P"/>
                             <constraint firstItem="hcN-Pd-MOW" firstAttribute="trailing" secondItem="7Xq-8Z-VMn" secondAttribute="trailing" constant="5" id="rme-NB-jlF"/>
@@ -286,11 +272,9 @@
                 <outlet property="timeToTextField" destination="n9F-aQ-qaW" id="3tO-VG-mzH"/>
                 <outlet property="workingCellRowDelete" destination="7Xq-8Z-VMn" id="reF-4k-UYV"/>
                 <outlet property="workingClinicErrorTextLabel" destination="rRW-ly-0GA" id="f7l-ND-u6I"/>
-                <outlet property="workingClinicSelectionTableView" destination="RTi-qY-rgQ" id="srV-bZ-4Kt"/>
                 <outlet property="workingClinicSelectonButton" destination="dan-xa-cbY" id="vo4-vK-c7w"/>
                 <outlet property="workingClinicTextLabel" destination="AxF-y9-y6a" id="FtF-bG-Cg7"/>
                 <outlet property="workingListExpandHeightConstraint" destination="2qC-Xx-mpC" id="pSM-Kg-K7T"/>
-                <outlet property="workingListTableViewHeightConstraint" destination="dvB-Yi-SXr" id="Fhk-UP-1A8"/>
                 <outlet property="workingTextView" destination="ebG-GZ-hVG" id="9vc-O5-WIt"/>
             </connections>
             <point key="canvasLocation" x="209.59999999999999" y="187.68472906403943"/>
