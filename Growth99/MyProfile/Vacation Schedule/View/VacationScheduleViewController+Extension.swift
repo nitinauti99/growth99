@@ -63,9 +63,6 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.estimatedRowHeight
-    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if tableView.tag == 0 {
@@ -101,11 +98,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         if tableView.tag == 0 {
             return 0
         } else {
-            if vacationsListModel?[section].userScheduleTimings?.count == 0 {
-                return 260
-            } else {
-                return 200
-            }
+            return UITableView.automaticDimension
         }
     }
     
@@ -192,5 +185,5 @@ extension VacationScheduleViewController: VacationsHeadeViewDelegate {
         vacationsListTableView.deleteSections([section], with: .none)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 500
-    }
+    }    
 }

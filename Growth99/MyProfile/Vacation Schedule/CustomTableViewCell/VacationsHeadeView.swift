@@ -14,6 +14,7 @@ protocol VacationsHeadeViewDelegate: AnyObject {
 class VacationsHeadeView: UITableViewHeaderFooterView {
     @IBOutlet weak var dateFromTextField: CustomTextField!
     @IBOutlet weak var dateToTextField: CustomTextField!
+    @IBOutlet weak var subView: UIView!
 
     weak var delegate: VacationsHeadeViewDelegate?    
     var buttondateFromTextFieldCallback: (CustomTextField) -> ()  = { _ in }
@@ -26,7 +27,12 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         dateToTextField.tintColor = .clear
         dateFromTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         dateToTextField.addInputViewDatePicker(target: self, selector: #selector(dateToButtonPressed1), mode: .date)
+        addTopBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
+//        addBottomBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
+        addLeftBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
+        addRightBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
     }
+       
     
     // MARK: - Date from picker done method
     @objc func dateFromButtonPressed() {
@@ -51,4 +57,38 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
     @IBAction func deleteSectionButtonAction(sender: UIButton) {
         delegate?.delateSectionButtonTapped(view: self)
     }
+    
+    
+    func addTopBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: borderWidth)
+        subView.addSubview(border)
+    }
+
+    func addLeftBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.frame = CGRect(x: 0, y: 0, width: borderWidth, height: frame.size.height)
+        border.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
+        subView.addSubview(border)
+    }
+
+    func addRightBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
+        border.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
+        subView.addSubview(border)
+    }
+    
+    func addBottomBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        border.frame = CGRect(x: 0, y: frame.size.height - borderWidth, width: frame.size.width, height: borderWidth)
+        subView.addSubview(border)
+    }
+
 }

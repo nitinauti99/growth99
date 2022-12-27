@@ -19,6 +19,7 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var removeTimeButton: UIButton!
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
+    @IBOutlet weak var subView: UIView!
 
     // MARK: - Button closures
     var buttonRemoveTapCallback: () -> ()  = { }
@@ -33,6 +34,10 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         timeToTextField.tintColor = .clear
         timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromDoneButtonPressed), mode: .time)
         timeToTextField.addInputViewDatePicker(target: self, selector: #selector(timeToDoneButtonPressed), mode: .time)
+        //addTopBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
+//        addBottomBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
+        addLeftBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
+        addRightBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
     }
 
     override func prepareForReuse() {
@@ -66,5 +71,37 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func removeTimeButtonAction(sender: UIButton) {
         buttonRemoveTapCallback()
+    }
+    
+    func addTopBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: borderWidth)
+        subView.addSubview(border)
+    }
+
+    func addLeftBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.frame = CGRect(x: 0, y: 0, width: borderWidth, height: frame.size.height)
+        border.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
+        subView.addSubview(border)
+    }
+
+    func addRightBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
+        border.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
+        subView.addSubview(border)
+    }
+    
+    func addBottomBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
+        let border = UIView()
+        border.backgroundColor = color
+        border.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        border.frame = CGRect(x: 0, y: frame.size.height - borderWidth, width: frame.size.width, height: borderWidth)
+        subView.addSubview(border)
     }
 }
