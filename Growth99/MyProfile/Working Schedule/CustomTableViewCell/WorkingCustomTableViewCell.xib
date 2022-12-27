@@ -56,8 +56,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dl-eH-tIC">
                                         <rect key="frame" x="0.0" y="7" width="278" height="31"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVd-6U-V4R">
+                                                <rect key="frame" x="10" y="3" width="233" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxF-y9-y6a">
-                                                <rect key="frame" x="10" y="3.3333333333333286" width="233" height="20.666666666666668"/>
+                                                <rect key="frame" x="10" y="3" width="233" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -85,12 +91,16 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="2qC-Xx-mpC"/>
                                             <constraint firstItem="Qrr-K8-79x" firstAttribute="top" secondItem="1dl-eH-tIC" secondAttribute="top" constant="1" id="3cr-OC-Bpe"/>
+                                            <constraint firstItem="DVd-6U-V4R" firstAttribute="bottom" secondItem="AxF-y9-y6a" secondAttribute="bottom" id="3tA-0l-Y7m"/>
+                                            <constraint firstItem="DVd-6U-V4R" firstAttribute="top" secondItem="AxF-y9-y6a" secondAttribute="top" id="8PZ-h7-mUK"/>
                                             <constraint firstItem="Qrr-K8-79x" firstAttribute="leading" secondItem="AxF-y9-y6a" secondAttribute="trailing" constant="10" id="BjA-i4-iFv"/>
                                             <constraint firstItem="AxF-y9-y6a" firstAttribute="centerY" secondItem="Qrr-K8-79x" secondAttribute="centerY" id="EA8-44-gSO"/>
+                                            <constraint firstItem="DVd-6U-V4R" firstAttribute="trailing" secondItem="AxF-y9-y6a" secondAttribute="trailing" id="ETD-Qg-ehJ"/>
                                             <constraint firstItem="dan-xa-cbY" firstAttribute="top" secondItem="1dl-eH-tIC" secondAttribute="top" id="OKf-3m-uBo"/>
                                             <constraint firstAttribute="trailing" secondItem="Qrr-K8-79x" secondAttribute="trailing" constant="10" id="TDl-ro-SOJ"/>
                                             <constraint firstAttribute="trailing" secondItem="dan-xa-cbY" secondAttribute="trailing" id="ez9-Fy-I3p"/>
                                             <constraint firstItem="AxF-y9-y6a" firstAttribute="leading" secondItem="1dl-eH-tIC" secondAttribute="leading" constant="10" id="it3-TO-KHb"/>
+                                            <constraint firstItem="DVd-6U-V4R" firstAttribute="leading" secondItem="AxF-y9-y6a" secondAttribute="leading" id="sre-gf-sSy"/>
                                             <constraint firstItem="dan-xa-cbY" firstAttribute="leading" secondItem="1dl-eH-tIC" secondAttribute="leading" id="vZp-PP-2Od"/>
                                             <constraint firstAttribute="trailing" secondItem="Qrr-K8-79x" secondAttribute="trailing" constant="10" id="x2c-Sa-Xpy"/>
                                         </constraints>
@@ -274,6 +284,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="subView" destination="aQy-Bo-lqL" id="CAj-Wy-Zdm"/>
+                <outlet property="supportWorkingClinicTextLabel" destination="DVd-6U-V4R" id="L3S-fr-6x9"/>
                 <outlet property="timeFromTextField" destination="72s-jM-X3a" id="dkd-oz-OJI"/>
                 <outlet property="timeToTextField" destination="n9F-aQ-qaW" id="3tO-VG-mzH"/>
                 <outlet property="workingCellRowDelete" destination="7Xq-8Z-VMn" id="reF-4k-UYV"/>

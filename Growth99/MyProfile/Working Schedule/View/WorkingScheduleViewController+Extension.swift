@@ -83,9 +83,11 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
                 }
                 else if selectedList.count > 3 {
                     workingCell.workingClinicTextLabel.text = "\(selectedList.count) days"
+                    workingCell.supportWorkingClinicTextLabel.text = selectedList.joined(separator: ",")
                 } else {
                     let sentence = selectedList.joined(separator: ", ")
                     workingCell.workingClinicTextLabel.text = sentence
+                    workingCell.supportWorkingClinicTextLabel.text = selectedList.joined(separator: ",")
                 }
             }
          }

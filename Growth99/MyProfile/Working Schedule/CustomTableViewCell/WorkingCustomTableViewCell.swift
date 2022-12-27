@@ -18,6 +18,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
     @IBOutlet weak var workingClinicTextLabel: UILabel!
+    @IBOutlet weak var supportWorkingClinicTextLabel: UILabel!
     @IBOutlet weak var workingClinicErrorTextLabel: UILabel!
     @IBOutlet weak var workingClinicSelectonButton: UIButton!
     @IBOutlet weak var workingListExpandHeightConstraint: NSLayoutConstraint!
@@ -78,6 +79,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     }
     
     func updateTextLabel(with content: [String]?) {
+        self.supportWorkingClinicTextLabel.text = content?.joined(separator: ",")
         if content?.count ?? 0 > 3 {
             workingClinicTextLabel.text = "\(content?.count ?? 0) days"
         } else {
