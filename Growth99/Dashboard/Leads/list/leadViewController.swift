@@ -40,12 +40,12 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         self.setUpUI()
         addSerchBar()
         self.registerTableView()
-        self.navigationController?.title = "Lead List"
+        self.navigationItem.title = "Leads Overview"
     }
     
     func setBarButton(){
         let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "add"), for: .normal)
+        button.setImage(UIImage(named: "navImage"), for: .normal)
         button.addTarget(self, action:  #selector(creatLead), for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
         let barButton = UIBarButtonItem(customView: button)

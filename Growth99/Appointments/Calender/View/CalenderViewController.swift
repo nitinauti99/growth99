@@ -27,11 +27,9 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var endDates: [Date] = []
     var filteredEvents: [EKEvent] = []
 
-    private var menuVC = DrawerViewContoller()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
+   
         setUpNavigationBar()
         
         self.calendar.select(Date())
@@ -90,14 +88,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func setUpNavigationBar() {
-        self.navigationItem.title = "Calendar"
-        navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
+        self.navigationItem.title = "Calendar" 
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(plusTapped), imageName: "navImage")
-        
-    }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
     }
     
     @objc func plusTapped(_ sender: UIButton) {

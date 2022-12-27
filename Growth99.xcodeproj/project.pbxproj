@@ -255,7 +255,6 @@
 		84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B3292A71A900B1FB69 /* OSLogger.swift */; };
 		84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B4292A71A900B1FB69 /* Endpoint.swift */; };
 		84FDC1AC29572CDC002821BB /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDC1AB29572CDC002821BB /* CalenderViewController.swift */; };
-		84FDC1AE29572CF4002821BB /* CalenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FDC1AD29572CF4002821BB /* CalenderViewController.storyboard */; };
 		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
 		84FDC1B429587346002821BB /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDC1B329587346002821BB /* EventsTableViewCell.swift */; };
 		84FDC1B62958868A002821BB /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FDC1B52958868A002821BB /* EventsTableViewCell.xib */; };
@@ -543,7 +542,6 @@
 		84F610B3292A71A900B1FB69 /* OSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLogger.swift; sourceTree = "<group>"; };
 		84F610B4292A71A900B1FB69 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84FDC1AB29572CDC002821BB /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
-		84FDC1AD29572CF4002821BB /* CalenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalenderViewController.storyboard; sourceTree = "<group>"; };
 		84FDC1B029573831002821BB /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
 		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		84FDC1B329587346002821BB /* EventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
@@ -1456,7 +1454,6 @@
 			isa = PBXGroup;
 			children = (
 				84FDC1AB29572CDC002821BB /* CalenderViewController.swift */,
-				84FDC1AD29572CF4002821BB /* CalenderViewController.storyboard */,
 				84FDC1B329587346002821BB /* EventsTableViewCell.swift */,
 				84FDC1B52958868A002821BB /* EventsTableViewCell.xib */,
 				84FDC1B029573831002821BB /* Growth99-Bridging-Header.h */,
@@ -1610,7 +1607,6 @@
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
 				84025F75293122F30051F51B /* VacationScheduleViewController.storyboard in Resources */,
 				84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */,
-				84FDC1AE29572CF4002821BB /* CalenderViewController.storyboard in Resources */,
 				8469A0FA29573B5A005C25BD /* UserListTableViewCell.xib in Resources */,
 				84E2C9212923D94200F79DFA /* UserListViewContoller.storyboard in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
