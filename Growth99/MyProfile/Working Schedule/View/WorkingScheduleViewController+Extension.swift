@@ -104,7 +104,6 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         if workingListModel?[selectedSection.section].userScheduleTimings?.count ?? 0 == 0 {
             workingListModel?.removeAll()
         }
-        workingListTableView.reloadData()
         workingScrollViewHight.constant = tableViewHeight + 650
     }
 

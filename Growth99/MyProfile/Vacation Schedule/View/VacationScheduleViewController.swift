@@ -90,9 +90,9 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
-        clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
-        vacationsListTableView.register(UINib(nibName: "VacationsHeadeView", bundle: nil), forHeaderFooterViewReuseIdentifier: "VacationsHeadeView")
-        vacationsListTableView.register(UINib(nibName: "VacationsCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "VacationsCustomTableViewCell")
+        clinicSelectionTableView.register(UINib(nibName: Constant.ViewIdentifier.dropDownCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.dropDownCustomTableViewCell)
+        vacationsListTableView.register(UINib(nibName:  Constant.ViewIdentifier.vacationsHeadeView, bundle: nil), forHeaderFooterViewReuseIdentifier: Constant.ViewIdentifier.vacationsHeadeView)
+        vacationsListTableView.register(UINib(nibName: Constant.ViewIdentifier.vacationsCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.vacationsCustomTableViewCell)
         vacationsListTableView.tableFooterView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
        getDataDropDown()
     }
@@ -113,7 +113,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Clinic Dropdown API Response method
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: "Vacation schedule updated sucessfully")
+        self.view.showToast(message: Constant.Profile.vacationScheduleUpdate)
     }
     
     func apiErrorReceived(error: String) {
@@ -171,42 +171,29 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             }
             
             for indexValue in 0..<(vacationsListModel?.count ?? 0) {
-               
-                if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
-                    if headerView.dateFromTextField.text == "" {
-                        isValidateVacationArray.insert(false, at: indexValue)
-                        headerView.dateFromTextField.showError(message: "Please choose from Date")
-                        return
-                    }
-                    if headerView.dateToTextField.text == "" {
-                        isValidateVacationArray.insert(false, at: indexValue)
-                        headerView.dateToTextField.showError(message: "Please choose to Date")
-                        return
-                    }
-                }
                 
                 for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
                     let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
                    
                   if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
                         
-                       if vacationCell.timeFromTextField.text == "" {
+                      if vacationCell.timeFromTextField.text == String.blank {
                             if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
                             }
-                            vacationCell.timeFromTextField.showError(message: "Please choose from time")
+                          vacationCell.timeFromTextField.showError(message: Constant.Profile.chooseFromTime)
                             return
                         }
                         
-                      if vacationCell.timeToTextField.text == "" {
+                      if vacationCell.timeToTextField.text == String.blank {
                             if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
                             }
-                            vacationCell.timeToTextField.showError(message: "Please choose to time")
+                            vacationCell.timeToTextField.showError(message: Constant.Profile.chooseToTime)
                             return
                         } else {
                             isValidateVacationArray.insert(true, at: childIndex)
@@ -216,14 +203,14 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                 }
                 
                 if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
-                    if headerView.dateFromTextField.text == "" {
+                    if headerView.dateFromTextField.text == String.blank {
                         isValidateVacationArray.insert(false, at: indexValue)
-                        headerView.dateFromTextField.showError(message: "Please choose from Date")
+                        headerView.dateFromTextField.showError(message: Constant.Profile.chooseFromDate)
                         return
                     }
-                    if headerView.dateToTextField.text == "" {
+                    if headerView.dateToTextField.text == String.blank {
                         isValidateVacationArray.insert(false, at: indexValue)
-                        headerView.dateToTextField.showError(message: "Please choose to Date")
+                        headerView.dateToTextField.showError(message: Constant.Profile.chooseToTime)
                         return
                     } else {
                         isValidateVacationArray.insert(true, at: indexValue)
@@ -255,7 +242,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         isEmptyResponse = true
         let indexSet = IndexSet(integer: (vacationsListModel?.count ?? 0) - 1)
         vacationsListTableView.insertSections(indexSet, with: .fade)
-        let date1 = UserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: "")
+        let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days:  String.blank)
         vacationsListModel?[vacationCount].userScheduleTimings?.append(date1)
         let indexPath = IndexPath(row: 0, section: vacationCount)
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)

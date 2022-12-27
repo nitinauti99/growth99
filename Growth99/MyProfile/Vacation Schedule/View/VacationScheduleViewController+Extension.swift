@@ -130,7 +130,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     
     // MARK: - Add vacations row method
     @objc func addRow(selectedSection: IndexPath, selectedIndex: Int) {
-        let date1 = UserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: "")
+        let date1 = UserScheduleTimings(id: 1, timeFromDate:  String.blank, timeToDate:  String.blank, days:  String.blank)
         vacationsListModel?[selectedSection.section].userScheduleTimings?.append(date1)
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true

@@ -73,6 +73,7 @@ struct Constant {
         static let chooseFromDate = "Please choose from date"
         static let chooseToDate = "Please choose to date"
         static let workingScheduleUpdate = "Working schedule updated sucessfully"
+        static let vacationScheduleUpdate = "Vacation schedule updated sucessfully"
     }
     
     struct CreateLead {
@@ -82,6 +83,13 @@ struct Constant {
         static let lastNameEmptyError = "The Last Name field is required."
         static let phoneNumberEmptyError = "The Phone Number field is required."
         static let phoneNumberInvalidError = "Please Input Valid Number!"
+    }
+    
+    struct ViewIdentifier {
+        static let dropDownCustomTableViewCell = "DropDownCustomTableViewCell"
+        static let vacationsHeadeView = "VacationsHeadeView"
+        static let vacationsCustomTableViewCell = "VacationsCustomTableViewCell"
+        static let workingCustomTableViewCell = "WorkingCustomTableViewCell"
     }
     
     

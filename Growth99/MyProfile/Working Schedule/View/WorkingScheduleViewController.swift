@@ -86,8 +86,8 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         clinicTextView.layer.cornerRadius = 4.5
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        clinicSelectionTableView.register(UINib(nibName: "DropDownCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "DropDownCustomTableViewCell")
-        workingListTableView.register(UINib(nibName: "WorkingCustomTableViewCell", bundle: nil), forCellReuseIdentifier: "WorkingCustomTableViewCell")
+        clinicSelectionTableView.register(UINib(nibName: Constant.ViewIdentifier.dropDownCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.dropDownCustomTableViewCell)
+        workingListTableView.register(UINib(nibName: Constant.ViewIdentifier.workingCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.workingCustomTableViewCell)
        getDataDropDown()
     }
     
