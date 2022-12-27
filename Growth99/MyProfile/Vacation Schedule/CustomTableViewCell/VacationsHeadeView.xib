@@ -144,11 +144,6 @@
                         <constraint firstItem="Ivy-Nb-34r" firstAttribute="leading" secondItem="qJV-ZA-pla" secondAttribute="leading" constant="20" id="wHr-zn-KTk"/>
                         <constraint firstItem="1sa-cX-NhE" firstAttribute="top" secondItem="9ED-6z-mYd" secondAttribute="bottom" constant="10" id="wsJ-tM-FYv"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

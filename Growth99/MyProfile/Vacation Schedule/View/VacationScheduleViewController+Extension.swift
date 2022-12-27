@@ -44,6 +44,11 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
                     cell.removeTimeButton.isHidden = true
                 }
             } else {
+                if vacationsListModel?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
+                    cell.removeTimeButton.isHidden = false
+                } else {
+                    cell.removeTimeButton.isHidden = true
+                }
                 cell.updateTimeFromTextField(with: String.blank)
                 cell.updateTimeToTextField(with: String.blank)
             }
@@ -116,10 +121,10 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     @objc func deleteRow(selectedSection: IndexPath, selectedIndex: Int) {
         vacationsListTableView.beginUpdates()
         vacationsListModel?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
-        vacationsListTableView.deleteRows(at: [selectedSection], with: .none)
+        vacationsListTableView.deleteRows(at: [selectedSection], with: .fade)
         vacationsListTableView.endUpdates()
-        vacationsListTableView.reloadRows(at: [selectedSection], with: .none)
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
+        vacationsListTableView.reloadRows(at: [selectedSection], with: .fade)
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
     }
     
     // MARK: - Add vacations row method
@@ -131,7 +136,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         let indexPath = IndexPath(row: selectedIndex + 1, section: selectedSection.section)
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
     }
     
     // MARK: - Time from button tapped
@@ -167,11 +172,11 @@ extension VacationScheduleViewController: UITextFieldDelegate {
 extension VacationScheduleViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
     }
 }
 
@@ -182,8 +187,8 @@ extension VacationScheduleViewController: VacationsHeadeViewDelegate {
         let section = view.tag
         vacationsListTableView.beginUpdates()
         vacationsListModel?.remove(at: section)
-        vacationsListTableView.deleteSections([section], with: .none)
+        vacationsListTableView.deleteSections([section], with: .fade)
         vacationsListTableView.endUpdates()
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
-    }    
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
+    }
 }
