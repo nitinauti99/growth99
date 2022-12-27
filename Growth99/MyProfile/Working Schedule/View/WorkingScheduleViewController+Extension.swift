@@ -50,9 +50,9 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
                 cell.timeFromTextField.text = workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
                 
             } else {
-                cell.timeFromTextField.text = ""
-                cell.timeToTextField.text = ""
-                cell.workingClinicTextLabel.text = "Select day"
+                cell.timeFromTextField.text = String.blank
+                cell.timeToTextField.text = String.blank
+                cell.workingClinicTextLabel.text = Constant.Profile.selectDay
             }
             cell.buttoneRemoveDaysTapCallback = {
                 self.deleteDaysRow(selectedSection: indexPath, selectedIndex: indexPath.row)
@@ -72,17 +72,15 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         let section = sender.tag / 1000
         
         let selectedArray = workingListModel?[section].userScheduleTimings?[row].days
-        print(selectedArray)
-        
         selectionMenu.setSelectedItems(items: selectedArray ?? []) { [weak self] (selectedItem, index, selected, selectedList) in
             print(selectedList)
             let cellIndexPath = IndexPath(item: row, section: 0)
             if let workingCell = self?.workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
                 if selectedList.count == 0 {
-                    workingCell.workingClinicTextLabel.text = "Select day"
+                    workingCell.workingClinicTextLabel.text = Constant.Profile.selectDay
                 }
                 else if selectedList.count > 3 {
-                    workingCell.workingClinicTextLabel.text = "\(selectedList.count) days"
+                    workingCell.workingClinicTextLabel.text = "\(selectedList.count) \(Constant.Profile.days)"
                     workingCell.supportWorkingClinicTextLabel.text = selectedList.joined(separator: ",")
                 } else {
                     let sentence = selectedList.joined(separator: ", ")
@@ -144,8 +142,8 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             clinicTextLabel.text = allClinicsForWorkingSchedule?[indexPath.row].name ?? String.blank
             selectedClinicId = allClinicsForWorkingSchedule?[indexPath.row].id ?? 0
             workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: selectedClinicId)
-            workingDateFromTextField.text = ""
-            workingDateToTextField.text = ""
+            workingDateFromTextField.text = String.blank
+            workingDateToTextField.text = String.blank
             hideClinicDropDown()
         }
     }

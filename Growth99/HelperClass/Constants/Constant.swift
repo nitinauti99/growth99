@@ -66,6 +66,13 @@ struct Constant {
         static let workingScheduleTitle = "Working Schedule"
         static let changePasswordTitle = "Change Password"
         static let workingSchedule = "working"
+        static let selectDay = "Select day"
+        static let days = "days"
+        static let chooseFromTime = "Please choose from time"
+        static let chooseToTime = "Please choose to time"
+        static let chooseFromDate = "Please choose from date"
+        static let chooseToDate = "Please choose to date"
+        static let workingScheduleUpdate = "Working schedule updated sucessfully"
     }
     
     struct CreateLead {
@@ -76,4 +83,6 @@ struct Constant {
         static let phoneNumberEmptyError = "The Phone Number field is required."
         static let phoneNumberInvalidError = "Please Input Valid Number!"
     }
+    
+    
 }

@@ -109,7 +109,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
   
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: "Working schedule updated sucessfully")
+        self.view.showToast(message: Constant.Profile.workingScheduleUpdate)
     }
     
     func apiErrorReceived(error: String) {
@@ -137,12 +137,12 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         isValidateArray = []
        
         guard let dateFrom = workingDateFromTextField.text, !dateFrom.isEmpty else {
-            workingDateFromTextField.showError(message: "Please choose from Date")
+            workingDateFromTextField.showError(message: Constant.Profile.chooseFromDate)
             return
         }
         
         guard let dateTo = workingDateToTextField.text, !dateTo.isEmpty else {
-            workingDateToTextField.showError(message: "Please choose to Date")
+            workingDateToTextField.showError(message: Constant.Profile.chooseToDate)
             return
         }
         
@@ -153,26 +153,25 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
             for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
                 let cellIndexPath = IndexPath(item: childIndex, section: 0)
                 if let workingCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                    if workingCell.workingClinicTextLabel.text == "Select day" {
+                    if workingCell.workingClinicTextLabel.text == Constant.Profile.selectDay {
                         isValidateArray.insert(false, at: childIndex)
                         workingCell.workingClinicErrorTextLabel.isHidden = false
                         return
                     }
-                    if workingCell.timeFromTextField.text == "" {
+                    if workingCell.timeFromTextField.text == String.blank {
                         isValidateArray.insert(false, at: childIndex)
-                        workingCell.timeFromTextField.showError(message: "Please choose from time")
+                        workingCell.timeFromTextField.showError(message: Constant.Profile.chooseFromTime)
                         return
                     }
-                    if (workingCell.timeToTextField.text == "") {
+                    if (workingCell.timeToTextField.text == String.blank) {
                         isValidateArray.insert(false, at: childIndex)
-                        workingCell.timeToTextField.showError(message: "Please choose to time")
+                        workingCell.timeToTextField.showError(message: Constant.Profile.chooseToTime)
                         return
                     } else {
                         workingCell.workingClinicErrorTextLabel.isHidden = true
                         isValidateArray.insert(true, at: childIndex)
                         let daysArray =  workingCell.supportWorkingClinicTextLabel.text ?? String.blank
                         let days = daysArray.components(separatedBy: ",")
-                        print(days)
                         selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeToTextField.text ?? String.blank), days: days), at: childIndex)
                     }
                 }
@@ -190,11 +189,11 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     @IBAction func addWorkingButtonAction(sender: UIButton) {
         if workingListModel?.count ?? 0 == 0 {
-            let parm = WorkingScheduleListModel(id: 1, clinicId: 1, providerId: 1, fromDate: "", toDate: "", scheduleType: "", userScheduleTimings: [])
+            let parm = WorkingScheduleListModel(id: 1, clinicId: 1, providerId: 1, fromDate: String.blank, toDate: String.blank, scheduleType: String.blank, userScheduleTimings: [])
             workingListModel?.append(parm)
             workingListTableView.reloadData()
         }
-        let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: "", timeToDate: "", days: [])
+        let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate: String.blank, days: [])
         workingListModel?[0].userScheduleTimings?.append(date1)
         workingListTableView.beginUpdates()
         isEmptyResponse = true

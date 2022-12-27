@@ -50,6 +50,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
         workingTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
         subView.layer.borderWidth = 1
+        subView.layer.cornerRadius = 5
         subView.layer.borderColor = UIColor.init(hexString: "#009EDE").cgColor
     }
     
@@ -80,7 +81,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     func updateTextLabel(with content: [String]?) {
         self.supportWorkingClinicTextLabel.text = content?.joined(separator: ",")
         if content?.count ?? 0 > 3 {
-            workingClinicTextLabel.text = "\(content?.count ?? 0) days"
+            workingClinicTextLabel.text = "\(content?.count ?? 0) \(Constant.Profile.days)"
         } else {
             let sentence = content?.joined(separator: ", ")
             workingClinicTextLabel.text = sentence
@@ -119,9 +120,9 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         daysViewModel.items[indexPath.row].isSelected = true
         if daysViewModel.selectedItems.count == 0 {
-            workingClinicTextLabel.text = "Select day"
+            workingClinicTextLabel.text = Constant.Profile.selectDay
         } else if daysViewModel.selectedItems.count > 3 {
-            workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
+            workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) \(Constant.Profile.days)"
             workingClinicErrorTextLabel.isHidden = true
         } else {
             workingClinicTextLabel.text = daysViewModel.selectedItems.map({$0.title}).joined(separator: ", ")
@@ -132,9 +133,9 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         daysViewModel.items[indexPath.row].isSelected = false
         if daysViewModel.selectedItems.count == 0 {
-            workingClinicTextLabel.text = "Select day"
+            workingClinicTextLabel.text = Constant.Profile.selectDay
         } else if daysViewModel.selectedItems.count > 3 {
-            workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) days"
+            workingClinicTextLabel.text = "\(daysViewModel.selectedItems.count) \(Constant.Profile.days)"
             workingClinicErrorTextLabel.isHidden = true
         } else {
             workingClinicTextLabel.text = daysViewModel.selectedItems.map({$0.title}).joined(separator: ", ")
@@ -148,15 +149,6 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate, UITableV
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.estimatedRowHeight
-    }
-
-    @IBAction func workingClinicSelectionButton(sender: UIButton) {
-//        if workingListSelection == true {
-//            workingHideClinicDropDown()
-//        } else {
-//            workingShowClinicDropDown()
-//        }
-        
     }
     
     func workingHideClinicDropDown() {
