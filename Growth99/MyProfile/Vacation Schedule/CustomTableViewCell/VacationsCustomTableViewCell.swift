@@ -27,7 +27,6 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     var buttonAddTimeTapCallback: () -> ()  = { }
     var userScheduleTimings: [UserScheduleTimings]?
     weak var delegate: CellSubclassDelegate?
-    var removeBottomBorder: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,12 +67,12 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     // MARK: - Add and remove time methods
     @IBAction func addTimeButtonAction(sFender: UIButton) {
         buttonAddTimeTapCallback()
-        removeBottomBorder = false
         borderView.isHidden = true
     }
     
     @IBAction func removeTimeButtonAction(sender: UIButton) {
         buttonRemoveTapCallback()
+        borderView.isHidden = false
     }
     
     func addTopBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {

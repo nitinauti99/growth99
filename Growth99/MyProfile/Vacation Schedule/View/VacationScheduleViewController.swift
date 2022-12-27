@@ -171,10 +171,26 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             }
             
             for indexValue in 0..<(vacationsListModel?.count ?? 0) {
+               
+                if let headerView = vacationsListTableView.headerView(forSection: indexValue) as? VacationsHeadeView {
+                    if headerView.dateFromTextField.text == "" {
+                        isValidateVacationArray.insert(false, at: indexValue)
+                        headerView.dateFromTextField.showError(message: "Please choose from Date")
+                        return
+                    }
+                    if headerView.dateToTextField.text == "" {
+                        isValidateVacationArray.insert(false, at: indexValue)
+                        headerView.dateToTextField.showError(message: "Please choose to Date")
+                        return
+                    }
+                }
+                
                 for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
                     let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
-                    if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-                        if vacationCell.timeFromTextField.text == "" {
+                   
+                  if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
+                        
+                       if vacationCell.timeFromTextField.text == "" {
                             if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
@@ -183,7 +199,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                             vacationCell.timeFromTextField.showError(message: "Please choose from time")
                             return
                         }
-                        if vacationCell.timeToTextField.text == "" {
+                        
+                      if vacationCell.timeToTextField.text == "" {
                             if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
