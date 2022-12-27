@@ -170,7 +170,10 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                     } else {
                         workingCell.workingClinicErrorTextLabel.isHidden = true
                         isValidateArray.insert(true, at: childIndex)
-                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeToTextField.text ?? String.blank), days: [workingCell.workingClinicTextLabel.text ?? String.blank]), at: childIndex)
+                        let daysArray =  workingCell.supportWorkingClinicTextLabel.text ?? String.blank
+                        let days = daysArray.components(separatedBy: ",")
+                        print(days)
+                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeToTextField.text ?? String.blank), days: days), at: childIndex)
                     }
                 }
             }
