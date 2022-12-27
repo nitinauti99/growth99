@@ -132,7 +132,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         }
         self.clinicSelectionTableView.reloadData()
         self.vacationsListTableView.reloadData()
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
+        vacationScrollViewHight.constant = vacationTableViewHeight + 600
+
     }
     
     // MARK: - Clinic dropdown selection mrthod

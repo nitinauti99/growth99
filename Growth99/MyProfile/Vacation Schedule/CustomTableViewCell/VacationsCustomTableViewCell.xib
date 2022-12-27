@@ -155,11 +155,19 @@
                                     <action selector="removeTimeButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="Ztp-sw-4S2"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ps-co-bsK">
+                                <rect key="frame" x="0.0" y="319" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.61960784313725492" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="vsU-kc-AFl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hcN-Pd-MOW"/>
                         <color key="backgroundColor" red="0.7803921568627451" green="0.93725490196078431" blue="1" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tZZ-Mm-RJd" firstAttribute="top" secondItem="Tzx-vN-wte" secondAttribute="bottom" constant="10" id="56W-Fq-odi"/>
+                            <constraint firstItem="6ps-co-bsK" firstAttribute="leading" secondItem="hcN-Pd-MOW" secondAttribute="leading" id="7Iv-63-LUJ"/>
                             <constraint firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="20" id="9cd-7L-39Y"/>
                             <constraint firstItem="tZZ-Mm-RJd" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" constant="10" id="GO0-72-dcV"/>
                             <constraint firstItem="87W-6p-6xI" firstAttribute="leading" secondItem="c96-4m-krF" secondAttribute="trailing" constant="20" id="Hgd-Ek-hLU"/>
@@ -170,6 +178,7 @@
                             <constraint firstItem="tZZ-Mm-RJd" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="Src-lb-r3k"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="top" secondItem="Wvb-G7-7ED" secondAttribute="bottom" constant="10" id="UNA-zI-QIr"/>
                             <constraint firstItem="87W-6p-6xI" firstAttribute="top" secondItem="c96-4m-krF" secondAttribute="top" id="XxA-i5-ueL"/>
+                            <constraint firstItem="6ps-co-bsK" firstAttribute="bottom" secondItem="hcN-Pd-MOW" secondAttribute="bottom" id="a3M-aF-gIp"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="leading" secondItem="Wvb-G7-7ED" secondAttribute="leading" constant="10" id="dV5-7Y-FEU"/>
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="leading" secondItem="aQy-Bo-lqL" secondAttribute="leading" constant="20" id="md3-RP-rFW"/>
                             <constraint firstItem="c96-4m-krF" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="oVJ-kC-fyC"/>
@@ -177,6 +186,7 @@
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="syk-4N-p5p"/>
                             <constraint firstItem="c96-4m-krF" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="45" id="uQE-iz-TFh"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="tZZ-Mm-RJd" secondAttribute="bottom" constant="25" id="uj4-tX-xqm"/>
+                            <constraint firstItem="6ps-co-bsK" firstAttribute="trailing" secondItem="hcN-Pd-MOW" secondAttribute="trailing" id="yy6-m3-aQ3"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -191,12 +201,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="addTimeButton" destination="c96-4m-krF" id="nnc-ZK-6NG"/>
+                <outlet property="borderView" destination="6ps-co-bsK" id="syS-tL-veh"/>
                 <outlet property="removeTimeButton" destination="87W-6p-6xI" id="Eh1-jb-eB3"/>
                 <outlet property="subView" destination="1HD-BI-YrH" id="J4Q-zi-QFt"/>
                 <outlet property="timeFromTextField" destination="tZZ-Mm-RJd" id="1yn-Gh-oHh"/>
                 <outlet property="timeToTextField" destination="72s-jM-X3a" id="nb8-A0-2HZ"/>
             </connections>
-            <point key="canvasLocation" x="209.59999999999999" y="188.05418719211823"/>
+            <point key="canvasLocation" x="209.59999999999999" y="187.68472906403943"/>
         </tableViewCell>
     </objects>
     <designables>

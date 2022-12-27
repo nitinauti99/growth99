@@ -35,6 +35,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
+            
             if isEmptyResponse == false {
                 cell.updateTimeFromTextField(with: vacationViewModel.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
                 cell.updateTimeToTextField(with: vacationViewModel.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
