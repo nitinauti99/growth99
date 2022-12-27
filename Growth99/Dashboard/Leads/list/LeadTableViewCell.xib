@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,12 +21,12 @@
                         <rect key="frame" x="10" y="10" width="315" height="205"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X66-cG-QO7" userLabel="NameLbi">
-                                <rect key="frame" x="18" y="15" width="80" height="20"/>
+                                <rect key="frame" x="18" y="15" width="90" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="cCu-NZ-2lb"/>
+                                    <constraint firstAttribute="width" constant="90" id="cCu-NZ-2lb"/>
                                     <constraint firstAttribute="height" constant="20" id="eHC-CP-TcI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -40,11 +40,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shv-ru-CF9" userLabel="EmailLbi">
-                                <rect key="frame" x="18" y="40" width="80" height="20"/>
+                                <rect key="frame" x="18" y="40" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9Gz-lp-YtF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -58,11 +58,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqF-UU-Ayr" userLabel="PhoneLbi">
-                                <rect key="frame" x="18" y="65" width="80" height="20"/>
+                                <rect key="frame" x="18" y="65" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6KP-IA-7v9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -76,11 +76,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSY-YG-ajV" userLabel="CreatedDateLbi">
-                                <rect key="frame" x="18" y="90" width="80" height="20"/>
+                                <rect key="frame" x="18" y="90" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="eph-jh-rZw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -94,11 +94,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-X6-Tul" userLabel="IdLbi">
-                                <rect key="frame" x="18" y="115" width="80" height="20"/>
+                                <rect key="frame" x="18" y="115" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="FR0-Sh-Nvz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -112,11 +112,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lead Status:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVD-WX-2FR" userLabel="LeadSaatus">
-                                <rect key="frame" x="18" y="165" width="80" height="20"/>
+                                <rect key="frame" x="18" y="165" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="tfN-jE-9sI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -135,11 +135,11 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created Date:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ4-ug-96p" userLabel="IdLbi">
-                                <rect key="frame" x="18" y="140" width="80" height="20"/>
+                                <rect key="frame" x="18" y="140" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Zlw-Be-3x7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -196,7 +196,7 @@
                             <constraint firstItem="cVD-WX-2FR" firstAttribute="top" secondItem="zZ4-ug-96p" secondAttribute="bottom" constant="5" id="rL9-yi-HnG"/>
                             <constraint firstAttribute="trailing" secondItem="biT-CJ-Ebe" secondAttribute="trailing" constant="40" id="v7G-W8-6d0"/>
                             <constraint firstItem="Thh-X6-Tul" firstAttribute="trailing" secondItem="KSY-YG-ajV" secondAttribute="trailing" id="wMV-gQ-BQv"/>
-                            <constraint firstItem="biT-CJ-Ebe" firstAttribute="leading" secondItem="X66-cG-QO7" secondAttribute="trailing" constant="20" id="wem-eX-PHM"/>
+                            <constraint firstItem="biT-CJ-Ebe" firstAttribute="leading" secondItem="X66-cG-QO7" secondAttribute="trailing" constant="10" id="wem-eX-PHM"/>
                             <constraint firstItem="cVD-WX-2FR" firstAttribute="trailing" secondItem="Thh-X6-Tul" secondAttribute="trailing" id="zbO-nh-SGA"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

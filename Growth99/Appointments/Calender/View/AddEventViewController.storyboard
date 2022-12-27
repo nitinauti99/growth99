@@ -554,7 +554,7 @@
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-an-tey">
                                                         <rect key="frame" x="40" y="845.33333333333337" width="310" height="100"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="gIj-OU-ZOC"/>
                                                         </constraints>
@@ -696,6 +696,9 @@
                             <constraint firstItem="C2f-ha-tHi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vhn-B3-15U"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="notesTextView" destination="uhT-an-tey" id="8So-8b-mSW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,8 +9,11 @@ import UIKit
 
 class AddEventViewController: UIViewController {
 
+    @IBOutlet private weak var notesTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        notesTextView.layer.borderColor = UIColor.gray.cgColor
+        notesTextView.layer.borderWidth = 1.0
         setUpNavigationBar()
     }
     
