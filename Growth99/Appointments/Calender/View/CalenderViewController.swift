@@ -105,6 +105,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     eventController.navigationItem.title = "Add Appointment"
                     eventController.eventStore = self.eventStore
                     eventController.editViewDelegate = self
+                    eventController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     self.present(eventController, animated: true, completion: nil)
                     
                 }
@@ -163,6 +164,10 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
+        let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
+        let navController = UINavigationController(rootViewController: addEventVC)
+        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(navController, animated:true, completion: nil)
     }
     
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {

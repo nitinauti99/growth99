@@ -77,7 +77,6 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
     
-    
     @objc func sideMenuTapped(_ sender: UIButton) {
         menuVC.revealSideMenu()
     }

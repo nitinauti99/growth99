@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Business Profile View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="BusinessProfileViewController" id="Y6W-OH-hqX" customClass="BusinessProfileViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="growthCircleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qon-eG-lpF">
+                                <rect key="frame" x="121.66666666666669" y="109" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="NgC-oQ-N5i"/>
+                                    <constraint firstAttribute="height" constant="150" id="nkQ-yq-XsD"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTf-Yp-A0I">
+                                <rect key="frame" x="323" y="219" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Tdq-tV-uyw"/>
+                                    <constraint firstAttribute="height" constant="40" id="avj-Qa-ReT"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="" backgroundImage="editicon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miG-i8-74V" userLabel="userName">
+                                <rect key="frame" x="40" y="319" width="313" height="21"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Name ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.28627000000000002" green="0.31373000000000001" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="*">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Medical" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8fC-gw-pen" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="50" y="356" width="313" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="DT2-sk-xvo"/>
+                                </constraints>
+                                <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONh-YG-TZk">
+                                <rect key="frame" x="40" y="426" width="313" height="83.666666666666686"/>
+                                <string key="text">*Note- Business name needs to be less than 20 characters. We use this name in automated SMS/Emails hence to avoid longer SMS we limit business name to 20 characters.
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.72156862745098038" green="0.56470588235294117" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mye-IZ-9Dw">
+                                <rect key="frame" x="40" y="559.66666666666663" width="110" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Dwt-RV-nnO"/>
+                                    <constraint firstAttribute="width" constant="110" id="x6P-ij-BnR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="miG-i8-74V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="0JO-O1-e3T"/>
+                            <constraint firstItem="ONh-YG-TZk" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" id="0vy-q8-fLM"/>
+                            <constraint firstItem="qon-eG-lpF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="4O4-3m-ssy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" constant="40" id="7VA-ni-wF1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fTf-Yp-A0I" secondAttribute="trailing" constant="30" id="ATa-tw-WA1"/>
+                            <constraint firstItem="ONh-YG-TZk" firstAttribute="leading" secondItem="miG-i8-74V" secondAttribute="leading" id="LKh-OT-8rB"/>
+                            <constraint firstItem="8fC-gw-pen" firstAttribute="top" secondItem="miG-i8-74V" secondAttribute="bottom" constant="16" id="MHY-uu-Ad9"/>
+                            <constraint firstItem="mye-IZ-9Dw" firstAttribute="leading" secondItem="miG-i8-74V" secondAttribute="leading" id="XcG-xj-T8H"/>
+                            <constraint firstItem="fTf-Yp-A0I" firstAttribute="bottom" secondItem="qon-eG-lpF" secondAttribute="bottom" id="Yd0-bz-8nI"/>
+                            <constraint firstItem="8fC-gw-pen" firstAttribute="leading" secondItem="miG-i8-74V" secondAttribute="leading" constant="10" id="asZ-s3-1wD"/>
+                            <constraint firstItem="miG-i8-74V" firstAttribute="top" secondItem="qon-eG-lpF" secondAttribute="bottom" constant="60" id="eiu-hh-bmP"/>
+                            <constraint firstItem="qon-eG-lpF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gbg-5k-Ooz"/>
+                            <constraint firstItem="ONh-YG-TZk" firstAttribute="top" secondItem="8fC-gw-pen" secondAttribute="bottom" constant="25" id="hMo-uX-U5b"/>
+                            <constraint firstItem="mye-IZ-9Dw" firstAttribute="top" secondItem="ONh-YG-TZk" secondAttribute="bottom" constant="50" id="x3Z-9I-ajL"/>
+                            <constraint firstItem="8fC-gw-pen" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" constant="10" id="yYI-eY-mMe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11" y="4"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="8fC-gw-pen">
+            <size key="intrinsicContentSize" width="55" height="25.333333333333332"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="editicon" width="92" height="78"/>
+        <image name="growthCircleIcon" width="80" height="80"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
