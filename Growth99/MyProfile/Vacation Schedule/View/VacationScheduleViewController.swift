@@ -241,6 +241,6 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         let indexPath = IndexPath(row: 0, section: vacationCount)
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
-        vacationScrollViewHight.constant = vacationTableViewHeight + 500
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
     }
 }
