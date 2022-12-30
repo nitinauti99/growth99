@@ -1,20 +1,22 @@
 //
-//  QuestionnaireList.swift
+//  QuestionnaireDetailList.swift
 //  Growth99
 //
-//  Created by nitin auti on 16/12/22.
+//  Created by nitin auti on 30/12/22.
 //
 
 import Foundation
 
-struct QuestionnaireList: Codable {
+struct QuestionnaireDetailList: Codable {
     let id: Int?
     let questionnaireId: Int?
     let source: String?
-    let patientQuestionAnswers: [PatientQuestionAnswersList]?
+    let leadStatus: String?
+    let questionnaireName: String?
+    let questionAnswers: [QuestionAnswers]?
 }
 
-struct PatientQuestionAnswersList: Codable {
+struct QuestionAnswers: Codable, Equatable {
     let questionId: Int?
     let questionName: String?
     let questionType: String?
@@ -23,17 +25,9 @@ struct PatientQuestionAnswersList: Codable {
     var answer: String?
     var answerText: String?
     let answerComments: String?
-    let patientQuestionChoices: [PatientQuestionChoices]?
     let required: Bool?
     let hidden: Bool?
     let showDropDown: Bool?
     let regex: String?
     let validationMessage: String?
-}
-
-struct PatientQuestionChoices: Codable, Equatable {
-    let choiceName: String?
-    let choiceId: Int?
-    var selected: Bool?
-    let id: Int?
 }

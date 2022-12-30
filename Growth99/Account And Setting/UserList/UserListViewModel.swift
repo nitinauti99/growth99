@@ -10,15 +10,15 @@ import Foundation
 protocol UserListViewModelProtocol {
     func getUserList()
     var UserData: [UserListModel] { get }
-    var userTotalCount: Int { get }
     func userDataAtIndex(index: Int) -> UserListModel?
+    var UserFilterDataData: [UserListModel] { get }
+    func userFilterDataDataAtIndex(index: Int)-> UserListModel?
 }
 
 class UserListViewModel {
     var delegate: UserListViewContollerProtocol?
     var userData: [UserListModel] = []
-    var userPeginationListData: [UserListModel]?
-    var totalCount: Int = 0
+    var userFilterData: [UserListModel] = []
 
     init(delegate: UserListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -42,19 +42,22 @@ class UserListViewModel {
     func userDataAtIndex(index: Int)-> UserListModel? {
         return self.userData[index]
     }
+    
+    func userFilterDataDataAtIndex(index: Int)-> UserListModel? {
+        return self.UserFilterDataData[index]
+    }
 }
 
 extension UserListViewModel: UserListViewModelProtocol {
+    
+    
+    var UserFilterDataData: [UserListModel] {
+        return self.userFilterData
+    }
    
     var UserData: [UserListModel] {
         return self.userData
     }
-   
-    var userTotalCount: Int {
-        return totalCount
-    }
-    
-    var userUserData: [UserListModel] {
-        return self.userPeginationListData ?? []
-    }
+
+ 
 }

@@ -61,6 +61,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
    private func setUpUI(){
@@ -73,6 +74,25 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
        ammountTextField.text = "\(LeadData?.amount ?? 0)"
        leadStatusTextField.text = LeadData?.leadStatus
        sourceTextField.text = LeadData?.leadSource
+       leadStatusTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .touchDown)
+
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.leadStatusTextField.text = selectedItem
+            
+        }
+        selectionMenu.reloadInputViews()
+       
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
     
     func updateLeadAmmountSaved() {

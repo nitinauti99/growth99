@@ -26,7 +26,7 @@ struct EndPoints {
     static let updateQuestionnaireSubmissionAmmount = "/api/questionnaire-submission/lead/"
     static let updateQuestionnaireSubmission = "/api/questionnaire-submission/lead/"
     static let userList = "/api/v1/users/all"
-
+    static let getQuestionnaireListDetail = "/api/questionnaire-submissions/"
 }
 
 struct ApiUrl {
@@ -47,5 +47,6 @@ struct ApiUrl {
     static let updateQuestionnaireSubmissionAmmount = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmissionAmmount)
     static let updateQuestionnaireSubmission = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmission)
     static let getUserList = EndPoints.baseURL.appending(EndPoints.userList)
+    static let getQuestionnaireDetailList = EndPoints.baseURL.appending(EndPoints.getQuestionnaireListDetail)
 
 }

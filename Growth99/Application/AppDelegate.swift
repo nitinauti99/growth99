@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             setUpHomeVC()
         }
        // authenticationWithTouchID()
-
         return true
     }
 

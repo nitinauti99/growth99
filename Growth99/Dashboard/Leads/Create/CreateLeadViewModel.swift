@@ -97,6 +97,9 @@ class CreateLeadViewModel {
 extension CreateLeadViewModel: CreateLeadViewModelProtocol {
 
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool {
+        if regex == "", textField.count > 0 {
+           return true
+        }
         let textFieldValidation = NSPredicate(format:"SELF MATCHES %@", regex)
         return textFieldValidation.evaluate(with: textField)
     }

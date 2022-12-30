@@ -19,18 +19,14 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     @IBOutlet private weak var searchBar: UISearchBar!
 
     var viewModel: UserListViewModelProtocol?
-    var refreshControl : UIRefreshControl!
     var isSearch : Bool = false
-    var filteredTableData:[String] = []
-    var currentPage : Int = 0
-    var isLoadingList : Bool = true
-    var totalCount: Int? = 0
+    var filteredTableData = [UserListModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = UserListViewModel(delegate: self)
         self.getUserList()
-        self.setBarButton()
+     //   self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
      }
     
@@ -68,7 +64,6 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     }
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
-        isLoadingList = false
         viewModel?.getUserList()
     }
 //
@@ -97,13 +92,13 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     }
     
     func LeadDataRecived() {
-        self.refreshControl?.endRefreshing()
         self.view.HideSpinner()
         self.userListTableView.reloadData()
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
 }
 
@@ -114,13 +109,22 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.UserData.count ?? 0
+        if isSearch {
+           return filteredTableData.count
+        }else{
+            return viewModel?.UserData.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UserListTableViewCell()
         cell = userListTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as! UserListTableViewCell
-        cell.configureCell(userVM: viewModel, index: indexPath)
+        if isSearch {
+            cell.configureCell(userVM: viewModel, index: indexPath)
+        }else{
+            cell.configureCell(userVM: viewModel, index: indexPath)
+
+        }
         return cell
     }
     
@@ -134,35 +138,17 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension UserListViewContoller:  UISearchBarDelegate {
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == "" {
-            self.view.ShowSpinner()
-            currentPage = 0
-            self.getUserList()
-        }
-     }
-
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        filteredTableData = (viewModel?.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        isSearch = true
+        userListTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearch = false
         searchBar.text = ""
-        self.view.ShowSpinner()
-        currentPage = 0
-        self.getUserList()
+        userListTableView.reloadData()
     }
 }
-
-extension UserListViewContoller:  UIScrollViewDelegate {
-     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        isLoadingList = false
-    }
-        
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if ((leadListTableView.contentOffset.y + leadListTableView.frame.size.height) >= leadListTableView.contentSize.height) {
-//            self.loadMoreItemsForList()
-//            self.isLoadingList = true
-//        }
-//    }
-}
-
 

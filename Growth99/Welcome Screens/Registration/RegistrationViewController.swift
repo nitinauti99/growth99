@@ -71,6 +71,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     @IBAction func registration(sender: UIButton){

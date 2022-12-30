@@ -16,245 +16,106 @@ protocol CreateLeadViewControllerProtocol: AnyObject {
 }
 
 class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtocol {
-
+    
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
+    
+    @IBOutlet weak var createLeadTableView : UITableView!
     @IBOutlet weak var customViewHight : NSLayoutConstraint!
     private var viewModel: CreateLeadViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
-    private var patientQuestionList = [PatientQuestionAnswersList]()
-
-    private var yPosition  = 20
-    private var xPosition  = 30
-    private var widthPosition  = 300
-    var buttonLastTag = 0
-    var buttonYesTag = 0
-    var buttonNoTag = 0
-
+    var buttons = [UIButton]()
+    var patientQuestionList = [PatientQuestionAnswersList]()
+    var listArray = [PatientQuestionChoices]()
+    var k = 0
+    var j = 0
+    
     private lazy var inputTypeTextField: CustomTextField = {
         let textField = CustomTextField()
         return textField
     }()
+    
+    private var tableViewHeight: CGFloat {
+        createLeadTableView.layoutIfNeeded()
+        return createLeadTableView.contentSize.height
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLeadViewModel(delegate: self)
         self.view.ShowSpinner()
         viewModel?.getQuestionnaireId()
-        self.widthPosition = Int((self.view.frame.width - 40))
         setUpUI()
+        self.registerTableViewCell()
     }
-
+    
+    
+    private func setUpUI(){
+        submitButton.roundCorners(corners: [.allCorners], radius: 10)
+        CancelButton.roundCorners(corners: [.allCorners], radius: 10)
+    }
+    
+    func registerTableViewCell(){
+        createLeadTableView.register(UINib(nibName: "InputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "InputTypeTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "TextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "TextTypeTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "YesNoTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "YesNoTypeTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "MultipleSelectionTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextTypeTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "DateTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "DateTypeTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "MultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "MultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
+        
+        createLeadTableView.register(UINib(nibName: "PreSelectCheckboxTableViewCell", bundle: nil), forCellReuseIdentifier: "PreSelectCheckboxTableViewCell")
+    }
+    
+    /// api Call
     func QuestionnaireIdRecived() {
         viewModel?.getQuestionnaireList()
     }
- 
+    
+    /// recvied QuestionnaireList
     func QuestionnaireListRecived() {
         view.HideSpinner()
         patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
-        self.setUpUiElement()
-    }
-
-    func setUpUiElement(){
-        var i = 0
-       
-        patientQuestionList.forEach { item in
-            i += 1
-           
-            if item.questionType == "Input" {
-                 inputTypeTextField = CustomTextField()
-                 let label : UILabel = UILabel()
-                 label.text = item.questionName
-                 label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 25)
-                 self.customView.addSubview(label)
-                 yPosition +=  Int(label.frame.height + 5)
-                 inputTypeTextField.tag = i
-                 print("Input type", inputTypeTextField.tag)
-                 inputTypeTextField.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
-                 self.customView.addSubview(inputTypeTextField)
-                 yPosition +=  Int(inputTypeTextField.frame.height + 20)
-          
-            } else if (item.questionType == "Text") {
-                let textView : UITextField = CustomTextField()
-                textView.tag = i
-                print("Text type", textView.tag)
-                textView.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 80)
-                self.customView.addSubview(textView)
-                yPosition +=  Int(textView.frame.height + 20)
-           
-            } else if (item.questionType ==  "Yes_No") {
-                let label : UILabel = UILabel()
-                print("Yes_No", label.tag)
-                label.text = item.questionName
-                label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
-                self.customView.addSubview(label)
-                yPosition +=  Int(label.frame.height + 10)
-
-                let button1 = UIButton(frame: CGRect(x: 20, y: yPosition, width: 70, height: 20))
-                button1.setTitleColor(UIColor.black, for: .normal)
-                button1.setTitle("  YES", for: .normal)
-                button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
-                button1.setImage(UIImage(named: "tickselected")!, for: .selected)
-                button1.addTarget(self, action: #selector(btnOnlineAction), for: .touchUpInside)
-                button1.tag = i
-                
-                let button2 = UIButton(frame: CGRect(x: Int(button1.frame.width) + 10, y: yPosition, width: 70, height: 20))
-                button2.setTitleColor(UIColor.black, for: .normal)
-                button2.setTitle("  NO", for: .normal)
-                button2.setImage(UIImage(named: "tickdefault")!, for: .normal)
-                button2.setImage(UIImage(named: "tickselected")!, for: .selected)
-                button2.addTarget(self, action: #selector(btnCodAction), for: .touchUpInside)
-                button2.tag = i
-                
-                self.customView.addSubview(button1)
-                self.customView.addSubview(button2)
-                yPosition +=  Int(button2.frame.height + 20)
-           
-            } else if (item.questionType == "Multiple_Selection_Text") {
-                let MultipleSelectionlabel : UILabel = UILabel()
-                print("Yes_No", MultipleSelectionlabel.tag)
-                MultipleSelectionlabel.text = item.questionName
-                MultipleSelectionlabel.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
-                self.customView.addSubview(MultipleSelectionlabel)
-                yPosition +=  Int(MultipleSelectionlabel.frame.height + 10)
-                let posX = 30
-                item.patientQuestionChoices?.forEach { item in
-                        i += 1
-                        let button1 = PassableUIButton(frame: CGRect(x: posX, y: yPosition, width: 100, height: 20))
-                        button1.setTitleColor(UIColor.black, for: .normal)
-                        let title = " " + (item.choiceName ?? "")
-                        button1.setTitle(title , for: .normal)
-                        button1.contentHorizontalAlignment = .left
-                        button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
-                        button1.setImage(UIImage(named: "tickselected")!, for: .selected)
-                        button1.addTarget(self, action: #selector(CreateLeadViewController.webButtonTouched(_:)), for:.touchUpInside)
-                        button1.tag = i
-                        print("multiselcted button", button1.tag)
-                        button1.params[i] = item
-                        self.customView.addSubview(button1)
-                        yPosition +=  Int(button1.frame.height + 10)
-                  }
-                yPosition +=  Int(20)
-            
-            } else if (item.questionType == "Date") {
-                inputTypeTextField = CustomTextField()
-                let label : UILabel = UILabel()
-                label.text = item.questionName
-                label.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 25)
-                self.customView.addSubview(label)
-                yPosition +=  Int(label.frame.height + 5)
-                inputTypeTextField.tag = i
-                print("Input type", inputTypeTextField.tag)
-                inputTypeTextField.frame = CGRect(x: xPosition, y: yPosition, width: self.widthPosition, height: 40)
-                let datePicker = UIDatePicker()
-                datePicker.datePickerMode = .date
-                datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
-                datePicker.frame.size = CGSize(width: 0, height: 300)
-                if #available(iOS 13.4, *) {
-                    datePicker.preferredDatePickerStyle = .wheels
-                } else {
-                    // Fallback on earlier versions
-                }
-                datePicker.minimumDate = Date()
-                datePicker.tag = inputTypeTextField.tag
-                let toolBar = UIToolbar()
-                toolBar.barStyle = UIBarStyle.default
-                toolBar.isTranslucent = true
-                toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
-                toolBar.sizeToFit()
-                let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
-                let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-                let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.donePicker))
-         
-                toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-                toolBar.isUserInteractionEnabled = true
-                doneButton.tag = inputTypeTextField.tag
-                cancelButton.tag = inputTypeTextField.tag
-                inputTypeTextField.inputView = datePicker
-                inputTypeTextField.inputAccessoryView = toolBar
-                self.customView.addSubview(inputTypeTextField)
-                yPosition +=  Int(inputTypeTextField.frame.height + 20)
-            }
-        }
-        customViewHight.constant = CGFloat(yPosition + 150)
+        self.createLeadTableView.reloadData()
+        customViewHight.constant = tableViewHeight + 180
     }
     
-    @objc func donePicker( _ sender: UIBarButtonItem) {
-        if let inputTypeTxtField = self.customView.viewWithTag(sender.tag) as? CustomTextField {
-            inputTypeTxtField.resignFirstResponder()
-         }
-    }
-     
-     @objc func dateChange(datePicker: UIDatePicker) {
-         if let inputTypeTxtField = self.customView.viewWithTag(datePicker.tag) as? CustomTextField {
-             inputTypeTxtField.text = formatDate(date: datePicker.date)
-          }
-     }
-                                                     
-    func formatDate(date: Date) -> String  {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        return formatter.string(from: date)
-    }
-    
-    @IBAction func btnOnlineAction(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
-            if let button = self.customView.viewWithTag(sender.tag + 1) as? UIButton {
-                button.setImage(UIImage(named: "tickselected")!, for: .selected)
-                button.isSelected = true
-            }
-        } else {
-            sender.setImage(UIImage(named: "tickselected")!, for: .selected)
-            sender.isSelected = true
-            if let button = self.customView.viewWithTag(sender.tag + 1) as? UIButton {
-                button.setImage(UIImage(named: "tickdefault")!, for: .normal)
-                button.isSelected = false
-            }
-        }
-    }
-
-  
-    @IBAction func btnCodAction(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
-            if let button = self.customView.viewWithTag(sender.tag - 1) as? UIButton {
-                button.setImage(UIImage(named: "tickselected")!, for: .selected)
-                button.isSelected = true
-            }
-        } else {
-            sender.setImage(UIImage(named: "tickselected")!, for: .selected)
-            sender.isSelected = true
-            if let button = self.customView.viewWithTag(sender.tag - 1) as? UIButton {
-                button.setImage(UIImage(named: "tickdefault")!, for: .normal)
-                button.isSelected = false
-            }
-        }
-    }
-    
+    /// multiple selection false type buttton action
     @IBAction func webButtonTouched(_ sender: PassableUIButton) {
-        print(sender.params[sender.tag] ?? "")
         if sender.isSelected {
             sender.isSelected = false
-            sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
         }else{
             sender.isSelected = true
-            sender.setImage(UIImage(named: "tickselected")!, for: .selected)
         }
     }
-   
-//    @objc func buttonAction(sender: UIButton){
-//            if sender.isSelected {
-//               sender.setImage(UIImage(named: "tickdefault")!, for: .normal)
-//            }else {
-//             sender.setImage(UIImage(named: "tickselected")!, for: .selected)
-//           }
-//        sender.isSelected = !sender.isSelected
-//    }
- 
+    ///  selection for drp down
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: listArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.choiceName?.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
+            textField.text = selectedItem?.choiceName
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(listArray.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+    ///  multiple selection with selction false
+    @objc func buttonAction(_ sender: PassableUIButton!){
+        for button in buttons {
+            button.isSelected = false
+        }
+        sender.isSelected = true
+    }
+    
+    ///  created Lead on existing datanaviagte to lead list
     func LeadDataRecived() {
         view.HideSpinner()
         do {
@@ -266,114 +127,151 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     
     func errorReceived(error: String) {
         view.HideSpinner()
-    }
-    
-   private func setUpUI(){
-       submitButton.roundCorners(corners: [.allCorners], radius: 10)
-       CancelButton.roundCorners(corners: [.allCorners], radius: 10)
+        self.view.showToast(message: error)
     }
     
     @IBAction func closeButtonClicked() {
         self.dismiss(animated: true)
     }
-  
+    
+    /// submit button which validate all  condition
     @IBAction func submitButtonClicked() {
-        var inputType: Bool =  false
-        var inputTypePresent: Bool =  false
-        var TextType: Bool =  false
-        var TextTypePresent: Bool =  false
-        var dateTypePresent: Bool = false
-        var dateType: Bool = false
-
-        var i = 0
-        patientQuestionList.forEach { item in
-            i += 1
-            if item.questionType == "Input" {
-                inputTypePresent = true
-                if let inputTypeTxtField = self.customView.viewWithTag(i) as? CustomTextField {
-                    guard let txtField = inputTypeTxtField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
-                        inputTypeTxtField.showError(message: item.validationMessage)
-                        inputType = false
-                        return
-                    }
-                   self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: inputTypeTxtField.text ?? "")
-                   inputType = true
-               }
-            }
-
-            if(item.questionType == "Text" ){
-                TextTypePresent =  true
-                if let txtView = self.customView.viewWithTag(i) as? CustomTextField {
-                    if txtView.text == "", let isValid = viewModel?.isValidTextFieldData(txtView.text ?? "", regex: item.regex ?? "") , isValid {
-                        txtView.showError(message: item.validationMessage)
-                        TextType = false
-                        return
-                    }
-                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: txtView.text ?? "")
-                    TextType = true
-
+        k = 0
+        j = 0
+        for index in 0..<(patientQuestionList.count) {
+            let cellIndexPath = IndexPath(item: index, section: 0)
+            let item = patientQuestionList[cellIndexPath.row]
+            /// InputType
+            if let InputTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? InputTypeTableViewCell {
+                print(InputTypeCell.inputeTypeLbi.text ?? "")
+                
+                guard let txtField = InputTypeCell.inputeTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                    InputTypeCell.inputeTypeTextField.showError(message: item.validationMessage)
+                    return
                 }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: InputTypeCell.inputeTypeTextField.text ?? "")
             }
-            if(item.questionType == "Yes_No" ){
-                if let txtView = self.customView.viewWithTag(i) as? UIButton {
-                    self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: txtView.isSelected)
-                    print(txtView.isSelected)
+            /// textType
+            if let textTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? TextTypeTableViewCell {
+                print(textTypeCell.textTypeLbi.text ?? "")
+                guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                    textTypeCell.textTypeTextField.showError(message: item.validationMessage)
+                    return
                 }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? "")
             }
-            if(item.questionType == "Multiple_Selection_Text" ) {
+            
+            /// yesNoType
+            if let yesNoTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? YesNoTypeTableViewCell {
+                print(yesNoTypeCell.yesNoTypeLbi.text ?? "")
+                print(yesNoTypeCell.yesTypeButton.isSelected)
+                print(yesNoTypeCell.NoTypeButton.isSelected)
+                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: yesNoTypeCell.yesTypeButton.isSelected )
+            }
+            
+            /// MultipleSelectionType
+            if let MultipleSelectionCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextTypeTableViewCell {
+                print(MultipleSelectionCell.inputeTypeLbi.text ?? "")
+                var selectedStringArray = [String]()
                 var patientQuestionChoicesList: [Any] = []
-                for item in item.patientQuestionChoices ?? [] {
-                    i += 1
-                    if let passableUIButton = self.customView.viewWithTag(i) as? PassableUIButton {
-                        let list  = self.patientQuestionChoicesList(patientQuestionChoices: item, selected: passableUIButton.isSelected)
-                        patientQuestionChoicesList.append(list)
+                var index = 0
+                for view in MultipleSelectionCell.contentView.subviews {
+                    print(view.tag)
+                    if let inputTypeTxtField = view.viewWithTag(k) as? PassableUIButton {
+                        print(inputTypeTxtField.isSelected)
+                        print(inputTypeTxtField.titleLabel?.text ?? "")
+                        
+                        if inputTypeTxtField.isSelected {
+                            selectedStringArray.append(inputTypeTxtField.titleLabel?.text ?? "")
+                        }
+                        
+                        if let itemList = item.patientQuestionChoices?[index] {
+                            let list = self.patientQuestionChoicesList(patientQuestionChoices: itemList, selected: inputTypeTxtField.isSelected)
+                            patientQuestionChoicesList.append(list)
+                        }
+                        k += 1
+                        index += 1
                     }
                 }
-                self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, patientQuestionList: patientQuestionChoicesList)
+                let selectedStr = selectedStringArray.joined(separator: ",")
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: selectedStr)
             }
-            if (item.questionType == "Date") {
-                dateTypePresent = true
-                if let inputTypeTxtField = self.customView.viewWithTag(i) as? CustomTextField {
-                    guard let txtField = inputTypeTxtField.text, txtField != "" else {
-                        if item.validationMessage == nil {
-                            inputTypeTxtField.showError(message: "The date selection field is required.")
-                        }else{
-                            inputTypeTxtField.showError(message: item.validationMessage)
+            
+            /// DropDownType
+            if let dropDownTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionWithDropDownTypeTableViewCell {
+                print(dropDownTypeCell.dropDownTypeLbi.text ?? "")
+                
+                guard let txtField = dropDownTypeCell.dropDownTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                    dropDownTypeCell.dropDownTypeTextField.showError(message: item.validationMessage)
+                    return
+                }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dropDownTypeCell.dropDownTypeTextField.text ?? "")
+            }
+            
+            /// preSelectCheckboxType
+            if let preSelectCheckboxCell = createLeadTableView.cellForRow(at: cellIndexPath) as? PreSelectCheckboxTableViewCell {
+                print(preSelectCheckboxCell.preSelectCheckbox.text ?? "")
+                print(preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
+                
+                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
+            }
+            
+            /// multipleSelectionFalseType
+            if let multipleSelectionTextWithFalseCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextWithFalseTableViewCell {
+                var selectedString: String = ""
+                print(multipleSelectionTextWithFalseCell.multipleSelectionTypeLbi.text ?? "")
+                print(multipleSelectionTextWithFalseCell.isSelected)
+                var j = 0
+                for view in multipleSelectionTextWithFalseCell.contentView.subviews {
+                    print(view.tag)
+                    if let buttonField = view.viewWithTag(j) as? PassableUIButton {
+                        print(buttonField.isSelected)
+                        if buttonField.isSelected {
+                            selectedString = buttonField.titleLabel?.text ?? ""
                         }
-                        dateType = false
-                        return
+                        print(buttonField.titleLabel?.text ?? "")
+                        j += 1
                     }
-                   self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: inputTypeTxtField.text ?? "")
-                    dateType = true
-               }
+                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: selectedString)
+                }
+            }
+            
+            /// DateType
+            if let dateTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? DateTypeTableViewCell {
+                print(dateTypeCell.dateTypeLbi.text ?? "")
+                print(dateTypeCell.dateTypeTextField.text ?? "")
+                
+                guard let txtField = dateTypeCell.dateTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                    dateTypeCell.dateTypeTextField.showError(message: item.validationMessage)
+                    return
+                }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dateTypeCell.dateTypeTextField.text ?? "")
             }
         }
-            let patientQuestionAnswers: [String: Any] = [
-                "id": 1234,
-                "questionnaireId": 7996,
-                "source": "Manual",
-                "patientQuestionAnswers": patientQuestionAnswers
-            ]
-
-           if TextTypePresent || inputTypePresent || dateTypePresent{
-                if inputType == true || TextType == true || dateType == true {
-                    view.ShowSpinner()
-                    viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
-                    print("all condtion meet")
-                }
-            }
+        
+        let patientQuestionAnswers: [String: Any] = [
+            "id": 1234,
+            "questionnaireId": 7996,
+            "source": "Manual",
+            "patientQuestionAnswers": patientQuestionAnswers
+        ]
+        print(patientQuestionAnswers)
+        view.ShowSpinner()
+        viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
+        print("all condtion meet")
+        
     }
     
     func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
-         let patientQuestionChoices: [String : Any] = [
-                "choiceName": patientQuestionChoices.choiceName ?? 0,
-                "choiceId": patientQuestionChoices.choiceId ?? 0,
-                "selected": selected
-            ]
+        let patientQuestionChoices: [String : Any] = [
+            "choiceName": patientQuestionChoices.choiceName ?? 0,
+            "choiceId": patientQuestionChoices.choiceId ?? 0,
+            "selected": selected
+        ]
         return patientQuestionChoices
     }
     
-    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any]){
+    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any], selectedString:[String] = []){
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
             "questionName": patientQuestionAnswersList.questionName ?? "",
@@ -391,14 +289,15 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         patientQuestionAnswers.append(patientQuestion)
     }
     
-    func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String){
+    /// for all
+    func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String) {
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
             "questionName": patientQuestionAnswersList.questionName ?? "",
             "questionType": patientQuestionAnswersList.questionType ?? "",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? "",
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? "",
+            "answer": patientQuestionAnswersList.answer ?? "",
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
@@ -408,15 +307,15 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         ]
         patientQuestionAnswers.append(patientQuestion)
     }
-  
+    
     func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
             "questionName": patientQuestionAnswersList.questionName ?? "",
             "questionType": patientQuestionAnswersList.questionType ?? "",
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? "",
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? "",
+            "answer": answerText,
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
@@ -425,5 +324,16 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]
         patientQuestionAnswers.append(patientQuestion)
+    }
+}
+
+extension CreateLeadViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        customViewHight.constant = tableViewHeight + 180
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        customViewHight.constant = tableViewHeight + 180
     }
 }
