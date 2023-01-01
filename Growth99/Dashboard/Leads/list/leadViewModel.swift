@@ -12,7 +12,6 @@ protocol leadViewModelProtocol {
     var leadUserData: [leadModel] { get }
     var leadTotalCount: Int { get }
     func leadDataAtIndex(index: Int) -> leadModel?
-
 }
 
 class leadViewModel {

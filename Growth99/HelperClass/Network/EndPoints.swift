@@ -27,6 +27,10 @@ struct EndPoints {
     static let updateQuestionnaireSubmission = "/api/questionnaire-submission/lead/"
     static let userList = "/api/v1/users/all"
     static let getQuestionnaireListDetail = "/api/questionnaire-submissions/"
+    static let getSMStemplatesListDetail = "/api/smstemplates/templateFor/Lead"
+    static let getEmailTemplatesListDetail = "/api/emailTemplates/templateFor/Lead"
+    static let sendCustomsms = "/api/v1/lead/send-custom-sms"
+    static let sendCustomEmail = "/api/v1/lead/send-custom-email"
 }
 
 struct ApiUrl {
@@ -48,5 +52,8 @@ struct ApiUrl {
     static let updateQuestionnaireSubmission = EndPoints.baseURL.appending(EndPoints.updateQuestionnaireSubmission)
     static let getUserList = EndPoints.baseURL.appending(EndPoints.userList)
     static let getQuestionnaireDetailList = EndPoints.baseURL.appending(EndPoints.getQuestionnaireListDetail)
-
+    static let getSMStemplatesListDetail = EndPoints.baseURL.appending(EndPoints.getSMStemplatesListDetail)
+    static let getEmailTemplatesListDetail = EndPoints.baseURL.appending(EndPoints.getEmailTemplatesListDetail)
+    static let sendCustomsms = EndPoints.baseURL.appending(EndPoints.sendCustomsms)
+    static let sendCustomEmail = EndPoints.baseURL.appending(EndPoints.sendCustomEmail)
 }

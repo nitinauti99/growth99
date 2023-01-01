@@ -13,6 +13,8 @@
 		84025F7E2931307F0051F51B /* DropDownCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84025F7C2931307F0051F51B /* DropDownCustomTableViewCell.swift */; };
 		84025F7F2931307F0051F51B /* DropDownCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */; };
 		841B1B21293FB71300D408CC /* VacationScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B1B20293FB71300D408CC /* VacationScheduleViewController+Extension.swift */; };
+		842DDABA2960580A0011E3C0 /* SMStemplatesListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DDAB92960580A0011E3C0 /* SMStemplatesListDetailModel.swift */; };
+		842DDABC2960585F0011E3C0 /* EmailTemplatesListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DDABB2960585F0011E3C0 /* EmailTemplatesListDetailModel.swift */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
 		843B0937295B704B0057D0C0 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B0936295B704B0057D0C0 /* BusinessProfileViewController.swift */; };
 		843B0939295B705B0057D0C0 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843B0938295B705B0057D0C0 /* BusinessProfileViewController.storyboard */; };
@@ -26,12 +28,12 @@
 		845B9B3A295F0E190072EF40 /* questionAnswersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B9B38295F0E190072EF40 /* questionAnswersTableViewCell.xib */; };
 		845B9B3D295F55EE0072EF40 /* SMSTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9B3B295F55EE0072EF40 /* SMSTemplateTableViewCell.swift */; };
 		845B9B3E295F55EE0072EF40 /* SMSTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B9B3C295F55EE0072EF40 /* SMSTemplateTableViewCell.xib */; };
-		845B9B41295F561A0072EF40 /* CustomSMSTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9B3F295F561A0072EF40 /* CustomSMSTemplateTableViewCell.swift */; };
-		845B9B42295F561A0072EF40 /* CustomSMSTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B9B40295F561A0072EF40 /* CustomSMSTemplateTableViewCell.xib */; };
 		845B9B45295F563E0072EF40 /* EmailTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9B43295F563E0072EF40 /* EmailTemplateTableViewCell.swift */; };
 		845B9B46295F563E0072EF40 /* EmailTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B9B44295F563E0072EF40 /* EmailTemplateTableViewCell.xib */; };
 		845B9B49295F56980072EF40 /* CustomEmailTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9B47295F56980072EF40 /* CustomEmailTemplateTableViewCell.swift */; };
 		845B9B4A295F56980072EF40 /* CustomEmailTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B9B48295F56980072EF40 /* CustomEmailTemplateTableViewCell.xib */; };
+		845B9B52295F5B770072EF40 /* CustomSMSTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9B50295F5B760072EF40 /* CustomSMSTemplateTableViewCell.swift */; };
+		845B9B53295F5B770072EF40 /* CustomSMSTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845B9B51295F5B770072EF40 /* CustomSMSTemplateTableViewCell.xib */; };
 		845C3993292273B800D934C5 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C3988292273B800D934C5 /* AppointmentsViewController.swift */; };
 		845C3994292273B800D934C5 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845C3989292273B800D934C5 /* AppointmentsViewController.storyboard */; };
 		845C3997292273B800D934C5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C398E292273B800D934C5 /* ChangePasswordViewController.swift */; };
@@ -322,6 +324,8 @@
 		84025F7C2931307F0051F51B /* DropDownCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCustomTableViewCell.swift; sourceTree = "<group>"; };
 		84025F7D2931307F0051F51B /* DropDownCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCustomTableViewCell.xib; sourceTree = "<group>"; };
 		841B1B20293FB71300D408CC /* VacationScheduleViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VacationScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
+		842DDAB92960580A0011E3C0 /* SMStemplatesListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMStemplatesListDetailModel.swift; sourceTree = "<group>"; };
+		842DDABB2960585F0011E3C0 /* EmailTemplatesListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTemplatesListDetailModel.swift; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
 		843B0936295B704B0057D0C0 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		843B0938295B705B0057D0C0 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
@@ -335,12 +339,12 @@
 		845B9B38295F0E190072EF40 /* questionAnswersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = questionAnswersTableViewCell.xib; sourceTree = "<group>"; };
 		845B9B3B295F55EE0072EF40 /* SMSTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSTemplateTableViewCell.swift; sourceTree = "<group>"; };
 		845B9B3C295F55EE0072EF40 /* SMSTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SMSTemplateTableViewCell.xib; sourceTree = "<group>"; };
-		845B9B3F295F561A0072EF40 /* CustomSMSTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSMSTemplateTableViewCell.swift; sourceTree = "<group>"; };
-		845B9B40295F561A0072EF40 /* CustomSMSTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSMSTemplateTableViewCell.xib; sourceTree = "<group>"; };
 		845B9B43295F563E0072EF40 /* EmailTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTemplateTableViewCell.swift; sourceTree = "<group>"; };
 		845B9B44295F563E0072EF40 /* EmailTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailTemplateTableViewCell.xib; sourceTree = "<group>"; };
 		845B9B47295F56980072EF40 /* CustomEmailTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmailTemplateTableViewCell.swift; sourceTree = "<group>"; };
 		845B9B48295F56980072EF40 /* CustomEmailTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomEmailTemplateTableViewCell.xib; sourceTree = "<group>"; };
+		845B9B50295F5B760072EF40 /* CustomSMSTemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSMSTemplateTableViewCell.swift; sourceTree = "<group>"; };
+		845B9B51295F5B770072EF40 /* CustomSMSTemplateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSMSTemplateTableViewCell.xib; sourceTree = "<group>"; };
 		845C3988292273B800D934C5 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		845C3989292273B800D934C5 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
 		845C398E292273B800D934C5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -709,8 +713,8 @@
 				845B9B38295F0E190072EF40 /* questionAnswersTableViewCell.xib */,
 				845B9B3B295F55EE0072EF40 /* SMSTemplateTableViewCell.swift */,
 				845B9B3C295F55EE0072EF40 /* SMSTemplateTableViewCell.xib */,
-				845B9B3F295F561A0072EF40 /* CustomSMSTemplateTableViewCell.swift */,
-				845B9B40295F561A0072EF40 /* CustomSMSTemplateTableViewCell.xib */,
+				845B9B50295F5B760072EF40 /* CustomSMSTemplateTableViewCell.swift */,
+				845B9B51295F5B770072EF40 /* CustomSMSTemplateTableViewCell.xib */,
 				845B9B43295F563E0072EF40 /* EmailTemplateTableViewCell.swift */,
 				845B9B44295F563E0072EF40 /* EmailTemplateTableViewCell.xib */,
 				845B9B47295F56980072EF40 /* CustomEmailTemplateTableViewCell.swift */,
@@ -1011,6 +1015,8 @@
 				84A62C9929534E6A00B8923A /* leadDetailViewModel.swift */,
 				84A1BA4B293B91E300546A3B /* leadDetailViewController.swift */,
 				84A1BA4D293B920C00546A3B /* leadDetailViewController.storyboard */,
+				842DDAB92960580A0011E3C0 /* SMStemplatesListDetailModel.swift */,
+				842DDABB2960585F0011E3C0 /* EmailTemplatesListDetailModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1711,6 +1717,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845B9B53295F5B770072EF40 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84865D40293DD85B003C8CD9 /* EditLeadViewController.storyboard in Resources */,
 				84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */,
 				84AE6D5D295C8E91002836ED /* TextTypeTableViewCell.xib in Resources */,
@@ -1724,7 +1731,6 @@
 				84AE6D65295C8EE6002836ED /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				845B9B32295DBC7F0072EF40 /* PreSelectCheckboxTableViewCell.xib in Resources */,
 				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
-				845B9B42295F561A0072EF40 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
 				84E5CF8F293D953500DC552D /* MockResponse.json in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
@@ -1948,6 +1954,7 @@
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				84E2C91F2923D93300F79DFA /* UserListViewContoller.swift in Sources */,
+				842DDABA2960580A0011E3C0 /* SMStemplatesListDetailModel.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
 				845C56BB29479E4B000FC363 /* WorkingScheduleModel.swift in Sources */,
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
@@ -2044,6 +2051,7 @@
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,
 				84BD8C9C295B5CB500FCFBC5 /* AddEventViewController.swift in Sources */,
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
+				845B9B52295F5B770072EF40 /* CustomSMSTemplateTableViewCell.swift in Sources */,
 				84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */,
 				84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
@@ -2052,7 +2060,6 @@
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
 				84B2293229314464006E8292 /* VacationModel.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
-				845B9B41295F561A0072EF40 /* CustomSMSTemplateTableViewCell.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				84FDC1B429587346002821BB /* EventsTableViewCell.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
@@ -2090,6 +2097,7 @@
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
+				842DDABC2960585F0011E3C0 /* EmailTemplatesListDetailModel.swift in Sources */,
 				84E5CF86293CF56A00DC552D /* VacationsHeadeView.swift in Sources */,
 				84B0E7ED293729CF00245135 /* WorkingScheduleViewController.swift in Sources */,
 				845B9B36295F053B0072EF40 /* QuestionnaireDetailList.swift in Sources */,

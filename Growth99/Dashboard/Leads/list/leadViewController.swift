@@ -29,14 +29,14 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = leadViewModel(delegate: self)
-        self.getLeadList()
-        self.view.ShowSpinner()
         self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.ShowSpinner()
+        self.getLeadList()
         self.setUpUI()
         addSerchBar()
         self.registerTableView()
