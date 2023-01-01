@@ -10,25 +10,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventsTableViewCell" rowHeight="100" id="aqG-XN-1ii" customClass="EventsTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventsTableViewCell" rowHeight="216" id="aqG-XN-1ii" customClass="EventsTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="357" height="216"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aqG-XN-1ii" id="fZf-bc-kaf">
-                <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="357" height="216"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLf-tQ-Xcs">
-                        <rect key="frame" x="5" y="5" width="343" height="90"/>
+                        <rect key="frame" x="5" y="5" width="347" height="206"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qJ-dq-Zyu">
-                                <rect key="frame" x="0.0" y="0.0" width="8" height="90"/>
+                                <rect key="frame" x="0.0" y="0.0" width="8" height="206"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="spa-hc-hPX"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-IC-AXD">
-                                <rect key="frame" x="289" y="22" width="32" height="32"/>
+                                <rect key="frame" x="293" y="22" width="32" height="32"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="6X6-27-ezq"/>
@@ -41,7 +41,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thusday -May 9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-0c-Rep">
-                                <rect key="frame" x="30" y="22" width="237" height="24"/>
+                                <rect key="frame" x="30" y="22" width="241" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -92,7 +92,7 @@
                 <outlet property="eventsLineView" destination="8qJ-dq-Zyu" id="ehw-1M-RBf"/>
                 <outlet property="eventsTitle" destination="2Xh-0c-Rep" id="0t4-E7-z6h"/>
             </connections>
-            <point key="canvasLocation" x="-1401" y="-2"/>
+            <point key="canvasLocation" x="-1399.2366412213739" y="38.732394366197184"/>
         </tableViewCell>
     </objects>
     <resources>

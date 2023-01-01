@@ -98,7 +98,6 @@ class VacationViewModel {
         outFormatter.dateFormat = "hh:mm a"
         outFormatter.amSymbol = "AM"
         outFormatter.pmSymbol = "PM"
-
         let date = inFormatter.date(from: timeString) ?? Date()
         return outFormatter.string(from: date)
     }

@@ -12,8 +12,7 @@ import EventKitUI
 
 class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate, EKEventEditViewDelegate, UITableViewDelegate, UITableViewDataSource{
     
-    
-    @IBOutlet private weak var calendar: FSCalendar!
+    @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var eventListView: UITableView!
@@ -26,12 +25,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var startDates: [Date] = []
     var endDates: [Date] = []
     var filteredEvents: [EKEvent] = []
-
+    var defaultCalender: String = "Default"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-   
-        setUpNavigationBar()
-        
+           
         self.calendar.select(Date())
         
         let formatingDate = getFormattedDate(date: Date(), format: "EEEE - MMM d")
@@ -40,7 +38,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         self.view.addGestureRecognizer(self.scopeGesture)
         self.eventListView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
-        self.calendar.scope = .month
+        if defaultCalender == "Default" {
+            self.calendar.scope = .month
+        } else {
+            self.calendar.scope = .week
+        }
         
         // For UITest
         self.calendar.accessibilityIdentifier = "calendar"
@@ -86,11 +88,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let dateformat = DateFormatter()
         dateformat.dateFormat = format
         return dateformat.string(from: date)
-    }
-    
-    func setUpNavigationBar() {
-        self.navigationItem.title = "Calendar" 
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(plusTapped), imageName: "navImage")
     }
     
     @objc func plusTapped(_ sender: UIButton) {
