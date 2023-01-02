@@ -58,7 +58,10 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(updateLeadInfo))
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(updateLeadInfo))
+       let timeLine = UIBarButtonItem(title: "TimeLine", style: .plain, target: self, action: #selector(leadTimeLiine))
+        navigationItem.rightBarButtonItems = [editButton, timeLine]
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         self.view.ShowSpinner()
         self.viewModel = leadDetailViewModel(delegate: self)
@@ -122,6 +125,12 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
         editLeadVC.LeadData = LeadData
         self.present(editLeadVC, animated: true)
+    }
+    
+    @objc func leadTimeLiine() {
+        let editLeadVC = UIStoryboard(name: "leadTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "leadTimeLineViewController") as! leadTimeLineViewController
+        editLeadVC.LeadData = LeadData
+        self.navigationController?.pushViewController(editLeadVC, animated: true)
     }
     
     @objc func updateUI(){

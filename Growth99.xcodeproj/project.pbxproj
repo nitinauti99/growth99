@@ -167,6 +167,14 @@
 		84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */; };
 		84B0E7F029372A3B00245135 /* WorkingScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */; };
 		84B1D1E52957065200D695FE /* QuestionnaireId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D1E42957065100D695FE /* QuestionnaireId.swift */; };
+		84B1F5D22962BC670067DAD4 /* leadTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1F5D12962BC670067DAD4 /* leadTimeLineViewController.swift */; };
+		84B1F5D42962BD570067DAD4 /* leadTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F5D32962BD570067DAD4 /* leadTimeLineViewController.storyboard */; };
+		84B1F5D62962C20E0067DAD4 /* leadTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1F5D52962C20E0067DAD4 /* leadTimeLineViewModel.swift */; };
+		84B1F5D82962D2600067DAD4 /* leadCreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1F5D72962D2600067DAD4 /* leadCreationModel.swift */; };
+		84B1F5DB2962DD4A0067DAD4 /* leadTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1F5D92962DD4A0067DAD4 /* leadTimeLineTableViewCell.swift */; };
+		84B1F5DC2962DD4A0067DAD4 /* leadTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F5DA2962DD4A0067DAD4 /* leadTimeLineTableViewCell.xib */; };
+		84B1F5DF296311080067DAD4 /* leadTimeLineHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1F5DD296311080067DAD4 /* leadTimeLineHeaderTableViewCell.swift */; };
+		84B1F5E0296311080067DAD4 /* leadTimeLineHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F5DE296311080067DAD4 /* leadTimeLineHeaderTableViewCell.xib */; };
 		84B2293229314464006E8292 /* VacationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293129314464006E8292 /* VacationModel.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
 		84BD8C9C295B5CB500FCFBC5 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD8C9B295B5CB500FCFBC5 /* AddEventViewController.swift */; };
@@ -493,6 +501,14 @@
 		84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkingScheduleViewController.storyboard; sourceTree = "<group>"; };
 		84B0E7EF29372A3B00245135 /* WorkingScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewModel.swift; sourceTree = "<group>"; };
 		84B1D1E42957065100D695FE /* QuestionnaireId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireId.swift; sourceTree = "<group>"; };
+		84B1F5D12962BC670067DAD4 /* leadTimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadTimeLineViewController.swift; sourceTree = "<group>"; };
+		84B1F5D32962BD570067DAD4 /* leadTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = leadTimeLineViewController.storyboard; sourceTree = "<group>"; };
+		84B1F5D52962C20E0067DAD4 /* leadTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadTimeLineViewModel.swift; sourceTree = "<group>"; };
+		84B1F5D72962D2600067DAD4 /* leadCreationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadCreationModel.swift; sourceTree = "<group>"; };
+		84B1F5D92962DD4A0067DAD4 /* leadTimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadTimeLineTableViewCell.swift; sourceTree = "<group>"; };
+		84B1F5DA2962DD4A0067DAD4 /* leadTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = leadTimeLineTableViewCell.xib; sourceTree = "<group>"; };
+		84B1F5DD296311080067DAD4 /* leadTimeLineHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leadTimeLineHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		84B1F5DE296311080067DAD4 /* leadTimeLineHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = leadTimeLineHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		84B2293129314464006E8292 /* VacationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationModel.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -721,6 +737,7 @@
 		845B9B4B295F56AC0072EF40 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				845B9B35295F053B0072EF40 /* QuestionnaireDetailList.swift */,
 				845B9B37295F0E190072EF40 /* questionAnswersTableViewCell.swift */,
 				845B9B38295F0E190072EF40 /* questionAnswersTableViewCell.xib */,
 				845B9B3B295F55EE0072EF40 /* SMSTemplateTableViewCell.swift */,
@@ -969,12 +986,12 @@
 			isa = PBXGroup;
 			children = (
 				84D10A2E2935195700959861 /* Leads */,
-				845C3A09292276C000D934C5 /* HomeView */,
+				845C3A09292276C000D934C5 /* Home */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		845C3A09292276C000D934C5 /* HomeView */ = {
+		845C3A09292276C000D934C5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				845C3A0C292276C000D934C5 /* UserProfile.swift */,
@@ -983,7 +1000,7 @@
 				845C3A0A292276C000D934C5 /* HomeViewModel.swift */,
 				845C3A0B292276C000D934C5 /* HomeViewContoller.swift */,
 			);
-			path = HomeView;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		845C56BE2947A8ED000FC363 /* CustomTableViewCell */ = {
@@ -1022,7 +1039,7 @@
 		84865D34293CC617003C8CD9 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				845B9B35295F053B0072EF40 /* QuestionnaireDetailList.swift */,
+				84B1F5D02962BC430067DAD4 /* LeadTimeLine */,
 				845B9B4B295F56AC0072EF40 /* Cell */,
 				84A62C9929534E6A00B8923A /* leadDetailViewModel.swift */,
 				84A1BA4B293B91E300546A3B /* leadDetailViewController.swift */,
@@ -1258,6 +1275,29 @@
 				84B0E7EC293729CF00245135 /* WorkingScheduleViewController.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		84B1F5D02962BC430067DAD4 /* LeadTimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				84B1F5D72962D2600067DAD4 /* leadCreationModel.swift */,
+				84B1F5E1296323710067DAD4 /* Cell */,
+				84B1F5D52962C20E0067DAD4 /* leadTimeLineViewModel.swift */,
+				84B1F5D12962BC670067DAD4 /* leadTimeLineViewController.swift */,
+				84B1F5D32962BD570067DAD4 /* leadTimeLineViewController.storyboard */,
+			);
+			path = LeadTimeLine;
+			sourceTree = "<group>";
+		};
+		84B1F5E1296323710067DAD4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84B1F5D92962DD4A0067DAD4 /* leadTimeLineTableViewCell.swift */,
+				84B1F5DA2962DD4A0067DAD4 /* leadTimeLineTableViewCell.xib */,
+				84B1F5DD296311080067DAD4 /* leadTimeLineHeaderTableViewCell.swift */,
+				84B1F5DE296311080067DAD4 /* leadTimeLineHeaderTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		84D10A2E2935195700959861 /* Leads */ = {
@@ -1736,14 +1776,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				845B9B53295F5B770072EF40 /* CustomSMSTemplateTableViewCell.xib in Resources */,
+				84B1F5E0296311080067DAD4 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84865D40293DD85B003C8CD9 /* EditLeadViewController.storyboard in Resources */,
 				84B0E7EE293729CF00245135 /* WorkingScheduleViewController.storyboard in Resources */,
 				84AE6D5D295C8E91002836ED /* TextTypeTableViewCell.xib in Resources */,
 				845B9B46295F563E0072EF40 /* EmailTemplateTableViewCell.xib in Resources */,
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				84E5CF88293CF57900DC552D /* VacationsHeadeView.xib in Resources */,
+				84B1F5D42962BD570067DAD4 /* leadTimeLineViewController.storyboard in Resources */,
 				84AE6D59295C8E63002836ED /* InputTypeTableViewCell.xib in Resources */,
 				8469A0FF2957455F005C25BD /* UserCreateViewController.storyboard in Resources */,
+				84B1F5DC2962DD4A0067DAD4 /* leadTimeLineTableViewCell.xib in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				843B0939295B705B0057D0C0 /* BusinessProfileViewController.storyboard in Resources */,
 				84AE6D65295C8EE6002836ED /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
@@ -2024,6 +2067,7 @@
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
 				84F610FD292A71AB00B1FB69 /* TLSCertificateBlock.swift in Sources */,
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
+				84B1F5DF296311080067DAD4 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
 				845C56C12947A906000FC363 /* WorkingCustomTableViewCell.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
@@ -2069,6 +2113,7 @@
 				84F61123292A71AB00B1FB69 /* Number+Extension.swift in Sources */,
 				84A1BA52293BB36100546A3B /* leadModel.swift in Sources */,
 				845C3A16292276C000D934C5 /* VerifyForgotPasswordViewModel.swift in Sources */,
+				84B1F5D62962C20E0067DAD4 /* leadTimeLineViewModel.swift in Sources */,
 				845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */,
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,
@@ -2087,6 +2132,7 @@
 				84FDC1B429587346002821BB /* EventsTableViewCell.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
+				84B1F5DB2962DD4A0067DAD4 /* leadTimeLineTableViewCell.swift in Sources */,
 				845C3A23292276C000D934C5 /* ClinicsModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
@@ -2108,8 +2154,10 @@
 				845C39CC292276AF00D934C5 /* iOSDropDown.swift in Sources */,
 				84F610DD292A71AB00B1FB69 /* FileDescriptor.swift in Sources */,
 				845C3A15292276C000D934C5 /* ForgotPasswordViewModel.swift in Sources */,
+				84B1F5D22962BC670067DAD4 /* leadTimeLineViewController.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
 				84F61127292A71AB00B1FB69 /* SecCertificate+Extension.swift in Sources */,
+				84B1F5D82962D2600067DAD4 /* leadCreationModel.swift in Sources */,
 				84F610C3292A71AA00B1FB69 /* JWTDecoder.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
 				845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */,
