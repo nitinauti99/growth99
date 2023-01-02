@@ -1,27 +1,24 @@
 //
-//  EventEditViewController.swift
-//  CalendarExampleTutorial
+//  CalenderBaseViewController.swift
+//  Growth99
 //
-//  Created by CallumHill on 2/5/21.
+//  Created by admin on 01/01/23.
 //
 
 import UIKit
 
-class EventEditViewController: UIViewController
-{
+class EventEditViewController: UIViewController {
 	
 	@IBOutlet weak var nameTF: UITextField!
 	@IBOutlet weak var datePicker: UIDatePicker!
 	
-	override func viewDidLoad()
-	{
+	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		datePicker.date = selectedDate
 	}
 	
-	@IBAction func saveAction(_ sender: Any)
-	{
+	@IBAction func saveAction(_ sender: Any) {
 		let newEvent = Event()
 		newEvent.id = eventsList.count
 		newEvent.name = nameTF.text

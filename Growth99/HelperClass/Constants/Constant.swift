@@ -62,6 +62,13 @@ struct Constant {
     }
     
     struct Profile {
+        static let appointment = "Add Appointment"
+        static let calender = "Calendar"
+        static let moreEvents = " More Events"
+        static let calenderAccessDenied = "Access denied"
+        static let unexpectedError = "Unexpected Error"
+        static let calenderDefault = "Default"
+        static let calenderNotDefault = "Notdefault"
         static let vacationTitle = "Vacantion Schedule"
         static let workingScheduleTitle = "Working Schedule"
         static let changePasswordTitle = "Change Password"
@@ -90,7 +97,9 @@ struct Constant {
         static let vacationsHeadeView = "VacationsHeadeView"
         static let vacationsCustomTableViewCell = "VacationsCustomTableViewCell"
         static let workingCustomTableViewCell = "WorkingCustomTableViewCell"
-    }
-    
-    
+        static let dailyViewController = "DailyViewController"
+        static let addEventViewController = "AddEventViewController"
+        static let eventsTableViewCell = "EventsTableViewCell"
+        static let calenderViewController = "CalenderViewController"
+    }    
 }

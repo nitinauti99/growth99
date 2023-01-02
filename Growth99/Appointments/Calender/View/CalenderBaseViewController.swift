@@ -18,34 +18,26 @@ class CalenderBaseViewController: UIViewController {
     }
     
     func setUpNavigationBar() {
-        self.navigationItem.title = "Calendar"
-//        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(plusTapped), imageName: "navImage")
+        self.navigationItem.title = Constant.Profile.calender
     }
     
-    
     @IBAction func dayViewAction(_ sender: Any) {
-        remove_ViewController(dayViewController: calenderViewController)
-        add_ViewController()
+        remove_ViewController(childViewController: calenderViewController)
+        add_DayViewController()
     }
     
     @IBAction func monthViewAction(_ sender: Any) {
-        remove_ViewController(dayViewController: dayViewController)
-        add_ViewControllerMonth()
+        remove_ViewController(childViewController: dayViewController)
+        add_WeekMonthViewController(calenderType: Constant.Profile.calenderDefault)
     }
     
     @IBAction func weekViewAction(_ sender: Any) {
-        remove_ViewController(dayViewController: calenderViewController)
-        let controller  = self.storyboard?.instantiateViewController(withIdentifier: "CalenderViewController")as! CalenderViewController
-        controller.defaultCalender = "Notdefault"
-        controller.view.frame = self.view.bounds
-        view.addSubview(controller.view)
-        addChild(controller)
-        controller.didMove(toParent: self)
-        calenderViewController = controller
+        remove_ViewController(childViewController: calenderViewController)
+        add_WeekMonthViewController(calenderType: Constant.Profile.calenderNotDefault)
     }
     
-     func add_ViewController() {
-        let controller  = self.storyboard?.instantiateViewController(withIdentifier: "DailyViewController")as! DailyViewController
+     func add_DayViewController() {
+         let controller  = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewIdentifier.dailyViewController)as! DailyViewController
         controller.view.frame = self.view.bounds
         view.addSubview(controller.view)
         addChild(controller)
@@ -53,22 +45,21 @@ class CalenderBaseViewController: UIViewController {
         dayViewController = controller
     }
     
-    func add_ViewControllerMonth() {
-       let controller  = self.storyboard?.instantiateViewController(withIdentifier: "CalenderViewController")as! CalenderViewController
-       controller.view.frame = self.view.bounds
-       view.addSubview(controller.view)
-       addChild(controller)
-       controller.didMove(toParent: self)
-       calenderViewController = controller
-   }
-    
+    func add_WeekMonthViewController(calenderType: String) {
+        let controller  = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewIdentifier.calenderViewController)as! CalenderViewController
+        controller.defaultCalender = calenderType
+        controller.view.frame = self.view.bounds
+        view.addSubview(controller.view)
+        addChild(controller)
+        controller.didMove(toParent: self)
+        calenderViewController = controller
+    }
 
-    func remove_ViewController(dayViewController: UIViewController?) {
-        if dayViewController != nil {
-            if self.view.subviews.contains(dayViewController!.view) {
-                dayViewController!.view.removeFromSuperview()
+    func remove_ViewController(childViewController: UIViewController?) {
+        if childViewController != nil {
+            if self.view.subviews.contains(childViewController!.view) {
+                childViewController!.view.removeFromSuperview()
             }
         }
     }
-
 }

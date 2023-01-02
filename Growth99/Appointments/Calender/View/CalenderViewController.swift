@@ -25,7 +25,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var startDates: [Date] = []
     var endDates: [Date] = []
     var filteredEvents: [EKEvent] = []
-    var defaultCalender: String = "Default"
+    var defaultCalender: String = Constant.Profile.calenderDefault
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,25 +38,22 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         self.view.addGestureRecognizer(self.scopeGesture)
         self.eventListView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
-        if defaultCalender == "Default" {
+        if defaultCalender == Constant.Profile.calenderDefault {
             self.calendar.scope = .month
         } else {
             self.calendar.scope = .week
         }
         
-        // For UITest
-        self.calendar.accessibilityIdentifier = "calendar"
-        eventListView.register(UINib(nibName: "EventsTableViewCell", bundle: nil), forCellReuseIdentifier: "EventsTableViewCell")
-        
+        eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
         fetchEventsFromCalendar()
     }
     
     func fetchEventsFromCalendar() -> Void {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         switch status {
-        case .notDetermined: requestAccessToCalendar("Calendar")
-        case .authorized: fetchEventsFromCalendar("Calendar")
-        case .denied: print("Access denied")
+        case .notDetermined: requestAccessToCalendar(Constant.Profile.calender)
+        case .authorized: fetchEventsFromCalendar(Constant.Profile.calender)
+        case .denied: print(Constant.Profile.calenderAccessDenied)
         default: break
         }
     }
@@ -99,12 +96,10 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     event.endDate = self.time
                     let eventController = EKEventEditViewController()
                     eventController.event = event
-                    eventController.navigationItem.title = "Add Appointment"
                     eventController.eventStore = self.eventStore
                     eventController.editViewDelegate = self
                     eventController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     self.present(eventController, animated: true, completion: nil)
-                    
                 }
             }
         })
@@ -125,7 +120,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         return panGesture
     }()
     
-    
     // MARK:- UIGestureRecognizerDelegate
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
@@ -134,7 +128,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     // MARK:- UIGestureRecognizerDelegate
-    
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let shouldBegin = self.eventListView.contentOffset.y <= -self.eventListView.contentInset.top
         if shouldBegin {
@@ -161,7 +154,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
-        let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
+        let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
         let navController = UINavigationController(rootViewController: addEventVC)
         navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(navController, animated:true, completion: nil)
@@ -187,7 +180,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventsTableViewCell", for: indexPath) as? EventsTableViewCell else { fatalError("Unexpected Error") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { fatalError(Constant.Profile.unexpectedError) }
         cell.eventsTitle.text = eventForDates[indexPath.row].title
         cell.eventsDate.setTitle(getFormattedDate(date: eventForDates[indexPath.row].startDate, format: "dd"), for: .normal)
         return cell

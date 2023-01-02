@@ -19,7 +19,7 @@ class AddEventViewController: UIViewController {
     
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
-        self.navigationItem.title = "Add Appointment"
+        self.navigationItem.title = Constant.Profile.appointment
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(closeEventClicked), imageName: "iconCircleCross")
     }
 

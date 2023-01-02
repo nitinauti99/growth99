@@ -77,7 +77,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	}
 	
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
+        let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
         let navController = UINavigationController(rootViewController: addEventVC)
         navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(navController, animated:true, completion: nil)
@@ -109,7 +109,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	
 	func setMoreEvents(_ cell: DailyCell, _ count: Int) {
 		cell.event3.isHidden = false
-		cell.event3.text = String(count) + " More Events"
+        cell.event3.text = String(count) + Constant.Profile.moreEvents
 	}
 	
 	func setEvent1(_ cell: DailyCell, _ event: Event) {
