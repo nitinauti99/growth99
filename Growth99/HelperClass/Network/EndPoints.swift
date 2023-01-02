@@ -33,6 +33,8 @@ struct EndPoints {
     static let sendCustomEmail = "/api/v1/lead/send-custom-email"
     static let leadCreation = "/api/questionnaire-submissions/"
     static let auditleadCreation = "/api/v1/audit/lead?"
+    static let patientsList = "/api/v1/patients/all?tag=&status="
+
 }
 
 struct ApiUrl {
@@ -60,5 +62,6 @@ struct ApiUrl {
     static let sendCustomEmail = EndPoints.baseURL.appending(EndPoints.sendCustomEmail)
     static let leadCreation = EndPoints.baseURL.appending(EndPoints.leadCreation)
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
+    static let patientsList = EndPoints.baseURL.appending(EndPoints.patientsList)
 
 }

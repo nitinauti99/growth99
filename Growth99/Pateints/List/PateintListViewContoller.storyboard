@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pateint List View Contoller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PateintListViewContoller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PateintListViewContoller" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vxg-GC-3k5">
+                                <rect key="frame" x="0.0" y="109" width="414" height="753"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="1JO-t3-uBG"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="TGe-aL-pZS"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-wE-DEc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Bew-D5-IMi"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="WJe-ts-DtR"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vxg-GC-3k5" secondAttribute="trailing" id="0jz-vw-Fo7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
+                            <constraint firstItem="Vxg-GC-3k5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DTv-Wi-Rgo"/>
+                            <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="Mrg-4q-sd3"/>
+                            <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="TfC-jd-n9H"/>
+                            <constraint firstItem="Vxg-GC-3k5" firstAttribute="top" secondItem="WEA-wE-DEc" secondAttribute="bottom" constant="5" id="X2C-SF-RYA"/>
+                            <constraint firstItem="WEA-wE-DEc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yfl-wr-yyI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pateintListTableView" destination="Vxg-GC-3k5" id="hVb-Jx-LSt"/>
+                        <outlet property="searchBar" destination="WEA-wE-DEc" id="ONf-6m-Gjt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26" y="35"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

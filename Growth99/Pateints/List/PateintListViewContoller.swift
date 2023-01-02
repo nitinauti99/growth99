@@ -1,32 +1,32 @@
 //
-//  UserListViewContoller.swift
+//  PateintListViewContoller.swift
 //  Growth99
 //
-//  Created by nitin auti on 15/11/22.
+//  Created by nitin auti on 02/01/23.
 //
 
 import Foundation
 import UIKit
 
-protocol UserListViewContollerProtocol: AnyObject {
+protocol PateintListViewContollerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
 }
 
-class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
+class PateintListViewContoller: UIViewController, PateintListViewContollerProtocol {
    
-    @IBOutlet private weak var userListTableView: UITableView!
+    @IBOutlet private weak var pateintListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
-    var viewModel: UserListViewModelProtocol?
+    var viewModel: PateintListViewModelProtocol?
     var isSearch : Bool = false
-    var filteredTableData = [UserListModel]()
+    var filteredTableData = [PateintListModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = UserListViewModel(delegate: self)
+        self.viewModel = PateintListViewModel(delegate: self)
         self.getUserList()
-//        self.setBarButton()
+        self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
      }
     
@@ -76,14 +76,14 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
 //     }
     
     func registerTableView() {
-        self.userListTableView.delegate = self
-        self.userListTableView.dataSource = self
-        userListTableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
+        self.pateintListTableView.delegate = self
+        self.pateintListTableView.dataSource = self
+        pateintListTableView.register(UINib(nibName: "PateintListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintListTableViewCell")
     }
 
     @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
-        self.present(createUserVC, animated: true)
+        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
+        self.navigationController?.pushViewController(createUserVC, animated: true)
     }
     
     @objc func getUserList(){
@@ -93,7 +93,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     
     func LeadDataRecived() {
         self.view.HideSpinner()
-        self.userListTableView.reloadData()
+        self.pateintListTableView.reloadData()
     }
     
     func errorReceived(error: String) {
@@ -102,7 +102,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     }
 }
 
-extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
+extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -117,8 +117,8 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UserListTableViewCell()
-        cell = userListTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as! UserListTableViewCell
+        var cell = PateintListTableViewCell()
+        cell = pateintListTableView.dequeueReusableCell(withIdentifier: "PateintListTableViewCell") as! PateintListTableViewCell
         if isSearch {
             cell.configureCell(userVM: viewModel, index: indexPath)
         }else{
@@ -137,18 +137,18 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension UserListViewContoller:  UISearchBarDelegate {
+extension PateintListViewContoller:  UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTableData = (viewModel?.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
-        userListTableView.reloadData()
+        pateintListTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearch = false
         searchBar.text = ""
-        userListTableView.reloadData()
+        pateintListTableView.reloadData()
     }
 }
 

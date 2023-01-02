@@ -213,7 +213,10 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             }
         } else if indexPath.section == 2 {
             
+        } else if indexPath.section == 3 {
+            pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
         }
+        
     }
     
     func pushViewControllerFromDrawerMenu(identifier: String, pusedViewController: String) {
