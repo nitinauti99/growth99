@@ -71,38 +71,38 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     @objc func textFieldDidChange(_ textField: UITextField) {
         
         if textField == emailTextField,  textField.text == "" {
-            emailTextField.showError(message: Constant.Login.emailEmptyError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
         }
         
         if textField == passwordTextField, textField.text == "" {
-            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
         }
 
         if textField == emailTextField, textField.text != "" , let emailValidate = viewModel?.isValidEmail(emailTextField.text ?? ""), emailValidate == false {
-            emailTextField.showError(message: Constant.Login.emailInvalidError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
         }
         
         if textField == passwordTextField, textField.text != "" , let passwrdValidate = viewModel?.isValidPassword(passwordTextField.text ?? ""), passwrdValidate == false {
-            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
         }
     }
  
     @IBAction func logIn(sender: UIButton){
         guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.Login.emailEmptyError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
         guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.Login.emailInvalidError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
 
         guard let password = passwordTextField.text, !password.isEmpty else {
-            passwordTextField.showError(message: Constant.Login.passwordEmptyError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
         guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
-            passwordTextField.showError(message: Constant.Login.passwordInvalidError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
             return
         }
         self.view.ShowSpinner()

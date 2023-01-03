@@ -40,9 +40,9 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     func setUpUI(){
         self.registrationButton.layer.cornerRadius = 12
         self.registrationButton.clipsToBounds = true
-        let attributedString = NSMutableAttributedString(string: Constant.Registration.privacyText)
-        attributedString.setAttributes([.link: Constant.Login.termsConditionsUrl], range: NSMakeRange(20, 18))
-        attributedString.setAttributes([.link: Constant.Login.privacyPolicyUrl], range: NSMakeRange(43, 14))
+        let attributedString = NSMutableAttributedString(string: Constant.ErrorMessage.privacyText)
+        attributedString.setAttributes([.link: Constant.ErrorMessage.termsConditionsUrl], range: NSMakeRange(20, 18))
+        attributedString.setAttributes([.link: Constant.ErrorMessage.privacyPolicyUrl], range: NSMakeRange(43, 14))
         self.hyperlinkTexview.attributedText = attributedString
         self.hyperlinkTexview.linkTextAttributes = [
             .foregroundColor: UIColor.init(hexString: "#009EDE"),
@@ -76,47 +76,47 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     
     @IBAction func registration(sender: UIButton){
         guard let firsName = firsNameTextField.text, !firsName.isEmpty else {
-            firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
 
         guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
-            lastNameTextField.showError(message: Constant.Registration.lastNameEmptyError)
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
             return
         }
 
         guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.Registration.emailEmptyError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
 
         guard let emailValidate = viewModel?.isValidEmail(email), emailValidate else {
-            emailTextField.showError(message: Constant.Registration.emailInvalidError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
 
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberEmptyError)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
 
         guard let password = passwordTextField.text, !password.isEmpty else {
-            passwordTextField.showError(message: Constant.Registration.passwordEmptyError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
 
         guard let passwordValidate = viewModel?.isValidPassword(password), passwordValidate else {
-            passwordTextField.showError(message: Constant.Registration.passwordInvalidError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
             return
         }
 
         guard let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty else {
-            repeatPasswordTextField.showError(message: Constant.Registration.repeatPasswordEmptyError)
+            repeatPasswordTextField.showError(message: Constant.ErrorMessage.repeatPasswordEmptyError)
             return
         }
 
         guard let bussinessName = bussinessNameTextField.text, !bussinessName.isEmpty else {
-            bussinessNameTextField.showError(message: Constant.Login.passwordEmptyError)
+            bussinessNameTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
         self.view.ShowSpinner()
@@ -132,10 +132,10 @@ extension RegistrationViewController: UITextViewDelegate {
    
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool
     {
-        if (URL.absoluteString == Constant.Login.termsConditionsUrl) {
+        if (URL.absoluteString == Constant.ErrorMessage.termsConditionsUrl) {
             UIApplication.shared.open(URL)
         }
-        if (URL.absoluteString == Constant.Login.privacyPolicyUrl) {
+        if (URL.absoluteString == Constant.ErrorMessage.privacyPolicyUrl) {
             UIApplication.shared.open(URL)
         }
         return false

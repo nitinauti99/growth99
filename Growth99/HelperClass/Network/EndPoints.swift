@@ -34,6 +34,8 @@ struct EndPoints {
     static let leadCreation = "/api/questionnaire-submissions/"
     static let auditleadCreation = "/api/v1/audit/lead?"
     static let patientsList = "/api/v1/patients/all?tag=&status="
+    static let crearePatients = "/api/patients"
+
 
 }
 
@@ -63,5 +65,6 @@ struct ApiUrl {
     static let leadCreation = EndPoints.baseURL.appending(EndPoints.leadCreation)
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
     static let patientsList = EndPoints.baseURL.appending(EndPoints.patientsList)
+    static let crearePatients = EndPoints.baseURL.appending(EndPoints.crearePatients)
 
 }

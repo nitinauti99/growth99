@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 protocol PateintListViewModelProtocol {
     func getUserList()
     var UserData: [PateintListModel] { get }

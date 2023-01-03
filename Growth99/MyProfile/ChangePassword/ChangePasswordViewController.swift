@@ -53,27 +53,27 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     @IBAction func savePasswordButton(sender: UIButton) {
 
         guard let oldPassword = oldPasswordTextField.text, !oldPassword.isEmpty else {
-            oldPasswordTextField.showError(message: Constant.ChangePassword.oldPasswordEmptyError)
+            oldPasswordTextField.showError(message: Constant.ErrorMessage.oldPasswordEmptyError)
             return
         }
 
         guard let passwordValidate = viewModel?.isValidPassword(oldPassword), passwordValidate else {
-            oldPasswordTextField.showError(message: Constant.ChangePassword.oldPasswordEmptyError)
+            oldPasswordTextField.showError(message: Constant.ErrorMessage.oldPasswordEmptyError)
             return
         }
 
         guard let newPassword = newPasswordTextField.text, !newPassword.isEmpty else {
-            newPasswordTextField.showError(message: Constant.ChangePassword.newPasswordEmptyError)
+            newPasswordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
         
         guard let verifyNewPassword = verifyPasswordTextField.text, !verifyNewPassword.isEmpty else {
-            newPasswordTextField.showError(message: Constant.ChangePassword.confirmPasswordEmptyError)
+            newPasswordTextField.showError(message: Constant.ErrorMessage.confirmPasswordEmptyError)
             return
         }
         
         guard let passwordValidate = viewModel?.isValidPasswordAndCoinfirmationPassword(newPassword, verifyNewPassword), passwordValidate else {
-            verifyPasswordTextField.showError(message: Constant.ChangePassword.passwordMissmatchError)
+            verifyPasswordTextField.showError(message: Constant.ErrorMessage.PasswordMissmatchError)
             return
         }
          self.view.ShowSpinner()

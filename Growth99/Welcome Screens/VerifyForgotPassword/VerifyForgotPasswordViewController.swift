@@ -57,35 +57,35 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     @IBAction func sendRequestButton(sender: UIButton){
        
         guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.VerifyForgotPassword.emailEmptyError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
         guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.VerifyForgotPassword.emailInvalidError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
         guard let password = passwordTextField.text, !password.isEmpty else {
-            passwordTextField.showError(message: Constant.VerifyForgotPassword.passwordEmptyError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
 
         guard let passwordValidate = viewModel?.isValidPassword(password), passwordValidate else {
-            passwordTextField.showError(message: Constant.VerifyForgotPassword.passwordInvalidError)
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
             return
         }
 
         guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {
-            confirmPasswordTextField.showError(message: Constant.VerifyForgotPassword.confirmPasswordEmptyError)
+            confirmPasswordTextField.showError(message: Constant.ErrorMessage.confirmPasswordEmptyError)
             return
         }
         
         guard let passwordValidate = viewModel?.isValidPasswordAndCoinfirmationPassword(password, confirmPassword), passwordValidate else {
-            confirmPasswordTextField.showError(message: Constant.VerifyForgotPassword.PasswordMissmatchError)
+            confirmPasswordTextField.showError(message: Constant.ErrorMessage.PasswordMissmatchError)
             return
         }
         
         guard let veificationCode = veificationCodeTextField.text, !veificationCode.isEmpty else {
-            veificationCodeTextField.showError(message: Constant.VerifyForgotPassword.ConfirmationCodeInvalidError)
+            veificationCodeTextField.showError(message: Constant.ErrorMessage.ConfirmationCodeInvalidError)
             return
         }
         

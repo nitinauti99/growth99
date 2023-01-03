@@ -14,7 +14,7 @@ protocol PateintListViewContollerProtocol: AnyObject {
 }
 
 class PateintListViewContoller: UIViewController, PateintListViewContollerProtocol {
-   
+
     @IBOutlet private weak var pateintListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
@@ -133,7 +133,7 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+       // self.navigationController?.popViewController(animated: true)
     }
 }
 

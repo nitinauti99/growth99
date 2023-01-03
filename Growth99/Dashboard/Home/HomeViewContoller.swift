@@ -333,16 +333,16 @@ extension HomeViewContoller: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         
         if textField == firsNameTextField,  textField.text == "" {
-            firsNameTextField.showError(message: Constant.Registration.firstNameEmptyError)
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
         }
         if textField == lastNameTextField, textField.text == "" {
-            lastNameTextField.showError(message: Constant.Registration.lastNameEmptyError)
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
         }
         if textField == phoneNumberTextField, textField.text == "" {
-            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberEmptyError)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
          }
         if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
-            phoneNumberTextField.showError(message: Constant.Registration.phoneNumberInvalidError)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
         }
     }
 }
