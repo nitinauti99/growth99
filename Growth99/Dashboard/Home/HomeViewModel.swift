@@ -26,13 +26,13 @@ protocol HomeViewModelProtocol {
 }
 
 class HomeViewModel {
-    var delegate: HomeViewContollerProtocool?
+    var delegate: HomeViewContollerProtocol?
     var userData: UserProfile?
     var allClinics: [Clinics]?
     var allserviceCategories: [Clinics]?
     var allServices: [Clinics]?
     
-    init(delegate: HomeViewContollerProtocool? = nil) {
+    init(delegate: HomeViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     

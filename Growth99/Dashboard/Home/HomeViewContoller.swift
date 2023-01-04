@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import LocalAuthentication
 
-protocol HomeViewContollerProtocool {
+protocol HomeViewContollerProtocol {
     func userDataRecived()
     func errorReceived(error: String)
     func clinicsRecived()
@@ -18,7 +18,7 @@ protocol HomeViewContollerProtocool {
     func profileDataUpdated()
 }
 
-class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
+class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     
     @IBOutlet private weak var firsNameTextField: CustomTextField!
     @IBOutlet private weak var lastNameTextField: CustomTextField!
@@ -119,21 +119,30 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
     
     func serviceCategoriesRecived() {
         // get from user api
-         selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
-        
-         allServiceCategories = viewModel?.getAllServiceCategories ?? []
+        selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
+        allServiceCategories = viewModel?.getAllServiceCategories ?? []
 
+        var itemNotPresent:Bool = false
+        for item in selectedServiceCategories {
+            if allServiceCategories.contains(item) {
+                itemNotPresent =  true
+            }
+        }
         self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? ""}).joined(separator: ", ")
         let selectedList = selectedServiceCategories.map({$0.id ?? 0})
         self.selectedServiceCategoriesIds = selectedList
+
+        if selectedServiceCategories.count == 0 || itemNotPresent == false {
+            self.serviceCategoriesTextField.text = ""
+        }
         self.viewModel?.getallService(SelectedCategories: selectedList)
     }
     
     func serviceRecived() {
         self.view.HideSpinner()
         // get from user api
+        self.servicesTextField.text = ""
         selectedService = viewModel?.getAllService ?? []
-        
         allService = viewModel?.getUserProfileData.services ?? []
     
         let selectedList = selectedService.map({$0.id ?? 0})
@@ -183,6 +192,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
 
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
+        self.rolesTextField.text = ""
         let rolesArray = [viewModel?.getUserProfileData.roles?.name]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics?.components(separatedBy: " ").first
@@ -222,10 +232,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocool {
 
     
     @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
-        if selectedServiceCategories.count == 0 {
-            self.serviceCategoriesTextField.text = ""
-        }
-     
+      
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServiceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
             cell.textLabel?.text = serviceCategories.name?.components(separatedBy: " ").first
         }
@@ -346,4 +353,12 @@ extension HomeViewContoller: UITextFieldDelegate {
         }
     }
   
+}
+
+extension Array where Element: Hashable {
+    func difference(from other: [Element]) -> [Element] {
+        let thisSet = Set(self)
+        let otherSet = Set(other)
+        return Array(thisSet.symmetricDifference(otherSet))
+    }
 }
