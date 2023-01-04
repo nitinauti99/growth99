@@ -22,11 +22,13 @@ class VacationViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     func getallClinicsforVacation(completion: @escaping([Clinics]?, Error?) -> Void) {
-        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [Clinics].self) { response in
-            switch response {
+       
+        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+            switch result {
             case .success(let allClinics):
                 completion(allClinics, nil)
             case .failure(let error):
+                print(error)
                 completion(nil, error)
             }
         }

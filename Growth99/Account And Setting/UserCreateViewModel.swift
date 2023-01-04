@@ -66,29 +66,29 @@ class UserCreateViewModel {
     }
     
     func getallServiceCategories(SelectedClinics: [Any]){
-        ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
-            switch result {
-            case .success(let allserviceCategories):
-                self.allserviceCategories = allserviceCategories
-                self.delegate?.serviceCategoriesRecived()
-            case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
-            }
-        }
+//        ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
+//            switch result {
+//            case .success(let allserviceCategories):
+//                self.allserviceCategories = allserviceCategories
+//                self.delegate?.serviceCategoriesRecived()
+//            case .failure(let error):
+//                print(error)
+//                self.delegate?.errorReceived(error: error.localizedDescription)
+//            }
+//        }
     }
     
     func getallService(SelectedCategories: [Any]) {
-        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
-            switch result {
-            case .success(let categories):
-                self.allServices = categories
-                self.delegate?.serviceRecived()
-            case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
-            }
-        }
+//        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
+//            switch result {
+//            case .success(let categories):
+//                self.allServices = categories
+//                self.delegate?.serviceRecived()
+//            case .failure(let error):
+//                print(error)
+//                self.delegate?.errorReceived(error: error.localizedDescription)
+//            }
+//        }
     }
     
     func updateProfileInfo(firstName: String, lastName: String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String) {

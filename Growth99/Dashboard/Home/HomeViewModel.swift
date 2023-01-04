@@ -17,10 +17,10 @@ protocol HomeViewModelProtocol {
     func getallClinics()
     var getAllClinicsData: [Clinics] { get }
     
-    func getallServiceCategories(SelectedClinics: [Any])
+    func getallServiceCategories(SelectedClinics: [Int])
     var getAllServiceCategories: [Clinics] { get }
    
-    func getallService(SelectedCategories: [Any])
+    func getallService(SelectedCategories: [Int])
     var getAllService: [Clinics] { get }
     func updateProfileInfo(firstName: String, lastName:String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String)
 }
@@ -65,9 +65,12 @@ class HomeViewModel {
             }
         }
     }
-    
-    func getallServiceCategories(SelectedClinics: [Any]){
-        ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
+        
+    func getallServiceCategories(SelectedClinics: [Int]){
+        let finaleUrl = ApiUrl.serviceCategories + SelectedClinics.map { String($0) }.joined(separator: ",")
+        
+        self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+           
             switch result {
             case .success(let allserviceCategories):
                 self.allserviceCategories = allserviceCategories
@@ -79,8 +82,11 @@ class HomeViewModel {
         }
     }
     
-    func getallService(SelectedCategories: [Any]) {
-        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
+    
+   func getallService(SelectedCategories: [Int]) {
+       let finaleUrl = ApiUrl.service  + SelectedCategories.map { String($0) }.joined(separator: ",")
+
+       self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
             case .success(let categories):
                 self.allServices = categories

@@ -5,17 +5,17 @@
 //  Created by Nitin Auti on 04/02/20.
 //  Copyright © 2020 Nitin Auti. All rights reserved.
 //
-
-import Foundation
-import Alamofire
-//import JWTDecode
-
-struct requestModel {
-	   var RequestUrl: String
-	   var method: Alamofire.HTTPMethod
-	   var parameters: [String: Any]?
-	   var headers: HTTPHeaders
-}
+//
+//import Foundation
+//import Alamofire
+////import JWTDecode
+//
+//struct requestModel {
+//	   var RequestUrl: String
+//	   var method: Alamofire.HTTPMethod
+//	   var parameters: [String: Any]?
+//	   var headers: HTTPHeaders
+//}
 //class NetworkingService: NSObject {
 //    
 //    static let shared = NetworkingService()
@@ -68,11 +68,11 @@ struct requestModel {
 //}
 
 // checking internet connectivity 
-class Connectivity {
-		class var isConnectedToInternet:Bool {
-			return NetworkReachabilityManager()!.isReachable
-		}
-	}
+//class Connectivity {
+//		class var isConnectedToInternet:Bool {
+//			return NetworkReachabilityManager()!.isReachable
+//		}
+//	}
 
 //extension NetworkingService {
 //

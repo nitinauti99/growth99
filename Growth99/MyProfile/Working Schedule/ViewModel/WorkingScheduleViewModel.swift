@@ -22,14 +22,14 @@ class WorkingScheduleViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     func getallClinicsforWorkingSchedule(completion: @escaping([Clinics]?, Error?) -> Void) {
-        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [Clinics].self) { response in
-            switch response {
-            case .success(let allClinics):
-                completion(allClinics, nil)
-            case .failure(let error):
-                completion(nil, error)
-            }
-        }
+//        ServiceManager.request(request: ApiRouter.getRequestForAllClinics.urlRequest, responseType: [Clinics].self) { response in
+//            switch response {
+//            case .success(let allClinics):
+//                completion(allClinics, nil)
+//            case .failure(let error):
+//                completion(nil, error)
+//            }
+//        }
     }
         
     func sendRequestforWorkingSchedule(vacationParams: [String: Any]) {
