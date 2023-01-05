@@ -133,7 +133,9 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // self.navigationController?.popViewController(animated: true)
+        let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
+        detailController.pateintData = viewModel?.userDataAtIndex(index: indexPath.row)
+        navigationController?.pushViewController(detailController, animated: true)
     }
 }
 
