@@ -47,10 +47,6 @@
           "imageName": "fa-medkit"
         },
         {
-          "title": "Contact From",
-          "imageName": "fa-edit"
-        },
-        {
           "title": "Users",
           "imageName": "fa-users"
         }
@@ -94,7 +90,17 @@
     },
     {
       "title": "Triggers",
-      "imageName": "fa-directions"
+      "imageName": "fa-directions",
+      "subMenuList": [
+        {
+          "title": "Lead Triggers",
+          "imageName": "fa-directions"
+        },
+        {
+          "title": "Appointment Triggers",
+          "imageName": "fa-directions"
+        }
+      ]
     },
     {
       "title": "Landing Pages",

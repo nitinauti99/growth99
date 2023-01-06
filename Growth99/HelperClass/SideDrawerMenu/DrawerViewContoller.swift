@@ -208,6 +208,14 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "BusinessProfileViewController", pusedViewController: "BusinessProfileViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "ClinicsListViewController", pusedViewController: "ClinicsListViewController")
+            case 2:
+                pushViewControllerFromDrawerMenu(identifier: "CategoriesListViewController", pusedViewController: "CategoriesListViewController")
+            case 3:
+                pushViewControllerFromDrawerMenu(identifier: "ServicesListViewController", pusedViewController: "ServicesListViewController")
+            case 4:
+                pushViewControllerFromDrawerMenu(identifier: "UserListViewContoller", pusedViewController: "UserListViewContoller")
             default:
                 break
             }
@@ -215,8 +223,18 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             
         } else if indexPath.section == 3 {
             pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
+        } else if indexPath.section == 4 {
+            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
+        } else if indexPath.section == 5 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "LeadTriggersListViewController", pusedViewController: "LeadTriggersListViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "AppointmentTriggersListViewController", pusedViewController: "AppointmentTriggersListViewController")
+            default:
+                break
+            }
         }
-        
     }
     
     func pushViewControllerFromDrawerMenu(identifier: String, pusedViewController: String) {

@@ -30,7 +30,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
 
     var workingScheduleViewModel = WorkingScheduleViewModel()
     var listSelection: Bool = false
-    private var menuVC = DrawerViewContoller()
     var allClinicsForWorkingSchedule: [Clinics]?
     var workingListModel =  [WorkingScheduleListModel]?([])
     var selectedClinicId: Int = 0
@@ -47,8 +46,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
         workingscrollview.delegate = self
         self.view.ShowSpinner()
         setUpNavigationBar()
@@ -77,7 +74,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
 
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.workingScheduleTitle
-        navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
     
     func setupUI() {
@@ -102,11 +98,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
             }
         }
     }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
-    }
-  
+
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
         self.view.showToast(message: Constant.Profile.workingScheduleUpdate)
