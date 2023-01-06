@@ -38,7 +38,6 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     var listSelection: Bool = false
     var isValidateVacationArray = [Bool]()
 
-    private var menuVC = DrawerViewContoller()
     var viewModel: VacationScheduleViewControllerCProtocol?
     var allClinicsForVacation: [Clinics]?
     var vacationsListModel =  [VacationsListModel]?([])
@@ -53,10 +52,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
-        
-       self.view.ShowSpinner()
+        self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
         vacationViewModel = VacationViewModel(delegate: self)
@@ -74,13 +70,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.vacationTitle
-        navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
-    }
-    
+
     // MARK: - setupDefaultUI
     func setupUI() {
         userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"

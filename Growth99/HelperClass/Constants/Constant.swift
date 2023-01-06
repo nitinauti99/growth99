@@ -45,6 +45,13 @@ struct Constant {
     struct Profile {
         static let appointment = "Add Appointment"
         static let calender = "Calendar"
+        static let clinics = "Clinics"
+        static let categories = "Categories"
+        static let services = "Services"
+        static let users = "Users"
+        static let tasks = "Tasksv"
+        static let leadTriggers = "Lead Triggers"
+        static let appointmentTriggers = "Appointment Triggers"
         static let moreEvents = " More Events"
         static let calenderAccessDenied = "Access denied"
         static let unexpectedError = "Unexpected Error"

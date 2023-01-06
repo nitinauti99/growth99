@@ -203,6 +203,18 @@
 		84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062ED2967080E001FE469 /* QuestionnaireList.swift */; };
 		84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */; };
 		84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062EF2967080E001FE469 /* QuestionnaireId.swift */; };
+		84D0634B2967EA2C001FE469 /* ClinicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0634A2967EA2C001FE469 /* ClinicsListViewController.swift */; };
+		84D0634D2967EA35001FE469 /* ClinicsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0634C2967EA35001FE469 /* ClinicsListViewController.storyboard */; };
+		84D0634F2967EA43001FE469 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0634E2967EA43001FE469 /* CategoriesListViewController.swift */; };
+		84D063512967EA54001FE469 /* CategoriesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063502967EA54001FE469 /* CategoriesListViewController.storyboard */; };
+		84D063532967EA64001FE469 /* ServicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063522967EA64001FE469 /* ServicesListViewController.swift */; };
+		84D063552967EA70001FE469 /* ServicesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063542967EA70001FE469 /* ServicesListViewController.storyboard */; };
+		84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063562967EA81001FE469 /* TasksListViewController.swift */; };
+		84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063582967EA8C001FE469 /* TasksListViewController.storyboard */; };
+		84D0635F2967EEFD001FE469 /* LeadTriggersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0635E2967EEFD001FE469 /* LeadTriggersListViewController.swift */; };
+		84D063612967EF15001FE469 /* AppointmentTriggersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063602967EF15001FE469 /* AppointmentTriggersListViewController.swift */; };
+		84D063632967EF20001FE469 /* AppointmentTriggersListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063622967EF20001FE469 /* AppointmentTriggersListViewController.storyboard */; };
+		84D063652967EF32001FE469 /* LeadTriggersListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063642967EF32001FE469 /* LeadTriggersListViewController.storyboard */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
 		84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */; };
 		84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */; };
@@ -552,6 +564,18 @@
 		84D062ED2967080E001FE469 /* QuestionnaireList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireList.swift; sourceTree = "<group>"; };
 		84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateLeadViewController.storyboard; sourceTree = "<group>"; };
 		84D062EF2967080E001FE469 /* QuestionnaireId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireId.swift; sourceTree = "<group>"; };
+		84D0634A2967EA2C001FE469 /* ClinicsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListViewController.swift; sourceTree = "<group>"; };
+		84D0634C2967EA35001FE469 /* ClinicsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListViewController.storyboard; sourceTree = "<group>"; };
+		84D0634E2967EA43001FE469 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
+		84D063502967EA54001FE469 /* CategoriesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoriesListViewController.storyboard; sourceTree = "<group>"; };
+		84D063522967EA64001FE469 /* ServicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListViewController.swift; sourceTree = "<group>"; };
+		84D063542967EA70001FE469 /* ServicesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListViewController.storyboard; sourceTree = "<group>"; };
+		84D063562967EA81001FE469 /* TasksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewController.swift; sourceTree = "<group>"; };
+		84D063582967EA8C001FE469 /* TasksListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TasksListViewController.storyboard; sourceTree = "<group>"; };
+		84D0635E2967EEFD001FE469 /* LeadTriggersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTriggersListViewController.swift; sourceTree = "<group>"; };
+		84D063602967EF15001FE469 /* AppointmentTriggersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTriggersListViewController.swift; sourceTree = "<group>"; };
+		84D063622967EF20001FE469 /* AppointmentTriggersListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppointmentTriggersListViewController.storyboard; sourceTree = "<group>"; };
+		84D063642967EF32001FE469 /* LeadTriggersListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadTriggersListViewController.storyboard; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
 		84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsDetailListModel.swift; sourceTree = "<group>"; };
 		84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaseTabbar.storyboard; sourceTree = "<group>"; };
@@ -1047,6 +1071,8 @@
 		84D0615129670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D0634A2967EA2C001FE469 /* ClinicsListViewController.swift */,
+				84D0634C2967EA35001FE469 /* ClinicsListViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1086,6 +1112,8 @@
 		84D0615D29670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D0634E2967EA43001FE469 /* CategoriesListViewController.swift */,
+				84D063502967EA54001FE469 /* CategoriesListViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1125,6 +1153,8 @@
 		84D0616229670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D063522967EA64001FE469 /* ServicesListViewController.swift */,
+				84D063542967EA70001FE469 /* ServicesListViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1226,8 +1256,8 @@
 		84D0617E29670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D0617F29670676001FE469 /* WorkingScheduleViewController+Extension.swift */,
 				84D0618029670676001FE469 /* WorkingScheduleViewController.swift */,
+				84D0617F29670676001FE469 /* WorkingScheduleViewController+Extension.swift */,
 				84D0618129670676001FE469 /* WorkingScheduleViewController.storyboard */,
 			);
 			path = View;
@@ -1282,9 +1312,9 @@
 		84D0618E29670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D0619129670676001FE469 /* VacationScheduleViewController.swift */,
 				84D0618F29670676001FE469 /* VacationScheduleViewController+Extension.swift */,
 				84D0619029670676001FE469 /* VacationScheduleViewController.storyboard */,
-				84D0619129670676001FE469 /* VacationScheduleViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1499,6 +1529,8 @@
 		84D062A9296707A5001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D063562967EA81001FE469 /* TasksListViewController.swift */,
+				84D063582967EA8C001FE469 /* TasksListViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1538,6 +1570,10 @@
 		84D062AE2967080E001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D0635E2967EEFD001FE469 /* LeadTriggersListViewController.swift */,
+				84D063642967EF32001FE469 /* LeadTriggersListViewController.storyboard */,
+				84D063602967EF15001FE469 /* AppointmentTriggersListViewController.swift */,
+				84D063622967EF20001FE469 /* AppointmentTriggersListViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2174,12 +2210,16 @@
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84D0623429670677001FE469 /* DropDownCustomTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
+				84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */,
+				84D063652967EF32001FE469 /* LeadTriggersListViewController.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				84D062A12967070D001FE469 /* UserListViewContoller.storyboard in Resources */,
+				84D063512967EA54001FE469 /* CategoriesListViewController.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
+				84D063632967EF20001FE469 /* AppointmentTriggersListViewController.storyboard in Resources */,
 				84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */,
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
@@ -2193,6 +2233,7 @@
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
 				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
+				84D0634D2967EA35001FE469 /* ClinicsListViewController.storyboard in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
@@ -2215,6 +2256,7 @@
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
 				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
+				84D063552967EA70001FE469 /* ServicesListViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
@@ -2355,6 +2397,7 @@
 				84F610F3292A71AB00B1FB69 /* Invalidation.swift in Sources */,
 				84D0624329670677001FE469 /* HomeViewModel.swift in Sources */,
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
+				84D0635F2967EEFD001FE469 /* LeadTriggersListViewController.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				84D0621829670676001FE469 /* AddEventViewController.swift in Sources */,
@@ -2492,10 +2535,12 @@
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
+				84D063532967EA64001FE469 /* ServicesListViewController.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
+				84D0634F2967EA43001FE469 /* CategoriesListViewController.swift in Sources */,
 				84D062F02967080E001FE469 /* leadModel.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
@@ -2503,6 +2548,7 @@
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
+				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
 				84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */,
 				84D062F42967080E001FE469 /* leadDetailViewController.swift in Sources */,
@@ -2532,6 +2578,7 @@
 				84D0631C2967080E001FE469 /* TextTypeTableViewCell.swift in Sources */,
 				848C92AA291F6AA000502956 /* RSSelectionMenuDataSource.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
+				84D063612967EF15001FE469 /* AppointmentTriggersListViewController.swift in Sources */,
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
@@ -2599,6 +2646,7 @@
 				84D0630B2967080E001FE469 /* leadDetailViewController+TableView.swift in Sources */,
 				84F610FC292A71AB00B1FB69 /* TLSCertificate.swift in Sources */,
 				84D063142967080E001FE469 /* InputTypeTableViewCell.swift in Sources */,
+				84D0634B2967EA2C001FE469 /* ClinicsListViewController.swift in Sources */,
 				84D0622C29670677001FE469 /* VacationScheduleViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

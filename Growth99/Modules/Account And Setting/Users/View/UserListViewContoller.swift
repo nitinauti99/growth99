@@ -34,6 +34,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         super.viewWillAppear(animated)
         addSerchBar()
         self.registerTableView()
+        self.title = Constant.Profile.users
     }
     
     func setBarButton(){

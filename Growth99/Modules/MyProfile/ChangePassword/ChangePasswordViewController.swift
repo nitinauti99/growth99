@@ -17,12 +17,9 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     @IBOutlet weak var newPasswordTextField: CustomTextField!
     @IBOutlet weak var verifyPasswordTextField: CustomTextField!
     
-    private var menuVC = DrawerViewContoller()
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = VerifyForgotPasswordViewModel(delegate: self)
-        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
         setUpNavigationBar()
     }
     
@@ -30,15 +27,8 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
         saveButton.layer.cornerRadius = 12
         cancelButton.layer.cornerRadius = 12
         self.navigationItem.title = Constant.Profile.changePasswordTitle
-        navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
     }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
-    }
-    
 
-    
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage)

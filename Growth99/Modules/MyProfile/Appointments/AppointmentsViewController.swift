@@ -9,20 +9,13 @@ import UIKit
 
 class AppointmentsViewController: UIViewController {
 
-    private var menuVC = DrawerViewContoller()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
         setUpNavigationBar()
     }
     
     func setUpNavigationBar() {
-        self.navigationItem.titleView = UIImageView.navigationBarLogo()
-        navigationItem.leftBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
+        self.title = Constant.Profile.appointment
     }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
-    }
+
 }
