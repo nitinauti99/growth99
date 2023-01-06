@@ -11,36 +11,17 @@ import UIKit
 extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSource {
    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return patientQuestionList.count
-        }else  {
             return 1
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        if indexPath.section == 0 {
-            let item = patientQuestionList[indexPath.row]
-            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "questionAnswersTableViewCell") as? questionAnswersTableViewCell else { return UITableViewCell() }
-            
-            cell.qutionNameLbi.text = item.questionName
-            cell.ansLbi.text = item.answerText
-            cell.editButton.isHidden = true
-            if item.questionName == "First Name" || item.questionName == "Last Name" || item.questionName == "Email" || item.questionName == "Phone Number" {
-                cell.editButton.isHidden = false
-                let image = UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate)
-                cell.editButton.setImage(image, for: .normal)
-                cell.editButton.tintColor = UIColor.init(hexString: "009EDE")
-            }
-            return cell
-       
-        } else if indexPath.section == 1 {
+    if indexPath.section == 0 {
             guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "SMSTemplateTableViewCell") as? SMSTemplateTableViewCell else { return UITableViewCell() }
             cell.smsSendButton.layer.cornerRadius = 5
             cell.smsSendButton.layer.borderWidth = 1
@@ -52,7 +33,7 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
             return cell
       
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 1 {
             
            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "EmailTemplateTableViewCell") as? EmailTemplateTableViewCell else { return UITableViewCell() }
            cell.emailSendButton.layer.cornerRadius = 5
@@ -65,7 +46,7 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
            return cell
     
-       } else if indexPath.section == 3 {
+       } else if indexPath.section == 2 {
           guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "CustomEmailTemplateTableViewCell") as? CustomEmailTemplateTableViewCell else { return UITableViewCell() }
           cell.emailSendButton.layer.cornerRadius = 5
           cell.emailSendButton.layer.borderWidth = 1
@@ -78,7 +59,7 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
         return cell
     
-       } else if indexPath.section == 4 {
+       } else if indexPath.section == 3 {
          guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "CustomSMSTemplateTableViewCell") as? CustomSMSTemplateTableViewCell else { return UITableViewCell() }
          cell.smsSendButton.layer.cornerRadius = 5
          cell.smsSendButton.layer.borderWidth = 1
@@ -94,13 +75,13 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            return 220
+        }else if indexPath.section == 1 {
             return 220
         }else if indexPath.section == 2 {
-            return 220
-        }else if indexPath.section == 3 {
             return 320
-        }else if indexPath.section == 4 {
+        }else if indexPath.section == 3 {
             return 240
         } else {
             return 80

@@ -89,7 +89,7 @@
                                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Existing"/>
-                                                                <state key="selected" title=" Cold" image="checkIcon"/>
+                                                                <state key="selected" title=" Existing" image="checkIcon"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="10"/>
@@ -244,6 +244,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editFirstNameWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IbU-qX-4ra"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-Md-bAX">
                                                         <rect key="frame" x="349" y="380" width="35" height="35"/>
@@ -253,6 +257,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editLastNameWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UEv-Ui-JPJ"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-7N-O4G">
                                                         <rect key="frame" x="349" y="560" width="35" height="35"/>
@@ -262,6 +270,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editPhoneNumberWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SwI-jz-Dci"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCt-ph-3Tj">
                                                         <rect key="frame" x="349" y="650" width="35" height="35"/>
@@ -271,6 +283,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editGenderWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1aA-UN-9vR"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJG-zb-JHD">
                                                         <rect key="frame" x="349" y="740" width="35" height="35"/>
@@ -280,6 +296,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editDateOfBirthWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zwl-lU-YEY"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -377,10 +397,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="FirstNameButton" destination="sDh-Ro-flm" id="btA-lO-v94"/>
+                        <outlet property="dateOfBirth" destination="6xs-kk-JWt" id="f3W-oC-F3r"/>
+                        <outlet property="email" destination="SzM-Nf-7ST" id="leu-ZL-gcb"/>
                         <outlet property="existingButton" destination="nad-rI-wTR" id="rrR-Rs-YjI"/>
-                        <outlet property="firstName" destination="YLq-qa-Zf9" id="OoJ-Lq-8TN"/>
+                        <outlet property="firstName" destination="dwF-BZ-1SP" id="iHT-02-jEe"/>
+                        <outlet property="fullName" destination="YLq-qa-Zf9" id="oQ6-0o-9q5"/>
+                        <outlet property="gender" destination="jCX-91-6Cc" id="ple-gt-hDa"/>
+                        <outlet property="lastName" destination="buE-c6-iZF" id="nub-zK-5Ej"/>
                         <outlet property="newButton" destination="r8S-4M-LgI" id="BDN-ff-JOr"/>
                         <outlet property="pateintDetailTableView" destination="fwm-mR-mHA" id="GiT-i1-IR9"/>
+                        <outlet property="phoneNumber" destination="htF-pe-wsg" id="8OI-7R-iMM"/>
                         <outlet property="scrollViewHight" destination="UZ7-O1-JcF" id="4pO-Sh-j80"/>
                     </connections>
                 </viewController>
@@ -391,27 +418,28 @@
     </scenes>
     <designables>
         <designable name="6xs-kk-JWt">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
         <designable name="SzM-Nf-7ST">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
         <designable name="buE-c6-iZF">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
         <designable name="dwF-BZ-1SP">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
         <designable name="htF-pe-wsg">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
         <designable name="jCX-91-6Cc">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
     </designables>
     <resources>
         <image name="checkIcon" width="20" height="20"/>
         <image name="edit" width="25" height="25"/>
+        <image name="saveIcon" width="22" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

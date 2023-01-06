@@ -9,35 +9,38 @@ import UIKit
 
 protocol PateintDetailViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
-    func recivedQuestionnaireList()
+    func recivedPateintDetail()
     func recivedSmsTemplateList()
     func recivedEmailTemplateList()
     func smsSend(responseMessage: String)
     func updatedLeadStatusRecived(responseMessage: String)
     func smsSendSuccessfully(responseMessage: String)
     func emailSendSuccessfully(responseMessage: String)
+    func updatedPateintsInfo(responseMessage: String)
 }
  
 class PateintDetailViewController: UIViewController, PateintDetailViewControllerProtocol {
 
     @IBOutlet private weak var fullName: UILabel!
-    @IBOutlet private weak var firstName: UILabel!
-    @IBOutlet private weak var lastName: UILabel!
-    @IBOutlet private weak var email: UILabel!
-    @IBOutlet private weak var phoneNumber: UILabel!
-    @IBOutlet private weak var gender: UILabel!
-    @IBOutlet private weak var dateOfBirth: UILabel!
+    @IBOutlet private weak var firstName: CustomTextField!
+    @IBOutlet private weak var lastName: CustomTextField!
+    @IBOutlet private weak var email: CustomTextField!
+    @IBOutlet private weak var phoneNumber: CustomTextField!
+    @IBOutlet private weak var gender: CustomTextField!
+    @IBOutlet private weak var dateOfBirth: CustomTextField!
     @IBOutlet weak var pateintDetailTableView: UITableView!
 
     @IBOutlet private weak var newButton: UIButton!
     @IBOutlet private weak var existingButton: UIButton!
     @IBOutlet private weak var scrollViewHight: NSLayoutConstraint!
+    @IBOutlet private weak var FirstNameButton: UIButton!
+
 
     var buttons: [UIButton] = []
-    var patientQuestionList = [QuestionAnswers]()
     private var viewModel: PateintDetailViewModelProtocol?
-    var pateintData: PateintListModel?
+    var pateintData: PateintsDetailListModel?
     var selctedSmsTemplateId = Int()
+    var pateintId = Int()
     var selctedTemplate = String()
     var smsBody: String = ""
     var emailBody: String = ""
@@ -52,10 +55,20 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewDidLoad()
         self.view.ShowSpinner()
         self.viewModel = PateintDetailViewModel(delegate: self)
-      //  viewModel?.getQuestionnaireList(questionnaireId: LeadData?.id ?? 0)
+        viewModel?.getpateintsList(pateintId: self.pateintId)
         self.registerCell()
         self.fullName.text = (pateintData?.firstName ?? "") + (pateintData?.lastName ?? "")
         buttons = [newButton, existingButton]
+        setUpClearColor()
+    }
+    
+    func setUpClearColor() {
+        firstName.borderColor = .clear
+        lastName.borderColor = .clear
+        email.borderColor = .clear
+        phoneNumber.borderColor = .clear
+        gender.borderColor = .clear
+        dateOfBirth.borderColor = .clear
     }
    
     func registerCell() {
@@ -69,13 +82,13 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        newButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)
-        existingButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)
+        newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
+        existingButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         scrollViewHight.constant = tableViewHeight + 800
        
     }
     
-    @objc func leadStatusTemplate(_ sender: UIButton) {
+    @objc func pateintStatusTemplate(_ sender: UIButton) {
         for button in buttons {
             button.isSelected = false
         }
@@ -83,18 +96,18 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         print(sender.titleLabel?.text ?? "")
         let str = sender.titleLabel?.text ?? ""
         self.view.ShowSpinner()
-        viewModel?.updateLeadStatus(template: "\(pateintData?.id ?? 0)/status/\(str.uppercased())")
+        viewModel?.updatePateintStatus(template: "\(pateintData?.id ?? 0)/status/\(str.uppercased())")
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
         self.view.showToast(message: responseMessage)
-        viewModel?.getQuestionnaireList(questionnaireId: pateintData?.id ?? 0)
+        viewModel?.getpateintsList(pateintId: pateintData?.id ?? 0)
     }
     
     func setLeadStatus(status: String) {
         if status == "NEW" {
             newButton.isSelected = true
-        }else if (status == "WARM" ) {
+        }else if (status == "EXISTING" ) {
             existingButton.isSelected = true
         }
     }
@@ -104,13 +117,57 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.view.showToast(message: error)
     }
     
-    func recivedQuestionnaireList() {
-        patientQuestionList = viewModel?.questionnaireDetailListData ?? []
+    func recivedPateintDetail() {
+        self.setUpUI()
         pateintDetailTableView.reloadData()
-        scrollViewHight.constant = tableViewHeight + 500
+        scrollViewHight.constant = tableViewHeight
         view.setNeedsLayout()
-        self.setLeadStatus(status: viewModel?.leadStatus ?? "")
+        self.setLeadStatus(status: viewModel?.pateintsDetailListData?.patientStatus ?? "")
         viewModel?.getSMSDefaultList()
+    }
+    
+    func setUpUI() {
+        pateintData = viewModel?.pateintsDetailListData
+        firstName.text = pateintData?.firstName
+        lastName.text = pateintData?.lastName
+        email.text = pateintData?.email
+        phoneNumber.text = pateintData?.phone
+        gender.text = pateintData?.gender
+        dateOfBirth.text = pateintData?.dateOfBirth
+    }
+    
+    @IBAction func editFirstName(sender: UIButton) {
+        firstName.borderColor = .gray
+        firstName.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "firstName", ansString: firstName.text ?? "")
+        }
+        sender.isSelected = true
+    }
+    
+    @IBAction func editLastName(sender: UIButton) {
+        sender.isSelected = true
+        lastName.borderColor = .gray
+        lastName.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func editPhoneNumber(sender: UIButton) {
+        sender.isSelected = true
+        phoneNumber.borderColor = .gray
+        phoneNumber.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func editGender(sender: UIButton) {
+        sender.isSelected = true
+        gender.borderColor = .gray
+        gender.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func editDateOfBirth(sender: UIButton) {
+        sender.isSelected = true
+        dateOfBirth.borderColor = .gray
+        dateOfBirth.isUserInteractionEnabled = true
     }
     
     func recivedSmsTemplateList(){
@@ -126,6 +183,14 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.view.showToast(message: responseMessage)
         pateintDetailTableView.reloadData()
     }
+    
+    func updatedPateintsInfo(responseMessage: String) {
+        self.view.HideSpinner()
+        firstName.isUserInteractionEnabled = true
+        self.view.showToast(message: responseMessage)
+        setUpClearColor()
+    }
+
     
     ///  multiple selection with selction false
     @objc func smsTemplateList(_ textField: UITextField){
@@ -214,10 +279,10 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
 extension PateintDetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewHight.constant = tableViewHeight + 800
+        scrollViewHight.constant = tableViewHeight
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        scrollViewHight.constant = tableViewHeight + 800
+        scrollViewHight.constant = tableViewHeight
     }
 }

@@ -204,6 +204,7 @@
 		84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */; };
 		84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062EF2967080E001FE469 /* QuestionnaireId.swift */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
+		84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */; };
 		84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */; };
 		84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */; };
 		84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28029255487003B3C06 /* UIViewController+Extension.swift */; };
@@ -552,6 +553,7 @@
 		84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateLeadViewController.storyboard; sourceTree = "<group>"; };
 		84D062EF2967080E001FE469 /* QuestionnaireId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireId.swift; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
+		84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsDetailListModel.swift; sourceTree = "<group>"; };
 		84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaseTabbar.storyboard; sourceTree = "<group>"; };
 		84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabbarViewController.swift; sourceTree = "<group>"; };
 		84EFC28029255487003B3C06 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -1317,6 +1319,7 @@
 				84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */,
 				84D0619D29670676001FE469 /* PateintDetailViewController.swift */,
 				84D0619E29670676001FE469 /* PateintDetailViewController+Tableview.swift */,
+				84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -2501,6 +2504,7 @@
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
+				84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */,
 				84D062F42967080E001FE469 /* leadDetailViewController.swift in Sources */,
 				84D0624229670677001FE469 /* UpdateUserProfile.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */,

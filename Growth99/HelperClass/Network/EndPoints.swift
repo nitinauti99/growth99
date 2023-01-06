@@ -35,7 +35,13 @@ struct EndPoints {
     static let auditleadCreation = "/api/v1/audit/lead?"
     static let patientsList = "/api/v1/patients/all?tag=&status="
     static let crearePatients = "/api/patients"
-
+    static let patientsStatus = "/api/patient/"
+    static let patientsDetaiilList = "/api/v1/patients/"
+    static let smstemplates = "/api/smstemplates/templateFor/Appointment"
+    static let emailTemplates = "/api/emailTemplates/templateFor/Appointment"
+    static let updatePatientsInfo = "/api/patient/"
+    
+    
 
 }
 
@@ -66,5 +72,9 @@ struct ApiUrl {
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
     static let patientsList = EndPoints.baseURL.appending(EndPoints.patientsList)
     static let crearePatients = EndPoints.baseURL.appending(EndPoints.crearePatients)
-
+    static let patientsStatus = EndPoints.baseURL.appending(EndPoints.patientsStatus)
+    static let patientsDetaiilList = EndPoints.baseURL.appending(EndPoints.patientsDetaiilList)
+    static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)
+    static let emailTemplates = EndPoints.baseURL.appending(EndPoints.emailTemplates)
+    static let updatePatientsInfo = EndPoints.baseURL.appending(EndPoints.updatePatientsInfo)
 }
