@@ -23,12 +23,12 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     @IBOutlet private var roles: UILabel!
     @IBOutlet private var bussinessTitile: UILabel!
     @IBOutlet private var profileImage: UIImageView!
-
-
+    
+    
     // MARK: - DECLARATIONS
     var section: Int = 0
     let appDel = UIApplication.shared.delegate as! AppDelegate
-
+    
     var tableViewHeight: CGFloat {
         tableView.layoutIfNeeded()
         return tableView.contentSize.height
@@ -44,15 +44,15 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.hiddenSections = Set(0...mainMenuList.count)
         self.roles.text = UserRepository.shared.roles
         self.bussinessTitile.text = "Medical"
-
+        
         scrollview.delegate = self
-
+        
         self.tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "MenuTableViewCell")
         
         ///used for showing subMenuTitle
         self.tableView.register(UINib(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuTableViewCell")
     }
-
+    
     // MARK: - FUNCTIONS
     func hideSideMenu() {
         self.view.backgroundColor = .clear
@@ -60,13 +60,13 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             self.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         }, completion: nil)
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first!.view == self.view {
             hideSideMenu()
         }
     }
-
+    
     func revealSideMenu() {
         UIApplication.shared.keyWindow?.addSubview(self.view)
         self.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
@@ -79,16 +79,16 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         })
         self.view.layoutIfNeeded()
     }
-
+    
     // MARK: - BUTTON_ACTIONS
-
+    
     @IBAction func signInTapped(_ sender: UIButton) {
     }
-
+    
     @IBAction func logoutMenuTapped(_ sender: UIBarButtonItem) {
         self.hideSideMenu()
     }
-
+    
     private func hideSection(section: Int) {
         func indexPathsForSection() -> [IndexPath] {
             var indexPaths = [IndexPath]()
@@ -135,11 +135,11 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHight.constant = tableViewHeight + 300
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollViewHight.constant = tableViewHeight + 300
     }
-
+    
     public func numberOfSections(in tableView: UITableView) -> Int {
         return mainMenuList.count
     }
@@ -224,13 +224,16 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 3 {
             pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
         } else if indexPath.section == 4 {
-            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
+            default:
+                break
+            }
         } else if indexPath.section == 5 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "LeadTriggersListViewController", pusedViewController: "LeadTriggersListViewController")
-            case 1:
-                pushViewControllerFromDrawerMenu(identifier: "AppointmentTriggersListViewController", pusedViewController: "AppointmentTriggersListViewController")
+                pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
             default:
                 break
             }

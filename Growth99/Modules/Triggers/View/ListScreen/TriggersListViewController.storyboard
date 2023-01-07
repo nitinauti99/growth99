@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lead Triggers List View Controller-->
+        <!--Triggers List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="LeadTriggersListViewController" id="Y6W-OH-hqX" customClass="LeadTriggersListViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TriggersListViewController" id="Y6W-OH-hqX" customClass="TriggersListViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-YF-kEM">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="90" width="393" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xCZ-lr-Bsq"/>
                                 </constraints>
@@ -31,8 +31,18 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="GK0-B9-via"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-59-Ib8">
+                                <rect key="frame" x="0.0" y="59" width="393" height="32"/>
+                                <segments>
+                                    <segment title="Lead Triggers"/>
+                                    <segment title="Appointment Triggers"/>
+                                </segments>
+                                <connections>
+                                    <action selector="triggerSegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="krk-kR-svX"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-ph-TaA">
-                                <rect key="frame" x="0.0" y="124" width="393" height="728"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="697"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="DvZ-93-1Lj"/>
@@ -48,14 +58,22 @@
                             <constraint firstAttribute="bottom" secondItem="FDa-ph-TaA" secondAttribute="bottom" id="4yt-Vg-hmZ"/>
                             <constraint firstItem="xrH-YF-kEM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIx-Lu-oTq"/>
                             <constraint firstAttribute="trailing" secondItem="xrH-YF-kEM" secondAttribute="trailing" id="QRd-Ma-r8J"/>
-                            <constraint firstItem="xrH-YF-kEM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ZED-q5-r3o"/>
+                            <constraint firstItem="Ng1-59-Ib8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WHY-Zi-6Gd"/>
+                            <constraint firstItem="Ng1-59-Ib8" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oi2-UY-AtE"/>
+                            <constraint firstItem="xrH-YF-kEM" firstAttribute="top" secondItem="Ng1-59-Ib8" secondAttribute="bottom" id="uLZ-Dp-Krl"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ng1-59-Ib8" secondAttribute="trailing" id="x0A-uG-GVz"/>
                             <constraint firstItem="FDa-ph-TaA" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="xBm-Ld-u1I"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="xrH-YF-kEM" id="oGo-Et-RFf"/>
+                        <outlet property="triggerSegmentControl" destination="Ng1-59-Ib8" id="8L2-Eu-G2I"/>
+                        <outlet property="triggersListTableView" destination="FDa-ph-TaA" id="EQs-K3-hcY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11" y="4"/>
+            <point key="canvasLocation" x="9.9236641221374047" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

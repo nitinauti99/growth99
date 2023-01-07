@@ -89,18 +89,12 @@
 		84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B75ECB2969035D00962F3E /* ServicesListTableViewCell.xib */; };
 		84B75ECF296903B000962F3E /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75ECE296903AF00962F3E /* ServicesViewModel.swift */; };
 		84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75ED0296904DA00962F3E /* ServicesListModel.swift */; };
-		84B75ED929692AD800962F3E /* LeadTriggersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75ED529692AD800962F3E /* LeadTriggersListViewController.swift */; };
-		84B75EDA29692AD800962F3E /* LeadTriggersListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B75ED629692AD800962F3E /* LeadTriggersListViewController.storyboard */; };
-		84B75EDB29692AD800962F3E /* AppointmentTriggersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75ED729692AD800962F3E /* AppointmentTriggersListViewController.swift */; };
-		84B75EDC29692AD800962F3E /* AppointmentTriggersListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B75ED829692AD800962F3E /* AppointmentTriggersListViewController.storyboard */; };
-		84B75EDE29692B3200962F3E /* LeadTriggersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EDD29692B3200962F3E /* LeadTriggersModel.swift */; };
-		84B75EE029692B4300962F3E /* AppointmentTriggersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EDF29692B4300962F3E /* AppointmentTriggersModel.swift */; };
-		84B75EE229692B9700962F3E /* LeadTriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EE129692B9700962F3E /* LeadTriggersViewModel.swift */; };
-		84B75EE429692BA500962F3E /* AppointmentTriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EE329692BA500962F3E /* AppointmentTriggersViewModel.swift */; };
-		84B75EE729692BC400962F3E /* AppointmentTriggersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EE529692BC400962F3E /* AppointmentTriggersTableViewCell.swift */; };
-		84B75EE829692BC400962F3E /* AppointmentTriggersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EE629692BC400962F3E /* AppointmentTriggersTableViewCell.xib */; };
 		84B75EEB29692BD400962F3E /* LeadTriggersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EE929692BD400962F3E /* LeadTriggersTableViewCell.swift */; };
 		84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EEA29692BD400962F3E /* LeadTriggersTableViewCell.xib */; };
+		84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EED2969408200962F3E /* TriggersListViewController.swift */; };
+		84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */; };
+		84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EF12969461600962F3E /* TriggersListModel.swift */; };
+		84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EF32969463B00962F3E /* TriggersViewModel.swift */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
 		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
 		84D0621329670676001FE469 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616929670676001FE469 /* EventsTableViewCell.swift */; };
@@ -472,18 +466,12 @@
 		84B75ECB2969035D00962F3E /* ServicesListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesListTableViewCell.xib; sourceTree = "<group>"; };
 		84B75ECE296903AF00962F3E /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
 		84B75ED0296904DA00962F3E /* ServicesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListModel.swift; sourceTree = "<group>"; };
-		84B75ED529692AD800962F3E /* LeadTriggersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadTriggersListViewController.swift; sourceTree = "<group>"; };
-		84B75ED629692AD800962F3E /* LeadTriggersListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeadTriggersListViewController.storyboard; sourceTree = "<group>"; };
-		84B75ED729692AD800962F3E /* AppointmentTriggersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentTriggersListViewController.swift; sourceTree = "<group>"; };
-		84B75ED829692AD800962F3E /* AppointmentTriggersListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentTriggersListViewController.storyboard; sourceTree = "<group>"; };
-		84B75EDD29692B3200962F3E /* LeadTriggersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTriggersModel.swift; sourceTree = "<group>"; };
-		84B75EDF29692B4300962F3E /* AppointmentTriggersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTriggersModel.swift; sourceTree = "<group>"; };
-		84B75EE129692B9700962F3E /* LeadTriggersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTriggersViewModel.swift; sourceTree = "<group>"; };
-		84B75EE329692BA500962F3E /* AppointmentTriggersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTriggersViewModel.swift; sourceTree = "<group>"; };
-		84B75EE529692BC400962F3E /* AppointmentTriggersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTriggersTableViewCell.swift; sourceTree = "<group>"; };
-		84B75EE629692BC400962F3E /* AppointmentTriggersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentTriggersTableViewCell.xib; sourceTree = "<group>"; };
 		84B75EE929692BD400962F3E /* LeadTriggersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTriggersTableViewCell.swift; sourceTree = "<group>"; };
 		84B75EEA29692BD400962F3E /* LeadTriggersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadTriggersTableViewCell.xib; sourceTree = "<group>"; };
+		84B75EED2969408200962F3E /* TriggersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggersListViewController.swift; sourceTree = "<group>"; };
+		84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TriggersListViewController.storyboard; sourceTree = "<group>"; };
+		84B75EF12969461600962F3E /* TriggersListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggersListModel.swift; sourceTree = "<group>"; };
+		84B75EF32969463B00962F3E /* TriggersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggersViewModel.swift; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
 		84D0616929670676001FE469 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
@@ -1132,10 +1120,8 @@
 		84B75ED429692AD800962F3E /* ListScreen */ = {
 			isa = PBXGroup;
 			children = (
-				84B75ED529692AD800962F3E /* LeadTriggersListViewController.swift */,
-				84B75ED629692AD800962F3E /* LeadTriggersListViewController.storyboard */,
-				84B75ED729692AD800962F3E /* AppointmentTriggersListViewController.swift */,
-				84B75ED829692AD800962F3E /* AppointmentTriggersListViewController.storyboard */,
+				84B75EED2969408200962F3E /* TriggersListViewController.swift */,
+				84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */,
 			);
 			path = ListScreen;
 			sourceTree = "<group>";
@@ -1714,8 +1700,7 @@
 		84D062AC2967080E001FE469 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				84B75EE129692B9700962F3E /* LeadTriggersViewModel.swift */,
-				84B75EE329692BA500962F3E /* AppointmentTriggersViewModel.swift */,
+				84B75EF32969463B00962F3E /* TriggersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1723,8 +1708,7 @@
 		84D062AD2967080E001FE469 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84B75EDD29692B3200962F3E /* LeadTriggersModel.swift */,
-				84B75EDF29692B4300962F3E /* AppointmentTriggersModel.swift */,
+				84B75EF12969461600962F3E /* TriggersListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1744,8 +1728,6 @@
 			children = (
 				84B75EE929692BD400962F3E /* LeadTriggersTableViewCell.swift */,
 				84B75EEA29692BD400962F3E /* LeadTriggersTableViewCell.xib */,
-				84B75EE529692BC400962F3E /* AppointmentTriggersTableViewCell.swift */,
-				84B75EE629692BC400962F3E /* AppointmentTriggersTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -2373,7 +2355,6 @@
 				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
-				84B75EDC29692AD800962F3E /* AppointmentTriggersListViewController.storyboard in Resources */,
 				84D0623429670677001FE469 /* DropDownCustomTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
@@ -2408,11 +2389,11 @@
 				84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
-				84B75EE829692BC400962F3E /* AppointmentTriggersTableViewCell.xib in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
 				84D0621B29670676001FE469 /* EventsTableViewCell.xib in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
+				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
@@ -2426,7 +2407,6 @@
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
-				84B75EDA29692AD800962F3E /* LeadTriggersListViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
@@ -2576,7 +2556,6 @@
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
 				84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */,
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
-				84B75EE229692B9700962F3E /* LeadTriggersViewModel.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */,
@@ -2602,6 +2581,7 @@
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
 				84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
+				84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */,
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
 				84F6112F292A71AB00B1FB69 /* Response.swift in Sources */,
 				84F610F8292A71AB00B1FB69 /* ASN1Tag.swift in Sources */,
@@ -2657,7 +2637,6 @@
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
 				84D0631F2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
-				84B75ED929692AD800962F3E /* LeadTriggersListViewController.swift in Sources */,
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,
 				845C39D0292276AF00D934C5 /* KeychainItemAccessibility.swift in Sources */,
 				845C39E6292276B000D934C5 /* HyperLinkLabel.swift in Sources */,
@@ -2708,7 +2687,6 @@
 				84D0623A29670677001FE469 /* PateintListViewModel.swift in Sources */,
 				84F610B6292A71AA00B1FB69 /* HMACCryptoSwift.swift in Sources */,
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
-				84B75EDB29692AD800962F3E /* AppointmentTriggersListViewController.swift in Sources */,
 				84D062A52967070D001FE469 /* UserListTableViewCell.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
@@ -2761,7 +2739,6 @@
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
-				84B75EE029692B4300962F3E /* AppointmentTriggersModel.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
@@ -2785,12 +2762,14 @@
 				84F61135292A71AB00B1FB69 /* HTTPMethod.swift in Sources */,
 				84F610F9292A71AB00B1FB69 /* DERError.swift in Sources */,
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
+				84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */,
 				845C39CC292276AF00D934C5 /* iOSDropDown.swift in Sources */,
 				84F610DD292A71AB00B1FB69 /* FileDescriptor.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
 				84F61127292A71AB00B1FB69 /* SecCertificate+Extension.swift in Sources */,
 				84F610C3292A71AA00B1FB69 /* JWTDecoder.swift in Sources */,
 				84D0628029670677001FE469 /* RegistrationViewModel.swift in Sources */,
+				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
 				845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */,
 				84D063032967080E001FE469 /* SMSTemplateTableViewCell.swift in Sources */,
@@ -2818,18 +2797,15 @@
 				84D0621629670676001FE469 /* CalenderBaseViewController.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
-				84B75EE729692BC400962F3E /* AppointmentTriggersTableViewCell.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
-				84B75EDE29692B3200962F3E /* LeadTriggersModel.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,
 				84D062F52967080E001FE469 /* leadDetailViewModel.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,
 				84D0628D29670677001FE469 /* LoginService.swift in Sources */,
-				84B75EE429692BA500962F3E /* AppointmentTriggersViewModel.swift in Sources */,
 				84D062F72967080E001FE469 /* leadTimeLineViewController.swift in Sources */,
 				84D0630B2967080E001FE469 /* leadDetailViewController+TableView.swift in Sources */,
 				84F610FC292A71AB00B1FB69 /* TLSCertificate.swift in Sources */,

@@ -86,18 +86,20 @@
     },
     {
       "title": "Tasks",
-      "imageName": "fa-tasks"
+      "imageName": "fa-tasks",
+      "subMenuList": [
+        {
+          "title": "Tasks List",
+          "imageName": "fa-tasks"
+        }
+      ]
     },
     {
       "title": "Triggers",
       "imageName": "fa-directions",
       "subMenuList": [
         {
-          "title": "Lead Triggers",
-          "imageName": "fa-directions"
-        },
-        {
-          "title": "Appointment Triggers",
+          "title": "Triggers List",
           "imageName": "fa-directions"
         }
       ]
