@@ -60,6 +60,26 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.fullName.text = (pateintData?.firstName ?? "") + (pateintData?.lastName ?? "")
         buttons = [newButton, existingButton]
         setUpClearColor()
+        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
+        dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+
+    }
+    
+    @objc func dateFromButtonPressed() {
+        dateOfBirth.text = dateFormatterString(textField: dateOfBirth)
+    }
+
+    func dateFormatterString(textField: CustomTextField) -> String {
+        var datePicker = UIDatePicker()
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let todaysDate = Date()
+        datePicker.minimumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        return dateFormatter.string(from: datePicker.date)
     }
     
     func setUpClearColor() {
@@ -133,7 +153,9 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         email.text = pateintData?.email
         phoneNumber.text = pateintData?.phone
         gender.text = pateintData?.gender
-        dateOfBirth.text = pateintData?.dateOfBirth
+        self.dateOfBirth.text = pateintData?.dateOfBirth
+        let dateOfBirth = dateFormatterString(textField: dateOfBirth)
+        self.dateOfBirth.text = dateOfBirth
     }
     
     @IBAction func editFirstName(sender: UIButton) {
@@ -146,28 +168,60 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         sender.isSelected = true
     }
     
+    
     @IBAction func editLastName(sender: UIButton) {
-        sender.isSelected = true
         lastName.borderColor = .gray
         lastName.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "lastName", ansString: lastName.text ?? "")
+        }
+        sender.isSelected = true
     }
     
     @IBAction func editPhoneNumber(sender: UIButton) {
-        sender.isSelected = true
         phoneNumber.borderColor = .gray
         phoneNumber.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "phone", ansString: phoneNumber.text ?? "")
+        }
+        sender.isSelected = true
     }
     
     @IBAction func editGender(sender: UIButton) {
-        sender.isSelected = true
         gender.borderColor = .gray
         gender.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "gender", ansString: (gender.text ?? "").uppercased())
+        }
+        sender.isSelected = true
+    }
+    
+    @objc func openGenderSelction(_ textfield: UITextField) {
+       let list =  ["Male","Female"]
+       
+       let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        
+        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+            self?.gender.text  = text
+            selectionMenu.dismissAutomatically = true
+         }
+
+        selectionMenu.show(style: .popover(sourceView: textfield, size: CGSize(width: textfield.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func editDateOfBirth(sender: UIButton) {
-        sender.isSelected = true
         dateOfBirth.borderColor = .gray
         dateOfBirth.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "dateOfBirth", ansString: dateOfBirth.text ?? "")
+        }
+        sender.isSelected = true
     }
     
     func recivedSmsTemplateList(){
@@ -190,7 +244,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.view.showToast(message: responseMessage)
         setUpClearColor()
     }
-
     
     ///  multiple selection with selction false
     @objc func smsTemplateList(_ textField: UITextField){
