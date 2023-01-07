@@ -27,7 +27,7 @@ class UserCreateViewController: UIViewController {
     @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
     @IBOutlet private weak var rolesTextField: CustomTextField!
     @IBOutlet private weak var degignationTextField: CustomTextField!
-
+    
     @IBOutlet private weak var userProvider: UISwitch!
     @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
     @IBOutlet private weak var userProviderView: UIView!
@@ -48,10 +48,10 @@ class UserCreateViewController: UIViewController {
     var selectedServiceIds = [Int]()
     
     var roleArray: [String]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -61,5 +61,5 @@ class UserCreateViewController: UIViewController {
         self.cancelButton.layer.cornerRadius = 12
         self.cancelButton.clipsToBounds = true
     }
-
+    
 }

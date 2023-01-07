@@ -18,7 +18,7 @@ protocol UserCreateViewModelProtocol {
     
     func getallServiceCategories(SelectedClinics: [Any])
     var getAllServiceCategories: [Clinics] { get }
-   
+    
     func getallService(SelectedCategories: [Any])
     var getAllService: [Clinics] { get }
     func updateProfileInfo(firstName: String, lastName:String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String)
@@ -38,7 +38,7 @@ class UserCreateViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getUserData(userId: Int) {
-
+        
         let url = ApiUrl.userProfile.appending("\(userId)")
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<UserProfile, GrowthNetworkError>) in
             switch result {
@@ -66,29 +66,29 @@ class UserCreateViewModel {
     }
     
     func getallServiceCategories(SelectedClinics: [Any]){
-//        ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
-//            switch result {
-//            case .success(let allserviceCategories):
-//                self.allserviceCategories = allserviceCategories
-//                self.delegate?.serviceCategoriesRecived()
-//            case .failure(let error):
-//                print(error)
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//            }
-//        }
+        //        ServiceManager.request(request: ApiRouter.getRequesServiceCategoriesForSelectedClinics(SelectedClinics).urlRequest, responseType: [Clinics].self) { result in
+        //            switch result {
+        //            case .success(let allserviceCategories):
+        //                self.allserviceCategories = allserviceCategories
+        //                self.delegate?.serviceCategoriesRecived()
+        //            case .failure(let error):
+        //                print(error)
+        //                self.delegate?.errorReceived(error: error.localizedDescription)
+        //            }
+        //        }
     }
     
     func getallService(SelectedCategories: [Any]) {
-//        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
-//            switch result {
-//            case .success(let categories):
-//                self.allServices = categories
-//                self.delegate?.serviceRecived()
-//            case .failure(let error):
-//                print(error)
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//            }
-//        }
+        //        ServiceManager.request(request: ApiRouter.getRequesServiceSelectedCategories(SelectedCategories).urlRequest, responseType: [Clinics].self) { result in
+        //            switch result {
+        //            case .success(let categories):
+        //                self.allServices = categories
+        //                self.delegate?.serviceRecived()
+        //            case .failure(let error):
+        //                print(error)
+        //                self.delegate?.errorReceived(error: error.localizedDescription)
+        //            }
+        //        }
     }
     
     func updateProfileInfo(firstName: String, lastName: String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String) {
@@ -152,11 +152,11 @@ extension UserCreateViewModel : UserCreateViewModelProtocol {
         }
         return true
     }
-
+    
     func isValidPassword(_ password: String) -> Bool {
         let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
         let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-
+        
         if passwordPred.evaluate(with: password) && password.count >= 8 {
             return true
         }

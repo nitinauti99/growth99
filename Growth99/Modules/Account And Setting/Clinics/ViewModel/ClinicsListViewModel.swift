@@ -21,7 +21,7 @@ class ClinicsListViewModel {
     var clinicsListData: [ClinicsListModel] = []
     var clinicsFilterData: [ClinicsListModel] = []
     var allClinics: [Clinics]?
-
+    
     init(delegate: ClinicsListViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -63,7 +63,7 @@ class ClinicsListViewModel {
 }
 
 extension ClinicsListViewModel: ClinicsListViewModelProtocol {
-
+    
     var clinicsFilterDataData: [ClinicsListModel] {
         return self.clinicsFilterData
     }

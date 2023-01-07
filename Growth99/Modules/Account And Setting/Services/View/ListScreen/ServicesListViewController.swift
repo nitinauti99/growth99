@@ -13,14 +13,14 @@ protocol ServicesListViewContollerProtocol: AnyObject {
 }
 
 class ServicesListViewController: UIViewController, ServicesListViewContollerProtocol {
-
+    
     @IBOutlet private weak var servicesListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-
+    
     var viewModel: ServicesListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [ServiceList]()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
@@ -41,13 +41,13 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-//        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
-//        self.navigationController?.pushViewController(createServicesVC, animated: true)
+        //        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
+        //        self.navigationController?.pushViewController(createServicesVC, animated: true)
     }
     
     func addEditServicesView() {
-//        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
-//        self.navigationController?.pushViewController(createServicesVC, animated: true)
+        //        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
+        //        self.navigationController?.pushViewController(createServicesVC, animated: true)
     }
     
     @objc func updateUI(){
@@ -71,21 +71,21 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
         self.view.ShowSpinner()
         viewModel?.getUserList()
     }
-//
-//    func loadMoreItemsForList(){
-//        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
-//            return
-//        }
-//         currentPage += 1
-//         getListFromServer(currentPage)
-//     }
+    //
+    //    func loadMoreItemsForList(){
+    //        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
+    //            return
+    //        }
+    //         currentPage += 1
+    //         getListFromServer(currentPage)
+    //     }
     
     func registerTableView() {
         self.servicesListTableView.delegate = self
         self.servicesListTableView.dataSource = self
         servicesListTableView.register(UINib(nibName: "ServicesListTableViewCell", bundle: nil), forCellReuseIdentifier: "ServicesListTableViewCell")
     }
-
+    
     @objc func getUserList(){
         self.view.ShowSpinner()
         viewModel?.getUserList()
@@ -107,10 +107,10 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-           return filteredTableData.count
+            return filteredTableData.count
         }else{
             return viewModel?.userData.count ?? 0
         }
@@ -123,7 +123,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
             cell.configureCell(userVM: viewModel, index: indexPath)
         } else {
             cell.configureCell(userVM: viewModel, index: indexPath)
-
+            
         }
         return cell
     }
@@ -133,25 +133,25 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
-////        createServicesVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-////        createServicesVC.screenTitle = Constant.Profile.editServices
-//        self.navigationController?.pushViewController(createServicesVC, animated: true)
+        //        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
+        ////        createServicesVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
+        ////        createServicesVC.screenTitle = Constant.Profile.editServices
+        //        self.navigationController?.pushViewController(createServicesVC, animated: true)
     }
 }
 
 extension ServicesListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredTableData = (viewModel?.userData.filter { $0.[0]name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
-//        isSearch = true
-//        servicesListTableView.reloadData()
+        //        filteredTableData = (viewModel?.userData.filter { $0.[0]name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        //        isSearch = true
+        //        servicesListTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        isSearch = false
-//        searchBar.text = ""
-//        servicesListTableView.reloadData()
+        //        isSearch = false
+        //        searchBar.text = ""
+        //        servicesListTableView.reloadData()
     }
 }
 

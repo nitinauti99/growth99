@@ -14,10 +14,10 @@ protocol CategoriesAddViewContollerProtocol {
 }
 
 class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol {
-
+    
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var categoriesNameTextField: CustomTextField!
-
+    
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
@@ -58,17 +58,17 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         if selectedClincs.count == 0 {
             self.clincsTextField.text = String.blank
         }
-     
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-              self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
-              let selectedId = selectedList.map({$0.id ?? 0})
-              self?.selectedClincIds = selectedId
-              self?.selectedClincs  = selectedList
-         }
+            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            let selectedId = selectedList.map({$0.id ?? 0})
+            self?.selectedClincIds = selectedId
+            self?.selectedClincs  = selectedList
+        }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox

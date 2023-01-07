@@ -20,7 +20,7 @@ class ServicesListViewModel {
     var servicesListData: [ServiceList] = []
     var servicesFilterData: [ServiceList] = []
     var allServices: [ServiceList]?
-
+    
     init(delegate: ServicesListViewContollerProtocol? = nil) {
         self.delegate = delegate
     }

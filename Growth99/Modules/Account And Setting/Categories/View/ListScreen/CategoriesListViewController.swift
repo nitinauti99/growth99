@@ -13,14 +13,14 @@ protocol CategoriesListViewContollerProtocol: AnyObject {
 }
 
 class CategoriesListViewController: UIViewController, CategoriesListViewContollerProtocol {
-
+    
     @IBOutlet private weak var categoriesListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-
+    
     var viewModel: CategoriesListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [CategoriesListModel]()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
@@ -58,7 +58,7 @@ class CategoriesListViewController: UIViewController, CategoriesListViewContolle
         self.categoriesListTableView.dataSource = self
         categoriesListTableView.register(UINib(nibName: "CategoriesListTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoriesListTableViewCell")
     }
-
+    
     @objc func getCategoriesList() {
         self.view.ShowSpinner()
         viewModel?.getCategoriesList()
@@ -80,10 +80,10 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-           return filteredTableData.count
+            return filteredTableData.count
         } else {
             return viewModel?.categoriesData.count ?? 0
         }
@@ -96,7 +96,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             cell.configureCell(userVM: viewModel, index: indexPath)
         } else {
             cell.configureCell(userVM: viewModel, index: indexPath)
-
+            
         }
         return cell
     }
@@ -107,8 +107,8 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let createCategoriesVC = UIStoryboard(name: "CategoriesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "CategoriesAddViewController") as! CategoriesAddViewController
-//        createCategoriesVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-//        createCategoriesVC.screenTitle = Constant.Profile.editCategories
+        //        createCategoriesVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
+        //        createCategoriesVC.screenTitle = Constant.Profile.editCategories
         self.navigationController?.pushViewController(createCategoriesVC, animated: true)
     }
 }

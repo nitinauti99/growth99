@@ -17,15 +17,15 @@ class UserListTableViewCell: UITableViewCell {
     @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var subView: UIView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
-
+        
     }
-
+    
     func configureCell(userVM: UserListViewModelProtocol?, index: IndexPath) {
         let userVM = userVM?.userDataAtIndex(index: index.row)
         self.firstName.text = userVM?.firstName
@@ -37,10 +37,10 @@ class UserListTableViewCell: UITableViewCell {
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

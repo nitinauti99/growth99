@@ -14,21 +14,21 @@ protocol UserListViewContollerProtocol: AnyObject {
 }
 
 class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
-   
+    
     @IBOutlet private weak var userListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-
+    
     var viewModel: UserListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [UserListModel]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = UserListViewModel(delegate: self)
         self.getUserList()
-//        self.setBarButton()
+        //        self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
-     }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,21 +67,21 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         self.view.ShowSpinner()
         viewModel?.getUserList()
     }
-//
-//    func loadMoreItemsForList(){
-//        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
-//            return
-//        }
-//         currentPage += 1
-//         getListFromServer(currentPage)
-//     }
+    //
+    //    func loadMoreItemsForList(){
+    //        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
+    //            return
+    //        }
+    //         currentPage += 1
+    //         getListFromServer(currentPage)
+    //     }
     
     func registerTableView() {
         self.userListTableView.delegate = self
         self.userListTableView.dataSource = self
         userListTableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
     }
-
+    
     @objc func creatUser() {
         let createUserVC = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
         self.present(createUserVC, animated: true)
@@ -108,10 +108,10 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-           return filteredTableData.count
+            return filteredTableData.count
         }else{
             return viewModel?.UserData.count ?? 0
         }
@@ -124,7 +124,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(userVM: viewModel, index: indexPath)
         }else{
             cell.configureCell(userVM: viewModel, index: indexPath)
-
+            
         }
         return cell
     }

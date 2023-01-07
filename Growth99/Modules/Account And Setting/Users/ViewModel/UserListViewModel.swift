@@ -19,7 +19,7 @@ class UserListViewModel {
     var delegate: UserListViewContollerProtocol?
     var userData: [UserListModel] = []
     var userFilterData: [UserListModel] = []
-
+    
     init(delegate: UserListViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -38,7 +38,7 @@ class UserListViewModel {
             }
         }
     }
- 
+    
     func userDataAtIndex(index: Int)-> UserListModel? {
         return self.userData[index]
     }
@@ -50,14 +50,11 @@ class UserListViewModel {
 
 extension UserListViewModel: UserListViewModelProtocol {
     
-    
     var UserFilterDataData: [UserListModel] {
         return self.userFilterData
     }
-   
+    
     var UserData: [UserListModel] {
         return self.userData
     }
-
- 
 }

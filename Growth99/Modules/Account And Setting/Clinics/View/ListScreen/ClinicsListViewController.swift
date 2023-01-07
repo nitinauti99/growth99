@@ -13,14 +13,14 @@ protocol ClinicsListViewContollerProtocol: AnyObject {
 }
 
 class ClinicsListViewController: UIViewController, ClinicsListViewContollerProtocol {
-
+    
     @IBOutlet private weak var clinicsListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-
+    
     var viewModel: ClinicsListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [ClinicsListModel]()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
@@ -40,13 +40,13 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-//        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
-//        self.navigationController?.pushViewController(createClinicsVC, animated: true)
+        //        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
+        //        self.navigationController?.pushViewController(createClinicsVC, animated: true)
     }
     
     func addEditClinicsView() {
-//        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
-//        self.navigationController?.pushViewController(createClinicsVC, animated: true)
+        //        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
+        //        self.navigationController?.pushViewController(createClinicsVC, animated: true)
     }
     
     func addSerchBar() {
@@ -57,13 +57,13 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
     }
-
+    
     func registerTableView() {
         self.clinicsListTableView.delegate = self
         self.clinicsListTableView.dataSource = self
         clinicsListTableView.register(UINib(nibName: "ClinicsListTableViewCell", bundle: nil), forCellReuseIdentifier: "ClinicsListTableViewCell")
     }
-
+    
     @objc func getClinicsList() {
         self.view.ShowSpinner()
         viewModel?.getClinicsList()
@@ -85,10 +85,10 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-           return filteredTableData.count
+            return filteredTableData.count
         }else{
             return viewModel?.clinicsData.count ?? 0
         }
@@ -101,7 +101,7 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
             cell.configureCell(userVM: viewModel, index: indexPath)
         } else {
             cell.configureCell(userVM: viewModel, index: indexPath)
-
+            
         }
         return cell
     }
@@ -111,10 +111,10 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
-////        createClinicsVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-////        createClinicsVC.screenTitle = Constant.Profile.editClinics
-//        self.navigationController?.pushViewController(createClinicsVC, animated: true)
+        //        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
+        ////        createClinicsVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
+        ////        createClinicsVC.screenTitle = Constant.Profile.editClinics
+        //        self.navigationController?.pushViewController(createClinicsVC, animated: true)
     }
 }
 

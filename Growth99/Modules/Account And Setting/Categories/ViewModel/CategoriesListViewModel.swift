@@ -20,7 +20,7 @@ class CategoriesListViewModel {
     var categoriesListData: [CategoriesListModel] = []
     var categoriesFilterData: [CategoriesListModel] = []
     var allClinics: [Clinics]?
-
+    
     init(delegate: CategoriesListViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
