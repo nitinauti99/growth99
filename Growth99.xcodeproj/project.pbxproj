@@ -1601,10 +1601,10 @@
 		84D062952967070C001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D062962967070C001FE469 /* UserCreateViewController.storyboard */,
-				84D062972967070C001FE469 /* UserListViewContoller.storyboard */,
 				84D062982967070C001FE469 /* UserListViewContoller.swift */,
+				84D062972967070C001FE469 /* UserListViewContoller.storyboard */,
 				84D062992967070C001FE469 /* UserCreateViewController.swift */,
+				84D062962967070C001FE469 /* UserCreateViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -28,6 +28,12 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         self.getUserList()
         //        self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
+        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
+    }
+    
+    @objc func addUserButtonTapped(_ sender: UIButton) {
+        let createCategoriesVC = UIStoryboard(name: "BaseTabbar", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller") as! HomeViewContoller
+        self.navigationController?.pushViewController(createCategoriesVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,15 +41,6 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         addSerchBar()
         self.registerTableView()
         self.title = Constant.Profile.users
-    }
-    
-    func setBarButton(){
-        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "add"), for: .normal)
-        button.addTarget(self, action:  #selector(creatUser), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
     }
     
     @objc func updateUI(){
@@ -112,7 +109,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             return filteredTableData.count
-        }else{
+        } else {
             return viewModel?.UserData.count ?? 0
         }
     }
@@ -138,7 +135,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension UserListViewContoller:  UISearchBarDelegate {
+extension UserListViewContoller: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTableData = (viewModel?.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
