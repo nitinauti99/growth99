@@ -1,5 +1,5 @@
 //
-//  CategoriesListTableViewCell.swift
+//  ClinicsListTableViewCell.swift
 //  Growth99
 //
 //  Created by admin on 07/01/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesListTableViewCell: UITableViewCell {
+class ClinicsListTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var createdDate: UILabel!
@@ -25,8 +25,8 @@ class CategoriesListTableViewCell: UITableViewCell {
 
     }
 
-    func configureCell(userVM: CategoriesListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.categoriesDataAtIndex(index: index.row)
+    func configureCell(userVM: ClinicsListViewModelProtocol?, index: IndexPath) {
+        let userVM = userVM?.clinicsDataAtIndex(index: index.row)
         self.nameLabel.text = userVM?.name
         self.id.text = String(userVM?.id ?? 0)
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")

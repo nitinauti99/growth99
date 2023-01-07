@@ -27,10 +27,17 @@
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="SR5-LP-HPA"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Kox-4R-Uz0">
                                 <rect key="frame" x="0.0" y="124" width="393" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="bw1-Lc-7HT"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="RkM-F3-x40"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -45,6 +52,10 @@
                             <constraint firstItem="Kox-4R-Uz0" firstAttribute="top" secondItem="NzZ-59-dYZ" secondAttribute="bottom" constant="5" id="xfy-Na-1cb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="NzZ-59-dYZ" id="nA2-g4-MQx"/>
+                        <outlet property="servicesListTableView" destination="Kox-4R-Uz0" id="8iu-Pz-0u0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

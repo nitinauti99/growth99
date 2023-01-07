@@ -100,5 +100,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BD10EB9-9FDB-4A0F-9095-5078F88ED183"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Account And Setting/Services/CustomTableViewCell/ServicesListTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "configureCell(userVM:index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4BD10EB9-9FDB-4A0F-9095-5078F88ED183 - 39b18654750212b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.ServicesListTableViewCell.configureCell(userVM: Swift.Optional&lt;Growth99.ServicesListViewModelProtocol&gt;, index: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/TDL_Sravan/growth99/Growth99/Modules/Account%20And%20Setting/Services/CustomTableViewCell/ServicesListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "254">
+               </Location>
+               <Location
+                  uuid = "4BD10EB9-9FDB-4A0F-9095-5078F88ED183 - 39b18654750212b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.ServicesListTableViewCell.configureCell(userVM: Swift.Optional&lt;Growth99.ServicesListViewModelProtocol&gt;, index: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/TDL_Sravan/growth99/Growth99/Modules/Account%20And%20Setting/Services/CustomTableViewCell/ServicesListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "287">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

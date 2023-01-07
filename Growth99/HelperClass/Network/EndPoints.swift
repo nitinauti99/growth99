@@ -42,6 +42,7 @@ struct EndPoints {
     static let updatePatientsInfo = "/api/patient/"
     static let categoriesList = "/api/v1/serviceCategories/all"
     static let createCategories = "/api/servicecategories"
+    static let getAllServices = "/api/v1/services/all"
 
 }
 
@@ -79,4 +80,5 @@ struct ApiUrl {
     static let updatePatientsInfo = EndPoints.baseURL.appending(EndPoints.updatePatientsInfo)
     static let categoriesList = EndPoints.baseURL.appending(EndPoints.categoriesList)
     static let createCategories = EndPoints.baseURL.appending(EndPoints.createCategories)
+    static let getAllServices = EndPoints.baseURL.appending(EndPoints.getAllServices)
 }

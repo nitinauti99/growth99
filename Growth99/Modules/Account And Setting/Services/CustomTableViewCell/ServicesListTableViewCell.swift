@@ -1,5 +1,5 @@
 //
-//  CategoriesListTableViewCell.swift
+//  ServicesListTableViewCell.swift
 //  Growth99
 //
 //  Created by admin on 07/01/23.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CategoriesListTableViewCell: UITableViewCell {
-
+class ServicesListTableViewCell: UITableViewCell {
+    
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var createdDate: UILabel!
     @IBOutlet private weak var createdBy: UILabel!
@@ -25,8 +25,8 @@ class CategoriesListTableViewCell: UITableViewCell {
 
     }
 
-    func configureCell(userVM: CategoriesListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.categoriesDataAtIndex(index: index.row)
+    func configureCell(userVM: ServicesListViewModelProtocol?, index: IndexPath) {
+        let userVM = userVM?.userDataAtIndex(index: index.row)
         self.nameLabel.text = userVM?.name
         self.id.text = String(userVM?.id ?? 0)
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")

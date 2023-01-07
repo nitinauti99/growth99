@@ -8,11 +8,11 @@
 import Foundation
 
 protocol CategoriesListViewModelProtocol {
-    func getUserList()
-    var  userData: [CategoriesListModel] { get }
-    func userDataAtIndex(index: Int) -> CategoriesListModel?
-    var  userFilterDataData: [CategoriesListModel] { get }
-    func userFilterDataDataAtIndex(index: Int)-> CategoriesListModel?
+    func getCategoriesList()
+    var  categoriesData: [CategoriesListModel] { get }
+    func categoriesDataAtIndex(index: Int) -> CategoriesListModel?
+    var  categoriesFilterDataData: [CategoriesListModel] { get }
+    func categoriesFilterDataAtIndex(index: Int)-> CategoriesListModel?
 }
 
 class CategoriesListViewModel {
@@ -27,12 +27,12 @@ class CategoriesListViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getUserList() {
+    func getCategoriesList() {
         self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
             switch result {
             case .success(let userData):
                 self.categoriesListData = userData
-                self.delegate?.LeadDataRecived()
+                self.delegate?.CategoriesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -52,22 +52,22 @@ class CategoriesListViewModel {
         }
     }
     
-    func userDataAtIndex(index: Int)-> CategoriesListModel? {
+    func categoriesDataAtIndex(index: Int)-> CategoriesListModel? {
         return self.categoriesListData[index]
     }
     
-    func userFilterDataDataAtIndex(index: Int)-> CategoriesListModel? {
+    func categoriesFilterDataAtIndex(index: Int)-> CategoriesListModel? {
         return self.categoriesListData[index]
     }
 }
 
 extension CategoriesListViewModel: CategoriesListViewModelProtocol {
     
-    var userFilterDataData: [CategoriesListModel] {
+    var categoriesFilterDataData: [CategoriesListModel] {
         return self.categoriesFilterData
     }
     
-    var userData: [CategoriesListModel] {
+    var categoriesData: [CategoriesListModel] {
         return self.categoriesListData
     }
 }

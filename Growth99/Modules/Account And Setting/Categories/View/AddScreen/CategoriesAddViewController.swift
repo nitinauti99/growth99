@@ -15,7 +15,6 @@ protocol CategoriesAddViewContollerProtocol {
 
 class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol {
 
-
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var categoriesNameTextField: CustomTextField!
 
@@ -71,7 +70,6 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
               self?.selectedClincs  = selectedList
          }
         selectionMenu.reloadInputViews()
-       
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
