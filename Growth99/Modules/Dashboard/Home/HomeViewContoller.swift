@@ -55,6 +55,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     var viewModel: HomeViewModelProtocol?
     var roleArray: [String]?
     
+    var screenTitle: String = Constant.Profile.homeScreen
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
@@ -65,13 +66,16 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         descriptionTextView.layer.borderWidth = 1.0;
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
-        self.navigationItem.titleView = UIImageView.navigationBarLogo()
-        self.navigationItem.leftBarButtonItem =
-            UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
         self.setupTexFieldValidstion()
-        
         self.view.ShowSpinner()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
+        if screenTitle == Constant.Profile.homeScreen {
+            self.navigationItem.titleView = UIImageView.navigationBarLogo()
+            self.navigationItem.leftBarButtonItem =
+                UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
+        } else {
+            self.title = Constant.Profile.createUser
+        }
     }
     
     @objc func sideMenuTapped(_ sender: UIButton) {
@@ -79,13 +83,21 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     }
 
     fileprivate func setUpUI() {
-        self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
-        self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
-        self.emailTextField.text = viewModel?.getUserProfileData.email
-        self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
-        self.degignationTextField.text = viewModel?.getUserProfileData.designation
-        self.descriptionTextView.text = viewModel?.getUserProfileData.description
-        
+        if screenTitle == Constant.Profile.homeScreen {
+            self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
+            self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
+            self.emailTextField.text = viewModel?.getUserProfileData.email
+            self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
+            self.degignationTextField.text = viewModel?.getUserProfileData.designation
+            self.descriptionTextView.text = viewModel?.getUserProfileData.description
+        } else {
+            self.firsNameTextField.text = String.blank
+            self.lastNameTextField.text = String.blank
+            self.emailTextField.text = String.blank
+            self.phoneNumberTextField.text = String.blank
+            self.degignationTextField.text = String.blank
+            self.descriptionTextView.text = String.blank
+        }
         self.saveButton.layer.cornerRadius = 12
         self.saveButton.clipsToBounds = true
         self.cancelButton.layer.cornerRadius = 12

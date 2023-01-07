@@ -52,6 +52,8 @@ struct Constant {
         static let services = "Services"
         static let users = "Users"
         static let tasks = "Tasksv"
+        static let homeScreen = "Home"
+        static let createUser = "Create User"
         static let leadTriggers = "Lead Triggers"
         static let appointmentTriggers = "Appointment Triggers"
         static let moreEvents = " More Events"

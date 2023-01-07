@@ -33,6 +33,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
         let createCategoriesVC = UIStoryboard(name: "BaseTabbar", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller") as! HomeViewContoller
+        createCategoriesVC.screenTitle = Constant.Profile.createUser
         self.navigationController?.pushViewController(createCategoriesVC, animated: true)
     }
     
