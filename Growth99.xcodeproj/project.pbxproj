@@ -1355,8 +1355,8 @@
 			children = (
 				84D0617629670676001FE469 /* Appointments */,
 				84D0617929670676001FE469 /* Working Schedule */,
-				84D0618529670676001FE469 /* ChangePassword */,
 				84D0618829670676001FE469 /* Vacation Schedule */,
+				84D0618529670676001FE469 /* ChangePassword */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -1373,9 +1373,9 @@
 		84D0617929670676001FE469 /* Working Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				84D0617A29670676001FE469 /* ViewModel */,
 				84D0617C29670676001FE469 /* Model */,
 				84D0617E29670676001FE469 /* View */,
+				84D0617A29670676001FE469 /* ViewModel */,
 				84D0618229670676001FE469 /* CustomTableViewCell */,
 			);
 			path = "Working Schedule";
@@ -1428,9 +1428,9 @@
 		84D0618829670676001FE469 /* Vacation Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				84D0618929670676001FE469 /* ViewModel */,
 				84D0618B29670676001FE469 /* Model */,
 				84D0618E29670676001FE469 /* View */,
+				84D0618929670676001FE469 /* ViewModel */,
 				84D0619229670676001FE469 /* CustomTableViewCell */,
 			);
 			path = "Vacation Schedule";
