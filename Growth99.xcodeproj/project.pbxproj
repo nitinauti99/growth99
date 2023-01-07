@@ -68,6 +68,17 @@
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
 		84AE6D67295D683A002836ED /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6D66295D6839002836ED /* CheckBox.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
+		84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75E9B2968CC7900962F3E /* ClinicsListModel.swift */; };
+		84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75E9D2968CCB700962F3E /* ClinicsListViewModel.swift */; };
+		84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75E9F2968CD8B00962F3E /* CategoriesListModel.swift */; };
+		84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EA12968CDBF00962F3E /* CategoriesListViewModel.swift */; };
+		84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EA32968CEA300962F3E /* CategoriesListTableViewCell.swift */; };
+		84B75EA62968CEA300962F3E /* CategoriesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EA42968CEA300962F3E /* CategoriesListTableViewCell.xib */; };
+		84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EA82968D7F100962F3E /* CategoriesListViewController.storyboard */; };
+		84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EA92968D7F100962F3E /* CategoriesListViewController.swift */; };
+		84B75EAF2968D84500962F3E /* CategoriesAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EAE2968D84500962F3E /* CategoriesAddViewController.swift */; };
+		84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EB02968D85000962F3E /* CategoriesAddViewController.storyboard */; };
+		84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EB22968E70F00962F3E /* CategoriesAddEditViewModel.swift */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
 		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
 		84D0621329670676001FE469 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616929670676001FE469 /* EventsTableViewCell.swift */; };
@@ -205,8 +216,6 @@
 		84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062EF2967080E001FE469 /* QuestionnaireId.swift */; };
 		84D0634B2967EA2C001FE469 /* ClinicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0634A2967EA2C001FE469 /* ClinicsListViewController.swift */; };
 		84D0634D2967EA35001FE469 /* ClinicsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0634C2967EA35001FE469 /* ClinicsListViewController.storyboard */; };
-		84D0634F2967EA43001FE469 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0634E2967EA43001FE469 /* CategoriesListViewController.swift */; };
-		84D063512967EA54001FE469 /* CategoriesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063502967EA54001FE469 /* CategoriesListViewController.storyboard */; };
 		84D063532967EA64001FE469 /* ServicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063522967EA64001FE469 /* ServicesListViewController.swift */; };
 		84D063552967EA70001FE469 /* ServicesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063542967EA70001FE469 /* ServicesListViewController.storyboard */; };
 		84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063562967EA81001FE469 /* TasksListViewController.swift */; };
@@ -428,6 +437,17 @@
 		84AE6D66295D6839002836ED /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
+		84B75E9B2968CC7900962F3E /* ClinicsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListModel.swift; sourceTree = "<group>"; };
+		84B75E9D2968CCB700962F3E /* ClinicsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListViewModel.swift; sourceTree = "<group>"; };
+		84B75E9F2968CD8B00962F3E /* CategoriesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListModel.swift; sourceTree = "<group>"; };
+		84B75EA12968CDBF00962F3E /* CategoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewModel.swift; sourceTree = "<group>"; };
+		84B75EA32968CEA300962F3E /* CategoriesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListTableViewCell.swift; sourceTree = "<group>"; };
+		84B75EA42968CEA300962F3E /* CategoriesListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesListTableViewCell.xib; sourceTree = "<group>"; };
+		84B75EA82968D7F100962F3E /* CategoriesListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesListViewController.storyboard; sourceTree = "<group>"; };
+		84B75EA92968D7F100962F3E /* CategoriesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
+		84B75EAE2968D84500962F3E /* CategoriesAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAddViewController.swift; sourceTree = "<group>"; };
+		84B75EB02968D85000962F3E /* CategoriesAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoriesAddViewController.storyboard; sourceTree = "<group>"; };
+		84B75EB22968E70F00962F3E /* CategoriesAddEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAddEditViewModel.swift; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
 		84D0616929670676001FE469 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
@@ -566,8 +586,6 @@
 		84D062EF2967080E001FE469 /* QuestionnaireId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireId.swift; sourceTree = "<group>"; };
 		84D0634A2967EA2C001FE469 /* ClinicsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListViewController.swift; sourceTree = "<group>"; };
 		84D0634C2967EA35001FE469 /* ClinicsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListViewController.storyboard; sourceTree = "<group>"; };
-		84D0634E2967EA43001FE469 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
-		84D063502967EA54001FE469 /* CategoriesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoriesListViewController.storyboard; sourceTree = "<group>"; };
 		84D063522967EA64001FE469 /* ServicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListViewController.swift; sourceTree = "<group>"; };
 		84D063542967EA70001FE469 /* ServicesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListViewController.storyboard; sourceTree = "<group>"; };
 		84D063562967EA81001FE469 /* TasksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewController.swift; sourceTree = "<group>"; };
@@ -998,6 +1016,31 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		84B75EA72968D7F100962F3E /* ListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84B75EA92968D7F100962F3E /* CategoriesListViewController.swift */,
+				84B75EA82968D7F100962F3E /* CategoriesListViewController.storyboard */,
+			);
+			path = ListScreen;
+			sourceTree = "<group>";
+		};
+		84B75EAA2968D7F100962F3E /* AddScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84B75EAE2968D84500962F3E /* CategoriesAddViewController.swift */,
+				84B75EB02968D85000962F3E /* CategoriesAddViewController.storyboard */,
+			);
+			path = AddScreen;
+			sourceTree = "<group>";
+		};
+		84B75EAB2968D7F100962F3E /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,6 +1100,7 @@
 		84D0614F29670676001FE469 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				84B75E9D2968CCB700962F3E /* ClinicsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1064,6 +1108,7 @@
 		84D0615029670676001FE469 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84B75E9B2968CC7900962F3E /* ClinicsListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1098,6 +1143,8 @@
 		84D0615B29670676001FE469 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				84B75EA12968CDBF00962F3E /* CategoriesListViewModel.swift */,
+				84B75EB22968E70F00962F3E /* CategoriesAddEditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1105,6 +1152,7 @@
 		84D0615C29670676001FE469 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84B75E9F2968CD8B00962F3E /* CategoriesListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1112,8 +1160,9 @@
 		84D0615D29670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D0634E2967EA43001FE469 /* CategoriesListViewController.swift */,
-				84D063502967EA54001FE469 /* CategoriesListViewController.storyboard */,
+				84B75EA72968D7F100962F3E /* ListScreen */,
+				84B75EAB2968D7F100962F3E /* DetailScreen */,
+				84B75EAA2968D7F100962F3E /* AddScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1121,6 +1170,8 @@
 		84D0615E29670676001FE469 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				84B75EA32968CEA300962F3E /* CategoriesListTableViewCell.swift */,
+				84B75EA42968CEA300962F3E /* CategoriesListTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -1358,11 +1409,11 @@
 			isa = PBXGroup;
 			children = (
 				84D061A029670676001FE469 /* PateintListViewContoller.swift */,
+				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
 				84D061A129670676001FE469 /* PateintListViewModel.swift */,
 				84D061A229670676001FE469 /* PateintListModel.swift */,
 				84D061A329670676001FE469 /* PateintListTableViewCell.swift */,
 				84D061A429670676001FE469 /* PateintListTableViewCell.xib */,
-				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -2214,8 +2265,8 @@
 				84D063652967EF32001FE469 /* LeadTriggersListViewController.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				84D062A12967070D001FE469 /* UserListViewContoller.storyboard in Resources */,
-				84D063512967EA54001FE469 /* CategoriesListViewController.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
+				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
@@ -2255,12 +2306,14 @@
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
+				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
 				84D063552967EA70001FE469 /* ServicesListViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
+				84B75EA62968CEA300962F3E /* CategoriesListTableViewCell.xib in Resources */,
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 			);
@@ -2404,6 +2457,7 @@
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
+				84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */,
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
@@ -2460,6 +2514,7 @@
 				84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
+				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
@@ -2474,6 +2529,7 @@
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
 				84F610E4292A71AB00B1FB69 /* TaskSequencer.swift in Sources */,
+				84B75EAF2968D84500962F3E /* CategoriesAddViewController.swift in Sources */,
 				848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */,
 				845C39E1292276B000D934C5 /* UITextFieldExtension.swift in Sources */,
 				84D062F82967080E001FE469 /* leadTimeLineViewModel.swift in Sources */,
@@ -2540,11 +2596,11 @@
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
-				84D0634F2967EA43001FE469 /* CategoriesListViewController.swift in Sources */,
 				84D062F02967080E001FE469 /* leadModel.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
+				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
@@ -2567,6 +2623,7 @@
 				84F61123292A71AB00B1FB69 /* Number+Extension.swift in Sources */,
 				845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */,
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
+				84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,
 				84D0630E2967080E001FE469 /* leadViewModel.swift in Sources */,
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
@@ -2596,6 +2653,7 @@
 				84D0621C29670676001FE469 /* DailyViewController.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
+				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84D0628B29670677001FE469 /* User.swift in Sources */,
 				845C39D4292276B000D934C5 /* Constant.swift in Sources */,
@@ -2622,6 +2680,7 @@
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
+				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,
 				84F610BB292A71AA00B1FB69 /* JWT.swift in Sources */,
@@ -2636,6 +2695,7 @@
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
+				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,

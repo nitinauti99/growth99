@@ -27,10 +27,17 @@
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="FXf-4d-hsp"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sPP-oX-fr4">
                                 <rect key="frame" x="0.0" y="129" width="393" height="723"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="aXO-Jr-NKi"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="nky-Xf-DJU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -45,6 +52,10 @@
                             <constraint firstItem="2y4-8j-Hzw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="zbI-6K-ErG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="categoriesListTableView" destination="sPP-oX-fr4" id="oVW-w5-hg1"/>
+                        <outlet property="searchBar" destination="2y4-8j-Hzw" id="2Rj-eQ-rdp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

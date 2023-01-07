@@ -40,8 +40,8 @@ struct EndPoints {
     static let smstemplates = "/api/smstemplates/templateFor/Appointment"
     static let emailTemplates = "/api/emailTemplates/templateFor/Appointment"
     static let updatePatientsInfo = "/api/patient/"
-    
-    
+    static let categoriesList = "/api/v1/serviceCategories/all"
+    static let createCategories = "/api/servicecategories"
 
 }
 
@@ -77,4 +77,6 @@ struct ApiUrl {
     static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)
     static let emailTemplates = EndPoints.baseURL.appending(EndPoints.emailTemplates)
     static let updatePatientsInfo = EndPoints.baseURL.appending(EndPoints.updatePatientsInfo)
+    static let categoriesList = EndPoints.baseURL.appending(EndPoints.categoriesList)
+    static let createCategories = EndPoints.baseURL.appending(EndPoints.createCategories)
 }

@@ -7,32 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6738FF77-A617-44A2-AD5E-A648B2260634"
+            uuid = "9091FD95-B0BA-4A67-9842-1C970766A1D7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Growth99/Appointments/Calender/View/CalenderViewController.swift"
+            filePath = "Growth99/Modules/Account And Setting/Categories/ViewModel/CategoriesAddEditViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "eventEditViewController(_:didCompleteWith:)"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "editCategories(selectedCategorieId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BDD74738-CB65-4464-9708-288940B48296"
+            uuid = "BC323046-6420-4341-ACFA-D262B39D4CFB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Growth99/MyProfile/Working Schedule/CustomTableViewCell/WorkingCustomTableViewCell.swift"
+            filePath = "Growth99/Modules/Account And Setting/Categories/ViewModel/CategoriesAddEditViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "workingShowClinicDropDown()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "editCategories(selectedCategorieId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "959B10C8-E71A-40D3-B574-831267B1B8E2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Account And Setting/Categories/ViewModel/CategoriesAddEditViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "editCategories(selectedCategorieId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "959B10C8-E71A-40D3-B574-831267B1B8E2 - 6b6c1b18e3fc578c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.CategoriesAddEditViewModel.editCategories(selectedCategorieId: Swift.Int) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/TDL_Sravan/growth99/Growth99/Modules/Account%20And%20Setting/Categories/ViewModel/CategoriesAddEditViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "177">
+               </Location>
+               <Location
+                  uuid = "959B10C8-E71A-40D3-B574-831267B1B8E2 - 75eca4ddd5e38ace"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Growth99.CategoriesAddEditModel, Growth99.GrowthNetworkError&gt;) -&gt; () in Growth99.CategoriesAddEditViewModel.editCategories(selectedCategorieId: Swift.Int) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/TDL_Sravan/growth99/Growth99/Modules/Account%20And%20Setting/Categories/ViewModel/CategoriesAddEditViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1457">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8467F13F-5E96-449E-859A-F3449BC8EAC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Account And Setting/Categories/ViewModel/CategoriesAddEditViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "editCategories(selectedCategorieId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

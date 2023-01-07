@@ -47,6 +47,8 @@ struct Constant {
         static let calender = "Calendar"
         static let clinics = "Clinics"
         static let categories = "Categories"
+        static let addCategories = "Create Category"
+        static let editCategories = "Edit Category"
         static let services = "Services"
         static let users = "Users"
         static let tasks = "Tasksv"
@@ -67,8 +69,11 @@ struct Constant {
         static let chooseToTime = "Please choose to time"
         static let chooseFromDate = "Please choose from date"
         static let chooseToDate = "Please choose to date"
+        static let addCategorie = "Categorie add sucessfully"
         static let workingScheduleUpdate = "Working schedule updated sucessfully"
         static let vacationScheduleUpdate = "Vacation schedule updated sucessfully"
+        static let clinicsRequired = "Clinics are required."
+        static let categoryNameRequired = "Category Name is required."
     }
     
     struct CreateLead {

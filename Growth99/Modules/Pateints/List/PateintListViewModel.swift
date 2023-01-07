@@ -19,7 +19,7 @@ class PateintListViewModel {
     var delegate: PateintListViewContollerProtocol?
     var PateintListData: [PateintListModel] = []
     var PateintFilterData: [PateintListModel] = []
-
+    
     init(delegate: PateintListViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -38,7 +38,7 @@ class PateintListViewModel {
             }
         }
     }
- 
+    
     func userDataAtIndex(index: Int)-> PateintListModel? {
         return self.PateintListData[index]
     }
@@ -54,10 +54,10 @@ extension PateintListViewModel: PateintListViewModelProtocol {
     var UserFilterDataData: [PateintListModel] {
         return self.PateintFilterData
     }
-   
+    
     var UserData: [PateintListModel] {
         return self.PateintListData
     }
-
- 
+    
+    
 }
