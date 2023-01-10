@@ -104,6 +104,7 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = LeadTriggersTableViewCell()
         cell = triggersListTableView.dequeueReusableCell(withIdentifier: "LeadTriggersTableViewCell") as! LeadTriggersTableViewCell
+        cell.delegate = self
         if isSearch {
             cell.configureCell(triggerVM: viewModel?.triggersData[indexPath.row])
         } else {
@@ -146,5 +147,13 @@ extension TriggersListViewController: UISearchBarDelegate {
         isSearch = false
         searchBar.text = ""
         triggersListTableView.reloadData()
+    }
+}
+
+extension TriggersListViewController: TriggerSourceDelegate {
+    
+    func didTapSwitchButton(triggerId: String, triggerStatus: String) {
+        self.view.ShowSpinner()
+        viewModel?.getSwitchOnButton(triggerId: triggerId, triggerStatus: triggerStatus)
     }
 }

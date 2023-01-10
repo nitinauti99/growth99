@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TriggerSourceDelegate: AnyObject {
-    func selectedSubItemsFSP()
+    func didTapSwitchButton(triggerId: String, triggerStatus: String)
 }
 
 class LeadTriggersTableViewCell: UITableViewCell {
@@ -23,6 +23,8 @@ class LeadTriggersTableViewCell: UITableViewCell {
     @IBOutlet private weak var updatedDate: UILabel!
     @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var subView: UIView!
+    
+    weak var delegate: TriggerSourceDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,8 +61,12 @@ class LeadTriggersTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func statusSwitchChanges(_ sender: Any) {
-        
+    @IBAction func statusSwitchChanges(_ sender: UIButton) {
+        if statusLabelSwitch.isOn {
+            delegate?.didTapSwitchButton(triggerId: self.id.text ?? "", triggerStatus: "ACTIVE")
+        } else {
+            delegate?.didTapSwitchButton(triggerId: self.id.text ?? "", triggerStatus: "INACTIVE")
+        }
     }
     
     func serverToLocal(date: String) -> String {

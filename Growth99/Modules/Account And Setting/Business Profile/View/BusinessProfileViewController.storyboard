@@ -17,24 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="growthCircleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qon-eG-lpF">
-                                <rect key="frame" x="121.66666666666669" y="109" width="150" height="150"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="growthCircleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qon-eG-lpF">
+                                <rect key="frame" x="96.666666666666686" y="79" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="NgC-oQ-N5i"/>
-                                    <constraint firstAttribute="height" constant="150" id="nkQ-yq-XsD"/>
+                                    <constraint firstAttribute="width" constant="200" id="NgC-oQ-N5i"/>
+                                    <constraint firstAttribute="height" constant="200" id="nkQ-yq-XsD"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTf-Yp-A0I">
-                                <rect key="frame" x="323" y="219" width="40" height="40"/>
+                                <rect key="frame" x="323" y="239" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Tdq-tV-uyw"/>
                                     <constraint firstAttribute="height" constant="40" id="avj-Qa-ReT"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="" backgroundImage="editicon"/>
+                                <connections>
+                                    <action selector="imageIconbtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0b3-uH-tVb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miG-i8-74V" userLabel="userName">
-                                <rect key="frame" x="40" y="319" width="313" height="21"/>
+                                <rect key="frame" x="40" y="309" width="313" height="21"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Name ">
                                         <attributes>
@@ -60,8 +63,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Medical" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8fC-gw-pen" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="50" y="356" width="313" height="45"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8fC-gw-pen" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="50" y="346" width="313" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DT2-sk-xvo"/>
                                 </constraints>
@@ -78,7 +81,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONh-YG-TZk">
-                                <rect key="frame" x="40" y="426" width="313" height="83.666666666666686"/>
+                                <rect key="frame" x="40" y="416" width="323" height="83.666666666666686"/>
                                 <string key="text">*Note- Business name needs to be less than 20 characters. We use this name in automated SMS/Emails hence to avoid longer SMS we limit business name to 20 characters.
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -86,7 +89,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mye-IZ-9Dw">
-                                <rect key="frame" x="40" y="559.66666666666663" width="110" height="40"/>
+                                <rect key="frame" x="40" y="549.66666666666663" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Dwt-RV-nnO"/>
@@ -101,14 +104,17 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ssavebtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Wlg-nl-hDZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="miG-i8-74V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="0JO-O1-e3T"/>
-                            <constraint firstItem="ONh-YG-TZk" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" id="0vy-q8-fLM"/>
-                            <constraint firstItem="qon-eG-lpF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="4O4-3m-ssy"/>
+                            <constraint firstItem="ONh-YG-TZk" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" constant="10" id="0vy-q8-fLM"/>
+                            <constraint firstItem="qon-eG-lpF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="4O4-3m-ssy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" constant="40" id="7VA-ni-wF1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fTf-Yp-A0I" secondAttribute="trailing" constant="30" id="ATa-tw-WA1"/>
                             <constraint firstItem="ONh-YG-TZk" firstAttribute="leading" secondItem="miG-i8-74V" secondAttribute="leading" id="LKh-OT-8rB"/>
@@ -116,13 +122,17 @@
                             <constraint firstItem="mye-IZ-9Dw" firstAttribute="leading" secondItem="miG-i8-74V" secondAttribute="leading" id="XcG-xj-T8H"/>
                             <constraint firstItem="fTf-Yp-A0I" firstAttribute="bottom" secondItem="qon-eG-lpF" secondAttribute="bottom" id="Yd0-bz-8nI"/>
                             <constraint firstItem="8fC-gw-pen" firstAttribute="leading" secondItem="miG-i8-74V" secondAttribute="leading" constant="10" id="asZ-s3-1wD"/>
-                            <constraint firstItem="miG-i8-74V" firstAttribute="top" secondItem="qon-eG-lpF" secondAttribute="bottom" constant="60" id="eiu-hh-bmP"/>
+                            <constraint firstItem="miG-i8-74V" firstAttribute="top" secondItem="qon-eG-lpF" secondAttribute="bottom" constant="30" id="eiu-hh-bmP"/>
                             <constraint firstItem="qon-eG-lpF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gbg-5k-Ooz"/>
                             <constraint firstItem="ONh-YG-TZk" firstAttribute="top" secondItem="8fC-gw-pen" secondAttribute="bottom" constant="25" id="hMo-uX-U5b"/>
                             <constraint firstItem="mye-IZ-9Dw" firstAttribute="top" secondItem="ONh-YG-TZk" secondAttribute="bottom" constant="50" id="x3Z-9I-ajL"/>
                             <constraint firstItem="8fC-gw-pen" firstAttribute="trailing" secondItem="miG-i8-74V" secondAttribute="trailing" constant="10" id="yYI-eY-mMe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="businessImageView" destination="qon-eG-lpF" id="CbF-xK-hYW"/>
+                        <outlet property="nameTextField" destination="8fC-gw-pen" id="SjN-l0-YUh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,7 +141,7 @@
     </scenes>
     <designables>
         <designable name="8fC-gw-pen">
-            <size key="intrinsicContentSize" width="55" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>
