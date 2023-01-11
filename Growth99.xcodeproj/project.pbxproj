@@ -234,6 +234,10 @@
 		84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063582967EA8C001FE469 /* TasksListViewController.storyboard */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
 		84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */; };
+		84EFB1A0296B0A3200D8285E /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB19F296B0A3200D8285E /* TasksListViewModel.swift */; };
+		84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB1A4296B22B900D8285E /* TaskListTableViewCell.swift */; };
+		84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EFB1A5296B22B900D8285E /* TaskListTableViewCell.xib */; };
+		84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFB1A8296C4C4B00D8285E /* TasksListModel.swift */; };
 		84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */; };
 		84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */; };
 		84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC28029255487003B3C06 /* UIViewController+Extension.swift */; };
@@ -612,6 +616,10 @@
 		84D063582967EA8C001FE469 /* TasksListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TasksListViewController.storyboard; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
 		84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsDetailListModel.swift; sourceTree = "<group>"; };
+		84EFB19F296B0A3200D8285E /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TasksListViewModel.swift; path = Growth99/Modules/Tasks/ViewMdel/TasksListViewModel.swift; sourceTree = SOURCE_ROOT; };
+		84EFB1A4296B22B900D8285E /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
+		84EFB1A5296B22B900D8285E /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
+		84EFB1A8296C4C4B00D8285E /* TasksListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListModel.swift; sourceTree = "<group>"; };
 		84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaseTabbar.storyboard; sourceTree = "<group>"; };
 		84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabbarViewController.swift; sourceTree = "<group>"; };
 		84EFC28029255487003B3C06 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -1648,42 +1656,21 @@
 		84D062A6296707A5001FE469 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				84D062A8296707A5001FE469 /* Model */,
+				84EFB1A2296B0A7300D8285E /* Model */,
+				84EFB1A1296B0A6000D8285E /* ViewMdel */,
 				84D062A9296707A5001FE469 /* View */,
-				84D062A7296707A5001FE469 /* ViewModel */,
-				84D062AA296707A5001FE469 /* CustomTableViewCell */,
 			);
 			path = Tasks;
-			sourceTree = "<group>";
-		};
-		84D062A7296707A5001FE469 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84D062A8296707A5001FE469 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		84D062A9296707A5001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84EFB1A3296B228A00D8285E /* Cell */,
 				84D063562967EA81001FE469 /* TasksListViewController.swift */,
 				84D063582967EA8C001FE469 /* TasksListViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		84D062AA296707A5001FE469 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		84D062AB2967080E001FE469 /* Triggers */ = {
@@ -1955,6 +1942,31 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84EFB1A1296B0A6000D8285E /* ViewMdel */ = {
+			isa = PBXGroup;
+			children = (
+				84EFB19F296B0A3200D8285E /* TasksListViewModel.swift */,
+			);
+			path = ViewMdel;
+			sourceTree = "<group>";
+		};
+		84EFB1A2296B0A7300D8285E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84EFB1A8296C4C4B00D8285E /* TasksListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84EFB1A3296B228A00D8285E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84EFB1A4296B22B900D8285E /* TaskListTableViewCell.swift */,
+				84EFB1A5296B22B900D8285E /* TaskListTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		84EFC27A292552FF003B3C06 /* BaseTabberScreen */ = {
@@ -2365,6 +2377,7 @@
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */,
+				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */,
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
@@ -2750,6 +2763,8 @@
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
+				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
+				84EFB1A0296B0A3200D8285E /* TasksListViewModel.swift in Sources */,
 				84D0621C29670676001FE469 /* DailyViewController.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
@@ -2769,6 +2784,7 @@
 				84F61127292A71AB00B1FB69 /* SecCertificate+Extension.swift in Sources */,
 				84F610C3292A71AA00B1FB69 /* JWTDecoder.swift in Sources */,
 				84D0628029670677001FE469 /* RegistrationViewModel.swift in Sources */,
+				84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */,
 				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
 				845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */,

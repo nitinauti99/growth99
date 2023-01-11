@@ -44,6 +44,8 @@ struct EndPoints {
     static let createCategories = "/api/servicecategories"
     static let getAllServices = "/api/v1/services/all"
     static let getAllTriggers = "/api/trigger"
+    static let workflowtasks = "/api/workflowtasks/all"
+
 
 }
 
@@ -83,4 +85,6 @@ struct ApiUrl {
     static let createCategories = EndPoints.baseURL.appending(EndPoints.createCategories)
     static let getAllServices = EndPoints.baseURL.appending(EndPoints.getAllServices)
     static let getAllTriggers = EndPoints.baseURL.appending(EndPoints.getAllTriggers)
+    static let workflowtasks = EndPoints.baseURL.appending(EndPoints.workflowtasks)
+
 }
