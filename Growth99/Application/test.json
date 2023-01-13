@@ -86,23 +86,11 @@
     },
     {
       "title": "Tasks",
-      "imageName": "fa-tasks",
-      "subMenuList": [
-        {
-          "title": "Tasks List",
-          "imageName": "fa-tasks"
-        }
-      ]
+      "imageName": "fa-tasks"
     },
     {
       "title": "Triggers",
-      "imageName": "fa-directions",
-      "subMenuList": [
-        {
-          "title": "Triggers List",
-          "imageName": "fa-directions"
-        }
-      ]
+      "imageName": "fa-directions"
     },
     {
       "title": "Landing Pages",

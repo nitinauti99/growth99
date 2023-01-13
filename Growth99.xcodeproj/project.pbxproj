@@ -358,6 +358,10 @@
 		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
+		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
+		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
+		DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45787029707F9F00CE458B /* GRWebViewController.swift */; };
+		DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA45787229707FA900CE458B /* GRWebViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -743,6 +747,10 @@
 		84F610B4292A71A900B1FB69 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
+		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
+		DA45787029707F9F00CE458B /* GRWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRWebViewController.swift; sourceTree = "<group>"; };
+		DA45787229707FA900CE458B /* GRWebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GRWebViewController.storyboard; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1073,20 +1081,6 @@
 			path = DetailScreen;
 			sourceTree = "<group>";
 		};
-		84B75EB42969002100962F3E /* DetailScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DetailScreen;
-			sourceTree = "<group>";
-		};
-		84B75EB52969002100962F3E /* AddScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddScreen;
-			sourceTree = "<group>";
-		};
 		84B75EB82969002100962F3E /* ListScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1162,6 +1156,7 @@
 				84D062A6296707A5001FE469 /* Tasks */,
 				84D062AB2967080E001FE469 /* Triggers */,
 				84D062B02967080E001FE469 /* Leads */,
+				DA45786E29707F8400CE458B /* GRWebView */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1226,8 +1221,7 @@
 			isa = PBXGroup;
 			children = (
 				84B75EB82969002100962F3E /* ListScreen */,
-				84B75EB52969002100962F3E /* AddScreen */,
-				84B75EB42969002100962F3E /* DetailScreen */,
+				DA04083129700D8B006B12EE /* DetailScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2323,6 +2317,32 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		DA04083129700D8B006B12EE /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */,
+				DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		DA45786E29707F8400CE458B /* GRWebView */ = {
+			isa = PBXGroup;
+			children = (
+				DA45786F29707F8400CE458B /* View */,
+			);
+			path = GRWebView;
+			sourceTree = "<group>";
+		};
+		DA45786F29707F8400CE458B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA45787029707F9F00CE458B /* GRWebViewController.swift */,
+				DA45787229707FA900CE458B /* GRWebViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DE5547C14E13DB3FD35464AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2448,6 +2468,7 @@
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
+				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
@@ -2468,6 +2489,7 @@
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
 				84D063232967080E001FE469 /* DateTypeTableViewCell.xib in Resources */,
+				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
@@ -2701,6 +2723,7 @@
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
+				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
 				84D0621429670676001FE469 /* DailyCell.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
@@ -2824,6 +2847,7 @@
 				84F610F6292A71AB00B1FB69 /* TLSCertificateDecoder.swift in Sources */,
 				84F61123292A71AB00B1FB69 /* Number+Extension.swift in Sources */,
 				845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */,
+				DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */,
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
 				84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,
