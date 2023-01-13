@@ -42,7 +42,8 @@ class TriggersListViewModel {
     
     func getSwitchOnButton(triggerId: String, triggerStatus: String) {
         let parameter: [String: Any] = [triggerStatus: ""]
-        self.requestManager.request(forPath: "\(ApiUrl.getAllTriggers)/status\(triggerId)", method: .PUT,task: .requestParameters(parameters: parameter, encoding: )) { (result: Result<[TriggersListModel], GrowthNetworkError>) in
+        let url = "\(ApiUrl.getAllTriggers)/status\(triggerId)"
+        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<[TriggersListModel], GrowthNetworkError>) in
             switch result {
             case .success(let triggerData):
                 self.triggersListData = triggerData
