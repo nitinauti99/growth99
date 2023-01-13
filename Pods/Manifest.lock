@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.6.2)
+  - DropDown (2.3.13)
   - FontAwesome.swift (1.9.1)
   - FSCalendar (2.8.4)
   - SDWebImage (5.13.5):
@@ -8,6 +9,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - DropDown
   - FontAwesome.swift
   - FSCalendar
   - SDWebImage (~> 5.0)
@@ -15,16 +17,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
     - FontAwesome.swift
     - FSCalendar
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   SDWebImage: 23d714cd599354ee7906dbae26dff89b421c4370
 
-PODFILE CHECKSUM: efb20edeb5e2af77b5918f219c5fbd4dd24cc5b8
+PODFILE CHECKSUM: 051796ff4c3c4d4c65ca3a90efffd86d8d38ac19
 
 COCOAPODS: 1.11.3

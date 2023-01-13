@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
-		845C39CC292276AF00D934C5 /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399D292276AF00D934C5 /* iOSDropDown.swift */; };
 		845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399F292276AF00D934C5 /* SpinnerView.swift */; };
 		845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A0292276AF00D934C5 /* SwiftLoader.swift */; };
 		845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A2292276AF00D934C5 /* KeychainWrapper.swift */; };
@@ -364,6 +363,7 @@
 		DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA45787229707FA900CE458B /* GRWebViewController.storyboard */; };
 		DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578762971325200CE458B /* ServicesListDetailViewController.swift */; };
 		DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */; };
+		DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -390,7 +390,6 @@
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
-		845C399D292276AF00D934C5 /* iOSDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
 		845C399F292276AF00D934C5 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		845C39A0292276AF00D934C5 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		845C39A2292276AF00D934C5 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
@@ -755,6 +754,7 @@
 		DA45787229707FA900CE458B /* GRWebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GRWebViewController.storyboard; sourceTree = "<group>"; };
 		DA4578762971325200CE458B /* ServicesListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListDetailViewController.swift; sourceTree = "<group>"; };
 		DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListDetailViewController.storyboard; sourceTree = "<group>"; };
+		DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListDetailModel.swift; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -789,22 +789,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		845C399B292276AF00D934C5 /* iOSDropDown */ = {
-			isa = PBXGroup;
-			children = (
-				845C399C292276AF00D934C5 /* Classes */,
-			);
-			path = iOSDropDown;
-			sourceTree = "<group>";
-		};
-		845C399C292276AF00D934C5 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				845C399D292276AF00D934C5 /* iOSDropDown.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		845C399E292276AF00D934C5 /* LoaderScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,7 +1024,6 @@
 				845C39AA292276AF00D934C5 /* Constants */,
 				845C39B8292276AF00D934C5 /* Extenssion */,
 				845C399E292276AF00D934C5 /* LoaderScreens */,
-				845C399B292276AF00D934C5 /* iOSDropDown */,
 				845C39AC292276AF00D934C5 /* SideDrawerMenu */,
 				848C9298291F6A9F00502956 /* RSSelectionMenu */,
 				845C39A4292276AF00D934C5 /* KYDrawerController */,
@@ -1287,6 +1270,7 @@
 			isa = PBXGroup;
 			children = (
 				84B75ECE296903AF00962F3E /* ServicesViewModel.swift */,
+				DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2668,6 +2652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* CustomSMSTemplateTableViewCell.swift in Sources */,
@@ -2898,7 +2883,6 @@
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
 				84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */,
 				84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */,
-				845C39CC292276AF00D934C5 /* iOSDropDown.swift in Sources */,
 				84F610DD292A71AB00B1FB69 /* FileDescriptor.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
 				84F61127292A71AB00B1FB69 /* SecCertificate+Extension.swift in Sources */,

@@ -12,7 +12,6 @@ protocol CategoriesAddEditViewModelProtocol {
     var  getAllClinicsData: [Clinics] { get }
     func createCategories(addCategoriesParams: [String: Any])
     func editCategories(selectedCategorieId: Int)
-
 }
 
 class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {

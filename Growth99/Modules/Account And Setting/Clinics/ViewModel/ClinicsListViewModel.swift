@@ -41,18 +41,6 @@ class ClinicsListViewModel {
         }
     }
     
-    func getallClinics(){
-        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
-            switch result {
-            case .success(let allClinics):
-                self.allClinics = allClinics
-            case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
-            }
-        }
-    }
-    
     func clinicsDataAtIndex(index: Int)-> ClinicsListModel? {
         return self.clinicsListData[index]
     }
