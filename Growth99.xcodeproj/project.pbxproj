@@ -358,6 +358,8 @@
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
 		DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45787029707F9F00CE458B /* GRWebViewController.swift */; };
 		DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA45787229707FA900CE458B /* GRWebViewController.storyboard */; };
+		DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578762971325200CE458B /* ServicesListDetailViewController.swift */; };
+		DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -743,6 +745,8 @@
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA45787029707F9F00CE458B /* GRWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRWebViewController.swift; sourceTree = "<group>"; };
 		DA45787229707FA900CE458B /* GRWebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GRWebViewController.storyboard; sourceTree = "<group>"; };
+		DA4578762971325200CE458B /* ServicesListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListDetailViewController.swift; sourceTree = "<group>"; };
+		DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListDetailViewController.storyboard; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1082,20 +1086,6 @@
 			path = ListScreen;
 			sourceTree = "<group>";
 		};
-		84B75EC3296902E600962F3E /* AddScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddScreen;
-			sourceTree = "<group>";
-		};
-		84B75EC4296902E600962F3E /* DetailScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DetailScreen;
-			sourceTree = "<group>";
-		};
 		84B75EC5296902E600962F3E /* ListScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1296,9 +1286,8 @@
 		84D0616229670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DA4578742971323B00CE458B /* DetailScreen */,
 				84B75EC5296902E600962F3E /* ListScreen */,
-				84B75EC3296902E600962F3E /* AddScreen */,
-				84B75EC4296902E600962F3E /* DetailScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2259,6 +2248,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DA4578742971323B00CE458B /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DA4578752971323B00CE458B /* View */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		DA4578752971323B00CE458B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA4578762971325200CE458B /* ServicesListDetailViewController.swift */,
+				DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DE5547C14E13DB3FD35464AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2437,6 +2443,7 @@
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
+				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
@@ -2736,6 +2743,7 @@
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
+				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,

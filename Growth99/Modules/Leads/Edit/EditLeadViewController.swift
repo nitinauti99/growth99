@@ -64,7 +64,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
         self.view.showToast(message: error)
     }
     
-   private func setUpUI(){
+   private func setUpUI() {
        saveButton.roundCorners(corners: [.allCorners], radius: 10)
        CancelButton.roundCorners(corners: [.allCorners], radius: 10)
        idTextField.text = "\(LeadData?.id ?? 0)"

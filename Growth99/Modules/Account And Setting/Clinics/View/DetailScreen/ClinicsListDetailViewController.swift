@@ -9,21 +9,25 @@ import UIKit
 
 class ClinicsListDetailViewController: UIViewController {
 
+    
+    @IBOutlet private weak var aboutClinicTextView: UITextView!
+    @IBOutlet private weak var giftCardTextView: UITextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpNavigationBar()
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setUpNavigationBar() {
+        self.title = Constant.Profile.createClinic
     }
-    */
+    
+    func setupUI() {
+        aboutClinicTextView.layer.borderColor = UIColor.gray.cgColor
+        aboutClinicTextView.layer.borderWidth = 1.0
+        giftCardTextView.layer.borderColor = UIColor.gray.cgColor
+        giftCardTextView.layer.borderWidth = 1.0
+    }
 
 }

@@ -41,8 +41,10 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        //        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
-        //        self.navigationController?.pushViewController(createServicesVC, animated: true)
+        guard let createServiceVC = UIViewController.loadStoryboard("ServicesListDetailViewController", "ServicesListDetailViewController") as? ServicesListDetailViewController else {
+            fatalError("Failed to load ServicesListDetailViewController from storyboard.")
+        }
+        self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
     
     func addEditServicesView() {

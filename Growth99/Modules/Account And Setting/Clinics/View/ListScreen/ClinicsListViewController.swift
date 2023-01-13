@@ -40,7 +40,9 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        let createClinicsVC = UIStoryboard(name: "ClinicsListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsListDetailViewController") as! ClinicsListDetailViewController
+        guard let createClinicsVC = UIViewController.loadStoryboard("ClinicsListDetailViewController", "ClinicsListDetailViewController") as? ClinicsListDetailViewController else {
+            fatalError("Failed to load ClinicsListDetailViewController from storyboard.")
+        }
         self.navigationController?.pushViewController(createClinicsVC, animated: true)
     }
     

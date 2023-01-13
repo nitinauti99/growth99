@@ -52,6 +52,8 @@ struct Constant {
         static let appointment = "Add Appointment"
         static let calender = "Calendar"
         static let clinics = "Clinics"
+        static let createClinic = "Create Clinic"
+        static let createService = "Create Service"
         static let categories = "Categories"
         static let addCategories = "Create Category"
         static let editCategories = "Edit Category"
