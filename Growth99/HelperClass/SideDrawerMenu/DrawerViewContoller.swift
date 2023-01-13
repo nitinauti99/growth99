@@ -120,12 +120,18 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         if self.section == section {
             cell.menuTitle.textColor = .red
         }
-        if title == "Logout" {
+        if title == Constant.SideMenu.logout {
             UserRepository.shared.isUserLoged =  false
             let LogInVC = UIStoryboard(name: "LogInViewController", bundle: nil).instantiateViewController(withIdentifier: "LogInViewController")
             let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
             mainVcIntial.isNavigationBarHidden = true
             appDel.window?.rootViewController = mainVcIntial
+        } else if title == Constant.SideMenu.helpTraining {
+            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController: "GRWebViewController")
+        } else if title == Constant.Profile.tasks {
+            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
+        } else if title == Constant.Profile.triggers {
+            pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
         }
     }
 }
@@ -186,7 +192,6 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         self.tableView.beginUpdates()
         tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .none)
         tableView.endUpdates()
-        print("index section \(indexPath.section) and \(indexPath.row)")
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
@@ -223,20 +228,6 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             
         } else if indexPath.section == 3 {
             pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
-        } else if indexPath.section == 4 {
-            switch indexPath.row {
-            case 0:
-                pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
-            default:
-                break
-            }
-        } else if indexPath.section == 5 {
-            switch indexPath.row {
-            case 0:
-                pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
-            default:
-                break
-            }
         }
     }
     

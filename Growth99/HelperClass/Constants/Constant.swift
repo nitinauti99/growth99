@@ -43,6 +43,11 @@ struct Constant {
         static let RESOURCE_UNAVAILABLE = "RESOURCE_UNAVAILABLE"
     }
     
+    struct SideMenu {
+        static let logout = "Logout"
+        static let helpTraining = "Help and Training"
+    }
+    
     struct Profile {
         static let appointment = "Add Appointment"
         static let calender = "Calendar"
@@ -52,13 +57,14 @@ struct Constant {
         static let editCategories = "Edit Category"
         static let services = "Services"
         static let users = "Users"
-        static let tasks = "Tasksv"
+        static let tasks = "Tasks"
         static let appointmentTrigger = "Appointment"
         static let leads = "leads"
         static let searchList = "Search..."
         static let homeScreen = "Home"
         static let triggerActive = "ACTIVE"
         static let createUser = "Create User"
+        static let triggers = "Triggers"
         static let leadTriggers = "Lead Triggers"
         static let triggersList = "Triggers List"
         static let appointmentTriggers = "Appointment Triggers"

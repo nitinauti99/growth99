@@ -40,8 +40,8 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        //        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
-        //        self.navigationController?.pushViewController(createClinicsVC, animated: true)
+        let createClinicsVC = UIStoryboard(name: "ClinicsListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsListDetailViewController") as! ClinicsListDetailViewController
+        self.navigationController?.pushViewController(createClinicsVC, animated: true)
     }
     
     func addEditClinicsView() {
