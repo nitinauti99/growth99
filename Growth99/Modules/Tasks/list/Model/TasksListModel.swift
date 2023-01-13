@@ -16,7 +16,6 @@ struct TaskDTOList: Codable {
         let name: String?
         let description: String?
         let userName: String?
-        let status: String?
         let deadLine: String?
         let userId: Int?
         let leadDTO: String?

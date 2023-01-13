@@ -30,7 +30,7 @@ class TaskListTableViewCell: UITableViewCell {
         self.firstName.text = userVM?.name
         self.lastName.text = userVM?.userName
         self.id.text = String(userVM?.id ?? 0)
-        self.email.text = userVM?.status
+        self.email.text = userVM?.patientDTO?.email
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
         self.updatedDate.text =  self.serverToLocal(date: userVM?.deadLine ?? "")
     }

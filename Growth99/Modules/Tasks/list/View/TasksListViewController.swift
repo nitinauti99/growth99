@@ -121,7 +121,9 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+        let createVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
+        //detailController.pateintId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
+        navigationController?.pushViewController(createVC, animated: true)
     }
 }
 
