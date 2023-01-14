@@ -126,7 +126,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="rgI-sG-p4Q"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
@@ -145,6 +145,13 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="swP-Sg-0PQ"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzN-Aw-bmk">
+                                                        <rect key="frame" x="40" y="139" width="310" height="45"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="selectClinicButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xr7-Ss-Bmn"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-xg-u8q" userLabel="userName">
                                                         <rect key="frame" x="40" y="200" width="310" height="21"/>
                                                         <attributedString key="attributedText">
@@ -208,6 +215,13 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="x05-7Y-O8P"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFp-82-M10">
+                                                        <rect key="frame" x="40" y="231" width="310" height="45"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="serviceDurationButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ipv-Ic-L7g"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-dW-YcI" userLabel="userName">
                                                         <rect key="frame" x="40" y="292" width="310" height="21"/>
                                                         <attributedString key="attributedText">
@@ -271,6 +285,13 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="dpn-h6-ui1"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYr-qb-6Sb">
+                                                        <rect key="frame" x="40" y="323" width="310" height="45"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="serviceCategoryButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WjQ-lm-Qbn"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bY7-os-SUx" userLabel="userName">
                                                         <rect key="frame" x="40" y="384" width="310" height="21"/>
                                                         <attributedString key="attributedText">
@@ -431,6 +452,13 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="YE8-GS-ZIO"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-fW-okk">
+                                                        <rect key="frame" x="40" y="924.66666666666663" width="310" height="45"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="selectConsentButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="w82-2t-jX7"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JR-ya-hpe" userLabel="userName">
                                                         <rect key="frame" x="40" y="985.66666666666663" width="310" height="16.333333333333371"/>
                                                         <attributedString key="attributedText">
@@ -473,6 +501,13 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="oFV-MB-B2y"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUq-hi-zHE">
+                                                        <rect key="frame" x="40" y="1012" width="310" height="45"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="selectQuestionButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1GO-L6-RFv"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vx3-6R-CVU">
                                                         <rect key="frame" x="40" y="1087" width="150" height="80"/>
                                                         <color key="backgroundColor" red="0.0" green="0.61960784313725492" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -489,6 +524,9 @@
                                                                 <integer key="value" value="8"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="uploadServiceImageButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yQc-12-xpD"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPv-W6-Lrn">
                                                         <rect key="frame" x="40" y="1217" width="110" height="40"/>
@@ -506,6 +544,9 @@
                                                                 <integer key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="saveServiceButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cK0-QR-GvD"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gal-Zi-yxD">
                                                         <rect key="frame" x="170" y="1217" width="110" height="40"/>
@@ -523,6 +564,9 @@
                                                                 <integer key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cancelServiceButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zW6-Mj-EcO"/>
+                                                        </connections>
                                                     </button>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2D1-3O-W0B">
                                                         <rect key="frame" x="40" y="781.66666666666663" width="310" height="100"/>
@@ -542,6 +586,9 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="tickdefault"/>
+                                                        <connections>
+                                                            <action selector="enableDepositsButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BaW-9f-eve"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable collecting deposits during online appointment booking" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcs-4S-7ni">
                                                         <rect key="frame" x="65" y="563.33333333333337" width="285" height="36"/>
@@ -595,6 +642,9 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="tickdefault"/>
+                                                        <connections>
+                                                            <action selector="disableBookingButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EgD-QQ-bj0"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable booking for this Service Via online booking" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Of-xZ-mCT">
                                                         <rect key="frame" x="65" y="703.33333333333337" width="285" height="36"/>
@@ -612,18 +662,23 @@
                                                     <constraint firstItem="7Of-xZ-mCT" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="0u3-KW-bl7"/>
                                                     <constraint firstItem="7Of-xZ-mCT" firstAttribute="centerY" secondItem="iVM-c1-IpU" secondAttribute="centerY" id="283-i2-5Bu"/>
                                                     <constraint firstItem="Xcs-4S-7ni" firstAttribute="top" secondItem="b86-j9-qJE" secondAttribute="bottom" constant="16" id="2Cf-ph-ghE"/>
+                                                    <constraint firstItem="XUq-hi-zHE" firstAttribute="bottom" secondItem="HAc-og-Quv" secondAttribute="bottom" id="5Rm-Q3-hrv"/>
                                                     <constraint firstItem="Vx3-6R-CVU" firstAttribute="top" secondItem="HAc-og-Quv" secondAttribute="bottom" constant="30" id="6CX-n7-zMq"/>
+                                                    <constraint firstItem="XUq-hi-zHE" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="6ot-FV-EoJ"/>
                                                     <constraint firstItem="bY7-os-SUx" firstAttribute="trailing" secondItem="GJc-dW-YcI" secondAttribute="trailing" id="9yk-rK-iDG"/>
+                                                    <constraint firstItem="Awd-fW-okk" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="AOe-qZ-HHX"/>
                                                     <constraint firstItem="5JJ-xg-u8q" firstAttribute="top" secondItem="AVg-us-WgC" secondAttribute="bottom" constant="16" id="AU3-ZY-Jml"/>
                                                     <constraint firstItem="GJc-dW-YcI" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="Arf-Ow-HIX"/>
                                                     <constraint firstItem="nRa-3b-s4x" firstAttribute="top" secondItem="bY7-os-SUx" secondAttribute="bottom" constant="10" id="B2S-gV-CFK"/>
                                                     <constraint firstItem="UEX-Ew-6xr" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="B6o-Cb-lcY"/>
+                                                    <constraint firstItem="UYr-qb-6Sb" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="BXH-bP-wTf"/>
                                                     <constraint firstItem="AVg-us-WgC" firstAttribute="top" secondItem="5Cv-qK-hww" secondAttribute="bottom" constant="10" id="D0g-Bd-cLu"/>
                                                     <constraint firstItem="Qn3-ts-hmN" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="D6E-xT-Ikp"/>
                                                     <constraint firstItem="s0K-2w-OKF" firstAttribute="top" secondItem="7Of-xZ-mCT" secondAttribute="bottom" constant="16" id="DGQ-aC-vcU"/>
                                                     <constraint firstItem="bY7-os-SUx" firstAttribute="leading" secondItem="GJc-dW-YcI" secondAttribute="leading" id="Dan-3e-0vY"/>
                                                     <constraint firstItem="Xcs-4S-7ni" firstAttribute="leading" secondItem="Tgm-xq-wrh" secondAttribute="trailing" constant="10" id="DdL-jG-eZi"/>
                                                     <constraint firstItem="0JR-ya-hpe" firstAttribute="trailing" secondItem="WNE-Z0-OoH" secondAttribute="trailing" id="Ds0-2j-PzP"/>
+                                                    <constraint firstItem="Awd-fW-okk" firstAttribute="top" secondItem="tK9-TA-zmI" secondAttribute="top" id="E90-eo-fr2"/>
                                                     <constraint firstItem="s0K-2w-OKF" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="ENe-c7-DE4"/>
                                                     <constraint firstItem="GJc-dW-YcI" firstAttribute="top" secondItem="xKV-US-rN6" secondAttribute="bottom" constant="16" id="F9v-Kw-QUl"/>
                                                     <constraint firstItem="2D1-3O-W0B" firstAttribute="top" secondItem="s0K-2w-OKF" secondAttribute="bottom" constant="10" id="Fhc-VT-vfC"/>
@@ -631,6 +686,8 @@
                                                     <constraint firstItem="5JJ-xg-u8q" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="Gfh-yZ-WBt"/>
                                                     <constraint firstItem="5JJ-xg-u8q" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="Gnw-tE-bqN"/>
                                                     <constraint firstItem="xKV-US-rN6" firstAttribute="top" secondItem="5JJ-xg-u8q" secondAttribute="bottom" constant="10" id="HW5-t6-30n"/>
+                                                    <constraint firstItem="UYr-qb-6Sb" firstAttribute="bottom" secondItem="xLO-rr-zwc" secondAttribute="bottom" id="HYq-to-ku4"/>
+                                                    <constraint firstItem="wFp-82-M10" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="HbQ-LG-HxY"/>
                                                     <constraint firstItem="Dkv-5T-p7r" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" constant="10" id="Hf1-Ll-Ee1"/>
                                                     <constraint firstItem="s0K-2w-OKF" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="HlT-JE-PM2"/>
                                                     <constraint firstItem="tK9-TA-zmI" firstAttribute="trailing" secondItem="WNE-Z0-OoH" secondAttribute="trailing" constant="10" id="J78-nO-gAO"/>
@@ -641,9 +698,13 @@
                                                     <constraint firstItem="GJc-dW-YcI" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="Nmh-we-6wc"/>
                                                     <constraint firstItem="HAc-og-Quv" firstAttribute="top" secondItem="0JR-ya-hpe" secondAttribute="bottom" constant="10" id="O47-jN-Htd"/>
                                                     <constraint firstItem="tK9-TA-zmI" firstAttribute="leading" secondItem="WNE-Z0-OoH" secondAttribute="leading" constant="10" id="OcD-J0-Qb7"/>
+                                                    <constraint firstItem="PzN-Aw-bmk" firstAttribute="bottom" secondItem="AVg-us-WgC" secondAttribute="bottom" id="Oxc-qi-476"/>
                                                     <constraint firstItem="b86-j9-qJE" firstAttribute="trailing" secondItem="UEX-Ew-6xr" secondAttribute="trailing" constant="10" id="Pg0-zf-cdE"/>
+                                                    <constraint firstItem="Awd-fW-okk" firstAttribute="bottom" secondItem="tK9-TA-zmI" secondAttribute="bottom" id="ReR-fF-gGf"/>
                                                     <constraint firstItem="Tgm-xq-wrh" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="TLy-rm-OEL"/>
                                                     <constraint firstItem="2D1-3O-W0B" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="TZs-py-WlN"/>
+                                                    <constraint firstItem="XUq-hi-zHE" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="Tyy-qo-3ne"/>
+                                                    <constraint firstItem="PzN-Aw-bmk" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="U2m-gP-ZIR"/>
                                                     <constraint firstItem="Kf4-Xr-0r8" firstAttribute="top" secondItem="Cxy-50-6tD" secondAttribute="top" constant="16" id="Ufd-1P-GOp"/>
                                                     <constraint firstItem="WNE-Z0-OoH" firstAttribute="top" secondItem="2D1-3O-W0B" secondAttribute="bottom" constant="16" id="VUI-4T-Eg6"/>
                                                     <constraint firstItem="AVg-us-WgC" firstAttribute="trailing" secondItem="5Cv-qK-hww" secondAttribute="trailing" constant="10" id="VW3-eq-LfA"/>
@@ -653,7 +714,10 @@
                                                     <constraint firstItem="xKV-US-rN6" firstAttribute="trailing" secondItem="5JJ-xg-u8q" secondAttribute="trailing" constant="10" id="XJy-nY-df4"/>
                                                     <constraint firstItem="UEX-Ew-6xr" firstAttribute="top" secondItem="nRa-3b-s4x" secondAttribute="bottom" constant="16" id="Y17-EP-t2l"/>
                                                     <constraint firstItem="WNE-Z0-OoH" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="YLS-tI-6Y7"/>
+                                                    <constraint firstItem="wFp-82-M10" firstAttribute="bottom" secondItem="xKV-US-rN6" secondAttribute="bottom" id="Z2I-V4-3hV"/>
                                                     <constraint firstItem="7Of-xZ-mCT" firstAttribute="leading" secondItem="iVM-c1-IpU" secondAttribute="trailing" constant="10" id="Z2s-fa-fc8"/>
+                                                    <constraint firstItem="XUq-hi-zHE" firstAttribute="top" secondItem="HAc-og-Quv" secondAttribute="top" id="ZMS-rY-9hy"/>
+                                                    <constraint firstItem="PzN-Aw-bmk" firstAttribute="top" secondItem="AVg-us-WgC" secondAttribute="top" id="aRr-ZU-ufa"/>
                                                     <constraint firstItem="tK9-TA-zmI" firstAttribute="top" secondItem="WNE-Z0-OoH" secondAttribute="bottom" constant="10" id="alW-pu-FX0"/>
                                                     <constraint firstItem="xKV-US-rN6" firstAttribute="leading" secondItem="5JJ-xg-u8q" secondAttribute="leading" constant="10" id="auC-XH-Zr4"/>
                                                     <constraint firstItem="Kf4-Xr-0r8" firstAttribute="leading" secondItem="Cxy-50-6tD" secondAttribute="leading" constant="40" id="cah-Nk-vzr"/>
@@ -663,8 +727,11 @@
                                                     <constraint firstItem="UEX-Ew-6xr" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="fPY-qs-5dl"/>
                                                     <constraint firstItem="5Cv-qK-hww" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="fnd-KA-Ags"/>
                                                     <constraint firstItem="AVg-us-WgC" firstAttribute="leading" secondItem="5Cv-qK-hww" secondAttribute="leading" constant="10" id="fvc-An-m7x"/>
+                                                    <constraint firstItem="wFp-82-M10" firstAttribute="top" secondItem="xKV-US-rN6" secondAttribute="top" id="iXy-qd-6fg"/>
+                                                    <constraint firstItem="UYr-qb-6Sb" firstAttribute="top" secondItem="xLO-rr-zwc" secondAttribute="top" id="le9-kg-gyd"/>
                                                     <constraint firstItem="bY7-os-SUx" firstAttribute="top" secondItem="xLO-rr-zwc" secondAttribute="bottom" constant="16" id="ly8-hZ-gSc"/>
                                                     <constraint firstItem="9ha-c6-Poj" firstAttribute="leading" secondItem="Qn3-ts-hmN" secondAttribute="leading" constant="10" id="n6G-dB-Shd"/>
+                                                    <constraint firstItem="PzN-Aw-bmk" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="n9I-Bu-uQl"/>
                                                     <constraint firstItem="WNE-Z0-OoH" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="nPd-ol-Lmp"/>
                                                     <constraint firstItem="Dkv-5T-p7r" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" constant="10" id="ngi-Dm-f2k"/>
                                                     <constraint firstItem="nRa-3b-s4x" firstAttribute="trailing" secondItem="bY7-os-SUx" secondAttribute="trailing" constant="10" id="p0a-Qi-EpZ"/>
@@ -675,9 +742,12 @@
                                                     <constraint firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" constant="40" id="qWe-5B-hje"/>
                                                     <constraint firstItem="fPv-W6-Lrn" firstAttribute="top" secondItem="Vx3-6R-CVU" secondAttribute="bottom" constant="50" id="rY4-Xv-geP"/>
                                                     <constraint firstItem="Xcs-4S-7ni" firstAttribute="centerY" secondItem="Tgm-xq-wrh" secondAttribute="centerY" id="rgj-PE-gqT"/>
+                                                    <constraint firstItem="wFp-82-M10" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="swb-lN-Eez"/>
+                                                    <constraint firstItem="Awd-fW-okk" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="tGP-R8-RvR"/>
                                                     <constraint firstItem="b86-j9-qJE" firstAttribute="top" secondItem="UEX-Ew-6xr" secondAttribute="bottom" constant="10" id="u9T-Gm-sLD"/>
                                                     <constraint firstItem="0JR-ya-hpe" firstAttribute="top" secondItem="tK9-TA-zmI" secondAttribute="bottom" constant="16" id="uuu-X7-mR9"/>
                                                     <constraint firstItem="xLO-rr-zwc" firstAttribute="trailing" secondItem="GJc-dW-YcI" secondAttribute="trailing" constant="10" id="vUA-pd-asv"/>
+                                                    <constraint firstItem="UYr-qb-6Sb" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="vhf-dN-4WN"/>
                                                     <constraint firstItem="0JR-ya-hpe" firstAttribute="leading" secondItem="WNE-Z0-OoH" secondAttribute="leading" id="w6w-W1-52B"/>
                                                     <constraint firstItem="fPv-W6-Lrn" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="y7a-C3-OYB"/>
                                                     <constraint firstItem="HAc-og-Quv" firstAttribute="trailing" secondItem="0JR-ya-hpe" secondAttribute="trailing" constant="10" id="yHo-RJ-ah6"/>
@@ -716,7 +786,16 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="depositCostTextField" destination="9ha-c6-Poj" id="26Y-oN-Rdr"/>
+                        <outlet property="selectClinicTextField" destination="AVg-us-WgC" id="h12-hI-R79"/>
+                        <outlet property="serviceCategoryTextField" destination="xLO-rr-zwc" id="ZAg-M6-C02"/>
+                        <outlet property="serviceConsentTextField" destination="tK9-TA-zmI" id="Rar-R6-rQt"/>
+                        <outlet property="serviceCostTextField" destination="nRa-3b-s4x" id="803-bP-GhG"/>
                         <outlet property="serviceDescTextView" destination="2D1-3O-W0B" id="9in-eZ-OX9"/>
+                        <outlet property="serviceDurationTextField" destination="xKV-US-rN6" id="UPO-oW-nzt"/>
+                        <outlet property="serviceNameTextField" destination="Dkv-5T-p7r" id="mKh-n3-s1N"/>
+                        <outlet property="serviceQuestionarieTextField" destination="HAc-og-Quv" id="qeN-0x-lAK"/>
+                        <outlet property="serviceUrlTextField" destination="b86-j9-qJE" id="SBJ-8y-G7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

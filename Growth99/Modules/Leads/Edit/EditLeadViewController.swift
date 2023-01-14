@@ -90,7 +90,6 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             
         }
         selectionMenu.reloadInputViews()
-       
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
