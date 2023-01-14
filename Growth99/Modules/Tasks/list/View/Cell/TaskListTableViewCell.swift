@@ -8,14 +8,12 @@
 import UIKit
 
 class TaskListTableViewCell: UITableViewCell {
-    @IBOutlet private weak var firstName: UILabel!
-    @IBOutlet private weak var lastName: UILabel!
-    @IBOutlet private weak var email: UILabel!
-    @IBOutlet private weak var createdDate: UILabel!
-    @IBOutlet private weak var createdBy: UILabel!
-    @IBOutlet private weak var updatedDate: UILabel!
-    @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var id: UILabel!
+    @IBOutlet private weak var taskName: UILabel!
+    @IBOutlet private weak var assignedTo: UILabel!
+    @IBOutlet private weak var status: UILabel!
+    @IBOutlet private weak var createdDate: UILabel!
+    @IBOutlet private weak var deadLine: UILabel!
     @IBOutlet private weak var subView: UIView!
     
     override func awakeFromNib() {
@@ -27,12 +25,13 @@ class TaskListTableViewCell: UITableViewCell {
   
     func configureCell(userVM: TasksListViewModelProtocol?, index: IndexPath) {
         let userVM = userVM?.taskDataAtIndex(index: index.row)
-        self.firstName.text = userVM?.name
-        self.lastName.text = userVM?.userName
+        self.taskName.text = userVM?.name
+        self.assignedTo.text = userVM?.userName
         self.id.text = String(userVM?.id ?? 0)
-        self.email.text = userVM?.patientDTO?.email
+        self.status.text = userVM?.status
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.deadLine ?? "")
+        self.deadLine.text =  self.serverToLocal(date: userVM?.deadLine ?? "")
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,9 +44,9 @@ class TaskListTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
+        let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
+        return dateFormatter.string(from: date as Date)
     }
     
 }

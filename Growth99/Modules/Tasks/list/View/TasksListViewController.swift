@@ -29,9 +29,8 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
-        let createCategoriesVC = UIStoryboard(name: "BaseTabbar", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller") as! HomeViewContoller
-        createCategoriesVC.screenTitle = Constant.Profile.createUser
-        self.navigationController?.pushViewController(createCategoriesVC, animated: true)
+        let createVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
+        navigationController?.pushViewController(createVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +66,6 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
         self.taskListTableView.delegate = self
         self.taskListTableView.dataSource = self
         taskListTableView.register(UINib(nibName: "TaskListTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskListTableViewCell")
-    }
-    
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
-        self.present(createUserVC, animated: true)
     }
     
     @objc func getUserList(){

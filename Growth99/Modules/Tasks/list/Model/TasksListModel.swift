@@ -18,12 +18,13 @@ struct TaskDTOList: Codable {
         let userName: String?
         let deadLine: String?
         let userId: Int?
-        let leadDTO: String?
+        let leadDTO: LeadDTO?
         let createdAt: String?
         let patientName: String?
         let patientId: Int?
         let patientDTO: PatientDTO?
         let leadId: Int?
+        let status: String?
 }
 
 struct PatientDTO: Codable {
@@ -34,4 +35,17 @@ struct PatientDTO: Codable {
     let email: String?
     let gender: String?
     let createdAt: String?
+}
+
+struct LeadDTO: Codable {
+    let phoneNumber : String?
+    let gender : String?
+    let firstName : String?
+    let symptom : String?
+    let message : String?
+    let email : String?
+    let createdAt : String?
+    let lastName : String?
+    let id : Int?
+
 }
