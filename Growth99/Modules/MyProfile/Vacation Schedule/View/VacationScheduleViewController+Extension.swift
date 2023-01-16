@@ -9,135 +9,130 @@ import Foundation
 import UIKit
 
 extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSource {
+        
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "VacationsHeadeView") as! VacationsHeadeView
+        headerView.delegate = self
+        headerView.tag = section
+        
+        if isEmptyResponse == false {
+            headerView.dateFromTextField.text = vacationViewModel?.serverToLocal(date: vacationsList?[section].fromDate ?? String.blank)
+            headerView.dateToTextField.text = vacationViewModel?.serverToLocal(date: vacationsList?[section].toDate ?? String.blank)
+        } else {
+            headerView.dateFromTextField.text = String.blank
+            headerView.dateToTextField.text = String.blank
+        }
+       
+        headerView.buttondateFromTextFieldCallback = { [weak self] (textFiled) in
+           
+            if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
+                headerView.updateDateFromTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
+            }
+        }
+        
+        headerView.buttondateToTextFieldCallback = { [weak self] (textFiled) in
+            if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
+                headerView.updateDateToTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
+            }
+        }
+        return headerView
+    }
     
     // MARK: - Tableview delegate methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView.tag == 0 {
-            return 1
-        } else {
-            return vacationsListModel?.count ?? 0
-        }
+        return vacationsList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == 0 {
-            return allClinicsForVacation?.count ?? 0
-        } else {
-            return vacationsListModel?[section].userScheduleTimings?.count ?? 0
-        }
+        return vacationsList?[section].userScheduleTimings?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView.tag == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCustomTableViewCell", for: indexPath) as? DropDownCustomTableViewCell else { fatalError("Unexpected Error") }
-            cell.selectionStyle = .none
-            cell.lblDropDownTitle.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
-            
-            if isEmptyResponse == false {
-                cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? "")
-                cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? "")
-                if vacationsListModel?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
-                    cell.removeTimeButton.isHidden = false
-                } else {
-                    cell.removeTimeButton.isHidden = true
-                }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
+        
+        if isEmptyResponse == false {
+            cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? "")
+            cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? "")
+            if vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
+                cell.removeTimeButton.isHidden = false
             } else {
-                if vacationsListModel?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
-                    cell.removeTimeButton.isHidden = false
-                } else {
-                    cell.removeTimeButton.isHidden = true
-                }
-                cell.updateTimeFromTextField(with: String.blank)
-                cell.updateTimeToTextField(with: String.blank)
+                cell.removeTimeButton.isHidden = true
             }
-           
-            cell.buttonRemoveTapCallback = {
-                self.deleteRow(selectedSection: indexPath, selectedIndex: indexPath.row)
+        } else {
+            if vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
+                cell.removeTimeButton.isHidden = false
+            } else {
+                cell.removeTimeButton.isHidden = true
             }
-            cell.buttonAddTimeTapCallback = {
-                self.addRow(selectedSection: indexPath, selectedIndex: indexPath.row)
-            }
-            cell.delegate = self
-            return cell
+            cell.updateTimeFromTextField(with: String.blank)
+            cell.updateTimeToTextField(with: String.blank)
+        
         }
+        
+        let totalcount = vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0 - 1
+        let lastIndex = vacationsList?[indexPath.section].userScheduleTimings?.endIndex
+        cell.borderView.isHidden = true
+
+        if totalcount == lastIndex {
+            print("last Index")
+            cell.borderView.isHidden = false
+        }
+        /// set bottom view only for last object
+        cell.buttonRemoveTapCallback = {
+            self.deleteRow(selectedSection: indexPath, selectedIndex: indexPath.row)
+        }
+        cell.buttonAddTimeTapCallback = {
+            self.addRow(selectedSection: indexPath, selectedIndex: indexPath.row)
+        }
+        cell.delegate = self
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if tableView.tag == 0 {
-            return UIView()
-        } else {
-            headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "VacationsHeadeView") as! VacationsHeadeView
-            headerView.delegate = self
-            headerView.tag = section
-            
-            if isEmptyResponse == false {
-                headerView.dateFromTextField.text = vacationViewModel?.serverToLocal(date: vacationsListModel?[section].fromDate ?? String.blank)
-                headerView.dateToTextField.text = vacationViewModel?.serverToLocal(date: vacationsListModel?[section].toDate ?? String.blank)
-            } else {
-                headerView.dateFromTextField.text = String.blank
-                headerView.dateToTextField.text = String.blank
-            }
-            headerView.buttondateFromTextFieldCallback = { [weak self] (textFiled) in
-                if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
-                    headerView.updateDateFromTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
-                }
-            }
-            
-            headerView.buttondateToTextFieldCallback = { [weak self] (textFiled) in
-                if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
-                    headerView.updateDateToTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
-                }
-            }
-            return headerView
-        }
-    }
-    
+        
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView.tag == 0 {
-            return 0
-        } else {
-            return UITableView.automaticDimension
-        }
+        return UITableView.automaticDimension
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.tag == 0 {
-            self.view.ShowSpinner()
-            clinicTextLabel.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
-            selectedClinicId = allClinicsForVacation?[indexPath.row].id ?? 0
-            vacationViewModel?.getVacationDeatils(selectedClinicId: selectedClinicId)
-            hideClinicDropDown()
-        }
-     }
-    
+        
     // MARK: - Delete vacations row method
     @objc func deleteRow(selectedSection: IndexPath, selectedIndex: Int) {
         vacationsListTableView.beginUpdates()
-        vacationsListModel?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
+        vacationsList?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
         vacationsListTableView.deleteRows(at: [selectedSection], with: .fade)
         vacationsListTableView.endUpdates()
         vacationsListTableView.reloadRows(at: [selectedSection], with: .fade)
         vacationScrollViewHight.constant = vacationTableViewHeight + 450
+       
+        let indexPath = IndexPath(row: selectedIndex - 1, section: selectedSection.section)
+
+        if let vacationCell = self.vacationsListTableView.cellForRow(at: indexPath) as? VacationsCustomTableViewCell {
+            vacationCell.borderView.isHidden = false
+            vacationCell.removeTimeButton.isHidden =  false
+            if vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0  == 1 {
+                vacationCell.removeTimeButton.isHidden =  true
+            }
+        }
     }
     
     // MARK: - Add vacations row method
     @objc func addRow(selectedSection: IndexPath, selectedIndex: Int) {
         let date1 = UserScheduleTimings(id: 1, timeFromDate:  String.blank, timeToDate:  String.blank, days:  String.blank)
-        vacationsListModel?[selectedSection.section].userScheduleTimings?.append(date1)
+        vacationsList?[selectedSection.section].userScheduleTimings?.append(date1)
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true
         let indexPath = IndexPath(row: selectedIndex + 1, section: selectedSection.section)
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 450
+      
+        let indexPathRemoveButton = IndexPath(row: selectedIndex, section: selectedSection.section)
+
+        if let vacationCell = self.vacationsListTableView.cellForRow(at: indexPathRemoveButton) as? VacationsCustomTableViewCell {
+            vacationCell.removeTimeButton.isHidden =  true
+        }
     }
     
     // MARK: - Time from button tapped
@@ -159,8 +154,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
             vacationCell.updateTimeToTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? "")
-        }
-    }
+          }
+      }
 }
 
 extension VacationScheduleViewController: UITextFieldDelegate {
@@ -187,7 +182,7 @@ extension VacationScheduleViewController: VacationsHeadeViewDelegate {
     func delateSectionButtonTapped(view: VacationsHeadeView) {
         let section = view.tag
         vacationsListTableView.beginUpdates()
-        vacationsListModel?.remove(at: section)
+        vacationsList?.remove(at: section)
         vacationsListTableView.deleteSections([section], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 450

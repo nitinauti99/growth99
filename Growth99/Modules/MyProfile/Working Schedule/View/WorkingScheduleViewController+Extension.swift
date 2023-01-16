@@ -11,28 +11,14 @@ import UIKit
 extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView.tag == 0 {
-            return 1
-        } else {
-            return workingListModel?.count ?? 0
-        }
+        return workingListModel?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == 0 {
-            return allClinicsForWorkingSchedule?.count ?? 0
-        } else {
-            return workingListModel?[section].userScheduleTimings?.count ?? 0
-        }
+        return workingListModel?[section].userScheduleTimings?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView.tag == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DropDownCustomTableViewCell", for: indexPath) as? DropDownCustomTableViewCell else { fatalError("Unexpected Error") }
-            cell.selectionStyle = .none
-            cell.lblDropDownTitle.text = allClinicsForWorkingSchedule?[indexPath.row].name ?? String.blank
-            return cell
-        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingCustomTableViewCell", for: indexPath) as? WorkingCustomTableViewCell else { fatalError("Unexpected Error") }
             
             cell.workingClinicSelectonButton.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
@@ -60,7 +46,6 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             cell.delegate = self
             return cell
         }
-    }
     
     @objc func myTargetFunction(sender: UIButton) {
         let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
@@ -135,17 +120,6 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         return tableView.estimatedRowHeight
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.tag == 0 {
-            self.view.ShowSpinner()
-            clinicTextLabel.text = allClinicsForWorkingSchedule?[indexPath.row].name ?? String.blank
-            selectedClinicId = allClinicsForWorkingSchedule?[indexPath.row].id ?? 0
-            workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: selectedClinicId)
-            workingDateFromTextField.text = String.blank
-            workingDateToTextField.text = String.blank
-            hideClinicDropDown()
-        }
-    }
 }
 
 extension WorkingScheduleViewController: UITextFieldDelegate {

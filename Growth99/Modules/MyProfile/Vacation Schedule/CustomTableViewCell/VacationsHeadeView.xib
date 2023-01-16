@@ -165,10 +165,10 @@
     </objects>
     <designables>
         <designable name="1sa-cX-NhE">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="29" height="25.333333333333332"/>
         </designable>
         <designable name="JU5-8c-E99">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="29" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>

@@ -35,7 +35,7 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         timeToTextField.tintColor = .clear
         timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromDoneButtonPressed), mode: .time)
         timeToTextField.addInputViewDatePicker(target: self, selector: #selector(timeToDoneButtonPressed), mode: .time)
-      
+        
         addLeftBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
         addRightBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
     }
@@ -72,15 +72,6 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func removeTimeButtonAction(sender: UIButton) {
         buttonRemoveTapCallback()
-        borderView.isHidden = false
-    }
-    
-    func addTopBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
-        let border = UIView()
-        border.backgroundColor = color
-        border.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: borderWidth)
-        subView.addSubview(border)
     }
 
     func addLeftBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
@@ -96,14 +87,6 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         border.backgroundColor = color
         border.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
         border.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
-        subView.addSubview(border)
-    }
-    
-    func addBottomBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
-        let border = UIView()
-        border.backgroundColor = color
-        border.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
-        border.frame = CGRect(x: 0, y: frame.size.height - borderWidth, width: frame.size.width, height: borderWidth)
         subView.addSubview(border)
     }
 }
