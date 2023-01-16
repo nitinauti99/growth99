@@ -47,7 +47,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         workingscrollview.delegate = self
-        self.view.ShowSpinner()
+        //self.view.ShowSpinner()
         setUpNavigationBar()
         setupUI()
         workingScheduleViewModel = WorkingScheduleViewModel(delegate: self)

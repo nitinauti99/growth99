@@ -45,6 +45,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     var patientQuestionList = [QuestionAnswers]()
     private var viewModel: leadDetailViewProtocol?
     var LeadData: leadModel?
+    var LeadId: Int?
     var selctedSmsTemplateId = Int()
     var selctedTemplate = String()
     var smsBody: String = ""
@@ -65,7 +66,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         self.view.ShowSpinner()
         self.viewModel = leadDetailViewModel(delegate: self)
-        viewModel?.getQuestionnaireList(questionnaireId: LeadData?.id ?? 0)
+        viewModel?.getQuestionnaireList(questionnaireId: LeadId ?? 0)
         self.registerCell()
         self.fullName.text = LeadData?.fullName
         buttons = [newButton, coldButton, warmButton, hotButton, wonButton, deadButton]
@@ -97,12 +98,12 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         print(sender.titleLabel?.text ?? "")
         let str = sender.titleLabel?.text ?? ""
         self.view.ShowSpinner()
-        viewModel?.updateLeadStatus(template: "\(LeadData?.id ?? 0)/status/\(str.uppercased())")
+        viewModel?.updateLeadStatus(template: "\(LeadId ?? 0)/status/\(str.uppercased())")
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
         self.view.showToast(message: responseMessage)
-        viewModel?.getQuestionnaireList(questionnaireId: LeadData?.id ?? 0)
+        viewModel?.getQuestionnaireList(questionnaireId: LeadId ?? 0)
     }
     
     func setLeadStatus(status: String) {
@@ -130,6 +131,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     @objc func leadTimeLiine() {
         let editLeadVC = UIStoryboard(name: "leadTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "leadTimeLineViewController") as! leadTimeLineViewController
         editLeadVC.LeadData = LeadData
+        editLeadVC.LeadId = LeadId
         self.navigationController?.pushViewController(editLeadVC, animated: true)
     }
     
@@ -141,6 +143,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     @objc func editButtonPressed(_ sender: UIButton) {
         let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
         editLeadVC.LeadData = LeadData
+        
         self.present(editLeadVC, animated: true)
     }
     
@@ -201,12 +204,12 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     }
     
      @objc func sendSmsTemplateList(_ sender: UIButton) {
-         selctedTemplate =  "\(LeadData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
+         selctedTemplate =  "\(LeadId ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
          self.sendTemplate()
     }
     
     @objc func sendEmailTemplateList(_ sender: UIButton) {
-        selctedTemplate = "\(LeadData?.id ?? 0)/email-template/\(self.selctedSmsTemplateId)"
+        selctedTemplate = "\(LeadId ?? 0)/email-template/\(self.selctedSmsTemplateId)"
         self.sendTemplate()
     }
     
@@ -240,7 +243,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
                 return
             }
             self.view.ShowSpinner()
-            viewModel?.sendCustomEmail(leadId: LeadData?.id ?? 0, email: LeadData?.Email ?? "", subject: cell.emailTextFiled.text ?? "", body: cell.emailTextView.text)
+            viewModel?.sendCustomEmail(leadId: LeadId ?? 0, email: LeadData?.Email ?? "", subject: cell.emailTextFiled.text ?? "", body: cell.emailTextView.text)
          }
     }
     

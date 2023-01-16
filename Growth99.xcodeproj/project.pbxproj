@@ -68,6 +68,7 @@
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
+		84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */; };
 		84AE6D67295D683A002836ED /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6D66295D6839002836ED /* CheckBox.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
 		84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75E9B2968CC7900962F3E /* ClinicsListModel.swift */; };
@@ -97,6 +98,9 @@
 		84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */; };
 		84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EF12969461600962F3E /* TriggersListModel.swift */; };
 		84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B75EF32969463B00962F3E /* TriggersViewModel.swift */; };
+		84B8B81B2973A64500742B42 /* EditTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B81A2973A64500742B42 /* EditTasksViewModel.swift */; };
+		84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B81C2973A88300742B42 /* EditTasksViewController.swift */; };
+		84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
 		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
 		84D0621329670676001FE469 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616929670676001FE469 /* EventsTableViewCell.swift */; };
@@ -236,7 +240,6 @@
 		84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063582967EA8C001FE469 /* TasksListViewController.storyboard */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
 		84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C45297035A000C58B0D /* TasksListViewModel.swift */; };
-		84E34C48297035C400C58B0D /* CreateTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C47297035C400C58B0D /* CreateTasksModel.swift */; };
 		84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */; };
 		84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */; };
 		84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E34C4D29703E0000C58B0D /* CreateTasksViewController.storyboard */; };
@@ -461,6 +464,7 @@
 		8497A03B28FF11E200CBA26C /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		8497A03C28FF11E200CBA26C /* Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Staging.plist; sourceTree = "<group>"; };
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
+		84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksModel.swift; sourceTree = "<group>"; };
 		84AE6D66295D6839002836ED /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -491,6 +495,9 @@
 		84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TriggersListViewController.storyboard; sourceTree = "<group>"; };
 		84B75EF12969461600962F3E /* TriggersListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggersListModel.swift; sourceTree = "<group>"; };
 		84B75EF32969463B00962F3E /* TriggersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggersViewModel.swift; sourceTree = "<group>"; };
+		84B8B81A2973A64500742B42 /* EditTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksViewModel.swift; sourceTree = "<group>"; };
+		84B8B81C2973A88300742B42 /* EditTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksViewController.swift; sourceTree = "<group>"; };
+		84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditTasksViewController.storyboard; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
 		84D0616929670676001FE469 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
@@ -631,7 +638,6 @@
 		84D063582967EA8C001FE469 /* TasksListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TasksListViewController.storyboard; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
 		84E34C45297035A000C58B0D /* TasksListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
-		84E34C47297035C400C58B0D /* CreateTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTasksModel.swift; sourceTree = "<group>"; };
 		84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTasksViewModel.swift; path = Growth99/Modules/Tasks/Add/ViewModel/CreateTasksViewModel.swift; sourceTree = SOURCE_ROOT; };
 		84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTasksViewController.swift; sourceTree = "<group>"; };
 		84E34C4D29703E0000C58B0D /* CreateTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTasksViewController.storyboard; sourceTree = "<group>"; };
@@ -1713,6 +1719,7 @@
 			children = (
 				84D062B12967080E001FE469 /* leadModel.swift */,
 				84D062B22967080E001FE469 /* Edit */,
+				84D062B92967080E001FE469 /* LeadTimeLine */,
 				84D062B62967080E001FE469 /* Detail */,
 				84D062D32967080E001FE469 /* list */,
 				84D062D82967080E001FE469 /* Create */,
@@ -1723,9 +1730,9 @@
 		84D062B22967080E001FE469 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				84D062B52967080E001FE469 /* EditLeadViewModel.swift */,
 				84D062B32967080E001FE469 /* EditLeadViewController.swift */,
 				84D062B42967080E001FE469 /* EditLeadViewController.storyboard */,
-				84D062B52967080E001FE469 /* EditLeadViewModel.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -1735,7 +1742,6 @@
 			children = (
 				84D062B72967080E001FE469 /* leadDetailViewController.swift */,
 				84D062B82967080E001FE469 /* leadDetailViewModel.swift */,
-				84D062B92967080E001FE469 /* LeadTimeLine */,
 				84D062C32967080E001FE469 /* Cell */,
 				84D062CF2967080E001FE469 /* leadDetailViewController.storyboard */,
 				84D062D02967080E001FE469 /* EmailTemplatesListDetailModel.swift */,
@@ -1749,10 +1755,10 @@
 			isa = PBXGroup;
 			children = (
 				84D062BA2967080E001FE469 /* leadCreationModel.swift */,
-				84D062BB2967080E001FE469 /* leadTimeLineViewController.swift */,
 				84D062BC2967080E001FE469 /* leadTimeLineViewModel.swift */,
 				84D062BD2967080E001FE469 /* Cell */,
 				84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */,
+				84D062BB2967080E001FE469 /* leadTimeLineViewController.swift */,
 			);
 			path = LeadTimeLine;
 			sourceTree = "<group>";
@@ -1965,7 +1971,6 @@
 		84E34C402970267A00C58B0D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84E34C47297035C400C58B0D /* CreateTasksModel.swift */,
 				848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */,
 				848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */,
 				848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */,
@@ -1986,6 +1991,8 @@
 		84E34C422970269700C58B0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84B8B81C2973A88300742B42 /* EditTasksViewController.swift */,
+				84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1993,6 +2000,7 @@
 		84E34C432970269E00C58B0D /* ViewMdel */ = {
 			isa = PBXGroup;
 			children = (
+				84B8B81A2973A64500742B42 /* EditTasksViewModel.swift */,
 			);
 			path = ViewMdel;
 			sourceTree = "<group>";
@@ -2000,6 +2008,7 @@
 		84E34C44297026A100C58B0D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2484,6 +2493,7 @@
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
 				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
+				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
 				84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */,
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
@@ -2695,12 +2705,14 @@
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
+				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
 				84F610FA292A71AB00B1FB69 /* TLSPublicKey.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
 				84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */,
+				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
 				84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */,
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
@@ -2731,7 +2743,6 @@
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
-				84E34C48297035C400C58B0D /* CreateTasksModel.swift in Sources */,
 				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */,
@@ -2744,6 +2755,7 @@
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
+				84B8B81B2973A64500742B42 /* EditTasksViewModel.swift in Sources */,
 				84D0628E29670677001FE469 /* LogInViewController.swift in Sources */,
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,

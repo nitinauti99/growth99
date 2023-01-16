@@ -30,7 +30,7 @@ class TasksListViewModel {
         self.requestManager.request(forPath: ApiUrl.workflowtasks, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
             switch result {
             case .success(let taskList):
-                self.taskDTOList = taskList.taskDTOList
+                self.taskDTOList = taskList.taskDTOList.reversed()
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

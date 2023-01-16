@@ -12,7 +12,6 @@ protocol leadTimeLineViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
     func recivedLeadCreation()
     func recivedAuditLeadList()
-
 }
 
 class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerProtocol {
@@ -22,7 +21,8 @@ class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerPro
     private var viewModel: leadTimeLineViewModelProtocol?
     var LeadData: leadModel?
     var list = [auditLeadModel]()
-    
+    var LeadId: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = leadTimeLineViewModel(delegate: self)
@@ -30,12 +30,13 @@ class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerPro
         
         leadTimeLineTableView.register(UINib(nibName: "leadTimeLineHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "leadTimeLineHeaderTableViewCell")
         self.view.ShowSpinner()
-        viewModel?.leadCreation(leadId: LeadData?.id ?? 0)
+        viewModel?.leadCreation(leadId: LeadId ?? 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.title = Constant.Profile.Timeline
+
     }
     
     func errorReceived(error: String) {
@@ -44,7 +45,7 @@ class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerPro
     }
     
     func recivedLeadCreation() {
-        viewModel?.auditLeadList(leadId: LeadData?.id ?? 0)
+        viewModel?.auditLeadList(leadId: LeadId ?? 0)
     }
     
     func recivedAuditLeadList() {
@@ -68,7 +69,7 @@ extension leadTimeLineViewController: UITableViewDelegate, UITableViewDataSource
         var cell = leadTimeLineHeaderTableViewCell()
         let item = viewModel?.leadCreationData
         cell = leadTimeLineTableView.dequeueReusableCell(withIdentifier: "leadTimeLineHeaderTableViewCell") as! leadTimeLineHeaderTableViewCell
-        cell.name.text = item?.lastName
+        cell.name.text = "\(item?.firstName  ?? "") \(item?.lastName ?? "")"
         cell.createdDateTime.text = item?.createdAt
         cell.type.text = "Lead Crated"
        

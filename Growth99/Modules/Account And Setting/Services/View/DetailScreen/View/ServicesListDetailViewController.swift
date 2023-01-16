@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DropDown
+//import DropDown
 
 protocol ServicesListDetailViewContollerProtocol {
     func errorReceived(error: String)
@@ -26,7 +26,6 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
     @IBOutlet private weak var serviceConsentTextField: CustomTextField!
     @IBOutlet private weak var serviceQuestionarieTextField: CustomTextField!
 
-    let dropDown = DropDown()
     var selectedClincs = [Clinics]()
     var allClinics = [Clinics]()
     var servicesAddViewModel: ServiceListDetailViewModelProtocol?

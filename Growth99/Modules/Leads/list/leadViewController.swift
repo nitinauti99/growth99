@@ -159,6 +159,7 @@ extension leadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
         detailController.LeadData = viewModel?.leadDataAtIndex(index: indexPath.row)
+        detailController.LeadId = viewModel?.leadDataAtIndex(index: indexPath.row)?.id ?? 0
         navigationController?.pushViewController(detailController, animated: true)
     }
 }

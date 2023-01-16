@@ -30,10 +30,12 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     var LeadData: leadModel?
     var patientQuestionAnswers = Array<Any>()
     var viewModel: EditLeadViewModelProtocol?
-   
+    var LeadId: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = EditLeadViewModel(delegate: self)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
