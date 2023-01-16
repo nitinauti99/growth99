@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol ServicesListViewModelProtocol {
+
+protocol ServiceListViewModelProtocol {
     func getServiceList()
-    var  userData: [ServiceList] { get }
-    func userDataAtIndex(index: Int) -> ServiceList?
-    var  userFilterDataData: [ServiceList] { get }
-    func userFilterDataDataAtIndex(index: Int)-> ServiceList?
+    var  serviceData: [ServiceList] { get }
+    func serviceDataAtIndex(index: Int) -> ServiceList?
+    var  serviceFilterDataData: [ServiceList] { get }
+    func serviceFilterDataAtIndex(index: Int)-> ServiceList?
 }
 
-class ServicesListViewModel {
+class ServiceListViewModel {
     var delegate: ServicesListViewContollerProtocol?
-    var servicesListData: [ServiceList] = []
-    var servicesFilterData: [ServiceList] = []
-    var allServices: [ServiceList]?
+    var serviceListData: [ServiceList] = []
+    var serviceFilterData: [ServiceList] = []
     
     init(delegate: ServicesListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -28,11 +28,11 @@ class ServicesListViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func getServiceList() {
-        self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[ServiceList], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
             switch result {
             case .success(let userData):
-                self.servicesListData = userData
-                self.delegate?.LeadDataRecived()
+                self.serviceListData = userData.serviceList ?? []
+                self.delegate?.serviceListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -40,22 +40,22 @@ class ServicesListViewModel {
         }
     }
     
-    func userDataAtIndex(index: Int)-> ServiceList? {
-        return self.servicesListData[index]
+    func serviceDataAtIndex(index: Int)-> ServiceList? {
+        return self.serviceListData[index]
     }
     
-    func userFilterDataDataAtIndex(index: Int)-> ServiceList? {
-        return self.servicesListData[index]
+    func serviceFilterDataAtIndex(index: Int)-> ServiceList? {
+        return self.serviceListData[index]
     }
 }
 
-extension ServicesListViewModel: ServicesListViewModelProtocol {
+extension ServiceListViewModel: ServiceListViewModelProtocol {
     
-    var userFilterDataData: [ServiceList] {
-        return self.servicesFilterData
+    var serviceFilterDataData: [ServiceList] {
+        return self.serviceFilterData
     }
     
-    var userData: [ServiceList] {
-        return self.servicesListData
+    var serviceData: [ServiceList] {
+        return self.serviceListData
     }
 }

@@ -25,8 +25,8 @@ class ServicesListTableViewCell: UITableViewCell {
         
     }
     
-    func configureCell(userVM: ServicesListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.userDataAtIndex(index: index.row)
+    func configureCell(userVM: ServiceListViewModelProtocol?, index: IndexPath) {
+        let userVM = userVM?.serviceDataAtIndex(index: index.row)
         self.nameLabel.text = userVM?.name
         self.id.text = String(userVM?.id ?? 0)
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")

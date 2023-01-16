@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ServicesListViewContollerProtocol: AnyObject {
-    func LeadDataRecived()
+    func serviceListDataRecived()
     func errorReceived(error: String)
 }
 
@@ -17,7 +17,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     @IBOutlet private weak var servicesListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    var viewModel: ServicesListViewModelProtocol?
+    var viewModel: ServiceListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [ServiceList]()
     
@@ -30,7 +30,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = ServicesListViewModel(delegate: self)
+        self.viewModel = ServiceListViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         setUpNavigationBar()
     }
@@ -48,11 +48,10 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     }
     
     func addEditServicesView() {
-        //        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
-        //        self.navigationController?.pushViewController(createServicesVC, animated: true)
+        
     }
     
-    @objc func updateUI(){
+    @objc func updateUI() {
         self.getUserList()
         self.view.ShowSpinner()
     }
@@ -69,18 +68,11 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
         self.view.ShowSpinner()
         self.getUserList()
     }
+    
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
         viewModel?.getServiceList()
     }
-    //
-    //    func loadMoreItemsForList(){
-    //        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
-    //            return
-    //        }
-    //         currentPage += 1
-    //         getListFromServer(currentPage)
-    //     }
     
     func registerTableView() {
         self.servicesListTableView.delegate = self
@@ -93,7 +85,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
         viewModel?.getServiceList()
     }
     
-    func LeadDataRecived() {
+    func serviceListDataRecived() {
         self.view.HideSpinner()
         self.servicesListTableView.reloadData()
     }
@@ -114,7 +106,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
         if isSearch {
             return filteredTableData.count
         }else{
-            return viewModel?.userData.count ?? 0
+            return viewModel?.serviceData.count ?? 0
         }
     }
     
@@ -135,25 +127,25 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let createServicesVC = UIStoryboard(name: "ServicesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ServicesAddViewController") as! ServicesAddViewController
-        ////        createServicesVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-        ////        createServicesVC.screenTitle = Constant.Profile.editServices
-        //        self.navigationController?.pushViewController(createServicesVC, animated: true)
+        guard let createServiceVC = UIViewController.loadStoryboard("ServicesListDetailViewController", "ServicesListDetailViewController") as? ServicesListDetailViewController else {
+            fatalError("Failed to load ServicesListDetailViewController from storyboard.")
+        }
+        self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
 }
 
 extension ServicesListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //        filteredTableData = (viewModel?.userData.filter { $0.[0]name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
-        //        isSearch = true
-        //        servicesListTableView.reloadData()
+        filteredTableData = (viewModel?.serviceData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        isSearch = true
+        servicesListTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //        isSearch = false
-        //        searchBar.text = ""
-        //        servicesListTableView.reloadData()
+        isSearch = false
+        searchBar.text = ""
+        servicesListTableView.reloadData()
     }
 }
 
