@@ -120,12 +120,10 @@
 		84D0622C29670677001FE469 /* VacationScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0618F29670676001FE469 /* VacationScheduleViewController+Extension.swift */; };
 		84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0619029670676001FE469 /* VacationScheduleViewController.storyboard */; };
 		84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0619129670676001FE469 /* VacationScheduleViewController.swift */; };
-		84D0622F29670677001FE469 /* DropDownCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0619329670676001FE469 /* DropDownCustomTableViewCell.swift */; };
 		84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D0619429670676001FE469 /* VacationsCustomTableViewCell.xib */; };
 		84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0619529670676001FE469 /* VacationsCustomTableViewCell.swift */; };
 		84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D0619629670676001FE469 /* VacationsHeadeView.xib */; };
 		84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0619729670676001FE469 /* VacationsHeadeView.swift */; };
-		84D0623429670677001FE469 /* DropDownCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D0619829670676001FE469 /* DropDownCustomTableViewCell.xib */; };
 		84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0619B29670676001FE469 /* PateintDetailViewModel.swift */; };
 		84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */; };
 		84D0623729670677001FE469 /* PateintDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0619D29670676001FE469 /* PateintDetailViewController.swift */; };
@@ -521,12 +519,10 @@
 		84D0618F29670676001FE469 /* VacationScheduleViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VacationScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
 		84D0619029670676001FE469 /* VacationScheduleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VacationScheduleViewController.storyboard; sourceTree = "<group>"; };
 		84D0619129670676001FE469 /* VacationScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VacationScheduleViewController.swift; sourceTree = "<group>"; };
-		84D0619329670676001FE469 /* DropDownCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCustomTableViewCell.swift; sourceTree = "<group>"; };
 		84D0619429670676001FE469 /* VacationsCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VacationsCustomTableViewCell.xib; sourceTree = "<group>"; };
 		84D0619529670676001FE469 /* VacationsCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VacationsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		84D0619629670676001FE469 /* VacationsHeadeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VacationsHeadeView.xib; sourceTree = "<group>"; };
 		84D0619729670676001FE469 /* VacationsHeadeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VacationsHeadeView.swift; sourceTree = "<group>"; };
-		84D0619829670676001FE469 /* DropDownCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCustomTableViewCell.xib; sourceTree = "<group>"; };
 		84D0619B29670676001FE469 /* PateintDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PateintDetailViewModel.swift; sourceTree = "<group>"; };
 		84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PateintDetailViewController.storyboard; sourceTree = "<group>"; };
 		84D0619D29670676001FE469 /* PateintDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController.swift; sourceTree = "<group>"; };
@@ -1458,12 +1454,10 @@
 		84D0619229670676001FE469 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				84D0619329670676001FE469 /* DropDownCustomTableViewCell.swift */,
-				84D0619429670676001FE469 /* VacationsCustomTableViewCell.xib */,
-				84D0619529670676001FE469 /* VacationsCustomTableViewCell.swift */,
-				84D0619629670676001FE469 /* VacationsHeadeView.xib */,
 				84D0619729670676001FE469 /* VacationsHeadeView.swift */,
-				84D0619829670676001FE469 /* DropDownCustomTableViewCell.xib */,
+				84D0619629670676001FE469 /* VacationsHeadeView.xib */,
+				84D0619529670676001FE469 /* VacationsCustomTableViewCell.swift */,
+				84D0619429670676001FE469 /* VacationsCustomTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -2492,7 +2486,6 @@
 				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
-				84D0623429670677001FE469 /* DropDownCustomTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
 				84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */,
@@ -2801,7 +2794,6 @@
 				84D063112967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift in Sources */,
 				84F610C2292A71AA00B1FB69 /* Base64.swift in Sources */,
 				845C39D6292276B000D934C5 /* DrawerViewModel.swift in Sources */,
-				84D0622F29670677001FE469 /* DropDownCustomTableViewCell.swift in Sources */,
 				84F61131292A71AB00B1FB69 /* MultipartUpload.swift in Sources */,
 				84F610C1292A71AA00B1FB69 /* JWA.swift in Sources */,
 				845C39EB292276B000D934C5 /* ApiRouter.swift in Sources */,

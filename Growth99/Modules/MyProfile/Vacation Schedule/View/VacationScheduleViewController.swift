@@ -9,7 +9,7 @@ import UIKit
 
 protocol VacationScheduleViewControllerCProtocol: AnyObject {
     func apiResponseRecived(apiResponse: ResponseModel)
-    func vacationsListResponseRecived(apiResponse: [VacationsListModel])
+    func vacationsListResponseRecived()
     func apiErrorReceived(error: String)
     func errorReceived(error: String)
     func clinicsRecived()
@@ -38,7 +38,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
 
     var vacationViewModel: VacationViewModelProtocol?
     var allClinicsForVacation: [Clinics]?
-    var vacationsListModel =  [VacationsListModel]?([])
+    var vacationsList:  [VacationsListModel]?
     var selectedClinicId: Int = 0
     var headerView = VacationsHeadeView()
     
@@ -46,6 +46,12 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     var arrTime = [Time]()
 
     var isEmptyResponse: Bool = false
+    
+    var vacationTableViewHeight: CGFloat {
+        vacationsListTableView.layoutIfNeeded()
+        return vacationsListTableView.contentSize.height
+    }
+    
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -72,14 +78,17 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - setupDefaultUI
     func setupUI() {
         userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
-        userNameTextField.isUserInteractionEnabled = false
+       
         clinicTextView.layer.cornerRadius = 4.5
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
         vacationsListTableView.register(UINib(nibName:  Constant.ViewIdentifier.vacationsHeadeView, bundle: nil), forHeaderFooterViewReuseIdentifier: Constant.ViewIdentifier.vacationsHeadeView)
+        
         vacationsListTableView.register(UINib(nibName: Constant.ViewIdentifier.vacationsCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.vacationsCustomTableViewCell)
+        
         vacationsListTableView.tableFooterView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
+        
     }
     
     func errorReceived(error: String) {
@@ -107,18 +116,16 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     }
     
     // MARK: - Vacations List API Response method
-    func vacationsListResponseRecived(apiResponse: [VacationsListModel]) {
+    func vacationsListResponseRecived() {
         self.view.HideSpinner()
-        vacationsListModel = apiResponse
-        if vacationsListModel?.count == 0 {
+        vacationsList = vacationViewModel?.getVacationData
+        if vacationsList?.count == 0 {
             isEmptyResponse = true
         } else {
             isEmptyResponse = false
         }
-//        self.clinicSelectionTableView.reloadData()
         self.vacationsListTableView.reloadData()
         vacationScrollViewHight.constant = vacationTableViewHeight + 600
-
     }
     
     // MARK: - Clinic dropdown selection mrthod
@@ -127,50 +134,37 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
-            self.clinicTextLabel.text  = allClinics.name?.components(separatedBy: " ").first
+            //self.clinicTextLabel.text  = allClinics.name?.components(separatedBy: " ").first
         }
-        
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
-            
+            self?.clinicTextLabel.text  = text?.name
+            self?.view.ShowSpinner()
+            self?.vacationViewModel?.getVacationDeatils(selectedClinicId: text?.id ?? 0)
         }
         selectionMenu.dismissAutomatically = true
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
      }
-    
-    func hideClinicDropDown() {
-        listSelection = false
-        self.listExpandHeightConstraint.constant = 31
-    }
-    
-    func showClinicDropDown() {
-        self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForVacation?.count ?? 0) + 31)
-        listSelection = true
-    }
-    
-    var vacationTableViewHeight: CGFloat {
-        vacationsListTableView.layoutIfNeeded()
-        return vacationsListTableView.contentSize.height
-    }
-    
+   
+   
     // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         isValidateVacationArray = []
-        if vacationsListModel?.count ?? 0 > 0 {
+        if vacationsList?.count ?? 0 > 0 {
             if selectedClinicId == 0 {
                 selectedClinicId = allClinicsForVacation?[0].id ?? 0
             }
             
-            for indexValue in 0..<(vacationsListModel?.count ?? 0) {
+            for indexValue in 0..<(vacationsList?.count ?? 0) {
                 
-                for childIndex in 0..<(vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0) {
+                for childIndex in 0..<(vacationsList?[indexValue].userScheduleTimings?.count ?? 0) {
                     let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
                    
                   if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
                         
                       if vacationCell.timeFromTextField.text == String.blank {
-                            if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                            if vacationsList?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
@@ -180,7 +174,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                         }
                         
                       if vacationCell.timeToTextField.text == String.blank {
-                            if vacationsListModel?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                            if vacationsList?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
@@ -210,7 +204,6 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                         arrTime.removeAll()
                     }
                 }
-                
             }
             
             if isValidateVacationArray.contains(false) {
@@ -226,17 +219,23 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     // MARK: - Add Vacations method
     @IBAction func addVacationButtonAction(sender: UIButton) {
-        
-        let vacationCount = vacationsListModel?.count ?? 0
+
+        let vacationCount = vacationsList?.count ?? 0
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
-        vacationsListModel?.append(date2)
+        vacationsList?.append(date2)
+        
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true
-        let indexSet = IndexSet(integer: (vacationsListModel?.count ?? 0) - 1)
+        let indexSet = IndexSet(integer: (vacationsList?.count ?? 0) - 1)
+       
         vacationsListTableView.insertSections(indexSet, with: .fade)
+      
         let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days:  String.blank)
-        vacationsListModel?[vacationCount].userScheduleTimings?.append(date1)
+        
+        vacationsList?[vacationCount].userScheduleTimings?.append(date1)
+       
         let indexPath = IndexPath(row: 0, section: vacationCount)
+        
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 450

@@ -28,7 +28,6 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         dateFromTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         dateToTextField.addInputViewDatePicker(target: self, selector: #selector(dateToButtonPressed1), mode: .date)
         addTopBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
-//        addBottomBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
         addLeftBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
         addRightBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
     }
@@ -82,13 +81,4 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         border.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
         subView.addSubview(border)
     }
-    
-    func addBottomBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
-        let border = UIView()
-        border.backgroundColor = color
-        border.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
-        border.frame = CGRect(x: 0, y: frame.size.height - borderWidth, width: frame.size.width, height: borderWidth)
-        subView.addSubview(border)
-    }
-
 }

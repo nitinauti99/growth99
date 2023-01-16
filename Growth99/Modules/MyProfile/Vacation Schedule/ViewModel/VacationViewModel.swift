@@ -10,6 +10,7 @@ import Foundation
 protocol VacationViewModelProtocol {
     func getallClinics()
     var getAllClinicsData: [Clinics] { get }
+    var getVacationData: [VacationsListModel] { get }
     func getVacationDeatils(selectedClinicId: Int)
     func sendRequestforVacation(vacationParams: [String: Any])
     
@@ -24,6 +25,7 @@ protocol VacationViewModelProtocol {
 
 class VacationViewModel {
     var allClinicsforVacation: [Clinics]?
+    var vacationList: [VacationsListModel]?
     
     let inFormatter = DateFormatter()
     let outFormatter = DateFormatter()
@@ -31,32 +33,45 @@ class VacationViewModel {
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
     let todaysDate = Date()
-
+    
     var delegate: VacationScheduleViewControllerCProtocol?
-
+    
     init(delegate: VacationScheduleViewControllerCProtocol? = nil) {
         self.delegate = delegate
     }
-
+    
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
-       
     
     func getallClinics() {
-            self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
-                switch result {
-                case .success(let allClinics):
-                    self.allClinicsforVacation = allClinics
-                    self.delegate?.clinicsRecived()
-                case .failure(let error):
-                    print(error)
-                    self.delegate?.errorReceived(error: error.localizedDescription)
+        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+            switch result {
+            case .success(let allClinics):
+                self.allClinicsforVacation = allClinics
+                self.delegate?.clinicsRecived()
+            case .failure(let error):
+                print(error)
+                self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }
-                
+    
+    func getVacationDeatils(selectedClinicId: Int) {
+        let url = "\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/vacation"
+        
+        self.requestManager.request(forPath: ApiUrl.userProfile.appending(url), method: .GET, headers: self.requestManager.Headers()) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let list):
+                self.vacationList = list
+                self.delegate?.vacationsListResponseRecived()
+            case .failure(let error):
+                self.delegate?.apiErrorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
     func sendRequestforVacation(vacationParams: [String: Any]) {
         let url = "\(UserRepository.shared.userId ?? 0)/vacation-schedules"
-       
+        
         self.requestManager.request(forPath: ApiUrl.vacationSubmit.appending(url), method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
@@ -68,18 +83,6 @@ class VacationViewModel {
         }
     }
     
-    func getVacationDeatils(selectedClinicId: Int) {
-        let url = "\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/vacation"
-
-        self.requestManager.request(forPath: ApiUrl.userProfile.appending(url), method: .GET, headers: self.requestManager.Headers()) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
-            switch result {
-            case .success(let response):
-                self.delegate?.vacationsListResponseRecived(apiResponse: response)
-            case .failure(let error):
-                self.delegate?.apiErrorReceived(error: error.localizedDescription)
-            }
-        }
-    }
 }
 
 extension VacationViewModel: VacationViewModelProtocol {
@@ -88,6 +91,10 @@ extension VacationViewModel: VacationViewModelProtocol {
         return self.allClinicsforVacation ?? []
     }
     
+    var getVacationData: [VacationsListModel] {
+        return self.vacationList ?? []
+    }
+   
     func dateFormatterString(textField: CustomTextField) -> String {
         datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
         dateFormatter.dateStyle = .medium
