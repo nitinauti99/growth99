@@ -1432,8 +1432,8 @@
 			isa = PBXGroup;
 			children = (
 				84D0618B29670676001FE469 /* Model */,
-				84D0618E29670676001FE469 /* View */,
 				84D0618929670676001FE469 /* ViewModel */,
+				84D0618E29670676001FE469 /* View */,
 				84D0619229670676001FE469 /* CustomTableViewCell */,
 			);
 			path = "Vacation Schedule";

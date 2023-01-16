@@ -113,7 +113,7 @@ class EditTasksViewModel {
                 "questionnaireSubmissionId": questionnaireSubmissionId,
                 "leadOrPatient": leadOrPatient,
             ]
-        }else{
+        }else {
             urlParameter = [
                 "name": name,
                 "description": description,

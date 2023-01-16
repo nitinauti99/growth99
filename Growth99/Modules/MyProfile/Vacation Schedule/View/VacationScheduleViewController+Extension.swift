@@ -37,8 +37,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
             
             if isEmptyResponse == false {
-                cell.updateTimeFromTextField(with: vacationViewModel.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank))
-                cell.updateTimeToTextField(with: vacationViewModel.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank))
+                cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? "")
+                cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? "")
                 if vacationsListModel?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
                     cell.removeTimeButton.isHidden = false
                 } else {
@@ -79,21 +79,21 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             headerView.tag = section
             
             if isEmptyResponse == false {
-                headerView.dateFromTextField.text = vacationViewModel.serverToLocal(date: vacationsListModel?[section].fromDate ?? String.blank)
-                headerView.dateToTextField.text = vacationViewModel.serverToLocal(date: vacationsListModel?[section].toDate ?? String.blank)
+                headerView.dateFromTextField.text = vacationViewModel?.serverToLocal(date: vacationsListModel?[section].fromDate ?? String.blank)
+                headerView.dateToTextField.text = vacationViewModel?.serverToLocal(date: vacationsListModel?[section].toDate ?? String.blank)
             } else {
                 headerView.dateFromTextField.text = String.blank
                 headerView.dateToTextField.text = String.blank
             }
             headerView.buttondateFromTextFieldCallback = { [weak self] (textFiled) in
                 if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
-                    headerView.updateDateFromTextField(with: self?.vacationViewModel.dateFormatterString(textField: textFiled) ?? String.blank)
+                    headerView.updateDateFromTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
                 }
             }
             
             headerView.buttondateToTextFieldCallback = { [weak self] (textFiled) in
                 if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
-                    headerView.updateDateToTextField(with: self?.vacationViewModel.dateFormatterString(textField: textFiled) ?? String.blank)
+                    headerView.updateDateToTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
                 }
             }
             return headerView
@@ -113,7 +113,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             self.view.ShowSpinner()
             clinicTextLabel.text = allClinicsForVacation?[indexPath.row].name ?? String.blank
             selectedClinicId = allClinicsForVacation?[indexPath.row].id ?? 0
-            vacationViewModel.getVacationDeatils(selectedClinicId: selectedClinicId)
+            vacationViewModel?.getVacationDeatils(selectedClinicId: selectedClinicId)
             hideClinicDropDown()
         }
      }
@@ -147,7 +147,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-            vacationCell.updateTimeFromTextField(with: self.vacationViewModel.timeFormatterString(textField: cell.timeFromTextField))
+            vacationCell.updateTimeFromTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? "")
         }
     }
     
@@ -158,7 +158,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-            vacationCell.updateTimeToTextField(with: self.vacationViewModel.timeFormatterString(textField: cell.timeToTextField))
+            vacationCell.updateTimeToTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? "")
         }
     }
 }

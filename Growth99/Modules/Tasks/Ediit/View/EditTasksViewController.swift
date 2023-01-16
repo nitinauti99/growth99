@@ -69,6 +69,10 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         DeadlineTextField.text =  taskDetail?.deadLine
         DeadlineTextField.text = dateFormatterString(textField: DeadlineTextField)
         descriptionTextView.text = taskDetail?.description
+    }
+    
+    func setupLeadOrPatientDetail() {
+        let taskDetail = viewModel?.taskDetailData
         if taskDetail?.leadDTO != nil {
             leadButton.isSelected = true
             leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? "") \(taskDetail?.leadDTO?.lastName ?? "")"
@@ -79,7 +83,6 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             emailTextField.text = taskDetail?.leadDTO?.email
             leadOrPatientLbi.text = "Lead Information"
             goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
-
         }else {
             patientButton.isSelected = true
             leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? "") \(taskDetail?.patientDTO?.lastName ?? "")"
@@ -90,7 +93,6 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             emailTextField.text = taskDetail?.patientDTO?.email
             leadOrPatientLbi.text = "Patient Information"
             goToDetailPageButton.setTitle("Go To Patient Detail", for: .normal)
-
         }
     }
     

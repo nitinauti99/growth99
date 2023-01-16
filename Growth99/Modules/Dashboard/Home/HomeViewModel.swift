@@ -39,7 +39,6 @@ class HomeViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getUserData(userId: Int) {
-
         let url = ApiUrl.userProfile.appending("\(userId)")
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<UserProfile, GrowthNetworkError>) in
             switch result {

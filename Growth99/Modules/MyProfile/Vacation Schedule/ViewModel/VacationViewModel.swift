@@ -7,12 +7,31 @@
 
 import Foundation
 
-class VacationViewModel {
+protocol VacationViewModelProtocol {
+    func getallClinics()
+    var getAllClinicsData: [Clinics] { get }
+    func getVacationDeatils(selectedClinicId: Int)
+    func sendRequestforVacation(vacationParams: [String: Any])
     
-    var datePicker = UIDatePicker()
-    var timePicker = UIDatePicker()
+    func dateFormatterString(textField: CustomTextField) -> String
+    func timeFormatterString(textField: CustomTextField) -> String
+    func serverToLocal(date: String) -> String
+    func serverToLocalTime(timeString: String) -> String
+    func serverToLocalInput(date: String) -> String
+    func serverToLocalTimeInput(timeString: String) -> String
+    
+}
+
+class VacationViewModel {
     var allClinicsforVacation: [Clinics]?
     
+    let inFormatter = DateFormatter()
+    let outFormatter = DateFormatter()
+    let dateFormatter = DateFormatter()
+    var datePicker = UIDatePicker()
+    var timePicker = UIDatePicker()
+    let todaysDate = Date()
+
     var delegate: VacationScheduleViewControllerCProtocol?
 
     init(delegate: VacationScheduleViewControllerCProtocol? = nil) {
@@ -20,23 +39,25 @@ class VacationViewModel {
     }
 
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
-
-    func getallClinicsforVacation(completion: @escaping([Clinics]?, Error?) -> Void) {
        
-        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
-            switch result {
-            case .success(let allClinics):
-                completion(allClinics, nil)
-            case .failure(let error):
-                print(error)
-                completion(nil, error)
+    
+    func getallClinics() {
+            self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+                switch result {
+                case .success(let allClinics):
+                    self.allClinicsforVacation = allClinics
+                    self.delegate?.clinicsRecived()
+                case .failure(let error):
+                    print(error)
+                    self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }
-        
+                
     func sendRequestforVacation(vacationParams: [String: Any]) {
-        let apiURL = ApiUrl.vacationSubmit.appending("\(UserRepository.shared.userId ?? 0)/vacation-schedules")
-        self.requestManager.request(forPath: apiURL, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
+        let url = "\(UserRepository.shared.userId ?? 0)/vacation-schedules"
+       
+        self.requestManager.request(forPath: ApiUrl.vacationSubmit.appending(url), method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 print(response)
@@ -48,8 +69,9 @@ class VacationViewModel {
     }
     
     func getVacationDeatils(selectedClinicId: Int) {
-        let apiURL = ApiUrl.userProfile.appending("\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/vacation")
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
+        let url = "\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/vacation"
+
+        self.requestManager.request(forPath: ApiUrl.userProfile.appending(url), method: .GET, headers: self.requestManager.Headers()) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 self.delegate?.vacationsListResponseRecived(apiResponse: response)
@@ -58,13 +80,18 @@ class VacationViewModel {
             }
         }
     }
+}
+
+extension VacationViewModel: VacationViewModelProtocol {
+   
+    var getAllClinicsData: [Clinics] {
+        return self.allClinicsforVacation ?? []
+    }
     
     func dateFormatterString(textField: CustomTextField) -> String {
         datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
         datePicker.minimumDate = todaysDate
         textField.resignFirstResponder()
         datePicker.reloadInputViews()
@@ -82,7 +109,6 @@ class VacationViewModel {
     }
     
     func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
@@ -91,11 +117,9 @@ class VacationViewModel {
     }
     
     func serverToLocalTime(timeString: String) -> String {
-        let inFormatter = DateFormatter()
         inFormatter.locale = Locale(identifier: "en_US_POSIX")
         inFormatter.dateFormat = "HH:mm:ss"
 
-        let outFormatter = DateFormatter()
         outFormatter.locale = Locale(identifier: "en_US_POSIX")
         outFormatter.dateFormat = "hh:mm a"
         outFormatter.amSymbol = "AM"
@@ -106,7 +130,6 @@ class VacationViewModel {
     
     
     func serverToLocalInput(date: String) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let date = dateFormatter.date(from: date) ?? Date()
@@ -115,7 +138,6 @@ class VacationViewModel {
     }
     
     func serverToLocalTimeInput(timeString: String) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "hh:mm a"
         let date = dateFormatter.date(from: timeString) ?? Date()
@@ -125,5 +147,5 @@ class VacationViewModel {
         let date24 = dateFormatter.string(from: date)
         return date24
     }
-
+    
 }
