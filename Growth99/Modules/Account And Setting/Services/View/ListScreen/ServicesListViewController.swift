@@ -105,7 +105,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             return filteredTableData.count
-        }else{
+        } else {
             return viewModel?.serviceData.count ?? 0
         }
     }

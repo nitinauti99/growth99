@@ -103,17 +103,6 @@
 		84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
 		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
-		84D0621329670676001FE469 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616929670676001FE469 /* EventsTableViewCell.swift */; };
-		84D0621429670676001FE469 /* DailyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616A29670676001FE469 /* DailyCell.swift */; };
-		84D0621529670676001FE469 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616B29670676001FE469 /* Event.swift */; };
-		84D0621629670676001FE469 /* CalenderBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616C29670676001FE469 /* CalenderBaseViewController.swift */; };
-		84D0621729670676001FE469 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616D29670676001FE469 /* CalendarHelper.swift */; };
-		84D0621829670676001FE469 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616E29670676001FE469 /* AddEventViewController.swift */; };
-		84D0621929670676001FE469 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0616F29670676001FE469 /* EventEditViewController.swift */; };
-		84D0621A29670676001FE469 /* AddEventViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0617129670676001FE469 /* AddEventViewController.storyboard */; };
-		84D0621B29670676001FE469 /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D0617229670676001FE469 /* EventsTableViewCell.xib */; };
-		84D0621C29670676001FE469 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617329670676001FE469 /* DailyViewController.swift */; };
-		84D0621D29670676001FE469 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617429670676001FE469 /* CalenderViewController.swift */; };
 		84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617729670676001FE469 /* AppointmentsViewController.swift */; };
 		84D0621F29670676001FE469 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0617829670676001FE469 /* AppointmentsViewController.storyboard */; };
 		84D0622029670676001FE469 /* WorkingScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617B29670676001FE469 /* WorkingScheduleViewModel.swift */; };
@@ -370,6 +359,21 @@
 		DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578762971325200CE458B /* ServicesListDetailViewController.swift */; };
 		DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */; };
 		DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */; };
+		DAB4E98E29755BA000AAA414 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E97C29755BA000AAA414 /* EventsTableViewCell.swift */; };
+		DAB4E98F29755BA000AAA414 /* EventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB4E97D29755BA000AAA414 /* EventsTableViewCell.xib */; };
+		DAB4E99029755BA000AAA414 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98129755BA000AAA414 /* Event.swift */; };
+		DAB4E99129755BA000AAA414 /* CalenderBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98229755BA000AAA414 /* CalenderBaseViewController.swift */; };
+		DAB4E99229755BA000AAA414 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98329755BA000AAA414 /* EventEditViewController.swift */; };
+		DAB4E99329755BA000AAA414 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98629755BA000AAA414 /* AddEventViewController.swift */; };
+		DAB4E99429755BA000AAA414 /* AddEventViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAB4E98729755BA000AAA414 /* AddEventViewController.storyboard */; };
+		DAB4E99529755BA000AAA414 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98929755BA000AAA414 /* CalenderViewController.swift */; };
+		DAB4E99629755BA000AAA414 /* DailyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98B29755BA000AAA414 /* DailyCell.swift */; };
+		DAB4E99729755BA000AAA414 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98C29755BA000AAA414 /* CalendarHelper.swift */; };
+		DAB4E99829755BA000AAA414 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E98D29755BA000AAA414 /* DailyViewController.swift */; };
+		DAB4E99A2975725800AAA414 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E9992975725800AAA414 /* CalenderViewModel.swift */; };
+		DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E99B297577D900AAA414 /* CalenderModel.swift */; };
+		DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E99D2975943300AAA414 /* EmptyEventsTableViewCell.swift */; };
+		DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB4E99E2975943300AAA414 /* EmptyEventsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -500,18 +504,6 @@
 		84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditTasksViewController.storyboard; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
-		84D0616929670676001FE469 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
-		84D0616A29670676001FE469 /* DailyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCell.swift; sourceTree = "<group>"; };
-		84D0616B29670676001FE469 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		84D0616C29670676001FE469 /* CalenderBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderBaseViewController.swift; sourceTree = "<group>"; };
-		84D0616D29670676001FE469 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
-		84D0616E29670676001FE469 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
-		84D0616F29670676001FE469 /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
-		84D0617029670676001FE469 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
-		84D0617129670676001FE469 /* AddEventViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEventViewController.storyboard; sourceTree = "<group>"; };
-		84D0617229670676001FE469 /* EventsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsTableViewCell.xib; sourceTree = "<group>"; };
-		84D0617329670676001FE469 /* DailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
-		84D0617429670676001FE469 /* CalenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		84D0617729670676001FE469 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		84D0617829670676001FE469 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
 		84D0617B29670676001FE469 /* WorkingScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -767,6 +759,22 @@
 		DA4578762971325200CE458B /* ServicesListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListDetailViewController.swift; sourceTree = "<group>"; };
 		DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListDetailModel.swift; sourceTree = "<group>"; };
+		DAB4E97C29755BA000AAA414 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		DAB4E97D29755BA000AAA414 /* EventsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsTableViewCell.xib; sourceTree = "<group>"; };
+		DAB4E98129755BA000AAA414 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		DAB4E98229755BA000AAA414 /* CalenderBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderBaseViewController.swift; sourceTree = "<group>"; };
+		DAB4E98329755BA000AAA414 /* EventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
+		DAB4E98429755BA000AAA414 /* Growth99-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Growth99-Bridging-Header.h"; sourceTree = "<group>"; };
+		DAB4E98629755BA000AAA414 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		DAB4E98729755BA000AAA414 /* AddEventViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddEventViewController.storyboard; sourceTree = "<group>"; };
+		DAB4E98929755BA000AAA414 /* CalenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		DAB4E98B29755BA000AAA414 /* DailyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCell.swift; sourceTree = "<group>"; };
+		DAB4E98C29755BA000AAA414 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		DAB4E98D29755BA000AAA414 /* DailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
+		DAB4E9992975725800AAA414 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
+		DAB4E99B297577D900AAA414 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
+		DAB4E99D2975943300AAA414 /* EmptyEventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsTableViewCell.swift; sourceTree = "<group>"; };
+		DAB4E99E2975943300AAA414 /* EmptyEventsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyEventsTableViewCell.xib; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1326,31 +1334,12 @@
 		84D0616729670676001FE469 /* Calender */ = {
 			isa = PBXGroup;
 			children = (
-				84D06331296708A3001FE469 /* Model */,
-				84D0616829670676001FE469 /* View */,
-				84D06333296708A3001FE469 /* ViewModel */,
-				84D06332296708A3001FE469 /* CustomTableViewCell */,
+				DAB4E97A29755BA000AAA414 /* Model */,
+				DAB4E97F29755BA000AAA414 /* View */,
+				DAB4E97E29755BA000AAA414 /* ViewModel */,
+				DAB4E97B29755BA000AAA414 /* CustomTableViewCell */,
 			);
 			path = Calender;
-			sourceTree = "<group>";
-		};
-		84D0616829670676001FE469 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84D0616929670676001FE469 /* EventsTableViewCell.swift */,
-				84D0616A29670676001FE469 /* DailyCell.swift */,
-				84D0616B29670676001FE469 /* Event.swift */,
-				84D0616C29670676001FE469 /* CalenderBaseViewController.swift */,
-				84D0616D29670676001FE469 /* CalendarHelper.swift */,
-				84D0616E29670676001FE469 /* AddEventViewController.swift */,
-				84D0616F29670676001FE469 /* EventEditViewController.swift */,
-				84D0617029670676001FE469 /* Growth99-Bridging-Header.h */,
-				84D0617129670676001FE469 /* AddEventViewController.storyboard */,
-				84D0617229670676001FE469 /* EventsTableViewCell.xib */,
-				84D0617329670676001FE469 /* DailyViewController.swift */,
-				84D0617429670676001FE469 /* CalenderViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		84D0617529670676001FE469 /* MyProfile */ = {
@@ -1843,40 +1832,8 @@
 		84D0632729670898001FE469 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
-				84D0632929670898001FE469 /* Model */,
-				84D0632A29670898001FE469 /* View */,
-				84D0632829670898001FE469 /* ViewModel */,
-				84D0632B29670898001FE469 /* CustomTableViewCell */,
 			);
 			path = Payments;
-			sourceTree = "<group>";
-		};
-		84D0632829670898001FE469 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84D0632929670898001FE469 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84D0632A29670898001FE469 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84D0632B29670898001FE469 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		84D0632C29670898001FE469 /* Booking History */ = {
@@ -1916,27 +1873,6 @@
 			children = (
 			);
 			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
-		84D06331296708A3001FE469 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84D06332296708A3001FE469 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
-		84D06333296708A3001FE469 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84E34C3C2970264D00C58B0D /* list */ = {
@@ -2351,6 +2287,82 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DAB4E97A29755BA000AAA414 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E99B297577D900AAA414 /* CalenderModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DAB4E97B29755BA000AAA414 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E97C29755BA000AAA414 /* EventsTableViewCell.swift */,
+				DAB4E97D29755BA000AAA414 /* EventsTableViewCell.xib */,
+				DAB4E99D2975943300AAA414 /* EmptyEventsTableViewCell.swift */,
+				DAB4E99E2975943300AAA414 /* EmptyEventsTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		DAB4E97E29755BA000AAA414 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E9992975725800AAA414 /* CalenderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DAB4E97F29755BA000AAA414 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E98529755BA000AAA414 /* AddEventView */,
+				DAB4E98829755BA000AAA414 /* CalenderView */,
+				DAB4E98A29755BA000AAA414 /* DayView */,
+				DAB4E98029755BA000AAA414 /* EventEdit */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DAB4E98029755BA000AAA414 /* EventEdit */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E98129755BA000AAA414 /* Event.swift */,
+				DAB4E98229755BA000AAA414 /* CalenderBaseViewController.swift */,
+				DAB4E98329755BA000AAA414 /* EventEditViewController.swift */,
+				DAB4E98429755BA000AAA414 /* Growth99-Bridging-Header.h */,
+			);
+			path = EventEdit;
+			sourceTree = "<group>";
+		};
+		DAB4E98529755BA000AAA414 /* AddEventView */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E98629755BA000AAA414 /* AddEventViewController.swift */,
+				DAB4E98729755BA000AAA414 /* AddEventViewController.storyboard */,
+			);
+			path = AddEventView;
+			sourceTree = "<group>";
+		};
+		DAB4E98829755BA000AAA414 /* CalenderView */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E98929755BA000AAA414 /* CalenderViewController.swift */,
+			);
+			path = CalenderView;
+			sourceTree = "<group>";
+		};
+		DAB4E98A29755BA000AAA414 /* DayView */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4E98B29755BA000AAA414 /* DailyCell.swift */,
+				DAB4E98C29755BA000AAA414 /* CalendarHelper.swift */,
+				DAB4E98D29755BA000AAA414 /* DailyViewController.swift */,
+			);
+			path = DayView;
+			sourceTree = "<group>";
+		};
 		DE5547C14E13DB3FD35464AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2503,6 +2515,7 @@
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
 				84D0621F29670676001FE469 /* AppointmentsViewController.storyboard in Resources */,
+				DAB4E98F29755BA000AAA414 /* EventsTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* CustomEmailTemplateTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
@@ -2512,19 +2525,19 @@
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
-				84D0621A29670676001FE469 /* AddEventViewController.storyboard in Resources */,
 				84D063062967080E001FE469 /* questionAnswersTableViewCell.xib in Resources */,
 				84D063102967080E001FE469 /* LeadTableViewCell.xib in Resources */,
+				DAB4E99429755BA000AAA414 /* AddEventViewController.storyboard in Resources */,
 				84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
-				84D0621B29670676001FE469 /* EventsTableViewCell.xib in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
+				DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
@@ -2681,7 +2694,6 @@
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
-				84D0621829670676001FE469 /* AddEventViewController.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
@@ -2721,7 +2733,6 @@
 				845C39ED292276B000D934C5 /* ServiceManager.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
-				84D0621729670676001FE469 /* CalendarHelper.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
 				84D0627E29670677001FE469 /* RegistrationModel.swift in Sources */,
@@ -2734,16 +2745,17 @@
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
+				DAB4E98E29755BA000AAA414 /* EventsTableViewCell.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
-				84D0621429670676001FE469 /* DailyCell.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
+				DAB4E99229755BA000AAA414 /* EventEditViewController.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */,
 				84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */,
@@ -2754,12 +2766,14 @@
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
+				DAB4E99129755BA000AAA414 /* CalenderBaseViewController.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
 				84B8B81B2973A64500742B42 /* EditTasksViewModel.swift in Sources */,
 				84D0628E29670677001FE469 /* LogInViewController.swift in Sources */,
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */,
+				DAB4E99829755BA000AAA414 /* DailyViewController.swift in Sources */,
 				84D0629F2967070D001FE469 /* UserListModel.swift in Sources */,
 				84D062F62967080E001FE469 /* leadCreationModel.swift in Sources */,
 				84D0623729670677001FE469 /* PateintDetailViewController.swift in Sources */,
@@ -2795,6 +2809,7 @@
 				84F610E0292A71AB00B1FB69 /* Optional.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
+				DAB4E99029755BA000AAA414 /* Event.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
@@ -2806,8 +2821,8 @@
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
 				84F610FD292A71AB00B1FB69 /* TLSCertificateBlock.swift in Sources */,
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
-				84D0621329670676001FE469 /* EventsTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
+				DAB4E99629755BA000AAA414 /* DailyCell.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
 				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
@@ -2829,6 +2844,7 @@
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
+				DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
@@ -2836,10 +2852,12 @@
 				84D062F02967080E001FE469 /* leadModel.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
+				DAB4E99329755BA000AAA414 /* AddEventViewController.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
+				DAB4E99A2975725800AAA414 /* CalenderViewModel.swift in Sources */,
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
@@ -2848,7 +2866,6 @@
 				84D062F42967080E001FE469 /* leadDetailViewController.swift in Sources */,
 				84D0624229670677001FE469 /* UpdateUserProfile.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */,
-				84D0621529670676001FE469 /* Event.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
 				84B75ECF296903B000962F3E /* ServicesViewModel.swift in Sources */,
 				84F61119292A71AB00B1FB69 /* NetworkManager+Stub.swift in Sources */,
@@ -2884,7 +2901,6 @@
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
-				84D0621D29670676001FE469 /* CalenderViewController.swift in Sources */,
 				84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
@@ -2892,7 +2908,6 @@
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
-				84D0621C29670676001FE469 /* DailyViewController.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
@@ -2901,12 +2916,14 @@
 				84D0628B29670677001FE469 /* User.swift in Sources */,
 				845C39D4292276B000D934C5 /* Constant.swift in Sources */,
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,
+				DAB4E99729755BA000AAA414 /* CalendarHelper.swift in Sources */,
 				84F61135292A71AB00B1FB69 /* HTTPMethod.swift in Sources */,
 				84F610F9292A71AB00B1FB69 /* DERError.swift in Sources */,
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
 				84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */,
 				84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */,
 				84F610DD292A71AB00B1FB69 /* FileDescriptor.swift in Sources */,
+				DAB4E99529755BA000AAA414 /* CalenderViewController.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
 				84F61127292A71AB00B1FB69 /* SecCertificate+Extension.swift in Sources */,
 				84F610C3292A71AA00B1FB69 /* JWTDecoder.swift in Sources */,
@@ -2934,10 +2951,9 @@
 				84F610C4292A71AA00B1FB69 /* JOSEHeader.swift in Sources */,
 				84D0631E2967080E001FE469 /* PreSelectCheckboxTableViewCell.swift in Sources */,
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
-				84D0621929670676001FE469 /* EventEditViewController.swift in Sources */,
+				DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
-				84D0621629670676001FE469 /* CalenderBaseViewController.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
