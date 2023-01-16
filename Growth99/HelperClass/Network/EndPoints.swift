@@ -49,6 +49,8 @@ struct EndPoints {
     static let taskPatientsList = "/api/v1/patients/all"
     static let taskQuestionnaireSubmissionList = "/api/questionnaire-submission/list"
     static let createTaskUser = "/api/workflowtasks"
+    static let consentList = "/api/v1/consents"
+    static let questionnaireList = "/api/v1/questionnaire"
 }
 
 struct ApiUrl {
@@ -92,5 +94,6 @@ struct ApiUrl {
     static let taskPatientsList = EndPoints.baseURL.appending(EndPoints.taskPatientsList)
     static let taskQuestionnaireSubmissionList = EndPoints.baseURL.appending(EndPoints.taskQuestionnaireSubmissionList)
     static let createTaskUser = EndPoints.baseURL.appending(EndPoints.createTaskUser)
-
+    static let consentList = EndPoints.baseURL.appending(EndPoints.consentList)
+    static let questionnaireList = EndPoints.baseURL.appending(EndPoints.questionnaireList)
 }

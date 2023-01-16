@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ServicesListModel: Codable {
+struct ServiceListModel: Codable {
     let serviceList: [ServiceList]?
 }
 
@@ -22,5 +22,26 @@ struct ServiceList: Codable {
     let serviceName: String?
     let categoryName: String?
     let categoryId: Int?
+    let updatedAt: String?
+}
+
+struct ConsentListModel: Codable, Equatable {
+    let createdAt: String?
+    let updatedBy: String?
+    let createdBy: String?
+    let name: String?
+    let id: Int?
+    let updatedAt: String?
+}
+
+struct QuestionnaireListModel: Codable, Equatable {
+    let createdAt: String?
+    let updatedBy: String?
+    let noOfQuestions: Int?
+    let isContactForm: Bool?
+    let createdBy: String?
+    let name: String?
+    let id: Int?
+    let isG99ReviewForm: Bool?
     let updatedAt: String?
 }

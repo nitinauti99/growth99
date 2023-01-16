@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ServicesListViewModelProtocol {
-    func getUserList()
+    func getServiceList()
     var  userData: [ServiceList] { get }
     func userDataAtIndex(index: Int) -> ServiceList?
     var  userFilterDataData: [ServiceList] { get }
@@ -27,7 +27,7 @@ class ServicesListViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getUserList() {
+    func getServiceList() {
         self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[ServiceList], GrowthNetworkError>) in
             switch result {
             case .success(let userData):

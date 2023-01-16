@@ -71,7 +71,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     }
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getServiceList()
     }
     //
     //    func loadMoreItemsForList(){
@@ -90,7 +90,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     
     @objc func getUserList(){
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getServiceList()
     }
     
     func LeadDataRecived() {

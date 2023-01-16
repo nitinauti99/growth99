@@ -30,7 +30,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
     @IBOutlet private weak var rolesTextField: CustomTextField!
     @IBOutlet private weak var degignationTextField: CustomTextField!
-
+    
     @IBOutlet private weak var userProvider: UISwitch!
     @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
     @IBOutlet private weak var userProviderView: UIView!
@@ -51,7 +51,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     var allService = [Clinics]()
     var selectedService = [Clinics]()
     var selectedServiceIds = [Int]()
-
+    
     var viewModel: HomeViewModelProtocol?
     var roleArray: [String]?
     
@@ -60,7 +60,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
-       
+        
         viewModel = HomeViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
@@ -72,7 +72,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         if screenTitle == Constant.Profile.homeScreen {
             self.navigationItem.titleView = UIImageView.navigationBarLogo()
             self.navigationItem.leftBarButtonItem =
-                UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
+            UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
         } else {
             self.title = Constant.Profile.createUser
         }
@@ -81,7 +81,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     @objc func sideMenuTapped(_ sender: UIButton) {
         menuVC.revealSideMenu()
     }
-
+    
     fileprivate func setUpUI() {
         if screenTitle == Constant.Profile.homeScreen {
             self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
@@ -117,12 +117,12 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     }
     
     func clinicsRecived() {
-         // get from user api
-         selectedClincs = viewModel?.getUserProfileData.clinics ?? []
-       
+        // get from user api
+        selectedClincs = viewModel?.getUserProfileData.clinics ?? []
+        
         /// get From allclinincsapi
-         allClinics = viewModel?.getAllClinicsData ?? []
-
+        allClinics = viewModel?.getAllClinicsData ?? []
+        
         self.clincsTextField.text = selectedClincs.map({$0.name ?? ""}).joined(separator: ", ")
         let selectedClincId = selectedClincs.map({$0.id ?? 0})
         self.selectedClincIds = selectedClincId
@@ -133,7 +133,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         // get from user api
         selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
         allServiceCategories = viewModel?.getAllServiceCategories ?? []
-
+        
         var itemNotPresent:Bool = false
         for item in selectedServiceCategories {
             if allServiceCategories.contains(item) {
@@ -143,7 +143,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? ""}).joined(separator: ", ")
         let selectedList = selectedServiceCategories.map({$0.id ?? 0})
         self.selectedServiceCategoriesIds = selectedList
-
+        
         if selectedServiceCategories.count == 0 || itemNotPresent == false {
             self.serviceCategoriesTextField.text = ""
         }
@@ -156,11 +156,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.servicesTextField.text = ""
         selectedService = viewModel?.getAllService ?? []
         allService = viewModel?.getUserProfileData.services ?? []
-    
+        
         let selectedList = selectedService.map({$0.id ?? 0})
         self.selectedServiceIds = selectedList
         self.servicesTextField.text = selectedService.map({$0.name ?? ""}).joined(separator: ", ")
-     }
+    }
     
     func profileDataUpdated(){
         self.view.HideSpinner()
@@ -168,7 +168,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.openUserListView()
     }
     
-
+    
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
             self.userProviderViewHight.constant = 300
@@ -201,7 +201,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     @objc func keyboardWillHide(notification:Notification) {
         self.view.frame.origin.y = 0
     }
-
+    
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
         self.rolesTextField.text = ""
@@ -212,8 +212,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
-         }
-
+        }
+        
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
@@ -221,50 +221,49 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         if selectedClincs.count == 0 {
             self.clincsTextField.text = ""
         }
-     
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-              self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
-              let selectedId = selectedList.map({$0.id ?? 0})
-              self?.selectedClincIds = selectedId
-              self?.selectedClincs  = selectedList
-            
-              self?.view.ShowSpinner()
-              self?.viewModel?.getallServiceCategories(SelectedClinics: selectedId)
-         }
+            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            let selectedId = selectedList.map({$0.id ?? 0})
+            self?.selectedClincIds = selectedId
+            self?.selectedClincs  = selectedList
+            self?.view.ShowSpinner()
+            self?.viewModel?.getallServiceCategories(SelectedClinics: selectedId)
+        }
         selectionMenu.reloadInputViews()
-       
+        
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
     }
-
+    
     
     @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
-      
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServiceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
             cell.textLabel?.text = serviceCategories.name?.components(separatedBy: " ").first
         }
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
             
-        self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
-        let selectedId = selectedList.map({$0.id ?? 0})
-        self?.selectedServiceCategoriesIds = selectedId
-        self?.selectedServiceCategories = selectedList
+            self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            let selectedId = selectedList.map({$0.id ?? 0})
+            self?.selectedServiceCategoriesIds = selectedId
+            self?.selectedServiceCategories = selectedList
             
-        self?.view.ShowSpinner()
-        self?.viewModel?.getallService(SelectedCategories: selectedId)
+            self?.view.ShowSpinner()
+            self?.viewModel?.getallService(SelectedCategories: selectedId)
         }
-
+        
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         if self.allServiceCategories.count >= 6 {
             selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServiceCategories.count) * 44)), arrowDirection: .down), from: self)
-        }else{
+        } else {
             selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServiceCategories.count) * 44)), arrowDirection: .up), from: self)
         }
     }
@@ -273,7 +272,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         if allService.count == 0 {
             self.servicesTextField.text = ""
         }
-     
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allService, cellType: .subTitle) { (cell, allServices, indexPath) in
             cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
         }
@@ -286,7 +285,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         }
         selectionMenu.showEmptyDataLabel(text: "No Services Found")
         selectionMenu.cellSelectionStyle = .checkbox
-
+        
         if self.allService.count >= 2 {
             selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allService.count) * 44)), arrowDirection: .down), from: self)
         }else{
@@ -294,25 +293,19 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         }
     }
     
-//    // search bar
-//    selectionMenu.showSearchBar { [weak self] (searchText) -> ([Clinics]) in
-//        return allServices.filter({ ($0.name)!.lowercased().starts(with: searchText.lowercased())})
-//    }
-
-   
     private func setupTexFieldValidstion() {
         self.phoneNumberTextField.addTarget(self, action:
-                                            #selector(HomeViewContoller.textFieldDidChange(_:)),
+                                                #selector(HomeViewContoller.textFieldDidChange(_:)),
                                             for: UIControl.Event.editingChanged)
         self.lastNameTextField.addTarget(self, action:
                                             #selector(HomeViewContoller.textFieldDidChange(_:)),
-                                            for: UIControl.Event.editingChanged)
+                                         for: UIControl.Event.editingChanged)
         self.firsNameTextField.addTarget(self, action:
                                             #selector(HomeViewContoller.textFieldDidChange(_:)),
-                                            for: UIControl.Event.editingChanged)
+                                         for: UIControl.Event.editingChanged)
     }
-
-   
+    
+    
     
     @IBAction func saveUserProfile(){
         self.view.ShowSpinner()
@@ -326,7 +319,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     func errorReceived(error: String) {
         self.view.HideSpinner()
     }
-   
+    
     func openUserListView(){
         let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
         self.navigationController?.pushViewController(userListVC, animated: true)
@@ -334,13 +327,13 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
 }
 
 extension HomeViewContoller: UITextFieldDelegate {
-   
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var maxLength = Int()
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-
+        currentString.replacingCharacters(in: range, with: string) as NSString
+        
         if  textField == phoneNumberTextField {
             maxLength = 10
             phoneNumberTextField.hideError()
@@ -359,10 +352,9 @@ extension HomeViewContoller: UITextFieldDelegate {
         }
         if textField == phoneNumberTextField, textField.text == "" {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
-         }
+        }
         if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
         }
     }
-  
 }

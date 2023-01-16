@@ -68,9 +68,7 @@ class HomeViewModel {
         
     func getallServiceCategories(SelectedClinics: [Int]){
         let finaleUrl = ApiUrl.serviceCategories + SelectedClinics.map { String($0) }.joined(separator: ",")
-        
         self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
-           
             switch result {
             case .success(let allserviceCategories):
                 self.allserviceCategories = allserviceCategories
@@ -84,7 +82,7 @@ class HomeViewModel {
     
     
    func getallService(SelectedCategories: [Int]) {
-       let finaleUrl = ApiUrl.service  + SelectedCategories.map { String($0) }.joined(separator: ",")
+       let finaleUrl = ApiUrl.service + SelectedCategories.map { String($0) }.joined(separator: ",")
 
        self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
