@@ -30,8 +30,8 @@ class ServiceListViewModel {
     func getServiceList() {
         self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
             switch result {
-            case .success(let userData):
-                self.serviceListData = userData.serviceList ?? []
+            case .success(let serviceData):
+                self.serviceListData = serviceData.serviceList ?? []
                 self.delegate?.serviceListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

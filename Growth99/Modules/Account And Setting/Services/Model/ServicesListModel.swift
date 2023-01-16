@@ -11,7 +11,7 @@ struct ServiceListModel: Codable {
     let serviceList: [ServiceList]?
 }
 
-struct ServiceList: Codable {
+struct ServiceList: Codable, Equatable {
     let createdAt: String?
     let updatedBy: String?
     let createdBy: String?

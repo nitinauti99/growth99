@@ -110,6 +110,7 @@ struct Constant {
         static let dailyViewController = "DailyViewController"
         static let addEventViewController = "AddEventViewController"
         static let eventsTableViewCell = "EventsTableViewCell"
+        static let emptyEventsTableViewCell = "EmptyEventsTableViewCell"
         static let calenderViewController = "CalenderViewController"
     }    
 }
