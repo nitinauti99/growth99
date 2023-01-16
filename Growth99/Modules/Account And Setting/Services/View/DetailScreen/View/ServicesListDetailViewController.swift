@@ -16,7 +16,7 @@ protocol ServicesListDetailViewContollerProtocol {
     func serviceCategoriesReceived()
 }
 
-class ServicesListDetailViewController: UIViewController, ServicesListDetailViewContollerProtocol {
+class ServicesListDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ServicesListDetailViewContollerProtocol {
     
     @IBOutlet private weak var serviceNameTextField: CustomTextField!
     @IBOutlet private weak var selectClinicTextField: CustomTextField!
@@ -28,6 +28,12 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
     @IBOutlet private weak var serviceDescTextView: UITextView!
     @IBOutlet private weak var serviceConsentTextField: CustomTextField!
     @IBOutlet private weak var serviceQuestionarieTextField: CustomTextField!
+    @IBOutlet private weak var serviceImageViewBtn: UIButton!
+    @IBOutlet private weak var removeImageViewBtn: UIButton!
+    @IBOutlet private weak var serviceImageView: UIImageView!
+    @IBOutlet private weak var serviceImageViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var serviceImageViewTop: NSLayoutConstraint!
+    @IBOutlet private weak var contentViewHeight: NSLayoutConstraint!
 
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
@@ -62,6 +68,14 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
     
     func setUpNavigationBar() {
         self.title = Constant.Profile.createService
+        if self.title == Constant.Profile.createService {
+            removeImageViewBtn.isHidden = true
+            contentViewHeight.constant = 1300
+            serviceImageViewHeight.constant = 0
+            serviceImageViewTop.constant = 0
+        } else {
+            removeImageViewBtn.isHidden = false
+        }
     }
     
     func setupUI() {
@@ -108,7 +122,12 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectClinicTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincs  = selectedList
+            self?.selectedClincIds = selectedId
+
+//            self?.view.ShowSpinner()
+//            self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedId)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -172,17 +191,16 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
             self.serviceCategoryTextField.text = String.blank
         }
         
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServiceCategories, cellType: .subTitle) { (cell, allServiceCategories, indexPath) in
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allServiceCategories, cellType: .subTitle) { (cell, allServiceCategories, indexPath) in
             cell.textLabel?.text = allServiceCategories.name?.components(separatedBy: " ").first
         }
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.serviceCategoryTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.serviceCategoryTextField.text = selectedItem?.name
             self?.selectedServiceCategories  = selectedList
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServiceCategories.count * 44))), arrowDirection: .up), from: self)
     }
     
@@ -195,7 +213,36 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
     }
     
     @IBAction func uploadServiceImageButtonAction(sender: UIButton) {
-        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = false
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        present(imagePickerController, animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        serviceImageView.image  = selectedImage
+        serviceImageViewHeight.constant = 200
+        serviceImageViewTop.constant = 20
+        contentViewHeight.constant = 1500
+        removeImageViewBtn.isHidden = false
+        serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func removeServiceImageButtonAction(sender: UIButton) {
+        serviceImageView.image = nil
+        serviceImageViewHeight.constant = 0
+        serviceImageViewTop.constant = 0
+        contentViewHeight.constant = 1300
+        removeImageViewBtn.isHidden = true
+        serviceImageViewBtn.setTitle("Choose Service Image", for: .normal)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveServiceButtonAction(sender: UIButton) {
@@ -203,6 +250,6 @@ class ServicesListDetailViewController: UIViewController, ServicesListDetailView
     }
     
     @IBAction func cancelServiceButtonAction(sender: UIButton) {
-        
+        self.navigationController?.popViewController(animated: true)
     }
 }

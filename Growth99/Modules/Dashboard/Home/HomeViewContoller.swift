@@ -305,9 +305,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
                                          for: UIControl.Event.editingChanged)
     }
     
-    
-    
-    @IBAction func saveUserProfile(){
+    @IBAction func saveUserProfile() {
         self.view.ShowSpinner()
         viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: self.degignationTextField.text ?? "", clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
     }
