@@ -67,16 +67,16 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             }
             cell.updateTimeFromTextField(with: String.blank)
             cell.updateTimeToTextField(with: String.blank)
-        
         }
         
-        let totalcount = vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0 - 1
-        let lastIndex = vacationsList?[indexPath.section].userScheduleTimings?.endIndex
+        let totalcount = (vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0) - 1
         cell.borderView.isHidden = true
+        cell.removeTimeButton.isHidden = true
 
-        if totalcount == lastIndex {
+        if indexPath.row == totalcount {
             print("last Index")
             cell.borderView.isHidden = false
+            cell.removeTimeButton.isHidden = false
         }
         /// set bottom view only for last object
         cell.buttonRemoveTapCallback = {
