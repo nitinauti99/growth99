@@ -1098,6 +1098,7 @@
                     <navigationItem key="navigationItem" id="DUE-kv-zTB"/>
                     <connections>
                         <outlet property="addAppointmnetView" destination="Ys2-E9-yUW" id="yKi-nH-jaF"/>
+                        <outlet property="allEvent" destination="upI-lR-wdM" id="M21-eW-CKe"/>
                         <outlet property="calendar" destination="JD4-CL-Yi6" id="Z6q-Rf-70s"/>
                         <outlet property="calendarHeightConstraint" destination="6yh-bg-YrF" id="qwg-Ov-7Xs"/>
                         <outlet property="calendarViewHeightConstraint" destination="EoV-9G-Y32" id="qtQ-rj-WkR"/>
@@ -1105,8 +1106,10 @@
                         <outlet property="calenderscrollview" destination="6Az-JU-V6A" id="kkf-XE-Fkb"/>
                         <outlet property="clincsTextField" destination="jzu-kM-8lq" id="4pM-F6-R1J"/>
                         <outlet property="eventListView" destination="3Vg-SQ-tU0" id="d9V-fs-OIU"/>
+                        <outlet property="pastEvent" destination="SqC-PW-i55" id="B84-P9-ez6"/>
                         <outlet property="providersTextField" destination="Szr-pV-NLf" id="M7f-xK-b2H"/>
                         <outlet property="servicesTextField" destination="Cfk-FX-j6V" id="aVx-m2-FE5"/>
+                        <outlet property="upcomingEvent" destination="xbh-EE-QCj" id="5p2-3g-7dw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8a7-1E-mEp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

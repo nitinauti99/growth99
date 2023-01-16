@@ -19,6 +19,9 @@ protocol CalenderViewModelProtocol {
     
     func getCalenderInfoList(clinicId: Int, providerId: Int, serviceId: Int)
     var appointmentInfoListData: [AppointmentDTOList] { get }
+    
+    func dateFormatterString(textField: CustomTextField) -> String
+    func timeFormatterString(textField: CustomTextField) -> String
 }
 
 
@@ -29,6 +32,9 @@ class CalenderViewModel: CalenderViewModelProtocol {
     var serviceListData: [ServiceList] = []
     var providerListData: [UserDTOList] = []
     var appoinmentListData: [AppointmentDTOList] = []
+    
+    var datePicker = UIDatePicker()
+    var timePicker = UIDatePicker()
     
     init(delegate: CalenderViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -102,6 +108,84 @@ class CalenderViewModel: CalenderViewModelProtocol {
     }
     var appointmentInfoListData: [AppointmentDTOList] {
         return self.appoinmentListData
+    }
+    
+    func dateFormatterString(textField: CustomTextField) -> String {
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let todaysDate = Date()
+        datePicker.minimumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        return dateFormatter.string(from: datePicker.date)
+    }
+    
+    func timeFormatterString(textField: CustomTextField) -> String {
+        timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        timePicker.datePickerMode = .time
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        textField.resignFirstResponder()
+        timePicker.reloadInputViews()
+        return formatter.string(from: timePicker.date)
+    }
+    
+    func serverToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    
+    func serverToLocalInput(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: date)
+    }
+    
+    func serverToLocalInputWorking(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter.string(from: date)
+    }
+    
+    func serverToLocalTime(timeString: String) -> String {
+        let inFormatter = DateFormatter()
+        inFormatter.locale = Locale(identifier: "en_US_POSIX")
+        inFormatter.dateFormat = "HH:mm:ss"
+
+        let outFormatter = DateFormatter()
+        outFormatter.locale = Locale(identifier: "en_US_POSIX")
+        outFormatter.dateFormat = "hh:mm a"
+        outFormatter.amSymbol = "AM"
+        outFormatter.pmSymbol = "PM"
+
+        let date = inFormatter.date(from: timeString) ?? Date()
+        return outFormatter.string(from: date)
+    }
+    
+    func serverToLocalTimeInput(timeString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "hh:mm a"
+        let date = dateFormatter.date(from: timeString) ?? Date()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let date24 = dateFormatter.string(from: date)
+        return date24
     }
     
 }

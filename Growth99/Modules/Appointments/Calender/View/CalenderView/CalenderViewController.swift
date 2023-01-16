@@ -24,7 +24,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var eventListView: UITableView!
-    @IBOutlet private weak var eventListHeaderLabel: UILabel!
     @IBOutlet var calenderscrollview: UIScrollView!
     @IBOutlet var calenderScrollViewHight: NSLayoutConstraint!
 
@@ -32,6 +31,10 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var providersTextField: CustomTextField!
     @IBOutlet private weak var addAppointmnetView: UIView!
+
+    @IBOutlet private weak var upcomingEvent: UIButton!
+    @IBOutlet private weak var pastEvent: UIButton!
+    @IBOutlet private weak var allEvent: UIButton!
 
     let eventStore : EKEventStore = EKEventStore()
     var time = Date()
@@ -259,10 +262,35 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     @IBAction func calenderButtonAction(sender: UIButton) {
         if sender.tag == 0 {
+            upcomingEvent.backgroundColor = UIColor(hexString: "009EDE")
+            upcomingEvent.titleLabel?.textColor = UIColor.white
+            
+            pastEvent.backgroundColor = UIColor.white
+            pastEvent.titleLabel?.textColor = UIColor.black
+            
+            allEvent.backgroundColor = UIColor.white
+            allEvent.titleLabel?.textColor = UIColor.black
             
         } else if sender.tag == 1 {
             
+            upcomingEvent.backgroundColor = UIColor.white
+            upcomingEvent.titleLabel?.textColor = UIColor.black
+            
+            pastEvent.backgroundColor = UIColor(hexString: "009EDE")
+            pastEvent.titleLabel?.textColor = UIColor.white
+            
+            allEvent.backgroundColor = UIColor.white
+            allEvent.titleLabel?.textColor = UIColor.black
         } else {
+            
+            upcomingEvent.backgroundColor = UIColor.white
+            upcomingEvent.titleLabel?.textColor = UIColor.black
+            
+            pastEvent.backgroundColor = UIColor.white
+            pastEvent.titleLabel?.textColor = UIColor.black
+            
+            allEvent.backgroundColor = UIColor(hexString: "009EDE")
+            allEvent.titleLabel?.textColor = UIColor.white
             
         }
     }
