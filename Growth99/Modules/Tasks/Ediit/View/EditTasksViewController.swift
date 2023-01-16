@@ -1,21 +1,23 @@
 //
-//  CreateTasksViewController.swift
+//  EditTasksViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 12/01/23.
+//  Created by nitin auti on 15/01/23.
 //
 
+import Foundation
 import UIKit
 
-protocol CreateTasksViewControllerProtocol: AnyObject {
+protocol EditTasksViewControllerProtocol: AnyObject {
     func taskUserListRecived()
     func taskPatientsListRecived()
     func taskQuestionnaireSubmissionListRecived()
     func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
+    func receivedTaskDetail()
 }
 
-class CreateTasksViewController: UIViewController , CreateTasksViewControllerProtocol{
+class EditTasksViewController: UIViewController , EditTasksViewControllerProtocol{
     
     @IBOutlet private weak var nameTextField: CustomTextField!
     @IBOutlet private weak var usersTextField: CustomTextField!
@@ -26,32 +28,70 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
     @IBOutlet private weak var leadButton: UIButton!
     @IBOutlet private weak var patientButton: UIButton!
     @IBOutlet private weak var leadOrPatientLabel: UILabel!
+    
+    @IBOutlet private weak var firstNameTextField: CustomTextField!
+    @IBOutlet private weak var lastNameTextField: CustomTextField!
+    @IBOutlet private weak var phoneNumberTextField: CustomTextField!
+    @IBOutlet private weak var emailTextField: CustomTextField!
+    @IBOutlet private weak var subView: UIView!
+    @IBOutlet private weak var leadOrPatientLbi: UILabel!
+    @IBOutlet private weak var goToDetailPageButton: UIButton!
 
-
-    var viewModel: CreateTasksViewModelProtocol?
+    var viewModel: EditTasksViewModelProtocol?
     var buttons = [UIButton]()
     var workflowTaskUser = Int()
     var workflowTaskPatient: Int = 0
     var questionnaireSubmissionId = Int()
     var leadOrPatientSelected = ""
+    var taskId: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CreateTasksViewModel(delegate: self)
+        self.viewModel = EditTasksViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
         self.view.ShowSpinner()
-        self.viewModel?.getTaskUserList()
-        leadTextField.placeholder = "Select Lead"
-        
-        setUPUI()
+        self.viewModel?.getTaskDetail(taskId: taskId)
     }
     
     func setUPUI() {
-        leadButton.addTarget(self, action: #selector(CreateTasksViewController.buttonAction(_ :)), for:.touchUpInside)
-        patientButton.addTarget(self, action: #selector(CreateTasksViewController.buttonAction(_ :)), for:.touchUpInside)
+        self.subView.createBorderForView(redius: 8, width: 1)
+        self.subView.addBottomShadow(color:.gray)
+        leadButton.addTarget(self, action: #selector(EditTasksViewController.buttonAction(_ :)), for:.touchUpInside)
+        patientButton.addTarget(self, action: #selector(EditTasksViewController.buttonAction(_ :)), for:.touchUpInside)
         DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         buttons = [leadButton, patientButton]
+        let taskDetail = viewModel?.taskDetailData
+        
+        nameTextField.text = taskDetail?.name
+        usersTextField.text = taskDetail?.userName
+        statusTextField.text = taskDetail?.status
+        DeadlineTextField.text =  taskDetail?.deadLine
+        DeadlineTextField.text = dateFormatterString(textField: DeadlineTextField)
+        descriptionTextView.text = taskDetail?.description
+        if taskDetail?.leadDTO != nil {
+            leadButton.isSelected = true
+            leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? "") \(taskDetail?.leadDTO?.lastName ?? "")"
+            leadOrPatientLabel.text = "Select Lead"
+            firstNameTextField.text = taskDetail?.leadDTO?.firstName
+            lastNameTextField.text = taskDetail?.leadDTO?.lastName
+            phoneNumberTextField.text = taskDetail?.leadDTO?.phoneNumber
+            emailTextField.text = taskDetail?.leadDTO?.email
+            leadOrPatientLbi.text = "Lead Information"
+            goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
+
+        }else {
+            patientButton.isSelected = true
+            leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? "") \(taskDetail?.patientDTO?.lastName ?? "")"
+            leadOrPatientLabel.text = "Select patients"
+            firstNameTextField.text = taskDetail?.patientDTO?.firstName
+            lastNameTextField.text = taskDetail?.patientDTO?.lastName
+            phoneNumberTextField.text = taskDetail?.patientDTO?.phoneNumber
+            emailTextField.text = taskDetail?.patientDTO?.email
+            leadOrPatientLbi.text = "Patient Information"
+            goToDetailPageButton.setTitle("Go To Patient Detail", for: .normal)
+
+        }
     }
     
     @objc func dateFromButtonPressed() {
@@ -81,12 +121,18 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
             leadOrPatientSelected = "Lead"
             leadTextField.placeholder = "Select Lead"
             leadOrPatientLabel.text = "Select Lead"
-        }else{
+        } else{
             leadOrPatientSelected = "Patient"
             leadTextField.placeholder = "Select patients"
             leadOrPatientLabel.text = "Select patients"
          }
     }
+    
+    func receivedTaskDetail(){
+        self.viewModel?.getTaskUserList()
+        setUPUI()
+    }
+
     
     func taskUserListRecived(){
         self.viewModel?.getTaskPatientsList()
@@ -113,6 +159,19 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
 
     @IBAction func cancelButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func goToPatientDetail(sender: UIButton) {
+        let taskDetail = viewModel?.taskDetailData
+        if taskDetail?.leadDTO != nil {
+            let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
+            detailController.LeadId = viewModel?.taskDetailData?.leadId ?? 0
+            navigationController?.pushViewController(detailController, animated: true)
+        }else {
+            let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
+            detailController.pateintId = viewModel?.taskDetailData?.patientId ?? 0
+            navigationController?.pushViewController(detailController, animated: true)
+        }
     }
     
     @IBAction func openStatusListDropDwon(sender: UIButton) {
@@ -156,7 +215,6 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
             selectionMenu.dismissAutomatically = true
             selectionMenu.tableView?.selectionStyle = .single
             selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(finaleListArray.count * 44))), arrowDirection: .down), from: self)
-      
         } else {
             let finaleListArray = viewModel?.taskPatientsList ?? []
             let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: finaleListArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
@@ -169,7 +227,7 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
             selectionMenu.dismissAutomatically = true
             selectionMenu.tableView?.selectionStyle = .single
             selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(finaleListArray.count * 44))), arrowDirection: .down), from: self)
-        }
+         }
     }
     
     @IBAction func createTaskUser(sender: UIButton) {
@@ -186,8 +244,8 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
             return
         }
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? "", description: descriptionTextView.text ?? "", workflowTaskStatus: statusTextField.text ?? "", workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? ""), workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
-      }
+        viewModel?.createTaskUser(name: nameTextField.text ?? "", description: descriptionTextView.text ?? "", workflowTaskStatus: statusTextField.text ?? "", workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? "") , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+       }
     
     func serverToLocalInputWorking(date: String) -> String {
         let dateFormatter = DateFormatter()
@@ -198,5 +256,4 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: date)
     }
-    
 }

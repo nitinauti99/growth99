@@ -12,7 +12,6 @@ protocol leadTimeLineViewModelProtocol {
     func auditLeadList(leadId: Int)
     var leadCreatiionData: [auditLeadModel]? { get }
     var leadCreationData: leadCreationModel? { get }
-
 }
 
 class leadTimeLineViewModel {

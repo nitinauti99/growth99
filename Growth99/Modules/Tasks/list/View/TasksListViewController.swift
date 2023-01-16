@@ -24,7 +24,6 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = TasksListViewModel(delegate: self)
-        self.getUserList()
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
     }
     
@@ -35,9 +34,10 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.getUserList()
         addSerchBar()
         self.registerTableView()
-        self.title = Constant.Profile.users
+        self.title = Constant.Profile.tasks
     }
     
     @objc func updateUI(){
@@ -115,16 +115,16 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let createVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
-        //detailController.pateintId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
-        navigationController?.pushViewController(createVC, animated: true)
+        let editVC = UIStoryboard(name: "EditTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "EditTasksViewController") as! EditTasksViewController
+        editVC.taskId = viewModel?.taskDataAtIndex(index: indexPath.row)?.id ?? 0
+        navigationController?.pushViewController(editVC, animated: true)
     }
 }
 
 extension TasksListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.taskData.filter { $0.userName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        filteredTableData = (viewModel?.taskData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
         taskListTableView.reloadData()
     }

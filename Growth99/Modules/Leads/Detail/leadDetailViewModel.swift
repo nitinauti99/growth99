@@ -143,7 +143,7 @@ class leadDetailViewModel {
 }
 
 extension leadDetailViewModel: leadDetailViewProtocol {
-    
+  
     var leadStatus: String {
         return  self.questionnaireDetailList?.leadStatus ?? ""
     }

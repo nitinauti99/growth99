@@ -60,6 +60,7 @@ struct Constant {
         static let services = "Services"
         static let users = "Users"
         static let tasks = "Tasks"
+        static let Timeline = "Timeline"
         static let appointmentTrigger = "Appointment"
         static let leads = "leads"
         static let searchList = "Search..."
