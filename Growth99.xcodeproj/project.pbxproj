@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
+		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
 		843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */; };
 		845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399F292276AF00D934C5 /* SpinnerView.swift */; };
@@ -398,6 +399,7 @@
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
+		841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bussinessDetailInfoModel.swift; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
 		843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewModel.swift; sourceTree = "<group>"; };
 		845C399F292276AF00D934C5 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -1590,6 +1592,7 @@
 				84D0620429670676001FE469 /* LogInViewController.storyboard */,
 				84D0620629670676001FE469 /* LoginService.swift */,
 				84D0620729670676001FE469 /* LogInViewController.swift */,
+				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2939,6 +2942,7 @@
 				84D063032967080E001FE469 /* SMSTemplateTableViewCell.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
+				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,

@@ -111,4 +111,22 @@ public class UserRepository {
             user.Xtenantid = newValue
         }
     }
+    
+    public var bussinessName: String? {
+        get {
+            user.bussinessName
+        }
+        set {
+            user.bussinessName = newValue
+        }
+    }
+    
+    public var bussinessLogo: String? {
+        get {
+            user.bussinessLogo
+        }
+        set {
+            user.bussinessLogo = newValue
+        }
+    }
 }

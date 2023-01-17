@@ -20,6 +20,8 @@ class User {
     private static let Xtenantid = "Xtenantid"
     private static let roles = "roles"
     private static let userId = "userId"
+    private static let bussinessName = "bussinessName"
+    private static let bussinessLogo = "bussinessLogo"
 
     var authToken: String? {
         get {
@@ -113,6 +115,24 @@ class User {
         }
     }
 
+    var bussinessName: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.bussinessName)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.bussinessName)
+        }
+    }
+    
+    var bussinessLogo: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.bussinessLogo)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.bussinessLogo)
+        }
+    }
+    
     var Xtenantid: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.Xtenantid)
@@ -132,6 +152,9 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.primaryEmailId)
         KeychainWrapper.standard.removeObject(forKey: User.Xtenantid)
         KeychainWrapper.standard.removeObject(forKey: User.userId)
+        KeychainWrapper.standard.removeObject(forKey: User.bussinessLogo)
+        KeychainWrapper.standard.removeObject(forKey: User.bussinessName)
+
     }
 
     private func applyNewValueInKeyChain(value: Any?, key: String) {
@@ -150,22 +173,3 @@ class User {
         }
     }
 }
-
-//@propertyWrapper
-//public struct Device {
-//
-//    private let deviceID = "deviceID"
-//
-//    public var wrappedValue: String? {
-//        var id = KeychainWrapper.standard.string(forKey: deviceID)
-//        if id == nil {
-//            id = UIDevice.current.identifierForVendor?.uuidString
-//            if id != nil {
-//                KeychainWrapper.standard.set(id!, forKey: deviceID)
-//            }
-//        }
-//        return id
-//    }
-//
-//    public init() { }
-//}

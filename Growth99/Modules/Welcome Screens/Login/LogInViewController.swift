@@ -10,10 +10,11 @@ import UIKit
 protocol LogInViewControllerProtocol: AnyObject {
     func LoaginDataRecived()
     func errorReceived(error: String)
+    func businessDetailReceived()
 }
 
 class LogInViewController: UIViewController, LogInViewControllerProtocol {
-   
+    
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
@@ -51,9 +52,14 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     
     func LoaginDataRecived() {
         self.view.HideSpinner()
+        viewModel?.getBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? "")
         self.openHomeView()
     }
     
+    func businessDetailReceived() {
+        
+    }
+   
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)

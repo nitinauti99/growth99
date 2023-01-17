@@ -18,12 +18,13 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     @IBOutlet private weak var businessImageView: UIImageView!
 
     var viewModel: BusinessProfileViewModelProtocol?
+    let user = UserRepository.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         viewModel = BusinessProfileViewModel(delegate: self)
-        nameTextField.text = "Admin"
+        nameTextField.text = user.bussinessName
     }
     
     // MARK: - setUpNavigationBar

@@ -12,6 +12,7 @@ protocol LogInViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
     func isValidPassword(_ password: String) -> Bool
     func loginValidate(email: String, password: String)
+    func getBusinessInfo(Xtenantid: String)
 }
 
 class LogInViewModel {
@@ -19,6 +20,7 @@ class LogInViewModel {
     var delegate: LogInViewControllerProtocol?
     var LogInData: LoginModel?
     let user = UserRepository.shared
+    var bussinessData: bussinessDetailInfoModel?
     
     init(delegate: LogInViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -43,6 +45,27 @@ class LogInViewModel {
                 print("Error while performing request \(error)")
             }
         }
+    }
+    
+    func getBusinessInfo(Xtenantid: String) {
+        let finaleUrl = ApiUrl.getBussinessInfo + "\(UserRepository.shared.Xtenantid ?? "")"
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<bussinessDetailInfoModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let response):
+                print(response)
+                self.bussinessData = response
+                self.setUpBusinessData()
+                self.delegate?.businessDetailReceived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func setUpBusinessData(){
+        self.user.bussinessLogo = bussinessData?.logoUrl
+        self.user.bussinessName = bussinessData?.name
     }
     
     func SetUpUserData(){
@@ -76,14 +99,3 @@ extension LogInViewModel : LogInViewModelProtocol {
         return false
     }
 }
-
-//requet using normal url session
-//NetworkManager.connect(httpMethod: .post, request: ApiRouter.getLogin("yogesh123@growth99.com", "Password1@!").urlRequest, responseType: LoginModel.self) { result in
-//    switch result {
-//    case .success(let loginData):
-//        print(loginData)
-//        self.delegate?.LoaginDataRecived()
-//    case .failure(let error):
-//        print(error.localizedDescription)
-//    }
-//}

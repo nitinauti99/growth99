@@ -23,7 +23,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     @IBOutlet private var roles: UILabel!
     @IBOutlet private var bussinessTitile: UILabel!
     @IBOutlet private var profileImage: UIImageView!
-    
+    let user = UserRepository.shared
+
     
     // MARK: - DECLARATIONS
     var section: Int = 0
@@ -43,8 +44,9 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.mainMenuList = viewModel?.loadJson() ?? []
         self.hiddenSections = Set(0...mainMenuList.count)
         self.roles.text = UserRepository.shared.roles
-        self.bussinessTitile.text = "Medical"
-        
+        self.bussinessTitile.text = user.bussinessName
+        self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? ""), placeholderImage: UIImage(named: "Logo.png"))
+
         scrollview.delegate = self
         
         self.tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "MenuTableViewCell")
