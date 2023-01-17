@@ -47,3 +47,24 @@ public extension String {
         return firstIndex(of: char)?.utf16Offset(in: self)
     }
 }
+
+
+extension String {
+
+    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")-> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+}
+
+extension Date {
+
+    func toString(withFormat format: String = "dd") -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let str = dateFormatter.string(from: self)
+        return str
+    }
+}

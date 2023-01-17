@@ -7,7 +7,12 @@
 
 import UIKit
 
-class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
+protocol AddEventViewControllerProtocol: AnyObject {
+    func eventDataReceived()
+    func errorEventReceived(error: String)
+}
+
+class AddEventViewController: UIViewController, CalenderViewContollerProtocol, AddEventViewControllerProtocol {
 
     @IBOutlet private weak var emailTextField: CustomTextField!
     @IBOutlet private weak var firstNameTextField: CustomTextField!
@@ -20,8 +25,11 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
     @IBOutlet private weak var dateTextField: CustomTextField!
     @IBOutlet private weak var timeTextField: CustomTextField!
     @IBOutlet private weak var notesTextView: UITextView!
+    @IBOutlet private weak var inPersonBtn: UIButton!
+    @IBOutlet private weak var virtualBtn: UIButton!
 
     var addEventViewModel: CalenderViewModelProtocol?
+    var eventViewModel: AddEventViewModelProtocol?
 
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
@@ -35,16 +43,19 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
     var selectedProviders = [UserDTOList]()
     var selectedProvidersIds = [Int]()
     
+    var inPersonSelected: String = "inPerson"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
         notesTextView.layer.borderWidth = 1.0
         setUpNavigationBar()
         addEventViewModel = CalenderViewModel(delegate: self)
+        eventViewModel = AddEventViewModel(delegate: self)
         dateTextField.tintColor = .clear
         timeTextField.tintColor = .clear
         dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateButtonPressed), mode: .date)
-        timeTextField.addInputViewDatePicker(target: self, selector: #selector(timeButtonPressed1), mode: .time)
+        timeTextField.addInputViewDatePickerCalender(target: self, selector: #selector(timeButtonPressed1), mode: .time)
     }
     
     @objc func dateButtonPressed() {
@@ -103,6 +114,14 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+    }
+    
+    func eventDataReceived() {
+        
+    }
+
+    func errorEventReceived(error: String) {
+        
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {
@@ -170,9 +189,15 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
     
     @IBAction func saveButtonAction(sender: UIButton) {
         guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.Profile.chooseToDate)
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
+        
+        guard let emailValidate = eventViewModel?.isValidEmail(email), emailValidate else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+        
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
             firstNameTextField.showError(message: Constant.Profile.chooseToDate)
             return
@@ -182,9 +207,14 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
             return
         }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
+        
+        if let textField = phoneNumberTextField.text, let phoneNumberValidate = eventViewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+        }
+        
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
             phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)
             return
@@ -212,5 +242,15 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol {
     
     @IBAction func canecelButtonAction(sender: UIButton) {
         self.navigationController?.dismiss(animated: true)
+    }
+    
+    @IBAction func inPersonButtonAction(sender: UIButton) {
+        inPersonBtn.isSelected = !inPersonBtn.isSelected
+        virtualBtn.isSelected = false
+    }
+    
+    @IBAction func virtualButtonAction(sender: UIButton) {
+        virtualBtn.isSelected = !virtualBtn.isSelected
+        inPersonBtn.isSelected = false
     }
 }

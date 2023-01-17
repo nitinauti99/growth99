@@ -686,7 +686,7 @@
                                                             <action selector="canecelButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tja-1V-2P5"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDD-a5-naM">
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDD-a5-naM">
                                                         <rect key="frame" x="50" y="881" width="15" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="fMB-qT-k4Z"/>
@@ -694,6 +694,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="tickdefault"/>
+                                                        <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="inPersonButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fhe-R2-03T"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqX-pi-rzb">
                                                         <rect key="frame" x="75" y="878" width="71" height="21"/>
@@ -709,6 +713,10 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="tickdefault"/>
+                                                        <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="virtualButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Xv7-X5-wrm"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Virtual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEb-6X-gXp">
                                                         <rect key="frame" x="196" y="878" width="50" height="21"/>
@@ -844,12 +852,14 @@
                         <outlet property="dateTextField" destination="b86-j9-qJE" id="Wip-dl-neY"/>
                         <outlet property="emailTextField" destination="Dkv-5T-p7r" id="geW-nx-rrl"/>
                         <outlet property="firstNameTextField" destination="AVg-us-WgC" id="BcJ-91-2Ps"/>
+                        <outlet property="inPersonBtn" destination="BDD-a5-naM" id="1R5-WR-Y3E"/>
                         <outlet property="lastNameTextField" destination="xKV-US-rN6" id="LcW-3D-lcv"/>
                         <outlet property="notesTextView" destination="uhT-an-tey" id="8So-8b-mSW"/>
                         <outlet property="phoneNumberTextField" destination="xLO-rr-zwc" id="dvK-Pm-dYz"/>
                         <outlet property="providersTextField" destination="TPZ-hI-lRM" id="hmz-G0-qso"/>
                         <outlet property="servicesTextField" destination="nRa-3b-s4x" id="201-92-zNv"/>
                         <outlet property="timeTextField" destination="Aru-SN-rLi" id="8MI-zp-WNS"/>
+                        <outlet property="virtualBtn" destination="CVC-og-qkh" id="QXo-Fz-OEx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -890,6 +900,7 @@
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="dropDown" width="15" height="24"/>
         <image name="tickdefault" width="16" height="16"/>
+        <image name="tickselected" width="16" height="16"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

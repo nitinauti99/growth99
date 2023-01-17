@@ -123,7 +123,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
         viewModel?.registration(firstName: firsName, lastName: lastName, email: email, phoneNumber: phoneNumber, password: password, repeatPassword: repeatPassword, businesName: bussinessName, agreeTerms: true)
     }
     
-    func openLogIInView(){
+    func openLogIInView() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }

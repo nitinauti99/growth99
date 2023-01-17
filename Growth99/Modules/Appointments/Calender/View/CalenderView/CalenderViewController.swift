@@ -59,6 +59,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     var appoinmentListData = [AppointmentDTOList]()
     var calenderViewModel: CalenderViewModelProtocol?
+    
+    var eventTypeSelected: String = "upcoming"
 
     var tableViewHeight: CGFloat {
         eventListView.layoutIfNeeded()
@@ -90,8 +92,21 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         setUpNavigationBar()
     }
     
+    func getFormattedDate(date: Date, format: String) -> String {
+           let dateformat = DateFormatter()
+           dateformat.dateFormat = format
+           return dateformat.string(from: date)
+       }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        clincsTextField.text = String.blank
+        servicesTextField.text = String.blank
+        providersTextField.text = String.blank
+        upcomingEvent.isEnabled = false
+        pastEvent.isEnabled = false
+        allEvent.isEnabled = false
+        calenderscrollview.setContentOffset(.zero, animated: true)
         getClinicsData()
     }
     
@@ -137,11 +152,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         // Print the event titles so check if everything works correctly
     }
     
-    func getFormattedDate(date: Date, format: String) -> String {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = format
-        return dateformat.string(from: date)
-    }
+
     
     @objc func plusTapped(_ sender: UIButton) {
         eventStore.requestAccess( to: EKEntityType.event, completion:{(granted, error) in
@@ -247,6 +258,9 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         selectedProviders = calenderViewModel?.providerData ?? []
         allProviders = calenderViewModel?.providerData ?? []
         self.view.HideSpinner()
+        upcomingEvent.isEnabled = true
+        pastEvent.isEnabled = true
+        allEvent.isEnabled = true
         eventListView.reloadData()
     }
     
@@ -270,6 +284,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             
             allEvent.backgroundColor = UIColor.white
             allEvent.titleLabel?.textColor = UIColor.black
+            eventTypeSelected = "upcoming"
+            eventListView.reloadData()
             
         } else if sender.tag == 1 {
             
@@ -281,6 +297,9 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             
             allEvent.backgroundColor = UIColor.white
             allEvent.titleLabel?.textColor = UIColor.black
+            eventTypeSelected = "past"
+            eventListView.reloadData()
+
         } else {
             
             upcomingEvent.backgroundColor = UIColor.white
@@ -291,6 +310,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             
             allEvent.backgroundColor = UIColor(hexString: "009EDE")
             allEvent.titleLabel?.textColor = UIColor.white
+            eventTypeSelected = "all"
+            eventListView.reloadData()
             
         }
     }
@@ -365,22 +386,35 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.calenderViewModel?.appointmentInfoListData.count ?? 0) == 0 {
-            return 1
+        if eventTypeSelected == "upcoming" {
+            if (self.calenderViewModel?.appointmentListCountGreaterthan() ?? 0) == 0 {
+                return 1
+            } else {
+                return self.calenderViewModel?.appointmentListCountGreaterthan() ?? 1
+            }
+        } else  if eventTypeSelected == "past"{
+            if (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0 {
+                return 1
+            } else {
+                return self.calenderViewModel?.appointmentListCountLessthan() ?? 1
+            }
         } else {
-            return self.calenderViewModel?.appointmentInfoListData.count ?? 0
+            if (self.calenderViewModel?.appointmentInfoListData.count ?? 0) == 0 {
+                return 1
+            } else {
+                return self.calenderViewModel?.appointmentInfoListData.count ?? 0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if (self.calenderViewModel?.appointmentInfoListData.count ?? 0) == 0 {
+        if (self.calenderViewModel?.appointmentListCountGreaterthan() ?? 0) == 0  || (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0  {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-//            cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
-//            cell.eventsDate.setTitle(getFormattedDate(date: self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate ?? Date(), format: "dd"), for: .normal)
+            cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
+            cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
             return cell
         }
     }
@@ -388,7 +422,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
     
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
         let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController

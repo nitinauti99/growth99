@@ -22,6 +22,9 @@ protocol CalenderViewModelProtocol {
     
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
+    
+    func appointmentListCountGreaterthan() -> Int
+    func appointmentListCountLessthan() -> Int
 }
 
 
@@ -108,6 +111,14 @@ class CalenderViewModel: CalenderViewModelProtocol {
     }
     var appointmentInfoListData: [AppointmentDTOList] {
         return self.appoinmentListData
+    }
+    
+    func appointmentListCountGreaterthan() -> Int {
+        return self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count
+    }
+    
+    func appointmentListCountLessthan() -> Int {
+        return self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count
     }
     
     func dateFormatterString(textField: CustomTextField) -> String {
