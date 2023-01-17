@@ -9,12 +9,14 @@ import UIKit
 
 protocol WorkingScheduleViewControllerCProtocol: AnyObject {
     func apiResponseRecived(apiResponse: ResponseModel)
-    func wcListResponseRecived(apiResponse: [WorkingScheduleListModel])
+    func wcListResponseRecived()
     func apiErrorReceived(error: String)
+    func errorReceived(error: String)
+    func clinicsRecived()
 }
 
 class WorkingScheduleViewController: UIViewController, WorkingScheduleViewControllerCProtocol, WorkingCellSubclassDelegate {
-    
+   
     @IBOutlet private weak var userNameTextField: CustomTextField!
     @IBOutlet weak var workingDateFromTextField: CustomTextField!
     @IBOutlet weak var workingDateToTextField: CustomTextField!
@@ -22,16 +24,14 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     @IBOutlet weak var clinicTextLabel: UILabel!
     @IBOutlet weak var clinicSelectonButton: UIButton!
     @IBOutlet weak var listExpandHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var clinicSelectionTableView: UITableView!
     @IBOutlet weak var workingListTableView: UITableView!
-    @IBOutlet weak var aulaSeparator: UIView!
     @IBOutlet var workingScrollViewHight: NSLayoutConstraint!
     @IBOutlet var workingscrollview: UIScrollView!
 
-    var workingScheduleViewModel = WorkingScheduleViewModel()
+    var workingScheduleViewModel: WorkingScheduleViewModelProtocol?
     var listSelection: Bool = false
     var allClinicsForWorkingSchedule: [Clinics]?
-    var workingListModel =  [WorkingScheduleListModel]?([])
+    var workingListModel: [WorkingScheduleListModel]?
     var selectedClinicId: Int = 0
     var selectedSlots = [SelectedSlots]()
     var isEmptyResponse: Bool = false
@@ -47,10 +47,11 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         workingscrollview.delegate = self
-        //self.view.ShowSpinner()
+        workingScheduleViewModel = WorkingScheduleViewModel(delegate: self)
+        self.view.ShowSpinner()
+        workingScheduleViewModel?.getallClinics()
         setUpNavigationBar()
         setupUI()
-        workingScheduleViewModel = WorkingScheduleViewModel(delegate: self)
         workingscrollview.delegate = self
         workingDateFromTextField.tintColor = .clear
         workingDateToTextField.tintColor = .clear
@@ -59,17 +60,16 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     @objc func dateFromButtonPressed() {
-        workingDateFromTextField.text = workingScheduleViewModel.dateFormatterString(textField: workingDateFromTextField)
+        workingDateFromTextField.text = workingScheduleViewModel?.dateFormatterString(textField: workingDateFromTextField)
     }
     
     @objc func dateToButtonPressed1() {
-        workingDateToTextField.text = workingScheduleViewModel.dateFormatterString(textField: workingDateToTextField)
+        workingDateToTextField.text = workingScheduleViewModel?.dateFormatterString(textField: workingDateToTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.listExpandHeightConstraint.constant = 31
-        self.aulaSeparator.backgroundColor = .clear
+
     }
 
     func setUpNavigationBar() {
@@ -82,22 +82,70 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         clinicTextView.layer.cornerRadius = 4.5
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        clinicSelectionTableView.register(UINib(nibName: Constant.ViewIdentifier.dropDownCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.dropDownCustomTableViewCell)
         workingListTableView.register(UINib(nibName: Constant.ViewIdentifier.workingCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.workingCustomTableViewCell)
        getDataDropDown()
     }
     
-    func getDataDropDown() {
-        workingScheduleViewModel.getallClinicsforWorkingSchedule { (response, error) in
-            if error == nil && response != nil {
-                self.allClinicsForWorkingSchedule = response
-                self.clinicTextLabel.text = self.allClinicsForWorkingSchedule?[0].name ?? String.blank
-               self.workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: self.allClinicsForWorkingSchedule?[0].id ?? 0)
-            } else {
-                self.view.HideSpinner()
-            }
-        }
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
+    
+    func clinicsRecived() {
+        self.clinicTextLabel.text = workingScheduleViewModel?.getAllClinicsData[0].name ?? String.blank
+        self.allClinicsForWorkingSchedule = workingScheduleViewModel?.getAllClinicsData ?? []
+        
+        /// get vacation detail for selected clinics
+        workingScheduleViewModel?.getWorkingScheduleDeatils(selectedClinicId: self.allClinicsForWorkingSchedule?[0].id ?? 0)
+    }
+   
+    func wcListResponseRecived() {
+        self.view.HideSpinner()
+        isValidationSucess = false
+        workingListModel = workingScheduleViewModel?.getVacationData ?? []
+
+        if workingListModel?.count ?? 0 > 0 {
+            isEmptyResponse = false
+            workingDateFromTextField.text = workingScheduleViewModel?.serverToLocal(date: workingListModel?[0].fromDate ?? String.blank)
+            workingDateToTextField.text = workingScheduleViewModel?.serverToLocal(date: workingListModel?[0].toDate ?? String.blank)
+        } else {
+            isEmptyResponse = true
+        }
+        self.workingListTableView.reloadData()
+        scrollViewHeight()
+    }
+    
+    func getDataDropDown() {
+//        workingScheduleViewModel.getallClinicsforWorkingSchedule { (response, error) in
+//            if error == nil && response != nil {
+//                self.allClinicsForWorkingSchedule = response
+//                self.clinicTextLabel.text = self.allClinicsForWorkingSchedule?[0].name ?? String.blank
+//               self.workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: self.allClinicsForWorkingSchedule?[0].id ?? 0)
+//            } else {
+//                self.view.HideSpinner()
+//            }
+//        }
+    }
+  
+    // MARK: - Clinic dropdown selection mrthod
+    @IBAction func clinicSelectionButton(sender: UIButton) {
+        let rolesArray = workingScheduleViewModel?.getAllClinicsData ?? []
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            //self.clinicTextLabel.text  = allClinics.name?.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+            selectionMenu.dismissAutomatically = true
+            self?.clinicTextLabel.text  = text?.name
+            self?.view.ShowSpinner()
+            self?.workingScheduleViewModel?.getWorkingScheduleDeatils(selectedClinicId: text?.id ?? 0)
+        }
+        selectionMenu.dismissAutomatically = true
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
+     }
+   
 
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
@@ -112,17 +160,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     func wcListResponseRecived(apiResponse: [WorkingScheduleListModel]) {
         self.view.HideSpinner()
         workingListModel = apiResponse
-        isValidationSucess = false
-        if workingListModel?.count ?? 0 > 0 {
-            isEmptyResponse = false
-            workingDateFromTextField.text = workingScheduleViewModel.serverToLocal(date: workingListModel?[0].fromDate ?? String.blank)
-            workingDateToTextField.text = workingScheduleViewModel.serverToLocal(date: workingListModel?[0].toDate ?? String.blank)
-        } else {
-            isEmptyResponse = true
-        }
-        self.clinicSelectionTableView.reloadData()
-        self.workingListTableView.reloadData()
-        scrollViewHeight()
     }
     
     @IBAction func saveWorkingButtonAction(sender: UIButton) {
@@ -164,7 +201,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                         isValidateArray.insert(true, at: childIndex)
                         let daysArray =  workingCell.supportWorkingClinicTextLabel.text ?? String.blank
                         let days = daysArray.components(separatedBy: ",")
-                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel.serverToLocalTimeInput(timeString: workingCell.timeToTextField.text ?? String.blank), days: days), at: childIndex)
+                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: workingCell.timeFromTextField.text ?? String.blank), timeToDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: workingCell.timeToTextField.text ?? String.blank), days: days), at: childIndex)
                     }
                 }
             }
@@ -173,9 +210,10 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 return
             }
             self.view.ShowSpinner()
-            let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
+            let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel?.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
+           
             let parameters: [String: Any]  = body.toDict()
-            workingScheduleViewModel.sendRequestforWorkingSchedule(vacationParams: parameters)
+            workingScheduleViewModel?.sendRequestforWorkingSchedule(vacationParams: parameters)
         }
     }
     
@@ -195,27 +233,27 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         scrollViewHeight()
     }
     
-    @IBAction func clinicSelectionButton(sender: UIButton) {
-        if listSelection == true {
-            hideClinicDropDown()
-            scrollViewHeight()
-        } else {
-            showClinicDropDown()
-        }
-    }
+//    @IBAction func clinicSelectionButton(sender: UIButton) {
+//        if listSelection == true {
+//            hideClinicDropDown()
+//            scrollViewHeight()
+//        } else {
+//            showClinicDropDown()
+//        }
+//    }
     
-    func hideClinicDropDown() {
-        listSelection = false
-        self.listExpandHeightConstraint.constant = 31
-        self.aulaSeparator.backgroundColor = .clear
-    }
+//    func hideClinicDropDown() {
+//        listSelection = false
+//        self.listExpandHeightConstraint.constant = 31
+//        self.aulaSeparator.backgroundColor = .clear
+//    }
     
-    func showClinicDropDown() {
-        workingScrollViewHight.constant = tableViewHeight + 650 + CGFloat(44 * (allClinicsForWorkingSchedule?.count ?? 0) + 31)
-        self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForWorkingSchedule?.count ?? 0) + 31)
-        self.aulaSeparator.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
-        listSelection = true
-    }
+//    func showClinicDropDown() {
+//        workingScrollViewHight.constant = tableViewHeight + 650 + CGFloat(44 * (allClinicsForWorkingSchedule?.count ?? 0) + 31)
+//        self.listExpandHeightConstraint.constant = CGFloat(44 * (allClinicsForWorkingSchedule?.count ?? 0) + 31)
+//        self.aulaSeparator.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+//        listSelection = true
+//    }
     
     func scrollViewHeight() {
         workingScrollViewHight.constant = tableViewHeight + 650

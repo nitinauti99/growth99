@@ -31,9 +31,9 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
 
                 cell.workingClinicSelectonButton.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
 
-                cell.timeToTextField.text = workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
+                cell.timeToTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
                 
-                cell.timeFromTextField.text = workingScheduleViewModel.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
+                cell.timeFromTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
                 
             } else {
                 cell.timeFromTextField.text = String.blank
@@ -98,7 +98,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-            vacationCell.updateTimeFromTextField(with: workingScheduleViewModel.timeFormatterString(textField: cell.timeFromTextField))
+            vacationCell.updateTimeFromTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? "")
         }
     }
     
@@ -108,7 +108,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-            vacationCell.updateTimeToTextField(with: workingScheduleViewModel.timeFormatterString(textField: cell.timeToTextField))
+            vacationCell.updateTimeToTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? "")
         }
     }
     

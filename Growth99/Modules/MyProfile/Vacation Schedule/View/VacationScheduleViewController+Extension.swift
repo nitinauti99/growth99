@@ -67,6 +67,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             }
             cell.updateTimeFromTextField(with: String.blank)
             cell.updateTimeToTextField(with: String.blank)
+            
+           
         }
         
         let totalcount = (vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0) - 1
