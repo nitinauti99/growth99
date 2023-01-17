@@ -7,8 +7,6 @@
 
 import UIKit
 import FSCalendar
-import EventKit
-import EventKitUI
 
 protocol CalenderViewContollerProtocol {
     func errorReceived(error: String)
@@ -18,31 +16,28 @@ protocol CalenderViewContollerProtocol {
     func appointmentListDataRecived()
 }
 
-class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate, EKEventEditViewDelegate, UITableViewDelegate, UITableViewDataSource, CalenderViewContollerProtocol{
-
+class CalenderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalenderViewContollerProtocol{
+    
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var eventListView: UITableView!
     @IBOutlet var calenderscrollview: UIScrollView!
     @IBOutlet var calenderScrollViewHight: NSLayoutConstraint!
-
+    
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var providersTextField: CustomTextField!
     @IBOutlet private weak var addAppointmnetView: UIView!
-
+    
     @IBOutlet private weak var upcomingEvent: UIButton!
     @IBOutlet private weak var pastEvent: UIButton!
     @IBOutlet private weak var allEvent: UIButton!
-
-    let eventStore : EKEventStore = EKEventStore()
+    
     var time = Date()
-    var eventForDates: [EKEvent] = []
     var titles: [String] = []
     var startDates: [Date] = []
     var endDates: [Date] = []
-    var filteredEvents: [EKEvent] = []
     var defaultCalender: String = Constant.Profile.calenderDefault
     
     var allClinics = [Clinics]()
@@ -61,7 +56,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var calenderViewModel: CalenderViewModelProtocol?
     
     var eventTypeSelected: String = "upcoming"
-
+    
     var tableViewHeight: CGFloat {
         eventListView.layoutIfNeeded()
         return eventListView.contentSize.height
@@ -69,37 +64,28 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     override func viewDidLoad() {
         super.viewDidLoad()
-           
+        
         self.calendar.select(Date())
         calenderViewModel = CalenderViewModel(delegate: self)
-
+        self.calendar.scope = .month
         let formatingDate = getFormattedDate(date: Date(), format: "EEEE - MMM d")
-//        eventListHeaderLabel.text = formatingDate
-        
-        self.view.addGestureRecognizer(self.scopeGesture)
-//        self.eventListView.panGestureRecognizer.require(toFail: self.scopeGesture)
-        
-        if defaultCalender == Constant.Profile.calenderDefault {
-            self.calendar.scope = .month
-        } else {
-            self.calendar.scope = .week
-        }
-        
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
         addAppointmnetView.layer.cornerRadius = 10
-        fetchEventsFromCalendar()
-        setUpNavigationBar()
     }
-    
-    func getFormattedDate(date: Date, format: String) -> String {
-           let dateformat = DateFormatter()
-           dateformat.dateFormat = format
-           return dateformat.string(from: date)
-       }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUpNavigationBar()
+        setupUI()
+        getClinicsData()
+    }
+    
+    func setUpNavigationBar() {
+        self.title = Constant.Profile.calender
+    }
+    
+    func setupUI() {
         clincsTextField.text = String.blank
         servicesTextField.text = String.blank
         providersTextField.text = String.blank
@@ -107,135 +93,17 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         pastEvent.isEnabled = false
         allEvent.isEnabled = false
         calenderscrollview.setContentOffset(.zero, animated: true)
-        getClinicsData()
     }
     
     func getClinicsData() {
         self.view.ShowSpinner()
         calenderViewModel?.getallClinics()
     }
-
-    func setUpNavigationBar() {
-        self.title = Constant.Profile.calender
-    }
     
-    func fetchEventsFromCalendar() -> Void {
-        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
-        switch status {
-        case .notDetermined: requestAccessToCalendar(Constant.Profile.calender)
-        case .authorized: fetchEventsFromCalendar(Constant.Profile.calender)
-        case .denied: print(Constant.Profile.calenderAccessDenied)
-        default: break
-        }
-    }
-    
-    func requestAccessToCalendar(_ calendarTitle: String) {
-        eventStore.requestAccess(to: EKEntityType.event) { (_, _) in
-            self.fetchEventsFromCalendar(calendarTitle)
-        }
-    }
-    
-    func fetchEventsFromCalendar(_ calendarTitle: String) -> Void {
-        for calendar in eventStore.calendars(for: .event) {
-            if calendar.title == calendarTitle {
-                let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
-                let oneMonthAfter = Calendar.current.date(byAdding: .month, value: 1, to: Date()) ?? Date()
-                let predicate = eventStore.predicateForEvents(
-                    withStart: oneMonthAgo,
-                    end: oneMonthAfter,
-                    calendars: [calendar]
-                )
-                eventForDates = eventStore.events(matching: predicate)
-                eventListView.reloadData()
-            }
-        }
-        // Print the event titles so check if everything works correctly
-    }
-    
-
-    
-    @objc func plusTapped(_ sender: UIButton) {
-        eventStore.requestAccess( to: EKEntityType.event, completion:{(granted, error) in
-            DispatchQueue.main.async {
-                if (granted) && (error == nil) {
-                    let event = EKEvent(eventStore: self.eventStore)
-                    event.startDate = self.time
-                    event.endDate = self.time
-                    let eventController = EKEventEditViewController()
-                    eventController.event = event
-                    eventController.eventStore = self.eventStore
-                    eventController.editViewDelegate = self
-                    eventController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                    self.present(eventController, animated: true, completion: nil)
-                }
-            }
-        })
-    }
-    
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
-    
-    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
-        [unowned self] in
-        let panGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
-        panGesture.delegate = self
-        panGesture.minimumNumberOfTouches = 1
-        panGesture.maximumNumberOfTouches = 2
-        return panGesture
-    }()
-    
-    // MARK:- UIGestureRecognizerDelegate
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarHeightConstraint.constant = bounds.height
-        calendarViewHeightConstraint.constant = bounds.height + 40
-        self.view.layoutIfNeeded()
-    }
-    
-    // MARK:- UIGestureRecognizerDelegate
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let shouldBegin = self.eventListView.contentOffset.y <= -self.eventListView.contentInset.top
-        if shouldBegin {
-            let velocity = self.scopeGesture.velocity(in: self.view)
-            switch self.calendar.scope {
-            case .month:
-                return velocity.y < 0
-            case .week:
-                return velocity.y > 0
-            @unknown default: break
-                
-            }
-        }
-        return shouldBegin
-    }
-    
-    
-    internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
-        let formatingDate = getFormattedDate(date: calendar.selectedDate ?? Date(), format: "EEEE - MMM d")
-//        eventListHeaderLabel.text = formatingDate
-        
-        if monthPosition == .next || monthPosition == .previous {
-            calendar.setCurrentPage(date, animated: true)
-        }
-        let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
-        let navController = UINavigationController(rootViewController: addEventVC)
-        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navController, animated:true, completion: nil)
-    }
-    
-    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
-        if action.rawValue == 1 {
-            fetchEventsFromCalendar()
-        }
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    func getFormattedDate(date: Date, format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: date)
     }
     
     func scrollViewHeight() {
@@ -299,7 +167,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             allEvent.titleLabel?.textColor = UIColor.black
             eventTypeSelected = "past"
             eventListView.reloadData()
-
+            
         } else {
             
             upcomingEvent.backgroundColor = UIColor.white
@@ -382,7 +250,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        //        if eventTypeSelected == "past" && eventTypeSelected == "all" {
+        //            return
+        //        } else {
         return 1
+        //        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -392,7 +264,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             } else {
                 return self.calenderViewModel?.appointmentListCountGreaterthan() ?? 1
             }
-        } else  if eventTypeSelected == "past"{
+        } else if eventTypeSelected == "past" {
             if (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0 {
                 return 1
             } else {
