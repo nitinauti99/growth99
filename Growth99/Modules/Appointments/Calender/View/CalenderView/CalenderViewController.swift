@@ -379,7 +379,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-            cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
+//            cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
 //            cell.eventsDate.setTitle(getFormattedDate(date: self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate ?? Date(), format: "dd"), for: .normal)
             return cell
         }
