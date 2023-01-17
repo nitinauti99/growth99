@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
+		843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */; };
 		845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399F292276AF00D934C5 /* SpinnerView.swift */; };
 		845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A0292276AF00D934C5 /* SwiftLoader.swift */; };
 		845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A2292276AF00D934C5 /* KeychainWrapper.swift */; };
@@ -398,6 +399,7 @@
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
+		843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewModel.swift; sourceTree = "<group>"; };
 		845C399F292276AF00D934C5 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		845C39A0292276AF00D934C5 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		845C39A2292276AF00D934C5 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
@@ -805,6 +807,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843A7A8E29769FDC0063FA2D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		845C399E292276AF00D934C5 /* LoaderScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -1165,6 +1175,7 @@
 		84D0614A29670676001FE469 /* Business Profile */ = {
 			isa = PBXGroup;
 			children = (
+				843A7A8E29769FDC0063FA2D /* ViewModel */,
 				84D0614B29670676001FE469 /* View */,
 			);
 			path = "Business Profile";
@@ -2903,6 +2914,7 @@
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
+				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
 				84D0628B29670677001FE469 /* User.swift in Sources */,

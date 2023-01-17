@@ -7,19 +7,38 @@
 
 import UIKit
 
-class BusinessProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+protocol BusinessProfileViewControllerProtocol {
+    func errorReceived(error: String)
+    func saveBusinessDetailReceived(responseMessage: String)
+}
 
+class BusinessProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, BusinessProfileViewControllerProtocol {
+   
     @IBOutlet private weak var nameTextField: CustomTextField!
     @IBOutlet private weak var businessImageView: UIImageView!
+
+    var viewModel: BusinessProfileViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
+        viewModel = BusinessProfileViewModel(delegate: self)
+        nameTextField.text = "Admin"
     }
     
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = "Business Profile"
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error)
+    }
+    
+    func saveBusinessDetailReceived(responseMessage: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage)
     }
     
     @IBAction func imageIconbtnTapped(_ sender: Any) {
@@ -29,7 +48,6 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         imagePickerController.delegate = self
         imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         present(imagePickerController, animated: true, completion: nil)
-        
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -47,6 +65,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
             nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
+        self.view.ShowSpinner()
+        viewModel?.saveBusinessInfo(name: name, trainingBusiness: false)
     }
-
 }
