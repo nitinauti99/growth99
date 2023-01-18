@@ -30,9 +30,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private weak var providersTextField: CustomTextField!
     @IBOutlet private weak var addAppointmnetView: UIView!
     
-    @IBOutlet private weak var upcomingEvent: UIButton!
-    @IBOutlet private weak var pastEvent: UIButton!
-    @IBOutlet private weak var allEvent: UIButton!
+    @IBOutlet private weak var calenderSegmentControl: UISegmentedControl!
     
     var time = Date()
     var titles: [String] = []
@@ -72,6 +70,10 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
         addAppointmnetView.layer.cornerRadius = 10
+        
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,9 +91,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         clincsTextField.text = String.blank
         servicesTextField.text = String.blank
         providersTextField.text = String.blank
-        upcomingEvent.isEnabled = false
-        pastEvent.isEnabled = false
-        allEvent.isEnabled = false
+        calenderSegmentControl.isEnabled = false
         calenderscrollview.setContentOffset(.zero, animated: true)
     }
     
@@ -126,15 +126,13 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         selectedProviders = calenderViewModel?.providerData ?? []
         allProviders = calenderViewModel?.providerData ?? []
         self.view.HideSpinner()
-        upcomingEvent.isEnabled = true
-        pastEvent.isEnabled = true
-        allEvent.isEnabled = true
         eventListView.reloadData()
     }
     
     func appointmentListDataRecived() {
         self.view.HideSpinner()
         appoinmentListData = calenderViewModel?.appointmentInfoListData ?? []
+        calenderSegmentControl.isEnabled = true
         eventListView.reloadData()
     }
     
@@ -142,45 +140,19 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.HideSpinner()
     }
     
-    @IBAction func calenderButtonAction(sender: UIButton) {
-        if sender.tag == 0 {
-            upcomingEvent.backgroundColor = UIColor(hexString: "009EDE")
-            upcomingEvent.titleLabel?.textColor = UIColor.white
-            
-            pastEvent.backgroundColor = UIColor.white
-            pastEvent.titleLabel?.textColor = UIColor.black
-            
-            allEvent.backgroundColor = UIColor.white
-            allEvent.titleLabel?.textColor = UIColor.black
+    @IBAction func calenderSegmentSelection(_ sender: Any) {
+        switch calenderSegmentControl.selectedSegmentIndex {
+        case 0:
             eventTypeSelected = "upcoming"
             eventListView.reloadData()
-            
-        } else if sender.tag == 1 {
-            
-            upcomingEvent.backgroundColor = UIColor.white
-            upcomingEvent.titleLabel?.textColor = UIColor.black
-            
-            pastEvent.backgroundColor = UIColor(hexString: "009EDE")
-            pastEvent.titleLabel?.textColor = UIColor.white
-            
-            allEvent.backgroundColor = UIColor.white
-            allEvent.titleLabel?.textColor = UIColor.black
+        case 1:
             eventTypeSelected = "past"
             eventListView.reloadData()
-            
-        } else {
-            
-            upcomingEvent.backgroundColor = UIColor.white
-            upcomingEvent.titleLabel?.textColor = UIColor.black
-            
-            pastEvent.backgroundColor = UIColor.white
-            pastEvent.titleLabel?.textColor = UIColor.black
-            
-            allEvent.backgroundColor = UIColor(hexString: "009EDE")
-            allEvent.titleLabel?.textColor = UIColor.white
+        case 2:
             eventTypeSelected = "all"
             eventListView.reloadData()
-            
+        default:
+            break;
         }
     }
     
@@ -280,14 +252,37 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (self.calenderViewModel?.appointmentListCountGreaterthan() ?? 0) == 0  || (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0  {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
-            return cell
+        
+        if eventTypeSelected == "upcoming" {
+            if (self.calenderViewModel?.appointmentListCountGreaterthan() ?? 0) == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
+                cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                return cell
+            }
+        } else if eventTypeSelected == "past" {
+            if (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
+                cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                return cell
+            }
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-            cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
-            cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
-            return cell
+            if (self.calenderViewModel?.appointmentInfoListData.count ?? 0) == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
+                cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                return cell
+            }
         }
     }
     

@@ -954,62 +954,26 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yI-ka-1rO">
                                                         <rect key="frame" x="0.0" y="690.5" width="414" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-EE-QCj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
-                                                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="120" id="WhU-Eh-l4e"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Upcoming"/>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DfQ-Py-gvR">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                                                                <segments>
+                                                                    <segment title="First"/>
+                                                                    <segment title="Past"/>
+                                                                    <segment title="All"/>
+                                                                </segments>
+                                                                <color key="selectedSegmentTintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
-                                                                    <action selector="calenderButtonActionWithSender:" destination="Cdl-e9-HqO" eventType="touchUpInside" id="rNm-aQ-Ka0"/>
+                                                                    <action selector="calenderSegmentSelection:" destination="Cdl-e9-HqO" eventType="valueChanged" id="QrE-Tl-dZz"/>
                                                                 </connections>
-                                                            </button>
-                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqC-PW-i55">
-                                                                <rect key="frame" x="120" y="0.0" width="120" height="50"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="120" id="FKk-mW-G3t"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Past">
-                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="calenderButtonActionWithSender:" destination="Cdl-e9-HqO" eventType="touchUpInside" id="ZgY-MV-Dwe"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upI-lR-wdM">
-                                                                <rect key="frame" x="240" y="0.0" width="120" height="50"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="120" id="uIm-K1-BvA"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="All">
-                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="calenderButtonActionWithSender:" destination="Cdl-e9-HqO" eventType="touchUpInside" id="gyH-FH-Oy0"/>
-                                                                </connections>
-                                                            </button>
+                                                            </segmentedControl>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="62t-Sr-Gvp"/>
-                                                            <constraint firstAttribute="bottom" secondItem="xbh-EE-QCj" secondAttribute="bottom" id="GRa-rV-8Gu"/>
-                                                            <constraint firstItem="xbh-EE-QCj" firstAttribute="leading" secondItem="3yI-ka-1rO" secondAttribute="leading" id="Mqw-p9-4rT"/>
-                                                            <constraint firstItem="upI-lR-wdM" firstAttribute="leading" secondItem="SqC-PW-i55" secondAttribute="trailing" id="NPx-Ya-Qhe"/>
-                                                            <constraint firstItem="upI-lR-wdM" firstAttribute="top" secondItem="SqC-PW-i55" secondAttribute="top" id="QmS-6z-jde"/>
-                                                            <constraint firstItem="SqC-PW-i55" firstAttribute="leading" secondItem="xbh-EE-QCj" secondAttribute="trailing" id="Uwq-aW-9xW"/>
-                                                            <constraint firstItem="SqC-PW-i55" firstAttribute="bottom" secondItem="xbh-EE-QCj" secondAttribute="bottom" id="cSg-yD-U4Z"/>
-                                                            <constraint firstItem="upI-lR-wdM" firstAttribute="bottom" secondItem="SqC-PW-i55" secondAttribute="bottom" id="odp-Ic-rb0"/>
-                                                            <constraint firstItem="SqC-PW-i55" firstAttribute="top" secondItem="xbh-EE-QCj" secondAttribute="top" id="oee-in-DKB"/>
-                                                            <constraint firstItem="xbh-EE-QCj" firstAttribute="top" secondItem="3yI-ka-1rO" secondAttribute="top" id="vWo-tp-CI4"/>
+                                                            <constraint firstItem="DfQ-Py-gvR" firstAttribute="leading" secondItem="3yI-ka-1rO" secondAttribute="leading" id="9VH-tj-wRE"/>
+                                                            <constraint firstAttribute="trailing" secondItem="DfQ-Py-gvR" secondAttribute="trailing" id="OfA-6S-btk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="DfQ-Py-gvR" secondAttribute="bottom" id="ZX7-8P-pyL"/>
+                                                            <constraint firstItem="DfQ-Py-gvR" firstAttribute="top" secondItem="3yI-ka-1rO" secondAttribute="top" id="lwr-lO-f8o"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -1098,18 +1062,16 @@
                     <navigationItem key="navigationItem" id="DUE-kv-zTB"/>
                     <connections>
                         <outlet property="addAppointmnetView" destination="Ys2-E9-yUW" id="yKi-nH-jaF"/>
-                        <outlet property="allEvent" destination="upI-lR-wdM" id="M21-eW-CKe"/>
                         <outlet property="calendar" destination="JD4-CL-Yi6" id="Z6q-Rf-70s"/>
                         <outlet property="calendarHeightConstraint" destination="6yh-bg-YrF" id="qwg-Ov-7Xs"/>
                         <outlet property="calendarViewHeightConstraint" destination="EoV-9G-Y32" id="qtQ-rj-WkR"/>
                         <outlet property="calenderScrollViewHight" destination="WnV-oi-xKl" id="cIK-kM-Cfp"/>
+                        <outlet property="calenderSegmentControl" destination="DfQ-Py-gvR" id="J7v-wJ-9og"/>
                         <outlet property="calenderscrollview" destination="6Az-JU-V6A" id="kkf-XE-Fkb"/>
                         <outlet property="clincsTextField" destination="jzu-kM-8lq" id="4pM-F6-R1J"/>
                         <outlet property="eventListView" destination="3Vg-SQ-tU0" id="d9V-fs-OIU"/>
-                        <outlet property="pastEvent" destination="SqC-PW-i55" id="B84-P9-ez6"/>
                         <outlet property="providersTextField" destination="Szr-pV-NLf" id="M7f-xK-b2H"/>
                         <outlet property="servicesTextField" destination="Cfk-FX-j6V" id="aVx-m2-FE5"/>
-                        <outlet property="upcomingEvent" destination="xbh-EE-QCj" id="5p2-3g-7dw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8a7-1E-mEp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1373,40 +1335,40 @@
     </scenes>
     <designables>
         <designable name="2bn-9i-Rf8">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="6ap-Gu-wfc">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="71M-Ey-Ckk">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="Cfk-FX-j6V">
-            <size key="intrinsicContentSize" width="117.5" height="25"/>
+            <size key="intrinsicContentSize" width="110.5" height="30"/>
         </designable>
         <designable name="Ncb-Vy-p3O">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Szr-pV-NLf">
-            <size key="intrinsicContentSize" width="118.5" height="25"/>
+            <size key="intrinsicContentSize" width="111.5" height="30"/>
         </designable>
         <designable name="U5u-aw-l21">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="W62-Z0-RHA">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Wu1-x8-b6o">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jzu-kM-8lq">
-            <size key="intrinsicContentSize" width="99.5" height="25"/>
+            <size key="intrinsicContentSize" width="92.5" height="30"/>
         </designable>
         <designable name="xJW-WU-nu4">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="zJe-wg-Ipq">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>
