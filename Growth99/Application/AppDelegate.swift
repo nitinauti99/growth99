@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let user = UserRepository.shared
     let mycontext: LAContext = LAContext()
 
-    var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.8 * (UIScreen.main.bounds.width))
+    var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.7 * (UIScreen.main.bounds.width))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.setUpTabBarProperty()

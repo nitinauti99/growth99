@@ -24,9 +24,7 @@
 		845C39D7292276B000D934C5 /* DrawerViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39AF292276AF00D934C5 /* DrawerViewContoller.swift */; };
 		845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C39B1292276AF00D934C5 /* MenuTableViewCell.xib */; };
 		845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39B2292276AF00D934C5 /* SubMenuTableViewCell.swift */; };
-		845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C39B3292276AF00D934C5 /* HeaderViewTableViewCell.xib */; };
 		845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39B4292276AF00D934C5 /* MenuTableViewCell.swift */; };
-		845C39DC292276B000D934C5 /* HeaderViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39B5292276AF00D934C5 /* HeaderViewTableViewCell.swift */; };
 		845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845C39B6292276AF00D934C5 /* SubMenuTableViewCell.xib */; };
 		845C39DE292276B000D934C5 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39B7292276AF00D934C5 /* MenuModel.swift */; };
 		845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39B9292276AF00D934C5 /* UIColorExtension.swift */; };
@@ -39,11 +37,6 @@
 		845C39E6292276B000D934C5 /* HyperLinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C0292276AF00D934C5 /* HyperLinkLabel.swift */; };
 		845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */; };
 		845C39E8292276B000D934C5 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C3292276AF00D934C5 /* EndPoints.swift */; };
-		845C39EB292276B000D934C5 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C6292276AF00D934C5 /* ApiRouter.swift */; };
-		845C39ED292276B000D934C5 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C8292276AF00D934C5 /* ServiceManager.swift */; };
-		845C39EE292276B000D934C5 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C9292276AF00D934C5 /* NetworkingService.swift */; };
-		845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39CA292276AF00D934C5 /* ErrorResponse.swift */; };
-		845C39F0292276B000D934C5 /* ErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39CB292276AF00D934C5 /* ErrorDetails.swift */; };
 		8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */; };
 		847E1F1F2916B39200C221C0 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 847E1F1E2916B39200C221C0 /* test.json */; };
 		848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C929A291F6A9F00502956 /* RSSelectionMenuController.swift */; };
@@ -415,9 +408,7 @@
 		845C39AF292276AF00D934C5 /* DrawerViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewContoller.swift; sourceTree = "<group>"; };
 		845C39B1292276AF00D934C5 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		845C39B2292276AF00D934C5 /* SubMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMenuTableViewCell.swift; sourceTree = "<group>"; };
-		845C39B3292276AF00D934C5 /* HeaderViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderViewTableViewCell.xib; sourceTree = "<group>"; };
 		845C39B4292276AF00D934C5 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		845C39B5292276AF00D934C5 /* HeaderViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewTableViewCell.swift; sourceTree = "<group>"; };
 		845C39B6292276AF00D934C5 /* SubMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMenuTableViewCell.xib; sourceTree = "<group>"; };
 		845C39B7292276AF00D934C5 /* MenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		845C39B9292276AF00D934C5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -430,11 +421,6 @@
 		845C39C0292276AF00D934C5 /* HyperLinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperLinkLabel.swift; sourceTree = "<group>"; };
 		845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavaigationContoller.swift; sourceTree = "<group>"; };
 		845C39C3292276AF00D934C5 /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
-		845C39C6292276AF00D934C5 /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
-		845C39C8292276AF00D934C5 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
-		845C39C9292276AF00D934C5 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		845C39CA292276AF00D934C5 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
-		845C39CB292276AF00D934C5 /* ErrorDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenssion.swift; sourceTree = "<group>"; };
 		847E1F1E2916B39200C221C0 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		84872B052917D61F0063DD3B /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1107,6 +1093,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		84088BC22977F04B0060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				845C39AE292276AF00D934C5 /* DrawerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BC32977F0600060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				845C39AF292276AF00D934C5 /* DrawerViewContoller.swift */,
+				845C39AD292276AF00D934C5 /* DrawerViewContoller.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BC42977F0730060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				845C39B7292276AF00D934C5 /* MenuModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		843A7A8E29769FDC0063FA2D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1163,9 +1174,9 @@
 		845C39AC292276AF00D934C5 /* SideDrawerMenu */ = {
 			isa = PBXGroup;
 			children = (
-				845C39AE292276AF00D934C5 /* DrawerViewModel.swift */,
-				845C39AF292276AF00D934C5 /* DrawerViewContoller.swift */,
-				845C39AD292276AF00D934C5 /* DrawerViewContoller.storyboard */,
+				84088BC42977F0730060855E /* Model */,
+				84088BC22977F04B0060855E /* ViewModel */,
+				84088BC32977F0600060855E /* View */,
 				845C39B0292276AF00D934C5 /* SideMenuTableViewCells */,
 			);
 			path = SideDrawerMenu;
@@ -1174,11 +1185,8 @@
 		845C39B0292276AF00D934C5 /* SideMenuTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				845C39B7292276AF00D934C5 /* MenuModel.swift */,
 				845C39B4292276AF00D934C5 /* MenuTableViewCell.swift */,
 				845C39B1292276AF00D934C5 /* MenuTableViewCell.xib */,
-				845C39B5292276AF00D934C5 /* HeaderViewTableViewCell.swift */,
-				845C39B3292276AF00D934C5 /* HeaderViewTableViewCell.xib */,
 				845C39B2292276AF00D934C5 /* SubMenuTableViewCell.swift */,
 				845C39B6292276AF00D934C5 /* SubMenuTableViewCell.xib */,
 			);
@@ -1211,11 +1219,6 @@
 			children = (
 				845C39C3292276AF00D934C5 /* EndPoints.swift */,
 				84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */,
-				845C39C6292276AF00D934C5 /* ApiRouter.swift */,
-				845C39C8292276AF00D934C5 /* ServiceManager.swift */,
-				845C39C9292276AF00D934C5 /* NetworkingService.swift */,
-				845C39CA292276AF00D934C5 /* ErrorResponse.swift */,
-				845C39CB292276AF00D934C5 /* ErrorDetails.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -2766,7 +2769,6 @@
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
-				845C39DA292276B000D934C5 /* HeaderViewTableViewCell.xib in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
@@ -3006,7 +3008,6 @@
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
 				84F6112F292A71AB00B1FB69 /* Response.swift in Sources */,
 				84F610F8292A71AB00B1FB69 /* ASN1Tag.swift in Sources */,
-				845C39ED292276B000D934C5 /* ServiceManager.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
@@ -3073,13 +3074,11 @@
 				84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */,
 				845C39D1292276AF00D934C5 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				84F610E1292A71AB00B1FB69 /* String+Extension.swift in Sources */,
-				845C39DC292276B000D934C5 /* HeaderViewTableViewCell.swift in Sources */,
 				84D063112967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift in Sources */,
 				84F610C2292A71AA00B1FB69 /* Base64.swift in Sources */,
 				845C39D6292276B000D934C5 /* DrawerViewModel.swift in Sources */,
 				84F61131292A71AB00B1FB69 /* MultipartUpload.swift in Sources */,
 				84F610C1292A71AA00B1FB69 /* JWA.swift in Sources */,
-				845C39EB292276B000D934C5 /* ApiRouter.swift in Sources */,
 				84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */,
 				84F610E0292A71AB00B1FB69 /* Optional.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
@@ -3088,7 +3087,6 @@
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
-				845C39EE292276B000D934C5 /* NetworkingService.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
 				84D0630F2967080E001FE469 /* LeadTableViewCell.swift in Sources */,
@@ -3110,7 +3108,6 @@
 				84F610BE292A71AA00B1FB69 /* Data+Crypto.swift in Sources */,
 				84D063082967080E001FE469 /* EmailTemplateTableViewCell.swift in Sources */,
 				84D0623F29670677001FE469 /* CreatePateintViewModel.swift in Sources */,
-				845C39F0292276B000D934C5 /* ErrorDetails.swift in Sources */,
 				84D0622729670677001FE469 /* ChangePasswordViewController.swift in Sources */,
 				84D0623A29670677001FE469 /* PateintListViewModel.swift in Sources */,
 				84F610B6292A71AA00B1FB69 /* HMACCryptoSwift.swift in Sources */,
@@ -3207,7 +3204,6 @@
 				84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */,
 				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
-				845C39EF292276B000D934C5 /* ErrorResponse.swift in Sources */,
 				84D063032967080E001FE469 /* SMSTemplateTableViewCell.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
