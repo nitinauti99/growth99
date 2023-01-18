@@ -73,14 +73,16 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-
+        getClinicsData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpNavigationBar()
         setupUI()
-        getClinicsData()
+        calenderSegmentControl.selectedSegmentIndex = 0
+        eventTypeSelected = "upcoming"
+        eventListView.reloadData()
     }
     
     func setUpNavigationBar() {
@@ -88,10 +90,6 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func setupUI() {
-        clincsTextField.text = String.blank
-        servicesTextField.text = String.blank
-        providersTextField.text = String.blank
-        calenderSegmentControl.isEnabled = false
         calenderscrollview.setContentOffset(.zero, animated: true)
     }
     
@@ -132,7 +130,6 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     func appointmentListDataRecived() {
         self.view.HideSpinner()
         appoinmentListData = calenderViewModel?.appointmentInfoListData ?? []
-        calenderSegmentControl.isEnabled = true
         eventListView.reloadData()
     }
     
@@ -231,22 +228,22 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if eventTypeSelected == "upcoming" {
-            if (self.calenderViewModel?.appointmentListCountGreaterthan() ?? 0) == 0 {
+            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count) == 0 {
                 return 1
             } else {
-                return self.calenderViewModel?.appointmentListCountGreaterthan() ?? 1
+                return self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count
             }
         } else if eventTypeSelected == "past" {
-            if (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0 {
+            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count) == 0 {
                 return 1
             } else {
-                return self.calenderViewModel?.appointmentListCountLessthan() ?? 1
+                return self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count
             }
         } else {
-            if (self.calenderViewModel?.appointmentInfoListData.count ?? 0) == 0 {
+            if self.appoinmentListData.count == 0 {
                 return 1
             } else {
-                return self.calenderViewModel?.appointmentInfoListData.count ?? 0
+                return self.appoinmentListData.count
             }
         }
     }
@@ -254,33 +251,33 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if eventTypeSelected == "upcoming" {
-            if (self.calenderViewModel?.appointmentListCountGreaterthan() ?? 0) == 0 {
+            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count) == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         } else if eventTypeSelected == "past" {
-            if (self.calenderViewModel?.appointmentListCountLessthan() ?? 0) == 0 {
+            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count) == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         } else {
-            if (self.calenderViewModel?.appointmentInfoListData.count ?? 0) == 0 {
+            if self.appoinmentListData.count == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientFirstName ?? String.blank) \(self.calenderViewModel?.appointmentInfoListData[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDate.setTitle(self.calenderViewModel?.appointmentInfoListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         }
