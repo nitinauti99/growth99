@@ -230,7 +230,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
        
         vacationsListTableView.insertSections(indexSet, with: .fade)
       
-        let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days:  String.blank)
+        let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days: [])
         
         vacationsList[vacationCount].userScheduleTimings?.append(date1)
        

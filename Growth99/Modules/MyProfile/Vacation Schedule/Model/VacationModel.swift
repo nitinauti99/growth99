@@ -52,9 +52,12 @@ struct UserScheduleTimings: Codable {
     let id: Int?
     let timeFromDate: String?
     let timeToDate: String?
-    let days: String?
+    let days: [Days]?
 }
 
+struct Days: Codable {
+    
+}
 
 struct VacationParamModel: Codable {
     let providerId: Int?
