@@ -418,22 +418,22 @@
     </scenes>
     <designables>
         <designable name="6xs-kk-JWt">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="SzM-Nf-7ST">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="buE-c6-iZF">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="dwF-BZ-1SP">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="htF-pe-wsg">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jCX-91-6Cc">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>

@@ -144,7 +144,6 @@
 		84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D061AE29670676001FE469 /* HomeViewContoller.swift */; };
 		84D0624529670677001FE469 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D061AF29670676001FE469 /* UserProfile.swift */; };
 		84D0624629670677001FE469 /* ClinicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D061B029670676001FE469 /* ClinicsModel.swift */; };
-		84D0627E29670677001FE469 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D061F329670676001FE469 /* RegistrationModel.swift */; };
 		84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D061F429670676001FE469 /* RegistrationViewController.storyboard */; };
 		84D0628029670677001FE469 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D061F529670676001FE469 /* RegistrationViewModel.swift */; };
 		84D0628129670677001FE469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D061F629670676001FE469 /* RegistrationViewController.swift */; };
@@ -159,7 +158,6 @@
 		84D0628A29670677001FE469 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0620229670676001FE469 /* LoginModel.swift */; };
 		84D0628B29670677001FE469 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0620329670676001FE469 /* User.swift */; };
 		84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0620429670676001FE469 /* LogInViewController.storyboard */; };
-		84D0628D29670677001FE469 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0620629670676001FE469 /* LoginService.swift */; };
 		84D0628E29670677001FE469 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0620729670676001FE469 /* LogInViewController.swift */; };
 		84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062912967070C001FE469 /* UserListViewModel.swift */; };
 		84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062922967070C001FE469 /* UserCreateViewModel.swift */; };
@@ -546,7 +544,6 @@
 		84D061AE29670676001FE469 /* HomeViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewContoller.swift; sourceTree = "<group>"; };
 		84D061AF29670676001FE469 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		84D061B029670676001FE469 /* ClinicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicsModel.swift; sourceTree = "<group>"; };
-		84D061F329670676001FE469 /* RegistrationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		84D061F429670676001FE469 /* RegistrationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationViewController.storyboard; sourceTree = "<group>"; };
 		84D061F529670676001FE469 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		84D061F629670676001FE469 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -561,7 +558,6 @@
 		84D0620229670676001FE469 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		84D0620329670676001FE469 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84D0620529670676001FE469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LogInViewController.storyboard; sourceTree = "<group>"; };
-		84D0620629670676001FE469 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		84D0620729670676001FE469 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		84D062912967070C001FE469 /* UserListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		84D062922967070C001FE469 /* UserCreateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateViewModel.swift; sourceTree = "<group>"; };
@@ -811,6 +807,306 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84088B9F2977E5520060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D061AF29670676001FE469 /* UserProfile.swift */,
+				84D061B029670676001FE469 /* ClinicsModel.swift */,
+				84D061AC29670676001FE469 /* UpdateUserProfile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BA02977E55A0060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D061AD29670676001FE469 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BA12977E5770060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D061AE29670676001FE469 /* HomeViewContoller.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BA22977E5900060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D0619B29670676001FE469 /* PateintDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BA32977E59C0060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BA42977E5B50060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */,
+				84D0619D29670676001FE469 /* PateintDetailViewController.swift */,
+				84D0619E29670676001FE469 /* PateintDetailViewController+Tableview.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BA52977E5D30060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D061A029670676001FE469 /* PateintListViewContoller.swift */,
+				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
+				84D061A329670676001FE469 /* PateintListTableViewCell.swift */,
+				84D061A429670676001FE469 /* PateintListTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BA62977E5E10060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D061A129670676001FE469 /* PateintListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BA72977E5EC0060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D061A229670676001FE469 /* PateintListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BA82977E6030060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D061A729670676001FE469 /* CreatePateintViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BA92977E6150060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D061A829670676001FE469 /* CreatePateintViewContoller.swift */,
+				84D061A929670676001FE469 /* CreatePateintViewContoller.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BAA2977E6580060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D062B52967080E001FE469 /* EditLeadViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BAB2977E66F0060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D062B32967080E001FE469 /* EditLeadViewController.swift */,
+				84D062B42967080E001FE469 /* EditLeadViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BAC2977E6E10060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D062BA2967080E001FE469 /* leadCreationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BAD2977E6ED0060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D062BC2967080E001FE469 /* leadTimeLineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BAE2977E6FF0060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D062BD2967080E001FE469 /* Cell */,
+				84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */,
+				84D062BB2967080E001FE469 /* leadTimeLineViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BAF2977E70D0060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D062B82967080E001FE469 /* leadDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BB02977E7370060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D062C32967080E001FE469 /* Cell */,
+				84D062CF2967080E001FE469 /* leadDetailViewController.storyboard */,
+				84D062B72967080E001FE469 /* leadDetailViewController.swift */,
+				84D062D12967080E001FE469 /* leadDetailViewController+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BB12977E74D0060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D062D02967080E001FE469 /* EmailTemplatesListDetailModel.swift */,
+				84D062D22967080E001FE469 /* SMStemplatesListDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BB22977E76F0060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D062B12967080E001FE469 /* leadModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BB32977E77A0060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D062D52967080E001FE469 /* leadViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BB42977E7840060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D062D62967080E001FE469 /* LeadTableViewCell.swift */,
+				84D062D72967080E001FE469 /* LeadTableViewCell.xib */,
+				84D062D42967080E001FE469 /* leadViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BB52977E7970060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D062DB2967080E001FE469 /* CreateLeadViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BB62977E7AF0060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D062DC2967080E001FE469 /* Cell */,
+				84D062DA2967080E001FE469 /* CreateLeadViewController.swift */,
+				84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */,
+				84D062D92967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BB72977E7BB0060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D062ED2967080E001FE469 /* QuestionnaireList.swift */,
+				84D062EF2967080E001FE469 /* QuestionnaireId.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BB82977E7F90060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D0620029670676001FE469 /* UserRepository.swift */,
+				84D0620129670676001FE469 /* LogInViewModel.swift */,
+				84D0620229670676001FE469 /* LoginModel.swift */,
+				84D0620329670676001FE469 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84088BB92977E80D0060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D0620429670676001FE469 /* LogInViewController.storyboard */,
+				84D0620729670676001FE469 /* LogInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BBA2977E8260060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BBB2977E8720060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D061FC29670676001FE469 /* VerifyForgotPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BBC2977E88D0060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D061FD29670676001FE469 /* VerifyForgotPasswordViewController.swift */,
+				84D061FE29670676001FE469 /* VerifyForgotPasswordViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BBD2977E89A0060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D061F829670676001FE469 /* ForgotPasswordViewController.storyboard */,
+				84D061F929670676001FE469 /* ForgotPasswordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BBE2977E8A50060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D061FA29670676001FE469 /* ForgotPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BBF2977E8C10060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D061F529670676001FE469 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BC02977E8D70060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D061F429670676001FE469 /* RegistrationViewController.storyboard */,
+				84D061F629670676001FE469 /* RegistrationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		843A7A8E29769FDC0063FA2D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1482,7 +1778,7 @@
 			children = (
 				84D0619A29670676001FE469 /* Edit */,
 				84D0619F29670676001FE469 /* List */,
-				84D061A629670676001FE469 /* Create */,
+				84D061A629670676001FE469 /* Add */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
@@ -1490,11 +1786,9 @@
 		84D0619A29670676001FE469 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				84D0619B29670676001FE469 /* PateintDetailViewModel.swift */,
-				84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */,
-				84D0619D29670676001FE469 /* PateintDetailViewController.swift */,
-				84D0619E29670676001FE469 /* PateintDetailViewController+Tableview.swift */,
-				84EFB19D2967249D00D8285E /* PateintsDetailListModel.swift */,
+				84088BA32977E59C0060855E /* Model */,
+				84088BA22977E5900060855E /* ViewModel */,
+				84088BA42977E5B50060855E /* View */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -1502,24 +1796,20 @@
 		84D0619F29670676001FE469 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				84D061A029670676001FE469 /* PateintListViewContoller.swift */,
-				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
-				84D061A129670676001FE469 /* PateintListViewModel.swift */,
-				84D061A229670676001FE469 /* PateintListModel.swift */,
-				84D061A329670676001FE469 /* PateintListTableViewCell.swift */,
-				84D061A429670676001FE469 /* PateintListTableViewCell.xib */,
+				84088BA72977E5EC0060855E /* Model */,
+				84088BA62977E5E10060855E /* ViewModel */,
+				84088BA52977E5D30060855E /* View */,
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		84D061A629670676001FE469 /* Create */ = {
+		84D061A629670676001FE469 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				84D061A729670676001FE469 /* CreatePateintViewModel.swift */,
-				84D061A829670676001FE469 /* CreatePateintViewContoller.swift */,
-				84D061A929670676001FE469 /* CreatePateintViewContoller.storyboard */,
+				84088BA82977E6030060855E /* ViewModel */,
+				84088BA92977E6150060855E /* View */,
 			);
-			path = Create;
+			path = Add;
 			sourceTree = "<group>";
 		};
 		84D061AA29670676001FE469 /* Dashboard */ = {
@@ -1533,11 +1823,9 @@
 		84D061AB29670676001FE469 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				84D061AC29670676001FE469 /* UpdateUserProfile.swift */,
-				84D061AD29670676001FE469 /* HomeViewModel.swift */,
-				84D061AE29670676001FE469 /* HomeViewContoller.swift */,
-				84D061AF29670676001FE469 /* UserProfile.swift */,
-				84D061B029670676001FE469 /* ClinicsModel.swift */,
+				84088B9F2977E5520060855E /* Model */,
+				84088BA02977E55A0060855E /* ViewModel */,
+				84088BA12977E5770060855E /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1556,10 +1844,8 @@
 		84D061F229670676001FE469 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				84D061F329670676001FE469 /* RegistrationModel.swift */,
-				84D061F429670676001FE469 /* RegistrationViewController.storyboard */,
-				84D061F529670676001FE469 /* RegistrationViewModel.swift */,
-				84D061F629670676001FE469 /* RegistrationViewController.swift */,
+				84088BBF2977E8C10060855E /* ViewModel */,
+				84088BC02977E8D70060855E /* View */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -1567,9 +1853,8 @@
 		84D061F729670676001FE469 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				84D061F829670676001FE469 /* ForgotPasswordViewController.storyboard */,
-				84D061F929670676001FE469 /* ForgotPasswordViewController.swift */,
-				84D061FA29670676001FE469 /* ForgotPasswordViewModel.swift */,
+				84088BBE2977E8A50060855E /* ViewModel */,
+				84088BBD2977E89A0060855E /* View */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -1577,9 +1862,8 @@
 		84D061FB29670676001FE469 /* VerifyForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				84D061FC29670676001FE469 /* VerifyForgotPasswordViewModel.swift */,
-				84D061FD29670676001FE469 /* VerifyForgotPasswordViewController.swift */,
-				84D061FE29670676001FE469 /* VerifyForgotPasswordViewController.storyboard */,
+				84088BBB2977E8720060855E /* ViewModel */,
+				84088BBC2977E88D0060855E /* View */,
 			);
 			path = VerifyForgotPassword;
 			sourceTree = "<group>";
@@ -1587,14 +1871,9 @@
 		84D061FF29670676001FE469 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				84D0620029670676001FE469 /* UserRepository.swift */,
-				84D0620129670676001FE469 /* LogInViewModel.swift */,
-				84D0620229670676001FE469 /* LoginModel.swift */,
-				84D0620329670676001FE469 /* User.swift */,
-				84D0620429670676001FE469 /* LogInViewController.storyboard */,
-				84D0620629670676001FE469 /* LoginService.swift */,
-				84D0620729670676001FE469 /* LogInViewController.swift */,
-				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
+				84088BB82977E7F90060855E /* Model */,
+				84088BBA2977E8260060855E /* ViewModel */,
+				84088BB92977E80D0060855E /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1716,12 +1995,11 @@
 		84D062B02967080E001FE469 /* Leads */ = {
 			isa = PBXGroup;
 			children = (
-				84D062B12967080E001FE469 /* leadModel.swift */,
-				84D062B22967080E001FE469 /* Edit */,
 				84D062B92967080E001FE469 /* LeadTimeLine */,
+				84D062B22967080E001FE469 /* Edit */,
 				84D062B62967080E001FE469 /* Detail */,
 				84D062D32967080E001FE469 /* list */,
-				84D062D82967080E001FE469 /* Create */,
+				84D062D82967080E001FE469 /* Add */,
 			);
 			path = Leads;
 			sourceTree = "<group>";
@@ -1729,9 +2007,8 @@
 		84D062B22967080E001FE469 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				84D062B52967080E001FE469 /* EditLeadViewModel.swift */,
-				84D062B32967080E001FE469 /* EditLeadViewController.swift */,
-				84D062B42967080E001FE469 /* EditLeadViewController.storyboard */,
+				84088BAA2977E6580060855E /* ViewModel */,
+				84088BAB2977E66F0060855E /* View */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -1739,13 +2016,9 @@
 		84D062B62967080E001FE469 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				84D062B72967080E001FE469 /* leadDetailViewController.swift */,
-				84D062B82967080E001FE469 /* leadDetailViewModel.swift */,
-				84D062C32967080E001FE469 /* Cell */,
-				84D062CF2967080E001FE469 /* leadDetailViewController.storyboard */,
-				84D062D02967080E001FE469 /* EmailTemplatesListDetailModel.swift */,
-				84D062D12967080E001FE469 /* leadDetailViewController+TableView.swift */,
-				84D062D22967080E001FE469 /* SMStemplatesListDetailModel.swift */,
+				84088BB12977E74D0060855E /* Model */,
+				84088BAF2977E70D0060855E /* ViewModel */,
+				84088BB02977E7370060855E /* View */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1753,11 +2026,9 @@
 		84D062B92967080E001FE469 /* LeadTimeLine */ = {
 			isa = PBXGroup;
 			children = (
-				84D062BA2967080E001FE469 /* leadCreationModel.swift */,
-				84D062BC2967080E001FE469 /* leadTimeLineViewModel.swift */,
-				84D062BD2967080E001FE469 /* Cell */,
-				84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */,
-				84D062BB2967080E001FE469 /* leadTimeLineViewController.swift */,
+				84088BAC2977E6E10060855E /* Model */,
+				84088BAD2977E6ED0060855E /* ViewModel */,
+				84088BAE2977E6FF0060855E /* View */,
 			);
 			path = LeadTimeLine;
 			sourceTree = "<group>";
@@ -1794,26 +2065,21 @@
 		84D062D32967080E001FE469 /* list */ = {
 			isa = PBXGroup;
 			children = (
-				84D062D42967080E001FE469 /* leadViewController.swift */,
-				84D062D52967080E001FE469 /* leadViewModel.swift */,
-				84D062D62967080E001FE469 /* LeadTableViewCell.swift */,
-				84D062D72967080E001FE469 /* LeadTableViewCell.xib */,
+				84088BB22977E76F0060855E /* Model */,
+				84088BB32977E77A0060855E /* ViewModel */,
+				84088BB42977E7840060855E /* View */,
 			);
 			path = list;
 			sourceTree = "<group>";
 		};
-		84D062D82967080E001FE469 /* Create */ = {
+		84D062D82967080E001FE469 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				84D062D92967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift */,
-				84D062DA2967080E001FE469 /* CreateLeadViewController.swift */,
-				84D062DB2967080E001FE469 /* CreateLeadViewModel.swift */,
-				84D062DC2967080E001FE469 /* Cell */,
-				84D062ED2967080E001FE469 /* QuestionnaireList.swift */,
-				84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */,
-				84D062EF2967080E001FE469 /* QuestionnaireId.swift */,
+				84088BB72977E7BB0060855E /* Model */,
+				84088BB52977E7970060855E /* ViewModel */,
+				84088BB62977E7AF0060855E /* View */,
 			);
-			path = Create;
+			path = Add;
 			sourceTree = "<group>";
 		};
 		84D062DC2967080E001FE469 /* Cell */ = {
@@ -2745,7 +3011,6 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
-				84D0627E29670677001FE469 /* RegistrationModel.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
@@ -2977,7 +3242,6 @@
 				84D062F52967080E001FE469 /* leadDetailViewModel.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,
 				848CBAB82971ABE800681049 /* TaskPatientsListModel.swift in Sources */,
-				84D0628D29670677001FE469 /* LoginService.swift in Sources */,
 				84D062F72967080E001FE469 /* leadTimeLineViewController.swift in Sources */,
 				84D0630B2967080E001FE469 /* leadDetailViewController+TableView.swift in Sources */,
 				84F610FC292A71AB00B1FB69 /* TLSCertificate.swift in Sources */,

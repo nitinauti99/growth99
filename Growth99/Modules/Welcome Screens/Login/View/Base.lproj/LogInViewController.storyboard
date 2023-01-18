@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jBr-zu-smh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jBr-zu-smh">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="iD3-9e-F2P">
-                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GgA-dh-aBW">
-                                <rect key="frame" x="120" y="91" width="150" height="50"/>
+                                <rect key="frame" x="120" y="88" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Abb-sB-L6h"/>
                                     <constraint firstAttribute="height" constant="50" id="Yzl-Cj-tkq"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MB0-bP-HPM">
-                                <rect key="frame" x="35" y="191" width="320" height="480"/>
+                                <rect key="frame" x="35" y="188" width="320" height="480"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fne-BS-6Vw" userLabel="userName">
                                         <rect key="frame" x="25" y="46" width="270" height="20"/>
@@ -190,7 +190,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jBr-zu-smh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nzF-Ed-XNo">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -206,7 +206,7 @@
     </scenes>
     <designables>
         <designable name="4Hn-Qt-BQe">
-            <size key="intrinsicContentSize" width="129" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="157" height="34"/>
         </designable>
         <designable name="9it-7d-Rlm">
             <size key="intrinsicContentSize" width="240.33333333333334" height="20.333333333333332"/>
@@ -215,7 +215,7 @@
             <size key="intrinsicContentSize" width="136" height="20.333333333333332"/>
         </designable>
         <designable name="rjj-ER-J1b">
-            <size key="intrinsicContentSize" width="157.66666666666666" height="24"/>
+            <size key="intrinsicContentSize" width="185.66666666666666" height="34"/>
         </designable>
     </designables>
     <resources>
