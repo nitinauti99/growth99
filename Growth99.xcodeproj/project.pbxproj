@@ -1118,6 +1118,42 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		84088BC529784E620060855E /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				84088BC829784EA30060855E /* ViewModel */,
+				84088BC729784E850060855E /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		84088BC629784E6D0060855E /* List */ = {
+			isa = PBXGroup;
+			children = (
+				84D062932967070C001FE469 /* Model */,
+				84D062902967070C001FE469 /* ViewModel */,
+				84D062952967070C001FE469 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		84088BC729784E850060855E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D062992967070C001FE469 /* UserCreateViewController.swift */,
+				84D062962967070C001FE469 /* UserCreateViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84088BC829784EA30060855E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D062922967070C001FE469 /* UserCreateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		843A7A8E29769FDC0063FA2D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1780,8 +1816,8 @@
 			isa = PBXGroup;
 			children = (
 				84D0619A29670676001FE469 /* Edit */,
-				84D0619F29670676001FE469 /* List */,
 				84D061A629670676001FE469 /* Add */,
+				84D0619F29670676001FE469 /* List */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
@@ -1884,10 +1920,8 @@
 		84D0628F2967070C001FE469 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				84D062932967070C001FE469 /* Model */,
-				84D062952967070C001FE469 /* View */,
-				84D062902967070C001FE469 /* ViewModel */,
-				84D0629A2967070C001FE469 /* CustomTableViewCell */,
+				84088BC529784E620060855E /* Add */,
+				84088BC629784E6D0060855E /* List */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1896,7 +1930,6 @@
 			isa = PBXGroup;
 			children = (
 				84D062912967070C001FE469 /* UserListViewModel.swift */,
-				84D062922967070C001FE469 /* UserCreateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1912,21 +1945,20 @@
 		84D062952967070C001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D0629A2967070C001FE469 /* Cell */,
 				84D062982967070C001FE469 /* UserListViewContoller.swift */,
 				84D062972967070C001FE469 /* UserListViewContoller.storyboard */,
-				84D062992967070C001FE469 /* UserCreateViewController.swift */,
-				84D062962967070C001FE469 /* UserCreateViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		84D0629A2967070C001FE469 /* CustomTableViewCell */ = {
+		84D0629A2967070C001FE469 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				84D0629B2967070C001FE469 /* UserListTableViewCell.xib */,
 				84D0629C2967070C001FE469 /* UserListTableViewCell.swift */,
 			);
-			path = CustomTableViewCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		84D062A6296707A5001FE469 /* Tasks */ = {
