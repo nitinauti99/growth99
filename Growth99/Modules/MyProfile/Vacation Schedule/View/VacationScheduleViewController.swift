@@ -38,7 +38,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
 
     var vacationViewModel: VacationViewModelProtocol?
     var allClinicsForVacation: [Clinics]?
-    var vacationsList:  [VacationsListModel]?
+    var vacationsList =  [VacationsListModel]()
     var selectedClinicId: Int = 0
     var headerView = VacationsHeadeView()
     
@@ -118,8 +118,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Vacations List API Response method
     func vacationsListResponseRecived() {
         self.view.HideSpinner()
-        vacationsList = vacationViewModel?.getVacationData
-        if vacationsList?.count == 0 {
+        vacationsList = vacationViewModel?.getVacationData ?? []
+        if vacationsList.count == 0 {
             isEmptyResponse = true
         } else {
             isEmptyResponse = false
@@ -151,20 +151,20 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         isValidateVacationArray = []
-        if vacationsList?.count ?? 0 > 0 {
+        if vacationsList.count > 0 {
             if selectedClinicId == 0 {
                 selectedClinicId = allClinicsForVacation?[0].id ?? 0
             }
             
-            for indexValue in 0..<(vacationsList?.count ?? 0) {
+            for indexValue in 0..<(vacationsList.count) {
                 
-                for childIndex in 0..<(vacationsList?[indexValue].userScheduleTimings?.count ?? 0) {
+                for childIndex in 0..<(vacationsList[indexValue].userScheduleTimings?.count ?? 0) {
                     let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
                    
                   if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
                         
                       if vacationCell.timeFromTextField.text == String.blank {
-                            if vacationsList?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                          if vacationsList[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
@@ -174,7 +174,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                         }
                         
                       if vacationCell.timeToTextField.text == String.blank {
-                            if vacationsList?[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                          if vacationsList[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
@@ -220,24 +220,24 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Add Vacations method
     @IBAction func addVacationButtonAction(sender: UIButton) {
 
-        let vacationCount = vacationsList?.count ?? 0
+        let vacationCount = vacationsList.count
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
-        vacationsList?.append(date2)
         
+        vacationsList.append(date2)
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true
-        let indexSet = IndexSet(integer: (vacationsList?.count ?? 0) - 1)
+        let indexSet = IndexSet(integer: (vacationsList.count ) - 1)
        
         vacationsListTableView.insertSections(indexSet, with: .fade)
       
         let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days:  String.blank)
         
-        vacationsList?[vacationCount].userScheduleTimings?.append(date1)
+        vacationsList[vacationCount].userScheduleTimings?.append(date1)
        
         let indexPath = IndexPath(row: 0, section: vacationCount)
         
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
-        vacationScrollViewHight.constant = vacationTableViewHeight + 450
+        vacationScrollViewHight.constant = vacationTableViewHeight + 600
     }
 }

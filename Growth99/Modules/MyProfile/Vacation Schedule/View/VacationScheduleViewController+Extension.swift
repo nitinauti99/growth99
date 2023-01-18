@@ -17,8 +17,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         headerView.tag = section
         
         if isEmptyResponse == false {
-            headerView.dateFromTextField.text = vacationViewModel?.serverToLocal(date: vacationsList?[section].fromDate ?? String.blank)
-            headerView.dateToTextField.text = vacationViewModel?.serverToLocal(date: vacationsList?[section].toDate ?? String.blank)
+            headerView.dateFromTextField.text = vacationViewModel?.serverToLocal(date: vacationsList[section].fromDate ?? String.blank)
+            headerView.dateToTextField.text = vacationViewModel?.serverToLocal(date: vacationsList[section].toDate ?? String.blank)
         } else {
             headerView.dateFromTextField.text = String.blank
             headerView.dateToTextField.text = String.blank
@@ -41,45 +41,46 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     
     // MARK: - Tableview delegate methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        return vacationsList?.count ?? 0
+        return vacationsList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vacationsList?[section].userScheduleTimings?.count ?? 0
+        return vacationsList[section].userScheduleTimings?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
         
         if isEmptyResponse == false {
-            cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? "")
-            cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? "")
-            if vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
+            cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? "")
+            cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? "")
+            if vacationsList[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
                 cell.removeTimeButton.isHidden = false
             } else {
                 cell.removeTimeButton.isHidden = true
             }
         } else {
-            if vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
+            if vacationsList[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
                 cell.removeTimeButton.isHidden = false
             } else {
                 cell.removeTimeButton.isHidden = true
             }
             cell.updateTimeFromTextField(with: String.blank)
             cell.updateTimeToTextField(with: String.blank)
-            
-           
         }
         
-        let totalcount = (vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0) - 1
+        let totalcount = (vacationsList[indexPath.section].userScheduleTimings?.count ?? 0) - 1
         cell.borderView.isHidden = true
         cell.removeTimeButton.isHidden = true
 
-        if indexPath.row == totalcount {
+        if (totalcount == 0) {
+            cell.borderView.isHidden = false
+        }else if (totalcount > 0 && indexPath.row == totalcount) {
             print("last Index")
             cell.borderView.isHidden = false
             cell.removeTimeButton.isHidden = false
         }
+        
         /// set bottom view only for last object
         cell.buttonRemoveTapCallback = {
             self.deleteRow(selectedSection: indexPath, selectedIndex: indexPath.row)
@@ -102,7 +103,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     // MARK: - Delete vacations row method
     @objc func deleteRow(selectedSection: IndexPath, selectedIndex: Int) {
         vacationsListTableView.beginUpdates()
-        vacationsList?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
+        vacationsList[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
         vacationsListTableView.deleteRows(at: [selectedSection], with: .fade)
         vacationsListTableView.endUpdates()
         vacationsListTableView.reloadRows(at: [selectedSection], with: .fade)
@@ -113,7 +114,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         if let vacationCell = self.vacationsListTableView.cellForRow(at: indexPath) as? VacationsCustomTableViewCell {
             vacationCell.borderView.isHidden = false
             vacationCell.removeTimeButton.isHidden =  false
-            if vacationsList?[indexPath.section].userScheduleTimings?.count ?? 0  == 1 {
+            if vacationsList[indexPath.section].userScheduleTimings?.count ?? 0  == 1 {
                 vacationCell.removeTimeButton.isHidden =  true
             }
         }
@@ -122,7 +123,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     // MARK: - Add vacations row method
     @objc func addRow(selectedSection: IndexPath, selectedIndex: Int) {
         let date1 = UserScheduleTimings(id: 1, timeFromDate:  String.blank, timeToDate:  String.blank, days:  String.blank)
-        vacationsList?[selectedSection.section].userScheduleTimings?.append(date1)
+        vacationsList[selectedSection.section].userScheduleTimings?.append(date1)
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true
         let indexPath = IndexPath(row: selectedIndex + 1, section: selectedSection.section)
@@ -184,7 +185,7 @@ extension VacationScheduleViewController: VacationsHeadeViewDelegate {
     func delateSectionButtonTapped(view: VacationsHeadeView) {
         let section = view.tag
         vacationsListTableView.beginUpdates()
-        vacationsList?.remove(at: section)
+        vacationsList.remove(at: section)
         vacationsListTableView.deleteSections([section], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 450

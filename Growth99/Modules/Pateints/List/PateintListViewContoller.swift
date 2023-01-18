@@ -24,6 +24,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = Constant.Profile.pateint
         self.viewModel = PateintListViewModel(delegate: self)
         self.getUserList()
         self.setBarButton()

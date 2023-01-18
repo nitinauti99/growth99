@@ -53,6 +53,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.ShowSpinner()
         self.viewModel = PateintDetailViewModel(delegate: self)
         viewModel?.getpateintsList(pateintId: self.pateintId)
