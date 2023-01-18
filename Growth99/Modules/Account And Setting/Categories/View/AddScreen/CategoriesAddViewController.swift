@@ -22,16 +22,28 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
     var categoriesAddViewModel: CategoriesAddEditViewModelProtocol?
-    
+    var screenTitle: String = Constant.Profile.addCategories
+    var categoryName: String = String.blank
+    var clinicName: String = String.blank
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNavigationBar()
         categoriesAddViewModel = CategoriesAddEditViewModel(delegate: self)
+        setUpNavigationBar()
+        setupUI()
         getClinicInfo()
     }
     
     func setUpNavigationBar() {
-        self.title = Constant.Profile.addCategories
+        self.title = screenTitle
+    }
+    
+    func setupUI() {
+        if title == Constant.Profile.editCategories {
+            categoriesNameTextField.text = categoryName
+        } else {
+            categoriesNameTextField.text = String.blank
+        }
     }
     
     func getClinicInfo() {

@@ -2150,40 +2150,12 @@
 		84D0632C29670898001FE469 /* Booking History */ = {
 			isa = PBXGroup;
 			children = (
-				84D0632E29670898001FE469 /* Model */,
-				84D0632F29670898001FE469 /* View */,
-				84D0632D29670898001FE469 /* ViewModel */,
-				84D0633029670898001FE469 /* CustomTableViewCell */,
+				DA073346297861F1004038C0 /* CustomTableViewCell */,
+				DA073347297861F1004038C0 /* Model */,
+				DA073345297861F1004038C0 /* View */,
+				DA073348297861F1004038C0 /* ViewModel */,
 			);
 			path = "Booking History";
-			sourceTree = "<group>";
-		};
-		84D0632D29670898001FE469 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84D0632E29670898001FE469 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84D0632F29670898001FE469 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84D0633029670898001FE469 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		84E34C3C2970264D00C58B0D /* list */ = {
@@ -2562,6 +2534,34 @@
 				DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */,
 			);
 			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		DA073345297861F1004038C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DA073346297861F1004038C0 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		DA073347297861F1004038C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA073348297861F1004038C0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DA45786E29707F8400CE458B /* GRWebView */ = {

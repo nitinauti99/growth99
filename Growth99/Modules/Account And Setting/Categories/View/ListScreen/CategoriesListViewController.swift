@@ -107,8 +107,9 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let createCategoriesVC = UIStoryboard(name: "CategoriesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "CategoriesAddViewController") as! CategoriesAddViewController
-        //        createCategoriesVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-        //        createCategoriesVC.screenTitle = Constant.Profile.editCategories
+        createCategoriesVC.screenTitle = Constant.Profile.editCategories
+        createCategoriesVC.categoryName = viewModel?.categoriesData[indexPath.row].name ?? String.blank
+        createCategoriesVC.clinicName = viewModel?.categoriesData[indexPath.row].name ?? String.blank
         self.navigationController?.pushViewController(createCategoriesVC, animated: true)
     }
 }
