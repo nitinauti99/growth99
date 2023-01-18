@@ -48,8 +48,9 @@ class UserListTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+        return dateFormatter.string(from: date as Date)
     }
+    
 }

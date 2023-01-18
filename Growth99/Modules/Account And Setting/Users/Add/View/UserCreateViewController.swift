@@ -1,15 +1,13 @@
 //
-//  HomeViewContoller.swift
+//  UserCreateViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 05/11/22.
+//  Created by nitin auti on 24/12/22.
 //
 
-import Foundation
 import UIKit
-import LocalAuthentication
 
-protocol HomeViewContollerProtocol {
+protocol UserCreateViewControllerProtocool {
     func userDataRecived()
     func errorReceived(error: String)
     func clinicsRecived()
@@ -18,13 +16,12 @@ protocol HomeViewContollerProtocol {
     func profileDataUpdated()
 }
 
-class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
-    
-    @IBOutlet private weak var firsNameTextField: CustomTextField!
-    @IBOutlet private weak var lastNameTextField: CustomTextField!
-    @IBOutlet private weak var emailTextField: CustomTextField!
-    @IBOutlet private weak var phoneNumberTextField: CustomTextField!
-    @IBOutlet private weak var passwordTextField: CustomTextField!
+class UserCreateViewController: UIViewController,UserCreateViewControllerProtocool {
+    @IBOutlet weak var firsNameTextField: CustomTextField!
+    @IBOutlet weak var lastNameTextField: CustomTextField!
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var phoneNumberTextField: CustomTextField!
+    @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
@@ -38,8 +35,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     
-    private var menuVC = DrawerViewContoller()
-    
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
@@ -52,16 +47,15 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     var selectedService = [Clinics]()
     var selectedServiceIds = [Int]()
     
-    var viewModel: HomeViewModelProtocol?
+    var viewModel: UserCreateViewModelProtocol?
     var roleArray: [String]?
     
     var screenTitle: String = Constant.Profile.homeScreen
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
-        self.title =  Constant.Profile.homeScreen
-        viewModel = HomeViewModel(delegate: self)
+        
+        viewModel = UserCreateViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
         self.userProviderViewHight.constant = 0
@@ -69,23 +63,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.setupTexFieldValidstion()
         self.view.ShowSpinner()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
-        self.navigationItem.titleView = UIImageView.navigationBarLogo()
-        self.navigationItem.leftBarButtonItem =
-        UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
-    }
-    
-    @objc func sideMenuTapped(_ sender: UIButton) {
-        menuVC.revealSideMenu()
+        self.title = Constant.Profile.createUser
     }
     
     fileprivate func setUpUI() {
-        self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
-        self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
-        self.emailTextField.text = viewModel?.getUserProfileData.email
-        self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
-        self.degignationTextField.text = viewModel?.getUserProfileData.designation
-        self.descriptionTextView.text = viewModel?.getUserProfileData.description
-      
         self.saveButton.layer.cornerRadius = 12
         self.saveButton.clipsToBounds = true
         self.cancelButton.layer.cornerRadius = 12
@@ -312,7 +293,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     }
 }
 
-extension HomeViewContoller: UITextFieldDelegate {
+extension UserCreateViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var maxLength = Int()

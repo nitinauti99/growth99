@@ -17,6 +17,9 @@ class LeadTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var leadStatusImage: UIImageView!
     @IBOutlet private weak var amount: UILabel!
+    @IBOutlet private weak var leadStatusLbi: UILabel!
+    @IBOutlet private weak var leadFormNameLbi: UILabel!
+    @IBOutlet private weak var leadSourceLbi: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +37,10 @@ class LeadTableViewCell: UITableViewCell {
         createdAt.text =  self.serverToLocal(date: leadVM?.createdAt ?? "")
         amount.text = String(leadVM?.amount ?? 0)
         let movement = leadVM?.leadStatus
+        leadStatusLbi.text = leadVM?.leadStatus
         leadStatusImage.image = UIImage(named: movement ?? "")
+        leadFormNameLbi.text = leadVM?.questionnaireName
+        leadSourceLbi.text = leadVM?.leadSource
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,10 +51,11 @@ class LeadTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+        return dateFormatter.string(from: date as Date)
     }
+    
 }
 
 enum LeaadStatus: String{
