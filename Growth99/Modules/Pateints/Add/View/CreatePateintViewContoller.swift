@@ -69,6 +69,7 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
     func pateintCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func errorReceived(error: String) {
@@ -136,7 +137,7 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
             "email": emailTextField.text ?? "",
             "phone": phoneNumberTextField.text ?? "",
             "gender": genderTextField.text ?? "",
-            "dateOfBirth": dateTextField.text ?? "",
+            "dateOfBirth": self.serverToLocalInputWorking(date: dateTextField.text ?? ""),
             "addressLine1": addressLine1TextField.text ?? "",
             "addressLine2": addressLine2TextField.text ?? "",
             "city": cityTextField.text ?? "",
@@ -149,6 +150,14 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
         viewModel?.cratePateint(parameters: param)
      }
     
+    func serverToLocalInputWorking(date: String) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            let date = dateFormatter.date(from: date) ?? Date()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            return dateFormatter.string(from: date)
+        }
 }
 
 extension CreatePateintViewContoller: UITextFieldDelegate  {

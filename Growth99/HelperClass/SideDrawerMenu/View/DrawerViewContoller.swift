@@ -74,7 +74,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     }
     
     func revealSideMenu() {
-        self.bussinessTitile.text = user.bussinessName
         UIApplication.shared.keyWindow?.addSubview(self.view)
         self.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         UIView.animate(withDuration: 0.3, animations: { () -> Void in
