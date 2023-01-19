@@ -25,6 +25,8 @@ protocol CalenderViewModelProtocol {
     
     func appointmentListCountGreaterthan() -> Int
     func appointmentListCountLessthan() -> Int
+    
+    func serverToLocal(date: String) -> String 
 }
 
 
@@ -148,7 +150,7 @@ class CalenderViewModel: CalenderViewModelProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.dateFormat = "EEEE - MMM d"
         return dateFormatter.string(from: date)
     }
     

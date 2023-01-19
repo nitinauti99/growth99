@@ -11,6 +11,7 @@ protocol AddEventViewControllerProtocol: AnyObject {
     func eventDataReceived()
     func datesDataReceived()
     func timesDataReceived()
+    func appoinmentCreated(apiResponse: AppoinmentModel)
     func errorEventReceived(error: String)
 }
 
@@ -52,8 +53,11 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     var allTimesList = [String]()
     var selectedTimes = [String]()
     var selectedTimesIds = [Int]()
-
-    var inPersonSelected: String = "inPerson"
+    
+    var userSelectedDate: String = String.blank
+    var selectedDate: String = String.blank
+    var selectedTime: String = String.blank
+    var appointmentTypeSelected: String = "InPerson"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         setUpNavigationBar()
         addEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = AddEventViewModel(delegate: self)
+        //setupEventUI()
     }
     
     // MARK: - setUpNavigationBar
@@ -69,6 +74,18 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         self.navigationItem.title = Constant.Profile.appointment
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(closeEventClicked), imageName: "iconCircleCross")
     }
+    
+  /*  func setupEventUI() {
+        if userSelectedDate == "Manual" {
+            dateTextField.isUserInteractionEnabled = true
+            dateTextField.leftPadding = 25
+        } else {
+            dateTextField.rightImage = nil
+            dateTextField.leftPadding = 0
+            dateTextField.text = userSelectedDate
+            dateTextField.isUserInteractionEnabled = false
+        }
+    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -127,6 +144,13 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     func eventDataReceived() {
         
     }
+    
+    func appoinmentCreated(apiResponse: AppoinmentModel) {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Appoinment created sucessfully")
+        self.navigationController?.dismiss(animated: true)
+        NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil)
+    }
 
     func errorEventReceived(error: String) {
         
@@ -181,11 +205,11 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allProviders, cellType: .subTitle) { (cell, allProviders, indexPath) in
-            cell.textLabel?.text = allProviders.firstName?.components(separatedBy: " ").first
+            cell.textLabel?.text = "\(allProviders.firstName ?? String.blank) \(allProviders.lastName ?? String.blank)"
         }
         
         selectionMenu.setSelectedItems(items: selectedProviders) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.providersTextField.text = selectedList.map({$0.firstName ?? ""}).joined(separator: ", ")
+            self?.providersTextField.text = "\(selectedItem?.firstName ?? String.blank) \(selectedItem?.lastName ?? String.blank)"
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedProviders  = selectedList
             self?.selectedProvidersIds = selectedId
@@ -208,6 +232,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         
         selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.dateTextField.text = self?.eventViewModel?.serverToLocal(date: selectedList[0])
+            self?.selectedDate = selectedList[0]
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
             self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? "") ?? "", clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
@@ -228,6 +253,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         
         selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.timeTextField.text = self?.eventViewModel?.utcToLocal(dateStr: selectedList[0])
+            self?.selectedTime = selectedList[0]
             self?.selectedTimes = selectedList
         }
         selectionMenu.reloadInputViews()
@@ -285,7 +311,8 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             timeTextField.showError(message: Constant.Profile.chooseToTime)
             return
         }
-        self.view.ShowSpinner()        
+        self.view.ShowSpinner()
+        eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
@@ -294,11 +321,13 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     
     @IBAction func inPersonButtonAction(sender: UIButton) {
         inPersonBtn.isSelected = !inPersonBtn.isSelected
+        appointmentTypeSelected = "InPerson"
         virtualBtn.isSelected = false
     }
     
     @IBAction func virtualButtonAction(sender: UIButton) {
         virtualBtn.isSelected = !virtualBtn.isSelected
         inPersonBtn.isSelected = false
+        appointmentTypeSelected = "Virtual"
     }
 }

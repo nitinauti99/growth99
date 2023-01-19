@@ -75,7 +75,6 @@ class WorkingScheduleViewModel {
         self.requestManager.request(forPath: apiURL, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                print(response)
                 self.delegate?.apiResponseRecived(apiResponse: response)
             case .failure(let error):
                 self.delegate?.apiErrorReceived(error: error.localizedDescription)
