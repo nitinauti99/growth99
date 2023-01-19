@@ -11,6 +11,7 @@ class EventsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventsLineView: UIView!
     @IBOutlet weak var eventsTitle: UILabel!
+    @IBOutlet weak var eventsDateCreated: UILabel!
     @IBOutlet weak var eventsDuration: UILabel!
     @IBOutlet weak var eventsDate: UIButton!
 

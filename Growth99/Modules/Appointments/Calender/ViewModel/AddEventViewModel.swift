@@ -18,6 +18,9 @@ protocol AddEventViewModelProtocol {
     func timeInputCalender(date: String) -> String
     func serverToLocal(date: String) -> String
     func utcToLocal(dateStr: String) -> String?
+    func serverToLocalInputWorking(date: String) -> String
+    func appointmentDateInput(date: String) -> String
+    func createAppoinemnetMethod(addEventModel: NewAppoinmentModel)
 }
 
 class AddEventViewModel {
@@ -68,6 +71,33 @@ class AddEventViewModel {
         }
     }
     
+    func createAppoinemnetMethod(addEventModel: NewAppoinmentModel) {
+        let parameters: Parameters = [
+            "firstName": addEventModel.firstName ?? String.blank,
+            "lastName": addEventModel.lastName ?? String.blank,
+            "email": addEventModel.email ?? String.blank,
+            "phone": addEventModel.phone ?? String.blank,
+            "notes": addEventModel.notes ?? String.blank,
+            "clinicId": addEventModel.clinicId ?? String.blank,
+            "serviceIds": addEventModel.serviceIds ?? String.blank,
+            "providerId": addEventModel.providerId ?? String.blank,
+            "date": addEventModel.date ?? String.blank,
+            "time": addEventModel.time ?? String.blank,
+            "appointmentType": addEventModel.appointmentType ?? String.blank,
+            "source": addEventModel.source ?? String.blank,
+            "appointmentDate": addEventModel.appointmentDate ?? String.blank
+        ]
+        self.requestManager.request(forPath: ApiUrl.newAppointment, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) { (result: Result<AppoinmentModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let appoinmentData):
+                self.delegate?.appoinmentCreated(apiResponse: appoinmentData)
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    
     var getAllDatesData: [String] {
         return allDates
     }
@@ -85,6 +115,25 @@ class AddEventViewModel {
         return dateFormatter.string(from: date)
     }
     
+    func appointmentDateInput(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z'"
+        return dateFormatter.string(from: date)
+    }
+    
+    func serverToLocalInputWorking(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        return dateFormatter.string(from: date)
+    }
+
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")

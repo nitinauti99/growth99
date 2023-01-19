@@ -16,7 +16,7 @@ protocol CalenderViewContollerProtocol {
     func appointmentListDataRecived()
 }
 
-class CalenderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalenderViewContollerProtocol{
+class CalenderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalenderViewContollerProtocol, FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
@@ -73,26 +73,25 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-        getClinicsData()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("EventCreated"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpNavigationBar()
-        setupUI()
         calenderSegmentControl.selectedSegmentIndex = 0
         eventTypeSelected = "upcoming"
+        getClinicsData()
         eventListView.reloadData()
+    }
+    
+    @objc func updateUI() {
+        getClinicsData()
     }
     
     func setUpNavigationBar() {
         self.title = Constant.Profile.calender
     }
-    
-    func setupUI() {
-        calenderscrollview.setContentOffset(.zero, animated: true)
-    }
-    
     func getClinicsData() {
         self.view.ShowSpinner()
         calenderViewModel?.getallClinics()
@@ -153,6 +152,24 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+    
+    internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        if monthPosition == .next || monthPosition == .previous {
+            calendar.setCurrentPage(date, animated: true)
+        }
+        let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
+        addEventVC.userSelectedDate = selectedDates.first ?? String.blank
+        let navController = UINavigationController(rootViewController: addEventVC)
+        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(navController, animated:true, completion: nil)
+    }
+    
     @IBAction func selectClinicButtonAction(sender: UIButton) {
         if selectedClincs.count == 0 {
             self.clincsTextField.text = String.blank
@@ -202,11 +219,11 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allProviders, cellType: .subTitle) { (cell, allProviders, indexPath) in
-            cell.textLabel?.text = allProviders.firstName?.components(separatedBy: " ").first
+            cell.textLabel?.text = "\(allProviders.firstName ?? String.blank) \(allProviders.lastName ?? String.blank)"
         }
         
         selectionMenu.setSelectedItems(items: selectedProviders) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.providersTextField.text = selectedList.map({$0.firstName ?? ""}).joined(separator: ", ")
+            self?.providersTextField.text = "\(selectedItem?.firstName ?? String.blank) \(selectedItem?.lastName ?? String.blank)"
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedProviders  = selectedList
             self?.selectedProvidersIds = selectedId
@@ -256,8 +273,9 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].appointmentStartDate ?? String.blank)
+                cell.eventsDate.setTitle(self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         } else if eventTypeSelected == "past" {
@@ -266,8 +284,9 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(self.self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].patientFirstName ?? String.blank) \(self.self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].appointmentStartDate ?? String.blank)
+                cell.eventsDate.setTitle(self.self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         } else {
@@ -277,6 +296,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                 cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: self.appoinmentListData[indexPath.row].appointmentStartDate ?? String.blank)
                 cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
@@ -289,6 +309,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
         let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
+        addEventVC.userSelectedDate = "Manual"
         let navController = UINavigationController(rootViewController: addEventVC)
         navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(navController, animated:true, completion: nil)
