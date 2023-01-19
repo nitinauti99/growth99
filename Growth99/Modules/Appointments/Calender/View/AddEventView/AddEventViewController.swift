@@ -9,6 +9,8 @@ import UIKit
 
 protocol AddEventViewControllerProtocol: AnyObject {
     func eventDataReceived()
+    func datesDataReceived()
+    func timesDataReceived()
     func errorEventReceived(error: String)
 }
 
@@ -33,7 +35,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
 
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
-    var selectedClincIds = [Int]()
+    var selectedClincIds = Int()
     
     var allServices = [ServiceList]()
     var selectedServices = [ServiceList]()
@@ -43,6 +45,14 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     var selectedProviders = [UserDTOList]()
     var selectedProvidersIds = [Int]()
     
+    var allDatesList = [String]()
+    var selectedDates = [String]()
+    var selectedDatesIds = [Int]()
+    
+    var allTimesList = [String]()
+    var selectedTimes = [String]()
+    var selectedTimesIds = [Int]()
+
     var inPersonSelected: String = "inPerson"
     
     override func viewDidLoad() {
@@ -52,18 +62,6 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         setUpNavigationBar()
         addEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = AddEventViewModel(delegate: self)
-        dateTextField.tintColor = .clear
-        timeTextField.tintColor = .clear
-        dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateButtonPressed), mode: .date)
-        timeTextField.addInputViewDatePickerCalender(target: self, selector: #selector(timeButtonPressed1), mode: .time)
-    }
-    
-    @objc func dateButtonPressed() {
-        dateTextField.text = addEventViewModel?.dateFormatterString(textField: dateTextField)
-    }
-    
-    @objc func timeButtonPressed1() {
-        timeTextField.text = addEventViewModel?.timeFormatterString(textField: timeTextField)
     }
     
     // MARK: - setUpNavigationBar
@@ -97,7 +95,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     }
     
     func serviceListDataRecived() {
-        selectedServices = addEventViewModel?.serviceData ?? []
+        selectedServices = []
         allServices = addEventViewModel?.serviceData ?? []
         self.view.HideSpinner()
     }
@@ -105,6 +103,16 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     func providerListDataRecived() {
         selectedProviders = addEventViewModel?.providerData ?? []
         allProviders = addEventViewModel?.providerData ?? []
+        self.view.HideSpinner()
+    }
+    
+    func datesDataReceived() {
+        allDatesList = eventViewModel?.getAllDatesData ?? []
+        self.view.HideSpinner()
+    }
+    
+    func timesDataReceived() {
+        allTimesList = eventViewModel?.getAllTimessData ?? []
         self.view.HideSpinner()
     }
     
@@ -137,7 +145,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincs  = selectedList
-            self?.selectedClincIds = selectedId
+            self?.selectedClincIds = selectedId.first ?? 0
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -149,7 +157,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             self.servicesTextField.text = String.blank
         }
         
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
             cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
         }
         
@@ -158,12 +166,12 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServices  = selectedList
             self?.selectedServicesIds = selectedId
-            self?.providersTextField.text = "Select Provider"
             self?.view.ShowSpinner()
             self?.addEventViewModel?.sendProviderList(providerParams: self?.selectedServicesIds.first ?? 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServices.count * 44))), arrowDirection: .up), from: self)
     }
     
@@ -181,10 +189,50 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedProviders  = selectedList
             self?.selectedProvidersIds = selectedId
+            self?.view.ShowSpinner()
+            self?.eventViewModel?.getDatesList(clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [])
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allProviders.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+    @IBAction func selectDatesButtonAction(sender: UIButton) {
+        if selectedDates.count == 0 {
+            self.dateTextField.text = String.blank
+        }
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
+            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? "")
+        }
+        
+        selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.dateTextField.text = self?.eventViewModel?.serverToLocal(date: selectedList[0])
+            self?.selectedDates = selectedList
+            self?.view.ShowSpinner()
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? "") ?? "", clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allDatesList.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+    @IBAction func selectTimesButtonAction(sender: UIButton) {
+        if selectedTimes.count == 0 {
+            self.timeTextField.text = String.blank
+        }
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
+            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? "")
+        }
+        
+        selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.timeTextField.text = self?.eventViewModel?.utcToLocal(dateStr: selectedList[0])
+            self?.selectedTimes = selectedList
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allTimesList.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func saveButtonAction(sender: UIButton) {
@@ -237,7 +285,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             timeTextField.showError(message: Constant.Profile.chooseToTime)
             return
         }
-        
+        self.view.ShowSpinner()        
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {

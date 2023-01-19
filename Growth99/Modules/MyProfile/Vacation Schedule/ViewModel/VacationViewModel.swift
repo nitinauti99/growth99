@@ -57,7 +57,6 @@ class VacationViewModel {
     
     func getVacationDeatils(selectedClinicId: Int) {
         let url = "\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/vacation"
-        
         self.requestManager.request(forPath: ApiUrl.userProfile.appending(url), method: .GET, headers: self.requestManager.Headers()) { (result: Result<[VacationsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let list):
@@ -71,7 +70,6 @@ class VacationViewModel {
     
     func sendRequestforVacation(vacationParams: [String: Any]) {
         let url = "\(UserRepository.shared.userId ?? 0)/vacation-schedules"
-        
         self.requestManager.request(forPath: ApiUrl.vacationSubmit.appending(url), method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):

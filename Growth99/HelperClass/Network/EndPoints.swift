@@ -56,6 +56,7 @@ struct EndPoints {
     static let calenderInfo = "/api/v1/appointments/calendar/filter?clinicId="
     static let bussinessInfo = "/api/businesses/"
     static let getBussinessInfo = "/api/public/v1/businesses/"
+    static let newAppointment = "/api/appointments/new"
 }
 
 struct ApiUrl {
@@ -106,6 +107,5 @@ struct ApiUrl {
     static let calenderInfo = EndPoints.baseURL.appending(EndPoints.calenderInfo)
     static let bussinessInfo = EndPoints.baseURL.appending(EndPoints.bussinessInfo)
     static let getBussinessInfo = EndPoints.baseURL.appending(EndPoints.getBussinessInfo)
-
-    
+    static let newAppointment = EndPoints.baseURL.appending(EndPoints.newAppointment)
 }
