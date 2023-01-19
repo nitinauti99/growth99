@@ -142,8 +142,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.view.HideSpinner()
         // get from user api
         self.servicesTextField.text = ""
-        selectedService = viewModel?.getAllService ?? []
-        allService = viewModel?.getUserProfileData.services ?? []
+        selectedService =  viewModel?.getUserProfileData.services ?? []
+        allService = viewModel?.getAllService ?? []
         
         let selectedList = selectedService.map({$0.id ?? 0})
         self.selectedServiceIds = selectedList

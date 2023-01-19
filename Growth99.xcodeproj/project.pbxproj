@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
+		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
 		843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */; };
@@ -391,6 +392,7 @@
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
+		84088BCA297930180060855E /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bussinessDetailInfoModel.swift; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
 		843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewModel.swift; sourceTree = "<group>"; };
@@ -1017,8 +1019,8 @@
 		84088BB82977E7F90060855E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
 				84D0620029670676001FE469 /* UserRepository.swift */,
-				84D0620129670676001FE469 /* LogInViewModel.swift */,
 				84D0620229670676001FE469 /* LoginModel.swift */,
 				84D0620329670676001FE469 /* User.swift */,
 			);
@@ -1037,7 +1039,7 @@
 		84088BBA2977E8260060855E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
+				84D0620129670676001FE469 /* LogInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1152,6 +1154,14 @@
 				84D062922967070C001FE469 /* UserCreateViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84088BC929792D280060855E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84088BCA297930180060855E /* BusinessModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		843A7A8E29769FDC0063FA2D /* ViewModel */ = {
@@ -1514,6 +1524,7 @@
 		84D0614A29670676001FE469 /* Business Profile */ = {
 			isa = PBXGroup;
 			children = (
+				84088BC929792D280060855E /* Model */,
 				843A7A8E29769FDC0063FA2D /* ViewModel */,
 				84D0614B29670676001FE469 /* View */,
 			);
@@ -3254,6 +3265,7 @@
 				84F610BB292A71AA00B1FB69 /* JWT.swift in Sources */,
 				84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */,
 				84F610C4292A71AA00B1FB69 /* JOSEHeader.swift in Sources */,
+				84088BCB297930180060855E /* BusinessModel.swift in Sources */,
 				84D0631E2967080E001FE469 /* PreSelectCheckboxTableViewCell.swift in Sources */,
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
 				DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */,

@@ -44,7 +44,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.mainMenuList = viewModel?.loadJson() ?? []
         self.hiddenSections = Set(0...mainMenuList.count)
         self.roles.text = UserRepository.shared.roles
-        self.bussinessTitile.text = user.bussinessName
         self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? ""), placeholderImage: UIImage(named: "Logo.png"))
 
         scrollview.delegate = self
@@ -53,6 +52,11 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         
         ///used for showing subMenuTitle
         self.tableView.register(UINib(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuTableViewCell")
+    }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.bussinessTitile.text = user.bussinessName
     }
     
     // MARK: - FUNCTIONS
@@ -70,6 +74,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     }
     
     func revealSideMenu() {
+        self.bussinessTitile.text = user.bussinessName
         UIApplication.shared.keyWindow?.addSubview(self.view)
         self.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         UIView.animate(withDuration: 0.3, animations: { () -> Void in

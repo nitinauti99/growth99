@@ -30,7 +30,7 @@ class UserListViewModel {
         self.requestManager.request(forPath: ApiUrl.getUserList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[UserListModel], GrowthNetworkError>) in
             switch result {
             case .success(let userData):
-                self.userData = userData
+                self.userData = userData.reversed()
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

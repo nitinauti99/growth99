@@ -9,8 +9,8 @@ import Foundation
 
 protocol UserCreateViewModelProtocol {
     func isValidFirstName(_ firstName: String) -> Bool
-    func isValidPassword(_ password: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    func isValidEmail(_ email: String) -> Bool
     func getUserData(userId: Int)
     var getUserProfileData: UserProfile { get }
     func getallClinics()
@@ -109,20 +109,28 @@ class UserCreateViewModel {
                                          "description": description,
                                          "designation": designation
         ]
-        let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
+        let url = "https://api.growthemr.com/api/users"
         
-        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .POST,headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
             switch result {
             case .success(let userData):
-                self.delegate?.profileDataUpdated()
+                if userData.email == nil {
+                    self.delegate?.errorReceived(error: "email is alredy exist")
+                }else{
+                    self.delegate?.profileDataUpdated()
+                }
                 print("Successful Response", userData)
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
                 self.delegate?.profileDataUpdated()
             }
         }
     }
     
+   
+}
+
+extension UserCreateViewModel : UserCreateViewModelProtocol {
+  
     var getAllService: [Clinics] {
         return self.allServices ?? []
     }
@@ -139,11 +147,6 @@ class UserCreateViewModel {
         return self.allClinics ?? []
     }
     
-}
-
-extension UserCreateViewModel : UserCreateViewModelProtocol {
-
-    
     func isValidFirstName(_ firstName: String) -> Bool {
         if firstName.count > 0 {
             return true
@@ -158,13 +161,10 @@ extension UserCreateViewModel : UserCreateViewModelProtocol {
         return true
     }
     
-    func isValidPassword(_ password: String) -> Bool {
-        let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
-        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-        
-        if passwordPred.evaluate(with: password) && password.count >= 8 {
-            return true
-        }
-        return false
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }

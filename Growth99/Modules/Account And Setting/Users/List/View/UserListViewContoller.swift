@@ -26,15 +26,13 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         super.viewDidLoad()
         self.viewModel = UserListViewModel(delegate: self)
         self.getUserList()
-        //        self.setBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
-        let createCategoriesVC = UIStoryboard(name: "BaseTabbar", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller") as! HomeViewContoller
-        createCategoriesVC.screenTitle = Constant.Profile.createUser
-        self.navigationController?.pushViewController(createCategoriesVC, animated: true)
+        let detailController = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
+        navigationController?.pushViewController(detailController, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,15 +63,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         self.view.ShowSpinner()
         viewModel?.getUserList()
     }
-    //
-    //    func loadMoreItemsForList(){
-    //        if (viewModel?.leadUserData.count ?? 0) ==  viewModel?.leadTotalCount {
-    //            return
-    //        }
-    //         currentPage += 1
-    //         getListFromServer(currentPage)
-    //     }
-    
+
     func registerTableView() {
         self.userListTableView.delegate = self
         self.userListTableView.dataSource = self

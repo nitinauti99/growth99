@@ -54,106 +54,22 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel = UserCreateViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
         self.setupTexFieldValidstion()
-        self.view.ShowSpinner()
-        viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
         self.title = Constant.Profile.createUser
-    }
-    
-    fileprivate func setUpUI() {
-        self.saveButton.layer.cornerRadius = 12
-        self.saveButton.clipsToBounds = true
-        self.cancelButton.layer.cornerRadius = 12
-        self.cancelButton.clipsToBounds = true
-    }
-    
-    func userDataRecived() {
-        viewModel?.getallClinics()
         userProvider.setOn(false, animated: false)
-        if viewModel?.getUserProfileData.isProvider ?? false {
-            userProvider.setOn(true, animated: false)
-            self.userProviderViewHight.constant = 300
-            self.userProviderView.isHidden = false
-        }
-        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? ""
-        setUpUI()
-    }
-    
-    func clinicsRecived() {
-        // get from user api
-        selectedClincs = viewModel?.getUserProfileData.clinics ?? []
-        
-        /// get From allclinincsapi
-        allClinics = viewModel?.getAllClinicsData ?? []
-        
-        self.clincsTextField.text = selectedClincs.map({$0.name ?? ""}).joined(separator: ", ")
-        let selectedClincId = selectedClincs.map({$0.id ?? 0})
-        self.selectedClincIds = selectedClincId
-        self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
-    }
-    
-    func serviceCategoriesRecived() {
-        // get from user api
-        selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
-        allServiceCategories = viewModel?.getAllServiceCategories ?? []
-        
-        var itemNotPresent:Bool = false
-        for item in selectedServiceCategories {
-            if allServiceCategories.contains(item) {
-                itemNotPresent =  true
-            }
-        }
-        self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? ""}).joined(separator: ", ")
-        let selectedList = selectedServiceCategories.map({$0.id ?? 0})
-        self.selectedServiceCategoriesIds = selectedList
-        
-        if selectedServiceCategories.count == 0 || itemNotPresent == false {
-            self.serviceCategoriesTextField.text = ""
-        }
-        self.viewModel?.getallService(SelectedCategories: selectedList)
-    }
-    
-    func serviceRecived() {
-        self.view.HideSpinner()
-        // get from user api
-        self.servicesTextField.text = ""
-        selectedService = viewModel?.getAllService ?? []
-        allService = viewModel?.getUserProfileData.services ?? []
-        
-        let selectedList = selectedService.map({$0.id ?? 0})
-        self.selectedServiceIds = selectedList
-        self.servicesTextField.text = selectedService.map({$0.name ?? ""}).joined(separator: ", ")
-    }
-    
-    func profileDataUpdated(){
-        self.view.HideSpinner()
-        self.view.showToast(message: "data updated successfully")
-        self.openUserListView()
-    }
-    
-    
-    @IBAction func switchIsChanged(sender: UISwitch) {
-        if sender.isOn {
-            self.userProviderViewHight.constant = 300
-            self.userProviderView.isHidden = false
-            self.view.layoutIfNeeded()
-        } else {
-            self.userProviderViewHight.constant = 0
-            self.userProviderView.isHidden = true
-            self.view.layoutIfNeeded()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.view.ShowSpinner()
+        viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -170,7 +86,77 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     @objc func keyboardWillHide(notification:Notification) {
         self.view.frame.origin.y = 0
     }
+        
+    fileprivate func setUpUI() {
+        self.saveButton.layer.cornerRadius = 12
+        self.saveButton.clipsToBounds = true
+        self.cancelButton.layer.cornerRadius = 12
+        self.cancelButton.clipsToBounds = true
+    }
     
+    func userDataRecived() {
+        self.view.HideSpinner()
+        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? ""
+        setUpUI()
+    }
+    
+    func profileDataUpdated(){
+        self.view.HideSpinner()
+        self.view.showToast(message: "data updated successfully")
+        self.openUserListView()
+    }
+    
+    @IBAction func switchIsChanged(sender: UISwitch) {
+        if sender.isOn {
+            self.userProviderViewHight.constant = 300
+            self.userProviderView.isHidden = false
+            self.view.layoutIfNeeded()
+            self.clincsTextField.text = ""
+            self.servicesTextField.text = ""
+            self.serviceCategoriesTextField.text = ""
+            self.view.ShowSpinner()
+            viewModel?.getallClinics()
+        } else {
+            self.userProviderViewHight.constant = 0
+            self.userProviderView.isHidden = true
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func clinicsRecived() {
+        /// get From allclinincsapi
+        allClinics = viewModel?.getAllClinicsData ?? []
+        let selectedClincId = selectedClincs.map({$0.id ?? 0})
+        self.selectedClincIds = selectedClincId
+        self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
+    }
+  
+    func serviceCategoriesRecived() {
+        // get from user api
+        allServiceCategories = viewModel?.getAllServiceCategories ?? []
+        var itemNotPresent:Bool = false
+        for item in selectedServiceCategories {
+            if allServiceCategories.contains(item) {
+                itemNotPresent =  true
+            }
+        }
+        let selectedList = selectedServiceCategories.map({$0.id ?? 0})
+        self.selectedServiceCategoriesIds = selectedList
+
+        if selectedServiceCategories.count == 0 || itemNotPresent == false {
+            self.serviceCategoriesTextField.text = ""
+        }
+        self.viewModel?.getallService(SelectedCategories: selectedList)
+    }
+    
+    func serviceRecived() {
+        self.view.HideSpinner()
+        // get from user api
+        self.servicesTextField.text = ""
+        allService = viewModel?.getAllService ?? []
+        let selectedList = selectedService.map({$0.id ?? 0})
+        self.selectedServiceIds = selectedList
+    }
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
         self.rolesTextField.text = ""
@@ -182,7 +168,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
         }
-        
+        selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
@@ -209,7 +195,6 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
     }
-    
     
     @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
         
@@ -241,7 +226,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         if allService.count == 0 {
             self.servicesTextField.text = ""
         }
-        
+       
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allService, cellType: .subTitle) { (cell, allServices, indexPath) in
             cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
         }
@@ -275,6 +260,33 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     }
     
     @IBAction func saveUserProfile() {
+        if let textField = firsNameTextField,  textField.text == "" {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            return
+        }
+        if let textField = lastNameTextField, textField.text == "" {
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
+            return
+        }
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+            return
+        }
+
+        guard let emailValidate = viewModel?.isValidEmail(email), emailValidate else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+
+        if let textField = phoneNumberTextField, textField.text == "" {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            return
+        }
+        if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
+        }
+        
         self.view.ShowSpinner()
         viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: self.degignationTextField.text ?? "", clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
     }
@@ -288,8 +300,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     }
     
     func openUserListView(){
-        let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
-        self.navigationController?.pushViewController(userListVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

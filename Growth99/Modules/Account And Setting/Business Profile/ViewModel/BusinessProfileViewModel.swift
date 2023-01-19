@@ -14,7 +14,8 @@ class BusinessProfileViewModel {
     var delegate: BusinessProfileViewControllerProtocol?
     var serviceListData: [ServiceList] = []
     var serviceFilterData: [ServiceList] = []
-    
+    let user = UserRepository.shared
+
     init(delegate: BusinessProfileViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -23,12 +24,15 @@ class BusinessProfileViewModel {
     
     func saveBusinessInfo(name: String, trainingBusiness: Bool) {
         let finaleUrl = ApiUrl.bussinessInfo + "\(UserRepository.shared.Xtenantid ?? "")"
-
-        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { [weak self] result in
-            guard let self = self else { return }
+        let parameter: [String : Any] = ["name": name,
+                                         "trainingBusiness": trainingBusiness
+                                         ]
+        
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<BusinessModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 print(response)
+                self.user.bussinessName = response.name
                 self.delegate?.saveBusinessDetailReceived(responseMessage: "saved bussiness info")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
