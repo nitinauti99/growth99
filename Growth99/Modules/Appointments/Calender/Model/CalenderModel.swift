@@ -56,7 +56,7 @@ struct AppointmentDTOList: Codable, Equatable {
 }
 
 
-struct NewAppoinmentModel: DictionaryEncodable {
+struct NewAppoinmentModel: Codable {
     let firstName: String?
     let lastName: String?
     let email: String?
@@ -72,27 +72,12 @@ struct NewAppoinmentModel: DictionaryEncodable {
     let appointmentDate: String?
 }
 
-protocol DictionaryEncodable: Encodable {}
-
-extension DictionaryEncodable {
-    func dictionary() -> [String: Any]? {
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .millisecondsSince1970
-        guard let json = try? encoder.encode(self),
-            let dict = try? JSONSerialization.jsonObject(with: json, options: []) as? [String: Any] else {
-                return nil
-        }
-        return dict
-    }
-}
-
-
 struct AppoinmentModel: Codable {
-    let data: Data?
+    let data: AppoinmentData?
     let statusCode: Int?
 }
 
-struct Data : Codable {
+struct AppoinmentData : Codable {
     let createdAt : String?
     let updatedAt : String?
     let createdBy : CreatedBy?
