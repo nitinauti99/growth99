@@ -151,10 +151,10 @@ extension HomeViewModel : HomeViewModelProtocol {
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count < 10 {
-            return false
+        if phoneNumber.count == 10 {
+            return true
         }
-        return true
+        return false
     }
 
     func isValidPassword(_ password: String) -> Bool {

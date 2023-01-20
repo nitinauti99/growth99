@@ -19,6 +19,8 @@ struct Constant {
         static let repeatPasswordInvalidError = "Repeat password is Invalide."
         static let nameEmptyError = "Name is required."
         static let firstNameEmptyError = "First Name is required."
+        static let firstNameInvalidError = "First Name is Invalide."
+        static let lastNameInvalidError = "Last Name is Invalide."
         static let lastNameEmptyError = "Last Name is required."
         static let phoneNumberEmptyError = "Phone number is required."
         static let phoneNumberInvalidError = "Phone number is Invalide"

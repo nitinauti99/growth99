@@ -35,6 +35,7 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
     @IBOutlet private weak var pateintListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
+    var dateFormater : DateFormaterProtocol?
     var viewModel: CreatePateintViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [PateintListModel]()
@@ -42,28 +43,32 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreatePateintViewModel(delegate: self)
+        dateFormater = DateFormater()
         noteTextView.layer.borderWidth = 1
         noteTextView.layer.borderColor = UIColor.gray.cgColor
         noteTextView.layer.cornerRadius = 5
         genderTextField.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
         dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        self.setUPUI()
 
     }
     @objc func dateFromButtonPressed() {
-        dateTextField.text = dateFormatterString(textField: dateTextField)
+        dateTextField.text = self.dateFormater?.dateFormatterString(textField: dateTextField)
     }
-
-    func dateFormatterString(textField: CustomTextField) -> String {
-        var datePicker = UIDatePicker()
-        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
-        datePicker.minimumDate = todaysDate
-        textField.resignFirstResponder()
-        datePicker.reloadInputViews()
-        return dateFormatter.string(from: datePicker.date)
+    
+    func setUPUI(){
+        self.phoneNumberTextField.addTarget(self, action:
+                                                #selector(CreatePateintViewContoller.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.lastNameTextField.addTarget(self, action:
+                                            #selector(CreatePateintViewContoller.textFieldDidChange(_:)),
+                                         for: UIControl.Event.editingChanged)
+        self.firsNameTextField.addTarget(self, action:
+                                            #selector(CreatePateintViewContoller.textFieldDidChange(_:)),
+                                         for: UIControl.Event.editingChanged)
+        self.emailTextField.addTarget(self, action:
+                                        #selector(CreatePateintViewContoller.textFieldDidChange(_:)),
+                                      for: UIControl.Event.editingChanged)
     }
     
     func pateintCreatedSuccessfully(responseMessage: String) {
@@ -83,19 +88,17 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             self?.genderTextField.text  = text
             selectionMenu.dismissAutomatically = true
          }
-
+        selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: textfield, size: CGSize(width: textfield.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+         
      }
     
     @IBAction func saveAction(sender: UIButton) {
@@ -137,7 +140,7 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
             "email": emailTextField.text ?? "",
             "phone": phoneNumberTextField.text ?? "",
             "gender": genderTextField.text ?? "",
-            "dateOfBirth": self.serverToLocalInputWorking(date: dateTextField.text ?? ""),
+            "dateOfBirth": dateFormater?.localToServer(date: dateTextField.text ?? "") ?? "",
             "addressLine1": addressLine1TextField.text ?? "",
             "addressLine2": addressLine2TextField.text ?? "",
             "city": cityTextField.text ?? "",
@@ -149,17 +152,70 @@ class CreatePateintViewContoller: UIViewController,  CreatePateintViewContollerP
         ]
         viewModel?.cratePateint(parameters: param)
      }
-    
-    func serverToLocalInputWorking(date: String) -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            let date = dateFormatter.date(from: date) ?? Date()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            return dateFormatter.string(from: date)
-        }
 }
 
 extension CreatePateintViewContoller: UITextFieldDelegate  {
    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = Int()
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+        currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if  textField == phoneNumberTextField {
+            maxLength = 10
+            phoneNumberTextField.hideError()
+            return newString.length <= maxLength
+        }
+        return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if let firsName = firsNameTextField.text,  firsName == "" {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            return
+        }
+       
+        if let firstName  = firsNameTextField.text, let firstNameValidate = viewModel?.isValid(testStr: firstName), firstNameValidate == false {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
+            return
+        }
+        
+        if let lastName = lastNameTextField.text, lastName == "" {
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
+            return
+        }
+        
+        if let lastName  = lastNameTextField.text, let lastNameValidate = viewModel?.isValid(testStr: lastName), lastNameValidate == false {
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
+            return
+        }
+        
+        guard let emailText = emailTextField.text, !emailText.isEmpty else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+            return
+        }
+        
+        guard let emailValidate = viewModel?.isValidEmail(emailText), emailValidate else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+        
+        guard let phoneNumber  = phoneNumberTextField.text, !phoneNumber.isEmpty else {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            return
+        }
+        
+        guard let phoneNumber  = phoneNumberTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberValidate == false else {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
+        }
+        
+        guard let gender  = genderTextField.text,  !gender.isEmpty else {
+            genderTextField.showError(message: Constant.ErrorMessage.genderEmptyError)
+            return
+        }
+       
+    }
 }

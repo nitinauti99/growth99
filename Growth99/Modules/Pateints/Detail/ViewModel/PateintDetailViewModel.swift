@@ -37,7 +37,7 @@ class PateintDetailViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func getpateintsList(pateintId: Int) {
-        let finaleUrl = ApiUrl.patientsDetaiilList + "\(pateintId)"
+        let finaleUrl = ApiUrl.patientsDetailList + "\(pateintId)"
 
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<PateintsDetailListModel, GrowthNetworkError>) in
             switch result {
@@ -157,16 +157,10 @@ class PateintDetailViewModel {
             }
         }
     }
-
-
 }
 
 extension PateintDetailViewModel: PateintDetailViewModelProtocol {
     
-//    var leadStatus: String {
-//        return  self.questionnaireDetailList?.leadStatus ?? ""
-//    }
-
     var smsTemplateListData: [SMStemplatesListDetailModel]? {
         return self.smstemplatesListDetail
     }

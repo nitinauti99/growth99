@@ -506,6 +506,7 @@
                     </view>
                     <connections>
                         <outlet property="DeadlineTextField" destination="nt7-qn-Y0H" id="tFs-Kg-ePk"/>
+                        <outlet property="LeadOrPatentsHight" destination="Poc-Lz-tWu" id="YTz-ho-nWQ"/>
                         <outlet property="descriptionTextView" destination="Gob-qB-pfY" id="CIG-kp-vTU"/>
                         <outlet property="emailTextField" destination="mze-hG-8dZ" id="wOQ-CK-MDw"/>
                         <outlet property="firstNameTextField" destination="qg1-oU-mok" id="2wc-pf-ipd"/>

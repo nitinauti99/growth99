@@ -55,7 +55,7 @@ class RegistrationViewModel {
 extension RegistrationViewModel : RegistrationViewModelProtocol {
    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 12 {
+        if phoneNumber.count == 10 {
             return true
         }
         return false

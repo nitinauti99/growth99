@@ -19,3 +19,17 @@ struct PateintListModel: Codable {
     let patientStatus: String?
     let updatedAt: String?
 }
+
+enum PateintStatus: String{
+    case NEW = "NEW"
+    case EXISTING = "EXISTING"
+    
+    var leadSatus: String {
+        switch self {
+        case .NEW:
+            return "NEW"
+        case .EXISTING:
+            return "EXISTING"
+        }
+    }
+}

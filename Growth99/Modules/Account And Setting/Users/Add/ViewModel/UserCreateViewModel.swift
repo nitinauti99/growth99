@@ -155,10 +155,10 @@ extension UserCreateViewModel : UserCreateViewModelProtocol {
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count < 10 {
-            return false
+        if phoneNumber.count == 10 {
+            return true
         }
-        return true
+        return false
     }
     
     func isValidEmail(_ email: String) -> Bool {

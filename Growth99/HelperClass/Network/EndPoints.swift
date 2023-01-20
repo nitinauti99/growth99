@@ -36,7 +36,7 @@ struct EndPoints {
     static let patientsList = "/api/v1/patients/all?tag=&status="
     static let crearePatients = "/api/patients"
     static let patientsStatus = "/api/patient/"
-    static let patientsDetaiilList = "/api/v1/patients/"
+    static let patientsDetailList = "/api/v1/patients/"
     static let smstemplates = "/api/smstemplates/templateFor/Appointment"
     static let emailTemplates = "/api/emailTemplates/templateFor/Appointment"
     static let updatePatientsInfo = "/api/patient/"
@@ -57,6 +57,7 @@ struct EndPoints {
     static let bussinessInfo = "/api/businesses/"
     static let getBussinessInfo = "/api/public/v1/businesses/"
     static let newAppointment = "/api/appointments/new"
+    static let patientsEditDetail = "/api/v1/patients/"
 }
 
 struct ApiUrl {
@@ -84,10 +85,14 @@ struct ApiUrl {
     static let sendCustomEmail = EndPoints.baseURL.appending(EndPoints.sendCustomEmail)
     static let leadCreation = EndPoints.baseURL.appending(EndPoints.leadCreation)
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
+   
+    //patients api end Point
     static let patientsList = EndPoints.baseURL.appending(EndPoints.patientsList)
     static let crearePatients = EndPoints.baseURL.appending(EndPoints.crearePatients)
     static let patientsStatus = EndPoints.baseURL.appending(EndPoints.patientsStatus)
-    static let patientsDetaiilList = EndPoints.baseURL.appending(EndPoints.patientsDetaiilList)
+    static let patientsDetailList = EndPoints.baseURL.appending(EndPoints.patientsDetailList)
+    static let patientsEditDetail = EndPoints.baseURL.appending(EndPoints.patientsEditDetail)
+
     static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)
     static let emailTemplates = EndPoints.baseURL.appending(EndPoints.emailTemplates)
     static let updatePatientsInfo = EndPoints.baseURL.appending(EndPoints.updatePatientsInfo)

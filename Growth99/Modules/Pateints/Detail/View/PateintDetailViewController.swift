@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ScrollableSegmentedControl
 
 protocol PateintDetailViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
@@ -28,15 +29,17 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var phoneNumber: CustomTextField!
     @IBOutlet private weak var gender: CustomTextField!
     @IBOutlet private weak var dateOfBirth: CustomTextField!
-    @IBOutlet weak var pateintDetailTableView: UITableView!
+    @IBOutlet private weak var notes: CustomTextField!
 
+    @IBOutlet weak var pateintDetailTableView: UITableView!
     @IBOutlet private weak var newButton: UIButton!
     @IBOutlet private weak var existingButton: UIButton!
     @IBOutlet private weak var scrollViewHight: NSLayoutConstraint!
     @IBOutlet private weak var FirstNameButton: UIButton!
+    @IBOutlet private weak var notesButton: UIButton!
+    @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
 
-
-    var buttons: [UIButton] = []
+    var dateFormater : DateFormaterProtocol?
     private var viewModel: PateintDetailViewModelProtocol?
     var pateintData: PateintsDetailListModel?
     var selctedSmsTemplateId = Int()
@@ -45,7 +48,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     var smsBody: String = ""
     var emailBody: String = ""
     var emailSubject: String = ""
-
+    var buttons: [UIButton] = []
     var tableViewHeight: CGFloat {
         pateintDetailTableView.layoutIfNeeded()
         return pateintDetailTableView.contentSize.height
@@ -53,34 +56,45 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.ShowSpinner()
         self.viewModel = PateintDetailViewModel(delegate: self)
+        dateFormater = DateFormater()
         viewModel?.getpateintsList(pateintId: self.pateintId)
         self.registerCell()
-        self.fullName.text = (pateintData?.firstName ?? "") + (pateintData?.lastName ?? "")
         buttons = [newButton, existingButton]
         setUpClearColor()
         gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+       
+           segmentedControl.segmentStyle = .textOnly
+           segmentedControl.insertSegment(withTitle: "Segment 1", at: 0)
+           segmentedControl.insertSegment(withTitle: "Segment 2", at: 1)
+           segmentedControl.insertSegment(withTitle: "Segment 3", at: 2)
+           segmentedControl.insertSegment(withTitle: "Segment 4", at: 3)
+           segmentedControl.insertSegment(withTitle: "Segment 5", at: 4)
+           segmentedControl.insertSegment(withTitle: "Segment 6", at: 5)
+               
+           segmentedControl.underlineSelected = true
+               
+           segmentedControl.addTarget(self, action: #selector(PateintDetailViewController.segmentSelected(sender:)), for: .valueChanged)
 
+           // change some colors
+           segmentedControl.segmentContentColor = UIColor.white
+           segmentedControl.selectedSegmentContentColor = UIColor.yellow
+           segmentedControl.selectedSegmentContentBackroundColor = .red
+        // segmentedControl.backgroundColor = UIColor.black
+           
+           // Turn off all segments been fixed/equal width.
+           // The width of each segment would be based on the text length and font size.
+           segmentedControl.fixedSegmentWidth = false
     }
     
     @objc func dateFromButtonPressed() {
-        dateOfBirth.text = dateFormatterString(textField: dateOfBirth)
+        dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
     }
-
-    func dateFormatterString(textField: CustomTextField) -> String {
-        var datePicker = UIDatePicker()
-        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
-        datePicker.minimumDate = todaysDate
-        textField.resignFirstResponder()
-        datePicker.reloadInputViews()
-        return dateFormatter.string(from: datePicker.date)
+    
+    @objc func segmentSelected(sender:ScrollableSegmentedControl) {
+        print("Segment at index \(sender.selectedSegmentIndex)  selected")
     }
     
     func setUpClearColor() {
@@ -90,6 +104,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         phoneNumber.borderColor = .clear
         gender.borderColor = .clear
         dateOfBirth.borderColor = .clear
+        notes.borderColor = .clear
     }
    
     func registerCell() {
@@ -105,7 +120,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewWillAppear(animated)
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         existingButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
-        scrollViewHight.constant = tableViewHeight + 800
+        scrollViewHight.constant = tableViewHeight + 1000
        
     }
     
@@ -141,7 +156,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     func recivedPateintDetail() {
         self.setUpUI()
         pateintDetailTableView.reloadData()
-        scrollViewHight.constant = tableViewHeight
+        scrollViewHight.constant = tableViewHeight + 1000
         view.setNeedsLayout()
         self.setLeadStatus(status: viewModel?.pateintsDetailListData?.patientStatus ?? "")
         viewModel?.getSMSDefaultList()
@@ -154,50 +169,11 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         email.text = pateintData?.email
         phoneNumber.text = pateintData?.phone
         gender.text = pateintData?.gender
+        notes.text = pateintData?.notes
         self.dateOfBirth.text = pateintData?.dateOfBirth
-        let dateOfBirth = dateFormatterString(textField: dateOfBirth)
+        let dateOfBirth = dateFormater?.dateFormatterString(textField: dateOfBirth)
         self.dateOfBirth.text = dateOfBirth
-    }
-    
-    @IBAction func editFirstName(sender: UIButton) {
-        firstName.borderColor = .gray
-        firstName.isUserInteractionEnabled = true
-        if sender.isSelected == true {
-            self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "firstName", ansString: firstName.text ?? "")
-        }
-        sender.isSelected = true
-    }
-    
-    
-    @IBAction func editLastName(sender: UIButton) {
-        lastName.borderColor = .gray
-        lastName.isUserInteractionEnabled = true
-        if sender.isSelected == true {
-            self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "lastName", ansString: lastName.text ?? "")
-        }
-        sender.isSelected = true
-    }
-    
-    @IBAction func editPhoneNumber(sender: UIButton) {
-        phoneNumber.borderColor = .gray
-        phoneNumber.isUserInteractionEnabled = true
-        if sender.isSelected == true {
-            self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "phone", ansString: phoneNumber.text ?? "")
-        }
-        sender.isSelected = true
-    }
-    
-    @IBAction func editGender(sender: UIButton) {
-        gender.borderColor = .gray
-        gender.isUserInteractionEnabled = true
-        if sender.isSelected == true {
-            self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "gender", ansString: (gender.text ?? "").uppercased())
-        }
-        sender.isSelected = true
+        self.fullName.text = (pateintData?.firstName ?? "") + " " + (pateintData?.lastName ?? "")
     }
     
     @objc func openGenderSelction(_ textfield: UITextField) {
@@ -206,12 +182,11 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             self?.gender.text  = text
             selectionMenu.dismissAutomatically = true
          }
-
+        selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: textfield, size: CGSize(width: textfield.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
     
@@ -256,6 +231,8 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
             textField.text = selectedItem?.name
             self?.selctedSmsTemplateId = selectedItem?.id ?? 0
         }
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.reloadInputViews()
         selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
@@ -270,6 +247,8 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
             textField.text = selectedItem?.name
             self?.selctedSmsTemplateId = selectedItem?.id ?? 0
         }
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.reloadInputViews()
         selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
@@ -333,10 +312,65 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
 extension PateintDetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewHight.constant = tableViewHeight
+        scrollViewHight.constant = tableViewHeight + 1000
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        scrollViewHight.constant = tableViewHeight
+        scrollViewHight.constant = tableViewHeight + 1000
     }
+}
+
+extension PateintDetailViewController {
+  
+    @IBAction func editFirstName(sender: UIButton) {
+        firstName.borderColor = .gray
+        firstName.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "firstName", ansString: firstName.text ?? "")
+        }
+        sender.isSelected = true
+    }
+    
+    
+    @IBAction func editLastName(sender: UIButton) {
+        lastName.borderColor = .gray
+        lastName.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "lastName", ansString: lastName.text ?? "")
+        }
+        sender.isSelected = true
+    }
+    
+    @IBAction func editPhoneNumber(sender: UIButton) {
+        phoneNumber.borderColor = .gray
+        phoneNumber.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "phone", ansString: phoneNumber.text ?? "")
+        }
+        sender.isSelected = true
+    }
+    
+    @IBAction func editGender(sender: UIButton) {
+        gender.borderColor = .gray
+        gender.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "gender", ansString: (gender.text ?? "").uppercased())
+        }
+        sender.isSelected = true
+    }
+    
+    @IBAction func editNotes(sender: UIButton) {
+        notes.borderColor = .gray
+        notes.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "notes", ansString: notes.text ?? "")
+        }
+        sender.isSelected = true
+    }
+    
 }

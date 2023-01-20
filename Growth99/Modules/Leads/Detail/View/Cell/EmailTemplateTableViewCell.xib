@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,21 +11,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmailTemplateTableViewCell" rowHeight="185" id="KGk-i7-Jjw" customClass="EmailTemplateTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="200"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmailTemplateTableViewCell" rowHeight="194" id="KGk-i7-Jjw" customClass="EmailTemplateTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="225"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="368" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="360" height="225"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADb-qB-vXA">
-                        <rect key="frame" x="10" y="10" width="348" height="180"/>
+                        <rect key="frame" x="10" y="10" width="340" height="205"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9K-JL-hfQ">
-                                <rect key="frame" x="10" y="10" width="328" height="45"/>
+                                <rect key="frame" x="10" y="20" width="320" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Email Template" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqH-eF-pCB">
-                                        <rect key="frame" x="30" y="13" width="169.5" height="19.5"/>
+                                        <rect key="frame" x="30" y="12.5" width="169.5" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqO-B1-MEw" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="28" y="75" width="302" height="45"/>
+                                <rect key="frame" x="28" y="85" width="294" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="g5c-8q-BQt"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-Ob-etf">
-                                <rect key="frame" x="28" y="137" width="120" height="35"/>
+                                <rect key="frame" x="28" y="147" width="120" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Arg-4N-qrK"/>
                                     <constraint firstAttribute="height" constant="35" id="Zvi-lX-khj"/>
@@ -79,8 +79,9 @@
                             <constraint firstItem="ZQ6-Ob-etf" firstAttribute="leading" secondItem="UqO-B1-MEw" secondAttribute="leading" id="1K5-iu-OBz"/>
                             <constraint firstItem="W9K-JL-hfQ" firstAttribute="leading" secondItem="ADb-qB-vXA" secondAttribute="leading" constant="10" id="A31-sv-pGX"/>
                             <constraint firstItem="UqO-B1-MEw" firstAttribute="top" secondItem="W9K-JL-hfQ" secondAttribute="bottom" constant="20" id="FqL-mn-7ea"/>
-                            <constraint firstItem="W9K-JL-hfQ" firstAttribute="top" secondItem="ADb-qB-vXA" secondAttribute="top" constant="10" id="J6d-xg-jdF"/>
+                            <constraint firstItem="W9K-JL-hfQ" firstAttribute="top" secondItem="ADb-qB-vXA" secondAttribute="top" constant="20" id="J6d-xg-jdF"/>
                             <constraint firstAttribute="trailing" secondItem="W9K-JL-hfQ" secondAttribute="trailing" constant="10" id="JkC-Vg-7oV"/>
+                            <constraint firstAttribute="bottom" secondItem="ZQ6-Ob-etf" secondAttribute="bottom" constant="23" id="WCe-md-OZz"/>
                             <constraint firstItem="UqO-B1-MEw" firstAttribute="leading" secondItem="ADb-qB-vXA" secondAttribute="leadingMargin" constant="20" id="a12-YY-ig8"/>
                             <constraint firstItem="ZQ6-Ob-etf" firstAttribute="top" secondItem="UqO-B1-MEw" secondAttribute="bottom" constant="17" id="yS7-Kl-5p9"/>
                             <constraint firstItem="UqO-B1-MEw" firstAttribute="trailing" secondItem="ADb-qB-vXA" secondAttribute="trailingMargin" constant="-10" id="zVo-eO-NIW"/>
@@ -100,7 +101,7 @@
                 <outlet property="emailTextFiled" destination="UqO-B1-MEw" id="NKL-Ew-yQU"/>
                 <outlet property="subView" destination="ADb-qB-vXA" id="ZFb-dd-NXx"/>
             </connections>
-            <point key="canvasLocation" x="173.91304347826087" y="118.86160714285714"/>
+            <point key="canvasLocation" x="168.11594202898553" y="121.54017857142857"/>
         </tableViewCell>
     </objects>
     <designables>

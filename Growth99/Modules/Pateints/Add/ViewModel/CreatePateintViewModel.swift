@@ -11,6 +11,7 @@ protocol CreatePateintViewModelProtocol {
     func cratePateint(parameters: [String:Any])
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidEmail(_ email: String) -> Bool
+    func isValid(testStr:String) -> Bool
 }
 
 class CreatePateintViewModel {
@@ -41,16 +42,23 @@ class CreatePateintViewModel {
 extension CreatePateintViewModel: CreatePateintViewModelProtocol{
    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count < 10 {
-            return false
+        if phoneNumber.count == 10 {
+            return true
         }
-        return true
+        return false
     }
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    
+    func isValid(testStr:String) -> Bool {
+        guard testStr.count > 1, testStr.count < 18 else { return false }
+
+        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^(([^ ]?)(^[a-zA-Z].*[a-zA-Z]$)([^ ]?))$")
+        return predicateTest.evaluate(with: testStr)
     }
     
 }

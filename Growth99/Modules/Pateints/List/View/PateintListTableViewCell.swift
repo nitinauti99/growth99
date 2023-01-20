@@ -18,13 +18,19 @@ class PateintListTableViewCell: UITableViewCell {
     @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var subView: UIView!
+    @IBOutlet private weak var pateintStatusImage: UIImageView!
+    @IBOutlet private weak var pateintStatusLbi: UILabel!
+    @IBOutlet weak var editButtonAction: UIButton!
 
+    var dateFormater : DateFormaterProtocol?
+    var buttonAddTimeTapCallback: () -> ()  = { }
+
+    var indexPath = IndexPath()
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
-
+        dateFormater = DateFormater()
     }
 
     func configureCell(userVM: PateintListViewModelProtocol?, index: IndexPath) {
@@ -33,24 +39,19 @@ class PateintListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? "")
+        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? "")
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: userVM?.updatedAt ?? "")
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        let movement = userVM?.patientStatus
+        pateintStatusLbi.text = userVM?.patientStatus
+        pateintStatusImage.image = UIImage(named: movement ?? "")
+        indexPath = index
     }
     
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
-    }
+//    @IBAction func editButtonTapped(_ sender: UIButton) {
+//
+//     }
+//
+    
 }

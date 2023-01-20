@@ -36,6 +36,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var leadOrPatientLbi: UILabel!
     @IBOutlet private weak var goToDetailPageButton: UIButton!
+    @IBOutlet private weak var LeadOrPatentsHight: NSLayoutConstraint!
 
     var viewModel: EditTasksViewModelProtocol?
     var buttons = [UIButton]()
@@ -73,6 +74,10 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     
     func setupLeadOrPatientDetail() {
         let taskDetail = viewModel?.taskDetailData
+        LeadOrPatentsHight.constant = 500
+//        if taskDetail?.leadDTO == nil || taskDetail?.leadDTO == nil{
+//            LeadOrPatentsHight.constant = 0
+//        }
         if taskDetail?.leadDTO != nil {
             leadButton.isSelected = true
             leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? "") \(taskDetail?.leadDTO?.lastName ?? "")"
@@ -83,6 +88,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             emailTextField.text = taskDetail?.leadDTO?.email
             leadOrPatientLbi.text = "Lead Information"
             goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
+           
         }else {
             patientButton.isSelected = true
             leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? "") \(taskDetail?.patientDTO?.lastName ?? "")"
@@ -145,6 +151,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     }
     
     func taskQuestionnaireSubmissionListRecived(){
+        self.setupLeadOrPatientDetail()
         self.view.HideSpinner()
     }
     
