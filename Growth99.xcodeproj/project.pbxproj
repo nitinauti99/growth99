@@ -71,9 +71,6 @@
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
-		84A37980297B1CEA005C7274 /* JXScrollableSegmentedControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3797D297B1CEA005C7274 /* JXScrollableSegmentedControlButton.swift */; };
-		84A37981297B1CEA005C7274 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 84A3797E297B1CEA005C7274 /* .gitkeep */; };
-		84A37982297B1CEA005C7274 /* JXScrollableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3797F297B1CEA005C7274 /* JXScrollableSegmentedControl.swift */; };
 		84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */; };
 		84AE6D67295D683A002836ED /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6D66295D6839002836ED /* CheckBox.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
@@ -230,6 +227,12 @@
 		84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063562967EA81001FE469 /* TasksListViewController.swift */; };
 		84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063582967EA8C001FE469 /* TasksListViewController.storyboard */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
+		84D43A21297C21C800678458 /* QuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A20297C21C800678458 /* QuestionarieViewController.swift */; };
+		84D43A23297C21D800678458 /* QuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D43A22297C21D800678458 /* QuestionarieViewController.storyboard */; };
+		84D43A25297C231D00678458 /* QuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A24297C231D00678458 /* QuestionarieViewModel.swift */; };
+		84D43A27297C244000678458 /* QuestionarieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A26297C244000678458 /* QuestionarieListModel.swift */; };
+		84D43A2A297C32DF00678458 /* QuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */; };
+		84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */; };
 		84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C45297035A000C58B0D /* TasksListViewModel.swift */; };
 		84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */; };
 		84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */; };
@@ -474,9 +477,6 @@
 		8497A03B28FF11E200CBA26C /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		8497A03C28FF11E200CBA26C /* Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Staging.plist; sourceTree = "<group>"; };
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
-		84A3797D297B1CEA005C7274 /* JXScrollableSegmentedControlButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXScrollableSegmentedControlButton.swift; sourceTree = "<group>"; };
-		84A3797E297B1CEA005C7274 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		84A3797F297B1CEA005C7274 /* JXScrollableSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXScrollableSegmentedControl.swift; sourceTree = "<group>"; };
 		84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksModel.swift; sourceTree = "<group>"; };
 		84AE6D66295D6839002836ED /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -634,6 +634,12 @@
 		84D063562967EA81001FE469 /* TasksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewController.swift; sourceTree = "<group>"; };
 		84D063582967EA8C001FE469 /* TasksListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TasksListViewController.storyboard; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
+		84D43A20297C21C800678458 /* QuestionarieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieViewController.swift; sourceTree = "<group>"; };
+		84D43A22297C21D800678458 /* QuestionarieViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionarieViewController.storyboard; sourceTree = "<group>"; };
+		84D43A24297C231D00678458 /* QuestionarieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieViewModel.swift; sourceTree = "<group>"; };
+		84D43A26297C244000678458 /* QuestionarieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieListModel.swift; sourceTree = "<group>"; };
+		84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieTableViewCell.swift; sourceTree = "<group>"; };
+		84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionarieTableViewCell.xib; sourceTree = "<group>"; };
 		84E34C45297035A000C58B0D /* TasksListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTasksViewModel.swift; path = Growth99/Modules/Tasks/Add/ViewModel/CreateTasksViewModel.swift; sourceTree = SOURCE_ROOT; };
 		84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTasksViewController.swift; sourceTree = "<group>"; };
@@ -870,12 +876,11 @@
 		84088BA52977E5D30060855E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84D43A2E297C55F200678458 /* Cell */,
 				84D061A029670676001FE469 /* PateintListViewContoller.swift */,
 				8473208629797FE5003099BB /* PateintListViewContoller+TableView.swift */,
 				8473208829798048003099BB /* PateintListViewContoller+SerachBar.swift */,
 				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
-				84D061A329670676001FE469 /* PateintListTableViewCell.swift */,
-				84D061A429670676001FE469 /* PateintListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1460,7 +1465,6 @@
 				845C399E292276AF00D934C5 /* LoaderScreens */,
 				845C39AC292276AF00D934C5 /* SideDrawerMenu */,
 				848C9298291F6A9F00502956 /* RSSelectionMenu */,
-				84A3797C297B1CEA005C7274 /* Classes */,
 				845C39A4292276AF00D934C5 /* KYDrawerController */,
 			);
 			path = HelperClass;
@@ -1476,16 +1480,6 @@
 				848F4D8628F1C164007AC421 /* Assets.xcassets */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		84A3797C297B1CEA005C7274 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				84A3797D297B1CEA005C7274 /* JXScrollableSegmentedControlButton.swift */,
-				84A3797E297B1CEA005C7274 /* .gitkeep */,
-				84A3797F297B1CEA005C7274 /* JXScrollableSegmentedControl.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		84B75EA72968D7F100962F3E /* ListScreen */ = {
@@ -1900,6 +1894,7 @@
 				84D061A629670676001FE469 /* Add */,
 				8473207C29797831003099BB /* Edit */,
 				84D0619A29670676001FE469 /* Detail */,
+				84D43A1C297C217500678458 /* Questionarie */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
@@ -2237,6 +2232,60 @@
 				DA073348297861F1004038C0 /* ViewModel */,
 			);
 			path = "Booking History";
+			sourceTree = "<group>";
+		};
+		84D43A1C297C217500678458 /* Questionarie */ = {
+			isa = PBXGroup;
+			children = (
+				84D43A1F297C218700678458 /* Model */,
+				84D43A1E297C218300678458 /* ViewModel */,
+				84D43A1D297C218000678458 /* View */,
+			);
+			path = Questionarie;
+			sourceTree = "<group>";
+		};
+		84D43A1D297C218000678458 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84D43A2C297C33D300678458 /* Cell */,
+				84D43A20297C21C800678458 /* QuestionarieViewController.swift */,
+				84D43A22297C21D800678458 /* QuestionarieViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84D43A1E297C218300678458 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D43A24297C231D00678458 /* QuestionarieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84D43A1F297C218700678458 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D43A26297C244000678458 /* QuestionarieListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84D43A2C297C33D300678458 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */,
+				84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		84D43A2E297C55F200678458 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84D061A329670676001FE469 /* PateintListTableViewCell.swift */,
+				84D061A429670676001FE469 /* PateintListTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		84E34C3C2970264D00C58B0D /* list */ = {
@@ -2882,6 +2931,7 @@
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
+				84D43A23297C21D800678458 /* QuestionarieViewController.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
@@ -2917,7 +2967,6 @@
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
-				84A37981297B1CEA005C7274 /* .gitkeep in Resources */,
 				84D063062967080E001FE469 /* questionAnswersTableViewCell.xib in Resources */,
 				84D063102967080E001FE469 /* LeadTableViewCell.xib in Resources */,
 				DAB4E99429755BA000AAA414 /* AddEventViewController.storyboard in Resources */,
@@ -2935,6 +2984,7 @@
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
+				84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
@@ -3088,6 +3138,7 @@
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
+				84D43A2A297C32DF00678458 /* QuestionarieTableViewCell.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
 				84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */,
@@ -3112,6 +3163,7 @@
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
+				84D43A25297C231D00678458 /* QuestionarieViewModel.swift in Sources */,
 				84F610FA292A71AB00B1FB69 /* TLSPublicKey.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
@@ -3124,7 +3176,6 @@
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
 				84F6112F292A71AB00B1FB69 /* Response.swift in Sources */,
 				84F610F8292A71AB00B1FB69 /* ASN1Tag.swift in Sources */,
-				84A37980297B1CEA005C7274 /* JXScrollableSegmentedControlButton.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
@@ -3141,6 +3192,7 @@
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
 				DAB4E98E29755BA000AAA414 /* EventsTableViewCell.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
+				84D43A27297C244000678458 /* QuestionarieListModel.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
@@ -3251,7 +3303,6 @@
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
 				DAB4E99A2975725800AAA414 /* CalenderViewModel.swift in Sources */,
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
-				84A37982297B1CEA005C7274 /* JXScrollableSegmentedControl.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
@@ -3339,6 +3390,7 @@
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
+				84D43A21297C21C800678458 /* QuestionarieViewController.swift in Sources */,
 				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,

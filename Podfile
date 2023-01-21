@@ -10,7 +10,6 @@ target 'Growth99' do
   pod 'Alamofire'
   pod 'FontAwesome.swift'
   pod 'FSCalendar'
-  pod 'ScrollableSegmentedControl'
   target 'Growth99Tests' do
     inherit! :search_paths
     # Pods for testing

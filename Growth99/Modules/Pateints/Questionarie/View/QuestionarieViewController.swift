@@ -1,33 +1,35 @@
 //
-//  UserListViewContoller.swift
+//  QuestionarieViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 15/11/22.
+//  Created by nitin auti on 21/01/23.
 //
 
 import Foundation
 import UIKit
 
-protocol UserListViewContollerProtocol: AnyObject {
+protocol QuestionarieViewControllerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
 }
 
-class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
+class QuestionarieViewController: UIViewController, QuestionarieViewControllerProtocol {
     
-    @IBOutlet private weak var userListTableView: UITableView!
+    @IBOutlet private weak var questionarieListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    var viewModel: UserListViewModelProtocol?
+    var viewModel: QuestionarieViewModelProtocol?
     var isSearch : Bool = false
-    var filteredTableData = [UserListModel]()
+    var filteredTableData = [QuestionarieListModel]()
+    let pateintId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = UserListViewModel(delegate: self)
-        self.getUserList()
+        self.viewModel = QuestionarieViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
+        self.view.ShowSpinner()
+        viewModel?.getQuestionarieList(pateintId: 46782)
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
@@ -43,7 +45,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     }
     
     @objc func updateUI(){
-        self.getUserList()
+        self.getQuestionarieList()
         self.view.ShowSpinner()
     }
     
@@ -57,17 +59,17 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     }
     @objc func LeadList() {
         self.view.ShowSpinner()
-        self.getUserList()
+        self.getQuestionarieList()
     }
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getQuestionarieList(pateintId: 46782)
     }
 
     func registerTableView() {
-        self.userListTableView.delegate = self
-        self.userListTableView.dataSource = self
-        userListTableView.register(UINib(nibName: "UserListTableViewCell", bundle: nil), forCellReuseIdentifier: "UserListTableViewCell")
+        self.questionarieListTableView.delegate = self
+        self.questionarieListTableView.dataSource = self
+        questionarieListTableView.register(UINib(nibName: "QuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionarieTableViewCell")
     }
     
     @objc func creatUser() {
@@ -75,14 +77,14 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         self.present(createUserVC, animated: true)
     }
     
-    @objc func getUserList(){
+    @objc func getQuestionarieList(){
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getQuestionarieList(pateintId: 46782)
     }
     
     func LeadDataRecived() {
         self.view.HideSpinner()
-        self.userListTableView.reloadData()
+        self.questionarieListTableView.reloadData()
     }
     
     func errorReceived(error: String) {
@@ -91,7 +93,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     }
 }
 
-extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
+extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -101,18 +103,17 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
         if isSearch {
             return filteredTableData.count
         } else {
-            return viewModel?.UserData.count ?? 0
+            return viewModel?.QuestionarieDataList.count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UserListTableViewCell()
-        cell = userListTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as! UserListTableViewCell
+        var cell = QuestionarieTableViewCell()
+        cell = questionarieListTableView.dequeueReusableCell(withIdentifier: "QuestionarieTableViewCell") as! QuestionarieTableViewCell
         if isSearch {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{
-            cell.configureCell(userVM: viewModel, index: indexPath)
-            
+            cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }
         return cell
     }
@@ -126,17 +127,19 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension UserListViewContoller: UISearchBarDelegate {
+extension QuestionarieViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.questionnaireName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
-        userListTableView.reloadData()
+        questionarieListTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearch = false
         searchBar.text = ""
-        userListTableView.reloadData()
+        questionarieListTableView.reloadData()
     }
 }
+
+

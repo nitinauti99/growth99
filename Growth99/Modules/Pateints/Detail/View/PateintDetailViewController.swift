@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ScrollableSegmentedControl
 
 protocol PateintDetailViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
@@ -19,9 +18,9 @@ protocol PateintDetailViewControllerProtocol: AnyObject {
     func emailSendSuccessfully(responseMessage: String)
     func updatedPateintsInfo(responseMessage: String)
 }
- 
-class PateintDetailViewController: UIViewController, PateintDetailViewControllerProtocol {
 
+class PateintDetailViewController: UIViewController, PateintDetailViewControllerProtocol {
+    
     @IBOutlet private weak var fullName: UILabel!
     @IBOutlet private weak var firstName: CustomTextField!
     @IBOutlet private weak var lastName: CustomTextField!
@@ -30,14 +29,13 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var gender: CustomTextField!
     @IBOutlet private weak var dateOfBirth: CustomTextField!
     @IBOutlet private weak var notes: CustomTextField!
-
+    
     @IBOutlet weak var pateintDetailTableView: UITableView!
     @IBOutlet private weak var newButton: UIButton!
     @IBOutlet private weak var existingButton: UIButton!
     @IBOutlet private weak var scrollViewHight: NSLayoutConstraint!
     @IBOutlet private weak var FirstNameButton: UIButton!
     @IBOutlet private weak var notesButton: UIButton!
-    @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
 
     var dateFormater : DateFormaterProtocol?
     private var viewModel: PateintDetailViewModelProtocol?
@@ -49,6 +47,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     var emailBody: String = ""
     var emailSubject: String = ""
     var buttons: [UIButton] = []
+   
     var tableViewHeight: CGFloat {
         pateintDetailTableView.layoutIfNeeded()
         return pateintDetailTableView.contentSize.height
@@ -64,37 +63,21 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         buttons = [newButton, existingButton]
         setUpClearColor()
         gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
+        
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
-       
-           segmentedControl.segmentStyle = .textOnly
-           segmentedControl.insertSegment(withTitle: "Segment 1", at: 0)
-           segmentedControl.insertSegment(withTitle: "Segment 2", at: 1)
-           segmentedControl.insertSegment(withTitle: "Segment 3", at: 2)
-           segmentedControl.insertSegment(withTitle: "Segment 4", at: 3)
-           segmentedControl.insertSegment(withTitle: "Segment 5", at: 4)
-           segmentedControl.insertSegment(withTitle: "Segment 6", at: 5)
-               
-           segmentedControl.underlineSelected = true
-               
-           segmentedControl.addTarget(self, action: #selector(PateintDetailViewController.segmentSelected(sender:)), for: .valueChanged)
-
-           // change some colors
-           segmentedControl.segmentContentColor = UIColor.white
-           segmentedControl.selectedSegmentContentColor = UIColor.yellow
-           segmentedControl.selectedSegmentContentBackroundColor = .red
-        // segmentedControl.backgroundColor = UIColor.black
-           
-           // Turn off all segments been fixed/equal width.
-           // The width of each segment would be based on the text length and font size.
-           segmentedControl.fixedSegmentWidth = false
     }
     
     @objc func dateFromButtonPressed() {
         dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
     }
     
-    @objc func segmentSelected(sender:ScrollableSegmentedControl) {
-        print("Segment at index \(sender.selectedSegmentIndex)  selected")
+//    @objc func segmentSelected(sender: ScrollableSegmentedControl) {
+//        print("Segment at index \(sender.selectedSegmentIndex)  selected")
+//    }
+   
+    @IBAction func openQuestionarieList (sender: UIButton) {
+        let QuestionarieVC = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
+        self.navigationController?.pushViewController(QuestionarieVC, animated: true)
     }
     
     func setUpClearColor() {
@@ -106,7 +89,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         dateOfBirth.borderColor = .clear
         notes.borderColor = .clear
     }
-   
+    
     func registerCell() {
         pateintDetailTableView.register(UINib(nibName: "questionAnswersTableViewCell", bundle: nil), forCellReuseIdentifier: "questionAnswersTableViewCell")
         
@@ -121,7 +104,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         existingButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         scrollViewHight.constant = tableViewHeight + 1000
-       
     }
     
     @objc func pateintStatusTemplate(_ sender: UIButton) {
@@ -177,15 +159,15 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     @objc func openGenderSelction(_ textfield: UITextField) {
-       let list =  ["Male","Female"]
-       
-       let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
+        let list =  ["Male","Female"]
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             self?.gender.text  = text
             selectionMenu.dismissAutomatically = true
-         }
+        }
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: textfield, size: CGSize(width: textfield.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
@@ -207,7 +189,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     func recivedEmailTemplateList(){
         self.view.HideSpinner()
     }
-
+    
     func smsSend(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage)
@@ -253,9 +235,9 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
     
-     @objc func sendSmsTemplateList(_ sender: UIButton) {
-         selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
-         self.sendTemplate()
+    @objc func sendSmsTemplateList(_ sender: UIButton) {
+        selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
+        self.sendTemplate()
     }
     
     @objc func sendEmailTemplateList(_ sender: UIButton) {
@@ -279,8 +261,8 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage)
     }
-   
-
+    
+    
     @objc func sendCustomEmailTemplateList(_ sender: UIButton) {
         let cellIndexPath = IndexPath(item: sender.tag, section: 3)
         if let cell = pateintDetailTableView.cellForRow(at: cellIndexPath) as? CustomEmailTemplateTableViewCell {
@@ -294,7 +276,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
             }
             self.view.ShowSpinner()
             viewModel?.sendCustomEmail(leadId: pateintData?.id ?? 0, email: pateintData?.email ?? "", subject: cell.emailTextFiled.text ?? "", body: cell.emailTextView.text)
-         }
+        }
     }
     
     func emailSendSuccessfully(responseMessage: String)  {
@@ -305,7 +287,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     func sendTemplate() {
         self.view.ShowSpinner()
         viewModel?.sendTemplate(template: selctedTemplate)
-     }
+    }
     
 }
 
@@ -314,14 +296,14 @@ extension PateintDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHight.constant = tableViewHeight + 1000
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollViewHight.constant = tableViewHeight + 1000
     }
 }
 
 extension PateintDetailViewController {
-  
+    
     @IBAction func editFirstName(sender: UIButton) {
         firstName.borderColor = .gray
         firstName.isUserInteractionEnabled = true

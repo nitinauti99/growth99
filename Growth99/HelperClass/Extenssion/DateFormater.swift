@@ -7,15 +7,14 @@
 
 import Foundation
 
-protocol DateFormaterProtocol {
+protocol DateFormaterProtocol: AnyObject {
     func serverToLocal(date: String) -> String
     func serverToLocalWithoutTime(date: String) -> String
     func localToServer(date: String) -> String
     func dateFormatterString(textField: CustomTextField) -> String
 }
 
-
-class DateFormater : DateFormaterProtocol {
+class DateFormater: DateFormaterProtocol {
     
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()

@@ -2,7 +2,6 @@ PODS:
   - Alamofire (5.6.2)
   - FontAwesome.swift (1.9.1)
   - FSCalendar (2.8.4)
-  - ScrollableSegmentedControl (1.5.0)
   - SDWebImage (5.13.5):
     - SDWebImage/Core (= 5.13.5)
   - SDWebImage/Core (5.13.5)
@@ -11,7 +10,6 @@ DEPENDENCIES:
   - Alamofire
   - FontAwesome.swift
   - FSCalendar
-  - ScrollableSegmentedControl
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
@@ -19,16 +17,14 @@ SPEC REPOS:
     - Alamofire
     - FontAwesome.swift
     - FSCalendar
-    - ScrollableSegmentedControl
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
-  ScrollableSegmentedControl: 2e64bbe8968a7fcd8aae5014434481464fcdfe60
   SDWebImage: 23d714cd599354ee7906dbae26dff89b421c4370
 
-PODFILE CHECKSUM: b069d7bb998a684711109f2e7cbbd72a293adce8
+PODFILE CHECKSUM: 8ebbd57cdd400d5f8fcf26f75b8d95b087eda37a
 
 COCOAPODS: 1.11.3

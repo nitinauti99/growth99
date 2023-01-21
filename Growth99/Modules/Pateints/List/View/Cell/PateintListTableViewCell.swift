@@ -48,10 +48,5 @@ class PateintListTableViewCell: UITableViewCell {
         pateintStatusImage.image = UIImage(named: movement ?? "")
         indexPath = index
     }
-    
-//    @IBAction func editButtonTapped(_ sender: UIButton) {
-//
-//     }
-//
-    
+
 }
