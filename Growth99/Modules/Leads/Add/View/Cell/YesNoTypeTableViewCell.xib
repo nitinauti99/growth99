@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="YesNoTypeTableViewCell" rowHeight="115" id="KGk-i7-Jjw" customClass="YesNoTypeTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="346" height="115"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="YesNoTypeTableViewCell" rowHeight="99" id="KGk-i7-Jjw" customClass="YesNoTypeTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="99"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="346" height="115"/>
+                <rect key="frame" x="0.0" y="0.0" width="349" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud3-4N-STI" userLabel="userName">
-                        <rect key="frame" x="35" y="15" width="296" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud3-4N-STI" userLabel="userName">
+                        <rect key="frame" x="35" y="15" width="299" height="20.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="d2E-2K-Mcj"/>
+                            <constraint firstAttribute="height" constant="20.5" id="wq2-tt-MIc"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-Vz-ya9" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
-                        <rect key="frame" x="35" y="50" width="80" height="20"/>
+                        <rect key="frame" x="35" y="50.5" width="80" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Ta5-3z-aDs"/>
                             <constraint firstAttribute="width" constant="80" id="YUv-aG-ZrI"/>
@@ -40,7 +40,7 @@
                         <state key="selected" image="tickselected"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-Pd-XmY" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
-                        <rect key="frame" x="135" y="50" width="80" height="20"/>
+                        <rect key="frame" x="135" y="50.5" width="80" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Wl6-TI-96U"/>
                             <constraint firstAttribute="width" constant="80" id="slq-eU-lXv"/>
@@ -59,6 +59,7 @@
                     <constraint firstAttribute="trailing" secondItem="ud3-4N-STI" secondAttribute="trailing" constant="15" id="QZ8-9a-cKS"/>
                     <constraint firstItem="DZa-Pd-XmY" firstAttribute="centerY" secondItem="g0r-Vz-ya9" secondAttribute="centerY" id="bqS-mk-LK8"/>
                     <constraint firstItem="g0r-Vz-ya9" firstAttribute="top" secondItem="ud3-4N-STI" secondAttribute="bottom" constant="15" id="dsW-N5-UNB"/>
+                    <constraint firstAttribute="bottom" secondItem="g0r-Vz-ya9" secondAttribute="bottom" constant="28.5" id="rBj-VO-G8V"/>
                     <constraint firstItem="DZa-Pd-XmY" firstAttribute="leading" secondItem="g0r-Vz-ya9" secondAttribute="trailing" constant="20" id="wTD-8z-awU"/>
                 </constraints>
             </tableViewCellContentView>
@@ -68,7 +69,7 @@
                 <outlet property="yesNoTypeLbi" destination="ud3-4N-STI" id="dlB-O8-cYP"/>
                 <outlet property="yesTypeButton" destination="g0r-Vz-ya9" id="kcs-Q2-eO8"/>
             </connections>
-            <point key="canvasLocation" x="155.07246376811597" y="84.709821428571431"/>
+            <point key="canvasLocation" x="157.24637681159422" y="78.683035714285708"/>
         </tableViewCell>
     </objects>
     <resources>

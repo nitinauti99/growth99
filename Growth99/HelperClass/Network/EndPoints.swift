@@ -59,6 +59,8 @@ struct EndPoints {
     static let newAppointment = "/api/appointments/new"
     static let patientsEditDetail = "/api/v1/patients/"
     static let patientsQuestionnaireList = "/api/v1/patient/"
+    static let getPatientsQuestionnaire = "/api/patient/"
+    static let submitPatientQuestionnnaire = "api/patient/questionnaire"
 }
 
 struct ApiUrl {
@@ -86,7 +88,7 @@ struct ApiUrl {
     static let sendCustomEmail = EndPoints.baseURL.appending(EndPoints.sendCustomEmail)
     static let leadCreation = EndPoints.baseURL.appending(EndPoints.leadCreation)
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
-   
+    
     //patients api end Point
     static let patientsList = EndPoints.baseURL.appending(EndPoints.patientsList)
     static let crearePatients = EndPoints.baseURL.appending(EndPoints.crearePatients)
@@ -94,6 +96,10 @@ struct ApiUrl {
     static let patientsDetailList = EndPoints.baseURL.appending(EndPoints.patientsDetailList)
     static let patientsEditDetail = EndPoints.baseURL.appending(EndPoints.patientsEditDetail)
     static let  patientsQuestionnaireList = EndPoints.baseURL.appending(EndPoints.patientsQuestionnaireList)
+    static let getPatientsQuestionnaire = EndPoints.baseURL.appending(EndPoints.getPatientsQuestionnaire)
+    static let submitPatientQuestionnnaire = EndPoints.baseURL.appending(EndPoints.submitPatientQuestionnnaire)
+
+    
     static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)
     static let emailTemplates = EndPoints.baseURL.appending(EndPoints.emailTemplates)
     static let updatePatientsInfo = EndPoints.baseURL.appending(EndPoints.updatePatientsInfo)

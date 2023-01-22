@@ -1,35 +1,36 @@
 //
-//  CreateLeadViewController.swift
+//  FillQuestionarieViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 04/12/22.
+//  Created by nitin auti on 22/01/23.
 //
 
 import Foundation
 import UIKit
 
-protocol CreateLeadViewControllerProtocol: AnyObject {
+protocol FillQuestionarieViewControllerProtocol: AnyObject {
     func LeadDataRecived()
-    func QuestionnaireIdRecived()
     func QuestionnaireListRecived()
     func errorReceived(error: String)
 }
 
-class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtocol {
+class FillQuestionarieViewController: UIViewController, FillQuestionarieViewControllerProtocol {
     
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
-    
-    @IBOutlet weak var createLeadTableView : UITableView!
+   
+    @IBOutlet weak var questionarieTableView : UITableView!
     @IBOutlet weak var customViewHight : NSLayoutConstraint!
-    private var viewModel: CreateLeadViewModelProtocol?
+    
+    private var viewModel: FillQuestionarieViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
     var buttons = [UIButton]()
     var patientQuestionList = [PatientQuestionAnswersList]()
     var listArray = [PatientQuestionChoices]()
     var k = 0
     var j = 0
+    var questionnaireId = Int()
     
     private lazy var inputTypeTextField: CustomTextField = {
         let textField = CustomTextField()
@@ -37,15 +38,15 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }()
     
     private var tableViewHeight: CGFloat {
-        createLeadTableView.layoutIfNeeded()
-        return createLeadTableView.contentSize.height
+        questionarieTableView.layoutIfNeeded()
+        return questionarieTableView.contentSize.height
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CreateLeadViewModel(delegate: self)
+        self.viewModel = FillQuestionarieViewModel(delegate: self)
         self.view.ShowSpinner()
-        viewModel?.getQuestionnaireId()
+        viewModel?.getQuestionnaireId(pateintId: 46782 , questionnaireId: questionnaireId)
         setUpUI()
         self.registerTableViewCell()
     }
@@ -57,34 +58,29 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
     
     func registerTableViewCell(){
-        createLeadTableView.register(UINib(nibName: "InputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "InputTypeTableViewCell")
+        questionarieTableView.register(UINib(nibName: "InputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "InputTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "TextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "TextTypeTableViewCell")
+        questionarieTableView.register(UINib(nibName: "TextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "TextTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "YesNoTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "YesNoTypeTableViewCell")
+        questionarieTableView.register(UINib(nibName: "YesNoTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "YesNoTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "MultipleSelectionTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextTypeTableViewCell")
+        questionarieTableView.register(UINib(nibName: "MultipleSelectionTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "DateTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "DateTypeTableViewCell")
+        questionarieTableView.register(UINib(nibName: "DateTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "DateTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "MultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell")
+        questionarieTableView.register(UINib(nibName: "MultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "MultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
+        questionarieTableView.register(UINib(nibName: "MultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "PreSelectCheckboxTableViewCell", bundle: nil), forCellReuseIdentifier: "PreSelectCheckboxTableViewCell")
-    }
-    
-    /// api Call
-    func QuestionnaireIdRecived() {
-        viewModel?.getQuestionnaireList()
+        questionarieTableView.register(UINib(nibName: "PreSelectCheckboxTableViewCell", bundle: nil), forCellReuseIdentifier: "PreSelectCheckboxTableViewCell")
     }
     
     /// recvied QuestionnaireList
     func QuestionnaireListRecived() {
         view.HideSpinner()
         patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
-        self.createLeadTableView.reloadData()
-        customViewHight.constant = tableViewHeight + 180
+        self.questionarieTableView.reloadData()
+        customViewHight.constant = tableViewHeight + 300
     }
     
     /// multiple selection false type buttton action
@@ -142,7 +138,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             let cellIndexPath = IndexPath(item: index, section: 0)
             let item = patientQuestionList[cellIndexPath.row]
             /// InputType
-            if let InputTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? InputTypeTableViewCell {
+            if let InputTypeCell = questionarieTableView.cellForRow(at: cellIndexPath) as? InputTypeTableViewCell {
                 print(InputTypeCell.inputeTypeLbi.text ?? "")
                 
                 guard let txtField = InputTypeCell.inputeTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
@@ -152,7 +148,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                 self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: InputTypeCell.inputeTypeTextField.text ?? "")
             }
             /// textType
-            if let textTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? TextTypeTableViewCell {
+            if let textTypeCell = questionarieTableView.cellForRow(at: cellIndexPath) as? TextTypeTableViewCell {
                 print(textTypeCell.textTypeLbi.text ?? "")
                 guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
                     textTypeCell.errorTypeLbi.isHidden = false
@@ -163,7 +159,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             }
             
             /// yesNoType
-            if let yesNoTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? YesNoTypeTableViewCell {
+            if let yesNoTypeCell = questionarieTableView.cellForRow(at: cellIndexPath) as? YesNoTypeTableViewCell {
                 print(yesNoTypeCell.yesNoTypeLbi.text ?? "")
                 print(yesNoTypeCell.yesTypeButton.isSelected)
                 print(yesNoTypeCell.NoTypeButton.isSelected)
@@ -171,7 +167,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             }
             
             /// MultipleSelectionType
-            if let MultipleSelectionCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextTypeTableViewCell {
+            if let MultipleSelectionCell = questionarieTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextTypeTableViewCell {
                 print(MultipleSelectionCell.inputeTypeLbi.text ?? "")
                 var selectedStringArray = [String]()
                 var patientQuestionChoicesList: [Any] = []
@@ -199,7 +195,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             }
             
             /// DropDownType
-            if let dropDownTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionWithDropDownTypeTableViewCell {
+            if let dropDownTypeCell = questionarieTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionWithDropDownTypeTableViewCell {
                 print(dropDownTypeCell.dropDownTypeLbi.text ?? "")
                 
                 guard let txtField = dropDownTypeCell.dropDownTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
@@ -210,7 +206,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             }
             
             /// preSelectCheckboxType
-            if let preSelectCheckboxCell = createLeadTableView.cellForRow(at: cellIndexPath) as? PreSelectCheckboxTableViewCell {
+            if let preSelectCheckboxCell = questionarieTableView.cellForRow(at: cellIndexPath) as? PreSelectCheckboxTableViewCell {
                 print(preSelectCheckboxCell.preSelectCheckbox.text ?? "")
                 print(preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
                 
@@ -218,7 +214,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             }
             
             /// multipleSelectionFalseType
-            if let multipleSelectionTextWithFalseCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextWithFalseTableViewCell {
+            if let multipleSelectionTextWithFalseCell = questionarieTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextWithFalseTableViewCell {
                 var selectedString: String = ""
                 print(multipleSelectionTextWithFalseCell.multipleSelectionTypeLbi.text ?? "")
                 print(multipleSelectionTextWithFalseCell.isSelected)
@@ -238,7 +234,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             }
             
             /// DateType
-            if let dateTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? DateTypeTableViewCell {
+            if let dateTypeCell = questionarieTableView.cellForRow(at: cellIndexPath) as? DateTypeTableViewCell {
                 print(dateTypeCell.dateTypeLbi.text ?? "")
                 print(dateTypeCell.dateTypeTextField.text ?? "")
                 
@@ -328,13 +324,13 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
 }
 
-extension CreateLeadViewController: UIScrollViewDelegate {
+extension FillQuestionarieViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 180
+        customViewHight.constant = tableViewHeight + 300
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 180
+        customViewHight.constant = tableViewHeight + 300
     }
 }

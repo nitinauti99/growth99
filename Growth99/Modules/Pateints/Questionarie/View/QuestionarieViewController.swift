@@ -123,7 +123,10 @@ extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+        let FillQuestionarieVC = UIStoryboard(name: "FillQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "FillQuestionarieViewController") as! FillQuestionarieViewController
+        let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
+        FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
+        self.navigationController?.pushViewController(FillQuestionarieVC, animated: true)
     }
 }
 
@@ -140,6 +143,7 @@ extension QuestionarieViewController: UISearchBarDelegate {
         searchBar.text = ""
         questionarieListTableView.reloadData()
     }
+    
 }
 
 

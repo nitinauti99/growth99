@@ -32,7 +32,7 @@ class QuestionarieViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[QuestionarieListModel], GrowthNetworkError>) in
             switch result {
             case .success(let userData):
-                self.QuestionarieData = userData.reversed()
+                self.QuestionarieData = userData
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

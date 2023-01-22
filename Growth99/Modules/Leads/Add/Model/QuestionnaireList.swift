@@ -20,7 +20,7 @@ struct PatientQuestionAnswersList: Codable {
     let questionType: String?
     let allowMultipleSelection: Bool?
     let preSelectCheckbox: Bool?
-    var answer: String?
+    var answer: Bool?
     var answerText: String?
     let answerComments: String?
     let patientQuestionChoices: [PatientQuestionChoices]?
