@@ -132,13 +132,15 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             let mainVcIntial = UINavigationController(rootViewController:  LogInVC)
             mainVcIntial.isNavigationBarHidden = true
             appDel.window?.rootViewController = mainVcIntial
-        } else if title == Constant.SideMenu.helpTraining {
-            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController: "GRWebViewController")
-        } else if title == Constant.Profile.tasks {
-            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
-        } else if title == Constant.Profile.triggers {
-            pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
         }
+//        } else if title == Constant.SideMenu.helpTraining {
+//            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController: "GRWebViewController")
+//        }
+//        else if title == Constant.Profile.tasks {
+//            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
+//        } else if title == Constant.Profile.triggers {
+//            pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
+//        }
     }
 }
 
@@ -194,7 +196,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        /*tableView.deselectRow(at: indexPath, animated: false)
         self.tableView.beginUpdates()
         tableView.reloadSections(NSIndexSet(index:indexPath.section) as IndexSet, with: .none)
         tableView.endUpdates()
@@ -234,7 +236,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             
         } else if indexPath.section == 3 {
             pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
-        }
+        }*/
     }
     
     func pushViewControllerFromDrawerMenu(identifier: String, pusedViewController: String) {

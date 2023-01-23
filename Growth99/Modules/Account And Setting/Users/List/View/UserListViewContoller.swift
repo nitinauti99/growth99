@@ -27,7 +27,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
         self.viewModel = UserListViewModel(delegate: self)
         self.getUserList()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
+//        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {

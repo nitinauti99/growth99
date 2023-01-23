@@ -25,9 +25,5 @@
 		<string>Font Awesome 6 Free-Regular-400</string>
 		<string>Font Awesome 6 Free-Solid-900</string>
 	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Access your calender</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Authentication with TouchId or FaceID</string>
 </dict>
 </plist>
