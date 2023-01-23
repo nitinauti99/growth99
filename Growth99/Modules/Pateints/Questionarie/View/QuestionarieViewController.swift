@@ -21,15 +21,15 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     var viewModel: QuestionarieViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [QuestionarieListModel]()
-    let pateintId = Int()
+    var pateintId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = QuestionarieViewModel(delegate: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationQuestionarieList"), object: nil)
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: 46782)
+        viewModel?.getQuestionarieList(pateintId: pateintId)
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
@@ -45,8 +45,8 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     }
     
     @objc func updateUI(){
-        self.getQuestionarieList()
         self.view.ShowSpinner()
+        viewModel?.getQuestionarieList(pateintId: pateintId)
     }
     
     func addSerchBar(){
@@ -63,7 +63,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     }
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: 46782)
+        viewModel?.getQuestionarieList(pateintId: pateintId)
     }
 
     func registerTableView() {
@@ -126,6 +126,7 @@ extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource
         let FillQuestionarieVC = UIStoryboard(name: "FillQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "FillQuestionarieViewController") as! FillQuestionarieViewController
         let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
         FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
+        FillQuestionarieVC.pateintId = pateintId
         self.navigationController?.pushViewController(FillQuestionarieVC, animated: true)
     }
 }

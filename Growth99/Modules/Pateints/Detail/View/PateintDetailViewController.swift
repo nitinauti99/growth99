@@ -77,6 +77,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
    
     @IBAction func openQuestionarieList (sender: UIButton) {
         let QuestionarieVC = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
+        QuestionarieVC.pateintId = 46782
         self.navigationController?.pushViewController(QuestionarieVC, animated: true)
     }
     

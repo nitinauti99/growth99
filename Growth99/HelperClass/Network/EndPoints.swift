@@ -60,7 +60,7 @@ struct EndPoints {
     static let patientsEditDetail = "/api/v1/patients/"
     static let patientsQuestionnaireList = "/api/v1/patient/"
     static let getPatientsQuestionnaire = "/api/patient/"
-    static let submitPatientQuestionnnaire = "api/patient/questionnaire"
+    static let submitPatientQuestionnnaire = "/api/patient/questionnaire"
 }
 
 struct ApiUrl {

@@ -12,6 +12,7 @@ protocol FillQuestionarieViewModelProtocol {
     func createLead(patientQuestionAnswers: [String: Any])
     func leadDataAtIndex(index: Int) -> leadModel
     var leadUserData: [leadModel]? { get }
+    var getQuestionnaireDataInfo: QuestionnaireList? { get }
     var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
     func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool
@@ -23,7 +24,8 @@ class FillQuestionarieViewModel {
     var questionnaireId = QuestionnaireId()
     var questionnaireList = [PatientQuestionAnswersList]()
     var questionnaireFilterList = [PatientQuestionAnswersList]()
-
+    var getQuestionnaireData: QuestionnaireList?
+    
     init(delegate: FillQuestionarieViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -37,6 +39,7 @@ class FillQuestionarieViewModel {
             switch result {
             case .success(let list):
                 print(list)
+                self.getQuestionnaireData = list
                 self.questionnaireList = list.patientQuestionAnswers ?? []
                 self.questionnaireFilterListArray()
                 self.delegate?.QuestionnaireListRecived()
@@ -81,7 +84,11 @@ class FillQuestionarieViewModel {
 }
 
 extension FillQuestionarieViewModel: FillQuestionarieViewModelProtocol {
-
+  
+    var getQuestionnaireDataInfo: QuestionnaireList? {
+        return self.getQuestionnaireData
+    }
+    
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool {
         if regex == "", textField.count > 0 {
            return true

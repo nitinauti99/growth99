@@ -11,6 +11,7 @@ struct QuestionnaireList: Codable {
     let id: Int?
     let questionnaireId: Int?
     let source: String?
+    let patientId: Int?
     let patientQuestionAnswers: [PatientQuestionAnswersList]?
 }
 

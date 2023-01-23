@@ -31,7 +31,7 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
     var k = 0
     var j = 0
     var questionnaireId = Int()
-    
+    var pateintId = Int()
     private lazy var inputTypeTextField: CustomTextField = {
         let textField = CustomTextField()
         return textField
@@ -46,7 +46,7 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         super.viewDidLoad()
         self.viewModel = FillQuestionarieViewModel(delegate: self)
         self.view.ShowSpinner()
-        viewModel?.getQuestionnaireId(pateintId: 46782 , questionnaireId: questionnaireId)
+        viewModel?.getQuestionnaireId(pateintId: pateintId , questionnaireId: questionnaireId)
         setUpUI()
         self.registerTableViewCell()
     }
@@ -80,7 +80,7 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         view.HideSpinner()
         patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
         self.questionarieTableView.reloadData()
-        customViewHight.constant = tableViewHeight + 300
+        customViewHight.constant = tableViewHeight + 270
     }
     
     /// multiple selection false type buttton action
@@ -118,7 +118,8 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
             sleep(8)
         }
         self.dismiss(animated: true)
-        NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("NotificationQuestionarieList"), object: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func errorReceived(error: String) {
@@ -247,8 +248,9 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         }
         
         let patientQuestionAnswers: [String: Any] = [
-            "id": 1234,
-            "questionnaireId": 7996,
+            "id": viewModel?.getQuestionnaireDataInfo?.id ?? 0,
+            "questionnaireId": viewModel?.getQuestionnaireDataInfo?.questionnaireId ?? 0,
+            "patientId": viewModel?.getQuestionnaireDataInfo?.patientId ?? 0,
             "source": "Manual",
             "patientQuestionAnswers": patientQuestionAnswers
         ]
@@ -327,10 +329,10 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
 extension FillQuestionarieViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 300
+        customViewHight.constant = tableViewHeight + 270
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 300
+        customViewHight.constant = tableViewHeight + 270
     }
 }
