@@ -1,5 +1,5 @@
 //
-//  QuestionarieListModel.swift
+//  QuestionarieModel.swift
 //  Growth99
 //
 //  Created by nitin auti on 21/01/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuestionarieListModel: Codable {
+struct QuestionarieModel: Codable {
     let questionnaireName: String?
     let AppointmentId: String?
     let questionnaireStatus: String?

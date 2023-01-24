@@ -9,16 +9,16 @@ import Foundation
 
 protocol QuestionarieViewModelProtocol {
     func getQuestionarieList(pateintId: Int)
-    var QuestionarieDataList: [QuestionarieListModel] { get }
-    func QuestionarieDataAtIndex(index: Int) -> QuestionarieListModel?
-    var QuestionarieFilterDataData: [QuestionarieListModel] { get }
-    func QuestionarieFilterDataDataAtIndex(index: Int)-> QuestionarieListModel?
+    var QuestionarieDataList: [QuestionarieModel] { get }
+    func QuestionarieDataAtIndex(index: Int) -> QuestionarieModel?
+    var QuestionarieFilterDataData: [QuestionarieModel] { get }
+    func QuestionarieFilterDataDataAtIndex(index: Int)-> QuestionarieModel?
 }
 
 class QuestionarieViewModel {
     var delegate: QuestionarieViewControllerProtocol?
-    var QuestionarieData: [QuestionarieListModel] = []
-    var QuestionarieFilterData: [QuestionarieListModel] = []
+    var QuestionarieData: [QuestionarieModel] = []
+    var QuestionarieFilterData: [QuestionarieModel] = []
     
     init(delegate: QuestionarieViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -27,9 +27,9 @@ class QuestionarieViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func getQuestionarieList(pateintId: Int) {
-        let finaleUrl = ApiUrl.patientsQuestionnaireList + "\(pateintId)" + "/questionnaire"
+        let finaleUrl = ApiUrl.patientsQuestionnaire + "\(pateintId)" + "/questionnaire"
 
-        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[QuestionarieListModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[QuestionarieModel], GrowthNetworkError>) in
             switch result {
             case .success(let userData):
                 self.QuestionarieData = userData
@@ -41,22 +41,22 @@ class QuestionarieViewModel {
         }
     }
     
-    func QuestionarieDataAtIndex(index: Int)-> QuestionarieListModel? {
+    func QuestionarieDataAtIndex(index: Int)-> QuestionarieModel? {
         return self.QuestionarieData[index]
     }
     
-    func QuestionarieFilterDataDataAtIndex(index: Int)-> QuestionarieListModel? {
+    func QuestionarieFilterDataDataAtIndex(index: Int)-> QuestionarieModel? {
         return self.QuestionarieFilterDataData[index]
     }
 }
 
 extension QuestionarieViewModel: QuestionarieViewModelProtocol {
    
-    var QuestionarieDataList: [QuestionarieListModel] {
+    var QuestionarieDataList: [QuestionarieModel] {
         return self.QuestionarieData
     }
     
-    var QuestionarieFilterDataData: [QuestionarieListModel] {
+    var QuestionarieFilterDataData: [QuestionarieModel] {
         return self.QuestionarieFilterData
     }
 }

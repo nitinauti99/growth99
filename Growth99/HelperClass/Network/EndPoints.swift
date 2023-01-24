@@ -58,9 +58,10 @@ struct EndPoints {
     static let getBussinessInfo = "/api/public/v1/businesses/"
     static let newAppointment = "/api/appointments/new"
     static let patientsEditDetail = "/api/v1/patients/"
-    static let patientsQuestionnaireList = "/api/v1/patient/"
+    static let patientsQuestionnaire = "/api/v1/patient/"
     static let getPatientsQuestionnaire = "/api/patient/"
     static let submitPatientQuestionnnaire = "/api/patient/questionnaire"
+    static let patientsQuestionnaireList =  "/api/v1/questionnaire"
 }
 
 struct ApiUrl {
@@ -95,9 +96,10 @@ struct ApiUrl {
     static let patientsStatus = EndPoints.baseURL.appending(EndPoints.patientsStatus)
     static let patientsDetailList = EndPoints.baseURL.appending(EndPoints.patientsDetailList)
     static let patientsEditDetail = EndPoints.baseURL.appending(EndPoints.patientsEditDetail)
-    static let  patientsQuestionnaireList = EndPoints.baseURL.appending(EndPoints.patientsQuestionnaireList)
+    static let  patientsQuestionnaire = EndPoints.baseURL.appending(EndPoints.patientsQuestionnaire)
     static let getPatientsQuestionnaire = EndPoints.baseURL.appending(EndPoints.getPatientsQuestionnaire)
     static let submitPatientQuestionnnaire = EndPoints.baseURL.appending(EndPoints.submitPatientQuestionnnaire)
+    static let patientsQuestionnaireList = EndPoints.baseURL.appending(EndPoints.patientsQuestionnaireList)
 
     
     static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)

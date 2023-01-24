@@ -1,40 +1,40 @@
 //
-//  QuestionarieViewController.swift
+//  QuestionarieListViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 21/01/23.
+//  Created by nitin auti on 24/01/23.
 //
 
 import Foundation
 import UIKit
 
-protocol QuestionarieViewControllerProtocol: AnyObject {
+protocol QuestionarieListViewControllerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
 }
 
-class QuestionarieViewController: UIViewController, QuestionarieViewControllerProtocol {
+class QuestionarieListViewController: UIViewController, QuestionarieListViewControllerProtocol {
     
     @IBOutlet private weak var questionarieListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    var viewModel: QuestionarieViewModelProtocol?
+    var viewModel: QuestionarieListViewModelProtocol?
     var isSearch : Bool = false
-    var filteredTableData = [QuestionarieModel]()
+    var filteredTableData = [QuestionarieListModel]()
     var pateintId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = QuestionarieViewModel(delegate: self)
+        self.viewModel = QuestionarieListViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationQuestionarieList"), object: nil)
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: pateintId)
+        viewModel?.getQuestionarieList()
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
-        let questionarieListVC = UIStoryboard(name: "QuestionarieListViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieListViewController") as! QuestionarieListViewController
-        navigationController?.pushViewController(questionarieListVC, animated: true)
+        let detailController = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
+        navigationController?.pushViewController(detailController, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     
     @objc func updateUI(){
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: pateintId)
+        viewModel?.getQuestionarieList()
     }
     
     func addSerchBar(){
@@ -63,13 +63,13 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     }
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: pateintId)
+        viewModel?.getQuestionarieList()
     }
 
     func registerTableView() {
         self.questionarieListTableView.delegate = self
         self.questionarieListTableView.dataSource = self
-        questionarieListTableView.register(UINib(nibName: "QuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionarieTableViewCell")
+        questionarieListTableView.register(UINib(nibName: "QuestionarieListTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionarieListTableViewCell")
     }
     
     @objc func creatUser() {
@@ -79,7 +79,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     
     @objc func getQuestionarieList(){
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: 46782)
+        viewModel?.getQuestionarieList()
     }
     
     func LeadDataRecived() {
@@ -93,7 +93,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     }
 }
 
-extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource {
+extension QuestionarieListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -108,8 +108,8 @@ extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = QuestionarieTableViewCell()
-        cell = questionarieListTableView.dequeueReusableCell(withIdentifier: "QuestionarieTableViewCell") as! QuestionarieTableViewCell
+        var cell = QuestionarieListTableViewCell()
+        cell = questionarieListTableView.dequeueReusableCell(withIdentifier: "QuestionarieListTableViewCell") as! QuestionarieListTableViewCell
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{
@@ -122,19 +122,19 @@ extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let FillQuestionarieVC = UIStoryboard(name: "FillQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "FillQuestionarieViewController") as! FillQuestionarieViewController
-        let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
-        FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
-        FillQuestionarieVC.pateintId = pateintId
-        self.navigationController?.pushViewController(FillQuestionarieVC, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let FillQuestionarieVC = UIStoryboard(name: "FillQuestionarieListViewController", bundle: nil).instantiateViewController(withIdentifier: "FillQuestionarieListViewController") as! FillQuestionarieListViewController
+//        let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
+//        FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
+//        FillQuestionarieVC.pateintId = pateintId
+//        self.navigationController?.pushViewController(FillQuestionarieVC, animated: true)
+//    }
 }
 
-extension QuestionarieViewController: UISearchBarDelegate {
+extension QuestionarieListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.questionnaireName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
         questionarieListTableView.reloadData()
     }
@@ -144,4 +144,7 @@ extension QuestionarieViewController: UISearchBarDelegate {
         searchBar.text = ""
         questionarieListTableView.reloadData()
     }
+    
 }
+
+
