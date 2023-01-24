@@ -1,5 +1,5 @@
 //
-//  QuestionarieListViewController.swift
+//  AddNewQuestionarieViewController.swift
 //  Growth99
 //
 //  Created by nitin auti on 24/01/23.
@@ -8,24 +8,24 @@
 import Foundation
 import UIKit
 
-protocol QuestionarieListViewControllerProtocol: AnyObject {
+protocol AddNewQuestionarieViewControllerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
 }
 
-class QuestionarieListViewController: UIViewController, QuestionarieListViewControllerProtocol {
+class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieViewControllerProtocol {
     
-    @IBOutlet private weak var questionarieListTableView: UITableView!
+    @IBOutlet private weak var AddNewQuestionarieTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    var viewModel: QuestionarieListViewModelProtocol?
+    var viewModel: AddNewQuestionarieViewModelProtocol?
     var isSearch : Bool = false
-    var filteredTableData = [QuestionarieListModel]()
+    var filteredTableData = [AddNewQuestionarieModel]()
     var pateintId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = QuestionarieListViewModel(delegate: self)
+        self.viewModel = AddNewQuestionarieViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationQuestionarieList"), object: nil)
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         self.view.ShowSpinner()
@@ -67,9 +67,9 @@ class QuestionarieListViewController: UIViewController, QuestionarieListViewCont
     }
 
     func registerTableView() {
-        self.questionarieListTableView.delegate = self
-        self.questionarieListTableView.dataSource = self
-        questionarieListTableView.register(UINib(nibName: "QuestionarieListTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionarieListTableViewCell")
+        self.AddNewQuestionarieTableView.delegate = self
+        self.AddNewQuestionarieTableView.dataSource = self
+        AddNewQuestionarieTableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
     }
     
     @objc func creatUser() {
@@ -84,7 +84,7 @@ class QuestionarieListViewController: UIViewController, QuestionarieListViewCont
     
     func LeadDataRecived() {
         self.view.HideSpinner()
-        self.questionarieListTableView.reloadData()
+        self.AddNewQuestionarieTableView.reloadData()
     }
     
     func errorReceived(error: String) {
@@ -93,7 +93,7 @@ class QuestionarieListViewController: UIViewController, QuestionarieListViewCont
     }
 }
 
-extension QuestionarieListViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -108,8 +108,8 @@ extension QuestionarieListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = QuestionarieListTableViewCell()
-        cell = questionarieListTableView.dequeueReusableCell(withIdentifier: "QuestionarieListTableViewCell") as! QuestionarieListTableViewCell
+        var cell = AddNewQuestionarieTableViewCell()
+        cell = AddNewQuestionarieTableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell") as! AddNewQuestionarieTableViewCell
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{
@@ -123,7 +123,7 @@ extension QuestionarieListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let FillQuestionarieVC = UIStoryboard(name: "FillQuestionarieListViewController", bundle: nil).instantiateViewController(withIdentifier: "FillQuestionarieListViewController") as! FillQuestionarieListViewController
+//        let FillQuestionarieVC = UIStoryboard(name: "FillAddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "FillAddNewQuestionarieViewController") as! FillAddNewQuestionarieViewController
 //        let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
 //        FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
 //        FillQuestionarieVC.pateintId = pateintId
@@ -131,18 +131,18 @@ extension QuestionarieListViewController: UITableViewDelegate, UITableViewDataSo
 //    }
 }
 
-extension QuestionarieListViewController: UISearchBarDelegate {
+extension AddNewQuestionarieViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
-        questionarieListTableView.reloadData()
+        AddNewQuestionarieTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearch = false
         searchBar.text = ""
-        questionarieListTableView.reloadData()
+        AddNewQuestionarieTableView.reloadData()
     }
     
 }

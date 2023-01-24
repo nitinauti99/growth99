@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionarieListTableViewCell: UITableViewCell {
+class AddNewQuestionarieTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var questionnaireName: UILabel!
     @IBOutlet private weak var questionnaireID: UILabel!
@@ -23,7 +23,7 @@ class QuestionarieListTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
     
-    func configureCell(questionarieVM: QuestionarieListViewModelProtocol?, index: IndexPath) {
+    func configureCell(questionarieVM: AddNewQuestionarieViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.QuestionarieDataAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.name
         self.questionnaireID.text = String(questionarieVM?.id ?? 0)

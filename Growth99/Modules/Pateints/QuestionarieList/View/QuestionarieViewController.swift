@@ -33,8 +33,8 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
-        let questionarieListVC = UIStoryboard(name: "QuestionarieListViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieListViewController") as! QuestionarieListViewController
-        navigationController?.pushViewController(questionarieListVC, animated: true)
+        let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
+        navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

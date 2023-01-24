@@ -237,12 +237,12 @@
 		84D43A27297C244000678458 /* QuestionarieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A26297C244000678458 /* QuestionarieModel.swift */; };
 		84D43A2A297C32DF00678458 /* QuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */; };
 		84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */; };
-		84DB4ADE298052D700112A23 /* QuestionarieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4ADD298052D700112A23 /* QuestionarieListViewController.swift */; };
-		84DB4AE0298052EC00112A23 /* QuestionarieListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4ADF298052EC00112A23 /* QuestionarieListViewController.storyboard */; };
-		84DB4AE22980530200112A23 /* QuestionarieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE12980530200112A23 /* QuestionarieListViewModel.swift */; };
-		84DB4AE42980531200112A23 /* QuestionarieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE32980531200112A23 /* QuestionarieListModel.swift */; };
-		84DB4AE8298053FC00112A23 /* QuestionarieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE6298053FC00112A23 /* QuestionarieListTableViewCell.swift */; };
-		84DB4AE9298053FC00112A23 /* QuestionarieListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4AE7298053FC00112A23 /* QuestionarieListTableViewCell.xib */; };
+		84DB4ADE298052D700112A23 /* AddNewQuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4ADD298052D700112A23 /* AddNewQuestionarieViewController.swift */; };
+		84DB4AE0298052EC00112A23 /* AddNewQuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4ADF298052EC00112A23 /* AddNewQuestionarieViewController.storyboard */; };
+		84DB4AE22980530200112A23 /* AddNewQuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE12980530200112A23 /* AddNewQuestionarieViewModel.swift */; };
+		84DB4AE42980531200112A23 /* AddNewQuestionarieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE32980531200112A23 /* AddNewQuestionarieModel.swift */; };
+		84DB4AE8298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE6298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift */; };
+		84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4AE7298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib */; };
 		84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C45297035A000C58B0D /* TasksListViewModel.swift */; };
 		84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */; };
 		84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */; };
@@ -654,12 +654,12 @@
 		84D43A26297C244000678458 /* QuestionarieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieModel.swift; sourceTree = "<group>"; };
 		84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieTableViewCell.swift; sourceTree = "<group>"; };
 		84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionarieTableViewCell.xib; sourceTree = "<group>"; };
-		84DB4ADD298052D700112A23 /* QuestionarieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieListViewController.swift; sourceTree = "<group>"; };
-		84DB4ADF298052EC00112A23 /* QuestionarieListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionarieListViewController.storyboard; sourceTree = "<group>"; };
-		84DB4AE12980530200112A23 /* QuestionarieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieListViewModel.swift; sourceTree = "<group>"; };
-		84DB4AE32980531200112A23 /* QuestionarieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieListModel.swift; sourceTree = "<group>"; };
-		84DB4AE6298053FC00112A23 /* QuestionarieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieListTableViewCell.swift; sourceTree = "<group>"; };
-		84DB4AE7298053FC00112A23 /* QuestionarieListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionarieListTableViewCell.xib; sourceTree = "<group>"; };
+		84DB4ADD298052D700112A23 /* AddNewQuestionarieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieViewController.swift; sourceTree = "<group>"; };
+		84DB4ADF298052EC00112A23 /* AddNewQuestionarieViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewQuestionarieViewController.storyboard; sourceTree = "<group>"; };
+		84DB4AE12980530200112A23 /* AddNewQuestionarieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieViewModel.swift; sourceTree = "<group>"; };
+		84DB4AE32980531200112A23 /* AddNewQuestionarieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieModel.swift; sourceTree = "<group>"; };
+		84DB4AE6298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieTableViewCell.swift; sourceTree = "<group>"; };
+		84DB4AE7298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewQuestionarieTableViewCell.xib; sourceTree = "<group>"; };
 		84E34C45297035A000C58B0D /* TasksListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTasksViewModel.swift; path = Growth99/Modules/Tasks/Add/ViewModel/CreateTasksViewModel.swift; sourceTree = SOURCE_ROOT; };
 		84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTasksViewController.swift; sourceTree = "<group>"; };
@@ -1949,9 +1949,9 @@
 				84D061A629670676001FE469 /* Add */,
 				8473207C29797831003099BB /* Edit */,
 				84D0619A29670676001FE469 /* Detail */,
-				84D43A1C297C217500678458 /* Questionarie */,
+				84D43A1C297C217500678458 /* QuestionarieList */,
 				84484593297D32390041468A /* FillQuestionnaire */,
-				84DB4AD92980527000112A23 /* QuestionarieList */,
+				84DB4AD92980527000112A23 /* AddNewQuestionarie */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
@@ -2291,14 +2291,14 @@
 			path = "Booking History";
 			sourceTree = "<group>";
 		};
-		84D43A1C297C217500678458 /* Questionarie */ = {
+		84D43A1C297C217500678458 /* QuestionarieList */ = {
 			isa = PBXGroup;
 			children = (
 				84D43A1F297C218700678458 /* Model */,
 				84D43A1E297C218300678458 /* ViewModel */,
 				84D43A1D297C218000678458 /* View */,
 			);
-			path = Questionarie;
+			path = QuestionarieList;
 			sourceTree = "<group>";
 		};
 		84D43A1D297C218000678458 /* View */ = {
@@ -2345,20 +2345,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		84DB4AD92980527000112A23 /* QuestionarieList */ = {
+		84DB4AD92980527000112A23 /* AddNewQuestionarie */ = {
 			isa = PBXGroup;
 			children = (
 				84DB4ADA2980528600112A23 /* Model */,
 				84DB4ADB2980529A00112A23 /* ViewModel */,
 				84DB4ADC298052A200112A23 /* View */,
 			);
-			path = QuestionarieList;
+			path = AddNewQuestionarie;
 			sourceTree = "<group>";
 		};
 		84DB4ADA2980528600112A23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84DB4AE32980531200112A23 /* QuestionarieListModel.swift */,
+				84DB4AE32980531200112A23 /* AddNewQuestionarieModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2366,7 +2366,7 @@
 		84DB4ADB2980529A00112A23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				84DB4AE12980530200112A23 /* QuestionarieListViewModel.swift */,
+				84DB4AE12980530200112A23 /* AddNewQuestionarieViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2375,8 +2375,8 @@
 			isa = PBXGroup;
 			children = (
 				84DB4AE5298053E000112A23 /* Cell */,
-				84DB4ADD298052D700112A23 /* QuestionarieListViewController.swift */,
-				84DB4ADF298052EC00112A23 /* QuestionarieListViewController.storyboard */,
+				84DB4ADD298052D700112A23 /* AddNewQuestionarieViewController.swift */,
+				84DB4ADF298052EC00112A23 /* AddNewQuestionarieViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2384,8 +2384,8 @@
 		84DB4AE5298053E000112A23 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				84DB4AE6298053FC00112A23 /* QuestionarieListTableViewCell.swift */,
-				84DB4AE7298053FC00112A23 /* QuestionarieListTableViewCell.xib */,
+				84DB4AE6298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift */,
+				84DB4AE7298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3058,7 +3058,7 @@
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
-				84DB4AE0298052EC00112A23 /* QuestionarieListViewController.storyboard in Resources */,
+				84DB4AE0298052EC00112A23 /* AddNewQuestionarieViewController.storyboard in Resources */,
 				84D0621F29670676001FE469 /* AppointmentsViewController.storyboard in Resources */,
 				DAB4E98F29755BA000AAA414 /* EventsTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* CustomEmailTemplateTableViewCell.xib in Resources */,
@@ -3095,7 +3095,7 @@
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
-				84DB4AE9298053FC00112A23 /* QuestionarieListTableViewCell.xib in Resources */,
+				84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
@@ -3273,7 +3273,7 @@
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
-				84DB4ADE298052D700112A23 /* QuestionarieListViewController.swift in Sources */,
+				84DB4ADE298052D700112A23 /* AddNewQuestionarieViewController.swift in Sources */,
 				84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
@@ -3289,7 +3289,7 @@
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
-				84DB4AE22980530200112A23 /* QuestionarieListViewModel.swift in Sources */,
+				84DB4AE22980530200112A23 /* AddNewQuestionarieViewModel.swift in Sources */,
 				DA58258C2977240300F002F6 /* AddEventViewModel.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
@@ -3322,8 +3322,8 @@
 				8448459A297D33B40041468A /* FillQuestionarieViewModel.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
 				DAB4E99129755BA000AAA414 /* CalenderBaseViewController.swift in Sources */,
-				84DB4AE8298053FC00112A23 /* QuestionarieListTableViewCell.swift in Sources */,
-				84DB4AE42980531200112A23 /* QuestionarieListModel.swift in Sources */,
+				84DB4AE8298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift in Sources */,
+				84DB4AE42980531200112A23 /* AddNewQuestionarieModel.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
 				84B8B81B2973A64500742B42 /* EditTasksViewModel.swift in Sources */,
 				84D0628E29670677001FE469 /* LogInViewController.swift in Sources */,

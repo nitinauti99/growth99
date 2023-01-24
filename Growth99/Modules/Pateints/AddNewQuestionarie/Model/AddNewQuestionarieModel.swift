@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuestionarieListModel: Codable {
+struct AddNewQuestionarieModel: Codable {
     let name: String?
     let noOfQuestions: Int?
     let isG99ReviewForm: Bool?
