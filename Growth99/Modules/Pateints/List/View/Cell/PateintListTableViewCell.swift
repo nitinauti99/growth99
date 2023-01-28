@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol PateintListTableViewCellDelegate: AnyObject {
+    func removePatieint(cell: PateintListTableViewCell, index: IndexPath)
+    func editPatieint(cell: PateintListTableViewCell, index: IndexPath)
+    func detailPatieint(cell: PateintListTableViewCell, index: IndexPath)
+}
+
 class PateintListTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var firstName: UILabel!
@@ -24,6 +30,7 @@ class PateintListTableViewCell: UITableViewCell {
 
     var dateFormater : DateFormaterProtocol?
     var buttonAddTimeTapCallback: () -> ()  = { }
+    weak var delegate: PateintListTableViewCellDelegate?
 
     var indexPath = IndexPath()
     override func awakeFromNib() {
@@ -34,7 +41,7 @@ class PateintListTableViewCell: UITableViewCell {
     }
 
     func configureCell(userVM: PateintListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.userDataAtIndex(index: index.row)
+        let userVM = userVM?.PateintDataAtIndex(index: index.row)
         self.firstName.text = userVM?.firstName
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
@@ -47,6 +54,18 @@ class PateintListTableViewCell: UITableViewCell {
         pateintStatusLbi.text = userVM?.patientStatus
         pateintStatusImage.image = UIImage(named: movement ?? "")
         indexPath = index
+        
     }
 
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removePatieint(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editPatieint(cell: self, index: indexPath)
+    }
+    
+    @IBAction func detailButtonPressed() {
+        self.delegate?.detailPatieint(cell: self, index: indexPath)
+    }
 }

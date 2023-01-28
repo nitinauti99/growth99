@@ -11,16 +11,18 @@ import UIKit
 protocol PateintListViewContollerProtocol: AnyObject {
     func LeadDataRecived()
     func errorReceived(error: String)
+    func pateintRemovedSuccefully(mrssage: String)
 }
 
-class PateintListViewContoller: UIViewController, PateintListViewContollerProtocol {
+class PateintListViewContoller: UIViewController, PateintListViewContollerProtocol, PateintListTableViewCellDelegate {
 
+    
     @IBOutlet weak var pateintListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
     var viewModel: PateintListViewModelProtocol?
     var isSearch : Bool = false
-    var filteredTableData = [PateintListModel]()
+    var pateintFilterData = [PateintListModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
-        self.getUserList()
+        self.getPateintList()
         self.registerTableView()
     }
     
@@ -53,7 +55,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     @objc func updateUI(){
-        self.getUserList()
+        self.getPateintList()
         self.view.ShowSpinner()
     }
     
@@ -67,7 +69,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     @objc func LeadList() {
         self.view.ShowSpinner()
-        self.getUserList()
+        self.getPateintList()
     }
 
     @objc func creatUser() {
@@ -75,15 +77,29 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
         self.navigationController?.pushViewController(createUserVC, animated: true)
     }
     
-   @objc func editButtonTapped() {
-        print("called edit action")
-        let editVC = UIStoryboard(name: "PateintEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintEditViewController") as! PateintEditViewController
-        self.navigationController?.pushViewController(editVC, animated: true)
+    func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
+        let pateintId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+        viewModel?.removePateints(pateintId: pateintId)
     }
 
-    @objc func getUserList(){
+    @objc func getPateintList() {
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getPateintList()
+    }
+    
+    func pateintRemovedSuccefully(mrssage: String){
+        viewModel?.getPateintList()
+    }
+
+    func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {
+        let editVC = UIStoryboard(name: "PateintEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintEditViewController") as! PateintEditViewController
+        editVC.pateintId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+        self.navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
+        let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
+        detailController.pateintId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
     }
     
     func LeadDataRecived() {

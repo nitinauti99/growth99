@@ -8,17 +8,18 @@
 import Foundation
 
 protocol PateintListViewModelProtocol {
-    func getUserList()
-    var UserData: [PateintListModel] { get }
-    func userDataAtIndex(index: Int) -> PateintListModel?
-    var UserFilterDataData: [PateintListModel] { get }
-    func userFilterDataDataAtIndex(index: Int)-> PateintListModel?
+    func getPateintList()
+    var PateintData: [PateintListModel] { get }
+    func PateintDataAtIndex(index: Int) -> PateintListModel?
+    var pateintFilterDataData: [PateintListModel] { get }
+    func pateintFilterDataDataAtIndex(index: Int)-> PateintListModel?
+    func removePateints(pateintId: Int)
 }
 
 class PateintListViewModel {
     var delegate: PateintListViewContollerProtocol?
     var PateintListData: [PateintListModel] = []
-    var PateintFilterData: [PateintListModel] = []
+    var pateintFilterData: [PateintListModel] = []
     
     init(delegate: PateintListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -26,11 +27,11 @@ class PateintListViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getUserList() {
+    func getPateintList() {
         self.requestManager.request(forPath: ApiUrl.patientsList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PateintListModel], GrowthNetworkError>) in
             switch result {
-            case .success(let userData):
-                self.PateintListData = userData
+            case .success(let PateintData):
+                self.PateintListData = PateintData
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -39,23 +40,41 @@ class PateintListViewModel {
         }
     }
     
-    func userDataAtIndex(index: Int)-> PateintListModel? {
+    func removePateints(pateintId: Int) {
+        let urlParameter: Parameters = [
+            "userId": pateintId
+        ]
+        let finaleUrl = ApiUrl.removePatient + "userId=" + "\(pateintId)"
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.pateintRemovedSuccefully(mrssage: "Pateints removed successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+          }
+    }
+    
+    func PateintDataAtIndex(index: Int)-> PateintListModel? {
         return self.PateintListData[index]
     }
     
-    func userFilterDataDataAtIndex(index: Int)-> PateintListModel? {
-        return self.PateintFilterData[index]
+    func pateintFilterDataDataAtIndex(index: Int)-> PateintListModel? {
+        return self.pateintFilterData[index]
     }
 }
 
 extension PateintListViewModel: PateintListViewModelProtocol {
     
     
-    var UserFilterDataData: [PateintListModel] {
-        return self.PateintFilterData
+    var pateintFilterDataData: [PateintListModel] {
+        return self.pateintFilterData
     }
     
-    var UserData: [PateintListModel] {
+    var PateintData: [PateintListModel] {
         return self.PateintListData
     }
     

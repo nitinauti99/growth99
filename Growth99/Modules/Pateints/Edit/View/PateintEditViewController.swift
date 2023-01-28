@@ -38,7 +38,7 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
     var viewModel: PateintEditViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [PateintListModel]()
-    
+    var pateintId = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintEditViewModel(delegate: self)
