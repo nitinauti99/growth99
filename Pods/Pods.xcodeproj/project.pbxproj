@@ -15,7 +15,6 @@
 		04A896288CE3A59B530250337A5F8362 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD7D15E6CA597D626B06CB25E83F8B /* Result+Alamofire.swift */; };
 		05102BD9E7BCB80DC7B64A34D0E7850B /* SDWebImageCacheSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F11A605A8FD8CA09F3FC1F3026262AE0 /* SDWebImageCacheSerializer.m */; };
 		05D76FA82DD3C37B76FFC1689CEF9981 /* SDWebImageDownloaderDecryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 08E976FF5B54CA78731DC3093AF44096 /* SDWebImageDownloaderDecryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		077964993B08A24201C4458ADCBED187 /* FontAwesome.swift-FontAwesome.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4F5DC4EB6E9DF6B4859D27EF8C9F5 /* FontAwesome.swift-FontAwesome.swift */; };
 		07A41F67B40B3C6C6C3DB862F1F633F8 /* SDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB82E37A268B14D82B5C819D58417E6 /* SDWebImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BFA90EFCD3407716FFC60D140325188 /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 76FBA12C9C803AEABA24796A2794EF04 /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C76BA74E22A5CFD8207C10026401D80 /* SDAnimatedImagePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21897BF6A552F14128A0379C559E21D /* SDAnimatedImagePlayer.m */; };
@@ -35,7 +34,6 @@
 		18303B692A81A7D708973A6B9CBA75D8 /* SDAsyncBlockOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4944825AAD5901839580CB7C4A09FB61 /* SDAsyncBlockOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1976BB7D7E26A12E29283E71154B63B3 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E614D428F2738FA2B6A8EF5216A631 /* SessionDelegate.swift */; };
 		1CC8E609DF9376286B12C7AF63DD0819 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AD22D308E1B56928F7A4F0D10A0F19 /* Foundation.framework */; };
-		1E5E850FC8D5C3051DF29D08E75EB413 /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941E98B1E97E248F1FF97C53DACBFD63 /* FontAwesomeStateRequirement.swift */; };
 		1EE44196E7BCE57AD96A2C751651EF40 /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107AD7BAC5691C0EB78E3945617C49CC /* AlamofireExtended.swift */; };
 		1FF421C714EDBE044E5EEB1E0C6A8571 /* FSCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CC619146975AD2FBAEDEF3B2D645C3C /* FSCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20004B99F5050F59E747AB8DFAD7E891 /* SDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 964605B3D02574ECC424CB063FA6CE63 /* SDWebImageDownloaderOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,9 +43,7 @@
 		26BF15D648EFA59FCA18AE285AC5B2A1 /* UIImage+MemoryCacheCost.h in Headers */ = {isa = PBXBuildFile; fileRef = 366DB89343015BF8E72650598554E796 /* UIImage+MemoryCacheCost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275F99E74511043432C892810081DCAF /* SDDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FE708E5AE7DB845C56C6412CFFB999 /* SDDiskCache.m */; };
 		278F5B2C01E923AA0C691D79BD0F321F /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = C7207ED610F35AE52113515CD06F9B09 /* UIImage+MultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27F575438D93027269C50D1F3B8D46CD /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784FE3C9E5080A6E720CE17981EF9BEC /* FontAwesomeImageRepresentable.swift */; };
 		28532908E40E423052AA43B0000028BF /* UIImage+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB38F8BDE51292E6DAC6103E8F3F3B /* UIImage+Metadata.m */; };
-		2A9B2BF3072A65C88836F7937AC8DA9F /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3A03BE19972B0F38F5A080BEACAD97 /* FontAwesomeView.swift */; };
 		2C762E5C654B718C19CC98FEB27C2DA4 /* SDFileAttributeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E361482066A6DD0AAFF88CEDA9C05C /* SDFileAttributeHelper.m */; };
 		2CBE3651CA006E19F5D64A2DE9B9A028 /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF15034E491F9807CC8752CAA321C7A /* CachedResponseHandler.swift */; };
 		2CCD13099063CD560E3067BD132914FA /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F3AA867DC00BFF8C0682D51B747729 /* Notifications.swift */; };
@@ -55,7 +51,6 @@
 		2F85FF5597762E2E3C6961C6DD690A60 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEC2AA6C696FDFE9B15C21EDF1C897C /* UIView+WebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FD9A8DE2EC9DDDBDBFA6251DD1272B8 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2E4B6C050B7A9D0478ACE30BDBB04263 /* Font Awesome 5 Free-Solid-900.otf */; };
 		3015C91C523C5133A639F57DE0425100 /* SDImageAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F04F477B077AF50E5BE1F1E90D6ECD /* SDImageAssetManager.m */; };
-		3237B713E08EA39D3CF26FC4C98885C4 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DBDAFDDF3B1607BD5099F18BEADBD /* FontAwesome.swift */; };
 		336BA7F271A33087B951BA4C6C6B2C6F /* SDImageAssetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A91D02611453AD5FD67A0AA9510C014 /* SDImageAssetManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		33A7D0F2D03004CE256A75E03DF33C70 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96882D1BD6696953BE1EAE27252C5FE /* RetryPolicy.swift */; };
 		33C0E2EFD1C8046A2020D25FD1F1611F /* SDImageAWebPCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7096E1FCC61BD2D2624F118690479D99 /* SDImageAWebPCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,10 +61,8 @@
 		3960120DF8907DA574823ACE7ED96076 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D7465905ECAC40D39523244492365F /* FSCalendarWeekdayView.m */; };
 		39F986157716D5214013E395BDFA237A /* FSCalendarDelegationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = A8CE89E70FE65790DC986F0E6B6CCCF2 /* FSCalendarDelegationProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B72C235C1AB8944333C2322F08B6B46 /* SDWebImageTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E646D8CA4A7E6D05380FE3D1A5432DD0 /* SDWebImageTransition.m */; };
-		3B895470C357B7298A097AB701C8D2E9 /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD24B6D0EFB857B828BC0BEA5843313 /* FontAwesomeSegmentedControl.swift */; };
 		3C4059621E23842C19D4EB5D35B41989 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893D00DBBD1218744685F42D500A1A97 /* Validation.swift */; };
 		3E4E56584545A9F057D6A39565EEBE81 /* FSCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A985832264C1756EBBCE8D7701A8EF /* FSCalendar-dummy.m */; };
-		3E870C76A3B0669EC52F74804AE22C9B /* FontAwesomeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E13A82696A5733E88474CED17BF34D /* FontAwesomeExtension.swift */; };
 		3F567CE353442AE137B71B258409F5DA /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA31DF9FB3A32CE776FAB4D3F56F42 /* SDImageLoadersManager.m */; };
 		4075297FF5A21C84EF513521FD7B34EF /* SDWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D3C94BB7A66BD87069605294D382BC /* SDWeakProxy.m */; };
 		412EE262DCED176A73591124DBDBA97C /* UIImage+MemoryCacheCost.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5CAA7793F89A6AB64B58044D32ED7 /* UIImage+MemoryCacheCost.m */; };
@@ -110,7 +103,6 @@
 		62A22A4C10675F9B65C7677CFD6C4676 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F16D288A098A868395AA6B0A1A75BE /* SDWebImagePrefetcher.m */; };
 		62FFC4B2AA010A5445E5D9D6294C62B6 /* FSCalendarCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = F6F8FFDFF7169E8A573231AD3325CB77 /* FSCalendarCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64CDB33E49BDBE16653C88756E26B8CB /* SDImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBDBA7A2FACC2617244A92A41FDB92D /* SDImageCoder.m */; };
-		667769AC064D2CC97F198C2E8F12AE6C /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5691A8BC4F9F7C92C325E371B98A20B /* Enum.swift */; };
 		67B0CAAD8E88B9A2357C41E73EA2EB48 /* SDWebImageCacheKeyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E563DDE52FFD2A969EF9CF3889E4375 /* SDWebImageCacheKeyFilter.m */; };
 		67B3DCBA30FDEDA18E0D4E3B2C16C911 /* SDImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AA8B4D44F5B38B7B4860B12E48CF797 /* SDImageLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68FB2DCB4C77DBCAF9A6037E470F2BDE /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25683E7C95F6D39F4CE75FAAB5C4FBDA /* ParameterEncoding.swift */; };
@@ -125,11 +117,9 @@
 		78AE96580BD551EB905F72C21AB81E97 /* SDImageCachesManagerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEBFB5A8FDA29A30ADDFD031BD03C79 /* SDImageCachesManagerOperation.m */; };
 		7930C94414B4C661867AC4FBE82E996C /* URLEncodedFormEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14331C1E17E493EE0AEFCA960A4255EB /* URLEncodedFormEncoder.swift */; };
 		7A424FED21A399FE2610DCB710A4A3FB /* SDWebImageOptionsProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B93DE8EB9FBFD04CB60D051E5632A04 /* SDWebImageOptionsProcessor.m */; };
-		7B065465BDC9CC3E19794775B7DDB98D /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F7D91C911256684463645A3C5779A /* FontAwesomeTextRepresentable.swift */; };
 		7B068137A8925891446203B5D3D6A4ED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D81A71CBFAC2D96813DD39CBB607600 /* CFNetwork.framework */; };
 		7D9E8F8A5D02148FCC2DBD6319BCC3D1 /* SDWebImageDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 528B9B3F9970AC06C2A9BFBA9F2DD05C /* SDWebImageDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E02F5B62BE00E97847DF549FFED2490 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA970050CC74823930C0B4362CBCBFF /* HTTPHeaders.swift */; };
-		7E29A5A984554B002E40C07209CF75FC /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061E2AF171FEBFD4B1B2A35E11829C9B /* FontAwesomeTabBarItem.swift */; };
 		7E6862A73246BB1A0E7BCEBAF50FFBE1 /* NSButton+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CDA93BFBF0535AAD1F3D87D18541BCB /* NSButton+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E98902CA894CFE1F54E7934B24B0B37 /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5633F25D8ACF570B6CF1F84205A4EC52 /* FSCalendarCollectionView.m */; };
 		7F1BB526AAE3ECDCE90127D9D0E10261 /* StringEncoding+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B127CE7BF7BD51014A28FE14374F9A /* StringEncoding+Alamofire.swift */; };
@@ -169,7 +159,6 @@
 		A53BDE589BDD6483F3EEDCE5EA1DCCD3 /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F8CD2800A06C7F5193CD71670EDBC /* Protected.swift */; };
 		A550F7F30921E5FFE67A755D67DA7683 /* FSCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = AF2EDEA2E08A39721A86704D4D78FE77 /* FSCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9A87DA629538D239C4B7401EB56AEB5 /* SDImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A47DB2502EF8708A8C98AC89862C80 /* SDImageTransformer.m */; };
-		AA340657015839AA3B1F125704AD264B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0771AC0600474A0D6042F1D259FCF0EA /* CoreText.framework */; };
 		AA3AE0DF5E35D3E0D2CAE7972D69373E /* SDAnimatedImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CBCA052F513C84661CC299F3C2CBA4 /* SDAnimatedImageView+WebCache.m */; };
 		ABEAA41C35A6CD25C93E622FB129C379 /* SDImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1E8F3C0EE7C2100567581FBAE2214 /* SDImageLoader.m */; };
 		AD0CFDA140E346502935BA58225E6EF3 /* SDWebImageDownloaderRequestModifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 21A00FA2B2AEF26B3F78C223B07A5409 /* SDWebImageDownloaderRequestModifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -196,16 +185,13 @@
 		C55A2D001850D3F407D968CFF1C545E2 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAC6E4BC0BDE71811F8D541F275E721 /* UIButton+WebCache.m */; };
 		C62B50D1E6DC9AAC007267B350DAFA39 /* Pods-Growth99Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE7F4917627B378CACE2B65C5B498950 /* Pods-Growth99Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6ED706364847164CB566CEA1A6FFDD6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5E18D2DF6366CA71BC7544BF809EA4 /* QuartzCore.framework */; };
-		C79240CBEABE439685B219E0E1DD69BE /* FontAwesome.swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3526A93F524753DA6F6571DD81422C /* FontAwesome.swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7ACD835AAE2936FB6B623084612825D /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B75C2549F874666C9EAC623A868C47E0 /* FSCalendarExtensions.m */; };
 		C7E8A80BE6BE5452380D8CA71F278B8A /* SDImageGIFCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = E361308F54DDF53FEB741FC79EA7DF4B /* SDImageGIFCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA4768CF12DA5C7D6A6E13BDE07706 /* Pods-Growth99-Growth99UITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FF1E434F05EFF24EDB5678F236254F /* Pods-Growth99-Growth99UITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE132491B81D44BB6B692C3F72FBC980 /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C1CF28EDC11FAD337B6A6912EC2A35 /* FSCalendarCollectionViewLayout.m */; };
-		CEBE3CEA5D715A76CDDED85B9589D578 /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F5C8865BE81D0E4B914D9E6020025 /* FontAwesomeImageView.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87EBD6AFE811C25E1A18C6914CF8C52 /* EventMonitor.swift */; };
 		CF10A50704D5CF6F07D5949BA4AB3EAB /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D5A24296D0E3D96F5A6BB8F84E2B /* FSCalendarDelegationFactory.m */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D54D9CA39BA2D6506D8CFE20C962D4E /* AFError.swift */; };
-		D3D42240C17AA84716A4E708D680833C /* FontAwesome.swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A4886D204C3F161BDA0AE3239D3FB684 /* FontAwesome.swift-dummy.m */; };
 		D556C63635E7A83C7A9B04FB104F7339 /* UIImage+Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 338C2160F0FD1CE7CFFAAE00477F7AC2 /* UIImage+Transform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D68F08F717E95BABFB43AE705D943426 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB548EACB94DD14F9CAA148C677C183 /* SDWebImageDownloader.m */; };
 		D6B4751CED01D53E4A1B6A571AAA2F83 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3253362E634031C85856B3BFEF3542 /* HTTPMethod.swift */; };
@@ -236,7 +222,6 @@
 		E9B4C89E7EB3B27D46AFCA452C3D426F /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740A4412571EDCA6BB2FCF790095EF82 /* MultipartUpload.swift */; };
 		E9CF46857D61D2A8AF4C3722C27C61C6 /* SDImageCoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1645D3E975F22AC8E63F5CC25DCF8C75 /* SDImageCoderHelper.m */; };
 		EC7997C28770C4633C0F9B1B2C362EBD /* Pods-Growth99-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11214134F4B04DA21AE0F0C9AE94CCFA /* Pods-Growth99-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE16E9F35C5A466B28E6B9973CE4E98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AD22D308E1B56928F7A4F0D10A0F19 /* Foundation.framework */; };
 		EEC150B66BCCD6C80FDA7E4D1975166B /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED9AB0C089E8EC77E000EDEDA0C54F6 /* DispatchQueue+Alamofire.swift */; };
 		F077E74D9855D0D7FCF570F8E8ED4A1E /* SDFileAttributeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 720CCEB268DA98A9B4D86D0CA5A0DDAB /* SDFileAttributeHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F0E28CEF30861F3589A4A662CEA76D80 /* SDImageGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B25EAC195B653B7807C3BF48854B21 /* SDImageGraphics.m */; };
@@ -250,9 +235,7 @@
 		F497CD01EF6568475FD363A248D78A4B /* UIImage+ForceDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = 49551235C4A662CC0E2B3E26949A8E2A /* UIImage+ForceDecode.m */; };
 		F7289F163C285103D6CCAB39447153CA /* SDWebImageDownloaderConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D3602CBD3B6F1A531089287EA2A8F62 /* SDWebImageDownloaderConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7C20C67D0D5A1C73A0A057268A719C1 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5BE26054BB5B923493E7A9241028F /* FSCalendar.m */; };
-		F8D3B3B3720BF695C709547A2E7AD085 /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B6E7EA08BDDE62808BEF13AB61D7DF /* FontAwesomeBarButtonItem.swift */; };
 		FB359FC2B8375E01A8A8F84D3C50EE82 /* SDWebImageDownloaderResponseModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B7271EC06B22630A94C41AC4EB35C314 /* SDWebImageDownloaderResponseModifier.m */; };
-		FBA64721DC6465037C07C713664308B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03796692A6DA39728D8A4E6BE4AACBC /* UIKit.framework */; };
 		FE0189D2FE038AD82C4CCF5A801A50A3 /* SDDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B32E5F99A80A8871BA327CBD7154032C /* SDDiskCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE05A1BF611E69C94BC7A9EADBE10B2F /* SDWebImageDownloaderConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B3C214ABFA79F9F714F4B32BB3557 /* SDWebImageDownloaderConfig.m */; };
 		FE4845B6FDD260059CDF9E26965CA31B /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC02EE7A4854EBE32DE0C641AACC96A /* SDWebImageManager.m */; };
@@ -261,13 +244,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		110BC9476C7518F7D8373116AD7CF509 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB240150692F32EC312F3CF346C8B9D1;
-			remoteInfo = FontAwesome.swift;
-		};
 		7CA19AF855AFA5DA3392C30C8794EBAE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -296,13 +272,6 @@
 			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
 			remoteInfo = SDWebImage;
 		};
-		C1BF27A92CF2F745A4AD15A17F81F6BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4DC20DD2E50259D674257304EC016C93;
-			remoteInfo = "FontAwesome.swift-FontAwesome.swift";
-		};
 		D1B3F732EB11A51CF6EA91FB80B6DEAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -324,13 +293,6 @@
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
-		EE5854932C77FD774BF74D316F7792A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB240150692F32EC312F3CF346C8B9D1;
-			remoteInfo = FontAwesome.swift;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -347,7 +309,7 @@
 		107AD7BAC5691C0EB78E3945617C49CC /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
 		11214134F4B04DA21AE0F0C9AE94CCFA /* Pods-Growth99-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Growth99-umbrella.h"; sourceTree = "<group>"; };
 		11F3AA867DC00BFF8C0682D51B747729 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		1205A4C030DDA56DDDEA4232C3CCE936 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Font Awesome 5 Free-Regular-400.otf"; path = "FontAwesome/Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		1205A4C030DDA56DDDEA4232C3CCE936 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "Font Awesome 5 Free-Regular-400.otf"; path = "FontAwesome/Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		128EFC13DA2FB68630AF702E505D35C2 /* Pods-Growth99-Growth99UITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Growth99-Growth99UITests-Info.plist"; sourceTree = "<group>"; };
 		139B3C214ABFA79F9F714F4B32BB3557 /* SDWebImageDownloaderConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderConfig.m; path = SDWebImage/Core/SDWebImageDownloaderConfig.m; sourceTree = "<group>"; };
 		14331C1E17E493EE0AEFCA960A4255EB /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
@@ -378,7 +340,6 @@
 		2695DB99D9CDE367A3ABA6A3F67AAAD9 /* FSCalendarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarCell.h; path = FSCalendar/FSCalendarCell.h; sourceTree = "<group>"; };
 		26FF1E434F05EFF24EDB5678F236254F /* Pods-Growth99-Growth99UITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Growth99-Growth99UITests-umbrella.h"; sourceTree = "<group>"; };
 		276C480EF59AC1A9AF590C274DE87574 /* FSCalendarSeparatorDecorationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendarSeparatorDecorationView.m; path = FSCalendar/FSCalendarSeparatorDecorationView.m; sourceTree = "<group>"; };
-		28A3CCFDC77829170B0B12EB9E3391CF /* FontAwesome.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FontAwesome.swift; path = FontAwesome_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292F8A3925761F6B432BE065ED83F81E /* FSCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSCalendar-prefix.pch"; sourceTree = "<group>"; };
 		29DC1875E11EC240ACA8356736670650 /* SDImageAPNGCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAPNGCoder.h; path = SDWebImage/Core/SDImageAPNGCoder.h; sourceTree = "<group>"; };
 		2A6162CE012B36898AF7FE90D8725189 /* Pods-Growth99Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Growth99Tests"; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -388,7 +349,7 @@
 		2D54D9CA39BA2D6506D8CFE20C962D4E /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		2D81A71CBFAC2D96813DD39CBB607600 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		2E1D9EF8A7EAEA290EC230F8662C136F /* UIView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCache.m"; path = "SDWebImage/Core/UIView+WebCache.m"; sourceTree = "<group>"; };
-		2E4B6C050B7A9D0478ACE30BDBB04263 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Font Awesome 5 Free-Solid-900.otf"; path = "FontAwesome/Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		2E4B6C050B7A9D0478ACE30BDBB04263 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "Font Awesome 5 Free-Solid-900.otf"; path = "FontAwesome/Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		2F0ECE0C4C091A588D0772CE8A47ED48 /* SDWebImageError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageError.h; path = SDWebImage/Core/SDWebImageError.h; sourceTree = "<group>"; };
 		2F3597B61163ECF95B85628F7CC6BF63 /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
 		305C8D377CA50B48FC212672EEA78824 /* SDImageIOAnimatedCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageIOAnimatedCoder.m; path = SDWebImage/Core/SDImageIOAnimatedCoder.m; sourceTree = "<group>"; };
@@ -502,10 +463,10 @@
 		990ABBB51F23534817E0FAD6C39EDC50 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendarHeaderView.m; path = FSCalendar/FSCalendarHeaderView.m; sourceTree = "<group>"; };
 		9A918D09BC9D203B8A8257B484C8BABC /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/Core/SDImageCache.m; sourceTree = "<group>"; };
 		9B29A62E711F06FF65E0BF8D9C822ECA /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
-		9CB12A60289D9321577B0FC0F8BEED32 /* Pods-Growth99 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Growth99"; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CB12A60289D9321577B0FC0F8BEED32 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB36BFC364EEA07B6ADE4A9A88D6877 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		9D11A0C2DCFAC59EADC135BA04224A05 /* Pods-Growth99Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Growth99Tests.modulemap"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DA863FC5DEF9CD27231055CEF6CC477 /* FSCalendarSeparatorDecorationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarSeparatorDecorationView.h; path = FSCalendar/FSCalendarSeparatorDecorationView.h; sourceTree = "<group>"; };
 		9E563DDE52FFD2A969EF9CF3889E4375 /* SDWebImageCacheKeyFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCacheKeyFilter.m; path = SDWebImage/Core/SDWebImageCacheKeyFilter.m; sourceTree = "<group>"; };
 		9ED9AB0C089E8EC77E000EDEDA0C54F6 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
@@ -522,7 +483,7 @@
 		A98A0902156230920DCA3D144F986493 /* Pods-Growth99.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Growth99.modulemap"; sourceTree = "<group>"; };
 		AA3526A93F524753DA6F6571DD81422C /* FontAwesome.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-umbrella.h"; sourceTree = "<group>"; };
 		AB9FA57E4BC9FAADEA8C87CF3A8520F5 /* FSCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSCalendar.release.xcconfig; sourceTree = "<group>"; };
-		ABA396F80796A40D4F9C13DB80E63009 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Font Awesome 5 Brands-Regular-400.otf"; path = "FontAwesome/Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		ABA396F80796A40D4F9C13DB80E63009 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "Font Awesome 5 Brands-Regular-400.otf"; path = "FontAwesome/Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
 		ACBE3018C4116F286E14CE8EF358E99C /* SDAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SDAnimatedImageView+WebCache.h"; path = "SDWebImage/Core/SDAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
 		AF139633CA979855A685ED027919F4C0 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF2EDEA2E08A39721A86704D4D78FE77 /* FSCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
@@ -672,16 +633,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB3745AF9BD6350FA23864EB5A40536E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA340657015839AA3B1F125704AD264B /* CoreText.framework in Frameworks */,
-				EE16E9F35C5A466B28E6B9973CE4E98E /* Foundation.framework in Frameworks */,
-				FBA64721DC6465037C07C713664308B1 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F4106EAFCE34F2875151A97241E56C0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -754,7 +705,6 @@
 				893D00DBBD1218744685F42D500A1A97 /* Validation.swift */,
 				8D6FBD321EB4F2A6453EDAB74D7E7431 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -779,7 +729,6 @@
 				8E87CA1121DE29A43DB2B22DF9B69975 /* Core */,
 				576C71A7831346A190EBF674CA5F089C /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -999,7 +948,6 @@
 				83D7465905ECAC40D39523244492365F /* FSCalendarWeekdayView.m */,
 				F9E52C0BFA9EAB2009C87BC8813FB386 /* Support Files */,
 			);
-			name = FSCalendar;
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
@@ -1040,10 +988,9 @@
 			isa = PBXGroup;
 			children = (
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
-				28A3CCFDC77829170B0B12EB9E3391CF /* FontAwesome.swift */,
 				3DA4F5DC4EB6E9DF6B4859D27EF8C9F5 /* FontAwesome.swift-FontAwesome.swift */,
 				95209B8BB966524BC76543F99C75F5FE /* FSCalendar */,
-				9CB12A60289D9321577B0FC0F8BEED32 /* Pods-Growth99 */,
+				9CB12A60289D9321577B0FC0F8BEED32 /* Pods_Growth99.framework */,
 				942FE07A82A23EFCE276FD578CB3E7CB /* Pods-Growth99-Growth99UITests */,
 				2A6162CE012B36898AF7FE90D8725189 /* Pods-Growth99Tests */,
 				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
@@ -1068,7 +1015,6 @@
 				CE42C758877967799920178C4FEB9383 /* Resources */,
 				87C0385D88C9C173E11C27C48D55FFD5 /* Support Files */,
 			);
-			name = FontAwesome.swift;
 			path = FontAwesome.swift;
 			sourceTree = "<group>";
 		};
@@ -1272,14 +1218,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F2C7B32C4DD86DF29B2C7777F7C77ED4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C79240CBEABE439685B219E0E1DD69BE /* FontAwesome.swift-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF9900830C8DCDB380DFE67D911EBA65 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1339,7 +1277,6 @@
 			dependencies = (
 				C2A51857E2EE4BB5ED69E8A101A4E152 /* PBXTargetDependency */,
 				8D997D6717FBA13BB9D2714D03FF549A /* PBXTargetDependency */,
-				290298FDD92DD4B620A5A6486CCBC98F /* PBXTargetDependency */,
 				F3F0034BB8E1D9E637594EE967C43BFA /* PBXTargetDependency */,
 			);
 			name = "Pods-Growth99-Growth99UITests";
@@ -1415,31 +1352,11 @@
 			dependencies = (
 				87E24A21DF0FC266058CBEC63E087223 /* PBXTargetDependency */,
 				D3EF32950885257F0D7228CFDC2E73EB /* PBXTargetDependency */,
-				09B0FBA3763588879B28B9ACC3C5B7B9 /* PBXTargetDependency */,
 				4D13E01A08BF8CB9667BDDCB410339E5 /* PBXTargetDependency */,
 			);
 			name = "Pods-Growth99";
 			productName = Pods_Growth99;
-			productReference = 9CB12A60289D9321577B0FC0F8BEED32 /* Pods-Growth99 */;
-			productType = "com.apple.product-type.framework";
-		};
-		BB240150692F32EC312F3CF346C8B9D1 /* FontAwesome.swift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 89BAA8DD469FB1B9862A3E66F052B03C /* Build configuration list for PBXNativeTarget "FontAwesome.swift" */;
-			buildPhases = (
-				F2C7B32C4DD86DF29B2C7777F7C77ED4 /* Headers */,
-				497D27F8E1126C0CDCE59BF435620E6F /* Sources */,
-				DB3745AF9BD6350FA23864EB5A40536E /* Frameworks */,
-				1D86A0D5260C482C204DD00C06958D11 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				99175A0615004570720357498046018B /* PBXTargetDependency */,
-			);
-			name = FontAwesome.swift;
-			productName = FontAwesome_swift;
-			productReference = 28A3CCFDC77829170B0B12EB9E3391CF /* FontAwesome.swift */;
+			productReference = 9CB12A60289D9321577B0FC0F8BEED32 /* Pods_Growth99.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */ = {
@@ -1483,7 +1400,6 @@
 			projectRoot = "";
 			targets = (
 				EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */,
-				BB240150692F32EC312F3CF346C8B9D1 /* FontAwesome.swift */,
 				4DC20DD2E50259D674257304EC016C93 /* FontAwesome.swift-FontAwesome.swift */,
 				13285D54682BEAD805960F9E6EEB9949 /* FSCalendar */,
 				68B186FC07DC47B8D5C39A4F39EC9559 /* Pods-Growth99 */,
@@ -1495,14 +1411,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D86A0D5260C482C204DD00C06958D11 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				077964993B08A24201C4458ADCBED187 /* FontAwesome.swift-FontAwesome.swift in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		53A0DE63B87DEEFCA2ADB14D91D66811 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1594,25 +1502,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C11BB1FA38DAF76433298D21CCD674CB /* Pods-Growth99Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		497D27F8E1126C0CDCE59BF435620E6F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				667769AC064D2CC97F198C2E8F12AE6C /* Enum.swift in Sources */,
-				3237B713E08EA39D3CF26FC4C98885C4 /* FontAwesome.swift in Sources */,
-				D3D42240C17AA84716A4E708D680833C /* FontAwesome.swift-dummy.m in Sources */,
-				F8D3B3B3720BF695C709547A2E7AD085 /* FontAwesomeBarButtonItem.swift in Sources */,
-				3E870C76A3B0669EC52F74804AE22C9B /* FontAwesomeExtension.swift in Sources */,
-				27F575438D93027269C50D1F3B8D46CD /* FontAwesomeImageRepresentable.swift in Sources */,
-				CEBE3CEA5D715A76CDDED85B9589D578 /* FontAwesomeImageView.swift in Sources */,
-				3B895470C357B7298A097AB701C8D2E9 /* FontAwesomeSegmentedControl.swift in Sources */,
-				1E5E850FC8D5C3051DF29D08E75EB413 /* FontAwesomeStateRequirement.swift in Sources */,
-				7E29A5A984554B002E40C07209CF75FC /* FontAwesomeTabBarItem.swift in Sources */,
-				7B065465BDC9CC3E19794775B7DDB98D /* FontAwesomeTextRepresentable.swift in Sources */,
-				2A9B2BF3072A65C88836F7937AC8DA9F /* FontAwesomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,18 +1650,6 @@
 			target = 68B186FC07DC47B8D5C39A4F39EC9559 /* Pods-Growth99 */;
 			targetProxy = E5A6EEA9E77F76FBC9872D3B9E1C7B77 /* PBXContainerItemProxy */;
 		};
-		09B0FBA3763588879B28B9ACC3C5B7B9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FontAwesome.swift;
-			target = BB240150692F32EC312F3CF346C8B9D1 /* FontAwesome.swift */;
-			targetProxy = EE5854932C77FD774BF74D316F7792A6 /* PBXContainerItemProxy */;
-		};
-		290298FDD92DD4B620A5A6486CCBC98F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FontAwesome.swift;
-			target = BB240150692F32EC312F3CF346C8B9D1 /* FontAwesome.swift */;
-			targetProxy = 110BC9476C7518F7D8373116AD7CF509 /* PBXContainerItemProxy */;
-		};
 		4D13E01A08BF8CB9667BDDCB410339E5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SDWebImage;
@@ -1790,12 +1667,6 @@
 			name = FSCalendar;
 			target = 13285D54682BEAD805960F9E6EEB9949 /* FSCalendar */;
 			targetProxy = 7CA19AF855AFA5DA3392C30C8794EBAE /* PBXContainerItemProxy */;
-		};
-		99175A0615004570720357498046018B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "FontAwesome.swift-FontAwesome.swift";
-			target = 4DC20DD2E50259D674257304EC016C93 /* FontAwesome.swift-FontAwesome.swift */;
-			targetProxy = C1BF27A92CF2F745A4AD15A17F81F6BC /* PBXContainerItemProxy */;
 		};
 		C2A51857E2EE4BB5ED69E8A101A4E152 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1914,40 +1785,6 @@
 				MODULEMAP_FILE = "Target Support Files/FSCalendar/FSCalendar.modulemap";
 				PRODUCT_MODULE_NAME = FSCalendar;
 				PRODUCT_NAME = FSCalendar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		77685F2105770A2454F3EE6AB6DE2F34 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC4EFC763657C093F805CA61718F9F92 /* FontAwesome.swift.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FontAwesome.swift/FontAwesome.swift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FontAwesome.swift/FontAwesome.swift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FontAwesome.swift/FontAwesome.swift.modulemap";
-				PRODUCT_MODULE_NAME = FontAwesome_swift;
-				PRODUCT_NAME = FontAwesome_swift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -2446,41 +2283,6 @@
 			};
 			name = Debug;
 		};
-		FF5F68A4C7265F1A9AF8D566ACDFBE62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41AEEC975C3537F8A6CBAF358E1D225F /* FontAwesome.swift.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FontAwesome.swift/FontAwesome.swift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FontAwesome.swift/FontAwesome.swift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FontAwesome.swift/FontAwesome.swift.modulemap";
-				PRODUCT_MODULE_NAME = FontAwesome_swift;
-				PRODUCT_NAME = FontAwesome_swift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2525,15 +2327,6 @@
 			buildConfigurations = (
 				DBFDC62F8B5A54958729E50C6F021CEE /* Debug */,
 				D2A8E188516B05507EDC7EB006D31B67 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		89BAA8DD469FB1B9862A3E66F052B03C /* Build configuration list for PBXNativeTarget "FontAwesome.swift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				77685F2105770A2454F3EE6AB6DE2F34 /* Debug */,
-				FF5F68A4C7265F1A9AF8D566ACDFBE62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

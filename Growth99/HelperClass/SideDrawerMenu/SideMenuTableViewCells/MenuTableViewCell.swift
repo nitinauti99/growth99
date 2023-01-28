@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FontAwesome_swift
 
 protocol SubMenuTableViewCellDelegate {
     func tappedSection(cell: MenuTableViewCell, section: Int, title: String)

@@ -64,6 +64,20 @@
 		848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */; };
 		848CBAB82971ABE800681049 /* TaskPatientsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */; };
 		848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */; };
+		848E478D2984D61600CC35BB /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E477F2984D61600CC35BB /* FontAwesomeBarButtonItem.swift */; };
+		848E478E2984D61600CC35BB /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47802984D61600CC35BB /* FontAwesomeSegmentedControl.swift */; };
+		848E478F2984D61600CC35BB /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47812984D61600CC35BB /* FontAwesomeView.swift */; };
+		848E47902984D61600CC35BB /* FontAwesomeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47822984D61600CC35BB /* FontAwesomeExtension.swift */; };
+		848E47912984D61600CC35BB /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47832984D61600CC35BB /* FontAwesomeTabBarItem.swift */; };
+		848E47922984D61600CC35BB /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47842984D61600CC35BB /* FontAwesomeImageRepresentable.swift */; };
+		848E47932984D61600CC35BB /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47852984D61600CC35BB /* FontAwesomeImageView.swift */; };
+		848E47942984D61600CC35BB /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 848E47862984D61600CC35BB /* Font Awesome 5 Brands-Regular-400.otf */; };
+		848E47952984D61600CC35BB /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 848E47872984D61600CC35BB /* Font Awesome 5 Free-Solid-900.otf */; };
+		848E47962984D61600CC35BB /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E47882984D61600CC35BB /* FontAwesomeTextRepresentable.swift */; };
+		848E47972984D61600CC35BB /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 848E47892984D61600CC35BB /* Font Awesome 5 Free-Regular-400.otf */; };
+		848E47982984D61600CC35BB /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E478A2984D61600CC35BB /* FontAwesome.swift */; };
+		848E47992984D61600CC35BB /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E478B2984D61600CC35BB /* FontAwesomeStateRequirement.swift */; };
+		848E479A2984D61600CC35BB /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E478C2984D61600CC35BB /* Enum.swift */; };
 		848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D7D28F1C160007AC421 /* AppDelegate.swift */; };
 		848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D7F28F1C160007AC421 /* SceneDelegate.swift */; };
 		848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848F4D8628F1C164007AC421 /* Assets.xcassets */; };
@@ -469,6 +483,20 @@
 		848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAllUserListModel.swift; sourceTree = "<group>"; };
 		848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPatientsListModel.swift; sourceTree = "<group>"; };
 		848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuestionnaireSubmissionModel.swift; sourceTree = "<group>"; };
+		848E477F2984D61600CC35BB /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
+		848E47802984D61600CC35BB /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
+		848E47812984D61600CC35BB /* FontAwesomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeView.swift; sourceTree = "<group>"; };
+		848E47822984D61600CC35BB /* FontAwesomeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeExtension.swift; sourceTree = "<group>"; };
+		848E47832984D61600CC35BB /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		848E47842984D61600CC35BB /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
+		848E47852984D61600CC35BB /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageView.swift; sourceTree = "<group>"; };
+		848E47862984D61600CC35BB /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		848E47872984D61600CC35BB /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		848E47882984D61600CC35BB /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		848E47892984D61600CC35BB /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		848E478A2984D61600CC35BB /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		848E478B2984D61600CC35BB /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		848E478C2984D61600CC35BB /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		848F4D7A28F1C160007AC421 /* Growth99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Growth99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F4D7D28F1C160007AC421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848F4D7F28F1C160007AC421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1418,6 +1446,35 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		848E477D2984D5E400CC35BB /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				848E477E2984D61600CC35BB /* FontAwesome */,
+			);
+			path = FontAwesome;
+			sourceTree = "<group>";
+		};
+		848E477E2984D61600CC35BB /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				848E477F2984D61600CC35BB /* FontAwesomeBarButtonItem.swift */,
+				848E47802984D61600CC35BB /* FontAwesomeSegmentedControl.swift */,
+				848E47812984D61600CC35BB /* FontAwesomeView.swift */,
+				848E47822984D61600CC35BB /* FontAwesomeExtension.swift */,
+				848E47832984D61600CC35BB /* FontAwesomeTabBarItem.swift */,
+				848E47842984D61600CC35BB /* FontAwesomeImageRepresentable.swift */,
+				848E47852984D61600CC35BB /* FontAwesomeImageView.swift */,
+				848E47862984D61600CC35BB /* Font Awesome 5 Brands-Regular-400.otf */,
+				848E47872984D61600CC35BB /* Font Awesome 5 Free-Solid-900.otf */,
+				848E47882984D61600CC35BB /* FontAwesomeTextRepresentable.swift */,
+				848E47892984D61600CC35BB /* Font Awesome 5 Free-Regular-400.otf */,
+				848E478A2984D61600CC35BB /* FontAwesome.swift */,
+				848E478B2984D61600CC35BB /* FontAwesomeStateRequirement.swift */,
+				848E478C2984D61600CC35BB /* Enum.swift */,
+			);
+			path = FontAwesome;
+			sourceTree = "<group>";
+		};
 		848F4D7128F1C160007AC421 = {
 			isa = PBXGroup;
 			children = (
@@ -1498,6 +1555,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				848E477D2984D5E400CC35BB /* FontAwesome */,
 				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				84F61018292A71A400B1FB69 /* GrowthCore */,
 				84F61083292A71A900B1FB69 /* GrowthNetwork */,
@@ -3015,6 +3073,7 @@
 				84D063102967080E001FE469 /* LeadTableViewCell.xib in Resources */,
 				DAB4E99429755BA000AAA414 /* AddEventViewController.storyboard in Resources */,
 				84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */,
+				848E47972984D61600CC35BB /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
 				8448459C297D35A50041468A /* FillQuestionarieViewController.storyboard in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
@@ -3030,6 +3089,7 @@
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */,
+				848E47952984D61600CC35BB /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
@@ -3041,6 +3101,7 @@
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
+				848E47942984D61600CC35BB /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
 				84B75EA62968CEA300962F3E /* CategoriesListTableViewCell.xib in Resources */,
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
@@ -3174,6 +3235,7 @@
 			files = (
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
+				848E478F2984D61600CC35BB /* FontAwesomeView.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* CustomSMSTemplateTableViewCell.swift in Sources */,
 				84D062F12967080E001FE469 /* EditLeadViewController.swift in Sources */,
@@ -3185,6 +3247,8 @@
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
 				84D43A2A297C32DF00678458 /* QuestionarieTableViewCell.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
+				848E47992984D61600CC35BB /* FontAwesomeStateRequirement.swift in Sources */,
+				848E478E2984D61600CC35BB /* FontAwesomeSegmentedControl.swift in Sources */,
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
 				84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */,
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
@@ -3216,6 +3280,7 @@
 				84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
+				848E479A2984D61600CC35BB /* Enum.swift in Sources */,
 				84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */,
 				8473207B29797452003099BB /* DateFormater.swift in Sources */,
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
@@ -3226,6 +3291,7 @@
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
+				848E47912984D61600CC35BB /* FontAwesomeTabBarItem.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				DA58258C2977240300F002F6 /* AddEventViewModel.swift in Sources */,
@@ -3314,6 +3380,7 @@
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
 				DAB4E99629755BA000AAA414 /* DailyCell.swift in Sources */,
+				848E478D2984D61600CC35BB /* FontAwesomeBarButtonItem.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
 				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
@@ -3351,6 +3418,7 @@
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
+				848E47932984D61600CC35BB /* FontAwesomeImageView.swift in Sources */,
 				84484598297D32D80041468A /* FillQuestionarieViewController.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
 				84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */,
@@ -3367,6 +3435,7 @@
 				84B75EEB29692BD400962F3E /* LeadTriggersTableViewCell.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
 				845C39D7292276B000D934C5 /* DrawerViewContoller.swift in Sources */,
+				848E47902984D61600CC35BB /* FontAwesomeExtension.swift in Sources */,
 				848C92AC291F6AA000502956 /* RSFirstRowSelection.swift in Sources */,
 				84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */,
 				84F610F6292A71AB00B1FB69 /* TLSCertificateDecoder.swift in Sources */,
@@ -3408,6 +3477,7 @@
 				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
+				848E47922984D61600CC35BB /* FontAwesomeImageRepresentable.swift in Sources */,
 				84D0628B29670677001FE469 /* User.swift in Sources */,
 				845C39D4292276B000D934C5 /* Constant.swift in Sources */,
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,
@@ -3440,6 +3510,7 @@
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
 				84D43A21297C21C800678458 /* QuestionarieViewController.swift in Sources */,
 				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,
+				848E47982984D61600CC35BB /* FontAwesome.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,
 				84F610BB292A71AA00B1FB69 /* JWT.swift in Sources */,
@@ -3451,6 +3522,7 @@
 				DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
+				848E47962984D61600CC35BB /* FontAwesomeTextRepresentable.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
@@ -3645,9 +3717,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calender";
