@@ -156,7 +156,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.openUserListView()
     }
     
-    
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
             self.userProviderViewHight.constant = 300
@@ -189,7 +188,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     @objc func keyboardWillHide(notification:Notification) {
         self.view.frame.origin.y = 0
     }
-    
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
         self.rolesTextField.text = ""
