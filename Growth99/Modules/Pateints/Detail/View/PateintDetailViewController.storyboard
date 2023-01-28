@@ -17,17 +17,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tza-ar-XVW">
-                                <rect key="frame" x="34" y="63" width="100" height="35"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIi-Z7-9Wk" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="48" width="414" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljl-rg-KW2">
+                                        <rect key="frame" x="172" y="42.5" width="60" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="9Di-Xe-X6b"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Task"/>
+                                        <connections>
+                                            <action selector="openTaskListWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Usd-7F-azX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvg-Nk-E2A">
+                                        <rect key="frame" x="247" y="42.5" width="157" height="35"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Appointments"/>
+                                        <connections>
+                                            <action selector="openQuestionarieListWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SyV-9k-rVs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tza-ar-XVW">
+                                        <rect key="frame" x="10" y="42.5" width="147" height="35"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Questionarie"/>
+                                        <connections>
+                                            <action selector="openQuestionarieListWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eKB-Zg-Pcl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="UgJ-zf-I8l"/>
+                                    <constraint firstItem="Yvg-Nk-E2A" firstAttribute="centerY" secondItem="Ljl-rg-KW2" secondAttribute="centerY" id="DWW-Ti-JF2"/>
+                                    <constraint firstItem="Tza-ar-XVW" firstAttribute="leading" secondItem="UIi-Z7-9Wk" secondAttribute="leading" constant="10" id="J4V-Qj-e1Z"/>
+                                    <constraint firstItem="Yvg-Nk-E2A" firstAttribute="leading" secondItem="Ljl-rg-KW2" secondAttribute="trailing" constant="15" id="Wxj-dj-gds"/>
+                                    <constraint firstItem="Tza-ar-XVW" firstAttribute="centerY" secondItem="Ljl-rg-KW2" secondAttribute="centerY" id="YEA-0Z-Y3T"/>
+                                    <constraint firstItem="Ljl-rg-KW2" firstAttribute="centerX" secondItem="UIi-Z7-9Wk" secondAttribute="centerX" constant="-5" id="ecJ-ST-XDg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yvg-Nk-E2A" secondAttribute="trailing" constant="10" id="grW-7p-ZXR"/>
+                                    <constraint firstItem="Ljl-rg-KW2" firstAttribute="centerY" secondItem="UIi-Z7-9Wk" secondAttribute="centerY" id="mbh-XM-2Un"/>
+                                    <constraint firstItem="Ljl-rg-KW2" firstAttribute="leading" secondItem="Tza-ar-XVW" secondAttribute="trailing" constant="15" id="w0e-5g-a9r"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="openQuestionarieListWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eKB-Zg-Pcl"/>
-                                </connections>
-                            </button>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKB-tX-mHI">
                                 <rect key="frame" x="0.0" y="168" width="414" height="728"/>
                                 <subviews>
@@ -441,12 +476,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wKB-tX-mHI" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="2zM-md-TdJ"/>
+                            <constraint firstItem="wKB-tX-mHI" firstAttribute="top" secondItem="UIi-Z7-9Wk" secondAttribute="bottom" id="8Za-bk-oHh"/>
                             <constraint firstItem="r9D-7W-Ypd" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="EwG-ga-E7g"/>
                             <constraint firstAttribute="trailing" secondItem="wKB-tX-mHI" secondAttribute="trailing" id="HTg-sr-Yf3"/>
                             <constraint firstAttribute="bottom" secondItem="wKB-tX-mHI" secondAttribute="bottom" id="Ljg-Nk-f4n"/>
                             <constraint firstItem="wKB-tX-mHI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="120" id="QXU-rl-ZTe"/>
-                            <constraint firstItem="Tza-ar-XVW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="dN9-A1-aJ6"/>
-                            <constraint firstItem="Tza-ar-XVW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="ovd-tg-FPM"/>
+                            <constraint firstItem="UIi-Z7-9Wk" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" id="XIr-O5-3wm"/>
+                            <constraint firstItem="UIi-Z7-9Wk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dVG-Cn-p5x"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UIi-Z7-9Wk" secondAttribute="trailing" id="xsh-o7-Vu1"/>
                         </constraints>
                     </view>
                     <connections>

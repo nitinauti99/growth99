@@ -63,6 +63,7 @@ struct EndPoints {
     static let submitPatientQuestionnnaire = "/api/patient/questionnaire"
     static let patientsQuestionnaireList =  "/api/v1/questionnaire"
     static let removePatient = "/api/public/users/delete?"
+    static let workflowPatientTasks = "/api/workflowtasks/patient/"
 }
 
 struct ApiUrl {
@@ -102,6 +103,7 @@ struct ApiUrl {
     static let submitPatientQuestionnnaire = EndPoints.baseURL.appending(EndPoints.submitPatientQuestionnnaire)
     static let patientsQuestionnaireList = EndPoints.baseURL.appending(EndPoints.patientsQuestionnaireList)
     static let removePatient = EndPoints.baseURL.appending(EndPoints.removePatient)
+    static let workflowPatientTasks = EndPoints.baseURL.appending(EndPoints.workflowPatientTasks)
 
     
     static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)

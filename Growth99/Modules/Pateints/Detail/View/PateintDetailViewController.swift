@@ -63,7 +63,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         buttons = [newButton, existingButton]
         setUpClearColor()
         gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
-        
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
     }
     
@@ -71,14 +70,21 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
     }
     
-//    @objc func segmentSelected(sender: ScrollableSegmentedControl) {
+//   @objc func segmentSelected(sender: ScrollableSegmentedControl) {
 //        print("Segment at index \(sender.selectedSegmentIndex)  selected")
 //    }
    
     @IBAction func openQuestionarieList (sender: UIButton) {
         let QuestionarieVC = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
-        QuestionarieVC.pateintId = 46782
+        QuestionarieVC.pateintId = pateintId
         self.navigationController?.pushViewController(QuestionarieVC, animated: true)
+    }
+    
+    @IBAction func openTaskList(sender: UIButton) {
+        let TasksListVC = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
+        TasksListVC.pateintId = pateintId
+        TasksListVC.fromPateint = true
+        self.navigationController?.pushViewController(TasksListVC, animated: true)
     }
     
     func setUpClearColor() {

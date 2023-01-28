@@ -43,7 +43,7 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
         super.viewDidLoad()
         self.viewModel = PateintEditViewModel(delegate: self)
         self.view.ShowSpinner()
-        viewModel?.getPateintList(pateintId: 46721)
+        viewModel?.getPateintList(pateintId: pateintId)
         dateFormater = DateFormater()
         noteTextView.layer.borderWidth = 1
         noteTextView.layer.borderColor = UIColor.gray.cgColor

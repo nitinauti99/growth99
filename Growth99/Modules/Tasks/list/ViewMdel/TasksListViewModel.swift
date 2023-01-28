@@ -8,7 +8,8 @@
 import Foundation
 
 protocol TasksListViewModelProtocol {
-    func getUserList()
+    func getTaskList()
+    func getPateintTaskList(pateintId: Int)
     var taskData: [TaskDTOList] { get }
     func taskDataAtIndex(index: Int) -> TaskDTOList?
     var taskFilterData: [TaskDTOList] { get }
@@ -26,7 +27,7 @@ class TasksListViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getUserList() {
+    func getTaskList() {
         self.requestManager.request(forPath: ApiUrl.workflowtasks, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
             switch result {
             case .success(let taskList):
@@ -39,6 +40,19 @@ class TasksListViewModel {
         }
     }
     
+    func getPateintTaskList(pateintId: Int){
+        self.requestManager.request(forPath: ApiUrl.workflowPatientTasks.appending("\(pateintId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let taskList):
+                self.taskDTOList = taskList.taskDTOList.reversed()
+                self.delegate?.LeadDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
     func taskDataAtIndex(index: Int)-> TaskDTOList? {
         return self.taskDTOList[index]
     }

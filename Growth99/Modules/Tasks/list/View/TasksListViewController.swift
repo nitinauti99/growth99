@@ -20,6 +20,8 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     var viewModel: TasksListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [TaskDTOList]()
+    var pateintId = Int()
+    var fromPateint = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +36,19 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getUserList()
+        if fromPateint == true {
+            self.view.ShowSpinner()
+            viewModel?.getPateintTaskList(pateintId: pateintId)
+        }else{
+            self.getTaskList()
+        }
         addSerchBar()
         self.registerTableView()
         self.title = Constant.Profile.tasks
     }
     
     @objc func updateUI(){
-        self.getUserList()
+        self.getTaskList()
         self.view.ShowSpinner()
     }
     
@@ -55,11 +62,11 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     }
     @objc func LeadList() {
         self.view.ShowSpinner()
-        self.getUserList()
+        self.getTaskList()
     }
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getTaskList()
     }
     
     func registerTableView() {
@@ -68,9 +75,9 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
         taskListTableView.register(UINib(nibName: "TaskListTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskListTableViewCell")
     }
     
-    @objc func getUserList(){
+    @objc func getTaskList(){
         self.view.ShowSpinner()
-        viewModel?.getUserList()
+        viewModel?.getTaskList()
     }
     
     func LeadDataRecived() {
@@ -105,7 +112,6 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(userVM: viewModel, index: indexPath)
         }else{
             cell.configureCell(userVM: viewModel, index: indexPath)
-            
         }
         return cell
     }

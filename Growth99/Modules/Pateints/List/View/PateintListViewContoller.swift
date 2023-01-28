@@ -78,8 +78,14 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let pateintId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
-        viewModel?.removePateints(pateintId: pateintId)
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \(viewModel?.PateintDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            let pateintId = self?.viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+            self?.viewModel?.removePateints(pateintId: pateintId)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     @objc func getPateintList() {
@@ -100,6 +106,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
         let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
         detailController.pateintId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+        self.navigationController?.pushViewController(detailController, animated: true)
     }
     
     func LeadDataRecived() {
