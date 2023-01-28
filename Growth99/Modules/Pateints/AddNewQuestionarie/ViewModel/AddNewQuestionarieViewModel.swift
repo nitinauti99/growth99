@@ -13,6 +13,8 @@ protocol AddNewQuestionarieViewModelProtocol {
     func QuestionarieDataAtIndex(index: Int) -> AddNewQuestionarieModel?
     var QuestionarieFilterDataData: [AddNewQuestionarieModel] { get }
     func QuestionarieFilterDataDataAtIndex(index: Int)-> AddNewQuestionarieModel?
+    
+    func sendQuestionarieListToPateint(questionnaireIds: (Int, Int))
 }
 
 class AddNewQuestionarieViewModel {
@@ -31,12 +33,16 @@ class AddNewQuestionarieViewModel {
             switch result {
             case .success(let questionarieList):
                 self.QuestionarieData = questionarieList
-                self.delegate?.LeadDataRecived()
+                self.delegate?.questionarieListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
             }
         }
+    }
+    
+    func sendQuestionarieListToPateint(questionnaireIds: (Int, Int)) {
+        
     }
     
     func QuestionarieDataAtIndex(index: Int)-> AddNewQuestionarieModel? {
@@ -49,6 +55,7 @@ class AddNewQuestionarieViewModel {
 }
 
 extension AddNewQuestionarieViewModel: AddNewQuestionarieViewModelProtocol {
+   
    
     var QuestionarieDataList: [AddNewQuestionarieModel] {
         return self.QuestionarieData

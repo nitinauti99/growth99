@@ -41,7 +41,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     private var viewModel: PateintDetailViewModelProtocol?
     var pateintData: PateintsDetailListModel?
     var selctedSmsTemplateId = Int()
-    var pateintId = Int()
+    var workflowTaskPatientId = Int()
     var selctedTemplate = String()
     var smsBody: String = ""
     var emailBody: String = ""
@@ -58,7 +58,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.view.ShowSpinner()
         self.viewModel = PateintDetailViewModel(delegate: self)
         dateFormater = DateFormater()
-        viewModel?.getpateintsList(pateintId: self.pateintId)
+        viewModel?.getpateintsList(pateintId: self.workflowTaskPatientId)
         self.registerCell()
         buttons = [newButton, existingButton]
         setUpClearColor()
@@ -76,13 +76,13 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
    
     @IBAction func openQuestionarieList (sender: UIButton) {
         let QuestionarieVC = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
-        QuestionarieVC.pateintId = pateintId
+        QuestionarieVC.pateintId = workflowTaskPatientId
         self.navigationController?.pushViewController(QuestionarieVC, animated: true)
     }
     
     @IBAction func openTaskList(sender: UIButton) {
         let TasksListVC = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
-        TasksListVC.pateintId = pateintId
+        TasksListVC.workflowTaskPatient = workflowTaskPatientId
         TasksListVC.fromPateint = true
         self.navigationController?.pushViewController(TasksListVC, animated: true)
     }
@@ -184,7 +184,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         dateOfBirth.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "dateOfBirth", ansString: dateOfBirth.text ?? "")
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "dateOfBirth", ansString: dateOfBirth.text ?? "")
         }
         sender.isSelected = true
     }
@@ -316,7 +316,7 @@ extension PateintDetailViewController {
         firstName.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "firstName", ansString: firstName.text ?? "")
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "firstName", ansString: firstName.text ?? "")
         }
         sender.isSelected = true
     }
@@ -327,7 +327,7 @@ extension PateintDetailViewController {
         lastName.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "lastName", ansString: lastName.text ?? "")
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "lastName", ansString: lastName.text ?? "")
         }
         sender.isSelected = true
     }
@@ -337,7 +337,7 @@ extension PateintDetailViewController {
         phoneNumber.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "phone", ansString: phoneNumber.text ?? "")
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "phone", ansString: phoneNumber.text ?? "")
         }
         sender.isSelected = true
     }
@@ -347,7 +347,7 @@ extension PateintDetailViewController {
         gender.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "gender", ansString: (gender.text ?? "").uppercased())
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "gender", ansString: (gender.text ?? "").uppercased())
         }
         sender.isSelected = true
     }
@@ -357,7 +357,7 @@ extension PateintDetailViewController {
         notes.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.pateintId,  inputString: "notes", ansString: notes.text ?? "")
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "notes", ansString: notes.text ?? "")
         }
         sender.isSelected = true
     }

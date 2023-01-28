@@ -20,7 +20,7 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     var viewModel: TasksListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [TaskDTOList]()
-    var pateintId = Int()
+    var workflowTaskPatient = Int()
     var fromPateint = Bool()
     
     override func viewDidLoad() {
@@ -30,15 +30,21 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
-        let createVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
-        navigationController?.pushViewController(createVC, animated: true)
+        if fromPateint == true {
+            let createPateintsTasksVC = UIStoryboard(name: "CreatePateintsTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintsTasksViewController") as! CreatePateintsTasksViewController
+            createPateintsTasksVC.workflowTaskPatient = workflowTaskPatient
+             navigationController?.pushViewController(createPateintsTasksVC, animated: true)
+        }else{
+            let createVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
+            navigationController?.pushViewController(createVC, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if fromPateint == true {
             self.view.ShowSpinner()
-            viewModel?.getPateintTaskList(pateintId: pateintId)
+            viewModel?.getPateintTaskList(pateintId: workflowTaskPatient)
         }else{
             self.getTaskList()
         }

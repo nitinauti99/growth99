@@ -40,7 +40,7 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
-        detailController.pateintId = viewModel?.PateintDataAtIndex(index: indexPath.row)?.id ?? 0
+        detailController.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: indexPath.row)?.id ?? 0
         navigationController?.pushViewController(detailController, animated: true)
     }
     

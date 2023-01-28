@@ -7,15 +7,21 @@
 
 import UIKit
 
+protocol AddNewQuestionarieTableViewCellDelegate: AnyObject {
+    func isQuestionnaireSelection(cell: AddNewQuestionarieTableViewCell, index: IndexPath)
+}
+
 class AddNewQuestionarieTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var questionnaireName: UILabel!
     @IBOutlet private weak var questionnaireID: UILabel!
-    @IBOutlet private weak var questionnaireSelection: UILabel!
+    @IBOutlet private weak var questionnaireSelection: UIButton!
     @IBOutlet private weak var subView: UIView!
 
     var dateFormater : DateFormaterProtocol?
-    
+    weak var delegate: AddNewQuestionarieTableViewCellDelegate?
+    var indexPath = IndexPath()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
@@ -27,6 +33,10 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
         let questionarieVM = questionarieVM?.QuestionarieDataAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.name
         self.questionnaireID.text = String(questionarieVM?.id ?? 0)
-       // self.questionnaireSelection.text = questionarieVM?.questionnaireStatus
+        indexPath = index
+    }
+    
+    @IBAction func selectionButtonPressed() {
+        self.delegate?.isQuestionnaireSelection(cell: self, index: indexPath)
     }
 }

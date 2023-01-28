@@ -71,6 +71,9 @@
 		848F4D9528F1C164007AC421 /* Growth99Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D9428F1C164007AC421 /* Growth99Tests.swift */; };
 		848F4D9F28F1C164007AC421 /* Growth99UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D9E28F1C164007AC421 /* Growth99UITests.swift */; };
 		848F4DA128F1C164007AC421 /* Growth99UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DA028F1C164007AC421 /* Growth99UITestsLaunchTests.swift */; };
+		84978CE229856466007041D2 /* CreatePateintsTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */; };
+		84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */; };
+		84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */; };
 		8497A03E28FF11E200CBA26C /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03A28FF11E200CBA26C /* Production.plist */; };
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
@@ -486,6 +489,9 @@
 		848F4D9A28F1C164007AC421 /* Growth99UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Growth99UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F4D9E28F1C164007AC421 /* Growth99UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Growth99UITests.swift; sourceTree = "<group>"; };
 		848F4DA028F1C164007AC421 /* Growth99UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Growth99UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewModel.swift; sourceTree = "<group>"; };
+		84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewController.swift; sourceTree = "<group>"; };
+		84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePateintsTasksViewController.storyboard; sourceTree = "<group>"; };
 		8497A03028F9CC9300CBA26C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8497A03A28FF11E200CBA26C /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		8497A03B28FF11E200CBA26C /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
@@ -1482,6 +1488,71 @@
 			path = Growth99UITests;
 			sourceTree = "<group>";
 		};
+		849004902985935900A271AA /* PateintsTags */ = {
+			isa = PBXGroup;
+			children = (
+				849004932985937000A271AA /* Model */,
+				849004922985936C00A271AA /* ViewModel */,
+				849004912985936800A271AA /* View */,
+			);
+			path = PateintsTags;
+			sourceTree = "<group>";
+		};
+		849004912985936800A271AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		849004922985936C00A271AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		849004932985937000A271AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84978CDD298563FE007041D2 /* AddPateintsTask */ = {
+			isa = PBXGroup;
+			children = (
+				84978CE029856432007041D2 /* Model */,
+				84978CDF2985642E007041D2 /* ViewModel */,
+				84978CDE2985642B007041D2 /* View */,
+			);
+			path = AddPateintsTask;
+			sourceTree = "<group>";
+		};
+		84978CDE2985642B007041D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */,
+				84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84978CDF2985642E007041D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84978CE029856432007041D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8497A01128F9CB3300CBA26C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1945,6 +2016,7 @@
 		84D0619929670676001FE469 /* Pateints */ = {
 			isa = PBXGroup;
 			children = (
+				849004902985935900A271AA /* PateintsTags */,
 				84D0619F29670676001FE469 /* List */,
 				84D061A629670676001FE469 /* Add */,
 				8473207C29797831003099BB /* Edit */,
@@ -1952,6 +2024,7 @@
 				84D43A1C297C217500678458 /* QuestionarieList */,
 				84484593297D32390041468A /* FillQuestionnaire */,
 				84DB4AD92980527000112A23 /* AddNewQuestionarie */,
+				84978CDD298563FE007041D2 /* AddPateintsTask */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
@@ -3095,6 +3168,7 @@
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
+				84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
@@ -3287,6 +3361,7 @@
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
+				84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				84DB4AE22980530200112A23 /* AddNewQuestionarieViewModel.swift in Sources */,
@@ -3522,6 +3597,7 @@
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
+				84978CE229856466007041D2 /* CreatePateintsTasksViewModel.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,
 				84D062F52967080E001FE469 /* leadDetailViewModel.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,

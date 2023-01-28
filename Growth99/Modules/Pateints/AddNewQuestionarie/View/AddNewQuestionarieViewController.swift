@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 protocol AddNewQuestionarieViewControllerProtocol: AnyObject {
-    func LeadDataRecived()
+    func questionarieListRecived()
     func errorReceived(error: String)
 }
 
-class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieViewControllerProtocol {
-    
+class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieViewControllerProtocol, AddNewQuestionarieTableViewCellDelegate {
+  
     @IBOutlet private weak var AddNewQuestionarieTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
@@ -26,27 +26,22 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = AddNewQuestionarieViewModel(delegate: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationQuestionarieList"), object: nil)
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
+        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(SendtoPatientButtonTapped), imageName: "Send to Patient")
         self.view.ShowSpinner()
         viewModel?.getQuestionarieList()
     }
-    
-    @objc func addUserButtonTapped(_ sender: UIButton) {
-        let detailController = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
-        navigationController?.pushViewController(detailController, animated: true)
+        
+    func registerTableView() {
+        self.AddNewQuestionarieTableView.delegate = self
+        self.AddNewQuestionarieTableView.dataSource = self
+        AddNewQuestionarieTableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
         self.registerTableView()
-        self.title = Constant.Profile.users
-    }
-    
-    @objc func updateUI(){
-        self.view.ShowSpinner()
-        viewModel?.getQuestionarieList()
+        self.title = Constant.Profile.Questionnarie
     }
     
     func addSerchBar(){
@@ -57,32 +52,12 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
     }
-    @objc func LeadList() {
-        self.view.ShowSpinner()
-        self.getQuestionarieList()
-    }
-    func getListFromServer(_ pageNumber: Int){
-        self.view.ShowSpinner()
-        viewModel?.getQuestionarieList()
-    }
-
-    func registerTableView() {
-        self.AddNewQuestionarieTableView.delegate = self
-        self.AddNewQuestionarieTableView.dataSource = self
-        AddNewQuestionarieTableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
-    }
     
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "UserCreateViewController", bundle: nil).instantiateViewController(withIdentifier: "UserCreateViewController") as! UserCreateViewController
-        self.present(createUserVC, animated: true)
-    }
+//    func isQuestionnaireSelection(cell: AddNewQuestionarieTableViewCell, index: IndexPath) {
+//        if
+//    }
     
-    @objc func getQuestionarieList(){
-        self.view.ShowSpinner()
-        viewModel?.getQuestionarieList()
-    }
-    
-    func LeadDataRecived() {
+    func questionarieListRecived() {
         self.view.HideSpinner()
         self.AddNewQuestionarieTableView.reloadData()
     }
@@ -91,6 +66,13 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
         self.view.HideSpinner()
         self.view.showToast(message: error)
     }
+    
+    @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
+        self.view.ShowSpinner()
+        
+    }
+    
+    
 }
 
 extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewDataSource {
@@ -121,14 +103,7 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let FillQuestionarieVC = UIStoryboard(name: "FillAddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "FillAddNewQuestionarieViewController") as! FillAddNewQuestionarieViewController
-//        let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
-//        FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
-//        FillQuestionarieVC.pateintId = pateintId
-//        self.navigationController?.pushViewController(FillQuestionarieVC, animated: true)
-//    }
+
 }
 
 extension AddNewQuestionarieViewController: UISearchBarDelegate {

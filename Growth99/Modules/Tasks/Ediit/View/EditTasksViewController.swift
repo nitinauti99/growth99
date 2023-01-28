@@ -178,7 +178,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             navigationController?.pushViewController(detailController, animated: true)
         }else {
             let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
-            detailController.pateintId = viewModel?.taskDetailData?.patientId ?? 0
+            detailController.workflowTaskPatientId = viewModel?.taskDetailData?.patientId ?? 0
             navigationController?.pushViewController(detailController, animated: true)
         }
     }
