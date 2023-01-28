@@ -35,8 +35,8 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.emailTextField.text = "yogesh123@growth99.com"
-        self.passwordTextField.text = "Password1@!"
+//        self.emailTextField.text = "yogesh123@growth99.com"
+//        self.passwordTextField.text = "Password1@!"
     }
     
     func setUpUI(){
