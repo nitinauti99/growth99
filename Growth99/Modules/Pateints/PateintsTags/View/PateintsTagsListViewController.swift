@@ -1,46 +1,46 @@
 //
-//  AddNewQuestionarieViewController.swift
+//  PateintsTagsListViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 24/01/23.
+//  Created by nitin auti on 29/01/23.
 //
 
 import Foundation
 import UIKit
 
-protocol AddNewQuestionarieViewControllerProtocol: AnyObject {
-    func questionarieListRecived()
+protocol PateintsTagsListViewControllerProtocol: AnyObject {
+    func pateintsTagListRecived()
     func errorReceived(error: String)
 }
 
-class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieViewControllerProtocol, AddNewQuestionarieTableViewCellDelegate {
+class PateintsTagsListViewController: UIViewController, PateintsTagsListViewControllerProtocol, PateintsTagListTableViewCellDelegate {
    
-    @IBOutlet private weak var AddNewQuestionarieTableView: UITableView!
+    @IBOutlet private weak var PateintsTagsListTableview: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    var viewModel: AddNewQuestionarieViewModelProtocol?
+    var viewModel: PateintsTagsListViewModelProtocol?
     var isSearch : Bool = false
-    var filteredTableData = [AddNewQuestionarieModel]()
+    var filteredTableData = [PateintsTagListModel]()
     var pateintId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = AddNewQuestionarieViewModel(delegate: self)
+        self.viewModel = PateintsTagsListViewModel(delegate: self)
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(SendtoPatientButtonTapped), imageName: "Send to Patient")
         self.view.ShowSpinner()
+        self.registerTableView()
         viewModel?.getQuestionarieList()
     }
         
     func registerTableView() {
-        self.AddNewQuestionarieTableView.delegate = self
-        self.AddNewQuestionarieTableView.dataSource = self
-        AddNewQuestionarieTableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
+        self.PateintsTagsListTableview.delegate = self
+        self.PateintsTagsListTableview.dataSource = self
+        PateintsTagsListTableview.register(UINib(nibName: "PateintsTagListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintsTagListTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSerchBar()
-        self.registerTableView()
+       // addSerchBar()
         self.title = Constant.Profile.Questionnarie
     }
     
@@ -53,13 +53,9 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
         searchBar.delegate = self
     }
     
-    func isQuestionnaireSelection(cell: AddNewQuestionarieTableViewCell, index: IndexPath) {
-
-    }
-    
-    func questionarieListRecived() {
+    func pateintsTagListRecived() {
         self.view.HideSpinner()
-        self.AddNewQuestionarieTableView.reloadData()
+        self.PateintsTagsListTableview.reloadData()
     }
     
     func errorReceived(error: String) {
@@ -69,13 +65,23 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
     
     @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
         self.view.ShowSpinner()
+    }
+    
+    func removePatieint(cell: PateintsTagListTableViewCell, index: IndexPath) {
+         
+    }
+    
+    func editPatieint(cell: PateintsTagListTableViewCell, index: IndexPath) {
+         
+    }
+    
+    func detailPatieint(cell: PateintsTagListTableViewCell, index: IndexPath) {
         
     }
     
-    
 }
 
-extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewDataSource {
+extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -90,8 +96,8 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = AddNewQuestionarieTableViewCell()
-        cell = AddNewQuestionarieTableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell") as! AddNewQuestionarieTableViewCell
+        var cell = PateintsTagListTableViewCell()
+        cell = PateintsTagsListTableview.dequeueReusableCell(withIdentifier: "PateintsTagListTableViewCell") as! PateintsTagListTableViewCell
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{
@@ -101,24 +107,28 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 100
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
+        detailController.PatientTagId = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)?.id ?? 0
+        navigationController?.pushViewController(detailController, animated: true)
+    }
 }
 
-extension AddNewQuestionarieViewController: UISearchBarDelegate {
+extension PateintsTagsListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
-        AddNewQuestionarieTableView.reloadData()
+        PateintsTagsListTableview.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearch = false
         searchBar.text = ""
-        AddNewQuestionarieTableView.reloadData()
+        PateintsTagsListTableview.reloadData()
     }
+    
 }
-
-

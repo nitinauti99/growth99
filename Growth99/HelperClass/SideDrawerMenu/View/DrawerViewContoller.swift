@@ -233,7 +233,14 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 2 {
             
         } else if indexPath.section == 3 {
-            pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "PateintListViewContoller", pusedViewController: "PateintListViewContoller")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "PateintsTagsListViewController", pusedViewController: "PateintsTagsListViewController")
+            default:
+                break
+            }
         }
     }
     

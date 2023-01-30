@@ -71,6 +71,15 @@
 		848F4D9528F1C164007AC421 /* Growth99Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D9428F1C164007AC421 /* Growth99Tests.swift */; };
 		848F4D9F28F1C164007AC421 /* Growth99UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D9E28F1C164007AC421 /* Growth99UITests.swift */; };
 		848F4DA128F1C164007AC421 /* Growth99UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DA028F1C164007AC421 /* Growth99UITestsLaunchTests.swift */; };
+		849004952985A18800A271AA /* PateintsTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004942985A18800A271AA /* PateintsTagsListViewController.swift */; };
+		849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */; };
+		849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */; };
+		8490049D2985A27200A271AA /* PateintsTagListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490049B2985A27200A271AA /* PateintsTagListTableViewCell.swift */; };
+		8490049E2985A27200A271AA /* PateintsTagListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8490049C2985A27200A271AA /* PateintsTagListTableViewCell.xib */; };
+		849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490049F2986934C00A271AA /* PateintsTagListModel.swift */; };
+		849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */; };
+		849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */; };
+		849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */; };
 		84978CE229856466007041D2 /* CreatePateintsTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */; };
 		84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */; };
 		84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */; };
@@ -489,6 +498,15 @@
 		848F4D9A28F1C164007AC421 /* Growth99UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Growth99UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F4D9E28F1C164007AC421 /* Growth99UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Growth99UITests.swift; sourceTree = "<group>"; };
 		848F4DA028F1C164007AC421 /* Growth99UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Growth99UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		849004942985A18800A271AA /* PateintsTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsListViewController.swift; sourceTree = "<group>"; };
+		849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTagsListViewController.storyboard; sourceTree = "<group>"; };
+		849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsListViewModel.swift; sourceTree = "<group>"; };
+		8490049B2985A27200A271AA /* PateintsTagListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagListTableViewCell.swift; sourceTree = "<group>"; };
+		8490049C2985A27200A271AA /* PateintsTagListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsTagListTableViewCell.xib; sourceTree = "<group>"; };
+		8490049F2986934C00A271AA /* PateintsTagListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagListModel.swift; sourceTree = "<group>"; };
+		849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsAddViewController.swift; sourceTree = "<group>"; };
+		849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsAddViewModel.swift; sourceTree = "<group>"; };
+		849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTagsAddViewController.storyboard; sourceTree = "<group>"; };
 		84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewModel.swift; sourceTree = "<group>"; };
 		84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewController.swift; sourceTree = "<group>"; };
 		84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePateintsTasksViewController.storyboard; sourceTree = "<group>"; };
@@ -1501,6 +1519,9 @@
 		849004912985936800A271AA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8490049A2985A24700A271AA /* Cell */,
+				849004942985A18800A271AA /* PateintsTagsListViewController.swift */,
+				849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1508,11 +1529,56 @@
 		849004922985936C00A271AA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		849004932985937000A271AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8490049F2986934C00A271AA /* PateintsTagListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8490049A2985A24700A271AA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8490049B2985A27200A271AA /* PateintsTagListTableViewCell.swift */,
+				8490049C2985A27200A271AA /* PateintsTagListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		849004A12986C22A00A271AA /* PateintsTagsAdd */ = {
+			isa = PBXGroup;
+			children = (
+				849004A42986C27C00A271AA /* Model */,
+				849004A32986C27800A271AA /* ViewModel */,
+				849004A22986C27400A271AA /* View */,
+			);
+			path = PateintsTagsAdd;
+			sourceTree = "<group>";
+		};
+		849004A22986C27400A271AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */,
+				849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		849004A32986C27800A271AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		849004A42986C27C00A271AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -2016,6 +2082,7 @@
 		84D0619929670676001FE469 /* Pateints */ = {
 			isa = PBXGroup;
 			children = (
+				849004A12986C22A00A271AA /* PateintsTagsAdd */,
 				849004902985935900A271AA /* PateintsTags */,
 				84D0619F29670676001FE469 /* List */,
 				84D061A629670676001FE469 /* Add */,
@@ -3156,12 +3223,15 @@
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
+				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
 				DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
+				8490049E2985A27200A271AA /* PateintsTagListTableViewCell.xib in Resources */,
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */,
+				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
@@ -3334,6 +3404,7 @@
 				848C92B1291F6AA000502956 /* ViewControllerExtension.swift in Sources */,
 				84F610DC292A71AB00B1FB69 /* Transformable.swift in Sources */,
 				84F610BF292A71AA00B1FB69 /* None.swift in Sources */,
+				849004952985A18800A271AA /* PateintsTagsListViewController.swift in Sources */,
 				84D062A32967070D001FE469 /* UserCreateViewController.swift in Sources */,
 				84F610ED292A71AB00B1FB69 /* Promise+Possible.swift in Sources */,
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
@@ -3360,6 +3431,7 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
+				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
@@ -3405,6 +3477,7 @@
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */,
+				849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */,
 				DAB4E99829755BA000AAA414 /* DailyViewController.swift in Sources */,
 				84D0629F2967070D001FE469 /* UserListModel.swift in Sources */,
 				8473208129797874003099BB /* PateintEditViewController.swift in Sources */,
@@ -3471,6 +3544,7 @@
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
 				84D062A52967070D001FE469 /* UserListTableViewCell.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
+				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */,
@@ -3538,6 +3612,7 @@
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
+				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
@@ -3556,6 +3631,7 @@
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
 				84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */,
 				84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */,
+				8490049D2985A27200A271AA /* PateintsTagListTableViewCell.swift in Sources */,
 				84F610DD292A71AB00B1FB69 /* FileDescriptor.swift in Sources */,
 				DAB4E99529755BA000AAA414 /* CalenderViewController.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
