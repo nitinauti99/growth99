@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeD-4t-6ht" userLabel="userName">
-                                <rect key="frame" x="30" y="156.66666666666666" width="340" height="20"/>
+                                <rect key="frame" x="30" y="156.66666666666666" width="330" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="71e-4p-9Z5"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRO-Vp-lXS" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="40" y="186.66666666666666" width="340" height="45"/>
+                                <rect key="frame" x="40" y="186.66666666666666" width="330" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="P7Y-5s-nr8"/>
                                 </constraints>
@@ -91,7 +91,7 @@
                             <constraint firstItem="FRO-Vp-lXS" firstAttribute="top" secondItem="KeD-4t-6ht" secondAttribute="bottom" constant="10" id="all-Cf-13c"/>
                             <constraint firstItem="FRO-Vp-lXS" firstAttribute="trailing" secondItem="KeD-4t-6ht" secondAttribute="trailing" constant="10" id="c1g-dQ-M4n"/>
                             <constraint firstItem="bN3-ef-Uit" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="dwK-Ku-LTY"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KeD-4t-6ht" secondAttribute="trailing" constant="20" id="iCv-aQ-Onv"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KeD-4t-6ht" secondAttribute="trailing" constant="30" id="iCv-aQ-Onv"/>
                             <constraint firstItem="KeD-4t-6ht" firstAttribute="top" secondItem="bN3-ef-Uit" secondAttribute="bottom" constant="30" id="k0v-7I-Wz7"/>
                         </constraints>
                     </view>

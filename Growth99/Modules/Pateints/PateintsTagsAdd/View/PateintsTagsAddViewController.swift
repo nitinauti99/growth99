@@ -18,6 +18,7 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     @IBOutlet private weak var PateintsTagsTextField: CustomTextField!
     var viewModel: PateintsTagsAddViewModelProtocol?
     var PatientTagId = Int()
+    var PateintsTagsCreate = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,9 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.Questionnarie
-        PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
+        if PateintsTagsCreate == false {
+            PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
+        }
     }
     
     func pateintsTagListRecived() {

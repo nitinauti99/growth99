@@ -26,10 +26,10 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintsTagsListViewModel(delegate: self)
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(SendtoPatientButtonTapped), imageName: "Send to Patient")
-        self.view.ShowSpinner()
         self.registerTableView()
+        self.view.ShowSpinner()
         viewModel?.getQuestionarieList()
+        self.setBarButton()
     }
         
     func registerTableView() {
@@ -41,7 +41,22 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // addSerchBar()
-        self.title = Constant.Profile.Questionnarie
+        self.title = Constant.Profile.patientTags
+    }
+    
+    func setBarButton(){
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "Add Tags"), for: .normal)
+        button.addTarget(self, action:  #selector(creatUser), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func creatUser() {
+        let PateintsTagsAddVC = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
+        PateintsTagsAddVC.PateintsTagsCreate = true
+        self.navigationController?.pushViewController(PateintsTagsAddVC, animated: true)
     }
     
     func addSerchBar(){
@@ -113,6 +128,7 @@ extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
         detailController.PatientTagId = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)?.id ?? 0
+        detailController.PateintsTagsCreate = false
         navigationController?.pushViewController(detailController, animated: true)
     }
 }

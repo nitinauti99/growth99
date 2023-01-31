@@ -23,7 +23,9 @@ class PateintsTagsAddViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func pateintsTagsDetails(pateintsTagId: Int) {
-        self.requestManager.request(forPath: ApiUrl.patientAddTags, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< PateintsTagListModel, GrowthNetworkError>) in
+        let finaleUrl = ApiUrl.patientAddTags + "\(pateintsTagId)"
+
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< PateintsTagListModel, GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagDict):
                 self.pateintsTagsDetailsDict = pateintsTagDict
