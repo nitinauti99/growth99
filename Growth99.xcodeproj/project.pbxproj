@@ -378,6 +378,10 @@
 		84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B4292A71A900B1FB69 /* Endpoint.swift */; };
 		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
+		D08E1E98298839BC00B3BBE3 /* BookingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */; };
+		D08E1E9A298839CA00B3BBE3 /* BookingHistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */; };
+		D08E1E9E29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */; };
+		D08E1E9F29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08E1E9D29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib */; };
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
@@ -807,6 +811,10 @@
 		84F610B4292A71A900B1FB69 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewController.swift; sourceTree = "<group>"; };
+		D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingHistoryViewController.storyboard; sourceTree = "<group>"; };
+		D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		D08E1E9D29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA45787029707F9F00CE458B /* GRWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRWebViewController.swift; sourceTree = "<group>"; };
@@ -2899,6 +2907,25 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		D08E1E962988399D00B3BBE3 /* BookingHistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				D08E1E9B29883B4C00B3BBE3 /* CustomCell */,
+				D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */,
+				D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */,
+			);
+			path = BookingHistoryView;
+			sourceTree = "<group>";
+		};
+		D08E1E9B29883B4C00B3BBE3 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */,
+				D08E1E9D29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		DA04083129700D8B006B12EE /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -3001,6 +3028,7 @@
 		DAB4E97F29755BA000AAA414 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D08E1E962988399D00B3BBE3 /* BookingHistoryView */,
 				DAB4E98529755BA000AAA414 /* AddEventView */,
 				DAB4E98829755BA000AAA414 /* CalenderView */,
 				DAB4E98A29755BA000AAA414 /* DayView */,
@@ -3175,6 +3203,7 @@
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				84D43A23297C21D800678458 /* QuestionarieViewController.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
+				D08E1E9A298839CA00B3BBE3 /* BookingHistoryViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
@@ -3238,6 +3267,7 @@
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
+				D08E1E9F29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib in Resources */,
 				84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
@@ -3464,6 +3494,7 @@
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
 				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
+				D08E1E98298839BC00B3BBE3 /* BookingHistoryViewController.swift in Sources */,
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				8448459A297D33B40041468A /* FillQuestionarieViewModel.swift in Sources */,
@@ -3609,6 +3640,7 @@
 				84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */,
 				8448459E297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
+				D08E1E9E29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
