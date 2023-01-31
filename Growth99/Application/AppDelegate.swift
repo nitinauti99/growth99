@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: 0.7 * (UIScreen.main.bounds.width))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        IQKeyboardManager.shared.enable = true
         self.setUpTabBarProperty()
         self.window = UIWindow()
         if user.isUserLoged == true {
