@@ -63,6 +63,7 @@ struct Constant {
         static let users = "Users"
         static let pateint = "Pateint"
         static let Questionnarie = "Questionnarie"
+        static let patientTags = "Patient Tags"
         static let tasks = "Tasks"
         static let Timeline = "Timeline"
         static let appointmentTrigger = "Appointment"
