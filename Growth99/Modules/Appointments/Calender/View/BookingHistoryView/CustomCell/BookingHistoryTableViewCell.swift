@@ -16,24 +16,28 @@ protocol BookingHistoryListTableViewCellDelegate: AnyObject {
 
 class BookingHistoryTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var subView: UIView!
-    @IBOutlet private weak var id: UILabel!
-    @IBOutlet private weak var createdDate: UILabel!
+    @IBOutlet weak var subView: UIView!
+    @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var createdDate: UILabel!
+    @IBOutlet weak var patientNameLabel: UILabel!
+    @IBOutlet weak var clinicNameLabel: UILabel!
+    @IBOutlet weak var providerNameLabel: UILabel!
+    @IBOutlet weak var servicesLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var appointmentDateLabel: UILabel!
+    @IBOutlet weak var paymetStatusLabel: UILabel!
+    @IBOutlet weak var appointmentStatusLabel: UILabel!
 
     var dateFormater : DateFormaterProtocol?
     weak var delegate: BookingHistoryListTableViewCellDelegate?
-
     var indexPath = IndexPath()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
         dateFormater = DateFormater()
-    }
-
-    func configureCell(userVM: PateintListViewModelProtocol?, index: IndexPath) {
-        
-        
     }
 
     @IBAction func deleteButtonPressed() {

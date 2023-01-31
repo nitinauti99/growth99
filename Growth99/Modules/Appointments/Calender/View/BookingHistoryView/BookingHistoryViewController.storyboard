@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Booking History View Controller-->
+        <!--Booking History View Contoller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="BookingHistoryViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingHistoryViewController" id="Y6W-OH-hqX" customClass="BookingHistoryViewContoller" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +52,10 @@
                             <constraint firstItem="HWd-OD-q2w" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="wjh-Uz-D52"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bookingHistoryTableView" destination="kfu-75-WPa" id="uCw-FU-K87"/>
+                        <outlet property="searchBar" destination="HWd-OD-q2w" id="W40-fZ-d4K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

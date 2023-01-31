@@ -17,7 +17,7 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
            return pateintFilterData.count
-        }else{
+        } else {
             return viewModel?.PateintData.count ?? 0
         }
     }
@@ -28,7 +28,7 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         if isSearch {
             cell.configureCell(userVM: viewModel, index: indexPath)
-        }else{
+        } else {
             cell.configureCell(userVM: viewModel, index: indexPath)
         }
         return cell

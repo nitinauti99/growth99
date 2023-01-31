@@ -378,6 +378,9 @@
 		84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B4292A71A900B1FB69 /* Endpoint.swift */; };
 		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
+		D005AD8629897BD300D02D68 /* BookingHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005AD8529897BD300D02D68 /* BookingHistoryViewModel.swift */; };
+		D005AD8829897BE600D02D68 /* BookingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005AD8729897BE600D02D68 /* BookingHistoryModel.swift */; };
+		D005AD8C2989834700D02D68 /* BookingHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005AD8B2989834700D02D68 /* BookingHistoryViewController+TableView.swift */; };
 		D08E1E98298839BC00B3BBE3 /* BookingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */; };
 		D08E1E9A298839CA00B3BBE3 /* BookingHistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */; };
 		D08E1E9E29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */; };
@@ -811,6 +814,9 @@
 		84F610B4292A71A900B1FB69 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D005AD8529897BD300D02D68 /* BookingHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewModel.swift; sourceTree = "<group>"; };
+		D005AD8729897BE600D02D68 /* BookingHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryModel.swift; sourceTree = "<group>"; };
+		D005AD8B2989834700D02D68 /* BookingHistoryViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
 		D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewController.swift; sourceTree = "<group>"; };
 		D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingHistoryViewController.storyboard; sourceTree = "<group>"; };
 		D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -2907,11 +2913,30 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		D005AD8329897BB900D02D68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D005AD8729897BE600D02D68 /* BookingHistoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D005AD8429897BBA00D02D68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D005AD8529897BD300D02D68 /* BookingHistoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D08E1E962988399D00B3BBE3 /* BookingHistoryView */ = {
 			isa = PBXGroup;
 			children = (
+				D005AD8329897BB900D02D68 /* Model */,
+				D005AD8429897BBA00D02D68 /* ViewModel */,
 				D08E1E9B29883B4C00B3BBE3 /* CustomCell */,
 				D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */,
+				D005AD8B2989834700D02D68 /* BookingHistoryViewController+TableView.swift */,
 				D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */,
 			);
 			path = BookingHistoryView;
@@ -3550,6 +3575,7 @@
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
+				D005AD8829897BE600D02D68 /* BookingHistoryModel.swift in Sources */,
 				84D0630F2967080E001FE469 /* LeadTableViewCell.swift in Sources */,
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
@@ -3579,6 +3605,7 @@
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */,
+				D005AD8C2989834700D02D68 /* BookingHistoryViewController+TableView.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
@@ -3600,6 +3627,7 @@
 				84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */,
 				84D062F42967080E001FE469 /* leadDetailViewController.swift in Sources */,
 				84D0624229670677001FE469 /* UpdateUserProfile.swift in Sources */,
+				D005AD8629897BD300D02D68 /* BookingHistoryViewModel.swift in Sources */,
 				8473208729797FE5003099BB /* PateintListViewContoller+TableView.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,

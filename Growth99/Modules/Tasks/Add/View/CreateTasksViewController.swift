@@ -192,7 +192,6 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
     func serverToLocalInputWorking(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

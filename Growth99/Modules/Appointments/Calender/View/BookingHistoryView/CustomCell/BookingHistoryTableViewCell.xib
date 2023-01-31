@@ -392,9 +392,18 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="appointmentDateLabel" destination="6qD-U0-jfE" id="W2z-Bm-hhs"/>
+                <outlet property="appointmentStatusLabel" destination="Kf5-hw-X7c" id="iJX-g0-feZ"/>
+                <outlet property="clinicNameLabel" destination="mee-z5-vsQ" id="QkN-eD-VoD"/>
                 <outlet property="createdDate" destination="2as-li-iWj" id="YcZ-Dc-aWx"/>
                 <outlet property="id" destination="63r-9K-2iL" id="glX-Ba-OWW"/>
+                <outlet property="patientNameLabel" destination="7Fz-I2-Mji" id="cci-dx-mML"/>
+                <outlet property="paymetStatusLabel" destination="eCG-o3-aSD" id="fOH-F0-y7r"/>
+                <outlet property="providerNameLabel" destination="fLK-cs-vf8" id="Web-CT-N4j"/>
+                <outlet property="servicesLabel" destination="Rjj-Ye-ODO" id="Yud-dE-fl0"/>
+                <outlet property="sourceLabel" destination="PEL-eK-3cu" id="iCv-wh-Sox"/>
                 <outlet property="subView" destination="8jK-1b-hJH" id="Raj-5C-Y8U"/>
+                <outlet property="typeLabel" destination="ahZ-iO-Bmh" id="a4d-EK-1vp"/>
             </connections>
             <point key="canvasLocation" x="192.0289855072464" y="158.70535714285714"/>
         </tableViewCell>
