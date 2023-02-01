@@ -16,6 +16,28 @@ protocol CalenderViewContollerProtocol {
     func appointmentListDataRecived()
 }
 
+
+func firstDayOfMonth(date: Date) -> Date {
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.year, .month,.day], from: date)
+    return calendar.date(from: components)!
+}
+
+struct MonthSection {
+
+    var month : Date
+    var headlines : [AppointmentDTOList]
+    static func group(headlines : [AppointmentDTOList]) -> [MonthSection] {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let groups = Dictionary(grouping: headlines) { headline in
+            firstDayOfMonth(date: dateFormat.date(from: headline.appointmentStartDate ?? String.blank) ?? Date())
+        }
+        return groups.map(MonthSection.init(month:headlines:))
+    }
+}
+
+
 class CalenderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalenderViewContollerProtocol, FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var calendar: FSCalendar!
@@ -55,6 +77,8 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     
     var eventTypeSelected: String = "upcoming"
     
+    var sections = [MonthSection]()
+    
     var tableViewHeight: CGFloat {
         eventListView.layoutIfNeeded()
         return eventListView.contentSize.height
@@ -66,14 +90,14 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         self.calendar.select(Date())
         calenderViewModel = CalenderViewModel(delegate: self)
         self.calendar.scope = .month
-        let formatingDate = getFormattedDate(date: Date(), format: "EEEE - MMM d")
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
         addAppointmnetView.layer.cornerRadius = 10
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("EventCreated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name("EventCreated"), object: nil)
+        self.sections = MonthSection.group(headlines: self.appoinmentListData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,8 +109,13 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         eventListView.reloadData()
     }
     
-    @objc func updateUI() {
-        getClinicsData()
+    @objc func notificationReceived(_ notification: Notification) {
+        self.view.showToast(message: "Appoinment created sucessfully")
+        guard let selectedClincIds = notification.userInfo?["clinicId"] as? String else { return }
+        guard let selectedProvidersIds = notification.userInfo?["providerId"] as? String else { return }
+        guard let selectedServicesIds = notification.userInfo?["serviceId"] as? String else { return }
+        self.calenderViewModel?.getCalenderInfoList(clinicId: Int(selectedClincIds) ?? 0, providerId: Int(selectedProvidersIds) ?? 0, serviceId: Int(selectedServicesIds) ?? 0)
+        eventListView.reloadData()
     }
     
     func setUpNavigationBar() {
@@ -129,6 +158,8 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     func appointmentListDataRecived() {
         self.view.HideSpinner()
         appoinmentListData = calenderViewModel?.appointmentInfoListData ?? []
+        self.sections = MonthSection.group(headlines: self.appoinmentListData)
+        self.sections.sort { lhs, rhs in lhs.month < rhs.month }
         eventListView.reloadData()
     }
     
@@ -236,68 +267,85 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //        if eventTypeSelected == "past" && eventTypeSelected == "all" {
-        //            return
-        //        } else {
-        return 1
-        //        }
+        return self.sections.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let section = self.sections[section]
+        let date = section.month
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 5, y: 0, width: eventListView.frame.size.width, height: 20)
+        myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        myLabel.text = dateFormatter.string(from: date)
+        let headerView = UIView()
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let section = self.sections[section]
         if eventTypeSelected == "upcoming" {
-            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count) == 0 {
+            if (section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count) == 0 {
                 return 1
             } else {
-                return self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count
+                return section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count
             }
         } else if eventTypeSelected == "past" {
-            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count) == 0 {
+            if (section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count) == 0 {
                 return 1
             } else {
-                return self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count
+                return section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count
             }
         } else {
-            if self.appoinmentListData.count == 0 {
+            if section.headlines.count == 0 {
                 return 1
             } else {
-                return self.appoinmentListData.count
+                return section.headlines.count
             }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let section = self.sections[indexPath.section]
+        let headline = section.headlines[indexPath.row]
         if eventTypeSelected == "upcoming" {
-            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count) == 0 {
+            if (section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count) == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].appointmentStartDate ?? String.blank)
-                cell.eventsDate.setTitle(self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].patientLastName ?? String.blank)"
+                
+                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].appointmentStartDate ?? String.blank)
+                cell.eventsDate.setTitle(section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()})[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         } else if eventTypeSelected == "past" {
-            if (self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count) == 0 {
+            if (section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count) == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].patientFirstName ?? String.blank) \(self.self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].appointmentStartDate ?? String.blank)
-                cell.eventsDate.setTitle(self.self.appoinmentListData.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].patientLastName ?? String.blank)"
+                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].appointmentStartDate ?? String.blank)
+                cell.eventsDate.setTitle(section.headlines.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()})[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         } else {
-            if self.appoinmentListData.count == 0 {
+            if section.headlines.count == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else {  return UITableViewCell() }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                cell.eventsTitle.text = "\(self.appoinmentListData[indexPath.row].patientFirstName ?? String.blank) \(self.appoinmentListData[indexPath.row].patientLastName ?? String.blank)"
-                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: self.appoinmentListData[indexPath.row].appointmentStartDate ?? String.blank)
-                cell.eventsDate.setTitle(self.appoinmentListData[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                cell.eventsTitle.text = "\(headline.patientFirstName ?? String.blank) \(headline.patientLastName ?? String.blank)"
+                cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: headline.appointmentStartDate ?? String.blank)
+                cell.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
                 return cell
             }
         }
