@@ -273,26 +273,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="video" catalog="system">
-                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="videoButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GCP-u2-psD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pa-J2-M9K">
-                                <rect key="frame" x="298" y="287" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Tse-XR-VFa"/>
-                                    <constraint firstAttribute="width" constant="30" id="u9s-Un-ecd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="dollarsign" catalog="system">
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="paymentButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7Xg-LT-HiX"/>
+                                    <action selector="videoButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GCP-u2-psD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -356,7 +341,6 @@
                             <constraint firstItem="ahZ-iO-Bmh" firstAttribute="top" secondItem="fLK-cs-vf8" secondAttribute="bottom" constant="30" id="gb1-CU-aRb"/>
                             <constraint firstItem="H9m-C9-tHz" firstAttribute="leading" secondItem="btQ-11-0ng" secondAttribute="leading" id="hk1-Bg-R1O"/>
                             <constraint firstItem="7Fz-I2-Mji" firstAttribute="trailing" secondItem="63r-9K-2iL" secondAttribute="trailing" id="iuA-XF-a1z"/>
-                            <constraint firstItem="5pa-J2-M9K" firstAttribute="leading" secondItem="Bu3-zK-yR7" secondAttribute="trailing" constant="20" id="izO-fy-oPt"/>
                             <constraint firstItem="PEL-eK-3cu" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="j4A-zf-xiW"/>
                             <constraint firstItem="eCG-o3-aSD" firstAttribute="trailing" secondItem="6qD-U0-jfE" secondAttribute="trailing" id="lp7-UX-PxS"/>
                             <constraint firstItem="eCG-o3-aSD" firstAttribute="top" secondItem="6qD-U0-jfE" secondAttribute="bottom" constant="5" id="n0j-WY-tFz"/>
@@ -372,7 +356,6 @@
                             <constraint firstItem="63r-9K-2iL" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="uvL-1W-xuE"/>
                             <constraint firstItem="A81-3B-jUp" firstAttribute="leading" secondItem="7X9-C0-OZZ" secondAttribute="leading" id="v8n-1K-Swa"/>
                             <constraint firstItem="Y3A-wd-ew2" firstAttribute="leading" secondItem="btQ-11-0ng" secondAttribute="leading" id="vA9-Fj-ucQ"/>
-                            <constraint firstItem="5pa-J2-M9K" firstAttribute="top" secondItem="VRX-9B-jh8" secondAttribute="top" id="xMp-yl-Hr2"/>
                             <constraint firstItem="Rjj-Ye-ODO" firstAttribute="trailing" secondItem="63r-9K-2iL" secondAttribute="trailing" id="yiq-ta-ou3"/>
                             <constraint firstItem="Kf5-hw-X7c" firstAttribute="leading" secondItem="63r-9K-2iL" secondAttribute="leading" id="yqd-Da-4rl"/>
                         </constraints>
@@ -413,6 +396,5 @@
         <image name="Detail" width="79" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
         <image name="dollarsign" catalog="system" width="89" height="128"/>
-        <image name="video" catalog="system" width="128" height="82"/>
     </resources>
 </document>

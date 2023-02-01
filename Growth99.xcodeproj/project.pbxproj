@@ -378,13 +378,6 @@
 		84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B4292A71A900B1FB69 /* Endpoint.swift */; };
 		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
-		D005AD8629897BD300D02D68 /* BookingHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005AD8529897BD300D02D68 /* BookingHistoryViewModel.swift */; };
-		D005AD8829897BE600D02D68 /* BookingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005AD8729897BE600D02D68 /* BookingHistoryModel.swift */; };
-		D005AD8C2989834700D02D68 /* BookingHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005AD8B2989834700D02D68 /* BookingHistoryViewController+TableView.swift */; };
-		D08E1E98298839BC00B3BBE3 /* BookingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */; };
-		D08E1E9A298839CA00B3BBE3 /* BookingHistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */; };
-		D08E1E9E29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */; };
-		D08E1E9F29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08E1E9D29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib */; };
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
@@ -409,6 +402,13 @@
 		DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E99B297577D900AAA414 /* CalenderModel.swift */; };
 		DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB4E99D2975943300AAA414 /* EmptyEventsTableViewCell.swift */; };
 		DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB4E99E2975943300AAA414 /* EmptyEventsTableViewCell.xib */; };
+		DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */; };
+		DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */; };
+		DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */; };
+		DAE1409B298ACCD600794F6A /* BookingHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14093298ACCD600794F6A /* BookingHistoryViewController+TableView.swift */; };
+		DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14095298ACCD600794F6A /* BookingHistoryViewModel.swift */; };
+		DAE1409D298ACCD600794F6A /* BookingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14096298ACCD600794F6A /* BookingHistoryViewController.swift */; };
+		DAE1409E298ACCD600794F6A /* BookingHistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE14097298ACCD600794F6A /* BookingHistoryViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -814,13 +814,6 @@
 		84F610B4292A71A900B1FB69 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D005AD8529897BD300D02D68 /* BookingHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewModel.swift; sourceTree = "<group>"; };
-		D005AD8729897BE600D02D68 /* BookingHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryModel.swift; sourceTree = "<group>"; };
-		D005AD8B2989834700D02D68 /* BookingHistoryViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
-		D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewController.swift; sourceTree = "<group>"; };
-		D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingHistoryViewController.storyboard; sourceTree = "<group>"; };
-		D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		D08E1E9D29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA45787029707F9F00CE458B /* GRWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRWebViewController.swift; sourceTree = "<group>"; };
@@ -845,6 +838,13 @@
 		DAB4E99B297577D900AAA414 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
 		DAB4E99D2975943300AAA414 /* EmptyEventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsTableViewCell.swift; sourceTree = "<group>"; };
 		DAB4E99E2975943300AAA414 /* EmptyEventsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyEventsTableViewCell.xib; sourceTree = "<group>"; };
+		DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryModel.swift; sourceTree = "<group>"; };
+		DAE14093298ACCD600794F6A /* BookingHistoryViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookingHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
+		DAE14095298ACCD600794F6A /* BookingHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewModel.swift; sourceTree = "<group>"; };
+		DAE14096298ACCD600794F6A /* BookingHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewController.swift; sourceTree = "<group>"; };
+		DAE14097298ACCD600794F6A /* BookingHistoryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookingHistoryViewController.storyboard; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2437,10 +2437,12 @@
 		84D0632C29670898001FE469 /* Booking History */ = {
 			isa = PBXGroup;
 			children = (
-				DA073346297861F1004038C0 /* CustomTableViewCell */,
-				DA073347297861F1004038C0 /* Model */,
-				DA073345297861F1004038C0 /* View */,
-				DA073348297861F1004038C0 /* ViewModel */,
+				DAE14091298ACCD600794F6A /* Model */,
+				DAE14094298ACCD600794F6A /* ViewModel */,
+				DAE1408E298ACCD600794F6A /* CustomCell */,
+				DAE14096298ACCD600794F6A /* BookingHistoryViewController.swift */,
+				DAE14093298ACCD600794F6A /* BookingHistoryViewController+TableView.swift */,
+				DAE14097298ACCD600794F6A /* BookingHistoryViewController.storyboard */,
 			);
 			path = "Booking History";
 			sourceTree = "<group>";
@@ -2913,44 +2915,6 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
-		D005AD8329897BB900D02D68 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D005AD8729897BE600D02D68 /* BookingHistoryModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D005AD8429897BBA00D02D68 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				D005AD8529897BD300D02D68 /* BookingHistoryViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		D08E1E962988399D00B3BBE3 /* BookingHistoryView */ = {
-			isa = PBXGroup;
-			children = (
-				D005AD8329897BB900D02D68 /* Model */,
-				D005AD8429897BBA00D02D68 /* ViewModel */,
-				D08E1E9B29883B4C00B3BBE3 /* CustomCell */,
-				D08E1E97298839BC00B3BBE3 /* BookingHistoryViewController.swift */,
-				D005AD8B2989834700D02D68 /* BookingHistoryViewController+TableView.swift */,
-				D08E1E99298839CA00B3BBE3 /* BookingHistoryViewController.storyboard */,
-			);
-			path = BookingHistoryView;
-			sourceTree = "<group>";
-		};
-		D08E1E9B29883B4C00B3BBE3 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				D08E1E9C29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift */,
-				D08E1E9D29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib */,
-			);
-			path = CustomCell;
-			sourceTree = "<group>";
-		};
 		DA04083129700D8B006B12EE /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -2958,34 +2922,6 @@
 				DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */,
 			);
 			path = DetailScreen;
-			sourceTree = "<group>";
-		};
-		DA073345297861F1004038C0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		DA073346297861F1004038C0 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
-		DA073347297861F1004038C0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		DA073348297861F1004038C0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DA45786E29707F8400CE458B /* GRWebView */ = {
@@ -3053,7 +2989,6 @@
 		DAB4E97F29755BA000AAA414 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D08E1E962988399D00B3BBE3 /* BookingHistoryView */,
 				DAB4E98529755BA000AAA414 /* AddEventView */,
 				DAB4E98829755BA000AAA414 /* CalenderView */,
 				DAB4E98A29755BA000AAA414 /* DayView */,
@@ -3098,6 +3033,31 @@
 				DAB4E98D29755BA000AAA414 /* DailyViewController.swift */,
 			);
 			path = DayView;
+			sourceTree = "<group>";
+		};
+		DAE1408E298ACCD600794F6A /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */,
+				DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		DAE14091298ACCD600794F6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DAE14094298ACCD600794F6A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAE14095298ACCD600794F6A /* BookingHistoryViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DE5547C14E13DB3FD35464AF /* Pods */ = {
@@ -3224,11 +3184,11 @@
 			files = (
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
+				DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				84D43A23297C21D800678458 /* QuestionarieViewController.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
-				D08E1E9A298839CA00B3BBE3 /* BookingHistoryViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
@@ -3292,7 +3252,7 @@
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
-				D08E1E9F29883B6700B3BBE3 /* BookingHistoryTableViewCell.xib in Resources */,
+				DAE1409E298ACCD600794F6A /* BookingHistoryViewController.storyboard in Resources */,
 				84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
@@ -3499,6 +3459,7 @@
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
+				DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */,
 				DAB4E98E29755BA000AAA414 /* EventsTableViewCell.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				84D43A27297C244000678458 /* QuestionarieModel.swift in Sources */,
@@ -3517,9 +3478,9 @@
 				84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
+				DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */,
 				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
-				D08E1E98298839BC00B3BBE3 /* BookingHistoryViewController.swift in Sources */,
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				8448459A297D33B40041468A /* FillQuestionarieViewModel.swift in Sources */,
@@ -3575,7 +3536,6 @@
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
-				D005AD8829897BE600D02D68 /* BookingHistoryModel.swift in Sources */,
 				84D0630F2967080E001FE469 /* LeadTableViewCell.swift in Sources */,
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
@@ -3605,8 +3565,8 @@
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */,
-				D005AD8C2989834700D02D68 /* BookingHistoryViewController+TableView.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
+				DAE1409D298ACCD600794F6A /* BookingHistoryViewController.swift in Sources */,
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
@@ -3623,11 +3583,11 @@
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
 				84484598297D32D80041468A /* FillQuestionarieViewController.swift in Sources */,
+				DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
 				84EFB19E2967249D00D8285E /* PateintsDetailListModel.swift in Sources */,
 				84D062F42967080E001FE469 /* leadDetailViewController.swift in Sources */,
 				84D0624229670677001FE469 /* UpdateUserProfile.swift in Sources */,
-				D005AD8629897BD300D02D68 /* BookingHistoryViewModel.swift in Sources */,
 				8473208729797FE5003099BB /* PateintListViewContoller+TableView.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
@@ -3668,7 +3628,6 @@
 				84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */,
 				8448459E297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
-				D08E1E9E29883B6700B3BBE3 /* BookingHistoryTableViewCell.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
@@ -3699,6 +3658,7 @@
 				84F610C3292A71AA00B1FB69 /* JWTDecoder.swift in Sources */,
 				84D0628029670677001FE469 /* RegistrationViewModel.swift in Sources */,
 				84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */,
+				DAE1409B298ACCD600794F6A /* BookingHistoryViewController+TableView.swift in Sources */,
 				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
 				84D063032967080E001FE469 /* SMSTemplateTableViewCell.swift in Sources */,
