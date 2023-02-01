@@ -77,6 +77,7 @@ struct Constant {
         static let triggersList = "Triggers List"
         static let appointmentTriggers = "Appointment Triggers"
         static let moreEvents = " More Events"
+        static let bookingHistory = "Booking History"
         static let calenderAccessDenied = "Access denied"
         static let unexpectedError = "Unexpected Error"
         static let calenderDefault = "Default"
