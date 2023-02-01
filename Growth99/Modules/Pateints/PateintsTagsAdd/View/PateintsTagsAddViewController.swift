@@ -11,6 +11,8 @@ import UIKit
 protocol PateintsTagsAddViewControllerProtocol: AnyObject {
     func pateintsTagListRecived()
     func errorReceived(error: String)
+    func savePateintsTagList(responseMessage:String)
+
 }
 
 class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewControllerProtocol {
@@ -23,20 +25,25 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintsTagsAddViewModel(delegate: self)
-        self.view.ShowSpinner()
-        viewModel?.pateintsTagsDetails(pateintsTagId: PatientTagId)
+        if PateintsTagsCreate == false {
+            self.view.ShowSpinner()
+            viewModel?.pateintsTagsDetails(pateintsTagId: PatientTagId)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.Questionnarie
         if PateintsTagsCreate == false {
-            PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
+            self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
         }
     }
     
     func pateintsTagListRecived() {
         self.view.HideSpinner()
+        if PateintsTagsCreate == false {
+            self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
+        }
     }
     
     func errorReceived(error: String) {
@@ -46,6 +53,28 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
         self.view.ShowSpinner()
+    }
+    
+    func savePateintsTagList(responseMessage:String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func cancelAction(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveAction(sender: UIButton) {
+        if let textField = PateintsTagsTextField.text,  textField == "" {
+            PateintsTagsTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+        }
+        self.view.ShowSpinner()
+        if PateintsTagsCreate == false {
+            viewModel?.savePateintsTagsDetails(pateintsTagId: PatientTagId, name: PateintsTagsTextField.text ?? "")
+        }else{
+            viewModel?.createPateintsTagsDetails(name: PateintsTagsTextField.text ?? "")
+        }
     }
     
 }

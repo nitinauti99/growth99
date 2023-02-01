@@ -26,8 +26,9 @@ class PateintsTagListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//      self.subView.createBorderForView(redius: 8, width: 1)
-//      self.subView.addBottomShadow(color:.gray)
+        dateFormater = DateFormater()
+      //  self.subView.createBorderForView(redius: 8, width: 1)
+      //  self.subView.addBottomShadow(color:.gray)
         dateFormater = DateFormater()
     }
     

@@ -10,6 +10,8 @@ import Foundation
 protocol PateintsTagsAddViewModelProtocol {
     func pateintsTagsDetails(pateintsTagId:Int)
     var pateintsTagsDetailsData: PateintsTagListModel? { get }
+    func savePateintsTagsDetails(pateintsTagId:Int, name: String)
+    func createPateintsTagsDetails(name: String)
 }
 
 class PateintsTagsAddViewModel {
@@ -36,6 +38,43 @@ class PateintsTagsAddViewModel {
             }
         }
     }
+    
+    func savePateintsTagsDetails(pateintsTagId:Int, name: String){
+        let finaleUrl = ApiUrl.patientAddTags + "\(pateintsTagId)"
+        let parameters: Parameters = [
+            "name": name,
+            "isDefault":false
+        ]
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task:.requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  (result: Result< PateintsTagListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let pateintsTagDict):
+                self.pateintsTagsDetailsDict = pateintsTagDict
+                self.delegate?.savePateintsTagList(responseMessage:"Pateints Tags details Saved")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func createPateintsTagsDetails(name: String){
+        let parameters: Parameters = [
+            "name": name,
+            "isDefault":false
+        ]
+        self.requestManager.request(forPath: ApiUrl.patientCreateTags, method: .POST, headers: self.requestManager.Headers(),task:.requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  (result: Result< PateintsTagListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let pateintsTagDict):
+                self.pateintsTagsDetailsDict = pateintsTagDict
+                self.delegate?.savePateintsTagList(responseMessage:"Pateints Tags details Saved")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
+
 }
 
 extension PateintsTagsAddViewModel: PateintsTagsAddViewModelProtocol {

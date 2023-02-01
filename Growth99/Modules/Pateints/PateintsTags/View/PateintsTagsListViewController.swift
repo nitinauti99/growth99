@@ -26,31 +26,25 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintsTagsListViewModel(delegate: self)
-        self.registerTableView()
-        self.view.ShowSpinner()
-        viewModel?.getQuestionarieList()
         self.setBarButton()
     }
         
     func registerTableView() {
-        self.PateintsTagsListTableview.delegate = self
-        self.PateintsTagsListTableview.dataSource = self
         PateintsTagsListTableview.register(UINib(nibName: "PateintsTagListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintsTagListTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // addSerchBar()
+        self.registerTableView()
+
+        self.view.ShowSpinner()
+        viewModel?.getQuestionarieList()
         self.title = Constant.Profile.patientTags
     }
     
     func setBarButton(){
-        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "Add Tags"), for: .normal)
-        button.addTarget(self, action:  #selector(creatUser), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(creatUser), imageName: "add")
     }
     
     @objc func creatUser() {
@@ -122,7 +116,7 @@ extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

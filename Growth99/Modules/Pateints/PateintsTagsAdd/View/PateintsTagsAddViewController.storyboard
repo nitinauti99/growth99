@@ -81,12 +81,59 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Q60-5r-CYC"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9u-mR-rvP">
+                                <rect key="frame" x="40" y="291.66666666666669" width="110" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="5g0-54-Xbc"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ms6-c6-Lh0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Submit"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6fH-c8-UJC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-d0-ghm">
+                                <rect key="frame" x="170" y="291.66666666666669" width="110" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NTW-2X-QLm"/>
+                                    <constraint firstAttribute="width" constant="110" id="PHr-63-Hwq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cancel"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="K3W-Av-1yw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vmL-d0-ghm" firstAttribute="top" secondItem="FRO-Vp-lXS" secondAttribute="bottom" constant="60" id="074-9K-zEh"/>
+                            <constraint firstItem="V9u-mR-rvP" firstAttribute="leading" secondItem="FRO-Vp-lXS" secondAttribute="leading" id="7Fi-aP-T0y"/>
                             <constraint firstItem="FRO-Vp-lXS" firstAttribute="leading" secondItem="KeD-4t-6ht" secondAttribute="leading" constant="10" id="B0F-WZ-7Og"/>
+                            <constraint firstItem="V9u-mR-rvP" firstAttribute="top" secondItem="FRO-Vp-lXS" secondAttribute="bottom" constant="60" id="HPQ-9Q-1QJ"/>
+                            <constraint firstItem="vmL-d0-ghm" firstAttribute="top" secondItem="V9u-mR-rvP" secondAttribute="top" id="KUJ-y0-RTI"/>
                             <constraint firstItem="bN3-ef-Uit" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Kny-tF-xqD"/>
+                            <constraint firstItem="vmL-d0-ghm" firstAttribute="leading" secondItem="V9u-mR-rvP" secondAttribute="trailing" constant="20" id="QmT-K8-Wi1"/>
                             <constraint firstItem="KeD-4t-6ht" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Rzb-EF-5BK"/>
                             <constraint firstItem="FRO-Vp-lXS" firstAttribute="top" secondItem="KeD-4t-6ht" secondAttribute="bottom" constant="10" id="all-Cf-13c"/>
                             <constraint firstItem="FRO-Vp-lXS" firstAttribute="trailing" secondItem="KeD-4t-6ht" secondAttribute="trailing" constant="10" id="c1g-dQ-M4n"/>
