@@ -100,6 +100,7 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     func appointmentListDataRecivedBookingHistory() {
         self.view.HideSpinner()
         bookingHistoryListData = viewModel?.appointmentInfoListDataBookingHistory ?? []
+        bookingHistoryListData = bookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? "") > ($1.appointmentCreatedDate ?? "")})
         self.bookingHistoryTableView.reloadData()
     }
     

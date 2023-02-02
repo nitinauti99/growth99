@@ -9,16 +9,16 @@ import Foundation
 
 protocol BookingHistoryViewModelProtocol {
     func getallClinicsBookingHistory()
-    var getAllClinicsDataBookingHistory: [Clinics] { get }
+    var  getAllClinicsDataBookingHistory: [Clinics] { get }
     
     func getServiceListBookingHistory()
-    var serviceDataBookingHistory: [ServiceList] { get }
+    var  serviceDataBookingHistory: [ServiceList] { get }
     
     func sendProviderListBookingHistory(providerParams: Int)
-    var providerDataBookingHistory: [UserDTOList] { get }
+    var  providerDataBookingHistory: [UserDTOList] { get }
     
     func getCalenderInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int)
-    var appointmentInfoListDataBookingHistory: [AppointmentDTOList] { get }
+    var  appointmentInfoListDataBookingHistory: [AppointmentDTOList] { get }
     
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
@@ -38,7 +38,6 @@ class BookingHistoryViewModel:BookingHistoryViewModelProtocol {
     func appointmentListCountLessthanBookingHistory() -> Int {
         return 0
     }
-    
     
     var delegate: BookingHistoryViewContollerProtocol?
     var allClinicsBookingHistory: [Clinics]?

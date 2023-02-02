@@ -41,19 +41,19 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thusday -May 9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-0c-Rep">
-                                <rect key="frame" x="30" y="10" width="241" height="24"/>
+                                <rect key="frame" x="23" y="10" width="248" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM — 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3l-5w-4WZ">
-                                <rect key="frame" x="30" y="63.5" width="241" height="19.5"/>
+                                <rect key="frame" x="23" y="63.5" width="248" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM — 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJn-t1-zKk">
-                                <rect key="frame" x="30" y="39" width="241" height="19.5"/>
+                                <rect key="frame" x="23" y="39" width="248" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                             <constraint firstItem="0fx-IC-AXD" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" constant="22" id="FZp-wO-fZq"/>
                             <constraint firstItem="0fx-IC-AXD" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="trailing" constant="22" id="Jgl-CF-dDe"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" id="V66-ZM-MXS"/>
-                            <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="8qJ-dq-Zyu" secondAttribute="trailing" constant="22" id="Z3X-Xp-pA8"/>
+                            <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="8qJ-dq-Zyu" secondAttribute="trailing" constant="15" id="Z3X-Xp-pA8"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="leading" secondItem="jLf-tQ-Xcs" secondAttribute="leading" id="kOA-Pt-hsd"/>
                             <constraint firstItem="dJn-t1-zKk" firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" id="m3n-aA-EiN"/>
                             <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="dJn-t1-zKk" secondAttribute="bottom" constant="5" id="nDI-0W-kGC"/>

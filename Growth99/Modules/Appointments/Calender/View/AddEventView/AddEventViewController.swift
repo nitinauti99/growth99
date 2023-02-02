@@ -147,9 +147,9 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     
     func appoinmentCreated(apiResponse: AppoinmentModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appoinment created sucessfully")
+        let userInfo = ["clinicId": selectedClincIds, "providerId": selectedProvidersIds, "serviceId": selectedServicesIds] as [String : Any]
+        NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil, userInfo: userInfo)
         self.navigationController?.dismiss(animated: true)
-        NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil)
     }
 
     func errorEventReceived(error: String) {

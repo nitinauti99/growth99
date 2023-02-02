@@ -28,7 +28,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Appointments Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-0c-Rep">
-                                <rect key="frame" x="30" y="33" width="297" height="24.5"/>
+                                <rect key="frame" x="23" y="33" width="304" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                             <constraint firstAttribute="bottom" secondItem="8qJ-dq-Zyu" secondAttribute="bottom" id="Cj7-Tb-UFd"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" id="V66-ZM-MXS"/>
                             <constraint firstItem="2Xh-0c-Rep" firstAttribute="centerY" secondItem="jLf-tQ-Xcs" secondAttribute="centerY" id="V92-m4-0BC"/>
-                            <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="8qJ-dq-Zyu" secondAttribute="trailing" constant="22" id="Z3X-Xp-pA8"/>
+                            <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="8qJ-dq-Zyu" secondAttribute="trailing" constant="15" id="Z3X-Xp-pA8"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="leading" secondItem="jLf-tQ-Xcs" secondAttribute="leading" id="kOA-Pt-hsd"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
