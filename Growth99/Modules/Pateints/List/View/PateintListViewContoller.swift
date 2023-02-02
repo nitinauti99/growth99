@@ -15,7 +15,6 @@ protocol PateintListViewContollerProtocol: AnyObject {
 }
 
 class PateintListViewContoller: UIViewController, PateintListViewContollerProtocol, PateintListTableViewCellDelegate {
-
     
     @IBOutlet weak var pateintListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -104,9 +103,13 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
-        detailController.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
-        self.navigationController?.pushViewController(detailController, animated: true)
+//        let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
+//        detailController.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+//        self.navigationController?.pushViewController(detailController, animated: true)
+        
+        let PeteintDetail = PeteintDetailView.viewController()
+        PeteintDetail.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+        self.navigationController?.pushViewController(PeteintDetail, animated: true)
     }
     
     func LeadDataRecived() {

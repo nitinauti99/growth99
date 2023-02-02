@@ -177,6 +177,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             detailController.LeadId = viewModel?.taskDetailData?.leadId ?? 0
             navigationController?.pushViewController(detailController, animated: true)
         }else {
+            /// check in navaigation PateintDetailViewController 
             let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
             detailController.workflowTaskPatientId = viewModel?.taskDetailData?.patientId ?? 0
             navigationController?.pushViewController(detailController, animated: true)

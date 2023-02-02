@@ -27,7 +27,7 @@ struct PateintsDetailListModel: Codable{
     let city: String?
     let country: String?
     let gender: String?
-    let notes: String
+    let notes: String?
     let tag: [Tag]?
 }
 

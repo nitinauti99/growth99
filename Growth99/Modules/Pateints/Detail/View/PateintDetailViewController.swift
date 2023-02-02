@@ -30,7 +30,8 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var dateOfBirth: CustomTextField!
     @IBOutlet private weak var notes: CustomTextField!
     
-    @IBOutlet weak var pateintDetailTableView: UITableView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var pateintDetailTableView: UITableView!
     @IBOutlet private weak var newButton: UIButton!
     @IBOutlet private weak var existingButton: UIButton!
     @IBOutlet private weak var scrollViewHight: NSLayoutConstraint!
@@ -59,20 +60,12 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.viewModel = PateintDetailViewModel(delegate: self)
         dateFormater = DateFormater()
         viewModel?.getpateintsList(pateintId: self.workflowTaskPatientId)
-        self.registerCell()
         buttons = [newButton, existingButton]
-        setUpClearColor()
-        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
-        dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
     }
     
     @objc func dateFromButtonPressed() {
         dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
     }
-    
-//   @objc func segmentSelected(sender: ScrollableSegmentedControl) {
-//        print("Segment at index \(sender.selectedSegmentIndex)  selected")
-//    }
    
     @IBAction func openQuestionarieList (sender: UIButton) {
         let QuestionarieVC = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
@@ -99,7 +92,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func registerCell() {
         pateintDetailTableView.register(UINib(nibName: "questionAnswersTableViewCell", bundle: nil), forCellReuseIdentifier: "questionAnswersTableViewCell")
-        
         pateintDetailTableView.register(UINib(nibName: "SMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplateTableViewCell")
         pateintDetailTableView.register(UINib(nibName: "CustomSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomSMSTemplateTableViewCell")
         pateintDetailTableView.register(UINib(nibName: "EmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "EmailTemplateTableViewCell")
@@ -108,6 +100,11 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.registerCell()
+        setUpClearColor()
+        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
+        dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         existingButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         scrollViewHight.constant = tableViewHeight + 1000

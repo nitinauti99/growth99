@@ -27,19 +27,13 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
         super.viewDidLoad()
         self.viewModel = QuestionarieViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationQuestionarieList"), object: nil)
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
-        self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: pateintId)
-    }
-    
-    @objc func addUserButtonTapped(_ sender: UIButton) {
-        let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
-        navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
+        self.view.ShowSpinner()
+        viewModel?.getQuestionarieList(pateintId: pateintId)
         self.registerTableView()
         self.title = Constant.Profile.users
     }
