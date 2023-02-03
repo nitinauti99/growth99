@@ -73,6 +73,7 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     
     func ClinicsDataRecived() {
         self.view.HideSpinner()
+        self.clinicsListTableView.setContentOffset(.zero, animated: true)
         self.clinicsListTableView.reloadData()
     }
     

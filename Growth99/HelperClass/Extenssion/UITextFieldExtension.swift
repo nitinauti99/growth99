@@ -92,7 +92,7 @@ import UIKit
         }
     }
     
-    public var errorMessage:String = ""{
+    public var errorMessage: String = ""{
         didSet{ lblError.text = errorMessage }
     }
     

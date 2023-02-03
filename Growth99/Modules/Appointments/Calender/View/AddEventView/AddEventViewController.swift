@@ -32,6 +32,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     @IBOutlet private weak var notesTextView: UITextView!
     @IBOutlet private weak var inPersonBtn: UIButton!
     @IBOutlet private weak var virtualBtn: UIButton!
+    @IBOutlet private weak var dateSelectionButton: UIButton!
 
     var addEventViewModel: CalenderViewModelProtocol?
     var eventViewModel: AddEventViewModelProtocol?
@@ -68,10 +69,8 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         setUpNavigationBar()
         addEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = AddEventViewModel(delegate: self)
-        emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)),
-                                  for: .editingChanged)
-        phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)),
-                                  for: .editingChanged)
+        //emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
+       // phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -86,19 +85,31 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.appointment
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(closeEventClicked), imageName: "iconCircleCross")
+        setupEventUI()
     }
     
-  /*  func setupEventUI() {
+   func setupEventUI() {
         if userSelectedDate == "Manual" {
             dateTextField.isUserInteractionEnabled = true
             dateTextField.leftPadding = 25
+            dateSelectionButton.isUserInteractionEnabled = true
         } else {
             dateTextField.rightImage = nil
             dateTextField.leftPadding = 0
-            dateTextField.text = userSelectedDate
+            dateTextField.text = serverToLocalDateFormat(date: userSelectedDate)
             dateTextField.isUserInteractionEnabled = false
+            dateSelectionButton.isUserInteractionEnabled = false
         }
-    }*/
+    }
+    
+    func serverToLocalDateFormat(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: date)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -237,7 +248,11 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             self?.selectedProviders  = selectedList
             self?.selectedProvidersIds = selectedId
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getDatesList(clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [])
+            if self?.userSelectedDate == "Manual" {
+                self?.eventViewModel?.getDatesList(clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [])
+            } else {
+                self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.localInputToServerInput(date: self?.dateTextField.text ?? String.blank) ?? "", clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -335,7 +350,11 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             return
         }
         self.view.ShowSpinner()
-        eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
+        if self.userSelectedDate == "Manual" {
+            eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
+        } else {
+            eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.localInputeDateToServer(date: dateTextField.text ?? String.blank), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.localInputToServerInput(date: dateTextField.text ?? String.blank)))
+        }
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {

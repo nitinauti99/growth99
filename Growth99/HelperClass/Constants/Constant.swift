@@ -52,6 +52,7 @@ struct Constant {
     
     struct Profile {
         static let appointment = "Add Appointment"
+        static let editAppointment = "Edit Appointment"
         static let calender = "Calendar"
         static let clinics = "Clinics"
         static let createClinic = "Create Clinic"

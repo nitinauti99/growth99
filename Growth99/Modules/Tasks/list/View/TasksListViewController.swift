@@ -88,6 +88,7 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     
     func LeadDataRecived() {
         self.view.HideSpinner()
+        self.taskListTableView.setContentOffset(.zero, animated: true)
         self.taskListTableView.reloadData()
     }
     

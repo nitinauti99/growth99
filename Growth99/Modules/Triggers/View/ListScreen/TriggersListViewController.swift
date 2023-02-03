@@ -70,6 +70,7 @@ class TriggersListViewController: UIViewController, TriggersListViewContollerPro
     
     func TriggersDataRecived() {
         self.view.HideSpinner()
+        self.triggersListTableView.setContentOffset(.zero, animated: true)
         self.triggersListTableView.reloadData()
     }
     

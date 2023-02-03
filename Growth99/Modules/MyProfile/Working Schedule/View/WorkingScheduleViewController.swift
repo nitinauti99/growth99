@@ -83,7 +83,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         workingListTableView.register(UINib(nibName: Constant.ViewIdentifier.workingCustomTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.workingCustomTableViewCell)
-       getDataDropDown()
     }
     
     func errorReceived(error: String) {
@@ -114,18 +113,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         self.workingListTableView.reloadData()
         scrollViewHeight()
     }
-    
-    func getDataDropDown() {
-//        workingScheduleViewModel.getallClinicsforWorkingSchedule { (response, error) in
-//            if error == nil && response != nil {
-//                self.allClinicsForWorkingSchedule = response
-//                self.clinicTextLabel.text = self.allClinicsForWorkingSchedule?[0].name ?? String.blank
-//               self.workingScheduleViewModel.getWorkingScheduleDeatils(selectedClinicId: self.allClinicsForWorkingSchedule?[0].id ?? 0)
-//            } else {
-//                self.view.HideSpinner()
-//            }
-//        }
-    }
   
     // MARK: - Clinic dropdown selection mrthod
     @IBAction func clinicSelectionButton(sender: UIButton) {
@@ -133,7 +120,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
-            //self.clinicTextLabel.text  = allClinics.name?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
@@ -145,7 +131,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
      }
-   
 
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()

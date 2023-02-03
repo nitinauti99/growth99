@@ -159,6 +159,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         appoinmentListData = calenderViewModel?.appointmentInfoListData ?? []
         self.sections = MonthSection.group(headlines: self.appoinmentListData)
         self.sections.sort { lhs, rhs in lhs.month < rhs.month }
+        self.eventListView.setContentOffset(.zero, animated: true)
         eventListView.reloadData()
     }
 
