@@ -21,6 +21,15 @@ protocol AddEventViewModelProtocol {
     func serverToLocalInputWorking(date: String) -> String
     func appointmentDateInput(date: String) -> String
     func createAppoinemnetMethod(addEventModel: NewAppoinmentModel)
+    func checkUserEmailAddress(emailAddress: String)
+    func checkUserPhoneNumber(phoneNumber: String)
+}
+
+struct AddEventPhoneModel: Codable {
+    let firstName: String?
+    let lastName: String?
+    let phone: String?
+    let email: String?
 }
 
 class AddEventViewModel {
@@ -65,6 +74,30 @@ class AddEventViewModel {
             case .success(let timesData):
                 self.allTimes = timesData
                 self.delegate?.timesDataReceived()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func checkUserEmailAddress(emailAddress: String) {
+        let apiURL = ApiUrl.userByPhone.appending("\(emailAddress)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[String], GrowthNetworkError>) in
+            switch result {
+            case .success(_):
+                self.delegate?.getEmailAddressDataRecived()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func checkUserPhoneNumber(phoneNumber: String) {
+        let apiURL = ApiUrl.userByPhone.appending("\(phoneNumber)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[AddEventPhoneModel], GrowthNetworkError>) in
+            switch result {
+            case .success(_):
+                self.delegate?.getPhoneNumberDataRecived()
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)
             }

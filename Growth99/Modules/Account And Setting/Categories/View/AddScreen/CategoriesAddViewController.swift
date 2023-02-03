@@ -64,6 +64,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     @IBAction func clinincsDropDown(sender: UIButton) {

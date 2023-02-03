@@ -13,6 +13,8 @@ protocol AddEventViewControllerProtocol: AnyObject {
     func timesDataReceived()
     func appoinmentCreated(apiResponse: AppoinmentModel)
     func errorEventReceived(error: String)
+    func getPhoneNumberDataRecived()
+    func getEmailAddressDataRecived()
 }
 
 class AddEventViewController: UIViewController, CalenderViewContollerProtocol, AddEventViewControllerProtocol {
@@ -66,7 +68,18 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         setUpNavigationBar()
         addEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = AddEventViewModel(delegate: self)
-        //setupEventUI()
+        emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)),
+                                  for: .editingChanged)
+        phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)),
+                                  for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == emailTextField {
+            eventViewModel?.checkUserEmailAddress(emailAddress: emailTextField.text ?? String.blank)
+        } else if textField == phoneNumberTextField {
+            eventViewModel?.checkUserPhoneNumber(phoneNumber: phoneNumberTextField.text ?? String.blank)
+        }
     }
     
     // MARK: - setUpNavigationBar
@@ -133,12 +146,21 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         self.view.HideSpinner()
     }
     
+    func getPhoneNumberDataRecived() {
+        
+    }
+
+    func getEmailAddressDataRecived() {
+        
+    }
+    
     func appointmentListDataRecived() {
         
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     func eventDataReceived() {
@@ -153,7 +175,8 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     }
 
     func errorEventReceived(error: String) {
-        
+        self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {

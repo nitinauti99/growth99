@@ -297,6 +297,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     func openUserListView(){
