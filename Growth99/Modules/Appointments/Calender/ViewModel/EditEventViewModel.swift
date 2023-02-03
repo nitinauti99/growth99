@@ -25,6 +25,7 @@ protocol EditEventViewModelProtocol {
     func checkUserPhoneNumber(phoneNumber: String)
     func localInputToServerInput(date: String) -> String
     func localInputeDateToServer(date: String) -> String
+    func deleteSelectedAppointment(deleteAppoinmentId: Int)
 }
 
 class EditEventViewModel {
@@ -126,6 +127,17 @@ class EditEventViewModel {
         }
     }
     
+    func deleteSelectedAppointment(deleteAppoinmentId: Int) {
+        let apiURL = ApiUrl.editAppointment.appending("\(deleteAppoinmentId)/cancel")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<String, GrowthNetworkError>) in
+            switch result {
+            case .success(_):
+                self.delegate?.appoinmentDeletedSucess()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
     
     var getAllDatesData: [String] {
         return allDates

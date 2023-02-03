@@ -15,6 +15,7 @@ protocol EditEventViewControllerProtocol: AnyObject {
     func errorEventReceived(error: String)
     func getPhoneNumberDataRecived()
     func getEmailAddressDataRecived()
+    func appoinmentDeletedSucess()
 }
 
 class EventEditViewController: UIViewController, CalenderViewContollerProtocol, EditEventViewControllerProtocol {
@@ -189,6 +190,11 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         self.navigationController?.popViewController(animated: true)
     }
 
+    func appoinmentDeletedSucess() {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Appointment Cancelled Sucessfully")
+        self.navigationController?.popViewController(animated: true)
+    }
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)
@@ -381,6 +387,11 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func canecelAppointmentAction(sender: UIButton) {
+        self.view.ShowSpinner()
+        eventViewModel?.deleteSelectedAppointment(deleteAppoinmentId: self.editBookingHistoryData?.id ?? 0)
+    }
+
     @IBAction func inPersonButtonAction(sender: UIButton) {
         inPersonBtn.isSelected = !inPersonBtn.isSelected
         appointmentTypeSelected = "InPerson"
