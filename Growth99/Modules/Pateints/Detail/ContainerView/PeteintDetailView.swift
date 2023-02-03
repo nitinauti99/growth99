@@ -9,30 +9,35 @@ import Foundation
 import UIKit
 
 class PeteintDetailView: UIViewController {
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+//    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
+
     var workflowTaskPatientId = Int()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupView()
-        segmentedControl.removeAllSegments()
-        segmentedControl.insertSegment(withTitle: "Pateint Detail", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "questionarie", at: 1, animated: false)
-        segmentedControl.insertSegment(withTitle: "Tasks", at: 2, animated: false)
-        segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        //self.setupView()
+        self.title = Constant.Profile.patientDetail
+        segmentedControl.segmentStyle = .textOnly
+        segmentedControl.insertSegment(withTitle: "Pateint Detail", at: 0)
+        segmentedControl.insertSegment(withTitle: "Questionarie", at: 1)
+        segmentedControl.insertSegment(withTitle: "Tasks", at: 2)
+        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
+        segmentedControl.underlineHeight = 40
+        segmentedControl.underlineSelected = true
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.fixedSegmentWidth = true
     }
     
     func setupView() {
-        updateView()
+            remove(asChildViewController: tasksListVC)
+            remove(asChildViewController: QuestionarieVC)
+            add(asChildViewController: pateintDetailVC)
+            navigationItem.rightBarButtonItem = nil
     }
     
-    @objc private func selectionDidChange(_ sender: UISegmentedControl) {
-        self.updateView()
-    }
-    
-    private func updateView() {
+    @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         if segmentedControl.selectedSegmentIndex == 0 {
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: QuestionarieVC)

@@ -18,7 +18,7 @@ class PateintsTagListTableViewCell: UITableViewCell {
     @IBOutlet private weak var questionnaireName: UILabel!
     @IBOutlet private weak var questionnaireID: UILabel!
     @IBOutlet private weak var questionnaireSelection: UIButton!
-    @IBOutlet private weak var subView: UIView!
+    @IBOutlet weak var subView: UIView!
     
     var dateFormater : DateFormaterProtocol?
     weak var delegate: PateintsTagListTableViewCellDelegate?
@@ -26,9 +26,6 @@ class PateintsTagListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        dateFormater = DateFormater()
-      //  self.subView.createBorderForView(redius: 8, width: 1)
-      //  self.subView.addBottomShadow(color:.gray)
         dateFormater = DateFormater()
     }
     

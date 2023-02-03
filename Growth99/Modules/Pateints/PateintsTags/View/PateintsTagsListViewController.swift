@@ -107,6 +107,8 @@ extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = PateintsTagListTableViewCell()
         cell = PateintsTagsListTableview.dequeueReusableCell(withIdentifier: "PateintsTagListTableViewCell") as! PateintsTagListTableViewCell
+        cell.subView.createBorderForView(redius: 8, width: 1)
+        cell.subView.addBottomShadow(color:.gray)
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{

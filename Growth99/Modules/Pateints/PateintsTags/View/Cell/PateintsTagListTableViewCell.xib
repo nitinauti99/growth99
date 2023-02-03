@@ -89,7 +89,7 @@
             <connections>
                 <outlet property="questionnaireID" destination="7Fz-I2-Mji" id="CBE-dY-CW9"/>
                 <outlet property="questionnaireName" destination="scQ-UJ-bLe" id="SVt-Ki-lSm"/>
-                <outlet property="subView" destination="8jK-1b-hJH" id="HxB-2D-Y72"/>
+                <outlet property="subView" destination="8jK-1b-hJH" id="1HX-Wm-G6k"/>
             </connections>
             <point key="canvasLocation" x="255.07246376811597" y="99.441964285714278"/>
         </tableViewCell>

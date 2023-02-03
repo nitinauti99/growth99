@@ -36,7 +36,14 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
         indexPath = index
     }
     
-    @IBAction func selectionButtonPressed() {
-        self.delegate?.isQuestionnaireSelection(cell: self, index: indexPath)
+    @IBAction func selectionButtonPressed(sender: UIButton) {
+        if sender.isSelected {
+            sender.setBackgroundImage(#imageLiteral(resourceName: "tickselected"), for: .normal)
+        } else {
+            sender.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for:.normal)
+        }
+        sender.isSelected = !sender.isSelected
+
+        //self.delegate?.isQuestionnaireSelection(cell: self, index: indexPath)
     }
 }

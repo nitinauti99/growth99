@@ -9,7 +9,7 @@ import Foundation
 
 struct QuestionarieModel: Codable {
     let questionnaireName: String?
-    let AppointmentId: Int?
+    let AppointmentId: String?
     let questionnaireStatus: String?
     let submittedDate: String?
     let createdAt: String?

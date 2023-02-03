@@ -28,7 +28,7 @@ class QuestionarieTableViewCell: UITableViewCell {
     func configureCell(questionarieVM: QuestionarieViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.QuestionarieDataAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.questionnaireName
-        self.appointmentID.text = String(questionarieVM?.AppointmentId ?? 0)
+        self.appointmentID.text = questionarieVM?.AppointmentId
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
         self.submittedDate.text = questionarieVM?.submittedDate
         self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? "")

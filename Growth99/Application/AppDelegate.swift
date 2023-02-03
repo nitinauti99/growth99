@@ -25,7 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             setUpHomeVC()
         }
-       // authenticationWithTouchID()
+        let segmentedControlAppearance = ScrollableSegmentedControl.appearance()
+        segmentedControlAppearance.segmentContentColor = UIColor.black
+        segmentedControlAppearance.selectedSegmentContentColor = UIColor.white
+        segmentedControlAppearance.backgroundColor = UIColor.white
+        segmentedControlAppearance.tintColor = UIColor(hexString: "#009EDE")
         return true
     }
 

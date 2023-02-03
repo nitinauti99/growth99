@@ -122,6 +122,7 @@
 		84B8B81B2973A64500742B42 /* EditTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B81A2973A64500742B42 /* EditTasksViewModel.swift */; };
 		84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B81C2973A88300742B42 /* EditTasksViewController.swift */; };
 		84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */; };
+		84C8F16C298BDCAC0049CEAC /* ScrollableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8F169298BDCAB0049CEAC /* ScrollableSegmentedControl.swift */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
 		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
 		84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617729670676001FE469 /* AppointmentsViewController.swift */; };
@@ -560,6 +561,8 @@
 		84B8B81A2973A64500742B42 /* EditTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksViewModel.swift; sourceTree = "<group>"; };
 		84B8B81C2973A88300742B42 /* EditTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksViewController.swift; sourceTree = "<group>"; };
 		84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditTasksViewController.storyboard; sourceTree = "<group>"; };
+		84C8F169298BDCAB0049CEAC /* ScrollableSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentedControl.swift; sourceTree = "<group>"; };
+		84C8F16A298BDCAB0049CEAC /* ScrollableSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableSegmentedControl.h; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
 		84D0617729670676001FE469 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
@@ -928,7 +931,6 @@
 		84088BA42977E5B50060855E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8499E1AC298AB3C60072ACF4 /* BaseView */,
 				84D0619D29670676001FE469 /* PateintDetailViewController.swift */,
 				84D0619E29670676001FE469 /* PateintDetailViewController+Tableview.swift */,
 				84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */,
@@ -1666,6 +1668,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */,
 				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				84F61018292A71A400B1FB69 /* GrowthCore */,
 				84F61083292A71A900B1FB69 /* GrowthNetwork */,
@@ -1693,13 +1696,13 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		8499E1AC298AB3C60072ACF4 /* BaseView */ = {
+		8499E1AC298AB3C60072ACF4 /* ContainerView */ = {
 			isa = PBXGroup;
 			children = (
 				8499E1AD298AB3F90072ACF4 /* PeteintDetailView.swift */,
 				8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */,
 			);
-			path = BaseView;
+			path = ContainerView;
 			sourceTree = "<group>";
 		};
 		84B75EA72968D7F100962F3E /* ListScreen */ = {
@@ -1774,6 +1777,15 @@
 				84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				84C8F169298BDCAB0049CEAC /* ScrollableSegmentedControl.swift */,
+				84C8F16A298BDCAB0049CEAC /* ScrollableSegmentedControl.h */,
+			);
+			path = ScrollableSegmentedControl;
 			sourceTree = "<group>";
 		};
 		84D0614729670676001FE469 /* Modules */ = {
@@ -2127,6 +2139,7 @@
 		84D0619A29670676001FE469 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				8499E1AC298AB3C60072ACF4 /* ContainerView */,
 				84088BA32977E59C0060855E /* Model */,
 				84088BA22977E5900060855E /* ViewModel */,
 				84088BA42977E5B50060855E /* View */,
@@ -2266,9 +2279,9 @@
 		84D062A6296707A5001FE469 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				84E34C3C2970264D00C58B0D /* list */,
 				84E34C412970268E00C58B0D /* Ediit */,
 				84E34C3D2970265C00C58B0D /* Add */,
-				84E34C3C2970264D00C58B0D /* list */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -3535,6 +3548,7 @@
 				84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */,
 				845C39D1292276AF00D934C5 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				84F610E1292A71AB00B1FB69 /* String+Extension.swift in Sources */,
+				84C8F16C298BDCAC0049CEAC /* ScrollableSegmentedControl.swift in Sources */,
 				84D063112967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift in Sources */,
 				84F610C2292A71AA00B1FB69 /* Base64.swift in Sources */,
 				845C39D6292276B000D934C5 /* DrawerViewModel.swift in Sources */,

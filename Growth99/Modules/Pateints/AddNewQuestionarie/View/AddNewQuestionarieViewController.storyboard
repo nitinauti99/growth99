@@ -29,24 +29,76 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3n8-X7-VMh">
-                                <rect key="frame" x="0.0" y="127" width="390" height="717"/>
+                                <rect key="frame" x="0.0" y="127" width="390" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="weA-xc-R0d"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="9Rr-gZ-Fdd"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3TQ-CM-aEK">
+                                <rect key="frame" x="0.0" y="730" width="390" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvC-aW-cWU">
+                                        <rect key="frame" x="38" y="23" width="130" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bZV-38-IEk"/>
+                                            <constraint firstAttribute="width" constant="130" id="wpR-wh-Nhe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Send to Patient"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfN-lo-6sB">
+                                        <rect key="frame" x="188" y="23" width="130" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="WlZ-fK-Tcg"/>
+                                            <constraint firstAttribute="height" constant="40" id="WqJ-sU-sEz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="kfN-lo-6sB" firstAttribute="leading" secondItem="XvC-aW-cWU" secondAttribute="trailing" constant="20" id="7bM-zH-nBB"/>
+                                    <constraint firstItem="XvC-aW-cWU" firstAttribute="top" secondItem="3TQ-CM-aEK" secondAttribute="topMargin" constant="15" id="984-dr-7jO"/>
+                                    <constraint firstItem="XvC-aW-cWU" firstAttribute="leading" secondItem="3TQ-CM-aEK" secondAttribute="leadingMargin" constant="30" id="LB0-9U-zEa"/>
+                                    <constraint firstItem="kfN-lo-6sB" firstAttribute="top" secondItem="XvC-aW-cWU" secondAttribute="top" id="bUg-M7-jDg"/>
+                                    <constraint firstAttribute="height" constant="80" id="szn-IM-DDI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3n8-X7-VMh" secondAttribute="trailing" id="5zn-BP-24h"/>
+                            <constraint firstItem="3TQ-CM-aEK" firstAttribute="top" secondItem="3n8-X7-VMh" secondAttribute="bottom" id="BMG-MC-vQY"/>
                             <constraint firstItem="3n8-X7-VMh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ECp-9N-FjR"/>
+                            <constraint firstItem="3TQ-CM-aEK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="H3c-pS-nLG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QaQ-aS-Z47" secondAttribute="trailing" constant="20" id="PNt-c8-ibC"/>
                             <constraint firstItem="QaQ-aS-Z47" firstAttribute="leadingMargin" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="Pvt-AZ-1lQ"/>
-                            <constraint firstAttribute="bottom" secondItem="3n8-X7-VMh" secondAttribute="bottom" id="aPx-bg-R3T"/>
                             <constraint firstItem="QaQ-aS-Z47" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="gsN-vQ-I1r"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3TQ-CM-aEK" secondAttribute="trailing" id="k3B-zO-WLB"/>
                             <constraint firstItem="3n8-X7-VMh" firstAttribute="top" secondItem="QaQ-aS-Z47" secondAttribute="bottom" constant="10" id="n0C-vw-tPu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="3TQ-CM-aEK" secondAttribute="bottom" id="sKM-CZ-Voe"/>
                         </constraints>
                     </view>
                     <connections>

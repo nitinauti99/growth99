@@ -437,7 +437,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="FirstNameButton" destination="sDh-Ro-flm" id="btA-lO-v94"/>
                         <outlet property="dateOfBirth" destination="6xs-kk-JWt" id="f3W-oC-F3r"/>
                         <outlet property="email" destination="SzM-Nf-7ST" id="leu-ZL-gcb"/>
                         <outlet property="existingButton" destination="nad-rI-wTR" id="rrR-Rs-YjI"/>
