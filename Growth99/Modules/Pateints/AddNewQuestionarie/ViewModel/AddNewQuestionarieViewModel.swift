@@ -13,7 +13,6 @@ protocol AddNewQuestionarieViewModelProtocol {
     func QuestionarieDataAtIndex(index: Int) -> AddNewQuestionarieModel?
     var QuestionarieFilterDataData: [AddNewQuestionarieModel] { get }
     func QuestionarieFilterDataDataAtIndex(index: Int)-> AddNewQuestionarieModel?
-    
     func sendQuestionarieListToPateint(questionnaireIds: (Int, Int))
 }
 
@@ -42,7 +41,17 @@ class AddNewQuestionarieViewModel {
     }
     
     func sendQuestionarieListToPateint(questionnaireIds: (Int, Int)) {
-        
+//
+//        self.requestManager.request(forPath: ApiUrl.createTaskUser, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let response):
+//                print(response)
+//                self.delegate?.taskUserCreatedSuccessfully(responseMessage: "task User Created Successfully")
+//            case .failure(let error):
+//                self.delegate?.errorReceived(error: error.localizedDescription)
+//            }
+//        }
     }
     
     func QuestionarieDataAtIndex(index: Int)-> AddNewQuestionarieModel? {
@@ -55,7 +64,6 @@ class AddNewQuestionarieViewModel {
 }
 
 extension AddNewQuestionarieViewModel: AddNewQuestionarieViewModelProtocol {
-   
    
     var QuestionarieDataList: [AddNewQuestionarieModel] {
         return self.QuestionarieData

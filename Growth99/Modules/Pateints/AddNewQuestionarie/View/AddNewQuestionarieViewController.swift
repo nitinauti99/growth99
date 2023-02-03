@@ -26,7 +26,6 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = AddNewQuestionarieViewModel(delegate: self)
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(SendtoPatientButtonTapped), imageName: "Send to Patient")
         self.view.ShowSpinner()
         viewModel?.getQuestionarieList()
     }
@@ -54,7 +53,7 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
     }
     
     func isQuestionnaireSelection(cell: AddNewQuestionarieTableViewCell, index: IndexPath) {
-
+        
     }
     
     func questionarieListRecived() {
@@ -67,12 +66,10 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
         self.view.showToast(message: error)
     }
     
-    @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
+    @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
         self.view.ShowSpinner()
         
     }
-    
-    
 }
 
 extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewDataSource {

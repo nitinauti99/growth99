@@ -53,6 +53,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         descriptionTextView.layer.borderWidth = 1.0;
         self.view.ShowSpinner()
         self.viewModel?.getTaskDetail(taskId: taskId)
+        self.title = Constant.Profile.tasksDetail
     }
     
     func setUPUI() {

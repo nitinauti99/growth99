@@ -35,8 +35,13 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var newButton: UIButton!
     @IBOutlet private weak var existingButton: UIButton!
     @IBOutlet private weak var scrollViewHight: NSLayoutConstraint!
-    @IBOutlet private weak var FirstNameButton: UIButton!
+    @IBOutlet private weak var firstNameButton: UIButton!
+    @IBOutlet private weak var lastNameButton: UIButton!
+    @IBOutlet private weak var phoneNumberButton: UIButton!
+    @IBOutlet private weak var dateOfBirthButton: UIButton!
+    @IBOutlet private weak var genderButton: UIButton!
     @IBOutlet private weak var notesButton: UIButton!
+    @IBOutlet weak var subView: UIView!
 
     var dateFormater : DateFormaterProtocol?
     private var viewModel: PateintDetailViewModelProtocol?
@@ -57,6 +62,8 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.ShowSpinner()
+        self.subView.createBorderForView(redius: 8, width: 1)
+        self.subView.addBottomShadow(color:.gray)
         self.viewModel = PateintDetailViewModel(delegate: self)
         dateFormater = DateFormater()
         viewModel?.getpateintsList(pateintId: self.workflowTaskPatientId)
@@ -81,13 +88,26 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     func setUpClearColor() {
+        self.gender.isEnabled = false
         firstName.borderColor = .clear
+        firstNameButton.isSelected = false
+        self.firstName.isUserInteractionEnabled = false
         lastName.borderColor = .clear
+        self.lastNameButton.isUserInteractionEnabled = false
+        lastNameButton.isSelected = false
         email.borderColor = .clear
         phoneNumber.borderColor = .clear
+        self.phoneNumber.isUserInteractionEnabled = false
+        phoneNumber.isSelected = false
         gender.borderColor = .clear
+        self.gender.isUserInteractionEnabled = false
+        gender.isSelected = false
         dateOfBirth.borderColor = .clear
+        self.dateOfBirth.isUserInteractionEnabled = false
+        dateOfBirth.isSelected = false
         notes.borderColor = .clear
+        self.notes.isUserInteractionEnabled = false
+        notes.isSelected = false
     }
     
     func registerCell() {
@@ -102,7 +122,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewWillAppear(animated)
         self.registerCell()
         setUpClearColor()
-        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
+//        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
 
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
@@ -201,10 +221,11 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     func updatedPateintsInfo(responseMessage: String) {
-        self.view.HideSpinner()
-        firstName.isUserInteractionEnabled = true
-        self.view.showToast(message: responseMessage)
-        setUpClearColor()
+        DispatchQueue.main.async {
+            self.view.HideSpinner()
+            self.view.showToast(message: responseMessage)
+            self.setUpClearColor()
+        }
     }
     
     ///  multiple selection with selction false
@@ -222,7 +243,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         selectionMenu.reloadInputViews()
         selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
-    
     ///  multiple selection with selction false
     @objc func emailTemplateList(_ textField: UITextField){
         let list = viewModel?.emailTemplateListData ?? []
@@ -314,6 +334,8 @@ extension PateintDetailViewController {
         if sender.isSelected == true {
             self.view.ShowSpinner()
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "firstName", ansString: firstName.text ?? "")
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "edit"), for: .normal)
         }
         sender.isSelected = true
     }
@@ -325,6 +347,8 @@ extension PateintDetailViewController {
         if sender.isSelected == true {
             self.view.ShowSpinner()
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "lastName", ansString: lastName.text ?? "")
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "edit"), for: .normal)
         }
         sender.isSelected = true
     }
@@ -335,6 +359,8 @@ extension PateintDetailViewController {
         if sender.isSelected == true {
             self.view.ShowSpinner()
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "phone", ansString: phoneNumber.text ?? "")
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "edit"), for: .normal)
         }
         sender.isSelected = true
     }
@@ -344,7 +370,10 @@ extension PateintDetailViewController {
         gender.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "gender", ansString: (gender.text ?? "").uppercased())
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "gender", ansString: (gender.text ?? ""))
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "edit"), for: .normal)
+
         }
         sender.isSelected = true
     }
@@ -355,6 +384,8 @@ extension PateintDetailViewController {
         if sender.isSelected == true {
             self.view.ShowSpinner()
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "notes", ansString: notes.text ?? "")
+            sender.isSelected = false
+            sender.setImage(UIImage(named: "edit"), for: .normal)
         }
         sender.isSelected = true
     }
