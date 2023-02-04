@@ -14,49 +14,77 @@ class PeteintDetailView: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     var workflowTaskPatientId = Int()
-
+    var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.setupView()
         self.title = Constant.Profile.patientDetail
         segmentedControl.segmentStyle = .textOnly
-        segmentedControl.insertSegment(withTitle: "Pateint Detail", at: 0)
-        segmentedControl.insertSegment(withTitle: "Questionarie", at: 1)
-        segmentedControl.insertSegment(withTitle: "Tasks", at: 2)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.patientDetail, at: 0)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.Questionnarie, at: 1)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.tasks, at: 2)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.Consents, at: 3)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.appointmentDetail, at: 4)
+
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
-        segmentedControl.underlineHeight = 40
+        segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.fixedSegmentWidth = true
+        segmentedControl.fixedSegmentWidth = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        segmentedControl.selectedSegmentIndex = selectedindex
     }
     
     func setupView() {
-            remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: QuestionarieVC)
-            add(asChildViewController: pateintDetailVC)
-            navigationItem.rightBarButtonItem = nil
+        remove(asChildViewController: tasksListVC)
+        remove(asChildViewController: questionarieVC)
+        add(asChildViewController: pateintDetailVC)
+        navigationItem.rightBarButtonItem = nil
     }
     
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
-        if segmentedControl.selectedSegmentIndex == 0 {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
             remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: QuestionarieVC)
+            remove(asChildViewController: questionarieVC)
+            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: PateintsAppointmentListVC)
             add(asChildViewController: pateintDetailVC)
             navigationItem.rightBarButtonItem = nil
-        }
-        if segmentedControl.selectedSegmentIndex == 1 {
+        case 1:
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: pateintDetailVC)
-            add(asChildViewController: QuestionarieVC)
+            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: PateintsAppointmentListVC)
+            add(asChildViewController: questionarieVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
-        }
-        if segmentedControl.selectedSegmentIndex == 2 {
-            remove(asChildViewController: QuestionarieVC)
+        case 2:
+            remove(asChildViewController: questionarieVC)
             remove(asChildViewController: pateintDetailVC)
+            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: PateintsAppointmentListVC)
             add(asChildViewController: tasksListVC)
             navigationItem.rightBarButtonItem = nil
-
+        case 3:
+            remove(asChildViewController: questionarieVC)
+            remove(asChildViewController: pateintDetailVC)
+            remove(asChildViewController: tasksListVC)
+            remove(asChildViewController: PateintsAppointmentListVC)
+            add(asChildViewController: consentsListVC)
+            navigationItem.rightBarButtonItem = nil
+        case 4:
+            remove(asChildViewController: questionarieVC)
+            remove(asChildViewController: pateintDetailVC)
+            remove(asChildViewController: tasksListVC)
+            remove(asChildViewController: consentsListVC)
+            add(asChildViewController: PateintsAppointmentListVC)
+            navigationItem.rightBarButtonItem = nil
+        default:
+            break
         }
+        
 //        if segmentedControl.selectedSegmentIndex == 3 {
 //            remove(asChildViewController: tasksListVC)
 //            remove(asChildViewController: tasksListVC)
@@ -86,13 +114,26 @@ class PeteintDetailView: UIViewController {
     private lazy var tasksListVC: TasksListViewController = {
         let tasksList = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
         tasksList.workflowTaskPatient = workflowTaskPatientId
+        tasksList.fromPateint = true
         return tasksList
     }()
     
-    private lazy var QuestionarieVC: QuestionarieViewController = {
+    private lazy var questionarieVC: QuestionarieViewController = {
         let questionarieList = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
         questionarieList.pateintId = workflowTaskPatientId
         return questionarieList
+    }()
+    
+    private lazy var consentsListVC: ConsentsListViewController = {
+        let consentsList = UIStoryboard(name: "ConsentsListViewController", bundle: nil).instantiateViewController(withIdentifier: "ConsentsListViewController") as! ConsentsListViewController
+        consentsList.pateintId = workflowTaskPatientId
+        return consentsList
+    }()
+
+    private lazy var PateintsAppointmentListVC: PatientAppointmentViewController = {
+        let patientAppointmentList = UIStoryboard(name: "PatientAppointmentViewController", bundle: nil).instantiateViewController(withIdentifier: "PatientAppointmentViewController") as! PatientAppointmentViewController
+        patientAppointmentList.pateintId = workflowTaskPatientId
+        return patientAppointmentList
     }()
     
     

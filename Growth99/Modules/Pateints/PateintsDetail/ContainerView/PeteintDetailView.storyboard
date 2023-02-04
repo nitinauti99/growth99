@@ -261,13 +261,6 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-42-9Up">
-                                                        <rect key="frame" x="27" y="555" width="263" height="45"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <connections>
-                                                            <action selector="openGenderSelctionWithSender:" destination="DsN-d9-OBe" eventType="touchUpInside" id="mgA-uI-tU9"/>
-                                                        </connections>
-                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7I-Zg-L3F">
                                                         <rect key="frame" x="25" y="615" width="255" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -391,7 +384,6 @@
                                                     <constraint firstItem="Q7I-Zg-L3F" firstAttribute="leading" secondItem="83m-zX-z6n" secondAttribute="leading" id="0yl-8p-moS"/>
                                                     <constraint firstItem="y14-sA-WYD" firstAttribute="top" secondItem="x2F-6c-7E3" secondAttribute="bottom" constant="15" id="21L-TW-r0a"/>
                                                     <constraint firstItem="NU0-YU-3mq" firstAttribute="trailing" secondItem="x2F-6c-7E3" secondAttribute="trailing" id="2qo-7F-2Qr"/>
-                                                    <constraint firstItem="cmA-42-9Up" firstAttribute="bottom" secondItem="Ifd-xg-uz2" secondAttribute="bottom" id="2sb-ug-qFL"/>
                                                     <constraint firstItem="lBc-29-Hdn" firstAttribute="leading" secondItem="fxV-DM-a4t" secondAttribute="leading" constant="25" id="4vM-oB-3hP"/>
                                                     <constraint firstItem="reG-0H-0xp" firstAttribute="leading" secondItem="NU0-YU-3mq" secondAttribute="leading" id="59O-fk-VzS"/>
                                                     <constraint firstItem="Ifd-xg-uz2" firstAttribute="leading" secondItem="reG-0H-0xp" secondAttribute="leading" id="5rZ-pW-bY6"/>
@@ -423,9 +415,7 @@
                                                     <constraint firstItem="Ifd-xg-uz2" firstAttribute="top" secondItem="83m-zX-z6n" secondAttribute="bottom" constant="5" id="aRo-i6-jKg"/>
                                                     <constraint firstItem="y14-sA-WYD" firstAttribute="trailing" secondItem="5jf-bi-UGK" secondAttribute="trailing" id="be7-ea-xNS"/>
                                                     <constraint firstItem="x2F-6c-7E3" firstAttribute="leading" secondItem="bi8-bH-ZlK" secondAttribute="leading" id="br7-Sm-V1Y"/>
-                                                    <constraint firstItem="cmA-42-9Up" firstAttribute="leading" secondItem="Ifd-xg-uz2" secondAttribute="leading" id="dzj-DF-xaX"/>
                                                     <constraint firstItem="brU-kc-PND" firstAttribute="top" secondItem="Q7I-Zg-L3F" secondAttribute="bottom" constant="5" id="fwA-Rw-UZ1"/>
-                                                    <constraint firstItem="cmA-42-9Up" firstAttribute="top" secondItem="Ifd-xg-uz2" secondAttribute="top" id="fwE-Uq-Ax0"/>
                                                     <constraint firstItem="5jf-bi-UGK" firstAttribute="top" secondItem="bi8-bH-ZlK" secondAttribute="bottom" constant="15" id="gr0-Ds-yYP"/>
                                                     <constraint firstItem="BKp-dF-Bab" firstAttribute="leading" secondItem="fxV-DM-a4t" secondAttribute="leading" id="hn0-AR-l58"/>
                                                     <constraint firstItem="UVo-M5-0bN" firstAttribute="leading" secondItem="brU-kc-PND" secondAttribute="trailing" constant="15" id="iwS-sg-JsE"/>
@@ -442,7 +432,6 @@
                                                     <constraint firstItem="83m-zX-z6n" firstAttribute="trailing" secondItem="KJb-bU-xGm" secondAttribute="trailing" id="tPd-eS-GFa"/>
                                                     <constraint firstItem="y14-sA-WYD" firstAttribute="leading" secondItem="5jf-bi-UGK" secondAttribute="leading" id="tQO-Ly-2Dv"/>
                                                     <constraint firstAttribute="trailing" secondItem="lBc-29-Hdn" secondAttribute="trailing" constant="90" id="tia-gZ-hUx"/>
-                                                    <constraint firstItem="cmA-42-9Up" firstAttribute="trailing" secondItem="Ifd-xg-uz2" secondAttribute="trailing" id="u7U-Fe-vRW"/>
                                                     <constraint firstItem="brU-kc-PND" firstAttribute="leading" secondItem="Q7I-Zg-L3F" secondAttribute="leading" id="vEP-zg-ofd"/>
                                                     <constraint firstItem="wgE-nb-LUX" firstAttribute="leading" secondItem="xye-QY-gyY" secondAttribute="trailing" constant="15" id="yHs-lc-Cca"/>
                                                     <constraint firstItem="xye-QY-gyY" firstAttribute="top" secondItem="lgu-VY-aqR" secondAttribute="bottom" constant="5" id="yqx-e9-ztl"/>
@@ -520,25 +509,25 @@
     </scenes>
     <designables>
         <designable name="Ifd-xg-uz2">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="NU0-YU-3mq">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="bi8-bH-ZlK">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="brU-kc-PND">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="reG-0H-0xp">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="x2F-6c-7E3">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="xye-QY-gyY">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
     </designables>
     <resources>
