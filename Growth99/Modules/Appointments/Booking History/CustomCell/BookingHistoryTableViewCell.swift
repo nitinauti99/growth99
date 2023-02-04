@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BookingHistoryListTableViewCellDelegate: AnyObject {
-    func removeBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
+    func removeAppointment(cell: BookingHistoryTableViewCell, index: IndexPath)
     func editAppointment(cell: BookingHistoryTableViewCell, index: IndexPath)
     func paymentBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
 }
@@ -44,7 +44,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButtonPressed() {
-        self.delegate?.removeBookingHistory(cell: self, index: indexPath)
+        self.delegate?.removeAppointment(cell: self, index: indexPath)
     }
     
     @IBAction func editButtonPressed() {
