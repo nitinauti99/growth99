@@ -14,9 +14,18 @@ protocol BookingHistoryViewContollerProtocol: AnyObject {
     func serviceListDataRecivedBookingHistory()
     func providerListDataRecivedBookingHistory()
     func appointmentListDataRecivedBookingHistory()
+    func appointmentRemovedSuccefully(message: String)
 }
 
-class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContollerProtocol {
+class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContollerProtocol, BookingHistoryListTableViewCellDelegate {
+    func removeBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath) {
+    
+    }
+    
+    func paymentBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath) {
+        
+    }
+    
     func clinicsReceivedBookingHistory() {
         
     }
@@ -108,6 +117,28 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     func errorReceivedBookingHistory(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)
+    }
+    
+    func editAppointment(cell: BookingHistoryTableViewCell, index: IndexPath) {
+        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        editVC.editBookingHistoryData = self.bookingHistoryListData[index.row]
+        navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func removeAppointment(cell: PateintListTableViewCell, index: IndexPath) {
+        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete", preferredStyle: UIAlertController.Style.alert)
+        //\(cell.PateintDataAtIndex(index: index.row)?.name ?? "")"
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+//            self?.view.ShowSpinner()
+//            let pateintId = self?.viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+//            self?.viewModel?.removePateints(pateintId: pateintId)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func appointmentRemovedSuccefully(message: String) {
+        self.getBookingHistory()
     }
 }
 

@@ -20,6 +20,8 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookingHistoryTableViewCell", for: indexPath) as? BookingHistoryTableViewCell else { return UITableViewCell() }
+        cell.delegate = self
+        cell.configureCell(index: indexPath)
         cell.id.text = String(self.bookingHistoryListData[indexPath.row].id ?? 0)
         cell.patientNameLabel.text = "\(self.bookingHistoryListData[indexPath.row].patientFirstName ?? String.blank) \(self.bookingHistoryListData[indexPath.row].patientLastName ?? String.blank)"
         cell.clinicNameLabel.text = self.bookingHistoryListData[indexPath.row].clinicName

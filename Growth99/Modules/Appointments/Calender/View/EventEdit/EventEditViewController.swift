@@ -195,6 +195,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         self.view.showToast(message: "Appointment Cancelled Sucessfully")
         self.navigationController?.popViewController(animated: true)
     }
+
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)

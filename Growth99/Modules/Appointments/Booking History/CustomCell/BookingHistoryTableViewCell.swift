@@ -9,8 +9,7 @@ import UIKit
 
 protocol BookingHistoryListTableViewCellDelegate: AnyObject {
     func removeBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
-    func editBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
-    func videoBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
+    func editAppointment(cell: BookingHistoryTableViewCell, index: IndexPath)
     func paymentBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
 }
 
@@ -40,18 +39,18 @@ class BookingHistoryTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
 
+    func configureCell(index: IndexPath) {
+        indexPath = index
+    }
+    
     @IBAction func deleteButtonPressed() {
         self.delegate?.removeBookingHistory(cell: self, index: indexPath)
     }
     
     @IBAction func editButtonPressed() {
-        self.delegate?.editBookingHistory(cell: self, index: indexPath)
+        self.delegate?.editAppointment(cell: self, index: indexPath)
     }
-    
-    @IBAction func videoButtonPressed() {
-        self.delegate?.videoBookingHistory(cell: self, index: indexPath)
-    }
-    
+
     @IBAction func paymentButtonPressed() {
         self.delegate?.paymentBookingHistory(cell: self, index: indexPath)
     }
