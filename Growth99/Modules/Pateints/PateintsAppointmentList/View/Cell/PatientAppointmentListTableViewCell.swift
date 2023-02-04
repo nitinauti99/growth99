@@ -8,10 +8,10 @@
 import UIKit
 
 protocol PatientAppointmentListTableViewCellDelegate: AnyObject {
-    func removeBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
-    func editBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
-    func videoBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
-    func paymentBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
+//    func removeBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
+//    func editBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
+//    func videoBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
+//    func paymentBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
 }
 
 class PatientAppointmentListTableViewCell: UITableViewCell {
@@ -38,21 +38,40 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color:.gray)
         dateFormater = DateFormater()
     }
-
-    @IBAction func deleteButtonPressed() {
-        self.delegate?.removeBookingHistory(cell: self, index: indexPath)
+    
+    func configureCell(patientAppointmentVM: PatientAppointmentViewModelProtocol?, index: IndexPath) {
+        let patientAppointmentListVM = patientAppointmentVM?.patientListAtIndex(index: index.row)
+        self.id.text = String(patientAppointmentListVM?.id ?? 0)
+        self.patientNameLabel.text = patientAppointmentListVM?.patientName ?? String.blank
+        self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
+        self.providerNameLabel.text = patientAppointmentListVM?.providerName
+        self.typeLabel.text = patientAppointmentListVM?.appointmentType
+       
+//        if let data = patientAppointmentListVM?.source {
+//            self.sourceLabel.text = data
+//        } else {
+//            self.sourceLabel.text = "-"
+//        }
+        self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
+        self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
+        self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
+        self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
     }
     
-    @IBAction func editButtonPressed() {
-        self.delegate?.editBookingHistory(cell: self, index: indexPath)
-    }
-    
-    @IBAction func videoButtonPressed() {
-        self.delegate?.videoBookingHistory(cell: self, index: indexPath)
-    }
-    
-    @IBAction func paymentButtonPressed() {
-        self.delegate?.paymentBookingHistory(cell: self, index: indexPath)
-    }
+//    @IBAction func deleteButtonPressed() {
+//        self.delegate?.removeBookingHistory(cell: self, index: indexPath)
+//    }
+//
+//    @IBAction func editButtonPressed() {
+//        self.delegate?.editBookingHistory(cell: self, index: indexPath)
+//    }
+//
+//    @IBAction func videoButtonPressed() {
+//        self.delegate?.videoBookingHistory(cell: self, index: indexPath)
+//    }
+//
+//    @IBAction func paymentButtonPressed() {
+//        self.delegate?.paymentBookingHistory(cell: self, index: indexPath)
+//    }
     
 }

@@ -10,27 +10,23 @@ import UIKit
 
 protocol PatientAppointmentViewControllerProtocol: AnyObject {
     func errorReceivedBookingHistory(error: String)
-    func clinicsReceivedBookingHistory()
-    func serviceListDataRecivedBookingHistory()
-    func providerListDataRecivedBookingHistory()
-    func appointmentListDataRecivedBookingHistory()
+    func patientAppointmentListDataRecived()
 }
 
 class PatientAppointmentViewController: UIViewController, PatientAppointmentViewControllerProtocol {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-    
     var viewModel: PatientAppointmentViewModelProtocol?
     var isSearch : Bool = false
-    var bookingHistoryFilterData = [AppointmentDTOList]()
-    var bookingHistoryListData = [AppointmentDTOList]()
+    var patientsAppointmentListFilterData = [PatientsAppointmentListModel]()
+    var patientsAppointmentList = [PatientsAppointmentListModel]()
     var pateintId = Int()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PatientAppointmentViewModel(delegate: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         self.title = Constant.Profile.appointmentDetail
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,12 +40,7 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
     func registerTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        tableView.register(UINib(nibName: "PatientAppointmentViewController", bundle: nil), forCellReuseIdentifier: "PatientAppointmentViewController")
-    }
-    
-    @objc func updateUI() {
-        self.getBookingHistory()
-        self.view.ShowSpinner()
+        tableView.register(UINib(nibName: "PatientAppointmentListTableViewCell", bundle: nil), forCellReuseIdentifier: "PatientAppointmentListTableViewCell")
     }
     
     func addSerchBar() {
@@ -59,23 +50,6 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
-    }
-    
-    func clinicsReceivedBookingHistory() {
-        
-    }
-    
-    func serviceListDataRecivedBookingHistory() {
-        
-    }
-    
-    func providerListDataRecivedBookingHistory() {
-        
-    }
-
-    @objc func LeadList() {
-        self.view.ShowSpinner()
-        self.getBookingHistory()
     }
     
     @objc func creatUser() {
@@ -94,10 +68,9 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         return formatter
     }()
     
-    func appointmentListDataRecivedBookingHistory() {
+    func patientAppointmentListDataRecived() {
         self.view.HideSpinner()
-        bookingHistoryListData = viewModel?.appointmentInfoListDataBookingHistory ?? []
-        bookingHistoryListData = bookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? "") > ($1.appointmentCreatedDate ?? "")})
+        patientsAppointmentList = viewModel?.getPatientsAppointmentList ?? []
         self.tableView.reloadData()
     }
     
@@ -110,7 +83,7 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
 extension PatientAppointmentViewController:  UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        bookingHistoryFilterData = (bookingHistoryListData.filter { $0.patientFirstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        patientsAppointmentListFilterData = (patientsAppointmentList.filter { $0.patientName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
         isSearch = true
         tableView.reloadData()
     }
