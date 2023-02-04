@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let segmentedControlAppearance = ScrollableSegmentedControl.appearance()
         segmentedControlAppearance.segmentContentColor = UIColor.black
-        segmentedControlAppearance.selectedSegmentContentColor = UIColor.white
+        segmentedControlAppearance.selectedSegmentContentColor = UIColor(hexString: "#009EDE")
         segmentedControlAppearance.backgroundColor = UIColor.white
         segmentedControlAppearance.tintColor = UIColor(hexString: "#009EDE")
         return true

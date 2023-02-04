@@ -42,7 +42,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var genderButton: UIButton!
     @IBOutlet private weak var notesButton: UIButton!
     @IBOutlet weak var subView: UIView!
-
+    
     var dateFormater : DateFormaterProtocol?
     private var viewModel: PateintDetailViewModelProtocol?
     var pateintData: PateintsDetailListModel?
@@ -53,7 +53,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     var emailBody: String = ""
     var emailSubject: String = ""
     var buttons: [UIButton] = []
-   
+    
     var tableViewHeight: CGFloat {
         pateintDetailTableView.layoutIfNeeded()
         return pateintDetailTableView.contentSize.height
@@ -73,7 +73,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @objc func dateFromButtonPressed() {
         dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
     }
-   
+    
     @IBAction func openQuestionarieList (sender: UIButton) {
         let QuestionarieVC = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
         QuestionarieVC.pateintId = workflowTaskPatientId
@@ -122,9 +122,9 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewWillAppear(animated)
         self.registerCell()
         setUpClearColor()
-//        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
+        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
-
+        
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         existingButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
         scrollViewHight.constant = tableViewHeight + 1000
@@ -373,7 +373,7 @@ extension PateintDetailViewController {
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "gender", ansString: (gender.text ?? ""))
             sender.isSelected = false
             sender.setImage(UIImage(named: "edit"), for: .normal)
-
+            
         }
         sender.isSelected = true
     }

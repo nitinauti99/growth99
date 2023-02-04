@@ -364,8 +364,8 @@ public enum ScrollableSegmentedControlSegmentStyle: Int {
             flowLayout.itemSize = CGSize(width: width, height: frame.size.height)
         } else {
             width = 1.0
-            flowLayout.itemSize = CGSize(width: width, height: frame.size.height)
-            flowLayout.estimatedItemSize = CGSize(width: width, height: frame.size.height)
+            flowLayout.itemSize = CGSize(width: width + 20 , height: frame.size.height)
+            flowLayout.estimatedItemSize = CGSize(width: width + 20, height: frame.size.height)
         }
     }
     
@@ -384,7 +384,7 @@ public enum ScrollableSegmentedControlSegmentStyle: Int {
         let size = (text as NSString).size(withAttributes: fontAttributes)
         let newLongestTextWidth = 2.0 + size.width + BaseSegmentCollectionViewCell.textPadding * 2
         if newLongestTextWidth > longestTextWidth {
-            longestTextWidth = newLongestTextWidth
+            longestTextWidth = 100
             configureSegmentSize()
         }
     }
@@ -672,6 +672,7 @@ public enum ScrollableSegmentedControlSegmentStyle: Int {
         override func configure(){
             super.configure()
             contentView.addSubview(titleLabel)
+            contentView.bringSubviewToFront(titleLabel)
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.textColor = BaseSegmentCollectionViewCell.defaultTextColor
             titleLabel.font = BaseSegmentCollectionViewCell.defaultFont

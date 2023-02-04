@@ -1,9 +1,3 @@
-//
-//  CalenderModel.swift
-//  Growth99
-//
-//  Created by Exaze Technologies on 16/01/23.
-//
 
 import Foundation
 

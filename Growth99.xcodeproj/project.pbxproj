@@ -45,6 +45,18 @@
 		845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */; };
 		845C39E8292276B000D934C5 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C3292276AF00D934C5 /* EndPoints.swift */; };
 		8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */; };
+		8471D528298D1ADB0010893E /* ConsentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D527298D1ADB0010893E /* ConsentsListViewController.swift */; };
+		8471D52A298D1AE80010893E /* ConsentsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8471D529298D1AE80010893E /* ConsentsListViewController.storyboard */; };
+		8471D52C298D1B320010893E /* ConsentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D52B298D1B320010893E /* ConsentsListViewModel.swift */; };
+		8471D52E298D1B7B0010893E /* ConsentsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D52D298D1B7B0010893E /* ConsentsListModel.swift */; };
+		8471D532298D20230010893E /* ConsentsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D530298D20230010893E /* ConsentsListTableViewCell.swift */; };
+		8471D533298D20230010893E /* ConsentsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8471D531298D20230010893E /* ConsentsListTableViewCell.xib */; };
+		8471D539298D460B0010893E /* PatientAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D538298D460B0010893E /* PatientAppointmentViewController.swift */; };
+		8471D53B298D465B0010893E /* PatientAppointmentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8471D53A298D465B0010893E /* PatientAppointmentViewController.storyboard */; };
+		8471D53D298D483A0010893E /* PatientAppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D53C298D483A0010893E /* PatientAppointmentViewModel.swift */; };
+		8471D541298D49130010893E /* PatientAppointmentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D53F298D49130010893E /* PatientAppointmentListTableViewCell.swift */; };
+		8471D542298D49130010893E /* PatientAppointmentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8471D540298D49130010893E /* PatientAppointmentListTableViewCell.xib */; };
+		8471D544298D49CE0010893E /* PatientAppointmentViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D543298D49CE0010893E /* PatientAppointmentViewController+TableView.swift */; };
 		8473207B29797452003099BB /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473207A29797452003099BB /* DateFormater.swift */; };
 		8473208129797874003099BB /* PateintEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473208029797874003099BB /* PateintEditViewController.swift */; };
 		8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8473208229797885003099BB /* PateintEditViewController.storyboard */; };
@@ -477,6 +489,18 @@
 		845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavaigationContoller.swift; sourceTree = "<group>"; };
 		845C39C3292276AF00D934C5 /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenssion.swift; sourceTree = "<group>"; };
+		8471D527298D1ADB0010893E /* ConsentsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsListViewController.swift; sourceTree = "<group>"; };
+		8471D529298D1AE80010893E /* ConsentsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConsentsListViewController.storyboard; sourceTree = "<group>"; };
+		8471D52B298D1B320010893E /* ConsentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConsentsListViewModel.swift; path = Growth99/Modules/Pateints/ConsentsList/View/ConsentsListViewModel.swift; sourceTree = SOURCE_ROOT; };
+		8471D52D298D1B7B0010893E /* ConsentsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsListModel.swift; sourceTree = "<group>"; };
+		8471D530298D20230010893E /* ConsentsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsListTableViewCell.swift; sourceTree = "<group>"; };
+		8471D531298D20230010893E /* ConsentsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsentsListTableViewCell.xib; sourceTree = "<group>"; };
+		8471D538298D460B0010893E /* PatientAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentViewController.swift; sourceTree = "<group>"; };
+		8471D53A298D465B0010893E /* PatientAppointmentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientAppointmentViewController.storyboard; sourceTree = "<group>"; };
+		8471D53C298D483A0010893E /* PatientAppointmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentViewModel.swift; sourceTree = "<group>"; };
+		8471D53F298D49130010893E /* PatientAppointmentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentListTableViewCell.swift; sourceTree = "<group>"; };
+		8471D540298D49130010893E /* PatientAppointmentListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PatientAppointmentListTableViewCell.xib; sourceTree = "<group>"; };
+		8471D543298D49CE0010893E /* PatientAppointmentViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientAppointmentViewController+TableView.swift"; sourceTree = "<group>"; };
 		8473207A29797452003099BB /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		8473208029797874003099BB /* PateintEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintEditViewController.swift; sourceTree = "<group>"; };
 		8473208229797885003099BB /* PateintEditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintEditViewController.storyboard; sourceTree = "<group>"; };
@@ -1402,14 +1426,105 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		8473207C29797831003099BB /* Edit */ = {
+		8471D523298D19F80010893E /* ConsentsList */ = {
+			isa = PBXGroup;
+			children = (
+				8471D526298D1AA50010893E /* Model */,
+				8471D525298D1A790010893E /* ViewModel */,
+				8471D524298D1A750010893E /* View */,
+			);
+			path = ConsentsList;
+			sourceTree = "<group>";
+		};
+		8471D524298D1A750010893E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8471D52F298D1FB80010893E /* cell */,
+				8471D527298D1ADB0010893E /* ConsentsListViewController.swift */,
+				8471D529298D1AE80010893E /* ConsentsListViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8471D525298D1A790010893E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8471D52B298D1B320010893E /* ConsentsListViewModel.swift */,
+			);
+			name = ViewModel;
+			path = "New Group/ViewModel";
+			sourceTree = "<group>";
+		};
+		8471D526298D1AA50010893E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8471D52D298D1B7B0010893E /* ConsentsListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8471D52F298D1FB80010893E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8471D530298D20230010893E /* ConsentsListTableViewCell.swift */,
+				8471D531298D20230010893E /* ConsentsListTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		8471D534298D422A0010893E /* PateintsAppointmentList */ = {
+			isa = PBXGroup;
+			children = (
+				8471D535298D43030010893E /* Model */,
+				8471D536298D43080010893E /* ViewModel */,
+				8471D537298D430C0010893E /* View */,
+			);
+			path = PateintsAppointmentList;
+			sourceTree = "<group>";
+		};
+		8471D535298D43030010893E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8471D536298D43080010893E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8471D53C298D483A0010893E /* PatientAppointmentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8471D537298D430C0010893E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8471D53E298D48E70010893E /* Cell */,
+				8471D538298D460B0010893E /* PatientAppointmentViewController.swift */,
+				8471D53A298D465B0010893E /* PatientAppointmentViewController.storyboard */,
+				8471D543298D49CE0010893E /* PatientAppointmentViewController+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8471D53E298D48E70010893E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8471D53F298D49130010893E /* PatientAppointmentListTableViewCell.swift */,
+				8471D540298D49130010893E /* PatientAppointmentListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8473207C29797831003099BB /* PateintsEdit */ = {
 			isa = PBXGroup;
 			children = (
 				8473207D2979783B003099BB /* Model */,
 				8473207E29797842003099BB /* ViewModel */,
 				8473207F2979784A003099BB /* View */,
 			);
-			path = Edit;
+			path = PateintsEdit;
 			sourceTree = "<group>";
 		};
 		8473207D2979783B003099BB /* Model */ = {
@@ -2126,21 +2241,23 @@
 		84D0619929670676001FE469 /* Pateints */ = {
 			isa = PBXGroup;
 			children = (
+				84D0619F29670676001FE469 /* PateintsList */,
+				84D0619A29670676001FE469 /* PateintsDetail */,
+				84D061A629670676001FE469 /* PateintsAdd */,
+				8473207C29797831003099BB /* PateintsEdit */,
+				8471D523298D19F80010893E /* ConsentsList */,
 				849004A12986C22A00A271AA /* PateintsTagsAdd */,
 				849004902985935900A271AA /* PateintsTags */,
-				84D0619F29670676001FE469 /* List */,
-				84D061A629670676001FE469 /* Add */,
-				8473207C29797831003099BB /* Edit */,
-				84D0619A29670676001FE469 /* Detail */,
 				84D43A1C297C217500678458 /* QuestionarieList */,
 				84484593297D32390041468A /* FillQuestionnaire */,
 				84DB4AD92980527000112A23 /* AddNewQuestionarie */,
+				8471D534298D422A0010893E /* PateintsAppointmentList */,
 				84978CDD298563FE007041D2 /* AddPateintsTask */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
 		};
-		84D0619A29670676001FE469 /* Detail */ = {
+		84D0619A29670676001FE469 /* PateintsDetail */ = {
 			isa = PBXGroup;
 			children = (
 				8499E1AC298AB3C60072ACF4 /* ContainerView */,
@@ -2148,26 +2265,26 @@
 				84088BA22977E5900060855E /* ViewModel */,
 				84088BA42977E5B50060855E /* View */,
 			);
-			path = Detail;
+			path = PateintsDetail;
 			sourceTree = "<group>";
 		};
-		84D0619F29670676001FE469 /* List */ = {
+		84D0619F29670676001FE469 /* PateintsList */ = {
 			isa = PBXGroup;
 			children = (
 				84088BA72977E5EC0060855E /* Model */,
 				84088BA62977E5E10060855E /* ViewModel */,
 				84088BA52977E5D30060855E /* View */,
 			);
-			path = List;
+			path = PateintsList;
 			sourceTree = "<group>";
 		};
-		84D061A629670676001FE469 /* Add */ = {
+		84D061A629670676001FE469 /* PateintsAdd */ = {
 			isa = PBXGroup;
 			children = (
 				84088BA82977E6030060855E /* ViewModel */,
 				84088BA92977E6150060855E /* View */,
 			);
-			path = Add;
+			path = PateintsAdd;
 			sourceTree = "<group>";
 		};
 		84D061AA29670676001FE469 /* Dashboard */ = {
@@ -3269,23 +3386,27 @@
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
+				8471D533298D20230010893E /* ConsentsListTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
 				DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
+				8471D52A298D1AE80010893E /* ConsentsListViewController.storyboard in Resources */,
 				8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */,
 				8490049E2985A27200A271AA /* PateintsTagListTableViewCell.xib in Resources */,
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */,
 				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
+				8471D542298D49130010893E /* PatientAppointmentListTableViewCell.xib in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
+				8471D53B298D465B0010893E /* PatientAppointmentViewController.storyboard in Resources */,
 				DAE1409E298ACCD600794F6A /* BookingHistoryViewController.storyboard in Resources */,
 				84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */,
@@ -3451,6 +3572,7 @@
 				84F610F1292A71AB00B1FB69 /* Promise.swift in Sources */,
 				84F610B5292A71AA00B1FB69 /* Claims.swift in Sources */,
 				84D0622629670676001FE469 /* WorkingCustomTableViewCell.swift in Sources */,
+				8471D532298D20230010893E /* ConsentsListTableViewCell.swift in Sources */,
 				848C92B1291F6AA000502956 /* ViewControllerExtension.swift in Sources */,
 				84F610DC292A71AB00B1FB69 /* Transformable.swift in Sources */,
 				84F610BF292A71AA00B1FB69 /* None.swift in Sources */,
@@ -3461,6 +3583,7 @@
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
+				8471D539298D460B0010893E /* PatientAppointmentViewController.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
 				84D43A25297C231D00678458 /* QuestionarieViewModel.swift in Sources */,
@@ -3486,12 +3609,15 @@
 				84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
+				8471D52E298D1B7B0010893E /* ConsentsListModel.swift in Sources */,
+				8471D544298D49CE0010893E /* PatientAppointmentViewController+TableView.swift in Sources */,
 				84DB4AE22980530200112A23 /* AddNewQuestionarieViewModel.swift in Sources */,
 				DA58258C2977240300F002F6 /* AddEventViewModel.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
+				8471D541298D49130010893E /* PatientAppointmentListTableViewCell.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
 				DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */,
@@ -3501,6 +3627,7 @@
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
+				8471D53D298D483A0010893E /* PatientAppointmentViewModel.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
@@ -3587,6 +3714,7 @@
 				84F610CB292A71AA00B1FB69 /* Dispatch.swift in Sources */,
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
+				8471D52C298D1B320010893E /* ConsentsListViewModel.swift in Sources */,
 				84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */,
 				84F610BE292A71AA00B1FB69 /* Data+Crypto.swift in Sources */,
 				84D063082967080E001FE469 /* EmailTemplateTableViewCell.swift in Sources */,
@@ -3660,6 +3788,7 @@
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
+				8471D528298D1ADB0010893E /* ConsentsListViewController.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
 				84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */,
