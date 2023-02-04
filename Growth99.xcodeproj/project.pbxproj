@@ -101,6 +101,7 @@
 		848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */; };
 		848CBAB82971ABE800681049 /* TaskPatientsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */; };
 		848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */; };
+		848F1154298EB2DB009D34CB /* PatientsAppointmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F1153298EB2DB009D34CB /* PatientsAppointmentListModel.swift */; };
 		848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D7D28F1C160007AC421 /* AppDelegate.swift */; };
 		848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D7F28F1C160007AC421 /* SceneDelegate.swift */; };
 		848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848F4D8628F1C164007AC421 /* Assets.xcassets */; };
@@ -572,6 +573,7 @@
 		848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAllUserListModel.swift; sourceTree = "<group>"; };
 		848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPatientsListModel.swift; sourceTree = "<group>"; };
 		848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuestionnaireSubmissionModel.swift; sourceTree = "<group>"; };
+		848F1153298EB2DB009D34CB /* PatientsAppointmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsAppointmentListModel.swift; sourceTree = "<group>"; };
 		848F4D7A28F1C160007AC421 /* Growth99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Growth99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F4D7D28F1C160007AC421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848F4D7F28F1C160007AC421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1595,6 +1597,7 @@
 		8471D535298D43030010893E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				848F1153298EB2DB009D34CB /* PatientsAppointmentListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3912,6 +3915,7 @@
 				848C92AA291F6AA000502956 /* RSSelectionMenuDataSource.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
+				848F1154298EB2DB009D34CB /* PatientsAppointmentListModel.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
