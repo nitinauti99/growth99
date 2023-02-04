@@ -302,6 +302,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: error)
     }
     
     func openUserListView(){

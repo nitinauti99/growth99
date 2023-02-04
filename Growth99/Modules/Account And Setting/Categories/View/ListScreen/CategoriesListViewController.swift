@@ -66,6 +66,7 @@ class CategoriesListViewController: UIViewController, CategoriesListViewContolle
     
     func CategoriesDataRecived() {
         self.view.HideSpinner()
+        self.categoriesListTableView.setContentOffset(.zero, animated: true)
         self.categoriesListTableView.reloadData()
     }
     

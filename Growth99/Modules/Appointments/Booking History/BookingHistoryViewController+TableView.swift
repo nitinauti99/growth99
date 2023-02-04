@@ -43,6 +43,8 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        editVC.editBookingHistoryData = self.bookingHistoryListData[indexPath.row]
+        navigationController?.pushViewController(editVC, animated: true)
     }
 }

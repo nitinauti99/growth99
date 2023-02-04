@@ -82,6 +82,7 @@ class UserListViewContoller: UIViewController, UserListViewContollerProtocol {
     
     func LeadDataRecived() {
         self.view.HideSpinner()
+        self.userListTableView.setContentOffset(.zero, animated: true)
         self.userListTableView.reloadData()
     }
     

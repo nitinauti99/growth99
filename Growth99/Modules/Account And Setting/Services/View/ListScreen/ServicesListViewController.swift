@@ -87,6 +87,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     
     func serviceListDataRecived() {
         self.view.HideSpinner()
+        self.servicesListTableView.setContentOffset(.zero, animated: true)
         self.servicesListTableView.reloadData()
     }
     

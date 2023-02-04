@@ -57,6 +57,7 @@ struct EndPoints {
     static let bussinessInfo = "/api/businesses/"
     static let getBussinessInfo = "/api/public/v1/businesses/"
     static let newAppointment = "/api/appointments/new"
+    static let editAppointment = "/api/appointments/"
     static let patientsEditDetail = "/api/v1/patients/"
     static let patientsQuestionnaire = "/api/v1/patient/"
     static let getPatientsQuestionnaire = "/api/patient/"
@@ -69,6 +70,8 @@ struct EndPoints {
     static let patientCreateTags = "/api/ptag"
     static let consentsList = "/api/v1/patients/"
     static let PatientAppointmenList = "/api/v1/patients/"
+    static let userByEmail = "/api/v1/userByEmail/"
+    static let userByPhone = "/api/v1/userByPhone/"
 }
 
 struct ApiUrl {
@@ -136,4 +139,7 @@ struct ApiUrl {
     static let bussinessInfo = EndPoints.baseURL.appending(EndPoints.bussinessInfo)
     static let getBussinessInfo = EndPoints.baseURL.appending(EndPoints.getBussinessInfo)
     static let newAppointment = EndPoints.baseURL.appending(EndPoints.newAppointment)
+    static let editAppointment = EndPoints.baseURL.appending(EndPoints.editAppointment)
+    static let userByEmail = EndPoints.baseURL.appending(EndPoints.userByEmail)
+    static let userByPhone = EndPoints.baseURL.appending(EndPoints.userByPhone)
 }
