@@ -10,7 +10,6 @@ import Foundation
 protocol EditEventViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
-
     var getAllDatesData: [String] { get }
     var getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
@@ -26,6 +25,8 @@ protocol EditEventViewModelProtocol {
     func localInputToServerInput(date: String) -> String
     func localInputeDateToServer(date: String) -> String
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
+    func getEditAppointmentsForPateint(appointmentsId: Int)
+    var getAppointmentsForPateintData: AppointmentDTOList? { get }
 }
 
 class EditEventViewModel {
@@ -33,12 +34,28 @@ class EditEventViewModel {
     var delegate: EditEventViewControllerProtocol?
     var allDates: [String] = []
     var allTimes: [String] = []
+    var editBookingHistoryData: AppointmentDTOList?
+
 
     init(delegate: EditEventViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    func getEditAppointmentsForPateint(appointmentsId: Int) {
+        let finaleUrl = ApiUrl.editAppoints + "\(appointmentsId)"
+       
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result< AppointmentDTOList, GrowthNetworkError>) in
+            switch result {
+            case .success(let PateintsAppointmentList):
+                self.editBookingHistoryData = PateintsAppointmentList
+                self.delegate?.EditAppointmentsForPateintDataRecived()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
     
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>) {
         let apiURL = ApiUrl.vacationSubmit.appending("\(providerId)/schedules/dates")
@@ -218,6 +235,11 @@ class EditEventViewModel {
 }
 
 extension EditEventViewModel: EditEventViewModelProtocol {
+  
+    var getAppointmentsForPateintData: AppointmentDTOList? {
+        return self.editBookingHistoryData
+    }
+    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         if phoneNumber.count == 10 {
             return true

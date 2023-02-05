@@ -11,9 +11,11 @@ import UIKit
 protocol PatientAppointmentViewControllerProtocol: AnyObject {
     func errorReceivedBookingHistory(error: String)
     func patientAppointmentListDataRecived()
+    func patientAppointmentDataRecived()
 }
 
-class PatientAppointmentViewController: UIViewController, PatientAppointmentViewControllerProtocol {
+class PatientAppointmentViewController: UIViewController, PatientAppointmentViewControllerProtocol,
+                                        PatientAppointmentListTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     var viewModel: PatientAppointmentViewModelProtocol?
@@ -34,7 +36,7 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         addSerchBar()
         self.registerTableView()
         self.view.ShowSpinner()
-        viewModel?.getPatientAppointmentList(pateintId: pateintId)
+        viewModel?.getPatientAppointmentsForAppointment(pateintId: pateintId)
     }
     
     func registerTableView() {
@@ -57,7 +59,15 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         self.navigationController?.pushViewController(createUserVC, animated: true)
     }
     
-     func getBookingHistory() {
+    func editPatientAppointment(cell: PatientAppointmentListTableViewCell, index: IndexPath){
+        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        let patientAppointmentListVM = viewModel?.patientListAtIndex(index: index.row)
+        editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
+        editVC.appointmentId  = patientAppointmentListVM?.id
+        navigationController?.pushViewController(editVC, animated: true)
+    }
+
+    func getBookingHistory() {
         self.view.ShowSpinner()
         viewModel?.getPatientAppointmentList(pateintId: pateintId)
     }
@@ -67,6 +77,11 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
+    func patientAppointmentDataRecived() {
+        viewModel?.getPatientAppointmentList(pateintId: pateintId)
+    }
+    
     
     func patientAppointmentListDataRecived() {
         self.view.HideSpinner()

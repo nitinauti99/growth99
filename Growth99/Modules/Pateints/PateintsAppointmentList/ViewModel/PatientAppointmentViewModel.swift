@@ -9,16 +9,18 @@ import Foundation
 
 protocol PatientAppointmentViewModelProtocol {
     func getPatientAppointmentList(pateintId: Int)
+    func getPatientAppointmentsForAppointment(pateintId: Int)
     func patientListAtIndex(index: Int) -> PatientsAppointmentListModel?
     func patientListFilterListAtIndex(index: Int)-> PatientsAppointmentListModel?
     var  getPatientsAppointmentList: [PatientsAppointmentListModel] { get }
+    var  getPatientsForAppointments: AppointmentDTOList? { get }
 }
 
 class PatientAppointmentViewModel {
- 
     var delegate: PatientAppointmentViewControllerProtocol?
     var patientsAppointmentList: [PatientsAppointmentListModel] = []
     var patientsAppointmentFilterList: [PatientsAppointmentListModel] = []
+    var patientsModel : AppointmentDTOList?
 
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
@@ -38,6 +40,20 @@ class PatientAppointmentViewModel {
             case .success(let PateintsAppointmentList):
                 self.patientsAppointmentList = PateintsAppointmentList
                 self.delegate?.patientAppointmentListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getPatientAppointmentsForAppointment(pateintId: Int) {
+        let finaleUrl = ApiUrl.PatientAppointmenList + "\(pateintId)"
+       
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result< AppointmentDTOList, GrowthNetworkError>) in
+            switch result {
+            case .success(let PateintsAppointmentList):
+                self.patientsModel = PateintsAppointmentList
+                self.delegate?.patientAppointmentDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)
             }
@@ -147,6 +163,10 @@ class PatientAppointmentViewModel {
 
 extension PatientAppointmentViewModel : PatientAppointmentViewModelProtocol {
    
+    var getPatientsForAppointments : AppointmentDTOList? {
+        return self.patientsModel
+    }
+    
     var getPatientsAppointmentList : [PatientsAppointmentListModel] {
         return self.patientsAppointmentList
     }

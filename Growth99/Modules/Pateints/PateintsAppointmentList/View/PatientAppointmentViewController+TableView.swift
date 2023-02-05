@@ -25,6 +25,7 @@ extension PatientAppointmentViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PatientAppointmentListTableViewCell", for: indexPath) as? PatientAppointmentListTableViewCell else { return UITableViewCell() }
+        cell.delegate = self
         cell.configureCell(patientAppointmentVM: viewModel, index: indexPath)
         return cell
     }

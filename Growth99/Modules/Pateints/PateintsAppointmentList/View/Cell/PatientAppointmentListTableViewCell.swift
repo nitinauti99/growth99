@@ -9,7 +9,7 @@ import UIKit
 
 protocol PatientAppointmentListTableViewCellDelegate: AnyObject {
 //    func removeBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
-//    func editBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
+      func editPatientAppointment(cell: PatientAppointmentListTableViewCell, index: IndexPath)
 //    func videoBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
 //    func paymentBookingHistory(cell: PatientAppointmentListTableViewCell, index: IndexPath)
 }
@@ -27,9 +27,9 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
     @IBOutlet weak var appointmentDateLabel: UILabel!
     @IBOutlet weak var paymetStatusLabel: UILabel!
     @IBOutlet weak var appointmentStatusLabel: UILabel!
-    
+
     var dateFormater : DateFormaterProtocol?
-    weak var delegate: PatientAppointmentListTableViewCellDelegate?
+    var delegate: PatientAppointmentListTableViewCellDelegate?
     var indexPath = IndexPath()
     
     override func awakeFromNib() {
@@ -46,25 +46,20 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
         self.providerNameLabel.text = patientAppointmentListVM?.providerName
         self.typeLabel.text = patientAppointmentListVM?.appointmentType
-       
-//        if let data = patientAppointmentListVM?.source {
-//            self.sourceLabel.text = data
-//        } else {
-//            self.sourceLabel.text = "-"
-//        }
         self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
         self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
         self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
+        indexPath = index
     }
     
 //    @IBAction func deleteButtonPressed() {
 //        self.delegate?.removeBookingHistory(cell: self, index: indexPath)
 //    }
 //
-//    @IBAction func editButtonPressed() {
-//        self.delegate?.editBookingHistory(cell: self, index: indexPath)
-//    }
+    @IBAction func editButtonPressed() {
+        self.delegate?.editPatientAppointment(cell: self, index: indexPath)
+    }
 //
 //    @IBAction func videoButtonPressed() {
 //        self.delegate?.videoBookingHistory(cell: self, index: indexPath)

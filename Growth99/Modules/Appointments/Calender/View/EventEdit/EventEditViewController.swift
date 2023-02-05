@@ -16,6 +16,7 @@ protocol EditEventViewControllerProtocol: AnyObject {
     func getPhoneNumberDataRecived()
     func getEmailAddressDataRecived()
     func appoinmentDeletedSucess()
+    func EditAppointmentsForPateintDataRecived()
 }
 
 class EventEditViewController: UIViewController, CalenderViewContollerProtocol, EditEventViewControllerProtocol {
@@ -60,7 +61,8 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     var selectedTimesIds = [Int]()
     
     var editBookingHistoryData: AppointmentDTOList?
-    
+    var appointmentId: Int?
+
     var userSelectedDate: String = String.blank
     var selectedDate: String = String.blank
     var selectedTime: String = String.blank
@@ -73,7 +75,8 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         editEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = EditEventViewModel(delegate: self)
         setUpNavigationBar()
-        setupBookingHistoryData()
+        self.view.ShowSpinner()
+        eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         //emailTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
        // phoneNumberTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -91,6 +94,11 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         self.navigationItem.title = Constant.Profile.editAppointment
     }
     
+    func EditAppointmentsForPateintDataRecived(){
+        editBookingHistoryData = eventViewModel?.getAppointmentsForPateintData
+        setupBookingHistoryData()
+    }
+
     func setupBookingHistoryData() {
         firstNameTextField.text = editBookingHistoryData?.patientFirstName ?? String.blank
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank

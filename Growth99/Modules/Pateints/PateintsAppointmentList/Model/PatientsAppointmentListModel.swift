@@ -25,19 +25,21 @@ struct PateintsService: Codable {
     let serviceName: String?
 }
 
-//let lastName : String?
-//let country : String?
-//let notes : String?
-//let gender : String?
-//let city : String?
-//let dateOfBirth : String?
-//let zipcode : String?
-//let firstName : String?
-//let phone : String?
-//let addressLine1 : String?
-//let addressLine2 : String?
-//let id : Int?
-//let state : String?
-//let patientTags : [String]?
-//let email: String?
-//let patientStatus: String?
+struct PatientsModel: Codable {
+    let lastName : String?
+    let country : String?
+    let notes : String?
+    let gender : String?
+    let city : String?
+    let dateOfBirth : String?
+    let zipcode : String?
+    let firstName : String?
+    let phone : String?
+    let addressLine1 : String?
+    let addressLine2 : String?
+    let id : Int?
+    let state : String?
+    let patientTags : [String]?
+    let email: String?
+    let patientStatus: String?
+}
