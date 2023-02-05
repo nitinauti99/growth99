@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "46BC7847-A012-4A94-8596-3ED7E996F2D7"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3FE1551-2F85-487A-BC39-BC6B5CCAACBA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Pateints/PateintsAppointmentList/View/PatientAppointmentViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "editPatientAppointment(cell:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1B8D5D5-7A55-4ED4-9834-3E8124DC43AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Appointments/Booking History/BookingHistoryViewController+TableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B51BD883-8B4F-4B87-BF8C-2569B0241F99"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Appointments/Calender/View/EventEdit/EventEditViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3F521A6-A69A-4083-9912-7F999E0BABCD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Appointments/Calender/ViewModel/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getEditAppointmentsForPateint(appointmentsId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F3F521A6-A69A-4083-9912-7F999E0BABCD - 594d3d1d9e82ee57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.EditEventViewModel.getEditAppointmentsForPateint(appointmentsId: Swift.Int) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bsravankumargoud/Downloads/SG/growth99/Growth99/Modules/Appointments/Calender/ViewModel/EditEventViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "576">
+               </Location>
+               <Location
+                  uuid = "F3F521A6-A69A-4083-9912-7F999E0BABCD - f228297d4d8de561"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Growth99.AppointmentDTOList, Growth99.GrowthNetworkError&gt;) -&gt; () in Growth99.EditEventViewModel.getEditAppointmentsForPateint(appointmentsId: Swift.Int) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bsravankumargoud/Downloads/SG/growth99/Growth99/Modules/Appointments/Calender/ViewModel/EditEventViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "1953">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

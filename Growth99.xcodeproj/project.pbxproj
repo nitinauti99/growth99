@@ -32,6 +32,12 @@
 		398F9100298ECB8700DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90E9298ECB8600DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift */; };
 		39A1B814298D7418006167CE /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1B813298D7418006167CE /* EditEventViewModel.swift */; };
 		39A1B816298D770F006167CE /* EventEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A1B815298D770F006167CE /* EventEditViewController.storyboard */; };
+		39DDA9C02990180300BFE0DE /* AppointmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DDA9BF2990180300BFE0DE /* AppointmentListModel.swift */; };
+		39DDA9C22990181600BFE0DE /* AppointmentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DDA9C12990181600BFE0DE /* AppointmentListViewModel.swift */; };
+		39DDA9C529901FCF00BFE0DE /* AppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DDA9C329901FCF00BFE0DE /* AppointmentTableViewCell.swift */; };
+		39DDA9C629901FCF00BFE0DE /* AppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DDA9C429901FCF00BFE0DE /* AppointmentTableViewCell.xib */; };
+		39E09D7C299013E900828E72 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E09D78299013E900828E72 /* AppointmentsViewController.swift */; };
+		39E09D7D299013E900828E72 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E09D79299013E900828E72 /* AppointmentsViewController.storyboard */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -181,8 +187,6 @@
 		84C8F16C298BDCAC0049CEAC /* ScrollableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8F169298BDCAB0049CEAC /* ScrollableSegmentedControl.swift */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
 		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
-		84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617729670676001FE469 /* AppointmentsViewController.swift */; };
-		84D0621F29670676001FE469 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0617829670676001FE469 /* AppointmentsViewController.storyboard */; };
 		84D0622029670676001FE469 /* WorkingScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617B29670676001FE469 /* WorkingScheduleViewModel.swift */; };
 		84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617D29670676001FE469 /* WorkingScheduleModel.swift */; };
 		84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617F29670676001FE469 /* WorkingScheduleViewController+Extension.swift */; };
@@ -504,6 +508,12 @@
 		398F90E9298ECB8600DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQKeyboardManager+UITextFieldViewNotification.swift"; sourceTree = "<group>"; };
 		39A1B813298D7418006167CE /* EditEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewModel.swift; sourceTree = "<group>"; };
 		39A1B815298D770F006167CE /* EventEditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventEditViewController.storyboard; sourceTree = "<group>"; };
+		39DDA9BF2990180300BFE0DE /* AppointmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListModel.swift; sourceTree = "<group>"; };
+		39DDA9C12990181600BFE0DE /* AppointmentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListViewModel.swift; sourceTree = "<group>"; };
+		39DDA9C329901FCF00BFE0DE /* AppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTableViewCell.swift; sourceTree = "<group>"; };
+		39DDA9C429901FCF00BFE0DE /* AppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentTableViewCell.xib; sourceTree = "<group>"; };
+		39E09D78299013E900828E72 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
+		39E09D79299013E900828E72 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -666,8 +676,6 @@
 		84C8F16A298BDCAB0049CEAC /* ScrollableSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableSegmentedControl.h; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
 		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
-		84D0617729670676001FE469 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
-		84D0617829670676001FE469 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
 		84D0617B29670676001FE469 /* WorkingScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewModel.swift; sourceTree = "<group>"; };
 		84D0617D29670676001FE469 /* WorkingScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleModel.swift; sourceTree = "<group>"; };
 		84D0617F29670676001FE469 /* WorkingScheduleViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkingScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -1036,6 +1044,40 @@
 				398F90E8298ECB8600DB96E4 /* IQNSArray+Sort.swift */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		39E09D76299013E900828E72 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39DDA9C12990181600BFE0DE /* AppointmentListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39E09D77299013E900828E72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39E09D78299013E900828E72 /* AppointmentsViewController.swift */,
+				39E09D79299013E900828E72 /* AppointmentsViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39E09D7A299013E900828E72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39DDA9BF2990180300BFE0DE /* AppointmentListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39E09D7B299013E900828E72 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				39DDA9C329901FCF00BFE0DE /* AppointmentTableViewCell.swift */,
+				39DDA9C429901FCF00BFE0DE /* AppointmentTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		84088B9F2977E5520060855E /* Model */ = {
@@ -2416,8 +2458,10 @@
 		84D0617629670676001FE469 /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
-				84D0617729670676001FE469 /* AppointmentsViewController.swift */,
-				84D0617829670676001FE469 /* AppointmentsViewController.storyboard */,
+				39E09D7A299013E900828E72 /* Model */,
+				39E09D77299013E900828E72 /* View */,
+				39E09D76299013E900828E72 /* ViewModel */,
+				39E09D7B299013E900828E72 /* CustomTableViewCell */,
 			);
 			path = Appointments;
 			sourceTree = "<group>";
@@ -3561,11 +3605,11 @@
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
-				84D0621F29670676001FE469 /* AppointmentsViewController.storyboard in Resources */,
 				DAB4E98F29755BA000AAA414 /* EventsTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* CustomEmailTemplateTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
+				39DDA9C629901FCF00BFE0DE /* AppointmentTableViewCell.xib in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
@@ -3591,6 +3635,7 @@
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
+				39E09D7D299013E900828E72 /* AppointmentsViewController.storyboard in Resources */,
 				DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
@@ -3768,8 +3813,10 @@
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */,
 				84D0623B29670677001FE469 /* PateintListModel.swift in Sources */,
+				39E09D7C299013E900828E72 /* AppointmentsViewController.swift in Sources */,
 				84D0622029670676001FE469 /* WorkingScheduleViewModel.swift in Sources */,
 				84F610D8292A71AB00B1FB69 /* NSOperationQueue.swift in Sources */,
+				39DDA9C529901FCF00BFE0DE /* AppointmentTableViewCell.swift in Sources */,
 				84F610F1292A71AB00B1FB69 /* Promise.swift in Sources */,
 				84F610B5292A71AA00B1FB69 /* Claims.swift in Sources */,
 				84D0622629670676001FE469 /* WorkingCustomTableViewCell.swift in Sources */,
@@ -3790,7 +3837,6 @@
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
-				84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
 				84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */,
@@ -3982,6 +4028,7 @@
 				84F61123292A71AB00B1FB69 /* Number+Extension.swift in Sources */,
 				845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */,
 				DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */,
+				39DDA9C02990180300BFE0DE /* AppointmentListModel.swift in Sources */,
 				398F90F6298ECB8700DB96E4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
 				398F90F2298ECB8700DB96E4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
@@ -4075,6 +4122,7 @@
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
 				DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */,
 				842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */,
+				39DDA9C22990181600BFE0DE /* AppointmentListViewModel.swift in Sources */,
 				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,

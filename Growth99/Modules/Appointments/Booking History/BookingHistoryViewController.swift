@@ -90,11 +90,6 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
         self.getBookingHistory()
     }
     
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
-        self.navigationController?.pushViewController(createUserVC, animated: true)
-    }
-    
     @objc func getBookingHistory() {
         self.view.ShowSpinner()
         viewModel?.getCalenderInfoListBookingHistory(clinicId: 0, providerId: 0, serviceId: 0)

@@ -32,7 +32,8 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
         } else {
             cell.sourceLabel.text = "-"
         }
-        cell.servicesLabel.text = self.bookingHistoryListData[indexPath.row].serviceList?[0].serviceName
+        let serviceSelectedArray = self.bookingHistoryListData[indexPath.row].serviceList ?? []
+        cell.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? ""}).joined(separator: ", ")
         cell.appointmentDateLabel.text = "\(self.viewModel?.serverToLocal(date: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? "") \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? "")"
         cell.paymetStatusLabel.text = self.bookingHistoryListData[indexPath.row].paymentStatus
         cell.appointmentStatusLabel.text = self.bookingHistoryListData[indexPath.row].appointmentStatus
