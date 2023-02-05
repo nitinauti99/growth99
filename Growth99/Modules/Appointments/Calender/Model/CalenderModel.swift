@@ -377,3 +377,10 @@ struct ServiceCategory : Codable {
     let defaultServiceCategoryId : String?
     let specialization : String?
 }
+
+struct AddEventPhoneModel: Codable {
+    let firstName: String?
+    let lastName: String?
+    let phone: String?
+    let email: String?
+}

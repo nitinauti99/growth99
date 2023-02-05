@@ -75,6 +75,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         editEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = EditEventViewModel(delegate: self)
         setUpNavigationBar()
+        setupBookingHistoryData()
         self.view.ShowSpinner()
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         //emailTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)

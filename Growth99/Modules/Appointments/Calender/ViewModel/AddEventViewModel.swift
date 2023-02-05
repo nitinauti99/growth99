@@ -27,13 +27,6 @@ protocol AddEventViewModelProtocol {
     func localInputeDateToServer(date: String) -> String
 }
 
-struct AddEventPhoneModel: Codable {
-    let firstName: String?
-    let lastName: String?
-    let phone: String?
-    let email: String?
-}
-
 class AddEventViewModel {
     
     var delegate: AddEventViewControllerProtocol?

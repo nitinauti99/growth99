@@ -45,7 +45,6 @@ class EditEventViewModel {
     
     func getEditAppointmentsForPateint(appointmentsId: Int) {
         let finaleUrl = ApiUrl.editAppoints + "\(appointmentsId)"
-       
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result< AppointmentDTOList, GrowthNetworkError>) in
             switch result {
             case .success(let PateintsAppointmentList):
@@ -146,7 +145,8 @@ class EditEventViewModel {
     
     func deleteSelectedAppointment(deleteAppoinmentId: Int) {
         let apiURL = ApiUrl.editAppointment.appending("\(deleteAppoinmentId)/cancel")
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<String, GrowthNetworkError>) in
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(_):
                 self.delegate?.appoinmentDeletedSucess()
