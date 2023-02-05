@@ -35,12 +35,48 @@
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
+		842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C6B298F713B00395061 /* ConsentsListModel.swift */; };
+		842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C6E298F713B00395061 /* ConsentsListViewController.swift */; };
+		842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C70298F713B00395061 /* ConsentsListTableViewCell.xib */; };
+		842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C71298F713B00395061 /* ConsentsListTableViewCell.swift */; };
+		842C0CAF298F713B00395061 /* ConsentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C72298F713B00395061 /* ConsentsListViewModel.swift */; };
+		842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C73298F713B00395061 /* ConsentsListViewController.storyboard */; };
+		842C0CB1298F713B00395061 /* PatientAppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C7A298F713B00395061 /* PatientAppointmentViewModel.swift */; };
+		842C0CB2298F713B00395061 /* PatientsAppointmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C7C298F713B00395061 /* PatientsAppointmentListModel.swift */; };
+		842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C7E298F713B00395061 /* PatientAppointmentViewController.storyboard */; };
+		842C0CB4298F713B00395061 /* PatientAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C7F298F713B00395061 /* PatientAppointmentViewController.swift */; };
+		842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C80298F713B00395061 /* PatientAppointmentViewController+TableView.swift */; };
+		842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C82298F713B00395061 /* PatientAppointmentListTableViewCell.xib */; };
+		842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C83298F713B00395061 /* PatientAppointmentListTableViewCell.swift */; };
+		842C0CB8298F713B00395061 /* CreatePateintsTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C86298F713B00395061 /* CreatePateintsTasksViewModel.swift */; };
+		842C0CB9298F713B00395061 /* CreatePateintsTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C89298F713B00395061 /* CreatePateintsTasksViewController.storyboard */; };
+		842C0CBA298F713B00395061 /* CreatePateintsTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C8A298F713B00395061 /* CreatePateintsTasksViewController.swift */; };
+		842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C8E298F713B00395061 /* FillQuestionarieViewModel.swift */; };
+		842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C91298F713B00395061 /* FillQuestionarieViewController.swift */; };
+		842C0CBD298F713B00395061 /* FillQuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C92298F713B00395061 /* FillQuestionarieViewController+TableView.swift */; };
+		842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C93298F713B00395061 /* FillQuestionarieViewController.storyboard */; };
+		842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C96298F713B00395061 /* AddNewQuestionarieViewModel.swift */; };
+		842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C99298F713B00395061 /* AddNewQuestionarieModel.swift */; };
+		842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C9B298F713B00395061 /* AddNewQuestionarieViewController.swift */; };
+		842C0CC3298F713B00395061 /* AddNewQuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C9D298F713B00395061 /* AddNewQuestionarieTableViewCell.xib */; };
+		842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0C9E298F713B00395061 /* AddNewQuestionarieTableViewCell.swift */; };
+		842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0C9F298F713B00395061 /* AddNewQuestionarieViewController.storyboard */; };
+		842C0CC6298F713B00395061 /* QuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CA2298F713B00395061 /* QuestionarieViewModel.swift */; };
+		842C0CC7298F713B00395061 /* QuestionarieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CA4298F713B00395061 /* QuestionarieModel.swift */; };
+		842C0CC8298F713B00395061 /* QuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0CA6298F713B00395061 /* QuestionarieViewController.storyboard */; };
+		842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CA7298F713B00395061 /* QuestionarieViewController.swift */; };
+		842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CA9298F713B00395061 /* QuestionarieTableViewCell.swift */; };
+		842C0CCB298F713B00395061 /* QuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0CAA298F713B00395061 /* QuestionarieTableViewCell.xib */; };
+		842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CCC298F749100395061 /* AddNewConsentsViewController.swift */; };
+		842C0CCF298F749E00395061 /* AddNewConsentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C0CCE298F749E00395061 /* AddNewConsentsViewController.storyboard */; };
+		842C0CD1298F756200395061 /* AddNewConsentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CD0298F756200395061 /* AddNewConsentsModel.swift */; };
+		842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CD2298F759100395061 /* AddNewConsentsViewModel.swift */; };
+		842C0CD7298F75CE00395061 /* ConsentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CD5298F75CE00395061 /* ConsentsTableViewCell.swift */; };
+		842C0CD8298F75CE00395061 /* ConsentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0CD6298F75CE00395061 /* ConsentsTableViewCell.xib */; };
+		842C0CDB298FC12200395061 /* PateintsTagListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C0CD9298FC12200395061 /* PateintsTagListTableViewCell.swift */; };
+		842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0CDA298FC12200395061 /* PateintsTagListTableViewCell.xib */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
 		843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */; };
-		84484598297D32D80041468A /* FillQuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484597297D32D80041468A /* FillQuestionarieViewController.swift */; };
-		8448459A297D33B40041468A /* FillQuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484599297D33B40041468A /* FillQuestionarieViewModel.swift */; };
-		8448459C297D35A50041468A /* FillQuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8448459B297D35A50041468A /* FillQuestionarieViewController.storyboard */; };
-		8448459E297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448459D297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift */; };
 		845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399F292276AF00D934C5 /* SpinnerView.swift */; };
 		845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A0292276AF00D934C5 /* SwiftLoader.swift */; };
 		845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A2292276AF00D934C5 /* KeychainWrapper.swift */; };
@@ -68,18 +104,6 @@
 		845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */; };
 		845C39E8292276B000D934C5 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39C3292276AF00D934C5 /* EndPoints.swift */; };
 		8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */; };
-		8471D528298D1ADB0010893E /* ConsentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D527298D1ADB0010893E /* ConsentsListViewController.swift */; };
-		8471D52A298D1AE80010893E /* ConsentsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8471D529298D1AE80010893E /* ConsentsListViewController.storyboard */; };
-		8471D52C298D1B320010893E /* ConsentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D52B298D1B320010893E /* ConsentsListViewModel.swift */; };
-		8471D52E298D1B7B0010893E /* ConsentsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D52D298D1B7B0010893E /* ConsentsListModel.swift */; };
-		8471D532298D20230010893E /* ConsentsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D530298D20230010893E /* ConsentsListTableViewCell.swift */; };
-		8471D533298D20230010893E /* ConsentsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8471D531298D20230010893E /* ConsentsListTableViewCell.xib */; };
-		8471D539298D460B0010893E /* PatientAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D538298D460B0010893E /* PatientAppointmentViewController.swift */; };
-		8471D53B298D465B0010893E /* PatientAppointmentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8471D53A298D465B0010893E /* PatientAppointmentViewController.storyboard */; };
-		8471D53D298D483A0010893E /* PatientAppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D53C298D483A0010893E /* PatientAppointmentViewModel.swift */; };
-		8471D541298D49130010893E /* PatientAppointmentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D53F298D49130010893E /* PatientAppointmentListTableViewCell.swift */; };
-		8471D542298D49130010893E /* PatientAppointmentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8471D540298D49130010893E /* PatientAppointmentListTableViewCell.xib */; };
-		8471D544298D49CE0010893E /* PatientAppointmentViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471D543298D49CE0010893E /* PatientAppointmentViewController+TableView.swift */; };
 		8473207B29797452003099BB /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473207A29797452003099BB /* DateFormater.swift */; };
 		8473208129797874003099BB /* PateintEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473208029797874003099BB /* PateintEditViewController.swift */; };
 		8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8473208229797885003099BB /* PateintEditViewController.storyboard */; };
@@ -101,7 +125,6 @@
 		848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */; };
 		848CBAB82971ABE800681049 /* TaskPatientsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */; };
 		848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */; };
-		848F1154298EB2DB009D34CB /* PatientsAppointmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F1153298EB2DB009D34CB /* PatientsAppointmentListModel.swift */; };
 		848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D7D28F1C160007AC421 /* AppDelegate.swift */; };
 		848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D7F28F1C160007AC421 /* SceneDelegate.swift */; };
 		848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848F4D8628F1C164007AC421 /* Assets.xcassets */; };
@@ -112,15 +135,10 @@
 		849004952985A18800A271AA /* PateintsTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004942985A18800A271AA /* PateintsTagsListViewController.swift */; };
 		849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */; };
 		849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */; };
-		8490049D2985A27200A271AA /* PateintsTagListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490049B2985A27200A271AA /* PateintsTagListTableViewCell.swift */; };
-		8490049E2985A27200A271AA /* PateintsTagListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8490049C2985A27200A271AA /* PateintsTagListTableViewCell.xib */; };
 		849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490049F2986934C00A271AA /* PateintsTagListModel.swift */; };
 		849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */; };
 		849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */; };
 		849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */; };
-		84978CE229856466007041D2 /* CreatePateintsTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */; };
-		84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */; };
-		84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */; };
 		8497A03E28FF11E200CBA26C /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03A28FF11E200CBA26C /* Production.plist */; };
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
@@ -284,18 +302,6 @@
 		84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D063562967EA81001FE469 /* TasksListViewController.swift */; };
 		84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D063582967EA8C001FE469 /* TasksListViewController.storyboard */; };
 		84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */; };
-		84D43A21297C21C800678458 /* QuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A20297C21C800678458 /* QuestionarieViewController.swift */; };
-		84D43A23297C21D800678458 /* QuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D43A22297C21D800678458 /* QuestionarieViewController.storyboard */; };
-		84D43A25297C231D00678458 /* QuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A24297C231D00678458 /* QuestionarieViewModel.swift */; };
-		84D43A27297C244000678458 /* QuestionarieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A26297C244000678458 /* QuestionarieModel.swift */; };
-		84D43A2A297C32DF00678458 /* QuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */; };
-		84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */; };
-		84DB4ADE298052D700112A23 /* AddNewQuestionarieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4ADD298052D700112A23 /* AddNewQuestionarieViewController.swift */; };
-		84DB4AE0298052EC00112A23 /* AddNewQuestionarieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4ADF298052EC00112A23 /* AddNewQuestionarieViewController.storyboard */; };
-		84DB4AE22980530200112A23 /* AddNewQuestionarieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE12980530200112A23 /* AddNewQuestionarieViewModel.swift */; };
-		84DB4AE42980531200112A23 /* AddNewQuestionarieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE32980531200112A23 /* AddNewQuestionarieModel.swift */; };
-		84DB4AE8298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4AE6298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift */; };
-		84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4AE7298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib */; };
 		84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C45297035A000C58B0D /* TasksListViewModel.swift */; };
 		84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */; };
 		84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */; };
@@ -503,12 +509,48 @@
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
 		84088BCA297930180060855E /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bussinessDetailInfoModel.swift; sourceTree = "<group>"; };
+		842C0C6B298F713B00395061 /* ConsentsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentsListModel.swift; sourceTree = "<group>"; };
+		842C0C6E298F713B00395061 /* ConsentsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentsListViewController.swift; sourceTree = "<group>"; };
+		842C0C70298F713B00395061 /* ConsentsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsentsListTableViewCell.xib; sourceTree = "<group>"; };
+		842C0C71298F713B00395061 /* ConsentsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentsListTableViewCell.swift; sourceTree = "<group>"; };
+		842C0C72298F713B00395061 /* ConsentsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentsListViewModel.swift; sourceTree = "<group>"; };
+		842C0C73298F713B00395061 /* ConsentsListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConsentsListViewController.storyboard; sourceTree = "<group>"; };
+		842C0C7A298F713B00395061 /* PatientAppointmentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientAppointmentViewModel.swift; sourceTree = "<group>"; };
+		842C0C7C298F713B00395061 /* PatientsAppointmentListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsAppointmentListModel.swift; sourceTree = "<group>"; };
+		842C0C7E298F713B00395061 /* PatientAppointmentViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PatientAppointmentViewController.storyboard; sourceTree = "<group>"; };
+		842C0C7F298F713B00395061 /* PatientAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientAppointmentViewController.swift; sourceTree = "<group>"; };
+		842C0C80298F713B00395061 /* PatientAppointmentViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PatientAppointmentViewController+TableView.swift"; sourceTree = "<group>"; };
+		842C0C82298F713B00395061 /* PatientAppointmentListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientAppointmentListTableViewCell.xib; sourceTree = "<group>"; };
+		842C0C83298F713B00395061 /* PatientAppointmentListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientAppointmentListTableViewCell.swift; sourceTree = "<group>"; };
+		842C0C86298F713B00395061 /* CreatePateintsTasksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewModel.swift; sourceTree = "<group>"; };
+		842C0C89298F713B00395061 /* CreatePateintsTasksViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreatePateintsTasksViewController.storyboard; sourceTree = "<group>"; };
+		842C0C8A298F713B00395061 /* CreatePateintsTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewController.swift; sourceTree = "<group>"; };
+		842C0C8E298F713B00395061 /* FillQuestionarieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillQuestionarieViewModel.swift; sourceTree = "<group>"; };
+		842C0C91298F713B00395061 /* FillQuestionarieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillQuestionarieViewController.swift; sourceTree = "<group>"; };
+		842C0C92298F713B00395061 /* FillQuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FillQuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
+		842C0C93298F713B00395061 /* FillQuestionarieViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FillQuestionarieViewController.storyboard; sourceTree = "<group>"; };
+		842C0C96298F713B00395061 /* AddNewQuestionarieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieViewModel.swift; sourceTree = "<group>"; };
+		842C0C99298F713B00395061 /* AddNewQuestionarieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieModel.swift; sourceTree = "<group>"; };
+		842C0C9B298F713B00395061 /* AddNewQuestionarieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieViewController.swift; sourceTree = "<group>"; };
+		842C0C9D298F713B00395061 /* AddNewQuestionarieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewQuestionarieTableViewCell.xib; sourceTree = "<group>"; };
+		842C0C9E298F713B00395061 /* AddNewQuestionarieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieTableViewCell.swift; sourceTree = "<group>"; };
+		842C0C9F298F713B00395061 /* AddNewQuestionarieViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddNewQuestionarieViewController.storyboard; sourceTree = "<group>"; };
+		842C0CA2298F713B00395061 /* QuestionarieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionarieViewModel.swift; sourceTree = "<group>"; };
+		842C0CA4298F713B00395061 /* QuestionarieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionarieModel.swift; sourceTree = "<group>"; };
+		842C0CA6298F713B00395061 /* QuestionarieViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionarieViewController.storyboard; sourceTree = "<group>"; };
+		842C0CA7298F713B00395061 /* QuestionarieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionarieViewController.swift; sourceTree = "<group>"; };
+		842C0CA9298F713B00395061 /* QuestionarieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionarieTableViewCell.swift; sourceTree = "<group>"; };
+		842C0CAA298F713B00395061 /* QuestionarieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionarieTableViewCell.xib; sourceTree = "<group>"; };
+		842C0CCC298F749100395061 /* AddNewConsentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewConsentsViewController.swift; sourceTree = "<group>"; };
+		842C0CCE298F749E00395061 /* AddNewConsentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewConsentsViewController.storyboard; sourceTree = "<group>"; };
+		842C0CD0298F756200395061 /* AddNewConsentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewConsentsModel.swift; sourceTree = "<group>"; };
+		842C0CD2298F759100395061 /* AddNewConsentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewConsentsViewModel.swift; sourceTree = "<group>"; };
+		842C0CD5298F75CE00395061 /* ConsentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsTableViewCell.swift; sourceTree = "<group>"; };
+		842C0CD6298F75CE00395061 /* ConsentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsentsTableViewCell.xib; sourceTree = "<group>"; };
+		842C0CD9298FC12200395061 /* PateintsTagListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagListTableViewCell.swift; sourceTree = "<group>"; };
+		842C0CDA298FC12200395061 /* PateintsTagListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsTagListTableViewCell.xib; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
 		843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewModel.swift; sourceTree = "<group>"; };
-		84484597297D32D80041468A /* FillQuestionarieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillQuestionarieViewController.swift; sourceTree = "<group>"; };
-		84484599297D33B40041468A /* FillQuestionarieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillQuestionarieViewModel.swift; sourceTree = "<group>"; };
-		8448459B297D35A50041468A /* FillQuestionarieViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FillQuestionarieViewController.storyboard; sourceTree = "<group>"; };
-		8448459D297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FillQuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		845C399F292276AF00D934C5 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		845C39A0292276AF00D934C5 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		845C39A2292276AF00D934C5 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
@@ -537,18 +579,6 @@
 		845C39C1292276AF00D934C5 /* CustomNavaigationContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavaigationContoller.swift; sourceTree = "<group>"; };
 		845C39C3292276AF00D934C5 /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		8466F4B52944C4D800B49893 /* UIButtonExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenssion.swift; sourceTree = "<group>"; };
-		8471D527298D1ADB0010893E /* ConsentsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsListViewController.swift; sourceTree = "<group>"; };
-		8471D529298D1AE80010893E /* ConsentsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConsentsListViewController.storyboard; sourceTree = "<group>"; };
-		8471D52B298D1B320010893E /* ConsentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConsentsListViewModel.swift; path = Growth99/Modules/Pateints/ConsentsList/View/ConsentsListViewModel.swift; sourceTree = SOURCE_ROOT; };
-		8471D52D298D1B7B0010893E /* ConsentsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsListModel.swift; sourceTree = "<group>"; };
-		8471D530298D20230010893E /* ConsentsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentsListTableViewCell.swift; sourceTree = "<group>"; };
-		8471D531298D20230010893E /* ConsentsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsentsListTableViewCell.xib; sourceTree = "<group>"; };
-		8471D538298D460B0010893E /* PatientAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentViewController.swift; sourceTree = "<group>"; };
-		8471D53A298D465B0010893E /* PatientAppointmentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PatientAppointmentViewController.storyboard; sourceTree = "<group>"; };
-		8471D53C298D483A0010893E /* PatientAppointmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentViewModel.swift; sourceTree = "<group>"; };
-		8471D53F298D49130010893E /* PatientAppointmentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAppointmentListTableViewCell.swift; sourceTree = "<group>"; };
-		8471D540298D49130010893E /* PatientAppointmentListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PatientAppointmentListTableViewCell.xib; sourceTree = "<group>"; };
-		8471D543298D49CE0010893E /* PatientAppointmentViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientAppointmentViewController+TableView.swift"; sourceTree = "<group>"; };
 		8473207A29797452003099BB /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		8473208029797874003099BB /* PateintEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintEditViewController.swift; sourceTree = "<group>"; };
 		8473208229797885003099BB /* PateintEditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintEditViewController.storyboard; sourceTree = "<group>"; };
@@ -573,7 +603,6 @@
 		848CBAB52971A9D500681049 /* TaskAllUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAllUserListModel.swift; sourceTree = "<group>"; };
 		848CBAB72971ABE800681049 /* TaskPatientsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPatientsListModel.swift; sourceTree = "<group>"; };
 		848CBAB92971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuestionnaireSubmissionModel.swift; sourceTree = "<group>"; };
-		848F1153298EB2DB009D34CB /* PatientsAppointmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsAppointmentListModel.swift; sourceTree = "<group>"; };
 		848F4D7A28F1C160007AC421 /* Growth99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Growth99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F4D7D28F1C160007AC421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848F4D7F28F1C160007AC421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -588,15 +617,10 @@
 		849004942985A18800A271AA /* PateintsTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsListViewController.swift; sourceTree = "<group>"; };
 		849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTagsListViewController.storyboard; sourceTree = "<group>"; };
 		849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsListViewModel.swift; sourceTree = "<group>"; };
-		8490049B2985A27200A271AA /* PateintsTagListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagListTableViewCell.swift; sourceTree = "<group>"; };
-		8490049C2985A27200A271AA /* PateintsTagListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsTagListTableViewCell.xib; sourceTree = "<group>"; };
 		8490049F2986934C00A271AA /* PateintsTagListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagListModel.swift; sourceTree = "<group>"; };
 		849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsAddViewController.swift; sourceTree = "<group>"; };
 		849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsAddViewModel.swift; sourceTree = "<group>"; };
 		849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTagsAddViewController.storyboard; sourceTree = "<group>"; };
-		84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewModel.swift; sourceTree = "<group>"; };
-		84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePateintsTasksViewController.swift; sourceTree = "<group>"; };
-		84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePateintsTasksViewController.storyboard; sourceTree = "<group>"; };
 		8497A03028F9CC9300CBA26C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8497A03A28FF11E200CBA26C /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		8497A03B28FF11E200CBA26C /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
@@ -763,18 +787,6 @@
 		84D063562967EA81001FE469 /* TasksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewController.swift; sourceTree = "<group>"; };
 		84D063582967EA8C001FE469 /* TasksListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TasksListViewController.storyboard; sourceTree = "<group>"; };
 		84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
-		84D43A20297C21C800678458 /* QuestionarieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieViewController.swift; sourceTree = "<group>"; };
-		84D43A22297C21D800678458 /* QuestionarieViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionarieViewController.storyboard; sourceTree = "<group>"; };
-		84D43A24297C231D00678458 /* QuestionarieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieViewModel.swift; sourceTree = "<group>"; };
-		84D43A26297C244000678458 /* QuestionarieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieModel.swift; sourceTree = "<group>"; };
-		84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionarieTableViewCell.swift; sourceTree = "<group>"; };
-		84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionarieTableViewCell.xib; sourceTree = "<group>"; };
-		84DB4ADD298052D700112A23 /* AddNewQuestionarieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieViewController.swift; sourceTree = "<group>"; };
-		84DB4ADF298052EC00112A23 /* AddNewQuestionarieViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewQuestionarieViewController.storyboard; sourceTree = "<group>"; };
-		84DB4AE12980530200112A23 /* AddNewQuestionarieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieViewModel.swift; sourceTree = "<group>"; };
-		84DB4AE32980531200112A23 /* AddNewQuestionarieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieModel.swift; sourceTree = "<group>"; };
-		84DB4AE6298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuestionarieTableViewCell.swift; sourceTree = "<group>"; };
-		84DB4AE7298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewQuestionarieTableViewCell.xib; sourceTree = "<group>"; };
 		84E34C45297035A000C58B0D /* TasksListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		84E34C49297035D500C58B0D /* CreateTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTasksViewModel.swift; path = Growth99/Modules/Tasks/Add/ViewModel/CreateTasksViewModel.swift; sourceTree = SOURCE_ROOT; };
 		84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTasksViewController.swift; sourceTree = "<group>"; };
@@ -1397,47 +1409,335 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		842C0C67298F704B00395061 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				849004902985935900A271AA /* PateintsTags */,
+				849004A12986C22A00A271AA /* PateintsTagsAdd */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
+		842C0C68298F713B00395061 /* Consents */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C69298F713B00395061 /* ConsentsList */,
+				842C0C74298F713B00395061 /* AddConsents */,
+			);
+			path = Consents;
+			sourceTree = "<group>";
+		};
+		842C0C69298F713B00395061 /* ConsentsList */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C6A298F713B00395061 /* Model */,
+				842C0C6C298F713B00395061 /* View */,
+			);
+			path = ConsentsList;
+			sourceTree = "<group>";
+		};
+		842C0C6A298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C6B298F713B00395061 /* ConsentsListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0C6C298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C6D298F713B00395061 /* ViewModel */,
+				842C0C6E298F713B00395061 /* ConsentsListViewController.swift */,
+				842C0C6F298F713B00395061 /* cell */,
+				842C0C72298F713B00395061 /* ConsentsListViewModel.swift */,
+				842C0C73298F713B00395061 /* ConsentsListViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0C6D298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0C6F298F713B00395061 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C70298F713B00395061 /* ConsentsListTableViewCell.xib */,
+				842C0C71298F713B00395061 /* ConsentsListTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		842C0C74298F713B00395061 /* AddConsents */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C76298F713B00395061 /* Model */,
+				842C0C75298F713B00395061 /* ViewModel */,
+				842C0C77298F713B00395061 /* View */,
+			);
+			path = AddConsents;
+			sourceTree = "<group>";
+		};
+		842C0C75298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CD2298F759100395061 /* AddNewConsentsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0C76298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CD0298F756200395061 /* AddNewConsentsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0C77298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CD4298F75A200395061 /* Cell */,
+				842C0CCC298F749100395061 /* AddNewConsentsViewController.swift */,
+				842C0CCE298F749E00395061 /* AddNewConsentsViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0C78298F713B00395061 /* PateintsAppointmentList */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C79298F713B00395061 /* ViewModel */,
+				842C0C7B298F713B00395061 /* Model */,
+				842C0C7D298F713B00395061 /* View */,
+			);
+			path = PateintsAppointmentList;
+			sourceTree = "<group>";
+		};
+		842C0C79298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C7A298F713B00395061 /* PatientAppointmentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0C7B298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C7C298F713B00395061 /* PatientsAppointmentListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0C7D298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C7E298F713B00395061 /* PatientAppointmentViewController.storyboard */,
+				842C0C7F298F713B00395061 /* PatientAppointmentViewController.swift */,
+				842C0C80298F713B00395061 /* PatientAppointmentViewController+TableView.swift */,
+				842C0C81298F713B00395061 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0C81298F713B00395061 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C82298F713B00395061 /* PatientAppointmentListTableViewCell.xib */,
+				842C0C83298F713B00395061 /* PatientAppointmentListTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		842C0C84298F713B00395061 /* AddPateintsTask */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C85298F713B00395061 /* ViewModel */,
+				842C0C87298F713B00395061 /* Model */,
+				842C0C88298F713B00395061 /* View */,
+			);
+			path = AddPateintsTask;
+			sourceTree = "<group>";
+		};
+		842C0C85298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C86298F713B00395061 /* CreatePateintsTasksViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0C87298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0C88298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C89298F713B00395061 /* CreatePateintsTasksViewController.storyboard */,
+				842C0C8A298F713B00395061 /* CreatePateintsTasksViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0C8B298F713B00395061 /* Questionarie */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CA0298F713B00395061 /* QuestionarieList */,
+				842C0C94298F713B00395061 /* AddNewQuestionarie */,
+				842C0C8C298F713B00395061 /* FillQuestionnaire */,
+			);
+			path = Questionarie;
+			sourceTree = "<group>";
+		};
+		842C0C8C298F713B00395061 /* FillQuestionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C8D298F713B00395061 /* ViewModel */,
+				842C0C8F298F713B00395061 /* Model */,
+				842C0C90298F713B00395061 /* View */,
+			);
+			path = FillQuestionnaire;
+			sourceTree = "<group>";
+		};
+		842C0C8D298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C8E298F713B00395061 /* FillQuestionarieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0C8F298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0C90298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C91298F713B00395061 /* FillQuestionarieViewController.swift */,
+				842C0C92298F713B00395061 /* FillQuestionarieViewController+TableView.swift */,
+				842C0C93298F713B00395061 /* FillQuestionarieViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0C94298F713B00395061 /* AddNewQuestionarie */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C95298F713B00395061 /* ViewModel */,
+				842C0C97298F713B00395061 /* Model */,
+				842C0C9A298F713B00395061 /* View */,
+			);
+			path = AddNewQuestionarie;
+			sourceTree = "<group>";
+		};
+		842C0C95298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C96298F713B00395061 /* AddNewQuestionarieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0C97298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C99298F713B00395061 /* AddNewQuestionarieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0C9A298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C9C298F713B00395061 /* Cell */,
+				842C0C9B298F713B00395061 /* AddNewQuestionarieViewController.swift */,
+				842C0C9F298F713B00395061 /* AddNewQuestionarieViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0C9C298F713B00395061 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				842C0C9E298F713B00395061 /* AddNewQuestionarieTableViewCell.swift */,
+				842C0C9D298F713B00395061 /* AddNewQuestionarieTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		842C0CA0298F713B00395061 /* QuestionarieList */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CA3298F713B00395061 /* Model */,
+				842C0CA1298F713B00395061 /* ViewModel */,
+				842C0CA5298F713B00395061 /* View */,
+			);
+			path = QuestionarieList;
+			sourceTree = "<group>";
+		};
+		842C0CA1298F713B00395061 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CA2298F713B00395061 /* QuestionarieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		842C0CA3298F713B00395061 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CA4298F713B00395061 /* QuestionarieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C0CA5298F713B00395061 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CA8298F713B00395061 /* Cell */,
+				842C0CA6298F713B00395061 /* QuestionarieViewController.storyboard */,
+				842C0CA7298F713B00395061 /* QuestionarieViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C0CA8298F713B00395061 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CA9298F713B00395061 /* QuestionarieTableViewCell.swift */,
+				842C0CAA298F713B00395061 /* QuestionarieTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		842C0CD4298F75A200395061 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				842C0CD5298F75CE00395061 /* ConsentsTableViewCell.swift */,
+				842C0CD6298F75CE00395061 /* ConsentsTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		843A7A8E29769FDC0063FA2D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84484593297D32390041468A /* FillQuestionnaire */ = {
-			isa = PBXGroup;
-			children = (
-				84484596297D32AB0041468A /* Model */,
-				84484595297D32A90041468A /* ViewModel */,
-				84484594297D32A60041468A /* View */,
-			);
-			path = FillQuestionnaire;
-			sourceTree = "<group>";
-		};
-		84484594297D32A60041468A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84484597297D32D80041468A /* FillQuestionarieViewController.swift */,
-				8448459D297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift */,
-				8448459B297D35A50041468A /* FillQuestionarieViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84484595297D32A90041468A /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				84484599297D33B40041468A /* FillQuestionarieViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84484596297D32AB0041468A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		845C399E292276AF00D934C5 /* LoaderScreens */ = {
@@ -1536,98 +1836,6 @@
 				84D1EE3B2923B03A00AAAF26 /* NetworkRequestManager.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		8471D523298D19F80010893E /* ConsentsList */ = {
-			isa = PBXGroup;
-			children = (
-				8471D526298D1AA50010893E /* Model */,
-				8471D525298D1A790010893E /* ViewModel */,
-				8471D524298D1A750010893E /* View */,
-			);
-			path = ConsentsList;
-			sourceTree = "<group>";
-		};
-		8471D524298D1A750010893E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8471D52F298D1FB80010893E /* cell */,
-				8471D527298D1ADB0010893E /* ConsentsListViewController.swift */,
-				8471D529298D1AE80010893E /* ConsentsListViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8471D525298D1A790010893E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8471D52B298D1B320010893E /* ConsentsListViewModel.swift */,
-			);
-			name = ViewModel;
-			path = "New Group/ViewModel";
-			sourceTree = "<group>";
-		};
-		8471D526298D1AA50010893E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8471D52D298D1B7B0010893E /* ConsentsListModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8471D52F298D1FB80010893E /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				8471D530298D20230010893E /* ConsentsListTableViewCell.swift */,
-				8471D531298D20230010893E /* ConsentsListTableViewCell.xib */,
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
-		8471D534298D422A0010893E /* PateintsAppointmentList */ = {
-			isa = PBXGroup;
-			children = (
-				8471D535298D43030010893E /* Model */,
-				8471D536298D43080010893E /* ViewModel */,
-				8471D537298D430C0010893E /* View */,
-			);
-			path = PateintsAppointmentList;
-			sourceTree = "<group>";
-		};
-		8471D535298D43030010893E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				848F1153298EB2DB009D34CB /* PatientsAppointmentListModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8471D536298D43080010893E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8471D53C298D483A0010893E /* PatientAppointmentViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		8471D537298D430C0010893E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8471D53E298D48E70010893E /* Cell */,
-				8471D538298D460B0010893E /* PatientAppointmentViewController.swift */,
-				8471D53A298D465B0010893E /* PatientAppointmentViewController.storyboard */,
-				8471D543298D49CE0010893E /* PatientAppointmentViewController+TableView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8471D53E298D48E70010893E /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				8471D53F298D49130010893E /* PatientAppointmentListTableViewCell.swift */,
-				8471D540298D49130010893E /* PatientAppointmentListTableViewCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		8473207C29797831003099BB /* PateintsEdit */ = {
@@ -1798,8 +2006,8 @@
 		8490049A2985A24700A271AA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				8490049B2985A27200A271AA /* PateintsTagListTableViewCell.swift */,
-				8490049C2985A27200A271AA /* PateintsTagListTableViewCell.xib */,
+				842C0CD9298FC12200395061 /* PateintsTagListTableViewCell.swift */,
+				842C0CDA298FC12200395061 /* PateintsTagListTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1832,40 +2040,6 @@
 			sourceTree = "<group>";
 		};
 		849004A42986C27C00A271AA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84978CDD298563FE007041D2 /* AddPateintsTask */ = {
-			isa = PBXGroup;
-			children = (
-				84978CE029856432007041D2 /* Model */,
-				84978CDF2985642E007041D2 /* ViewModel */,
-				84978CDE2985642B007041D2 /* View */,
-			);
-			path = AddPateintsTask;
-			sourceTree = "<group>";
-		};
-		84978CDE2985642B007041D2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84978CE329856488007041D2 /* CreatePateintsTasksViewController.swift */,
-				84978CE529856498007041D2 /* CreatePateintsTasksViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84978CDF2985642E007041D2 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				84978CE129856466007041D2 /* CreatePateintsTasksViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84978CE029856432007041D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -2356,17 +2530,10 @@
 			isa = PBXGroup;
 			children = (
 				84D0619F29670676001FE469 /* PateintsList */,
-				84D0619A29670676001FE469 /* PateintsDetail */,
 				84D061A629670676001FE469 /* PateintsAdd */,
 				8473207C29797831003099BB /* PateintsEdit */,
-				8471D523298D19F80010893E /* ConsentsList */,
-				849004A12986C22A00A271AA /* PateintsTagsAdd */,
-				849004902985935900A271AA /* PateintsTags */,
-				84D43A1C297C217500678458 /* QuestionarieList */,
-				84484593297D32390041468A /* FillQuestionnaire */,
-				84DB4AD92980527000112A23 /* AddNewQuestionarie */,
-				8471D534298D422A0010893E /* PateintsAppointmentList */,
-				84978CDD298563FE007041D2 /* AddPateintsTask */,
+				84D0619A29670676001FE469 /* PateintsDetail */,
+				842C0C67298F704B00395061 /* Tags */,
 			);
 			path = Pateints;
 			sourceTree = "<group>";
@@ -2378,6 +2545,10 @@
 				84088BA32977E59C0060855E /* Model */,
 				84088BA22977E5900060855E /* ViewModel */,
 				84088BA42977E5B50060855E /* View */,
+				842C0C8B298F713B00395061 /* Questionarie */,
+				842C0C84298F713B00395061 /* AddPateintsTask */,
+				842C0C68298F713B00395061 /* Consents */,
+				842C0C78298F713B00395061 /* PateintsAppointmentList */,
 			);
 			path = PateintsDetail;
 			sourceTree = "<group>";
@@ -2709,101 +2880,11 @@
 			path = "Booking History";
 			sourceTree = "<group>";
 		};
-		84D43A1C297C217500678458 /* QuestionarieList */ = {
-			isa = PBXGroup;
-			children = (
-				84D43A1F297C218700678458 /* Model */,
-				84D43A1E297C218300678458 /* ViewModel */,
-				84D43A1D297C218000678458 /* View */,
-			);
-			path = QuestionarieList;
-			sourceTree = "<group>";
-		};
-		84D43A1D297C218000678458 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84D43A2C297C33D300678458 /* Cell */,
-				84D43A20297C21C800678458 /* QuestionarieViewController.swift */,
-				84D43A22297C21D800678458 /* QuestionarieViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84D43A1E297C218300678458 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				84D43A24297C231D00678458 /* QuestionarieViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84D43A1F297C218700678458 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				84D43A26297C244000678458 /* QuestionarieModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84D43A2C297C33D300678458 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				84D43A28297C32DF00678458 /* QuestionarieTableViewCell.swift */,
-				84D43A29297C32DF00678458 /* QuestionarieTableViewCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		84D43A2E297C55F200678458 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				84D061A329670676001FE469 /* PateintListTableViewCell.swift */,
 				84D061A429670676001FE469 /* PateintListTableViewCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		84DB4AD92980527000112A23 /* AddNewQuestionarie */ = {
-			isa = PBXGroup;
-			children = (
-				84DB4ADA2980528600112A23 /* Model */,
-				84DB4ADB2980529A00112A23 /* ViewModel */,
-				84DB4ADC298052A200112A23 /* View */,
-			);
-			path = AddNewQuestionarie;
-			sourceTree = "<group>";
-		};
-		84DB4ADA2980528600112A23 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				84DB4AE32980531200112A23 /* AddNewQuestionarieModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84DB4ADB2980529A00112A23 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				84DB4AE12980530200112A23 /* AddNewQuestionarieViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84DB4ADC298052A200112A23 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84DB4AE5298053E000112A23 /* Cell */,
-				84DB4ADD298052D700112A23 /* AddNewQuestionarieViewController.swift */,
-				84DB4ADF298052EC00112A23 /* AddNewQuestionarieViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84DB4AE5298053E000112A23 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				84DB4AE6298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift */,
-				84DB4AE7298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3448,10 +3529,12 @@
 			files = (
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
+				842C0CD8298F75CE00395061 /* ConsentsTableViewCell.xib in Resources */,
 				DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */,
+				842C0CB9298F713B00395061 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
-				84D43A23297C21D800678458 /* QuestionarieViewController.storyboard in Resources */,
+				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
@@ -3464,7 +3547,9 @@
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */,
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
+				842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */,
 				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
+				842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
 				84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */,
@@ -3476,13 +3561,14 @@
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
-				84DB4AE0298052EC00112A23 /* AddNewQuestionarieViewController.storyboard in Resources */,
 				84D0621F29670676001FE469 /* AppointmentsViewController.storyboard in Resources */,
 				DAB4E98F29755BA000AAA414 /* EventsTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* CustomEmailTemplateTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
+				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
+				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
 				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
@@ -3492,38 +3578,34 @@
 				84D063102967080E001FE469 /* LeadTableViewCell.xib in Resources */,
 				DAB4E99429755BA000AAA414 /* AddEventViewController.storyboard in Resources */,
 				84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */,
+				842C0CC8298F713B00395061 /* QuestionarieViewController.storyboard in Resources */,
+				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
-				8448459C297D35A50041468A /* FillQuestionarieViewController.storyboard in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
+				842C0CC3298F713B00395061 /* AddNewQuestionarieTableViewCell.xib in Resources */,
+				842C0CCB298F713B00395061 /* QuestionarieTableViewCell.xib in Resources */,
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
-				8471D533298D20230010893E /* ConsentsListTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
 				DAB4E9A02975943300AAA414 /* EmptyEventsTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
-				8471D52A298D1AE80010893E /* ConsentsListViewController.storyboard in Resources */,
 				8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */,
-				8490049E2985A27200A271AA /* PateintsTagListTableViewCell.xib in Resources */,
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
-				84D43A2B297C32DF00678458 /* QuestionarieTableViewCell.xib in Resources */,
 				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
-				8471D542298D49130010893E /* PatientAppointmentListTableViewCell.xib in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
-				8471D53B298D465B0010893E /* PatientAppointmentViewController.storyboard in Resources */,
 				DAE1409E298ACCD600794F6A /* BookingHistoryViewController.storyboard in Resources */,
-				84978CE629856498007041D2 /* CreatePateintsTasksViewController.storyboard in Resources */,
-				84DB4AE9298053FC00112A23 /* AddNewQuestionarieTableViewCell.xib in Resources */,
+				842C0CCF298F749E00395061 /* AddNewConsentsViewController.storyboard in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
@@ -3534,6 +3616,7 @@
 				84B75EA62968CEA300962F3E /* CategoriesListTableViewCell.xib in Resources */,
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
+				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3662,6 +3745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
+				842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* CustomSMSTemplateTableViewCell.swift in Sources */,
@@ -3672,13 +3756,15 @@
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */,
+				842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
-				84D43A2A297C32DF00678458 /* QuestionarieTableViewCell.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
+				842C0CC6298F713B00395061 /* QuestionarieViewModel.swift in Sources */,
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
 				84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */,
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
+				842C0CD7298F75CE00395061 /* ConsentsTableViewCell.swift in Sources */,
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */,
 				84D0623B29670677001FE469 /* PateintListModel.swift in Sources */,
@@ -3687,7 +3773,6 @@
 				84F610F1292A71AB00B1FB69 /* Promise.swift in Sources */,
 				84F610B5292A71AA00B1FB69 /* Claims.swift in Sources */,
 				84D0622629670676001FE469 /* WorkingCustomTableViewCell.swift in Sources */,
-				8471D532298D20230010893E /* ConsentsListTableViewCell.swift in Sources */,
 				848C92B1291F6AA000502956 /* ViewControllerExtension.swift in Sources */,
 				84F610DC292A71AB00B1FB69 /* Transformable.swift in Sources */,
 				84F610BF292A71AA00B1FB69 /* None.swift in Sources */,
@@ -3699,15 +3784,12 @@
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
-				8471D539298D460B0010893E /* PatientAppointmentViewController.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
-				84D43A25297C231D00678458 /* QuestionarieViewModel.swift in Sources */,
 				84F610FA292A71AB00B1FB69 /* TLSPublicKey.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
-				84DB4ADE298052D700112A23 /* AddNewQuestionarieViewController.swift in Sources */,
 				84D0621E29670676001FE469 /* AppointmentsViewController.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
@@ -3721,33 +3803,30 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
+				842C0CB1298F713B00395061 /* PatientAppointmentViewModel.swift in Sources */,
 				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
-				84978CE429856488007041D2 /* CreatePateintsTasksViewController.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
-				8471D52E298D1B7B0010893E /* ConsentsListModel.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
-				8471D544298D49CE0010893E /* PatientAppointmentViewController+TableView.swift in Sources */,
-				84DB4AE22980530200112A23 /* AddNewQuestionarieViewModel.swift in Sources */,
 				DA58258C2977240300F002F6 /* AddEventViewModel.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
+				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
-				8471D541298D49130010893E /* PatientAppointmentListTableViewCell.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
 				398F90FD298ECB8700DB96E4 /* IQUITextFieldView+Additions.swift in Sources */,
 				DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */,
 				DAB4E98E29755BA000AAA414 /* EventsTableViewCell.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
-				84D43A27297C244000678458 /* QuestionarieModel.swift in Sources */,
+				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
-				8471D53D298D483A0010893E /* PatientAppointmentViewModel.swift in Sources */,
+				842C0CB2298F713B00395061 /* PatientsAppointmentListModel.swift in Sources */,
 				398F90FA298ECB8700DB96E4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
@@ -3758,6 +3837,7 @@
 				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				DAB4E99229755BA000AAA414 /* EventEditViewController.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
+				842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */,
 				84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */,
 				84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
@@ -3765,19 +3845,18 @@
 				DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */,
 				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
+				842C0CAF298F713B00395061 /* ConsentsListViewModel.swift in Sources */,
 				398F90F0298ECB8700DB96E4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
-				8448459A297D33B40041468A /* FillQuestionarieViewModel.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
 				DAB4E99129755BA000AAA414 /* CalenderBaseViewController.swift in Sources */,
-				84DB4AE8298053FC00112A23 /* AddNewQuestionarieTableViewCell.swift in Sources */,
-				84DB4AE42980531200112A23 /* AddNewQuestionarieModel.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
 				84B8B81B2973A64500742B42 /* EditTasksViewModel.swift in Sources */,
 				84D0628E29670677001FE469 /* LogInViewController.swift in Sources */,
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
+				842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */,
 				84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */,
 				849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */,
 				DAB4E99829755BA000AAA414 /* DailyViewController.swift in Sources */,
@@ -3824,11 +3903,13 @@
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
 				84D0630F2967080E001FE469 /* LeadTableViewCell.swift in Sources */,
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
+				842C0CBD298F713B00395061 /* FillQuestionarieViewController+TableView.swift in Sources */,
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
 				398F90F7298ECB8700DB96E4 /* IQKeyboardManager.swift in Sources */,
 				84F610FD292A71AB00B1FB69 /* TLSCertificateBlock.swift in Sources */,
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
+				842C0CB4298F713B00395061 /* PatientAppointmentViewController.swift in Sources */,
 				DAB4E99629755BA000AAA414 /* DailyCell.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
 				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
@@ -3838,7 +3919,6 @@
 				84F610CB292A71AA00B1FB69 /* Dispatch.swift in Sources */,
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
-				8471D52C298D1B320010893E /* ConsentsListViewModel.swift in Sources */,
 				84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */,
 				84F610BE292A71AA00B1FB69 /* Data+Crypto.swift in Sources */,
 				84D063082967080E001FE469 /* EmailTemplateTableViewCell.swift in Sources */,
@@ -3852,7 +3932,9 @@
 				398F90EB298ECB8700DB96E4 /* IQKeyboardManager+Internal.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
+				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
+				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				DAB4E99F2975943300AAA414 /* EmptyEventsTableViewCell.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
@@ -3862,10 +3944,12 @@
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadModel.swift in Sources */,
+				842C0CD1298F756200395061 /* AddNewConsentsModel.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				DAB4E99329755BA000AAA414 /* AddEventViewController.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
+				842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
@@ -3873,7 +3957,6 @@
 				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
-				84484598297D32D80041468A /* FillQuestionarieViewController.swift in Sources */,
 				DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */,
 				398F90F9298ECB8700DB96E4 /* IQKeyboardManager+OrientationNotification.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
@@ -3915,29 +3998,29 @@
 				848C92AA291F6AA000502956 /* RSSelectionMenuDataSource.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
-				848F1154298EB2DB009D34CB /* PatientsAppointmentListModel.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
-				8471D528298D1ADB0010893E /* ConsentsListViewController.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
 				84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */,
-				8448459E297D4B7B0041468A /* FillQuestionarieViewController+TableView.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
+				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				39A1B814298D7418006167CE /* EditEventViewModel.swift in Sources */,
+				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
 				847C6C44297A963E000188AE /* PateintsEditDetailModel.swift in Sources */,
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
+				842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */,
 				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
@@ -3949,11 +4032,12 @@
 				398F9100298ECB8700DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */,
 				398F90FE298ECB8700DB96E4 /* IQUIView+Hierarchy.swift in Sources */,
 				84F61135292A71AB00B1FB69 /* HTTPMethod.swift in Sources */,
+				842C0CDB298FC12200395061 /* PateintsTagListTableViewCell.swift in Sources */,
 				84F610F9292A71AB00B1FB69 /* DERError.swift in Sources */,
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
 				84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */,
 				84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */,
-				8490049D2985A27200A271AA /* PateintsTagListTableViewCell.swift in Sources */,
+				842C0CBA298F713B00395061 /* CreatePateintsTasksViewController.swift in Sources */,
 				84F610DD292A71AB00B1FB69 /* FileDescriptor.swift in Sources */,
 				DAB4E99529755BA000AAA414 /* CalenderViewController.swift in Sources */,
 				848C92AE291F6AA000502956 /* RSSelectionTableView.swift in Sources */,
@@ -3978,17 +4062,20 @@
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
-				84D43A21297C21C800678458 /* QuestionarieViewController.swift in Sources */,
 				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,
+				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,
 				84F610BB292A71AA00B1FB69 /* JWT.swift in Sources */,
 				84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */,
+				842C0CB8298F713B00395061 /* CreatePateintsTasksViewModel.swift in Sources */,
 				84F610C4292A71AA00B1FB69 /* JOSEHeader.swift in Sources */,
 				84088BCB297930180060855E /* BusinessModel.swift in Sources */,
 				84D0631E2967080E001FE469 /* PreSelectCheckboxTableViewCell.swift in Sources */,
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
 				DAB4E99C297577D900AAA414 /* CalenderModel.swift in Sources */,
+				842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */,
+				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
@@ -3998,10 +4085,10 @@
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
-				84978CE229856466007041D2 /* CreatePateintsTasksViewModel.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,
 				84D062F52967080E001FE469 /* leadDetailViewModel.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,
+				842C0CC7298F713B00395061 /* QuestionarieModel.swift in Sources */,
 				848CBAB82971ABE800681049 /* TaskPatientsListModel.swift in Sources */,
 				84D062F72967080E001FE469 /* leadTimeLineViewController.swift in Sources */,
 				84D0630B2967080E001FE469 /* leadDetailViewController+TableView.swift in Sources */,

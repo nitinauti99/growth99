@@ -1,17 +1,13 @@
 //
-//  QuestionarieListTableViewCell.swift
+//  ConsentsTableViewCell.swift
 //  Growth99
 //
-//  Created by nitin auti on 24/01/23.
+//  Created by nitin auti on 05/02/23.
 //
 
 import UIKit
 
-protocol AddNewQuestionarieTableViewCellDelegate: AnyObject {
-    func isQuestionnaireSelection(cell: AddNewQuestionarieTableViewCell, index: IndexPath)
-}
-
-class AddNewQuestionarieTableViewCell: UITableViewCell {
+class ConsentsTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var questionnaireName: UILabel!
     @IBOutlet private weak var questionnaireID: UILabel!
@@ -19,9 +15,7 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
 
     var dateFormater : DateFormaterProtocol?
-    weak var delegate: AddNewQuestionarieTableViewCellDelegate?
-    var indexPath = IndexPath()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
@@ -29,11 +23,17 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
     
-    func configureCell(questionarieVM: AddNewQuestionarieViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.QuestionarieDataAtIndex(index: index.row)
-        self.questionnaireName.text = questionarieVM?.name
-        self.questionnaireID.text = String(questionarieVM?.id ?? 0)
-        indexPath = index
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.questionnaireName?.text = nil
+        self.questionnaireID?.text = nil
+        self.questionnaireSelection.imageView?.image = nil
+    }
+    
+    func configureCell(consentsVM: AddNewConsentsViewModelProtocol?, index: IndexPath) {
+        let consentsVM = consentsVM?.ConsentsDataAtIndex(index: index.row)
+        self.questionnaireName.text = consentsVM?.name
+        self.questionnaireID.text = String(consentsVM?.id ?? 0)
     }
     
     @IBAction func selectionButtonPressed(sender: UIButton) {
@@ -43,7 +43,5 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
             sender.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for:.normal)
         }
         sender.isSelected = !sender.isSelected
-
-        //self.delegate?.isQuestionnaireSelection(cell: self, index: indexPath)
     }
 }

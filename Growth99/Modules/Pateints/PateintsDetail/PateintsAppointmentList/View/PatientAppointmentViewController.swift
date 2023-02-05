@@ -72,12 +72,6 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         viewModel?.getPatientAppointmentList(pateintId: pateintId)
     }
     
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
-    
     func patientAppointmentDataRecived() {
         viewModel?.getPatientAppointmentList(pateintId: pateintId)
     }

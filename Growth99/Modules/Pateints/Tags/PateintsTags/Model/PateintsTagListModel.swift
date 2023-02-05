@@ -11,3 +11,7 @@ struct PateintsTagListModel: Codable {
     let isDefault: Bool?
     let id: Int?
 }
+
+struct PateintsTagRemove:  Codable {
+    let success: String?
+}

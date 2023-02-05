@@ -102,8 +102,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AddNewQuestionarieTableView" destination="3n8-X7-VMh" id="fJk-NV-CyN"/>
                         <outlet property="searchBar" destination="QaQ-aS-Z47" id="1z7-oD-ooy"/>
+                        <outlet property="tableView" destination="3n8-X7-VMh" id="7mR-pp-JIG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

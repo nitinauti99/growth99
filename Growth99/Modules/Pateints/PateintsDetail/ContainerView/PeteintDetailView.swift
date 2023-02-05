@@ -73,7 +73,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: PateintsAppointmentListVC)
             add(asChildViewController: consentsListVC)
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(assignNewConsentButtonTapped), imageName: "add")
         case 4:
             remove(asChildViewController: questionarieVC)
             remove(asChildViewController: pateintDetailVC)
@@ -90,6 +90,10 @@ class PeteintDetailView: UIViewController {
 //            remove(asChildViewController: tasksListVC)
 //            add(asChildViewController: pateintDetailVC)
 //        }
+    }
+    @objc func assignNewConsentButtonTapped(_ sender: UIButton){
+        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
+        navigationController?.pushViewController(addNewConsentsVC, animated: true)
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
