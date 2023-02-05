@@ -13,7 +13,7 @@ protocol PateintsTagsListViewModelProtocol {
     func QuestionarieDataAtIndex(index: Int) -> PateintsTagListModel?
     var QuestionarieFilterDataData: [PateintsTagListModel] { get }
     func QuestionarieFilterDataDataAtIndex(index: Int)-> PateintsTagListModel?
-    func sendQuestionarieListToPateint(questionnaireIds: (Int, Int))
+    func removePateintsTag(pateintsTagid: Int)
 }
 
 class PateintsTagsListViewModel {
@@ -40,8 +40,18 @@ class PateintsTagsListViewModel {
         }
     }
     
-    func sendQuestionarieListToPateint(questionnaireIds: (Int, Int)) {
-        
+    func removePateintsTag(pateintsTagid: Int) {
+        self.requestManager.request(forPath: ApiUrl.removePatientsTags.appending("\(pateintsTagid)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+            
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.pateintTagRemovedSuccefully(mrssage: data.success ?? "")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
     
     func QuestionarieDataAtIndex(index: Int)-> PateintsTagListModel? {

@@ -11,9 +11,10 @@ import UIKit
 protocol PateintsTagsListViewControllerProtocol: AnyObject {
     func pateintsTagListRecived()
     func errorReceived(error: String)
+    func pateintTagRemovedSuccefully(mrssage: String)
 }
 
-class PateintsTagsListViewController: UIViewController, PateintsTagsListViewControllerProtocol, PateintsTagListTableViewCellDelegate {
+class PateintsTagsListViewController: UIViewController, PateintsTagsListViewControllerProtocol,PateintsTagListTableViewCellDelegate {
    
     @IBOutlet private weak var PateintsTagsListTableview: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -35,9 +36,8 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // addSerchBar()
+        addSerchBar()
         self.registerTableView()
-
         self.view.ShowSpinner()
         viewModel?.getQuestionarieList()
         self.title = Constant.Profile.patientTags
@@ -72,22 +72,29 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
         self.view.showToast(message: error)
     }
     
-    @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
-        self.view.ShowSpinner()
+    func removePatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \(viewModel?.QuestionarieDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            let tagid = self?.viewModel?.QuestionarieDataAtIndex(index: index.row)?.id ?? 0
+            self?.viewModel?.removePateintsTag(pateintsTagid: tagid)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
-    
-    func removePatieint(cell: PateintsTagListTableViewCell, index: IndexPath) {
-         
+
+    func pateintTagRemovedSuccefully(mrssage: String){
+        self.view.showToast(message: mrssage)
+        viewModel?.getQuestionarieList()
     }
-    
-    func editPatieint(cell: PateintsTagListTableViewCell, index: IndexPath) {
-         
+
+    func editPatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
+        let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
+        detailController.PatientTagId = viewModel?.QuestionarieDataAtIndex(index: index.row)?.id ?? 0
+        detailController.PateintsTagsCreate = false
+        navigationController?.pushViewController(detailController, animated: true)
     }
-    
-    func detailPatieint(cell: PateintsTagListTableViewCell, index: IndexPath) {
-        
-    }
-    
+
 }
 
 extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,10 +112,10 @@ extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = PateintsTagListTableViewCell()
-        cell = PateintsTagsListTableview.dequeueReusableCell(withIdentifier: "PateintsTagListTableViewCell") as! PateintsTagListTableViewCell
-        cell.subView.createBorderForView(redius: 8, width: 1)
-        cell.subView.addBottomShadow(color:.gray)
+        
+        guard let cell = self.PateintsTagsListTableview.dequeueReusableCell(withIdentifier: "PateintsTagListTableViewCell", for: indexPath) as? PateintsTagListTableViewCell else { return UITableViewCell() }
+
+        cell.delegate = self
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{
@@ -118,11 +125,12 @@ extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
+        
         detailController.PatientTagId = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)?.id ?? 0
         detailController.PateintsTagsCreate = false
         navigationController?.pushViewController(detailController, animated: true)
@@ -142,5 +150,4 @@ extension PateintsTagsListViewController: UISearchBarDelegate {
         searchBar.text = ""
         PateintsTagsListTableview.reloadData()
     }
-    
 }

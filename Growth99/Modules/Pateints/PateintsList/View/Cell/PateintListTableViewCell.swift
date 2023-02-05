@@ -54,7 +54,6 @@ class PateintListTableViewCell: UITableViewCell {
         pateintStatusLbi.text = userVM?.patientStatus
         pateintStatusImage.image = UIImage(named: movement ?? "")
         indexPath = index
-        
     }
 
     @IBAction func deleteButtonPressed() {

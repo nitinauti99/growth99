@@ -13,33 +13,33 @@ protocol AddNewQuestionarieViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
 }
 
-class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieViewControllerProtocol, AddNewQuestionarieTableViewCellDelegate {
-   
-    @IBOutlet private weak var AddNewQuestionarieTableView: UITableView!
+class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewControllerProtocol {
+    
+    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
     var viewModel: AddNewQuestionarieViewModelProtocol?
-    var isSearch : Bool = false
     var filteredTableData = [AddNewQuestionarieModel]()
+    var isSearch : Bool = false
     var pateintId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = AddNewQuestionarieViewModel(delegate: self)
+        self.addSerchBar()
+        self.registerTableView()
         self.view.ShowSpinner()
+        self.viewModel = AddNewQuestionarieViewModel(delegate: self)
         viewModel?.getQuestionarieList()
     }
-        
+    
     func registerTableView() {
-        self.AddNewQuestionarieTableView.delegate = self
-        self.AddNewQuestionarieTableView.dataSource = self
-        AddNewQuestionarieTableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        tableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSerchBar()
-        self.registerTableView()
         self.title = Constant.Profile.Questionnarie
     }
     
@@ -52,13 +52,9 @@ class AddNewQuestionarieViewController: UIViewController, AddNewQuestionarieView
         searchBar.delegate = self
     }
     
-    func isQuestionnaireSelection(cell: AddNewQuestionarieTableViewCell, index: IndexPath) {
-        
-    }
-    
     func questionarieListRecived() {
         self.view.HideSpinner()
-        self.AddNewQuestionarieTableView.reloadData()
+        self.tableView.reloadData()
     }
     
     func errorReceived(error: String) {
@@ -88,7 +84,7 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = AddNewQuestionarieTableViewCell()
-        cell = AddNewQuestionarieTableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell") as! AddNewQuestionarieTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell") as! AddNewQuestionarieTableViewCell
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{
@@ -100,7 +96,7 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
 }
 
 extension AddNewQuestionarieViewController: UISearchBarDelegate {
@@ -108,13 +104,13 @@ extension AddNewQuestionarieViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
         isSearch = true
-        AddNewQuestionarieTableView.reloadData()
+        tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearch = false
         searchBar.text = ""
-        AddNewQuestionarieTableView.reloadData()
+        tableView.reloadData()
     }
 }
 
