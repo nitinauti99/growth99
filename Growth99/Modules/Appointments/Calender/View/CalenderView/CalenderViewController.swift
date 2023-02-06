@@ -307,7 +307,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
 
     @IBAction func addAppointmentButtonAction(sender: UIButton) {

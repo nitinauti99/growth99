@@ -121,8 +121,7 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     }
     
     func removeAppointment(cell: BookingHistoryTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete", preferredStyle: UIAlertController.Style.alert)
-        //\(cell.PateintDataAtIndex(index: index.row)?.name ?? "")"
+        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(cell.patientNameLabel.text ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
 //            self?.view.ShowSpinner()
 //            let pateintId = self?.viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
