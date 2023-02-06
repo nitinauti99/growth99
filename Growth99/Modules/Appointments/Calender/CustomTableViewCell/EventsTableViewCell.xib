@@ -58,6 +58,21 @@
                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzl-vA-rIn">
+                                <rect key="frame" x="296.5" y="73" width="25" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="D7U-xR-8Tp"/>
+                                    <constraint firstAttribute="width" constant="25" id="MPw-pJ-57u"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="edit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="eventDetailButtonPressed" destination="aqG-XN-1ii" eventType="touchUpInside" id="zGB-Ll-1Yf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -69,8 +84,10 @@
                             <constraint firstAttribute="trailing" secondItem="0fx-IC-AXD" secondAttribute="trailing" constant="22" id="DlC-GB-SQT"/>
                             <constraint firstItem="0fx-IC-AXD" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" constant="22" id="FZp-wO-fZq"/>
                             <constraint firstItem="0fx-IC-AXD" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="trailing" constant="22" id="Jgl-CF-dDe"/>
+                            <constraint firstItem="uzl-vA-rIn" firstAttribute="bottom" secondItem="T3l-5w-4WZ" secondAttribute="bottom" id="OhV-ZB-SnF"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" id="V66-ZM-MXS"/>
                             <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="8qJ-dq-Zyu" secondAttribute="trailing" constant="15" id="Z3X-Xp-pA8"/>
+                            <constraint firstItem="uzl-vA-rIn" firstAttribute="centerX" secondItem="0fx-IC-AXD" secondAttribute="centerX" id="beM-ar-LDL"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="leading" secondItem="jLf-tQ-Xcs" secondAttribute="leading" id="kOA-Pt-hsd"/>
                             <constraint firstItem="dJn-t1-zKk" firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" id="m3n-aA-EiN"/>
                             <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="dJn-t1-zKk" secondAttribute="bottom" constant="10" id="nDI-0W-kGC"/>
@@ -100,6 +117,7 @@
             <connections>
                 <outlet property="eventsDate" destination="0fx-IC-AXD" id="ihD-cY-o8z"/>
                 <outlet property="eventsDateCreated" destination="dJn-t1-zKk" id="uu1-ox-P0h"/>
+                <outlet property="eventsDetailButton" destination="uzl-vA-rIn" id="Q5M-Cm-4ya"/>
                 <outlet property="eventsDuration" destination="T3l-5w-4WZ" id="wtb-Ps-Ncq"/>
                 <outlet property="eventsLineView" destination="8qJ-dq-Zyu" id="ehw-1M-RBf"/>
                 <outlet property="eventsTitle" destination="2Xh-0c-Rep" id="0t4-E7-z6h"/>
@@ -108,6 +126,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="edit" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

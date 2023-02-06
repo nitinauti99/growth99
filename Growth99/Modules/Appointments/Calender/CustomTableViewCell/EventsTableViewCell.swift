@@ -14,6 +14,7 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventsDateCreated: UILabel!
     @IBOutlet weak var eventsDuration: UILabel!
     @IBOutlet weak var eventsDate: UIButton!
+    @IBOutlet weak var eventsDetailButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,8 @@ class EventsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
+    @IBAction func eventDetailButtonPressed() {
+        
+    }
 
 }

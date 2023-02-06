@@ -38,6 +38,9 @@
 		39DDA9C629901FCF00BFE0DE /* AppointmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DDA9C429901FCF00BFE0DE /* AppointmentTableViewCell.xib */; };
 		39E09D7C299013E900828E72 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E09D78299013E900828E72 /* AppointmentsViewController.swift */; };
 		39E09D7D299013E900828E72 /* AppointmentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E09D79299013E900828E72 /* AppointmentsViewController.storyboard */; };
+		39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBABBF2991576B001B789D /* GrowthDateFormats.swift */; };
+		39EBABC2299157FA001B789D /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBABC1299157FA001B789D /* ExtensionDate.swift */; };
+		39EBABC429915872001B789D /* StringExtension1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBABC329915872001B789D /* StringExtension1.swift */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -514,6 +517,9 @@
 		39DDA9C429901FCF00BFE0DE /* AppointmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentTableViewCell.xib; sourceTree = "<group>"; };
 		39E09D78299013E900828E72 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		39E09D79299013E900828E72 /* AppointmentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppointmentsViewController.storyboard; sourceTree = "<group>"; };
+		39EBABBF2991576B001B789D /* GrowthDateFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthDateFormats.swift; sourceTree = "<group>"; };
+		39EBABC1299157FA001B789D /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
+		39EBABC329915872001B789D /* StringExtension1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension1.swift; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1078,6 +1084,16 @@
 				39DDA9C429901FCF00BFE0DE /* AppointmentTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39EBABBE29915751001B789D /* GrowthDateFormats */ = {
+			isa = PBXGroup;
+			children = (
+				39EBABBF2991576B001B789D /* GrowthDateFormats.swift */,
+				39EBABC1299157FA001B789D /* ExtensionDate.swift */,
+				39EBABC329915872001B789D /* StringExtension1.swift */,
+			);
+			path = GrowthDateFormats;
 			sourceTree = "<group>";
 		};
 		84088B9F2977E5520060855E /* Model */ = {
@@ -2116,6 +2132,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				39EBABBE29915751001B789D /* GrowthDateFormats */,
 				398F90CD298ECB8600DB96E4 /* IQKeyboardManagerSwift */,
 				84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */,
 				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
@@ -3860,6 +3877,7 @@
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
+				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
@@ -3867,6 +3885,7 @@
 				398F90FD298ECB8700DB96E4 /* IQUITextFieldView+Additions.swift in Sources */,
 				DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */,
 				DAB4E98E29755BA000AAA414 /* EventsTableViewCell.swift in Sources */,
+				39EBABC2299157FA001B789D /* ExtensionDate.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
@@ -4041,6 +4060,7 @@
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
 				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,
+				39EBABC429915872001B789D /* StringExtension1.swift in Sources */,
 				84D0631C2967080E001FE469 /* TextTypeTableViewCell.swift in Sources */,
 				848C92AA291F6AA000502956 /* RSSelectionMenuDataSource.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
