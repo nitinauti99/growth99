@@ -17,4 +17,11 @@ extension UIViewController {
         }
         return nil
     }
+    
+    func emptyMessage(parentView: UIView, message: String) {
+        let messageLBI = UILabel(frame: CGRect(x: 20, y: parentView.frame.height / 2 , width: parentView.frame.width - 20, height: 100))
+        messageLBI.textAlignment = .center
+        messageLBI.text = message
+        parentView.addSubview(messageLBI)
+     }
 }

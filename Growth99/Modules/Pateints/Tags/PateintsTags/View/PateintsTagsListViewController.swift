@@ -73,12 +73,16 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     }
     
     func removePatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \(viewModel?.QuestionarieDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.QuestionarieDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                      handler: { [weak self] _ in
             self?.view.ShowSpinner()
             let tagid = self?.viewModel?.QuestionarieDataAtIndex(index: index.row)?.id ?? 0
             self?.viewModel?.removePateintsTag(pateintsTagid: tagid)
-        }))
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

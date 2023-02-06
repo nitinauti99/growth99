@@ -77,12 +77,16 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \(viewModel?.PateintDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.PateintDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                      handler: { [weak self] _ in
             self?.view.ShowSpinner()
             let pateintId = self?.viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
             self?.viewModel?.removePateints(pateintId: pateintId)
-        }))
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -94,6 +98,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     
     func pateintRemovedSuccefully(mrssage: String){
         viewModel?.getPateintList()
+        self.view.showToast(message: mrssage)
     }
 
     func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {

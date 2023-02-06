@@ -137,7 +137,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated By:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B45-2r-iN7" userLabel="LeadSaatus">
-                                <rect key="frame" x="18" y="210" width="72.666666666666671" height="20"/>
+                                <rect key="frame" x="18" y="210" width="73" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="07E-VE-vtA"/>
                                 </constraints>
@@ -173,7 +173,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lead Status:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A81-3B-jUp" userLabel="LeadSaatus">
-                                <rect key="frame" x="18" y="110" width="70.666666666666671" height="20"/>
+                                <rect key="frame" x="18" y="110" width="70.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="mQq-i2-Yqv"/>
                                 </constraints>
@@ -197,8 +197,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated By:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtI-tl-JyQ" userLabel="LeadSaatus">
-                                <rect key="frame" x="18" y="240" width="72.666666666666671" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtI-tl-JyQ" userLabel="LeadSaatus">
+                                <rect key="frame" x="18" y="240" width="47.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Uiq-Yk-ZRU"/>
                                 </constraints>

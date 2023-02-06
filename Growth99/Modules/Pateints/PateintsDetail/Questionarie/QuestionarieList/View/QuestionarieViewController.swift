@@ -51,10 +51,12 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
     }
+    
     @objc func LeadList() {
         self.view.ShowSpinner()
         self.getQuestionarieList()
     }
+    
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
         viewModel?.getQuestionarieList(pateintId: pateintId)
@@ -63,7 +65,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     func registerTableView() {
         self.questionarieListTableView.delegate = self
         self.questionarieListTableView.dataSource = self
-        questionarieListTableView.register(UINib(nibName: "QuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionarieTableViewCell")
+        self.questionarieListTableView.register(UINib(nibName: "QuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionarieTableViewCell")
     }
     
     @objc func creatUser() {
@@ -73,12 +75,15 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     
     @objc func getQuestionarieList(){
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList(pateintId: 46782)
+        viewModel?.getQuestionarieList(pateintId: pateintId)
     }
     
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.questionarieListTableView.reloadData()
+        if viewModel?.QuestionarieDataList.count == 0 {
+           self.emptyMessage(parentView: self.view, message: "There is no data")
+        }
     }
     
     func errorReceived(error: String) {
