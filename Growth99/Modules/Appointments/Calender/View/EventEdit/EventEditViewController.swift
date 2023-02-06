@@ -112,7 +112,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
         phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? String.blank
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
-        var serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
+        let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
         selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         servicesTextField.text = serviceSelectedArray.map({$0.serviceName ?? ""}).joined(separator: ", ")
@@ -240,6 +240,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     }
     
     @IBAction func selectServicesButtonAction(sender: UIButton) {
+        createSelectedServicesarray.removeAll()
         if selectedServices.count == 0 {
             self.servicesTextField.text = String.blank
         }
