@@ -40,8 +40,10 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     var editEventViewModel: CalenderViewModelProtocol?
     var eventViewModel: EditEventViewModelProtocol?
 
-    var serviceListArray = [String]()
-    var serviceListSelectedArray = [String]()
+    //var serviceListArray = [String]()
+   // var serviceListSelectedArray = [String]()
+   // var serviceListId  = [Int]()
+   // var serviceListSelectetId  = [Int]()
 
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
@@ -49,7 +51,8 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     
     var allServices = [ServiceList]()
     var selectedServices = [ServiceList]()
-    
+    var createSelectedServicesarray = [ServiceList]()
+
     var selectedServicesIds = [Int]()
     
     var allProviders = [UserDTOList]()
@@ -111,7 +114,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
         var serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
-        serviceListSelectedArray = serviceSelectedArray.map({$0.serviceName ?? String.blank})
+        selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         servicesTextField.text = serviceSelectedArray.map({$0.serviceName ?? ""}).joined(separator: ", ")
         providersTextField.text = editBookingHistoryData?.providerName ?? String.blank
         appoinmentStatusField.text = editBookingHistoryData?.appointmentStatus ?? String.blank
@@ -159,7 +162,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     
     func serviceListDataRecived() {
         allServices = editEventViewModel?.serviceData ?? []
-        serviceListArray = allServices.map({$0.serviceName ?? String.blank})
+        //serviceListArray = allServices.map({$0.serviceName ?? String.blank})
         self.view.HideSpinner()
     }
     
@@ -241,22 +244,29 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
             self.servicesTextField.text = String.blank
         }
         
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: serviceListArray, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.components(separatedBy: " ").first
+        for item in allServices {
+            for selctedItem in selectedServices {
+                if selctedItem.serviceId == item.serviceId {
+                    createSelectedServicesarray.append(item)
+                }
+            }
         }
-        
-        selectionMenu.setSelectedItems(items: serviceListSelectedArray) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.servicesTextField.text = selectedList.map({$0}).joined(separator: ", ")
-//            let selectedId = selectedList.map({$0.id ?? 0})
-//            self?.selectedServices  = selectedList
-//            self?.selectedServicesIds = selectedId
+                
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
+            cell.textLabel?.text = allServices.serviceName?.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: createSelectedServicesarray) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.servicesTextField.text = selectedList.map({$0.serviceName ?? ""}).joined(separator: ", ")
+            let selectedId = selectedList.map({$0.id ?? 0})
+            self?.selectedServices  = selectedList
+            self?.selectedServicesIds = selectedId
             self?.view.ShowSpinner()
             self?.editEventViewModel?.sendProviderList(providerParams: self?.selectedServicesIds.first ?? 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(serviceListArray.count * 44))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServices.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func selectProvidersButtonAction(sender: UIButton) {

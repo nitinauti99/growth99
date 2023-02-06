@@ -35,6 +35,10 @@ extension PatientAppointmentViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        let patientAppointmentListVM = viewModel?.patientListAtIndex(index: indexPath.row)
+        editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
+        editVC.appointmentId  = patientAppointmentListVM?.id
+        navigationController?.pushViewController(editVC, animated: true)
     }
 }

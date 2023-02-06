@@ -67,7 +67,7 @@ struct Constant {
         static let Questionnarie = " Questionnarie "
         static let tasks = "  Tasks  "
         static let Consents = "  Consents  "
-        static let appointmentDetail = "Appointment Detail"
+        static let appointmentDetail = "Appointment"
         static let tasksDetail = "Tasks Detail"
         static let patientTags = "Patient Tags"
         static let Timeline = "Timeline"
