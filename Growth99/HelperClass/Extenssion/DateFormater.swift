@@ -20,9 +20,9 @@ class DateFormater: DateFormaterProtocol {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
+        guard let date = dateFormatter.date(from: date) else { return ""}
         dateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-        return dateFormatter.string(from: date as Date)
+        return dateFormatter.string(from: date)
     }
     
     func serverToLocalWithoutTime(date: String) -> String {

@@ -64,7 +64,7 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
     
     @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
         self.view.ShowSpinner()
-        
+        /// api is accepting wrong formate data
     }
 }
 
@@ -84,7 +84,7 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = AddNewQuestionarieTableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell") as! AddNewQuestionarieTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell", for: indexPath) as! AddNewQuestionarieTableViewCell
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }else{

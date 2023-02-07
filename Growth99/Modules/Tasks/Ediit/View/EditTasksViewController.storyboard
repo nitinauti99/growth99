@@ -531,31 +531,31 @@
     </scenes>
     <designables>
         <designable name="LoW-f7-VgA">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="QDp-hp-wog">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="bmi-YC-6bI">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jdN-Lv-IAr">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="lrc-7C-of5">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="mze-hG-8dZ">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="nt7-qn-Y0H">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="qg1-oU-mok">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="ss6-BP-XHc">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>

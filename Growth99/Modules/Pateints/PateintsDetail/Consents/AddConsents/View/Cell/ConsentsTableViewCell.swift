@@ -25,8 +25,8 @@ class ConsentsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.questionnaireName?.text = nil
-        self.questionnaireID?.text = nil
+        self.questionnaireName.text?.removeAll()
+        self.questionnaireID.text?.removeAll()
         self.questionnaireSelection.imageView?.image = nil
     }
     
@@ -38,9 +38,9 @@ class ConsentsTableViewCell: UITableViewCell {
     
     @IBAction func selectionButtonPressed(sender: UIButton) {
         if sender.isSelected {
-            sender.setBackgroundImage(#imageLiteral(resourceName: "tickselected"), for: .normal)
+            sender.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for: .normal)
         } else {
-            sender.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for:.normal)
+            sender.setBackgroundImage(#imageLiteral(resourceName: "tickselected"), for: .normal)
         }
         sender.isSelected = !sender.isSelected
     }

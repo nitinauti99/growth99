@@ -130,6 +130,7 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editVC = UIStoryboard(name: "EditTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "EditTasksViewController") as! EditTasksViewController
         editVC.taskId = viewModel?.taskDataAtIndex(index: indexPath.row)?.id ?? 0
+        editVC.workflowTaskPatient = viewModel?.taskDataAtIndex(index: indexPath.row)?.patientId ?? 0
         navigationController?.pushViewController(editVC, animated: true)
     }
 }

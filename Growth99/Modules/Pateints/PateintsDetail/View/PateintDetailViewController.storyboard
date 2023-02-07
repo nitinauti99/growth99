@@ -204,7 +204,7 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCX-91-6Cc" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCX-91-6Cc" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="30" y="555" width="304" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="QcA-5s-AWM"/>
@@ -442,7 +442,6 @@
                         <outlet property="existingButton" destination="nad-rI-wTR" id="rrR-Rs-YjI"/>
                         <outlet property="firstName" destination="dwF-BZ-1SP" id="iHT-02-jEe"/>
                         <outlet property="fullName" destination="YLq-qa-Zf9" id="oQ6-0o-9q5"/>
-                        <outlet property="gender" destination="jCX-91-6Cc" id="ple-gt-hDa"/>
                         <outlet property="lastName" destination="buE-c6-iZF" id="nub-zK-5Ej"/>
                         <outlet property="newButton" destination="r8S-4M-LgI" id="BDN-ff-JOr"/>
                         <outlet property="notes" destination="NgV-ql-EI4" id="Tm3-X4-Ukk"/>

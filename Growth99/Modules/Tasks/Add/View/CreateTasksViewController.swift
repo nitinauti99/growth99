@@ -43,7 +43,6 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
         self.view.ShowSpinner()
         self.viewModel?.getTaskUserList()
         leadTextField.placeholder = "Select Lead"
-        
         setUPUI()
     }
     

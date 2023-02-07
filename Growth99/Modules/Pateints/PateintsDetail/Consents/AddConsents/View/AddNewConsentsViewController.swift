@@ -34,7 +34,7 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
         self.view.ShowSpinner()
         viewModel?.getConsentsList()
         self.registerTableView()
-        self.title = Constant.Profile.users
+        self.title = Constant.Profile.AssignConsent
     }
     
     func addSerchBar(){
@@ -49,7 +49,8 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
     func registerTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        tableView.register(UINib(nibName: "ConsentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ConsentsTableViewCell")
+        tableView.register(UINib(nibName: "ConsentsTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "ConsentsTableViewCell")
     }
     
     @objc func creatUser() {
@@ -60,6 +61,11 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
     func ConsentsListRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
+    }
+    
+    @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
+        self.view.ShowSpinner()
+        /// api is accepting wrong formate data
     }
     
     func errorReceived(error: String) {
@@ -77,14 +83,14 @@ extension AddNewConsentsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             return filteredTableData.count
-        } else {
+        }else {
             return viewModel?.ConsentsDataList.count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = ConsentsTableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: "ConsentsTableViewCell") as! ConsentsTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "ConsentsTableViewCell", for: indexPath) as! ConsentsTableViewCell
         if isSearch {
             cell.configureCell(consentsVM: viewModel, index: indexPath)
         }else{
@@ -98,11 +104,11 @@ extension AddNewConsentsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let FillConsentsVC = UIStoryboard(name: "FillAddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "FillAddNewConsentsViewController") as! FillAddNewConsentsViewController
-//        let consentsVM = viewModel?.ConsentsDataAtIndex(index: indexPath.row)
-//        FillConsentsVC.questionnaireId = consentsVM?.questionnaireId ?? 0
-//        FillConsentsVC.pateintId = pateintId
-//        self.navigationController?.pushViewController(FillConsentsVC, animated: true)
+        // let FillConsentsVC = UIStoryboard(name: "FillAddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "FillAddNewConsentsViewController") as! FillAddNewConsentsViewController
+        //  let consentsVM = viewModel?.ConsentsDataAtIndex(index: indexPath.row)
+        //  FillConsentsVC.questionnaireId = consentsVM?.questionnaireId ?? 0
+        //  FillConsentsVC.pateintId = pateintId
+        //   self.navigationController?.pushViewController(FillConsentsVC, animated: true)
     }
 }
 

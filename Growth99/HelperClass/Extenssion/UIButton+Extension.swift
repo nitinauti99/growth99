@@ -1,9 +1,3 @@
-//
-//  UIButton+Extension.swift
-//  Growth99
-//
-//  Created by admin on 16/11/22.
-//
 
 import Foundation
 import UIKit
@@ -22,6 +16,23 @@ extension UIButton {
         let barBackButtonItem = UIBarButtonItem(customView: backButton)
         backButton.addTarget(target, action: action, for: .touchUpInside)
         return barBackButtonItem
+    }
+    
+    static func barButtonTarget(target: Any,
+                               action: Selector,
+                               name: String) -> UIBarButtonItem {
+        let leftBarButton = UIButton(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: 30,
+                                                height: 30))
+        leftBarButton.setTitle(name, for: .normal)
+        leftBarButton.backgroundColor = UIColor(hexString: "#009EDE")
+        leftBarButton.tintColor = .white
+
+        leftBarButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        let barLeftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
+        leftBarButton.addTarget(target, action: action, for: .touchUpInside)
+        return barLeftBarButtonItem
     }
     
     

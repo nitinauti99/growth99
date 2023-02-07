@@ -122,7 +122,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewWillAppear(animated)
         self.registerCell()
         setUpClearColor()
-        gender.addTarget(self, action: #selector(openGenderSelction(_ : )), for: .touchDown)
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)
@@ -182,7 +181,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         self.fullName.text = (pateintData?.firstName ?? "") + " " + (pateintData?.lastName ?? "")
     }
     
-    @objc func openGenderSelction(_ textfield: UITextField) {
+    @IBAction func openGenderSelction(sender: UIButton) {
         let list =  ["Male","Female"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
@@ -193,7 +192,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
             selectionMenu.dismissAutomatically = true
         }
         selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.show(style: .popover(sourceView: textfield, size: CGSize(width: textfield.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func editDateOfBirth(sender: UIButton) {
@@ -367,7 +366,7 @@ extension PateintDetailViewController {
     
     @IBAction func editGender(sender: UIButton) {
         gender.borderColor = .gray
-//      gender.isUserInteractionEnabled = true
+        gender.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "gender", ansString: (gender.text ?? ""))

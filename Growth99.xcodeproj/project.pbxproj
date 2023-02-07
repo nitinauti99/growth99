@@ -1659,8 +1659,8 @@
 		842C0C8C298F713B00395061 /* FillQuestionnaire */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C8D298F713B00395061 /* ViewModel */,
 				842C0C8F298F713B00395061 /* Model */,
+				842C0C8D298F713B00395061 /* ViewModel */,
 				842C0C90298F713B00395061 /* View */,
 			);
 			path = FillQuestionnaire;
@@ -1694,8 +1694,8 @@
 		842C0C94298F713B00395061 /* AddNewQuestionarie */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C95298F713B00395061 /* ViewModel */,
 				842C0C97298F713B00395061 /* Model */,
+				842C0C95298F713B00395061 /* ViewModel */,
 				842C0C9A298F713B00395061 /* View */,
 			);
 			path = AddNewQuestionarie;

@@ -46,7 +46,6 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     var leadOrPatientSelected = ""
     var taskId: Int = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = EditTasksViewModel(delegate: self)
@@ -65,21 +64,18 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         buttons = [leadButton, patientButton]
         let taskDetail = viewModel?.taskDetailData
-        
         nameTextField.text = taskDetail?.name
         usersTextField.text = taskDetail?.userName
         statusTextField.text = taskDetail?.status
         DeadlineTextField.text =  taskDetail?.deadLine
         DeadlineTextField.text = dateFormatterString(textField: DeadlineTextField)
         descriptionTextView.text = taskDetail?.description
+        workflowTaskUser = taskDetail?.userId ?? 0
     }
     
     func setupLeadOrPatientDetail() {
         let taskDetail = viewModel?.taskDetailData
         LeadOrPatentsHight.constant = 500
-        //        if taskDetail?.leadDTO == nil || taskDetail?.leadDTO == nil{
-        //            LeadOrPatentsHight.constant = 0
-        //        }
         if taskDetail?.leadDTO != nil {
             leadButton.isSelected = true
             leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? "") \(taskDetail?.leadDTO?.lastName ?? "")"
@@ -90,7 +86,8 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             emailTextField.text = taskDetail?.leadDTO?.email
             leadOrPatientLbi.text = "Lead Information"
             goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
-            
+            leadOrPatientSelected = "Lead"
+
         }else {
             patientButton.isSelected = true
             leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? "") \(taskDetail?.patientDTO?.lastName ?? "")"
@@ -101,6 +98,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             emailTextField.text = taskDetail?.patientDTO?.email
             leadOrPatientLbi.text = "Patient Information"
             goToDetailPageButton.setTitle("Go To Patient Detail", for: .normal)
+            leadOrPatientSelected = "Patient"
         }
     }
     
@@ -165,6 +163,8 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage)
+        let userInfo = [ "selectedIndex" : 2 ]
+        NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
         self.navigationController?.popViewController(animated: true)
     }
     
