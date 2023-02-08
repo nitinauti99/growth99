@@ -17,9 +17,12 @@ protocol EditEventViewControllerProtocol: AnyObject {
     func getEmailAddressDataRecived()
     func appoinmentDeletedSucess()
     func EditAppointmentsForPateintDataRecived()
+    func clinicsReceivedEventEdit()
+    func serviceListDataRecivedEventEdit()
+    func providerListDataRecivedEventEdit()
 }
 
-class EventEditViewController: UIViewController, CalenderViewContollerProtocol, EditEventViewControllerProtocol {
+class EventEditViewController: UIViewController, EditEventViewControllerProtocol {
 
     @IBOutlet private weak var emailTextField: CustomTextField!
     @IBOutlet private weak var firstNameTextField: CustomTextField!
@@ -37,7 +40,6 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     @IBOutlet private weak var virtualBtn: UIButton!
     @IBOutlet private weak var dateSelectionButton: UIButton!
 
-    var editEventViewModel: CalenderViewModelProtocol?
     var eventViewModel: EditEventViewModelProtocol?
 
     //var serviceListArray = [String]()
@@ -79,7 +81,6 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
         super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
         notesTextView.layer.borderWidth = 1.0
-        editEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = EditEventViewModel(delegate: self)
         setUpNavigationBar()
         self.view.ShowSpinner()
@@ -147,28 +148,28 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
     
     func getClinicsData() {
         self.view.ShowSpinner()
-        editEventViewModel?.getallClinics()
+        eventViewModel?.getallClinicsEditEvent()
     }
     
     @IBAction func cancelButton(sender: UIButton) {
         self.dismiss(animated: true)
     }
     
-    func clinicsReceived() {
-        selectedClincs = editEventViewModel?.getAllClinicsData ?? []
-        allClinics = editEventViewModel?.getAllClinicsData ?? []
-        self.editEventViewModel?.getServiceList()
+    func clinicsReceivedEventEdit() {
+        selectedClincs = eventViewModel?.getAllClinicsDataEditEvent ?? []
+        allClinics = eventViewModel?.getAllClinicsDataEditEvent ?? []
+        self.eventViewModel?.getServiceListEditEvent()
     }
     
-    func serviceListDataRecived() {
-        allServices = editEventViewModel?.serviceData ?? []
+    func serviceListDataRecivedEventEdit() {
+        allServices = eventViewModel?.serviceDataEditEvent ?? []
         //serviceListArray = allServices.map({$0.serviceName ?? String.blank})
         self.view.HideSpinner()
     }
     
-    func providerListDataRecived() {
-        selectedProviders = editEventViewModel?.providerData ?? []
-        allProviders = editEventViewModel?.providerData ?? []
+    func providerListDataRecivedEventEdit() {
+        selectedProviders = eventViewModel?.providerDataEditEvent ?? []
+        allProviders = eventViewModel?.providerDataEditEvent ?? []
         self.view.HideSpinner()
     }
     
@@ -262,7 +263,7 @@ class EventEditViewController: UIViewController, CalenderViewContollerProtocol, 
             self?.selectedServices  = selectedList
             self?.selectedServicesIds = selectedId
             self?.view.ShowSpinner()
-            self?.editEventViewModel?.sendProviderList(providerParams: self?.selectedServicesIds.first ?? 0)
+            self?.eventViewModel?.sendProviderListEditEvent(providerParams: self?.selectedServicesIds.first ?? 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

@@ -27,6 +27,15 @@ protocol EditEventViewModelProtocol {
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
     func getEditAppointmentsForPateint(appointmentsId: Int)
     var getAppointmentsForPateintData: AppointmentDTOList? { get }
+    
+    func getallClinicsEditEvent()
+    var  getAllClinicsDataEditEvent: [Clinics] { get }
+    
+    func getServiceListEditEvent()
+    var  serviceDataEditEvent: [ServiceList] { get }
+    
+    func sendProviderListEditEvent(providerParams: Int)
+    var  providerDataEditEvent: [UserDTOList] { get }
 }
 
 class EditEventViewModel {
@@ -35,7 +44,9 @@ class EditEventViewModel {
     var allDates: [String] = []
     var allTimes: [String] = []
     var editBookingHistoryData: AppointmentDTOList?
-
+    var allClinicsEditEvent: [Clinics]?
+    var serviceListDataEditEvent: [ServiceList] = []
+    var providerListDataEditEvent: [UserDTOList] = []
 
     init(delegate: EditEventViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -54,6 +65,57 @@ class EditEventViewModel {
                 self.delegate?.errorEventReceived(error: error.localizedDescription)
             }
         }
+    }
+    
+    func getallClinicsEditEvent() {
+        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+            switch result {
+            case .success(let allClinics):
+                self.allClinicsEditEvent = allClinics
+                self.delegate?.clinicsReceivedEventEdit()
+            case .failure(let error):
+                print(error)
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var getAllClinicsDataEditEvent: [Clinics] {
+        return self.allClinicsEditEvent ?? []
+    }
+    
+    func getServiceListEditEvent() {
+        self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let serviceData):
+                self.serviceListDataEditEvent = serviceData.serviceList ?? []
+                self.delegate?.serviceListDataRecivedEventEdit()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    var serviceDataEditEvent: [ServiceList] {
+        return self.serviceListDataEditEvent
+    }
+    
+    func sendProviderListEditEvent(providerParams: Int) {
+        let apiURL = ApiUrl.providerList.appending("\(providerParams)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<ProviderListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let providerData):
+                self.providerListDataEditEvent = providerData.userDTOList ?? []
+                self.delegate?.providerListDataRecivedEventEdit()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var providerDataEditEvent: [UserDTOList] {
+        return self.providerListDataEditEvent
     }
     
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>) {
