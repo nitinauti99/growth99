@@ -248,6 +248,17 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
+        } else if indexPath.section == 9 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "EmailTemplateViewController", pusedViewController: "EmailTemplateViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "SMSTemplateViewController", pusedViewController: "SMSTemplateViewController")
+            case 2:
+                pushViewControllerFromDrawerMenu(identifier: "ConsentsTemplateListViewController", pusedViewController: "ConsentsTemplateListViewController")
+            default:
+                break
+            }
         }
     }
     
