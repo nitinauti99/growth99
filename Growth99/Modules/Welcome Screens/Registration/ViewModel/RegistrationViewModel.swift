@@ -42,7 +42,11 @@ class RegistrationViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                self.delegate?.LoaginDataRecived()
+                if response.statusCode == 400 {
+                    self.delegate?.errorReceived(error: "There is some error creating account")
+                }else{
+                    self.delegate?.LoaginDataRecived()
+                }
                 print("Successful Response", response)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

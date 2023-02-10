@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTH-rE-Aed">
-                                <rect key="frame" x="0.0" y="44" width="390" height="800"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="797"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZzS-e3-Axy">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="797"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuG-do-SR0">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="1018"/>
@@ -227,7 +227,7 @@
                                                                 </connections>
                                                             </button>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="I agree to Growth99 Terms &amp; Conditions and Privacy Policy" translatesAutoresizingMaskIntoConstraints="NO" id="UeB-1A-V9y">
-                                                                <rect key="frame" x="55" y="672" width="250" height="55"/>
+                                                                <rect key="frame" x="70" y="672" width="235" height="55"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="55" id="eYc-lT-IaN"/>
@@ -240,14 +240,15 @@
                                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="lmE-Qs-sF9"/>
                                                                 </connections>
                                                             </textView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy6-9m-1ca">
-                                                                <rect key="frame" x="25" y="689.66666666666663" width="20" height="20"/>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qy6-9m-1ca">
+                                                                <rect key="frame" x="25" y="682" width="35" height="35"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="1Xs-Ib-nwx"/>
-                                                                    <constraint firstAttribute="width" constant="20" id="mJT-sD-EUx"/>
+                                                                    <constraint firstAttribute="height" constant="35" id="1Xs-Ib-nwx"/>
+                                                                    <constraint firstAttribute="width" constant="35" id="mJT-sD-EUx"/>
                                                                 </constraints>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Button" image="tickdefault"/>
+                                                                <state key="normal" image="tickdefault"/>
+                                                                <state key="selected" image="tickselected"/>
                                                                 <connections>
                                                                     <action selector="selectionButtonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2G4-pe-4h7"/>
                                                                 </connections>
@@ -423,6 +424,7 @@
         <image name="BackroundImage" width="375" height="547.5"/>
         <image name="Logo" width="161" height="25"/>
         <image name="tickdefault" width="16" height="16"/>
+        <image name="tickselected" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
