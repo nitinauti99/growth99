@@ -143,6 +143,14 @@
 		848F4D9528F1C164007AC421 /* Growth99Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D9428F1C164007AC421 /* Growth99Tests.swift */; };
 		848F4D9F28F1C164007AC421 /* Growth99UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4D9E28F1C164007AC421 /* Growth99UITests.swift */; };
 		848F4DA128F1C164007AC421 /* Growth99UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4DA028F1C164007AC421 /* Growth99UITestsLaunchTests.swift */; };
+		848FA3C929960DA900A7D2D5 /* QuestionnaireTemplateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FA3C829960DA900A7D2D5 /* QuestionnaireTemplateListViewController.swift */; };
+		848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848FA3CA2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard */; };
+		848FA3CD2996164C00A7D2D5 /* QuestionnaireTemplatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FA3CC2996164C00A7D2D5 /* QuestionnaireTemplatesViewModel.swift */; };
+		848FA3CF2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FA3CE2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift */; };
+		848FA3D12996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FA3D02996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift */; };
+		848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FA3D3299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift */; };
+		848FA3D6299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FA3D4299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib */; };
+		848FA3D8299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FA3D7299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift */; };
 		849004952985A18800A271AA /* PateintsTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004942985A18800A271AA /* PateintsTagsListViewController.swift */; };
 		849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */; };
 		849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */; };
@@ -656,6 +664,14 @@
 		848F4D9A28F1C164007AC421 /* Growth99UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Growth99UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F4D9E28F1C164007AC421 /* Growth99UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Growth99UITests.swift; sourceTree = "<group>"; };
 		848F4DA028F1C164007AC421 /* Growth99UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Growth99UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		848FA3C829960DA900A7D2D5 /* QuestionnaireTemplateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireTemplateListViewController.swift; sourceTree = "<group>"; };
+		848FA3CA2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionnaireTemplateListViewController.storyboard; sourceTree = "<group>"; };
+		848FA3CC2996164C00A7D2D5 /* QuestionnaireTemplatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireTemplatesViewModel.swift; sourceTree = "<group>"; };
+		848FA3CE2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireTemplatesModel.swift; sourceTree = "<group>"; };
+		848FA3D02996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireTemplateListViewController+TableView.swift"; sourceTree = "<group>"; };
+		848FA3D3299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireTemplateListTableViewCell.swift; sourceTree = "<group>"; };
+		848FA3D4299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionnaireTemplateListTableViewCell.xib; sourceTree = "<group>"; };
+		848FA3D7299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireTemplateListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		849004942985A18800A271AA /* PateintsTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsListViewController.swift; sourceTree = "<group>"; };
 		849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTagsListViewController.storyboard; sourceTree = "<group>"; };
 		849004982985A1B300A271AA /* PateintsTagsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsListViewModel.swift; sourceTree = "<group>"; };
@@ -1982,7 +1998,8 @@
 		848A03852993FAD7004FE278 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				849035052995633600556D47 /* consents */,
+				848FA3C429960C3D00A7D2D5 /* QuestionnaireTemplates */,
+				849035052995633600556D47 /* consentsTemplates */,
 				848A0387299402FD004FE278 /* EmailTemplates */,
 				848A0386299402F7004FE278 /* SmsTemplate */,
 			);
@@ -2119,6 +2136,53 @@
 			path = Growth99UITests;
 			sourceTree = "<group>";
 		};
+		848FA3C429960C3D00A7D2D5 /* QuestionnaireTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				848FA3C729960CAD00A7D2D5 /* Model */,
+				848FA3C629960CA400A7D2D5 /* ViewModel */,
+				848FA3C529960CA100A7D2D5 /* View */,
+			);
+			path = QuestionnaireTemplates;
+			sourceTree = "<group>";
+		};
+		848FA3C529960CA100A7D2D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				848FA3D2299621A500A7D2D5 /* Cell */,
+				848FA3C829960DA900A7D2D5 /* QuestionnaireTemplateListViewController.swift */,
+				848FA3CA2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard */,
+				848FA3D02996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift */,
+				848FA3D7299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		848FA3C629960CA400A7D2D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				848FA3CC2996164C00A7D2D5 /* QuestionnaireTemplatesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		848FA3C729960CAD00A7D2D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				848FA3CE2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		848FA3D2299621A500A7D2D5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				848FA3D3299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift */,
+				848FA3D4299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		849004902985935900A271AA /* PateintsTags */ = {
 			isa = PBXGroup;
 			children = (
@@ -2235,14 +2299,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		849035052995633600556D47 /* consents */ = {
+		849035052995633600556D47 /* consentsTemplates */ = {
 			isa = PBXGroup;
 			children = (
 				849035082995660700556D47 /* Model */,
 				849035072995660400556D47 /* ViewModel */,
 				849035062995660000556D47 /* View */,
 			);
-			path = consents;
+			path = consentsTemplates;
 			sourceTree = "<group>";
 		};
 		849035062995660000556D47 /* View */ = {
@@ -3813,6 +3877,7 @@
 				84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */,
 				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
 				842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */,
+				848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
 				84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */,
@@ -3834,6 +3899,7 @@
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
 				8490350429954F7300556D47 /* SMSTemplatesListTableViewCell.xib in Resources */,
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
+				848FA3D6299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
 				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
@@ -4050,6 +4116,7 @@
 				84F610DC292A71AB00B1FB69 /* Transformable.swift in Sources */,
 				84F610BF292A71AA00B1FB69 /* None.swift in Sources */,
 				849004952985A18800A271AA /* PateintsTagsListViewController.swift in Sources */,
+				848FA3C929960DA900A7D2D5 /* QuestionnaireTemplateListViewController.swift in Sources */,
 				84D062A32967070D001FE469 /* UserCreateViewController.swift in Sources */,
 				84F610ED292A71AB00B1FB69 /* Promise+Possible.swift in Sources */,
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
@@ -4087,6 +4154,7 @@
 				DA58258C2977240300F002F6 /* AddEventViewModel.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
+				848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
@@ -4109,6 +4177,7 @@
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
 				84BD33FD2994BB460050C0D8 /* EmailTemplatesListTableViewCell.swift in Sources */,
+				848FA3D12996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift in Sources */,
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
@@ -4209,6 +4278,7 @@
 				84903518299572C200556D47 /* ConsentsTemplateListTableViewCell.swift in Sources */,
 				84D0623F29670677001FE469 /* CreatePateintViewModel.swift in Sources */,
 				84D0622729670677001FE469 /* ChangePasswordViewController.swift in Sources */,
+				848FA3CD2996164C00A7D2D5 /* QuestionnaireTemplatesViewModel.swift in Sources */,
 				84D0623A29670677001FE469 /* PateintListViewModel.swift in Sources */,
 				84F610B6292A71AA00B1FB69 /* HMACCryptoSwift.swift in Sources */,
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
@@ -4276,6 +4346,7 @@
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,
 				84D0630E2967080E001FE469 /* leadViewModel.swift in Sources */,
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
+				848FA3D8299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift in Sources */,
 				84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */,
 				84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */,
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
@@ -4371,6 +4442,7 @@
 				849035102995679200556D47 /* ConsentsTemplateListModel.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
+				848FA3CF2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
