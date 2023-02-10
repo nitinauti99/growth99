@@ -35,6 +35,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
         viewModel = RegistrationViewModel(delegate: self)
         self.registrationView.createBorderForView()
         self.setUpUI()
+        self.setupTexFieldValidstion()
     }
 
     func setUpUI(){
@@ -56,10 +57,8 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     
     @IBAction func selectionButton(sender: UIButton) {
         if sender.isSelected {
-            self.selectionButton.setImage(UIImage(named: "tickselected"), for: .selected)
             sender.isSelected = false
         }else{
-            self.selectionButton.setImage(UIImage(named: "tickdefault"), for: .normal)
             sender.isSelected = true
         }
     }
@@ -72,6 +71,21 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error)
+    }
+    
+    private func setupTexFieldValidstion() {
+        self.emailTextField.addTarget(self, action:
+                                            #selector(self.textFieldDidChange(_:)),
+                                         for: UIControl.Event.editingChanged)
+        self.phoneNumberTextField.addTarget(self, action:
+                                                #selector(self.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.passwordTextField.addTarget(self, action:
+                                                #selector(self.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.repeatPasswordTextField.addTarget(self, action:
+                                            #selector(self.textFieldDidChange(_:)),
+                                         for: UIControl.Event.editingChanged)
     }
     
     @IBAction func registration(sender: UIButton){
@@ -99,7 +113,12 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
-
+        
+        guard let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberValidate else {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+        
         guard let password = passwordTextField.text, !password.isEmpty else {
             passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
@@ -114,11 +133,21 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
             repeatPasswordTextField.showError(message: Constant.ErrorMessage.repeatPasswordEmptyError)
             return
         }
-
+        
+//        guard let repeatPasswordValidate = viewModel?.isValidPassword(repeatPassword), repeatPasswordValidate else {
+//            repeatPasswordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
+//            return
+//        }
+        guard let repeatPasswordValidate = passwordTextField.text, let password = repeatPasswordTextField.text, repeatPasswordValidate == password else {
+             repeatPasswordTextField.showError(message: Constant.ErrorMessage.passwordMissmatchError)
+             return
+        }
+        
         guard let bussinessName = bussinessNameTextField.text, !bussinessName.isEmpty else {
             bussinessNameTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
+        
         self.view.ShowSpinner()
         viewModel?.registration(firstName: firsName, lastName: lastName, email: email, phoneNumber: phoneNumber, password: password, repeatPassword: repeatPassword, businesName: bussinessName, agreeTerms: true)
     }
@@ -141,3 +170,44 @@ extension RegistrationViewController: UITextViewDelegate {
         return false
      }
 }
+
+extension RegistrationViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = Int()
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+        currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        if  textField == phoneNumberTextField {
+            maxLength = 10
+            phoneNumberTextField.hideError()
+            return newString.length <= maxLength
+        }
+        return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == emailTextField, let passwordValidate = viewModel?.isValidEmail(textField.text ?? ""), passwordValidate == false {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+        
+        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField.text ?? ""), phoneNumberValidate == false {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
+        }
+        
+        if textField == passwordTextField, let passwordValidate = viewModel?.isValidPassword(textField.text ?? ""), passwordValidate == false {
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
+            return
+        }
+        
+        if textField == repeatPasswordTextField, let repeatPasswordValidate = repeatPasswordTextField.text, let passwordValidate = passwordTextField.text, repeatPasswordValidate !=  passwordValidate {
+            repeatPasswordTextField.showError(message: Constant.ErrorMessage.passwordMissmatchError)
+            return
+        }
+    }
+}
+

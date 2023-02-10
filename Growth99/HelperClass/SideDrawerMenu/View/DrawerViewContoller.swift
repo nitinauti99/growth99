@@ -256,6 +256,8 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
                 pushViewControllerFromDrawerMenu(identifier: "SMSTemplateViewController", pusedViewController: "SMSTemplateViewController")
             case 2:
                 pushViewControllerFromDrawerMenu(identifier: "ConsentsTemplateListViewController", pusedViewController: "ConsentsTemplateListViewController")
+            case 3:
+                pushViewControllerFromDrawerMenu(identifier: "QuestionnaireTemplateListViewController", pusedViewController: "QuestionnaireTemplateListViewController")
             default:
                 break
             }
