@@ -1,13 +1,13 @@
 //
-//  EditEventViewModel.swift
+//  AppointmentListDetailViewModel.swift
 //  Growth99
 //
-//  Created by Sravan Goud on 03/02/23.
+//  Created by Sravan Goud on 10/02/23.
 //
 
 import Foundation
 
-protocol EditEventViewModelProtocol {
+protocol AppointmentListDetailVMProtocol {
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     var  getAllDatesData: [String] { get }
@@ -17,7 +17,7 @@ protocol EditEventViewModelProtocol {
     func editAppoinemnetMethod(editAppoinmentId: Int, editAppoinmentModel: EditAppoinmentModel)
     func checkUserEmailAddress(emailAddress: String)
     func checkUserPhoneNumber(phoneNumber: String)
-
+    
     func localInputToServerInput(date: String) -> String
     func localInputeDateToServer(date: String) -> String
     func serverToLocal(date: String) -> String
@@ -25,7 +25,7 @@ protocol EditEventViewModelProtocol {
     func serverToLocalInputWorking(date: String) -> String
     func appointmentDateInput(date: String) -> String
     func timeInputCalender(date: String) -> String
-
+    
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
     func getEditAppointmentsForPateint(appointmentsId: Int)
     var  getAppointmentsForPateintData: AppointmentDTOList? { get }
@@ -40,17 +40,17 @@ protocol EditEventViewModelProtocol {
     var  providerDataEditEvent: [UserDTOList] { get }
 }
 
-class EditEventViewModel: EditEventViewModelProtocol {
+class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
     
-    var delegate: EditEventViewControllerProtocol?
+    var delegate: AppointmentListDetailVCProtocol?
     var allDates: [String] = []
     var allTimes: [String] = []
     var editBookingHistoryData: AppointmentDTOList?
     var allClinicsEditEvent: [Clinics]?
     var serviceListDataEditEvent: [ServiceList] = []
     var providerListDataEditEvent: [UserDTOList] = []
-
-    init(delegate: EditEventViewControllerProtocol? = nil) {
+    
+    init(delegate: AppointmentListDetailVCProtocol? = nil) {
         self.delegate = delegate
     }
     
@@ -62,7 +62,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
             switch result {
             case .success(let PateintsAppointmentList):
                 self.editBookingHistoryData = PateintsAppointmentList
-                self.delegate?.EditAppointmentsForPateintDataRecived()
+                self.delegate?.editAppointmentsForPateintDataRecived()
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)
             }
@@ -265,7 +265,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return dateFormatter.string(from: date)
     }
-
+    
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -274,7 +274,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date)
     }
-
+    
     func localInputeDateToServer(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -295,7 +295,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
         }
         return nil
     }
-  
+    
     var getAppointmentsForPateintData: AppointmentDTOList? {
         return self.editBookingHistoryData
     }
@@ -313,4 +313,3 @@ class EditEventViewModel: EditEventViewModelProtocol {
         return emailPred.evaluate(with: email)
     }
 }
-

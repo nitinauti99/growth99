@@ -38,9 +38,10 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-//        editVC.appointmentId = self.appointmentsListData[indexPath.row].id
-        //        editVC.editBookingHistoryData = self.appointmentsListData[indexPath.row]
+        guard let editVC = UIViewController.loadStoryboard("AppointmentListDetailViewController", "AppointmentListDetailViewController") as? AppointmentListDetailViewController else {
+            fatalError("Failed to load AppointmentListDetailViewController from storyboard.")
+        }
+        editVC.appointmentId = viewModel?.getProfileAppoinmentListData[indexPath.row].id
         navigationController?.pushViewController(editVC, animated: true)
     }
 }
