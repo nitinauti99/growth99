@@ -27,7 +27,7 @@ extension ConsentsTemplateListViewController: UITableViewDelegate, UITableViewDa
         cell = self.tableView.dequeueReusableCell(withIdentifier: "ConsentsTemplateListTableViewCell", for: indexPath) as! ConsentsTemplateListTableViewCell
         if isSearch {
             cell.configureCell(consentsTemplateList: viewModel, index: indexPath)
-        }else{
+        } else {
             cell.configureCell(consentsTemplateList: viewModel, index: indexPath)
         }
         return cell

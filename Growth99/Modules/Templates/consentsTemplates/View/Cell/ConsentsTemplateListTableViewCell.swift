@@ -17,7 +17,7 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var editButtonAction: UIButton!
 
-    var dateFormater : DateFormaterProtocol?
+    var dateFormater: DateFormaterProtocol?
     var buttonAddTimeTapCallback: () -> ()  = { }
     weak var delegate: PateintListTableViewCellDelegate?
 

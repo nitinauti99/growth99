@@ -28,7 +28,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var paymetStatusLabel: UILabel!
     @IBOutlet weak var appointmentStatusLabel: UILabel!
 
-    var dateFormater : DateFormaterProtocol?
+    var dateFormater: DateFormaterProtocol?
     weak var delegate: BookingHistoryListTableViewCellDelegate?
     var indexPath = IndexPath()
     

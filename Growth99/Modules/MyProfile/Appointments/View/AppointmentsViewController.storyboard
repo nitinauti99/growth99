@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,13 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbb-wJ-gll">
+                                <rect key="frame" x="0.0" y="48" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="tD5-jn-SJG"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="iNK-wL-FCS"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="isV-YA-GR7">
+                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="pzr-AA-k8j"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="zsw-qH-QrZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bbb-wJ-gll" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="9DN-pX-9DI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="isV-YA-GR7" secondAttribute="trailing" id="Evf-gM-PAw"/>
+                            <constraint firstItem="isV-YA-GR7" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="I5N-Nw-24g"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="isV-YA-GR7" secondAttribute="bottom" id="Jn4-57-O1Q"/>
+                            <constraint firstItem="isV-YA-GR7" firstAttribute="top" secondItem="bbb-wJ-gll" secondAttribute="bottom" id="gbg-1F-ohN"/>
+                            <constraint firstItem="bbb-wJ-gll" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="nro-DI-yel"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bbb-wJ-gll" secondAttribute="trailing" id="vRK-Gp-r2F"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="appointmentsTableView" destination="isV-YA-GR7" id="snG-3X-2eU"/>
+                        <outlet property="searchBar" destination="bbb-wJ-gll" id="vXU-ht-tbI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="80"/>
+            <point key="canvasLocation" x="86.956521739130437" y="79.6875"/>
         </scene>
     </scenes>
     <resources>

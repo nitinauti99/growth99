@@ -9,16 +9,16 @@ import Foundation
 
 protocol CalenderViewModelProtocol {
     func getallClinics()
-    var getAllClinicsData: [Clinics] { get }
+    var  getAllClinicsData: [Clinics] { get }
     
     func getServiceList()
-    var serviceData: [ServiceList] { get }
+    var  serviceData: [ServiceList] { get }
     
     func sendProviderList(providerParams: Int)
-    var providerData: [UserDTOList] { get }
+    var  providerData: [UserDTOList] { get }
     
     func getCalenderInfoList(clinicId: Int, providerId: Int, serviceId: Int)
-    var appointmentInfoListData: [AppointmentDTOList] { get }
+    var  appointmentInfoListData: [AppointmentDTOList] { get }
     
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
