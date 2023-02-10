@@ -1,18 +1,17 @@
 //
-//  AddEventViewModel.swift
+//  EditEventViewModel.swift
 //  Growth99
 //
-//  Created by Exaze Technologies on 18/01/23.
+//  Created by Sravan Goud on 03/02/23.
 //
 
 import Foundation
 
-protocol AddEventViewModelProtocol {
+protocol EditEventViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
-
-    var getAllDatesData: [String] { get }
-    var getAllTimessData: [String] { get }
+    var  getAllDatesData: [String] { get }
+    var  getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>)
     func timeInputCalender(date: String) -> String
@@ -20,24 +19,104 @@ protocol AddEventViewModelProtocol {
     func utcToLocal(dateStr: String) -> String?
     func serverToLocalInputWorking(date: String) -> String
     func appointmentDateInput(date: String) -> String
-    func createAppoinemnetMethod(addEventModel: NewAppoinmentModel)
+    func editAppoinemnetMethod(editAppoinmentId: Int, editAppoinmentModel: EditAppoinmentModel)
     func checkUserEmailAddress(emailAddress: String)
     func checkUserPhoneNumber(phoneNumber: String)
     func localInputToServerInput(date: String) -> String
     func localInputeDateToServer(date: String) -> String
+    func deleteSelectedAppointment(deleteAppoinmentId: Int)
+    func getEditAppointmentsForPateint(appointmentsId: Int)
+    var  getAppointmentsForPateintData: AppointmentDTOList? { get }
+    
+    func getallClinicsEditEvent()
+    var  getAllClinicsDataEditEvent: [Clinics] { get }
+    
+    func getServiceListEditEvent()
+    var  serviceDataEditEvent: [ServiceList] { get }
+    
+    func sendProviderListEditEvent(providerParams: Int)
+    var  providerDataEditEvent: [UserDTOList] { get }
 }
 
-class AddEventViewModel {
+class EditEventViewModel {
     
-    var delegate: AddEventViewControllerProtocol?
+    var delegate: EditEventViewControllerProtocol?
     var allDates: [String] = []
     var allTimes: [String] = []
+    var editBookingHistoryData: AppointmentDTOList?
+    var allClinicsEditEvent: [Clinics]?
+    var serviceListDataEditEvent: [ServiceList] = []
+    var providerListDataEditEvent: [UserDTOList] = []
 
-    init(delegate: AddEventViewControllerProtocol? = nil) {
+    init(delegate: EditEventViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    func getEditAppointmentsForPateint(appointmentsId: Int) {
+        let finaleUrl = ApiUrl.editAppoints + "\(appointmentsId)"
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result< AppointmentDTOList, GrowthNetworkError>) in
+            switch result {
+            case .success(let PateintsAppointmentList):
+                self.editBookingHistoryData = PateintsAppointmentList
+                self.delegate?.EditAppointmentsForPateintDataRecived()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getallClinicsEditEvent() {
+        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+            switch result {
+            case .success(let allClinics):
+                self.allClinicsEditEvent = allClinics
+                self.delegate?.clinicsReceivedEventEdit()
+            case .failure(let error):
+                print(error)
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var getAllClinicsDataEditEvent: [Clinics] {
+        return self.allClinicsEditEvent ?? []
+    }
+    
+    func getServiceListEditEvent() {
+        self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let serviceData):
+                self.serviceListDataEditEvent = serviceData.serviceList ?? []
+                self.delegate?.serviceListDataRecivedEventEdit()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    var serviceDataEditEvent: [ServiceList] {
+        return self.serviceListDataEditEvent
+    }
+    
+    func sendProviderListEditEvent(providerParams: Int) {
+        let apiURL = ApiUrl.providerList.appending("\(providerParams)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<ProviderListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let providerData):
+                self.providerListDataEditEvent = providerData.userDTOList ?? []
+                self.delegate?.providerListDataRecivedEventEdit()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var providerDataEditEvent: [UserDTOList] {
+        return self.providerListDataEditEvent
+    }
     
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>) {
         let apiURL = ApiUrl.vacationSubmit.appending("\(providerId)/schedules/dates")
@@ -99,32 +178,45 @@ class AddEventViewModel {
         }
     }
     
-    func createAppoinemnetMethod(addEventModel: NewAppoinmentModel) {
+    func editAppoinemnetMethod(editAppoinmentId: Int, editAppoinmentModel: EditAppoinmentModel) {
         let parameters: Parameters = [
-            "firstName": addEventModel.firstName ?? String.blank,
-            "lastName": addEventModel.lastName ?? String.blank,
-            "email": addEventModel.email ?? String.blank,
-            "phone": addEventModel.phone ?? String.blank,
-            "notes": addEventModel.notes ?? String.blank,
-            "clinicId": addEventModel.clinicId ?? String.blank,
-            "serviceIds": addEventModel.serviceIds ?? String.blank,
-            "providerId": addEventModel.providerId ?? String.blank,
-            "date": addEventModel.date ?? String.blank,
-            "time": addEventModel.time ?? String.blank,
-            "appointmentType": addEventModel.appointmentType ?? String.blank,
-            "source": addEventModel.source ?? String.blank,
-            "appointmentDate": addEventModel.appointmentDate ?? String.blank
+            "firstName": editAppoinmentModel.firstName ?? String.blank,
+            "lastName": editAppoinmentModel.lastName ?? String.blank,
+            "email": editAppoinmentModel.email ?? String.blank,
+            "phone": editAppoinmentModel.phone ?? String.blank,
+            "notes": editAppoinmentModel.notes ?? String.blank,
+            "clinicId": editAppoinmentModel.clinicId ?? String.blank,
+            "serviceIds": editAppoinmentModel.serviceIds ?? String.blank,
+            "providerId": editAppoinmentModel.providerId ?? String.blank,
+            "date": editAppoinmentModel.date ?? String.blank,
+            "time": editAppoinmentModel.time ?? String.blank,
+            "appointmentType": editAppoinmentModel.appointmentType ?? String.blank,
+            "source": editAppoinmentModel.source ?? String.blank,
+            "appointmentConfirmationStatus": editAppoinmentModel.appointmentConfirmationStatus ?? String.blank,
+            "appointmentDate": editAppoinmentModel.appointmentDate ?? String.blank
         ]
-        self.requestManager.request(forPath: ApiUrl.newAppointment, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) { (result: Result<AppoinmentModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.editAppointment.appending("\(editAppoinmentId)"), method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) { (result: Result<AppoinmentModel, GrowthNetworkError>) in
             switch result {
-            case .success(let appoinmentData):
-                self.delegate?.appoinmentCreated(apiResponse: appoinmentData)
+            case .success(_):
+                self.delegate?.appoinmentEdited()
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)
             }
         }
     }
     
+    func deleteSelectedAppointment(deleteAppoinmentId: Int) {
+        let apiURL = ApiUrl.editAppointment.appending("\(deleteAppoinmentId)/cancel")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_):
+                self.delegate?.appoinmentDeletedSucess()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
     
     var getAllDatesData: [String] {
         return allDates
@@ -204,7 +296,12 @@ class AddEventViewModel {
     
 }
 
-extension AddEventViewModel : AddEventViewModelProtocol {
+extension EditEventViewModel: EditEventViewModelProtocol {
+  
+    var getAppointmentsForPateintData: AppointmentDTOList? {
+        return self.editBookingHistoryData
+    }
+    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         if phoneNumber.count == 10 {
             return true
@@ -218,3 +315,4 @@ extension AddEventViewModel : AddEventViewModelProtocol {
         return emailPred.evaluate(with: email)
     }
 }
+

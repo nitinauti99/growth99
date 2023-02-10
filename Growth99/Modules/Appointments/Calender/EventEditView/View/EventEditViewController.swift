@@ -41,12 +41,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     @IBOutlet private weak var dateSelectionButton: UIButton!
 
     var eventViewModel: EditEventViewModelProtocol?
-
-    //var serviceListArray = [String]()
-   // var serviceListSelectedArray = [String]()
-   // var serviceListId  = [Int]()
-   // var serviceListSelectetId  = [Int]()
-
+    
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = Int()
@@ -163,7 +158,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     
     func serviceListDataRecivedEventEdit() {
         allServices = eventViewModel?.serviceDataEditEvent ?? []
-        //serviceListArray = allServices.map({$0.serviceName ?? String.blank})
         self.view.HideSpinner()
     }
     
