@@ -88,14 +88,14 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     }
 
     func removeProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileAppoinmentDataAtIndex(index: index.row)?.patientFirstname ?? String.blank) \(viewModel?.getProfileAppoinmentDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+       /* let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileAppoinmentDataAtIndex(index: index.row)?.patientFirstname ?? String.blank) \(viewModel?.getProfileAppoinmentDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
             self?.view.ShowSpinner()
             let pateintId = self?.viewModel?.getProfileAppoinmentDataAtIndex(index: index.row)?.id ?? 0
             //self?.viewModel?.removePateints(pateintId: pateintId)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)*/
     }
 
     func appointmentRemovedSuccefully(message: String) {
@@ -106,7 +106,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
 extension AppointmentsViewController:  UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        appointmentsFilterData = (viewModel?.getProfileAppoinmentListData.filter { $0.patientFirstname?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        viewModel?.getProfileFilterData(searchText: searchText)
         isSearch = true
         appointmentsTableView.reloadData()
     }

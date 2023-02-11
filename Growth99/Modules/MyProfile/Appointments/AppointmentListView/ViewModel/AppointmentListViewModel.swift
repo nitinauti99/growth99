@@ -10,9 +10,13 @@ import Foundation
 protocol AppointmentViewModelProtocol {
     
     func getProfileApointmentsList()
+    func getProfileFilterData(searchText: String)
+    
+    func getProfileDataAtIndex(index: Int)-> AppointmentListModel?
+    func getProfileFilterDataAtIndex(index: Int)-> AppointmentListModel?
+    
     var  getProfileAppoinmentListData: [AppointmentListModel] { get }
-    var  getProfileAppoinmenFilterListData: [AppointmentListModel] { get }
-    func getProfileAppoinmentDataAtIndex(index: Int) -> AppointmentListModel?
+    var  getProfileAppoinmentFilterListData: [AppointmentListModel] { get }
 
     func serverToLocal(date: String) -> String
     func utcToLocal(timeString: String) -> String?
@@ -123,16 +127,26 @@ class AppointmentListViewModel {
 }
 
 extension AppointmentListViewModel: AppointmentViewModelProtocol {
+    
+    func getProfileFilterData(searchText: String) {
+        self.profileAppoinmentListFilterData = (self.getProfileAppoinmentListData.filter { $0.patientFirstname?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        
+        print(self.profileAppoinmentListFilterData)
+    }
+    
+    func getProfileDataAtIndex(index: Int)-> AppointmentListModel? {
+        return self.getProfileAppoinmentListData[index]
+    }
+    
+    func getProfileFilterDataAtIndex(index: Int)-> AppointmentListModel? {
+        return self.profileAppoinmentListFilterData[index]
+    }
+   
+    var getProfileAppoinmentFilterListData: [AppointmentListModel] {
+         return self.profileAppoinmentListFilterData
+    }
 
     var getProfileAppoinmentListData: [AppointmentListModel] {
         return self.profileAppoinmentList
-    }
-    
-    var getProfileAppoinmenFilterListData: [AppointmentListModel] {
-        return self.profileAppoinmentList
-    }
-    
-    func getProfileAppoinmentDataAtIndex(index: Int)-> AppointmentListModel? {
-        return self.profileAppoinmentList[index]
     }
 }
