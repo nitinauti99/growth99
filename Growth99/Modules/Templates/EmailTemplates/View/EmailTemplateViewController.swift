@@ -38,8 +38,7 @@ class EmailTemplateViewController: UIViewController, EmailTemplateViewContollerP
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: Constant.Profile.leadTemplates, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.appointmentTemplates, at: 1)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.eventTemplates, at: 2)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.massEmailTemplates, at: 3)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.massEmailTemplates, at: 2)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 3
         segmentedControl.underlineSelected = true
@@ -77,12 +76,6 @@ class EmailTemplateViewController: UIViewController, EmailTemplateViewContollerP
 //               self.emptyMessage(parentView: self.view, message: "There is no data")
 //            }
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
-        case 3:
-            tableView.reloadData()
-//            if viewModel?.getSelectedTemplate(selectedIndex: 3).count == 0 {
-//               self.emptyMessage(parentView: self.view, message: "There is no data")
-//            }
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(assignNewConsentButtonTapped), imageName: "add")
         default:
             break
         }

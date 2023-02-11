@@ -10,7 +10,6 @@ import Foundation
 protocol EmailTemplateViewModelProtocol {
     var getLeadTemplateListData: [Any] { get }
     var getAppointmentTemplateListData: [Any] { get }
-    var getEventTemplateListData: [Any] { get }
     var getMassEmailTemplateListData: [Any] { get }
     var emailTemplateFilterDataData: [EmailTemplateListModel] { get }
     func getEmailTemplateList()
@@ -27,7 +26,6 @@ class EmailTemplateViewModel {
     
     var leadTemplateListData: [Any] = []
     var apppointmentTemplateListData: [Any] = []
-    var eventTemplateListData: [Any] = []
     var massEmailTemplateListData: [Any] = []
     
     init(delegate: EmailTemplateViewContollerProtocol? = nil) {
@@ -52,13 +50,11 @@ class EmailTemplateViewModel {
     
     func getSelectedTemplate(selectedIndex: Int) -> [Any] {
         if selectedIndex == 0 {
-            return leadTemplateListData
+            return leadTemplateListData.reversed()
         }else if (selectedIndex == 1){
-            return apppointmentTemplateListData
-        }else if (selectedIndex == 2){
-            return eventTemplateListData
+            return apppointmentTemplateListData.reversed()
         }else {
-            return massEmailTemplateListData
+            return massEmailTemplateListData.reversed()
         }
     }
     
@@ -69,8 +65,6 @@ class EmailTemplateViewModel {
                 leadTemplateListData.append(template)
             }else if (template.templateFor == "Appointment"){
                 apppointmentTemplateListData.append(template)
-            }else if (template.templateFor == "Event"){
-                eventTemplateListData.append(template)
             }else {
                 massEmailTemplateListData.append(template)
             }
@@ -82,16 +76,10 @@ class EmailTemplateViewModel {
             return leadTemplateListData[index] as? EmailTemplateListModel
         }else if (selectedIndex == 1){
             return apppointmentTemplateListData[index] as? EmailTemplateListModel
-        }else if (selectedIndex == 2){
-            return eventTemplateListData[index] as? EmailTemplateListModel
         }else {
             return massEmailTemplateListData[index] as? EmailTemplateListModel
         }
     }
-    
-    //    func emailTemplateFilterDataDataAtIndex(index: Int)-> EmailTemplateListModel? {
-    //        return self.emailTemplateListData[index]
-    //    }
 }
 
 extension EmailTemplateViewModel: EmailTemplateViewModelProtocol {
@@ -102,11 +90,7 @@ extension EmailTemplateViewModel: EmailTemplateViewModelProtocol {
     var getAppointmentTemplateListData: [Any] {
         return self.apppointmentTemplateListData
     }
-    
-    var getEventTemplateListData: [Any] {
-        return self.eventTemplateListData
-    }
-    
+
     var getMassEmailTemplateListData: [Any] {
         return self.massEmailTemplateListData
     }
