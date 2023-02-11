@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 class RequestManager: NetworkManager {
 
@@ -23,12 +22,6 @@ class RequestManager: NetworkManager {
              .custom(key: "Content-Type", value: "application/json"),
              .authorization("Bearer "+(UserRepository.shared.authToken ?? ""))]
      }
-           
-       /// sendding common header parameter from here
-    func PublicHeaders()-> HTTPHeaders{
-                  return ["Content-Type": "application/json"
-           ] as HTTPHeaders
-    }
     
     func queryItems(from params: [String: Any]) -> [URLQueryItem] {
          let queryItems: [URLQueryItem] = params.compactMap { parameter -> URLQueryItem? in

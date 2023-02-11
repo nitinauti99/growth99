@@ -29,6 +29,7 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         self.title = Constant.Profile.smsTemplateList
         viewModel = SMSTemplateViewModel(delegate: self)
         setUpSegemtcontrol()
+        self.view.ShowSpinner()
         tableView.register(UINib(nibName: "SMSTemplatesListTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplatesListTableViewCell")
         viewModel?.getSMSTemplateList()
     }
@@ -37,8 +38,7 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: Constant.Profile.leadTemplates, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.appointmentTemplates, at: 1)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.eventTemplates, at: 2)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.massEmailTemplates, at: 3)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.massEmailTemplates, at: 2)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 3
         segmentedControl.underlineSelected = true

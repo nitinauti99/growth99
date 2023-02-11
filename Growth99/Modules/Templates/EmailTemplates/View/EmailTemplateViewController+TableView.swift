@@ -16,7 +16,7 @@ extension EmailTemplateViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
+            return viewModel?.getSelectedTemplateFilterData(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
         } else {
             return viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
         }
@@ -26,7 +26,7 @@ extension EmailTemplateViewController: UITableViewDelegate, UITableViewDataSourc
         var cell = EmailTemplatesListTableViewCell()
         cell = self.tableView.dequeueReusableCell(withIdentifier: "EmailTemplatesListTableViewCell", for: indexPath) as! EmailTemplatesListTableViewCell
         if isSearch {
-            cell.configureCell(emailTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
+            cell.configureCellIsSearch(emailTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
         }else{
             cell.configureCell(emailTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
         }

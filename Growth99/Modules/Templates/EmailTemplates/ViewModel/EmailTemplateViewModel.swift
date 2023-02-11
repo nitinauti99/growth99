@@ -11,17 +11,25 @@ protocol EmailTemplateViewModelProtocol {
     var getLeadTemplateListData: [Any] { get }
     var getAppointmentTemplateListData: [Any] { get }
     var getMassEmailTemplateListData: [Any] { get }
-    var emailTemplateFilterDataData: [EmailTemplateListModel] { get }
-    func getEmailTemplateList()
-    func emailTemplateDataAtIndex(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
-    func getSelectedTemplate(selectedIndex: Int) ->[Any]
     
-    //func emailTemplateFilterDataDataAtIndex(index: Int)-> EmailTemplateListModel?
+    var getTemplateListData: [EmailTemplateListModel] { get }
+    var getTemplateFilterListData: [EmailTemplateListModel] { get }
+
+    func getSelectedTemplate(selectedIndex: Int) ->[Any]
+    func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any]
+
+    func getEmailTemplateList()
+    func filterData(searchText: String)
+    
+    func getTemplateDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
+    func getTemplateFilterDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
+
 }
 
 class EmailTemplateViewModel {
     var delegate: EmailTemplateViewContollerProtocol?
     var emailTemplateListData: [EmailTemplateListModel] = []
+   
     var emailTemplateFilterData: [EmailTemplateListModel] = []
     
     var leadTemplateListData: [Any] = []
@@ -48,17 +56,6 @@ class EmailTemplateViewModel {
         }
     }
     
-    func getSelectedTemplate(selectedIndex: Int) -> [Any] {
-        if selectedIndex == 0 {
-            return leadTemplateListData.reversed()
-        }else if (selectedIndex == 1){
-            return apppointmentTemplateListData.reversed()
-        }else {
-            return massEmailTemplateListData.reversed()
-        }
-    }
-    
-    
     func setTemplate(){
         for template in self.emailTemplateListData {
             if template.templateFor == "Lead" {
@@ -70,8 +67,27 @@ class EmailTemplateViewModel {
             }
         }
     }
+
+   func getSelectedTemplate(selectedIndex: Int) -> [Any] {
+        if selectedIndex == 0 {
+            return leadTemplateListData
+        }else if (selectedIndex == 1){
+            return apppointmentTemplateListData
+        }else {
+            return massEmailTemplateListData
+        }
+    }
     
-    func emailTemplateDataAtIndex(index: Int, selectedIndex: Int) -> EmailTemplateListModel?{
+    func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any] {
+           return self.emailTemplateFilterData
+    }
+    
+    func filterData(searchText: String) {
+        self.emailTemplateFilterData = (self.emailTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        print(self.emailTemplateFilterData)
+    }
+    
+    func getTemplateDataAtIndexPath(index: Int, selectedIndex:Int) -> EmailTemplateListModel? {
         if selectedIndex == 0 {
             return leadTemplateListData[index] as? EmailTemplateListModel
         }else if (selectedIndex == 1){
@@ -80,9 +96,22 @@ class EmailTemplateViewModel {
             return massEmailTemplateListData[index] as? EmailTemplateListModel
         }
     }
+    
+    func getTemplateFilterDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel? {
+        return self.emailTemplateFilterData[index]
+    }
 }
 
 extension EmailTemplateViewModel: EmailTemplateViewModelProtocol {
+  
+    var getTemplateListData: [EmailTemplateListModel] {
+        return self.emailTemplateListData
+    }
+    
+    var getTemplateFilterListData: [EmailTemplateListModel] {
+        return self.emailTemplateFilterData
+    }
+    
     var getLeadTemplateListData: [Any] {
         return self.leadTemplateListData
     }
@@ -94,14 +123,6 @@ extension EmailTemplateViewModel: EmailTemplateViewModelProtocol {
     var getMassEmailTemplateListData: [Any] {
         return self.massEmailTemplateListData
     }
-    
-    var emailTemplateFilterDataData: [EmailTemplateListModel] {
-        return self.emailTemplateListData
-    }
-    
-    var getEmailTemplateData: [EmailTemplateListModel] {
-        return self.emailTemplateListData
-    }
-    
+
     
 }

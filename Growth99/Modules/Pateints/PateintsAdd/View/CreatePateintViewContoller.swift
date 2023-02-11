@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Alamofire
 
 protocol CreatePateintViewContollerProtocol: AnyObject {
     func pateintCreatedSuccessfully(responseMessage: String)

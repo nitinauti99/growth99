@@ -6,7 +6,6 @@
 
 import Foundation
 import UIKit
-import Alamofire
 
 protocol PateintEditViewControllerProtocol: AnyObject {
     func pateintCreatedSuccessfully(responseMessage: String)

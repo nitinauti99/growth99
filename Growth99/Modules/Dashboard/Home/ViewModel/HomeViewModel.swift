@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol HomeViewModelProtocol {
     func isValidFirstName(_ firstName: String) -> Bool

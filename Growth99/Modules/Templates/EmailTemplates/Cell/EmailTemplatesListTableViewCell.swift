@@ -30,7 +30,18 @@ class EmailTemplatesListTableViewCell: UITableViewCell {
     }
 
     func configureCell(emailTemplateList: EmailTemplateViewModelProtocol?, index: IndexPath, selectedIndex: Int) {
-        let emailTemplateList = emailTemplateList?.emailTemplateDataAtIndex(index: index.row, selectedIndex: selectedIndex)
+        let emailTemplateList = emailTemplateList?.getTemplateDataAtIndexPath(index: index.row, selectedIndex: selectedIndex)
+        self.name.text = emailTemplateList?.name
+        self.id.text = String(emailTemplateList?.id ?? 0)
+        self.createdBy.text = emailTemplateList?.createdBy
+        self.templateFor.text = emailTemplateList?.templateFor
+        self.createdAt.text = dateFormater?.serverToLocal(date: emailTemplateList?.createdAt ?? "")
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: emailTemplateList?.updatedAt ?? "")
+        indexPath = index
+    }
+    
+    func configureCellIsSearch(emailTemplateList: EmailTemplateViewModelProtocol?, index: IndexPath, selectedIndex: Int) {
+        let emailTemplateList = emailTemplateList?.getTemplateFilterDataAtIndexPath(index: index.row, selectedIndex: selectedIndex)
         self.name.text = emailTemplateList?.name
         self.id.text = String(emailTemplateList?.id ?? 0)
         self.createdBy.text = emailTemplateList?.createdBy

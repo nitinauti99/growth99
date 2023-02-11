@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol ForgotPasswordViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
@@ -51,34 +50,3 @@ extension ForgotPasswordViewModel : ForgotPasswordViewModelProtocol {
     }
     
 }
-
-struct EmptyEntity: Codable, EmptyResponse {
-    static func emptyValue() -> EmptyEntity {
-        return EmptyEntity.init()
-    }
-}
-
-
-//        ServiceManager.request(httpMethod: .get, request: ApiRouter.sendRequestForgotPassword("nitinauti99@gmail.com").urlRequest, responseType: EmptyEntity.self, body: body()) { result in
-//            switch result {
-//            case .success(let loginData):
-//                print(loginData)
-//                self.delegate?.LoaginDataRecived()
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-
-
-//        /// request with alamofire
-//        struct Body: Codable {}
-//        ServiceManager.request(httpMethod: .post, request: ApiRouter.getNewsList(email, password).urlRequest, responseType: LoginModel.self, body: Body()) { result in
-//            switch result {
-//            case .success(let logInData):
-//                self.LogInData = logInData
-//                self.delegate?.LoaginDataRecived()
-//            case .failure(let error):
-//                print(error)
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//            }
-//        }

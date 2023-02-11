@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol RegistrationViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool

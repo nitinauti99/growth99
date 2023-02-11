@@ -2202,10 +2202,10 @@
 		848A03852993FAD7004FE278 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				848FA3C429960C3D00A7D2D5 /* QuestionnaireTemplates */,
-				849035052995633600556D47 /* consentsTemplates */,
 				848A0387299402FD004FE278 /* EmailTemplates */,
 				848A0386299402F7004FE278 /* SmsTemplate */,
+				849035052995633600556D47 /* consentsTemplates */,
+				848FA3C429960C3D00A7D2D5 /* QuestionnaireTemplates */,
 			);
 			path = Templates;
 			sourceTree = "<group>";

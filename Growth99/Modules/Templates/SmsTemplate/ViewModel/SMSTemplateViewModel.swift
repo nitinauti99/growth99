@@ -10,7 +10,6 @@ import Foundation
 protocol SMSTemplateViewModelProtocol {
     var getLeadTemplateListData: [Any] { get }
     var getAppointmentTemplateListData: [Any] { get }
-    var getEventTemplateListData: [Any] { get }
     var getMassSMSTemplateListData: [Any] { get }
     var smsTemplateFilterDataData: [SMSTemplateModel] { get }
     func getSMSTemplateList()
@@ -26,7 +25,6 @@ class SMSTemplateViewModel {
     
     var leadTemplateListData: [Any] = []
     var apppointmentTemplateListData: [Any] = []
-    var eventTemplateListData: [Any] = []
     var massSMSTemplateListData: [Any] = []
     
     init(delegate: SMSTemplateViewContollerProtocol? = nil) {
@@ -54,8 +52,6 @@ class SMSTemplateViewModel {
             return leadTemplateListData
         }else if (selectedIndex == 1){
             return apppointmentTemplateListData
-        }else if (selectedIndex == 2){
-            return eventTemplateListData
         }else {
             return massSMSTemplateListData
         }
@@ -68,8 +64,6 @@ class SMSTemplateViewModel {
                 leadTemplateListData.append(template)
             }else if (template.templateFor == "Appointment"){
                 apppointmentTemplateListData.append(template)
-            }else if (template.templateFor == "Event"){
-                eventTemplateListData.append(template)
             }else {
                 massSMSTemplateListData.append(template)
             }
@@ -81,8 +75,6 @@ class SMSTemplateViewModel {
             return leadTemplateListData[index] as? SMSTemplateModel
         }else if (selectedIndex == 1){
             return apppointmentTemplateListData[index] as? SMSTemplateModel
-        }else if (selectedIndex == 2){
-            return eventTemplateListData[index] as? SMSTemplateModel
         }else {
             return massSMSTemplateListData[index] as? SMSTemplateModel
         }
@@ -100,10 +92,6 @@ extension SMSTemplateViewModel: SMSTemplateViewModelProtocol {
     
     var getAppointmentTemplateListData: [Any] {
         return self.apppointmentTemplateListData
-    }
-    
-    var getEventTemplateListData: [Any] {
-        return self.eventTemplateListData
     }
     
     var getMassSMSTemplateListData: [Any] {

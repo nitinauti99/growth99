@@ -1,26 +1,22 @@
 PODS:
-  - Alamofire (5.6.2)
   - FSCalendar (2.8.4)
   - SDWebImage (5.13.5):
     - SDWebImage/Core (= 5.13.5)
   - SDWebImage/Core (5.13.5)
 
 DEPENDENCIES:
-  - Alamofire
   - FSCalendar
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - FSCalendar
     - SDWebImage
 
 SPEC CHECKSUMS:
-  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   SDWebImage: 23d714cd599354ee7906dbae26dff89b421c4370
 
-PODFILE CHECKSUM: 69f50ab0c9f2a272b1fad4ead7b846933eb42a56
+PODFILE CHECKSUM: 1d652585f915589ddc9c248e021d8f9f4c8648bd
 
 COCOAPODS: 1.11.3
