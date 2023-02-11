@@ -100,7 +100,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return filteredTableData.count
+            return viewModel?.UserFilterDataData.count ?? 0
         } else {
             return viewModel?.UserData.count ?? 0
         }
@@ -110,10 +110,9 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
         var cell = UserListTableViewCell()
         cell = userListTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as! UserListTableViewCell
         if isSearch {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCell(userVM: viewModel, index: indexPath, isSearch: isSearch)
         }else{
             cell.configureCell(userVM: viewModel, index: indexPath)
-            
         }
         return cell
     }
@@ -130,7 +129,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
 extension UserListViewContoller: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        viewModel?.filterData(searchText: searchText)
         isSearch = true
         userListTableView.reloadData()
     }

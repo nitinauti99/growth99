@@ -26,6 +26,18 @@ class UserListTableViewCell: UITableViewCell {
         
     }
     
+    func configureCell(userVM: UserListViewModelProtocol?, index: IndexPath, isSearch:Bool) {
+        let userVM = userVM?.userFilterDataDataAtIndex(index: index.row)
+        self.firstName.text = userVM?.firstName
+        self.lastName.text = userVM?.lastName
+        self.id.text = String(userVM?.id ?? 0)
+        self.email.text = userVM?.email
+        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
+        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? "")
+        self.createdBy.text = userVM?.createdBy
+        self.updatedBy.text = userVM?.updatedBy
+    }
+    
     func configureCell(userVM: UserListViewModelProtocol?, index: IndexPath) {
         let userVM = userVM?.userDataAtIndex(index: index.row)
         self.firstName.text = userVM?.firstName

@@ -13,6 +13,7 @@ protocol UserListViewModelProtocol {
     func userDataAtIndex(index: Int) -> UserListModel?
     var UserFilterDataData: [UserListModel] { get }
     func userFilterDataDataAtIndex(index: Int)-> UserListModel?
+    func filterData(searchText: String)
 }
 
 class UserListViewModel {
@@ -39,21 +40,27 @@ class UserListViewModel {
         }
     }
     
+    func filterData(searchText: String) {
+        self.userFilterData = (self.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        
+        print(self.userFilterData)
+    }
+    
     func userDataAtIndex(index: Int)-> UserListModel? {
         return self.userData[index]
     }
     
     func userFilterDataDataAtIndex(index: Int)-> UserListModel? {
-        return self.UserFilterDataData[index]
+        return self.userFilterData[index]
     }
 }
 
 extension UserListViewModel: UserListViewModelProtocol {
-    
+   
     var UserFilterDataData: [UserListModel] {
-        return self.userFilterData
+         return self.userFilterData
     }
-    
+
     var UserData: [UserListModel] {
         return self.userData
     }
