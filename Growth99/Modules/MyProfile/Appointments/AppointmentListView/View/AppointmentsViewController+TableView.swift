@@ -16,7 +16,7 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return viewModel?.getProfileAppoinmenFilterListData.count ?? 0
+            return viewModel?.getProfileAppoinmentFilterListData.count ?? 0
         } else {
             return viewModel?.getProfileAppoinmentListData.count ?? 0
         }
@@ -26,7 +26,7 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentTableViewCell", for: indexPath) as? AppointmentTableViewCell else { return UITableViewCell() }
         cell.delegate = self        
         if isSearch {
-            cell.configureCell(profileAppointmentList: viewModel, index: indexPath)
+            cell.configureCell(profileAppointmentList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
             cell.configureCell(profileAppointmentList: viewModel, index: indexPath)
         }
