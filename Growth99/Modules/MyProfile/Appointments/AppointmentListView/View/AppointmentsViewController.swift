@@ -80,8 +80,10 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     }
 
     func editProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath) {
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-//        editVC.editAppointmentsData = appointmentsListData[index.row]
+        guard let editVC = UIViewController.loadStoryboard("AppointmentListDetailViewController", "AppointmentListDetailViewController") as? AppointmentListDetailViewController else {
+            fatalError("Failed to load AppointmentListDetailViewController from storyboard.")
+        }
+        editVC.appointmentId = viewModel?.getProfileAppoinmentListData[index.row].id
         navigationController?.pushViewController(editVC, animated: true)
     }
 
