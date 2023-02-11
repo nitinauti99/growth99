@@ -198,6 +198,20 @@
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
 		8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499E1AD298AB3F90072ACF4 /* PeteintDetailView.swift */; };
 		8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */; };
+		849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3ADD2997CC72003E856A /* FontAwesomeBarButtonItem.swift */; };
+		849D3AEC2997CC72003E856A /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3ADE2997CC72003E856A /* FontAwesomeSegmentedControl.swift */; };
+		849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3ADF2997CC72003E856A /* FontAwesomeView.swift */; };
+		849D3AEE2997CC72003E856A /* FontAwesomeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE02997CC72003E856A /* FontAwesomeExtension.swift */; };
+		849D3AEF2997CC72003E856A /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE12997CC72003E856A /* FontAwesomeTabBarItem.swift */; };
+		849D3AF02997CC72003E856A /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE22997CC72003E856A /* FontAwesomeImageRepresentable.swift */; };
+		849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE32997CC72003E856A /* FontAwesomeImageView.swift */; };
+		849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 849D3AE42997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf */; };
+		849D3AF32997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 849D3AE52997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf */; };
+		849D3AF42997CC72003E856A /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE62997CC72003E856A /* FontAwesomeTextRepresentable.swift */; };
+		849D3AF52997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 849D3AE72997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf */; };
+		849D3AF62997CC72003E856A /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE82997CC72003E856A /* FontAwesome.swift */; };
+		849D3AF72997CC72003E856A /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AE92997CC72003E856A /* FontAwesomeStateRequirement.swift */; };
+		849D3AF82997CC72003E856A /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3AEA2997CC72003E856A /* Enum.swift */; };
 		84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */; };
 		84AE6D67295D683A002836ED /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6D66295D6839002836ED /* CheckBox.swift */; };
 		84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2293329314CF8006E8292 /* UITextField+Extension.swift */; };
@@ -719,6 +733,20 @@
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
 		8499E1AD298AB3F90072ACF4 /* PeteintDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeteintDetailView.swift; sourceTree = "<group>"; };
 		8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PeteintDetailView.storyboard; sourceTree = "<group>"; };
+		849D3ADD2997CC72003E856A /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
+		849D3ADE2997CC72003E856A /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
+		849D3ADF2997CC72003E856A /* FontAwesomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeView.swift; sourceTree = "<group>"; };
+		849D3AE02997CC72003E856A /* FontAwesomeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeExtension.swift; sourceTree = "<group>"; };
+		849D3AE12997CC72003E856A /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		849D3AE22997CC72003E856A /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
+		849D3AE32997CC72003E856A /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageView.swift; sourceTree = "<group>"; };
+		849D3AE42997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		849D3AE52997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		849D3AE62997CC72003E856A /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		849D3AE72997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		849D3AE82997CC72003E856A /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		849D3AE92997CC72003E856A /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		849D3AEA2997CC72003E856A /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		84A5AB1C2973EE1C00AE5355 /* EditTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTasksModel.swift; sourceTree = "<group>"; };
 		84AE6D66295D6839002836ED /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		84B2293329314CF8006E8292 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -2550,6 +2578,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				849D3ADC2997CC72003E856A /* FontAwesome */,
 				39EBABBE29915751001B789D /* GrowthDateFormats */,
 				398F90CD298ECB8600DB96E4 /* IQKeyboardManagerSwift */,
 				84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */,
@@ -2587,6 +2616,27 @@
 				8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */,
 			);
 			path = ContainerView;
+			sourceTree = "<group>";
+		};
+		849D3ADC2997CC72003E856A /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				849D3ADD2997CC72003E856A /* FontAwesomeBarButtonItem.swift */,
+				849D3ADE2997CC72003E856A /* FontAwesomeSegmentedControl.swift */,
+				849D3ADF2997CC72003E856A /* FontAwesomeView.swift */,
+				849D3AE02997CC72003E856A /* FontAwesomeExtension.swift */,
+				849D3AE12997CC72003E856A /* FontAwesomeTabBarItem.swift */,
+				849D3AE22997CC72003E856A /* FontAwesomeImageRepresentable.swift */,
+				849D3AE32997CC72003E856A /* FontAwesomeImageView.swift */,
+				849D3AE42997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf */,
+				849D3AE52997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf */,
+				849D3AE62997CC72003E856A /* FontAwesomeTextRepresentable.swift */,
+				849D3AE72997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf */,
+				849D3AE82997CC72003E856A /* FontAwesome.swift */,
+				849D3AE92997CC72003E856A /* FontAwesomeStateRequirement.swift */,
+				849D3AEA2997CC72003E856A /* Enum.swift */,
+			);
+			path = FontAwesome;
 			sourceTree = "<group>";
 		};
 		84B75EA72968D7F100962F3E /* ListScreen */ = {
@@ -3956,11 +4006,13 @@
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */,
+				849D3AF32997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
 				842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */,
 				84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */,
 				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
 				842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */,
+				849D3AF52997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
@@ -3968,6 +4020,7 @@
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
+				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				84D063232967080E001FE469 /* DateTypeTableViewCell.xib in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
@@ -4235,6 +4288,7 @@
 				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
+				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
@@ -4253,6 +4307,7 @@
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
+				849D3AF72997CC72003E856A /* FontAwesomeStateRequirement.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
 				842C0CB2298F713B00395061 /* PatientsAppointmentListModel.swift in Sources */,
@@ -4271,6 +4326,7 @@
 				842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */,
 				84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */,
 				84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */,
+				849D3AEC2997CC72003E856A /* FontAwesomeSegmentedControl.swift in Sources */,
 				84F6112A292A71AB00B1FB69 /* Stub.swift in Sources */,
 				84EFC2A029256166003B3C06 /* UIButton+Extension.swift in Sources */,
 				DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */,
@@ -4286,6 +4342,7 @@
 				84903514299571F700556D47 /* ConsentsTemplateListViewController+SearchBar.swift in Sources */,
 				84D0628E29670677001FE469 /* LogInViewController.swift in Sources */,
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
+				849D3AEF2997CC72003E856A /* FontAwesomeTabBarItem.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */,
 				3947A8F42996776E000CA2EB /* AddEventViewController.swift in Sources */,
@@ -4369,6 +4426,7 @@
 				84F610B6292A71AA00B1FB69 /* HMACCryptoSwift.swift in Sources */,
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
 				398F90FC298ECB8700DB96E4 /* IQUIViewController+Additions.swift in Sources */,
+				849D3AF42997CC72003E856A /* FontAwesomeTextRepresentable.swift in Sources */,
 				84D062A52967070D001FE469 /* UserListTableViewCell.swift in Sources */,
 				398F90EB298ECB8700DB96E4 /* IQKeyboardManager+Internal.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
@@ -4442,6 +4500,7 @@
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
+				849D3AEE2997CC72003E856A /* FontAwesomeExtension.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
@@ -4452,6 +4511,7 @@
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
+				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
@@ -4489,6 +4549,7 @@
 				84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */,
 				3947A8FB299677A3000CA2EB /* CalenderViewModel.swift in Sources */,
 				8490350E2995677F00556D47 /* ConsentsTemplateListViewModel.swift in Sources */,
+				849D3AF02997CC72003E856A /* FontAwesomeImageRepresentable.swift in Sources */,
 				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
 				398F90F5298ECB8700DB96E4 /* IQKeyboardManager+Position.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
@@ -4505,7 +4566,9 @@
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
+				849D3AF62997CC72003E856A /* FontAwesome.swift in Sources */,
 				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,
+				849D3AF82997CC72003E856A /* Enum.swift in Sources */,
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,
@@ -4529,6 +4592,7 @@
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
+				849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */,
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FontAwesome_swift
 
 class SubMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var menuIcon: UIImageView!
