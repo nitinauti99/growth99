@@ -18,6 +18,8 @@ protocol AppointmentViewModelProtocol {
     var  getProfileAppoinmentListData: [AppointmentListModel] { get }
     var  getProfileAppoinmentFilterListData: [AppointmentListModel] { get }
 
+    func removeProfileAppoinment(appoinmentId: Int)
+    
     func serverToLocal(date: String) -> String
     func utcToLocal(timeString: String) -> String?
     func serverToLocalTime(timeString: String) -> String
@@ -48,6 +50,24 @@ class AppointmentListViewModel {
             }
         }
     }
+    
+    /*func removeProfileAppoinment(appoinmentId: Int) {
+        let urlParameter: Parameters = [
+            "userId": pateintId
+        ]
+        let finaleUrl = ApiUrl.removePatient + "userId=" + "\(pateintId)"
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.pateintRemovedSuccefully(mrssage: "Pateints removed successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+          }
+    }*/
     
     func serverToLocal(date: String) -> String {
             let dateFormatter = DateFormatter()
@@ -127,6 +147,9 @@ class AppointmentListViewModel {
 }
 
 extension AppointmentListViewModel: AppointmentViewModelProtocol {
+    func removeProfileAppoinment(appoinmentId: Int) {
+        
+    }
     
     func getProfileFilterData(searchText: String) {
         self.profileAppoinmentListFilterData = (self.getProfileAppoinmentListData.filter { $0.patientFirstname?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })

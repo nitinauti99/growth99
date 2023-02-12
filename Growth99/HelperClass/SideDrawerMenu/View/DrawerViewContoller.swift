@@ -133,11 +133,11 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             mainVcIntial.isNavigationBarHidden = true
             appDel.window?.rootViewController = mainVcIntial
         } else if title == Constant.SideMenu.helpTraining {
-            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController: "GRWebViewController")
+//            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController: "GRWebViewController")
         } else if title == Constant.Profile.tasks {
-            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
+//            pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
         } else if title == Constant.Profile.triggers {
-            pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
+//            pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
         }
     }
 }
@@ -215,7 +215,8 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        } else if indexPath.section == 1 {
+        }
+        /*else if indexPath.section == 1 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "BusinessProfileViewController", pusedViewController: "BusinessProfileViewController")
@@ -261,7 +262,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        }
+        }*/
     }
     
     func pushViewControllerFromDrawerMenu(identifier: String, pusedViewController: String) {

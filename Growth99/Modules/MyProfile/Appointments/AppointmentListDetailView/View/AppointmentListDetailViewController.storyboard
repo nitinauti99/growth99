@@ -876,9 +876,6 @@
                                                                 <integer key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="gotoPatientActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bih-Vs-rr8"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-sp-MDG">
                                                         <rect key="frame" x="40" y="1339.3333333333333" width="310" height="40"/>

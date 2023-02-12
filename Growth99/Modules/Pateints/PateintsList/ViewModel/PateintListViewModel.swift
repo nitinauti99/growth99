@@ -9,9 +9,9 @@ import Foundation
 
 protocol PateintListViewModelProtocol {
     func getPateintList()
-    var PateintData: [PateintListModel] { get }
+    var  PateintData: [PateintListModel] { get }
     func PateintDataAtIndex(index: Int) -> PateintListModel?
-    var pateintFilterDataData: [PateintListModel] { get }
+    var  pateintFilterDataData: [PateintListModel] { get }
     func pateintFilterDataDataAtIndex(index: Int)-> PateintListModel?
     func removePateints(pateintId: Int)
 }
