@@ -35,9 +35,9 @@ class AppointmentListViewModel {
     init(delegate: AppointmentsViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
-    
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
-    
+
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+
     func getProfileApointmentsList() {
         let apiURL = ApiUrl.profileAppointments.appending("\(UserRepository.shared.userId ?? 0)")
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[AppointmentListModel], GrowthNetworkError>) in
@@ -51,23 +51,25 @@ class AppointmentListViewModel {
         }
     }
     
-    /*func removeProfileAppoinment(appoinmentId: Int) {
-        let urlParameter: Parameters = [
-            "userId": pateintId
-        ]
-        let finaleUrl = ApiUrl.removePatient + "userId=" + "\(pateintId)"
-        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) {  [weak self] result in
+    func removeProfileAppoinment(appoinmentId: Int) {
+        let finaleUrl = ApiUrl.removeProfileAppointment + "\(appoinmentId)"
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.pateintRemovedSuccefully(mrssage: "Pateints removed successfully")
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.profileAppoinmentsRemoved()
+                }else if (response.statusCode == 500) {
+                    self.delegate?.profileAppoinmentsErrorReceived(error: "Unable to delete paid appointments")
+                }else{
+                    self.delegate?.profileAppoinmentsErrorReceived(error: "response failed")
+                }
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                self.delegate?.profileAppoinmentsErrorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
             }
-          }
-    }*/
+        }
+    }
     
     func serverToLocal(date: String) -> String {
             let dateFormatter = DateFormatter()
@@ -147,10 +149,7 @@ class AppointmentListViewModel {
 }
 
 extension AppointmentListViewModel: AppointmentViewModelProtocol {
-    func removeProfileAppoinment(appoinmentId: Int) {
-        
-    }
-    
+
     func getProfileFilterData(searchText: String) {
         self.profileAppoinmentListFilterData = (self.getProfileAppoinmentListData.filter { $0.patientFirstname?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
         

@@ -46,6 +46,7 @@
 		398F90FE298ECB8700DB96E4 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90E7298ECB8600DB96E4 /* IQUIView+Hierarchy.swift */; };
 		398F90FF298ECB8700DB96E4 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90E8298ECB8600DB96E4 /* IQNSArray+Sort.swift */; };
 		398F9100298ECB8700DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90E9298ECB8600DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift */; };
+		39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B952AB29994F9B00DF1E8B /* UITableView+Extension.swift */; };
 		39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBABBF2991576B001B789D /* GrowthDateFormats.swift */; };
 		39EBABC2299157FA001B789D /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBABC1299157FA001B789D /* ExtensionDate.swift */; };
 		39EBABC429915872001B789D /* StringExtension1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EBABC329915872001B789D /* StringExtension1.swift */; };
@@ -570,6 +571,7 @@
 		398F90E7298ECB8600DB96E4 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		398F90E8298ECB8600DB96E4 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		398F90E9298ECB8600DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQKeyboardManager+UITextFieldViewNotification.swift"; sourceTree = "<group>"; };
+		39B952AB29994F9B00DF1E8B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		39EBABBF2991576B001B789D /* GrowthDateFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthDateFormats.swift; sourceTree = "<group>"; };
 		39EBABC1299157FA001B789D /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		39EBABC329915872001B789D /* StringExtension1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension1.swift; sourceTree = "<group>"; };
@@ -2151,6 +2153,7 @@
 				843801512954836C00CEA664 /* PassableUIButton.swift */,
 				84AE6D66295D6839002836ED /* CheckBox.swift */,
 				8473207A29797452003099BB /* DateFormater.swift */,
+				39B952AB29994F9B00DF1E8B /* UITableView+Extension.swift */,
 			);
 			path = Extenssion;
 			sourceTree = "<group>";
@@ -4406,6 +4409,7 @@
 				842C0CB4298F713B00395061 /* PatientAppointmentViewController.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
 				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
+				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,
@@ -4784,7 +4788,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
@@ -4801,7 +4805,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devemr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4825,7 +4829,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
@@ -4842,7 +4846,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devemr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
