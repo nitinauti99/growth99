@@ -48,7 +48,7 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
@@ -57,7 +57,7 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     func savePateintsTagList(responseMessage:String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+        self.view.showToast(message: responseMessage, color: .black)
         self.navigationController?.popViewController(animated: true)
     }
     

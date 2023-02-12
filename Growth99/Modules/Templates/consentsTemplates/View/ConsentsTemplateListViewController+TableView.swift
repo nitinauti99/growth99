@@ -16,7 +16,7 @@ extension ConsentsTemplateListViewController: UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return viewModel?.getConsentsTemplateListData.count ?? 0
+            return viewModel?.getConsentsTemplateFilterListData.count ?? 0
         } else {
             return viewModel?.getConsentsTemplateListData.count ?? 0
         }
@@ -25,8 +25,9 @@ extension ConsentsTemplateListViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = ConsentsTemplateListTableViewCell()
         cell = self.tableView.dequeueReusableCell(withIdentifier: "ConsentsTemplateListTableViewCell", for: indexPath) as! ConsentsTemplateListTableViewCell
+        cell.delegate = self
         if isSearch {
-            cell.configureCell(consentsTemplateList: viewModel, index: indexPath)
+            cell.configureCellisSearch(consentsTemplateList: viewModel, index: indexPath)
         } else {
             cell.configureCell(consentsTemplateList: viewModel, index: indexPath)
         }
@@ -40,5 +41,4 @@ extension ConsentsTemplateListViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }

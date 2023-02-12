@@ -11,9 +11,10 @@ import UIKit
 protocol QuestionnaireTemplateListViewControllerProtocol {
     func questionnaireTemplatesDataRecived()
     func errorReceived(error: String)
+    func questionnaireRemovedSuccefully(mrssage: String)
 }
 
-class QuestionnaireTemplateListViewController: UIViewController, QuestionnaireTemplateListViewControllerProtocol {
+class QuestionnaireTemplateListViewController: UIViewController, QuestionnaireTemplateListViewControllerProtocol,QuestionnaireTemplateListTableViewCellDelegate {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -28,12 +29,9 @@ class QuestionnaireTemplateListViewController: UIViewController, QuestionnaireTe
         super.viewDidLoad()
         self.title = Constant.Profile.Questionnarie
         viewModel = QuestionnaireTemplateListViewModel(delegate: self)
+        self.view.ShowSpinner()
         viewModel?.getQuestionnaireTemplateList()
         tableView.register(UINib(nibName: "QuestionnaireTemplateListTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionnaireTemplateListTableViewCell")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     func addSerchBar(){
@@ -45,30 +43,49 @@ class QuestionnaireTemplateListViewController: UIViewController, QuestionnaireTe
         searchBar.delegate = self
     }
     
-    @objc func LeadList() {
-        self.view.ShowSpinner()
-        self.getPateintList()
-    }
-    
     @objc func creatUser() {
         let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
         self.navigationController?.pushViewController(createUserVC, animated: true)
     }
     
-    @objc func getPateintList() {
-        self.view.ShowSpinner()
-        viewModel?.getQuestionnaireTemplateList()
+    func removePatieint(cell: QuestionnaireTemplateListTableViewCell, index: IndexPath) {
+        var consentsName : String = ""
+        var questionnaireId = Int()
+            consentsName = viewModel?.getqQuestionnaireTemplateDataAtIndex(index: index.row)?.name ?? ""
+            questionnaireId = viewModel?.getqQuestionnaireTemplateDataAtIndex(index: index.row)?.id ?? 0
+        if isSearch {
+            consentsName = viewModel?.getQuestionnaireTemplateFilterDataAtIndex(index: index.row)?.name ?? ""
+            questionnaireId =  viewModel?.getQuestionnaireTemplateFilterDataAtIndex(index: index.row)?.id ?? 0
+        }
+        
+        let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(consentsName)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                      handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            self?.viewModel?.removeQuestionnaire(questionnaireId: questionnaireId)
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func questionnaireTemplatesDataRecived(){
         self.view.HideSpinner()
-        //QuestionnaireTemplateListData = viewModel?.getQuestionnaireTemplateData ?? []
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
+    func questionnaireRemovedSuccefully(mrssage: String){
+        self.view.showToast(message: mrssage, color: .black)
+        viewModel?.getQuestionnaireTemplateList()
+    }
+
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

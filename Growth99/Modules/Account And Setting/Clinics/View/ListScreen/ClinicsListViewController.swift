@@ -79,7 +79,7 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
 }
 

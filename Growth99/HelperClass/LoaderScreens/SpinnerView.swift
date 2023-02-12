@@ -28,18 +28,19 @@ extension UIView {
         SwiftLoader.hide()
     }
     
-    func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-150, width: self.frame.size.width - 60, height: 50))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+    func showToast(message : String , color: UIColor?) {
+        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-150, width: self.frame.size.width - 60, height: 60))
+        toastLabel.backgroundColor = color ?? UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = UIFont(name: "Avenir Next Medium", size: 15)
         toastLabel.textAlignment = .center;
         toastLabel.text = message
+        toastLabel.numberOfLines = 0
         toastLabel.alpha = 1.0
         toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds  =  true
         self.addSubview(toastLabel)
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 6.0, delay: 0.1, options: .curveEaseOut, animations: {
              toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()

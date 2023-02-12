@@ -16,7 +16,7 @@ extension SMSTemplateViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
+            return viewModel?.getSelectedTemplateFilterData(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
         } else {
             return viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
         }
@@ -26,7 +26,7 @@ extension SMSTemplateViewController: UITableViewDelegate, UITableViewDataSource 
         var cell = SMSTemplatesListTableViewCell()
         cell = self.tableView.dequeueReusableCell(withIdentifier: "SMSTemplatesListTableViewCell", for: indexPath) as! SMSTemplatesListTableViewCell
         if isSearch {
-            cell.configureCell(smsTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
+            cell.configureCellisSearch(smsTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
         }else{
             cell.configureCell(smsTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
         }

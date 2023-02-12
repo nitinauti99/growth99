@@ -23,7 +23,6 @@ protocol EmailTemplateViewModelProtocol {
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
     func getTemplateFilterDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
-
 }
 
 class EmailTemplateViewModel {

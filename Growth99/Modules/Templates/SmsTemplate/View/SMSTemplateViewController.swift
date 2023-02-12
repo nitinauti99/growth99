@@ -29,6 +29,8 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         self.title = Constant.Profile.smsTemplateList
         viewModel = SMSTemplateViewModel(delegate: self)
         setUpSegemtcontrol()
+        self.addSerchBar()
+
         self.view.ShowSpinner()
         tableView.register(UINib(nibName: "SMSTemplatesListTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplatesListTableViewCell")
         viewModel?.getSMSTemplateList()
@@ -48,41 +50,29 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "selectedIndex") , object: nil)
     }
-    
-    @objc func notificationReceived(_ notification: Notification) {
-        guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
-        segmentedControl.selectedSegmentIndex = segment
-    }
-    
+
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 0).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
+            // if viewModel?.getSelectedTemplate(selectedIndex: 0).count == 0 {
+            //    self.emptyMessage(parentView: self.view, message: "There is no data")
+            //  }
             navigationItem.rightBarButtonItem = nil
         case 1:
             tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 1).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
+            // if viewModel?.getSelectedTemplate(selectedIndex: 1).count == 0 {
+            //     self.emptyMessage(parentView: self.view, message: "There is no data")
+            //  }
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 2:
             tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 2).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
+            //  if viewModel?.getSelectedTemplate(selectedIndex: 2).count == 0 {
+            //        self.emptyMessage(parentView: self.view, message: "There is no data")
+            //   }
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
-        case 3:
-            tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 3).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(assignNewConsentButtonTapped), imageName: "add")
-        default:
+       default:
             break
         }
     }
@@ -129,18 +119,15 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         self.view.ShowSpinner()
         viewModel?.getSMSTemplateList()
     }
-    
-    
-    
+
     func SmsTemplatesDataRecived(){
         self.view.HideSpinner()
-        //SmsTemplateeListData = viewModel?.getSmsTemplateeData ?? []
         self.tableView.reloadData()
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
 }

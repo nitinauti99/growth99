@@ -102,7 +102,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
-        self.view.showToast(message: responseMessage)
+        self.view.showToast(message: responseMessage, color: .black)
         viewModel?.getQuestionnaireList(questionnaireId: LeadId ?? 0)
     }
     
@@ -149,7 +149,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func recivedQuestionnaireList() {
@@ -171,7 +171,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
 
     func smsSend(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+        self.view.showToast(message: responseMessage, color: .black)
         anslistTableView.reloadData()
     }
     
@@ -227,7 +227,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+        self.view.showToast(message: responseMessage, color: .black)
     }
    
 
@@ -249,7 +249,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     func emailSendSuccessfully(responseMessage: String)  {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+        self.view.showToast(message: responseMessage, color: .black)
     }
     
     func sendTemplate() {

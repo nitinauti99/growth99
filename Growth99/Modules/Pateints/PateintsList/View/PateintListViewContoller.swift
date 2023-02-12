@@ -98,7 +98,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     
     func pateintRemovedSuccefully(mrssage: String){
         viewModel?.getPateintList()
-        self.view.showToast(message: mrssage)
+        self.view.showToast(message: mrssage, color: .black)
     }
 
     func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {
@@ -124,6 +124,6 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
 }

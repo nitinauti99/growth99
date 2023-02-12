@@ -31,13 +31,13 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
 
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+       self.view.showToast(message: responseMessage, color: .black)
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     @IBAction func savePasswordButton(sender: UIButton) {

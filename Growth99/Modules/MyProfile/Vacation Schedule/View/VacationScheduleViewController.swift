@@ -93,7 +93,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func clinicsRecived() {
@@ -107,12 +107,12 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Clinic Dropdown API Response method
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.vacationScheduleUpdate)
+        self.view.showToast(message: Constant.Profile.vacationScheduleUpdate, color: .black)
     }
     
     func apiErrorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     // MARK: - Vacations List API Response method

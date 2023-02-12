@@ -1421,9 +1421,9 @@
 			children = (
 				84D43A2E297C55F200678458 /* Cell */,
 				84D061A029670676001FE469 /* PateintListViewContoller.swift */,
+				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
 				8473208629797FE5003099BB /* PateintListViewContoller+TableView.swift */,
 				8473208829798048003099BB /* PateintListViewContoller+SerachBar.swift */,
-				84D061A529670676001FE469 /* PateintListViewContoller.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -29,27 +29,46 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7ev-FY-GYI">
-                                <rect key="frame" x="0.0" y="92" width="390" height="718"/>
+                                <rect key="frame" x="0.0" y="152" width="390" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="Bbq-nf-j49"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="zSe-lk-VWo"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ag3-ne-W4B">
+                                <rect key="frame" x="0.0" y="92" width="390" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IRp-Q5-70x"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="nGi-LT-7mh"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7ev-FY-GYI" firstAttribute="top" secondItem="2bV-R7-VBx" secondAttribute="bottom" id="5DU-fH-Ee5"/>
+                            <constraint firstItem="ag3-ne-W4B" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3NL-aY-E6K"/>
+                            <constraint firstItem="7ev-FY-GYI" firstAttribute="top" secondItem="2bV-R7-VBx" secondAttribute="bottom" constant="60" id="5DU-fH-Ee5"/>
                             <constraint firstItem="2bV-R7-VBx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="CuF-ED-6P5"/>
+                            <constraint firstItem="ag3-ne-W4B" firstAttribute="top" secondItem="2bV-R7-VBx" secondAttribute="bottom" id="Zjr-jb-OMQ"/>
                             <constraint firstItem="2bV-R7-VBx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Zv8-YI-TKg"/>
                             <constraint firstItem="2bV-R7-VBx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aek-H3-V2u"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7ev-FY-GYI" secondAttribute="trailing" id="fmd-vI-aHd"/>
+                            <constraint firstItem="7ev-FY-GYI" firstAttribute="top" secondItem="ag3-ne-W4B" secondAttribute="bottom" id="frK-aI-I5b"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="7ev-FY-GYI" secondAttribute="bottom" id="tWm-99-956"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ag3-ne-W4B" secondAttribute="trailing" id="uAr-d1-0i6"/>
                             <constraint firstItem="7ev-FY-GYI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xZo-fZ-T2z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="ag3-ne-W4B" id="NhE-MO-Fbg"/>
                         <outlet property="segmentedControl" destination="2bV-R7-VBx" id="R4t-r7-412"/>
                         <outlet property="tableView" destination="7ev-FY-GYI" id="GYg-6z-cQX"/>
                     </connections>

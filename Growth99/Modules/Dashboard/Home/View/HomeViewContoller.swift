@@ -152,7 +152,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "data updated successfully")
+        self.view.showToast(message: "data updated successfully", color: .black)
         self.openUserListView()
     }
     
@@ -302,7 +302,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func openUserListView(){

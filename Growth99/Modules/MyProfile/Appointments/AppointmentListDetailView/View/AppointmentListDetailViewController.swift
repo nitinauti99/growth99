@@ -189,7 +189,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func eventDataReceived() {
@@ -203,13 +203,13 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment Cancelled Sucessfully")
+        self.view.showToast(message: "Appointment Cancelled Sucessfully", color: .red)
         self.navigationController?.popViewController(animated: true)
     }
 
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {

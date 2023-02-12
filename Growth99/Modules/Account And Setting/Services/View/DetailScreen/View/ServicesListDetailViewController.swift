@@ -109,7 +109,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {

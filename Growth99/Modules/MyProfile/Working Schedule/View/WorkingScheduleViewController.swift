@@ -87,7 +87,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func clinicsRecived() {
@@ -134,12 +134,12 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
 
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.workingScheduleUpdate)
+        self.view.showToast(message: Constant.Profile.workingScheduleUpdate, color: .black)
     }
     
     func apiErrorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func wcListResponseRecived(apiResponse: [WorkingScheduleListModel]) {

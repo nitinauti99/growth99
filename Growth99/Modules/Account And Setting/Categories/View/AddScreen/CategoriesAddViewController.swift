@@ -58,13 +58,13 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     
     func addCategoriesResponse() {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.addCategorie)
+        self.view.showToast(message: Constant.Profile.addCategorie, color: .black)
         self.navigationController?.popViewController(animated: true)
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     @IBAction func clinincsDropDown(sender: UIButton) {

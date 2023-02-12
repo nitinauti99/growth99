@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 extension QuestionnaireTemplateListViewController: UITableViewDelegate, UITableViewDataSource {
-   
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return viewModel?.getQuestionnaireTemplateListData.count ?? 0
+            return viewModel?.getQuestionnaireTemplateFilterListData.count ?? 0
         } else {
             return viewModel?.getQuestionnaireTemplateListData.count ?? 0
         }
@@ -25,8 +25,10 @@ extension QuestionnaireTemplateListViewController: UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = QuestionnaireTemplateListTableViewCell()
         cell = self.tableView.dequeueReusableCell(withIdentifier: "QuestionnaireTemplateListTableViewCell", for: indexPath) as! QuestionnaireTemplateListTableViewCell
+        cell.delegate = self
+
         if isSearch {
-            cell.configureCell(questionnaireTemplateList: viewModel, index: indexPath)
+            cell.configureCellisSearch(questionnaireTemplateList: viewModel, index: indexPath)
         }else{
             cell.configureCell(questionnaireTemplateList: viewModel, index: indexPath)
         }

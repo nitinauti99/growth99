@@ -30,7 +30,18 @@ class SMSTemplatesListTableViewCell: UITableViewCell {
     }
 
     func configureCell(smsTemplateList: SMSTemplateViewModelProtocol?, index: IndexPath, selectedIndex: Int) {
-        let smsTemplateList = smsTemplateList?.smsTemplateDataAtIndex(index: index.row, selectedIndex: selectedIndex)
+        let smsTemplateList = smsTemplateList?.getTemplateDataAtIndexPath(index: index.row, selectedIndex: selectedIndex)
+        self.name.text = smsTemplateList?.name
+        self.id.text = String(smsTemplateList?.id ?? 0)
+        self.createdBy.text = smsTemplateList?.createdBy
+        self.templateFor.text = smsTemplateList?.templateFor
+        self.createdAt.text = dateFormater?.serverToLocal(date: smsTemplateList?.createdAt ?? "")
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: smsTemplateList?.updatedAt ?? "")
+        indexPath = index
+    }
+    
+    func configureCellisSearch(smsTemplateList: SMSTemplateViewModelProtocol?, index: IndexPath, selectedIndex: Int) {
+        let smsTemplateList = smsTemplateList?.getTemplateFilterDataAtIndexPath(index: index.row, selectedIndex: selectedIndex)
         self.name.text = smsTemplateList?.name
         self.id.text = String(smsTemplateList?.id ?? 0)
         self.createdBy.text = smsTemplateList?.createdBy
@@ -40,3 +51,4 @@ class SMSTemplatesListTableViewCell: UITableViewCell {
         indexPath = index
     }
 }
+

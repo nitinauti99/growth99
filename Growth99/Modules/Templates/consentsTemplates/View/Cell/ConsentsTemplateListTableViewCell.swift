@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ConsentsTemplateListTableViewCellDelegate: AnyObject {
+    func removePatieint(cell: ConsentsTemplateListTableViewCell, index: IndexPath)
+}
+
 class ConsentsTemplateListTableViewCell: UITableViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var id: UILabel!
@@ -18,8 +22,7 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
     @IBOutlet weak var editButtonAction: UIButton!
 
     var dateFormater: DateFormaterProtocol?
-    var buttonAddTimeTapCallback: () -> ()  = { }
-    weak var delegate: PateintListTableViewCellDelegate?
+    weak var delegate: ConsentsTemplateListTableViewCellDelegate?
 
     var indexPath = IndexPath()
     override func awakeFromNib() {
@@ -29,6 +32,17 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
 
+    func configureCellisSearch(consentsTemplateList: ConsentsTemplateListViewModelProtocol?, index: IndexPath) {
+        let consentsTemplateList = consentsTemplateList?.consentsTemplateFilterDataAtIndex(index: index.row)
+        self.name.text = consentsTemplateList?.name
+        self.id.text = String(consentsTemplateList?.id ?? 0)
+        self.createdBy.text = consentsTemplateList?.createdBy
+        self.templateFor.text = consentsTemplateList?.templateFor
+        self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? "")
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? "")
+        indexPath = index
+    }
+    
     func configureCell(consentsTemplateList: ConsentsTemplateListViewModelProtocol?, index: IndexPath) {
         let consentsTemplateList = consentsTemplateList?.consentsTemplateDataAtIndex(index: index.row)
         self.name.text = consentsTemplateList?.name
@@ -39,4 +53,9 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? "")
         indexPath = index
     }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removePatieint(cell: self, index: indexPath)
+    }
+    
 }

@@ -109,7 +109,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     @objc func notificationReceived(_ notification: Notification) {
-        self.view.showToast(message: "Appoinment created sucessfully")
+        self.view.showToast(message: "Appoinment created sucessfully", color: .black)
         guard let selectedClincIds = notification.userInfo?["clinicId"] as? String else { return }
         guard let selectedProvidersIds = notification.userInfo?["providerId"] as? String else { return }
         guard let selectedServicesIds = notification.userInfo?["serviceId"] as? String else { return }
@@ -165,7 +165,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -160,21 +160,6 @@
                                     <action selector="detailButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pfr-S3-eSA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu3-zK-yR7">
-                                <rect key="frame" x="183" y="155" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="8dp-Tb-obc"/>
-                                    <constraint firstAttribute="height" constant="30" id="D7c-vP-Mco"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Delete">
-                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pkh-Ex-nVs"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -191,13 +176,11 @@
                             <constraint firstItem="btQ-11-0ng" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="10" id="EWd-7Y-eGx"/>
                             <constraint firstItem="A81-3B-jUp" firstAttribute="top" secondItem="7X9-C0-OZZ" secondAttribute="bottom" constant="5" id="GeL-bd-EfR"/>
                             <constraint firstItem="fLK-cs-vf8" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="IYk-8w-xBM"/>
-                            <constraint firstItem="Bu3-zK-yR7" firstAttribute="leading" secondItem="HM8-H5-Kz0" secondAttribute="trailing" constant="25" id="J8c-DR-lxy"/>
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="top" secondItem="A81-3B-jUp" secondAttribute="bottom" constant="5" id="MjA-wG-ByJ"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="trailing" secondItem="SRX-mT-mQW" secondAttribute="trailing" id="Nvb-jg-Sz8"/>
                             <constraint firstItem="mee-z5-vsQ" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="RY6-RA-QFI"/>
                             <constraint firstAttribute="bottom" secondItem="HM8-H5-Kz0" secondAttribute="bottom" constant="13" id="Tcv-Bx-oJf"/>
                             <constraint firstItem="Rjj-Ye-ODO" firstAttribute="top" secondItem="fLK-cs-vf8" secondAttribute="bottom" constant="5" id="Ufi-Ai-ICq"/>
-                            <constraint firstItem="Bu3-zK-yR7" firstAttribute="centerY" secondItem="HM8-H5-Kz0" secondAttribute="centerY" id="WdU-wb-zNB"/>
                             <constraint firstItem="63r-9K-2iL" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="10" id="XJx-Sq-mIs"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="leading" secondItem="SRX-mT-mQW" secondAttribute="leading" id="Yei-Ep-0ny"/>
                             <constraint firstAttribute="trailing" secondItem="jhF-wB-5M7" secondAttribute="trailing" constant="8" id="ZgN-3q-qkn"/>
@@ -254,7 +237,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Delete" width="80" height="73"/>
         <image name="Detail" width="79" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
     </resources>

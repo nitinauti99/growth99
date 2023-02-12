@@ -141,7 +141,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
-        self.view.showToast(message: responseMessage)
+       self.view.showToast(message: responseMessage, color: .black)
         viewModel?.getpateintsList(pateintId: pateintData?.id ?? 0)
     }
     
@@ -155,7 +155,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error)
+        self.view.showToast(message: error, color: .black)
     }
     
     func recivedPateintDetail() {
@@ -215,14 +215,14 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func smsSend(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+       self.view.showToast(message: responseMessage, color: .black)
         pateintDetailTableView.reloadData()
     }
     
     func updatedPateintsInfo(responseMessage: String) {
         DispatchQueue.main.async {
             self.view.HideSpinner()
-            self.view.showToast(message: responseMessage)
+           self.view.showToast(message: responseMessage, color: .black)
             self.setUpClearColor()
         }
     }
@@ -282,7 +282,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+       self.view.showToast(message: responseMessage, color: .black)
     }
     
     
@@ -304,7 +304,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func emailSendSuccessfully(responseMessage: String)  {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage)
+       self.view.showToast(message: responseMessage, color: .black)
     }
     
     func sendTemplate() {

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol QuestionnaireTemplateListTableViewCellDelegate: AnyObject {
+    func removePatieint(cell: QuestionnaireTemplateListTableViewCell, index: IndexPath)
+}
+
 class QuestionnaireTemplateListTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var name: UILabel!
@@ -19,8 +23,7 @@ class QuestionnaireTemplateListTableViewCell: UITableViewCell {
     @IBOutlet weak var editButtonAction: UIButton!
 
     var dateFormater : DateFormaterProtocol?
-    var buttonAddTimeTapCallback: () -> ()  = { }
-    weak var delegate: PateintListTableViewCellDelegate?
+    weak var delegate: QuestionnaireTemplateListTableViewCellDelegate?
 
     var indexPath = IndexPath()
     override func awakeFromNib() {
@@ -31,7 +34,7 @@ class QuestionnaireTemplateListTableViewCell: UITableViewCell {
     }
 
     func configureCell(questionnaireTemplateList: QuestionnaireTemplateListViewModelProtocol?, index: IndexPath) {
-        let questionnaireTemplateList = questionnaireTemplateList?.questionnaireTemplateDataAtIndex(index: index.row)
+        let questionnaireTemplateList = questionnaireTemplateList?.getqQuestionnaireTemplateDataAtIndex(index: index.row)
         self.name.text = questionnaireTemplateList?.name
         self.id.text = String(questionnaireTemplateList?.id ?? 0)
         self.createdBy.text = questionnaireTemplateList?.createdBy
@@ -39,5 +42,21 @@ class QuestionnaireTemplateListTableViewCell: UITableViewCell {
         self.createdAt.text = dateFormater?.serverToLocal(date: questionnaireTemplateList?.createdAt ?? "")
         self.updatedAt.text =  dateFormater?.serverToLocal(date: questionnaireTemplateList?.updatedAt ?? "")
         indexPath = index
+    }
+    
+    func configureCellisSearch(questionnaireTemplateList: QuestionnaireTemplateListViewModelProtocol?, index: IndexPath) {
+        let questionnaireTemplateList = questionnaireTemplateList?.getQuestionnaireTemplateFilterDataAtIndex(index: index.row)
+        self.name.text = questionnaireTemplateList?.name
+        self.id.text = String(questionnaireTemplateList?.id ?? 0)
+        self.createdBy.text = questionnaireTemplateList?.createdBy
+        self.templateFor.text = questionnaireTemplateList?.templateFor
+        self.createdAt.text = dateFormater?.serverToLocal(date: questionnaireTemplateList?.createdAt ?? "")
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: questionnaireTemplateList?.updatedAt ?? "")
+        indexPath = index
+    }
+    
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removePatieint(cell: self, index: indexPath)
     }
 }
