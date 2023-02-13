@@ -18,6 +18,11 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
         if isSearch {
             return viewModel?.getProfileAppoinmentFilterListData.count ?? 0
         } else {
+            if viewModel?.getProfileAppoinmentListData.count ?? 0 == 0 {
+                self.appointmentsTableView.setEmptyMessage("There is no data to show.")
+            } else {
+                self.appointmentsTableView.restore()
+            }
             return viewModel?.getProfileAppoinmentListData.count ?? 0
         }
     }
