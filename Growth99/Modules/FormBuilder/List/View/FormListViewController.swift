@@ -20,9 +20,6 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     var viewModel: FormListViewModelProtocol?
-    
-    var workflowTaskPatientId = Int()
-    var selectedindex = 0
     var isSearch: Bool = false
     
     override func viewDidLoad() {
@@ -30,13 +27,24 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         self.title = Constant.Profile.FormsList
         viewModel = FormListViewModel(delegate: self)
         self.addSerchBar()
+        self.setBarButton()
         self.view.ShowSpinner()
         viewModel?.getFormList()
         tableView.register(UINib(nibName: "FormListTableViewCell", bundle: nil), forCellReuseIdentifier: "FormListTableViewCell")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setBarButton(){
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "add"), for: .normal)
+        button.addTarget(self, action:  #selector(creatForm), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func creatForm() {
+        let FormListVC = UIStoryboard(name: "CreateFormViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateFormViewController") as! CreateFormViewController
+        self.navigationController?.pushViewController(FormListVC, animated: true)
     }
     
     func addSerchBar(){
@@ -51,8 +59,8 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     func removePatieint(cell: FormListTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var consentsId = Int()
-            consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? ""
-            consentsId = viewModel?.FormDataAtIndex(index: index.row)?.id ?? 0
+        consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? ""
+        consentsId = viewModel?.FormDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
             consentsName = viewModel?.FormFilterDataAtIndex(index: index.row)?.name ?? ""
             consentsId =  viewModel?.FormFilterDataAtIndex(index: index.row)?.id ?? 0
@@ -60,7 +68,7 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         
         let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(consentsName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
-                                      handler: { [weak self] _ in
+                                        handler: { [weak self] _ in
             self?.view.ShowSpinner()
             self?.viewModel?.removeConsents(consentsId: consentsId)
         })
@@ -85,13 +93,13 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         self.view.showToast(message: mrssage,color: .red)
         viewModel?.getFormList()
     }
-        
+    
     func FormsDataRecived(){
         self.view.HideSpinner()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-     }
+    }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
