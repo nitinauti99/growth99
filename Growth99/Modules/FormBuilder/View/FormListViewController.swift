@@ -1,25 +1,25 @@
 //
-//  ConsentsViewController.swift
+//  FormListViewContoller.swift
 //  Growth99
 //
-//  Created by nitin auti on 09/02/23.
+//  Created by nitin auti on 13/02/23.
 //
 
 import Foundation
 import UIKit
 
-protocol ConsentsTemplateListViewControllerProtocol {
-    func ConsentsTemplatesDataRecived()
+protocol FormListViewControllerProtocol {
+    func FormsDataRecived()
     func errorReceived(error: String)
     func consentsRemovedSuccefully(mrssage: String)
 }
 
-class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateListViewControllerProtocol,ConsentsTemplateListTableViewCellDelegate {
+class FormListViewController: UIViewController, FormListViewControllerProtocol, FormListTableViewCellDelegate {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-    var viewModel: ConsentsTemplateListViewModelProtocol?
+    var viewModel: FormListViewModelProtocol?
     
     var workflowTaskPatientId = Int()
     var selectedindex = 0
@@ -27,12 +27,12 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.consentsTemplatesList
-        viewModel = ConsentsTemplateListViewModel(delegate: self)
+        self.title = Constant.Profile.FormsList
+        viewModel = FormListViewModel(delegate: self)
         self.addSerchBar()
         self.view.ShowSpinner()
-        viewModel?.getConsentsTemplateList()
-        tableView.register(UINib(nibName: "ConsentsTemplateListTableViewCell", bundle: nil), forCellReuseIdentifier: "ConsentsTemplateListTableViewCell")
+        viewModel?.getFormList()
+        tableView.register(UINib(nibName: "FormListTableViewCell", bundle: nil), forCellReuseIdentifier: "FormListTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,14 +48,14 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
         searchBar.delegate = self
     }
     
-    func removePatieint(cell: ConsentsTemplateListTableViewCell, index: IndexPath) {
+    func removePatieint(cell: FormListTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var consentsId = Int()
-            consentsName = viewModel?.consentsTemplateDataAtIndex(index: index.row)?.name ?? ""
-            consentsId = viewModel?.consentsTemplateDataAtIndex(index: index.row)?.id ?? 0
+            consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? ""
+            consentsId = viewModel?.FormDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
-            consentsName = viewModel?.consentsTemplateFilterDataAtIndex(index: index.row)?.name ?? ""
-            consentsId =  viewModel?.consentsTemplateFilterDataAtIndex(index: index.row)?.id ?? 0
+            consentsName = viewModel?.FormFilterDataAtIndex(index: index.row)?.name ?? ""
+            consentsId =  viewModel?.FormFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         
         let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(consentsName)", preferredStyle: UIAlertController.Style.alert)
@@ -78,15 +78,15 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
     
     @objc func getPateintList() {
         self.view.ShowSpinner()
-        viewModel?.getConsentsTemplateList()
+        viewModel?.getFormList()
     }
     
     func consentsRemovedSuccefully(mrssage: String) {
         self.view.showToast(message: mrssage,color: .red)
-        viewModel?.getConsentsTemplateList()
+        viewModel?.getFormList()
     }
         
-    func ConsentsTemplatesDataRecived(){
+    func FormsDataRecived(){
         self.view.HideSpinner()
         DispatchQueue.main.async {
             self.tableView.reloadData()

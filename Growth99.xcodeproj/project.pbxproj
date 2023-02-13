@@ -104,6 +104,14 @@
 		842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C0CDA298FC12200395061 /* PateintsTagListTableViewCell.xib */; };
 		843801522954836C00CEA664 /* PassableUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843801512954836C00CEA664 /* PassableUIButton.swift */; };
 		843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */; };
+		8440B38F2999FDBE00A42097 /* FormListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440B38E2999FDBE00A42097 /* FormListViewController.swift */; };
+		8440B3912999FDCF00A42097 /* FormListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8440B3902999FDCF00A42097 /* FormListViewController.storyboard */; };
+		8440B3932999FE4900A42097 /* FormListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440B3922999FE4900A42097 /* FormListViewModel.swift */; };
+		8440B3952999FE5D00A42097 /* FormListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440B3942999FE5D00A42097 /* FormListModel.swift */; };
+		8440B399299A1B1300A42097 /* FormListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440B397299A1B1300A42097 /* FormListTableViewCell.swift */; };
+		8440B39A299A1B1300A42097 /* FormListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8440B398299A1B1300A42097 /* FormListTableViewCell.xib */; };
+		8440B39C299A319800A42097 /* FormListViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440B39B299A319800A42097 /* FormListViewContoller+TableView.swift */; };
+		8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440B39D299A323B00A42097 /* FormListViewController+SearchBar.swift */; };
 		845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C399F292276AF00D934C5 /* SpinnerView.swift */; };
 		845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A0292276AF00D934C5 /* SwiftLoader.swift */; };
 		845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C39A2292276AF00D934C5 /* KeychainWrapper.swift */; };
@@ -630,6 +638,14 @@
 		842C0CDA298FC12200395061 /* PateintsTagListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsTagListTableViewCell.xib; sourceTree = "<group>"; };
 		843801512954836C00CEA664 /* PassableUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassableUIButton.swift; sourceTree = "<group>"; };
 		843A7A8F2976A0140063FA2D /* BusinessProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewModel.swift; sourceTree = "<group>"; };
+		8440B38E2999FDBE00A42097 /* FormListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormListViewController.swift; sourceTree = "<group>"; };
+		8440B3902999FDCF00A42097 /* FormListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormListViewController.storyboard; sourceTree = "<group>"; };
+		8440B3922999FE4900A42097 /* FormListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormListViewModel.swift; sourceTree = "<group>"; };
+		8440B3942999FE5D00A42097 /* FormListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormListModel.swift; sourceTree = "<group>"; };
+		8440B397299A1B1300A42097 /* FormListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormListTableViewCell.swift; sourceTree = "<group>"; };
+		8440B398299A1B1300A42097 /* FormListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormListTableViewCell.xib; sourceTree = "<group>"; };
+		8440B39B299A319800A42097 /* FormListViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormListViewContoller+TableView.swift"; sourceTree = "<group>"; };
+		8440B39D299A323B00A42097 /* FormListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		845C399F292276AF00D934C5 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		845C39A0292276AF00D934C5 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		845C39A2292276AF00D934C5 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
@@ -2066,6 +2082,53 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8440B38A2999FD5E00A42097 /* FormBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				8440B38B2999FD7200A42097 /* Model */,
+				8440B38C2999FD7600A42097 /* ViewModel */,
+				8440B38D2999FD7900A42097 /* View */,
+			);
+			path = FormBuilder;
+			sourceTree = "<group>";
+		};
+		8440B38B2999FD7200A42097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8440B3942999FE5D00A42097 /* FormListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8440B38C2999FD7600A42097 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8440B3922999FE4900A42097 /* FormListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8440B38D2999FD7900A42097 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8440B396299A1AE800A42097 /* Cell */,
+				8440B38E2999FDBE00A42097 /* FormListViewController.swift */,
+				8440B3902999FDCF00A42097 /* FormListViewController.storyboard */,
+				8440B39B299A319800A42097 /* FormListViewContoller+TableView.swift */,
+				8440B39D299A323B00A42097 /* FormListViewController+SearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8440B396299A1AE800A42097 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8440B397299A1B1300A42097 /* FormListTableViewCell.swift */,
+				8440B398299A1B1300A42097 /* FormListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		845C399E292276AF00D934C5 /* LoaderScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -2746,6 +2809,7 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8440B38A2999FD5E00A42097 /* FormBuilder */,
 				848A03852993FAD7004FE278 /* Templates */,
 				84D061F129670676001FE469 /* Welcome Screens */,
 				84D061AA29670676001FE469 /* Dashboard */,
@@ -4041,6 +4105,7 @@
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
+				8440B3912999FDCF00A42097 /* FormListViewController.storyboard in Resources */,
 				84D063062967080E001FE469 /* questionAnswersTableViewCell.xib in Resources */,
 				84D063102967080E001FE469 /* LeadTableViewCell.xib in Resources */,
 				84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */,
@@ -4066,6 +4131,7 @@
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
+				8440B39A299A1B1300A42097 /* FormListTableViewCell.xib in Resources */,
 				8490350C2995673D00556D47 /* ConsentsTemplateListViewController.storyboard in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
@@ -4352,6 +4418,7 @@
 				8473208129797874003099BB /* PateintEditViewController.swift in Sources */,
 				84D062F62967080E001FE469 /* leadCreationModel.swift in Sources */,
 				84D0623729670677001FE469 /* PateintDetailViewController.swift in Sources */,
+				8440B399299A1B1300A42097 /* FormListTableViewCell.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
 				84BD33F92994BB020050C0D8 /* EmailTemplateViewController+TableView.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
@@ -4363,6 +4430,7 @@
 				845C39E1292276B000D934C5 /* UITextFieldExtension.swift in Sources */,
 				84D062F82967080E001FE469 /* leadTimeLineViewModel.swift in Sources */,
 				84F610E8292A71AB00B1FB69 /* Device.swift in Sources */,
+				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
 				84D0631F2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
@@ -4392,6 +4460,8 @@
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
+				8440B3952999FE5D00A42097 /* FormListModel.swift in Sources */,
+				8440B39C299A319800A42097 /* FormListViewContoller+TableView.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
 				84D0630F2967080E001FE469 /* LeadTableViewCell.swift in Sources */,
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
@@ -4526,6 +4596,7 @@
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
 				842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */,
 				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
+				8440B3932999FE4900A42097 /* FormListViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
 				84D0628B29670677001FE469 /* User.swift in Sources */,
@@ -4538,6 +4609,7 @@
 				842C0CDB298FC12200395061 /* PateintsTagListTableViewCell.swift in Sources */,
 				84F610F9292A71AB00B1FB69 /* DERError.swift in Sources */,
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
+				8440B38F2999FDBE00A42097 /* FormListViewController.swift in Sources */,
 				84E34C4C2970365800C58B0D /* CreateTasksViewController.swift in Sources */,
 				84B75EF42969463B00962F3E /* TriggersViewModel.swift in Sources */,
 				842C0CBA298F713B00395061 /* CreatePateintsTasksViewController.swift in Sources */,

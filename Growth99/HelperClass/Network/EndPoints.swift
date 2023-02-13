@@ -82,6 +82,7 @@ struct EndPoints {
     static let profileAppointments = "/api/v1/appointment/user/"
     static let removeConsents = "/api/consents/"
     static let removeQuestionnaire = "/api/questionnaire/"
+    static let FormsList = "/api/v1/questionnaire"
 }
 
 struct ApiUrl {
@@ -162,4 +163,6 @@ struct ApiUrl {
     static let userByEmail = EndPoints.baseURL.appending(EndPoints.userByEmail)
     static let userByPhone = EndPoints.baseURL.appending(EndPoints.userByPhone)
     static let profileAppointments = EndPoints.baseURL.appending(EndPoints.profileAppointments)
+    static let FormsList = EndPoints.baseURL.appending(EndPoints.FormsList)
+
 }
