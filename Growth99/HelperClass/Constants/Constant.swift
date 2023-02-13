@@ -105,6 +105,7 @@ struct Constant {
         static let workingSchedule = "working"
         static let selectDay = "Select day"
         static let days = "days"
+        static let tableViewEmptyText = "There is no data to show."
         static let chooseFromTime = "Please choose from time"
         static let chooseToTime = "Please choose to time"
         static let chooseFromDate = "Please choose from date"

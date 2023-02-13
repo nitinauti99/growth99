@@ -60,6 +60,8 @@
 		39F2FF1F2996B8020089BD4F /* AppointmentListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F2FF1E2996B8020089BD4F /* AppointmentListDetailViewController.swift */; };
 		39F2FF212996B8110089BD4F /* AppointmentListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39F2FF202996B8110089BD4F /* AppointmentListDetailViewController.storyboard */; };
 		39F2FF232996B8630089BD4F /* AppointmentListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */; };
+		39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F904DE299A895300666C85 /* ClassIdentifiable.swift */; };
+		39F904E1299A896B00666C85 /* NibIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F904E0299A896B00666C85 /* NibIdentifiable.swift */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -593,6 +595,8 @@
 		39F2FF1E2996B8020089BD4F /* AppointmentListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListDetailViewController.swift; sourceTree = "<group>"; };
 		39F2FF202996B8110089BD4F /* AppointmentListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppointmentListDetailViewController.storyboard; sourceTree = "<group>"; };
 		39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListDetailViewModel.swift; sourceTree = "<group>"; };
+		39F904DE299A895300666C85 /* ClassIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassIdentifiable.swift; sourceTree = "<group>"; };
+		39F904E0299A896B00666C85 /* NibIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifiable.swift; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1380,6 +1384,15 @@
 				39F2FF202996B8110089BD4F /* AppointmentListDetailViewController.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		39F904DD299A894800666C85 /* Identifiable */ = {
+			isa = PBXGroup;
+			children = (
+				39F904DE299A895300666C85 /* ClassIdentifiable.swift */,
+				39F904E0299A896B00666C85 /* NibIdentifiable.swift */,
+			);
+			path = Identifiable;
 			sourceTree = "<group>";
 		};
 		84088B9F2977E5520060855E /* Model */ = {
@@ -2644,6 +2657,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				39F904DD299A894800666C85 /* Identifiable */,
 				849D3ADC2997CC72003E856A /* FontAwesome */,
 				39EBABBE29915751001B789D /* GrowthDateFormats */,
 				398F90CD298ECB8600DB96E4 /* IQKeyboardManagerSwift */,
@@ -4503,6 +4517,7 @@
 				849D3AF42997CC72003E856A /* FontAwesomeTextRepresentable.swift in Sources */,
 				84D062A52967070D001FE469 /* UserListTableViewCell.swift in Sources */,
 				398F90EB298ECB8700DB96E4 /* IQKeyboardManager+Internal.swift in Sources */,
+				39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
@@ -4660,6 +4675,7 @@
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				849035102995679200556D47 /* ConsentsTemplateListModel.swift in Sources */,
 				3947A8EF2996776E000CA2EB /* EmptyEventsTableViewCell.swift in Sources */,
+				39F904E1299A896B00666C85 /* NibIdentifiable.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				848FA3CF2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift in Sources */,

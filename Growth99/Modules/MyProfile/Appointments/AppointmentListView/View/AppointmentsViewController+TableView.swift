@@ -19,7 +19,7 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
             return viewModel?.getProfileAppoinmentFilterListData.count ?? 0
         } else {
             if viewModel?.getProfileAppoinmentListData.count ?? 0 == 0 {
-                self.appointmentsTableView.setEmptyMessage("There is no data to show.")
+                self.appointmentsTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
             } else {
                 self.appointmentsTableView.restore()
             }
@@ -28,7 +28,7 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentTableViewCell", for: indexPath) as? AppointmentTableViewCell else { return UITableViewCell() }
+        var cell: AppointmentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.delegate = self        
         if isSearch {
             cell.configureCell(profileAppointmentList: viewModel, index: indexPath, isSearch: isSearch)
