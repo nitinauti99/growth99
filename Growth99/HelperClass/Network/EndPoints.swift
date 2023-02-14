@@ -15,6 +15,7 @@ struct EndPoints {
     static let VerifyforgotPassword = "/api/public/users/forgot-password"
     static let userProfile = "/api/v1/user/"
     static let allClinics = "/api/v1/clinics/allClinics"
+    static let selectedClinic = "/api/clinics/"
     static let changePassword = "/api/users/change-password"
     static let serviceCategories = "/api/v1/clinics/serviceCategories?clinicId="
     static let service = "/api/v1/services/serviceCategories?categoryId="
@@ -84,6 +85,7 @@ struct EndPoints {
     static let removeConsents = "/api/consents/"
     static let removeQuestionnaire = "/api/questionnaire/"
     static let FormsList = "/api/v1/questionnaire"
+    static let timezonesList = "/api/timezones"
 }
 
 struct ApiUrl {
@@ -166,4 +168,6 @@ struct ApiUrl {
     static let profileAppointments = EndPoints.baseURL.appending(EndPoints.profileAppointments)
     static let FormsList = EndPoints.baseURL.appending(EndPoints.FormsList)
     static let removeProfileAppointment = EndPoints.baseURL.appending(EndPoints.removeProfileAppointment)
+    static let timezonesList = EndPoints.baseURL.appending(EndPoints.timezonesList)
+    static let selectedClinic = EndPoints.baseURL.appending(EndPoints.selectedClinic)
 }

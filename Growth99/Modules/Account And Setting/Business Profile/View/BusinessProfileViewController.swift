@@ -29,7 +29,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
-        self.navigationItem.title = "Business Profile"
+        self.navigationItem.title = Constant.Profile.businessProfile
     }
     
     func errorReceived(error: String) {

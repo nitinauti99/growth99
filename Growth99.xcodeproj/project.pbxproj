@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
+		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
 		3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D52996776D000CA2EB /* CalenderViewController.swift */; };
 		3947A8EF2996776E000CA2EB /* EmptyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D72996776D000CA2EB /* EmptyEventsTableViewCell.swift */; };
@@ -545,6 +547,8 @@
 /* Begin PBXFileReference section */
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
+		39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListModel.swift; sourceTree = "<group>"; };
 		3947A8D32996776D000CA2EB /* CalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
 		3947A8D52996776D000CA2EB /* CalenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		3947A8D72996776D000CA2EB /* EmptyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyEventsTableViewCell.swift; sourceTree = "<group>"; };
@@ -2940,6 +2944,7 @@
 			isa = PBXGroup;
 			children = (
 				84B75E9D2968CCB700962F3E /* ClinicsListViewModel.swift */,
+				39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2948,6 +2953,7 @@
 			isa = PBXGroup;
 			children = (
 				84B75E9B2968CC7900962F3E /* ClinicsListModel.swift */,
+				39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4525,6 +4531,7 @@
 				84F610E0292A71AB00B1FB69 /* Optional.swift in Sources */,
 				39F2FF232996B8630089BD4F /* AppointmentListDetailViewModel.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
+				39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
@@ -4698,6 +4705,7 @@
 				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
 				398F90F5298ECB8700DB96E4 /* IQKeyboardManager+Position.swift in Sources */,
 				84F610BA292A71AA00B1FB69 /* CompactJSONDecoder.swift in Sources */,
+				39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */,
 				84D063032967080E001FE469 /* SMSTemplateTableViewCell.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,

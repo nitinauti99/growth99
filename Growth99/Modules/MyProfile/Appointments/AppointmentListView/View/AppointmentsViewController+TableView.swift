@@ -28,7 +28,7 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: AppointmentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        let cell: AppointmentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.delegate = self        
         if isSearch {
             cell.configureCell(profileAppointmentList: viewModel, index: indexPath, isSearch: isSearch)

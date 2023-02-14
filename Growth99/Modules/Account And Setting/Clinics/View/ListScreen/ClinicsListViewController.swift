@@ -43,6 +43,7 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
         guard let createClinicsVC = UIViewController.loadStoryboard("ClinicsListDetailViewController", "ClinicsListDetailViewController") as? ClinicsListDetailViewController else {
             fatalError("Failed to load ClinicsListDetailViewController from storyboard.")
         }
+        createClinicsVC.screenTitle = Constant.Profile.createClinic
         self.navigationController?.pushViewController(createClinicsVC, animated: true)
     }
     
@@ -114,10 +115,10 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let createClinicsVC = UIStoryboard(name: "ClinicsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsAddViewController") as! ClinicsAddViewController
-        ////        createClinicsVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-        ////        createClinicsVC.screenTitle = Constant.Profile.editClinics
-        //        self.navigationController?.pushViewController(createClinicsVC, animated: true)
+        let clinicDetailVC = UIStoryboard(name: "ClinicsListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsListDetailViewController") as! ClinicsListDetailViewController
+        clinicDetailVC.screenTitle = Constant.Profile.editClinic
+        clinicDetailVC.clinicId = viewModel?.clinicsData[indexPath.row].id ?? 0
+        self.navigationController?.pushViewController(clinicDetailVC, animated: true)
     }
 }
 
