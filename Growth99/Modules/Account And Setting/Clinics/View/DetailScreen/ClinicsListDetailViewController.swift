@@ -14,7 +14,7 @@ protocol ClinicsDetailListVCProtocol: AnyObject {
     func errorReceived(error: String)
 }
 
-class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol {
+class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol, UITextFieldDelegate {
 
     @IBOutlet private weak var clinicNameTextField: CustomTextField!
     @IBOutlet private weak var contactNumberTextField: CustomTextField!
@@ -70,6 +70,8 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     var viewModel: ClinicsDetailListViewModelProtocol?
     var businessHours = [BusinessHoursAccount]()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ClinicsDetailListViewModel(delegate: self)
@@ -77,6 +79,89 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         setupUI()
         dateFormater = DateFormater()
         getSelectedClinicsList()
+        mondayStartTimeTF.tintColor = .clear
+        mondayEndTimeTF.tintColor = .clear
+        tuesdayStartTimeTF.tintColor = .clear
+        tuesdayEndTimeTF.tintColor = .clear
+        wednesdayStartTimeTF.tintColor = .clear
+        wednesdayEndTimeTF.tintColor = .clear
+        thursdayStartTimeTF.tintColor = .clear
+        thursdayEndTimeTF.tintColor = .clear
+        fridayStartTimeTF.tintColor = .clear
+        fridayEndTimeTF.tintColor = .clear
+        saturdayStartTimeTF.tintColor = .clear
+        saturdayEndTimeTF.tintColor = .clear
+        sundayStartTimeTF.tintColor = .clear
+        sundayEndTimeTF.tintColor = .clear
+        
+        mondayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(mondayStartTimeButtonPressed), mode: .time)
+        mondayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(mondayEndTimeButtonPressed), mode: .time)
+        tuesdayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(tuesdayStartTimeButtonPressed), mode: .time)
+        tuesdayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(tuesdayEndTimeButtonPressed), mode: .time)
+        wednesdayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(wednesdayStartTimeButtonPressed), mode: .time)
+        wednesdayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(wednesdayEndTimeButtonPressed), mode: .time)
+        thursdayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(thursdayStartTimeButtonPressed), mode: .time)
+        thursdayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(thursEndTimeButtonPressed), mode: .time)
+        fridayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(fridayStartTimeButtonPressed), mode: .time)
+        fridayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(tridayEndTimeButtonPressed), mode: .time)
+        saturdayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(saturdayStartTimeButtonPressed), mode: .time)
+        saturdayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(saturdaydayEndTimeButtonPressed), mode: .time)
+        sundayStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(sundayStartTimeButtonPressed), mode: .time)
+        sundayEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(sundayEndTimeButtonPressed), mode: .time)
+    }
+    
+    @objc func mondayStartTimeButtonPressed() {
+        mondayStartTimeTF.text = dateFormater?.timeFormatterString(textField: mondayStartTimeTF)
+    }
+    
+    @objc func mondayEndTimeButtonPressed() {
+        mondayEndTimeTF.text = dateFormater?.timeFormatterString(textField: mondayEndTimeTF)
+    }
+    @objc func tuesdayStartTimeButtonPressed() {
+        tuesdayStartTimeTF.text = dateFormater?.timeFormatterString(textField: tuesdayStartTimeTF)
+    }
+    @objc func tuesdayEndTimeButtonPressed() {
+        tuesdayEndTimeTF.text = dateFormater?.timeFormatterString(textField: tuesdayEndTimeTF)
+    }
+    
+    @objc func wednesdayStartTimeButtonPressed() {
+        wednesdayStartTimeTF.text = dateFormater?.timeFormatterString(textField: wednesdayStartTimeTF)
+    }
+    
+    @objc func wednesdayEndTimeButtonPressed() {
+        wednesdayEndTimeTF.text = dateFormater?.timeFormatterString(textField: wednesdayEndTimeTF)
+    }
+    
+    @objc func thursdayStartTimeButtonPressed() {
+        thursdayStartTimeTF.text = dateFormater?.timeFormatterString(textField: thursdayStartTimeTF)
+    }
+    
+    @objc func thursEndTimeButtonPressed() {
+        thursdayEndTimeTF.text = dateFormater?.timeFormatterString(textField: thursdayEndTimeTF)
+    }
+    
+    @objc func fridayStartTimeButtonPressed() {
+        fridayStartTimeTF.text = dateFormater?.timeFormatterString(textField: fridayStartTimeTF)
+    }
+    
+    @objc func tridayEndTimeButtonPressed() {
+        fridayEndTimeTF.text = dateFormater?.timeFormatterString(textField: fridayEndTimeTF)
+    }
+    
+    @objc func saturdayStartTimeButtonPressed() {
+        saturdayStartTimeTF.text = dateFormater?.timeFormatterString(textField: saturdayStartTimeTF)
+    }
+    
+    @objc func saturdaydayEndTimeButtonPressed() {
+        saturdayEndTimeTF.text = dateFormater?.timeFormatterString(textField: saturdayEndTimeTF)
+    }
+    
+    @objc func sundayStartTimeButtonPressed() {
+        sundayStartTimeTF.text = dateFormater?.timeFormatterString(textField: sundayStartTimeTF)
+    }
+    
+    @objc func sundayEndTimeButtonPressed() {
+        sundayEndTimeTF.text = dateFormater?.timeFormatterString(textField: sundayEndTimeTF)
     }
     
     @objc func getSelectedClinicsList() {
@@ -286,6 +371,8 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     }
     
     @IBAction func saveButton(sender: UIButton) {
+        
+        countryCodeTextField.text = "1"
         guard let clinicName = clinicNameTextField.text, !clinicName.isEmpty else {
             clinicNameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
@@ -322,12 +409,44 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         if mondayBtn.isSelected {
-//            businessHours.append(BusinessHoursAccount(dayOfWeek: "MOMDAY", openHour: <#T##String?#>, closeHour: <#T##String?#>))
-
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "MONDAY", openHour: dateFormater?.localToServerWithDate(date: mondayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: mondayEndTimeTF.text ?? String.blank)))
         }
         
+        if tuesdayBtn.isSelected {
+           businessHours.append(BusinessHoursAccount(dayOfWeek: "TUESDAY", openHour: dateFormater?.localToServerWithDate(date: tuesdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: tuesdayEndTimeTF.text ?? String.blank)))
+        }
+        
+        if wednesdayBtn.isSelected {
+           businessHours.append(BusinessHoursAccount(dayOfWeek: "WEDNESDAY", openHour: dateFormater?.localToServerWithDate(date: wednesdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: wednesdayEndTimeTF.text ?? String.blank)))
+        }
+        
+        if thursdayBtn.isSelected {
+           businessHours.append(BusinessHoursAccount(dayOfWeek: "THURSDAY", openHour: dateFormater?.localToServerWithDate(date: thursdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: thursdayEndTimeTF.text ?? String.blank)))
+        }
+        
+        if fridayBtn.isSelected {
+           businessHours.append(BusinessHoursAccount(dayOfWeek: "FRIDAY", openHour: dateFormater?.localToServerWithDate(date: fridayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: fridayEndTimeTF.text ?? String.blank)))
+        }
+        
+        if saturdayBtn.isSelected {
+           businessHours.append(BusinessHoursAccount(dayOfWeek: "SATURDAY", openHour: dateFormater?.localToServerWithDate(date: saturdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: saturdayEndTimeTF.text ?? String.blank)))
+        }
+        
+        if sundayBtn.isSelected {
+           businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
+        }
+        print("Sample:: \(businessHours)")
 //        self.view.ShowSpinner()
 //        viewModel?.updateUserSelectedClinic()
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == mondayStartTimeTF || textField == mondayEndTimeTF || textField == tuesdayStartTimeTF || textField == tuesdayEndTimeTF || textField == wednesdayStartTimeTF || textField == wednesdayEndTimeTF || textField == thursdayStartTimeTF || textField == thursdayEndTimeTF || textField == fridayStartTimeTF || textField == fridayEndTimeTF || textField == saturdayStartTimeTF || textField == saturdayEndTimeTF || textField == sundayStartTimeTF || textField == sundayEndTimeTF  {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     
 }
