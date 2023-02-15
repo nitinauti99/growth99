@@ -18,7 +18,6 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
         
     }
     
-    
     @IBOutlet weak var appointmentsTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
@@ -46,7 +45,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     func registerTableView() {
         appointmentsTableView.delegate = self
         appointmentsTableView.dataSource = self
-        appointmentsTableView.register(UINib(nibName: "AppointmentTableViewCell", bundle: nil), forCellReuseIdentifier: "AppointmentTableViewCell")
+        appointmentsTableView.register(cellType: AppointmentTableViewCell.self)
     }
     
     func addSerchBar() {

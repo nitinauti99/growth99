@@ -14,7 +14,9 @@ protocol DateFormaterProtocol: AnyObject {
     func localToServer(date: String) -> String
     func utcToLocal(timeString: String) -> String?
     func dateFormatterString(textField: CustomTextField) -> String
-    func timeFormatterString(textField: CustomTextField) -> String 
+    func timeFormatterString(textField: CustomTextField) -> String
+    func utcToLocalAccounts(timeString: String) -> String?
+    func localToServerWithDate(date: String) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
@@ -56,6 +58,15 @@ class DateFormater: DateFormaterProtocol {
         return dateFormatter.string(from: date)
     }
     
+    func localToServerWithDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "h:mm a"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return dateFormatter.string(from: date)
+    }
+    
     func dateFormatterString(textField: CustomTextField) -> String {
         var datePicker = UIDatePicker()
         datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
@@ -83,6 +94,18 @@ class DateFormater: DateFormaterProtocol {
     func utcToLocal(timeString: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        if let date = dateFormatter.date(from: timeString) {
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: date)
+        }
+        return nil
+    }
+    
+    func utcToLocalAccounts(timeString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         if let date = dateFormatter.date(from: timeString) {
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")

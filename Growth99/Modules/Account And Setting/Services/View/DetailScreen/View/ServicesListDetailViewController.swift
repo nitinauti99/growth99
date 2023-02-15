@@ -137,7 +137,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     }
 
     @IBAction func serviceDurationButtonAction(sender: UIButton) {
-        let leadStatusArray = ["10", "15", "20", "30", "45", "60", "90", "120", "150", "180"]
+        let leadStatusArray = ["5","10", "15", "20", "30", "45", "60", "90", "120", "150", "180"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }

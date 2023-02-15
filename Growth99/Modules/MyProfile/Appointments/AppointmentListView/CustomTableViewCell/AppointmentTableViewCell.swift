@@ -13,7 +13,7 @@ protocol ProfileAppointmentCellDelegate: AnyObject {
     func paymentProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath)
 }
 
-class AppointmentTableViewCell: UITableViewCell {
+class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifiable {
 
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var id: UILabel!

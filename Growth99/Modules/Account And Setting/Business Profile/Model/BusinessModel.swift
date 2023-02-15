@@ -8,15 +8,15 @@
 import Foundation
 
 struct BusinessModel: Codable {
-    let createdAt : String?
-    let updatedAt : String?
-    let createdBy : CreatedBy?
-    let updatedBy : UpdatedBy?
-    let deleted : Bool?
-    let id : Int?
-    let name : String?
-    let logoUrl : String?
-    let deleteBusiness : Bool?
+    let createdAt: String?
+    let updatedAt: String?
+    let createdBy: CreatedBy?
+    let updatedBy: UpdatedBy?
+    let deleted: Bool?
+    let id: Int?
+    let name: String?
+    let logoUrl: String?
+    let deleteBusiness: Bool?
 }
 
 
