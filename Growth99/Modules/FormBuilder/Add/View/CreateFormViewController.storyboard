@@ -425,7 +425,9 @@
                         <outlet property="Show_title_Fields" destination="qve-LV-bK8" id="QWF-pL-4NH"/>
                         <outlet property="backroundImageSelctionButton" destination="j7C-i6-bkR" id="XZN-rS-Acg"/>
                         <outlet property="backroundImageSelctionLBI" destination="ylb-66-W2R" id="xbg-vX-0HF"/>
+                        <outlet property="buttonText" destination="YtF-6d-P42" id="IG1-CH-hHz"/>
                         <outlet property="is_Custom" destination="Rz9-0D-Dx5" id="XDj-Ib-fDg"/>
+                        <outlet property="questionnaireName" destination="Omk-di-beB" id="EFH-kF-W8q"/>
                         <outlet property="submitButton" destination="qXb-31-yEC" id="wJI-nT-M94"/>
                     </connections>
                 </viewController>
@@ -436,16 +438,16 @@
     </scenes>
     <designables>
         <designable name="Omk-di-beB">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="YtF-6d-P42">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="liT-VZ-MDy">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="tdh-h1-HxX">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>

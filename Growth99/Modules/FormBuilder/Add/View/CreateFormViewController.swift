@@ -8,9 +8,8 @@ import Foundation
 import UIKit
 
 protocol CreateFormViewControllerProtocol {
-    func FormsDataRecived()
+    func FormsDataRecived(message: String)
     func errorReceived(error: String)
-    func consentsRemovedSuccefully(mrssage: String)
 }
 
 class CreateFormViewController: UIViewController, CreateFormViewControllerProtocol {
@@ -23,13 +22,16 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     @IBOutlet weak var Make_lead_generationForm: UIButton!
     @IBOutlet weak var Show_Custom_Content_Virtual_ConsultationLead: UIButton!
     @IBOutlet weak var Show_Thank_page_URL_ContactForm: UIButton!
+    @IBOutlet weak var ConfigureThank_page_message_contactForm: UIButton!
+
     @IBOutlet weak var Show_Thank_page_URL_ContactForm_TextView: CustomTextField!
     @IBOutlet weak var Show_Thank_page_URL_ContactForm_TextView_SepraterHight: NSLayoutConstraint!
-    @IBOutlet weak var ConfigureThank_page_message_contactForm: UIButton!
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView: CustomTextField!
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView_SepraterHight: NSLayoutConstraint!
     @IBOutlet weak var backroundImageSelctionLBI: UILabel!
     @IBOutlet weak var backroundImageSelctionButton: UIButton!
+    @IBOutlet weak var questionnaireName: CustomTextField!
+    @IBOutlet weak var buttonText: CustomTextField!
 
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
@@ -57,20 +59,15 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
         backroundImageSelctionLBI.isHidden = true
     }
     
-    func consentsRemovedSuccefully(mrssage: String) {
-        self.view.showToast(message: mrssage,color: .red)
-        viewModel?.getCreateForm()
-    }
-    
-    func FormsDataRecived(){
+    func FormsDataRecived(message: String){
         self.view.HideSpinner()
+        self.view.showToast(message: message, color: .black)
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
     }
-    
     
     @IBAction func Make_Public(sender: UIButton){
         print("Make_Public")
@@ -166,11 +163,46 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     }
     
     @IBAction func cancelAction(sender: UIButton){
-         
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveAction(sender: UIButton){
-         
+        let createFormList: [String : Any] = [
+            "name": self.questionnaireName.text ?? "",
+            "isPublic": self.Make_Public.isSelected,
+            "enableModernUi": self.Enable_ModernUI.isSelected,
+            "showTitle": self.Show_title_Form.isSelected,
+            "hideFieldTitle": self.Show_title_Fields.isSelected,
+            "isCustom": self.is_Custom.isSelected,
+            "isLeadForm": self.Make_lead_generationForm.isSelected,
+            "showThankYouPageUrlLinkInContactForm": self.Show_Thank_page_URL_ContactForm.isSelected,
+            "thankYouPageUrl": Show_Thank_page_URL_ContactForm_TextView.text ?? "",
+            "configureThankYouMessageInContactForm": ConfigureThank_page_message_contactForm.isSelected,
+            "thankYouPageMessageContactForm": ConfigureThank_page_message_contactForm_TextView.text ?? "",
+
+            "chatQuestionnaire": false,
+            "buttonBackgroundColor": "#357ffa",
+            "buttonForegroundColor": "#357ffa",
+            "titleColor": "inherit",
+            "popupTitleColor": "inherit",
+            "popupLabelColor": "inherit",
+            "inputBoxShadowColor": "#357ffa",
+            "activeSideColor": "#003b6f",
+            "textForComposer": "",
+            "showTextForComposer": true,
+            "emailTemplateId": "",
+            "submitButtonText": "Submit",
+            "showThankYouPageUrlLinkInVC": false,
+            "showThankYouPageUrlLinkInLandingPage": false,
+            "thankYouPageUrlVC": "",
+            "thankYouPageUrlLandingPage": "",
+            "configureThankYouMessageInLandingPage": false,
+            "configureThankYouMessageInVC": false,
+            "thankYouPageMessageLandingPage": "",
+            "thankYouPageMessageVC": ""
+        ]
+        
+        self.view.ShowSpinner()
+        viewModel?.saveCreateForm(formData: createFormList)
     }
-    
 }
