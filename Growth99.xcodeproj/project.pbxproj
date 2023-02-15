@@ -3054,8 +3054,8 @@
 		84D0616229670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA4578742971323B00CE458B /* DetailScreen */,
 				84B75EC5296902E600962F3E /* ListScreen */,
+				DA4578742971323B00CE458B /* DetailScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -44,6 +44,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
         guard let createServiceVC = UIViewController.loadStoryboard("ServicesListDetailViewController", "ServicesListDetailViewController") as? ServicesListDetailViewController else {
             fatalError("Failed to load ServicesListDetailViewController from storyboard.")
         }
+        createServiceVC.screenTitle = Constant.Profile.createService
         self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
     
@@ -87,7 +88,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     
     func serviceListDataRecived() {
         self.view.HideSpinner()
-        self.servicesListTableView.setContentOffset(.zero, animated: true)
+        self.servicesListTableView.setContentOffset(.zero, animated: false)
         self.servicesListTableView.reloadData()
     }
     
@@ -131,6 +132,8 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
         guard let createServiceVC = UIViewController.loadStoryboard("ServicesListDetailViewController", "ServicesListDetailViewController") as? ServicesListDetailViewController else {
             fatalError("Failed to load ServicesListDetailViewController from storyboard.")
         }
+        createServiceVC.screenTitle = Constant.Profile.editService
+        createServiceVC.serviceId = viewModel?.serviceData[indexPath.row].id ?? 0
         self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
 }

@@ -49,5 +49,16 @@ class ServicesListTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date! as Date)
     }
-    
+
+    func utcToLocal(timeString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        if let date = dateFormatter.date(from: timeString) {
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: date)
+        }
+        return nil
+    }
 }

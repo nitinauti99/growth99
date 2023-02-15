@@ -19,17 +19,28 @@ protocol ServiceListDetailViewModelProtocol {
     var  getAllQuestionnairesData: [QuestionnaireListModel] { get }
     
     func getallServiceCategories(selectedClinics: [Int])
-    var getAllServiceCategoriesData: [Clinics] { get }
+    var  getAllServiceCategoriesData: [Clinics] { get }
     
+    func createServiceAPICall(name: String, serviceCategoryId: Int, durationInMinutes: Int,
+                              serviceCost: Int, description: String, serviceURL: String,
+                              consentIds: Array<Int>, questionnaireIds: Array<Int>,
+                              clinicIds: Array<Int>, file: String, files: String,
+                              preBookingCost: Int, imageRemoved: Bool, isPreBookingCostAllowed: Bool,
+                              showInPublicBooking: Bool, priceVaries: Bool)
+    func getUserSelectedService(serviceID: Int)
+    var  getUserSelectedServiceData: ServiceDetailModel? { get }
+
 }
 
 class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
+
     var delegate: ServicesListDetailViewContollerProtocol?
     var allClinics: [Clinics]?
     var allConsent: [ConsentListModel]?
     var allQuestionnaires: [QuestionnaireListModel]?
     var allserviceCategories: [Clinics]?
-    
+    var serviceDetailListData: ServiceDetailModel?
+
     init(delegate: ServicesListDetailViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -104,5 +115,65 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     var getAllServiceCategoriesData: [Clinics] {
         return self.allserviceCategories ?? []
     }
+
+    func createServiceAPICall(name: String, serviceCategoryId: Int, durationInMinutes: Int,
+                              serviceCost: Int, description: String, serviceURL: String,
+                              consentIds: Array<Int>, questionnaireIds: Array<Int>,
+                              clinicIds: Array<Int>, file: String, files: String,
+                              preBookingCost: Int, imageRemoved: Bool, isPreBookingCostAllowed: Bool,
+                              showInPublicBooking: Bool, priceVaries: Bool) {
+        
+        let parameter: [String : Any] = ["name": name,
+                                         "serviceCategoryId": serviceCategoryId,
+                                         "durationInMinutes": durationInMinutes,
+                                         "serviceCost": serviceCost,
+                                         "description": description,
+                                         "serviceURL": serviceURL,
+                                         "consentIds": consentIds,
+                                         "questionnaireIds": questionnaireIds,
+                                         "clinicIds": clinicIds,
+                                         "file": file,
+                                         "files": files,
+                                         "preBookingCost": preBookingCost,
+                                         "imageRemoved": imageRemoved,
+                                         "isPreBookingCostAllowed": isPreBookingCostAllowed,
+                                         "showInPublicBooking": showInPublicBooking,
+                                         "priceVaries": priceVaries
+        ]
+        
+        let finaleUrl = ApiUrl.createService
+        self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.createServiceSucessfullyReceived()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while creating service")
+                } else {
+                    self.delegate?.errorReceived(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
     
+    func getUserSelectedService(serviceID: Int) {
+        self.requestManager.request(forPath: ApiUrl.editService + "\(serviceID)", method: .GET, headers: self.requestManager.Headers()) { (result: Result<ServiceDetailModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let selectedServiceInfo):
+                self.serviceDetailListData = selectedServiceInfo
+                self.delegate?.selectedServiceDataReceived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    var getUserSelectedServiceData: ServiceDetailModel? {
+        return self.serviceDetailListData
+    }
 }
