@@ -318,7 +318,7 @@ struct Questionnaires : Codable {
     let css : String?
     let isDefault : String?
     let identifier : String?
-    let isCustom : String?
+    let isCustom : Bool?
     let trackCode : String?
     let googleAnalyticsGlobalCode : String?
     let googleAnalyticsGlobalCodeUrl : String?
@@ -377,6 +377,7 @@ struct ServiceCategory : Codable {
     let defaultServiceCategoryId : String?
     let specialization : String?
 }
+
 
 struct AddEventPhoneModel: Codable {
     let firstName: String?

@@ -530,6 +530,16 @@
 		DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */; };
 		DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */; };
 		DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14095298ACCD600794F6A /* BookingHistoryViewModel.swift */; };
+		DAEF7499299D4ADB009140AE /* BusinessDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAEF7497299D4ADB009140AE /* BusinessDetailView.storyboard */; };
+		DAEF749A299D4ADB009140AE /* BusinessDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF7498299D4ADB009140AE /* BusinessDetailView.swift */; };
+		DAEF749C299D530A009140AE /* PersonalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF749B299D530A009140AE /* PersonalizationViewController.swift */; };
+		DAEF749E299D5315009140AE /* SubdomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF749D299D5315009140AE /* SubdomainViewController.swift */; };
+		DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF749F299D5322009140AE /* RefundPolicyViewController.swift */; };
+		DAEF74A2299D532F009140AE /* TrackingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A1299D532F009140AE /* TrackingCodeViewController.swift */; };
+		DAEF74A4299D533B009140AE /* DataStudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A3299D533B009140AE /* DataStudioViewController.swift */; };
+		DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */; };
+		DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */; };
+		DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1088,6 +1098,16 @@
 		DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryModel.swift; sourceTree = "<group>"; };
 		DAE14095298ACCD600794F6A /* BookingHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewModel.swift; sourceTree = "<group>"; };
+		DAEF7497299D4ADB009140AE /* BusinessDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessDetailView.storyboard; sourceTree = "<group>"; };
+		DAEF7498299D4ADB009140AE /* BusinessDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailView.swift; sourceTree = "<group>"; };
+		DAEF749B299D530A009140AE /* PersonalizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationViewController.swift; sourceTree = "<group>"; };
+		DAEF749D299D5315009140AE /* SubdomainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubdomainViewController.swift; sourceTree = "<group>"; };
+		DAEF749F299D5322009140AE /* RefundPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundPolicyViewController.swift; sourceTree = "<group>"; };
+		DAEF74A1299D532F009140AE /* TrackingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCodeViewController.swift; sourceTree = "<group>"; };
+		DAEF74A3299D533B009140AE /* DataStudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStudioViewController.swift; sourceTree = "<group>"; };
+		DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidMediaViewController.swift; sourceTree = "<group>"; };
+		DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndicationReportViewController.swift; sourceTree = "<group>"; };
+		DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSMSAuditViewController.swift; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2968,6 +2988,7 @@
 		84D0614A29670676001FE469 /* Business Profile */ = {
 			isa = PBXGroup;
 			children = (
+				DAEF7496299D4ADB009140AE /* ContainerView */,
 				84088BC929792D280060855E /* Model */,
 				84D0614B29670676001FE469 /* View */,
 				843A7A8E29769FDC0063FA2D /* ViewModel */,
@@ -2980,6 +3001,14 @@
 			children = (
 				84D0614C29670676001FE469 /* BusinessProfileViewController.swift */,
 				84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */,
+				DAEF749B299D530A009140AE /* PersonalizationViewController.swift */,
+				DAEF749D299D5315009140AE /* SubdomainViewController.swift */,
+				DAEF749F299D5322009140AE /* RefundPolicyViewController.swift */,
+				DAEF74A1299D532F009140AE /* TrackingCodeViewController.swift */,
+				DAEF74A3299D533B009140AE /* DataStudioViewController.swift */,
+				DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */,
+				DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */,
+				DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3109,8 +3138,8 @@
 		84D0616229670676001FE469 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA4578742971323B00CE458B /* DetailScreen */,
 				84B75EC5296902E600962F3E /* ListScreen */,
+				DA4578742971323B00CE458B /* DetailScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4057,6 +4086,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		DAEF7496299D4ADB009140AE /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF7498299D4ADB009140AE /* BusinessDetailView.swift */,
+				DAEF7497299D4ADB009140AE /* BusinessDetailView.storyboard */,
+			);
+			path = ContainerView;
+			sourceTree = "<group>";
+		};
 		DE5547C14E13DB3FD35464AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -4250,6 +4288,7 @@
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				842C0CC3298F713B00395061 /* AddNewQuestionarieTableViewCell.xib in Resources */,
+				DAEF7499299D4ADB009140AE /* BusinessDetailView.storyboard in Resources */,
 				842C0CCB298F713B00395061 /* QuestionarieTableViewCell.xib in Resources */,
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
@@ -4507,6 +4546,7 @@
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
+				DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */,
 				849D3AF72997CC72003E856A /* FontAwesomeStateRequirement.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
 				84F610C9292A71AA00B1FB69 /* DispatchBlock.swift in Sources */,
@@ -4516,6 +4556,7 @@
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
+				DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */,
 				84BD33FD2994BB460050C0D8 /* EmailTemplatesListTableViewCell.swift in Sources */,
 				848FA3D12996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift in Sources */,
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
@@ -4542,6 +4583,7 @@
 				84903514299571F700556D47 /* ConsentsTemplateListViewController+SearchBar.swift in Sources */,
 				84D0628E29670677001FE469 /* LogInViewController.swift in Sources */,
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
+				DAEF749A299D4ADB009140AE /* BusinessDetailView.swift in Sources */,
 				849D3AEF2997CC72003E856A /* FontAwesomeTabBarItem.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */,
@@ -4584,6 +4626,7 @@
 				845C39D6292276B000D934C5 /* DrawerViewModel.swift in Sources */,
 				84F61131292A71AB00B1FB69 /* MultipartUpload.swift in Sources */,
 				8473208929798048003099BB /* PateintListViewContoller+SerachBar.swift in Sources */,
+				DAEF749C299D530A009140AE /* PersonalizationViewController.swift in Sources */,
 				84F610C1292A71AA00B1FB69 /* JWA.swift in Sources */,
 				84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */,
 				84F610E0292A71AB00B1FB69 /* Optional.swift in Sources */,
@@ -4594,10 +4637,12 @@
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
+				DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
 				8440B3952999FE5D00A42097 /* FormListModel.swift in Sources */,
 				8440B39C299A319800A42097 /* FormListViewContoller+TableView.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
+				DAEF749E299D5315009140AE /* SubdomainViewController.swift in Sources */,
 				84D0630F2967080E001FE469 /* LeadTableViewCell.swift in Sources */,
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
 				842C0CBD298F713B00395061 /* FillQuestionarieViewController+TableView.swift in Sources */,
@@ -4705,6 +4750,7 @@
 				39EBABC429915872001B789D /* StringExtension1.swift in Sources */,
 				84D0631C2967080E001FE469 /* TextTypeTableViewCell.swift in Sources */,
 				848C92AA291F6AA000502956 /* RSSelectionMenuDataSource.swift in Sources */,
+				DAEF74A4299D533B009140AE /* DataStudioViewController.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
 				84F6112C292A71AB00B1FB69 /* CertificatePinningPolicy.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
@@ -4776,6 +4822,7 @@
 				398F90F4298ECB8700DB96E4 /* IQKeyboardManagerConstants.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,
+				DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */,
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
@@ -4811,6 +4858,7 @@
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,
+				DAEF74A2299D532F009140AE /* TrackingCodeViewController.swift in Sources */,
 				84D062F52967080E001FE469 /* leadDetailViewModel.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,
 				842C0CC7298F713B00395061 /* QuestionarieModel.swift in Sources */,

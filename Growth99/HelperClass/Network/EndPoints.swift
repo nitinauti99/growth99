@@ -43,6 +43,8 @@ struct EndPoints {
     static let updatePatientsInfo = "/api/patient/"
     static let categoriesList = "/api/v1/serviceCategories/all"
     static let createCategories = "/api/servicecategories"
+    static let createService = "/api/services"
+    static let editService = "/api/services/"
     static let getAllServices = "/api/v1/services/all"
     static let getAllTriggers = "/api/trigger"
     static let workflowtasks = "/api/workflowtasks/all"
@@ -173,4 +175,6 @@ struct ApiUrl {
     static let removeProfileAppointment = EndPoints.baseURL.appending(EndPoints.removeProfileAppointment)
     static let timezonesList = EndPoints.baseURL.appending(EndPoints.timezonesList)
     static let selectedClinic = EndPoints.baseURL.appending(EndPoints.selectedClinic)
+    static let createService = EndPoints.baseURL.appending(EndPoints.createService)
+    static let editService = EndPoints.baseURL.appending(EndPoints.editService)
 }

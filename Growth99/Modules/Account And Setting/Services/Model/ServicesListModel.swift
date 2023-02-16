@@ -45,3 +45,43 @@ struct QuestionnaireListModel: Codable, Equatable {
     let isG99ReviewForm: Bool?
     let updatedAt: String?
 }
+
+struct ServiceDetailModel : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : CreatedBy?
+    let updatedBy : UpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let name : String?
+    let durationInMinutes : Int?
+    let serviceCost : Double?
+    let serviceURL : String?
+    let description : String?
+    let imageUrl : String?
+    let isDefault : Bool?
+    let defaultServiceId : String?
+    let position : Int?
+    let serviceCategory : ServiceCategory?
+    let clinics : [ClinicsServices]?
+    let consents : [Consents]?
+    let questionnaires : [Questionnaires]?
+    let preBookingCost : Double?
+    let isPreBookingCostAllowed : Bool?
+    let showInPublicBooking : Bool?
+    let priceVaries : Bool?
+    let serviceName : String?
+    let serviceId : String?
+}
+
+struct ClinicsServices : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : CreatedBy?
+    let updatedBy : UpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let clinic : Clinic?
+}
