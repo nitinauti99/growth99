@@ -15,4 +15,5 @@ struct FormListModel: Codable {
     let createdBy: String?
     let emailTemplateName: String?
     let updatedAt: String?
+    let noOfQuestions: Int?
 }

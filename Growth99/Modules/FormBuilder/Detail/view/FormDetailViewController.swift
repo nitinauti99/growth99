@@ -1,19 +1,14 @@
 //
-//  CreateFormViewController.swift
+//  FormDetailViewController.swift
 //  Growth99
 //
-//  Created by nitin auti on 13/02/23.
+//  Created by Nitin Auti on 15/02/23.
+//
 
 import Foundation
 import UIKit
 
-protocol CreateFormViewControllerProtocol {
-    func FormsDataRecived(message: String)
-    func errorReceived(error: String)
-}
-
-class CreateFormViewController: UIViewController, CreateFormViewControllerProtocol {
-    
+class FormDetailViewController: UIViewController {
     @IBOutlet weak var Make_Public: UIButton!
     @IBOutlet weak var Enable_ModernUI: UIButton!
     @IBOutlet weak var Show_title_Form: UIButton!
@@ -35,14 +30,15 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet private weak var subView: UIView!
+    @IBOutlet var scrollView: UIScrollView!
 
-    var viewModel: CreateFormViewModelProtocol?
-        
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.createForm
-        self.viewModel = CreateFormViewModel(delegate: self)
+        self.subView.createBorderForView(redius: 8, width: 1)
+        self.subView.addBottomShadow(color:.gray)
+        self.scrollView.delegate = self
         self.setUpUI()
+
     }
     
     private func setUpUI(){
@@ -207,6 +203,16 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
         ]
         
         self.view.ShowSpinner()
-        viewModel?.saveCreateForm(formData: createFormList)
+       /// viewModel?.saveCreateForm(formData: createFormList)
+    }
+    
+}
+
+extension FormDetailViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
     }
 }

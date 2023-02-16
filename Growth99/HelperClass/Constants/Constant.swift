@@ -68,8 +68,13 @@ struct Constant {
         static let pateint = "Patients List"
         static let business = "Business"
         static let patientDetail = " Patient Detail "
+        static let designer = " Designer "
+        static let notification = " Notification "
+        static let submission = " Submission "
+
         static let emailTemplatesList = "Email Templates List"
         static let FormsList = "Forms"
+        static let createForm = "Create Form"
         static let smsTemplateList = "SMS Templates List"
         static let consentsTemplatesList = "Consents"
         static let leadTemplates = "Lead Templates"

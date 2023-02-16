@@ -42,6 +42,8 @@ extension FormListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+        let formDetailContainerView = FormDetailContainerView.viewController()
+        formDetailContainerView.workflowFormId = viewModel?.FormDataAtIndex(index: indexPath.row)?.id ?? 0
+        self.navigationController?.pushViewController(formDetailContainerView, animated: true)
     }
 }

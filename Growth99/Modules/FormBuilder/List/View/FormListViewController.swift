@@ -28,9 +28,13 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         viewModel = FormListViewModel(delegate: self)
         self.addSerchBar()
         self.setBarButton()
+        tableView.register(UINib(nibName: "FormListTableViewCell", bundle: nil), forCellReuseIdentifier: "FormListTableViewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.view.ShowSpinner()
         viewModel?.getFormList()
-        tableView.register(UINib(nibName: "FormListTableViewCell", bundle: nil), forCellReuseIdentifier: "FormListTableViewCell")
     }
     
     func setBarButton(){
