@@ -12,6 +12,8 @@
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
 		01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFF299D5B1300821274 /* FormDetailViewModel.swift */; };
 		01D7AB02299D5B2100821274 /* FormDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AB01299D5B2100821274 /* FormDetailModel.swift */; };
+		01D7AB06299E572700821274 /* FormDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */; };
+		01D7AB07299E572700821274 /* FormDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -565,6 +567,8 @@
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
 		01D7AAFF299D5B1300821274 /* FormDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewModel.swift; sourceTree = "<group>"; };
 		01D7AB01299D5B2100821274 /* FormDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailModel.swift; sourceTree = "<group>"; };
+		01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailTableViewCell.swift; sourceTree = "<group>"; };
+		01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormDetailTableViewCell.xib; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
@@ -1156,6 +1160,7 @@
 		01D7AAF3299D59D800821274 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				01D7AB03299E56F800821274 /* Cell */,
 				01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */,
 			);
 			path = view;
@@ -1184,6 +1189,15 @@
 				01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */,
 			);
 			path = ContainerView;
+			sourceTree = "<group>";
+		};
+		01D7AB03299E56F800821274 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */,
+				01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3947A8CF2996776D000CA2EB /* CalenderView */ = {
@@ -4300,6 +4314,7 @@
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
+				01D7AB07299E572700821274 /* FormDetailTableViewCell.xib in Resources */,
 				8440B39A299A1B1300A42097 /* FormListTableViewCell.xib in Resources */,
 				848EEA90299A5F7700F6E3D5 /* CreateFormViewController.storyboard in Resources */,
 				01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */,
@@ -4562,6 +4577,7 @@
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
+				01D7AB06299E572700821274 /* FormDetailTableViewCell.swift in Sources */,
 				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */,

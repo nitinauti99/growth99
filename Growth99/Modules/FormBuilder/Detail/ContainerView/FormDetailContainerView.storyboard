@@ -474,9 +474,19 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gt4-Ps-olN" userLabel="View2">
                                                 <rect key="frame" x="0.0" y="915" width="393" height="400"/>
+                                                <subviews>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yTh-aK-Nzr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </tableView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="yTh-aK-Nzr" secondAttribute="bottom" id="2z7-0O-gtJ"/>
                                                     <constraint firstAttribute="height" constant="400" id="CQy-N0-ALq"/>
+                                                    <constraint firstItem="yTh-aK-Nzr" firstAttribute="top" secondItem="gt4-Ps-olN" secondAttribute="top" id="Rb3-kd-N89"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yTh-aK-Nzr" secondAttribute="trailing" id="i2P-DF-hct"/>
+                                                    <constraint firstItem="yTh-aK-Nzr" firstAttribute="leading" secondItem="gt4-Ps-olN" secondAttribute="leading" id="vlf-Tz-X2Z"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKJ-QT-dCU" userLabel="View3">
