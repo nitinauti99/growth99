@@ -535,6 +535,7 @@
 		DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */; };
 		DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */; };
 		DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */; };
+		DAEF74C6299E1589009140AE /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = DAEF74C5299E1589009140AE /* CountryPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1109,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */,
+				DAEF74C6299E1589009140AE /* CountryPicker in Frameworks */,
 				689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4071,6 +4073,9 @@
 			dependencies = (
 			);
 			name = Growth99;
+			packageProductDependencies = (
+				DAEF74C5299E1589009140AE /* CountryPicker */,
+			);
 			productName = Growth99;
 			productReference = 848F4D7A28F1C160007AC421 /* Growth99.app */;
 			productType = "com.apple.product-type.application";
@@ -4146,6 +4151,9 @@
 				Base,
 			);
 			mainGroup = 848F4D7128F1C160007AC421;
+			packageReferences = (
+				DAEF74C4299E1589009140AE /* XCRemoteSwiftPackageReference "CountryPicker" */,
+			);
 			productRefGroup = 848F4D7B28F1C160007AC421 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -5182,6 +5190,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DAEF74C4299E1589009140AE /* XCRemoteSwiftPackageReference "CountryPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mobven/CountryPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DAEF74C5299E1589009140AE /* CountryPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAEF74C4299E1589009140AE /* XCRemoteSwiftPackageReference "CountryPicker" */;
+			productName = CountryPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 848F4D7228F1C160007AC421 /* Project object */;
 }
