@@ -84,7 +84,7 @@ class FormDetailContainerView: UIViewController {
         guard let formDetailVC = storyboard?.instantiateViewController(withIdentifier: "FormDetailViewController") as? FormDetailViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
-      //  detailController.workflowTaskPatientId = workflowTaskPatientId
+        formDetailVC.questionId = workflowFormId
         return formDetailVC
     }()
     
@@ -103,7 +103,6 @@ class FormDetailContainerView: UIViewController {
     @objc func addTaskTapped(_ sender: UIButton) {
         let createTasksVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
         navigationController?.pushViewController(createTasksVC, animated: true)
-
     }
     
     private lazy var tasksListVC: TasksListViewController = {

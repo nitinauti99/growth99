@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
-class FormDetailViewController: UIViewController {
+protocol FormDetailViewControllerProtocol {
+    func FormsDataRecived()
+    func errorReceived(error: String)
+}
+class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol {
+    
     @IBOutlet weak var Make_Public: UIButton!
     @IBOutlet weak var Enable_ModernUI: UIButton!
     @IBOutlet weak var Show_title_Form: UIButton!
@@ -27,18 +32,32 @@ class FormDetailViewController: UIViewController {
     @IBOutlet weak var backroundImageSelctionButton: UIButton!
     @IBOutlet weak var questionnaireName: CustomTextField!
     @IBOutlet weak var buttonText: CustomTextField!
-    @IBOutlet weak var submitButton : UIButton!
-    @IBOutlet weak var CancelButton : UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var CancelButton: UIButton!
     @IBOutlet private weak var subView: UIView!
+    
     @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var workingScrollViewHight: NSLayoutConstraint!
 
+    
+    var viewModel: FormDetailViewModelProtocol?
+    var questionId = Int()
+    var tableViewHeight: CGFloat {
+        tableView.layoutIfNeeded()
+        return tableView.contentSize.height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = FormDetailViewModel(delegate: self)
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
         self.scrollView.delegate = self
         self.setUpUI()
-
+        self.view.ShowSpinner()
+        viewModel?.getFormDetail(questionId: questionId)
+        tableView.register(UINib(nibName: "FormDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "FormDetailTableViewCell")
     }
     
     private func setUpUI(){
@@ -62,6 +81,15 @@ class FormDetailViewController: UIViewController {
         self.view.HideSpinner()
         self.view.showToast(message: message, color: .black)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func FormsDataRecived() {
+        self.view.HideSpinner()
+        tableView.reloadData()
+    }
+    
+    func scrollViewHeight() {
+        workingScrollViewHight.constant = tableViewHeight + 1000
     }
     
     func errorReceived(error: String) {
@@ -210,9 +238,15 @@ class FormDetailViewController: UIViewController {
 
 extension FormDetailViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+   internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }
+        scrollViewHeight()
     }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewHeight()
+    }
+    
 }

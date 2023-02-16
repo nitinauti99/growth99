@@ -6,3 +6,83 @@
 //
 
 import Foundation
+
+protocol FormDetailViewModelProtocol {
+    var getFormDetailData: [FormDetailModel] { get }
+    var getFormFilterListData: [FormDetailModel] { get }
+    func getFormDetail(questionId: Int)
+    func filterData(searchText: String)
+    func FormDataAtIndex(index: Int) -> FormDetailModel?
+    func FormFilterDataAtIndex(index: Int)-> FormDetailModel?
+}
+
+class FormDetailViewModel {
+    var delegate: FormDetailViewControllerProtocol?
+    var formDetailData: [FormDetailModel] = []
+    var FormFilterData: [FormDetailModel] = []
+    
+    init(delegate: FormDetailViewControllerProtocol? = nil) {
+        self.delegate = delegate
+    }
+    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    func getFormDetail(questionId: Int) {
+        let finaleURL = ApiUrl.fromDetail.appending("\(questionId)/questions")
+        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[FormDetailModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let FormData):
+                self.formDetailData = FormData
+                self.delegate?.FormsDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+//    func removeConsents(consentsId: Int) {
+//        let finaleUrl = ApiUrl.removeConsents + "\(consentsId)"
+//
+//        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let response):
+//                    self.delegate?.consentsRemovedSuccefully(mrssage: "Consents removed successfully")
+//                }else if (response.statusCode == 500) {
+//                    self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
+//                }else{
+//                    self.delegate?.errorReceived(error: "response failed")
+//                }
+//            case .failure(let error):
+//                self.delegate?.errorReceived(error: error.localizedDescription)
+//                print("Error while performing request \(error)")
+//            }
+//        }
+//    }
+    
+    func filterData(searchText: String) {
+        self.FormFilterData = (self.formDetailData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        print(self.FormFilterData)
+    }
+    
+    func FormFilterDataAtIndex(index: Int) -> FormDetailModel? {
+        return self.FormFilterData[index]
+    }
+    
+    func FormDataAtIndex(index: Int)-> FormDetailModel? {
+        return self.formDetailData[index]
+    }
+}
+
+extension FormDetailViewModel: FormDetailViewModelProtocol {
+    
+    var getFormFilterListData: [FormDetailModel] {
+        return self.FormFilterData
+    }
+    
+    var getFormDetailData: [FormDetailModel] {
+        return self.formDetailData
+    }
+    
+}

@@ -89,6 +89,7 @@ struct EndPoints {
     static let FormsList = "/api/v1/questionnaire"
     static let createFrom = "/api/questionnaire"
     static let timezonesList = "/api/timezones"
+    static let fromDetail = "/api/questionnaire/"
 }
 
 struct ApiUrl {
@@ -171,6 +172,7 @@ struct ApiUrl {
     static let profileAppointments = EndPoints.baseURL.appending(EndPoints.profileAppointments)
     static let FormsList = EndPoints.baseURL.appending(EndPoints.FormsList)
     static let createFrom = EndPoints.baseURL.appending(EndPoints.createFrom)
+    static let fromDetail = EndPoints.baseURL.appending(EndPoints.fromDetail)
 
     static let removeProfileAppointment = EndPoints.baseURL.appending(EndPoints.removeProfileAppointment)
     static let timezonesList = EndPoints.baseURL.appending(EndPoints.timezonesList)
