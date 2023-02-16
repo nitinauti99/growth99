@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CountryPicker
 
 protocol ClinicsDetailListVCProtocol: AnyObject {
     func clinicUpdateReceived(responeMessage: String)
@@ -70,8 +71,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     var viewModel: ClinicsDetailListViewModelProtocol?
     var businessHours = [BusinessHoursAccount]()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ClinicsDetailListViewModel(delegate: self)
@@ -79,6 +78,8 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         setupUI()
         dateFormater = DateFormater()
         getSelectedClinicsList()
+       
+        
         mondayStartTimeTF.tintColor = .clear
         mondayEndTimeTF.tintColor = .clear
         tuesdayStartTimeTF.tintColor = .clear
@@ -184,7 +185,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         self.dismiss(animated: true)
     }
 
-    
     func clinicUpdateReceived(responeMessage: String) {
         self.view.HideSpinner()
         if responeMessage == Constant.Profile.editClinic {
@@ -212,7 +212,15 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     }
     
     @IBAction func countrySelectionButton(sender: UIButton) {
-        
+       startPicker()
+    }
+    
+    private func startPicker() {
+        let countryPicker = CountryPickerViewController()
+        countryPicker.title = "Select Country Code"
+        countryPicker.selectedCountry = "US"
+        countryPicker.delegate = self
+        self.present(countryPicker, animated: true)
     }
     
     @IBAction func currencySelectionButton(sender: UIButton) {
@@ -449,4 +457,10 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     }
     
     
+}
+
+extension ClinicsListDetailViewController: CountryPickerDelegate {
+    func countryPicker(didSelect country: Country) {
+        countryCodeTextField.text = country.phoneCode
+    }
 }
