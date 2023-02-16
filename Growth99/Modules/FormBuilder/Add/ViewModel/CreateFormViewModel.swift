@@ -22,8 +22,7 @@ class CreateFormViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func saveCreateForm(formData:[String: Any]) {
-        
-        self.requestManager.request(forPath: ApiUrl.createFrom, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: formData, encoding: .jsonEncoding)) { (result: Result<[CreateFormModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.createFrom, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: formData, encoding: .jsonEncoding)) { (result: Result<CreateFormModel, GrowthNetworkError>) in
             switch result {
             case .success(let FormData):
                 print(FormData)

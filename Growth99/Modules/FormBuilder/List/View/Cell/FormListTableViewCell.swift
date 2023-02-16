@@ -12,8 +12,8 @@ class FormListTableViewCell: UITableViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var createdAt: UILabel!
-    @IBOutlet private weak var createdBy: UILabel!
     @IBOutlet private weak var updatedAt: UILabel!
+    @IBOutlet private weak var NumberOfQustion: UILabel!
     @IBOutlet private weak var templateFor: UILabel!
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var editButtonAction: UIButton!
@@ -33,8 +33,7 @@ class FormListTableViewCell: UITableViewCell {
         let FormList = FormList?.FormFilterDataAtIndex(index: index.row)
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
-        self.createdBy.text = FormList?.createdBy
-        self.templateFor.text = FormList?.templateFor
+        self.NumberOfQustion.text = String(FormList?.noOfQuestions ?? 0)
         self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? "")
         self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? "")
         indexPath = index
@@ -44,8 +43,7 @@ class FormListTableViewCell: UITableViewCell {
         let FormList = FormList?.FormDataAtIndex(index: index.row)
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
-        self.createdBy.text = FormList?.createdBy
-        self.templateFor.text = FormList?.templateFor
+        self.NumberOfQustion.text = String((FormList?.noOfQuestions ?? Int("-")) ?? 0)
         self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? "")
         self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? "")
         indexPath = index

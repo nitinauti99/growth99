@@ -32,7 +32,7 @@ class FormListViewModel {
         self.requestManager.request(forPath: ApiUrl.FormsList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[FormListModel], GrowthNetworkError>) in
             switch result {
             case .success(let FormData):
-                self.FormListData = FormData
+                self.FormListData = FormData.reversed()
                 self.delegate?.FormsDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

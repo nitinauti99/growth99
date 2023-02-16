@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
+		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
+		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
+		01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFF299D5B1300821274 /* FormDetailViewModel.swift */; };
+		01D7AB02299D5B2100821274 /* FormDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AB01299D5B2100821274 /* FormDetailModel.swift */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -545,6 +550,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
+		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
+		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
+		01D7AAFF299D5B1300821274 /* FormDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewModel.swift; sourceTree = "<group>"; };
+		01D7AB01299D5B2100821274 /* FormDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailModel.swift; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
@@ -1112,6 +1122,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01D7AAF2299D59CF00821274 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				01D7AAF6299D5A4200821274 /* ContainerView */,
+				01D7AAF5299D59EA00821274 /* Model */,
+				01D7AAF4299D59E100821274 /* ViewModel */,
+				01D7AAF3299D59D800821274 /* view */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		01D7AAF3299D59D800821274 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		01D7AAF4299D59E100821274 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01D7AAFF299D5B1300821274 /* FormDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01D7AAF5299D59EA00821274 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01D7AB01299D5B2100821274 /* FormDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01D7AAF6299D5A4200821274 /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */,
+				01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */,
+			);
+			path = ContainerView;
+			sourceTree = "<group>";
+		};
 		3947A8CF2996776D000CA2EB /* CalenderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2112,6 +2166,7 @@
 		8440B38A2999FD5E00A42097 /* FormBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				01D7AAF2299D59CF00821274 /* Detail */,
 				848EEA89299A5A6D00F6E3D5 /* Add */,
 				848EEA87299A5A4C00F6E3D5 /* List */,
 			);
@@ -4208,6 +4263,7 @@
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				8440B39A299A1B1300A42097 /* FormListTableViewCell.xib in Resources */,
 				848EEA90299A5F7700F6E3D5 /* CreateFormViewController.storyboard in Resources */,
+				01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */,
 				8490350C2995673D00556D47 /* ConsentsTemplateListViewController.storyboard in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
@@ -4385,6 +4441,7 @@
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */,
 				84D0623B29670677001FE469 /* PateintListModel.swift in Sources */,
+				01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */,
 				849034FB2995371E00556D47 /* SMSTemplateModel.swift in Sources */,
 				84D0622029670676001FE469 /* WorkingScheduleViewModel.swift in Sources */,
 				84F610D8292A71AB00B1FB69 /* NSOperationQueue.swift in Sources */,
@@ -4403,6 +4460,7 @@
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
+				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
@@ -4547,6 +4605,7 @@
 				849034F5299536DA00556D47 /* SMSTemplateViewController.swift in Sources */,
 				398F90F7298ECB8700DB96E4 /* IQKeyboardManager.swift in Sources */,
 				84F610FD292A71AB00B1FB69 /* TLSCertificateBlock.swift in Sources */,
+				01D7AB02299D5B2100821274 /* FormDetailModel.swift in Sources */,
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
 				845C39E0292276B000D934C5 /* EnvironmentManager.swift in Sources */,
 				3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */,
@@ -4610,6 +4669,7 @@
 				84D062F42967080E001FE469 /* leadDetailViewController.swift in Sources */,
 				84D0624229670677001FE469 /* UpdateUserProfile.swift in Sources */,
 				8473208729797FE5003099BB /* PateintListViewContoller+TableView.swift in Sources */,
+				01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */,
 				8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
