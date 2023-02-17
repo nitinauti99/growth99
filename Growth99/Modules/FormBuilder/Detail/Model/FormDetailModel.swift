@@ -29,7 +29,17 @@ struct FormDetailModel: Codable {
     let preSelectCheckbox : Bool?
     let description : String?
     let subHeading : String?
-    let questionChoices : [String]?
+    let questionChoices : [QuestionChoices]?
     let questionImages : [String]?
-    
+}
+
+struct QuestionChoices: Codable {
+    let deleted : Bool?
+    let id : Int?
+    let tenantId : Int?
+    let updatedBy : UpdatedBy?
+    let updatedAt : String?
+    let createdAt : String?
+    let createdBy : CreatedBy?
+    let name : String?
 }

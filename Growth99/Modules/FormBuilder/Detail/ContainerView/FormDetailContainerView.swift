@@ -20,7 +20,7 @@ class FormDetailContainerView: UIViewController {
         self.title = Constant.Profile.designer
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: Constant.Profile.designer, at: 0)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.Questionnarie, at: 1)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.notification, at: 1)
         segmentedControl.insertSegment(withTitle: Constant.Profile.submission, at: 2)
 
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)

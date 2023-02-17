@@ -29,30 +29,69 @@ class FormDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var validationView: UIView!
     @IBOutlet weak var multipleSelectionView: UIView!
    
+    @IBOutlet weak var multipleSelectionViewHight: NSLayoutConstraint!
     @IBOutlet weak var validationViewHight: NSLayoutConstraint!
 
-        
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
+        self.dissableUserIntraction()
     }
 
     func configureCell(FormList: FormDetailViewModelProtocol?, index: IndexPath) {
         let FormList = FormList?.FormDataAtIndex(index: index.row)
         self.questionNameTextfield.text = FormList?.name
-        requiredButton.isSelected = FormList?.required ?? false
-        hiddenButton.isSelected = FormList?.hidden ?? false
-        validateButton.isSelected = FormList?.validate ?? false
-        validationViewHight.constant = 0
-        validationView.isHidden = true
-
+        self.requiredButton.isSelected = FormList?.required ?? false
+        self.hiddenButton.isSelected = FormList?.hidden ?? false
+        self.validateButton.isSelected = FormList?.validate ?? false
+        self.validationViewHight.constant = 0
+        self.validationView.isHidden = true
+        self.multipleSelectionView.isHidden = true
+        self.multipleSelectionViewHight.constant = 0
         if FormList?.validate == true {
-            validationViewHight.constant = 180
-            validationView.isHidden = false
+            self.validationViewHight.constant = 180
+            self.validationView.isHidden = false
         }
-//        indexPath = index
+        self.validationMessageTextfield.text = FormList?.validationMessage
+        self.selctionType(selctionType:FormList?.type ?? "")
     }
     
+    func dissableUserIntraction() {
+        self.questionNameTextfield.isUserInteractionEnabled = false
+        self.requiredButton.isUserInteractionEnabled = false
+        self.hiddenButton.isUserInteractionEnabled = false
+        self.validateButton.isUserInteractionEnabled = false
+        self.validationMessageTextfield.isUserInteractionEnabled = false
+        self.questionNameTextfield.isUserInteractionEnabled = false
+        self.inputBoxButton.isUserInteractionEnabled = false
+        self.textButton.isUserInteractionEnabled = false
+        self.yesNoButton.isUserInteractionEnabled = false
+        self.dateButton.isUserInteractionEnabled = false
+        self.multipleSelectionButton.isUserInteractionEnabled = false
+        self.fileButton.isUserInteractionEnabled = false
+        self.regexTextfield.isUserInteractionEnabled = false
+    }
+    
+    func selctionType(selctionType: String){
+        switch selctionType {
+        case  "Input":
+            self.inputBoxButton.isSelected = true
+        case "Text":
+            self.textButton.isSelected = true
+        case "Yes_No":
+            self.yesNoButton.isSelected = true
+        case  "Date":
+            self.dateButton.isSelected = true
+        case "Multiple_Selection_Text":
+            self.multipleSelectionButton.isSelected = true
+        case "File":
+            self.fileButton.isSelected = true
+        default:
+            break
+        }
+    }
+    
+    
+   
 }
