@@ -24,11 +24,15 @@ class FormDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var multipleSelectionButton: UIButton!
     @IBOutlet weak var fileButton: UIButton!
-    
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var validationView: UIView!
     @IBOutlet weak var multipleSelectionView: UIView!
-   
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var subViewHight: NSLayoutConstraint!
     @IBOutlet weak var multipleSelectionViewHight: NSLayoutConstraint!
     @IBOutlet weak var validationViewHight: NSLayoutConstraint!
 
@@ -37,9 +41,17 @@ class FormDetailTableViewCell: UITableViewCell {
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
         self.dissableUserIntraction()
+        self.bottomView.isHidden = true
+        self.subViewHight.constant = 0
     }
 
     func configureCell(FormList: FormDetailViewModelProtocol?, index: IndexPath) {
+        self.setUPUI(FormList, index)
+        self.saveButton.roundCorners(corners: [.allCorners], radius: 25)
+        self.cancelButton.roundCorners(corners: [.allCorners], radius: 25)
+    }
+    
+    fileprivate func setUPUI(_ FormList: FormDetailViewModelProtocol?, _ index: IndexPath) {
         let FormList = FormList?.FormDataAtIndex(index: index.row)
         self.questionNameTextfield.text = FormList?.name
         self.requiredButton.isSelected = FormList?.required ?? false
@@ -92,6 +104,11 @@ class FormDetailTableViewCell: UITableViewCell {
         }
     }
     
+    /// edit button pressed
     
-   
+    @IBAction func editButtonAction(sender: UIButton) {
+        self.bottomView.isHidden = false
+        self.subViewHight.constant = 76
+    }
+       
 }
