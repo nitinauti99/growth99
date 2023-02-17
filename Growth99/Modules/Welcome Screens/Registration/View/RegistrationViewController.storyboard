@@ -51,7 +51,7 @@
                                                         <rect key="frame" x="30" y="110" width="330" height="818"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDY-nF-cAc" userLabel="userName">
-                                                                <rect key="frame" x="25" y="25" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="25" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="14f-qL-6kA"/>
                                                                 </constraints>
@@ -60,7 +60,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-zG-CmB" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="51" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="51" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="Evv-Bq-cNh"/>
                                                                 </constraints>
@@ -73,7 +73,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="020-5d-fI6" userLabel="userName">
-                                                                <rect key="frame" x="25" y="116" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="116" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="Zix-MG-Cac"/>
                                                                 </constraints>
@@ -82,7 +82,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nr9-YI-AB4" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="233" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="233" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="Bwu-e3-aiX"/>
                                                                 </constraints>
@@ -95,7 +95,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF6-PB-6XK" userLabel="password">
-                                                                <rect key="frame" x="25" y="207" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="207" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="sD0-U8-JLv"/>
                                                                 </constraints>
@@ -104,7 +104,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRb-n2-5Gp" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="142" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="142" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="HK9-K5-h1a"/>
                                                                 </constraints>
@@ -117,7 +117,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QE4-Ox-Owi" userLabel="userName">
-                                                                <rect key="frame" x="25" y="298" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="298" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="oeu-7z-hWl"/>
                                                                 </constraints>
@@ -126,7 +126,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wtm-Yo-XOz" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="415" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="415" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="1qN-Vb-ZI4"/>
                                                                 </constraints>
@@ -139,7 +139,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKu-pb-ibf" userLabel="password">
-                                                                <rect key="frame" x="25" y="389" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="389" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="x6C-rc-iBx"/>
                                                                 </constraints>
@@ -148,7 +148,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r2s-qy-wlE" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="324" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="324" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="8LH-S0-I31"/>
                                                                 </constraints>
@@ -161,7 +161,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-nT-77u" userLabel="userName">
-                                                                <rect key="frame" x="25" y="480" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="480" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="QNl-ns-7NO"/>
                                                                 </constraints>
@@ -170,7 +170,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u7j-sh-se9" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="597" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="597" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="9QF-i7-z3u"/>
                                                                 </constraints>
@@ -183,7 +183,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEQ-mf-PYf" userLabel="password">
-                                                                <rect key="frame" x="25" y="571" width="280" height="20"/>
+                                                                <rect key="frame" x="10" y="571" width="310" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="SRG-fX-pyZ"/>
                                                                 </constraints>
@@ -192,7 +192,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dZD-sf-Gb8" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="506" width="270" height="45"/>
+                                                                <rect key="frame" x="20" y="506" width="300" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="Ged-IA-ZzV"/>
                                                                 </constraints>
@@ -265,7 +265,7 @@
                                                             <constraint firstItem="020-5d-fI6" firstAttribute="trailing" secondItem="yXa-zG-CmB" secondAttribute="trailing" id="5y7-wK-EJw"/>
                                                             <constraint firstItem="HWX-nT-77u" firstAttribute="trailing" secondItem="Wtm-Yo-XOz" secondAttribute="trailing" id="6wZ-sa-ZVC"/>
                                                             <constraint firstItem="gEQ-mf-PYf" firstAttribute="top" secondItem="dZD-sf-Gb8" secondAttribute="bottom" constant="20" id="BDD-3L-N5r"/>
-                                                            <constraint firstAttribute="trailing" secondItem="vDY-nF-cAc" secondAttribute="trailing" constant="25" id="Bfv-TY-Yb4"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vDY-nF-cAc" secondAttribute="trailing" constant="10" id="Bfv-TY-Yb4"/>
                                                             <constraint firstItem="VKu-pb-ibf" firstAttribute="trailing" secondItem="r2s-qy-wlE" secondAttribute="trailing" id="CSv-TT-BaK"/>
                                                             <constraint firstItem="GRb-n2-5Gp" firstAttribute="trailing" secondItem="020-5d-fI6" secondAttribute="trailing" id="Cid-IC-Xb9"/>
                                                             <constraint firstItem="VKu-pb-ibf" firstAttribute="top" secondItem="r2s-qy-wlE" secondAttribute="bottom" constant="20" id="DBL-Vh-Wz6"/>
@@ -284,7 +284,7 @@
                                                             <constraint firstItem="Wtm-Yo-XOz" firstAttribute="leading" secondItem="VKu-pb-ibf" secondAttribute="leading" constant="10" id="W3E-kE-4S3"/>
                                                             <constraint firstItem="dZD-sf-Gb8" firstAttribute="trailing" secondItem="HWX-nT-77u" secondAttribute="trailing" id="YeU-ye-eRr"/>
                                                             <constraint firstItem="QF6-PB-6XK" firstAttribute="leading" secondItem="vDY-nF-cAc" secondAttribute="leading" id="ZVf-Nn-JW8"/>
-                                                            <constraint firstItem="vDY-nF-cAc" firstAttribute="leading" secondItem="7Lb-I3-Ddx" secondAttribute="leading" constant="25" id="aCc-vp-ChJ"/>
+                                                            <constraint firstItem="vDY-nF-cAc" firstAttribute="leading" secondItem="7Lb-I3-Ddx" secondAttribute="leading" constant="10" id="aCc-vp-ChJ"/>
                                                             <constraint firstItem="vDY-nF-cAc" firstAttribute="top" secondItem="7Lb-I3-Ddx" secondAttribute="top" constant="25" id="aYs-xJ-GNa"/>
                                                             <constraint firstItem="UeB-1A-V9y" firstAttribute="top" secondItem="u7j-sh-se9" secondAttribute="bottom" constant="30" id="cAI-54-rjT"/>
                                                             <constraint firstItem="r2s-qy-wlE" firstAttribute="top" secondItem="QE4-Ox-Owi" secondAttribute="bottom" constant="6" id="cAv-OM-CNZ"/>
@@ -391,7 +391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96.92307692307692" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="95.625" y="3.1690140845070425"/>
         </scene>
     </scenes>
     <designables>
