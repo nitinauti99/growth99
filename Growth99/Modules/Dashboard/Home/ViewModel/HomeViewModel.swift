@@ -110,14 +110,14 @@ class HomeViewModel {
         ]
         let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
         
-        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
+          
             switch result {
             case .success(let userData):
                 self.delegate?.profileDataUpdated()
                 print("Successful Response", userData)
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                self.delegate?.profileDataUpdated()
+            case .failure(_ ):
+                self.delegate?.errorReceived(error: GrowthNetworkError.invalidResponse.localizedDescription)
             }
         }
     }
