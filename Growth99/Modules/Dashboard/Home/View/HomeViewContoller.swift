@@ -293,7 +293,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     
     @IBAction func saveUserProfile() {
         self.view.ShowSpinner()
-        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: self.degignationTextField.text ?? "", clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
+        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? "", clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
     }
     
     @IBAction func cancelUserProfile(){
