@@ -14,7 +14,7 @@ protocol ServicesListDetailViewContollerProtocol {
     func consentReceived()
     func questionnairesReceived()
     func serviceCategoriesReceived()
-    func createServiceSucessfullyReceived()
+    func createServiceSucessfullyReceived(message: String)
     func selectedServiceDataReceived()
 }
 
@@ -80,6 +80,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var isPreBookingCostAllowed: Bool = false
     var showInPublicBooking: Bool = false
     var priceVaries: Bool = false
+    var httpMethodType: HTTPMethod = .POST
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -228,9 +229,13 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         self.view.HideSpinner()
     }
     
-    func createServiceSucessfullyReceived() {
+    func createServiceSucessfullyReceived(message: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: "Service Create Sucessfully", color: .black)
+        if message == Constant.Profile.createService {
+            self.view.showToast(message: "Service Create Sucessfully", color: .black)
+        } else {
+            self.view.showToast(message: "Service Updated Sucessfully", color: .black)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -452,6 +457,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         self.view.ShowSpinner()
+        
+        if self.title == Constant.Profile.createService {
+            httpMethodType = .POST
+        } else {
+            httpMethodType = .PUT
+        }
         servicesAddViewModel?.createServiceAPICall(name: serviceName,
                                                    serviceCategoryId: selectedServiceCategoriesId,
                                                    durationInMinutes: Int(serviceDuration) ?? 0,
@@ -467,7 +478,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
                                                    imageRemoved: imageRemoved,
                                                    isPreBookingCostAllowed: isPreBookingCostAllowed,
                                                    showInPublicBooking: showInPublicBooking,
-                                                   priceVaries: false)
+                                                   priceVaries: false, httpMethod: httpMethodType, isScreenFrom: self.title ?? String.blank, serviceId: serviceId ?? 0)
 
     }
     

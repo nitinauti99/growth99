@@ -278,7 +278,6 @@
 		84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BD33FC2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib */; };
 		84C8F16C298BDCAC0049CEAC /* ScrollableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8F169298BDCAB0049CEAC /* ScrollableSegmentedControl.swift */; };
 		84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0614C29670676001FE469 /* BusinessProfileViewController.swift */; };
-		84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */; };
 		84D0622029670676001FE469 /* WorkingScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617B29670676001FE469 /* WorkingScheduleViewModel.swift */; };
 		84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617D29670676001FE469 /* WorkingScheduleModel.swift */; };
 		84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D0617F29670676001FE469 /* WorkingScheduleViewController+Extension.swift */; };
@@ -851,7 +850,6 @@
 		84C8F169298BDCAB0049CEAC /* ScrollableSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentedControl.swift; sourceTree = "<group>"; };
 		84C8F16A298BDCAB0049CEAC /* ScrollableSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableSegmentedControl.h; sourceTree = "<group>"; };
 		84D0614C29670676001FE469 /* BusinessProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessProfileViewController.swift; sourceTree = "<group>"; };
-		84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessProfileViewController.storyboard; sourceTree = "<group>"; };
 		84D0617B29670676001FE469 /* WorkingScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleViewModel.swift; sourceTree = "<group>"; };
 		84D0617D29670676001FE469 /* WorkingScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingScheduleModel.swift; sourceTree = "<group>"; };
 		84D0617F29670676001FE469 /* WorkingScheduleViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkingScheduleViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -3019,7 +3017,6 @@
 			isa = PBXGroup;
 			children = (
 				84D0614C29670676001FE469 /* BusinessProfileViewController.swift */,
-				84D0614D29670676001FE469 /* BusinessProfileViewController.storyboard */,
 				DAEF749B299D530A009140AE /* PersonalizationViewController.swift */,
 				DAEF749D299D5315009140AE /* SubdomainViewController.swift */,
 				DAEF749F299D5322009140AE /* RefundPolicyViewController.swift */,
@@ -4338,7 +4335,6 @@
 				842C0CCF298F749E00395061 /* AddNewConsentsViewController.storyboard in Resources */,
 				3947A8F92996776E000CA2EB /* EventEditViewController.storyboard in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
-				84D0620A29670676001FE469 /* BusinessProfileViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,

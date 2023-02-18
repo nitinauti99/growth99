@@ -16,6 +16,11 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getProfileAppoinmentFilterListData.count ?? 0 == 0 {
+                self.appointmentsTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.appointmentsTableView.restore()
+            }
             return viewModel?.getProfileAppoinmentFilterListData.count ?? 0
         } else {
             if viewModel?.getProfileAppoinmentListData.count ?? 0 == 0 {
