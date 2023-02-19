@@ -19,13 +19,14 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     @IBOutlet private weak var businessNoteImageView: UIImageView!
 
     var viewModel: BusinessProfileViewModelProtocol?
-    let user = UserRepository.shared
+    var bussinessInfoData: BusinessSubDomainModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         viewModel = BusinessProfileViewModel(delegate: self)
-        nameTextField.text = user.bussinessName
+        nameTextField.text = bussinessInfoData?.name
+        businessImageView.sd_setImage(with: URL(string: bussinessInfoData?.logoUrl ?? ""), placeholderImage: UIImage(named: "Logo.png"))
         businessNoteImageView.image = UIImage.fontAwesomeIcon(code: "fa-exclamation-triangle", style: .solid, textColor: UIColor.black, size: CGSize(width: 15, height: 15))
     }
     

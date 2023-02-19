@@ -129,4 +129,22 @@ public class UserRepository {
             user.bussinessLogo = newValue
         }
     }
+    
+    public var bussinessId: Int? {
+        get {
+            user.bussinessId
+        }
+        set {
+            user.bussinessId = newValue
+        }
+    }
+    
+    public var subDomainName: String? {
+        get {
+            user.subDomainName
+        }
+        set {
+            user.subDomainName = newValue
+        }
+    }
 }

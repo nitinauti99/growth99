@@ -8,22 +8,59 @@
 import UIKit
 
 class RefundPolicyViewController: UIViewController {
-
+    
+    @IBOutlet private weak var paymentRefundableTF: CustomTextField!
+    @IBOutlet private weak var refundablePercentageTF: CustomTextField!
+    @IBOutlet private weak var paymentRefundableBtn: UIButton!
+        
+    var bussinessInfoData: BusinessSubDomainModel?
+    
+    var paymentRefundable: Bool = true
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.paymentRefundableTF.text = "\(bussinessInfoData?.paymentRefundableBeforeHours ?? 0)"
+        self.refundablePercentageTF.text = self.forTrailingZero(temp: bussinessInfoData?.refundablePaymentPercentage ?? 0.0)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func forTrailingZero(temp: Double) -> String {
+        let tempVar = String(format: "%g", temp)
+        return tempVar
     }
-    */
-
+    
+    @IBAction func paymentRefundableBtnTapped(_ sender: Any) {
+        paymentRefundableBtn.isSelected = !paymentRefundableBtn.isSelected
+        if paymentRefundableBtn.isSelected {
+            paymentRefundable = true
+        } else {
+            paymentRefundable = false
+        }
+    }
+    
+    @IBAction func savebtnTapped(_ sender: Any) {
+        guard let refundablePercentage = refundablePercentageTF.text, !refundablePercentage.isEmpty else {
+            refundablePercentageTF.showError(message: Constant.ErrorMessage.refundPercentageEmptyError)
+            return
+        }
+        self.view.ShowSpinner()
+        let paymentRefund = Int(paymentRefundableTF.text ?? "") ?? 0
+        let refundePercentage = Int(refundablePercentageTF.text ?? "") ?? 0
+        saveSubDomainInfo(paymentRefundable: paymentRefundable, paymentRefundableText: paymentRefund, refundablePercentage: refundePercentage)
+    }
+    
+    func saveSubDomainInfo(paymentRefundable: Bool, paymentRefundableText: Int, refundablePercentage: Int) {
+        let parameter: [String : Any] = ["paymentRefundable": paymentRefundable, "paymentRefundableBeforeHours": paymentRefundableText, "refundablePaymentPercentage": refundablePercentage]
+        let finaleUrl = ApiUrl.paymentRefund + "\(bussinessInfoData?.id ?? 0)"
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<BusinessSubDomainModel, GrowthNetworkError>) in
+            switch result {
+            case .success(_):
+                self.view?.HideSpinner()
+                self.view?.showToast(message: "Information updated sucessfully.", color: .black)
+            case .failure(let error):
+                self.view?.HideSpinner()
+                self.view?.showToast(message: error.localizedDescription, color: .black)
+            }
+        }
+    }
 }

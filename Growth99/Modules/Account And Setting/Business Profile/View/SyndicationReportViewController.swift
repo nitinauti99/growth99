@@ -9,6 +9,8 @@ import UIKit
 
 class SyndicationReportViewController: UIViewController {
 
+    var bussinessInfoData: BusinessSubDomainModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -62,9 +62,11 @@ class LogInViewModel {
         }
     }
     
-    func setUpBusinessData(){
+    func setUpBusinessData() {
         self.user.bussinessLogo = bussinessData?.logoUrl
         self.user.bussinessName = bussinessData?.name
+        self.user.bussinessId = bussinessData?.id
+        self.user.subDomainName = bussinessData?.subDomainName
     }
     
     func SetUpUserData(){

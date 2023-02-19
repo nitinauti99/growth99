@@ -391,14 +391,6 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             selectedClincIds = editBookingHistoryData?.clinicId ?? 0
         }
         
-       /* if selectedProvidersIds.count == 0 {
-            selectedProvidersIds = editBookingHistoryData?.providerId
-        }
-        
-        if selectedServicesIds.count = {
-            
-        }*/
-        
         self.view.ShowSpinner()
         eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
     }

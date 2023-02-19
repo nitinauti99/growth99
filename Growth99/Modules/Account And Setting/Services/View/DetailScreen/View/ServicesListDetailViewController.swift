@@ -58,6 +58,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
     
+    var createSelectedClinicsarray = [Clinics]()
+    
     var allServiceCategories = [Clinics]()
     var selectedServiceCategories = [Clinics]()
     var selectedServiceCategoriesId = Int()
@@ -149,6 +151,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         questionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
         serviceQuestionarieTextField.text = questionnaires.map({$0.name ?? ""}).joined(separator: ", ")
         
+//        let consentSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
+//        selectedConsent = consentSelectedArray
+//
+//        let questionnairesSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
+//        selectedQuestionnaires = questionnairesSelectedArray
+                
         if servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking == true {
             disableButton.isSelected = true
         } else {
@@ -210,6 +218,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     
     func clinicsReceived() {
         allClinics = servicesAddViewModel?.getAllClinicsData ?? []
+        selectedClincs
         let selectedClincId = allClinics.map({$0.id ?? 0})
         self.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedClincId)
     }

@@ -241,6 +241,9 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="tickdefault"/>
                                 <state key="selected" image="tickselected"/>
+                                <connections>
+                                    <action selector="paymentRefundableBtnTapped:" destination="wuN-qZ-9yS" eventType="touchUpInside" id="cTS-Ih-ZZ4"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is payment refundable? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2j-cn-QBC">
                                 <rect key="frame" x="45" y="65.666666666666671" width="325" height="18"/>
@@ -267,6 +270,9 @@
                                         <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="wuN-qZ-9yS" id="8xB-M5-kzr"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="How many hours before appointment time, payment can be refunded for canceled appointments?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-CS-Pue" userLabel="userName">
                                 <rect key="frame" x="20" y="113.66666666666667" width="350" height="27.666666666666671"/>
@@ -332,6 +338,9 @@
                                         <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="wuN-qZ-9yS" id="PZZ-dn-wyX"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Z6-yNK">
                                 <rect key="frame" x="20" y="325" width="350" height="80"/>
@@ -375,6 +384,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="savebtnTapped:" destination="wuN-qZ-9yS" eventType="touchUpInside" id="9Yv-pV-NJR"/>
                                     <action selector="ssavebtnTapped:" destination="IlC-uo-g6W" eventType="touchUpInside" id="qGc-MI-4mQ"/>
                                 </connections>
                             </button>
@@ -406,6 +416,11 @@
                             <constraint firstItem="EZ8-oA-7NQ" firstAttribute="trailing" secondItem="5UX-sv-v14" secondAttribute="trailing" constant="10" id="zfw-Rr-gjw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="paymentRefundableBtn" destination="NVQ-fJ-fhE" id="TI9-Wc-3EQ"/>
+                        <outlet property="paymentRefundableTF" destination="0Qy-rb-C8B" id="etb-lG-vmP"/>
+                        <outlet property="refundablePercentageTF" destination="EZ8-oA-7NQ" id="LUG-lQ-Zwb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZH-Rk-4g8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -462,6 +477,9 @@
                                         <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="y0k-jf-MOv" id="jGy-st-J5S"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugn-g9-NPW">
                                 <rect key="frame" x="20" y="189" width="110" height="40"/>
@@ -480,6 +498,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="savebtnTapped:" destination="y0k-jf-MOv" eventType="touchUpInside" id="DAw-Lq-fYL"/>
                                     <action selector="ssavebtnTapped:" destination="IlC-uo-g6W" eventType="touchUpInside" id="J8s-FQ-3yR"/>
                                 </connections>
                             </button>
@@ -497,6 +516,9 @@
                             <constraint firstItem="jfl-rF-4Ej" firstAttribute="top" secondItem="vqS-bF-dRk" secondAttribute="bottom" constant="16" id="nDW-aZ-oXk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="subDomainNameTextField" destination="jfl-rF-4Ej" id="VyF-5J-2Hz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcU-kt-fpu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -590,6 +612,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="savebtnTapped:" destination="QSs-KV-Q9W" eventType="touchUpInside" id="Txm-fn-K9y"/>
                                     <action selector="ssavebtnTapped:" destination="IlC-uo-g6W" eventType="touchUpInside" id="Aj9-9F-4O4"/>
                                 </connections>
                             </button>
@@ -669,7 +692,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3d-KP-EJn">
-                                <rect key="frame" x="20" y="245.66666666666663" width="110" height="40"/>
+                                <rect key="frame" x="20" y="254" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="1Hu-jl-2aE"/>
@@ -685,11 +708,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="savebtnTapped:" destination="LR3-Wj-Uef" eventType="touchUpInside" id="GFc-7E-YAe"/>
                                     <action selector="ssavebtnTapped:" destination="IlC-uo-g6W" eventType="touchUpInside" id="c1d-iv-q23"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTP-V6-4Dw">
-                                <rect key="frame" x="330" y="215.66666666666666" width="40" height="40"/>
+                                <rect key="frame" x="330" y="229" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="k59-iG-3uR"/>
                                     <constraint firstAttribute="width" constant="40" id="zCn-Nj-jXa"/>
@@ -700,30 +724,43 @@
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="deletebtnTapped:" destination="LR3-Wj-Uef" eventType="touchUpInside" id="UiE-7d-t2S"/>
+                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-9C-Fg5">
+                                <rect key="frame" x="20" y="210.66666666666666" width="350" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="1" green="0.14901960780000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W9x-ok-uzb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="FzH-9C-Fg5" firstAttribute="top" secondItem="3DS-Tg-tVV" secondAttribute="bottom" constant="5" id="8SY-yS-v9g"/>
                             <constraint firstItem="24I-gr-iwW" firstAttribute="top" secondItem="W9x-ok-uzb" secondAttribute="top" constant="20" id="C81-uD-sIc"/>
+                            <constraint firstItem="lTP-V6-4Dw" firstAttribute="top" secondItem="FzH-9C-Fg5" secondAttribute="bottom" constant="5" id="G3H-tU-Shz"/>
                             <constraint firstItem="j3d-KP-EJn" firstAttribute="leading" secondItem="24I-gr-iwW" secondAttribute="leading" id="M6z-WV-aOM"/>
                             <constraint firstItem="3DS-Tg-tVV" firstAttribute="leading" secondItem="24I-gr-iwW" secondAttribute="leading" id="VKD-gj-w8e"/>
                             <constraint firstItem="W9x-ok-uzb" firstAttribute="trailing" secondItem="24I-gr-iwW" secondAttribute="trailing" constant="20" id="Wrc-Yb-Mz5"/>
                             <constraint firstItem="24I-gr-iwW" firstAttribute="leading" secondItem="W9x-ok-uzb" secondAttribute="leading" constant="20" id="XG7-D9-YOK"/>
-                            <constraint firstItem="j3d-KP-EJn" firstAttribute="top" secondItem="3DS-Tg-tVV" secondAttribute="bottom" constant="40" id="Zwy-Jb-iXI"/>
                             <constraint firstItem="3DS-Tg-tVV" firstAttribute="trailing" secondItem="24I-gr-iwW" secondAttribute="trailing" id="b1S-16-R1i"/>
                             <constraint firstItem="lTP-V6-4Dw" firstAttribute="trailing" secondItem="3DS-Tg-tVV" secondAttribute="trailing" id="e2v-S0-Jgu"/>
+                            <constraint firstItem="j3d-KP-EJn" firstAttribute="top" secondItem="FzH-9C-Fg5" secondAttribute="bottom" constant="30" id="jeF-fP-3nU"/>
+                            <constraint firstItem="FzH-9C-Fg5" firstAttribute="trailing" secondItem="3DS-Tg-tVV" secondAttribute="trailing" id="kHO-XL-Rhe"/>
+                            <constraint firstItem="FzH-9C-Fg5" firstAttribute="leading" secondItem="3DS-Tg-tVV" secondAttribute="leading" id="xFd-t7-fPA"/>
                             <constraint firstItem="3DS-Tg-tVV" firstAttribute="top" secondItem="24I-gr-iwW" secondAttribute="bottom" constant="10" id="y2G-57-8rb"/>
-                            <constraint firstItem="lTP-V6-4Dw" firstAttribute="top" secondItem="3DS-Tg-tVV" secondAttribute="bottom" constant="10" id="zL4-L2-Qmi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dataStudioCodeTextView" destination="3DS-Tg-tVV" id="6gg-9s-R8u"/>
+                        <outlet property="errorLabel" destination="FzH-9C-Fg5" id="ObN-cn-0ON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tTZ-DS-upv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4375" y="14"/>
+            <point key="canvasLocation" x="4373.8461538461534" y="13.507109004739336"/>
         </scene>
         <!--Paid Media View Controller-->
         <scene sceneID="UXL-Ov-Urn">
@@ -750,7 +787,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bin-Gf-dap">
-                                <rect key="frame" x="20" y="245.66666666666663" width="110" height="40"/>
+                                <rect key="frame" x="20" y="254" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="19T-uA-Jz6"/>
@@ -766,11 +803,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="savebtnTapped:" destination="LFP-EG-lDe" eventType="touchUpInside" id="LQG-Eh-feM"/>
                                     <action selector="ssavebtnTapped:" destination="IlC-uo-g6W" eventType="touchUpInside" id="TCy-e2-sJ2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aON-3c-BjK">
-                                <rect key="frame" x="330" y="215.66666666666666" width="40" height="40"/>
+                                <rect key="frame" x="330" y="229" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Sjo-4O-zVo"/>
                                     <constraint firstAttribute="height" constant="40" id="jxW-3P-1Hc"/>
@@ -781,24 +819,37 @@
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="deletebtnTapped:" destination="LFP-EG-lDe" eventType="touchUpInside" id="Ew0-e2-Bg8"/>
+                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ant-Vz-nCG">
+                                <rect key="frame" x="20" y="210.66666666666666" width="350" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="1" green="0.14901960780000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BmN-wn-s9w"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NTU-pz-2Sz" firstAttribute="trailing" secondItem="58W-Vl-7GU" secondAttribute="trailing" id="0Lq-A2-ImZ"/>
-                            <constraint firstItem="bin-Gf-dap" firstAttribute="top" secondItem="NTU-pz-2Sz" secondAttribute="bottom" constant="40" id="JXM-SL-DSE"/>
+                            <constraint firstItem="Ant-Vz-nCG" firstAttribute="top" secondItem="NTU-pz-2Sz" secondAttribute="bottom" constant="5" id="3NV-S4-Y5v"/>
                             <constraint firstItem="58W-Vl-7GU" firstAttribute="leading" secondItem="BmN-wn-s9w" secondAttribute="leading" constant="20" id="MMC-5F-udA"/>
+                            <constraint firstItem="Ant-Vz-nCG" firstAttribute="leading" secondItem="NTU-pz-2Sz" secondAttribute="leading" id="S0V-f1-fkW"/>
                             <constraint firstItem="58W-Vl-7GU" firstAttribute="top" secondItem="BmN-wn-s9w" secondAttribute="top" constant="20" id="YXi-7W-OkT"/>
                             <constraint firstItem="aON-3c-BjK" firstAttribute="trailing" secondItem="NTU-pz-2Sz" secondAttribute="trailing" id="ZCb-YF-SAU"/>
                             <constraint firstItem="NTU-pz-2Sz" firstAttribute="top" secondItem="58W-Vl-7GU" secondAttribute="bottom" constant="10" id="d9s-hV-zvn"/>
-                            <constraint firstItem="aON-3c-BjK" firstAttribute="top" secondItem="NTU-pz-2Sz" secondAttribute="bottom" constant="10" id="gmY-Fa-mWx"/>
+                            <constraint firstItem="Ant-Vz-nCG" firstAttribute="trailing" secondItem="NTU-pz-2Sz" secondAttribute="trailing" id="eQX-Uu-45U"/>
                             <constraint firstItem="bin-Gf-dap" firstAttribute="leading" secondItem="58W-Vl-7GU" secondAttribute="leading" id="hRW-qf-bYA"/>
                             <constraint firstItem="BmN-wn-s9w" firstAttribute="trailing" secondItem="58W-Vl-7GU" secondAttribute="trailing" constant="20" id="kY8-u3-L2P"/>
+                            <constraint firstItem="aON-3c-BjK" firstAttribute="top" secondItem="Ant-Vz-nCG" secondAttribute="bottom" constant="5" id="qjw-o5-Mf2"/>
+                            <constraint firstItem="bin-Gf-dap" firstAttribute="top" secondItem="Ant-Vz-nCG" secondAttribute="bottom" constant="30" id="xn2-hP-VD1"/>
                             <constraint firstItem="NTU-pz-2Sz" firstAttribute="leading" secondItem="58W-Vl-7GU" secondAttribute="leading" id="zXg-8g-uRp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="Ant-Vz-nCG" id="bOz-eU-lEW"/>
                         <outlet property="paidMediaCodeTextView" destination="NTU-pz-2Sz" id="Mct-gu-bNI"/>
                     </connections>
                 </viewController>
@@ -836,16 +887,16 @@
     </scenes>
     <designables>
         <designable name="0Qy-rb-C8B">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="EZ8-oA-7NQ">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="jfl-rF-4Ej">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="tda-YN-Uzo">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>

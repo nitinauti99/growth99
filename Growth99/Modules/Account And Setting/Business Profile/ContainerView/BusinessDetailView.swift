@@ -13,19 +13,39 @@ class BusinessDetailView: UIViewController {
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
+    var bussinessInfoData: BusinessSubDomainModel?
+
     var workflowTaskPatientId = Int()
     var selectedindex = 0
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setupView()
         self.title = Constant.Profile.business
         segmentedControl.segmentStyle = .textOnly
-        setupSegment1()
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
         segmentedControl.fixedSegmentWidth = false
-        segmentedControl.selectedSegmentIndex = selectedindex
+        setupSegment1()
+        self.view.ShowSpinner()
+        getUSerBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? "")
+    }
+    
+    func getUSerBusinessInfo(Xtenantid: String) {
+        let finaleUrl = ApiUrl.getBussinessInfo + "\(UserRepository.shared.Xtenantid ?? "")"
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<BusinessSubDomainModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let response):
+                self.view.HideSpinner()
+                self.bussinessInfoData = response
+                self.setupView()
+                self.segmentedControl.selectedSegmentIndex = self.selectedindex
+            case .failure(let error):
+                self.view.HideSpinner()
+                self.view.showToast(message: error.localizedDescription, color: .black)
+            }
+        }
     }
     
     func setupSegment() {
@@ -71,11 +91,71 @@ class BusinessDetailView: UIViewController {
         remove(asChildViewController: SyndicationReportVC)
         remove(asChildViewController: emailSMSAuditVC)
         add(asChildViewController: businessProfileVC)
-        navigationItem.rightBarButtonItem = nil
     }
     
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
+         case 0:
+             remove(asChildViewController: personalizationVC)
+             remove(asChildViewController: subdomainVC)
+             remove(asChildViewController: refundPolicyVC)
+             remove(asChildViewController: trackingCodeVC)
+             remove(asChildViewController: dataStudioVC)
+             remove(asChildViewController: paidMediaVC)
+             remove(asChildViewController: SyndicationReportVC)
+             remove(asChildViewController: emailSMSAuditVC)
+             add(asChildViewController: businessProfileVC)
+         case 1:
+             remove(asChildViewController: businessProfileVC)
+             remove(asChildViewController: refundPolicyVC)
+             remove(asChildViewController: trackingCodeVC)
+             remove(asChildViewController: dataStudioVC)
+             remove(asChildViewController: paidMediaVC)
+             remove(asChildViewController: SyndicationReportVC)
+             remove(asChildViewController: emailSMSAuditVC)
+             add(asChildViewController: subdomainVC)
+         case 2:
+             remove(asChildViewController: personalizationVC)
+             remove(asChildViewController: businessProfileVC)
+             remove(asChildViewController: trackingCodeVC)
+             remove(asChildViewController: dataStudioVC)
+             remove(asChildViewController: paidMediaVC)
+             remove(asChildViewController: SyndicationReportVC)
+             remove(asChildViewController: emailSMSAuditVC)
+             add(asChildViewController: refundPolicyVC)
+         case 3:
+             remove(asChildViewController: personalizationVC)
+             remove(asChildViewController: subdomainVC)
+             remove(asChildViewController: businessProfileVC)
+             remove(asChildViewController: dataStudioVC)
+             remove(asChildViewController: paidMediaVC)
+             remove(asChildViewController: SyndicationReportVC)
+             remove(asChildViewController: emailSMSAuditVC)
+             add(asChildViewController: trackingCodeVC)
+         case 4:
+             remove(asChildViewController: personalizationVC)
+             remove(asChildViewController: subdomainVC)
+             remove(asChildViewController: refundPolicyVC)
+             remove(asChildViewController: businessProfileVC)
+             remove(asChildViewController: businessProfileVC)
+             remove(asChildViewController: paidMediaVC)
+             remove(asChildViewController: SyndicationReportVC)
+             remove(asChildViewController: emailSMSAuditVC)
+             add(asChildViewController: dataStudioVC)
+         case 5:
+             remove(asChildViewController: businessProfileVC)
+             remove(asChildViewController: personalizationVC)
+             remove(asChildViewController: subdomainVC)
+             remove(asChildViewController: refundPolicyVC)
+             remove(asChildViewController: trackingCodeVC)
+             remove(asChildViewController: dataStudioVC)
+             remove(asChildViewController: SyndicationReportVC)
+             remove(asChildViewController: emailSMSAuditVC)
+             add(asChildViewController: paidMediaVC)
+         default:
+             break
+         }
+       /* switch segmentedControl.selectedSegmentIndex {
         case 0:
             remove(asChildViewController: personalizationVC)
             remove(asChildViewController: subdomainVC)
@@ -168,7 +248,7 @@ class BusinessDetailView: UIViewController {
             add(asChildViewController: emailSMSAuditVC)
         default:
             break
-        }
+        }*/
 
     }
     
@@ -197,6 +277,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "BusinessProfileViewController") as? BusinessProfileViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -205,6 +286,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "PersonalizationViewController") as? PersonalizationViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -212,6 +294,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "SubdomainViewController") as? SubdomainViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -219,6 +302,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "RefundPolicyViewController") as? RefundPolicyViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
 
@@ -226,6 +310,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "TrackingCodeViewController") as? TrackingCodeViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -233,6 +318,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "DataStudioViewController") as? DataStudioViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -240,6 +326,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "PaidMediaViewController") as? PaidMediaViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -247,6 +334,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "SyndicationReportViewController") as? SyndicationReportViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
@@ -254,6 +342,7 @@ class BusinessDetailView: UIViewController {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "EmailSMSAuditViewController") as? EmailSMSAuditViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
+        detailController.bussinessInfoData = bussinessInfoData
         return detailController
     }()
     
