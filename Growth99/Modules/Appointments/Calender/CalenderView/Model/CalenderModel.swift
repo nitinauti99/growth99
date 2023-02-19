@@ -189,7 +189,7 @@ struct Clinic : Codable {
     let css : String?
     let currencySymbol : String?
     let isReviewPublished : Bool?
-    let disableVirtualAppointment : String?
+    let disableVirtualAppointment : Bool?
 }
 
 struct Consents : Codable {

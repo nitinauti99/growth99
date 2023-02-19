@@ -64,7 +64,7 @@ struct ClinicsDetailListModel: Codable {
     let css: String?
     let currencySymbol: String?
     let isReviewPublished: Bool?
-    let disableVirtualAppointment: String?
+    let disableVirtualAppointment: Bool?
     let clinicVacationSchedules: [String]?
     let priceVaries: String?
 }
