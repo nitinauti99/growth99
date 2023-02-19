@@ -33,11 +33,11 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
             cell.sourceLabel.text = "-"
         }
         let serviceSelectedArray = self.bookingHistoryListData[indexPath.row].serviceList ?? []
-        cell.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? ""}).joined(separator: ", ")
-        cell.appointmentDateLabel.text = "\(self.viewModel?.serverToLocal(date: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? "") \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? "")"
+        cell.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        cell.appointmentDateLabel.text = "\(self.viewModel?.serverToLocal(date: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? String.blank) \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? String.blank)"
         cell.paymetStatusLabel.text = self.bookingHistoryListData[indexPath.row].paymentStatus
         cell.appointmentStatusLabel.text = self.bookingHistoryListData[indexPath.row].appointmentStatus
-        cell.createdDate.text = "\(self.viewModel?.serverToLocalCreatedDate(date: self.bookingHistoryListData[indexPath.row].appointmentCreatedDate ?? String.blank) ?? "") \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentCreatedDate ?? String.blank) ?? "")"
+        cell.createdDate.text = "\(self.viewModel?.serverToLocalCreatedDate(date: self.bookingHistoryListData[indexPath.row].appointmentCreatedDate ?? String.blank) ?? String.blank) \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentCreatedDate ?? String.blank) ?? String.blank)"
         return cell
     }
     

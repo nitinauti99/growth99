@@ -119,7 +119,7 @@ class FormDetailTableViewCell: UITableViewCell {
             self.validationView.isHidden = false
         }
         self.validationMessageTextfield.text = formList?.validationMessage
-        self.selctionType(selctionType:formList?.type ?? "")
+        self.selctionType(selctionType:formList?.type ?? String.blank)
     }
     
     func dissableUserIntraction() {

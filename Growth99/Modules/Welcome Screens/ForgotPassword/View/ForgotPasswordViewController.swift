@@ -69,7 +69,7 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
             return
         }
          self.view.ShowSpinner()
-         viewModel?.sendRequestGetPassword(email: emailTextField.text ?? "")
+         viewModel?.sendRequestGetPassword(email: emailTextField.text ?? String.blank)
     }
     
     func openVerifyPasswordView(){

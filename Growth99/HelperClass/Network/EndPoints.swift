@@ -27,6 +27,7 @@ struct EndPoints {
     static let updateQuestionnaireSubmissionAmmount = "/api/questionnaire-submission/lead/"
     static let updateQuestionnaireSubmission = "/api/questionnaire-submission/lead/"
     static let userList = "/api/v1/users/all"
+    static let paymentRefund = "/api/paymentRefund/businesses/"
     static let getQuestionnaireListDetail = "/api/questionnaire-submissions/"
     static let getSMStemplatesListDetail = "/api/smstemplates/templateFor/Lead"
     static let getEmailTemplatesListDetail = "/api/emailTemplates/templateFor/Lead"
@@ -179,4 +180,6 @@ struct ApiUrl {
     static let selectedClinic = EndPoints.baseURL.appending(EndPoints.selectedClinic)
     static let createService = EndPoints.baseURL.appending(EndPoints.createService)
     static let editService = EndPoints.baseURL.appending(EndPoints.editService)
+    static let paymentRefund = EndPoints.baseURL.appending(EndPoints.paymentRefund)
+
 }

@@ -110,7 +110,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
         selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
-        servicesTextField.text = serviceSelectedArray.map({$0.serviceName ?? ""}).joined(separator: ", ")
+        servicesTextField.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
         providersTextField.text = editBookingHistoryData?.providerName ?? String.blank
         appoinmentStatusField.text = editBookingHistoryData?.appointmentStatus ?? String.blank
         dateTextField.text = eventViewModel?.serverToLocal(date: editBookingHistoryData?.appointmentStartDate ?? String.blank)
@@ -222,7 +222,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincs  = selectedList
             self?.selectedClincIds = selectedId.first ?? 0
@@ -250,7 +250,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             cell.textLabel?.text = allServices.serviceName?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: createSelectedServicesarray) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.servicesTextField.text = selectedList.map({$0.serviceName ?? ""}).joined(separator: ", ")
+            self?.servicesTextField.text = selectedList.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServices  = selectedList
             self?.selectedServicesIds = selectedId
@@ -303,7 +303,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? "")
+            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? String.blank)
         }
         
         selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -311,7 +311,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self?.selectedDate = selectedList[0]
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? "") ?? "", clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -324,7 +324,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? "")
+            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? String.blank)
         }
         
         selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -390,14 +390,6 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         if selectedClincIds == 0 {
             selectedClincIds = editBookingHistoryData?.clinicId ?? 0
         }
-        
-       /* if selectedProvidersIds.count == 0 {
-            selectedProvidersIds = editBookingHistoryData?.providerId
-        }
-        
-        if selectedServicesIds.count = {
-            
-        }*/
         
         self.view.ShowSpinner()
         eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))

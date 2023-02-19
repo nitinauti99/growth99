@@ -185,7 +185,7 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
             return
         }
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? "", description: descriptionTextView.text ?? "", workflowTaskStatus: statusTextField.text ?? "", workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? ""), workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank), workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
       }
     
     func serverToLocalInputWorking(date: String) -> String {

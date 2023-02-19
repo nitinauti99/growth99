@@ -78,7 +78,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         LeadOrPatentsHight.constant = 500
         if taskDetail?.leadDTO != nil {
             leadButton.isSelected = true
-            leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? "") \(taskDetail?.leadDTO?.lastName ?? "")"
+            leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? String.blank) \(taskDetail?.leadDTO?.lastName ?? String.blank)"
             leadOrPatientLabel.text = "Select Lead"
             firstNameTextField.text = taskDetail?.leadDTO?.firstName
             lastNameTextField.text = taskDetail?.leadDTO?.lastName
@@ -90,7 +90,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
 
         }else {
             patientButton.isSelected = true
-            leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? "") \(taskDetail?.patientDTO?.lastName ?? "")"
+            leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? String.blank) \(taskDetail?.patientDTO?.lastName ?? String.blank)"
             leadOrPatientLabel.text = "Select patients"
             firstNameTextField.text = taskDetail?.patientDTO?.firstName
             lastNameTextField.text = taskDetail?.patientDTO?.lastName
@@ -261,7 +261,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             return
         }
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? "", description: descriptionTextView.text ?? "", workflowTaskStatus: statusTextField.text ?? "", workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? "") , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank) , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
     }
     
     func serverToLocalInputWorking(date: String) -> String {

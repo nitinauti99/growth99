@@ -27,7 +27,7 @@ open class RSSelectionMenuSearchDelegate: NSObject {
         guard let searchHandler = didSearch else {
             return
         }
-        searchHandler(text ?? "")
+        searchHandler(text ?? String.blank)
     }
 }
 

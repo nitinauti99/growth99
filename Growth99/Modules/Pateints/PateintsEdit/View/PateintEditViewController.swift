@@ -162,20 +162,20 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
         
         self.view.ShowSpinner()
         let param : [String: Any] = [
-            "firstName": firsNameTextField.text ?? "",
-            "lastName": lastNameTextField.text ?? "",
-            "email": emailTextField.text ?? "",
-            "phone": phoneNumberTextField.text ?? "",
-            "gender": genderTextField.text ?? "",
-            "dateOfBirth": dateFormater?.localToServer(date: dateTextField.text ?? "") ?? "",
-            "addressLine1": addressLine1TextField.text ?? "",
-            "addressLine2": addressLine2TextField.text ?? "",
-            "city": cityTextField.text ?? "",
-            "state": stateTextField.text ?? "",
-            "country": countryTextField.text ?? "",
-            "zipcode": zipCodeTextField.text ?? "",
-            "notes": noteTextView.text ?? "",
-            "username": emailTextField.text ?? ""
+            "firstName": firsNameTextField.text ?? String.blank,
+            "lastName": lastNameTextField.text ?? String.blank,
+            "email": emailTextField.text ?? String.blank,
+            "phone": phoneNumberTextField.text ?? String.blank,
+            "gender": genderTextField.text ?? String.blank,
+            "dateOfBirth": dateFormater?.localToServer(date: dateTextField.text ?? String.blank) ?? String.blank,
+            "addressLine1": addressLine1TextField.text ?? String.blank,
+            "addressLine2": addressLine2TextField.text ?? String.blank,
+            "city": cityTextField.text ?? String.blank,
+            "state": stateTextField.text ?? String.blank,
+            "country": countryTextField.text ?? String.blank,
+            "zipcode": zipCodeTextField.text ?? String.blank,
+            "notes": noteTextView.text ?? String.blank,
+            "username": emailTextField.text ?? String.blank
         ]
         viewModel?.cratePateint(parameters: param)
     }

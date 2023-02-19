@@ -48,7 +48,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     }
     
     func LeadDataRecived() {
-        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammountTextField.text ?? "") ?? 0)
+        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammountTextField.text ?? String.blank) ?? 0)
         do {
            sleep(5)
         }
@@ -132,7 +132,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             return
         }
         view.ShowSpinner()
-        let id = Int(idTextField.text ?? "") ?? 0
-        viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? "", email: emailTextField.text ?? "", phoneNumber: phoneNumberTextField.text ?? "", leadStatus: leadStatusTextField.text ?? "")
+        let id = Int(idTextField.text ?? String.blank) ?? 0
+        viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phoneNumber: phoneNumberTextField.text ?? String.blank, leadStatus: leadStatusTextField.text ?? String.blank)
      }
 }

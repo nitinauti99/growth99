@@ -31,6 +31,6 @@ class QuestionarieTableViewCell: UITableViewCell {
         self.appointmentID.text = questionarieVM?.AppointmentId
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
         self.submittedDate.text = questionarieVM?.submittedDate
-        self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? "")
+        self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)
     }
 }

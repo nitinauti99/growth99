@@ -34,11 +34,11 @@ class LeadTableViewCell: UITableViewCell {
         email.text = leadVM?.Email
         id.text = String(leadVM?.id ?? 0)
         phoneNumber.text = leadVM?.PhoneNumber
-        createdAt.text =  self.serverToLocal(date: leadVM?.createdAt ?? "")
+        createdAt.text =  self.serverToLocal(date: leadVM?.createdAt ?? String.blank)
         amount.text = String(leadVM?.amount ?? 0)
         let movement = leadVM?.leadStatus
         leadStatusLbi.text = leadVM?.leadStatus
-        leadStatusImage.image = UIImage(named: movement ?? "")
+        leadStatusImage.image = UIImage(named: movement ?? String.blank)
         leadFormNameLbi.text = leadVM?.questionnaireName
         leadSourceLbi.text = leadVM?.leadSource
     }

@@ -58,6 +58,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
     
+    var createSelectedClinicsarray = [Clinics]()
+    
     var allServiceCategories = [Clinics]()
     var selectedServiceCategories = [Clinics]()
     var selectedServiceCategoriesId = Int()
@@ -128,12 +130,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceNameTextField.text = servicesAddViewModel?.getUserSelectedServiceData?.name ?? String.blank
         
         userClinics = servicesAddViewModel?.getUserSelectedServiceData?.clinics ?? []
-        selectClinicTextField.text = userClinics.map({$0.clinic?.name ?? ""}).joined(separator: ", ")
+        selectClinicTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
         
         serviceDurationTextField.text = "\(servicesAddViewModel?.getUserSelectedServiceData?.durationInMinutes ?? 0)"
        
         servicecategory = servicesAddViewModel?.getUserSelectedServiceData?.serviceCategory
-        serviceCategoryTextField.text = servicecategory.map({$0.name ?? ""})
+        serviceCategoryTextField.text = servicecategory.map({$0.name ?? String.blank})
                 
         serviceCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.serviceCost ?? 0.0)
         
@@ -144,11 +146,17 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceDescTextView.text = servicesAddViewModel?.getUserSelectedServiceData?.description
         
         consents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
-        serviceConsentTextField.text = consents.map({$0.name ?? ""}).joined(separator: ", ")
+        serviceConsentTextField.text = consents.map({$0.name ?? String.blank}).joined(separator: ", ")
         
         questionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
-        serviceQuestionarieTextField.text = questionnaires.map({$0.name ?? ""}).joined(separator: ", ")
+        serviceQuestionarieTextField.text = questionnaires.map({$0.name ?? String.blank}).joined(separator: ", ")
         
+//        let consentSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
+//        selectedConsent = consentSelectedArray
+//
+//        let questionnairesSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
+//        selectedQuestionnaires = questionnairesSelectedArray
+                
         if servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking == true {
             disableButton.isSelected = true
         } else {
@@ -210,6 +218,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     
     func clinicsReceived() {
         allClinics = servicesAddViewModel?.getAllClinicsData ?? []
+        selectedClincs
         let selectedClincId = allClinics.map({$0.id ?? 0})
         self.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedClincId)
     }
@@ -254,7 +263,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.selectClinicTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.selectClinicTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincs  = selectedList
             self?.selectedClincIds = selectedId
@@ -290,7 +299,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         selectionMenu.setSelectedItems(items: selectedConsent) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.serviceConsentTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.serviceConsentTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedConsent = selectedList
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedConsentIds = selectedId
@@ -311,7 +320,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         selectionMenu.setSelectedItems(items: selectedQuestionnaires) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.serviceQuestionarieTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.serviceQuestionarieTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedQuestionnaires = selectedList
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedQuestionnairesIds = selectedId

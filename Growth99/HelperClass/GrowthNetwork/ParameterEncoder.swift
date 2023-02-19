@@ -115,7 +115,7 @@ public struct URLParameterEncoder: ParameterEncoder {
         guard let url = urlRequest.url else { throw GrowthNetworkError.missingURL }
 
         if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {
-            let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + self.query(parameters)
+            let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? String.blank) + self.query(parameters)
             urlComponents.percentEncodedQuery = percentEncodedQuery
             urlRequest.url = urlComponents.url
         } else {

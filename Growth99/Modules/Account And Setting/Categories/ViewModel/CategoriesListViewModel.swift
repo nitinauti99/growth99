@@ -9,17 +9,23 @@ import Foundation
 
 protocol CategoriesListViewModelProtocol {
     func getCategoriesList()
-    var  categoriesData: [CategoriesListModel] { get }
-    func categoriesDataAtIndex(index: Int) -> CategoriesListModel?
-    var  categoriesFilterDataData: [CategoriesListModel] { get }
-    func categoriesFilterDataAtIndex(index: Int)-> CategoriesListModel?
+ 
+    func getCategoriesFilterData(searchText: String)
+    
+    func getCategoriesDataAtIndex(index: Int)-> CategoriesListModel?
+    func getCategoriesFilterDataAtIndex(index: Int)-> CategoriesListModel?
+    
+    var  getCategoriesListData: [CategoriesListModel] { get }
+    var  getCategoriesFilterListData: [CategoriesListModel] { get }
 }
 
 class CategoriesListViewModel {
     var delegate: CategoriesListViewContollerProtocol?
-    var categoriesListData: [CategoriesListModel] = []
-    var categoriesFilterData: [CategoriesListModel] = []
     var allClinics: [Clinics]?
+    
+    var categoriesList: [CategoriesListModel] = []
+    var categoriesListFilterData: [CategoriesListModel] = []
+
     
     init(delegate: CategoriesListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -30,8 +36,8 @@ class CategoriesListViewModel {
     func getCategoriesList() {
         self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
             switch result {
-            case .success(let userData):
-                self.categoriesListData = userData
+            case .success(let categoriesListData):
+                self.categoriesList = categoriesListData
                 self.delegate?.CategoriesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -40,7 +46,7 @@ class CategoriesListViewModel {
         }
     }
     
-    func getallClinics(){
+    func getallClinics() {
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
             case .success(let allClinics):
@@ -51,23 +57,27 @@ class CategoriesListViewModel {
             }
         }
     }
-    
-    func categoriesDataAtIndex(index: Int)-> CategoriesListModel? {
-        return self.categoriesListData[index]
-    }
-    
-    func categoriesFilterDataAtIndex(index: Int)-> CategoriesListModel? {
-        return self.categoriesListData[index]
-    }
 }
 
 extension CategoriesListViewModel: CategoriesListViewModelProtocol {
-    
-    var categoriesFilterDataData: [CategoriesListModel] {
-        return self.categoriesFilterData
+
+    func getCategoriesFilterData(searchText: String) {
+        self.categoriesListFilterData = (self.getCategoriesListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
-    var categoriesData: [CategoriesListModel] {
-        return self.categoriesListData
+    func getCategoriesDataAtIndex(index: Int)-> CategoriesListModel? {
+        return self.getCategoriesListData[index]
+    }
+    
+    func getCategoriesFilterDataAtIndex(index: Int)-> CategoriesListModel? {
+        return self.categoriesListFilterData[index]
+    }
+    
+    var getCategoriesListData: [CategoriesListModel] {
+        return self.categoriesList
+    }
+   
+    var getCategoriesFilterListData: [CategoriesListModel] {
+         return self.categoriesListFilterData
     }
 }

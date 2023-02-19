@@ -35,14 +35,14 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
         super.viewWillAppear(animated)
         self.title = Constant.Profile.Questionnarie
         if PateintsTagsCreate == false {
-            self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
+            self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? String.blank
         }
     }
     
     func pateintsTagListRecived() {
         self.view.HideSpinner()
         if PateintsTagsCreate == false {
-            self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? ""
+            self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? String.blank
         }
     }
     
@@ -71,9 +71,9 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
         }
         self.view.ShowSpinner()
         if PateintsTagsCreate == false {
-            viewModel?.savePateintsTagsDetails(pateintsTagId: PatientTagId, name: PateintsTagsTextField.text ?? "")
+            viewModel?.savePateintsTagsDetails(pateintsTagId: PatientTagId, name: PateintsTagsTextField.text ?? String.blank)
         }else{
-            viewModel?.createPateintsTagsDetails(name: PateintsTagsTextField.text ?? "")
+            viewModel?.createPateintsTagsDetails(name: PateintsTagsTextField.text ?? String.blank)
         }
     }
     

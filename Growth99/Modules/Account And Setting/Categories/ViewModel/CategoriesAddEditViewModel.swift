@@ -12,11 +12,14 @@ protocol CategoriesAddEditViewModelProtocol {
     var  getAllClinicsData: [Clinics] { get }
     func createCategories(addCategoriesParams: [String: Any])
     func editCategories(selectedCategorieId: Int)
+    func getCategoriesInfo(categoryId: Int)
+    var  getAllCategoriesData: ServiceDetailModel? { get }
 }
 
 class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     var delegate: CategoriesAddViewContollerProtocol?
     var allClinics: [Clinics]?
+    var serviceCategoryList: ServiceDetailModel?
     var addCategoriesResponse: CategoriesAddEditModel?
     
     init(delegate: CategoriesAddViewContollerProtocol? = nil) {
@@ -25,6 +28,24 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
+    func getCategoriesInfo(categoryId: Int) {
+        let finalURL = ApiUrl.createCategories + "/\(categoryId)"
+        self.requestManager.request(forPath: finalURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<ServiceDetailModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let allServiceCategoryList):
+                self.serviceCategoryList = allServiceCategoryList
+                self.delegate?.categoriesResponseReceived()
+            case .failure(let error):
+                print(error)
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    var getAllCategoriesData: ServiceDetailModel? {
+        return self.serviceCategoryList
+    }
+    
     func getallClinics(){
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {

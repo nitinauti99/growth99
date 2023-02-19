@@ -41,7 +41,7 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
     
     func addSerchBar(){
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -51,10 +51,10 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
     func removePatieint(cell: ConsentsTemplateListTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var consentsId = Int()
-            consentsName = viewModel?.consentsTemplateDataAtIndex(index: index.row)?.name ?? ""
+            consentsName = viewModel?.consentsTemplateDataAtIndex(index: index.row)?.name ?? String.blank
             consentsId = viewModel?.consentsTemplateDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
-            consentsName = viewModel?.consentsTemplateFilterDataAtIndex(index: index.row)?.name ?? ""
+            consentsName = viewModel?.consentsTemplateFilterDataAtIndex(index: index.row)?.name ?? String.blank
             consentsId =  viewModel?.consentsTemplateFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         

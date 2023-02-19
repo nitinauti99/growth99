@@ -10,17 +10,22 @@ import Foundation
 
 protocol ClinicsListViewModelProtocol {
     func getClinicsList()
-    var  clinicsData: [ClinicsListModel] { get }
-    func clinicsDataAtIndex(index: Int) -> ClinicsListModel?
-    var  clinicsFilterDataData: [ClinicsListModel] { get }
-    func clinicsFilterDataAtIndex(index: Int)-> ClinicsListModel?
+   
+    func getClinicsFilterData(searchText: String)
+    
+    func getClinicsDataAtIndex(index: Int)-> ClinicsListModel?
+    func getClinicsFilterDataAtIndex(index: Int)-> ClinicsListModel?
+    
+    var  getClinicsListData: [ClinicsListModel] { get }
+    var  getClinicsFilterListData: [ClinicsListModel] { get }
 }
 
 class ClinicsListViewModel {
     var delegate: ClinicsListViewContollerProtocol?
-    var clinicsListData: [ClinicsListModel] = []
-    var clinicsFilterData: [ClinicsListModel] = []
     var allClinics: [Clinics]?
+    var clinicList: [ClinicsListModel] = []
+    var clinicListFilterData: [ClinicsListModel] = []
+
     
     init(delegate: ClinicsListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -31,8 +36,8 @@ class ClinicsListViewModel {
     func getClinicsList() {
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[ClinicsListModel], GrowthNetworkError>) in
             switch result {
-            case .success(let userData):
-                self.clinicsListData = userData
+            case .success(let clinicListData):
+                self.clinicList = clinicListData
                 self.delegate?.ClinicsDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -40,23 +45,27 @@ class ClinicsListViewModel {
             }
         }
     }
-    
-    func clinicsDataAtIndex(index: Int)-> ClinicsListModel? {
-        return self.clinicsListData[index]
-    }
-    
-    func clinicsFilterDataAtIndex(index: Int)-> ClinicsListModel? {
-        return self.clinicsListData[index]
-    }
 }
 
 extension ClinicsListViewModel: ClinicsListViewModelProtocol {
-    
-    var clinicsFilterDataData: [ClinicsListModel] {
-        return self.clinicsFilterData
+
+    func getClinicsFilterData(searchText: String) {
+        self.clinicListFilterData = (self.getClinicsListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
-    var clinicsData: [ClinicsListModel] {
-        return self.clinicsListData
+    func getClinicsDataAtIndex(index: Int)-> ClinicsListModel? {
+        return self.getClinicsListData[index]
+    }
+    
+    func getClinicsFilterDataAtIndex(index: Int)-> ClinicsListModel? {
+        return self.clinicListFilterData[index]
+    }
+    
+    var getClinicsListData: [ClinicsListModel] {
+        return self.clinicList
+    }
+   
+    var getClinicsFilterListData: [ClinicsListModel] {
+         return self.clinicListFilterData
     }
 }

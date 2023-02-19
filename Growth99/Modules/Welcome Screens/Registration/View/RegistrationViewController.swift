@@ -189,17 +189,17 @@ extension RegistrationViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         
-        if textField == emailTextField, let passwordValidate = viewModel?.isValidEmail(textField.text ?? ""), passwordValidate == false {
+        if textField == emailTextField, let passwordValidate = viewModel?.isValidEmail(textField.text ?? String.blank), passwordValidate == false {
             emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
         
-        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField.text ?? ""), phoneNumberValidate == false {
+        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField.text ?? String.blank), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return
         }
         
-        if textField == passwordTextField, let passwordValidate = viewModel?.isValidPassword(textField.text ?? ""), passwordValidate == false {
+        if textField == passwordTextField, let passwordValidate = viewModel?.isValidPassword(textField.text ?? String.blank), passwordValidate == false {
             passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
             return
         }

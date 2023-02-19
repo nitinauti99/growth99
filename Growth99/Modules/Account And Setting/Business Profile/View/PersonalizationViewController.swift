@@ -9,6 +9,8 @@ import UIKit
 
 class PersonalizationViewController: UIViewController {
 
+    var bussinessInfoData: BusinessSubDomainModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

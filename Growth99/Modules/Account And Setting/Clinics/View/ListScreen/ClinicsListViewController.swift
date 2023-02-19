@@ -54,7 +54,7 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     
     func addSerchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -92,9 +92,19 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return filteredTableData.count
-        }else{
-            return viewModel?.clinicsData.count ?? 0
+            if viewModel?.getClinicsFilterListData.count ?? 0 == 0 {
+                self.clinicsListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.clinicsListTableView.restore()
+            }
+            return viewModel?.getClinicsFilterListData.count ?? 0
+        } else {
+            if viewModel?.getClinicsListData.count ?? 0 == 0 {
+                self.clinicsListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.clinicsListTableView.restore()
+            }
+            return viewModel?.getClinicsListData.count ?? 0
         }
     }
     
@@ -102,10 +112,9 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
         var cell = ClinicsListTableViewCell()
         cell = clinicsListTableView.dequeueReusableCell(withIdentifier: "ClinicsListTableViewCell") as! ClinicsListTableViewCell
         if isSearch {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCell(clinicsFilterList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
-            cell.configureCell(userVM: viewModel, index: indexPath)
-            
+            cell.configureCell(clinicsListData: viewModel, index: indexPath)
         }
         return cell
     }
@@ -117,7 +126,11 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let clinicDetailVC = UIStoryboard(name: "ClinicsListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsListDetailViewController") as! ClinicsListDetailViewController
         clinicDetailVC.screenTitle = Constant.Profile.editClinic
-        clinicDetailVC.clinicId = viewModel?.clinicsData[indexPath.row].id ?? 0
+        if isSearch {
+            clinicDetailVC.clinicId = viewModel?.getClinicsFilterListData[indexPath.row].id
+        } else {
+            clinicDetailVC.clinicId = viewModel?.getClinicsListData[indexPath.row].id
+        }
         self.navigationController?.pushViewController(clinicDetailVC, animated: true)
     }
 }
@@ -125,7 +138,7 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
 extension ClinicsListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.clinicsData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        viewModel?.getClinicsFilterData(searchText: searchText)
         isSearch = true
         clinicsListTableView.reloadData()
     }

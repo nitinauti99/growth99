@@ -51,7 +51,11 @@ extension AppointmentsViewController: UITableViewDelegate, UITableViewDataSource
         guard let editVC = UIViewController.loadStoryboard("AppointmentListDetailViewController", "AppointmentListDetailViewController") as? AppointmentListDetailViewController else {
             fatalError("Failed to load AppointmentListDetailViewController from storyboard.")
         }
-        editVC.appointmentId = viewModel?.getProfileAppoinmentListData[indexPath.row].id
+        if isSearch {
+            editVC.appointmentId = viewModel?.getProfileAppoinmentFilterListData[indexPath.row].id
+        } else {
+            editVC.appointmentId = viewModel?.getProfileAppoinmentListData[indexPath.row].id
+        }
         navigationController?.pushViewController(editVC, animated: true)
     }
 }

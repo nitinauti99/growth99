@@ -145,7 +145,7 @@ class leadDetailViewModel {
 extension leadDetailViewModel: leadDetailViewProtocol {
   
     var leadStatus: String {
-        return  self.questionnaireDetailList?.leadStatus ?? ""
+        return  self.questionnaireDetailList?.leadStatus ?? String.blank
     }
 
     var smsTemplateListData: [SMStemplatesListDetailModel]? {

@@ -11,6 +11,7 @@ protocol CategoriesAddViewContollerProtocol {
     func errorReceived(error: String)
     func clinicsRecived()
     func addCategoriesResponse()
+    func categoriesResponseReceived()
 }
 
 class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol {
@@ -24,26 +25,18 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     var categoriesAddViewModel: CategoriesAddEditViewModelProtocol?
     var screenTitle: String = Constant.Profile.addCategories
     var categoryName: String = String.blank
-    var clinicName: String = String.blank
+    var categoryId: Int?
+    var userClinics = [ClinicsServices]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         categoriesAddViewModel = CategoriesAddEditViewModel(delegate: self)
         setUpNavigationBar()
-        setupUI()
         getClinicInfo()
     }
     
     func setUpNavigationBar() {
         self.title = screenTitle
-    }
-    
-    func setupUI() {
-        if title == Constant.Profile.editCategories {
-            categoriesNameTextField.text = categoryName
-        } else {
-            categoriesNameTextField.text = String.blank
-        }
     }
     
     func getClinicInfo() {
@@ -54,6 +47,28 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     func clinicsRecived() {
         self.view.HideSpinner()
         allClinics = categoriesAddViewModel?.getAllClinicsData ?? []
+        setupUI()
+    }
+    
+    func setupUI() {
+        if title == Constant.Profile.editCategories {
+            self.view.ShowSpinner()
+            categoriesAddViewModel?.getCategoriesInfo(categoryId: categoryId ?? 0)
+        } else {
+            categoriesNameTextField.text = String.blank
+            clincsTextField.text = String.blank
+        }
+    }
+    
+    func categoriesResponseReceived() {
+        self.view.HideSpinner()
+        setupCategoriesEditUI()
+    }
+    
+    func setupCategoriesEditUI() {
+        categoriesNameTextField.text = categoriesAddViewModel?.getAllCategoriesData?.name
+        userClinics = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
+        clincsTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
     }
     
     func addCategoriesResponse() {
@@ -77,7 +92,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincIds = selectedId
             self?.selectedClincs  = selectedList

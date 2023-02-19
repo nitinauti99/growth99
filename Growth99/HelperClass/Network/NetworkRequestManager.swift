@@ -20,7 +20,7 @@ class RequestManager: NetworkManager {
     func Headers()-> [HTTPHeader] {
         return [.custom(key: "x-tenantid", value: UserRepository.shared.Xtenantid ?? String.blank),
              .custom(key: "Content-Type", value: "application/json"),
-             .authorization("Bearer "+(UserRepository.shared.authToken ?? ""))]
+             .authorization("Bearer "+(UserRepository.shared.authToken ?? String.blank))]
      }
     
     func queryItems(from params: [String: Any]) -> [URLQueryItem] {

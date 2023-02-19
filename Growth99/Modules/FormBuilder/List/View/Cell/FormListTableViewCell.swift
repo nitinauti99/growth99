@@ -34,8 +34,8 @@ class FormListTableViewCell: UITableViewCell {
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
         self.NumberOfQustion.text = String(FormList?.noOfQuestions ?? 0)
-        self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? String.blank)
         indexPath = index
     }
     
@@ -44,8 +44,8 @@ class FormListTableViewCell: UITableViewCell {
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
         self.NumberOfQustion.text = String((FormList?.noOfQuestions ?? Int("-")) ?? 0)
-        self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? String.blank)
         indexPath = index
     }
     

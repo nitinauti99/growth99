@@ -14,6 +14,6 @@ class SubMenuTableViewCell: UITableViewCell {
     
     func configure(titleData: menuList, row: Int){
         self.menuTitle.text = titleData.subMenuList?[row].title
-        menuIcon.image = UIImage.fontAwesomeIcon(code: titleData.subMenuList?[row].imageName ?? "", style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
+        menuIcon.image = UIImage.fontAwesomeIcon(code: titleData.subMenuList?[row].imageName ?? String.blank, style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
     }
 }

@@ -17,6 +17,8 @@ class CategoriesListTableViewCell: UITableViewCell {
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var subView: UIView!
     
+    var indexPath = IndexPath()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,15 +26,27 @@ class CategoriesListTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color:.gray)
         
     }
+
+    func configureCell(categoriesFilterList: CategoriesListViewModelProtocol?, index: IndexPath, isSearch: Bool) {
+        let categoriesList = categoriesFilterList?.getCategoriesFilterDataAtIndex(index: index.row)
+        self.nameLabel.text = categoriesList?.name
+        self.id.text = String(categoriesList?.id ?? 0)
+        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdBy.text = categoriesList?.createdBy
+        self.updatedBy.text = categoriesList?.updatedBy
+        indexPath = index
+    }
     
-    func configureCell(userVM: CategoriesListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.categoriesDataAtIndex(index: index.row)
-        self.nameLabel.text = userVM?.name
-        self.id.text = String(userVM?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? "")
-        self.createdBy.text = userVM?.createdBy
-        self.updatedBy.text = userVM?.updatedBy
+    func configureCell(categoriesListData: CategoriesListViewModelProtocol?, index: IndexPath) {
+        let categoriesList = categoriesListData?.getCategoriesDataAtIndex(index: index.row)
+        self.nameLabel.text = categoriesList?.name
+        self.id.text = String(categoriesList?.id ?? 0)
+        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdBy.text = categoriesList?.createdBy
+        self.updatedBy.text = categoriesList?.updatedBy
+        indexPath = index
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

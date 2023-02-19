@@ -172,7 +172,7 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     
     @IBAction func saveAction(sender: UIButton){
         let createFormList: [String : Any] = [
-            "name": self.questionnaireName.text ?? "",
+            "name": self.questionnaireName.text ?? String.blank,
             "isPublic": self.Make_Public.isSelected,
             "enableModernUi": self.Enable_ModernUI.isSelected,
             "showTitle": self.Show_title_Form.isSelected,
@@ -180,9 +180,9 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
             "isCustom": self.is_Custom.isSelected,
             "isLeadForm": self.Make_lead_generationForm.isSelected,
             "showThankYouPageUrlLinkInContactForm": self.Show_Thank_page_URL_ContactForm.isSelected,
-            "thankYouPageUrl": Show_Thank_page_URL_ContactForm_TextView.text ?? "",
+            "thankYouPageUrl": Show_Thank_page_URL_ContactForm_TextView.text ?? String.blank,
             "configureThankYouMessageInContactForm": ConfigureThank_page_message_contactForm.isSelected,
-            "thankYouPageMessageContactForm": ConfigureThank_page_message_contactForm_TextView.text ?? "",
+            "thankYouPageMessageContactForm": ConfigureThank_page_message_contactForm_TextView.text ?? String.blank,
 
             "chatQuestionnaire": false,
             "buttonBackgroundColor": "#357ffa",

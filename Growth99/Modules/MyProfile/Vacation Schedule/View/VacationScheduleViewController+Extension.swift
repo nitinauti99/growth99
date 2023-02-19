@@ -52,8 +52,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
         
         if isEmptyResponse == false {
-            cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? "")
-            cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? "")
+            cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? String.blank)
+            cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? String.blank)
             if vacationsList[indexPath.section].userScheduleTimings?.count ?? 0 > 1 {
                 cell.removeTimeButton.isHidden = false
             } else {
@@ -145,7 +145,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-            vacationCell.updateTimeFromTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? "")
+            vacationCell.updateTimeFromTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? String.blank)
         }
     }
     
@@ -156,7 +156,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
-            vacationCell.updateTimeToTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? "")
+            vacationCell.updateTimeToTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? String.blank)
           }
       }
 }

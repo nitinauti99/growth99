@@ -200,7 +200,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincs  = selectedList
             self?.selectedClincIds = selectedId.first ?? 0
@@ -220,7 +220,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         selectionMenu.setSelectedItems(items: selectedServices) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.servicesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.servicesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServices  = selectedList
             self?.selectedServicesIds = selectedId
@@ -251,7 +251,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             if self?.userSelectedDate == "Manual" {
                 self?.eventViewModel?.getDatesList(clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [])
             } else {
-                self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.localInputToServerInput(date: self?.dateTextField.text ?? String.blank) ?? "", clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+                self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.localInputToServerInput(date: self?.dateTextField.text ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
             }
         }
         selectionMenu.reloadInputViews()
@@ -265,7 +265,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? "")
+            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? String.blank)
         }
         
         selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -273,7 +273,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             self?.selectedDate = selectedList[0]
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? "") ?? "", clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -286,7 +286,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? "")
+            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? String.blank)
         }
         
         selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in

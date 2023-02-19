@@ -44,7 +44,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.mainMenuList = viewModel?.loadJson() ?? []
         self.hiddenSections = Set(0...mainMenuList.count)
         self.roles.text = UserRepository.shared.roles
-        self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? ""), placeholderImage: UIImage(named: "Logo.png"))
+        self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
 
         scrollview.delegate = self
         

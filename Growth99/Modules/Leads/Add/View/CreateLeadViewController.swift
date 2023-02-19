@@ -143,28 +143,28 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             let item = patientQuestionList[cellIndexPath.row]
             /// InputType
             if let InputTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? InputTypeTableViewCell {
-                print(InputTypeCell.inputeTypeLbi.text ?? "")
+                print(InputTypeCell.inputeTypeLbi.text ?? String.blank)
                 
-                guard let txtField = InputTypeCell.inputeTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                guard let txtField = InputTypeCell.inputeTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
                     InputTypeCell.inputeTypeTextField.showError(message: item.validationMessage)
                     return
                 }
-                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: InputTypeCell.inputeTypeTextField.text ?? "")
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: InputTypeCell.inputeTypeTextField.text ?? String.blank)
             }
             /// textType
             if let textTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? TextTypeTableViewCell {
-                print(textTypeCell.textTypeLbi.text ?? "")
-                guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                print(textTypeCell.textTypeLbi.text ?? String.blank)
+                guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
                     textTypeCell.errorTypeLbi.isHidden = false
                     textTypeCell.errorTypeLbi.text =  item.validationMessage
                     return
                 }
-                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? "")
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? String.blank)
             }
             
             /// yesNoType
             if let yesNoTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? YesNoTypeTableViewCell {
-                print(yesNoTypeCell.yesNoTypeLbi.text ?? "")
+                print(yesNoTypeCell.yesNoTypeLbi.text ?? String.blank)
                 print(yesNoTypeCell.yesTypeButton.isSelected)
                 print(yesNoTypeCell.NoTypeButton.isSelected)
                 self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: yesNoTypeCell.yesTypeButton.isSelected )
@@ -172,7 +172,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             
             /// MultipleSelectionType
             if let MultipleSelectionCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextTypeTableViewCell {
-                print(MultipleSelectionCell.inputeTypeLbi.text ?? "")
+                print(MultipleSelectionCell.inputeTypeLbi.text ?? String.blank)
                 var selectedStringArray = [String]()
                 var patientQuestionChoicesList: [Any] = []
                 var index = 0
@@ -180,10 +180,10 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                     print(view.tag)
                     if let inputTypeTxtField = view.viewWithTag(k) as? PassableUIButton {
                         print(inputTypeTxtField.isSelected)
-                        print(inputTypeTxtField.titleLabel?.text ?? "")
+                        print(inputTypeTxtField.titleLabel?.text ?? String.blank)
                         
                         if inputTypeTxtField.isSelected {
-                            selectedStringArray.append(inputTypeTxtField.titleLabel?.text ?? "")
+                            selectedStringArray.append(inputTypeTxtField.titleLabel?.text ?? String.blank)
                         }
                         
                         if let itemList = item.patientQuestionChoices?[index] {
@@ -200,18 +200,18 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             
             /// DropDownType
             if let dropDownTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionWithDropDownTypeTableViewCell {
-                print(dropDownTypeCell.dropDownTypeLbi.text ?? "")
+                print(dropDownTypeCell.dropDownTypeLbi.text ?? String.blank)
                 
-                guard let txtField = dropDownTypeCell.dropDownTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                guard let txtField = dropDownTypeCell.dropDownTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
                     dropDownTypeCell.dropDownTypeTextField.showError(message: item.validationMessage)
                     return
                 }
-                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dropDownTypeCell.dropDownTypeTextField.text ?? "")
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dropDownTypeCell.dropDownTypeTextField.text ?? String.blank)
             }
             
             /// preSelectCheckboxType
             if let preSelectCheckboxCell = createLeadTableView.cellForRow(at: cellIndexPath) as? PreSelectCheckboxTableViewCell {
-                print(preSelectCheckboxCell.preSelectCheckbox.text ?? "")
+                print(preSelectCheckboxCell.preSelectCheckbox.text ?? String.blank)
                 print(preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
                 
                 self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
@@ -220,7 +220,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             /// multipleSelectionFalseType
             if let multipleSelectionTextWithFalseCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextWithFalseTableViewCell {
                 var selectedString: String = ""
-                print(multipleSelectionTextWithFalseCell.multipleSelectionTypeLbi.text ?? "")
+                print(multipleSelectionTextWithFalseCell.multipleSelectionTypeLbi.text ?? String.blank)
                 print(multipleSelectionTextWithFalseCell.isSelected)
                 var j = 0
                 for view in multipleSelectionTextWithFalseCell.contentView.subviews {
@@ -228,9 +228,9 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
                     if let buttonField = view.viewWithTag(j) as? PassableUIButton {
                         print(buttonField.isSelected)
                         if buttonField.isSelected {
-                            selectedString = buttonField.titleLabel?.text ?? ""
+                            selectedString = buttonField.titleLabel?.text ?? String.blank
                         }
-                        print(buttonField.titleLabel?.text ?? "")
+                        print(buttonField.titleLabel?.text ?? String.blank)
                         j += 1
                     }
                     self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: selectedString)
@@ -239,14 +239,14 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             
             /// DateType
             if let dateTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? DateTypeTableViewCell {
-                print(dateTypeCell.dateTypeLbi.text ?? "")
-                print(dateTypeCell.dateTypeTextField.text ?? "")
+                print(dateTypeCell.dateTypeLbi.text ?? String.blank)
+                print(dateTypeCell.dateTypeTextField.text ?? String.blank)
                 
-                guard let txtField = dateTypeCell.dateTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? "") , isValid else {
+                guard let txtField = dateTypeCell.dateTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
                     dateTypeCell.dateTypeTextField.showError(message: item.validationMessage)
                     return
                 }
-                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dateTypeCell.dateTypeTextField.text ?? "")
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dateTypeCell.dateTypeTextField.text ?? String.blank)
             }
         }
         
@@ -275,15 +275,15 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any], selectedString:[String] = []){
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? "",
-            "questionType": patientQuestionAnswersList.questionType ?? "",
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
             "allowMultipleSelection": false,
             "preSelectCheckbox": false,
             "answer": "",
-            "answerText": patientQuestionAnswersList.answerText ?? "",
+            "answerText": patientQuestionAnswersList.answerText ?? String.blank,
             "answerComments": "",
             "patientQuestionChoices": patientQuestionList,
-            "required": patientQuestionAnswersList.required ?? "",
+            "required": patientQuestionAnswersList.required ?? String.blank,
             "hidden": patientQuestionAnswersList.hidden ?? false,
             "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]
@@ -294,15 +294,15 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String) {
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? "",
-            "questionType": patientQuestionAnswersList.questionType ?? "",
-            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? "",
-            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? "",
-            "answer": patientQuestionAnswersList.answer ?? "",
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+            "answer": patientQuestionAnswersList.answer ?? String.blank,
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
-            "required": patientQuestionAnswersList.required ?? "",
+            "required": patientQuestionAnswersList.required ?? String.blank,
             "hidden": patientQuestionAnswersList.hidden ?? false,
             "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]
@@ -312,15 +312,15 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? "",
-            "questionType": patientQuestionAnswersList.questionType ?? "",
-            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? "",
-            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? "",
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
             "answer": answerText,
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
-            "required": patientQuestionAnswersList.required ?? "",
+            "required": patientQuestionAnswersList.required ?? String.blank,
             "hidden": patientQuestionAnswersList.hidden ?? false,
             "showDropDown": patientQuestionAnswersList.showDropDown ?? false
         ]

@@ -32,8 +32,8 @@ class TaskListTableViewCell: UITableViewCell {
         self.assignedTo.text = userVM?.userName
         self.id.text = String(userVM?.id ?? 0)
         self.status.text = userVM?.status
-        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? "")
-        self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? "")
+        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

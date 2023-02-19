@@ -63,9 +63,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
     
     @IBAction func statusSwitchChanges(_ sender: UIButton) {
         if statusLabelSwitch.isOn {
-            delegate?.didTapSwitchButton(triggerId: self.id.text ?? "", triggerStatus: "ACTIVE")
+            delegate?.didTapSwitchButton(triggerId: self.id.text ?? String.blank, triggerStatus: "ACTIVE")
         } else {
-            delegate?.didTapSwitchButton(triggerId: self.id.text ?? "", triggerStatus: "INACTIVE")
+            delegate?.didTapSwitchButton(triggerId: self.id.text ?? String.blank, triggerStatus: "INACTIVE")
         }
     }
     

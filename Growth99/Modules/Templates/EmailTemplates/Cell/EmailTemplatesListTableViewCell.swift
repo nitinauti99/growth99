@@ -35,8 +35,8 @@ class EmailTemplatesListTableViewCell: UITableViewCell {
         self.id.text = String(emailTemplateList?.id ?? 0)
         self.createdBy.text = emailTemplateList?.createdBy
         self.templateFor.text = emailTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: emailTemplateList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: emailTemplateList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: emailTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: emailTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
     
@@ -46,8 +46,8 @@ class EmailTemplatesListTableViewCell: UITableViewCell {
         self.id.text = String(emailTemplateList?.id ?? 0)
         self.createdBy.text = emailTemplateList?.createdBy
         self.templateFor.text = emailTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: emailTemplateList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: emailTemplateList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: emailTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: emailTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
 }

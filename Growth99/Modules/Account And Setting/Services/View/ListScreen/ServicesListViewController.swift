@@ -59,7 +59,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     
     func addSerchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -106,9 +106,19 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return filteredTableData.count
+            if viewModel?.getServiceFilterListData.count ?? 0 == 0 {
+                self.servicesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.servicesListTableView.restore()
+            }
+            return viewModel?.getServiceFilterListData.count ?? 0
         } else {
-            return viewModel?.serviceData.count ?? 0
+            if viewModel?.getServiceListData.count ?? 0 == 0 {
+                self.servicesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.servicesListTableView.restore()
+            }
+            return viewModel?.getServiceListData.count ?? 0
         }
     }
     
@@ -116,9 +126,9 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
         var cell = ServicesListTableViewCell()
         cell = servicesListTableView.dequeueReusableCell(withIdentifier: "ServicesListTableViewCell") as! ServicesListTableViewCell
         if isSearch {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCell(serviceFilterList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCell(serviceListData: viewModel, index: indexPath)
             
         }
         return cell
@@ -133,7 +143,11 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
             fatalError("Failed to load ServicesListDetailViewController from storyboard.")
         }
         createServiceVC.screenTitle = Constant.Profile.editService
-        createServiceVC.serviceId = viewModel?.serviceData[indexPath.row].id ?? 0
+        if isSearch {
+            createServiceVC.serviceId = viewModel?.getServiceFilterListData[indexPath.row].id
+        } else {
+            createServiceVC.serviceId = viewModel?.getServiceListData[indexPath.row].id
+        }
         self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
 }
@@ -141,7 +155,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
 extension ServicesListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.serviceData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        viewModel?.getServiceFilterData(searchText: searchText)
         isSearch = true
         servicesListTableView.reloadData()
     }
