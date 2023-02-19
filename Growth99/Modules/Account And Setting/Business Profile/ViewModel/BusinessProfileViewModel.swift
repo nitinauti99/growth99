@@ -23,7 +23,7 @@ class BusinessProfileViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func saveBusinessInfo(name: String, trainingBusiness: Bool) {
-        let finaleUrl = ApiUrl.bussinessInfo + "\(UserRepository.shared.Xtenantid ?? "")"
+        let finaleUrl = ApiUrl.bussinessInfo + "\(UserRepository.shared.Xtenantid ?? String.blank)"
         let parameter: [String : Any] = ["name": name,
                                          "trainingBusiness": trainingBusiness
                                          ]

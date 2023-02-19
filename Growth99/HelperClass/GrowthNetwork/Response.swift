@@ -54,7 +54,7 @@ public final class Response: CustomDebugStringConvertible {
             \(headers)
             """
         } ?? "nil"
-        let metricsDescription = metrics?.description ?? ""
+        let metricsDescription = metrics?.description ?? String.blank
 
         return """
         [Request]: \(requestDescription)

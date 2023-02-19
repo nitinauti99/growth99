@@ -44,8 +44,8 @@ class RefundPolicyViewController: UIViewController {
             return
         }
         self.view.ShowSpinner()
-        let paymentRefund = Int(paymentRefundableTF.text ?? "") ?? 0
-        let refundePercentage = Int(refundablePercentageTF.text ?? "") ?? 0
+        let paymentRefund = Int(paymentRefundableTF.text ?? String.blank) ?? 0
+        let refundePercentage = Int(refundablePercentageTF.text ?? String.blank) ?? 0
         saveSubDomainInfo(paymentRefundable: paymentRefundable, paymentRefundableText: paymentRefund, refundablePercentage: refundePercentage)
     }
     

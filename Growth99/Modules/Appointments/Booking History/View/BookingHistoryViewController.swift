@@ -78,7 +78,7 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     
     func addSerchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -104,7 +104,7 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     func appointmentListDataRecivedBookingHistory() {
         self.view.HideSpinner()
         bookingHistoryListData = viewModel?.appointmentInfoListDataBookingHistory ?? []
-        bookingHistoryListData = bookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? "") > ($1.appointmentCreatedDate ?? "")})
+        bookingHistoryListData = bookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? String.blank) > ($1.appointmentCreatedDate ?? String.blank)})
         self.bookingHistoryTableView.setContentOffset(.zero, animated: true)
         self.bookingHistoryTableView.reloadData()
     }

@@ -31,8 +31,8 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesFilterList?.getCategoriesFilterDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? "")
+        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index
@@ -42,13 +42,12 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesListData?.getCategoriesDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? "")
+        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index
     }
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

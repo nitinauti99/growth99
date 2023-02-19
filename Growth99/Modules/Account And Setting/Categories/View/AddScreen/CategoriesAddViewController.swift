@@ -68,7 +68,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     func setupCategoriesEditUI() {
         categoriesNameTextField.text = categoriesAddViewModel?.getAllCategoriesData?.name
         userClinics = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
-        clincsTextField.text = userClinics.map({$0.clinic?.name ?? ""}).joined(separator: ", ")
+        clincsTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
     }
     
     func addCategoriesResponse() {
@@ -92,7 +92,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincIds = selectedId
             self?.selectedClincs  = selectedList

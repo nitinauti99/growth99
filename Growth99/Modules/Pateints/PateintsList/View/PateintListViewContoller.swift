@@ -60,7 +60,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     
     func addSerchBar(){
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -77,7 +77,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.PateintDataAtIndex(index: index.row)?.name ?? "")", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.PateintDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()

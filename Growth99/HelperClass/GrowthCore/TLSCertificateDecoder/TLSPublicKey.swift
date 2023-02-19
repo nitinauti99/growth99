@@ -13,7 +13,7 @@ public class TLSPublicKey {
     }
 
     public var algoName: String? {
-        algoIds[algoOID ?? ""]
+        algoIds[algoOID ?? String.blank]
     }
 
     var key: Data? {

@@ -32,8 +32,8 @@ class UserListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? "")
+        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
     }
@@ -44,8 +44,8 @@ class UserListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? "")
+        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
     }

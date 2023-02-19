@@ -100,7 +100,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
             self.userProviderViewHight.constant = 300
             self.userProviderView.isHidden = false
         }
-        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? ""
+        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
         setUpUI()
     }
     
@@ -111,7 +111,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         /// get From allclinincsapi
         allClinics = viewModel?.getAllClinicsData ?? []
         
-        self.clincsTextField.text = selectedClincs.map({$0.name ?? ""}).joined(separator: ", ")
+        self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
         let selectedClincId = selectedClincs.map({$0.id ?? 0})
         self.selectedClincIds = selectedClincId
         self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
@@ -128,7 +128,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
                 itemNotPresent =  true
             }
         }
-        self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? ""}).joined(separator: ", ")
+        self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? String.blank}).joined(separator: ", ")
         let selectedList = selectedServiceCategories.map({$0.id ?? 0})
         self.selectedServiceCategoriesIds = selectedList
         
@@ -147,7 +147,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         
         let selectedList = selectedService.map({$0.id ?? 0})
         self.selectedServiceIds = selectedList
-        self.servicesTextField.text = selectedService.map({$0.name ?? ""}).joined(separator: ", ")
+        self.servicesTextField.text = selectedService.map({$0.name ?? String.blank}).joined(separator: ", ")
     }
     
     func profileDataUpdated(){
@@ -213,7 +213,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincIds = selectedId
             self?.selectedClincs  = selectedList
@@ -236,7 +236,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
             
-            self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServiceCategoriesIds = selectedId
             self?.selectedServiceCategories = selectedList
@@ -267,7 +267,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServiceIds = selectedId
             self?.selectedService = selectedList
-            self?.servicesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.servicesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
         }
         selectionMenu.showEmptyDataLabel(text: "No Services Found")
         selectionMenu.cellSelectionStyle = .checkbox
@@ -293,7 +293,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     
     @IBAction func saveUserProfile() {
         self.view.ShowSpinner()
-        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? "", clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
+        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: phoneNumberTextField.text ?? String.blank, roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
     }
     
     @IBAction func cancelUserProfile(){
@@ -338,7 +338,7 @@ extension HomeViewContoller: UITextFieldDelegate {
         if textField == phoneNumberTextField, textField.text == "" {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
         }
-        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
+        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
         }
     }

@@ -32,7 +32,7 @@ class MenuTableViewCell: UITableViewHeaderFooterView {
     }
     
     @objc func selectHeaderAction(gestureRecognizer: UITapGestureRecognizer) {
-        delegate?.tappedSection(cell: self, section: section, title: self.title ?? "")
+        delegate?.tappedSection(cell: self, section: section, title: self.title ?? String.blank)
     }
     
     func configure(mainMenuList: menuList, section: Int, delegate: SubMenuTableViewCellDelegate) {
@@ -40,7 +40,7 @@ class MenuTableViewCell: UITableViewHeaderFooterView {
         self.delegate = delegate
         self.title = mainMenuList.title
         self.menuTitle.text = mainMenuList.title
-        menuIcon.image = UIImage.fontAwesomeIcon(code: mainMenuList.imageName ?? "", style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
+        menuIcon.image = UIImage.fontAwesomeIcon(code: mainMenuList.imageName ?? String.blank, style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
         if mainMenuList.subMenuList?.count == nil {
             self.forwordArrow.isHidden = true
         } else{

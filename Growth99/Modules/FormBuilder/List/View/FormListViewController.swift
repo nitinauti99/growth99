@@ -53,7 +53,7 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     
     func addSerchBar(){
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -63,10 +63,10 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     func removePatieint(cell: FormListTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var consentsId = Int()
-        consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? ""
+        consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? String.blank
         consentsId = viewModel?.FormDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
-            consentsName = viewModel?.FormFilterDataAtIndex(index: index.row)?.name ?? ""
+            consentsName = viewModel?.FormFilterDataAtIndex(index: index.row)?.name ?? String.blank
             consentsId =  viewModel?.FormFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         

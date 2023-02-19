@@ -46,7 +46,7 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
             for item in item.patientQuestionChoices ?? [] {
                     let button1 = PassableUIButton(frame: CGRect(x: 30, y: buttonY, width: 100, height: 20))
                     button1.setTitleColor(UIColor.black, for: .normal)
-                    let title = " " + (item.choiceName ?? "")
+                    let title = " " + (item.choiceName ?? String.blank)
                     button1.setTitle(title , for: .normal)
                     button1.contentHorizontalAlignment = .left
                     button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
@@ -84,7 +84,7 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
             for item in item.patientQuestionChoices ?? [] {
                     let button1 = PassableUIButton(frame: CGRect(x: 30, y: buttonY, width: 100, height: 20))
                     button1.setTitleColor(UIColor.black, for: .normal)
-                    let title = " " + (item.choiceName ?? "")
+                    let title = " " + (item.choiceName ?? String.blank)
                     button1.setTitle(title , for: .normal)
                     button1.contentHorizontalAlignment = .left
                     button1.setImage(UIImage(named: "tickdefault")!, for: .normal)

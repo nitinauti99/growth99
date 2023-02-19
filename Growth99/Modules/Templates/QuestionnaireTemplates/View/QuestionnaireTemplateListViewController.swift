@@ -36,7 +36,7 @@ class QuestionnaireTemplateListViewController: UIViewController, QuestionnaireTe
     
     func addSerchBar(){
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -51,10 +51,10 @@ class QuestionnaireTemplateListViewController: UIViewController, QuestionnaireTe
     func removePatieint(cell: QuestionnaireTemplateListTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var questionnaireId = Int()
-            consentsName = viewModel?.getqQuestionnaireTemplateDataAtIndex(index: index.row)?.name ?? ""
+            consentsName = viewModel?.getqQuestionnaireTemplateDataAtIndex(index: index.row)?.name ?? String.blank
             questionnaireId = viewModel?.getqQuestionnaireTemplateDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
-            consentsName = viewModel?.getQuestionnaireTemplateFilterDataAtIndex(index: index.row)?.name ?? ""
+            consentsName = viewModel?.getQuestionnaireTemplateFilterDataAtIndex(index: index.row)?.name ?? String.blank
             questionnaireId =  viewModel?.getQuestionnaireTemplateFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         

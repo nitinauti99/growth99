@@ -30,8 +30,8 @@ class ConsentsListTableViewCell: UITableViewCell {
         self.consentName.text = consentsVM?.name
         self.appointmentID.text = String(consentsVM?.appointmentId ?? 0)
         self.consentStatus.text = consentsVM?.appointmentConsentStatus
-        self.appointmentDate.text = dateFormater?.serverToLocal(date: consentsVM?.appointmentDate ?? "")
-        self.createdDate.text = dateFormater?.serverToLocal(date: consentsVM?.createdAt ?? "")
-        self.signedDate.text = dateFormater?.serverToLocal(date: consentsVM?.signedDate ?? "")
+        self.appointmentDate.text = dateFormater?.serverToLocal(date: consentsVM?.appointmentDate ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: consentsVM?.createdAt ?? String.blank)
+        self.signedDate.text = dateFormater?.serverToLocal(date: consentsVM?.signedDate ?? String.blank)
     }
 }

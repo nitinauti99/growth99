@@ -98,7 +98,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-            vacationCell.updateTimeFromTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? "")
+            vacationCell.updateTimeFromTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? String.blank)
         }
     }
     
@@ -108,7 +108,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-            vacationCell.updateTimeToTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? "")
+            vacationCell.updateTimeToTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? String.blank)
         }
     }
     

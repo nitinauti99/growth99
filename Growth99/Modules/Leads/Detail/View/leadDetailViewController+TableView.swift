@@ -73,7 +73,7 @@ extension leadDetailViewController: UITableViewDelegate, UITableViewDataSource {
           cell.emailSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
           cell.emailSendButton.addTarget(self, action: #selector(self.sendCustomEmailTemplateList(_:)), for:.touchUpInside)
            emailBody = cell.emailTextView.text
-           emailSubject = cell.emailTextFiled.text ?? ""
+           emailSubject = cell.emailTextFiled.text ?? String.blank
            cell.emailSendButton.tag = indexPath.row
            cell.errorLbi.isHidden = true
 

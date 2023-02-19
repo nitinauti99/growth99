@@ -44,7 +44,7 @@ class ConsentsListViewController: UIViewController, ConsentsListViewControllerPr
     
     func addSerchBar(){
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()

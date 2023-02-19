@@ -39,8 +39,8 @@ class QuestionnaireTemplateListTableViewCell: UITableViewCell {
         self.id.text = String(questionnaireTemplateList?.id ?? 0)
         self.createdBy.text = questionnaireTemplateList?.createdBy
         self.templateFor.text = questionnaireTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: questionnaireTemplateList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: questionnaireTemplateList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: questionnaireTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: questionnaireTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
     
@@ -50,8 +50,8 @@ class QuestionnaireTemplateListTableViewCell: UITableViewCell {
         self.id.text = String(questionnaireTemplateList?.id ?? 0)
         self.createdBy.text = questionnaireTemplateList?.createdBy
         self.templateFor.text = questionnaireTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: questionnaireTemplateList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: questionnaireTemplateList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: questionnaireTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: questionnaireTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
     

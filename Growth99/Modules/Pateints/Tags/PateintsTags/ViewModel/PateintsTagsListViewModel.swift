@@ -46,7 +46,7 @@ class PateintsTagsListViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.pateintTagRemovedSuccefully(mrssage: data.success ?? "")
+                self.delegate?.pateintTagRemovedSuccefully(mrssage: data.success ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

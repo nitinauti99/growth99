@@ -38,8 +38,8 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         self.id.text = String(consentsTemplateList?.id ?? 0)
         self.createdBy.text = consentsTemplateList?.createdBy
         self.templateFor.text = consentsTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
     
@@ -49,8 +49,8 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         self.id.text = String(consentsTemplateList?.id ?? 0)
         self.createdBy.text = consentsTemplateList?.createdBy
         self.templateFor.text = consentsTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? "")
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? "")
+        self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
     

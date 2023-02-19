@@ -92,23 +92,23 @@ extension Metrics: CustomStringConvertible {
     }
 
     private var domainLookupTimeIntervalDescription: String {
-        "[Domain Lookup TimeInterval] :: \(String(format: "%.4f", self.domainLookupTimeInterval ?? ""))"
+        "[Domain Lookup TimeInterval] :: \(String(format: "%.4f", self.domainLookupTimeInterval ?? String.blank))"
     }
 
     private var tcpConnectionDescription: String {
-        "[TCP Connection TimeInterval] :: \(String(format: "%.4f", self.tcpConnectionTimeInterval ?? ""))"
+        "[TCP Connection TimeInterval] :: \(String(format: "%.4f", self.tcpConnectionTimeInterval ?? String.blank))"
     }
 
     private var tlsSecurityHandshakeDescription: String {
-        "[Security Handshake TimeInterval] :: \(String(format: "%.4f", self.tlsSecurityHandshakeTimeInterval ?? ""))"
+        "[Security Handshake TimeInterval] :: \(String(format: "%.4f", self.tlsSecurityHandshakeTimeInterval ?? String.blank))"
     }
 
     private var requestResourceDescription: String {
-        "[Request Resource TimeInterval] :: \(String(format: "%.4f", self.requestResourceTimeInterval ?? ""))"
+        "[Request Resource TimeInterval] :: \(String(format: "%.4f", self.requestResourceTimeInterval ?? String.blank))"
     }
 
     private var responseDescription: String {
-        "[Response TimeInterval] :: \(String(format: "%.4f", self.responseTimeInterval ?? ""))"
+        "[Response TimeInterval] :: \(String(format: "%.4f", self.responseTimeInterval ?? String.blank))"
     }
 
     private var taskIntervalDescription: String {

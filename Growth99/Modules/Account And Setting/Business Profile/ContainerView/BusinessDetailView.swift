@@ -29,11 +29,11 @@ class BusinessDetailView: UIViewController {
         segmentedControl.fixedSegmentWidth = false
         setupSegment1()
         self.view.ShowSpinner()
-        getUSerBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? "")
+        getUSerBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? String.blank)
     }
     
     func getUSerBusinessInfo(Xtenantid: String) {
-        let finaleUrl = ApiUrl.getBussinessInfo + "\(UserRepository.shared.Xtenantid ?? "")"
+        let finaleUrl = ApiUrl.getBussinessInfo + "\(UserRepository.shared.Xtenantid ?? String.blank)"
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<BusinessSubDomainModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):

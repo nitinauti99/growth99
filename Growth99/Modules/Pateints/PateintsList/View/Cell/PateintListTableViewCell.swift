@@ -46,13 +46,13 @@ class PateintListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  dateFormater?.serverToLocal(date: userVM?.updatedAt ?? "")
+        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
         let movement = userVM?.patientStatus
         pateintStatusLbi.text = userVM?.patientStatus
-        pateintStatusImage.image = UIImage(named: movement ?? "")
+        pateintStatusImage.image = UIImage(named: movement ?? String.blank)
         indexPath = index
     }
 

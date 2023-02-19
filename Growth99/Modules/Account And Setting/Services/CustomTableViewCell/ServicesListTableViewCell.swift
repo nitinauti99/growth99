@@ -30,8 +30,8 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceFilterList?.getServiceFilterDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? "")
+        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index
@@ -41,8 +41,8 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceListData?.getServiceDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? "")
+        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index

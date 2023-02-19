@@ -43,7 +43,7 @@ class AppointmentListViewModel {
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[AppointmentListModel], GrowthNetworkError>) in
             switch result {
             case .success(let profileAppoinments):
-                self.profileAppoinmentList = profileAppoinments.sorted(by: { ($0.createdAt ?? "") > ($1.createdAt ?? "")})
+                self.profileAppoinmentList = profileAppoinments.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.profileAppointmentsReceived()
             case .failure(let error):
                 self.delegate?.profileAppoinmentsErrorReceived(error: error.localizedDescription)

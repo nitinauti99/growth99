@@ -17,7 +17,7 @@ extension FillQuestionarieViewController: UITableViewDelegate, UITableViewDataSo
         
         let item = patientQuestionList[indexPath.row]
         print("drop down", item.showDropDown ?? false)
-        print("questionName ---", item.questionName ?? "")
+        print("questionName ---", item.questionName ?? String.blank)
 
         if item.questionType == "Input" {
             guard let cell = questionarieTableView.dequeueReusableCell(withIdentifier: "InputTypeTableViewCell") as? InputTypeTableViewCell else { return UITableViewCell() }
@@ -46,7 +46,7 @@ extension FillQuestionarieViewController: UITableViewDelegate, UITableViewDataSo
             for item in item.patientQuestionChoices ?? [] {
                     let button1 = PassableUIButton(frame: CGRect(x: 30, y: buttonY, width: 100, height: 20))
                     button1.setTitleColor(UIColor.black, for: .normal)
-                    let title = " " + (item.choiceName ?? "")
+                    let title = " " + (item.choiceName ?? String.blank)
                     button1.setTitle(title , for: .normal)
                     button1.contentHorizontalAlignment = .left
                     button1.setImage(UIImage(named: "tickdefault")!, for: .normal)
@@ -84,7 +84,7 @@ extension FillQuestionarieViewController: UITableViewDelegate, UITableViewDataSo
             for item in item.patientQuestionChoices ?? [] {
                     let button1 = PassableUIButton(frame: CGRect(x: 30, y: buttonY, width: 100, height: 20))
                     button1.setTitleColor(UIColor.black, for: .normal)
-                    let title = " " + (item.choiceName ?? "")
+                    let title = " " + (item.choiceName ?? String.blank)
                     button1.setTitle(title , for: .normal)
                     button1.contentHorizontalAlignment = .left
                     button1.setImage(UIImage(named: "tickdefault")!, for: .normal)

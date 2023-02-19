@@ -52,7 +52,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     
     func LoaginDataRecived() {
         self.view.HideSpinner()
-        viewModel?.getBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? "")
+        viewModel?.getBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? String.blank)
         self.openHomeView()
     }
     
@@ -84,11 +84,11 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
             passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
         }
 
-        if textField == emailTextField, textField.text != "" , let emailValidate = viewModel?.isValidEmail(emailTextField.text ?? ""), emailValidate == false {
+        if textField == emailTextField, textField.text != "" , let emailValidate = viewModel?.isValidEmail(emailTextField.text ?? String.blank), emailValidate == false {
             emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
         }
         
-        if textField == passwordTextField, textField.text != "" , let passwrdValidate = viewModel?.isValidPassword(passwordTextField.text ?? ""), passwrdValidate == false {
+        if textField == passwordTextField, textField.text != "" , let passwrdValidate = viewModel?.isValidPassword(passwordTextField.text ?? String.blank), passwrdValidate == false {
             passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
         }
     }
@@ -112,7 +112,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
             return
         }
         self.view.ShowSpinner()
-         viewModel?.loginValidate(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+         viewModel?.loginValidate(email: emailTextField.text ?? String.blank, password: passwordTextField.text ?? String.blank)
     }
     
     @IBAction func showPassword(sender: UIButton){

@@ -69,7 +69,7 @@ extension leadTimeLineViewController: UITableViewDelegate, UITableViewDataSource
         var cell = leadTimeLineHeaderTableViewCell()
         let item = viewModel?.leadCreationData
         cell = leadTimeLineTableView.dequeueReusableCell(withIdentifier: "leadTimeLineHeaderTableViewCell") as! leadTimeLineHeaderTableViewCell
-        cell.name.text = "\(item?.firstName  ?? "") \(item?.lastName ?? "")"
+        cell.name.text = "\(item?.firstName  ?? String.blank) \(item?.lastName ?? String.blank)"
         cell.createdDateTime.text = item?.createdAt
         cell.type.text = "Lead Crated"
        

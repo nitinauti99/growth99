@@ -362,7 +362,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({ $0.name ?? "" }).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({ $0.name ?? String.blank }).joined(separator: ", ")
             let selectedId = selectedList.map({ $0.id ?? 0 })
             self?.selectedClincs = selectedList
             self?.selectedClincIds = selectedId
@@ -382,7 +382,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         selectionMenu.setSelectedItems(items: selectedServices) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.servicesTextField.text = selectedList.map({ $0.name ?? "" }).joined(separator: ", ")
+            self?.servicesTextField.text = selectedList.map({ $0.name ?? String.blank }).joined(separator: ", ")
             let selectedId = selectedList.map({ $0.id ?? 0 })
             self?.selectedServices = selectedList
             self?.selectedServicesIds = selectedId

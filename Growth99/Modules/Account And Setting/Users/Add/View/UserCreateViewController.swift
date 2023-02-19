@@ -96,7 +96,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     
     func userDataRecived() {
         self.view.HideSpinner()
-        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? ""
+        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
         setUpUI()
     }
     
@@ -182,7 +182,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincIds = selectedId
             self?.selectedClincs  = selectedList
@@ -204,7 +204,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
             
-            self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServiceCategoriesIds = selectedId
             self?.selectedServiceCategories = selectedList
@@ -235,7 +235,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedServiceIds = selectedId
             self?.selectedService = selectedList
-            self?.servicesTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            self?.servicesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
         }
         selectionMenu.showEmptyDataLabel(text: "No Services Found")
         selectionMenu.cellSelectionStyle = .checkbox
@@ -282,13 +282,13 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
-        if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
+        if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return
         }
         
         self.view.ShowSpinner()
-        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? "", lastName: lastNameTextField.text ?? "", email: emailTextField.text ?? "", phone: phoneNumberTextField.text ?? "", roleId: Int(UserRepository.shared.Xtenantid ?? "") ?? 0, designation: self.degignationTextField.text ?? "", clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? "")
+        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: phoneNumberTextField.text ?? String.blank, roleId: Int(UserRepository.shared.Xtenantid ?? String.blank) ?? 0, designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
     }
     
     @IBAction func cancelUserProfile(){
@@ -332,7 +332,7 @@ extension UserCreateViewController: UITextFieldDelegate {
         if textField == phoneNumberTextField, textField.text == "" {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
         }
-        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? ""), phoneNumberValidate == false {
+        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
         }
     }

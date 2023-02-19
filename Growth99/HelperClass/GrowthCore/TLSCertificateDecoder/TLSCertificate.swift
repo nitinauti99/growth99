@@ -98,7 +98,7 @@ public class TLSCertificate {
 
     /// Returns signature algorithm name for the certificate signature algorithm.
     public var sigAlgName: String? {
-        algoIds[sigAlgOID ?? ""]
+        algoIds[sigAlgOID ?? String.blank]
     }
 
     /// Returns signature algorithm OID string from the certificate.

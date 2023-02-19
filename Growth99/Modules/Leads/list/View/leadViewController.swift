@@ -59,7 +59,7 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
     
     func addSerchBar(){
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search..."
+        searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -72,7 +72,7 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
         isLoadingList = false
-        viewModel?.getLeadList(page: pageNumber, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
+        viewModel?.getLeadList(page: pageNumber, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? String.blank, leadTagFilter: "")
     }
     
     func loadMoreItemsForList(){
@@ -104,7 +104,7 @@ class leadViewController: UIViewController, leadViewControllerProtocol {
         }
         self.view.ShowSpinner()
         currentPage = 0
-        viewModel?.getLeadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? "", leadTagFilter: "")
+        viewModel?.getLeadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? String.blank, leadTagFilter: "")
     }
     
    @objc func pullToRefresh(sender:AnyObject) {

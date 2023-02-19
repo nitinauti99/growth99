@@ -47,7 +47,7 @@ class LogInViewModel {
     }
     
     func getBusinessInfo(Xtenantid: String) {
-        let finaleUrl = ApiUrl.getBussinessInfo + "\(UserRepository.shared.Xtenantid ?? "")"
+        let finaleUrl = ApiUrl.getBussinessInfo + "\(UserRepository.shared.Xtenantid ?? String.blank)"
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<bussinessDetailInfoModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):

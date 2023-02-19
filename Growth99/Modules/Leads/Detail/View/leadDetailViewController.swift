@@ -95,8 +95,8 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
             button.isSelected = false
         }
         sender.isSelected = true
-        print(sender.titleLabel?.text ?? "")
-        let str = sender.titleLabel?.text ?? ""
+        print(sender.titleLabel?.text ?? String.blank)
+        let str = sender.titleLabel?.text ?? String.blank
         self.view.ShowSpinner()
         viewModel?.updateLeadStatus(template: "\(LeadId ?? 0)/status/\(str.uppercased())")
     }
@@ -157,7 +157,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         anslistTableView.reloadData()
         scrollViewHight.constant = tableViewHeight + 500
         view.setNeedsLayout()
-        self.setLeadStatus(status: viewModel?.leadStatus ?? "")
+        self.setLeadStatus(status: viewModel?.leadStatus ?? String.blank)
         viewModel?.getSMSDefaultList()
     }
     
@@ -221,7 +221,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
                 return
             }
             self.view.ShowSpinner()
-            viewModel?.sendCustomSMS(leadId: LeadData?.id ?? 0, phoneNumber: LeadData?.PhoneNumber ?? "", body: cell.smsTextView.text)
+            viewModel?.sendCustomSMS(leadId: LeadData?.id ?? 0, phoneNumber: LeadData?.PhoneNumber ?? String.blank, body: cell.smsTextView.text)
         }
     }
     
@@ -243,7 +243,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
                 return
             }
             self.view.ShowSpinner()
-            viewModel?.sendCustomEmail(leadId: LeadId ?? 0, email: LeadData?.Email ?? "", subject: cell.emailTextFiled.text ?? "", body: cell.emailTextView.text)
+            viewModel?.sendCustomEmail(leadId: LeadId ?? 0, email: LeadData?.Email ?? String.blank, subject: cell.emailTextFiled.text ?? String.blank, body: cell.emailTextView.text)
          }
     }
     

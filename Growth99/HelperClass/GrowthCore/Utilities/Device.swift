@@ -19,7 +19,7 @@ public struct Device {
         currentName = Host.current().localizedName
         #endif
 
-        return currentName ?? ""
+        return currentName ?? String.blank
     }
 
     public var systemVersion: String {

@@ -26,7 +26,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         setUpNavigationBar()
         viewModel = BusinessProfileViewModel(delegate: self)
         nameTextField.text = bussinessInfoData?.name
-        businessImageView.sd_setImage(with: URL(string: bussinessInfoData?.logoUrl ?? ""), placeholderImage: UIImage(named: "Logo.png"))
+        businessImageView.sd_setImage(with: URL(string: bussinessInfoData?.logoUrl ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
         businessNoteImageView.image = UIImage.fontAwesomeIcon(code: "fa-exclamation-triangle", style: .solid, textColor: UIColor.black, size: CGSize(width: 15, height: 15))
     }
     

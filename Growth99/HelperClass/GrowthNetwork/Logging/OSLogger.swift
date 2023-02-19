@@ -24,7 +24,7 @@ private extension OSLogger {
 
     static func sourceFileName(filePath: String) -> String {
         let components = filePath.components(separatedBy: "/")
-        return components.last ?? ""
+        return components.last ?? String.blank
     }
 }
 
