@@ -17,6 +17,8 @@ class ServicesListTableViewCell: UITableViewCell {
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var subView: UIView!
     
+    var indexPath = IndexPath()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,15 +26,26 @@ class ServicesListTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color:.gray)
         
     }
+    func configureCell(serviceFilterList: ServiceListViewModelProtocol?, index: IndexPath, isSearch: Bool) {
+        let serviceList = serviceFilterList?.getServiceFilterDataAtIndex(index: index.row)
+        self.nameLabel.text = serviceList?.name
+        self.id.text = String(serviceList?.id ?? 0)
+        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? "")
+        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? "")
+        self.createdBy.text = serviceList?.createdBy
+        self.updatedBy.text = serviceList?.updatedBy
+        indexPath = index
+    }
     
-    func configureCell(userVM: ServiceListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.serviceDataAtIndex(index: index.row)
-        self.nameLabel.text = userVM?.name
-        self.id.text = String(userVM?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? "")
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? "")
-        self.createdBy.text = userVM?.createdBy
-        self.updatedBy.text = userVM?.updatedBy
+    func configureCell(serviceListData: ServiceListViewModelProtocol?, index: IndexPath) {
+        let serviceList = serviceListData?.getServiceDataAtIndex(index: index.row)
+        self.nameLabel.text = serviceList?.name
+        self.id.text = String(serviceList?.id ?? 0)
+        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? "")
+        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? "")
+        self.createdBy.text = serviceList?.createdBy
+        self.updatedBy.text = serviceList?.updatedBy
+        indexPath = index
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -84,19 +84,19 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            if filteredTableData.count == 0 {
+            if viewModel?.getCategoriesFilterListData.count ?? 0 == 0 {
                 self.categoriesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
             } else {
                 self.categoriesListTableView.restore()
             }
-            return filteredTableData.count
+            return viewModel?.getCategoriesFilterListData.count ?? 0
         } else {
-            if viewModel?.categoriesData.count ?? 0 == 0 {
+            if viewModel?.getCategoriesListData.count ?? 0 == 0 {
                 self.categoriesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
             } else {
                 self.categoriesListTableView.restore()
             }
-            return viewModel?.categoriesData.count ?? 0
+            return viewModel?.getCategoriesListData.count ?? 0
         }
     }
     
@@ -104,10 +104,9 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
         var cell = CategoriesListTableViewCell()
         cell = categoriesListTableView.dequeueReusableCell(withIdentifier: "CategoriesListTableViewCell") as! CategoriesListTableViewCell
         if isSearch {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCell(categoriesFilterList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
-            cell.configureCell(userVM: viewModel, index: indexPath)
-            
+            cell.configureCell(categoriesListData: viewModel, index: indexPath)
         }
         return cell
     }
@@ -119,16 +118,19 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let createCategoriesVC = UIStoryboard(name: "CategoriesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "CategoriesAddViewController") as! CategoriesAddViewController
         createCategoriesVC.screenTitle = Constant.Profile.editCategories
-        createCategoriesVC.categoryName = viewModel?.categoriesData[indexPath.row].name ?? String.blank
-        createCategoriesVC.clinicName = viewModel?.categoriesData[indexPath.row].name ?? String.blank
+        if isSearch {
+            createCategoriesVC.categoryId = viewModel?.getCategoriesFilterListData[indexPath.row].id
+        } else {
+            createCategoriesVC.categoryId = viewModel?.getCategoriesListData[indexPath.row].id
+        }
         self.navigationController?.pushViewController(createCategoriesVC, animated: true)
     }
 }
 
-extension CategoriesListViewController: UISearchBarDelegate {
+extension CategoriesListViewController:  UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.categoriesData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        viewModel?.getCategoriesFilterData(searchText: searchText)
         isSearch = true
         categoriesListTableView.reloadData()
     }

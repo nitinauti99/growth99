@@ -1458,7 +1458,6 @@
 		39F2FF1A2996B7CF0089BD4F /* AppointmentListDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				39F2FF1C2996B7CF0089BD4F /* Model */,
 				39F2FF1D2996B7CF0089BD4F /* View */,
 				39F2FF1B2996B7CF0089BD4F /* ViewModel */,
 			);
@@ -1471,13 +1470,6 @@
 				39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		39F2FF1C2996B7CF0089BD4F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		39F2FF1D2996B7CF0089BD4F /* View */ = {
@@ -2885,13 +2877,6 @@
 			path = AddScreen;
 			sourceTree = "<group>";
 		};
-		84B75EAB2968D7F100962F3E /* DetailScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DetailScreen;
-			sourceTree = "<group>";
-		};
 		84B75EB82969002100962F3E /* ListScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -3108,7 +3093,6 @@
 			isa = PBXGroup;
 			children = (
 				84B75EA72968D7F100962F3E /* ListScreen */,
-				84B75EAB2968D7F100962F3E /* DetailScreen */,
 				84B75EAA2968D7F100962F3E /* AddScreen */,
 			);
 			path = View;
