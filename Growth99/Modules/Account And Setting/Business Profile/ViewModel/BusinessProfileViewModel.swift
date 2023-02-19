@@ -31,9 +31,8 @@ class BusinessProfileViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<BusinessModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                print(response)
                 self.user.bussinessName = response.name
-                self.delegate?.saveBusinessDetailReceived(responseMessage: "saved bussiness info")
+                self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated sucessfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

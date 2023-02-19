@@ -59,12 +59,24 @@ class DateFormater: DateFormaterProtocol {
     }
     
     func localToServerWithDate(date: String) -> String {
+        let currentDate = Date()
+        let currentTime = date
+        
+        let dateFormatter22 = DateFormatter()
+        dateFormatter22.string(from: currentDate)
+        dateFormatter22.dateFormat = "yyyy-MM-dd'T'"
+        dateFormatter22.locale = Locale(identifier: "en_US_POSIX")
+    
+        
+        let dateWith = dateFormatter22.string(from: currentDate)
+        
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.dateFormat = "h:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return dateFormatter.string(from: date)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "HH:mm:ss'z'"
+        return dateWith + dateFormatter.string(from: date)
     }
     
     func dateFormatterString(textField: CustomTextField) -> String {

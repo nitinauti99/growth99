@@ -20,6 +20,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
 
     var viewModel: BusinessProfileViewModelProtocol?
     var bussinessInfoData: BusinessSubDomainModel?
+    let user = UserRepository.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()

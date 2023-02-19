@@ -218,7 +218,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     
     func clinicsReceived() {
         allClinics = servicesAddViewModel?.getAllClinicsData ?? []
-        selectedClincs
         let selectedClincId = allClinics.map({$0.id ?? 0})
         self.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedClincId)
     }
@@ -414,7 +413,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceImageView.image  = selectedImage
         serviceImageViewHeight.constant = 200
         serviceImageViewTop.constant = 20
-        contentViewHeight.constant = 1500
+        contentViewHeight.constant = 1550
         imageRemoved = false
         removeImageViewBtn.isHidden = false
         serviceImageViewBtn.setTitle("Change Service Image", for: .normal)

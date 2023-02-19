@@ -12,6 +12,7 @@ protocol ClinicsDetailListViewModelProtocol {
     func getTimeZonesList()
     var  getClinicsListData: ClinicsDetailListModel? { get }
     var  getTimeZonesListData: [String]? { get }
+    func updateUserSelectedClinic(clinicParms: [String: Any], clinicId: Int , urlMethod: HTTPMethod, screenTitle: String)
 }
 
 class ClinicsDetailListViewModel: ClinicsDetailListViewModelProtocol {
@@ -53,16 +54,13 @@ class ClinicsDetailListViewModel: ClinicsDetailListViewModelProtocol {
         }
     }
     
-    
-    
-    
-    func updateUserSelectedClinic(clinicId: Int , urlMethod: HTTPMethod, screenTitle: String) {
+    func updateUserSelectedClinic(clinicParms: [String: Any], clinicId: Int , urlMethod: HTTPMethod, screenTitle: String) {
         if screenTitle == Constant.Profile.editClinic {
             finaleUrl = ApiUrl.selectedClinic + "\(clinicId)"
         } else {
-            finaleUrl = ApiUrl.allClinics
+            finaleUrl = ApiUrl.creatClinic
         }
-        self.requestManager.request(forPath: finaleUrl, method: urlMethod, headers: self.requestManager.Headers()) {  (result: Result<ClinicsDetailListModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: finaleUrl, method: urlMethod, headers: self.requestManager.Headers(), task: .requestParameters(parameters: clinicParms, encoding: .jsonEncoding)) {  (result: Result<ClinicsDetailListModel, GrowthNetworkError>) in
             switch result {
             case .success(_):
                 self.delegate?.clinicUpdateReceived(responeMessage: screenTitle)

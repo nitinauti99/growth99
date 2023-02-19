@@ -56,7 +56,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.bussinessTitile.text = user.bussinessName
     }
     
     // MARK: - FUNCTIONS
@@ -84,6 +83,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             }
         })
         self.view.layoutIfNeeded()
+        self.bussinessTitile.text = user.bussinessName
     }
     
     // MARK: - BUTTON_ACTIONS

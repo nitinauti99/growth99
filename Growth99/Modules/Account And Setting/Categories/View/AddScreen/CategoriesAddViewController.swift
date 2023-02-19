@@ -20,7 +20,9 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     @IBOutlet private weak var categoriesNameTextField: CustomTextField!
     
     var allClinics = [Clinics]()
+    
     var selectedClincs = [Clinics]()
+    
     var selectedClincIds = [Int]()
     var categoriesAddViewModel: CategoriesAddEditViewModelProtocol?
     var screenTitle: String = Constant.Profile.addCategories
@@ -68,6 +70,17 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     func setupCategoriesEditUI() {
         categoriesNameTextField.text = categoriesAddViewModel?.getAllCategoriesData?.name
         userClinics = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
+        
+        
+        
+        let consentClinicArray = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
+        for item in consentClinicArray {
+            let selectedId = item.clinic?.id
+            let selectedName = item.clinic?.name
+            let clinic = Clinics(isDefault: false, name: selectedName, id: selectedId)
+            selectedClincs.append(clinic)
+        }
+        
         clincsTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
     }
     

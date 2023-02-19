@@ -70,7 +70,8 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     var timeZoneList: [String]?
     var viewModel: ClinicsDetailListViewModelProtocol?
     var businessHours = [BusinessHoursAccount]()
-    
+    var httpMethodType: HTTPMethod = .POST
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ClinicsDetailListViewModel(delegate: self)
@@ -192,7 +193,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         } else {
             self.view.showToast(message: "Clinic created sucessfully", color: .black)
         }
-        
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func timeZoneSelectionButton(sender: UIButton) {
         if timeZoneList?.count == 0 {
@@ -418,6 +419,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         if mondayBtn.isSelected {
+            
             businessHours.append(BusinessHoursAccount(dayOfWeek: "MONDAY", openHour: dateFormater?.localToServerWithDate(date: mondayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: mondayEndTimeTF.text ?? String.blank)))
         }
         
@@ -444,9 +446,19 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         if sundayBtn.isSelected {
            businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
         }
-        print("Sample:: \(businessHours)")
-//        self.view.ShowSpinner()
-//        viewModel?.updateUserSelectedClinic()
+        
+        let params = ClinicParamModel(name: clinicName, contactNumber: contactNumber, address: address, notificationEmail: notificationEmail, notificationSMS: notificationSmsTextField.text, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, countryCode: countryCode, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
+        let parameters: [String: Any]  = params.toDict()
+        print("Sample params:: \(parameters)")
+
+        if self.title == Constant.Profile.createClinic {
+            httpMethodType = .POST
+        } else {
+            httpMethodType = .PUT
+        }
+        
+        self.view.ShowSpinner()
+        viewModel?.updateUserSelectedClinic(clinicParms: parameters, clinicId: clinicId ?? 0 , urlMethod: httpMethodType, screenTitle: self.title ?? String.blank)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
