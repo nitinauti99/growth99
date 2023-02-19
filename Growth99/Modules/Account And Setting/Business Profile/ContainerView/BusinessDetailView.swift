@@ -20,6 +20,15 @@ class BusinessDetailView: UIViewController {
         //self.setupView()
         self.title = Constant.Profile.business
         segmentedControl.segmentStyle = .textOnly
+        setupSegment1()
+        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
+        segmentedControl.underlineHeight = 4
+        segmentedControl.underlineSelected = true
+        segmentedControl.fixedSegmentWidth = false
+        segmentedControl.selectedSegmentIndex = selectedindex
+    }
+    
+    func setupSegment() {
         segmentedControl.insertSegment(withTitle: Constant.Profile.businessProfile, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.personalization, at: 1)
         segmentedControl.insertSegment(withTitle: Constant.Profile.subdomain, at: 2)
@@ -29,12 +38,17 @@ class BusinessDetailView: UIViewController {
         segmentedControl.insertSegment(withTitle: Constant.Profile.paidMedia, at: 6)
         segmentedControl.insertSegment(withTitle: Constant.Profile.syndicationReport, at: 7)
         segmentedControl.insertSegment(withTitle: Constant.Profile.emailSMSAudit, at: 8)
-
-        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
-        segmentedControl.underlineHeight = 4
-        segmentedControl.underlineSelected = true
-        segmentedControl.fixedSegmentWidth = false
-        segmentedControl.selectedSegmentIndex = selectedindex
+    }
+    
+    func setupSegment1() {
+        segmentedControl.insertSegment(withTitle: Constant.Profile.businessProfile, at: 0)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.subdomain, at: 1)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.refundPolicy, at: 2)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.trackingCode, at: 3)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.dataStudio, at: 4)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.paidMedia, at: 5)
+//        segmentedControl.insertSegment(withTitle: Constant.Profile.syndicationReport, at: 7)
+//        segmentedControl.insertSegment(withTitle: Constant.Profile.emailSMSAudit, at: 8)
     }
     
     override func viewWillAppear(_ animated: Bool) {

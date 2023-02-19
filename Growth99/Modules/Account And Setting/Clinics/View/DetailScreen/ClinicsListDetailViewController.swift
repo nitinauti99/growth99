@@ -344,6 +344,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             sundayEndTimeTF.text = dateFormater?.utcToLocalAccounts(timeString: filteredSundayArray?.first?.closeHour ?? String.blank)
         }
         
+        
     }
     
     func errorReceived(error: String) {

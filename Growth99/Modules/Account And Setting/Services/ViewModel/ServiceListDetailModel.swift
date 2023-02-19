@@ -26,7 +26,7 @@ protocol ServiceListDetailViewModelProtocol {
                               consentIds: Array<Int>, questionnaireIds: Array<Int>,
                               clinicIds: Array<Int>, file: String, files: String,
                               preBookingCost: Int, imageRemoved: Bool, isPreBookingCostAllowed: Bool,
-                              showInPublicBooking: Bool, priceVaries: Bool)
+                              showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int)
     func getUserSelectedService(serviceID: Int)
     var  getUserSelectedServiceData: ServiceDetailModel? { get }
 
@@ -40,6 +40,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     var allQuestionnaires: [QuestionnaireListModel]?
     var allserviceCategories: [Clinics]?
     var serviceDetailListData: ServiceDetailModel?
+    var apiURL: String = String.blank
 
     init(delegate: ServicesListDetailViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -121,7 +122,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
                               consentIds: Array<Int>, questionnaireIds: Array<Int>,
                               clinicIds: Array<Int>, file: String, files: String,
                               preBookingCost: Int, imageRemoved: Bool, isPreBookingCostAllowed: Bool,
-                              showInPublicBooking: Bool, priceVaries: Bool) {
+                              showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int) {
         
         let parameter: [String : Any] = ["name": name,
                                          "serviceCategoryId": serviceCategoryId,
@@ -141,13 +142,17 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
                                          "priceVaries": priceVaries
         ]
         
-        let finaleUrl = ApiUrl.createService
-        self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  [weak self] result in
+        if isScreenFrom == Constant.Profile.createService {
+            apiURL = ApiUrl.createService
+        } else {
+            apiURL = ApiUrl.editService + "\(serviceId)"
+        }
+        self.requestManager.request(forPath: apiURL, method: httpMethod, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.createServiceSucessfullyReceived()
+                    self.delegate?.createServiceSucessfullyReceived(message: isScreenFrom)
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "We are facing issue while creating service")
                 } else {

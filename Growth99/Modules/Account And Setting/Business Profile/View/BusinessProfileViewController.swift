@@ -16,6 +16,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
    
     @IBOutlet private weak var nameTextField: CustomTextField!
     @IBOutlet private weak var businessImageView: UIImageView!
+    @IBOutlet private weak var businessNoteImageView: UIImageView!
 
     var viewModel: BusinessProfileViewModelProtocol?
     let user = UserRepository.shared
@@ -25,6 +26,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         setUpNavigationBar()
         viewModel = BusinessProfileViewModel(delegate: self)
         nameTextField.text = user.bussinessName
+        businessNoteImageView.image = UIImage.fontAwesomeIcon(code: "fa-exclamation-triangle", style: .solid, textColor: UIColor.black, size: CGSize(width: 15, height: 15))
     }
     
     // MARK: - setUpNavigationBar
