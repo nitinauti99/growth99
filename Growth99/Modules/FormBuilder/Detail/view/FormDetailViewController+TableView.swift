@@ -21,7 +21,8 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = FormDetailTableViewCell()
         cell = self.tableView.dequeueReusableCell(withIdentifier: "FormDetailTableViewCell", for: indexPath) as! FormDetailTableViewCell
-        cell.configureCell(FormList: viewModel, index: indexPath)
+        cell.delegate = self
+        cell.configureCell(tableView: tableView, FormList: viewModel, index: indexPath)
         return cell
     }
     

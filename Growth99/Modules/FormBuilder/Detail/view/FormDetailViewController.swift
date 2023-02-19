@@ -12,7 +12,7 @@ protocol FormDetailViewControllerProtocol {
     func FormsDataRecived()
     func errorReceived(error: String)
 }
-class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol {
+class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol, FormDetailTableViewCellDelegate {
     
     @IBOutlet weak var Make_Public: UIButton!
     @IBOutlet weak var Enable_ModernUI: UIButton!
@@ -83,13 +83,19 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         self.navigationController?.popViewController(animated: true)
     }
     
+    func reloadForm(cell: FormDetailTableViewCell, index: IndexPath){
+        tableView.beginUpdates()
+        self.tableView?.reloadRows(at: [index], with: UITableView.RowAnimation.none)
+        tableView?.endUpdates()
+    }
+
     func FormsDataRecived() {
         self.view.HideSpinner()
         tableView.reloadData()
     }
     
     func scrollViewHeight() {
-        workingScrollViewHight.constant = tableViewHeight + 1000
+        workingScrollViewHight.constant = tableViewHeight + 1000 + 300
     }
     
     func errorReceived(error: String) {
