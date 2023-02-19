@@ -15,6 +15,8 @@
 		01D7AB06299E572700821274 /* FormDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */; };
 		01D7AB07299E572700821274 /* FormDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */; };
 		01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AB08299E8CD000821274 /* FormDetailViewController+TableView.swift */; };
+		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
+		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -571,6 +573,8 @@
 		01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailTableViewCell.swift; sourceTree = "<group>"; };
 		01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormDetailTableViewCell.xib; sourceTree = "<group>"; };
 		01D7AB08299E8CD000821274 /* FormDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormDetailViewController+TableView.swift"; sourceTree = "<group>"; };
+		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
@@ -1197,6 +1201,8 @@
 		01D7AB03299E56F800821274 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */,
+				01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */,
 				01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */,
 				01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */,
 			);
@@ -4315,6 +4321,7 @@
 				84D063022967080E001FE469 /* CustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
+				01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
@@ -4878,6 +4885,7 @@
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
+				01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */,
 				849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */,
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,

@@ -43,3 +43,15 @@ struct QuestionChoices: Codable {
     let createdBy : CreatedBy?
     let name : String?
 }
+
+struct QuestionsList: Codable {
+    let questionName : String?
+    let questionid : Int?
+   
+    init(questionName: String, questionid: Int) {
+        self.questionName = questionName
+        self.questionid = questionid
+    }
+  
+
+}

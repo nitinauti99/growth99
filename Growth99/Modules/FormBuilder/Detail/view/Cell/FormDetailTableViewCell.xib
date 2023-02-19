@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="518" height="1130"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsz-QW-rrN">
-                                <rect key="frame" x="10" y="10" width="498" height="1110"/>
+                                <rect key="frame" x="10" y="10" width="498" height="1305"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilC-0W-F0u" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                         <rect key="frame" x="28" y="75" width="460" height="40"/>
@@ -231,22 +231,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW9-CS-mYd">
-                                        <rect key="frame" x="28" y="980" width="30" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="P31-bK-l5w"/>
-                                            <constraint firstAttribute="height" constant="25" id="ZNO-ll-A7b"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="tickdefault"/>
-                                        <state key="selected" image="tickselected"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-Xk-SPZ">
-                                        <rect key="frame" x="78" y="984" width="412" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Question Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU6-X8-c3Z">
                                         <rect key="frame" x="28" y="430" width="462" height="20"/>
                                         <constraints>
@@ -256,7 +240,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Piz-V9-DDT">
-                                        <rect key="frame" x="8" y="660" width="482" height="315"/>
+                                        <rect key="frame" x="8" y="695" width="482" height="510"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G3P-fI-I5X" userLabel="View1">
                                                 <rect key="frame" x="0.0" y="0.0" width="482" height="90"/>
@@ -279,6 +263,9 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="multipleChoiceYESButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="N0m-2n-VxZ"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0B-GE-47n" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="120" y="61" width="80" height="20"/>
@@ -291,6 +278,9 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="multipleChoiceNOButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HAD-hz-q5L"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -326,6 +316,9 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="dropDownYESButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="N55-6L-31s"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8D2-sp-KzM" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="120" y="40.666666666666629" width="80" height="20"/>
@@ -338,6 +331,9 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="dropDownNOButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Raw-oc-I8b"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -373,6 +369,9 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="preSelectCheckboxYESButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4bb-kq-hCg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJl-k7-oBt" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="120" y="40.666666666666629" width="80" height="20"/>
@@ -385,6 +384,9 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="preSelectCheckboxNOButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GpO-N4-uoK"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -423,6 +425,9 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="tickselected"/>
+                                                        <connections>
+                                                            <action selector="addQuestionButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="InA-3y-xUu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -434,9 +439,18 @@
                                                     <constraint firstAttribute="height" constant="40" id="jDH-OB-Pfz"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CtC-mm-mPq">
-                                                <rect key="frame" x="0.0" y="300" width="482" height="15"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CtC-mm-mPq">
+                                                <rect key="frame" x="0.0" y="300" width="482" height="210"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="210" id="Xhq-RD-QH9"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="Tla-TM-29u"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="HHL-5v-6Rn"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="KGk-i7-Jjw" id="sD1-ER-ge9"/>
+                                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="I2a-9B-adt"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -462,7 +476,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W14-gI-Pky" userLabel="BottomView">
-                                        <rect key="frame" x="28" y="1020" width="171" height="76"/>
+                                        <rect key="frame" x="28" y="1215" width="171" height="76"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qc1-FD-la2">
                                                 <rect key="frame" x="103" y="13" width="50" height="50"/>
@@ -515,23 +529,39 @@
                                             <action selector="editButtonActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7Sw-fe-xZK"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFC-RN-aJw">
+                                        <rect key="frame" x="28" y="660" width="30" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="p8H-C3-Kml"/>
+                                            <constraint firstAttribute="height" constant="25" id="rgH-Di-oz6"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="tickdefault"/>
+                                        <state key="selected" image="tickselected"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGJ-l1-SLA">
+                                        <rect key="frame" x="78" y="664" width="412" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="vUD-LN-bFs" firstAttribute="centerY" secondItem="kli-99-XDq" secondAttribute="centerY" id="1l9-q0-aEC"/>
-                                    <constraint firstItem="CpT-Xk-SPZ" firstAttribute="leading" secondItem="jha-AG-aLa" secondAttribute="leading" id="22b-xf-Oth"/>
                                     <constraint firstAttribute="bottom" secondItem="W14-gI-Pky" secondAttribute="bottom" constant="14" id="5Do-Cj-Sjd"/>
-                                    <constraint firstItem="Piz-V9-DDT" firstAttribute="top" secondItem="ZMs-0R-6OU" secondAttribute="bottom" constant="10" id="5ki-Gp-lQT"/>
+                                    <constraint firstItem="xGJ-l1-SLA" firstAttribute="centerY" secondItem="pFC-RN-aJw" secondAttribute="centerY" id="7DU-yZ-oSx"/>
+                                    <constraint firstItem="Piz-V9-DDT" firstAttribute="top" secondItem="pFC-RN-aJw" secondAttribute="bottom" constant="10" id="8Bk-EM-Bj2"/>
                                     <constraint firstItem="LLc-ou-u4u" firstAttribute="centerY" secondItem="vRP-8o-pWT" secondAttribute="centerY" id="8Od-ZP-rGW"/>
-                                    <constraint firstItem="W14-gI-Pky" firstAttribute="top" secondItem="eW9-CS-mYd" secondAttribute="bottom" constant="15" id="8Pr-VF-S7H"/>
                                     <constraint firstItem="GJd-I7-ODU" firstAttribute="centerY" secondItem="e3u-9G-ANo" secondAttribute="centerY" id="8fW-le-DCd"/>
                                     <constraint firstItem="LPO-zQ-gj0" firstAttribute="trailing" secondItem="fHc-AU-7jh" secondAttribute="trailing" id="9Wl-P4-7TJ"/>
                                     <constraint firstItem="fHc-AU-7jh" firstAttribute="leading" secondItem="uDb-yY-FMF" secondAttribute="trailing" constant="20" id="9e8-BW-IFQ"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="mU6-X8-c3Z" secondAttribute="trailing" id="9gi-3e-TKT"/>
+                                    <constraint firstItem="pFC-RN-aJw" firstAttribute="top" secondItem="ZMs-0R-6OU" secondAttribute="bottom" constant="10" id="A2w-7F-Io2"/>
                                     <constraint firstItem="Fdl-8T-rQN" firstAttribute="leading" secondItem="ilC-0W-F0u" secondAttribute="leading" id="BYi-hT-taN"/>
-                                    <constraint firstItem="eW9-CS-mYd" firstAttribute="top" secondItem="Piz-V9-DDT" secondAttribute="bottom" constant="5" id="DZ0-yx-Jbz"/>
                                     <constraint firstItem="uDb-yY-FMF" firstAttribute="leading" secondItem="mU6-X8-c3Z" secondAttribute="leading" id="FKg-6A-Kq1"/>
                                     <constraint firstItem="fHc-AU-7jh" firstAttribute="trailing" secondItem="mU6-X8-c3Z" secondAttribute="trailing" id="Glw-3u-gml"/>
+                                    <constraint firstItem="xGJ-l1-SLA" firstAttribute="trailing" secondItem="jha-AG-aLa" secondAttribute="trailing" id="HWX-LO-liZ"/>
                                     <constraint firstItem="vRP-8o-pWT" firstAttribute="top" secondItem="vUD-LN-bFs" secondAttribute="bottom" constant="10" id="MQJ-ej-jwr"/>
                                     <constraint firstItem="mU6-X8-c3Z" firstAttribute="leading" secondItem="qsz-QW-rrN" secondAttribute="leadingMargin" constant="20" id="MTe-ec-BTk"/>
                                     <constraint firstItem="GJd-I7-ODU" firstAttribute="trailing" secondItem="AgP-eC-NmZ" secondAttribute="trailing" id="Mro-gg-f65"/>
@@ -541,16 +571,14 @@
                                     <constraint firstItem="fHc-AU-7jh" firstAttribute="centerY" secondItem="uDb-yY-FMF" secondAttribute="centerY" id="RG3-Yz-2Et"/>
                                     <constraint firstItem="0XX-L6-DCA" firstAttribute="leading" secondItem="Fdl-8T-rQN" secondAttribute="trailing" constant="20" id="RUX-SA-lCo"/>
                                     <constraint firstItem="jha-AG-aLa" firstAttribute="centerY" secondItem="ZMs-0R-6OU" secondAttribute="centerY" id="SUn-mC-xb9"/>
-                                    <constraint firstItem="eW9-CS-mYd" firstAttribute="leading" secondItem="ZMs-0R-6OU" secondAttribute="leading" id="TOR-4K-hud"/>
                                     <constraint firstItem="AgP-eC-NmZ" firstAttribute="leading" secondItem="LPO-zQ-gj0" secondAttribute="leading" id="Vj4-Zy-hpO"/>
                                     <constraint firstItem="e3u-9G-ANo" firstAttribute="leading" secondItem="tiE-sF-bjW" secondAttribute="leading" id="VnZ-Px-8rJ"/>
-                                    <constraint firstItem="CpT-Xk-SPZ" firstAttribute="trailing" secondItem="jha-AG-aLa" secondAttribute="trailing" id="Y7m-hp-JqZ"/>
                                     <constraint firstItem="jha-AG-aLa" firstAttribute="trailing" secondItem="GJd-I7-ODU" secondAttribute="trailing" id="YHT-49-DY9"/>
                                     <constraint firstItem="LLc-ou-u4u" firstAttribute="leading" secondItem="vRP-8o-pWT" secondAttribute="trailing" constant="20" id="YLt-ez-bln"/>
                                     <constraint firstItem="tiE-sF-bjW" firstAttribute="top" secondItem="jPU-HK-qAf" secondAttribute="bottom" constant="10" id="ZEz-Hq-iPh"/>
                                     <constraint firstItem="Fdl-8T-rQN" firstAttribute="top" secondItem="ilC-0W-F0u" secondAttribute="bottom" constant="20" id="cEU-fH-1Ro"/>
+                                    <constraint firstItem="xGJ-l1-SLA" firstAttribute="leading" secondItem="pFC-RN-aJw" secondAttribute="trailing" constant="20" id="cYi-3u-nd5"/>
                                     <constraint firstItem="ZMs-0R-6OU" firstAttribute="leading" secondItem="e3u-9G-ANo" secondAttribute="leading" id="dHh-xV-Yek"/>
-                                    <constraint firstItem="CpT-Xk-SPZ" firstAttribute="leading" secondItem="eW9-CS-mYd" secondAttribute="trailing" constant="20" id="dQW-8j-3ly"/>
                                     <constraint firstItem="mU6-X8-c3Z" firstAttribute="top" secondItem="8lM-qw-qFf" secondAttribute="bottom" constant="10" id="dSH-fj-qOE"/>
                                     <constraint firstItem="da2-8Z-hZd" firstAttribute="top" secondItem="qsz-QW-rrN" secondAttribute="top" constant="10" id="dgq-Q3-mWj"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Piz-V9-DDT" secondAttribute="trailing" id="eA0-I1-kFn"/>
@@ -565,22 +593,23 @@
                                     <constraint firstItem="AgP-eC-NmZ" firstAttribute="leading" secondItem="tiE-sF-bjW" secondAttribute="trailing" constant="20" id="iIm-6v-b9C"/>
                                     <constraint firstItem="8lM-qw-qFf" firstAttribute="leading" secondItem="ilC-0W-F0u" secondAttribute="leading" constant="-10" id="itI-b4-mkr"/>
                                     <constraint firstItem="tiE-sF-bjW" firstAttribute="leading" secondItem="jPU-HK-qAf" secondAttribute="leading" id="j0i-cn-pKJ"/>
-                                    <constraint firstItem="W14-gI-Pky" firstAttribute="leading" secondItem="eW9-CS-mYd" secondAttribute="leading" id="j5C-8Q-NpW"/>
                                     <constraint firstItem="AgP-eC-NmZ" firstAttribute="centerY" secondItem="tiE-sF-bjW" secondAttribute="centerY" id="jvh-gu-Pe6"/>
                                     <constraint firstItem="e3u-9G-ANo" firstAttribute="top" secondItem="tiE-sF-bjW" secondAttribute="bottom" constant="10" id="kof-Fj-pqv"/>
                                     <constraint firstItem="ilC-0W-F0u" firstAttribute="leading" secondItem="qsz-QW-rrN" secondAttribute="leading" constant="28" id="lsA-2b-RV3"/>
                                     <constraint firstItem="jPU-HK-qAf" firstAttribute="leading" secondItem="uDb-yY-FMF" secondAttribute="leading" id="nM1-Yt-910"/>
                                     <constraint firstAttribute="trailing" secondItem="ilC-0W-F0u" secondAttribute="trailing" constant="10" id="oWl-a3-jMb"/>
+                                    <constraint firstItem="W14-gI-Pky" firstAttribute="leading" secondItem="pFC-RN-aJw" secondAttribute="leading" id="ocG-Ix-aEl"/>
                                     <constraint firstItem="vRP-8o-pWT" firstAttribute="leading" secondItem="vUD-LN-bFs" secondAttribute="leading" id="ppg-bK-Dqi"/>
                                     <constraint firstItem="0XX-L6-DCA" firstAttribute="centerY" secondItem="Fdl-8T-rQN" secondAttribute="centerY" id="s5g-y4-huh"/>
                                     <constraint firstItem="jha-AG-aLa" firstAttribute="leading" secondItem="ZMs-0R-6OU" secondAttribute="trailing" constant="20" id="tLv-aX-QMl"/>
                                     <constraint firstItem="ZMs-0R-6OU" firstAttribute="top" secondItem="e3u-9G-ANo" secondAttribute="bottom" constant="10" id="uRr-H4-RbJ"/>
                                     <constraint firstItem="LPO-zQ-gj0" firstAttribute="leading" secondItem="jPU-HK-qAf" secondAttribute="trailing" constant="20" id="wxj-Be-4nW"/>
+                                    <constraint firstItem="W14-gI-Pky" firstAttribute="top" secondItem="Piz-V9-DDT" secondAttribute="bottom" constant="10" id="xAY-3U-LNu"/>
                                     <constraint firstItem="vUD-LN-bFs" firstAttribute="leading" secondItem="Fdl-8T-rQN" secondAttribute="leading" id="xDf-6d-yqD"/>
                                     <constraint firstItem="LPO-zQ-gj0" firstAttribute="centerY" secondItem="jPU-HK-qAf" secondAttribute="centerY" id="xJi-Ph-VCz"/>
                                     <constraint firstItem="uDb-yY-FMF" firstAttribute="top" secondItem="mU6-X8-c3Z" secondAttribute="bottom" constant="10" id="xlZ-t2-x71"/>
-                                    <constraint firstItem="CpT-Xk-SPZ" firstAttribute="centerY" secondItem="eW9-CS-mYd" secondAttribute="centerY" id="xsb-wi-fUU"/>
                                     <constraint firstItem="ilC-0W-F0u" firstAttribute="top" secondItem="qsz-QW-rrN" secondAttribute="top" constant="75" id="yUc-ed-mGz"/>
+                                    <constraint firstItem="pFC-RN-aJw" firstAttribute="leading" secondItem="ZMs-0R-6OU" secondAttribute="leading" id="zit-ZY-QAz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -613,21 +642,29 @@
                 <outlet property="checkBoxView" destination="CSS-Ze-uJW" id="eGF-OM-B6f"/>
                 <outlet property="checkBoxViewHight" destination="CyE-Ms-RfH" id="hY9-nO-rF7"/>
                 <outlet property="dateButton" destination="e3u-9G-ANo" id="bes-Vv-1B5"/>
+                <outlet property="dropDownNOButton" destination="8D2-sp-KzM" id="QjJ-kh-cYa"/>
                 <outlet property="dropDownView" destination="ceS-7q-Scn" id="eAm-4G-jR8"/>
                 <outlet property="dropDownViewHight" destination="l6a-CX-0fF" id="TRJ-fW-qaE"/>
+                <outlet property="dropDownYESButton" destination="wpA-M1-FTz" id="F26-Zf-B3I"/>
                 <outlet property="editButton" destination="da2-8Z-hZd" id="6yT-YK-lzY"/>
-                <outlet property="fileButton" destination="eW9-CS-mYd" id="DOf-Om-rUx"/>
+                <outlet property="fileButton" destination="pFC-RN-aJw" id="jRV-gg-hak"/>
                 <outlet property="hiddenButton" destination="vRP-8o-pWT" id="Pql-Sn-0uJ"/>
                 <outlet property="inputBoxButton" destination="uDb-yY-FMF" id="9s4-fv-mVe"/>
+                <outlet property="multipleChoiceNOButton" destination="g0B-GE-47n" id="1Kt-yV-NmL"/>
                 <outlet property="multipleChoiceView" destination="G3P-fI-I5X" id="8zs-Ka-Gks"/>
                 <outlet property="multipleChoiceViewHight" destination="QIH-dF-q7g" id="iC6-Uc-3YS"/>
+                <outlet property="multipleChoiceYESButton" destination="Jcs-cp-kSA" id="laK-ik-IZJ"/>
                 <outlet property="multipleSelectionButton" destination="ZMs-0R-6OU" id="Qex-1R-nMF"/>
                 <outlet property="multipleSelectionView" destination="Piz-V9-DDT" id="fnQ-d5-svk"/>
                 <outlet property="questionNameTextfield" destination="ilC-0W-F0u" id="Bov-9b-UWl"/>
+                <outlet property="questionTableView" destination="CtC-mm-mPq" id="X8f-Tf-WB0"/>
+                <outlet property="questionTableViewHight" destination="Xhq-RD-QH9" id="32T-f5-9eo"/>
                 <outlet property="regexTextfield" destination="vHa-hD-TxE" id="Cwt-vK-Ucb"/>
                 <outlet property="requiredButton" destination="vUD-LN-bFs" id="DHh-mj-thH"/>
                 <outlet property="saveButton" destination="QaR-KP-XVE" id="NTN-EF-O8x"/>
                 <outlet property="scrollView" destination="0sF-Md-tRp" id="61y-Mk-bpS"/>
+                <outlet property="selctedCheckBoxYESButton" destination="uRg-Z1-5ml" id="xqI-eI-Pv3"/>
+                <outlet property="selectedCheckBoxNOButton" destination="zJl-k7-oBt" id="ixn-2y-L1i"/>
                 <outlet property="subView" destination="qsz-QW-rrN" id="ZKC-LJ-i2w"/>
                 <outlet property="subViewHight" destination="tJc-qA-HQk" id="AcB-hD-jvh"/>
                 <outlet property="textButton" destination="jPU-HK-qAf" id="uop-Jg-Xdv"/>

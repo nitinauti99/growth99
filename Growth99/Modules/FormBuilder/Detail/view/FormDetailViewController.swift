@@ -85,8 +85,8 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     
     func reloadForm(cell: FormDetailTableViewCell, index: IndexPath){
         tableView.beginUpdates()
-        self.tableView?.reloadRows(at: [index], with: UITableView.RowAnimation.none)
-        tableView?.endUpdates()
+        self.tableView.reloadRows(at: [index], with: UITableView.RowAnimation.none)
+        tableView.endUpdates()
     }
 
     func FormsDataRecived() {
