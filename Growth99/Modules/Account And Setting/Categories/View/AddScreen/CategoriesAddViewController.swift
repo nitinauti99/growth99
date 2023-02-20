@@ -71,8 +71,6 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         categoriesNameTextField.text = categoriesAddViewModel?.getAllCategoriesData?.name
         userClinics = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
         
-        
-        
         let consentClinicArray = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
         for item in consentClinicArray {
             let selectedId = item.clinic?.id
@@ -125,6 +123,12 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         guard let dateTo = categoriesNameTextField.text, !dateTo.isEmpty else {
             categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
             return
+        }
+        
+        if selectedClincIds.count == 0 {
+            for clinicId in selectedClincs {
+                selectedClincIds.append(clinicId.id ?? 0)
+            }
         }
         self.view.ShowSpinner()
         let params: [String : Any] = ["name": categoriesNameTextField.text ?? String.blank, "clinicIds": selectedClincIds]

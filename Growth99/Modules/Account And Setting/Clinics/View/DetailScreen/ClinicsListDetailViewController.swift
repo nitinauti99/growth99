@@ -405,11 +405,11 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             contactNumberTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
-        
-        guard let contactNumber = contactNumberTextField.text, contactNumber.isValidMobile() else {
-            contactNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-            return
-        }
+//        
+//        guard let contactNumber = contactNumberTextField.text, contactNumber.isValidMobile() else {
+//            contactNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+//            return
+//        }
         
         guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
             timeZoneTextField.showError(message: Constant.ErrorMessage.nameEmptyError)

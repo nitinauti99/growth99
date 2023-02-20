@@ -363,10 +363,10 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             return
         }
         
-        guard let phoneNumber = phoneNumberTextField.text, phoneNumber.isValidMobile() else {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-            return
-        }
+//        guard let phoneNumber = phoneNumberTextField.text, phoneNumber.isValidMobile() else {
+//            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+//            return
+//        }
         
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
             phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)

@@ -295,10 +295,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
-        guard let contactNumber = phoneNumberTextField.text, contactNumber.isValidMobile() else {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-            return
-        }
+//        guard let contactNumber = phoneNumberTextField.text, contactNumber.isValidMobile() else {
+//            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+//            return
+//        }
         self.view.ShowSpinner()
         viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: contactNumber, roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
     }
