@@ -3,6 +3,42 @@ import Foundation
 
 public extension String {
 
+    func applyPatternOnNumbers(pattern: String, replacementCharacter: Character) -> String {
+            var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+            for index in 0 ..< pattern.count {
+                guard index < pureNumber.count else { return pureNumber }
+                let stringIndex = String.Index(utf16Offset: index, in: pattern)
+                let patternCharacter = pattern[stringIndex]
+                guard patternCharacter != replacementCharacter else { continue }
+                pureNumber.insert(patternCharacter, at: stringIndex)
+            }
+            return pureNumber
+        }
+    
+    
+    
+    func isValidMobile() -> Bool {
+        let mobileRegEx = "^\\d{3}-\\d{3}-\\d{4}$"
+        let mobileTest = NSPredicate(format:"SELF MATCHES %@", mobileRegEx)
+        let result = mobileTest.evaluate(with: self)
+        return result
+    }
+    
+    func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+                index = numbers.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+    
     func validateUrl() -> Bool {
         let urlRegEx = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
         let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)

@@ -51,9 +51,11 @@ class LogInViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<bussinessDetailInfoModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                print(response)
                 self.bussinessData = response
-                self.setUpBusinessData()
+                self.user.bussinessLogo = response.logoUrl
+                self.user.bussinessName = response.name
+                self.user.bussinessId = response.id
+                self.user.subDomainName = response.subDomainName
                 self.delegate?.businessDetailReceived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -61,15 +63,8 @@ class LogInViewModel {
             }
         }
     }
-    
-    func setUpBusinessData() {
-        self.user.bussinessLogo = bussinessData?.logoUrl
-        self.user.bussinessName = bussinessData?.name
-        self.user.bussinessId = bussinessData?.id
-        self.user.subDomainName = bussinessData?.subDomainName
-    }
-    
-    func SetUpUserData(){
+
+    func SetUpUserData() {
         self.user.firstName = LogInData?.firstName
         self.user.lastName = LogInData?.lastName
         self.user.authToken = LogInData?.idToken
@@ -85,7 +80,6 @@ extension LogInViewModel : LogInViewModelProtocol {
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }

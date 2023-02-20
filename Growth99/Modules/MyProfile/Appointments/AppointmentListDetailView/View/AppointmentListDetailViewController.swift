@@ -22,7 +22,7 @@ protocol AppointmentListDetailVCProtocol: AnyObject {
     func providerListDataRecivedEventEdit()
 }
 
-class AppointmentListDetailViewController: UIViewController, AppointmentListDetailVCProtocol {
+class AppointmentListDetailViewController: UIViewController, AppointmentListDetailVCProtocol, UITextFieldDelegate {
     @IBOutlet private weak var emailTextField: CustomTextField!
     @IBOutlet private weak var firstNameTextField: CustomTextField!
     @IBOutlet private weak var lastNameTextField: CustomTextField!
@@ -105,7 +105,9 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         firstNameTextField.text = editBookingHistoryData?.patientFirstName ?? String.blank
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
-        phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? String.blank
+        
+        phoneNumberTextField.text = editBookingHistoryData?.patientPhone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
         let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
@@ -361,8 +363,9 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             return
         }
         
-        if let textField = phoneNumberTextField.text, let phoneNumberValidate = eventViewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
+        guard let phoneNumber = phoneNumberTextField.text, phoneNumber.isValidMobile() else {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
         }
         
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
@@ -421,5 +424,15 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         inPersonBtn.isSelected = false
         appointmentTypeSelected = "Virtual"
     }
-}
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneNumberTextField {
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
+        }
+        return true
+    }
 
+}

@@ -79,17 +79,16 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     }
     
     fileprivate func setUpUI() {
-        self.firsNameTextField.text = viewModel?.getUserProfileData.firstName
-        self.lastNameTextField.text = viewModel?.getUserProfileData.lastName
-        self.emailTextField.text = viewModel?.getUserProfileData.email
-        self.phoneNumberTextField.text = viewModel?.getUserProfileData.phone
-        self.degignationTextField.text = viewModel?.getUserProfileData.designation
-        self.descriptionTextView.text = viewModel?.getUserProfileData.description
-      
-        self.saveButton.layer.cornerRadius = 12
-        self.saveButton.clipsToBounds = true
-        self.cancelButton.layer.cornerRadius = 12
-        self.cancelButton.clipsToBounds = true
+        firsNameTextField.text = viewModel?.getUserProfileData.firstName
+        lastNameTextField.text = viewModel?.getUserProfileData.lastName
+        emailTextField.text = viewModel?.getUserProfileData.email
+        phoneNumberTextField.text = viewModel?.getUserProfileData.phone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+        degignationTextField.text = viewModel?.getUserProfileData.designation
+        descriptionTextView.text = viewModel?.getUserProfileData.description
+        saveButton.layer.cornerRadius = 12
+        saveButton.clipsToBounds = true
+        cancelButton.layer.cornerRadius = 12
+        cancelButton.clipsToBounds = true
     }
     
     func userDataRecived() {
@@ -292,8 +291,16 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     }
     
     @IBAction func saveUserProfile() {
+        guard let contactNumber = phoneNumberTextField.text, !contactNumber.isEmpty else {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            return
+        }
+        guard let contactNumber = phoneNumberTextField.text, contactNumber.isValidMobile() else {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
+        }
         self.view.ShowSpinner()
-        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: phoneNumberTextField.text ?? String.blank, roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
+        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: contactNumber, roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
     }
     
     @IBAction func cancelUserProfile(){
@@ -314,15 +321,11 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
 extension HomeViewContoller: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var maxLength = Int()
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-        currentString.replacingCharacters(in: range, with: string) as NSString
-        
-        if  textField == phoneNumberTextField {
-            maxLength = 10
-            phoneNumberTextField.hideError()
-            return newString.length <= maxLength
+        if textField == phoneNumberTextField {
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
         }
         return true
     }
@@ -334,12 +337,6 @@ extension HomeViewContoller: UITextFieldDelegate {
         }
         if textField == lastNameTextField, textField.text == "" {
             lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
-        }
-        if textField == phoneNumberTextField, textField.text == "" {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
-        }
-        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
         }
     }
 }

@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         segmentedControlAppearance.selectedSegmentContentColor = UIColor(hexString: "#009EDE")
         segmentedControlAppearance.backgroundColor = UIColor.white
         segmentedControlAppearance.tintColor = UIColor(hexString: "#009EDE")
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
+
         return true
     }
 

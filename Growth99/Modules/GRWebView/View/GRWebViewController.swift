@@ -11,21 +11,20 @@ import WebKit
 class GRWebViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet private weak var webView: WKWebView!
-    
-
     var webViewUrlString: String = String.blank
-    
+    var webViewUrl: URL!
+    var webViewTitle: String = String.blank
+
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
+        self.title = webViewTitle
         loadWebviewUrl()
     }
     
     func loadWebviewUrl() {
-        if let url = URL(string: "https://growth99.zohodesk.com/portal/en/kb/growth99-plus") {
-            let request = URLRequest(url: url)
-            webView.load(request)
-            webView.allowsBackForwardNavigationGestures = true
-        }
+        let request = URLRequest(url: webViewUrl)
+        webView.load(request)
+        webView.allowsBackForwardNavigationGestures = true
     }
 }

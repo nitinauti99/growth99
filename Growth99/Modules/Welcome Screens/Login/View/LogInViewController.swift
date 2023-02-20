@@ -24,7 +24,9 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     let appDel = UIApplication.shared.delegate as! AppDelegate
     var viewModel: LogInViewModelProtocol?
     let emailMessage = NSLocalizedString("Email is required.", comment: "")
-   
+    let user = UserRepository.shared
+    var bussinessInfoData: bussinessDetailInfoModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginView.addBottomShadow(color: .gray,opacity: 0.5)
@@ -51,13 +53,12 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     }
     
     func LoaginDataRecived() {
-        self.view.HideSpinner()
         viewModel?.getBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? String.blank)
-        self.openHomeView()
     }
     
     func businessDetailReceived() {
-        
+        self.view.HideSpinner()
+        self.openHomeView()
     }
    
     func errorReceived(error: String) {

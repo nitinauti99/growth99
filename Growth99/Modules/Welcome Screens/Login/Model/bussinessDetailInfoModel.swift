@@ -26,6 +26,6 @@ struct bussinessDetailInfoModel: Codable {
     let dataStudioCode: String?
     let smsLimit: Int?
     let emailLimit: Int?
-    let paidMediaCode: Int?
+    let paidMediaCode: String?
     let syndicationCode: Int?
 }

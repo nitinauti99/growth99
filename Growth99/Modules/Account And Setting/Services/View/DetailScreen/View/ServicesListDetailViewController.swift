@@ -93,13 +93,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         enableButton.isSelected = true
         hideButton.isSelected = false
         disableButton.isSelected = false
-        
-        
-        let prefix = UILabel()
-        prefix.text = "http"
-        prefix.sizeToFit()
-        serviceUrlTextField.leftView = prefix
-        serviceUrlTextField.leftViewMode = .whileEditing
     }
     
     func getClinicInfo() {
@@ -459,7 +452,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             serviceCostTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
-        guard let serviceUrl = serviceUrlTextField.text, !serviceUrl.validateUrl() else {
+        
+        guard let serviceUrl = serviceUrlTextField.text, serviceUrl.validateUrl() else {
             serviceUrlTextField.showError(message: "Service URL is invalid.")
             return
         }

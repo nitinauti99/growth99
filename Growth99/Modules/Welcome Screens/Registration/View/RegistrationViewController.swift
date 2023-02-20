@@ -155,6 +155,7 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
     func openLogIInView() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
 }
 
 extension RegistrationViewController: UITextViewDelegate {

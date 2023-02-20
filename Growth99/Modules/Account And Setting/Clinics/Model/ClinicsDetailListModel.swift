@@ -66,7 +66,7 @@ struct ClinicsDetailListModel: Codable {
     let isReviewPublished: Bool?
     let disableVirtualAppointment: Bool?
     let clinicVacationSchedules: [String]?
-    let priceVaries: String?
+    let priceVaries: Bool?
 }
 
 struct ClinicParamModel: Codable {

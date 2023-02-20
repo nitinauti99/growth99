@@ -15,7 +15,7 @@ protocol ClinicsDetailListVCProtocol: AnyObject {
     func errorReceived(error: String)
 }
 
-class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol, UITextFieldDelegate {
+class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet private weak var clinicNameTextField: CustomTextField!
     @IBOutlet private weak var contactNumberTextField: CustomTextField!
@@ -64,6 +64,10 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBOutlet private weak var sundayStartTimeTF: CustomTextField!
     @IBOutlet private weak var sundayEndTimeTF: CustomTextField!
 
+    @IBOutlet private weak var onlineLinkWithoutURLView: UIView!
+    @IBOutlet private weak var onlineLinkWithURLView: UIView!
+    @IBOutlet private weak var onlineLinkWithURLTextView: UITextView!
+
     var clinicId: Int?
     var screenTitle: String = String.blank
     var dateFormater: DateFormaterProtocol?
@@ -80,7 +84,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         dateFormater = DateFormater()
         getSelectedClinicsList()
        
-        
         mondayStartTimeTF.tintColor = .clear
         mondayEndTimeTF.tintColor = .clear
         tuesdayStartTimeTF.tintColor = .clear
@@ -246,12 +249,19 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         timeZoneList = viewModel?.getTimeZonesListData
         if screenTitle == Constant.Profile.editClinic {
             setupClinicDetailUI()
+            onlineLinkWithoutURLView.isHidden = true
+            onlineLinkWithURLView.isHidden = false
+        } else {
+            onlineLinkWithoutURLView.isHidden = false
+            onlineLinkWithURLView.isHidden = true
         }
     }
     
     func setupClinicDetailUI() {
         clinicNameTextField.text = viewModel?.getClinicsListData?.name ?? String.blank
-        contactNumberTextField.text = viewModel?.getClinicsListData?.contactNumber ?? String.blank
+        
+        contactNumberTextField.text = viewModel?.getClinicsListData?.contactNumber?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+        
         timeZoneTextField.text = viewModel?.getClinicsListData?.timezone ?? String.blank
         addressField.text = viewModel?.getClinicsListData?.address ?? String.blank
         aboutClinicTextView.text = viewModel?.getClinicsListData?.about ?? String.blank
@@ -267,6 +277,9 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         twitterURLTextField.text = viewModel?.getClinicsListData?.twitter ?? String.blank
         paymentLinkTextField.text = viewModel?.getClinicsListData?.paymentLink ?? String.blank
         
+        let tenentID = UserRepository.shared.Xtenantid ?? String.blank
+        let clinicURL = "https://devemr.growthemr.com/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
+        onlineLinkWithURLTextView.text = clinicURL
         
         let filteredMondayArray = viewModel?.getClinicsListData?.businessHours?.filter{$0.dayOfWeek == "MONDAY"}
         if filteredMondayArray?.count == 0 {
@@ -393,6 +406,11 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             return
         }
         
+        guard let contactNumber = contactNumberTextField.text, contactNumber.isValidMobile() else {
+            contactNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
+        }
+        
         guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
             timeZoneTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
@@ -404,10 +422,15 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         guard let notificationEmail = notificationEmailTextField.text, !notificationEmail.isEmpty else {
-            notificationEmailTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            notificationEmailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
         
+        guard let notificationEmailValid = viewModel?.isValidEmail(notificationEmail), notificationEmailValid else {
+            notificationEmailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+
         guard let countryCode = countryCodeTextField.text, !countryCode.isEmpty else {
             countryCodeTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
@@ -418,8 +441,37 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             return
         }
         
+       /* guard let websiteURL = websiteURLTextField.text, websiteURL.validateUrl() else {
+            websiteURLTextField.showError(message: "website URL is invalid.")
+            return
+        }
+        
+        guard let appointmentURL = appointmentURLTextField.text, appointmentURL.validateUrl() else {
+            appointmentURLTextField.showError(message: "Appointment URL is invalid.")
+            return
+        }
+        
+        guard let giftcardURL = instagramURLTextField.text, giftcardURL.validateUrl() else {
+            giftcardURLTextField.showError(message: "Giftcard URL is invalid.")
+            return
+        }
+        
+        guard let instagramURL = instagramURLTextField.text, instagramURL.validateUrl() else {
+            instagramURLTextField.showError(message: "Instagram URL is invalid.")
+            return
+        }
+        
+        guard let twitterURL = twitterURLTextField.text, twitterURL.validateUrl() else {
+            twitterURLTextField.showError(message: "Twitter URL is invalid.")
+            return
+        }
+        
+        guard let paymentLinkURL = paymentLinkTextField.text, paymentLinkURL.validateUrl() else {
+            paymentLinkTextField.showError(message: "PaymentLink URL is invalid.")
+            return
+        }*/
+        
         if mondayBtn.isSelected {
-            
             businessHours.append(BusinessHoursAccount(dayOfWeek: "MONDAY", openHour: dateFormater?.localToServerWithDate(date: mondayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: mondayEndTimeTF.text ?? String.blank)))
         }
         
@@ -464,12 +516,28 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == mondayStartTimeTF || textField == mondayEndTimeTF || textField == tuesdayStartTimeTF || textField == tuesdayEndTimeTF || textField == wednesdayStartTimeTF || textField == wednesdayEndTimeTF || textField == thursdayStartTimeTF || textField == thursdayEndTimeTF || textField == fridayStartTimeTF || textField == fridayEndTimeTF || textField == saturdayStartTimeTF || textField == saturdayEndTimeTF || textField == sundayStartTimeTF || textField == sundayEndTimeTF  {
             return false
-        } else {
+        } else if textField == contactNumberTextField {
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
+        }
+        else {
             return true
         }
     }
     
-    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        if (URL.absoluteString == onlineLinkWithURLTextView.text) {
+            guard let webView = UIViewController.loadStoryboard("GRWebViewController", "GRWebViewController") as? GRWebViewController else {
+                fatalError("Failed to load BaseTabbarViewController from storyboard.")
+            }
+            webView.webViewUrl = URL
+            webView.webViewTitle = self.title ?? String.blank
+            self.navigationController?.pushViewController(webView, animated: true)
+        }
+        return false
+    }
 }
 
 extension ClinicsListDetailViewController: CountryPickerDelegate {

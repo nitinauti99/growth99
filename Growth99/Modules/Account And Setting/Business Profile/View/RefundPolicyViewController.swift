@@ -20,6 +20,11 @@ class RefundPolicyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if bussinessInfoData?.paymentRefundable == true {
+            paymentRefundableBtn.isSelected = true
+        } else {
+            paymentRefundableBtn.isSelected = false
+        }
         self.paymentRefundableTF.text = "\(bussinessInfoData?.paymentRefundableBeforeHours ?? 0)"
         self.refundablePercentageTF.text = self.forTrailingZero(temp: bussinessInfoData?.refundablePaymentPercentage ?? 0.0)
     }
