@@ -476,18 +476,36 @@
                                                 <rect key="frame" x="0.0" y="925" width="393" height="105"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yTh-aK-Nzr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="105"/>
+                                                        <rect key="frame" x="0.0" y="60" width="393" height="45"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <connections>
                                                             <outlet property="dataSource" destination="9aP-hi-U8j" id="Vz8-ia-Lb9"/>
                                                             <outlet property="delegate" destination="9aP-hi-U8j" id="mBa-xo-g6W"/>
                                                         </connections>
                                                     </tableView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdW-pB-WIo">
+                                                        <rect key="frame" x="223" y="12" width="150" height="35"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="150" id="VBU-fk-L35"/>
+                                                            <constraint firstAttribute="height" constant="35" id="nDu-V5-5rx"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="+ Add Question">
+                                                            <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="addQuestionActionWithSender:" destination="9aP-hi-U8j" eventType="touchUpInside" id="fAi-Ue-xdp"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="yTh-aK-Nzr" secondAttribute="bottom" id="2z7-0O-gtJ"/>
-                                                    <constraint firstItem="yTh-aK-Nzr" firstAttribute="top" secondItem="gt4-Ps-olN" secondAttribute="top" id="Rb3-kd-N89"/>
+                                                    <constraint firstItem="vdW-pB-WIo" firstAttribute="top" secondItem="gt4-Ps-olN" secondAttribute="top" constant="12" id="4ew-QV-B72"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vdW-pB-WIo" secondAttribute="trailing" constant="20" id="BBF-8i-Yst"/>
+                                                    <constraint firstItem="yTh-aK-Nzr" firstAttribute="top" secondItem="gt4-Ps-olN" secondAttribute="top" constant="60" id="Rb3-kd-N89"/>
                                                     <constraint firstAttribute="trailing" secondItem="yTh-aK-Nzr" secondAttribute="trailing" id="i2P-DF-hct"/>
                                                     <constraint firstItem="yTh-aK-Nzr" firstAttribute="leading" secondItem="gt4-Ps-olN" secondAttribute="leading" id="vlf-Tz-X2Z"/>
                                                 </constraints>
@@ -551,6 +569,7 @@
                         <outlet property="Show_Thank_page_URL_ContactForm_TextView_SepraterHight" destination="wcp-8i-tIH" id="LEq-vC-98l"/>
                         <outlet property="Show_title_Fields" destination="UZW-dm-FVa" id="Byd-g8-fai"/>
                         <outlet property="Show_title_Form" destination="zVT-kU-QdN" id="hNN-Hm-cLl"/>
+                        <outlet property="addQuestionButton" destination="vdW-pB-WIo" id="aJ2-0b-7UH"/>
                         <outlet property="backroundImageSelctionButton" destination="TEF-qm-e9t" id="AkU-k6-g4P"/>
                         <outlet property="backroundImageSelctionLBI" destination="qbf-Ed-eMS" id="ud6-6A-yww"/>
                         <outlet property="buttonText" destination="4Jk-RV-hCG" id="3iX-mq-Srl"/>
@@ -587,9 +606,6 @@
         <image name="tickselected" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

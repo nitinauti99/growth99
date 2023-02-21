@@ -10,6 +10,7 @@ import Foundation
 protocol FormDetailViewModelProtocol {
     var getFormDetailData: [FormDetailModel] { get }
     var getFormFilterListData: [FormDetailModel] { get }
+    func addFormDetailData(item: FormDetailModel)
     func getFormDetail(questionId: Int)
     func filterData(searchText: String)
     func FormDataAtIndex(index: Int) -> FormDetailModel?
@@ -73,6 +74,11 @@ class FormDetailViewModel {
     func FormDataAtIndex(index: Int)-> FormDetailModel? {
         return self.formDetailData[index]
     }
+    
+    func addFormDetailData(item: FormDetailModel){
+        self.formDetailData.append(item)
+    }
+
 }
 
 extension FormDetailViewModel: FormDetailViewModelProtocol {

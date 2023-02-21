@@ -40,7 +40,8 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var workingScrollViewHight: NSLayoutConstraint!
 
-    
+    @IBOutlet weak var addQuestionButton: UIButton!
+
     var viewModel: FormDetailViewModelProtocol?
     var questionId = Int()
     var tableViewHeight: CGFloat {
@@ -74,6 +75,9 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         backroundImageSelctionButton.isHidden = true
         backroundImageSelctionButton.layer.borderWidth = 2
         backroundImageSelctionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
+        addQuestionButton.layer.borderWidth = 2
+        addQuestionButton.roundCorners(corners: [.allCorners], radius: 5)
+        addQuestionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
         backroundImageSelctionLBI.isHidden = true
     }
     
@@ -95,7 +99,7 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     }
     
     func scrollViewHeight() {
-        workingScrollViewHight.constant = tableViewHeight + 1000 + 300
+        workingScrollViewHight.constant = tableViewHeight + 1000 + 350
     }
     
     func errorReceived(error: String) {
@@ -194,6 +198,19 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
             ConfigureThank_page_message_contactForm_TextView.isHidden = false
             ConfigureThank_page_message_contactForm_TextView_SepraterHight.constant = 80
         }
+    }
+    
+    @IBAction func addQuestionAction(sender:UIButton) {
+        let createdBy = CreatedBy(firstName: "", lastName: "", email: "", username: "")
+        let updatedBy =  UpdatedBy(firstName: "", lastName: "", email: "", username: "")
+
+        let formItem  = FormDetailModel(createdAt: "", updatedAt: "", createdBy: createdBy, updatedBy: updatedBy, deleted: false, tenantId: 0, id: 0, name: "", type: "", answer: "", required: false, questionOrder:0, allowMultipleSelection: false, allowLabelsDisplayWithImages: false, hidden: false, validate: false, regex: "", validationMessage: "", showDropDown: false, preSelectCheckbox: false, description: "", subHeading: "", questionChoices: [], questionImages: [])
+        
+        viewModel?.addFormDetailData(item: formItem)
+        NotificationCenter.default.post(name: Notification.Name("notificationCreateQuestion"), object: nil)
+        let indexPath = IndexPath(row: (viewModel?.getFormDetailData.count ?? 0) - 1 , section: 0)
+        tableView.insertRows(at: [indexPath], with: .none)
+        tableView.reloadData()
     }
     
     @IBAction func cancelAction(sender: UIButton){
