@@ -117,6 +117,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.tableView = tableView
         self.questionTableView.reloadData()
         buttons = [inputBoxButton, textButton,yesNoButton,dateButton,multipleSelectionButton,fileButton]
+        
     }
     
     fileprivate func showDeletButton() -> Bool? {

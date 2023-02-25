@@ -11,6 +11,7 @@ import UIKit
 protocol FormDetailViewControllerProtocol {
     func FormsDataRecived()
     func errorReceived(error: String)
+    func formsQuestionareDataRecived()
 }
 class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol, FormDetailTableViewCellDelegate {
     
@@ -57,7 +58,7 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         self.scrollView.delegate = self
         self.setUpUI()
         self.view.ShowSpinner()
-        viewModel?.getFormDetail(questionId: questionId)
+        viewModel?.getFormQuestionnaireData(questionnaireId: questionId)
         tableView.register(UINib(nibName: "FormDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "FormDetailTableViewCell")
     }
     
@@ -96,6 +97,37 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     func FormsDataRecived() {
         self.view.HideSpinner()
         tableView.reloadData()
+    }
+    
+    func formsQuestionareDataRecived(){
+        self.setUPVale()
+        viewModel?.getFormDetail(questionId: questionId)
+    }
+
+    func setUPVale() {
+        let item = viewModel?.getFormQuestionnaireData
+        self.questionnaireName.text = item?.name
+        self.Make_Public.isSelected = item?.isPublic ?? false
+        self.Enable_ModernUI.isSelected = item?.enableModernUi ?? false
+        self.Show_title_Form.isSelected = item?.showTitle ?? false
+        self.Show_title_Fields.isSelected = item?.hideFieldTitle ?? false // need to check
+        self.is_Custom.isSelected = item?.isCustom ?? false
+        self.Make_lead_generationForm.isSelected = item?.isLeadForm ?? false
+        self.Show_Custom_Content_Virtual_ConsultationLead.isSelected = item?.showTextForComposer ?? false
+        self.Show_Thank_page_URL_ContactForm.isSelected = item?.showThankYouPageUrlLinkInContactForm ?? false
+        
+        self.ConfigureThank_page_message_contactForm.isSelected = item?.configureThankYouMessageInContactForm ?? false
+        if item?.configureThankYouMessageInContactForm  == true {
+            Show_Thank_page_URL_ContactForm_TextView_SepraterHight.constant = 80
+            Show_Thank_page_URL_ContactForm_TextView.isHidden = false
+            Show_Thank_page_URL_ContactForm_TextView.text = item?.thankYouPageUrl ?? String.blank
+        }
+        ConfigureThank_page_message_contactForm_TextView.text = item?.thankYouPageMessageContactForm ?? String.blank
+        if item?.configureThankYouMessageInContactForm  == true {
+            ConfigureThank_page_message_contactForm_TextView_SepraterHight.constant = 80
+            ConfigureThank_page_message_contactForm_TextView.isHidden = false
+            ConfigureThank_page_message_contactForm_TextView.text = item?.thankYouPageMessageContactForm ?? ""
+        }
     }
     
     func scrollViewHeight() {

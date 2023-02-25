@@ -66,8 +66,8 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? String.blank
         consentsId = viewModel?.FormDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
-            consentsName = viewModel?.FormFilterDataAtIndex(index: index.row)?.name ?? String.blank
-            consentsId =  viewModel?.FormFilterDataAtIndex(index: index.row)?.id ?? 0
+            consentsName = viewModel?.formFilterDataAtIndex(index: index.row)?.name ?? String.blank
+            consentsId =  viewModel?.formFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         
         let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(consentsName)", preferredStyle: UIAlertController.Style.alert)

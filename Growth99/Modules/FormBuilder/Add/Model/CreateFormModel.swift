@@ -13,7 +13,7 @@ struct CreateFormModel : Codable {
     let titleColor : String?
     let tenantId : Int?
     let enableModernUi : Bool?
-    let showLogo : String?
+    let showLogo : Bool?
     let popupLabelColor : String?
     let identifier : String?
     let googleAnalyticsGlobalCode : String?

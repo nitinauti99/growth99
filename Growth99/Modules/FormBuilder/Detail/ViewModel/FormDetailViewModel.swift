@@ -14,19 +14,39 @@ protocol FormDetailViewModelProtocol {
     func getFormDetail(questionId: Int)
     func filterData(searchText: String)
     func FormDataAtIndex(index: Int) -> FormDetailModel?
-    func FormFilterDataAtIndex(index: Int)-> FormDetailModel?
+    func formFilterDataAtIndex(index: Int)-> FormDetailModel?
+    func getFormQuestionnaireData(questionnaireId: Int)
+    var getFormQuestionnaireData: CreateFormModel? { get }
+
 }
 
 class FormDetailViewModel {
     var delegate: FormDetailViewControllerProtocol?
     var formDetailData: [FormDetailModel] = []
     var FormFilterData: [FormDetailModel] = []
-    
+    var formQuestionnaireData: CreateFormModel?
+
     init(delegate: FormDetailViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    func getFormQuestionnaireData(questionnaireId: Int) {
+        let finaleUrl = ApiUrl.questionnaireFormURL + "\(questionnaireId)"
+
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CreateFormModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let FormData):
+                print(FormData)
+                self.formQuestionnaireData = FormData
+                self.delegate?.formsQuestionareDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
     
     func getFormDetail(questionId: Int) {
         let finaleURL = ApiUrl.fromDetail.appending("\(questionId)/questions")
@@ -67,7 +87,7 @@ class FormDetailViewModel {
         print(self.FormFilterData)
     }
     
-    func FormFilterDataAtIndex(index: Int) -> FormDetailModel? {
+    func formFilterDataAtIndex(index: Int) -> FormDetailModel? {
         return self.FormFilterData[index]
     }
     
@@ -82,6 +102,10 @@ class FormDetailViewModel {
 }
 
 extension FormDetailViewModel: FormDetailViewModelProtocol {
+   
+    var getFormQuestionnaireData: CreateFormModel? {
+        return self.formQuestionnaireData
+    }
     
     var getFormFilterListData: [FormDetailModel] {
         return self.FormFilterData

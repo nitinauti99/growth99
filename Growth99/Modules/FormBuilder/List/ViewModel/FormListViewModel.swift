@@ -13,7 +13,7 @@ protocol FormListViewModelProtocol {
     func getFormList()
     func filterData(searchText: String)
     func FormDataAtIndex(index: Int) -> FormListModel?
-    func FormFilterDataAtIndex(index: Int)-> FormListModel?
+    func formFilterDataAtIndex(index: Int)-> FormListModel?
     func removeConsents(consentsId: Int)
 }
 
@@ -67,7 +67,7 @@ class FormListViewModel {
         print(self.FormFilterData)
     }
     
-    func FormFilterDataAtIndex(index: Int) -> FormListModel? {
+    func formFilterDataAtIndex(index: Int) -> FormListModel? {
         return self.FormFilterData[index]
     }
     

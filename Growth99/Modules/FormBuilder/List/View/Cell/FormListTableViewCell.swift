@@ -30,7 +30,7 @@ class FormListTableViewCell: UITableViewCell {
     }
 
     func configureCellisSearch(FormList: FormListViewModelProtocol?, index: IndexPath) {
-        let FormList = FormList?.FormFilterDataAtIndex(index: index.row)
+        let FormList = FormList?.formFilterDataAtIndex(index: index.row)
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
         self.NumberOfQustion.text = String(FormList?.noOfQuestions ?? 0)
