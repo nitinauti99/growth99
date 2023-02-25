@@ -488,7 +488,7 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="saveIcon"/>
                                                 <connections>
-                                                    <action selector="saveButtonActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Shg-mh-DPb"/>
+                                                    <action selector="saveFormDataWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rv8-b0-l0h"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qc1-FD-la2">
@@ -553,6 +553,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="Delete"/>
+                                        <connections>
+                                            <action selector="deleteButtonActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HHT-ah-lr3"/>
+                                        </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUl-2v-Oyr">
                                         <rect key="frame" x="192" y="1228" width="50" height="50"/>

@@ -80,14 +80,40 @@ struct QuestionChoices: Codable {
         self.createdBy = createdBy
         self.name = name
     }
+   
 }
 
-struct QuestionsList: Codable {
-    let questionName : String?
-    let questionid : Int?
-   
-    init(questionName: String, questionid: Int) {
-        self.questionName = questionName
-        self.questionid = questionid
+struct QuestionFormDetailModel : Codable {
+    let name : String?
+    let type : String?
+    let required : Bool?
+    let hidden : Bool?
+    let validate : Bool?
+    let regex : String?
+    let questionOrder : Int?
+    let answer : String?
+    let id : Int?
+    let allowLabelsDisplayWithImages : Bool?
+    let allowMultipleSelection : Bool?
+    let questionChoices : [QuestionChoices]?
+    let questionImages : [String]?
+    let validationMessage : String?
+
+    init(name: String?, type: String?, required: Bool?, hidden: Bool?, validate: Bool?, regex: String?, questionOrder: Int?, answer: String?, id: Int?, allowLabelsDisplayWithImages: Bool?, allowMultipleSelection: Bool?, questionChoices: [QuestionChoices]?, questionImages: [String]?, validationMessage: String?) {
+        self.name = name
+        self.type = type
+        self.required = required
+        self.hidden = hidden
+        self.validate = validate
+        self.regex = regex
+        self.questionOrder = questionOrder
+        self.answer = answer
+        self.id = id
+        self.allowLabelsDisplayWithImages = allowLabelsDisplayWithImages
+        self.allowMultipleSelection = allowMultipleSelection
+        self.questionChoices = questionChoices
+        self.questionImages = questionImages
+        self.validationMessage = validationMessage
     }
+    
 }

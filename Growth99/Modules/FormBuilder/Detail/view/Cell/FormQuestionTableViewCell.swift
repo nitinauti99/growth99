@@ -28,8 +28,8 @@ class FormQuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(tableView: UITableView?, FormList: QuestionsList?, index: IndexPath) {
-        self.questionNameTextfield.text = FormList?.questionName
+    func configureCell(tableView: UITableView?, FormList: QuestionChoices?, index: IndexPath) {
+        self.questionNameTextfield.text = FormList?.name
         self.indexPath = index
     }
     

@@ -42,7 +42,7 @@ class FormListViewModel {
     }
     
     func removeConsents(consentsId: Int) {
-        let finaleUrl = ApiUrl.removeConsents + "\(consentsId)"
+        let finaleUrl = ApiUrl.removeQuestionnaire + "\(consentsId)"
 
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }

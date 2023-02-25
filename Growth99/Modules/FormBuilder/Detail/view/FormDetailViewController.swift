@@ -12,9 +12,11 @@ protocol FormDetailViewControllerProtocol {
     func FormsDataRecived()
     func errorReceived(error: String)
     func formsQuestionareDataRecived()
+    func updatedFormDataSuccessfully()
+    func questionRemovedSuccefully(mrssage: String)
 }
 class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol, FormDetailTableViewCellDelegate {
-    
+   
     @IBOutlet weak var Make_Public: UIButton!
     @IBOutlet weak var Enable_ModernUI: UIButton!
     @IBOutlet weak var Show_title_Form: UIButton!
@@ -31,6 +33,7 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView_SepraterHight: NSLayoutConstraint!
     @IBOutlet weak var backroundImageSelctionLBI: UILabel!
     @IBOutlet weak var backroundImageSelctionButton: UIButton!
+    @IBOutlet weak var backroundImage: UIImageView!
     @IBOutlet weak var questionnaireName: CustomTextField!
     @IBOutlet weak var buttonText: CustomTextField!
     @IBOutlet weak var submitButton: UIButton!
@@ -99,6 +102,11 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         tableView.reloadData()
     }
     
+    func updatedFormDataSuccessfully(){
+        self.view.showToast(message: "Form Data Updated Successfully", color: .black)
+        self.navigationController?.popViewController(animated: true)
+    }
+
     func formsQuestionareDataRecived(){
         self.setUPVale()
         viewModel?.getFormDetail(questionId: questionId)
@@ -117,16 +125,21 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         self.Show_Thank_page_URL_ContactForm.isSelected = item?.showThankYouPageUrlLinkInContactForm ?? false
         
         self.ConfigureThank_page_message_contactForm.isSelected = item?.configureThankYouMessageInContactForm ?? false
-        if item?.configureThankYouMessageInContactForm  == true {
+        
+        if item?.showThankYouPageUrlLinkInContactForm  == true {
             Show_Thank_page_URL_ContactForm_TextView_SepraterHight.constant = 80
             Show_Thank_page_URL_ContactForm_TextView.isHidden = false
             Show_Thank_page_URL_ContactForm_TextView.text = item?.thankYouPageUrl ?? String.blank
         }
-        ConfigureThank_page_message_contactForm_TextView.text = item?.thankYouPageMessageContactForm ?? String.blank
         if item?.configureThankYouMessageInContactForm  == true {
             ConfigureThank_page_message_contactForm_TextView_SepraterHight.constant = 80
             ConfigureThank_page_message_contactForm_TextView.isHidden = false
             ConfigureThank_page_message_contactForm_TextView.text = item?.thankYouPageMessageContactForm ?? ""
+        }
+        
+        if item?.enableModernUi ?? false == true {
+            backroundImageSelctionLBI.isHidden = false
+            backroundImageSelctionButton.isHidden = false
         }
     }
     
@@ -249,6 +262,27 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         self.navigationController?.popViewController(animated: true)
     }
     
+    func deleteQuestion(name: String, id: Int){
+        let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(name)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                        handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            self?.viewModel?.removeQuestions(questionId: self?.questionId ?? 0, childQuestionId: id )
+
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func questionRemovedSuccefully(mrssage: String) {
+        self.view.showToast(message: mrssage, color: .red)
+        viewModel?.getFormQuestionnaireData(questionnaireId: questionId)
+    }
+
+    
     @IBAction func saveAction(sender: UIButton){
         let createFormList: [String : Any] = [
             "name": self.questionnaireName.text ?? String.blank,
@@ -258,10 +292,11 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
             "hideFieldTitle": self.Show_title_Fields.isSelected,
             "isCustom": self.is_Custom.isSelected,
             "isLeadForm": self.Make_lead_generationForm.isSelected,
+            "showTextForComposer": self.Show_Custom_Content_Virtual_ConsultationLead.isSelected,
             "showThankYouPageUrlLinkInContactForm": self.Show_Thank_page_URL_ContactForm.isSelected,
             "thankYouPageUrl": Show_Thank_page_URL_ContactForm_TextView.text ?? String.blank,
             "configureThankYouMessageInContactForm": ConfigureThank_page_message_contactForm.isSelected,
-            "thankYouPageMessageContactForm": ConfigureThank_page_message_contactForm_TextView.text ?? String.blank,
+            "thankYouPageMessageContactForm": ConfigureThank_page_message_contactForm_TextView.text ?? String.blank,   
 
             "chatQuestionnaire": false,
             "buttonBackgroundColor": "#357ffa",
@@ -272,7 +307,6 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
             "inputBoxShadowColor": "#357ffa",
             "activeSideColor": "#003b6f",
             "textForComposer": "",
-            "showTextForComposer": true,
             "emailTemplateId": "",
             "submitButtonText": "Submit",
             "showThankYouPageUrlLinkInVC": false,
@@ -284,11 +318,14 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
             "thankYouPageMessageLandingPage": "",
             "thankYouPageMessageVC": ""
         ]
-        
         self.view.ShowSpinner()
-       /// viewModel?.saveCreateForm(formData: createFormList)
+        viewModel?.updateFormData(questionnaireId: questionId,formData: createFormList)
     }
     
+    func saveFormData(item: [String : Any]) {
+        self.view.ShowSpinner()
+        viewModel?.updateQuestionFormData(questionnaireId: self.questionId, formData: item)
+    }
 }
 
 extension FormDetailViewController: UIScrollViewDelegate {

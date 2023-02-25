@@ -9,6 +9,8 @@ import UIKit
 
 protocol FormDetailTableViewCellDelegate: AnyObject {
     func reloadForm(cell: FormDetailTableViewCell, index: IndexPath)
+    func saveFormData(item: [String: Any])
+    func deleteQuestion(name: String, id: Int)
 }
 
 class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegate {
@@ -69,37 +71,49 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     
     @IBOutlet weak var deletButton: UIButton!
     @IBOutlet weak var bottomDeletButton: UIButton!
-
+    
     @IBOutlet weak var deletButtonWidth: NSLayoutConstraint!
     
     var tableView: UITableView?
     var indexPath = IndexPath()
     var buttons = [UIButton]()
-    var questionArray = [QuestionsList]()
+    var questionArray = [QuestionChoices]()
     var formList : FormDetailModel?
     weak var delegate: FormDetailTableViewCellDelegate?
     var crateQuestion = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        /// Register TablView
         questionTableView.register(UINib(nibName: "FormQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "FormQuestionTableViewCell")
         NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationCreateQuestion), name: Notification.Name("notificationCreateQuestion"), object: nil)
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
         self.dissableUserIntraction()
+        self.scrollView.delegate = self
+        self.setUPInitialConstantValue()
+    }
+    
+    /// setting initail values
+    func setUPInitialConstantValue() {
         self.setUPButtonAction()
+        self.hideMultipleSelctionView()
         self.bottomView.isHidden = true
         self.subViewHight.constant = 0
-        self.scrollView.delegate = self
-        self.hideMultipleSelctionView()
-        questionTableViewHight.constant = 0
-        questionTableView.isHidden = true
+        self.questionTableViewHight.constant = 0
+        self.questionTableView.isHidden = true
+        self.validationViewHight.constant = 0
+        self.validationView.isHidden = true
+        self.multipleSelectionView.isHidden = true
+        self.multipleChoiceNOButton.isSelected = false
+        self.dropDownNOButton.isSelected = false
+        self.selectedCheckBoxNOButton.isSelected = false
     }
     
     @objc func NotificationCreateQuestion(){
         crateQuestion = true
-//        cancelButton.isHidden = true
-//        cancelButtonWidth.constant = 0
+        //        cancelButton.isHidden = true
+        //        cancelButtonWidth.constant = 0
     }
     
     
@@ -110,6 +124,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.hideAddQuestionView()
     }
     
+    /// configure cell
     func configureCell(tableView: UITableView?, FormList: FormDetailViewModelProtocol?, index: IndexPath) {
         self.setUPUI(FormList, index)
         self.saveButton.roundCorners(corners: [.allCorners], radius: 25)
@@ -120,7 +135,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         
     }
     
-    fileprivate func showDeletButton() -> Bool? {
+    /// based below condition we shwo delete button on form
+    private func showDeletButton() -> Bool? {
         if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" {
             deletButton.isHidden = true
             deletButtonWidth.constant = 0
@@ -130,6 +146,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }
     }
     
+    
+    /// setUp Data for UI
     func setUPUI(_ FormList: FormDetailViewModelProtocol?, _ index: IndexPath) {
         self.indexPath = index
         self.formList = FormList?.FormDataAtIndex(index: index.row)
@@ -137,25 +155,54 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.requiredButton.isSelected = formList?.required ?? false
         self.hiddenButton.isSelected = formList?.hidden ?? false
         self.validateButton.isSelected = formList?.validate ?? false
-        self.validationViewHight.constant = 0
-        self.validationView.isHidden = true
-        self.multipleSelectionView.isHidden = true
-        //self.cancelButton.isHidden = true
-       // self.cancelButtonWidth.constant = 50
-
+        self.validationMessageTextfield.text = formList?.validationMessage
+        self.selctionType(selctionType:formList?.type ?? String.blank)
+        self.setUPInitialMultiselectionView()
+        self.questionArray = formList?.questionChoices ?? []
+        /// based on below condtion we are shwoing validated
         if formList?.validate == true {
             self.validationViewHight.constant = 180
             self.validationView.isHidden = false
         }
-        self.validationMessageTextfield.text = formList?.validationMessage
-        self.selctionType(selctionType:formList?.type ?? String.blank)
         if let isDeletbuttonShow = showDeletButton(), isDeletbuttonShow {
-            deletButton.isHidden = false
-            deletButtonWidth.constant = 40
+            self.deletButton.isHidden = false
+            self.deletButtonWidth.constant = 40
         }
-        cancelButton.addTarget(self, action: #selector(self.cancelButtonAction(sender:)), for: .touchUpInside)
+        
+        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonAction(sender:)), for: .touchUpInside)
     }
     
+    /// setUpMultipleSelectionValues
+    private func setUPInitialMultiselectionView() {
+        if formList?.allowMultipleSelection == true {
+            self.multipleChoiceYESButton.isSelected = true
+            self.multipleChoiceNOButton.isSelected = false
+            self.hideDropDownView()
+            self.hideCheckBoxView()
+        }else{
+            self.multipleChoiceYESButton.isSelected = false
+            self.multipleChoiceNOButton.isSelected = true
+        }
+        
+        if formList?.showDropDown == true {
+            self.dropDownYESButton.isSelected = true
+            self.dropDownNOButton.isSelected = false
+            self.hideCheckBoxView()
+        }else{
+            self.dropDownYESButton.isSelected = false
+            self.dropDownNOButton.isSelected = true
+        }
+        
+        if formList?.preSelectCheckbox == true {
+            self.selctedCheckBoxYESButton.isSelected = true
+            self.selectedCheckBoxNOButton.isSelected = false
+        }else{
+            self.selctedCheckBoxYESButton.isSelected = false
+            self.selectedCheckBoxNOButton.isSelected = true
+        }
+    }
+    
+    /// Disable all filed user intraction
     func dissableUserIntraction() {
         self.questionNameTextfield.isUserInteractionEnabled = false
         self.requiredButton.isUserInteractionEnabled = false
@@ -172,6 +219,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.regexTextfield.isUserInteractionEnabled = false
     }
     
+    /// enable allfiled user intraction
     func enableUserIntraction() {
         self.questionNameTextfield.isUserInteractionEnabled = true
         self.requiredButton.isUserInteractionEnabled = true
@@ -207,6 +255,28 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }
     }
     
+    func getSelctionType() -> String {
+        if self.inputBoxButton.isSelected == true {
+            return "Input"
+        }
+        if self.textButton.isSelected == true {
+            return "Text"
+        }
+        if self.yesNoButton.isSelected == true {
+            return "Yes_No"
+        }
+        if self.dateButton.isSelected == true {
+            return "Date"
+        }
+        if self.multipleSelectionButton.isSelected == true {
+            return "Multiple_Selection_Text"
+        }
+        if self.fileButton.isSelected == true {
+            return "File"
+        }
+        return ""
+    }
+    
     func setUPButtonAction(){
         inputBoxButton.addTarget(self, action: #selector(self.buttonAction(_ :)), for:.touchUpInside)
         textButton.addTarget(self, action: #selector(self.buttonAction(_ :)), for:.touchUpInside)
@@ -216,6 +286,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         fileButton.addTarget(self, action: #selector(self.buttonAction(_ :)), for:.touchUpInside)
     }
     
+    /// set selected button based server data
     @objc func buttonAction(_ sender: UIButton!){
         for button in buttons {
             button.isSelected = false
@@ -229,6 +300,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }
     }
     
+    /// show mupltiple selcetion view
     func showMultSelctionView(){
         self.showMultipleChocesView()
         self.showDropDownView()
@@ -273,6 +345,15 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.subViewHight.constant = 76
         self.deletButton.isHidden = false
         self.enableUserIntraction()
+        if multipleSelectionButton.isSelected == true {
+            self.multipleSelectionView.isHidden = false
+            self.showMultSelctionView()
+            self.setUPInitialMultiselectionView()
+            self.questionTableView.isHidden = false
+            self.questionTableViewHight.constant = CGFloat(questionArray.count * 120)
+            self.questionTableView.reloadData()
+            self.questionTableView?.performBatchUpdates(nil, completion: nil)
+        }
         if let isDeletbuttonShow = showDeletButton(), isDeletbuttonShow {
             bottomDeletButton.isHidden = false
         }
@@ -289,12 +370,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         // self.setUPUI(formList, indexPath)
         delegate?.reloadForm(cell: self, index: indexPath)
         self.tableView?.performBatchUpdates(nil, completion: nil)
-    }
-    
-    @IBAction func saveButtonAction(sender: UIButton) {
-        self.bottomView.isHidden = true
-        self.subViewHight.constant = 0
-        self.dissableUserIntraction()
     }
     
     /// multiple selction view
@@ -372,7 +447,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             multipleChoiceNOButton.isSelected = false
             self.hideDropDownView()
             self.hideCheckBoxView()
-            //            self.tableView?.performBatchUpdates(nil, completion: nil)
         }
     }
     
@@ -394,7 +468,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             sender.isSelected = true
             dropDownNOButton.isSelected = false
             self.hideCheckBoxView()
-            //            self.tableView?.performBatchUpdates(nil, completion: nil)
         }
     }
     
@@ -429,14 +502,19 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     }
     
     @IBAction func addMutiSelectionQuestionButton(sender: UIButton) {
-        let item  = QuestionsList(questionName: "", questionid: 0)
-        questionArray.append(item)
-        questionTableView.isHidden = false
-        questionTableViewHight.constant = CGFloat(questionArray.count * 120)
+        /// Create Empty Object for tableView To add row
+        let createdBy = CreatedBy(firstName: "", lastName: "", email: "", username: "")
+        let updatedBy =  UpdatedBy(firstName: "", lastName: "", email: "", username: "")
+        let item  = QuestionChoices(deleted: false, id: 0, tenantId: 0, updatedBy: updatedBy, updatedAt: "", createdAt: "", createdBy: createdBy, name: "")
+        
+        self.questionArray.append(item)
+        self.questionTableView.isHidden = false
+        self.questionTableViewHight.constant = CGFloat(questionArray.count * 120)
         self.tableView?.performBatchUpdates(nil, completion: nil)
         self.questionTableView.reloadData()
     }
     
+    /// Remove row from table view
     func deletRowFormCell(cell: FormQuestionTableViewCell, index: IndexPath) {
         self.questionArray.remove(at: index.row)
         questionTableViewHight.constant = CGFloat(questionArray.count * 120)
@@ -444,11 +522,148 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
+    @IBAction func deleteButtonAction(sender: UIButton) {
+        delegate?.deleteQuestion(name: formList?.name ?? "", id: formList?.id ?? 0)
+    }
+    
+    func updateMultiSelectionFromData() -> [String: Any]{
+        var questionListArray = [Any]()
+        for indexValue in 0..<(questionArray.count) {
+            let cellIndexPath = IndexPath(item: indexValue, section: 0)
+            var questionDict: [String: Any] = [:]
+           
+            if let cell = self.questionTableView.cellForRow(at: cellIndexPath) as? FormQuestionTableViewCell {
+                questionDict["name"] = cell.questionNameTextfield.text
+            }
+            questionListArray.append(questionDict)
+        }
+        
+        let formData: [String: Any] = [
+            "name": self.questionNameTextfield.text ?? "",
+            "type": getSelctionType(),
+            "required": requiredButton.isSelected,
+            "hidden": hiddenButton.isSelected,
+            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "questionOrder": formList?.questionOrder ?? 0,
+            "answer": "",
+            "id": formList?.id ?? 0,
+            "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
+            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "questionChoices": questionListArray,
+            "showDropDown": self.dropDownYESButton.isSelected,
+            "preSelectCheckbox": self.selctedCheckBoxYESButton.isSelected,
+            "questionImages": [],
+        ]
+        return formData
+    }
+    
+    // need to check validation meesage
+    func updateOtherTypeFromData() -> [String: Any]{
+        let formData: [String: Any] = [
+            "name": self.questionNameTextfield.text ?? "",
+            "type": getSelctionType(),
+            "required": requiredButton.isSelected,
+            "hidden": hiddenButton.isSelected,
+            "validate": validateButton.isSelected,
+            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "questionOrder": formList?.questionOrder ?? 0,
+            "answer": "",
+            "id": formList?.id ?? 0,
+            "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
+            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "questionChoices": [ ],
+            "questionImages": [],
+            "validationMessage": self.validationMessageTextfield.text ?? ""
+        ]
+        return formData
+    }
+    
+    private func updateFromData() -> [String: Any]{
+        if getSelctionType() == "Multiple_Selection_Text" {
+            return updateMultiSelectionFromData()
+        }else {
+            return updateOtherTypeFromData()
+        }
+    }
+    @IBAction func saveFormData(sender: UIButton){
+        self.bottomView.isHidden = true
+        self.subViewHight.constant = 0
+        self.dissableUserIntraction()
+        self.bottomDeletButton.isHidden = true
+        var formData: [String: Any] = [:]
+        
+        if formList?.id == 0 {
+            formData = self.saveFromData()
+        }else{
+            formData = self.updateFromData()
+        }
+        delegate?.saveFormData(item: formData)
+    }
+    
+    func saveFromData() -> [String: Any] {
+        if getSelctionType() == "Multiple_Selection_Text" {
+            return saveMultiSelectionFromData()
+        }else {
+            return saveOtherTypeFromData()
+        }
+    }
+    
+    func saveMultiSelectionFromData() -> [String: Any]{
+        var questionListArray = [Any]()
+        for indexValue in 0..<(questionArray.count) {
+            let cellIndexPath = IndexPath(item: indexValue, section: 0)
+            var questionDict: [String: Any] = [:]
+           
+            if let cell = self.questionTableView.cellForRow(at: cellIndexPath) as? FormQuestionTableViewCell {
+                questionDict["name"] = cell.questionNameTextfield.text
+            }
+            questionListArray.append(questionDict)
+        }
+        
+        let formData: [String: Any] = [
+            "name": self.questionNameTextfield.text ?? "",
+            "type": getSelctionType(),
+            "required": requiredButton.isSelected,
+            "hidden": hiddenButton.isSelected,
+            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "questionOrder": self.indexPath.row + 1,
+            "answer": "",
+            "id": NSNull(),
+            "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
+            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "questionChoices": questionListArray,
+            "showDropDown": self.dropDownYESButton.isSelected,
+            "preSelectCheckbox": self.selctedCheckBoxYESButton.isSelected,
+            "questionImages": [],
+        ]
+        return formData
+    }
+    
+    // need to check validation meesage
+    func saveOtherTypeFromData() -> [String: Any]{
+        let formData: [String: Any] = [
+            "name": self.questionNameTextfield.text ?? "",
+            "type": getSelctionType(),
+            "required": requiredButton.isSelected,
+            "hidden": hiddenButton.isSelected,
+            "validate": validateButton.isSelected,
+            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "questionOrder": self.indexPath.row + 1,
+            "answer": "",
+            "id": NSNull(),
+            "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
+            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "questionChoices": [ ],
+            "questionImages": [],
+            "validationMessage": self.validationMessageTextfield.text ?? ""
+        ]
+        return formData
+    }
 }
 
 extension FormDetailTableViewCell: UIScrollViewDelegate {
     
-   internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }

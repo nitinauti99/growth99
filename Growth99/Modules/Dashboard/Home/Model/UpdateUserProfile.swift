@@ -28,6 +28,23 @@ struct CreatedBy: Codable, Equatable {
     let lastName: String?
     let email: String?
     let username: String?
+    
+    func toDict() -> [String:Any] {
+        var dictionary = [String:Any]()
+        if firstName != nil {
+            dictionary["firstName"] = firstName
+        }
+        if lastName != nil {
+            dictionary["lastName"] = lastName
+        }
+        if email != nil {
+            dictionary["email"] = email
+        }
+        if username != nil {
+            dictionary["username"] = username
+        }
+        return dictionary
+    }
 }
 
 struct UpdatedBy: Codable, Equatable {
@@ -35,4 +52,21 @@ struct UpdatedBy: Codable, Equatable {
     let lastName: String?
     let email: String?
     let username: String?
+    
+    func toDict() -> [String:Any] {
+        var dictionary = [String:Any]()
+        if firstName != nil {
+            dictionary["firstName"] = firstName
+        }
+        if lastName != nil {
+            dictionary["lastName"] = lastName
+        }
+        if email != nil {
+            dictionary["email"] = email
+        }
+        if username != nil {
+            dictionary["username"] = username
+        }
+        return dictionary
+    }
 }

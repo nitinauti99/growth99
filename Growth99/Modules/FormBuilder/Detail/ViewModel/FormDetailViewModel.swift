@@ -17,7 +17,10 @@ protocol FormDetailViewModelProtocol {
     func formFilterDataAtIndex(index: Int)-> FormDetailModel?
     func getFormQuestionnaireData(questionnaireId: Int)
     var getFormQuestionnaireData: CreateFormModel? { get }
-
+    func updateFormData(questionnaireId: Int,formData:[String: Any])
+    func updateQuestionFormData(questionnaireId: Int,formData: [String: Any])
+    func removeQuestions(questionId: Int, childQuestionId: Int)
+    
 }
 
 class FormDetailViewModel {
@@ -25,7 +28,7 @@ class FormDetailViewModel {
     var formDetailData: [FormDetailModel] = []
     var FormFilterData: [FormDetailModel] = []
     var formQuestionnaireData: CreateFormModel?
-
+    
     init(delegate: FormDetailViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -34,7 +37,7 @@ class FormDetailViewModel {
     
     func getFormQuestionnaireData(questionnaireId: Int) {
         let finaleUrl = ApiUrl.questionnaireFormURL + "\(questionnaireId)"
-
+        
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CreateFormModel, GrowthNetworkError>) in
             switch result {
             case .success(let FormData):
@@ -62,25 +65,58 @@ class FormDetailViewModel {
         }
     }
     
-//    func removeConsents(consentsId: Int) {
-//        let finaleUrl = ApiUrl.removeConsents + "\(consentsId)"
-//
-//        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let response):
-//                    self.delegate?.consentsRemovedSuccefully(mrssage: "Consents removed successfully")
-//                }else if (response.statusCode == 500) {
-//                    self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
-//                }else{
-//                    self.delegate?.errorReceived(error: "response failed")
-//                }
-//            case .failure(let error):
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//                print("Error while performing request \(error)")
-//            }
-//        }
-//    }
+    func updateFormData(questionnaireId: Int,formData:[String: Any]){
+        let finaleURL = ApiUrl.fromDetail.appending("\(questionnaireId)")
+        
+        self.requestManager.request(forPath: finaleURL, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: formData, encoding: .jsonEncoding)) { (result: Result<CreateFormModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let FormData):
+                print(FormData)
+                self.delegate?.updatedFormDataSuccessfully()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func updateQuestionFormData(questionnaireId: Int,formData: [String: Any]){
+        let finaleURL = ApiUrl.fromDetail.appending("\(questionnaireId)/questions")
+        
+        self.requestManager.request(forPath: finaleURL, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: formData, encoding: .jsonEncoding)) { (result: Result<CreateFormModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let FormData):
+                print(FormData)
+                self.delegate?.updatedFormDataSuccessfully()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    
+    func removeQuestions(questionId: Int, childQuestionId: Int) {
+        let finaleUrl = ApiUrl.fromDetail.appending("\(questionId)/questions/\(childQuestionId)")
+        
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if(response.statusCode == 200){
+                    self.delegate?.questionRemovedSuccefully(mrssage: "Consents removed successfully")
+                }else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
+                } else{
+                    self.delegate?.errorReceived(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
     
     func filterData(searchText: String) {
         self.FormFilterData = (self.formDetailData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
@@ -98,11 +134,11 @@ class FormDetailViewModel {
     func addFormDetailData(item: FormDetailModel){
         self.formDetailData.append(item)
     }
-
+    
 }
 
 extension FormDetailViewModel: FormDetailViewModelProtocol {
-   
+    
     var getFormQuestionnaireData: CreateFormModel? {
         return self.formQuestionnaireData
     }
