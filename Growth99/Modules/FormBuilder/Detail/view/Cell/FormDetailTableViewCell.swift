@@ -98,6 +98,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     func setUPInitialConstantValue() {
         self.setUPButtonAction()
         self.hideMultipleSelctionView()
+        self.saveButton.isHidden = true
+        self.crateQuestion = false
         self.bottomView.isHidden = true
         self.subViewHight.constant = 0
         self.questionTableViewHight.constant = 0
@@ -111,11 +113,15 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     }
     
     @objc func NotificationCreateQuestion(){
-        crateQuestion = true
-        //        cancelButton.isHidden = true
-        //        cancelButtonWidth.constant = 0
+        self.validationViewHight.constant = 0
+        self.validationView.isHidden = true
+        self.deletButton.isHidden = true
+        self.crateQuestion = true
+        self.bottomView.isHidden = false
+        self.subViewHight.constant = 76
+        self.cancelButton.isHidden = true
+        self.cancelButtonWidth.constant = 0
     }
-    
     
     func hideMultipleSelctionView(){
         self.hideMultipleChocesView()
@@ -130,6 +136,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.saveButton.roundCorners(corners: [.allCorners], radius: 25)
         self.cancelButton.roundCorners(corners: [.allCorners], radius: 25)
         self.tableView = tableView
+        self.saveButton.isHidden = true
         self.questionTableView.reloadData()
         buttons = [inputBoxButton, textButton,yesNoButton,dateButton,multipleSelectionButton,fileButton]
         
@@ -142,7 +149,11 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             deletButtonWidth.constant = 0
             return false
         }else {
-            return true
+            if self.crateQuestion == true {
+               return false
+           }else{
+               return true
+           }
         }
     }
     
@@ -315,7 +326,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.hideMultipleSelctionView()
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
-    
+
     @IBAction func requiredButton(sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
@@ -335,15 +346,21 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBAction func validateButton(sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
+            self.validationViewHight.constant = 0
+            self.validationView.isHidden = true
         } else {
             sender.isSelected = true
+            self.validationViewHight.constant = 180
+            self.validationView.isHidden = false
         }
     }
     
+    /// edit button pressed it allow user to edit filed
     @IBAction func editButtonAction(sender: UIButton) {
         self.bottomView.isHidden = false
         self.subViewHight.constant = 76
         self.deletButton.isHidden = false
+        self.saveButton.isHidden = false
         self.enableUserIntraction()
         if multipleSelectionButton.isSelected == true {
             self.multipleSelectionView.isHidden = false
@@ -354,8 +371,9 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             self.questionTableView.reloadData()
             self.questionTableView?.performBatchUpdates(nil, completion: nil)
         }
-        if let isDeletbuttonShow = showDeletButton(), isDeletbuttonShow {
+        if self.crateQuestion == true {
             bottomDeletButton.isHidden = false
+            self.questionNameTextfield.placeholder = "New Question"
         }
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
