@@ -75,7 +75,7 @@ struct Constant {
         static let designer = " Designer "
         static let notification = " Notification "
         static let submission = " Submission "
-
+        static let notificationList = "Notification Setting"
         static let emailTemplatesList = "Email Templates List"
         static let FormsList = "Forms"
         static let createForm = "Create Form"

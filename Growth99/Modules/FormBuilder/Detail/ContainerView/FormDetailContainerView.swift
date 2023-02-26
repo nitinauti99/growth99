@@ -41,7 +41,7 @@ class FormDetailContainerView: UIViewController {
     }
    
     func setupView() {
-        remove(asChildViewController: tasksListVC)
+        remove(asChildViewController: notificationListVC)
         remove(asChildViewController: questionarieVC)
         add(asChildViewController: formDetailVC)
         navigationItem.rightBarButtonItem = nil
@@ -50,25 +50,19 @@ class FormDetailContainerView: UIViewController {
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            remove(asChildViewController: tasksListVC)
+            remove(asChildViewController: notificationListVC)
             remove(asChildViewController: questionarieVC)
-            remove(asChildViewController: consentsListVC)
-            remove(asChildViewController: PateintsAppointmentListVC)
             add(asChildViewController: formDetailVC)
             navigationItem.rightBarButtonItem = nil
         case 1:
-            remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: formDetailVC)
-            remove(asChildViewController: consentsListVC)
-            remove(asChildViewController: PateintsAppointmentListVC)
-            add(asChildViewController: questionarieVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
-        case 2:
             remove(asChildViewController: questionarieVC)
             remove(asChildViewController: formDetailVC)
-            remove(asChildViewController: consentsListVC)
-            remove(asChildViewController: PateintsAppointmentListVC)
-            add(asChildViewController: tasksListVC)
+            add(asChildViewController: notificationListVC)
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
+        case 2:
+            remove(asChildViewController: notificationListVC)
+            remove(asChildViewController: formDetailVC)
+            add(asChildViewController: questionarieVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
         default:
             break
@@ -105,11 +99,10 @@ class FormDetailContainerView: UIViewController {
         navigationController?.pushViewController(createTasksVC, animated: true)
     }
     
-    private lazy var tasksListVC: TasksListViewController = {
-        let tasksList = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
-        tasksList.workflowTaskPatient = workflowFormId
-        tasksList.fromPateint = true
-        return tasksList
+    private lazy var notificationListVC: NotificationListViewController = {
+        let notificationListVC = UIStoryboard(name: "NotificationListViewController", bundle: nil).instantiateViewController(withIdentifier: "NotificationListViewController") as! NotificationListViewController
+        notificationListVC.questionId = workflowFormId
+        return notificationListVC
     }()
     
     private lazy var questionarieVC: QuestionarieViewController = {
