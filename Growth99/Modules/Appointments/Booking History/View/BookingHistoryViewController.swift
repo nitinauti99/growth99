@@ -114,7 +114,13 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     
     func editAppointment(cell: BookingHistoryTableViewCell, index: IndexPath) {
         let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-        editVC.editBookingHistoryData = self.bookingHistoryListData[index.row]
+        if isSearch {
+            editVC.appointmentId = viewModel?.getBookingHistoryFilterDataAtIndex(index: index.row)?.id
+            editVC.editBookingHistoryData = viewModel?.getBookingHistoryFilterDataAtIndex(index: index.row)
+        } else {
+            editVC.appointmentId = viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.id
+            editVC.editBookingHistoryData = viewModel?.getBookingHistoryDataAtIndex(index: index.row)
+        }
         navigationController?.pushViewController(editVC, animated: true)
     }
     
@@ -122,9 +128,9 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
         
         let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.patientFirstName ?? String.blank) \(viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
-            self?.view.ShowSpinner()
-            let selectedBookingHistoryId = self?.viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.id ?? 0
-            self?.viewModel?.removeSelectedBookingHistory(bookingHistoryId: selectedBookingHistoryId)
+//            self?.view.ShowSpinner()
+//            let selectedBookingHistoryId = self?.viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.id ?? 0
+//            self?.viewModel?.removeSelectedBookingHistory(bookingHistoryId: selectedBookingHistoryId)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)

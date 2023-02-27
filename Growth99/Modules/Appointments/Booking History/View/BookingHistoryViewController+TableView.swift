@@ -50,11 +50,11 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
         if isSearch {
-            editVC.appointmentId = self.bookingHistoryFilterData[indexPath.row].id
-            editVC.editBookingHistoryData = self.bookingHistoryFilterData[indexPath.row]
+            editVC.appointmentId = viewModel?.getBookingHistoryFilterListData[indexPath.row].id
+            editVC.editBookingHistoryData = viewModel?.getBookingHistoryFilterListData[indexPath.row]
         } else {
-            editVC.appointmentId = self.bookingHistoryListData[indexPath.row].id
-            editVC.editBookingHistoryData = self.bookingHistoryListData[indexPath.row]
+            editVC.appointmentId = viewModel?.getBookingHistoryListData[indexPath.row].id
+            editVC.editBookingHistoryData = viewModel?.getBookingHistoryListData[indexPath.row]
         }
         navigationController?.pushViewController(editVC, animated: true)
     }
