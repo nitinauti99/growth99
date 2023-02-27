@@ -83,6 +83,7 @@ class FormDetailContainerView: UIViewController {
     @objc func creatUser() {
         let createNotificationVC = UIStoryboard(name: "CreateNotificationViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateNotificationViewController") as! CreateNotificationViewController
         createNotificationVC.questionId = workflowFormId
+        createNotificationVC.screenName = "Create Form"
         self.navigationController?.pushViewController(createNotificationVC, animated: true)
     }
     

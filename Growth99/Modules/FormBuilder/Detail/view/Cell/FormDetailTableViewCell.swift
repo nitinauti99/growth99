@@ -9,6 +9,7 @@ import UIKit
 
 protocol FormDetailTableViewCellDelegate: AnyObject {
     func reloadForm(cell: FormDetailTableViewCell, index: IndexPath)
+    func showRegexList(cell: FormDetailTableViewCell, sender: UIButton, index: IndexPath)
     func saveFormData(item: [String: Any])
     func deleteQuestion(name: String, id: Int)
 }
@@ -81,6 +82,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     var formList : FormDetailModel?
     weak var delegate: FormDetailTableViewCellDelegate?
     var crateQuestion = false
+    var regexListArray = [String]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -157,6 +159,9 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }
     }
     
+    @IBAction func openDropDownRegexList(sender: UIButton){
+        delegate?.showRegexList(cell: self, sender: sender, index: indexPath)
+    }
     
     /// setUp Data for UI
     func setUPUI(_ FormList: FormDetailViewModelProtocol?, _ index: IndexPath) {
@@ -166,6 +171,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.requiredButton.isSelected = formList?.required ?? false
         self.hiddenButton.isSelected = formList?.hidden ?? false
         self.validateButton.isSelected = formList?.validate ?? false
+        self.regexTextfield.text = getRegexTypeFromRegex(regex: formList?.regex ?? "")
         self.validationMessageTextfield.text = formList?.validationMessage
         self.selctionType(selctionType:formList?.type ?? String.blank)
         self.setUPInitialMultiselectionView()
@@ -285,6 +291,65 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         if self.fileButton.isSelected == true {
             return "File"
         }
+        return ""
+    }
+    
+    func getRegexForSelctionType(selctionType: String) -> String {
+        switch selctionType {
+        case  "Email":
+            return "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
+        case "Phone":
+            return "^[1-9][0-9]{9}$"
+        case "Name including white space":
+            return "^[a-zA-Z]([a-zA-Z ]*)?$"
+        case  "Name without space":
+            return "^[a-zA-Z]*$"
+        case "User name contain special character without space":
+            return "^[^\n ]*$"
+        case "Date validation dd/MM/yyyy or dd-MM-yyyy":
+            return "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$"
+        case "Date validation MM/dd/yyyy or MM-dd-yyyy":
+            return "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$"
+        case "Date validation yyyy/MM/dd or yyyy-MM-dd":
+            return "^((?:19|20|21)[0-9][0-9])[-/](0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])$"
+        default:
+            return ""
+        }
+    }
+    
+    func getRegexTypeFromRegex(regex: String) -> String {
+        if regex == "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"{
+            return "Email"
+        }
+        
+        if regex == "^[1-9][0-9]{9}$" {
+            return "Phone"
+        }
+        
+        if regex == "^[a-zA-Z]([a-zA-Z ]*)?$"{
+            return "Name including white space"
+        }
+        
+        if regex == "^[a-zA-Z]*$"{
+            return "Name without space"
+        }
+        
+        if regex == "^[^\n ]*$"{
+            return "User name contain special character without space"
+        }
+        
+        if regex == "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$" {
+            return "Date validation dd/MM/yyyy or dd-MM-yyyy"
+        }
+        
+        if regex == "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$" {
+            return "Date validation MM/dd/yyyy or MM-dd-yyyy"
+        }
+        
+        if regex == "^((?:19|20|21)[0-9][0-9])[-/](0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])$" {
+            return "Date validation yyyy/MM/dd or yyyy-MM-dd"
+        }
+        
         return ""
     }
     
@@ -560,8 +625,9 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "name": self.questionNameTextfield.text ?? "",
             "type": getSelctionType(),
             "required": requiredButton.isSelected,
+            "validate": validateButton.isSelected,
             "hidden": hiddenButton.isSelected,
-            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "regex": self.getRegexForSelctionType(selctionType: self.regexTextfield.text ?? ""),
             "questionOrder": formList?.questionOrder ?? 0,
             "answer": "",
             "id": formList?.id ?? 0,
@@ -583,13 +649,13 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "required": requiredButton.isSelected,
             "hidden": hiddenButton.isSelected,
             "validate": validateButton.isSelected,
-            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "regex": self.getRegexForSelctionType(selctionType: self.regexTextfield.text ?? ""),
             "questionOrder": formList?.questionOrder ?? 0,
             "answer": "",
             "id": formList?.id ?? 0,
             "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
             "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
-            "questionChoices": [ ],
+            "questionChoices": [],
             "questionImages": [],
             "validationMessage": self.validationMessageTextfield.text ?? ""
         ]
@@ -643,7 +709,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "type": getSelctionType(),
             "required": requiredButton.isSelected,
             "hidden": hiddenButton.isSelected,
-            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "validate": validateButton.isSelected,
+            "regex": self.getRegexForSelctionType(selctionType: self.regexTextfield.text ?? ""),
             "questionOrder": self.indexPath.row + 1,
             "answer": "",
             "id": NSNull(),
@@ -665,7 +732,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "required": requiredButton.isSelected,
             "hidden": hiddenButton.isSelected,
             "validate": validateButton.isSelected,
-            "regex": "^[a-zA-Z]([a-zA-Z ]*)?$",
+            "regex": self.getRegexForSelctionType(selctionType: self.regexTextfield.text ?? ""),
             "questionOrder": self.indexPath.row + 1,
             "answer": "",
             "id": NSNull(),
@@ -689,22 +756,3 @@ extension FormDetailTableViewCell: UIScrollViewDelegate {
 }
 
 
-extension FormDetailTableViewCell: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questionArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = FormQuestionTableViewCell()
-        cell = self.questionTableView.dequeueReusableCell(withIdentifier: "FormQuestionTableViewCell", for: indexPath) as! FormQuestionTableViewCell
-        let item = questionArray[indexPath.row]
-        cell.delegate = self
-        cell.configureCell(tableView: tableView, FormList: item, index: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-}

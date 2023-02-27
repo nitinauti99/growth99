@@ -36,6 +36,7 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
         viewModel?.getNotificationListList(questionId: questionId)
+
     }
 
     func addSerchBar(){

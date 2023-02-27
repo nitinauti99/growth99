@@ -39,6 +39,18 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let createNotificationVC = UIStoryboard(name: "CreateNotificationViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateNotificationViewController") as! CreateNotificationViewController
+        var notificationId = Int()
+            notificationId = viewModel?.getNotificationListDataAtIndexPath(index: indexPath.row)?.id ?? 0
+        if isSearch {
+            notificationId =  viewModel?.getNotificationFilterDataAtIndexPath(index: indexPath.row)?.id ?? 0
+        }
+        createNotificationVC.questionId = questionId
+        createNotificationVC.notificationId = notificationId
+        createNotificationVC.screenName = "Edit Notification"
+        self.navigationController?.pushViewController(createNotificationVC, animated: true)
+    }
    
     
 }

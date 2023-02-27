@@ -143,6 +143,22 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         }
     }
     
+    func showRegexList(cell: FormDetailTableViewCell, sender: UIButton, index: IndexPath){
+       
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: RegexList().regexArray, cellType: .subTitle) { (cell, list, indexPath) in
+            cell.textLabel?.text = list
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.regexTextfield.text = ""
+            cell.regexTextfield.text = selectedItem
+            selectionMenu.dismissAutomatically = true
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(RegexList().regexArray.count * 44))), arrowDirection: .up), from: self)
+    }
+
+    
     func scrollViewHeight() {
         workingScrollViewHight.constant = tableViewHeight + 1000 + 350
     }
