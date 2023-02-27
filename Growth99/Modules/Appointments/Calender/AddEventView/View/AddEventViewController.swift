@@ -105,7 +105,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     func serverToLocalDateFormat(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date)
@@ -323,10 +323,6 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             return
         }
         
-        if let textField = phoneNumberTextField.text, let phoneNumberValidate = eventViewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-        }
-        
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
             phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)
             return
@@ -371,5 +367,17 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         virtualBtn.isSelected = !virtualBtn.isSelected
         inPersonBtn.isSelected = false
         appointmentTypeSelected = "Virtual"
+    }
+}
+extension AddEventViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneNumberTextField {
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
+        }
+        return true
     }
 }

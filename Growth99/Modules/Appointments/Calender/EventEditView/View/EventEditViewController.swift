@@ -106,7 +106,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         firstNameTextField.text = editBookingHistoryData?.patientFirstName ?? String.blank
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
-        phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? String.blank
+        phoneNumberTextField.text = editBookingHistoryData?.patientPhone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
         let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
@@ -393,13 +393,9 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             selectedClincIds = editBookingHistoryData?.clinicId ?? 0
         }
         
-       /* if selectedProvidersIds.count == 0 {
-            selectedProvidersIds = editBookingHistoryData?.providerId
+        if selectedProvidersIds.count == 0 {
+            selectedProvidersIds = [editBookingHistoryData?.providerId ?? 0]
         }
-        
-        if selectedServicesIds.count = {
-            
-        }*/
         
         self.view.ShowSpinner()
         eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
@@ -430,6 +426,18 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         virtualBtn.isSelected = !virtualBtn.isSelected
         inPersonBtn.isSelected = false
         appointmentTypeSelected = "Virtual"
+    }
+}
+extension EventEditViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneNumberTextField {
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
+        }
+        return true
     }
 }
 

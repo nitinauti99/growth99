@@ -336,12 +336,12 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
         return formatter
     }()
 
     internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let selectedDates = calendar.selectedDates.map({ self.dateFormatter.string(from: $0) })
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }

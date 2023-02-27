@@ -97,7 +97,6 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
                 self.categoriesListTableView.restore()
             }
             return viewModel?.getCategoriesListData.sorted(by: { ($0.createdAt ?? String.blank) < ($1.createdAt ?? String.blank)}).count ?? 0
-
         }
     }
     

@@ -8,167 +8,66 @@
 import Foundation
 
 protocol BookingHistoryViewModelProtocol {
-    func getallClinicsBookingHistory()
-    var  getAllClinicsDataBookingHistory: [Clinics] { get }
-    
-    func getServiceListBookingHistory()
-    var  serviceDataBookingHistory: [ServiceList] { get }
-    
-    func sendProviderListBookingHistory(providerParams: Int)
-    var  providerDataBookingHistory: [UserDTOList] { get }
     
     func getCalenderInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int)
-    var  appointmentInfoListDataBookingHistory: [AppointmentDTOList] { get }
     
-    func dateFormatterString(textField: CustomTextField) -> String
-    func timeFormatterString(textField: CustomTextField) -> String
+    func getBookingHistoryFilterData(searchText: String)
     
-    func appointmentListCountGreaterthanBookingHistory() -> Int
-    func appointmentListCountLessthanBookingHistory() -> Int
+    func getBookingHistoryDataAtIndex(index: Int)-> AppointmentDTOList?
+    func getBookingHistoryFilterDataAtIndex(index: Int)-> AppointmentDTOList?
     
-    func serverToLocal(date: String) -> String
-    func utcToLocal(timeString: String) -> String?
+    var  getBookingHistoryListData: [AppointmentDTOList] { get }
+    var  getBookingHistoryFilterListData: [AppointmentDTOList] { get }
+    
+    func removeSelectedBookingHistory(bookingHistoryId: Int)
+
     func serverToLocalTime(timeString: String) -> String
-    func serverToLocalCreatedDate(date: String) -> String
 }
 
-
-class BookingHistoryViewModel:BookingHistoryViewModelProtocol {
-    
-    func appointmentListCountLessthanBookingHistory() -> Int {
-        return 0
-    }
+class BookingHistoryViewModel {
     
     var delegate: BookingHistoryViewContollerProtocol?
-    var allClinicsBookingHistory: [Clinics]?
-    var serviceListDataBookingHistory: [ServiceList] = []
-    var providerListDataBookingHistory: [UserDTOList] = []
-    var appoinmentListDataBookingHistory: [AppointmentDTOList] = []
-    
-    var datePicker = UIDatePicker()
-    var timePicker = UIDatePicker()
+    var bookingHistoryList: [AppointmentDTOList] = []
+    var bookingHistoryListFilterData: [AppointmentDTOList] = []
     
     init(delegate: BookingHistoryViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
-    
-    func getallClinicsBookingHistory() {
-        self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
-            switch result {
-            case .success(let allClinics):
-                self.allClinicsBookingHistory = allClinics
-                self.delegate?.clinicsReceivedBookingHistory()
-            case .failure(let error):
-                print(error)
-                self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)
-            }
-        }
-    }
-    
-    var getAllClinicsDataBookingHistory: [Clinics] {
-        return self.allClinicsBookingHistory ?? []
-    }
-    
-    func getServiceListBookingHistory() {
-        self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let serviceData):
-                self.serviceListDataBookingHistory = serviceData.serviceList ?? []
-                self.delegate?.serviceListDataRecivedBookingHistory()
-            case .failure(let error):
-                self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
-    
-    var serviceDataBookingHistory: [ServiceList] {
-        return self.serviceListDataBookingHistory
-    }
-    
-    func sendProviderListBookingHistory(providerParams: Int) {
-        let apiURL = ApiUrl.providerList.appending("\(providerParams)")
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<ProviderListModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let providerData):
-                self.providerListDataBookingHistory = providerData.userDTOList ?? []
-                self.delegate?.providerListDataRecivedBookingHistory()
-            case .failure(let error):
-                self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)
-            }
-        }
-    }
-    
-    var providerDataBookingHistory: [UserDTOList] {
-        return self.providerListDataBookingHistory
-    }
-    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+
     func getCalenderInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int) {
         let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"
         let apiURL = ApiUrl.calenderInfo.appending("\(url)")
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalenderInfoListModel, GrowthNetworkError>) in
             switch result {
             case .success(let appointmentDTOListData):
-                self.appoinmentListDataBookingHistory = appointmentDTOListData.appointmentDTOList ?? []
+                self.bookingHistoryList = appointmentDTOListData.appointmentDTOList ?? []
                 self.delegate?.appointmentListDataRecivedBookingHistory()
             case .failure(let error):
                 self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)
             }
         }
     }
-    var appointmentInfoListDataBookingHistory: [AppointmentDTOList] {
-        return self.appoinmentListDataBookingHistory
-    }
     
-    func appointmentListCountGreaterthanBookingHistory() -> Int {
-        return self.appoinmentListDataBookingHistory.filter({$0.appointmentStartDate?.toDate() ?? Date() > Date()}).count
-    }
-    
-    func appointmentListCountLessthan() -> Int {
-        return self.appoinmentListDataBookingHistory.filter({$0.appointmentStartDate?.toDate() ?? Date() < Date()}).count
-    }
-    
-    func dateFormatterString(textField: CustomTextField) -> String {
-        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
-        datePicker.minimumDate = todaysDate
-        textField.resignFirstResponder()
-        datePicker.reloadInputViews()
-        return dateFormatter.string(from: datePicker.date)
-    }
-    
-    func timeFormatterString(textField: CustomTextField) -> String {
-        timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        timePicker.datePickerMode = .time
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        textField.resignFirstResponder()
-        timePicker.reloadInputViews()
-        return formatter.string(from: timePicker.date)
-    }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MMM d yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    func serverToLocalCreatedDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MMM d yyyy"
-        return dateFormatter.string(from: date)
+    func removeSelectedBookingHistory(bookingHistoryId: Int) {
+        let finaleUrl = ApiUrl.removeProfileAppointment + "\(bookingHistoryId)"
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.appointmentRemovedSuccefully()
+                }else if (response.statusCode == 500) {
+                    self.delegate?.profileAppoinmentsErrorReceived(error: "Unable to delete paid appointments")
+                }else{
+                    self.delegate?.profileAppoinmentsErrorReceived(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.profileAppoinmentsErrorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
     
     func serverToLocalInput(date: String) -> String {
@@ -215,17 +114,27 @@ class BookingHistoryViewModel:BookingHistoryViewModelProtocol {
         let date24 = dateFormatter.string(from: date)
         return date24
     }
-    
-    func utcToLocal(timeString: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        if let date = dateFormatter.date(from: timeString) {
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            dateFormatter.dateFormat = "h:mm a"
-            return dateFormatter.string(from: date)
-        }
-        return nil
+}
+
+extension BookingHistoryViewModel: BookingHistoryViewModelProtocol {
+
+    func getBookingHistoryFilterData(searchText: String) {
+        self.bookingHistoryListFilterData = (self.getBookingHistoryListData.filter { $0.patientFirstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
+    func getBookingHistoryDataAtIndex(index: Int)-> AppointmentDTOList? {
+        return self.getBookingHistoryListData[index]
+    }
+    
+    func getBookingHistoryFilterDataAtIndex(index: Int)-> AppointmentDTOList? {
+        return self.bookingHistoryListFilterData[index]
+    }
+    
+    var getBookingHistoryListData: [AppointmentDTOList] {
+        return self.bookingHistoryList
+    }
+   
+    var getBookingHistoryFilterListData: [AppointmentDTOList] {
+         return self.bookingHistoryListFilterData
+    }
 }

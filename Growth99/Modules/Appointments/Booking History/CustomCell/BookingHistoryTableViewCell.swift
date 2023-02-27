@@ -1,5 +1,5 @@
 //
-//  BookingHistoryTableViewCell.swift
+//  BookingHistoryTableViewself.swift
 //  Growth99
 //
 //  Created by Mahender Reddy on 30/01/23.
@@ -39,10 +39,79 @@ class BookingHistoryTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
 
-    func configureCell(index: IndexPath) {
+    func configureCell(bookingHistoryFilterList: BookingHistoryViewModelProtocol?, index: IndexPath, isSearch: Bool) {
+        let bookingHistoryFilterList = bookingHistoryFilterList?.getBookingHistoryFilterDataAtIndex(index: index.row)
+        self.id.text = String(bookingHistoryFilterList?.id ?? 0)
+        self.patientNameLabel.text = "\(bookingHistoryFilterList?.patientFirstName ?? String.blank) \(bookingHistoryFilterList?.patientLastName ?? String.blank)"
+        self.clinicNameLabel.text = bookingHistoryFilterList?.clinicName
+        self.providerNameLabel.text = bookingHistoryFilterList?.providerName
+        self.typeLabel.text = bookingHistoryFilterList?.appointmentType
+        if let data = bookingHistoryFilterList?.source {
+            self.sourceLabel.text = data
+        } else {
+            self.sourceLabel.text = "-"
+        }
+        let serviceSelectedArray = bookingHistoryFilterList?.serviceList ?? []
+        self.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        self.appointmentDateLabel.text = "\(self.serverToLocal(date: bookingHistoryFilterList?.appointmentStartDate ?? String.blank)) \(self.utcToLocal(timeString: bookingHistoryFilterList?.appointmentStartDate ?? String.blank) ?? String.blank)"
+        self.paymetStatusLabel.text = bookingHistoryFilterList?.paymentStatus
+        self.appointmentStatusLabel.text = bookingHistoryFilterList?.appointmentStatus
+        self.createdDate.text = "\(self.serverToLocalCreatedDate(date: bookingHistoryFilterList?.appointmentCreatedDate ?? String.blank)) \(self.utcToLocal(timeString: bookingHistoryFilterList?.appointmentCreatedDate ?? String.blank) ?? String.blank)"
         indexPath = index
     }
     
+    func configureCell(bookingHistoryList: BookingHistoryViewModelProtocol?, index: IndexPath, isSearch: Bool) {
+        let bookingHistoryList = bookingHistoryList?.getBookingHistoryDataAtIndex(index: index.row)
+        self.id.text = String(bookingHistoryList?.id ?? 0)
+        self.patientNameLabel.text = "\(bookingHistoryList?.patientFirstName ?? String.blank) \(bookingHistoryList?.patientLastName ?? String.blank)"
+        self.clinicNameLabel.text = bookingHistoryList?.clinicName
+        self.providerNameLabel.text = bookingHistoryList?.providerName
+        self.typeLabel.text = bookingHistoryList?.appointmentType
+        if let data = bookingHistoryList?.source {
+            self.sourceLabel.text = data
+        } else {
+            self.sourceLabel.text = "-"
+        }
+        let serviceSelectedArray = bookingHistoryList?.serviceList ?? []
+        self.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        self.appointmentDateLabel.text = "\(self.serverToLocal(date: bookingHistoryList?.appointmentStartDate ?? String.blank)) \(self.utcToLocal(timeString: bookingHistoryList?.appointmentStartDate ?? String.blank) ?? String.blank)"
+        self.paymetStatusLabel.text = bookingHistoryList?.paymentStatus
+        self.appointmentStatusLabel.text = bookingHistoryList?.appointmentStatus
+        self.createdDate.text = "\(self.serverToLocalCreatedDate(date: bookingHistoryList?.appointmentCreatedDate ?? String.blank)) \(self.utcToLocal(timeString: bookingHistoryList?.appointmentCreatedDate ?? String.blank) ?? String.blank)"
+        indexPath = index
+    }
+    
+    func serverToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MMM d yyyy"
+        return dateFormatter.string(from: date)
+    }
+
+    func serverToLocalCreatedDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MMM d yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    func utcToLocal(timeString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        if let date = dateFormatter.date(from: timeString) {
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: date)
+        }
+        return nil
+    }
+
     @IBAction func deleteButtonPressed() {
         self.delegate?.removeAppointment(cell: self, index: indexPath)
     }

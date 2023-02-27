@@ -14,7 +14,7 @@ protocol BookingHistoryViewContollerProtocol: AnyObject {
     func serviceListDataRecivedBookingHistory()
     func providerListDataRecivedBookingHistory()
     func appointmentListDataRecivedBookingHistory()
-    func appointmentRemovedSuccefully(message: String)
+    func appointmentRemovedSuccefully()
 }
 
 class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContollerProtocol, BookingHistoryListTableViewCellDelegate {
@@ -103,8 +103,6 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     
     func appointmentListDataRecivedBookingHistory() {
         self.view.HideSpinner()
-        bookingHistoryListData = viewModel?.appointmentInfoListDataBookingHistory ?? []
-        bookingHistoryListData = bookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? String.blank) > ($1.appointmentCreatedDate ?? String.blank)})
         self.bookingHistoryTableView.setContentOffset(.zero, animated: true)
         self.bookingHistoryTableView.reloadData()
     }
@@ -121,25 +119,26 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     }
     
     func removeAppointment(cell: BookingHistoryTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(cell.patientNameLabel.text ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+        
+        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.patientFirstName ?? String.blank) \(viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
-//            self?.view.ShowSpinner()
-//            let pateintId = self?.viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
-//            self?.viewModel?.removePateints(pateintId: pateintId)
+            self?.view.ShowSpinner()
+            let selectedBookingHistoryId = self?.viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.id ?? 0
+            self?.viewModel?.removeSelectedBookingHistory(bookingHistoryId: selectedBookingHistoryId)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 
-    func appointmentRemovedSuccefully(message: String) {
+    func appointmentRemovedSuccefully() {
         self.getBookingHistory()
     }
 }
 
 extension BookingHistoryViewContoller:  UISearchBarDelegate {
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        bookingHistoryFilterData = (bookingHistoryListData.filter { $0.patientFirstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        viewModel?.getBookingHistoryFilterData(searchText: searchText)
         isSearch = true
         bookingHistoryTableView.reloadData()
     }

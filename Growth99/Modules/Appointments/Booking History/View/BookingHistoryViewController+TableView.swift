@@ -15,29 +15,31 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookingHistoryListData.count
+        if isSearch {
+            if viewModel?.getBookingHistoryFilterListData.count ?? 0 == 0 {
+                self.bookingHistoryTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.bookingHistoryTableView.restore()
+            }
+            return viewModel?.getBookingHistoryFilterListData.count ?? 0
+        } else {
+            if viewModel?.getBookingHistoryListData.count ?? 0 == 0 {
+                self.bookingHistoryTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+            } else {
+                self.bookingHistoryTableView.restore()
+            }
+            return viewModel?.getBookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? String.blank) > ($1.appointmentCreatedDate ?? String.blank)}).count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookingHistoryTableViewCell", for: indexPath) as? BookingHistoryTableViewCell else { return UITableViewCell() }
         cell.delegate = self
-        cell.configureCell(index: indexPath)
-        cell.id.text = String(self.bookingHistoryListData[indexPath.row].id ?? 0)
-        cell.patientNameLabel.text = "\(self.bookingHistoryListData[indexPath.row].patientFirstName ?? String.blank) \(self.bookingHistoryListData[indexPath.row].patientLastName ?? String.blank)"
-        cell.clinicNameLabel.text = self.bookingHistoryListData[indexPath.row].clinicName
-        cell.providerNameLabel.text = self.bookingHistoryListData[indexPath.row].providerName
-        cell.typeLabel.text = self.bookingHistoryListData[indexPath.row].appointmentType
-        if let data = self.bookingHistoryListData[indexPath.row].source {
-            cell.sourceLabel.text = data
+        if isSearch {
+            cell.configureCell(bookingHistoryFilterList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
-            cell.sourceLabel.text = "-"
+            cell.configureCell(bookingHistoryList: viewModel, index: indexPath, isSearch: isSearch)
         }
-        let serviceSelectedArray = self.bookingHistoryListData[indexPath.row].serviceList ?? []
-        cell.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
-        cell.appointmentDateLabel.text = "\(self.viewModel?.serverToLocal(date: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? String.blank) \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentStartDate ?? String.blank) ?? String.blank)"
-        cell.paymetStatusLabel.text = self.bookingHistoryListData[indexPath.row].paymentStatus
-        cell.appointmentStatusLabel.text = self.bookingHistoryListData[indexPath.row].appointmentStatus
-        cell.createdDate.text = "\(self.viewModel?.serverToLocalCreatedDate(date: self.bookingHistoryListData[indexPath.row].appointmentCreatedDate ?? String.blank) ?? String.blank) \(viewModel?.utcToLocal(timeString: self.bookingHistoryListData[indexPath.row].appointmentCreatedDate ?? String.blank) ?? String.blank)"
         return cell
     }
     
@@ -47,8 +49,13 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-        editVC.appointmentId = self.bookingHistoryListData[indexPath.row].id
-        editVC.editBookingHistoryData = self.bookingHistoryListData[indexPath.row]
+        if isSearch {
+            editVC.appointmentId = self.bookingHistoryFilterData[indexPath.row].id
+            editVC.editBookingHistoryData = self.bookingHistoryFilterData[indexPath.row]
+        } else {
+            editVC.appointmentId = self.bookingHistoryListData[indexPath.row].id
+            editVC.editBookingHistoryData = self.bookingHistoryListData[indexPath.row]
+        }
         navigationController?.pushViewController(editVC, animated: true)
     }
 }
