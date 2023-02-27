@@ -11,6 +11,7 @@ import UIKit
 protocol CreateNotificationViewContollerProtocol {
     func errorReceived(error: String)
     func createdNotificationSuccessfully(message: String)
+    func recivedNotificationData()
 }
 
 class CreateNotificationViewController: UIViewController, CreateNotificationViewContollerProtocol {
@@ -22,10 +23,15 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     var viewModel: CreateNotificationViewModelProtocol?
     var categoryName: String = String.blank
     var questionId = Int()
-
+    var notificationId = Int()
+    var screenName: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CreateNotificationViewModel(delegate: self)
+        if screenName == "Edit Notification" {
+            self.view.ShowSpinner()
+           viewModel?.getCreateCreateNotification(questionId: questionId, notificationId: notificationId)
+        }
         self.selectedNotificationTypeTextField.addTarget(self, action:
                                                 #selector(self.textFieldDidChange(_:)),
                                                          for: .editingChanged)
@@ -62,6 +68,17 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         self.navigationController?.popViewController(animated: true)
     }
     
+    func recivedNotificationData() {
+        self.view.HideSpinner()
+        let data = viewModel?.getgetNotificationData
+        self.notificationTypeTextField.text = data?.notificationType
+        if data?.notificationType == "EMAIL" {
+            self.selectedNotificationTypeTextField.text = data?.toEmail
+        }else{
+            self.selectedNotificationTypeTextField.text = data?.phoneNumber
+        }
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
@@ -70,6 +87,7 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     func createdNotificationSuccessfully(message: String) {
         self.view.HideSpinner()
         self.view.showToast(message: message, color: .black)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveButtonAction(sender: UIButton) {
@@ -94,7 +112,7 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         }
 
         self.view.ShowSpinner()
-        viewModel?.createNotification(questionId: questionId, params: params)
+        viewModel?.createNotification(questionId: questionId, notificationId: notificationId, params: params)
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {

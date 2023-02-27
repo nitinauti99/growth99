@@ -8,27 +8,27 @@
 import Foundation
 
 protocol CreateNotificationViewModelProtocol {
-    func getCreateCreateNotification(questionId: Int)
-    func createNotification(questionId: Int, params: [String: Any])
+    func getCreateCreateNotification(questionId: Int, notificationId: Int)
+    func createNotification(questionId: Int,notificationId: Int, params: [String: Any])
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    var getgetNotificationData:CreateNotificationModel { get }
 }
 
 class CreateNotificationViewModel {
     var delegate: CreateNotificationViewContollerProtocol?
-    var CreateNotificationData: [CreateNotificationModel] = []
-    var notificationFilteListrData: [CreateNotificationModel] = []
-        
+    var getNotificationData: CreateNotificationModel?
+    
     init(delegate: CreateNotificationViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func createNotification(questionId: Int, params: [String: Any]) {
+    func createNotification(questionId: Int,notificationId: Int, params: [String: Any]) {
         
-        let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications")
-
+        let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications/\(notificationId)")
+        
         self.requestManager.request(forPath: finaleURL, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: params, encoding: .jsonEncoding)) { (result: Result<CreateNotificationModel, GrowthNetworkError>) in
             switch result {
             case .success(let FormData):
@@ -41,37 +41,19 @@ class CreateNotificationViewModel {
         }
     }
     
-    func getCreateCreateNotification(questionId: Int) {
+    func getCreateCreateNotification(questionId: Int, notificationId: Int) {
+        let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications/\(notificationId)")
         
-    }
-    
-//    func getCreateCreateNotification(questionId: Int) {
-//        let finaleURL = ""
-//
-//        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[CreateNotificationModel], GrowthNetworkError>) in
-//            switch result {
-//            case .success(let CreateNotificationData):
-//                self.CreateNotificationData = CreateNotificationData
-//                self.delegate?.categoriesResponseReceived()
-//            case .failure(let error):
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//                print("Error while performing request \(error)")
-//            }
-//        }
-//    }
-    
-    func filterData(searchText: String) {
-        self.CreateNotificationData = (self.CreateNotificationData.filter { $0.toEmail?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-    }
-    
-   
-    func getCreateNotificationDataAtIndexPath(index: Int) -> CreateNotificationModel? {
-        return CreateNotificationData[index]
-
-    }
-    
-    func getNotificationFilterDataAtIndexPath(index: Int) -> CreateNotificationModel? {
-        return self.notificationFilteListrData[index]
+        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CreateNotificationModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let getNotificationData):
+                self.getNotificationData = getNotificationData
+                self.delegate?.recivedNotificationData()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
 
 }
@@ -79,12 +61,8 @@ class CreateNotificationViewModel {
 extension CreateNotificationViewModel: CreateNotificationViewModelProtocol {
  
     
-    var getCreateNotificationData: [CreateNotificationModel] {
-        return self.CreateNotificationData
-    }
-    
-    var getNotificationFilterListData: [CreateNotificationModel] {
-        return self.notificationFilteListrData
+    var getgetNotificationData: CreateNotificationModel {
+        return self.getNotificationData!
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {

@@ -19,6 +19,7 @@
 		01BBA9EB29AB9450006A5DB8 /* CreateNotificationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9EA29AB9450006A5DB8 /* CreateNotificationViewController.storyboard */; };
 		01BBA9ED29AB945D006A5DB8 /* CreateNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */; };
 		01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */; };
+		01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -589,6 +590,7 @@
 		01BBA9EA29AB9450006A5DB8 /* CreateNotificationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNotificationViewController.storyboard; sourceTree = "<group>"; };
 		01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationViewModel.swift; sourceTree = "<group>"; };
 		01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationModel.swift; sourceTree = "<group>"; };
+		01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormDetailTableViewCell+TableView.swift"; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -1311,6 +1313,7 @@
 				01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */,
 				01D7AB04299E572700821274 /* FormDetailTableViewCell.swift */,
 				01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */,
+				01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4690,6 +4693,7 @@
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				01D7AB06299E572700821274 /* FormDetailTableViewCell.swift in Sources */,
+				01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */,
 				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */,

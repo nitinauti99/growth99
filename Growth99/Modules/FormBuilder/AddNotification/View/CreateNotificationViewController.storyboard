@@ -189,10 +189,10 @@
     </scenes>
     <designables>
         <designable name="T0e-A0-BIM">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
         <designable name="bfM-di-qon">
-            <size key="intrinsicContentSize" width="19" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

@@ -110,6 +110,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeW-D9-gaf">
+                                                <rect key="frame" x="8" y="43" width="449" height="40"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="openDropDownRegexListWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tA2-fX-ZTd"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regex Input for validation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoX-pd-yRa">
                                                 <rect key="frame" x="18" y="18" width="444" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -140,9 +147,13 @@
                                             <constraint firstItem="1H9-7P-SYR" firstAttribute="trailing" secondItem="NoX-pd-yRa" secondAttribute="trailing" id="0Wn-ne-cwz"/>
                                             <constraint firstItem="NoX-pd-yRa" firstAttribute="leading" secondItem="8lM-qw-qFf" secondAttribute="leadingMargin" constant="10" id="4N2-3Q-Qv3"/>
                                             <constraint firstItem="vHa-hD-TxE" firstAttribute="leading" secondItem="NoX-pd-yRa" secondAttribute="leading" id="4Z5-UR-POg"/>
+                                            <constraint firstItem="xeW-D9-gaf" firstAttribute="leading" secondItem="vHa-hD-TxE" secondAttribute="leading" constant="-10" id="C75-gH-jfd"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="NoX-pd-yRa" secondAttribute="trailing" id="E2a-n2-kW9"/>
                                             <constraint firstItem="1H9-7P-SYR" firstAttribute="top" secondItem="vHa-hD-TxE" secondAttribute="bottom" constant="15" id="Gbl-pR-nZA"/>
+                                            <constraint firstItem="xeW-D9-gaf" firstAttribute="top" secondItem="vHa-hD-TxE" secondAttribute="top" id="QMn-TN-VAi"/>
                                             <constraint firstItem="NoX-pd-yRa" firstAttribute="top" secondItem="8lM-qw-qFf" secondAttribute="topMargin" constant="10" id="VFd-j9-ZlW"/>
+                                            <constraint firstItem="xeW-D9-gaf" firstAttribute="trailing" secondItem="vHa-hD-TxE" secondAttribute="trailing" constant="-5" id="Z5r-3f-lXv"/>
+                                            <constraint firstItem="xeW-D9-gaf" firstAttribute="bottom" secondItem="vHa-hD-TxE" secondAttribute="bottom" id="ax6-SW-sh1"/>
                                             <constraint firstItem="1H9-7P-SYR" firstAttribute="leading" secondItem="NoX-pd-yRa" secondAttribute="leading" id="kM1-mb-PiQ"/>
                                             <constraint firstItem="vHa-hD-TxE" firstAttribute="trailing" secondItem="NoX-pd-yRa" secondAttribute="trailing" id="nIZ-Cg-CYF"/>
                                             <constraint firstItem="Q8h-Or-F2B" firstAttribute="top" secondItem="1H9-7P-SYR" secondAttribute="bottom" constant="10" id="oHq-Y9-pBw"/>
@@ -708,13 +719,13 @@
     </objects>
     <designables>
         <designable name="Q8h-Or-F2B">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="ilC-0W-F0u">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="vHa-hD-TxE">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
     </designables>
     <resources>

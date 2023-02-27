@@ -80,7 +80,6 @@ struct QuestionChoices: Codable {
         self.createdBy = createdBy
         self.name = name
     }
-   
 }
 
 struct QuestionFormDetailModel : Codable {
@@ -116,4 +115,17 @@ struct QuestionFormDetailModel : Codable {
         self.validationMessage = validationMessage
     }
     
+}
+
+struct RegexList: Codable, Equatable {
+    var regexArray: [String] = [
+        "Email",
+        "Phone",
+        "Name including white space",
+        "Name without space",
+        "User name contain special character without space",
+        "Date validation dd/MM/yyyy or dd-MM-yyyy",
+        "Date validation MM/dd/yyyy or MM-dd-yyyy",
+        "Date validation yyyy/MM/dd or yyyy-MM-dd"
+    ]
 }
