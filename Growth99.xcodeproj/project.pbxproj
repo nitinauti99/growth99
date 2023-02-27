@@ -15,6 +15,10 @@
 		01BBA9E029AB571F006A5DB8 /* NotificationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9DE29AB571F006A5DB8 /* NotificationListTableViewCell.swift */; };
 		01BBA9E129AB571F006A5DB8 /* NotificationListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9DF29AB571F006A5DB8 /* NotificationListTableViewCell.xib */; };
 		01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9E229AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift */; };
+		01BBA9E929AB9447006A5DB8 /* CreateNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9E829AB9447006A5DB8 /* CreateNotificationViewController.swift */; };
+		01BBA9EB29AB9450006A5DB8 /* CreateNotificationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9EA29AB9450006A5DB8 /* CreateNotificationViewController.storyboard */; };
+		01BBA9ED29AB945D006A5DB8 /* CreateNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */; };
+		01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -581,6 +585,10 @@
 		01BBA9DE29AB571F006A5DB8 /* NotificationListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListTableViewCell.swift; sourceTree = "<group>"; };
 		01BBA9DF29AB571F006A5DB8 /* NotificationListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationListTableViewCell.xib; sourceTree = "<group>"; };
 		01BBA9E229AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01BBA9E829AB9447006A5DB8 /* CreateNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationViewController.swift; sourceTree = "<group>"; };
+		01BBA9EA29AB9450006A5DB8 /* CreateNotificationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNotificationViewController.storyboard; sourceTree = "<group>"; };
+		01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationViewModel.swift; sourceTree = "<group>"; };
+		01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationModel.swift; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -1168,14 +1176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01BBA9CF29AB53A6006A5DB8 /* Notification */ = {
+		01BBA9CF29AB53A6006A5DB8 /* NotificationList */ = {
 			isa = PBXGroup;
 			children = (
 				01BBA9D029AB53EA006A5DB8 /* Model */,
 				01BBA9D129AB53EC006A5DB8 /* ViewModel */,
 				01BBA9D229AB53F0006A5DB8 /* View */,
 			);
-			path = Notification;
+			path = NotificationList;
 			sourceTree = "<group>";
 		};
 		01BBA9D029AB53EA006A5DB8 /* Model */ = {
@@ -1213,6 +1221,41 @@
 				01BBA9DF29AB571F006A5DB8 /* NotificationListTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		01BBA9E429AB7DCF006A5DB8 /* AddNotification */ = {
+			isa = PBXGroup;
+			children = (
+				01BBA9E729AB7DE5006A5DB8 /* Model */,
+				01BBA9E629AB7DE3006A5DB8 /* ViewModel */,
+				01BBA9E529AB7DE0006A5DB8 /* View */,
+			);
+			path = AddNotification;
+			sourceTree = "<group>";
+		};
+		01BBA9E529AB7DE0006A5DB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01BBA9E829AB9447006A5DB8 /* CreateNotificationViewController.swift */,
+				01BBA9EA29AB9450006A5DB8 /* CreateNotificationViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01BBA9E629AB7DE3006A5DB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01BBA9E729AB7DE5006A5DB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		01D7AAF2299D59CF00821274 /* Detail */ = {
@@ -2264,7 +2307,8 @@
 		8440B38A2999FD5E00A42097 /* FormBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				01BBA9CF29AB53A6006A5DB8 /* Notification */,
+				01BBA9E429AB7DCF006A5DB8 /* AddNotification */,
+				01BBA9CF29AB53A6006A5DB8 /* NotificationList */,
 				01D7AAF2299D59CF00821274 /* Detail */,
 				848EEA89299A5A6D00F6E3D5 /* Add */,
 				848EEA87299A5A4C00F6E3D5 /* List */,
@@ -4321,6 +4365,7 @@
 				84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */,
 				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
 				842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */,
+				01BBA9EB29AB9450006A5DB8 /* CreateNotificationViewController.storyboard in Resources */,
 				849D3AF52997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
@@ -4618,6 +4663,7 @@
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
+				01BBA9E929AB9447006A5DB8 /* CreateNotificationViewController.swift in Sources */,
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
@@ -4854,6 +4900,7 @@
 				01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
+				01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadViewController.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
@@ -4919,6 +4966,7 @@
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,
+				01BBA9ED29AB945D006A5DB8 /* CreateNotificationViewModel.swift in Sources */,
 				84F610BB292A71AA00B1FB69 /* JWT.swift in Sources */,
 				84D1EE3C2923B03A00AAAF26 /* NetworkRequestManager.swift in Sources */,
 				842C0CB8298F713B00395061 /* CreatePateintsTasksViewModel.swift in Sources */,

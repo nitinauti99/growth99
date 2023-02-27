@@ -5,6 +5,10 @@
 //  Created by Nitin Auti on 26/02/23.
 //
 
+protocol NotificationListTableViewCellDelegate: AnyObject {
+    func removeNotification(cell: NotificationListTableViewCell, index: IndexPath)
+}
+
 class NotificationListTableViewCell: UITableViewCell {
     @IBOutlet private weak var notificationType: UILabel!
     @IBOutlet private weak var phoneNumber: UILabel!
@@ -14,6 +18,7 @@ class NotificationListTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var editButtonAction: UIButton!
 
+    weak var delegate: NotificationListTableViewCellDelegate?
     var dateFormater : DateFormaterProtocol?
     var indexPath = IndexPath()
     
@@ -42,6 +47,10 @@ class NotificationListTableViewCell: UITableViewCell {
         self.createdDate.text = dateFormater?.serverToLocal(date: NotificationList?.createdAt ?? String.blank)
         self.updatedDate.text =  dateFormater?.serverToLocal(date: NotificationList?.updatedAt ?? String.blank)
         indexPath = index
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeNotification(cell: self, index: indexPath)
     }
 }
 

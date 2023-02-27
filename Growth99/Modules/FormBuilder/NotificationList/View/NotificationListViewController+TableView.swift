@@ -25,6 +25,8 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = NotificationListTableViewCell()
         cell = self.tableView.dequeueReusableCell(withIdentifier: "NotificationListTableViewCell", for: indexPath) as! NotificationListTableViewCell
+        cell.delegate = self
+
         if isSearch {
             cell.configureCellisSearch(NotificationList: viewModel, index: indexPath)
         }else{

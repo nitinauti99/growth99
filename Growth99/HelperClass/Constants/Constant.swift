@@ -65,6 +65,7 @@ struct Constant {
         static let createService = "Create Service"
         static let categories = "Categories"
         static let addCategories = "Create Category"
+        static let creatNotification = "Create Notification"
         static let editCategories = "Edit Category"
         static let editService = "Edit Service"
         static let services = "Services"
@@ -87,9 +88,6 @@ struct Constant {
         static let massEmailTemplates = "Mass Email Templates"
         static let Questionnarie = "Questionnarie "
         static let tasks = "Tasks"
-        
-        
-        
         static let personalization = "Personalization"
         static let subdomain = "Subdomain"
         static let refundPolicy = "Refund Policy"
@@ -98,8 +96,6 @@ struct Constant {
         static let paidMedia = "Paid Media"
         static let syndicationReport = "Syndication Report"
         static let emailSMSAudit = "Email/SMS Audit"
-        
-        
         static let Consents = " Consents"
         static let AssignConsent = "Assign Consent"
         static let appointmentDetail = "Appointment"

@@ -142,6 +142,21 @@
                                     <action selector="detailButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pfr-S3-eSA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLn-8b-vW6">
+                                <rect key="frame" x="193" y="130" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="M1X-bi-2He"/>
+                                    <constraint firstAttribute="width" constant="30" id="Sp5-7A-Qnv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Delete">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H5N-C9-18Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -150,6 +165,8 @@
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="leading" secondItem="A81-3B-jUp" secondAttribute="leading" id="3BR-P9-EQr"/>
                             <constraint firstItem="jhF-wB-5M7" firstAttribute="centerY" secondItem="8jK-1b-hJH" secondAttribute="centerY" id="4iK-1R-VEh"/>
                             <constraint firstItem="btQ-11-0ng" firstAttribute="leading" secondItem="8jK-1b-hJH" secondAttribute="leading" constant="18" id="7i8-o6-mkh"/>
+                            <constraint firstItem="LLn-8b-vW6" firstAttribute="bottom" secondItem="HM8-H5-Kz0" secondAttribute="bottom" id="8PV-e1-IfO"/>
+                            <constraint firstItem="LLn-8b-vW6" firstAttribute="top" secondItem="HM8-H5-Kz0" secondAttribute="top" id="9y1-TX-pPP"/>
                             <constraint firstItem="SRX-mT-mQW" firstAttribute="leading" secondItem="8jK-1b-hJH" secondAttribute="leadingMargin" constant="10" id="Bgp-vN-b2e"/>
                             <constraint firstItem="ahZ-iO-Bmh" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="CBU-4b-vld"/>
                             <constraint firstAttribute="trailing" secondItem="7Fz-I2-Mji" secondAttribute="trailing" constant="40" id="CWp-J3-lbk"/>
@@ -160,6 +177,7 @@
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="top" secondItem="A81-3B-jUp" secondAttribute="bottom" constant="5" id="MjA-wG-ByJ"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="trailing" secondItem="SRX-mT-mQW" secondAttribute="trailing" id="Nvb-jg-Sz8"/>
                             <constraint firstItem="mee-z5-vsQ" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="RY6-RA-QFI"/>
+                            <constraint firstItem="LLn-8b-vW6" firstAttribute="leading" secondItem="HM8-H5-Kz0" secondAttribute="trailing" constant="25" id="Wer-nx-iSQ"/>
                             <constraint firstItem="63r-9K-2iL" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="10" id="XJx-Sq-mIs"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="leading" secondItem="SRX-mT-mQW" secondAttribute="leading" id="Yei-Ep-0ny"/>
                             <constraint firstAttribute="trailing" secondItem="jhF-wB-5M7" secondAttribute="trailing" constant="8" id="ZgN-3q-qkn"/>
@@ -213,6 +231,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Delete" width="80" height="73"/>
         <image name="Detail" width="79" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
     </resources>

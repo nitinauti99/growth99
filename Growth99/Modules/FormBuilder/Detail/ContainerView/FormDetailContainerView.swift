@@ -11,7 +11,7 @@ import UIKit
 class FormDetailContainerView: UIViewController {
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
-
+    
     var workflowFormId = Int()
     var selectedindex = 0
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class FormDetailContainerView: UIViewController {
         segmentedControl.insertSegment(withTitle: Constant.Profile.designer, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.notification, at: 1)
         segmentedControl.insertSegment(withTitle: Constant.Profile.submission, at: 2)
-
+        
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
@@ -39,7 +39,7 @@ class FormDetailContainerView: UIViewController {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
         segmentedControl.selectedSegmentIndex = segment
     }
-   
+    
     func setupView() {
         remove(asChildViewController: notificationListVC)
         remove(asChildViewController: questionarieVC)
@@ -58,45 +58,32 @@ class FormDetailContainerView: UIViewController {
             remove(asChildViewController: questionarieVC)
             remove(asChildViewController: formDetailVC)
             add(asChildViewController: notificationListVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(creatUser), imageName: "add")
         case 2:
             remove(asChildViewController: notificationListVC)
             remove(asChildViewController: formDetailVC)
             add(asChildViewController: questionarieVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
         default:
             break
         }
-
     }
     
     static func viewController() -> FormDetailContainerView {
-          return UIStoryboard.init(name: "FormDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "FormDetailContainerView") as! FormDetailContainerView
-      }
+        return UIStoryboard.init(name: "FormDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "FormDetailContainerView") as! FormDetailContainerView
+    }
     
     private lazy var formDetailVC: FormDetailViewController = {
         guard let formDetailVC = storyboard?.instantiateViewController(withIdentifier: "FormDetailViewController") as? FormDetailViewController else {
-               fatalError("Unable to Instantiate Summary View Controller")
-           }
+            fatalError("Unable to Instantiate Summary View Controller")
+        }
         formDetailVC.questionId = workflowFormId
         return formDetailVC
     }()
     
-    
-    
-    @objc func assignNewConsentButtonTapped(_ sender: UIButton){
-        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
-        navigationController?.pushViewController(addNewConsentsVC, animated: true)
-    }
-    
-    @objc func addUserButtonTapped(_ sender: UIButton) {
-        let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
-        navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
-    }
-    
-    @objc func addTaskTapped(_ sender: UIButton) {
-        let createTasksVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
-        navigationController?.pushViewController(createTasksVC, animated: true)
+    @objc func creatUser() {
+        let createNotificationVC = UIStoryboard(name: "CreateNotificationViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateNotificationViewController") as! CreateNotificationViewController
+        createNotificationVC.questionId = workflowFormId
+        self.navigationController?.pushViewController(createNotificationVC, animated: true)
     }
     
     private lazy var notificationListVC: NotificationListViewController = {
@@ -110,19 +97,6 @@ class FormDetailContainerView: UIViewController {
         questionarieList.pateintId = workflowFormId
         return questionarieList
     }()
-    
-    private lazy var consentsListVC: ConsentsListViewController = {
-        let consentsList = UIStoryboard(name: "ConsentsListViewController", bundle: nil).instantiateViewController(withIdentifier: "ConsentsListViewController") as! ConsentsListViewController
-        consentsList.pateintId = workflowFormId
-        return consentsList
-    }()
-
-    private lazy var PateintsAppointmentListVC: PatientAppointmentViewController = {
-        let patientAppointmentList = UIStoryboard(name: "PatientAppointmentViewController", bundle: nil).instantiateViewController(withIdentifier: "PatientAppointmentViewController") as! PatientAppointmentViewController
-        patientAppointmentList.pateintId = workflowFormId
-        return patientAppointmentList
-    }()
-    
     
     private func add(asChildViewController viewController: UIViewController) {
         addChild(viewController)
