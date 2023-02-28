@@ -28,7 +28,7 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.smsSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
             cell.smsSendButton.addTarget(self, action: #selector(self.sendSmsTemplateList(_:)), for:.touchUpInside)
             
-            cell.smsTextFiled.addTarget(self, action: #selector(leadDetailViewController.smsTemplateList(_:)), for:.touchDown)
+            cell.smsTextFiledButton.addTarget(self, action: #selector(leadDetailViewController.smsTemplateList(_:)), for:.touchDown)
             cell.smsTextFiled.text = "Selecte SMS template"
             
             return cell
@@ -41,7 +41,7 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.emailSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
             cell.emailSendButton.addTarget(self, action: #selector(self.sendEmailTemplateList(_:)), for:.touchUpInside)
             
-            cell.emailTextFiled.addTarget(self, action: #selector(leadDetailViewController.emailTemplateList(_:)), for:.touchDown)
+            cell.emailTextFiledButton.addTarget(self, action: #selector(leadDetailViewController.emailTemplateList(_:)), for:.touchDown)
             cell.emailTextFiled.text = "Select Email template"
             
             return cell

@@ -10,6 +10,8 @@ import UIKit
 class SMSTemplateTableViewCell: UITableViewCell {
     @IBOutlet weak var smsTextFiled: CustomTextField!
     @IBOutlet weak var smsSendButton: UIButton!
+    @IBOutlet weak var smsTextFiledButton: UIButton!
+
     @IBOutlet weak var subView: UIView!
 
     override func awakeFromNib() {

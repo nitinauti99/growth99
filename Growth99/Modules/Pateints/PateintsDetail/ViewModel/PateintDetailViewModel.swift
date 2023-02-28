@@ -11,16 +11,15 @@ protocol PateintDetailViewModelProtocol {
     func getpateintsList(pateintId: Int)
     func getSMSDefaultList()
     func getEmailDefaultList()
-    var pateintsDetailListData: PateintsDetailListModel? { get }
-    var smsTemplateListData: [SMStemplatesListDetailModel]? { get }
-    var emailTemplateListData: [EmailTemplatesListDetailModel]? { get }
     func sendTemplate(template: String)
     func updatePateintStatus(template: String)
-   // var leadStatus:String { get }
+    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func sendCustomSMS(leadId: Int, phoneNumber: String, body: String)
     func sendCustomEmail(leadId: Int, email: String,subject:String, body: String)
     func updatePateintsInfo(pateintId: Int, inputString: String, ansString: String)
-
+    var pateintsDetailListData: PateintsDetailListModel? { get }
+    var smsTemplateListData: [SMStemplatesListDetailModel]? { get }
+    var emailTemplateListData: [EmailTemplatesListDetailModel]? { get }
 }
 
 class PateintDetailViewModel {
@@ -171,5 +170,14 @@ extension PateintDetailViewModel: PateintDetailViewModelProtocol {
     
     var pateintsDetailListData: PateintsDetailListModel? {
         return self.pateintsDetailList
+    }
+    
+    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[1-9][0-9]{9}$")
+        if  predicateTest.evaluate(with: phoneNumber) {
+            return true
+        }else{
+            return false
+        }
     }
 }

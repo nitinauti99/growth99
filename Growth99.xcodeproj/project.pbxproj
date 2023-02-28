@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */; };
 		01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */; };
+		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
 		01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */; };
 		01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */; };
 		01BBA9D829AB5452006A5DB8 /* NotificationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D729AB5452006A5DB8 /* NotificationListViewModel.swift */; };
@@ -582,6 +583,7 @@
 /* Begin PBXFileReference section */
 		01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintEditViewController+UITextField.swift"; sourceTree = "<group>"; };
 		01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintViewContoller+UITextfiled.swift"; sourceTree = "<group>"; };
+		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
 		01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationListViewController.storyboard; sourceTree = "<group>"; };
 		01BBA9D729AB5452006A5DB8 /* NotificationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewModel.swift; sourceTree = "<group>"; };
@@ -1657,6 +1659,7 @@
 				84D0619D29670676001FE469 /* PateintDetailViewController.swift */,
 				84D0619E29670676001FE469 /* PateintDetailViewController+Tableview.swift */,
 				84D0619C29670676001FE469 /* PateintDetailViewController.storyboard */,
+				01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4820,6 +4823,7 @@
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
 				398F90FC298ECB8700DB96E4 /* IQUIViewController+Additions.swift in Sources */,
 				849D3AF42997CC72003E856A /* FontAwesomeTextRepresentable.swift in Sources */,
+				01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */,
 				84D062A52967070D001FE469 /* UserListTableViewCell.swift in Sources */,
 				398F90EB298ECB8700DB96E4 /* IQKeyboardManager+Internal.swift in Sources */,
 				39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */,

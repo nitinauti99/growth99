@@ -10,6 +10,8 @@ import UIKit
 class EmailTemplateTableViewCell: UITableViewCell {
     @IBOutlet weak var emailTextFiled: CustomTextField!
     @IBOutlet weak var emailSendButton: UIButton!
+    @IBOutlet weak var emailTextFiledButton: UIButton!
+
     @IBOutlet weak var subView: UIView!
 
     override func awakeFromNib() {

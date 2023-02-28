@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,6 +61,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oa-8T-NGi">
+                                <rect key="frame" x="28" y="85" width="294" height="45"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-Ob-etf">
                                 <rect key="frame" x="28" y="147" width="120" height="35"/>
                                 <constraints>
@@ -78,11 +82,15 @@
                         <constraints>
                             <constraint firstItem="ZQ6-Ob-etf" firstAttribute="leading" secondItem="UqO-B1-MEw" secondAttribute="leading" id="1K5-iu-OBz"/>
                             <constraint firstItem="W9K-JL-hfQ" firstAttribute="leading" secondItem="ADb-qB-vXA" secondAttribute="leading" constant="10" id="A31-sv-pGX"/>
+                            <constraint firstItem="7oa-8T-NGi" firstAttribute="bottom" secondItem="UqO-B1-MEw" secondAttribute="bottom" id="Aeb-7x-Hi7"/>
+                            <constraint firstItem="7oa-8T-NGi" firstAttribute="top" secondItem="UqO-B1-MEw" secondAttribute="top" id="Cd6-4r-LW7"/>
+                            <constraint firstItem="7oa-8T-NGi" firstAttribute="trailing" secondItem="UqO-B1-MEw" secondAttribute="trailing" id="FVs-oK-Vzf"/>
                             <constraint firstItem="UqO-B1-MEw" firstAttribute="top" secondItem="W9K-JL-hfQ" secondAttribute="bottom" constant="20" id="FqL-mn-7ea"/>
                             <constraint firstItem="W9K-JL-hfQ" firstAttribute="top" secondItem="ADb-qB-vXA" secondAttribute="top" constant="20" id="J6d-xg-jdF"/>
                             <constraint firstAttribute="trailing" secondItem="W9K-JL-hfQ" secondAttribute="trailing" constant="10" id="JkC-Vg-7oV"/>
                             <constraint firstAttribute="bottom" secondItem="ZQ6-Ob-etf" secondAttribute="bottom" constant="23" id="WCe-md-OZz"/>
                             <constraint firstItem="UqO-B1-MEw" firstAttribute="leading" secondItem="ADb-qB-vXA" secondAttribute="leadingMargin" constant="20" id="a12-YY-ig8"/>
+                            <constraint firstItem="7oa-8T-NGi" firstAttribute="leading" secondItem="UqO-B1-MEw" secondAttribute="leading" id="pnl-zu-ZRU"/>
                             <constraint firstItem="ZQ6-Ob-etf" firstAttribute="top" secondItem="UqO-B1-MEw" secondAttribute="bottom" constant="17" id="yS7-Kl-5p9"/>
                             <constraint firstItem="UqO-B1-MEw" firstAttribute="trailing" secondItem="ADb-qB-vXA" secondAttribute="trailingMargin" constant="-10" id="zVo-eO-NIW"/>
                         </constraints>
@@ -99,6 +107,7 @@
             <connections>
                 <outlet property="emailSendButton" destination="ZQ6-Ob-etf" id="Iec-9U-hTE"/>
                 <outlet property="emailTextFiled" destination="UqO-B1-MEw" id="NKL-Ew-yQU"/>
+                <outlet property="emailTextFiledButton" destination="7oa-8T-NGi" id="G2o-ah-6Pi"/>
                 <outlet property="subView" destination="ADb-qB-vXA" id="ZFb-dd-NXx"/>
             </connections>
             <point key="canvasLocation" x="168.11594202898553" y="121.54017857142857"/>

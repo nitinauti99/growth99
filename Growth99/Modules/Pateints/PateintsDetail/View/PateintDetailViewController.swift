@@ -25,7 +25,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var firstName: CustomTextField!
     @IBOutlet private weak var lastName: CustomTextField!
     @IBOutlet private weak var email: CustomTextField!
-    @IBOutlet private weak var phoneNumber: CustomTextField!
+    @IBOutlet weak var phoneNumber: CustomTextField!
     @IBOutlet private weak var gender: CustomTextField!
     @IBOutlet private weak var dateOfBirth: CustomTextField!
     @IBOutlet private weak var notes: CustomTextField!
@@ -44,7 +44,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet weak var subView: UIView!
     
     var dateFormater : DateFormaterProtocol?
-    private var viewModel: PateintDetailViewModelProtocol?
+    var viewModel: PateintDetailViewModelProtocol?
     var pateintData: PateintsDetailListModel?
     var selctedSmsTemplateId = Int()
     var workflowTaskPatientId = Int()
@@ -68,6 +68,9 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         dateFormater = DateFormater()
         viewModel?.getpateintsList(pateintId: self.workflowTaskPatientId)
         buttons = [newButton, existingButton]
+        self.phoneNumber.addTarget(self, action:
+                                                #selector(PateintDetailViewController.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
     }
     
     @objc func dateFromButtonPressed() {
@@ -88,26 +91,31 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     func setUpClearColor() {
-        self.gender.isEnabled = false
-        firstName.borderColor = .clear
-        firstNameButton.isSelected = false
+        self.firstName.borderColor = .clear
+        self.firstNameButton.isSelected = false
         self.firstName.isUserInteractionEnabled = false
-        lastName.borderColor = .clear
-        self.lastNameButton.isUserInteractionEnabled = false
-        lastNameButton.isSelected = false
-        email.borderColor = .clear
-        phoneNumber.borderColor = .clear
+        
+        self.lastName.borderColor = .clear
+        self.lastNameButton.isSelected = false
+        self.lastName.isUserInteractionEnabled = false
+        
+        self.email.borderColor = .clear
+        
+        self.phoneNumber.borderColor = .clear
+        self.phoneNumberButton.isSelected = false
         self.phoneNumber.isUserInteractionEnabled = false
-        phoneNumber.isSelected = false
-        gender.borderColor = .clear
-//        self.gender.isUserInteractionEnabled = false
-        gender.isSelected = false
-        dateOfBirth.borderColor = .clear
+       
+        self.gender.borderColor = .clear
+        self.genderButton.isSelected = false
+        self.gender.isEnabled = false
+
+        self.dateOfBirth.borderColor = .clear
+        self.dateOfBirthButton.isSelected = false
         self.dateOfBirth.isUserInteractionEnabled = false
-        dateOfBirth.isSelected = false
-        notes.borderColor = .clear
+        
+        self.notes.borderColor = .clear
+        self.notesButton.isSelected = false
         self.notes.isUserInteractionEnabled = false
-        notes.isSelected = false
     }
     
     func registerCell() {
@@ -169,15 +177,15 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func setUpUI() {
         pateintData = viewModel?.pateintsDetailListData
-        firstName.text = pateintData?.firstName
-        lastName.text = pateintData?.lastName
-        email.text = pateintData?.email
-        phoneNumber.text = pateintData?.phone
-        gender.text = pateintData?.gender
-        notes.text = pateintData?.notes
-        self.dateOfBirth.text = pateintData?.dateOfBirth
+        firstName.text = pateintData?.firstName ?? "-"
+        lastName.text = pateintData?.lastName ?? "-"
+        email.text = pateintData?.email ?? "-"
+        phoneNumber.text = pateintData?.phone ?? "-"
+        gender.text = pateintData?.gender ?? "-"
+        notes.text = pateintData?.notes ?? "-"
+        self.dateOfBirth.text = pateintData?.dateOfBirth ?? "-"
         let dateOfBirth = dateFormater?.dateFormatterString(textField: dateOfBirth)
-        self.dateOfBirth.text = dateOfBirth
+        self.dateOfBirth.text = dateOfBirth ?? "-"
         self.fullName.text = (pateintData?.firstName ?? String.blank) + " " + (pateintData?.lastName ?? String.blank)
     }
     
@@ -195,16 +203,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func editDateOfBirth(sender: UIButton) {
-        dateOfBirth.borderColor = .gray
-        dateOfBirth.isUserInteractionEnabled = true
-        if sender.isSelected == true {
-            self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "dateOfBirth", ansString: dateOfBirth.text ?? String.blank)
-        }
-        sender.isSelected = true
-    }
-    
+   
     func recivedSmsTemplateList(){
         viewModel?.getEmailDefaultList()
     }
@@ -259,12 +258,12 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     @objc func sendSmsTemplateList(_ sender: UIButton) {
-        selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
+        self.selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
         self.sendTemplate()
     }
     
     @objc func sendEmailTemplateList(_ sender: UIButton) {
-        selctedTemplate = "\(pateintData?.id ?? 0)/email-template/\(self.selctedSmsTemplateId)"
+        self.selctedTemplate = "\(pateintData?.id ?? 0)/email-template/\(self.selctedSmsTemplateId)"
         self.sendTemplate()
     }
     
@@ -376,6 +375,17 @@ extension PateintDetailViewController {
         }
         sender.isSelected = true
     }
+    
+    @IBAction func editDateOfBirth(sender: UIButton) {
+        dateOfBirth.borderColor = .gray
+        dateOfBirth.isUserInteractionEnabled = true
+        if sender.isSelected == true {
+            self.view.ShowSpinner()
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "dateOfBirth", ansString: dateOfBirth.text ?? String.blank)
+        }
+        sender.isSelected = true
+    }
+    
     
     @IBAction func editNotes(sender: UIButton) {
         notes.borderColor = .gray
