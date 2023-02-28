@@ -28,7 +28,7 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
             } else {
                 self.bookingHistoryTableView.restore()
             }
-            return viewModel?.getBookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? String.blank) > ($1.appointmentCreatedDate ?? String.blank)}).count ?? 0
+            return viewModel?.getBookingHistoryListData.sorted(by: { ($0.appointmentCreatedDate ?? String.blank) < ($1.appointmentCreatedDate ?? String.blank)}).count ?? 0
         }
     }
     

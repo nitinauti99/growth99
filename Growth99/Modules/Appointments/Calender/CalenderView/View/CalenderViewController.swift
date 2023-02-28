@@ -277,6 +277,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
 
                     cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate ?? String.blank)
                     cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                    cell.selectionStyle = .none
                     return cell
                 }
             } else if eventTypeSelected == "past" {
@@ -288,6 +289,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientLastName ?? String.blank)"
                     cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate ?? String.blank)
                     cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
+                    cell.selectionStyle = .none
                     return cell
                 }
             } else {
@@ -299,11 +301,21 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.eventsTitle.text = "\(headline.patientFirstName ?? String.blank) \(headline.patientLastName ?? String.blank)"
                     cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: headline.appointmentStartDate ?? String.blank)
                     cell.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
+                    cell.selectionStyle = .none
                     return cell
                 }
             }
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = self.sections[indexPath.section]
+        let headline = section.headlines[indexPath.row]
+        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        editVC.appointmentId = headline.id
+        editVC.editBookingHistoryData = headline
+        navigationController?.pushViewController(editVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

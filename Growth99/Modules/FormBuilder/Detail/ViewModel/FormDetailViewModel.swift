@@ -101,7 +101,6 @@ class FormDetailViewModel {
         let finaleUrl = ApiUrl.fromDetail.appending("\(questionId)/questions/\(childQuestionId)")
         
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
-            
             guard let self = self else { return }
             switch result {
             case .success(let response):
