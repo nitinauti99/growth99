@@ -41,7 +41,7 @@ class PateintListTableViewCell: UITableViewCell {
     }
 
     func configureCell(userVM: PateintListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.PateintDataAtIndex(index: index.row)
+        let userVM = userVM?.pateintDataAtIndex(index: index.row)
         self.firstName.text = userVM?.firstName
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
@@ -52,10 +52,25 @@ class PateintListTableViewCell: UITableViewCell {
         self.updatedBy.text = userVM?.updatedBy
         let movement = userVM?.patientStatus
         pateintStatusLbi.text = userVM?.patientStatus
-        pateintStatusImage.image = UIImage(named: movement ?? String.blank)
+        pateintStatusImage.image = UIImage(named: movement?.lowercased() ?? String.blank)
         indexPath = index
     }
 
+    func configureCellWithSearch(userVM: PateintListViewModelProtocol?, index: IndexPath) {
+        let userVM = userVM?.pateintFilterDataAtIndex(index: index.row)
+        self.firstName.text = userVM?.firstName
+        self.lastName.text = userVM?.lastName
+        self.id.text = String(userVM?.id ?? 0)
+        self.email.text = userVM?.email
+        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
+        self.createdBy.text = userVM?.createdBy
+        self.updatedBy.text = userVM?.updatedBy
+        let movement = userVM?.patientStatus
+        pateintStatusLbi.text = userVM?.patientStatus
+        pateintStatusImage.image = UIImage(named: movement?.lowercased() ?? String.blank)
+        indexPath = index
+    }
     @IBAction func deleteButtonPressed() {
         self.delegate?.removePatieint(cell: self, index: indexPath)
     }

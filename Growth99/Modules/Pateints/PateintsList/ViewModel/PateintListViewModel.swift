@@ -9,16 +9,17 @@ import Foundation
 
 protocol PateintListViewModelProtocol {
     func getPateintList()
-    var  PateintData: [PateintListModel] { get }
-    func PateintDataAtIndex(index: Int) -> PateintListModel?
-    var  pateintFilterDataData: [PateintListModel] { get }
-    func pateintFilterDataDataAtIndex(index: Int)-> PateintListModel?
+    func pateintDataAtIndex(index: Int) -> PateintListModel?
+    func pateintFilterDataAtIndex(index: Int)-> PateintListModel?
     func removePateints(pateintId: Int)
+    func filterData(searchText: String)
+    var  getPateintData: [PateintListModel] { get }
+    var  getPateintFilterData: [PateintListModel] { get }
 }
 
 class PateintListViewModel {
     var delegate: PateintListViewContollerProtocol?
-    var PateintListData: [PateintListModel] = []
+    var pateintListData: [PateintListModel] = []
     var pateintFilterData: [PateintListModel] = []
     
     init(delegate: PateintListViewContollerProtocol? = nil) {
@@ -30,8 +31,8 @@ class PateintListViewModel {
     func getPateintList() {
         self.requestManager.request(forPath: ApiUrl.patientsList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PateintListModel], GrowthNetworkError>) in
             switch result {
-            case .success(let PateintData):
-                self.PateintListData = PateintData
+            case .success(let pateintData):
+                self.pateintListData = pateintData
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -58,25 +59,27 @@ class PateintListViewModel {
           }
     }
     
-    func PateintDataAtIndex(index: Int)-> PateintListModel? {
-        return self.PateintListData[index]
+    func pateintDataAtIndex(index: Int)-> PateintListModel? {
+        return self.pateintListData[index]
     }
     
-    func pateintFilterDataDataAtIndex(index: Int)-> PateintListModel? {
+    func filterData(searchText: String) {
+       self.pateintFilterData = (self.pateintListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+    }
+    
+    func pateintFilterDataAtIndex(index: Int)-> PateintListModel? {
         return self.pateintFilterData[index]
     }
 }
 
 extension PateintListViewModel: PateintListViewModelProtocol {
     
-    
-    var pateintFilterDataData: [PateintListModel] {
+    var getPateintFilterData: [PateintListModel] {
         return self.pateintFilterData
     }
     
-    var PateintData: [PateintListModel] {
-        return self.PateintListData
+    var getPateintData: [PateintListModel] {
+        return self.pateintListData
     }
-    
     
 }

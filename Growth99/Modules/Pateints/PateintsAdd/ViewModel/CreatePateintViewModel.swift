@@ -42,10 +42,11 @@ class CreatePateintViewModel {
 extension CreatePateintViewModel: CreatePateintViewModelProtocol{
    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
+        guard phoneNumber.count > 10, phoneNumber.count < 10, !phoneNumber.isEmpty else {
+            return false
         }
-        return false
+        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[1-9][0-9]{9}$")
+        return predicateTest.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -55,10 +56,10 @@ extension CreatePateintViewModel: CreatePateintViewModelProtocol{
     }
     
     func isValid(testStr:String) -> Bool {
-        guard testStr.count > 1, testStr.count < 18 else { return false }
-
-        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^(([^ ]?)(^[a-zA-Z].*[a-zA-Z]$)([^ ]?))$")
+        guard testStr.count > 1, !testStr.isEmpty else {
+            return false
+        }
+       let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z]*$")
         return predicateTest.evaluate(with: testStr)
     }
-    
 }
