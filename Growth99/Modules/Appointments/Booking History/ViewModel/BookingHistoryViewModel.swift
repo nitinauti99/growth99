@@ -19,7 +19,7 @@ protocol BookingHistoryViewModelProtocol {
     var  getBookingHistoryListData: [AppointmentDTOList] { get }
     var  getBookingHistoryFilterListData: [AppointmentDTOList] { get }
     
-//    func removeSelectedBookingHistory(bookingHistoryId: Int)
+    func removeSelectedBookingHistory(bookingHistoryId: Int)
 
     func serverToLocalTime(timeString: String) -> String
 }
@@ -50,25 +50,25 @@ class BookingHistoryViewModel {
         }
     }
     
-//    func removeSelectedBookingHistory(bookingHistoryId: Int) {
-//        let finaleUrl = ApiUrl.removeProfileAppointment + "\(bookingHistoryId)"
-//        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let response):
-//                if response.statusCode == 200 {
-//                    self.delegate?.appointmentRemovedSuccefully()
-//                }else if (response.statusCode == 500) {
-//                    self.delegate?.profileAppoinmentsErrorReceived(error: "Unable to delete paid appointments")
-//                }else{
-//                    self.delegate?.profileAppoinmentsErrorReceived(error: "response failed")
-//                }
-//            case .failure(let error):
-//                self.delegate?.profileAppoinmentsErrorReceived(error: error.localizedDescription)
-//                print("Error while performing request \(error)")
-//            }
-//        }
-//    }
+    func removeSelectedBookingHistory(bookingHistoryId: Int) {
+        /*let finaleUrl = ApiUrl.removeProfileAppointment + "\(bookingHistoryId)"
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.profileAppoinmentsRemoved()
+                }else if (response.statusCode == 500) {
+                    self.delegate?.profileAppoinmentsErrorReceived(error: "Unable to delete paid appointments")
+                }else{
+                    self.delegate?.profileAppoinmentsErrorReceived(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.profileAppoinmentsErrorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }*/
+    }
     
     func serverToLocalInput(date: String) -> String {
         let dateFormatter = DateFormatter()

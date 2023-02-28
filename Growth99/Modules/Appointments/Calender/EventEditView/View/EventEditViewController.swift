@@ -124,13 +124,12 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             virtualBtn.isSelected = true
         }
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
-        print("notes::::: \(editBookingHistoryData?.notes ?? String.blank)")
     }
     
     func serverToLocalDateFormat(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date)
@@ -309,8 +308,8 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         }
         
         selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.dateTextField.text = self?.serverToLocalDateFormat(date: selectedList[0])
-            self?.selectedDate = selectedList[0]
+            self?.dateTextField.text = self?.serverToLocalDateFormat(date: selectedItem ?? "")
+            self?.selectedDate = selectedItem ?? ""
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
             self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
@@ -395,6 +394,14 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         
         if selectedProvidersIds.count == 0 {
             selectedProvidersIds = [editBookingHistoryData?.providerId ?? 0]
+        }
+        
+        if selectedDate == String.blank {
+            selectedDate = editBookingHistoryData?.appointmentStartDate ?? ""
+        }
+        
+        if selectedTime == String.blank {
+            selectedTime = editBookingHistoryData?.appointmentStartDate ?? ""
         }
         
         self.view.ShowSpinner()
