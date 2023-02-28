@@ -11,12 +11,13 @@ protocol FormDetailViewModelProtocol {
     var getFormDetailData: [FormDetailModel] { get }
     var getFormFilterListData: [FormDetailModel] { get }
     func addFormDetailData(item: FormDetailModel)
+    func removeFormData(index: IndexPath)
     func getFormDetail(questionId: Int)
     func filterData(searchText: String)
     func FormDataAtIndex(index: Int) -> FormDetailModel?
     func formFilterDataAtIndex(index: Int)-> FormDetailModel?
     func getFormQuestionnaireData(questionnaireId: Int)
-    var getFormQuestionnaireData: CreateFormModel? { get }
+    var  getFormQuestionnaireData: CreateFormModel? { get }
     func updateFormData(questionnaireId: Int,formData:[String: Any])
     func updateQuestionFormData(questionnaireId: Int,formData: [String: Any])
     func removeQuestions(questionId: Int, childQuestionId: Int)
@@ -135,8 +136,9 @@ class FormDetailViewModel {
         self.formDetailData.append(item)
     }
     
-    
-    
+    func removeFormData(index: IndexPath){
+        self.formDetailData.remove(at: index.row)
+    }
 }
 
 extension FormDetailViewModel: FormDetailViewModelProtocol {

@@ -261,6 +261,14 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         }
     }
     
+    func deleteNotSsavedQuestion(cell: FormDetailTableViewCell, index: IndexPath) {
+        viewModel?.removeFormData(index: index)
+        self.tableView.deleteRows(at: [index], with: .automatic)
+        self.tableView?.performBatchUpdates(nil, completion: nil)
+        self.tableView.reloadData()
+        self.scrollViewHeight()
+    }
+    
     @IBAction func addQuestionAction(sender:UIButton) {
         let createdBy = CreatedBy(firstName: "", lastName: "", email: "", username: "")
         let updatedBy =  UpdatedBy(firstName: "", lastName: "", email: "", username: "")
