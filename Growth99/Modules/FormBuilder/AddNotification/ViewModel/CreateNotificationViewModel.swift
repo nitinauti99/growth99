@@ -9,7 +9,8 @@ import Foundation
 
 protocol CreateNotificationViewModelProtocol {
     func getCreateCreateNotification(questionId: Int, notificationId: Int)
-    func createNotification(questionId: Int,notificationId: Int, params: [String: Any])
+    func updateNotification(questionId: Int,notificationId: Int, params: [String: Any])
+    func createNotification(questionId: Int, params: [String: Any])
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     var getgetNotificationData:CreateNotificationModel { get }
@@ -25,11 +26,27 @@ class CreateNotificationViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func createNotification(questionId: Int,notificationId: Int, params: [String: Any]) {
+    func createNotification(questionId: Int,params: [String: Any]) {
+        
+        let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications")
+        
+        self.requestManager.request(forPath: finaleURL, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: params, encoding: .jsonEncoding)) { (result: Result<CreateNotificationModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let FormData):
+                print(FormData)
+                self.delegate?.createdNotificationSuccessfully(message: "Notification Created  Successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func updateNotification(questionId: Int,notificationId: Int, params: [String: Any]) {
         
         let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications/\(notificationId)")
         
-        self.requestManager.request(forPath: finaleURL, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: params, encoding: .jsonEncoding)) { (result: Result<CreateNotificationModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: finaleURL, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: params, encoding: .jsonEncoding)) { (result: Result<CreateNotificationModel, GrowthNetworkError>) in
             switch result {
             case .success(let FormData):
                 print(FormData)

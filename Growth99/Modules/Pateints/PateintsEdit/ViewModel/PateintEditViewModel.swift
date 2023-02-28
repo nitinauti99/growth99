@@ -9,10 +9,11 @@ import Foundation
 
 protocol PateintEditViewModelProtocol {
     func getPateintList(pateintId: Int) 
-    func cratePateint(parameters: [String:Any])
-    var pateintEditDetailData: PateintsEditDetailModel? { get }
+    func updatePateintsDetail(patientsId: Int, parameters: [String:Any])
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidEmail(_ email: String) -> Bool
+    func isValid(testStr:String) -> Bool
+    var getPateintEditData: PateintsEditDetailModel? { get }
 }
 
 class PateintEditViewModel {
@@ -40,8 +41,9 @@ class PateintEditViewModel {
         }
     }
     
-    func cratePateint(parameters: [String:Any]) {
-        self.requestManager.request(forPath: ApiUrl.crearePatients, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
+    func updatePateintsDetail(patientsId: Int, parameters: [String:Any]) {
+        let finaleUrl = ApiUrl.crearePatients.appending("/\(patientsId)")
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -57,15 +59,16 @@ class PateintEditViewModel {
 
 extension PateintEditViewModel: PateintEditViewModelProtocol{
    
-    var pateintEditDetailData: PateintsEditDetailModel? {
+    var getPateintEditData: PateintsEditDetailModel? {
         return self.pateintsDetailList
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
+        guard phoneNumber.count > 10, phoneNumber.count < 10, !phoneNumber.isEmpty else {
             return false
         }
-        return true
+        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[1-9][0-9]{9}$")
+        return predicateTest.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -74,5 +77,12 @@ extension PateintEditViewModel: PateintEditViewModelProtocol{
         return emailPred.evaluate(with: email)
     }
     
+    func isValid(testStr:String) -> Bool {
+        guard testStr.count > 1, !testStr.isEmpty else {
+            return false
+        }
+       let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z]*$")
+        return predicateTest.evaluate(with: testStr)
+    }
 }
 

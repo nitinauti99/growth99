@@ -12,6 +12,7 @@ protocol FormDetailTableViewCellDelegate: AnyObject {
     func showRegexList(cell: FormDetailTableViewCell, sender: UIButton, index: IndexPath)
     func saveFormData(item: [String: Any])
     func deleteQuestion(name: String, id: Int)
+    func deleteNotSsavedQuestion(cell: FormDetailTableViewCell, index: IndexPath)
 }
 
 class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegate {
@@ -41,7 +42,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBOutlet weak var validationView: UIView!
     @IBOutlet weak var multipleSelectionView: UIView!
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var subViewHight: NSLayoutConstraint!
+    @IBOutlet weak var bottomViewHight: NSLayoutConstraint!
     @IBOutlet weak var multipleSelectionViewHight: NSLayoutConstraint!
     @IBOutlet weak var validationViewHight: NSLayoutConstraint!
     @IBOutlet weak var scrollViewHight: NSLayoutConstraint!
@@ -71,10 +72,11 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBOutlet weak var questionTableViewHight: NSLayoutConstraint!
     
     @IBOutlet weak var deletButton: UIButton!
-    @IBOutlet weak var bottomDeletButton: UIButton!
-    
     @IBOutlet weak var deletButtonWidth: NSLayoutConstraint!
-    
+
+    @IBOutlet weak var bottomDeletButton: UIButton!
+    @IBOutlet weak var bottomDeletButtonSepraterWidth: NSLayoutConstraint!
+
     var tableView: UITableView?
     var indexPath = IndexPath()
     var buttons = [UIButton]()
@@ -100,10 +102,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     func setUPInitialConstantValue() {
         self.setUPButtonAction()
         self.hideMultipleSelctionView()
-        self.saveButton.isHidden = true
-        self.crateQuestion = false
         self.bottomView.isHidden = true
-        self.subViewHight.constant = 0
+        self.bottomViewHight.constant = 0
         self.questionTableViewHight.constant = 0
         self.questionTableView.isHidden = true
         self.validationViewHight.constant = 0
@@ -112,17 +112,17 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.multipleChoiceNOButton.isSelected = false
         self.dropDownNOButton.isSelected = false
         self.selectedCheckBoxNOButton.isSelected = false
+        self.editButton.isHidden = true
+        self.saveButton.isHidden = true
+        self.deletButton.isHidden = true
+        self.crateQuestion = false
+        self.bottomDeletButton.isHidden = true
     }
     
+    /// when we are creating new question notification get called
     @objc func NotificationCreateQuestion(){
         self.validationViewHight.constant = 0
-        self.validationView.isHidden = true
-        self.deletButton.isHidden = true
         self.crateQuestion = true
-        self.bottomView.isHidden = false
-        self.subViewHight.constant = 76
-        self.cancelButton.isHidden = true
-        self.cancelButtonWidth.constant = 0
     }
     
     func hideMultipleSelctionView(){
@@ -135,27 +135,37 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     /// configure cell
     func configureCell(tableView: UITableView?, FormList: FormDetailViewModelProtocol?, index: IndexPath) {
         self.setUPUI(FormList, index)
+        self.questionNameTextfield.placeholder = "New Question"
         self.saveButton.roundCorners(corners: [.allCorners], radius: 25)
         self.cancelButton.roundCorners(corners: [.allCorners], radius: 25)
         self.tableView = tableView
-        self.saveButton.isHidden = true
         self.questionTableView.reloadData()
         buttons = [inputBoxButton, textButton,yesNoButton,dateButton,multipleSelectionButton,fileButton]
         
     }
     
     /// based below condition we shwo delete button on form
-    private func showDeletButton() -> Bool? {
+    private func showDeleteReloadButton() {
         if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" {
-            deletButton.isHidden = true
-            deletButtonWidth.constant = 0
-            return false
+            self.editButton.isHidden = false // shwoing edit button
+            self.deletButton.isHidden = true
+            self.deletButtonWidth.constant = 0
         }else {
-            if self.crateQuestion == true {
-               return false
-           }else{
-               return true
-           }
+            self.editButton.isHidden = false // shwoing edit button
+            self.deletButton.isHidden = false
+        }
+    }
+    
+    func showDeletebuttonOnAddQuestion(){
+        if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" {
+            self.saveButton.isHidden = false
+            self.cancelButton.isHidden = false
+            self.bottomDeletButton.isHidden = true
+        }else{
+            self.saveButton.isHidden = false
+            self.cancelButton.isHidden = false
+            self.bottomDeletButton.isHidden = false
+            self.bottomDeletButtonSepraterWidth.constant = 100
         }
     }
     
@@ -166,6 +176,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     /// setUp Data for UI
     func setUPUI(_ FormList: FormDetailViewModelProtocol?, _ index: IndexPath) {
         self.indexPath = index
+        self.bottomDeletButton.isHidden = false
+        self.dissableUserIntraction()
         self.formList = FormList?.FormDataAtIndex(index: index.row)
         self.questionNameTextfield.text = formList?.name
         self.requiredButton.isSelected = formList?.required ?? false
@@ -176,17 +188,50 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.selctionType(selctionType:formList?.type ?? String.blank)
         self.setUPInitialMultiselectionView()
         self.questionArray = formList?.questionChoices ?? []
-        /// based on below condtion we are shwoing validated
-        if formList?.validate == true {
-            self.validationViewHight.constant = 180
-            self.validationView.isHidden = false
-        }
-        if let isDeletbuttonShow = showDeletButton(), isDeletbuttonShow {
-            self.deletButton.isHidden = false
-            self.deletButtonWidth.constant = 40
+        self.cancelButton.addTarget(self,
+                                    action: #selector(self.cancelButtonAction(sender:)),
+                                    for: .touchUpInside)
+
+       
+        if self.crateQuestion == true {
+            self.saveButton.isHidden = false
+            self.bottomDeletButton.isHidden = false
+            self.bottomDeletButtonSepraterWidth.constant = 30
+            self.editButton.isHidden = true
+            self.cancelButton.isHidden = true
+            self.hideValidationView()
+            self.bottomView.isHidden = false
+            self.bottomViewHight.constant = 76
+            self.enableUserIntraction()
+        }else{
+            self.showDeleteReloadButton()
+            self.saveButton.isHidden = true
+            self.bottomDeletButton.isHidden = true
+            self.bottomView.isHidden = true
+            self.bottomViewHight.constant = 0
+            self.editButton.isHidden = false
+
         }
         
-        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonAction(sender:)), for: .touchUpInside)
+        // based on below condtion we are shwoing validated:
+        if formList?.validate == true {
+            self.showValiDationView()
+            self.saveButton.isHidden = true
+            self.bottomDeletButton.isHidden = true
+            self.bottomViewHight.constant = 0
+            self.editButton.isHidden = false
+        }
+        
+    }
+    
+    func showValiDationView(){
+        self.validationViewHight.constant = 180
+        self.validationView.isHidden = false
+    }
+    
+    func hideValidationView(){
+        self.validationViewHight.constant = 0
+        self.validationView.isHidden = true
     }
     
     /// setUpMultipleSelectionValues
@@ -420,13 +465,12 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }
     }
     
-    /// edit button pressed it allow user to edit filed
-    @IBAction func editButtonAction(sender: UIButton) {
+    fileprivate func editButtonPressed() {
         self.bottomView.isHidden = false
-        self.subViewHight.constant = 76
-        self.deletButton.isHidden = false
-        self.saveButton.isHidden = false
+        self.bottomViewHight.constant = 76
         self.enableUserIntraction()
+        self.showDeletebuttonOnAddQuestion()
+       
         if multipleSelectionButton.isSelected == true {
             self.multipleSelectionView.isHidden = false
             self.showMultSelctionView()
@@ -436,21 +480,21 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             self.questionTableView.reloadData()
             self.questionTableView?.performBatchUpdates(nil, completion: nil)
         }
-        if self.crateQuestion == true {
-            bottomDeletButton.isHidden = false
-            self.questionNameTextfield.placeholder = "New Question"
-        }
+    }
+    
+    /// edit button pressed it allow user to edit filed
+    @IBAction func editButtonAction(sender: UIButton) {
+        self.editButtonPressed()
+       /// self.showDeletButton()
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {
         self.bottomView.isHidden = true
-        self.subViewHight.constant = 0
+        self.bottomViewHight.constant = 0
+        self.bottomDeletButton.isHidden = true
         self.dissableUserIntraction()
         self.hideMutipleSelctionView()
-        bottomDeletButton.isHidden = true
-        /// setup ui again
-        // self.setUPUI(formList, indexPath)
         delegate?.reloadForm(cell: self, index: indexPath)
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
@@ -609,6 +653,10 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         delegate?.deleteQuestion(name: formList?.name ?? "", id: formList?.id ?? 0)
     }
     
+    @IBAction func deleteBottomButtonAction(sender: UIButton) {
+        delegate?.deleteNotSsavedQuestion(cell: self, index: indexPath)
+    }
+    
     func updateMultiSelectionFromData() -> [String: Any]{
         var questionListArray = [Any]()
         for indexValue in 0..<(questionArray.count) {
@@ -671,9 +719,9 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     }
     @IBAction func saveFormData(sender: UIButton){
         self.bottomView.isHidden = true
-        self.subViewHight.constant = 0
+        self.bottomViewHight.constant = 0
         self.dissableUserIntraction()
-        self.bottomDeletButton.isHidden = true
+//        self.bottomDeletButton.isHidden = true
         var formData: [String: Any] = [:]
         
         if formList?.id == 0 {

@@ -58,6 +58,7 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
             selectionMenu.dismissAutomatically = true
         }
         selectionMenu.reloadInputViews()
+        selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(notificationArray.count * 44))), arrowDirection: .up), from: self)
      }
@@ -99,6 +100,8 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
             }
             params = [
                "notificationType": "SMS",
+               "toEmail": "",
+               "messageText": "",
                "phoneNumber": selectedNotificationTypeTextField.text ?? String.blank,
            ]
         }else{
@@ -107,12 +110,18 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
             }
             params = [
                "notificationType": "EMAIL",
+               "phoneNumber": "",
+               "messageText": "",
                "toEmail" : selectedNotificationTypeTextField.text ?? String.blank,
            ]
         }
-
-        self.view.ShowSpinner()
-        viewModel?.createNotification(questionId: questionId, notificationId: notificationId, params: params)
+        if screenName == "Edit Notification" {
+            self.view.ShowSpinner()
+            viewModel?.updateNotification(questionId: questionId, notificationId: notificationId, params: params)
+        }else {
+            self.view.ShowSpinner()
+            viewModel?.createNotification(questionId: questionId,params: params)
+        }
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {

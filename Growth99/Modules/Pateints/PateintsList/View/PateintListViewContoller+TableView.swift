@@ -16,9 +16,9 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-           return pateintFilterData.count
+            return viewModel?.getPateintFilterData.count ?? 0
         } else {
-            return viewModel?.PateintData.count ?? 0
+            return viewModel?.getPateintData.count ?? 0
         }
     }
     
@@ -27,7 +27,7 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
         cell = pateintListTableView.dequeueReusableCell(withIdentifier: "PateintListTableViewCell") as! PateintListTableViewCell
         cell.delegate = self
         if isSearch {
-            cell.configureCell(userVM: viewModel, index: indexPath)
+            cell.configureCellWithSearch(userVM: viewModel, index: indexPath)
         } else {
             cell.configureCell(userVM: viewModel, index: indexPath)
         }
@@ -40,7 +40,7 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let PeteintDetail = PeteintDetailView.viewController()
-        PeteintDetail.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: indexPath.row)?.id ?? 0
+        PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: indexPath.row)?.id ?? 0
         self.navigationController?.pushViewController(PeteintDetail, animated: true)
 
     }

@@ -71,6 +71,8 @@ struct Constant {
         static let services = "Services"
         static let users = "Users"
         static let pateint = "Patients List"
+        static let createPatient = "Create Patient"
+        static let editPatient = "Edit Patient"
         static let business = "Business"
         static let patientDetail = " Patient Detail "
         static let designer = " Designer "

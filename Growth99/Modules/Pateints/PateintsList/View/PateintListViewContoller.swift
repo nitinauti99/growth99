@@ -77,11 +77,11 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.PateintDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.pateintDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()
-            let pateintId = self?.viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+            let pateintId = self?.viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
             self?.viewModel?.removePateints(pateintId: pateintId)
         })
         cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
@@ -103,7 +103,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
 
     func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {
         let editVC = UIStoryboard(name: "PateintEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintEditViewController") as! PateintEditViewController
-        editVC.pateintId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+        editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
         self.navigationController?.pushViewController(editVC, animated: true)
     }
     
@@ -113,7 +113,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
 //        self.navigationController?.pushViewController(detailController, animated: true)
         
         let PeteintDetail = PeteintDetailView.viewController()
-        PeteintDetail.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
+        PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
         self.navigationController?.pushViewController(PeteintDetail, animated: true)
     }
     

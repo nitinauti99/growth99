@@ -11,7 +11,7 @@ import UIKit
 extension PateintListViewContoller:  UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        pateintFilterData = (viewModel?.PateintData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
+        viewModel?.filterData(searchText: searchText)
         isSearch = true
         pateintListTableView.reloadData()
     }

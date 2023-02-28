@@ -568,19 +568,23 @@
                                             <action selector="deleteButtonActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HHT-ah-lr3"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUl-2v-Oyr">
-                                        <rect key="frame" x="192" y="1228" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUl-2v-Oyr">
+                                        <rect key="frame" x="186" y="1228" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JL2-S1-D1U"/>
                                             <constraint firstAttribute="width" constant="50" id="JsF-Oy-uFY"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="Delete"/>
+                                        <connections>
+                                            <action selector="deleteBottomButtonActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Duv-VI-Sd0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="vUD-LN-bFs" firstAttribute="centerY" secondItem="kli-99-XDq" secondAttribute="centerY" id="1l9-q0-aEC"/>
+                                    <constraint firstItem="RUl-2v-Oyr" firstAttribute="leading" secondItem="QaR-KP-XVE" secondAttribute="trailing" constant="100" id="3sZ-N8-dwA"/>
                                     <constraint firstAttribute="bottom" secondItem="W14-gI-Pky" secondAttribute="bottom" constant="14" id="5Do-Cj-Sjd"/>
                                     <constraint firstItem="xGJ-l1-SLA" firstAttribute="centerY" secondItem="pFC-RN-aJw" secondAttribute="centerY" id="7DU-yZ-oSx"/>
                                     <constraint firstItem="Piz-V9-DDT" firstAttribute="top" secondItem="pFC-RN-aJw" secondAttribute="bottom" constant="10" id="8Bk-EM-Bj2"/>
@@ -595,6 +599,7 @@
                                     <constraint firstItem="uDb-yY-FMF" firstAttribute="leading" secondItem="mU6-X8-c3Z" secondAttribute="leading" id="FKg-6A-Kq1"/>
                                     <constraint firstItem="fHc-AU-7jh" firstAttribute="trailing" secondItem="mU6-X8-c3Z" secondAttribute="trailing" id="Glw-3u-gml"/>
                                     <constraint firstItem="xGJ-l1-SLA" firstAttribute="trailing" secondItem="jha-AG-aLa" secondAttribute="trailing" id="HWX-LO-liZ"/>
+                                    <constraint firstItem="RUl-2v-Oyr" firstAttribute="centerY" secondItem="Qc1-FD-la2" secondAttribute="centerY" id="Iib-IG-7Oa"/>
                                     <constraint firstItem="vRP-8o-pWT" firstAttribute="top" secondItem="vUD-LN-bFs" secondAttribute="bottom" constant="10" id="MQJ-ej-jwr"/>
                                     <constraint firstItem="mU6-X8-c3Z" firstAttribute="leading" secondItem="qsz-QW-rrN" secondAttribute="leadingMargin" constant="20" id="MTe-ec-BTk"/>
                                     <constraint firstItem="GJd-I7-ODU" firstAttribute="trailing" secondItem="AgP-eC-NmZ" secondAttribute="trailing" id="Mro-gg-f65"/>
@@ -637,8 +642,6 @@
                                     <constraint firstItem="0XX-L6-DCA" firstAttribute="centerY" secondItem="Fdl-8T-rQN" secondAttribute="centerY" id="s5g-y4-huh"/>
                                     <constraint firstItem="jha-AG-aLa" firstAttribute="leading" secondItem="ZMs-0R-6OU" secondAttribute="trailing" constant="20" id="tLv-aX-QMl"/>
                                     <constraint firstItem="ZMs-0R-6OU" firstAttribute="top" secondItem="e3u-9G-ANo" secondAttribute="bottom" constant="10" id="uRr-H4-RbJ"/>
-                                    <constraint firstItem="RUl-2v-Oyr" firstAttribute="centerY" secondItem="Qc1-FD-la2" secondAttribute="centerY" id="ukn-1r-W0G"/>
-                                    <constraint firstItem="RUl-2v-Oyr" firstAttribute="leading" secondItem="Qc1-FD-la2" secondAttribute="trailing" constant="26" id="wwx-Lq-iLu"/>
                                     <constraint firstItem="LPO-zQ-gj0" firstAttribute="leading" secondItem="jPU-HK-qAf" secondAttribute="trailing" constant="20" id="wxj-Be-4nW"/>
                                     <constraint firstItem="W14-gI-Pky" firstAttribute="top" secondItem="Piz-V9-DDT" secondAttribute="bottom" constant="10" id="xAY-3U-LNu"/>
                                     <constraint firstItem="vUD-LN-bFs" firstAttribute="leading" secondItem="Fdl-8T-rQN" secondAttribute="leading" id="xDf-6d-yqD"/>
@@ -674,7 +677,9 @@
                 <outlet property="addQuestionView" destination="wEW-gn-cCS" id="Nyi-Nf-6eT"/>
                 <outlet property="addQuestionViewHight" destination="jDH-OB-Pfz" id="cAs-c8-v4N"/>
                 <outlet property="bottomDeletButton" destination="RUl-2v-Oyr" id="2Qv-6s-dCm"/>
+                <outlet property="bottomDeletButtonSepraterWidth" destination="3sZ-N8-dwA" id="AF1-mP-HX2"/>
                 <outlet property="bottomView" destination="W14-gI-Pky" id="w0k-gW-I8z"/>
+                <outlet property="bottomViewHight" destination="tJc-qA-HQk" id="2y5-jw-0gZ"/>
                 <outlet property="cancelButton" destination="Qc1-FD-la2" id="Y5E-0s-iDc"/>
                 <outlet property="cancelButtonWidth" destination="juJ-dc-3I7" id="Rpx-zH-PIy"/>
                 <outlet property="checkBoxView" destination="CSS-Ze-uJW" id="eGF-OM-B6f"/>
@@ -706,7 +711,6 @@
                 <outlet property="selctedCheckBoxYESButton" destination="uRg-Z1-5ml" id="xqI-eI-Pv3"/>
                 <outlet property="selectedCheckBoxNOButton" destination="zJl-k7-oBt" id="ixn-2y-L1i"/>
                 <outlet property="subView" destination="qsz-QW-rrN" id="ZKC-LJ-i2w"/>
-                <outlet property="subViewHight" destination="tJc-qA-HQk" id="AcB-hD-jvh"/>
                 <outlet property="textButton" destination="jPU-HK-qAf" id="uop-Jg-Xdv"/>
                 <outlet property="validateButton" destination="Fdl-8T-rQN" id="dUj-s0-2l0"/>
                 <outlet property="validationMessageTextfield" destination="Q8h-Or-F2B" id="Rle-p0-eco"/>
@@ -719,13 +723,13 @@
     </objects>
     <designables>
         <designable name="Q8h-Or-F2B">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="ilC-0W-F0u">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="vHa-hD-TxE">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
     </designables>
     <resources>
