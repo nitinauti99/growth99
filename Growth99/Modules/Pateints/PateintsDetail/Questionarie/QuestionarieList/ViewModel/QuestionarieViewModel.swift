@@ -9,16 +9,17 @@ import Foundation
 
 protocol QuestionarieViewModelProtocol {
     func getQuestionarieList(pateintId: Int)
-    var QuestionarieDataList: [QuestionarieModel] { get }
-    func QuestionarieDataAtIndex(index: Int) -> QuestionarieModel?
-    var QuestionarieFilterDataData: [QuestionarieModel] { get }
-    func QuestionarieFilterDataDataAtIndex(index: Int)-> QuestionarieModel?
+    func getQuestionarieDataAtIndex(index: Int) -> QuestionarieModel?
+    func getQuestionarieFilterDataAtIndex(index: Int)-> QuestionarieModel?
+    func filterData(searchText: String)
+    var getQuestionarieDataList: [QuestionarieModel] { get }
+    var getQuestionarieFilterData: [QuestionarieModel] { get }
 }
 
 class QuestionarieViewModel {
     var delegate: QuestionarieViewControllerProtocol?
-    var QuestionarieData: [QuestionarieModel] = []
-    var QuestionarieFilterData: [QuestionarieModel] = []
+    var questionarieData: [QuestionarieModel] = []
+    var questionarieFilterData: [QuestionarieModel] = []
     
     init(delegate: QuestionarieViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -31,8 +32,8 @@ class QuestionarieViewModel {
 
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[QuestionarieModel], GrowthNetworkError>) in
             switch result {
-            case .success(let userData):
-                self.QuestionarieData = userData
+            case .success(let questionarieData):
+                self.questionarieData = questionarieData
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -41,22 +42,26 @@ class QuestionarieViewModel {
         }
     }
     
-    func QuestionarieDataAtIndex(index: Int)-> QuestionarieModel? {
-        return self.QuestionarieData[index]
+    func filterData(searchText: String) {
+       self.questionarieFilterData = (self.questionarieData.filter { $0.questionnaireName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
-    func QuestionarieFilterDataDataAtIndex(index: Int)-> QuestionarieModel? {
-        return self.QuestionarieFilterDataData[index]
+    func getQuestionarieDataAtIndex(index: Int)-> QuestionarieModel? {
+        return self.questionarieData[index]
+    }
+    
+    func getQuestionarieFilterDataAtIndex(index: Int)-> QuestionarieModel? {
+        return self.questionarieFilterData[index]
     }
 }
 
 extension QuestionarieViewModel: QuestionarieViewModelProtocol {
    
-    var QuestionarieDataList: [QuestionarieModel] {
-        return self.QuestionarieData
+    var getQuestionarieDataList: [QuestionarieModel] {
+        return self.questionarieData
     }
     
-    var QuestionarieFilterDataData: [QuestionarieModel] {
-        return self.QuestionarieFilterData
+    var getQuestionarieFilterData: [QuestionarieModel] {
+        return self.questionarieFilterData
     }
 }

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
+		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
+		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
+		017D571929AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017D571829AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard */; };
+		017D572029AF604100D6A5A4 /* DisplayQuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571F29AF604100D6A5A4 /* DisplayQuestionnaireViewModel.swift */; };
+		017D572229AF604C00D6A5A4 /* DisplayQuestionariModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572129AF604C00D6A5A4 /* DisplayQuestionariModel.swift */; };
+		017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */; };
+		017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */; };
+		017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */; };
 		01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */; };
 		01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */; };
 		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
@@ -581,6 +590,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
+		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
+		017D571829AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayQuestionnaireViewContoller.storyboard; sourceTree = "<group>"; };
+		017D571F29AF604100D6A5A4 /* DisplayQuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewModel.swift; sourceTree = "<group>"; };
+		017D572129AF604C00D6A5A4 /* DisplayQuestionariModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionariModel.swift; sourceTree = "<group>"; };
+		017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
+		017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
+		017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayQuestionnaireViewContoller+TableView.swift"; sourceTree = "<group>"; };
 		01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintEditViewController+UITextField.swift"; sourceTree = "<group>"; };
 		01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintViewContoller+UITextfiled.swift"; sourceTree = "<group>"; };
 		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
@@ -1184,6 +1202,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
+			isa = PBXGroup;
+			children = (
+				017D571D29AF5F9000D6A5A4 /* Model */,
+				017D571C29AF5F8800D6A5A4 /* ViewModel */,
+				017D571B29AF5F8100D6A5A4 /* View */,
+			);
+			path = ViewQuestinarie;
+			sourceTree = "<group>";
+		};
+		017D571B29AF5F8100D6A5A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				017D571E29AF5FAE00D6A5A4 /* Cell */,
+				017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */,
+				017D571829AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard */,
+				017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		017D571C29AF5F8800D6A5A4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				017D571F29AF604100D6A5A4 /* DisplayQuestionnaireViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		017D571D29AF5F9000D6A5A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				017D572129AF604C00D6A5A4 /* DisplayQuestionariModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		017D571E29AF5FAE00D6A5A4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */,
+				017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01BBA9CF29AB53A6006A5DB8 /* NotificationList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2168,6 +2232,7 @@
 			children = (
 				842C0CA0298F713B00395061 /* QuestionarieList */,
 				842C0C94298F713B00395061 /* AddNewQuestionarie */,
+				017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */,
 				842C0C8C298F713B00395061 /* FillQuestionnaire */,
 			);
 			path = Questionarie;
@@ -2285,6 +2350,8 @@
 				842C0CA8298F713B00395061 /* Cell */,
 				842C0CA6298F713B00395061 /* QuestionarieViewController.storyboard */,
 				842C0CA7298F713B00395061 /* QuestionarieViewController.swift */,
+				017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */,
+				017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4429,6 +4496,7 @@
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
 				01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */,
 				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
+				017D571929AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
 				8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */,
@@ -4437,6 +4505,7 @@
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
 				01D7AB07299E572700821274 /* FormDetailTableViewCell.xib in Resources */,
 				8440B39A299A1B1300A42097 /* FormListTableViewCell.xib in Resources */,
+				017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */,
 				848EEA90299A5F7700F6E3D5 /* CreateFormViewController.storyboard in Resources */,
 				01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */,
 				8490350C2995673D00556D47 /* ConsentsTemplateListViewController.storyboard in Resources */,
@@ -4601,6 +4670,7 @@
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */,
 				842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */,
+				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
@@ -4631,6 +4701,7 @@
 				849004952985A18800A271AA /* PateintsTagsListViewController.swift in Sources */,
 				848FA3C929960DA900A7D2D5 /* QuestionnaireTemplateListViewController.swift in Sources */,
 				84D062A32967070D001FE469 /* UserCreateViewController.swift in Sources */,
+				017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */,
 				84F610ED292A71AB00B1FB69 /* Promise+Possible.swift in Sources */,
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
@@ -4693,7 +4764,9 @@
 				398F90FA298ECB8700DB96E4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
+				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
+				017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
 				DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */,
@@ -4706,6 +4779,7 @@
 				01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */,
 				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
+				017D572029AF604100D6A5A4 /* DisplayQuestionnaireViewModel.swift in Sources */,
 				842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */,
 				84D0622229670676001FE469 /* WorkingScheduleViewController+Extension.swift in Sources */,
 				84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */,
@@ -4925,6 +4999,7 @@
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
+				017D572229AF604C00D6A5A4 /* DisplayQuestionariModel.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
 				847C6C44297A963E000188AE /* PateintsEditDetailModel.swift in Sources */,
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
@@ -5012,6 +5087,7 @@
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,
 				DAEF74A2299D532F009140AE /* TrackingCodeViewController.swift in Sources */,
 				84D062F52967080E001FE469 /* leadDetailViewModel.swift in Sources */,
+				017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */,
 				84F61126292A71AB00B1FB69 /* CharacterSet+Extension.swift in Sources */,
 				842C0CC7298F713B00395061 /* QuestionarieModel.swift in Sources */,
 				848EEA92299A5FAC00F6E3D5 /* CreateFormViewModel.swift in Sources */,

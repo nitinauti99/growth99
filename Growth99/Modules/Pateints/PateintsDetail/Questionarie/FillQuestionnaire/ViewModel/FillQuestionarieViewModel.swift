@@ -8,14 +8,14 @@
 import Foundation
 
 protocol FillQuestionarieViewModelProtocol {
-    func getQuestionnaireId(pateintId: Int,  questionnaireId: Int)
-    func createLead(patientQuestionAnswers: [String: Any])
     func leadDataAtIndex(index: Int) -> leadModel
+    func createLead(patientQuestionAnswers: [String: Any])
+    func getQuestionnaireId(pateintId: Int,  questionnaireId: Int)
+    func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
+    func isValidTextFieldData(_ textField: String, regex: String) -> Bool
     var leadUserData: [leadModel]? { get }
     var getQuestionnaireDataInfo: QuestionnaireList? { get }
     var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
-    func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
-    func isValidTextFieldData(_ textField: String, regex: String) -> Bool
 }
 
 class FillQuestionarieViewModel {

@@ -15,8 +15,8 @@ protocol QuestionarieViewControllerProtocol: AnyObject {
 
 class QuestionarieViewController: UIViewController, QuestionarieViewControllerProtocol {
     
-    @IBOutlet private weak var questionarieListTableView: UITableView!
-    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet weak var questionarieListTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel: QuestionarieViewModelProtocol?
     var isSearch : Bool = false
@@ -61,7 +61,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
         self.view.ShowSpinner()
         viewModel?.getQuestionarieList(pateintId: pateintId)
     }
-
+    
     func registerTableView() {
         self.questionarieListTableView.delegate = self
         self.questionarieListTableView.dataSource = self
@@ -81,66 +81,13 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.questionarieListTableView.reloadData()
-        if viewModel?.QuestionarieDataList.count == 0 {
-           self.emptyMessage(parentView: self.view, message: "There is no data")
+        if viewModel?.getQuestionarieDataList.count == 0 {
+            self.emptyMessage(parentView: self.view, message: "There is no data")
         }
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
-    }
-}
-
-extension QuestionarieViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch {
-            return filteredTableData.count
-        } else {
-            return viewModel?.QuestionarieDataList.count ?? 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = QuestionarieTableViewCell()
-        cell = questionarieListTableView.dequeueReusableCell(withIdentifier: "QuestionarieTableViewCell") as! QuestionarieTableViewCell
-        if isSearch {
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
-        }else{
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let FillQuestionarieVC = UIStoryboard(name: "FillQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "FillQuestionarieViewController") as! FillQuestionarieViewController
-        let questionarieVM = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)
-        FillQuestionarieVC.questionnaireId = questionarieVM?.questionnaireId ?? 0
-        FillQuestionarieVC.pateintId = pateintId
-        self.navigationController?.pushViewController(FillQuestionarieVC, animated: true)
-    }
-}
-
-extension QuestionarieViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.questionnaireName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
-        isSearch = true
-        questionarieListTableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearch = false
-        searchBar.text = ""
-        questionarieListTableView.reloadData()
     }
 }

@@ -70,6 +70,7 @@ struct Constant {
         static let editService = "Edit Service"
         static let services = "Services"
         static let users = "Users"
+        static let questionnaireDetails = "View Questionnaire"
         static let pateint = "Patients List"
         static let createPatient = "Create Patient"
         static let editPatient = "Edit Patient"
