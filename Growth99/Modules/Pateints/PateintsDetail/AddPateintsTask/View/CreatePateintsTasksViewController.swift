@@ -25,12 +25,14 @@ class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksV
     var workflowTaskUser = Int()
     var workflowTaskPatient: Int = 0
     var questionnaireSubmissionId = Int()
+    var dateFormater: DateFormaterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreatePateintsTasksViewModel(delegate: self)
         self.view.ShowSpinner()
         self.viewModel?.getTaskUserList()
+        dateFormater = DateFormater()
         setUPUI()
     }
     
@@ -60,7 +62,6 @@ class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksV
     
     func taskUserListRecived(){
         self.view.HideSpinner()
-
     }
     
     func errorReceived(error: String) {

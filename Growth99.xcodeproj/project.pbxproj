@@ -34,6 +34,8 @@
 		01BBA9ED29AB945D006A5DB8 /* CreateNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */; };
 		01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */; };
 		01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */; };
+		01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */; };
+		01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -619,6 +621,8 @@
 		01BBA9EC29AB945D006A5DB8 /* CreateNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationViewModel.swift; sourceTree = "<group>"; };
 		01BBA9EE29AB9469006A5DB8 /* CreateNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationModel.swift; sourceTree = "<group>"; };
 		01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormDetailTableViewCell+TableView.swift"; sourceTree = "<group>"; };
+		01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -2255,8 +2259,8 @@
 		842C0C88298F713B00395061 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C89298F713B00395061 /* CreatePateintsTasksViewController.storyboard */,
 				842C0C8A298F713B00395061 /* CreatePateintsTasksViewController.swift */,
+				842C0C89298F713B00395061 /* CreatePateintsTasksViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3680,6 +3684,8 @@
 				84EFB1A3296B228A00D8285E /* Cell */,
 				84D063562967EA81001FE469 /* TasksListViewController.swift */,
 				84D063582967EA8C001FE469 /* TasksListViewController.storyboard */,
+				01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */,
+				01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4681,6 +4687,7 @@
 				84D062F12967080E001FE469 /* EditLeadViewController.swift in Sources */,
 				84F610F3292A71AB00B1FB69 /* Invalidation.swift in Sources */,
 				84D0624329670677001FE469 /* HomeViewModel.swift in Sources */,
+				01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */,
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
@@ -5013,6 +5020,7 @@
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
 				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
+				01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */,
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,

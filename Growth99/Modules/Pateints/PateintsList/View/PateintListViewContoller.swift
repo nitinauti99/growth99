@@ -108,10 +108,6 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
-//        let detailController = UIStoryboard(name: "PateintDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintDetailViewController") as! PateintDetailViewController
-//        detailController.workflowTaskPatientId = viewModel?.PateintDataAtIndex(index: index.row)?.id ?? 0
-//        self.navigationController?.pushViewController(detailController, animated: true)
-        
         let PeteintDetail = PeteintDetailView.viewController()
         PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
         self.navigationController?.pushViewController(PeteintDetail, animated: true)

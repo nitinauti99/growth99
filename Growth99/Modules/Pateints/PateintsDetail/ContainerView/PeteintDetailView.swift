@@ -127,8 +127,9 @@ class PeteintDetailView: UIViewController {
     }()
     
     @objc func addTaskTapped(_ sender: UIButton) {
-        let createTasksVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
-        navigationController?.pushViewController(createTasksVC, animated: true)
+        let createPateintsTasksVC = UIStoryboard(name: "CreatePateintsTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintsTasksViewController") as! CreatePateintsTasksViewController
+        createPateintsTasksVC.workflowTaskPatient = workflowTaskPatientId
+        navigationController?.pushViewController(createPateintsTasksVC, animated: true)
     }
     
     /// Consents for Pateints
