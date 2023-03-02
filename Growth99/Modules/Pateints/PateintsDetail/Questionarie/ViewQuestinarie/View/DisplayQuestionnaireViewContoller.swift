@@ -34,6 +34,14 @@ class DisplayQuestionnaireViewContoller: UIViewController, DisplayQuestionnaireV
         self.title = Constant.Profile.questionnaireDetails
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            let userInfo = [ "selectedIndex" : 1 ]
+            NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
+        }
+    }
+    
     func registerTableView() {
         self.questionnaireTableView.register(UINib(nibName: "DisplayQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "DisplayQuestionnaireTableViewCell")
     }

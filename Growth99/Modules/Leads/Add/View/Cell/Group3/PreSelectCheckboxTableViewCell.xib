@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPV-cq-LDE">
-                        <rect key="frame" x="60" y="10" width="41.5" height="62"/>
+                        <rect key="frame" x="60" y="10" width="303" height="62"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -40,6 +40,7 @@
                     <constraint firstItem="sh3-r8-DW1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Jpl-tY-RG7"/>
                     <constraint firstAttribute="bottom" secondItem="HPV-cq-LDE" secondAttribute="bottom" constant="10" id="U4u-uc-gZM"/>
                     <constraint firstItem="HPV-cq-LDE" firstAttribute="centerY" secondItem="sh3-r8-DW1" secondAttribute="centerY" id="XTr-7v-Hlt"/>
+                    <constraint firstAttribute="trailing" secondItem="HPV-cq-LDE" secondAttribute="trailing" constant="10" id="aHK-xx-0TR"/>
                     <constraint firstItem="sh3-r8-DW1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="fL4-Nk-PbL"/>
                     <constraint firstItem="HPV-cq-LDE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ij0-hr-Hbc"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sh3-r8-DW1" secondAttribute="bottom" constant="21" id="lFJ-aE-Ls8"/>

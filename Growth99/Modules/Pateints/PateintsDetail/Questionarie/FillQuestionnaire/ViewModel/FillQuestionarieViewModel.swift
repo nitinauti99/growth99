@@ -8,23 +8,24 @@
 import Foundation
 
 protocol FillQuestionarieViewModelProtocol {
-    func leadDataAtIndex(index: Int) -> leadModel
-    func createLead(patientQuestionAnswers: [String: Any])
-    func getQuestionnaireId(pateintId: Int,  questionnaireId: Int)
-    func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
+    func getQuestionnaireData(pateintId: Int,  questionnaireId: Int)
+    func getQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
+    func createQuestionnaireForPateint(patientQuestionAnswers: [String: Any])
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool
-    var leadUserData: [leadModel]? { get }
-    var getQuestionnaireDataInfo: QuestionnaireList? { get }
-    var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
+   
+    var getQuestionnaireData: [PatientQuestionAnswersList]? { get }
+    var getQuestionnaireDetailInfo: QuestionnaireList? { get }
 }
 
 class FillQuestionarieViewModel {
-    var delegate: FillQuestionarieViewControllerProtocol?
     var leadData =  [leadModel]()
+    
     var questionnaireId = QuestionnaireId()
-    var questionnaireList = [PatientQuestionAnswersList]()
-    var questionnaireFilterList = [PatientQuestionAnswersList]()
-    var getQuestionnaireData: QuestionnaireList?
+    var getQuestionnaireList = [PatientQuestionAnswersList]()
+    var getQuestionnairePatientQuestionChoicesList: [PatientQuestionChoices]?
+    var questionnaireDetailInfo: QuestionnaireList?
+    
+    var delegate: FillQuestionarieViewControllerProtocol?
     
     init(delegate: FillQuestionarieViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -32,32 +33,33 @@ class FillQuestionarieViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getQuestionnaireId(pateintId: Int,  questionnaireId: Int) {
+    func getQuestionnaireData(pateintId: Int,  questionnaireId: Int) {
         let finaleUrl = ApiUrl.getPatientsQuestionnaire + "\(pateintId)" + "/questionnaire/" + "\(questionnaireId)" + "/questions"
 
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result<QuestionnaireList, GrowthNetworkError>) in
             switch result {
             case .success(let list):
-                print(list)
-                self.getQuestionnaireData = list
-                self.questionnaireList = list.patientQuestionAnswers ?? []
-                self.questionnaireFilterListArray()
-                self.delegate?.QuestionnaireListRecived()
+                self.getQuestionnaireList = list.patientQuestionAnswers ?? []
+                self.delegate?.questionnaireListRecived()
+                self.questionnaireDetailInfo = list
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
             }
         }
     }
-
-    func createLead(patientQuestionAnswers:[String: Any]) {
-
+    
+    func getQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList? {
+        return self.getQuestionnaireList[index]
+    }
+    
+    func createQuestionnaireForPateint(patientQuestionAnswers:[String: Any]) {
         self.requestManager.request(forPath: ApiUrl.submitPatientQuestionnnaire, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.LeadDataRecived()
+                self.delegate?.questionareAdddedSuccessfully()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -65,30 +67,18 @@ class FillQuestionarieViewModel {
         }
     }
     
-    func leadDataAtIndex(index: Int)-> leadModel {
-        return self.leadData[index]
-    }
-    
-    func questionnaireFilterListArray() {
-        for item in self.questionnaireList {
-            self.questionnaireFilterList.append(item)
-//            if item.hidden as? NSObject == NSNull() {
-//
-//            }
-        }
-    }
-    
-    func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList? {
-        return self.leadUserQuestionnaireList?[index]
-    }
 }
 
 extension FillQuestionarieViewModel: FillQuestionarieViewModelProtocol {
-  
-    var getQuestionnaireDataInfo: QuestionnaireList? {
-        return self.getQuestionnaireData
+   
+    var getQuestionnaireDetailInfo: QuestionnaireList? {
+        return self.questionnaireDetailInfo!
     }
-    
+
+    var getQuestionnaireData: [PatientQuestionAnswersList]? {
+        return self.getQuestionnaireList
+    }
+
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool {
         if regex == "", textField.count > 0 {
            return true
@@ -96,15 +86,7 @@ extension FillQuestionarieViewModel: FillQuestionarieViewModelProtocol {
         let textFieldValidation = NSPredicate(format:"SELF MATCHES %@", regex)
         return textFieldValidation.evaluate(with: textField)
     }
-   
-    var leadUserQuestionnaireList: [PatientQuestionAnswersList]? {
-        return self.questionnaireFilterList
-    }
 
-    var leadUserData: [leadModel]? {
-        return self.leadData
-    }
-    
     func isValidFirstName(_ firstName: String) -> Bool {
         if firstName.count > 0 {
             return true

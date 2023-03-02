@@ -14,6 +14,8 @@ class QuestionarieTableViewCell: UITableViewCell {
     @IBOutlet private weak var questionnaireStatus: UILabel!
     @IBOutlet private weak var submittedDate: UILabel!
     @IBOutlet private weak var createdDate: UILabel!
+    @IBOutlet private weak var statusButton: UIButton!
+
     @IBOutlet private weak var subView: UIView!
 
     var dateFormater : DateFormaterProtocol?
@@ -32,6 +34,12 @@ class QuestionarieTableViewCell: UITableViewCell {
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
         self.submittedDate.text = dateFormater?.serverToLocal(date: questionarieVM?.submittedDate ?? String.blank)
         self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)
+       
+        if questionarieVM?.questionnaireStatus == "Submitted" {
+            statusButton.setImage(UIImage(named: "submited"), for: .normal)
+        }else{
+            self.statusButton.setImage(UIImage(named: "pending"), for: .normal)
+        }
     }
     
     func configureCellWithSearch(questionarieVM: QuestionarieViewModelProtocol?, index: IndexPath) {
@@ -41,5 +49,11 @@ class QuestionarieTableViewCell: UITableViewCell {
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
         self.submittedDate.text = questionarieVM?.submittedDate
         self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)
+        if questionarieVM?.questionnaireStatus == "Submitted" {
+            statusButton.setImage(UIImage(named: "submited"), for: .normal)
+        }else{
+            self.statusButton.setImage(UIImage(named: "pending"), for: .normal)
+        }
     }
+    
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class TextTypeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var textTypeLbi: UILabel!
+    @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var textTypeTextField: UITextView!
     @IBOutlet weak var errorTypeLbi: UILabel!
 
@@ -20,9 +20,9 @@ class TextTypeTableViewCell: UITableViewCell {
         textTypeTextField.layer.borderWidth = 1.0;
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    func configureCell(questionarieVM: FillQuestionarieViewModelProtocol?, index: IndexPath) {
+        let questionarieVM = questionarieVM?.getQuestionnaireListAtIndex(index: index.row)
+        self.questionnaireName.text = questionarieVM?.questionName
     }
     
 }
