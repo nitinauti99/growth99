@@ -8,18 +8,19 @@
 import Foundation
 
 protocol TasksListViewModelProtocol {
-    func getTaskList()
+    func getTasksList()
     func getPateintTaskList(pateintId: Int)
-    var taskData: [TaskDTOList] { get }
     func taskDataAtIndex(index: Int) -> TaskDTOList?
-    var taskFilterData: [TaskDTOList] { get }
     func taskFilterDataAtIndex(index: Int)-> TaskDTOList?
+    func filterData(searchText: String)
+    var getTaskData: [TaskDTOList] { get }
+    var getTaskFilterData: [TaskDTOList] { get }
 }
 
 class TasksListViewModel {
     var delegate: TasksListViewControllerProtocol?
-    var taskDTOList: [TaskDTOList] = []
-    var taskFilterData: [TaskDTOList] = []
+    var taskList: [TaskDTOList] = []
+    var taskFilterList: [TaskDTOList] = []
     
     init(delegate: TasksListViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -27,12 +28,12 @@ class TasksListViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getTaskList() {
+    func getTasksList() {
         self.requestManager.request(forPath: ApiUrl.workflowtasks, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
             switch result {
             case .success(let taskList):
-                self.taskDTOList = taskList.taskDTOList.reversed()
-                self.delegate?.LeadDataRecived()
+                self.taskList = taskList.taskDTOList.reversed()
+                self.delegate?.tasksDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -44,8 +45,8 @@ class TasksListViewModel {
         self.requestManager.request(forPath: ApiUrl.workflowPatientTasks.appending("\(pateintId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
             switch result {
             case .success(let taskList):
-                self.taskDTOList = taskList.taskDTOList.reversed()
-                self.delegate?.LeadDataRecived()
+                self.taskList = taskList.taskDTOList.reversed()
+                self.delegate?.tasksDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -53,22 +54,26 @@ class TasksListViewModel {
         }
     }
 
+    func filterData(searchText: String) {
+       self.taskFilterList = (self.taskList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+    }
+    
     func taskDataAtIndex(index: Int)-> TaskDTOList? {
-        return self.taskDTOList[index]
+        return self.taskList[index]
     }
     
     func taskFilterDataAtIndex(index: Int)-> TaskDTOList? {
-        return self.taskDTOList[index]
+        return self.taskFilterList[index]
     }
 }
 
 extension TasksListViewModel: TasksListViewModelProtocol {
   
-    var TaskFilterDataData: [TaskDTOList] {
-        return self.taskFilterData
+    var getTaskFilterData: [TaskDTOList] {
+        return self.taskFilterList
     }
     
-    var taskData: [TaskDTOList] {
-        return self.taskDTOList
+    var getTaskData: [TaskDTOList] {
+        return self.taskList
     }
 }

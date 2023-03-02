@@ -9,7 +9,7 @@ import UIKit
 
 class InputTypeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var inputeTypeLbi: UILabel!
+    @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var inputeTypeTextField: CustomTextField!
 
     override func awakeFromNib() {
@@ -17,10 +17,9 @@ class InputTypeTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCell(questionarieVM: FillQuestionarieViewModelProtocol?, index: IndexPath) {
+        let questionarieVM = questionarieVM?.getQuestionnaireListAtIndex(index: index.row)
+        self.questionnaireName.text = questionarieVM?.questionName
     }
     
 }

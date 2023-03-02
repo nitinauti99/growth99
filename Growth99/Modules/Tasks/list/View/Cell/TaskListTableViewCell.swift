@@ -36,6 +36,16 @@ class TaskListTableViewCell: UITableViewCell {
         self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
     }
     
+    func configureCellWithSearch(userVM: TasksListViewModelProtocol?, index: IndexPath) {
+        let userVM = userVM?.taskFilterDataAtIndex(index: index.row)
+        self.taskName.text = userVM?.name
+        self.assignedTo.text = userVM?.userName
+        self.id.text = String(userVM?.id ?? 0)
+        self.status.text = userVM?.status
+        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

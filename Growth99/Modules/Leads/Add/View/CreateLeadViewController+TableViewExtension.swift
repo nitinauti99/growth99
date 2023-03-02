@@ -22,26 +22,26 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
         if item.questionType == "Input" {
             guard let cell = createLeadTableView.dequeueReusableCell(withIdentifier: "InputTypeTableViewCell") as? InputTypeTableViewCell else { return UITableViewCell() }
 
-            cell.inputeTypeLbi.text = item.questionName
+            cell.questionnaireName.text = item.questionName
             return cell
 
         }
         if(item.questionType == "Text") {
             guard let cell = createLeadTableView.dequeueReusableCell(withIdentifier: "TextTypeTableViewCell") as? TextTypeTableViewCell else { return UITableViewCell() }
-            cell.textTypeLbi.text = item.questionName
+            cell.questionnaireName.text = item.questionName
             return cell
 
         }
         if(item.questionType == "Yes_No") {
             guard let cell = createLeadTableView.dequeueReusableCell(withIdentifier: "YesNoTypeTableViewCell") as? YesNoTypeTableViewCell else { return UITableViewCell() }
-            cell.yesNoTypeLbi.text = item.questionName
+            cell.questionnaireName.text = item.questionName
             return cell
 
         }
         if(item.questionType == "Multiple_Selection_Text" && item.allowMultipleSelection == true) {
             guard let cell = createLeadTableView.dequeueReusableCell(withIdentifier: "MultipleSelectionTextTypeTableViewCell") as? MultipleSelectionTextTypeTableViewCell else { return UITableViewCell() }
 
-            cell.inputeTypeLbi.text = item.questionName
+            cell.questionnaireName.text = item.questionName
             var buttonY = 40
             for item in item.patientQuestionChoices ?? [] {
                     let button1 = PassableUIButton(frame: CGRect(x: 30, y: buttonY, width: 100, height: 20))
@@ -64,7 +64,7 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
         if(item.questionType == "Multiple_Selection_Text" && item.showDropDown == true) {
             guard let cell = createLeadTableView.dequeueReusableCell(withIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell") as? MultipleSelectionWithDropDownTypeTableViewCell else { return UITableViewCell() }
             listArray = []
-            cell.dropDownTypeLbi.text = item.questionName
+            cell.questionnaireName.text = item.questionName
             listArray = item.patientQuestionChoices ?? []
             cell.dropDownTypeTextField.addTarget(self, action: #selector(Self.textFieldDidChange(_:)), for: .touchDown)
             return cell
@@ -101,7 +101,7 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
         }
         if(item.questionType == "Date") {
             guard let cell = createLeadTableView.dequeueReusableCell(withIdentifier: "DateTypeTableViewCell") as? DateTypeTableViewCell else { return UITableViewCell() }
-            cell.dateTypeLbi.text = item.questionName
+            cell.questionnaireName.text = item.questionName
             return cell
         }
         

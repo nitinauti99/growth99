@@ -22,4 +22,5 @@ struct PatientQuestionAnswers:Codable {
     let questionType : String?
     let validationMessage : String?
     let answerText : String?
+    let patientQuestionChoices: [PatientQuestionChoices]?
 }

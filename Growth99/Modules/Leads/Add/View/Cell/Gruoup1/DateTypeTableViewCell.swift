@@ -9,18 +9,20 @@ import UIKit
 
 class DateTypeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var dateTypeLbi: UILabel!
+    @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var dateTypeTextField: CustomTextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        dateTypeTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    func configureCell(questionarieVM: FillQuestionarieViewModelProtocol?, index: IndexPath) {
+        let questionarieVM = questionarieVM?.getQuestionnaireListAtIndex(index: index.row)
+        self.questionnaireName.text = questionarieVM?.questionName
+        self.dateTypeTextField.addInputViewDatePicker(target: self,
+                                                 selector: #selector(dateFromButtonPressed),
+                                                 mode: .date)
     }
     
     @objc func dateFromButtonPressed() {

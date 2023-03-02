@@ -16,6 +16,16 @@ class PeteintDetailView: UIViewController {
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeSegment") , object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = Constant.Profile.patientDetail
+        self.setUpSegemtControl()
+    }
+    
+    func setUpSegemtControl(){
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: Constant.Profile.patientDetail, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.Questionnarie, at: 1)
@@ -23,21 +33,16 @@ class PeteintDetailView: UIViewController {
         segmentedControl.insertSegment(withTitle: Constant.Profile.Consents, at: 3)
         segmentedControl.insertSegment(withTitle: Constant.Profile.appointmentDetail, at: 4)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.title = Constant.Profile.patientDetail
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
         segmentedControl.fixedSegmentWidth = false
         segmentedControl.selectedSegmentIndex = selectedindex
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "selectedIndex") , object: nil)
     }
     
     @objc func notificationReceived(_ notification: Notification) {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
-        segmentedControl.selectedSegmentIndex = segment
+        self.selectedindex = segment
+        self.selectionDidChange(sender: segmentedControl)
     }
    
     func setupView() {
@@ -122,8 +127,9 @@ class PeteintDetailView: UIViewController {
     }()
     
     @objc func addTaskTapped(_ sender: UIButton) {
-        let createTasksVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
-        navigationController?.pushViewController(createTasksVC, animated: true)
+        let createPateintsTasksVC = UIStoryboard(name: "CreatePateintsTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintsTasksViewController") as! CreatePateintsTasksViewController
+        createPateintsTasksVC.workflowTaskPatient = workflowTaskPatientId
+        navigationController?.pushViewController(createPateintsTasksVC, animated: true)
     }
     
     /// Consents for Pateints

@@ -39,9 +39,16 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let PeteintDetail = PeteintDetailView.viewController()
-        PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: indexPath.row)?.id ?? 0
-        self.navigationController?.pushViewController(PeteintDetail, animated: true)
+        if isSearch {
+            let PeteintDetail = PeteintDetailView.viewController()
+            PeteintDetail.workflowTaskPatientId = viewModel?.pateintFilterDataAtIndex(index: indexPath.row)?.id ?? 0
+            self.navigationController?.pushViewController(PeteintDetail, animated: true)
+        }else{
+            let PeteintDetail = PeteintDetailView.viewController()
+            PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: indexPath.row)?.id ?? 0
+            self.navigationController?.pushViewController(PeteintDetail, animated: true)
+        }
+   
 
     }
     

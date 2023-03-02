@@ -34,16 +34,19 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
     var workflowTaskPatient: Int = 0
     var questionnaireSubmissionId = Int()
     var leadOrPatientSelected = ""
-    
+    var dateFormater: DateFormaterProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateTasksViewModel(delegate: self)
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         descriptionTextView.layer.borderWidth = 1.0;
+        self.title = "Create Task"
         self.view.ShowSpinner()
         self.viewModel?.getTaskUserList()
         leadTextField.placeholder = "Select Lead"
         setUPUI()
+        dateFormater = DateFormater()
     }
     
     func setUPUI() {

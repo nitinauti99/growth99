@@ -45,7 +45,8 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     var questionnaireSubmissionId = Int()
     var leadOrPatientSelected = ""
     var taskId: Int = 0
-    
+    var dateFormater: DateFormaterProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = EditTasksViewModel(delegate: self)
@@ -54,6 +55,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         self.view.ShowSpinner()
         self.viewModel?.getTaskDetail(taskId: taskId)
         self.title = Constant.Profile.tasksDetail
+        dateFormater = DateFormater()
     }
     
     func setUPUI() {
@@ -68,7 +70,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         usersTextField.text = taskDetail?.userName
         statusTextField.text = taskDetail?.status
         DeadlineTextField.text =  taskDetail?.deadLine
-        DeadlineTextField.text = dateFormatterString(textField: DeadlineTextField)
+        DeadlineTextField.text = dateFormater?.dateFormatterString(textField: DeadlineTextField)
         descriptionTextView.text = taskDetail?.description
         workflowTaskUser = taskDetail?.userId ?? 0
     }
@@ -163,8 +165,6 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: .black)
-        let userInfo = [ "selectedIndex" : 2 ]
-        NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -179,15 +179,17 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             detailController.LeadId = viewModel?.taskDetailData?.leadId ?? 0
             navigationController?.pushViewController(detailController, animated: true)
         }else {
-            /// check in navaigation PateintDetailViewController
-            if let viewControllers = self.navigationController?.viewControllers {
-                for controller in viewControllers {
-                    if controller is PeteintDetailView {
-                        (controller as! PeteintDetailView).selectedindex = 0
-                        self.navigationController?.popToViewController(controller, animated: true)
-                    }
-                }
-            }
+            self.navigationController?.popViewController(animated: true)
+
+//            /// check in navaigation PateintDetailViewController
+//            if let viewControllers = self.navigationController?.viewControllers {
+//                for controller in viewControllers {
+//                    if controller is PeteintDetailView {
+//                        (controller as! PeteintDetailView).selectedindex = 0
+//                        self.navigationController?.popToViewController(controller, animated: true)
+//                    }
+//                }
+//            }
         }
     }
     
@@ -261,7 +263,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             return
         }
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank) , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+        viewModel?.createTaskUser(patientId: taskId, name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank) , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
     }
     
     func serverToLocalInputWorking(date: String) -> String {

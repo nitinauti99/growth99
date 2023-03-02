@@ -29,7 +29,7 @@ protocol EditTasksViewModelProtocol {
     func taskQuestionnaireSubmissionListAtIndex(index: Int) -> TaskQuestionnaireSubmissionModel?
     
     /// create patients user
-    func createTaskUser(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
+    func createTaskUser(patientId: Int, name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
 }
 
 class EditTasksViewModel {
@@ -99,7 +99,7 @@ class EditTasksViewModel {
         }
     }
     
-    func createTaskUser(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String){
+    func createTaskUser(patientId: Int, name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String){
         var urlParameter: Parameters = [String: Any]()
 
         if workflowTaskPatient == 0 {
@@ -125,8 +125,9 @@ class EditTasksViewModel {
                 "leadOrPatient": leadOrPatient,
             ]
         }
+        let finalUrl = ApiUrl.createTaskUser.appending("/\(patientId)")
         
-        self.requestManager.request(forPath: ApiUrl.createTaskUser, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: finalUrl, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
