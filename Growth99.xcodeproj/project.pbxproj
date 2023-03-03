@@ -109,6 +109,20 @@
 		39F2FF232996B8630089BD4F /* AppointmentListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */; };
 		39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F904DE299A895300666C85 /* ClassIdentifiable.swift */; };
 		39F904E1299A896B00666C85 /* NibIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F904E0299A896B00666C85 /* NibIdentifiable.swift */; };
+		39FC68A429B120BE00FCB7C6 /* MassSMSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC688E29B120BE00FCB7C6 /* MassSMSViewModel.swift */; };
+		39FC68A529B120BE00FCB7C6 /* MassSMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689029B120BE00FCB7C6 /* MassSMSModel.swift */; };
+		39FC68A629B120BE00FCB7C6 /* MassSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689229B120BE00FCB7C6 /* MassSMSViewController.swift */; };
+		39FC68A729B120BE00FCB7C6 /* MassSMSViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689329B120BE00FCB7C6 /* MassSMSViewController+TableView.swift */; };
+		39FC68A829B120BE00FCB7C6 /* MassSMSViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC689429B120BE00FCB7C6 /* MassSMSViewController.storyboard */; };
+		39FC68A929B120BE00FCB7C6 /* MassSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689629B120BE00FCB7C6 /* MassSMSTableViewCell.swift */; };
+		39FC68AA29B120BE00FCB7C6 /* MassSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC689729B120BE00FCB7C6 /* MassSMSTableViewCell.xib */; };
+		39FC68AB29B120BE00FCB7C6 /* MassEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689A29B120BE00FCB7C6 /* MassEmailViewModel.swift */; };
+		39FC68AC29B120BE00FCB7C6 /* MassEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689C29B120BE00FCB7C6 /* MassEmailModel.swift */; };
+		39FC68AD29B120BE00FCB7C6 /* MassEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689E29B120BE00FCB7C6 /* MassEmailViewController.swift */; };
+		39FC68AE29B120BE00FCB7C6 /* MassEmailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC689F29B120BE00FCB7C6 /* MassEmailViewController.storyboard */; };
+		39FC68AF29B120BE00FCB7C6 /* MassEmailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68A029B120BE00FCB7C6 /* MassEmailViewController+TableView.swift */; };
+		39FC68B029B120BE00FCB7C6 /* MassEmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68A229B120BE00FCB7C6 /* MassEmailTableViewCell.swift */; };
+		39FC68B129B120BE00FCB7C6 /* MassEmailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC68A329B120BE00FCB7C6 /* MassEmailTableViewCell.xib */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -705,6 +719,20 @@
 		39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListDetailViewModel.swift; sourceTree = "<group>"; };
 		39F904DE299A895300666C85 /* ClassIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassIdentifiable.swift; sourceTree = "<group>"; };
 		39F904E0299A896B00666C85 /* NibIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifiable.swift; sourceTree = "<group>"; };
+		39FC688E29B120BE00FCB7C6 /* MassSMSViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSViewModel.swift; sourceTree = "<group>"; };
+		39FC689029B120BE00FCB7C6 /* MassSMSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSModel.swift; sourceTree = "<group>"; };
+		39FC689229B120BE00FCB7C6 /* MassSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSViewController.swift; sourceTree = "<group>"; };
+		39FC689329B120BE00FCB7C6 /* MassSMSViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassSMSViewController+TableView.swift"; sourceTree = "<group>"; };
+		39FC689429B120BE00FCB7C6 /* MassSMSViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MassSMSViewController.storyboard; sourceTree = "<group>"; };
+		39FC689629B120BE00FCB7C6 /* MassSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSTableViewCell.swift; sourceTree = "<group>"; };
+		39FC689729B120BE00FCB7C6 /* MassSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassSMSTableViewCell.xib; sourceTree = "<group>"; };
+		39FC689A29B120BE00FCB7C6 /* MassEmailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailViewModel.swift; sourceTree = "<group>"; };
+		39FC689C29B120BE00FCB7C6 /* MassEmailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailModel.swift; sourceTree = "<group>"; };
+		39FC689E29B120BE00FCB7C6 /* MassEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailViewController.swift; sourceTree = "<group>"; };
+		39FC689F29B120BE00FCB7C6 /* MassEmailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MassEmailViewController.storyboard; sourceTree = "<group>"; };
+		39FC68A029B120BE00FCB7C6 /* MassEmailViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassEmailViewController+TableView.swift"; sourceTree = "<group>"; };
+		39FC68A229B120BE00FCB7C6 /* MassEmailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailTableViewCell.swift; sourceTree = "<group>"; };
+		39FC68A329B120BE00FCB7C6 /* MassEmailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailTableViewCell.xib; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1732,6 +1760,107 @@
 				39F904E0299A896B00666C85 /* NibIdentifiable.swift */,
 			);
 			path = Identifiable;
+			sourceTree = "<group>";
+		};
+		39FC688B29B120BE00FCB7C6 /* Marketing */ = {
+			isa = PBXGroup;
+			children = (
+				39FC688C29B120BE00FCB7C6 /* MassSMS */,
+				39FC689829B120BE00FCB7C6 /* MassEmail */,
+			);
+			path = Marketing;
+			sourceTree = "<group>";
+		};
+		39FC688C29B120BE00FCB7C6 /* MassSMS */ = {
+			isa = PBXGroup;
+			children = (
+				39FC688D29B120BE00FCB7C6 /* ViewModel */,
+				39FC688F29B120BE00FCB7C6 /* Model */,
+				39FC689129B120BE00FCB7C6 /* View */,
+				39FC689529B120BE00FCB7C6 /* CustomCell */,
+			);
+			path = MassSMS;
+			sourceTree = "<group>";
+		};
+		39FC688D29B120BE00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC688E29B120BE00FCB7C6 /* MassSMSViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC688F29B120BE00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689029B120BE00FCB7C6 /* MassSMSModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC689129B120BE00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689229B120BE00FCB7C6 /* MassSMSViewController.swift */,
+				39FC689329B120BE00FCB7C6 /* MassSMSViewController+TableView.swift */,
+				39FC689429B120BE00FCB7C6 /* MassSMSViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC689529B120BE00FCB7C6 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689629B120BE00FCB7C6 /* MassSMSTableViewCell.swift */,
+				39FC689729B120BE00FCB7C6 /* MassSMSTableViewCell.xib */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		39FC689829B120BE00FCB7C6 /* MassEmail */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689929B120BE00FCB7C6 /* ViewModel */,
+				39FC689B29B120BE00FCB7C6 /* Model */,
+				39FC689D29B120BE00FCB7C6 /* View */,
+				39FC68A129B120BE00FCB7C6 /* CustomCell */,
+			);
+			path = MassEmail;
+			sourceTree = "<group>";
+		};
+		39FC689929B120BE00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689A29B120BE00FCB7C6 /* MassEmailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC689B29B120BE00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689C29B120BE00FCB7C6 /* MassEmailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC689D29B120BE00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC689E29B120BE00FCB7C6 /* MassEmailViewController.swift */,
+				39FC689F29B120BE00FCB7C6 /* MassEmailViewController.storyboard */,
+				39FC68A029B120BE00FCB7C6 /* MassEmailViewController+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC68A129B120BE00FCB7C6 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				39FC68A229B120BE00FCB7C6 /* MassEmailTableViewCell.swift */,
+				39FC68A329B120BE00FCB7C6 /* MassEmailTableViewCell.xib */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		84088B9F2977E5520060855E /* Model */ = {
@@ -3201,6 +3330,7 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				39FC688B29B120BE00FCB7C6 /* Marketing */,
 				8440B38A2999FD5E00A42097 /* FormBuilder */,
 				848A03852993FAD7004FE278 /* Templates */,
 				84D061F129670676001FE469 /* Welcome Screens */,
@@ -4509,6 +4639,7 @@
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
 				848FA3D6299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
+				39FC68A829B120BE00FCB7C6 /* MassSMSViewController.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
 				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
@@ -4522,9 +4653,11 @@
 				3947A8F22996776E000CA2EB /* EventsTableViewCell.xib in Resources */,
 				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
+				39FC68AE29B120BE00FCB7C6 /* MassEmailViewController.storyboard in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
 				39F2FF212996B8110089BD4F /* AppointmentListDetailViewController.storyboard in Resources */,
+				39FC68B129B120BE00FCB7C6 /* MassEmailTableViewCell.xib in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
@@ -4559,6 +4692,7 @@
 				3947A8F92996776E000CA2EB /* EventEditViewController.storyboard in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
+				39FC68AA29B120BE00FCB7C6 /* MassSMSTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
@@ -4700,6 +4834,7 @@
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
 				842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
+				39FC68A529B120BE00FCB7C6 /* MassSMSModel.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* CustomSMSTemplateTableViewCell.swift in Sources */,
 				84D062F12967080E001FE469 /* EditLeadViewController.swift in Sources */,
@@ -4745,6 +4880,7 @@
 				017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */,
 				84F610ED292A71AB00B1FB69 /* Promise+Possible.swift in Sources */,
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
+				39FC68AC29B120BE00FCB7C6 /* MassEmailModel.swift in Sources */,
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
@@ -4752,7 +4888,9 @@
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
+				39FC68A429B120BE00FCB7C6 /* MassSMSViewModel.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
+				39FC68AD29B120BE00FCB7C6 /* MassEmailViewController.swift in Sources */,
 				84F610FA292A71AB00B1FB69 /* TLSPublicKey.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
@@ -4787,6 +4925,7 @@
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
+				39FC68AF29B120BE00FCB7C6 /* MassEmailViewController+TableView.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
 				01BBA9E929AB9447006A5DB8 /* CreateNotificationViewController.swift in Sources */,
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
@@ -4811,7 +4950,9 @@
 				017D574B29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
+				39FC68AB29B120BE00FCB7C6 /* MassEmailViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
+				39FC68A729B120BE00FCB7C6 /* MassSMSViewController+TableView.swift in Sources */,
 				DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */,
 				84BD33FD2994BB460050C0D8 /* EmailTemplatesListTableViewCell.swift in Sources */,
 				848FA3D12996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift in Sources */,
@@ -5042,6 +5183,7 @@
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
+				39FC68B029B120BE00FCB7C6 /* MassEmailTableViewCell.swift in Sources */,
 				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
 				01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */,
@@ -5087,6 +5229,7 @@
 				84D063032967080E001FE469 /* SMSTemplateTableViewCell.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
+				39FC68A929B120BE00FCB7C6 /* MassSMSTableViewCell.swift in Sources */,
 				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
@@ -5129,6 +5272,7 @@
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
+				39FC68A629B120BE00FCB7C6 /* MassSMSViewController.swift in Sources */,
 				01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */,
 				849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */,
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,
@@ -5326,7 +5470,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
@@ -5368,7 +5512,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;

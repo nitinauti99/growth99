@@ -264,6 +264,16 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
                 break
             }
         }
+        else if indexPath.section == 11 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "MassEmailViewController", pusedViewController: "MassEmailViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "MassSMSViewController", pusedViewController: "MassSMSViewController")
+            default:
+                break
+            }
+        }
     }
     
     func pushViewControllerFromDrawerMenu(identifier: String, pusedViewController: String) {
