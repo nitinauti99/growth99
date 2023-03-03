@@ -47,6 +47,12 @@
 		01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */; };
 		01C7489429B22F090085CED2 /* UserListViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */; };
 		01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */; };
+		01C7489C29B2338E0085CED2 /* BussinessSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489B29B2338E0085CED2 /* BussinessSelectionViewController.swift */; };
+		01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */; };
+		01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C748A629B234490085CED2 /* BussinessSelectionListTableViewCell.swift */; };
+		01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01C748A729B234490085CED2 /* BussinessSelectionListTableViewCell.xib */; };
+		01C748AB29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */; };
+		01C748AF29B24D930085CED2 /* BussinessSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C748AE29B24D930085CED2 /* BussinessSelectionModel.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -659,6 +665,12 @@
 		01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewContoller+TableView.swift"; sourceTree = "<group>"; };
 		01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7489B29B2338E0085CED2 /* BussinessSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BussinessSelectionViewController.swift; sourceTree = "<group>"; };
+		01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BussinessSelectionViewController.storyboard; sourceTree = "<group>"; };
+		01C748A629B234490085CED2 /* BussinessSelectionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BussinessSelectionListTableViewCell.swift; sourceTree = "<group>"; };
+		01C748A729B234490085CED2 /* BussinessSelectionListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BussinessSelectionListTableViewCell.xib; sourceTree = "<group>"; };
+		01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BussinessSelectionViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C748AE29B24D930085CED2 /* BussinessSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BussinessSelectionModel.swift; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -1427,6 +1439,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		01C7489829B2334E0085CED2 /* BussinessView */ = {
+			isa = PBXGroup;
+			children = (
+				01C748A329B233FE0085CED2 /* Cell */,
+				01C7489B29B2338E0085CED2 /* BussinessSelectionViewController.swift */,
+				01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */,
+				01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */,
+			);
+			path = BussinessView;
+			sourceTree = "<group>";
+		};
+		01C748A329B233FE0085CED2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01C748A629B234490085CED2 /* BussinessSelectionListTableViewCell.swift */,
+				01C748A729B234490085CED2 /* BussinessSelectionListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01D7AAF2299D59CF00821274 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2100,6 +2132,7 @@
 		84088BB82977E7F90060855E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01C748AE29B24D930085CED2 /* BussinessSelectionModel.swift */,
 				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
 				84D0620029670676001FE469 /* UserRepository.swift */,
 				84D0620229670676001FE469 /* LoginModel.swift */,
@@ -2111,8 +2144,9 @@
 		84088BB92977E80D0060855E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D0620429670676001FE469 /* LogInViewController.storyboard */,
+				01C7489829B2334E0085CED2 /* BussinessView */,
 				84D0620729670676001FE469 /* LogInViewController.swift */,
+				84D0620429670676001FE469 /* LogInViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4601,6 +4635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
+				01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */,
 				842C0CD8298F75CE00395061 /* ConsentsTableViewCell.xib in Resources */,
@@ -4718,6 +4753,7 @@
 				39F2FF142996B2F40089BD4F /* AppointmentsViewController.storyboard in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
+				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
 				39F2FF162996B2F40089BD4F /* AppointmentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4885,6 +4921,7 @@
 				84F610D8292A71AB00B1FB69 /* NSOperationQueue.swift in Sources */,
 				3947A900299677EE000CA2EB /* BookingHistoryViewController.swift in Sources */,
 				84F610F1292A71AB00B1FB69 /* Promise.swift in Sources */,
+				01C748AB29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift in Sources */,
 				84F610B5292A71AA00B1FB69 /* Claims.swift in Sources */,
 				84D0622629670676001FE469 /* WorkingCustomTableViewCell.swift in Sources */,
 				848C92B1291F6AA000502956 /* ViewControllerExtension.swift in Sources */,
@@ -5015,6 +5052,7 @@
 				84D062F62967080E001FE469 /* leadCreationModel.swift in Sources */,
 				84D0623729670677001FE469 /* PateintDetailViewController.swift in Sources */,
 				8440B399299A1B1300A42097 /* FormListTableViewCell.swift in Sources */,
+				01C7489C29B2338E0085CED2 /* BussinessSelectionViewController.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
 				84BD33F92994BB020050C0D8 /* EmailTemplateViewController+TableView.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
@@ -5029,6 +5067,7 @@
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
 				84D0631F2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
+				01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,
 				845C39D0292276AF00D934C5 /* KeychainItemAccessibility.swift in Sources */,
@@ -5254,6 +5293,7 @@
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,
+				01C748AF29B24D930085CED2 /* BussinessSelectionModel.swift in Sources */,
 				398F90F4298ECB8700DB96E4 /* IQKeyboardManagerConstants.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,

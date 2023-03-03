@@ -11,9 +11,10 @@ protocol LogInViewControllerProtocol: AnyObject {
     func LoaginDataRecived()
     func errorReceived(error: String)
     func businessDetailReceived()
+    func bussinessSelectionDataRecived()
 }
 
-class LogInViewController: UIViewController, LogInViewControllerProtocol {
+class LogInViewController: UIViewController, LogInViewControllerProtocol,BussinessSelectionViewContollerProtocol {
     
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var emailTextField: CustomTextField!
@@ -26,7 +27,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     let emailMessage = NSLocalizedString("Email is required.", comment: "")
     let user = UserRepository.shared
     var bussinessInfoData: bussinessDetailInfoModel?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginView.addBottomShadow(color: .gray,opacity: 0.5)
@@ -37,8 +38,17 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.emailTextField.text = "yogesh123@growth99.com"
-        self.passwordTextField.text = "Password1@!"
+        self.emailTextField.text = "nitinauti99@gmail.com"
+        self.passwordTextField.text = "Password13@!"
+    }
+    
+    private func setupTexFieldValidstion() {
+        self.emailTextField.addTarget(self, action:
+                                            #selector(LogInViewController.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
+        self.passwordTextField.addTarget(self, action:
+                                            #selector(LogInViewController.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
     }
     
     func setUpUI(){
@@ -52,68 +62,38 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
         }
     }
     
-    func LoaginDataRecived() {
-        viewModel?.getBusinessInfo(Xtenantid: UserRepository.shared.Xtenantid ?? String.blank)
+    func bussinessSelectionDataRecived() {
+        let data = viewModel?.getBussinessSelcetionData ?? []
+        if data.count == 1 {
+            self.view.ShowSpinner()
+            viewModel?.getBusinessInfo(Xtenantid: data[0].tenantId ?? 0)
+        }else{
+            let BussinessSelectionVC = UIStoryboard(name: "BussinessSelectionViewController", bundle: nil).instantiateViewController(withIdentifier: "BussinessSelectionViewController") as! BussinessSelectionViewController
+            BussinessSelectionVC.bussinessSelectionData = viewModel?.getBussinessSelcetionData ?? []
+            BussinessSelectionVC.modalPresentationStyle = .overFullScreen
+            BussinessSelectionVC.bussinessDelegate = self
+            self.present(BussinessSelectionVC, animated: true)
+        }
     }
     
+    func bussinessSelectionDataRecived(data: BussinessSelectionModel){
+        print(data)
+        self.view.ShowSpinner()
+        viewModel?.getBusinessInfo(Xtenantid: data.tenantId ?? 0)
+    }
+
     func businessDetailReceived() {
+        viewModel?.loginValidate(email: emailTextField.text ?? String.blank, password: passwordTextField.text ?? String.blank)
+    }
+    
+    func LoaginDataRecived() {
         self.view.HideSpinner()
         self.openHomeView()
     }
-   
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
-    }
-    
-    private func setupTexFieldValidstion() {
-        self.emailTextField.addTarget(self, action:
-                                            #selector(LogInViewController.textFieldDidChange(_:)),
-                                            for: UIControl.Event.editingChanged)
-        self.passwordTextField.addTarget(self, action:
-                                            #selector(LogInViewController.textFieldDidChange(_:)),
-                                            for: UIControl.Event.editingChanged)
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        
-        if textField == emailTextField,  textField.text == "" {
-            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
-        }
-        
-        if textField == passwordTextField, textField.text == "" {
-            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
-        }
-
-        if textField == emailTextField, textField.text != "" , let emailValidate = viewModel?.isValidEmail(emailTextField.text ?? String.blank), emailValidate == false {
-            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
-        }
-        
-        if textField == passwordTextField, textField.text != "" , let passwrdValidate = viewModel?.isValidPassword(passwordTextField.text ?? String.blank), passwrdValidate == false {
-            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
-        }
-    }
- 
-    @IBAction func logIn(sender: UIButton){
-        guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
-            return
-        }
-        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
-            return
-        }
-
-        guard let password = passwordTextField.text, !password.isEmpty else {
-            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
-            return
-        }
-        guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
-            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
-            return
-        }
-        self.view.ShowSpinner()
-         viewModel?.loginValidate(email: emailTextField.text ?? String.blank, password: passwordTextField.text ?? String.blank)
     }
     
     @IBAction func showPassword(sender: UIButton){
@@ -143,5 +123,48 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
         }
         self.view.window?.rootViewController = tabbarController
     }
+ 
+    @IBAction func logIn(sender: UIButton){
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+            return
+        }
+        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
+            return
+        }
+        guard let passwordValid = viewModel?.isValidPassword(password), passwordValid else {
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
+            return
+        }
+        self.view.ShowSpinner()
+        viewModel?.getBussinessSelection(email:emailTextField.text ?? String.blank)
+    }
 }
 
+extension LogInViewController: UITextViewDelegate {
+
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == emailTextField,  textField.text == "" {
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+        }
+        
+        if textField == passwordTextField, textField.text == "" {
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
+        }
+
+        if textField == emailTextField, textField.text != "" , let emailValidate = viewModel?.isValidEmail(emailTextField.text ?? String.blank), emailValidate == false {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+        }
+        
+        if textField == passwordTextField, textField.text != "" , let passwrdValidate = viewModel?.isValidPassword(passwordTextField.text ?? String.blank), passwrdValidate == false {
+            passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
+        }
+    }
+}
