@@ -91,6 +91,7 @@ struct Constant {
         static let massEmailTemplates = "Mass Email Templates"
         static let Questionnarie = "Questionnarie "
         static let tasks = "Tasks"
+        static let createTasks = "Create Task"
         static let personalization = "Personalization"
         static let subdomain = "Subdomain"
         static let refundPolicy = "Refund Policy"

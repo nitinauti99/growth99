@@ -30,6 +30,14 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
         self.viewModel = AddNewConsentsViewModel(delegate: self)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            let userInfo = [ "selectedIndex" : 3 ]
+            NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
@@ -69,7 +77,9 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
         self.view.HideSpinner()
         self.navigationController?.popViewController(animated: true)
     }
-
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
         /// api is accepting wrong formate data

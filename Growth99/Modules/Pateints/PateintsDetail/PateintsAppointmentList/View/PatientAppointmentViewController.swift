@@ -28,7 +28,6 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         super.viewDidLoad()
         self.viewModel = PatientAppointmentViewModel(delegate: self)
         self.title = Constant.Profile.appointmentDetail
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,20 +85,5 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
     func errorReceivedBookingHistory(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
-    }
-}
-
-extension PatientAppointmentViewController:  UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        patientsAppointmentListFilterData = (patientsAppointmentList.filter { $0.patientName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-        isSearch = true
-        tableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearch = false
-        searchBar.text = ""
-        tableView.reloadData()
     }
 }

@@ -16,7 +16,7 @@ extension PatientAppointmentViewController: UITableViewDelegate, UITableViewData
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
-            return patientsAppointmentListFilterData.count
+            return viewModel?.getPatientsAppointmentFilterList.count ?? 0
         } else {
             return viewModel?.getPatientsAppointmentList.count ?? 0
         }
@@ -26,7 +26,11 @@ extension PatientAppointmentViewController: UITableViewDelegate, UITableViewData
     
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PatientAppointmentListTableViewCell", for: indexPath) as? PatientAppointmentListTableViewCell else { return UITableViewCell() }
         cell.delegate = self
-        cell.configureCell(patientAppointmentVM: viewModel, index: indexPath)
+        if isSearch {
+            cell.configureCellWithSearch(patientAppointmentVM: viewModel, index: indexPath)
+        }else{
+            cell.configureCell(patientAppointmentVM: viewModel, index: indexPath)
+        }
         return cell
     }
     
@@ -35,10 +39,18 @@ extension PatientAppointmentViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-        let patientAppointmentListVM = viewModel?.patientListAtIndex(index: indexPath.row)
-        editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
-        editVC.appointmentId  = patientAppointmentListVM?.id
-        navigationController?.pushViewController(editVC, animated: true)
+        if isSearch {
+            let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+            let patientAppointmentListVM = viewModel?.patientListFilterListAtIndex(index: indexPath.row)
+            editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
+            editVC.appointmentId  = patientAppointmentListVM?.id
+            navigationController?.pushViewController(editVC, animated: true)
+        }else{
+            let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+            let patientAppointmentListVM = viewModel?.patientListAtIndex(index: indexPath.row)
+            editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
+            editVC.appointmentId  = patientAppointmentListVM?.id
+            navigationController?.pushViewController(editVC, animated: true)
+        }
     }
 }

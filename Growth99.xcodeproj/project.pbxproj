@@ -42,6 +42,11 @@
 		01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */; };
 		01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */; };
 		01C7488C29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */; };
+		01C7488E29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488D29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift */; };
+		01C7489029B22E670085CED2 /* ServicesListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488F29B22E670085CED2 /* ServicesListViewController+TableView.swift */; };
+		01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */; };
+		01C7489429B22F090085CED2 /* UserListViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */; };
+		01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -649,6 +654,11 @@
 		01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewConsentsViewController+searchBar.swift"; sourceTree = "<group>"; };
 		01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsentsListViewController+TableView.swift"; sourceTree = "<group>"; };
 		01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsentsListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488D29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientAppointmentViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488F29B22E670085CED2 /* ServicesListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewContoller+TableView.swift"; sourceTree = "<group>"; };
+		01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -2341,8 +2351,8 @@
 		842C0C78298F713B00395061 /* PateintsAppointmentList */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C79298F713B00395061 /* ViewModel */,
 				842C0C7B298F713B00395061 /* Model */,
+				842C0C79298F713B00395061 /* ViewModel */,
 				842C0C7D298F713B00395061 /* View */,
 			);
 			path = PateintsAppointmentList;
@@ -2370,6 +2380,7 @@
 				842C0C7E298F713B00395061 /* PatientAppointmentViewController.storyboard */,
 				842C0C7F298F713B00395061 /* PatientAppointmentViewController.swift */,
 				842C0C80298F713B00395061 /* PatientAppointmentViewController+TableView.swift */,
+				01C7488D29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift */,
 				842C0C81298F713B00395061 /* Cell */,
 			);
 			path = View;
@@ -3262,6 +3273,8 @@
 			children = (
 				84B75EC6296902E600962F3E /* ServicesListViewController.swift */,
 				84B75EC7296902E600962F3E /* ServicesListViewController.storyboard */,
+				01C7488F29B22E670085CED2 /* ServicesListViewController+TableView.swift */,
+				01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */,
 			);
 			path = ListScreen;
 			sourceTree = "<group>";
@@ -3803,6 +3816,8 @@
 				84D0629A2967070C001FE469 /* Cell */,
 				84D062982967070C001FE469 /* UserListViewContoller.swift */,
 				84D062972967070C001FE469 /* UserListViewContoller.storyboard */,
+				01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */,
+				01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4841,6 +4856,7 @@
 				84F610F3292A71AB00B1FB69 /* Invalidation.swift in Sources */,
 				84D0624329670677001FE469 /* HomeViewModel.swift in Sources */,
 				01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */,
+				01C7489029B22E670085CED2 /* ServicesListViewController+TableView.swift in Sources */,
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
@@ -4896,6 +4912,7 @@
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
+				01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
 				39F2FF122996B2F40089BD4F /* AppointmentsViewController.swift in Sources */,
@@ -4919,6 +4936,7 @@
 				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
+				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */,
@@ -5107,6 +5125,7 @@
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */,
+				01C7489429B22F090085CED2 /* UserListViewContoller+TableView.swift in Sources */,
 				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
@@ -5153,6 +5172,7 @@
 				848FA3D8299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift in Sources */,
 				84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */,
 				84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */,
+				01C7488E29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift in Sources */,
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
 				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,

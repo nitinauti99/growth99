@@ -39,6 +39,14 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
         tableView.register(UINib(nibName: "AddNewQuestionarieTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewQuestionarieTableViewCell")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            let userInfo = [ "selectedIndex" : 1 ]
+            NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.Questionnarie
@@ -68,6 +76,9 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
         self.navigationController?.popViewController(animated: true)
     }
 
+    @IBAction func cancelPatientButtonTapped(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
         /// api is accepting wrong formate data

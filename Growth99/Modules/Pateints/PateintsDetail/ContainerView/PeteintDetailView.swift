@@ -88,7 +88,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: consentsListVC)
             add(asChildViewController: pateintsAppointmentListVC)
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addAppointMentButtonTapped), imageName: "add")
         default:
             break
         }
@@ -151,6 +151,11 @@ class PeteintDetailView: UIViewController {
         patientAppointmentList.pateintId = workflowTaskPatientId
         return patientAppointmentList
     }()
+    
+    @objc func addAppointMentButtonTapped(_ sender: UIButton){
+        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
+        navigationController?.pushViewController(addNewConsentsVC, animated: true)
+    }
   
    /// add VC as child view contoller
     private func add(asChildViewController viewController: UIViewController) {
