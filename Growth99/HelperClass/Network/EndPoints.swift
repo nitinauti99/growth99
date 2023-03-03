@@ -95,6 +95,7 @@ struct EndPoints {
     static let questionnaireFormURL = "/api/questionnaire/"
     static let notificationList = "/api/questionnaire/"
     static let patientsQuestionnaireDetail = "/api/patient/"
+    static let createConsentPatients = "/api/patients/"
 }
 
 struct ApiUrl {
@@ -188,4 +189,7 @@ struct ApiUrl {
     static let paymentRefund = EndPoints.baseURL.appending(EndPoints.paymentRefund)
     static let creatClinic = EndPoints.baseURL.appending(EndPoints.creatClinic)
     static let questionnaireFormURL = EndPoints.baseURL.appending(EndPoints.questionnaireFormURL)
+    static let createConsentPatients = EndPoints.baseURL.appending(EndPoints.createConsentPatients)
+
+    
 }

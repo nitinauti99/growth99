@@ -9,10 +9,10 @@ import UIKit
 
 class AddNewQuestionarieTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var questionnaireName: UILabel!
-    @IBOutlet private weak var questionnaireID: UILabel!
-    @IBOutlet private weak var questionnaireSelection: UIButton!
-    @IBOutlet private weak var subView: UIView!
+    @IBOutlet weak var questionnaireName: UILabel!
+    @IBOutlet weak var questionnaireID: UILabel!
+    @IBOutlet weak var questionnaireSelection: UIButton!
+    @IBOutlet weak var subView: UIView!
 
     var dateFormater : DateFormaterProtocol?
     var indexPath = IndexPath()
@@ -25,7 +25,14 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
     }
     
     func configureCell(questionarieVM: AddNewQuestionarieViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.QuestionarieDataAtIndex(index: index.row)
+        let questionarieVM = questionarieVM?.questionarieDataAtIndex(index: index.row)
+        self.questionnaireName.text = questionarieVM?.name
+        self.questionnaireID.text = String(questionarieVM?.id ?? 0)
+        indexPath = index
+    }
+    
+    func configureCellWithSearch(questionarieVM: AddNewQuestionarieViewModelProtocol?, index: IndexPath) {
+        let questionarieVM = questionarieVM?.questionarieFilterDataAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.name
         self.questionnaireID.text = String(questionarieVM?.id ?? 0)
         indexPath = index

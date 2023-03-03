@@ -11,18 +11,20 @@ import UIKit
 protocol AddNewConsentsViewControllerProtocol: AnyObject {
     func ConsentsListRecived()
     func errorReceived(error: String)
+    func consnetSendToPateintSuccessfully()
 }
 
 class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControllerProtocol {
     
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel: AddNewConsentsViewModelProtocol?
     var filteredTableData = [AddNewConsentsModel]()
     var isSearch : Bool = false
     var pateintId = Int()
-    
+    var consentId = Int()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = AddNewConsentsViewModel(delegate: self)
@@ -63,66 +65,34 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
         self.tableView.reloadData()
     }
     
+    func consnetSendToPateintSuccessfully(){
+        self.view.HideSpinner()
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    
     @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
-        self.view.ShowSpinner()
         /// api is accepting wrong formate data
+        var consentsIdArray = [AddNewConsentsModel]()
+        
+        let patientconentsList = viewModel?.getConsentsDataList ?? []
+        
+        for index in 0..<(patientconentsList.count ) {
+            let cellIndexPath = IndexPath(item: index, section: 0)
+            let item = patientconentsList[cellIndexPath.row]
+            if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? ConsentsTableViewCell {
+                if InputTypeCell.questionnaireSelection.isSelected == true {
+                    consentsIdArray.append(item)
+                }
+            }
+        }
+        self.view.ShowSpinner()
+        viewModel?.sendConsentsListToPateint(patient:pateintId, consentsIds: consentsIdArray)
+        
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
-    }
-}
-
-extension AddNewConsentsViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch {
-            return filteredTableData.count
-        }else {
-            return viewModel?.ConsentsDataList.count ?? 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = ConsentsTableViewCell()
-        cell = tableView.dequeueReusableCell(withIdentifier: "ConsentsTableViewCell", for: indexPath) as! ConsentsTableViewCell
-        if isSearch {
-            cell.configureCell(consentsVM: viewModel, index: indexPath)
-        } else {
-            cell.configureCell(consentsVM: viewModel, index: indexPath)
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // let FillConsentsVC = UIStoryboard(name: "FillAddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "FillAddNewConsentsViewController") as! FillAddNewConsentsViewController
-        //  let consentsVM = viewModel?.ConsentsDataAtIndex(index: indexPath.row)
-        //  FillConsentsVC.questionnaireId = consentsVM?.questionnaireId ?? 0
-        //  FillConsentsVC.pateintId = pateintId
-        //   self.navigationController?.pushViewController(FillConsentsVC, animated: true)
-    }
-}
-
-extension AddNewConsentsViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.ConsentsDataList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
-        isSearch = true
-        tableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearch = false
-        searchBar.text = ""
-        tableView.reloadData()
     }
 }

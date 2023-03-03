@@ -25,6 +25,16 @@ class ConsentsListTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
     
+    func configureCellWithSearch(consentsVM: ConsentsListViewModelProtocol?, index: IndexPath) {
+        let consentsVM = consentsVM?.consentsFilterListAtIndex(index: index.row)
+        self.consentName.text = consentsVM?.name
+        self.appointmentID.text = String(consentsVM?.appointmentId ?? 0)
+        self.consentStatus.text = consentsVM?.appointmentConsentStatus
+        self.appointmentDate.text = dateFormater?.serverToLocal(date: consentsVM?.appointmentDate ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: consentsVM?.createdAt ?? String.blank)
+        self.signedDate.text = dateFormater?.serverToLocal(date: consentsVM?.signedDate ?? String.blank)
+    }
+    
     func configureCell(consentsVM: ConsentsListViewModelProtocol?, index: IndexPath) {
         let consentsVM = consentsVM?.consentsListAtIndex(index: index.row)
         self.consentName.text = consentsVM?.name

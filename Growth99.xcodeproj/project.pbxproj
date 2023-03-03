@@ -36,6 +36,12 @@
 		01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */; };
 		01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */; };
 		01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */; };
+		01C7488229B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488129B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift */; };
+		01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488329B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift */; };
+		01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488529B219F60085CED2 /* AddNewConsentsViewController+TableView.swift */; };
+		01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */; };
+		01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */; };
+		01C7488C29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -623,6 +629,12 @@
 		01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormDetailTableViewCell+TableView.swift"; sourceTree = "<group>"; };
 		01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksListViewController+TableView.swift"; sourceTree = "<group>"; };
 		01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488129B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewQuestionarieViewController+tableView.swift"; sourceTree = "<group>"; };
+		01C7488329B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewQuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488529B219F60085CED2 /* AddNewConsentsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewConsentsViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewConsentsViewController+searchBar.swift"; sourceTree = "<group>"; };
+		01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsentsListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsentsListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -2134,8 +2146,10 @@
 			isa = PBXGroup;
 			children = (
 				842C0C6F298F713B00395061 /* cell */,
-				842C0C72298F713B00395061 /* ConsentsListViewModel.swift */,
 				842C0C73298F713B00395061 /* ConsentsListViewController.storyboard */,
+				842C0C6E298F713B00395061 /* ConsentsListViewController.swift */,
+				01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */,
+				01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2143,7 +2157,7 @@
 		842C0C6D298F713B00395061 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C6E298F713B00395061 /* ConsentsListViewController.swift */,
+				842C0C72298F713B00395061 /* ConsentsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2189,6 +2203,8 @@
 				842C0CD4298F75A200395061 /* Cell */,
 				842C0CCC298F749100395061 /* AddNewConsentsViewController.swift */,
 				842C0CCE298F749E00395061 /* AddNewConsentsViewController.storyboard */,
+				01C7488529B219F60085CED2 /* AddNewConsentsViewController+TableView.swift */,
+				01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2336,6 +2352,8 @@
 				842C0C9C298F713B00395061 /* Cell */,
 				842C0C9B298F713B00395061 /* AddNewQuestionarieViewController.swift */,
 				842C0C9F298F713B00395061 /* AddNewQuestionarieViewController.storyboard */,
+				01C7488129B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift */,
+				01C7488329B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4754,6 +4772,7 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
+				01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */,
 				8490350329954F7300556D47 /* SMSTemplatesListTableViewCell.swift in Sources */,
 				842C0CB1298F713B00395061 /* PatientAppointmentViewModel.swift in Sources */,
 				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
@@ -4817,6 +4836,7 @@
 				01BBA9E029AB571F006A5DB8 /* NotificationListTableViewCell.swift in Sources */,
 				398F90F0298ECB8700DB96E4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
+				01C7488C29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
@@ -4901,6 +4921,7 @@
 				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
+				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,
 				84BD33F62994BB020050C0D8 /* EmailTemplateViewController+SearchBar.swift in Sources */,
 				84D063212967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift in Sources */,
@@ -4930,6 +4951,7 @@
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
+				01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				3947A8F82996776E000CA2EB /* EventEditViewController.swift in Sources */,
@@ -4944,6 +4966,7 @@
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */,
+				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
@@ -4980,6 +5003,7 @@
 				DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */,
 				398F90F6298ECB8700DB96E4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
+				01C7488229B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift in Sources */,
 				398F90F2298ECB8700DB96E4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
 				84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,

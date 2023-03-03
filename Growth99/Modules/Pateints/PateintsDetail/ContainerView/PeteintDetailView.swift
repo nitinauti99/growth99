@@ -16,13 +16,13 @@ class PeteintDetailView: UIViewController {
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpSegemtControl()
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeSegment") , object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.patientDetail
-        self.setUpSegemtControl()
     }
     
     func setUpSegemtControl(){
@@ -115,6 +115,7 @@ class PeteintDetailView: UIViewController {
     
     @objc func addQuestionariButtonTapped(_ sender: UIButton) {
         let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
+        addNewQuestionarieVC.pateintId = workflowTaskPatientId
         navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
     }
     
