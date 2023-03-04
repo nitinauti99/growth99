@@ -33,6 +33,8 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
         super.viewDidLoad()
         self.viewModel = MassEmailandSMSViewModel(delegate: self)
         setUpNavigationBar()
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     }
     
     func setUpNavigationBar() {
@@ -45,6 +47,7 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
     }
     
     @IBAction func massEmailSMSSegmentSelection(_ sender: Any) {
+        self.massEmailandSMSTableView.setContentOffset(.zero, animated: true)
         self.massEmailandSMSTableView.reloadData()
     }
     
@@ -103,7 +106,6 @@ extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
     func editEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
         
     }
-    
     
     func didTapSwitchButton(massEmailandSMSId: String, massEmailandSMSStatus: String) {
         self.view.ShowSpinner()

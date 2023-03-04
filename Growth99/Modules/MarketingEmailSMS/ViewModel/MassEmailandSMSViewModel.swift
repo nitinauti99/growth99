@@ -63,13 +63,10 @@ class MassEmailandSMSViewModel {
 }
 
 extension MassEmailandSMSViewModel: MassEmailandSMSViewModelProtocol {
-
-
     func removeSelectedMassEmail(MassEmailId: Int) {
         
     }
     
-
     func getMassEmailandSMSFilterData(searchText: String) {
         self.massEmailListFilterData = (self.getMassEmailandSMSData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }

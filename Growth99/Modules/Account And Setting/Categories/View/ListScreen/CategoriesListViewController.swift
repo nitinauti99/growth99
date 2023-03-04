@@ -85,14 +85,14 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             if viewModel?.getCategoriesFilterListData.count ?? 0 == 0 {
-                self.categoriesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.categoriesListTableView.setEmptyMessage()
             } else {
                 self.categoriesListTableView.restore()
             }
             return viewModel?.getCategoriesFilterListData.count ?? 0
         } else {
             if viewModel?.getCategoriesListData.count ?? 0 == 0 {
-                self.categoriesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.categoriesListTableView.setEmptyMessage()
             } else {
                 self.categoriesListTableView.restore()
             }

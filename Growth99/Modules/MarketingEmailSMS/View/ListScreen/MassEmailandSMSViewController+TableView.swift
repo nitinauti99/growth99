@@ -14,32 +14,74 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch {
-            if viewModel?.getMassEmailandSMSFilterData.count ?? 0 == 0 {
-                self.massEmailandSMSTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+        let selectedIndex = self.massEmailSMSSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                if viewModel?.getMassEmailandSMSFilterData.count ?? 0 == 0 {
+                    self.massEmailandSMSTableView.setEmptyMessage()
+                } else {
+                    self.massEmailandSMSTableView.restore()
+                }
+                return viewModel?.getMassEmailandSMSFilterData.filter({ $0.emailFlag == true
+                }).count ?? 0
             } else {
-                self.massEmailandSMSTableView.restore()
+                if viewModel?.getMassEmailandSMSData.count ?? 0 == 0 {
+                    self.massEmailandSMSTableView.setEmptyMessage()
+                } else {
+                    self.massEmailandSMSTableView.restore()
+                }
+                return viewModel?.getMassEmailandSMSData.filter({ $0.emailFlag == true
+                }).count ?? 0
             }
-            return viewModel?.getMassEmailandSMSFilterData.count ?? 0
-        } else {
-            if viewModel?.getMassEmailandSMSData.count ?? 0 == 0 {
-                self.massEmailandSMSTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+        case 1:
+            if isSearch {
+                if viewModel?.getMassEmailandSMSFilterData.count ?? 0 == 0 {
+                    self.massEmailandSMSTableView.setEmptyMessage()
+                } else {
+                    self.massEmailandSMSTableView.restore()
+                }
+                return viewModel?.getMassEmailandSMSFilterData.filter({ $0.smsFlag == true
+                }).count ?? 0
             } else {
-                self.massEmailandSMSTableView.restore()
+                if viewModel?.getMassEmailandSMSData.count ?? 0 == 0 {
+                    self.massEmailandSMSTableView.setEmptyMessage()
+                } else {
+                    self.massEmailandSMSTableView.restore()
+                }
+                return viewModel?.getMassEmailandSMSData.filter({ $0.smsFlag == true
+                }).count ?? 0
             }
-            return viewModel?.getMassEmailandSMSData.count ?? 0
+        default:
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTableViewCell", for: indexPath) as? MassEmailandSMSTableViewCell else { return UITableViewCell() }
         cell.delegate = self
-        if isSearch {
-            cell.configureCell(massEmailFilterList: viewModel, index: indexPath, isSearch: isSearch)
-        } else {
-            cell.configureCell(massEmailList: viewModel, index: indexPath, isSearch: isSearch)
+        let selectedIndex = self.massEmailSMSSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.emailFlag == true})
+                cell.configureCell(massEmailFilterList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.emailFlag == true})
+                cell.configureCell(massEmailList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            }
+        case 1:
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.smsFlag == true})
+                cell.configureCell(massEmailFilterList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.smsFlag == true})
+                cell.configureCell(massEmailList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            }
+        default:
+            return UITableViewCell()
         }
         return cell
     }
@@ -52,12 +94,11 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
         let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
         if isSearch {
             editVC.appointmentId = viewModel?.getMassEmailandSMSFilterData[indexPath.row].id
-           // editVC.editMassEmailData = viewModel?.getMassEmailFilterListData[indexPath.row]
+            // editVC.editMassEmailData = viewModel?.getMassEmailFilterListData[indexPath.row]
         } else {
             editVC.appointmentId = viewModel?.getMassEmailandSMSData[indexPath.row].id
-           // editVC.editMassEmailData = viewModel?.getMassEmailListData[indexPath.row]
+            // editVC.editMassEmailData = viewModel?.getMassEmailListData[indexPath.row]
         }
         navigationController?.pushViewController(editVC, animated: true)
     }
 }
-

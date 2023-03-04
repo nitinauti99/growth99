@@ -63,7 +63,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewDidLoad()
         self.view.ShowSpinner()
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         self.viewModel = PateintDetailViewModel(delegate: self)
         dateFormater = DateFormater()
         viewModel?.getpateintsList(pateintId: self.workflowTaskPatientId)

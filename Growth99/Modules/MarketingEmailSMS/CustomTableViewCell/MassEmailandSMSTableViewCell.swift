@@ -34,11 +34,11 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         
     }
-    func configureCell(massEmailFilterList: MassEmailandSMSViewModelProtocol?, index: IndexPath, isSearch: Bool) {
-        let massEmailFilterList = massEmailFilterList?.getMassEmailandSMSFilterDataAtIndex(index: index.row)
+    
+    func configureCell(massEmailFilterList: MassEmailandSMSModel?, index: IndexPath, isSearch: Bool) {
         self.id.text = String(massEmailFilterList?.id ?? 0)
         self.triggerNameLabel.text = massEmailFilterList?.name
         /*if massEmailFilterList?.triggerActionName == String.blank {
@@ -47,7 +47,9 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         } else {
             self.sourceLabel.text = massEmailFilterList?.triggerActionName
         }*/
-        self.moduleLabel.text = massEmailFilterList?.moduleName
+        self.executionStatusLabel.text = massEmailFilterList?.executionStatus
+        self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
+        //self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.scheduledDateTime ?? String.blank)
         self.createdDate.text =  self.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  self.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
@@ -60,8 +62,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         indexPath = index
     }
     
-    func configureCell(massEmailList: MassEmailandSMSViewModelProtocol?, index: IndexPath, isSearch: Bool) {
-        let massEmailList = massEmailList?.getMassEmailandSMSDataAtIndex(index: index.row)
+    func configureCell(massEmailList: MassEmailandSMSModel?, index: IndexPath, isSearch: Bool) {
         self.id.text = String(massEmailList?.id ?? 0)
         self.triggerNameLabel.text = massEmailList?.name
         /*if massEmailList?.triggerActionName == String.blank {
@@ -70,7 +71,9 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         } else {
             self.sourceLabel.text = massEmailList?.triggerActionName
         }*/
-        self.moduleLabel.text = massEmailList?.moduleName
+        self.executionStatusLabel.text = massEmailList?.executionStatus
+        self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
+      //  self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailList?.scheduledDateTime ?? String.blank)
         self.createdDate.text =  self.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  self.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)

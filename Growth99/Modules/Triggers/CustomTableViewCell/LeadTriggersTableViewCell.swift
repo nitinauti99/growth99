@@ -25,39 +25,63 @@ class LeadTriggersTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     
     weak var delegate: TriggerSourceDelegate?
-    
+    var indexPath = IndexPath()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         
     }
     
-    func configureCell(triggerVM: TriggersListModel?) {
-        self.id.text = String(triggerVM?.id ?? 0)
-        self.nameLabel.text = triggerVM?.name
-        if triggerVM?.triggerActionName == String.blank {
-            let sourceFrom = triggerVM?.triggerConditions?.joined(separator: ", ")
+    
+    func configureCell(triggerFilterList: TriggersListModel?, index: IndexPath, isSearch: Bool) {
+        self.id.text = String(triggerFilterList?.id ?? 0)
+        self.nameLabel.text = triggerFilterList?.name
+        if triggerFilterList?.triggerActionName == String.blank {
+            let sourceFrom = triggerFilterList?.triggerConditions?.joined(separator: ", ")
             self.sourceLabel.text = sourceFrom
         } else {
-            self.sourceLabel.text = triggerVM?.triggerActionName
+            self.sourceLabel.text = triggerFilterList?.triggerActionName
         }
-        self.moduleLabel.text = triggerVM?.moduleName
-        self.createdDate.text =  self.serverToLocal(date: triggerVM?.createdAt ?? String.blank)
-        self.createdBy.text = triggerVM?.createdBy
-        self.updatedDate.text =  self.serverToLocal(date: triggerVM?.updatedAt ?? String.blank)
-        self.updatedBy.text = triggerVM?.updatedBy
-        if triggerVM?.status == Constant.Profile.triggerActive {
+        self.moduleLabel.text = triggerFilterList?.moduleName
+        self.createdDate.text =  self.serverToLocal(date: triggerFilterList?.createdAt ?? String.blank)
+        self.createdBy.text = triggerFilterList?.createdBy
+        self.updatedDate.text =  self.serverToLocal(date: triggerFilterList?.updatedAt ?? String.blank)
+        self.updatedBy.text = triggerFilterList?.updatedBy
+        if triggerFilterList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)
         } else {
             self.statusLabelSwitch.setOn(false, animated: true)
         }
+        indexPath = index
     }
     
+    func configureCell(triggerList: TriggersListModel?, index: IndexPath, isSearch: Bool) {
+        self.id.text = String(triggerList?.id ?? 0)
+        self.nameLabel.text = triggerList?.name
+        if triggerList?.triggerActionName == String.blank {
+            let sourceFrom = triggerList?.triggerConditions?.joined(separator: ", ")
+            self.sourceLabel.text = sourceFrom
+        } else {
+            self.sourceLabel.text = triggerList?.triggerActionName
+        }
+        self.moduleLabel.text = triggerList?.moduleName
+        self.createdDate.text =  self.serverToLocal(date: triggerList?.createdAt ?? String.blank)
+        self.createdBy.text = triggerList?.createdBy
+        self.updatedDate.text =  self.serverToLocal(date: triggerList?.updatedAt ?? String.blank)
+        self.updatedBy.text = triggerList?.updatedBy
+        if triggerList?.status == Constant.Profile.triggerActive {
+            self.statusLabelSwitch.setOn(true, animated: true)
+        } else {
+            self.statusLabelSwitch.setOn(false, animated: true)
+        }
+        indexPath = index
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     

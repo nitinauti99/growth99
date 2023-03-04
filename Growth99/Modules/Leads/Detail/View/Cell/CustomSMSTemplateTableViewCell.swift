@@ -20,7 +20,7 @@ class CustomSMSTemplateTableViewCell: UITableViewCell {
         smsTextView.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
         smsTextView.layer.cornerRadius = 5
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
 
     }
 

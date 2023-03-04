@@ -13,7 +13,7 @@ protocol TriggersListViewContollerProtocol: AnyObject {
 }
 
 class TriggersListViewController: UIViewController, TriggersListViewContollerProtocol {
-
+    
     @IBOutlet private weak var triggersListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var triggerSegmentControl: UISegmentedControl!
@@ -32,6 +32,8 @@ class TriggersListViewController: UIViewController, TriggersListViewContollerPro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = TriggersListViewModel(delegate: self)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
         setUpNavigationBar()
     }
     
@@ -45,6 +47,7 @@ class TriggersListViewController: UIViewController, TriggersListViewContollerPro
     }
     
     @IBAction func triggerSegmentSelection(_ sender: Any) {
+        self.triggersListTableView.setContentOffset(.zero, animated: true)
         self.triggersListTableView.reloadData()
     }
     
@@ -87,18 +90,42 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch {
-            return filteredTableData.count
-        } else {
-            let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
-            switch selectedIndex {
-            case 0:
-                return viewModel?.triggersData.filter({$0.moduleName == Constant.Profile.leads}).count ?? 0
-            case 1:
-                return viewModel?.triggersData.filter({$0.moduleName == Constant.Profile.appointmentTrigger}).count ?? 0
-            default:
-                return 0
+        let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                if viewModel?.getTriggersFilterData.count ?? 0 == 0 {
+                    self.triggersListTableView.setEmptyMessage()
+                } else {
+                    self.triggersListTableView.restore()
+                }
+                return viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.leads}).count ?? 0
+            } else {
+                if viewModel?.getTriggersData.count ?? 0 == 0 {
+                    self.triggersListTableView.setEmptyMessage()
+                } else {
+                    self.triggersListTableView.restore()
+                }
+                return viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.leads}).count ?? 0
             }
+        case 1:
+            if isSearch {
+                if viewModel?.getTriggersFilterData.count ?? 0 == 0 {
+                    self.triggersListTableView.setEmptyMessage()
+                } else {
+                    self.triggersListTableView.restore()
+                }
+                return viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.appointmentTrigger}).count ?? 0
+            } else {
+                if viewModel?.getTriggersData.count ?? 0 == 0 {
+                    self.triggersListTableView.setEmptyMessage()
+                } else {
+                    self.triggersListTableView.restore()
+                }
+                return viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.appointmentTrigger}).count ?? 0
+            }
+        default:
+            return 0
         }
     }
     
@@ -106,20 +133,26 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
         var cell = LeadTriggersTableViewCell()
         cell = triggersListTableView.dequeueReusableCell(withIdentifier: "LeadTriggersTableViewCell") as! LeadTriggersTableViewCell
         cell.delegate = self
-        if isSearch {
-            cell.configureCell(triggerVM: viewModel?.triggersData[indexPath.row])
-        } else {
-            let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
-            switch selectedIndex {
-            case 0:
-                let filteredArray = viewModel?.triggersData.filter({$0.moduleName == Constant.Profile.leads})
-                cell.configureCell(triggerVM: filteredArray?[indexPath.row])
-            case 1:
-                let filteredArray = viewModel?.triggersData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
-                cell.configureCell(triggerVM: filteredArray?[indexPath.row])
-            default:
-                return UITableViewCell()
+        let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                let filteredArray = viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.leads})
+                cell.configureCell(triggerFilterList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            } else {
+                let filteredArray = viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.leads})
+                cell.configureCell(triggerList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
             }
+        case 1:
+            if isSearch {
+                let filteredArray = viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
+                cell.configureCell(triggerFilterList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            } else {
+                let filteredArray = viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
+                cell.configureCell(triggerList: filteredArray?[indexPath.row], index: indexPath, isSearch: isSearch)
+            }
+        default:
+            return UITableViewCell()
         }
         return cell
     }
@@ -129,17 +162,17 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let createTriggersVC = UIStoryboard(name: "TriggersAddViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggersAddViewController") as! TriggersAddViewController
-//        //        createTriggersVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-//        //        createTriggersVC.screenTitle = Constant.Profile.editTriggers
-//        self.navigationController?.pushViewController(createTriggersVC, animated: true)
+        //        let createTriggersVC = UIStoryboard(name: "TriggersAddViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggersAddViewController") as! TriggersAddViewController
+        //        //        createTriggersVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
+        //        //        createTriggersVC.screenTitle = Constant.Profile.editTriggers
+        //        self.navigationController?.pushViewController(createTriggersVC, animated: true)
     }
 }
 
 extension TriggersListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.triggersData.filter { $0.name.lowercased().prefix(searchText.count) == searchText.lowercased() })!
+        viewModel?.getTriggersFilterData(searchText: searchText)
         isSearch = true
         triggersListTableView.reloadData()
     }

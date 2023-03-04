@@ -17,14 +17,14 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             if viewModel?.getServiceFilterListData.count ?? 0 == 0 {
-                self.servicesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.servicesListTableView.setEmptyMessage()
             } else {
                 self.servicesListTableView.restore()
             }
             return viewModel?.getServiceFilterListData.count ?? 0
         } else {
             if viewModel?.getServiceListData.count ?? 0 == 0 {
-                self.servicesListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.servicesListTableView.setEmptyMessage()
             } else {
                 self.servicesListTableView.restore()
             }

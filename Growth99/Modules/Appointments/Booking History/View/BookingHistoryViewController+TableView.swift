@@ -17,14 +17,14 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             if viewModel?.getBookingHistoryFilterListData.count ?? 0 == 0 {
-                self.bookingHistoryTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.bookingHistoryTableView.setEmptyMessage()
             } else {
                 self.bookingHistoryTableView.restore()
             }
             return viewModel?.getBookingHistoryFilterListData.count ?? 0
         } else {
             if viewModel?.getBookingHistoryListData.count ?? 0 == 0 {
-                self.bookingHistoryTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.bookingHistoryTableView.setEmptyMessage()
             } else {
                 self.bookingHistoryTableView.restore()
             }

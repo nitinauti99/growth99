@@ -1872,9 +1872,9 @@
 		39FC68F029B363F000FCB7C6 /* ListScreen */ = {
 			isa = PBXGroup;
 			children = (
-				39FC68F129B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard */,
 				39FC68F229B363F000FCB7C6 /* MassEmailandSMSViewController.swift */,
 				39FC68F329B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift */,
+				39FC68F129B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard */,
 			);
 			path = ListScreen;
 			sourceTree = "<group>";
