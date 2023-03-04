@@ -49,7 +49,7 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     
     @objc func creatUser() {
         let PateintsTagsAddVC = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-        PateintsTagsAddVC.PateintsTagsCreate = true
+        PateintsTagsAddVC.pateintsTagScreenName = "Create Screen"
         self.navigationController?.pushViewController(PateintsTagsAddVC, animated: true)
     }
     

@@ -34,12 +34,13 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = Constant.Profile.Questionnarie
         if pateintsTagScreenName == "Edit Screen" {
             self.pateintsTagsLBI.text = "Edit Patient Tag"
+            self.title = Constant.Profile.editPatientTags
             self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? String.blank
         }else{
             self.pateintsTagsLBI.text = "Create Patient Tag"
+            self.title = Constant.Profile.createPatientTags
         }
     }
     
@@ -74,8 +75,8 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
             PateintsTagsTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
         }
         self.view.ShowSpinner()
-        if PateintsTagsCreate == false {
-            viewModel?.savePateintsTagsDetails(pateintsTagId: PatientTagId, name: PateintsTagsTextField.text ?? String.blank)
+        if pateintsTagScreenName == "Edit Screen" {
+            viewModel?.savePateintsTagsDetails(pateintsTagId: patientTagId, name: PateintsTagsTextField.text ?? String.blank)
         }else{
             viewModel?.createPateintsTagsDetails(name: PateintsTagsTextField.text ?? String.blank)
         }
