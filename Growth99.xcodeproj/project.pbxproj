@@ -3581,10 +3581,10 @@
 				39FC688B29B120BE00FCB7C6 /* Marketing */,
 				8440B38A2999FD5E00A42097 /* FormBuilder */,
 				848A03852993FAD7004FE278 /* Templates */,
-				84D061F129670676001FE469 /* Welcome Screens */,
+				84D061F129670676001FE469 /* Welcome */,
 				84D061AA29670676001FE469 /* Dashboard */,
 				84D0617529670676001FE469 /* MyProfile */,
-				84D0614829670676001FE469 /* Account And Setting */,
+				84D0614829670676001FE469 /* AccountSettings */,
 				84D0616629670676001FE469 /* Appointments */,
 				84D0619929670676001FE469 /* Pateints */,
 				84D062A6296707A5001FE469 /* Tasks */,
@@ -3595,19 +3595,19 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		84D0614829670676001FE469 /* Account And Setting */ = {
+		84D0614829670676001FE469 /* AccountSettings */ = {
 			isa = PBXGroup;
 			children = (
-				84D0614A29670676001FE469 /* Business Profile */,
+				84D0614A29670676001FE469 /* BusinessProfile */,
 				84D0614E29670676001FE469 /* Clinics */,
 				84D0615A29670676001FE469 /* Categories */,
 				84D0615F29670676001FE469 /* Services */,
 				84D0628F2967070C001FE469 /* Users */,
 			);
-			path = "Account And Setting";
+			path = AccountSettings;
 			sourceTree = "<group>";
 		};
-		84D0614A29670676001FE469 /* Business Profile */ = {
+		84D0614A29670676001FE469 /* BusinessProfile */ = {
 			isa = PBXGroup;
 			children = (
 				DAEF7496299D4ADB009140AE /* ContainerView */,
@@ -3615,7 +3615,7 @@
 				84D0614B29670676001FE469 /* View */,
 				843A7A8E29769FDC0063FA2D /* ViewModel */,
 			);
-			path = "Business Profile";
+			path = BusinessProfile;
 			sourceTree = "<group>";
 		};
 		84D0614B29670676001FE469 /* View */ = {
@@ -3776,7 +3776,7 @@
 		84D0616629670676001FE469 /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
-				84D0632C29670898001FE469 /* Booking History */,
+				84D0632C29670898001FE469 /* BookingHistory */,
 				84D0632729670898001FE469 /* Payments */,
 				84D0616729670676001FE469 /* Calender */,
 			);
@@ -3797,14 +3797,14 @@
 			isa = PBXGroup;
 			children = (
 				39F2FEFB2996B2F40089BD4F /* Appointments */,
-				84D0617929670676001FE469 /* Working Schedule */,
-				84D0618829670676001FE469 /* Vacation Schedule */,
+				84D0617929670676001FE469 /* WorkingSchedule */,
+				84D0618829670676001FE469 /* VacationSchedule */,
 				84D0618529670676001FE469 /* ChangePassword */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
 		};
-		84D0617929670676001FE469 /* Working Schedule */ = {
+		84D0617929670676001FE469 /* WorkingSchedule */ = {
 			isa = PBXGroup;
 			children = (
 				84D0617C29670676001FE469 /* Model */,
@@ -3812,7 +3812,7 @@
 				84D0617A29670676001FE469 /* ViewModel */,
 				84D0618229670676001FE469 /* CustomTableViewCell */,
 			);
-			path = "Working Schedule";
+			path = WorkingSchedule;
 			sourceTree = "<group>";
 		};
 		84D0617A29670676001FE469 /* ViewModel */ = {
@@ -3859,7 +3859,7 @@
 			path = ChangePassword;
 			sourceTree = "<group>";
 		};
-		84D0618829670676001FE469 /* Vacation Schedule */ = {
+		84D0618829670676001FE469 /* VacationSchedule */ = {
 			isa = PBXGroup;
 			children = (
 				84D0618B29670676001FE469 /* Model */,
@@ -3867,7 +3867,7 @@
 				84D0618E29670676001FE469 /* View */,
 				84D0619229670676001FE469 /* CustomTableViewCell */,
 			);
-			path = "Vacation Schedule";
+			path = VacationSchedule;
 			sourceTree = "<group>";
 		};
 		84D0618929670676001FE469 /* ViewModel */ = {
@@ -3973,7 +3973,7 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		84D061F129670676001FE469 /* Welcome Screens */ = {
+		84D061F129670676001FE469 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
 				84D061FF29670676001FE469 /* Login */,
@@ -3981,7 +3981,7 @@
 				84D061F729670676001FE469 /* ForgotPassword */,
 				84D061FB29670676001FE469 /* VerifyForgotPassword */,
 			);
-			path = "Welcome Screens";
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		84D061F229670676001FE469 /* Registration */ = {
@@ -4071,7 +4071,7 @@
 			isa = PBXGroup;
 			children = (
 				84E34C3C2970264D00C58B0D /* list */,
-				84E34C412970268E00C58B0D /* Ediit */,
+				84E34C412970268E00C58B0D /* Edit */,
 				84E34C3D2970265C00C58B0D /* Add */,
 			);
 			path = Tasks;
@@ -4246,7 +4246,7 @@
 			path = Payments;
 			sourceTree = "<group>";
 		};
-		84D0632C29670898001FE469 /* Booking History */ = {
+		84D0632C29670898001FE469 /* BookingHistory */ = {
 			isa = PBXGroup;
 			children = (
 				DAE14091298ACCD600794F6A /* Model */,
@@ -4254,7 +4254,7 @@
 				DAE14094298ACCD600794F6A /* ViewModel */,
 				DAE1408E298ACCD600794F6A /* CustomCell */,
 			);
-			path = "Booking History";
+			path = BookingHistory;
 			sourceTree = "<group>";
 		};
 		84D43A2E297C55F200678458 /* Cell */ = {
@@ -4305,14 +4305,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		84E34C412970268E00C58B0D /* Ediit */ = {
+		84E34C412970268E00C58B0D /* Edit */ = {
 			isa = PBXGroup;
 			children = (
 				84E34C44297026A100C58B0D /* Model */,
 				84E34C432970269E00C58B0D /* ViewMdel */,
 				84E34C422970269700C58B0D /* View */,
 			);
-			path = Ediit;
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		84E34C422970269700C58B0D /* View */ = {
