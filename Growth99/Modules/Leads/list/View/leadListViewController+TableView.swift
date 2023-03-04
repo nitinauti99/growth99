@@ -30,9 +30,9 @@ extension leadListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = UIStoryboard(name: "leadListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadListDetailViewController") as! leadDetailViewController
-        detailController.leadData = viewModel?.leadListDataAtIndex(index: indexPath.row)
-        detailController.leadId = viewModel?.leadListDataAtIndex(index: indexPath.row)?.id ?? 0
+        let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
+//        detailController.leadData = viewModel?.leadListDataAtIndex(index: indexPath.row)
+//        detailController.leadId = viewModel?.leadListDataAtIndex(index: indexPath.row)?.id ?? 0
         navigationController?.pushViewController(detailController, animated: true)
     }
 }
