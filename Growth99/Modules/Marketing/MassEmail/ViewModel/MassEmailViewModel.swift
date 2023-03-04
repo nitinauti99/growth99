@@ -13,11 +13,11 @@ protocol MassEmailViewModelProtocol {
     
     func getMassEmailFilterData(searchText: String)
     
-    func getMassEmailDataAtIndex(index: Int)-> AppointmentDTOList?
-    func getMassEmailFilterDataAtIndex(index: Int)-> AppointmentDTOList?
+    func getMassEmailDataAtIndex(index: Int)-> MassEmailSMSModel?
+    func getMassEmailFilterDataAtIndex(index: Int)-> MassEmailSMSModel?
     
-    var  getMassEmailListData: [AppointmentDTOList] { get }
-    var  getMassEmailFilterListData: [AppointmentDTOList] { get }
+    var  getMassEmailListData: [MassEmailSMSModel] { get }
+    var  getMassEmailFilterListData: [MassEmailSMSModel] { get }
     
     func removeSelectedMassEmail(MassEmailId: Int)
 
@@ -27,8 +27,8 @@ protocol MassEmailViewModelProtocol {
 class MassEmailViewModel {
     
     var delegate: MassEmailViewContollerProtocol?
-    var massEmailList: [AppointmentDTOList] = []
-    var massEmailListFilterData: [AppointmentDTOList] = []
+    var massEmailList: [MassEmailSMSModel] = []
+    var massEmailListFilterData: [MassEmailSMSModel] = []
     
     init(delegate: MassEmailViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -39,10 +39,10 @@ class MassEmailViewModel {
     func getCalenderInfoListMassEmail(clinicId: Int, providerId: Int, serviceId: Int) {
         let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"
         let apiURL = ApiUrl.calenderInfo.appending("\(url)")
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalenderInfoListModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSModel, GrowthNetworkError>) in
             switch result {
-            case .success(let appointmentDTOListData):
-                self.massEmailList = appointmentDTOListData.appointmentDTOList ?? []
+            case .success(let massEmailSMSListData):
+                self.massEmailList = massEmailSMSListData ?? []
                 self.delegate?.appointmentListDataRecivedMassEmail()
             case .failure(let error):
                 self.delegate?.errorReceivedMassEmail(error: error.localizedDescription)
@@ -122,19 +122,19 @@ extension MassEmailViewModel: MassEmailViewModelProtocol {
         self.massEmailListFilterData = (self.getMassEmailListData.filter { $0.patientFirstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
-    func getMassEmailDataAtIndex(index: Int)-> AppointmentDTOList? {
+    func getMassEmailDataAtIndex(index: Int)-> MassEmailSMSModel? {
         return self.getMassEmailListData[index]
     }
     
-    func getMassEmailFilterDataAtIndex(index: Int)-> AppointmentDTOList? {
+    func getMassEmailFilterDataAtIndex(index: Int)-> MassEmailSMSModel? {
         return self.massEmailListFilterData[index]
     }
     
-    var getMassEmailListData: [AppointmentDTOList] {
+    var getMassEmailListData: [MassEmailSMSModel] {
         return self.massEmailList
     }
    
-    var getMassEmailFilterListData: [AppointmentDTOList] {
+    var getMassEmailFilterListData: [MassEmailSMSModel] {
          return self.massEmailListFilterData
     }
 }
