@@ -153,6 +153,7 @@
 		39FC68FB29B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68F329B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift */; };
 		39FC68FC29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */; };
 		39FC68FD29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */; };
+		39FC68FF29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -793,6 +794,7 @@
 		39FC68F329B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassEmailandSMSViewController+TableView.swift"; sourceTree = "<group>"; };
 		39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSTableViewCell.swift; sourceTree = "<group>"; };
 		39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSTableViewCell.xib; sourceTree = "<group>"; };
+		39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggersListViewController+TableView.swift"; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -3471,6 +3473,7 @@
 			isa = PBXGroup;
 			children = (
 				84B75EED2969408200962F3E /* TriggersListViewController.swift */,
+				39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */,
 				84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */,
 			);
 			path = ListScreen;
@@ -5401,6 +5404,7 @@
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
+				39FC68FF29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift in Sources */,
 				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
 				01152E1129B398CE00B24627 /* leadListViewController+TableView.swift in Sources */,

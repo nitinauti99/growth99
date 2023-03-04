@@ -13,7 +13,7 @@ protocol MassEmailandSMSViewContollerProtocol: AnyObject {
 }
 
 class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContollerProtocol {
-
+    
     @IBOutlet weak var massEmailandSMSTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var massEmailSMSSegmentControl: UISegmentedControl!
