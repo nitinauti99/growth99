@@ -61,7 +61,7 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
     func getListFromServer(_ pageNumber: Int){
         self.view.ShowSpinner()
         self.isLoadingList = false
-        self.viewModel?.getleadList(page: pageNumber, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? String.blank, leadListTagFilter: "")
+        self.viewModel?.getleadList(page: pageNumber, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? String.blank, leadTagFilter: "")
     }
     
     func loadMoreItemsForList(){
@@ -73,7 +73,6 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
      }
     
     func registerTableView() {
-        self.tableView.register(UINib(nibName: "leadListHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "leadListHeaderTableViewCell")
         self.tableView.register(UINib(nibName: "leadListTableViewCell", bundle: nil), forCellReuseIdentifier: "leadListTableViewCell")
     }
     
@@ -83,7 +82,7 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
         }
         self.view.ShowSpinner()
         self.currentPage = 0
-        self.viewModel?.getleadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? String.blank, leadListTagFilter: "")
+        self.viewModel?.getleadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: searchBar.text ?? String.blank, leadTagFilter: "")
     }
     
     @objc func creatUser() {
@@ -92,7 +91,7 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
     }
     
     @objc func getleadList(){
-        self.viewModel?.getleadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: "", leadListTagFilter: "")
+        self.viewModel?.getleadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
     }
     
     func leadListDataRecived() {
