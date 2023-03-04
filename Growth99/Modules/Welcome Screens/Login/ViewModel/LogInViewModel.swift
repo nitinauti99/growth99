@@ -48,7 +48,7 @@ class LogInViewModel {
     
     func getBusinessInfo(Xtenantid: Int) {
         let finaleUrl = ApiUrl.getBussinessInfo + "\(Xtenantid)"
-        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<bussinessDetailInfoModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.publicHeader()) {  (result: Result<bussinessDetailInfoModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 self.bussinessData = response
@@ -66,7 +66,9 @@ class LogInViewModel {
 
     func loginValidate(email: String, password: String) {
         let parameter: Parameters = ["email": email,
-                                     "password": password]
+                                     "password": password,
+                                     "businessId": self.user.bussinessId ?? 0
+        ]
         
         self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, GrowthNetworkError>) in
             

@@ -1626,10 +1626,8 @@
 		3947A8DB2996776E000CA2EB /* AddEventView */ = {
 			isa = PBXGroup;
 			children = (
-				3947A8DE2996776E000CA2EB /* Model */,
 				3947A8DF2996776E000CA2EB /* View */,
 				3947A8DC2996776E000CA2EB /* ViewModel */,
-				3947A8E32996776E000CA2EB /* CustomTableViewCell */,
 			);
 			path = AddEventView;
 			sourceTree = "<group>";
@@ -1642,13 +1640,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		3947A8DE2996776E000CA2EB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		3947A8DF2996776E000CA2EB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1656,13 +1647,6 @@
 				3947A8E12996776E000CA2EB /* AddEventViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3947A8E32996776E000CA2EB /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		3947A8E42996776E000CA2EB /* EventEditView */ = {

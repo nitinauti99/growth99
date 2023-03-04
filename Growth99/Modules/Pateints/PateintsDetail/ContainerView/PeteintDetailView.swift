@@ -160,8 +160,10 @@ class PeteintDetailView: UIViewController {
     }()
     
     @objc func addAppointMentButtonTapped(_ sender: UIButton){
-        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
-        navigationController?.pushViewController(addNewConsentsVC, animated: true)
+        let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
+        addEventVC.screenTitile = "Pateints Appointment"
+        addEventVC.userSelectedDate = "Manual"
+        navigationController?.pushViewController(addEventVC, animated: true)
     }
   
     /// pateints TimeLine

@@ -25,6 +25,8 @@ protocol AddEventViewModelProtocol {
     func checkUserPhoneNumber(phoneNumber: String)
     func localInputToServerInput(date: String) -> String
     func localInputeDateToServer(date: String) -> String
+    func getPateintsAppointData()
+    var getPatientsAppointmentList: [PatientsModel] { get }
 }
 
 class AddEventViewModel {
@@ -32,6 +34,7 @@ class AddEventViewModel {
     var delegate: AddEventViewControllerProtocol?
     var allDates: [String] = []
     var allTimes: [String] = []
+    var patientsAppointmentList = [PatientsModel]()
 
     init(delegate: AddEventViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -39,6 +42,18 @@ class AddEventViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
+    func getPateintsAppointData(){
+        self.requestManager.request(forPath: ApiUrl.patientsByTenantId, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[PatientsModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let PateintsAppointmentList):
+                self.patientsAppointmentList = PateintsAppointmentList
+                self.delegate?.patientAppointmentListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorEventReceived(error: error.localizedDescription)
+            }
+        }
+    }
+
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>) {
         let apiURL = ApiUrl.vacationSubmit.appending("\(providerId)/schedules/dates")
         let parameter: Parameters = ["clinicId": clinicIds,
@@ -125,7 +140,6 @@ class AddEventViewModel {
         }
     }
     
-    
     var getAllDatesData: [String] {
         return allDates
     }
@@ -204,6 +218,11 @@ class AddEventViewModel {
 }
 
 extension AddEventViewModel : AddEventViewModelProtocol {
+   
+    var getPatientsAppointmentList: [PatientsModel] {
+        return self.patientsAppointmentList
+    }
+    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         if phoneNumber.count == 10 {
             return true
