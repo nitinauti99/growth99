@@ -32,6 +32,7 @@ class PeteintDetailView: UIViewController {
         segmentedControl.insertSegment(withTitle: Constant.Profile.tasks, at: 2)
         segmentedControl.insertSegment(withTitle: Constant.Profile.Consents, at: 3)
         segmentedControl.insertSegment(withTitle: Constant.Profile.appointmentDetail, at: 4)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.timeLineDetail, at: 5)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
@@ -44,14 +45,7 @@ class PeteintDetailView: UIViewController {
         self.selectedindex = segment
         self.selectionDidChange(sender: segmentedControl)
     }
-   
-    func setupView() {
-        remove(asChildViewController: tasksListVC)
-        remove(asChildViewController: questionarieVC)
-        add(asChildViewController: pateintDetailVC)
-        navigationItem.rightBarButtonItem = nil
-    }
-    
+  
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -59,6 +53,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: questionarieVC)
             remove(asChildViewController: consentsListVC)
             remove(asChildViewController: pateintsAppointmentListVC)
+            remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: pateintDetailVC)
             navigationItem.rightBarButtonItem = nil
         case 1:
@@ -66,6 +61,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: pateintDetailVC)
             remove(asChildViewController: consentsListVC)
             remove(asChildViewController: pateintsAppointmentListVC)
+            remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: questionarieVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addQuestionariButtonTapped), imageName: "add")
         case 2:
@@ -73,6 +69,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: pateintDetailVC)
             remove(asChildViewController: consentsListVC)
             remove(asChildViewController: pateintsAppointmentListVC)
+            remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: tasksListVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
         case 3:
@@ -80,6 +77,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: pateintDetailVC)
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: pateintsAppointmentListVC)
+            remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: consentsListVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addNewConsentButtonTapped), imageName: "add")
         case 4:
@@ -87,8 +85,17 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: pateintDetailVC)
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: pateintsAppointmentListVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addAppointMentButtonTapped), imageName: "add")
+        case 5:
+            remove(asChildViewController: pateintDetailVC)
+            remove(asChildViewController: questionarieVC)
+            remove(asChildViewController: tasksListVC)
+            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: pateintsAppointmentListVC)
+            add(asChildViewController: pateinstTimeLineVC)
+            navigationItem.rightBarButtonItem = nil
         default:
             break
         }
@@ -157,6 +164,13 @@ class PeteintDetailView: UIViewController {
         navigationController?.pushViewController(addNewConsentsVC, animated: true)
     }
   
+    /// pateints TimeLine
+    private lazy var pateinstTimeLineVC: PateintsTimeLineViewController = {
+        let pateintsTimeLineVC = UIStoryboard(name: "PateintsTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTimeLineViewController") as! PateintsTimeLineViewController
+        pateintsTimeLineVC.pateintsId = workflowTaskPatientId
+        return pateintsTimeLineVC
+    }()
+    
    /// add VC as child view contoller
     private func add(asChildViewController viewController: UIViewController) {
         addChild(viewController)

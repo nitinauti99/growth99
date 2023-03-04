@@ -103,6 +103,7 @@ struct Constant {
         static let Consents = " Consents"
         static let AssignConsent = "Assign Consent"
         static let appointmentDetail = "Appointment"
+        static let timeLineDetail = "TimeLine"
         static let deleteConcents = "Delete Consent"
         static let tasksDetail = "Tasks Detail"
         static let patientTags = "Patient Tags"

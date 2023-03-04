@@ -97,6 +97,7 @@ struct EndPoints {
     static let patientsQuestionnaireDetail = "/api/patient/"
     static let createConsentPatients = "/api/patients/"
     static let getBussinessSelection = "/api/public/v1/users/"
+    static let patentsTimeLine = "/api/v1/audit/patient?patientId="
 }
 
 struct ApiUrl {
@@ -192,5 +193,6 @@ struct ApiUrl {
     static let questionnaireFormURL = EndPoints.baseURL.appending(EndPoints.questionnaireFormURL)
     static let createConsentPatients = EndPoints.baseURL.appending(EndPoints.createConsentPatients)
     static let getBussinessSelection = EndPoints.baseURL.appending(EndPoints.getBussinessSelection)
-    
+    static let patentsTimeLine = EndPoints.baseURL.appending(EndPoints.patentsTimeLine)    
 }
+
