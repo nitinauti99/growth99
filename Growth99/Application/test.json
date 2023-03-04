@@ -153,12 +153,8 @@
       "imageName": "fa-book",
       "subMenuList": [
         {
-          "title": "Mass Email",
+          "title": "Mass Email and SMS",
           "imageName": "fa-envelope"
-        },
-        {
-          "title": "Mass SMS",
-          "imageName": "fa-comment-dots"
         }
       ]
     },

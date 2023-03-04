@@ -1,13 +1,13 @@
 //
-//  BookingHistoryModel.swift
+//  TriggersListModel.swift
 //  Growth99
 //
-//  Created by Mahender Reddy on 31/01/23.
+//  Created by admin on 07/01/23.
 //
 
 import Foundation
 
-struct MassEmailSMSModel : Codable {
+struct MassEmailandSMSModel : Codable {
     let bpmnTasks : [String]?
     let bpmnEmails : [String]?
     let updatedBy : String?
@@ -37,7 +37,7 @@ struct BpmnSMS : Codable {
     let id : Int?
     let triggerFrequency : String?
     let bpmnTriggerType : String?
-    let smsTemplate : SmsTemplate?
+    let smsTemplate : SMSTemplate?
     let triggerTime : Int?
     let actionIndex : Int?
     let orderOfCondition : Int?
@@ -59,7 +59,7 @@ struct SmsTemplate : Codable {
     let deleted : Bool?
     let tenantId : Int?
     let id : Int?
-    let defaultSmsTemplateId : String?
+    let defaultSmsTemplateId : Int?
     let name : String?
     let body : String?
     let subject : String?
@@ -71,3 +71,4 @@ struct SmsTemplate : Codable {
     let isCustom : String?
     let isCloneTemplate : Bool?
 }
+

@@ -267,9 +267,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         else if indexPath.section == 11 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "MassEmailViewController", pusedViewController: "MassEmailViewController")
-            case 1:
-                pushViewControllerFromDrawerMenu(identifier: "MassSMSViewController", pusedViewController: "MassSMSViewController")
+                pushViewControllerFromDrawerMenu(identifier: "MassEmailandSMSViewController", pusedViewController: "MassEmailandSMSViewController")
             default:
                 break
             }

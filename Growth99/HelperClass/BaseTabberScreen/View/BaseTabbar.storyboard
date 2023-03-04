@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yS-T6-sZu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1321.7391304347827" y="334.82142857142856"/>
+            <point key="canvasLocation" x="1538" y="335"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="o9R-4j-BXe">
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcc-wb-reu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059" y="335"/>
+            <point key="canvasLocation" x="828" y="335"/>
         </scene>
         <!--Base Tabbar View Controller-->
         <scene sceneID="t2x-oH-iuO">
@@ -149,12 +149,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="V3N-ea-uov" kind="relationship" relationship="rootViewController" id="WmJ-NS-g02"/>
+                        <segue destination="V3N-ea-uov" kind="relationship" relationship="rootViewController" id="6lz-Lk-OjG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krQ-MC-KnY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="442" y="335"/>
+            <point key="canvasLocation" x="112" y="335"/>
         </scene>
         <!--Home View Contoller-->
         <scene sceneID="M7P-pE-Ydr">
@@ -1356,40 +1356,40 @@
     </scenes>
     <designables>
         <designable name="2bn-9i-Rf8">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="6ap-Gu-wfc">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="71M-Ey-Ckk">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="Cfk-FX-j6V">
-            <size key="intrinsicContentSize" width="117.5" height="25"/>
+            <size key="intrinsicContentSize" width="110.5" height="30"/>
         </designable>
         <designable name="Ncb-Vy-p3O">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Szr-pV-NLf">
-            <size key="intrinsicContentSize" width="118.5" height="25"/>
+            <size key="intrinsicContentSize" width="111.5" height="30"/>
         </designable>
         <designable name="U5u-aw-l21">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="W62-Z0-RHA">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Wu1-x8-b6o">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jzu-kM-8lq">
-            <size key="intrinsicContentSize" width="99.5" height="25"/>
+            <size key="intrinsicContentSize" width="92.5" height="30"/>
         </designable>
         <designable name="xJW-WU-nu4">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="zJe-wg-Ipq">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>
