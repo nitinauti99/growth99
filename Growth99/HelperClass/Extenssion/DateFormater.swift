@@ -18,9 +18,20 @@ protocol DateFormaterProtocol: AnyObject {
     func utcToLocalAccounts(timeString: String) -> String?
     func localToServerWithDate(date: String) -> String
     func serverToLocalDate(date: String) -> String
+    func serverToLocalPateintTimeLineDate(date: String) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
+    
+    func serverToLocalPateintTimeLineDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
+        return dateFormatter.string(from: date)
+    }
     
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()

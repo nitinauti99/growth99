@@ -9,7 +9,7 @@ import Foundation
 
 struct EndPoints {
     static let baseURL = "https://api.growthemr.com"
-    static let auth = "/api/auth"
+    static let auth = "/api/user/auth"
     static let register = "/api/account/register"
     static let forgotPassword = "/api/public/users/forgot-password"
     static let VerifyforgotPassword = "/api/public/users/forgot-password"
@@ -98,6 +98,8 @@ struct EndPoints {
     static let createConsentPatients = "/api/patients/"
     static let getBussinessSelection = "/api/public/v1/users/"
     static let getAllEmailandSMS = "/api/trigger?query=%27BroadCast%27"
+    static let patentsTimeLine = "/api/v1/audit/patient?patientId="
+    static let patientsByTenantId = "/api/v1/patientsByTenantId"
 }
 
 struct ApiUrl {
@@ -194,4 +196,8 @@ struct ApiUrl {
     static let createConsentPatients = EndPoints.baseURL.appending(EndPoints.createConsentPatients)
     static let getBussinessSelection = EndPoints.baseURL.appending(EndPoints.getBussinessSelection)
     static let getAllEmailandSMS = EndPoints.baseURL.appending(EndPoints.getAllEmailandSMS)
+    static let patentsTimeLine = EndPoints.baseURL.appending(EndPoints.patentsTimeLine)
+    static let patientsByTenantId = EndPoints.baseURL.appending(EndPoints.patientsByTenantId)
 }
+
+

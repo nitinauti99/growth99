@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01152DFA29B31C0300B24627 /* PateintsTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */; };
+		01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */; };
+		01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */; };
+		01152E0029B31C2A00B24627 /* PateintsTimeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DFF29B31C2A00B24627 /* PateintsTimeLineModel.swift */; };
+		01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E0229B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift */; };
+		01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01152E0329B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib */; };
+		01152E0729B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E0629B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -618,6 +625,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewController.swift; sourceTree = "<group>"; };
+		01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTimeLineViewController.storyboard; sourceTree = "<group>"; };
+		01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewModel.swift; sourceTree = "<group>"; };
+		01152DFF29B31C2A00B24627 /* PateintsTimeLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineModel.swift; sourceTree = "<group>"; };
+		01152E0229B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineTableViewCell.swift; sourceTree = "<group>"; };
+		01152E0329B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsTimeLineTableViewCell.xib; sourceTree = "<group>"; };
+		01152E0629B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintsTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -1258,6 +1272,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01152DF529B31BB700B24627 /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				01152DF829B31BD100B24627 /* Model */,
+				01152DF729B31BCE00B24627 /* ViewModel */,
+				01152DF629B31BCB00B24627 /* View */,
+			);
+			path = TimeLine;
+			sourceTree = "<group>";
+		};
+		01152DF629B31BCB00B24627 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01152E0129B31E6300B24627 /* Cell */,
+				01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */,
+				01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */,
+				01152E0629B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01152DF729B31BCE00B24627 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01152DF829B31BD100B24627 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01152DFF29B31C2A00B24627 /* PateintsTimeLineModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01152E0129B31E6300B24627 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01152E0229B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift */,
+				01152E0329B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
 			isa = PBXGroup;
 			children = (
@@ -1552,10 +1612,8 @@
 		3947A8DB2996776E000CA2EB /* AddEventView */ = {
 			isa = PBXGroup;
 			children = (
-				3947A8DE2996776E000CA2EB /* Model */,
 				3947A8DF2996776E000CA2EB /* View */,
 				3947A8DC2996776E000CA2EB /* ViewModel */,
-				3947A8E32996776E000CA2EB /* CustomTableViewCell */,
 			);
 			path = AddEventView;
 			sourceTree = "<group>";
@@ -1568,13 +1626,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		3947A8DE2996776E000CA2EB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		3947A8DF2996776E000CA2EB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,13 +1633,6 @@
 				3947A8E12996776E000CA2EB /* AddEventViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3947A8E32996776E000CA2EB /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		3947A8E42996776E000CA2EB /* EventEditView */ = {
@@ -3668,6 +3712,7 @@
 				842C0C8B298F713B00395061 /* Questionarie */,
 				842C0C84298F713B00395061 /* AddPateintsTask */,
 				842C0C68298F713B00395061 /* Consents */,
+				01152DF529B31BB700B24627 /* TimeLine */,
 				842C0C78298F713B00395061 /* PateintsAppointmentList */,
 			);
 			path = PateintsDetail;
@@ -4581,6 +4626,7 @@
 				DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */,
 				842C0CB9298F713B00395061 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
+				01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */,
 				3947A8F52996776E000CA2EB /* AddEventViewController.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
@@ -4680,6 +4726,7 @@
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
+				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
@@ -4871,6 +4918,7 @@
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
+				01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
@@ -4901,6 +4949,7 @@
 				8490350329954F7300556D47 /* SMSTemplatesListTableViewCell.swift in Sources */,
 				842C0CB1298F713B00395061 /* PatientAppointmentViewModel.swift in Sources */,
 				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
+				01152E0029B31C2A00B24627 /* PateintsTimeLineModel.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
@@ -5166,6 +5215,7 @@
 				84903512299571CB00556D47 /* ConsentsTemplateListViewController+TableView.swift in Sources */,
 				848EEA94299A5FC100F6E3D5 /* CreateFormModel.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
+				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
 				01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
@@ -5187,6 +5237,7 @@
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
 				842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */,
 				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
+				01152DFA29B31C0300B24627 /* PateintsTimeLineViewController.swift in Sources */,
 				8440B3932999FE4900A42097 /* FormListViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
@@ -5195,6 +5246,7 @@
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,
 				398F90EC298ECB8700DB96E4 /* IQPreviousNextView.swift in Sources */,
 				398F9100298ECB8700DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */,
+				01152E0729B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift in Sources */,
 				398F90FE298ECB8700DB96E4 /* IQUIView+Hierarchy.swift in Sources */,
 				84F61135292A71AB00B1FB69 /* HTTPMethod.swift in Sources */,
 				842C0CDB298FC12200395061 /* PateintsTagListTableViewCell.swift in Sources */,

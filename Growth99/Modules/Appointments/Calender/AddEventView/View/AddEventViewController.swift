@@ -15,6 +15,7 @@ protocol AddEventViewControllerProtocol: AnyObject {
     func errorEventReceived(error: String)
     func getPhoneNumberDataRecived()
     func getEmailAddressDataRecived()
+    func patientAppointmentListDataRecived()
 }
 
 class AddEventViewController: UIViewController, CalenderViewContollerProtocol, AddEventViewControllerProtocol {
@@ -61,6 +62,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     var selectedDate: String = String.blank
     var selectedTime: String = String.blank
     var appointmentTypeSelected: String = "InPerson"
+    var screenTitile = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,20 +115,12 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getClinicsData()
+        self.getClinicsData()
     }
-    
+ 
     func getClinicsData() {
         self.view.ShowSpinner()
         addEventViewModel?.getallClinics()
-    }
-
-    @objc func closeEventClicked(_ sender: UIButton) {
-        self.dismiss(animated: true)
-    }
-    
-    @IBAction func cancelButton(sender: UIButton) {
-        self.dismiss(animated: true)
     }
     
     func clinicsReceived() {
@@ -139,6 +133,23 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         selectedServices = []
         allServices = addEventViewModel?.serviceData ?? []
         self.view.HideSpinner()
+        if self.screenTitile == "Pateints Appointment" {
+            self.view.ShowSpinner()
+            self.eventViewModel?.getPateintsAppointData()
+        }
+    }
+    
+    func patientAppointmentListDataRecived(){
+        self.view.HideSpinner()
+        self.setUPUI()
+    }
+    
+    func setUPUI(){
+        let item = eventViewModel?.getPatientsAppointmentList[0]
+        self.emailTextField.text = item?.email
+        self.firstNameTextField.text = item?.firstName
+        self.lastNameTextField.text = item?.lastName
+        self.phoneNumberTextField.text = item?.phone
     }
     
     func providerListDataRecived() {
@@ -178,11 +189,23 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         
     }
     
+    
+    @objc func closeEventClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func cancelButton(sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     func appoinmentCreated(apiResponse: AppoinmentModel) {
         self.view.HideSpinner()
         let userInfo = ["clinicId": selectedClincIds, "providerId": selectedProvidersIds, "serviceId": selectedServicesIds] as [String : Any]
         NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil, userInfo: userInfo)
         self.navigationController?.dismiss(animated: true)
+        if self.screenTitile == "Pateints Appointment" {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     func errorEventReceived(error: String) {
@@ -196,7 +219,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -216,7 +239,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServices.name
         }
         
         selectionMenu.setSelectedItems(items: selectedServices) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -354,7 +377,11 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
+        if self.screenTitile == "Pateints Appointment" {
+            self.navigationController?.popViewController(animated: true)
+        }
         self.navigationController?.dismiss(animated: true)
+        
     }
     
     @IBAction func inPersonButtonAction(sender: UIButton) {
