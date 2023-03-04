@@ -100,6 +100,7 @@ struct EndPoints {
     static let getAllEmailandSMS = "/api/trigger?query=%27BroadCast%27"
     static let patentsTimeLine = "/api/v1/audit/patient?patientId="
     static let patientsByTenantId = "/api/v1/patientsByTenantId"
+    static let getAnnouncementsList = "/api/productionRelease/all"
 }
 
 struct ApiUrl {
@@ -198,6 +199,7 @@ struct ApiUrl {
     static let getAllEmailandSMS = EndPoints.baseURL.appending(EndPoints.getAllEmailandSMS)
     static let patentsTimeLine = EndPoints.baseURL.appending(EndPoints.patentsTimeLine)
     static let patientsByTenantId = EndPoints.baseURL.appending(EndPoints.patientsByTenantId)
+    static let getAnnouncementsList = EndPoints.baseURL.appending(EndPoints.getAnnouncementsList)
 }
 
 

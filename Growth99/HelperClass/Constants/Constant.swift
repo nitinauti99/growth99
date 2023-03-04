@@ -56,6 +56,11 @@ struct Constant {
     }
     
     struct Profile {
+        static let socialMediaManager = "Social Media Manager"
+        static let chatbot = "Chatbot"
+        static let websiteTemplatesList = "Website Templates"
+        static let announcements = "Announcements"
+        static let landingPages = "Landing Pages"
         static let appointment = "Add Appointment"
         static let editAppointment = "Edit Appointment"
         static let calender = "Calendar"

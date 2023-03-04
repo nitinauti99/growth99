@@ -24,7 +24,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     @IBOutlet private var bussinessTitile: UILabel!
     @IBOutlet private var profileImage: UIImageView!
     let user = UserRepository.shared
-
+    
     
     // MARK: - DECLARATIONS
     var section: Int = 0
@@ -45,7 +45,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.hiddenSections = Set(0...mainMenuList.count)
         self.roles.text = UserRepository.shared.roles
         self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
-
+        
         scrollview.delegate = self
         
         self.tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "MenuTableViewCell")
@@ -53,7 +53,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         ///used for showing subMenuTitle
         self.tableView.register(UINib(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuTableViewCell")
     }
-   
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -140,6 +140,12 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
         } else if(title == Constant.Profile.formBuilder) {
             pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
+        } else if(title == Constant.Profile.websiteTemplatesList) {
+            pushViewControllerFromDrawerMenu(identifier: "WebisteTemplatesViewController", pusedViewController:  "WebisteTemplatesViewController")
+        } else if(title == Constant.Profile.announcements) {
+            pushViewControllerFromDrawerMenu(identifier: "AnnouncementsViewController", pusedViewController: "AnnouncementsViewController")
+        } else if(title == Constant.Profile.landingPages) {
+            pushViewControllerFromDrawerMenu(identifier: "LandingPagesViewController", pusedViewController: "LandingPagesViewController")
         }
     }
 }
@@ -268,6 +274,20 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "MassEmailandSMSViewController", pusedViewController: "MassEmailandSMSViewController")
+            default:
+                break
+            }
+        } else if indexPath.section == 12 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "SocialMediaManagerViewController", pusedViewController: "SocialMediaManagerViewController")
+            default:
+                break
+            }
+        } else if indexPath.section == 13 {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "ChatbotViewController", pusedViewController: "ChatbotViewController")
             default:
                 break
             }

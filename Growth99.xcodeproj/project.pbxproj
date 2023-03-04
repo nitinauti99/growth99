@@ -154,6 +154,24 @@
 		39FC68FC29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */; };
 		39FC68FD29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */; };
 		39FC68FF29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */; };
+		39FC690B29B3D22400FCB7C6 /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */; };
+		39FC690D29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */; };
+		39FC690F29B3D26400FCB7C6 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC690E29B3D26400FCB7C6 /* AnnouncementsViewModel.swift */; };
+		39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691029B3D26E00FCB7C6 /* AnnouncementsModel.swift */; };
+		39FC691329B3D28300FCB7C6 /* WebisteTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691229B3D28300FCB7C6 /* WebisteTemplatesViewController.swift */; };
+		39FC691529B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC691429B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard */; };
+		39FC691F29B3D56300FCB7C6 /* LandingPagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691829B3D56300FCB7C6 /* LandingPagesViewModel.swift */; };
+		39FC692029B3D56300FCB7C6 /* LandingPagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */; };
+		39FC692129B3D56400FCB7C6 /* LandingPagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */; };
+		39FC692229B3D56400FCB7C6 /* LandingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */; };
+		39FC692C29B3D73D00FCB7C6 /* ChatbotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */; };
+		39FC692D29B3D73D00FCB7C6 /* ChatbotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */; };
+		39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */; };
+		39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */; };
+		39FC693929B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */; };
+		39FC693A29B3D75A00FCB7C6 /* SocialMediaManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */; };
+		39FC693B29B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */; };
+		39FC693C29B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -795,6 +813,24 @@
 		39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSTableViewCell.swift; sourceTree = "<group>"; };
 		39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSTableViewCell.xib; sourceTree = "<group>"; };
 		39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggersListViewController+TableView.swift"; sourceTree = "<group>"; };
+		39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
+		39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementsViewController.storyboard; sourceTree = "<group>"; };
+		39FC690E29B3D26400FCB7C6 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
+		39FC691029B3D26E00FCB7C6 /* AnnouncementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsModel.swift; sourceTree = "<group>"; };
+		39FC691229B3D28300FCB7C6 /* WebisteTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebisteTemplatesViewController.swift; sourceTree = "<group>"; };
+		39FC691429B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebisteTemplatesViewController.storyboard; sourceTree = "<group>"; };
+		39FC691829B3D56300FCB7C6 /* LandingPagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesViewModel.swift; sourceTree = "<group>"; };
+		39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesModel.swift; sourceTree = "<group>"; };
+		39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingPagesViewController.storyboard; sourceTree = "<group>"; };
+		39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesViewController.swift; sourceTree = "<group>"; };
+		39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotViewModel.swift; sourceTree = "<group>"; };
+		39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotModel.swift; sourceTree = "<group>"; };
+		39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotViewController.swift; sourceTree = "<group>"; };
+		39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatbotViewController.storyboard; sourceTree = "<group>"; };
+		39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerViewModel.swift; sourceTree = "<group>"; };
+		39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerModel.swift; sourceTree = "<group>"; };
+		39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerViewController.swift; sourceTree = "<group>"; };
+		39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialMediaManagerViewController.storyboard; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -2047,6 +2083,219 @@
 			children = (
 				39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */,
 				39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC690029B3D20D00FCB7C6 /* WebisteTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690129B3D20D00FCB7C6 /* ViewModel */,
+				39FC690229B3D20D00FCB7C6 /* Model */,
+				39FC690329B3D20D00FCB7C6 /* View */,
+				39FC690429B3D20D00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = WebisteTemplates;
+			sourceTree = "<group>";
+		};
+		39FC690129B3D20D00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC690229B3D20D00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC690329B3D20D00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691229B3D28300FCB7C6 /* WebisteTemplatesViewController.swift */,
+				39FC691429B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC690429B3D20D00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC690529B3D20E00FCB7C6 /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690729B3D20E00FCB7C6 /* Model */,
+				39FC690829B3D20E00FCB7C6 /* View */,
+				39FC690629B3D20E00FCB7C6 /* ViewModel */,
+				39FC690929B3D20E00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = Announcements;
+			sourceTree = "<group>";
+		};
+		39FC690629B3D20E00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690E29B3D26400FCB7C6 /* AnnouncementsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC690729B3D20E00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691029B3D26E00FCB7C6 /* AnnouncementsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC690829B3D20E00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */,
+				39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC690929B3D20E00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC691629B3D56300FCB7C6 /* LandingPages */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691729B3D56300FCB7C6 /* ViewModel */,
+				39FC691929B3D56300FCB7C6 /* Model */,
+				39FC691B29B3D56300FCB7C6 /* View */,
+				39FC691E29B3D56300FCB7C6 /* CustomTableViewCell */,
+			);
+			path = LandingPages;
+			sourceTree = "<group>";
+		};
+		39FC691729B3D56300FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691829B3D56300FCB7C6 /* LandingPagesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC691929B3D56300FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC691B29B3D56300FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */,
+				39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC691E29B3D56300FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC692329B3D73D00FCB7C6 /* Chatbot */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692429B3D73D00FCB7C6 /* ViewModel */,
+				39FC692629B3D73D00FCB7C6 /* Model */,
+				39FC692829B3D73D00FCB7C6 /* View */,
+				39FC692B29B3D73D00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = Chatbot;
+			sourceTree = "<group>";
+		};
+		39FC692429B3D73D00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC692629B3D73D00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC692829B3D73D00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */,
+				39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC692B29B3D73D00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC693029B3D75A00FCB7C6 /* SocialMediaManager */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693329B3D75A00FCB7C6 /* Model */,
+				39FC693529B3D75A00FCB7C6 /* View */,
+				39FC693129B3D75A00FCB7C6 /* ViewModel */,
+				39FC693829B3D75A00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = SocialMediaManager;
+			sourceTree = "<group>";
+		};
+		39FC693129B3D75A00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC693329B3D75A00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC693529B3D75A00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */,
+				39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC693829B3D75A00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -3520,6 +3769,11 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				39FC693029B3D75A00FCB7C6 /* SocialMediaManager */,
+				39FC692329B3D73D00FCB7C6 /* Chatbot */,
+				39FC691629B3D56300FCB7C6 /* LandingPages */,
+				39FC690529B3D20E00FCB7C6 /* Announcements */,
+				39FC690029B3D20D00FCB7C6 /* WebisteTemplates */,
 				39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */,
 				8440B38A2999FD5E00A42097 /* FormBuilder */,
 				848A03852993FAD7004FE278 /* Templates */,
@@ -4790,6 +5044,7 @@
 				DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */,
 				842C0CB9298F713B00395061 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
+				39FC692129B3D56400FCB7C6 /* LandingPagesViewController.storyboard in Resources */,
 				01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */,
 				3947A8F52996776E000CA2EB /* AddEventViewController.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
@@ -4816,6 +5071,7 @@
 				842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */,
 				01BBA9EB29AB9450006A5DB8 /* CreateNotificationViewController.storyboard in Resources */,
 				849D3AF52997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf in Resources */,
+				39FC690D29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard in Resources */,
 				848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
@@ -4823,6 +5079,7 @@
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
+				39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				84D063232967080E001FE469 /* DateTypeTableViewCell.xib in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
@@ -4851,6 +5108,7 @@
 				842C0CC8298F713B00395061 /* QuestionarieViewController.storyboard in Resources */,
 				3947A8F22996776E000CA2EB /* EventsTableViewCell.xib in Resources */,
 				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
+				39FC691529B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
@@ -4897,6 +5155,7 @@
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
+				39FC693C29B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
 				84B75EA62968CEA300962F3E /* CategoriesListTableViewCell.xib in Resources */,
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
@@ -5049,6 +5308,7 @@
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */,
 				842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */,
+				39FC691F29B3D56300FCB7C6 /* LandingPagesViewModel.swift in Sources */,
 				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
@@ -5098,6 +5358,7 @@
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
+				39FC692D29B3D73D00FCB7C6 /* ChatbotModel.swift in Sources */,
 				01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
@@ -5122,6 +5383,7 @@
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
+				39FC693929B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
 				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
@@ -5152,6 +5414,7 @@
 				398F90FA298ECB8700DB96E4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
+				39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */,
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
 				017D574B29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
@@ -5194,9 +5457,11 @@
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				DAEF749A299D4ADB009140AE /* BusinessDetailView.swift in Sources */,
 				849D3AEF2997CC72003E856A /* FontAwesomeTabBarItem.swift in Sources */,
+				39FC692C29B3D73D00FCB7C6 /* ChatbotViewModel.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */,
 				3947A8F42996776E000CA2EB /* AddEventViewController.swift in Sources */,
+				39FC692029B3D56300FCB7C6 /* LandingPagesModel.swift in Sources */,
 				84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */,
 				849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */,
 				84D0629F2967070D001FE469 /* UserListModel.swift in Sources */,
@@ -5270,6 +5535,7 @@
 				3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */,
 				842C0CB4298F713B00395061 /* PatientAppointmentViewController.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
+				39FC693B29B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift in Sources */,
 				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
@@ -5283,6 +5549,7 @@
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
 				84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */,
+				39FC693A29B3D75A00FCB7C6 /* SocialMediaManagerModel.swift in Sources */,
 				01152E3829B3C63700B24627 /* CombineTimeLineViewController.swift in Sources */,
 				84F610BE292A71AA00B1FB69 /* Data+Crypto.swift in Sources */,
 				84D063082967080E001FE469 /* EmailTemplateTableViewCell.swift in Sources */,
@@ -5302,6 +5569,7 @@
 				39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
+				39FC692229B3D56400FCB7C6 /* LandingPagesViewController.swift in Sources */,
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
 				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
@@ -5317,6 +5585,7 @@
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
 				842C0CD1298F756200395061 /* AddNewConsentsModel.swift in Sources */,
+				39FC690B29B3D22400FCB7C6 /* AnnouncementsViewController.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
@@ -5385,7 +5654,9 @@
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				849D3AEE2997CC72003E856A /* FontAwesomeExtension.swift in Sources */,
+				39FC690F29B3D26400FCB7C6 /* AnnouncementsViewModel.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
+				39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
@@ -5396,6 +5667,7 @@
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
+				39FC691329B3D28300FCB7C6 /* WebisteTemplatesViewController.swift in Sources */,
 				01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
