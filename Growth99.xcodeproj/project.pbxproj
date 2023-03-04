@@ -14,6 +14,8 @@
 		01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E0229B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift */; };
 		01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01152E0329B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib */; };
 		01152E0729B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E0629B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift */; };
+		01152E0C29B38C4D00B24627 /* PateintsTagsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E0B29B38C4D00B24627 /* PateintsTagsListViewController+TableView.swift */; };
+		01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E0D29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -639,6 +641,8 @@
 		01152E0229B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		01152E0329B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsTimeLineTableViewCell.xib; sourceTree = "<group>"; };
 		01152E0629B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintsTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
+		01152E0B29B38C4D00B24627 /* PateintsTagsListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintsTagsListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01152E0D29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintsTagsListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -3082,6 +3086,8 @@
 				8490049A2985A24700A271AA /* Cell */,
 				849004942985A18800A271AA /* PateintsTagsListViewController.swift */,
 				849004962985A19800A271AA /* PateintsTagsListViewController.storyboard */,
+				01152E0B29B38C4D00B24627 /* PateintsTagsListViewController+TableView.swift */,
+				01152E0D29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3114,7 +3120,6 @@
 		849004A12986C22A00A271AA /* PateintsTagsAdd */ = {
 			isa = PBXGroup;
 			children = (
-				849004A42986C27C00A271AA /* Model */,
 				849004A32986C27800A271AA /* ViewModel */,
 				849004A22986C27400A271AA /* View */,
 			);
@@ -3136,13 +3141,6 @@
 				849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		849004A42986C27C00A271AA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		849034F12995366E00556D47 /* View */ = {
@@ -5196,6 +5194,7 @@
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
+				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
 				01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */,
@@ -5312,6 +5311,7 @@
 				84D0628B29670677001FE469 /* User.swift in Sources */,
 				845C39D4292276B000D934C5 /* Constant.swift in Sources */,
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,
+				01152E0C29B38C4D00B24627 /* PateintsTagsListViewController+TableView.swift in Sources */,
 				398F90EC298ECB8700DB96E4 /* IQPreviousNextView.swift in Sources */,
 				398F9100298ECB8700DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */,
 				01152E0729B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift in Sources */,

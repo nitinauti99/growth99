@@ -12,36 +12,40 @@ protocol PateintsTagsAddViewControllerProtocol: AnyObject {
     func pateintsTagListRecived()
     func errorReceived(error: String)
     func savePateintsTagList(responseMessage:String)
-
 }
 
 class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewControllerProtocol {
-   
+    
     @IBOutlet private weak var PateintsTagsTextField: CustomTextField!
+    @IBOutlet private weak var pateintsTagsLBI: UILabel!
+    
     var viewModel: PateintsTagsAddViewModelProtocol?
-    var PatientTagId = Int()
-    var PateintsTagsCreate = Bool()
+    var patientTagId = Int()
+    var pateintsTagScreenName = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintsTagsAddViewModel(delegate: self)
-        if PateintsTagsCreate == false {
+        if pateintsTagScreenName == "Edit Screen" {
             self.view.ShowSpinner()
-            viewModel?.pateintsTagsDetails(pateintsTagId: PatientTagId)
+            viewModel?.pateintsTagsDetails(pateintsTagId: patientTagId)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.Questionnarie
-        if PateintsTagsCreate == false {
+        if pateintsTagScreenName == "Edit Screen" {
+            self.pateintsTagsLBI.text = "Edit Patient Tag"
             self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? String.blank
+        }else{
+            self.pateintsTagsLBI.text = "Create Patient Tag"
         }
     }
     
     func pateintsTagListRecived() {
         self.view.HideSpinner()
-        if PateintsTagsCreate == false {
+        if pateintsTagScreenName == "Edit Screen" {
             self.PateintsTagsTextField.text = viewModel?.pateintsTagsDetailsData?.name ?? String.blank
         }
     }

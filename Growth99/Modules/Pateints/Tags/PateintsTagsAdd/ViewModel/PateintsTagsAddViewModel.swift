@@ -9,9 +9,9 @@ import Foundation
 
 protocol PateintsTagsAddViewModelProtocol {
     func pateintsTagsDetails(pateintsTagId:Int)
-    var pateintsTagsDetailsData: PateintsTagListModel? { get }
     func savePateintsTagsDetails(pateintsTagId:Int, name: String)
     func createPateintsTagsDetails(name: String)
+    var pateintsTagsDetailsData: PateintsTagListModel? { get }
 }
 
 class PateintsTagsAddViewModel {
@@ -73,8 +73,6 @@ class PateintsTagsAddViewModel {
             }
         }
     }
-
-
 }
 
 extension PateintsTagsAddViewModel: PateintsTagsAddViewModelProtocol {

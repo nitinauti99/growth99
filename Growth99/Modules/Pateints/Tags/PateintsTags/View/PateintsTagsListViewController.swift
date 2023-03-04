@@ -16,8 +16,8 @@ protocol PateintsTagsListViewControllerProtocol: AnyObject {
 
 class PateintsTagsListViewController: UIViewController, PateintsTagsListViewControllerProtocol,PateintsTagListTableViewCellDelegate {
    
-    @IBOutlet private weak var PateintsTagsListTableview: UITableView!
-    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet weak var pateintsTagsListTableview: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel: PateintsTagsListViewModelProtocol?
     var isSearch : Bool = false
@@ -31,7 +31,7 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     }
         
     func registerTableView() {
-        PateintsTagsListTableview.register(UINib(nibName: "PateintsTagListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintsTagListTableViewCell")
+        pateintsTagsListTableview.register(UINib(nibName: "PateintsTagListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintsTagListTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +39,7 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
         addSerchBar()
         self.registerTableView()
         self.view.ShowSpinner()
-        viewModel?.getQuestionarieList()
+        viewModel?.getPateintsTagsList()
         self.title = Constant.Profile.patientTags
     }
     
@@ -64,7 +64,12 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     
     func pateintsTagListRecived() {
         self.view.HideSpinner()
-        self.PateintsTagsListTableview.reloadData()
+        self.pateintsTagsListTableview.reloadData()
+        if viewModel?.getPateintsTagsData.count == 0 {
+            self.emptyMessage(parentView: self.view, message: "There is no data to show")
+        }else{
+            self.emptyMessage(parentView: self.view, message: "")
+        }
     }
     
     func errorReceived(error: String) {
@@ -73,12 +78,22 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     }
     
     func removePatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.QuestionarieDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+        var tagName : String = ""
+        var tagId: Int = 0
+       
+        if self.isSearch {
+            tagId = self.viewModel?.pateintsTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            tagName = self.viewModel?.pateintsTagsFilterListDataAtIndex(index: index.row)?.name ?? String.blank
+        }else{
+            tagId = self.viewModel?.pateintsTagsListDataAtIndex(index: index.row)?.id ?? 0
+            tagName = self.viewModel?.pateintsTagsListDataAtIndex(index: index.row)?.name ?? String.blank
+        }
+        
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()
-            let tagid = self?.viewModel?.QuestionarieDataAtIndex(index: index.row)?.id ?? 0
-            self?.viewModel?.removePateintsTag(pateintsTagid: tagid)
+            self?.viewModel?.removePateintsTag(pateintsTagid: tagId)
         })
         cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
         alert.addAction(cancelAlert)
@@ -89,69 +104,17 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
 
     func pateintTagRemovedSuccefully(mrssage: String){
         self.view.showToast(message: mrssage, color: .red)
-        viewModel?.getQuestionarieList()
+        viewModel?.getPateintsTagsList()
     }
 
     func editPatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
         let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-        detailController.PatientTagId = viewModel?.QuestionarieDataAtIndex(index: index.row)?.id ?? 0
-        detailController.PateintsTagsCreate = false
-        navigationController?.pushViewController(detailController, animated: true)
-    }
-
-}
-
-extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch {
-            return filteredTableData.count
-        } else {
-            return viewModel?.QuestionarieDataList.count ?? 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = self.PateintsTagsListTableview.dequeueReusableCell(withIdentifier: "PateintsTagListTableViewCell", for: indexPath) as? PateintsTagListTableViewCell else { return UITableViewCell() }
-
-        cell.delegate = self
-        if isSearch {
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+        detailController.pateintsTagScreenName = "Edit Screen"
+        if self.isSearch {
+            detailController.patientTagId = viewModel?.pateintsTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
         }else{
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+            detailController.patientTagId = viewModel?.pateintsTagsListDataAtIndex(index: index.row)?.id ?? 0
         }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-        
-        detailController.PatientTagId = viewModel?.QuestionarieDataAtIndex(index: indexPath.row)?.id ?? 0
-        detailController.PateintsTagsCreate = false
         navigationController?.pushViewController(detailController, animated: true)
-    }
-}
-
-extension PateintsTagsListViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTableData = (viewModel?.QuestionarieDataList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })!
-        isSearch = true
-        PateintsTagsListTableview.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearch = false
-        searchBar.text = ""
-        PateintsTagsListTableview.reloadData()
     }
 }
