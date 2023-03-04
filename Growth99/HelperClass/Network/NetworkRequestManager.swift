@@ -23,6 +23,13 @@ class RequestManager: NetworkManager {
              .authorization("Bearer "+(UserRepository.shared.authToken ?? String.blank))]
      }
     
+    
+    func publicHeader()-> [HTTPHeader] {
+        return [
+             .custom(key: "Content-Type", value: "application/json"),
+             ]
+    }
+    
     func queryItems(from params: [String: Any]) -> [URLQueryItem] {
          let queryItems: [URLQueryItem] = params.compactMap { parameter -> URLQueryItem? in
              var result: URLQueryItem?

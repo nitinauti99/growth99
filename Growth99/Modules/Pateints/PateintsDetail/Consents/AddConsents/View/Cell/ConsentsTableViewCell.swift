@@ -9,10 +9,10 @@ import UIKit
 
 class ConsentsTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var questionnaireName: UILabel!
-    @IBOutlet private weak var questionnaireID: UILabel!
-    @IBOutlet private weak var questionnaireSelection: UIButton!
-    @IBOutlet private weak var subView: UIView!
+    @IBOutlet  weak var questionnaireName: UILabel!
+    @IBOutlet  weak var questionnaireID: UILabel!
+    @IBOutlet  weak var questionnaireSelection: UIButton!
+    @IBOutlet  weak var subView: UIView!
 
     var dateFormater : DateFormaterProtocol?
     
@@ -30,8 +30,14 @@ class ConsentsTableViewCell: UITableViewCell {
         self.questionnaireSelection.imageView?.image = nil
     }
     
+    func configureCellWithSearch(consentsVM: AddNewConsentsViewModelProtocol?, index: IndexPath) {
+        let consentsVM = consentsVM?.getConsentsFilterDataAtIndex(index: index.row)
+        self.questionnaireName.text = consentsVM?.name
+        self.questionnaireID.text = String(consentsVM?.id ?? 0)
+    }
+    
     func configureCell(consentsVM: AddNewConsentsViewModelProtocol?, index: IndexPath) {
-        let consentsVM = consentsVM?.ConsentsDataAtIndex(index: index.row)
+        let consentsVM = consentsVM?.getConsentsDataAtIndex(index: index.row)
         self.questionnaireName.text = consentsVM?.name
         self.questionnaireID.text = String(consentsVM?.id ?? 0)
     }

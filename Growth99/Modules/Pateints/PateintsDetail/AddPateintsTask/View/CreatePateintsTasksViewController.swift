@@ -33,7 +33,16 @@ class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksV
         self.view.ShowSpinner()
         self.viewModel?.getTaskUserList()
         dateFormater = DateFormater()
+        self.title = Constant.Profile.createTasks
         setUPUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            let userInfo = [ "selectedIndex" : 2 ]
+            NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
+        }
     }
     
     func setUPUI() {

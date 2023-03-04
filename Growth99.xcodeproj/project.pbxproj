@@ -36,6 +36,23 @@
 		01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */; };
 		01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */; };
 		01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */; };
+		01C7488229B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488129B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift */; };
+		01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488329B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift */; };
+		01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488529B219F60085CED2 /* AddNewConsentsViewController+TableView.swift */; };
+		01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */; };
+		01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */; };
+		01C7488C29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */; };
+		01C7488E29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488D29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift */; };
+		01C7489029B22E670085CED2 /* ServicesListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7488F29B22E670085CED2 /* ServicesListViewController+TableView.swift */; };
+		01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */; };
+		01C7489429B22F090085CED2 /* UserListViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */; };
+		01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */; };
+		01C7489C29B2338E0085CED2 /* BussinessSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7489B29B2338E0085CED2 /* BussinessSelectionViewController.swift */; };
+		01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */; };
+		01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C748A629B234490085CED2 /* BussinessSelectionListTableViewCell.swift */; };
+		01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01C748A729B234490085CED2 /* BussinessSelectionListTableViewCell.xib */; };
+		01C748AB29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */; };
+		01C748AF29B24D930085CED2 /* BussinessSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C748AE29B24D930085CED2 /* BussinessSelectionModel.swift */; };
 		01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */; };
 		01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */; };
 		01D7AAFC299D5AF700821274 /* FormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */; };
@@ -637,6 +654,23 @@
 		01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormDetailTableViewCell+TableView.swift"; sourceTree = "<group>"; };
 		01C7484629B0E8F90085CED2 /* TasksListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksListViewController+TableView.swift"; sourceTree = "<group>"; };
 		01C7484829B0E9F40085CED2 /* TasksListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488129B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewQuestionarieViewController+tableView.swift"; sourceTree = "<group>"; };
+		01C7488329B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewQuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488529B219F60085CED2 /* AddNewConsentsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewConsentsViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddNewConsentsViewController+searchBar.swift"; sourceTree = "<group>"; };
+		01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsentsListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsentsListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488D29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientAppointmentViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7488F29B22E670085CED2 /* ServicesListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewContoller+TableView.swift"; sourceTree = "<group>"; };
+		01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
+		01C7489B29B2338E0085CED2 /* BussinessSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BussinessSelectionViewController.swift; sourceTree = "<group>"; };
+		01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BussinessSelectionViewController.storyboard; sourceTree = "<group>"; };
+		01C748A629B234490085CED2 /* BussinessSelectionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BussinessSelectionListTableViewCell.swift; sourceTree = "<group>"; };
+		01C748A729B234490085CED2 /* BussinessSelectionListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BussinessSelectionListTableViewCell.xib; sourceTree = "<group>"; };
+		01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BussinessSelectionViewController+TableView.swift"; sourceTree = "<group>"; };
+		01C748AE29B24D930085CED2 /* BussinessSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BussinessSelectionModel.swift; sourceTree = "<group>"; };
 		01D7AAF7299D5A5E00821274 /* FormDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailContainerView.swift; sourceTree = "<group>"; };
 		01D7AAF9299D5A6E00821274 /* FormDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FormDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailViewController.swift; sourceTree = "<group>"; };
@@ -1405,6 +1439,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		01C7489829B2334E0085CED2 /* BussinessView */ = {
+			isa = PBXGroup;
+			children = (
+				01C748A329B233FE0085CED2 /* Cell */,
+				01C7489B29B2338E0085CED2 /* BussinessSelectionViewController.swift */,
+				01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */,
+				01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */,
+			);
+			path = BussinessView;
+			sourceTree = "<group>";
+		};
+		01C748A329B233FE0085CED2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01C748A629B234490085CED2 /* BussinessSelectionListTableViewCell.swift */,
+				01C748A729B234490085CED2 /* BussinessSelectionListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01D7AAF2299D59CF00821274 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2078,6 +2132,7 @@
 		84088BB82977E7F90060855E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01C748AE29B24D930085CED2 /* BussinessSelectionModel.swift */,
 				841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */,
 				84D0620029670676001FE469 /* UserRepository.swift */,
 				84D0620229670676001FE469 /* LoginModel.swift */,
@@ -2089,8 +2144,9 @@
 		84088BB92977E80D0060855E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D0620429670676001FE469 /* LogInViewController.storyboard */,
+				01C7489829B2334E0085CED2 /* BussinessView */,
 				84D0620729670676001FE469 /* LogInViewController.swift */,
+				84D0620429670676001FE469 /* LogInViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2263,8 +2319,10 @@
 			isa = PBXGroup;
 			children = (
 				842C0C6F298F713B00395061 /* cell */,
-				842C0C72298F713B00395061 /* ConsentsListViewModel.swift */,
 				842C0C73298F713B00395061 /* ConsentsListViewController.storyboard */,
+				842C0C6E298F713B00395061 /* ConsentsListViewController.swift */,
+				01C7488929B21EA90085CED2 /* ConsentsListViewController+TableView.swift */,
+				01C7488B29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2272,7 +2330,7 @@
 		842C0C6D298F713B00395061 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C6E298F713B00395061 /* ConsentsListViewController.swift */,
+				842C0C72298F713B00395061 /* ConsentsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2318,6 +2376,8 @@
 				842C0CD4298F75A200395061 /* Cell */,
 				842C0CCC298F749100395061 /* AddNewConsentsViewController.swift */,
 				842C0CCE298F749E00395061 /* AddNewConsentsViewController.storyboard */,
+				01C7488529B219F60085CED2 /* AddNewConsentsViewController+TableView.swift */,
+				01C7488729B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2325,8 +2385,8 @@
 		842C0C78298F713B00395061 /* PateintsAppointmentList */ = {
 			isa = PBXGroup;
 			children = (
-				842C0C79298F713B00395061 /* ViewModel */,
 				842C0C7B298F713B00395061 /* Model */,
+				842C0C79298F713B00395061 /* ViewModel */,
 				842C0C7D298F713B00395061 /* View */,
 			);
 			path = PateintsAppointmentList;
@@ -2354,6 +2414,7 @@
 				842C0C7E298F713B00395061 /* PatientAppointmentViewController.storyboard */,
 				842C0C7F298F713B00395061 /* PatientAppointmentViewController.swift */,
 				842C0C80298F713B00395061 /* PatientAppointmentViewController+TableView.swift */,
+				01C7488D29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift */,
 				842C0C81298F713B00395061 /* Cell */,
 			);
 			path = View;
@@ -2465,6 +2526,8 @@
 				842C0C9C298F713B00395061 /* Cell */,
 				842C0C9B298F713B00395061 /* AddNewQuestionarieViewController.swift */,
 				842C0C9F298F713B00395061 /* AddNewQuestionarieViewController.storyboard */,
+				01C7488129B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift */,
+				01C7488329B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3244,6 +3307,8 @@
 			children = (
 				84B75EC6296902E600962F3E /* ServicesListViewController.swift */,
 				84B75EC7296902E600962F3E /* ServicesListViewController.storyboard */,
+				01C7488F29B22E670085CED2 /* ServicesListViewController+TableView.swift */,
+				01C7489129B22E960085CED2 /* ServicesListViewController+SearchBar.swift */,
 			);
 			path = ListScreen;
 			sourceTree = "<group>";
@@ -3785,6 +3850,8 @@
 				84D0629A2967070C001FE469 /* Cell */,
 				84D062982967070C001FE469 /* UserListViewContoller.swift */,
 				84D062972967070C001FE469 /* UserListViewContoller.storyboard */,
+				01C7489329B22F090085CED2 /* UserListViewContoller+TableView.swift */,
+				01C7489529B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4568,6 +4635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
+				01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */,
 				842C0CD8298F75CE00395061 /* ConsentsTableViewCell.xib in Resources */,
@@ -4685,6 +4753,7 @@
 				39F2FF142996B2F40089BD4F /* AppointmentsViewController.storyboard in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
+				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
 				39F2FF162996B2F40089BD4F /* AppointmentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4823,6 +4892,7 @@
 				84F610F3292A71AB00B1FB69 /* Invalidation.swift in Sources */,
 				84D0624329670677001FE469 /* HomeViewModel.swift in Sources */,
 				01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */,
+				01C7489029B22E670085CED2 /* ServicesListViewController+TableView.swift in Sources */,
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
@@ -4851,6 +4921,7 @@
 				84F610D8292A71AB00B1FB69 /* NSOperationQueue.swift in Sources */,
 				3947A900299677EE000CA2EB /* BookingHistoryViewController.swift in Sources */,
 				84F610F1292A71AB00B1FB69 /* Promise.swift in Sources */,
+				01C748AB29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift in Sources */,
 				84F610B5292A71AA00B1FB69 /* Claims.swift in Sources */,
 				84D0622629670676001FE469 /* WorkingCustomTableViewCell.swift in Sources */,
 				848C92B1291F6AA000502956 /* ViewControllerExtension.swift in Sources */,
@@ -4878,6 +4949,7 @@
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
+				01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
 				39F2FF122996B2F40089BD4F /* AppointmentsViewController.swift in Sources */,
@@ -4892,6 +4964,7 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
+				01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */,
 				8490350329954F7300556D47 /* SMSTemplatesListTableViewCell.swift in Sources */,
 				842C0CB1298F713B00395061 /* PatientAppointmentViewModel.swift in Sources */,
 				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
@@ -4900,6 +4973,7 @@
 				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
+				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */,
@@ -4958,6 +5032,7 @@
 				01BBA9E029AB571F006A5DB8 /* NotificationListTableViewCell.swift in Sources */,
 				398F90F0298ECB8700DB96E4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				84D0620929670676001FE469 /* BusinessProfileViewController.swift in Sources */,
+				01C7488C29B21EEE0085CED2 /* ConsentsListViewController+SearchBar.swift in Sources */,
 				84F61124292A71AB00B1FB69 /* Dictionary+Extension.swift in Sources */,
 				84F610C0292A71AA00B1FB69 /* ClaimSet.swift in Sources */,
 				84F61129292A71AB00B1FB69 /* JSON.swift in Sources */,
@@ -4977,6 +5052,7 @@
 				84D062F62967080E001FE469 /* leadCreationModel.swift in Sources */,
 				84D0623729670677001FE469 /* PateintDetailViewController.swift in Sources */,
 				8440B399299A1B1300A42097 /* FormListTableViewCell.swift in Sources */,
+				01C7489C29B2338E0085CED2 /* BussinessSelectionViewController.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
 				84BD33F92994BB020050C0D8 /* EmailTemplateViewController+TableView.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
@@ -4991,6 +5067,7 @@
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
 				84D0631F2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
+				01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,
 				845C39D0292276AF00D934C5 /* KeychainItemAccessibility.swift in Sources */,
@@ -5042,6 +5119,7 @@
 				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
+				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,
 				84BD33F62994BB020050C0D8 /* EmailTemplateViewController+SearchBar.swift in Sources */,
 				84D063212967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift in Sources */,
@@ -5071,6 +5149,7 @@
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
+				01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
 				3947A8F82996776E000CA2EB /* EventEditViewController.swift in Sources */,
@@ -5085,6 +5164,8 @@
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */,
+				01C7489429B22F090085CED2 /* UserListViewContoller+TableView.swift in Sources */,
+				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
@@ -5121,6 +5202,7 @@
 				DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */,
 				398F90F6298ECB8700DB96E4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
+				01C7488229B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift in Sources */,
 				398F90F2298ECB8700DB96E4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
 				84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* NetworkManager.swift in Sources */,
@@ -5129,6 +5211,7 @@
 				848FA3D8299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift in Sources */,
 				84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */,
 				84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */,
+				01C7488E29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift in Sources */,
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
 				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,
@@ -5210,6 +5293,7 @@
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,
+				01C748AF29B24D930085CED2 /* BussinessSelectionModel.swift in Sources */,
 				398F90F4298ECB8700DB96E4 /* IQKeyboardManagerConstants.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,

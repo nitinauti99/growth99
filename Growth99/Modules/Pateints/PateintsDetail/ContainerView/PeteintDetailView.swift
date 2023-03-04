@@ -16,13 +16,13 @@ class PeteintDetailView: UIViewController {
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpSegemtControl()
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeSegment") , object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.patientDetail
-        self.setUpSegemtControl()
     }
     
     func setUpSegemtControl(){
@@ -88,7 +88,7 @@ class PeteintDetailView: UIViewController {
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: consentsListVC)
             add(asChildViewController: pateintsAppointmentListVC)
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addAppointMentButtonTapped), imageName: "add")
         default:
             break
         }
@@ -115,6 +115,7 @@ class PeteintDetailView: UIViewController {
     
     @objc func addQuestionariButtonTapped(_ sender: UIButton) {
         let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
+        addNewQuestionarieVC.pateintId = workflowTaskPatientId
         navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
     }
     
@@ -150,6 +151,11 @@ class PeteintDetailView: UIViewController {
         patientAppointmentList.pateintId = workflowTaskPatientId
         return patientAppointmentList
     }()
+    
+    @objc func addAppointMentButtonTapped(_ sender: UIButton){
+        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
+        navigationController?.pushViewController(addNewConsentsVC, animated: true)
+    }
   
    /// add VC as child view contoller
     private func add(asChildViewController viewController: UIViewController) {

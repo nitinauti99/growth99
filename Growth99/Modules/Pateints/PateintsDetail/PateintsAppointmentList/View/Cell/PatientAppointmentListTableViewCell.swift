@@ -39,6 +39,20 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
     
+    func configureCellWithSearch(patientAppointmentVM: PatientAppointmentViewModelProtocol?, index: IndexPath) {
+        let patientAppointmentListVM = patientAppointmentVM?.patientListFilterListAtIndex(index: index.row)
+        self.id.text = String(patientAppointmentListVM?.id ?? 0)
+        self.patientNameLabel.text = patientAppointmentListVM?.patientName ?? String.blank
+        self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
+        self.providerNameLabel.text = patientAppointmentListVM?.providerName
+        self.typeLabel.text = patientAppointmentListVM?.appointmentType
+        self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
+        self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
+        self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
+        self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
+        indexPath = index
+    }
+    
     func configureCell(patientAppointmentVM: PatientAppointmentViewModelProtocol?, index: IndexPath) {
         let patientAppointmentListVM = patientAppointmentVM?.patientListAtIndex(index: index.row)
         self.id.text = String(patientAppointmentListVM?.id ?? 0)
@@ -52,6 +66,7 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
         indexPath = index
     }
+    
     
 //    @IBAction func deleteButtonPressed() {
 //        self.delegate?.removeBookingHistory(cell: self, index: indexPath)

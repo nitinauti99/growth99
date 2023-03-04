@@ -11,6 +11,7 @@ protocol ConsentsListViewModelProtocol {
     func getConsentsList(pateintId: Int)
     func consentsListAtIndex(index: Int) -> ConsentsListModel?
     func consentsFilterListAtIndex(index: Int)-> ConsentsListModel?
+    func filterData(searchText: String)
     var consentsFilterDataList: [ConsentsListModel] { get }
     var consentsDataList: [ConsentsListModel] { get }
 }
@@ -38,6 +39,10 @@ class ConsentsListViewModel {
                 print("Error while performing request \(error)")
             }
         }
+    }
+    
+    func filterData(searchText: String) {
+       self.consentsFilterList = (self.consentsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
     func consentsListAtIndex(index: Int)-> ConsentsListModel? {
