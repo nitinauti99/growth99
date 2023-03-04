@@ -18,7 +18,7 @@ protocol FillQuestionarieViewModelProtocol {
 }
 
 class FillQuestionarieViewModel {
-    var leadData =  [leadModel]()
+    var leadData =  [leadListModel]()
     
     var questionnaireId = QuestionnaireId()
     var getQuestionnaireList = [PatientQuestionAnswersList]()

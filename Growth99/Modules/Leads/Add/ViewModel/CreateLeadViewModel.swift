@@ -11,8 +11,8 @@ protocol CreateLeadViewModelProtocol {
     func getQuestionnaireId()
     func getQuestionnaireList()
     func createLead(patientQuestionAnswers: [String: Any])
-    func leadDataAtIndex(index: Int) -> leadModel
-    var leadUserData: [leadModel]? { get }
+    func leadDataAtIndex(index: Int) -> leadListModel
+    var leadUserData: [leadListModel]? { get }
     var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
     func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool
@@ -20,7 +20,7 @@ protocol CreateLeadViewModelProtocol {
 
 class CreateLeadViewModel {
     var delegate: CreateLeadViewControllerProtocol?
-    var leadData =  [leadModel]()
+    var leadData =  [leadListModel]()
     var questionnaireId = QuestionnaireId()
     var questionnaireList = [PatientQuestionAnswersList]()
     var questionnaireFilterList = [PatientQuestionAnswersList]()
@@ -77,7 +77,7 @@ class CreateLeadViewModel {
         }
     }
     
-    func leadDataAtIndex(index: Int)-> leadModel {
+    func leadDataAtIndex(index: Int)-> leadListModel {
         return self.leadData[index]
     }
     
@@ -108,7 +108,7 @@ extension CreateLeadViewModel: CreateLeadViewModelProtocol {
         return self.questionnaireFilterList
     }
 
-    var leadUserData: [leadModel]? {
+    var leadUserData: [leadListModel]? {
         return self.leadData
     }
     

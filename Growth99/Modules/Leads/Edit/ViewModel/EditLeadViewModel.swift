@@ -11,8 +11,8 @@ protocol EditLeadViewModelProtocol {
     func updateLead(questionnaireId: Int, name: String, email: String, phoneNumber: String, leadStatus: String)
     func updateLeadAmmount(questionnaireId: Int, ammount: Int)
     func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
-    func leadDataAtIndex(index: Int) -> leadModel
-    var LeadUserData: [leadModel]? { get }
+    func leadDataAtIndex(index: Int) -> leadListModel
+    var LeadUserData: [leadListModel]? { get }
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidFirstName(_ firstName: String) -> Bool
@@ -22,8 +22,8 @@ protocol EditLeadViewModelProtocol {
 
 class EditLeadViewModel {
     var delegate: EditLeadViewControllerProtocol?
-    var LeadData =  [leadModel]()
-    var leadPeginationListData: [leadModel]?
+    var LeadData =  [leadListModel]()
+    var leadPeginationListData: [leadListModel]?
     var totalCount: Int = 0
 
     init(delegate: EditLeadViewControllerProtocol? = nil) {
@@ -83,7 +83,7 @@ class EditLeadViewModel {
         components?.queryItems = self.requestManager.queryItems(from: urlParameter)
         let url = (components?.url)!
         
-        self.requestManager.request(forPath: url.absoluteString, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[leadModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: url.absoluteString, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[leadListModel], GrowthNetworkError>) in
             
             switch result {
             case .success(let LeadData):
@@ -96,7 +96,7 @@ class EditLeadViewModel {
         }
     }
     
-    func setUpData(leadData: [leadModel]) {
+    func setUpData(leadData: [leadListModel]) {
          for item in leadData {
             if item.totalCount == nil {
                 self.leadPeginationListData?.append(item)
@@ -106,7 +106,7 @@ class EditLeadViewModel {
         }
     }
 
-    func leadDataAtIndex(index: Int)-> leadModel {
+    func leadDataAtIndex(index: Int)-> leadListModel {
         return self.LeadData[index]
     }
     
@@ -114,7 +114,7 @@ class EditLeadViewModel {
 
 extension EditLeadViewModel: EditLeadViewModelProtocol {
 
-    var LeadUserData: [leadModel]? {
+    var LeadUserData: [leadListModel]? {
         return self.LeadData
     }
     

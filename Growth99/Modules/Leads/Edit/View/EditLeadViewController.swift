@@ -27,7 +27,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     @IBOutlet weak var saveButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
 
-    var LeadData: leadModel?
+    var LeadData: leadListModel?
     var patientQuestionAnswers = Array<Any>()
     var viewModel: EditLeadViewModelProtocol?
     var LeadId: Int?

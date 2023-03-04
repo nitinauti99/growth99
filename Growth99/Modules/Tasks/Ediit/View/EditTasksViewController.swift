@@ -176,7 +176,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         let taskDetail = viewModel?.taskDetailData
         if taskDetail?.leadDTO != nil {
             let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
-            detailController.LeadId = viewModel?.taskDetailData?.leadId ?? 0
+            detailController.leadId = viewModel?.taskDetailData?.leadId ?? 0
             navigationController?.pushViewController(detailController, animated: true)
         }else {
             self.navigationController?.popViewController(animated: true)

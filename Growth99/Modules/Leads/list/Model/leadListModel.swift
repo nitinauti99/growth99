@@ -1,5 +1,5 @@
 //
-//  leadModel.swift
+//  leadListModel.swift
 //  Growth99
 //
 //  Created by nitin auti on 03/12/22.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct leadModel : Codable {
+struct leadListModel : Codable {
     let lastName: String?
     let leadStatus: String?
     let amount: Int?
     let Email: String?
     let Message: String?
     let leadSource: String?
+    let landingPage: String?
     let fullName: String?
+    let Gender: String?
+    let sourceUrl: String?
     let firstName: String?
     let createdAt: String?
     let id: Int?
     var PhoneNumber: String?
     let Symptoms: String?
-    let Gender: String?
-    let landingPage: String?
-    let sourceUrl: String?
     let totalCount: Int?
     let questionnaireName: String?
     

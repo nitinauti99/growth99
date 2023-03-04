@@ -104,6 +104,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
     }
     
     func clinicsRecived() {
+        self.view.HideSpinner()
         // get from user api
         selectedClincs = viewModel?.getUserProfileData.clinics ?? []
         
@@ -113,7 +114,10 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
         let selectedClincId = selectedClincs.map({$0.id ?? 0})
         self.selectedClincIds = selectedClincId
-        self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
+        if self.selectedClincIds.count > 0 {
+            self.view.ShowSpinner()
+            self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
+        }
     }
     
     func serviceCategoriesRecived() {

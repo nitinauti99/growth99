@@ -45,12 +45,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     }
     
     func setBarButton(){
-        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "add"), for: .normal)
-        button.addTarget(self, action:  #selector(creatUser), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        self.navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(creatUser), imageName: "add")
     }
     
     @objc func updateUI(){
