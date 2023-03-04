@@ -19,7 +19,7 @@ class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerPro
     @IBOutlet private weak var leadTimeLineTableView: UITableView!
     
     private var viewModel: leadTimeLineViewModelProtocol?
-    var LeadData: leadModel?
+    var LeadData: leadListModel?
     var list = [auditLeadModel]()
     var LeadId: Int?
 

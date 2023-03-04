@@ -1,5 +1,5 @@
 //
-//  LeadTableViewCell.swift
+//  leadListTableViewCell.swift
 //  Growth99
 //
 //  Created by nitin auti on 29/11/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeadTableViewCell: UITableViewCell {
+class leadListTableViewCell: UITableViewCell {
    
     @IBOutlet private weak var fullName: UILabel!
     @IBOutlet private weak var email: UILabel!
@@ -28,8 +28,8 @@ class LeadTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
     }
 
-    func configureCell(leadVM: leadViewModelProtocol?, index: IndexPath) {
-        let leadVM = leadVM?.leadDataAtIndex(index: index.row)
+    func configureCell(leadVM: leadListViewModelProtocol?, index: IndexPath) {
+        let leadVM = leadVM?.leadListDataAtIndex(index: index.row)
         fullName.text = leadVM?.fullName
         email.text = leadVM?.Email
         id.text = String(leadVM?.id ?? 0)

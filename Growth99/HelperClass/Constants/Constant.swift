@@ -76,6 +76,11 @@ struct Constant {
         static let editPatient = "Edit Patient"
         static let business = "Business"
         static let patientDetail = " Patient Detail "
+        static let leadDetail = " Lead Detail "
+        static let leadTimeLine = " Lead TimeLine "
+        static let leadTask = " Task "
+        static let leadHistory = " History "
+        static let leadCombinedTimeLine = " Combine TimeLine "
         static let designer = " Designer "
         static let notification = " Notification "
         static let submission = " Submission "
@@ -107,6 +112,8 @@ struct Constant {
         static let deleteConcents = "Delete Consent"
         static let tasksDetail = "Tasks Detail"
         static let patientTags = "Patient Tags"
+        static let createPatientTags = "Add Patient Tag"
+        static let editPatientTags = "Edit Patient Tag"
         static let Timeline = "Timeline"
         static let appointmentTrigger = "Appointment"
         static let leads = "leads"
@@ -145,6 +152,7 @@ struct Constant {
         static let vacationScheduleUpdate = "Vacation schedule updated sucessfully"
         static let clinicsRequired = "Clinics are required."
         static let categoryNameRequired = "Category Name is required."
+        static let leadListTitle = "Lead Dashboard"
     }
     
     struct CreateLead {

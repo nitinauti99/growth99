@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lead View Controller-->
+        <!--Lead List View Controller-->
         <scene sceneID="70z-k5-x18">
             <objects>
-                <viewController storyboardIdentifier="leadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LBF-ol-tIj" customClass="leadViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leadListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LBF-ol-tIj" customClass="leadListViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5R0-uG-Pec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,8 +73,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="T4I-oA-JWw"/>
                     <connections>
-                        <outlet property="leadListTableView" destination="r1Q-NK-FWT" id="WSm-6p-k2r"/>
                         <outlet property="searchBar" destination="5UL-kV-9ZP" id="UjB-Pg-lD7"/>
+                        <outlet property="tableView" destination="r1Q-NK-FWT" id="OEV-zW-9gC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yS-T6-sZu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

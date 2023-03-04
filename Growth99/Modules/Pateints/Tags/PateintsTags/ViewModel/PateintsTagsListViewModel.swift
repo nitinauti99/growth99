@@ -8,18 +8,19 @@
 import Foundation
 
 protocol PateintsTagsListViewModelProtocol {
-    func getQuestionarieList()
-    var QuestionarieDataList: [PateintsTagListModel] { get }
-    func QuestionarieDataAtIndex(index: Int) -> PateintsTagListModel?
-    var QuestionarieFilterDataData: [PateintsTagListModel] { get }
-    func QuestionarieFilterDataDataAtIndex(index: Int)-> PateintsTagListModel?
+    func getPateintsTagsList()
+    func pateintsTagsListDataAtIndex(index: Int) -> PateintsTagListModel?
+    func pateintsTagsFilterListDataAtIndex(index: Int)-> PateintsTagListModel?
     func removePateintsTag(pateintsTagid: Int)
+    func filterData(searchText: String)
+    var getPateintsTagsData: [PateintsTagListModel] { get }
+    var getPateintsTagsFilterData: [PateintsTagListModel] { get }
 }
 
 class PateintsTagsListViewModel {
     var delegate: PateintsTagsListViewControllerProtocol?
-    var QuestionarieData: [PateintsTagListModel] = []
-    var QuestionarieFilterData: [PateintsTagListModel] = []
+    var pateintsTagsList: [PateintsTagListModel] = []
+    var pateintsTagsFilterList: [PateintsTagListModel] = []
     
     init(delegate: PateintsTagsListViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -27,11 +28,11 @@ class PateintsTagsListViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getQuestionarieList() {
+    func getPateintsTagsList() {
         self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PateintsTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.QuestionarieData = pateintsTagList
+                self.pateintsTagsList = pateintsTagList
                 self.delegate?.pateintsTagListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -54,23 +55,26 @@ class PateintsTagsListViewModel {
         }
     }
     
-    func QuestionarieDataAtIndex(index: Int)-> PateintsTagListModel? {
-        return self.QuestionarieData[index]
+    func filterData(searchText: String) {
+       self.pateintsTagsFilterList = (self.pateintsTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
-    func QuestionarieFilterDataDataAtIndex(index: Int)-> PateintsTagListModel? {
-        return self.QuestionarieFilterDataData[index]
+    func pateintsTagsListDataAtIndex(index: Int)-> PateintsTagListModel? {
+        return self.pateintsTagsList[index]
+    }
+    
+    func pateintsTagsFilterListDataAtIndex(index: Int)-> PateintsTagListModel? {
+        return self.pateintsTagsFilterList[index]
     }
 }
 
 extension PateintsTagsListViewModel: PateintsTagsListViewModelProtocol {
    
-   
-    var QuestionarieDataList: [PateintsTagListModel] {
-        return self.QuestionarieData
+    var getPateintsTagsData: [PateintsTagListModel] {
+        return self.pateintsTagsList
     }
     
-    var QuestionarieFilterDataData: [PateintsTagListModel] {
-        return self.QuestionarieFilterData
+    var getPateintsTagsFilterData: [PateintsTagListModel] {
+        return self.pateintsTagsFilterList
     }
 }

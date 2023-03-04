@@ -29,8 +29,15 @@ class PateintsTagListTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
     }
     
+    func configureCellWithSearch(questionarieVM: PateintsTagsListViewModelProtocol?, index: IndexPath) {
+        let questionarieVM = questionarieVM?.pateintsTagsFilterListDataAtIndex(index: index.row)
+        self.name.text = questionarieVM?.name
+        self.id.text = String(questionarieVM?.id ?? 0)
+        indexPath = index
+    }
+    
     func configureCell(questionarieVM: PateintsTagsListViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.QuestionarieDataAtIndex(index: index.row)
+        let questionarieVM = questionarieVM?.pateintsTagsListDataAtIndex(index: index.row)
         self.name.text = questionarieVM?.name
         self.id.text = String(questionarieVM?.id ?? 0)
         indexPath = index
