@@ -38,6 +38,9 @@
 		013A4F9929B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */; };
 		013A4F9C29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9A29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift */; };
 		013A4F9D29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4F9B29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib */; };
+		013A4FA129B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9F29B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift */; };
+		013A4FA229B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FA029B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib */; };
+		013A4FA429B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FA329B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -697,6 +700,9 @@
 		013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadHistoryViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		013A4F9A29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadHistoryListTableViewCell.swift; sourceTree = "<group>"; };
 		013A4F9B29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadHistoryListTableViewCell.xib; sourceTree = "<group>"; };
+		013A4F9F29B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadCombineTimeLineTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FA029B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadCombineTimeLineTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FA329B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CombineTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -1512,8 +1518,10 @@
 		01152E2D29B3C5C200B24627 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				013A4F9E29B4C5FC00CA24B0 /* Cell */,
 				01152E3729B3C63700B24627 /* CombineTimeLineViewController.swift */,
 				01152E3929B3C64000B24627 /* CombineTimeLineViewController.storyboard */,
+				013A4FA329B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1533,6 +1541,15 @@
 				013A4F9B29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		013A4F9E29B4C5FC00CA24B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				013A4F9F29B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift */,
+				013A4FA029B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
@@ -5117,6 +5134,7 @@
 				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
+				013A4FA229B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
 				8440B3912999FDCF00A42097 /* FormListViewController.storyboard in Resources */,
 				84D063062967080E001FE469 /* questionAnswersTableViewCell.xib in Resources */,
@@ -5701,6 +5719,7 @@
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
+				013A4FA429B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift in Sources */,
 				017D572229AF604C00D6A5A4 /* DisplayQuestionariModel.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
 				847C6C44297A963E000188AE /* PateintsEditDetailModel.swift in Sources */,
@@ -5752,6 +5771,7 @@
 				01C748AF29B24D930085CED2 /* BussinessSelectionModel.swift in Sources */,
 				398F90F4298ECB8700DB96E4 /* IQKeyboardManagerConstants.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
+				013A4FA129B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift in Sources */,
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,
 				01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */,
 				DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */,

@@ -52,41 +52,36 @@ class LeadDetailContainerView: UIViewController {
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: leadTimeLineVC)
             remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: pateintsAppointmentListVC)
-            remove(asChildViewController: pateinstTimeLineVC)
+            remove(asChildViewController: combineTimeLineVC)
             add(asChildViewController: leadDetailVC)
             navigationItem.rightBarButtonItem = nil
         case 1:
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: leadDetailVC)
             remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: pateintsAppointmentListVC)
-            remove(asChildViewController: pateinstTimeLineVC)
+            remove(asChildViewController: combineTimeLineVC)
             add(asChildViewController: leadTimeLineVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addQuestionariButtonTapped), imageName: "add")
+            navigationItem.rightBarButtonItem = nil
         case 2:
             remove(asChildViewController: leadTimeLineVC)
             remove(asChildViewController: leadDetailVC)
             remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: pateintsAppointmentListVC)
-            remove(asChildViewController: pateinstTimeLineVC)
+            remove(asChildViewController: combineTimeLineVC)
             add(asChildViewController: tasksListVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
         case 3:
             remove(asChildViewController: leadTimeLineVC)
             remove(asChildViewController: leadDetailVC)
             remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: pateintsAppointmentListVC)
-            remove(asChildViewController: pateinstTimeLineVC)
+            remove(asChildViewController: combineTimeLineVC)
             add(asChildViewController: leadHistoryVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addNewConsentButtonTapped), imageName: "add")
+            navigationItem.rightBarButtonItem = nil
         case 4:
             remove(asChildViewController: leadTimeLineVC)
             remove(asChildViewController: leadDetailVC)
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: pateinstTimeLineVC)
-            add(asChildViewController: pateintsAppointmentListVC)
+            add(asChildViewController: combineTimeLineVC)
             navigationItem.rightBarButtonItem = nil
         default:
             break
@@ -110,12 +105,6 @@ class LeadDetailContainerView: UIViewController {
         return leadTimeLineVC
     }()
     
-    @objc func addQuestionariButtonTapped(_ sender: UIButton) {
-        let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
-        addNewQuestionarieVC.pateintId = workflowLeadId
-        navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
-    }
-    
     /// task for Pateints
     private lazy var tasksListVC: TasksListViewController = {
         let tasksList = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
@@ -130,36 +119,16 @@ class LeadDetailContainerView: UIViewController {
         navigationController?.pushViewController(createLeadTasksVC, animated: true)
     }
     
-    /// Consents for Pateints
+    /// Lead History
     private lazy var leadHistoryVC: LeadHistoryViewController = {
         let leadHistoryList = UIStoryboard(name: "LeadHistoryViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadHistoryViewController") as! LeadHistoryViewController
         return leadHistoryList
     }()
-    
-    @objc func addNewConsentButtonTapped(_ sender: UIButton){
-        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
-        navigationController?.pushViewController(addNewConsentsVC, animated: true)
-    }
-    
-    /// Appointmen for Pateints
-    private lazy var pateintsAppointmentListVC: PatientAppointmentViewController = {
-        let patientAppointmentList = UIStoryboard(name: "PatientAppointmentViewController", bundle: nil).instantiateViewController(withIdentifier: "PatientAppointmentViewController") as! PatientAppointmentViewController
-        patientAppointmentList.pateintId = workflowLeadId
-        return patientAppointmentList
-    }()
-    
-    @objc func addAppointMentButtonTapped(_ sender: UIButton){
-        let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
-        addEventVC.screenTitile = "Pateints Appointment"
-        addEventVC.userSelectedDate = "Manual"
-        navigationController?.pushViewController(addEventVC, animated: true)
-    }
-  
-    /// pateints TimeLine
-    private lazy var pateinstTimeLineVC: PateintsTimeLineViewController = {
-        let pateintsTimeLineVC = UIStoryboard(name: "PateintsTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTimeLineViewController") as! PateintsTimeLineViewController
-        pateintsTimeLineVC.pateintsId = workflowLeadId
-        return pateintsTimeLineVC
+      
+    /// LeadCombine TimeLine
+    private lazy var combineTimeLineVC: CombineTimeLineViewController = {
+        let combineTimeLineVC = UIStoryboard(name: "CombineTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "CombineTimeLineViewController") as! CombineTimeLineViewController
+        return combineTimeLineVC
     }()
     
    /// add VC as child view contoller

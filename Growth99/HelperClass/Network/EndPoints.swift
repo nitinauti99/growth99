@@ -103,6 +103,7 @@ struct EndPoints {
     static let leadTaskList = "/api/workflowtasks/lead/"
     static let getAnnouncementsList = "/api/productionRelease/all"
     static let getLeadHistory = "/api/questionnaire/contact-submissions/email/"
+    static let combineLeadTimeLine = "/api/v1/audit/lead/all?leadEmail="
 }
 
 struct ApiUrl {
@@ -204,6 +205,9 @@ struct ApiUrl {
     static let leadTaskList = EndPoints.baseURL.appending(EndPoints.leadTaskList)
     static let getAnnouncementsList = EndPoints.baseURL.appending(EndPoints.getAnnouncementsList)
     static let getLeadHistory = EndPoints.baseURL.appending(EndPoints.getLeadHistory)
+    static let combineLeadTimeLine = EndPoints.baseURL.appending(EndPoints.combineLeadTimeLine)
+
 }
+
 
 
