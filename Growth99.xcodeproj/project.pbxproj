@@ -19,7 +19,7 @@
 		01152E1129B398CE00B24627 /* leadListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E1029B398CE00B24627 /* leadListViewController+TableView.swift */; };
 		01152E1329B39C3600B24627 /* leadListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E1229B39C3600B24627 /* leadListViewController+SearchBar.swift */; };
 		01152E1529B39C7400B24627 /* leadListViewController+ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E1429B39C7400B24627 /* leadListViewController+ScrollView.swift */; };
-		01152E1829B3BA6E00B24627 /* LeadDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E1729B3BA6E00B24627 /* LeadDetailContainerView.swift */; };
+		01152E1829B3BA6E00B24627 /* `.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E1729B3BA6E00B24627 /* `.swift */; };
 		01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152E1929B3BA7800B24627 /* LeadDetailContainerView.storyboard */; };
 		01152E2029B3C1A900B24627 /* LeadTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E1F29B3C1A900B24627 /* LeadTaskListViewController.swift */; };
 		01152E2229B3C1B600B24627 /* LeadTaskListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152E2129B3C1B600B24627 /* LeadTaskListViewController.storyboard */; };
@@ -33,6 +33,7 @@
 		01152E3A29B3C64000B24627 /* CombineTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152E3929B3C64000B24627 /* CombineTimeLineViewController.storyboard */; };
 		01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */; };
 		01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */; };
+		013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -438,8 +439,6 @@
 		84D062F82967080E001FE469 /* leadTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062BC2967080E001FE469 /* leadTimeLineViewModel.swift */; };
 		84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062BE2967080E001FE469 /* leadTimeLineTableViewCell.xib */; };
 		84D062FA2967080E001FE469 /* leadTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062BF2967080E001FE469 /* leadTimeLineTableViewCell.swift */; };
-		84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062C02967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib */; };
-		84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062C12967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift */; };
 		84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */; };
 		84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062C42967080E001FE469 /* SMSTemplateTableViewCell.xib */; };
 		84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062C52967080E001FE469 /* QuestionnaireDetailList.swift */; };
@@ -663,7 +662,7 @@
 		01152E1029B398CE00B24627 /* leadListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadListViewController+TableView.swift"; sourceTree = "<group>"; };
 		01152E1229B39C3600B24627 /* leadListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		01152E1429B39C7400B24627 /* leadListViewController+ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadListViewController+ScrollView.swift"; sourceTree = "<group>"; };
-		01152E1729B3BA6E00B24627 /* LeadDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadDetailContainerView.swift; sourceTree = "<group>"; };
+		01152E1729B3BA6E00B24627 /* `.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "`.swift"; sourceTree = "<group>"; };
 		01152E1929B3BA7800B24627 /* LeadDetailContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadDetailContainerView.storyboard; sourceTree = "<group>"; };
 		01152E1F29B3C1A900B24627 /* LeadTaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTaskListViewController.swift; sourceTree = "<group>"; };
 		01152E2129B3C1B600B24627 /* LeadTaskListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadTaskListViewController.storyboard; sourceTree = "<group>"; };
@@ -677,6 +676,7 @@
 		01152E3929B3C64000B24627 /* CombineTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CombineTimeLineViewController.storyboard; sourceTree = "<group>"; };
 		01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineViewModel.swift; sourceTree = "<group>"; };
 		01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineModel.swift; sourceTree = "<group>"; };
+		013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -1098,8 +1098,6 @@
 		84D062BC2967080E001FE469 /* leadTimeLineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leadTimeLineViewModel.swift; sourceTree = "<group>"; };
 		84D062BE2967080E001FE469 /* leadTimeLineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = leadTimeLineTableViewCell.xib; sourceTree = "<group>"; };
 		84D062BF2967080E001FE469 /* leadTimeLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leadTimeLineTableViewCell.swift; sourceTree = "<group>"; };
-		84D062C02967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = leadTimeLineHeaderTableViewCell.xib; sourceTree = "<group>"; };
-		84D062C12967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leadTimeLineHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = leadTimeLineViewController.storyboard; sourceTree = "<group>"; };
 		84D062C42967080E001FE469 /* SMSTemplateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSTemplateTableViewCell.xib; sourceTree = "<group>"; };
 		84D062C52967080E001FE469 /* QuestionnaireDetailList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireDetailList.swift; sourceTree = "<group>"; };
@@ -1382,7 +1380,7 @@
 		01152E1629B3BA2B00B24627 /* containView */ = {
 			isa = PBXGroup;
 			children = (
-				01152E1729B3BA6E00B24627 /* LeadDetailContainerView.swift */,
+				01152E1729B3BA6E00B24627 /* `.swift */,
 				01152E1929B3BA7800B24627 /* LeadDetailContainerView.storyboard */,
 			);
 			path = containView;
@@ -2246,8 +2244,9 @@
 			isa = PBXGroup;
 			children = (
 				84D062BD2967080E001FE469 /* Cell */,
-				84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */,
 				84D062BB2967080E001FE469 /* leadTimeLineViewController.swift */,
+				84D062C22967080E001FE469 /* leadTimeLineViewController.storyboard */,
+				013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4183,10 +4182,8 @@
 		84D062BD2967080E001FE469 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				84D062BE2967080E001FE469 /* leadTimeLineTableViewCell.xib */,
 				84D062BF2967080E001FE469 /* leadTimeLineTableViewCell.swift */,
-				84D062C02967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib */,
-				84D062C12967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift */,
+				84D062BE2967080E001FE469 /* leadTimeLineTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4954,7 +4951,6 @@
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				39FC68AA29B120BE00FCB7C6 /* MassSMSTableViewCell.xib in Resources */,
-				84D062FB2967080E001FE469 /* leadTimeLineHeaderTableViewCell.xib in Resources */,
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
@@ -5190,7 +5186,7 @@
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
 				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
-				01152E1829B3BA6E00B24627 /* LeadDetailContainerView.swift in Sources */,
+				01152E1829B3BA6E00B24627 /* `.swift in Sources */,
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
@@ -5232,7 +5228,6 @@
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				01D7AB06299E572700821274 /* FormDetailTableViewCell.swift in Sources */,
 				01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */,
-				84D062FC2967080E001FE469 /* leadTimeLineHeaderTableViewCell.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
 				017D572029AF604100D6A5A4 /* DisplayQuestionnaireViewModel.swift in Sources */,
 				842C0CBC298F713B00395061 /* FillQuestionarieViewController.swift in Sources */,
@@ -5519,6 +5514,7 @@
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
 				39FC68A929B120BE00FCB7C6 /* MassSMSTableViewCell.swift in Sources */,
+				013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */,
 				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,

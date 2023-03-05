@@ -14,29 +14,25 @@ protocol leadTimeLineViewControllerProtocol: AnyObject {
     func recivedAuditLeadList()
 }
 
-class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerProtocol {
+class leadTimeLineViewController: UIViewController,
+                                  leadTimeLineViewControllerProtocol {
     
-    @IBOutlet private weak var leadTimeLineTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: leadTimeLineViewModelProtocol?
-    var LeadData: leadListModel?
-    var list = [auditLeadModel]()
-    var LeadId: Int?
+    var viewModel: leadTimeLineViewModelProtocol?
+    var leadId = Int()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = leadTimeLineViewModel(delegate: self)
-        leadTimeLineTableView.register(UINib(nibName: "leadTimeLineTableViewCell", bundle: nil), forCellReuseIdentifier: "leadTimeLineTableViewCell")
-        
-        leadTimeLineTableView.register(UINib(nibName: "leadTimeLineHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "leadTimeLineHeaderTableViewCell")
-        self.view.ShowSpinner()
-        viewModel?.leadCreation(leadId: LeadId ?? 0)
+        tableView.register(UINib(nibName: "leadTimeLineTableViewCell", bundle: nil), forCellReuseIdentifier: "leadTimeLineTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.Timeline
-
+        self.view.ShowSpinner()
+        viewModel?.getLeadTimeData(leadId: leadId)
     }
     
     func errorReceived(error: String) {
@@ -45,55 +41,12 @@ class leadTimeLineViewController: UIViewController,leadTimeLineViewControllerPro
     }
     
     func recivedLeadCreation() {
-        viewModel?.auditLeadList(leadId: LeadId ?? 0)
+        self.view.HideSpinner()
+        self.tableView.reloadData()
     }
     
     func recivedAuditLeadList() {
         self.view.HideSpinner()
-        list = viewModel?.leadCreatiionData ?? []
-        self.leadTimeLineTableView.reloadData()
+        self.tableView.reloadData()
     }
-}
-
-extension leadTimeLineViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-        
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var cell = leadTimeLineHeaderTableViewCell()
-        let item = viewModel?.leadCreationData
-        cell = leadTimeLineTableView.dequeueReusableCell(withIdentifier: "leadTimeLineHeaderTableViewCell") as! leadTimeLineHeaderTableViewCell
-        cell.name.text = "\(item?.firstName  ?? String.blank) \(item?.lastName ?? String.blank)"
-        cell.createdDateTime.text = item?.createdAt
-        cell.type.text = "Lead Crated"
-       
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = leadTimeLineTableViewCell()
-        let item = list[indexPath.row]
-        cell = leadTimeLineTableView.dequeueReusableCell(withIdentifier: "leadTimeLineTableViewCell") as! leadTimeLineTableViewCell
-        cell.name.text = item.name
-        cell.createdDateTime.text = item.createdDateTime
-        cell.email.text = item.email
-        cell.type.text = item.type
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 180
-        }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
-    }
-   
 }

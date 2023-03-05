@@ -85,8 +85,8 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     @IBAction func openTaskList(sender: UIButton) {
         let TasksListVC = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
-        TasksListVC.workflowTaskPatient = workflowTaskPatientId
-        TasksListVC.fromPateint = true
+        TasksListVC.workflowTaskPatientId = workflowTaskPatientId
+        TasksListVC.screenTitile = "Patient Task"
         self.navigationController?.pushViewController(TasksListVC, animated: true)
     }
     

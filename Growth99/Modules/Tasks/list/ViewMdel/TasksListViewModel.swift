@@ -10,6 +10,7 @@ import Foundation
 protocol TasksListViewModelProtocol {
     func getTasksList()
     func getPateintTaskList(pateintId: Int)
+    func getLeadTaskList(LeadId: Int)
     func taskDataAtIndex(index: Int) -> TaskDTOList?
     func taskFilterDataAtIndex(index: Int)-> TaskDTOList?
     func filterData(searchText: String)
@@ -53,6 +54,20 @@ class TasksListViewModel {
             }
         }
     }
+    
+    func getLeadTaskList(LeadId: Int){
+        self.requestManager.request(forPath:ApiUrl.leadTaskList.appending("\(LeadId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let taskList):
+                self.taskList = taskList.taskDTOList.reversed()
+                self.delegate?.tasksDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
 
     func filterData(searchText: String) {
        self.taskFilterList = (self.taskList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })

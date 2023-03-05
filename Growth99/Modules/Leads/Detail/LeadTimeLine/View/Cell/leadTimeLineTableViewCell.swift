@@ -8,7 +8,6 @@
 import UIKit
 
 class leadTimeLineTableViewCell: UITableViewCell {
-
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var id: UILabel!
@@ -17,19 +16,24 @@ class leadTimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var subView: UIView!
     
+    var dateFormater : DateFormaterProtocol?
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color:.gray)
         type.layer.borderWidth = 1
         type.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
         type.layer.cornerRadius = 5
+        dateFormater = DateFormater()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    
+    func configureCell(timeLineVM: leadTimeLineViewModelProtocol?, index: IndexPath) {
+        let timeLineVM = timeLineVM?.leadTimeLineDataAtIndex(index: index.row)
+        self.name.text = timeLineVM?.name
+        self.email.text = timeLineVM?.email
+        self.type.text =  timeLineVM?.type ?? String.blank
+        self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
     }
     
 }

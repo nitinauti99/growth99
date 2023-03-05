@@ -12,7 +12,7 @@ class LeadDetailContainerView: UIViewController {
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
-    var workflowTaskPatientId = Int()
+    var workflowLeadId = Int()
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,41 +106,41 @@ class LeadDetailContainerView: UIViewController {
     
     private lazy var leadDetailVC: leadDetailViewController = {
         let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
-
+        detailController.leadId = workflowLeadId
         return detailController
     }()
     
     /// questionarie for Pateints
     private lazy var leadTimeLineVC: leadTimeLineViewController = {
         let leadTimeLineVC = UIStoryboard(name: "leadTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "leadTimeLineViewController") as! leadTimeLineViewController
-//        questionarieList.pateintId = workflowTaskPatientId
+        leadTimeLineVC.leadId = workflowLeadId
         return leadTimeLineVC
     }()
     
     @objc func addQuestionariButtonTapped(_ sender: UIButton) {
         let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
-        addNewQuestionarieVC.pateintId = workflowTaskPatientId
+        addNewQuestionarieVC.pateintId = workflowLeadId
         navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
     }
     
     /// task for Pateints
     private lazy var tasksListVC: TasksListViewController = {
         let tasksList = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
-        tasksList.workflowTaskPatient = workflowTaskPatientId
-        tasksList.fromPateint = true
+        tasksList.workflowTaskLeadId = workflowLeadId
+        tasksList.screenTitile = "Lead Task"
         return tasksList
     }()
     
     @objc func addTaskTapped(_ sender: UIButton) {
         let createPateintsTasksVC = UIStoryboard(name: "CreatePateintsTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintsTasksViewController") as! CreatePateintsTasksViewController
-        createPateintsTasksVC.workflowTaskPatient = workflowTaskPatientId
+        createPateintsTasksVC.workflowTaskPatient = workflowLeadId
         navigationController?.pushViewController(createPateintsTasksVC, animated: true)
     }
     
     /// Consents for Pateints
     private lazy var consentsListVC: ConsentsListViewController = {
         let consentsList = UIStoryboard(name: "ConsentsListViewController", bundle: nil).instantiateViewController(withIdentifier: "ConsentsListViewController") as! ConsentsListViewController
-        consentsList.pateintId = workflowTaskPatientId
+        consentsList.pateintId = workflowLeadId
         return consentsList
     }()
     
@@ -152,7 +152,7 @@ class LeadDetailContainerView: UIViewController {
     /// Appointmen for Pateints
     private lazy var pateintsAppointmentListVC: PatientAppointmentViewController = {
         let patientAppointmentList = UIStoryboard(name: "PatientAppointmentViewController", bundle: nil).instantiateViewController(withIdentifier: "PatientAppointmentViewController") as! PatientAppointmentViewController
-        patientAppointmentList.pateintId = workflowTaskPatientId
+        patientAppointmentList.pateintId = workflowLeadId
         return patientAppointmentList
     }()
     
@@ -166,7 +166,7 @@ class LeadDetailContainerView: UIViewController {
     /// pateints TimeLine
     private lazy var pateinstTimeLineVC: PateintsTimeLineViewController = {
         let pateintsTimeLineVC = UIStoryboard(name: "PateintsTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTimeLineViewController") as! PateintsTimeLineViewController
-        pateintsTimeLineVC.pateintsId = workflowTaskPatientId
+        pateintsTimeLineVC.pateintsId = workflowLeadId
         return pateintsTimeLineVC
     }()
     

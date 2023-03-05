@@ -20,8 +20,9 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     var viewModel: TasksListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [TaskDTOList]()
-    var workflowTaskPatient = Int()
-    var fromPateint = Bool()
+    var workflowTaskPatientId = Int()
+    var workflowTaskLeadId = Int()
+    var screenTitile = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +32,9 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {
-        if fromPateint == true {
+        if screenTitile == "Patient Task" {
             let createPateintsTasksVC = UIStoryboard(name: "CreatePateintsTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintsTasksViewController") as! CreatePateintsTasksViewController
-            createPateintsTasksVC.workflowTaskPatient = workflowTaskPatient
+            createPateintsTasksVC.workflowTaskPatient = workflowTaskPatientId
             navigationController?.pushViewController(createPateintsTasksVC, animated: true)
         }else{
             let createVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
@@ -44,9 +45,12 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.tasks
-        if fromPateint == true {
+        if screenTitile == "Patient Task" {
             self.view.ShowSpinner()
-            viewModel?.getPateintTaskList(pateintId: workflowTaskPatient)
+            viewModel?.getPateintTaskList(pateintId: workflowTaskPatientId)
+        }else if (screenTitile == "Lead Task"){
+            self.view.ShowSpinner()
+            viewModel?.getLeadTaskList(LeadId: workflowTaskLeadId)
         }else{
             self.view.ShowSpinner()
             viewModel?.getTasksList()

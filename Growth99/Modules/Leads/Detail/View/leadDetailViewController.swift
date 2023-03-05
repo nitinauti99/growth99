@@ -131,8 +131,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     @objc func leadTimeLiine() {
         let editLeadVC = UIStoryboard(name: "leadTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "leadTimeLineViewController") as! leadTimeLineViewController
-        editLeadVC.LeadData = leadData
-        editLeadVC.LeadId = leadId
+        editLeadVC.leadId = leadId ?? 0
         self.navigationController?.pushViewController(editLeadVC, animated: true)
     }
     

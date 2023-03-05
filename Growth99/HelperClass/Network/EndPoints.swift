@@ -99,6 +99,7 @@ struct EndPoints {
     static let getBussinessSelection = "/api/public/v1/users/"
     static let patentsTimeLine = "/api/v1/audit/patient?patientId="
     static let patientsByTenantId = "/api/v1/patientsByTenantId"
+    static let leadTaskList = "/api/workflowtasks/lead/"
 }
 
 struct ApiUrl {
@@ -196,6 +197,7 @@ struct ApiUrl {
     static let getBussinessSelection = EndPoints.baseURL.appending(EndPoints.getBussinessSelection)
     static let patentsTimeLine = EndPoints.baseURL.appending(EndPoints.patentsTimeLine)
     static let patientsByTenantId = EndPoints.baseURL.appending(EndPoints.patientsByTenantId)
+    static let leadTaskList = EndPoints.baseURL.appending(EndPoints.leadTaskList)
 
 }
 

@@ -46,6 +46,8 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     var leadOrPatientSelected = ""
     var taskId: Int = 0
     var dateFormater: DateFormaterProtocol?
+    
+    var screenTitile = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,22 +176,39 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     
     @IBAction func goToPatientDetail(sender: UIButton) {
         let taskDetail = viewModel?.taskDetailData
-        if taskDetail?.leadDTO != nil {
-            let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
-            detailController.leadId = viewModel?.taskDetailData?.leadId ?? 0
-            navigationController?.pushViewController(detailController, animated: true)
-        }else {
-            self.navigationController?.popViewController(animated: true)
-
-//            /// check in navaigation PateintDetailViewController
-//            if let viewControllers = self.navigationController?.viewControllers {
-//                for controller in viewControllers {
-//                    if controller is PeteintDetailView {
-//                        (controller as! PeteintDetailView).selectedindex = 0
-//                        self.navigationController?.popToViewController(controller, animated: true)
-//                    }
-//                }
-//            }
+        if self.screenTitile == "Task List" {
+            if (sender.titleLabel?.text == "Go To Lead Detail" ) {
+                let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
+                detailController.workflowLeadId = viewModel?.taskDetailData?.leadId ?? 0
+                navigationController?.pushViewController(detailController, animated: true)
+                
+                
+            }else if(sender.titleLabel?.text == "Go To Patient Detail" ) {
+                let detailController = UIStoryboard(name: "PeteintDetailView", bundle: nil).instantiateViewController(withIdentifier: "PeteintDetailView") as! PeteintDetailView
+                detailController.workflowTaskPatientId = viewModel?.taskDetailData?.patientId ?? 0
+                navigationController?.pushViewController(detailController, animated: true)
+            }
+        }else{
+            /// check in navaigation PateintDetailViewController
+            if (sender.titleLabel?.text == "Go To Lead Detail" ) {
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for controller in viewControllers {
+                        if controller is PeteintDetailView {
+                            (controller as! PeteintDetailView).selectedindex = 0
+                            self.navigationController?.popToViewController(controller, animated: true)
+                        }
+                    }
+                }
+            }else{
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for controller in viewControllers {
+                        if controller is LeadDetailContainerView {
+                            (controller as! LeadDetailContainerView).selectedindex = 0
+                            self.navigationController?.popToViewController(controller, animated: true)
+                        }
+                    }
+                }
+            }
         }
     }
     

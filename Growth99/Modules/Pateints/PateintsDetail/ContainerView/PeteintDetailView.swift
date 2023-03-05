@@ -129,8 +129,8 @@ class PeteintDetailView: UIViewController {
     /// task for Pateints
     private lazy var tasksListVC: TasksListViewController = {
         let tasksList = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
-        tasksList.workflowTaskPatient = workflowTaskPatientId
-        tasksList.fromPateint = true
+        tasksList.workflowTaskPatientId = workflowTaskPatientId
+        tasksList.screenTitile = "Patient Task"
         return tasksList
     }()
     

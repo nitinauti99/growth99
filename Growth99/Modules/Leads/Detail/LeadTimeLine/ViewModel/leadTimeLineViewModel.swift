@@ -9,16 +9,19 @@ import Foundation
 
 protocol leadTimeLineViewModelProtocol {
     func leadCreation(leadId: Int)
-    func auditLeadList(leadId: Int)
-    var leadCreatiionData: [auditLeadModel]? { get }
-    var leadCreationData: leadCreationModel? { get }
+    func getLeadTimeData(leadId: Int)
+    func leadTimeLineDataAtIndex(index: Int)-> auditLeadModel?
+
+    var getLeadTimeLineData: [auditLeadModel]? { get }
+    var getCreationData: leadCreationModel? { get }
+
 }
 
 class leadTimeLineViewModel {
     var delegate: leadTimeLineViewControllerProtocol?
     
     var leadCreation: leadCreationModel?
-    var auditLead: [auditLeadModel]?
+    var leadTimeLineList: [auditLeadModel]?
 
     init(delegate: leadTimeLineViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -41,12 +44,12 @@ class leadTimeLineViewModel {
         }
     }
     
-    func auditLeadList(leadId: Int) {
+    func getLeadTimeData(leadId: Int) {
         let finalURL = ApiUrl.auditleadCreation +  "leadId=\(leadId)"
         self.requestManager.request(forPath: finalURL, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[auditLeadModel], GrowthNetworkError>) in
             switch result {
             case .success(let list):
-                self.auditLead = list
+                self.leadTimeLineList = list
                 self.delegate?.recivedAuditLeadList()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -54,18 +57,20 @@ class leadTimeLineViewModel {
             }
         }
     }
-
+    
+    func leadTimeLineDataAtIndex(index: Int)-> auditLeadModel? {
+        return self.leadTimeLineList?[index]
+    }
+    
 }
 
 extension leadTimeLineViewModel: leadTimeLineViewModelProtocol {
  
-    var leadCreationData: leadCreationModel? {
+    var getCreationData: leadCreationModel? {
         return self.leadCreation
     }
    
-    var leadCreatiionData: [auditLeadModel]? {
-        return self.auditLead ?? []
+    var getLeadTimeLineData: [auditLeadModel]? {
+        return self.leadTimeLineList ?? []
     }
-    
-   
 }
