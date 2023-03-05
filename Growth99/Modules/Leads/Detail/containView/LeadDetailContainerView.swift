@@ -22,7 +22,7 @@ class LeadDetailContainerView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = Constant.Profile.patientDetail
+        self.title = Constant.Profile.leadDetail
     }
     
     func setUpSegemtControl(){
@@ -132,9 +132,9 @@ class LeadDetailContainerView: UIViewController {
     }()
     
     @objc func addTaskTapped(_ sender: UIButton) {
-        let createPateintsTasksVC = UIStoryboard(name: "CreatePateintsTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintsTasksViewController") as! CreatePateintsTasksViewController
-        createPateintsTasksVC.workflowTaskPatient = workflowLeadId
-        navigationController?.pushViewController(createPateintsTasksVC, animated: true)
+        let createLeadTasksVC = UIStoryboard(name: "CreateLeadTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLeadTasksViewController") as! CreateLeadTasksViewController
+        createLeadTasksVC.workflowTaskLeadId = workflowLeadId
+        navigationController?.pushViewController(createLeadTasksVC, animated: true)
     }
     
     /// Consents for Pateints

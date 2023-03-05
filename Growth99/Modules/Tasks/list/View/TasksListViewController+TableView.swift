@@ -39,7 +39,7 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editVC = UIStoryboard(name: "EditTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "EditTasksViewController") as! EditTasksViewController
-        editVC.screenTitile = "Task List"
+        editVC.screenTitile = self.screenTitile
 
         if isSearch {
             editVC.taskId = viewModel?.taskFilterDataAtIndex(index: indexPath.row)?.id ?? 0

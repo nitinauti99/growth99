@@ -175,8 +175,29 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     }
     
     @IBAction func goToPatientDetail(sender: UIButton) {
-        let taskDetail = viewModel?.taskDetailData
-        if self.screenTitile == "Task List" {
+      
+        if (self.screenTitile == "Lead Task") || (self.screenTitile == "Patient Task") {
+            /// check in navaigation PateintDetailViewController
+            if (sender.titleLabel?.text == "Go To Lead Detail" ) {
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for controller in viewControllers {
+                        if controller is LeadDetailContainerView {
+                            (controller as! LeadDetailContainerView).selectedindex = 0
+                            self.navigationController?.popToViewController(controller, animated: true)
+                        }
+                    }
+                }
+            }else{
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for controller in viewControllers {
+                        if controller is PeteintDetailView {
+                            (controller as! PeteintDetailView).selectedindex = 0
+                            self.navigationController?.popToViewController(controller, animated: true)
+                        }
+                    }
+                }
+            }
+        }else{
             if (sender.titleLabel?.text == "Go To Lead Detail" ) {
                 let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
                 detailController.workflowLeadId = viewModel?.taskDetailData?.leadId ?? 0
@@ -187,27 +208,6 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
                 let detailController = UIStoryboard(name: "PeteintDetailView", bundle: nil).instantiateViewController(withIdentifier: "PeteintDetailView") as! PeteintDetailView
                 detailController.workflowTaskPatientId = viewModel?.taskDetailData?.patientId ?? 0
                 navigationController?.pushViewController(detailController, animated: true)
-            }
-        }else{
-            /// check in navaigation PateintDetailViewController
-            if (sender.titleLabel?.text == "Go To Lead Detail" ) {
-                if let viewControllers = self.navigationController?.viewControllers {
-                    for controller in viewControllers {
-                        if controller is PeteintDetailView {
-                            (controller as! PeteintDetailView).selectedindex = 0
-                            self.navigationController?.popToViewController(controller, animated: true)
-                        }
-                    }
-                }
-            }else{
-                if let viewControllers = self.navigationController?.viewControllers {
-                    for controller in viewControllers {
-                        if controller is LeadDetailContainerView {
-                            (controller as! LeadDetailContainerView).selectedindex = 0
-                            self.navigationController?.popToViewController(controller, animated: true)
-                        }
-                    }
-                }
             }
         }
     }
