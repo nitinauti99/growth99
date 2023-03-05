@@ -27,8 +27,6 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = leadListViewModel(delegate: self)
-        self.view.ShowSpinner()
-        self.getleadList()
         self.setBarButton()
      }
     
@@ -37,6 +35,8 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
         self.navigationItem.title = Constant.Profile.leadListTitle
         self.addSerchBar()
         self.registerTableView()
+        self.view.ShowSpinner()
+        self.getleadList()
     }
 
     func setBarButton(){

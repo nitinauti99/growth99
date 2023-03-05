@@ -89,7 +89,6 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
         
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.leadStatusTextField.text = selectedItem
-            
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

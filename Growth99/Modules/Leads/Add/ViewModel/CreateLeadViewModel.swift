@@ -11,17 +11,21 @@ protocol CreateLeadViewModelProtocol {
     func getQuestionnaireId()
     func getQuestionnaireList()
     func createLead(patientQuestionAnswers: [String: Any])
-    func leadDataAtIndex(index: Int) -> leadListModel
-    var leadUserData: [leadListModel]? { get }
-    var leadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
-    func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
+
+    //    func leadDataAtIndex(index: Int) -> leadListModel
+    func getLeadQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList?
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool
+    
+    var getQuestionnaireListInfo: QuestionnaireList? { get }
+    var getLeadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
+
 }
 
 class CreateLeadViewModel {
     var delegate: CreateLeadViewControllerProtocol?
-    var leadData =  [leadListModel]()
+  
     var questionnaireId = QuestionnaireId()
+    var questionnaireListInfo:  QuestionnaireList?
     var questionnaireList = [PatientQuestionAnswersList]()
     var questionnaireFilterList = [PatientQuestionAnswersList]()
 
@@ -31,6 +35,7 @@ class CreateLeadViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
+    /// For get questionnaireId
     func getQuestionnaireId() {
         self.requestManager.request(forPath: ApiUrl.getQuestionnaireId, method: .GET, headers: self.requestManager.Headers()) { (result: Result<QuestionnaireId, GrowthNetworkError>) in
             switch result {
@@ -45,12 +50,14 @@ class CreateLeadViewModel {
         }
     }
 
+    /// get QuestionnaireList
     func getQuestionnaireList() {
         let finaleUrl = ApiUrl.getQuestionnaireList + "\(self.questionnaireId.id ?? 0)"
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result<QuestionnaireList, GrowthNetworkError>) in
             switch result {
             case .success(let list):
                 print(list)
+                self.questionnaireListInfo = list
                 self.questionnaireList = list.patientQuestionAnswers ?? []
                 self.questionnaireFilterListArray()
                 self.delegate?.QuestionnaireListRecived()
@@ -61,6 +68,7 @@ class CreateLeadViewModel {
         }
     }
     
+    /// create lead
     func createLead(patientQuestionAnswers:[String: Any]) {
         let finaleUrl = ApiUrl.createLead + "\(String(describing: self.questionnaireId.id))"
 
@@ -77,9 +85,9 @@ class CreateLeadViewModel {
         }
     }
     
-    func leadDataAtIndex(index: Int)-> leadListModel {
-        return self.leadData[index]
-    }
+//    func leadDataAtIndex(index: Int)-> leadListModel {
+//        return self.leadData[index]
+//    }
     
     func questionnaireFilterListArray() {
         for item in self.questionnaireList {
@@ -89,27 +97,27 @@ class CreateLeadViewModel {
         }
     }
     
-    func leadUserQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList? {
-        return self.leadUserQuestionnaireList?[index]
+    func getLeadQuestionnaireListAtIndex(index: Int)-> PatientQuestionAnswersList? {
+        return self.questionnaireFilterList[index]
     }
 }
 
 extension CreateLeadViewModel: CreateLeadViewModelProtocol {
 
+    var getLeadUserQuestionnaireList: [PatientQuestionAnswersList]? {
+        return self.questionnaireFilterList
+    }
+
+    var getQuestionnaireListInfo: QuestionnaireList? {
+        return self.questionnaireListInfo
+    }
+    
     func isValidTextFieldData(_ textField: String, regex: String) -> Bool {
         if regex == "", textField.count > 0 {
            return true
         }
         let textFieldValidation = NSPredicate(format:"SELF MATCHES %@", regex)
         return textFieldValidation.evaluate(with: textField)
-    }
-   
-    var leadUserQuestionnaireList: [PatientQuestionAnswersList]? {
-        return self.questionnaireFilterList
-    }
-
-    var leadUserData: [leadListModel]? {
-        return self.leadData
     }
     
     func isValidFirstName(_ firstName: String) -> Bool {

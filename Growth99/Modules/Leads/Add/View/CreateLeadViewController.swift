@@ -15,21 +15,20 @@ protocol CreateLeadViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
 }
 
-class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtocol {
-    
+class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtocol ,LeadMultipleSelectionWithDropDownTypeTableViewCellDelegate{
+
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
-    
-    @IBOutlet weak var createLeadTableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var customViewHight : NSLayoutConstraint!
-    private var viewModel: CreateLeadViewModelProtocol?
+    
+    var viewModel: CreateLeadViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
     var buttons = [UIButton]()
     var patientQuestionList = [PatientQuestionAnswersList]()
+   
     var listArray = [PatientQuestionChoices]()
-    var k = 0
-    var j = 0
     
     private lazy var inputTypeTextField: CustomTextField = {
         let textField = CustomTextField()
@@ -37,41 +36,42 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }()
     
     private var tableViewHeight: CGFloat {
-        createLeadTableView.layoutIfNeeded()
-        return createLeadTableView.contentSize.height
+        tableView.layoutIfNeeded()
+        return tableView.contentSize.height
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLeadViewModel(delegate: self)
-        self.view.ShowSpinner()
-        viewModel?.getQuestionnaireId()
-        setUpUI()
         self.registerTableViewCell()
+        self.setUpUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.ShowSpinner()
+        self.viewModel?.getQuestionnaireId()
+    }
     
     private func setUpUI(){
-        submitButton.roundCorners(corners: [.allCorners], radius: 10)
-        CancelButton.roundCorners(corners: [.allCorners], radius: 10)
+        self.submitButton.roundCorners(corners: [.allCorners], radius: 10)
+        self.CancelButton.roundCorners(corners: [.allCorners], radius: 10)
     }
     
     func registerTableViewCell(){
-        createLeadTableView.register(UINib(nibName: "InputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "InputTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadInputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadInputTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "TextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "TextTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadTextTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "YesNoTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "YesNoTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadYesNoTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadYesNoTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "MultipleSelectionTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadDateTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadDateTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "DateTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "DateTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadMultipleSelectionTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadMultipleSelectionTextTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "MultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadMultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell")
         
-        createLeadTableView.register(UINib(nibName: "MultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
-        
-        createLeadTableView.register(UINib(nibName: "PreSelectCheckboxTableViewCell", bundle: nil), forCellReuseIdentifier: "PreSelectCheckboxTableViewCell")
+        tableView.register(UINib(nibName: "LeadMultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
     }
     
     /// api Call
@@ -82,37 +82,24 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     /// recvied QuestionnaireList
     func QuestionnaireListRecived() {
         view.HideSpinner()
-        patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
-        self.createLeadTableView.reloadData()
+//        patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
+        self.tableView.reloadData()
         customViewHight.constant = tableViewHeight + 180
     }
     
-    /// multiple selection false type buttton action
-    @IBAction func webButtonTouched(_ sender: PassableUIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        }else{
-            sender.isSelected = true
-        }
-    }
-    ///  selection for drp down
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: listArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+    // show drop down list
+    func showDropDownQuestionchoice(cell: LeadMultipleSelectionWithDropDownTypeTableViewCell, index: IndexPath) {
+        let questionarieVM = viewModel?.getLeadQuestionnaireListAtIndex(index: index.row)
+        let patientQuestionChoices = questionarieVM?.patientQuestionChoices ?? []
+
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: patientQuestionChoices, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.choiceName?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
-            textField.text = selectedItem?.choiceName
+            cell.dropDownTypeTextField.text = selectedItem?.choiceName
         }
         selectionMenu.reloadInputViews()
-        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(listArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    ///  multiple selection with selction false
-    @objc func buttonAction(_ sender: PassableUIButton!){
-        for button in buttons {
-            button.isSelected = false
-        }
-        sender.isSelected = true
+        selectionMenu.show(style: .popover(sourceView: cell.dropDownButton, size: CGSize(width: cell.dropDownButton.frame.width, height: (Double(patientQuestionChoices.count * 44))), arrowDirection: .up), from: self)
     }
     
     ///  created Lead on existing datanaviagte to lead list
@@ -135,162 +122,110 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
     
     /// submit button which validate all  condition
-//    @IBAction func submitButtonClicked() {
-//        k = 0
-//        j = 0
-//        for index in 0..<(patientQuestionList.count) {
-//            let cellIndexPath = IndexPath(item: index, section: 0)
-//            let item = patientQuestionList[cellIndexPath.row]
-//            /// InputType
-//            if let InputTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? InputTypeTableViewCell {
-//                print(InputTypeCell.inputeTypeLbi.text ?? String.blank)
-//                
-//                guard let txtField = InputTypeCell.inputeTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
-//                    InputTypeCell.inputeTypeTextField.showError(message: item.validationMessage)
-//                    return
-//                }
-//                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: InputTypeCell.inputeTypeTextField.text ?? String.blank)
-//            }
-//            /// textType
-//            if let textTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? TextTypeTableViewCell {
-//                print(textTypeCell.textTypeLbi.text ?? String.blank)
-//                guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
-//                    textTypeCell.errorTypeLbi.isHidden = false
-//                    textTypeCell.errorTypeLbi.text =  item.validationMessage
-//                    return
-//                }
-//                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? String.blank)
-//            }
-//            
-//            /// yesNoType
-//            if let yesNoTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? YesNoTypeTableViewCell {
-//                print(yesNoTypeCell.yesNoTypeLbi.text ?? String.blank)
-//                print(yesNoTypeCell.yesTypeButton.isSelected)
-//                print(yesNoTypeCell.NoTypeButton.isSelected)
-//                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: yesNoTypeCell.yesTypeButton.isSelected )
-//            }
-//            
-//            /// MultipleSelectionType
-//            if let MultipleSelectionCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextTypeTableViewCell {
-//                print(MultipleSelectionCell.inputeTypeLbi.text ?? String.blank)
-//                var selectedStringArray = [String]()
-//                var patientQuestionChoicesList: [Any] = []
-//                var index = 0
-//                for view in MultipleSelectionCell.contentView.subviews {
-//                    print(view.tag)
-//                    if let inputTypeTxtField = view.viewWithTag(k) as? PassableUIButton {
-//                        print(inputTypeTxtField.isSelected)
-//                        print(inputTypeTxtField.titleLabel?.text ?? String.blank)
-//                        
-//                        if inputTypeTxtField.isSelected {
-//                            selectedStringArray.append(inputTypeTxtField.titleLabel?.text ?? String.blank)
-//                        }
-//                        
-//                        if let itemList = item.patientQuestionChoices?[index] {
-//                            let list = self.patientQuestionChoicesList(patientQuestionChoices: itemList, selected: inputTypeTxtField.isSelected)
-//                            patientQuestionChoicesList.append(list)
-//                        }
-//                        k += 1
-//                        index += 1
-//                    }
-//                }
-//                let selectedStr = selectedStringArray.joined(separator: ",")
-//                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: selectedStr)
-//            }
-//            
-//            /// DropDownType
-//            if let dropDownTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionWithDropDownTypeTableViewCell {
-//                print(dropDownTypeCell.dropDownTypeLbi.text ?? String.blank)
-//                
-//                guard let txtField = dropDownTypeCell.dropDownTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
-//                    dropDownTypeCell.dropDownTypeTextField.showError(message: item.validationMessage)
-//                    return
-//                }
-//                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dropDownTypeCell.dropDownTypeTextField.text ?? String.blank)
-//            }
-//            
-//            /// preSelectCheckboxType
-//            if let preSelectCheckboxCell = createLeadTableView.cellForRow(at: cellIndexPath) as? PreSelectCheckboxTableViewCell {
-//                print(preSelectCheckboxCell.preSelectCheckbox.text ?? String.blank)
-//                print(preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
-//                
-//                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: preSelectCheckboxCell.preSelectedCheckBoxButton.isSelected)
-//            }
-//            
-//            /// multipleSelectionFalseType
-//            if let multipleSelectionTextWithFalseCell = createLeadTableView.cellForRow(at: cellIndexPath) as? MultipleSelectionTextWithFalseTableViewCell {
-//                var selectedString: String = ""
-//                print(multipleSelectionTextWithFalseCell.multipleSelectionTypeLbi.text ?? String.blank)
-//                print(multipleSelectionTextWithFalseCell.isSelected)
-//                var j = 0
-//                for view in multipleSelectionTextWithFalseCell.contentView.subviews {
-//                    print(view.tag)
-//                    if let buttonField = view.viewWithTag(j) as? PassableUIButton {
-//                        print(buttonField.isSelected)
-//                        if buttonField.isSelected {
-//                            selectedString = buttonField.titleLabel?.text ?? String.blank
-//                        }
-//                        print(buttonField.titleLabel?.text ?? String.blank)
-//                        j += 1
-//                    }
-//                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: selectedString)
-//                }
-//            }
-//            
-//            /// DateType
-//            if let dateTypeCell = createLeadTableView.cellForRow(at: cellIndexPath) as? DateTypeTableViewCell {
-//                print(dateTypeCell.dateTypeLbi.text ?? String.blank)
-//                print(dateTypeCell.dateTypeTextField.text ?? String.blank)
-//                
-//                guard let txtField = dateTypeCell.dateTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
-//                    dateTypeCell.dateTypeTextField.showError(message: item.validationMessage)
-//                    return
-//                }
-//                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dateTypeCell.dateTypeTextField.text ?? String.blank)
-//            }
-//        }
-//        
-//        let patientQuestionAnswers: [String: Any] = [
-//            "id": 1234,
-//            "questionnaireId": 7996,
-//            "source": "Manual",
-//            "patientQuestionAnswers": patientQuestionAnswers
-//        ]
-//        print(patientQuestionAnswers)
-//        view.ShowSpinner()
-//        viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
-//        print("all condtion meet")
-//        
-//    }
-    
-    func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
-        let patientQuestionChoices: [String : Any] = [
-            "choiceName": patientQuestionChoices.choiceName ?? 0,
-            "choiceId": patientQuestionChoices.choiceId ?? 0,
-            "selected": selected
+    @IBAction func submitButtonClicked() {
+        let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
+
+        for index in 0..<(patientQuestionList.count ) {
+            let cellIndexPath = IndexPath(item: index, section: 0)
+            let item = patientQuestionList[cellIndexPath.row]
+            
+            ///  /// 1. questionnaireType ->  InputType
+            if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadInputTypeTableViewCell {
+                print(InputTypeCell.questionnaireName.text ?? String.blank)
+
+                guard let txtField = InputTypeCell.inputeTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
+                    InputTypeCell.inputeTypeTextField.showError(message: item.validationMessage)
+                    return
+                }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: InputTypeCell.inputeTypeTextField.text ?? String.blank)
+            }
+            
+            /// 2. questionnaireType -> TextType
+            if let textTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadTextTypeTableViewCell {
+                print(textTypeCell.questionnaireName.text ?? String.blank)
+               
+                guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
+                    textTypeCell.errorTypeLbi.isHidden = false
+                    textTypeCell.errorTypeLbi.text =  item.validationMessage
+                    return
+                }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? String.blank)
+            }
+            
+            /// 3. questionnaireType  -> DateType
+            if let dateTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadDateTypeTableViewCell {
+                print(dateTypeCell.questionnaireName.text ?? String.blank)
+                print(dateTypeCell.dateTypeTextField.text ?? String.blank)
+
+                guard let txtField = dateTypeCell.dateTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
+                    dateTypeCell.dateTypeTextField.showError(message: item.validationMessage)
+                    return
+                }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dateTypeCell.dateTypeTextField.text ?? String.blank)
+            }
+
+           // 4.questionnaireTyp-> yesNoType
+            if let yesNoTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadYesNoTypeTableViewCell {
+                print(yesNoTypeCell.questionnaireName.text ?? String.blank)
+
+                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: yesNoTypeCell.yesTypeButton.isSelected )
+            }
+
+            /// 5. questionnaireType  MultipleSelectionType && DropDownType
+            if let dropDownTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadMultipleSelectionWithDropDownTypeTableViewCell {
+                print(dropDownTypeCell.questionnaireName.text ?? String.blank)
+
+                guard let txtField = dropDownTypeCell.dropDownTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
+                    dropDownTypeCell.dropDownTypeTextField.showError(message: item.validationMessage)
+                    return
+                }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dropDownTypeCell.dropDownTypeTextField.text ?? String.blank)
+            }
+            
+            ///6 . questionnaireType  Multiple_Selection_Text
+            if let MultipleSelectionCell = tableView.cellForRow(at: cellIndexPath) as? LeadMultipleSelectionTextTypeTableViewCell {
+                print(MultipleSelectionCell.questionnaireName.text ?? String.blank)
+
+                let patientQuestionChoicesList = item.patientQuestionChoices ?? []
+                var selectedStringArray = [String]()
+                var patientQuestionChoices: PatientQuestionChoices!
+                var patientQuestionChoicesItem: [Any] = []
+
+                let tableView = MultipleSelectionCell.getTableView()
+                
+                for childIndex in 0..<( patientQuestionChoicesList.count) {
+                    let cellchildIndexPath = IndexPath(item: childIndex, section: 0)
+                    patientQuestionChoices = patientQuestionChoicesList[cellchildIndexPath.row]
+                  
+                    /// retrived data for child cell
+                    if let MultipleSelectionQuestionChoice = MultipleSelectionCell.tableView(tableView, cellForRowAt: cellchildIndexPath) as? MultipleSelectionQuestionChoiceTableViewCell {
+                        print("receved child table view")
+                        selectedStringArray.append(MultipleSelectionQuestionChoice.questionnaireChoiceName.text ?? String.blank)
+                       
+                        let list = self.patientQuestionChoicesList(patientQuestionChoices: patientQuestionChoices, selected: MultipleSelectionQuestionChoice.questionnaireChoiceButton.isSelected)
+                       
+                        patientQuestionChoicesItem.append(list)
+                    }
+                }
+                let selectedStr = selectedStringArray.joined(separator: ",")
+                self.setPatientQuestionChoicesList(patientQuestionAnswersList: item, patientQuestionList: patientQuestionChoicesItem, selectedString: selectedStr )
+            }
+        }
+
+        let patientQuestionAnswers: [String: Any] = [
+            "id": viewModel?.getQuestionnaireListInfo?.id ?? 0,
+            "questionnaireId": viewModel?.getQuestionnaireListInfo?.questionnaireId ?? 0,
+            "source": "Manual",
+            "patientQuestionAnswers": patientQuestionAnswers
         ]
-        return patientQuestionChoices
+        print(patientQuestionAnswers)
+        view.ShowSpinner()
+        viewModel?.createLead(patientQuestionAnswers: patientQuestionAnswers)
+        print("all condtion meet")
     }
     
-    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any], selectedString:[String] = []){
-        let patientQuestion: [String : Any] = [
-            "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
-            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
-            "allowMultipleSelection": false,
-            "preSelectCheckbox": false,
-            "answer": "",
-            "answerText": patientQuestionAnswersList.answerText ?? String.blank,
-            "answerComments": "",
-            "patientQuestionChoices": patientQuestionList,
-            "required": patientQuestionAnswersList.required ?? String.blank,
-            "hidden": patientQuestionAnswersList.hidden ?? false,
-            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
-        ]
-        patientQuestionAnswers.append(patientQuestion)
-    }
-    
-    /// for all
+  
+    /// setDataFor InputType Question
     func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String) {
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
@@ -309,6 +244,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         patientQuestionAnswers.append(patientQuestion)
     }
     
+    /// Set Dat For InputTaype answerText as Bool
     func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
         let patientQuestion: [String : Any] = [
             "questionId": patientQuestionAnswersList.questionId ?? 0,
@@ -320,6 +256,34 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
             "answerText": answerText,
             "answerComments": "",
             "patientQuestionChoices": [],
+            "required": patientQuestionAnswersList.required ?? String.blank,
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+        ]
+        patientQuestionAnswers.append(patientQuestion)
+    }
+    
+    //// add patientQuestionChoices inside array
+    func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
+        let patientQuestionChoices: [String : Any] = [
+            "choiceName": patientQuestionChoices.choiceName ?? 0,
+            "choiceId": patientQuestionChoices.choiceId ?? 0,
+            "selected": selected
+        ]
+        return patientQuestionChoices
+    }
+
+    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any], selectedString: String){
+        let patientQuestion: [String : Any] = [
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+            "answer": false,
+            "answerText": patientQuestionAnswersList.answerText ?? String.blank,
+            "answerComments": "",
+            "patientQuestionChoices": patientQuestionList,
             "required": patientQuestionAnswersList.required ?? String.blank,
             "hidden": patientQuestionAnswersList.hidden ?? false,
             "showDropDown": patientQuestionAnswersList.showDropDown ?? false

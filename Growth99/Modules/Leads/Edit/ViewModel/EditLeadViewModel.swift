@@ -12,17 +12,17 @@ protocol EditLeadViewModelProtocol {
     func updateLeadAmmount(questionnaireId: Int, ammount: Int)
     func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
     func leadDataAtIndex(index: Int) -> leadListModel
-    var LeadUserData: [leadListModel]? { get }
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidFirstName(_ firstName: String) -> Bool
     func isValidLastName(_ lastName: String) -> Bool
     func isValidMessage(_ message: String) -> Bool
+    var leadUserData: [leadListModel]? { get }
 }
 
 class EditLeadViewModel {
     var delegate: EditLeadViewControllerProtocol?
-    var LeadData =  [leadListModel]()
+    var leadData =  [leadListModel]()
     var leadPeginationListData: [leadListModel]?
     var totalCount: Int = 0
 
@@ -107,15 +107,15 @@ class EditLeadViewModel {
     }
 
     func leadDataAtIndex(index: Int)-> leadListModel {
-        return self.LeadData[index]
+        return self.leadData[index]
     }
     
 }
 
 extension EditLeadViewModel: EditLeadViewModelProtocol {
 
-    var LeadUserData: [leadListModel]? {
-        return self.LeadData
+    var leadUserData: [leadListModel]? {
+        return self.leadData
     }
     
     func isValidFirstName(_ firstName: String) -> Bool {

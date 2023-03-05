@@ -41,6 +41,34 @@
 		013A4FA129B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9F29B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift */; };
 		013A4FA229B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FA029B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib */; };
 		013A4FA429B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FA329B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift */; };
+		013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FAA29B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift */; };
+		013A4FBA29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FAB29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib */; };
+		013A4FBB29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FAC29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.swift */; };
+		013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FAD29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib */; };
+		013A4FBD29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FAE29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.xib */; };
+		013A4FBE29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FAF29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.swift */; };
+		013A4FBF29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FB029B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift */; };
+		013A4FC029B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FB129B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib */; };
+		013A4FC129B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FB329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib */; };
+		013A4FC229B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FB429B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.swift */; };
+		013A4FC329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FB529B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift */; };
+		013A4FC429B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FB629B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.xib */; };
+		013A4FC529B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FB729B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.swift */; };
+		013A4FC629B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FB829B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib */; };
+		013A4FD829B4E3FA00CA24B0 /* InputTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FC929B4E3FA00CA24B0 /* InputTypeTableViewCell.swift */; };
+		013A4FD929B4E3FA00CA24B0 /* TextTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FCA29B4E3FA00CA24B0 /* TextTypeTableViewCell.xib */; };
+		013A4FDA29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FCB29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift */; };
+		013A4FDB29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FCC29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.swift */; };
+		013A4FDC29B4E3FA00CA24B0 /* TextTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FCD29B4E3FA00CA24B0 /* TextTypeTableViewCell.swift */; };
+		013A4FDD29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FCE29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib */; };
+		013A4FDE29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FCF29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib */; };
+		013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD029B4E3FA00CA24B0 /* DateTypeTableViewCell.xib */; };
+		013A4FE029B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD229B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.swift */; };
+		013A4FE129B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD329B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib */; };
+		013A4FE229B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD429B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib */; };
+		013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */; };
+		013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
+		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -50,8 +78,6 @@
 		017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */; };
 		017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */; };
 		017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */; };
-		017D574B29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D574929B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift */; };
-		017D574C29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017D574A29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
 		01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */; };
 		01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */; };
 		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
@@ -481,22 +507,6 @@
 		84D063112967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062D92967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift */; };
 		84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062DA2967080E001FE469 /* CreateLeadViewController.swift */; };
 		84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062DB2967080E001FE469 /* CreateLeadViewModel.swift */; };
-		84D063142967080E001FE469 /* InputTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062DD2967080E001FE469 /* InputTypeTableViewCell.swift */; };
-		84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062DE2967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift */; };
-		84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062DF2967080E001FE469 /* TextTypeTableViewCell.xib */; };
-		84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062E02967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib */; };
-		84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062E12967080E001FE469 /* DateTypeTableViewCell.swift */; };
-		84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062E22967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib */; };
-		84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062E32967080E001FE469 /* YesNoTypeTableViewCell.swift */; };
-		84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062E42967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib */; };
-		84D0631C2967080E001FE469 /* TextTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062E52967080E001FE469 /* TextTypeTableViewCell.swift */; };
-		84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062E62967080E001FE469 /* YesNoTypeTableViewCell.xib */; };
-		84D0631E2967080E001FE469 /* PreSelectCheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062E72967080E001FE469 /* PreSelectCheckboxTableViewCell.swift */; };
-		84D0631F2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062E82967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
-		84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062E92967080E001FE469 /* InputTypeTableViewCell.xib */; };
-		84D063212967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062EA2967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift */; };
-		84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062EB2967080E001FE469 /* PreSelectCheckboxTableViewCell.xib */; };
-		84D063232967080E001FE469 /* DateTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D062EC2967080E001FE469 /* DateTypeTableViewCell.xib */; };
 		84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062ED2967080E001FE469 /* QuestionnaireList.swift */; };
 		84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */; };
 		84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D062EF2967080E001FE469 /* QuestionnaireId.swift */; };
@@ -703,6 +713,34 @@
 		013A4F9F29B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadCombineTimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		013A4FA029B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadCombineTimeLineTableViewCell.xib; sourceTree = "<group>"; };
 		013A4FA329B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CombineTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
+		013A4FAA29B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadYesNoTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FAB29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadDateTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FAC29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadInputTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FAD29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadTextTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FAE29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadInputTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FAF29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadTextTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FB029B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadDateTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FB129B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadYesNoTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FB329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadMultipleSelectionWithDropDownTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FB429B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadMultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FB529B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadMultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FB629B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadMultipleSelectionTextTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FB729B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadMultipleSelectionTextTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FB829B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadMultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FC929B4E3FA00CA24B0 /* InputTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FCA29B4E3FA00CA24B0 /* TextTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FCB29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FCC29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FCD29B4E3FA00CA24B0 /* TextTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FCE29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesNoTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FCF29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FD029B4E3FA00CA24B0 /* DateTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FD229B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionTextTypeTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FD329B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionTextTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FD429B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionWithDropDownTypeTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
+		013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
+		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -712,8 +750,6 @@
 		017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
 		017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayQuestionnaireViewContoller+TableView.swift"; sourceTree = "<group>"; };
-		017D574929B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
-		017D574A29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintEditViewController+UITextField.swift"; sourceTree = "<group>"; };
 		01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintViewContoller+UITextfiled.swift"; sourceTree = "<group>"; };
 		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
@@ -1159,22 +1195,6 @@
 		84D062D92967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateLeadViewController+TableViewExtension.swift"; sourceTree = "<group>"; };
 		84D062DA2967080E001FE469 /* CreateLeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLeadViewController.swift; sourceTree = "<group>"; };
 		84D062DB2967080E001FE469 /* CreateLeadViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLeadViewModel.swift; sourceTree = "<group>"; };
-		84D062DD2967080E001FE469 /* InputTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTypeTableViewCell.swift; sourceTree = "<group>"; };
-		84D062DE2967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionTextTypeTableViewCell.swift; sourceTree = "<group>"; };
-		84D062DF2967080E001FE469 /* TextTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextTypeTableViewCell.xib; sourceTree = "<group>"; };
-		84D062E02967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionTextTypeTableViewCell.xib; sourceTree = "<group>"; };
-		84D062E12967080E001FE469 /* DateTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTypeTableViewCell.swift; sourceTree = "<group>"; };
-		84D062E22967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionTextWithFalseTableViewCell.xib; sourceTree = "<group>"; };
-		84D062E32967080E001FE469 /* YesNoTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoTypeTableViewCell.swift; sourceTree = "<group>"; };
-		84D062E42967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionWithDropDownTypeTableViewCell.xib; sourceTree = "<group>"; };
-		84D062E52967080E001FE469 /* TextTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTypeTableViewCell.swift; sourceTree = "<group>"; };
-		84D062E62967080E001FE469 /* YesNoTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesNoTypeTableViewCell.xib; sourceTree = "<group>"; };
-		84D062E72967080E001FE469 /* PreSelectCheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSelectCheckboxTableViewCell.swift; sourceTree = "<group>"; };
-		84D062E82967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
-		84D062E92967080E001FE469 /* InputTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTypeTableViewCell.xib; sourceTree = "<group>"; };
-		84D062EA2967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionTextWithFalseTableViewCell.swift; sourceTree = "<group>"; };
-		84D062EB2967080E001FE469 /* PreSelectCheckboxTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreSelectCheckboxTableViewCell.xib; sourceTree = "<group>"; };
-		84D062EC2967080E001FE469 /* DateTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTypeTableViewCell.xib; sourceTree = "<group>"; };
 		84D062ED2967080E001FE469 /* QuestionnaireList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireList.swift; sourceTree = "<group>"; };
 		84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateLeadViewController.storyboard; sourceTree = "<group>"; };
 		84D062EF2967080E001FE469 /* QuestionnaireId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireId.swift; sourceTree = "<group>"; };
@@ -1552,6 +1572,80 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		013A4FA829B4E39B00CA24B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FA929B4E39B00CA24B0 /* Group1 */,
+				013A4FB229B4E39B00CA24B0 /* Group2 */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		013A4FA929B4E39B00CA24B0 /* Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FAC29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.swift */,
+				013A4FAE29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.xib */,
+				013A4FAF29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.swift */,
+				013A4FAD29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib */,
+				013A4FB029B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift */,
+				013A4FAB29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib */,
+				013A4FAA29B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift */,
+				013A4FB129B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib */,
+			);
+			path = Group1;
+			sourceTree = "<group>";
+		};
+		013A4FB229B4E39B00CA24B0 /* Group2 */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FB729B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.swift */,
+				013A4FB629B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.xib */,
+				013A4FB429B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.swift */,
+				013A4FB829B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib */,
+				013A4FB529B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift */,
+				013A4FB329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib */,
+			);
+			path = Group2;
+			sourceTree = "<group>";
+		};
+		013A4FC729B4E3FA00CA24B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FC829B4E3FA00CA24B0 /* Group1 */,
+				013A4FD129B4E3FA00CA24B0 /* Group2 */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		013A4FC829B4E3FA00CA24B0 /* Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FC929B4E3FA00CA24B0 /* InputTypeTableViewCell.swift */,
+				013A4FCA29B4E3FA00CA24B0 /* TextTypeTableViewCell.xib */,
+				013A4FCB29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift */,
+				013A4FCC29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.swift */,
+				013A4FCD29B4E3FA00CA24B0 /* TextTypeTableViewCell.swift */,
+				013A4FCE29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib */,
+				013A4FCF29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib */,
+				013A4FD029B4E3FA00CA24B0 /* DateTypeTableViewCell.xib */,
+			);
+			path = Group1;
+			sourceTree = "<group>";
+		};
+		013A4FD129B4E3FA00CA24B0 /* Group2 */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FD229B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.swift */,
+				013A4FD329B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib */,
+				013A4FD429B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib */,
+				013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */,
+				013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */,
+				013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */,
+			);
+			path = Group2;
+			sourceTree = "<group>";
+		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
 			isa = PBXGroup;
 			children = (
@@ -1596,45 +1690,6 @@
 				017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		017D574629B0447A00D6A5A4 /* Gruoup1 */ = {
-			isa = PBXGroup;
-			children = (
-				84D062DD2967080E001FE469 /* InputTypeTableViewCell.swift */,
-				84D062E92967080E001FE469 /* InputTypeTableViewCell.xib */,
-				84D062E52967080E001FE469 /* TextTypeTableViewCell.swift */,
-				84D062DF2967080E001FE469 /* TextTypeTableViewCell.xib */,
-				84D062E12967080E001FE469 /* DateTypeTableViewCell.swift */,
-				84D062EC2967080E001FE469 /* DateTypeTableViewCell.xib */,
-				84D062E32967080E001FE469 /* YesNoTypeTableViewCell.swift */,
-				84D062E62967080E001FE469 /* YesNoTypeTableViewCell.xib */,
-			);
-			path = Gruoup1;
-			sourceTree = "<group>";
-		};
-		017D574729B044A800D6A5A4 /* Group2 */ = {
-			isa = PBXGroup;
-			children = (
-				84D062DE2967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift */,
-				84D062E02967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib */,
-				017D574929B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift */,
-				017D574A29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.xib */,
-				84D062E82967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */,
-				84D062E42967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib */,
-			);
-			name = Group2;
-			sourceTree = "<group>";
-		};
-		017D574829B044CC00D6A5A4 /* Group3 */ = {
-			isa = PBXGroup;
-			children = (
-				84D062E72967080E001FE469 /* PreSelectCheckboxTableViewCell.swift */,
-				84D062EB2967080E001FE469 /* PreSelectCheckboxTableViewCell.xib */,
-				84D062EA2967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift */,
-				84D062E22967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib */,
-			);
-			path = Group3;
 			sourceTree = "<group>";
 		};
 		01BBA9CF29AB53A6006A5DB8 /* NotificationList */ = {
@@ -2546,6 +2601,7 @@
 		84088BB62977E7AF0060855E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				013A4FA829B4E39B00CA24B0 /* Cell */,
 				84D062DA2967080E001FE469 /* CreateLeadViewController.swift */,
 				84D062EE2967080E001FE469 /* CreateLeadViewController.storyboard */,
 				84D062D92967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift */,
@@ -2919,7 +2975,7 @@
 		842C0C90298F713B00395061 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D062DC2967080E001FE469 /* Cell */,
+				013A4FC729B4E3FA00CA24B0 /* Cell */,
 				842C0C91298F713B00395061 /* FillQuestionarieViewController.swift */,
 				842C0C92298F713B00395061 /* FillQuestionarieViewController+TableView.swift */,
 				842C0C93298F713B00395061 /* FillQuestionarieViewController.storyboard */,
@@ -4458,17 +4514,6 @@
 			path = Add;
 			sourceTree = "<group>";
 		};
-		84D062DC2967080E001FE469 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				017D574829B044CC00D6A5A4 /* Group3 */,
-				017D574629B0447A00D6A5A4 /* Gruoup1 */,
-				017D574729B044A800D6A5A4 /* Group2 */,
-			);
-			name = Cell;
-			path = ../../../../../Leads/Add/View/Cell;
-			sourceTree = "<group>";
-		};
 		84D0632729670898001FE469 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
@@ -5085,7 +5130,6 @@
 				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
 				01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
-				84D0631D2967080E001FE469 /* YesNoTypeTableViewCell.xib in Resources */,
 				84903519299572C200556D47 /* ConsentsTemplateListTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
@@ -5093,11 +5137,10 @@
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
 				84D062A12967070D001FE469 /* UserListViewContoller.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
+				013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */,
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
-				84D063192967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.xib in Resources */,
 				849D3AF32997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf in Resources */,
-				017D574C29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */,
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
 				842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */,
 				84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */,
@@ -5109,19 +5152,21 @@
 				848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
-				84D063222967080E001FE469 /* PreSelectCheckboxTableViewCell.xib in Resources */,
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */,
+				013A4FBD29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.xib in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
 				39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */,
+				013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
-				84D063232967080E001FE469 /* DateTypeTableViewCell.xib in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84BD33F72994BB020050C0D8 /* EmailTemplateViewController.storyboard in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
+				013A4FDD29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* CustomEmailTemplateTableViewCell.xib in Resources */,
+				013A4FE129B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
@@ -5131,7 +5176,6 @@
 				848FA3D6299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
-				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
 				013A4FA229B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib in Resources */,
@@ -5144,7 +5188,7 @@
 				3947A8F22996776E000CA2EB /* EventsTableViewCell.xib in Resources */,
 				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
 				39FC691529B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard in Resources */,
-				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
+				013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
 				39F2FF212996B8110089BD4F /* AppointmentListDetailViewController.storyboard in Resources */,
@@ -5159,7 +5203,6 @@
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
 				01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */,
-				84D0631B2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				017D571929AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* SMSTemplateTableViewCell.xib in Resources */,
@@ -5174,10 +5217,13 @@
 				01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */,
 				8490350C2995673D00556D47 /* ConsentsTemplateListViewController.storyboard in Resources */,
 				01152E3229B3C5F100B24627 /* LeadHistoryViewController.storyboard in Resources */,
-				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				013A4F9D29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib in Resources */,
+				013A4FDE29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib in Resources */,
 				01152E3A29B3C64000B24627 /* CombineTimeLineViewController.storyboard in Resources */,
+				013A4FD929B4E3FA00CA24B0 /* TextTypeTableViewCell.xib in Resources */,
+				013A4FC029B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib in Resources */,
 				01BBA9E129AB571F006A5DB8 /* NotificationListTableViewCell.xib in Resources */,
+				013A4FE229B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				01152E2229B3C1B600B24627 /* CreateLeadTasksViewController.storyboard in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
@@ -5189,6 +5235,7 @@
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
+				013A4FBA29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
 				39FC693C29B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
@@ -5199,7 +5246,10 @@
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
 				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
+				013A4FC129B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				39FC68FD29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib in Resources */,
+				013A4FC629B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib in Resources */,
+				013A4FC429B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				39F2FF162996B2F40089BD4F /* AppointmentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5329,6 +5379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
+				013A4FBF29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift in Sources */,
 				842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
@@ -5423,7 +5474,9 @@
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
 				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
+				013A4FDA29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
+				013A4FBE29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.swift in Sources */,
 				01152E1829B3BA6E00B24627 /* LeadDetailContainerView.swift in Sources */,
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */,
@@ -5450,10 +5503,10 @@
 				398F90FA298ECB8700DB96E4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
+				013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */,
 				39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */,
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
-				017D574B29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
@@ -5511,6 +5564,7 @@
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
 				84F610E4292A71AB00B1FB69 /* TaskSequencer.swift in Sources */,
 				84B75EAF2968D84500962F3E /* CategoriesAddViewController.swift in Sources */,
+				013A4FDB29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.swift in Sources */,
 				848A0391299418AC004FE278 /* EmailTemplateListModel.swift in Sources */,
 				39F2FF112996B2F40089BD4F /* AppointmentListModel.swift in Sources */,
 				848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */,
@@ -5519,7 +5573,6 @@
 				84F610E8292A71AB00B1FB69 /* Device.swift in Sources */,
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
-				84D0631F2967080E001FE469 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,
@@ -5571,14 +5624,13 @@
 				842C0CB4298F713B00395061 /* PatientAppointmentViewController.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
 				39FC693B29B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift in Sources */,
-				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
 				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
+				013A4FD829B4E3FA00CA24B0 /* InputTypeTableViewCell.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,
 				84BD33F62994BB020050C0D8 /* EmailTemplateViewController+SearchBar.swift in Sources */,
-				84D063212967080E001FE469 /* MultipleSelectionTextWithFalseTableViewCell.swift in Sources */,
 				01BBA9D829AB5452006A5DB8 /* NotificationListViewModel.swift in Sources */,
 				84F610CB292A71AA00B1FB69 /* Dispatch.swift in Sources */,
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
@@ -5593,6 +5645,7 @@
 				84D0623F29670677001FE469 /* CreatePateintViewModel.swift in Sources */,
 				84D0622729670677001FE469 /* ChangePasswordViewController.swift in Sources */,
 				848FA3CD2996164C00A7D2D5 /* QuestionnaireTemplatesViewModel.swift in Sources */,
+				013A4FC529B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				84D0623A29670677001FE469 /* PateintListViewModel.swift in Sources */,
 				84F610B6292A71AA00B1FB69 /* HMACCryptoSwift.swift in Sources */,
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
@@ -5619,6 +5672,7 @@
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
+				013A4FC229B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				842C0CD1298F756200395061 /* AddNewConsentsModel.swift in Sources */,
 				39FC690B29B3D22400FCB7C6 /* AnnouncementsViewController.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
@@ -5631,7 +5685,7 @@
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
-				84D063182967080E001FE469 /* DateTypeTableViewCell.swift in Sources */,
+				013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
 				DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */,
@@ -5681,7 +5735,6 @@
 				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,
 				01152E1529B39C7400B24627 /* leadListViewController+ScrollView.swift in Sources */,
 				39EBABC429915872001B789D /* StringExtension1.swift in Sources */,
-				84D0631C2967080E001FE469 /* TextTypeTableViewCell.swift in Sources */,
 				848C92AA291F6AA000502956 /* RSSelectionMenuDataSource.swift in Sources */,
 				DAEF74A4299D533B009140AE /* DataStudioViewController.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
@@ -5690,13 +5743,13 @@
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				849D3AEE2997CC72003E856A /* FontAwesomeExtension.swift in Sources */,
 				39FC690F29B3D26400FCB7C6 /* AnnouncementsViewModel.swift in Sources */,
+				013A4FDC29B4E3FA00CA24B0 /* TextTypeTableViewCell.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
 				39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
-				84D0631A2967080E001FE469 /* YesNoTypeTableViewCell.swift in Sources */,
 				84903512299571CB00556D47 /* ConsentsTemplateListViewController+TableView.swift in Sources */,
 				848EEA94299A5FC100F6E3D5 /* CreateFormModel.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
@@ -5708,6 +5761,7 @@
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
 				01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadListListViewController.swift in Sources */,
+				013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
@@ -5715,6 +5769,7 @@
 				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
 				01152E1129B398CE00B24627 /* leadListViewController+TableView.swift in Sources */,
+				013A4FE029B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */,
 				84B2293429314CF8006E8292 /* UITextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
@@ -5793,7 +5848,6 @@
 				842C0CB8298F713B00395061 /* CreatePateintsTasksViewModel.swift in Sources */,
 				84F610C4292A71AA00B1FB69 /* JOSEHeader.swift in Sources */,
 				84088BCB297930180060855E /* BusinessModel.swift in Sources */,
-				84D0631E2967080E001FE469 /* PreSelectCheckboxTableViewCell.swift in Sources */,
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
 				842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */,
 				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
@@ -5811,6 +5865,7 @@
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
 				01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */,
+				013A4FBB29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.swift in Sources */,
 				849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */,
 				39FC68F829B363F000FCB7C6 /* MassEmailandSMSModel.swift in Sources */,
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,
@@ -5827,8 +5882,8 @@
 				84D0630B2967080E001FE469 /* leadDetailViewController+TableView.swift in Sources */,
 				84F610FC292A71AB00B1FB69 /* TLSCertificate.swift in Sources */,
 				01152E2029B3C1A900B24627 /* CreateLeadTasksViewController.swift in Sources */,
-				84D063142967080E001FE469 /* InputTypeTableViewCell.swift in Sources */,
 				013A4F9929B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift in Sources */,
+				013A4FC329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0622C29670677001FE469 /* VacationScheduleViewController+Extension.swift in Sources */,
 				84B75EC12969011B00962F3E /* ClinicsListTableViewCell.swift in Sources */,
 			);
