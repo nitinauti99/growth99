@@ -141,6 +141,9 @@
 		3947A900299677EE000CA2EB /* BookingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8FD299677EE000CA2EB /* BookingHistoryViewController.swift */; };
 		3947A901299677EE000CA2EB /* BookingHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8FE299677EE000CA2EB /* BookingHistoryViewController+TableView.swift */; };
 		3947A902299677EE000CA2EB /* BookingHistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3947A8FF299677EE000CA2EB /* BookingHistoryViewController.storyboard */; };
+		397C4FD229B510B000778B8E /* AnnouncementsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397C4FD129B510B000778B8E /* AnnouncementsViewController+TableView.swift */; };
+		397C4FD629B5117300778B8E /* AnnouncementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397C4FD429B5117300778B8E /* AnnouncementsTableViewCell.swift */; };
+		397C4FD729B5117300778B8E /* AnnouncementsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397C4FD529B5117300778B8E /* AnnouncementsTableViewCell.xib */; };
 		398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90CF298ECB8600DB96E4 /* IQTextView.swift */; };
 		398F90EB298ECB8700DB96E4 /* IQKeyboardManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90D0298ECB8600DB96E4 /* IQKeyboardManager+Internal.swift */; };
 		398F90EC298ECB8700DB96E4 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F90D2298ECB8600DB96E4 /* IQPreviousNextView.swift */; };
@@ -815,6 +818,9 @@
 		3947A8FD299677EE000CA2EB /* BookingHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryViewController.swift; sourceTree = "<group>"; };
 		3947A8FE299677EE000CA2EB /* BookingHistoryViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookingHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
 		3947A8FF299677EE000CA2EB /* BookingHistoryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookingHistoryViewController.storyboard; sourceTree = "<group>"; };
+		397C4FD129B510B000778B8E /* AnnouncementsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementsViewController+TableView.swift"; sourceTree = "<group>"; };
+		397C4FD429B5117300778B8E /* AnnouncementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTableViewCell.swift; sourceTree = "<group>"; };
+		397C4FD529B5117300778B8E /* AnnouncementsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementsTableViewCell.xib; sourceTree = "<group>"; };
 		398F90CF298ECB8600DB96E4 /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
 		398F90D0298ECB8600DB96E4 /* IQKeyboardManager+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQKeyboardManager+Internal.swift"; sourceTree = "<group>"; };
 		398F90D2298ECB8600DB96E4 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
@@ -1960,6 +1966,54 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		397C4FCC29B5095000778B8E /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				397C4FCE29B5095000778B8E /* Model */,
+				397C4FCF29B5095000778B8E /* View */,
+				397C4FCD29B5095000778B8E /* ViewModel */,
+				397C4FD029B5095000778B8E /* CustomTableViewCell */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		397C4FCD29B5095000778B8E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		397C4FCE29B5095000778B8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		397C4FCF29B5095000778B8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		397C4FD029B5095000778B8E /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		397C4FD329B5114B00778B8E /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				397C4FD429B5117300778B8E /* AnnouncementsTableViewCell.swift */,
+				397C4FD529B5117300778B8E /* AnnouncementsTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
 		398F90CD298ECB8600DB96E4 /* IQKeyboardManagerSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -2154,6 +2208,7 @@
 			isa = PBXGroup;
 			children = (
 				39FC68F029B363F000FCB7C6 /* ListScreen */,
+				397C4FCC29B5095000778B8E /* DetailScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2224,7 +2279,7 @@
 				39FC690729B3D20E00FCB7C6 /* Model */,
 				39FC690829B3D20E00FCB7C6 /* View */,
 				39FC690629B3D20E00FCB7C6 /* ViewModel */,
-				39FC690929B3D20E00FCB7C6 /* CustomTableViewCell */,
+				397C4FD329B5114B00778B8E /* CustomTableViewCell */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -2249,16 +2304,10 @@
 			isa = PBXGroup;
 			children = (
 				39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */,
+				397C4FD129B510B000778B8E /* AnnouncementsViewController+TableView.swift */,
 				39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		39FC690929B3D20E00FCB7C6 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		39FC691629B3D56300FCB7C6 /* LandingPages */ = {
@@ -5140,6 +5189,7 @@
 				013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */,
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
+				397C4FD729B5117300778B8E /* AnnouncementsTableViewCell.xib in Resources */,
 				849D3AF32997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
 				842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */,
@@ -5440,6 +5490,7 @@
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
+				397C4FD629B5117300778B8E /* AnnouncementsTableViewCell.swift in Sources */,
 				84F610FA292A71AB00B1FB69 /* TLSPublicKey.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
@@ -5866,6 +5917,7 @@
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
 				01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */,
 				013A4FBB29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.swift in Sources */,
+				397C4FD229B510B000778B8E /* AnnouncementsViewController+TableView.swift in Sources */,
 				849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */,
 				39FC68F829B363F000FCB7C6 /* MassEmailandSMSModel.swift in Sources */,
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,

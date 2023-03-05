@@ -16,13 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-YF-kEM">
+                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="xCZ-lr-Bsq"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="GK0-B9-via"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-ph-TaA">
+                                <rect key="frame" x="0.0" y="124" width="393" height="728"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="DvZ-93-1Lj"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="ehq-nV-fbp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FDa-ph-TaA" secondAttribute="trailing" id="13d-n3-Rdf"/>
+                            <constraint firstItem="FDa-ph-TaA" firstAttribute="top" secondItem="xrH-YF-kEM" secondAttribute="bottom" constant="5" id="3Wq-hB-Rbd"/>
+                            <constraint firstAttribute="bottom" secondItem="FDa-ph-TaA" secondAttribute="bottom" id="4yt-Vg-hmZ"/>
+                            <constraint firstItem="xrH-YF-kEM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIx-Lu-oTq"/>
+                            <constraint firstAttribute="trailing" secondItem="xrH-YF-kEM" secondAttribute="trailing" id="QRd-Ma-r8J"/>
+                            <constraint firstItem="xrH-YF-kEM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="VOw-vK-P6k"/>
+                            <constraint firstItem="FDa-ph-TaA" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="xBm-Ld-u1I"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="announcementsTableView" destination="FDa-ph-TaA" id="0UB-e6-vOB"/>
+                        <outlet property="searchBar" destination="xrH-YF-kEM" id="oGo-Et-RFf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45" y="-28"/>
+            <point key="canvasLocation" x="9.9236641221374047" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

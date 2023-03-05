@@ -34,7 +34,7 @@ public extension UIView {
         self.layer.borderColor = cgColor
     }
     
-    func addBottomShadow(color: UIColor = UIColor.borderColor,offset: CGSize = CGSize(width: 0, height: 3), redius: CGFloat = 4, opacity: Float = 0.5){
+    func addBottomShadow(color: UIColor = UIColor.borderColor, offset: CGSize = CGSize(width: 0, height: 3), redius: CGFloat = 4, opacity: Float = 0.5){
         self.layoutIfNeeded()
         self.layer.masksToBounds = false
         let cgColor: CGColor = color.cgColor
