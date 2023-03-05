@@ -17,7 +17,7 @@ class LeadDetailContainerView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSegemtControl()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeSegment") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeLeadSegment") , object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +42,7 @@ class LeadDetailContainerView: UIViewController {
     @objc func notificationReceived(_ notification: Notification) {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
         self.selectedindex = segment
+        self.segmentedControl.selectedSegmentIndex = self.selectedindex
         self.selectionDidChange(sender: segmentedControl)
     }
   
@@ -50,7 +51,7 @@ class LeadDetailContainerView: UIViewController {
         case 0:
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: leadTimeLineVC)
-            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: leadHistoryVC)
             remove(asChildViewController: pateintsAppointmentListVC)
             remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: leadDetailVC)
@@ -58,7 +59,7 @@ class LeadDetailContainerView: UIViewController {
         case 1:
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: leadDetailVC)
-            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: leadHistoryVC)
             remove(asChildViewController: pateintsAppointmentListVC)
             remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: leadTimeLineVC)
@@ -66,7 +67,7 @@ class LeadDetailContainerView: UIViewController {
         case 2:
             remove(asChildViewController: leadTimeLineVC)
             remove(asChildViewController: leadDetailVC)
-            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: leadHistoryVC)
             remove(asChildViewController: pateintsAppointmentListVC)
             remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: tasksListVC)
@@ -77,23 +78,15 @@ class LeadDetailContainerView: UIViewController {
             remove(asChildViewController: tasksListVC)
             remove(asChildViewController: pateintsAppointmentListVC)
             remove(asChildViewController: pateinstTimeLineVC)
-            add(asChildViewController: consentsListVC)
+            add(asChildViewController: leadHistoryVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addNewConsentButtonTapped), imageName: "add")
         case 4:
             remove(asChildViewController: leadTimeLineVC)
             remove(asChildViewController: leadDetailVC)
             remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: consentsListVC)
+            remove(asChildViewController: leadHistoryVC)
             remove(asChildViewController: pateinstTimeLineVC)
             add(asChildViewController: pateintsAppointmentListVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addAppointMentButtonTapped), imageName: "add")
-        case 5:
-            remove(asChildViewController: leadDetailVC)
-            remove(asChildViewController: leadTimeLineVC)
-            remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: consentsListVC)
-            remove(asChildViewController: pateintsAppointmentListVC)
-            add(asChildViewController: pateinstTimeLineVC)
             navigationItem.rightBarButtonItem = nil
         default:
             break
@@ -138,10 +131,9 @@ class LeadDetailContainerView: UIViewController {
     }
     
     /// Consents for Pateints
-    private lazy var consentsListVC: ConsentsListViewController = {
-        let consentsList = UIStoryboard(name: "ConsentsListViewController", bundle: nil).instantiateViewController(withIdentifier: "ConsentsListViewController") as! ConsentsListViewController
-        consentsList.pateintId = workflowLeadId
-        return consentsList
+    private lazy var leadHistoryVC: LeadHistoryViewController = {
+        let leadHistoryList = UIStoryboard(name: "LeadHistoryViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadHistoryViewController") as! LeadHistoryViewController
+        return leadHistoryList
     }()
     
     @objc func addNewConsentButtonTapped(_ sender: UIButton){

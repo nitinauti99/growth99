@@ -31,6 +31,9 @@ extension leadDetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.qutionNameLbi.text = item.questionName
             cell.ansLbi.text = item.answerText
+            if item.questionName == "Email" {
+                self.user.primaryEmailId = item.answerText
+            }
             cell.editButton.addTarget(self, action: #selector(editButtonPressed(_:)), for: .touchUpInside)
             cell.editButton.isHidden = true
             if item.questionName == "First Name" || item.questionName == "Last Name" || item.questionName == "Email" || item.questionName == "Phone Number" {

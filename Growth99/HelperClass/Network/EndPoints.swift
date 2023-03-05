@@ -102,6 +102,7 @@ struct EndPoints {
     static let patientsByTenantId = "/api/v1/patientsByTenantId"
     static let leadTaskList = "/api/workflowtasks/lead/"
     static let getAnnouncementsList = "/api/productionRelease/all"
+    static let getLeadHistory = "/api/questionnaire/contact-submissions/email/"
 }
 
 struct ApiUrl {
@@ -202,6 +203,7 @@ struct ApiUrl {
     static let patientsByTenantId = EndPoints.baseURL.appending(EndPoints.patientsByTenantId)
     static let leadTaskList = EndPoints.baseURL.appending(EndPoints.leadTaskList)
     static let getAnnouncementsList = EndPoints.baseURL.appending(EndPoints.getAnnouncementsList)
+    static let getLeadHistory = EndPoints.baseURL.appending(EndPoints.getLeadHistory)
 }
 
 

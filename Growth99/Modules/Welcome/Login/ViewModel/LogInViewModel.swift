@@ -69,14 +69,13 @@ class LogInViewModel {
                                      "password": password,
                                      "businessId": self.user.bussinessId ?? 0
         ]
-        
         self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, GrowthNetworkError>) in
             
             switch result {
             case .success(let logInData):
                 self.LogInData = logInData
                 self.user.isUserLoged = true
-                self.SetUpUserData()
+                self.setUpUserData()
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -86,7 +85,7 @@ class LogInViewModel {
     }
     
     
-    func SetUpUserData() {
+    func setUpUserData() {
         self.user.firstName = LogInData?.firstName
         self.user.lastName = LogInData?.lastName
         self.user.authToken = LogInData?.idToken

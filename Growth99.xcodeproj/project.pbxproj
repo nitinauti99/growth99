@@ -34,6 +34,10 @@
 		01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */; };
 		01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */; };
 		013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */; };
+		013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */; };
+		013A4F9929B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */; };
+		013A4F9C29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9A29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift */; };
+		013A4F9D29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4F9B29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -689,6 +693,10 @@
 		01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineViewModel.swift; sourceTree = "<group>"; };
 		01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineModel.swift; sourceTree = "<group>"; };
 		013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
+		013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
+		013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadHistoryViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		013A4F9A29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadHistoryListTableViewCell.swift; sourceTree = "<group>"; };
+		013A4F9B29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadHistoryListTableViewCell.xib; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -1474,8 +1482,11 @@
 		01152E2A29B3C54E00B24627 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				013A4F9529B49A4700CA24B0 /* Cell */,
 				01152E2F29B3C5E700B24627 /* LeadHistoryViewController.swift */,
 				01152E3129B3C5F100B24627 /* LeadHistoryViewController.storyboard */,
+				013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */,
+				013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1513,6 +1524,15 @@
 				01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		013A4F9529B49A4700CA24B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				013A4F9A29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift */,
+				013A4F9B29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
@@ -5137,6 +5157,7 @@
 				8490350C2995673D00556D47 /* ConsentsTemplateListViewController.storyboard in Resources */,
 				01152E3229B3C5F100B24627 /* LeadHistoryViewController.storyboard in Resources */,
 				84D063172967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
+				013A4F9D29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib in Resources */,
 				01152E3A29B3C64000B24627 /* CombineTimeLineViewController.storyboard in Resources */,
 				01BBA9E129AB571F006A5DB8 /* NotificationListTableViewCell.xib in Resources */,
 				01152E2229B3C1B600B24627 /* CreateLeadTasksViewController.storyboard in Resources */,
@@ -5343,6 +5364,7 @@
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */,
+				013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
@@ -5712,6 +5734,7 @@
 				84D0628029670677001FE469 /* RegistrationViewModel.swift in Sources */,
 				84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */,
 				3947A8FB299677A3000CA2EB /* CalenderViewModel.swift in Sources */,
+				013A4F9C29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift in Sources */,
 				8490350E2995677F00556D47 /* ConsentsTemplateListViewModel.swift in Sources */,
 				849D3AF02997CC72003E856A /* FontAwesomeImageRepresentable.swift in Sources */,
 				84B75EEE2969408200962F3E /* TriggersListViewController.swift in Sources */,
@@ -5785,6 +5808,7 @@
 				84F610FC292A71AB00B1FB69 /* TLSCertificate.swift in Sources */,
 				01152E2029B3C1A900B24627 /* CreateLeadTasksViewController.swift in Sources */,
 				84D063142967080E001FE469 /* InputTypeTableViewCell.swift in Sources */,
+				013A4F9929B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift in Sources */,
 				84D0622C29670677001FE469 /* VacationScheduleViewController+Extension.swift in Sources */,
 				84B75EC12969011B00962F3E /* ClinicsListTableViewCell.swift in Sources */,
 			);

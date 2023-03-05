@@ -52,6 +52,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     var smsBody: String = ""
     var emailBody: String = ""
     var emailSubject: String = ""
+    let user = UserRepository.shared
 
     var tableViewHeight: CGFloat {
         anslistTableView.layoutIfNeeded()
