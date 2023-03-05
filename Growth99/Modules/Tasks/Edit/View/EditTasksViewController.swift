@@ -62,7 +62,7 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
     
     func setUPUI() {
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         leadButton.addTarget(self, action: #selector(EditTasksViewController.buttonAction(_ :)), for:.touchUpInside)
         patientButton.addTarget(self, action: #selector(EditTasksViewController.buttonAction(_ :)), for:.touchUpInside)
         DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)

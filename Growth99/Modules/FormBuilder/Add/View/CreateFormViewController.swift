@@ -48,7 +48,7 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     private func setUpUI(){
         self.buttonText.text = "Submit"
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         submitButton.roundCorners(corners: [.allCorners], radius: 10)
         CancelButton.roundCorners(corners: [.allCorners], radius: 10)
         Show_Thank_page_URL_ContactForm_TextView.isHidden = true

@@ -97,9 +97,11 @@ struct EndPoints {
     static let patientsQuestionnaireDetail = "/api/patient/"
     static let createConsentPatients = "/api/patients/"
     static let getBussinessSelection = "/api/public/v1/users/"
+    static let getAllEmailandSMS = "/api/trigger?query=%27BroadCast%27"
     static let patentsTimeLine = "/api/v1/audit/patient?patientId="
     static let patientsByTenantId = "/api/v1/patientsByTenantId"
     static let leadTaskList = "/api/workflowtasks/lead/"
+    static let getAnnouncementsList = "/api/productionRelease/all"
 }
 
 struct ApiUrl {
@@ -195,10 +197,11 @@ struct ApiUrl {
     static let questionnaireFormURL = EndPoints.baseURL.appending(EndPoints.questionnaireFormURL)
     static let createConsentPatients = EndPoints.baseURL.appending(EndPoints.createConsentPatients)
     static let getBussinessSelection = EndPoints.baseURL.appending(EndPoints.getBussinessSelection)
+    static let getAllEmailandSMS = EndPoints.baseURL.appending(EndPoints.getAllEmailandSMS)
     static let patentsTimeLine = EndPoints.baseURL.appending(EndPoints.patentsTimeLine)
     static let patientsByTenantId = EndPoints.baseURL.appending(EndPoints.patientsByTenantId)
     static let leadTaskList = EndPoints.baseURL.appending(EndPoints.leadTaskList)
-
+    static let getAnnouncementsList = EndPoints.baseURL.appending(EndPoints.getAnnouncementsList)
 }
 
 

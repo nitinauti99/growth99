@@ -10,10 +10,12 @@ import Foundation
 protocol TriggersListViewModelProtocol {
     func getTriggersList()
     func getSwitchOnButton(triggerId: String, triggerStatus: String)
-    var  triggersData: [TriggersListModel] { get }
-    func triggersDataAtIndex(index: Int) -> TriggersListModel?
-    var  triggersFilterDataData: [TriggersListModel] { get }
-    func triggersFilterDataAtIndex(index: Int)-> TriggersListModel?
+    
+    func getTriggersFilterData(searchText: String)
+    func getTriggersDataAtIndex(index: Int)-> TriggersListModel?
+    func getTriggersFilterDataAtIndex(index: Int)-> TriggersListModel?
+    var  getTriggersData: [TriggersListModel] { get }
+    var  getTriggersFilterData: [TriggersListModel] { get }
 }
 
 class TriggersListViewModel {
@@ -54,23 +56,30 @@ class TriggersListViewModel {
             }
         }
     }
-    
-    func triggersDataAtIndex(index: Int)-> TriggersListModel? {
-        return self.triggersListData[index]
-    }
-    
-    func triggersFilterDataAtIndex(index: Int)-> TriggersListModel? {
-        return self.triggersListData[index]
-    }
 }
 
 extension TriggersListViewModel: TriggersListViewModelProtocol {
-   
-    var triggersFilterDataData: [TriggersListModel] {
-        return self.triggersFilterData
+    func removeSelectedMassEmail(MassEmailId: Int) {
+        
+    }
+
+    func getTriggersFilterData(searchText: String) {
+        self.triggersFilterData = (self.getTriggersData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
     }
     
-    var triggersData: [TriggersListModel] {
+    func getTriggersDataAtIndex(index: Int)-> TriggersListModel? {
+        return self.getTriggersData[index]
+    }
+    
+    func getTriggersFilterDataAtIndex(index: Int)-> TriggersListModel? {
+        return self.triggersFilterData[index]
+    }
+    
+    var getTriggersData: [TriggersListModel] {
         return self.triggersListData
+    }
+   
+    var getTriggersFilterData: [TriggersListModel] {
+         return self.triggersFilterData
     }
 }

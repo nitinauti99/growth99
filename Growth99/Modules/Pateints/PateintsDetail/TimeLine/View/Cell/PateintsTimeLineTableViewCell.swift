@@ -21,7 +21,7 @@ class PateintsTimeLineTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         type.layer.borderWidth = 1
         type.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
         type.layer.cornerRadius = 5

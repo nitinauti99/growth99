@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-NK-FWT">
-                                <rect key="frame" x="0.0" y="152" width="414" height="661"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="LBF-ol-tIj" id="Wmd-oW-SCD"/>
@@ -26,7 +26,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMo-7z-F93">
-                                <rect key="frame" x="333" y="102" width="69" height="31"/>
+                                <rect key="frame" x="333" y="58" width="69" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="MjN-TB-tg9"/>
                                     <constraint firstAttribute="height" constant="31" id="yqv-2J-xwh"/>
@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UL-kV-9ZP">
-                                <rect key="frame" x="0.0" y="92" width="334" height="50"/>
+                                <rect key="frame" x="0.0" y="48" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Fsi-l2-9mH"/>
                                 </constraints>
@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yS-T6-sZu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741" y="269"/>
+            <point key="canvasLocation" x="1538" y="335"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="o9R-4j-BXe">
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcc-wb-reu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="269"/>
+            <point key="canvasLocation" x="828" y="335"/>
         </scene>
         <!--Base Tabbar View Controller-->
         <scene sceneID="t2x-oH-iuO">
@@ -116,7 +116,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LyY-jU-6Ya" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991" y="269"/>
+            <point key="canvasLocation" x="-523" y="-2"/>
         </scene>
         <!--Home-->
         <scene sceneID="Fjo-8f-2Fu">
@@ -135,7 +135,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VvP-F3-FEM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="-451"/>
+            <point key="canvasLocation" x="443" y="-426"/>
         </scene>
         <!--Leads-->
         <scene sceneID="NLj-Fp-cNV">
@@ -149,12 +149,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="LBF-ol-tIj" kind="relationship" relationship="rootViewController" id="mQl-Ha-GkD"/>
+                        <segue destination="V3N-ea-uov" kind="relationship" relationship="rootViewController" id="6lz-Lk-OjG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krQ-MC-KnY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="184" y="269"/>
+            <point key="canvasLocation" x="112" y="335"/>
         </scene>
         <!--Home View Contoller-->
         <scene sceneID="M7P-pE-Ydr">
@@ -687,7 +687,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZ6-cX-iGT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="-451"/>
+            <point key="canvasLocation" x="1323" y="-427"/>
         </scene>
         <!--Appointment-->
         <scene sceneID="XhH-gG-7Jt">
@@ -706,7 +706,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPs-kx-2UN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-523" y="1024"/>
+            <point key="canvasLocation" x="-500" y="1004"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="azh-GA-Pbx">
@@ -725,7 +725,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EbF-FS-uYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1528" y="1021"/>
+            <point key="canvasLocation" x="-1228" y="1359"/>
         </scene>
         <!--Calender Base View Controller-->
         <scene sceneID="Ix3-ey-2dD">
@@ -770,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRX-1l-R09" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="1762"/>
+            <point key="canvasLocation" x="248" y="1635"/>
         </scene>
         <!--Calender View Controller-->
         <scene sceneID="EDy-y2-DKW">
@@ -1130,7 +1130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bvv-MV-zEZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1571" y="1808"/>
+            <point key="canvasLocation" x="-500" y="1704"/>
         </scene>
         <!--Daily Calendar-->
         <scene sceneID="EZc-HQ-Y0R">
@@ -1356,40 +1356,40 @@
     </scenes>
     <designables>
         <designable name="2bn-9i-Rf8">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="6ap-Gu-wfc">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="71M-Ey-Ckk">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="Cfk-FX-j6V">
-            <size key="intrinsicContentSize" width="117.5" height="25"/>
+            <size key="intrinsicContentSize" width="110.5" height="30"/>
         </designable>
         <designable name="Ncb-Vy-p3O">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Szr-pV-NLf">
-            <size key="intrinsicContentSize" width="118.5" height="25"/>
+            <size key="intrinsicContentSize" width="111.5" height="30"/>
         </designable>
         <designable name="U5u-aw-l21">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="W62-Z0-RHA">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Wu1-x8-b6o">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jzu-kM-8lq">
-            <size key="intrinsicContentSize" width="99.5" height="25"/>
+            <size key="intrinsicContentSize" width="92.5" height="30"/>
         </designable>
         <designable name="xJW-WU-nu4">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="zJe-wg-Ipq">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>
