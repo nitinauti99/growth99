@@ -3685,10 +3685,10 @@
 		8497A03928FF11E200CBA26C /* Environment */ = {
 			isa = PBXGroup;
 			children = (
+				8497A03D28FF11E200CBA26C /* QA.plist */,
+				8497A03C28FF11E200CBA26C /* Staging.plist */,
 				8497A03B28FF11E200CBA26C /* Development.plist */,
 				8497A03A28FF11E200CBA26C /* Production.plist */,
-				8497A03C28FF11E200CBA26C /* Staging.plist */,
-				8497A03D28FF11E200CBA26C /* QA.plist */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -3696,20 +3696,20 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				845C39A1292276AF00D934C5 /* KeyChain */,
+				845C39C2292276AF00D934C5 /* Network */,
+				845C39AA292276AF00D934C5 /* Constants */,
+				845C39B8292276AF00D934C5 /* Extenssion */,
+				84F61018292A71A400B1FB69 /* GrowthCore */,
+				845C399E292276AF00D934C5 /* LoaderScreens */,
+				84F61083292A71A900B1FB69 /* GrowthNetwork */,
+				845C39AC292276AF00D934C5 /* SideDrawerMenu */,
 				39F904DD299A894800666C85 /* Identifiable */,
 				849D3ADC2997CC72003E856A /* FontAwesome */,
 				39EBABBE29915751001B789D /* GrowthDateFormats */,
 				398F90CD298ECB8600DB96E4 /* IQKeyboardManagerSwift */,
 				84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */,
 				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
-				84F61018292A71A400B1FB69 /* GrowthCore */,
-				84F61083292A71A900B1FB69 /* GrowthNetwork */,
-				845C39C2292276AF00D934C5 /* Network */,
-				845C39A1292276AF00D934C5 /* KeyChain */,
-				845C39AA292276AF00D934C5 /* Constants */,
-				845C39B8292276AF00D934C5 /* Extenssion */,
-				845C399E292276AF00D934C5 /* LoaderScreens */,
-				845C39AC292276AF00D934C5 /* SideDrawerMenu */,
 				848C9298291F6A9F00502956 /* RSSelectionMenu */,
 				845C39A4292276AF00D934C5 /* KYDrawerController */,
 			);
@@ -3861,14 +3861,6 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				39FC693029B3D75A00FCB7C6 /* SocialMediaManager */,
-				39FC692329B3D73D00FCB7C6 /* Chatbot */,
-				39FC691629B3D56300FCB7C6 /* LandingPages */,
-				39FC690529B3D20E00FCB7C6 /* Announcements */,
-				39FC690029B3D20D00FCB7C6 /* WebisteTemplates */,
-				39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */,
-				8440B38A2999FD5E00A42097 /* FormBuilder */,
-				848A03852993FAD7004FE278 /* Templates */,
 				84D061F129670676001FE469 /* Welcome */,
 				84D061AA29670676001FE469 /* Dashboard */,
 				84D0617529670676001FE469 /* MyProfile */,
@@ -3877,7 +3869,15 @@
 				84D0619929670676001FE469 /* Pateints */,
 				84D062A6296707A5001FE469 /* Tasks */,
 				84D062AB2967080E001FE469 /* Triggers */,
+				39FC691629B3D56300FCB7C6 /* LandingPages */,
+				39FC690029B3D20D00FCB7C6 /* WebisteTemplates */,
+				8440B38A2999FD5E00A42097 /* FormBuilder */,
+				848A03852993FAD7004FE278 /* Templates */,
 				84D062B02967080E001FE469 /* Leads */,
+				39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */,
+				39FC693029B3D75A00FCB7C6 /* SocialMediaManager */,
+				39FC692329B3D73D00FCB7C6 /* Chatbot */,
+				39FC690529B3D20E00FCB7C6 /* Announcements */,
 				DA45786E29707F8400CE458B /* GRWebView */,
 			);
 			path = Modules;
@@ -4651,8 +4651,8 @@
 		84EFC27B2925531B003B3C06 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */,
 				84EFC27E292553E3003B3C06 /* BaseTabbarViewController.swift */,
+				84EFC27C2925532E003B3C06 /* BaseTabbar.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
