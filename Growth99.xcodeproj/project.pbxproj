@@ -3439,10 +3439,10 @@
 			children = (
 				848F4D8B28F1C164007AC421 /* Info.plist */,
 				84B2E5AC2913A34000BAA535 /* Growth99-Bridging-Header.h */,
+				84D0614729670676001FE469 /* Modules */,
 				8497A04528FF126000CBA26C /* Application */,
 				8497A03928FF11E200CBA26C /* Environment */,
 				8497A04228FF121A00CBA26C /* HelperClass */,
-				84D0614729670676001FE469 /* Modules */,
 			);
 			path = Growth99;
 			sourceTree = "<group>";
