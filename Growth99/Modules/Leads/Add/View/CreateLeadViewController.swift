@@ -82,9 +82,8 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     /// recvied QuestionnaireList
     func QuestionnaireListRecived() {
         view.HideSpinner()
-//        patientQuestionList = viewModel?.leadUserQuestionnaireList ?? []
         self.tableView.reloadData()
-        customViewHight.constant = tableViewHeight + 180
+        customViewHight.constant = tableViewHeight + 320
     }
     
     // show drop down list
@@ -106,7 +105,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     func LeadDataRecived() {
         view.HideSpinner()
         do {
-            sleep(8)
+            sleep(5)
         }
         self.dismiss(animated: true)
         NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
@@ -118,7 +117,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
     
     @IBAction func closeButtonClicked() {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     /// submit button which validate all  condition
@@ -295,10 +294,10 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
 extension CreateLeadViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 180
+        customViewHight.constant = tableViewHeight + 320
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 180
+        customViewHight.constant = tableViewHeight + 320
     }
 }

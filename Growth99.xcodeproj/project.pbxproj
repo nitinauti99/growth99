@@ -1652,6 +1652,99 @@
 			path = Group2;
 			sourceTree = "<group>";
 		};
+		013A4FE629B514F500CA24B0 /* LeadTags */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FEB29B5157400CA24B0 /* model */,
+				013A4FEA29B5157200CA24B0 /* ViewModel */,
+				013A4FE929B5156F00CA24B0 /* View */,
+			);
+			path = LeadTags;
+			sourceTree = "<group>";
+		};
+		013A4FE729B514FE00CA24B0 /* DeletedLead */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FEE29B5158700CA24B0 /* Model */,
+				013A4FED29B5158500CA24B0 /* ViewModel */,
+				013A4FEC29B5158300CA24B0 /* View */,
+			);
+			path = DeletedLead;
+			sourceTree = "<group>";
+		};
+		013A4FE829B5150F00CA24B0 /* LeadSourceURL */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FF129B5159D00CA24B0 /* Model */,
+				013A4FF029B5159B00CA24B0 /* ViewModel */,
+				013A4FEF29B5159900CA24B0 /* View */,
+			);
+			path = LeadSourceURL;
+			sourceTree = "<group>";
+		};
+		013A4FE929B5156F00CA24B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		013A4FEA29B5157200CA24B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		013A4FEB29B5157400CA24B0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		013A4FEC29B5158300CA24B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		013A4FED29B5158500CA24B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		013A4FEE29B5158700CA24B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		013A4FEF29B5159900CA24B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		013A4FF029B5159B00CA24B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		013A4FF129B5159D00CA24B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
 			isa = PBXGroup;
 			children = (
@@ -2316,7 +2409,6 @@
 				39FC691729B3D56300FCB7C6 /* ViewModel */,
 				39FC691929B3D56300FCB7C6 /* Model */,
 				39FC691B29B3D56300FCB7C6 /* View */,
-				39FC691E29B3D56300FCB7C6 /* CustomTableViewCell */,
 			);
 			path = LandingPages;
 			sourceTree = "<group>";
@@ -2346,20 +2438,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		39FC691E29B3D56300FCB7C6 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
 		39FC692329B3D73D00FCB7C6 /* Chatbot */ = {
 			isa = PBXGroup;
 			children = (
-				39FC692429B3D73D00FCB7C6 /* ViewModel */,
 				39FC692629B3D73D00FCB7C6 /* Model */,
+				39FC692429B3D73D00FCB7C6 /* ViewModel */,
 				39FC692829B3D73D00FCB7C6 /* View */,
-				39FC692B29B3D73D00FCB7C6 /* CustomTableViewCell */,
 			);
 			path = Chatbot;
 			sourceTree = "<group>";
@@ -2387,13 +2471,6 @@
 				39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		39FC692B29B3D73D00FCB7C6 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		39FC693029B3D75A00FCB7C6 /* SocialMediaManager */ = {
@@ -4479,6 +4556,9 @@
 				84D062D82967080E001FE469 /* Add */,
 				84D062B22967080E001FE469 /* Edit */,
 				84D062B62967080E001FE469 /* Detail */,
+				013A4FE629B514F500CA24B0 /* LeadTags */,
+				013A4FE729B514FE00CA24B0 /* DeletedLead */,
+				013A4FE829B5150F00CA24B0 /* LeadSourceURL */,
 			);
 			path = Leads;
 			sourceTree = "<group>";

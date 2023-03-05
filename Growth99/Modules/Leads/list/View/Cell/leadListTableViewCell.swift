@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol leadListTableViewCellDelegate: AnyObject {
+    func removeLead(cell: leadListTableViewCell, index: IndexPath)
+    func editLead(cell: leadListTableViewCell, index: IndexPath)
+    func detailLead(cell: leadListTableViewCell, index: IndexPath)
+}
+
 class leadListTableViewCell: UITableViewCell {
-   
     @IBOutlet private weak var fullName: UILabel!
     @IBOutlet private weak var email: UILabel!
     @IBOutlet private weak var id: UILabel!
@@ -21,6 +26,9 @@ class leadListTableViewCell: UITableViewCell {
     @IBOutlet private weak var leadFormNameLbi: UILabel!
     @IBOutlet private weak var leadSourceLbi: UILabel!
 
+    var indexPath = IndexPath()
+    weak var delegate: leadListTableViewCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
@@ -28,7 +36,7 @@ class leadListTableViewCell: UITableViewCell {
     }
 
     func configureCell(leadVM: leadListViewModelProtocol?, index: IndexPath) {
-        let leadVM = leadVM?.leadListDataAtIndex(index: index.row)
+        let leadVM = leadVM?.leadPeginationListDataAtIndex(index: index.row)
         fullName.text = leadVM?.fullName
         email.text = leadVM?.Email
         id.text = String(leadVM?.id ?? 0)
@@ -40,10 +48,19 @@ class leadListTableViewCell: UITableViewCell {
         leadStatusImage.image = UIImage(named: movement ?? String.blank)
         leadFormNameLbi.text = leadVM?.questionnaireName
         leadSourceLbi.text = leadVM?.leadSource
+        indexPath = index
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeLead(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editLead(cell: self, index: indexPath)
+    }
+    
+    @IBAction func detailButtonPressed() {
+        self.delegate?.detailLead(cell: self, index: indexPath)
     }
     
     func serverToLocal(date: String) -> String {
@@ -68,17 +85,17 @@ enum LeaadStatus: String{
     var leadSatus: String {
         switch self {
         case .HOT:
-            return "hot"
+            return "HOT"
         case .COLD:
-            return "cold"
+            return "COLD"
         case .NEW:
-            return "new"
+            return "NEW"
         case .DEAD:
-            return "cold"
+            return "COLD"
         case .WON:
-            return "won"
+            return "WON"
         case .WARM:
-            return "warm"
+            return "WARM"
         }
     }
 }

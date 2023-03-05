@@ -35,16 +35,16 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = EditLeadViewModel(delegate: self)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.title = Constant.Profile.editLead
         setUpUI()
     }
     
     @IBAction func closeButtonClicked() {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func LeadDataRecived() {
@@ -52,7 +52,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
         do {
            sleep(5)
         }
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
         viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
     }
     
@@ -76,11 +76,10 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
        ammountTextField.text = "\(LeadData?.amount ?? 0)"
        leadStatusTextField.text = LeadData?.leadStatus
        sourceTextField.text = LeadData?.leadSource
-       leadStatusTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .touchDown)
 
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @IBAction func textFieldDidChange(sender: UIButton) {
         let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
@@ -91,8 +90,9 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             self?.leadStatusTextField.text = selectedItem
         }
         selectionMenu.reloadInputViews()
+        selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
     
     func updateLeadAmmountSaved() {

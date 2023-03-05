@@ -11,9 +11,10 @@ import UIKit
 protocol leadListViewControllerProtocol: AnyObject {
     func leadListDataRecived()
     func errorReceived(error: String)
+    func leadRemovedSuccefully(mrssage: String)
 }
 
-class leadListViewController: UIViewController, leadListViewControllerProtocol {
+class leadListViewController: UIViewController, leadListViewControllerProtocol,leadListTableViewCellDelegate {
    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -87,7 +88,42 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol {
     
     @objc func creatUser() {
         let createleadListVC = UIStoryboard(name: "CreateLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLeadViewController") as! CreateLeadViewController
-        self.present(createleadListVC, animated: true)
+        self.navigationController?.pushViewController(createleadListVC, animated: true)
+    }
+    
+    func removeLead(cell: leadListTableViewCell, index: IndexPath) {
+        let fullName = (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.firstName ?? "")  + (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.lastName ?? "")
+        
+        let alert = UIAlertController(title: "Delete Lead", message: "Are you sure you want to delete \n\(fullName)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                      handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            let leadId = self?.viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
+            self?.viewModel?.removeLead(leadId: leadId)
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func leadRemovedSuccefully(mrssage: String){
+        self.view.showToast(message: mrssage, color: .red)
+        self.getleadList()
+    }
+
+    func editLead(cell: leadListTableViewCell, index: IndexPath) {
+        let editVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
+        editVC.LeadId = viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
+        editVC.LeadData = viewModel?.leadPeginationListDataAtIndex(index: index.row)
+        self.navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func detailLead(cell: leadListTableViewCell, index: IndexPath) {
+        let LeadDetail = LeadDetailContainerView.viewController()
+        LeadDetail.workflowLeadId = viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
+        self.navigationController?.pushViewController(LeadDetail, animated: true)
     }
     
     @objc func getleadList(){
