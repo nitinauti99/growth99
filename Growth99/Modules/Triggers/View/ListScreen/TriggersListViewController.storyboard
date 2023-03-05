@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-YF-kEM">
-                                <rect key="frame" x="0.0" y="90" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xCZ-lr-Bsq"/>
                                 </constraints>
@@ -32,17 +32,21 @@
                                 </connections>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-59-Ib8">
-                                <rect key="frame" x="0.0" y="59" width="393" height="32"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dBP-Z9-Q2K"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Lead Triggers"/>
                                     <segment title="Appointment Triggers"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="triggerSegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="krk-kR-svX"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-ph-TaA">
-                                <rect key="frame" x="0.0" y="155" width="393" height="697"/>
+                                <rect key="frame" x="0.0" y="174" width="393" height="678"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="DvZ-93-1Lj"/>

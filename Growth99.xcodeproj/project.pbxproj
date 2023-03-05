@@ -147,20 +147,32 @@
 		39F2FF232996B8630089BD4F /* AppointmentListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */; };
 		39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F904DE299A895300666C85 /* ClassIdentifiable.swift */; };
 		39F904E1299A896B00666C85 /* NibIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F904E0299A896B00666C85 /* NibIdentifiable.swift */; };
-		39FC68A429B120BE00FCB7C6 /* MassSMSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC688E29B120BE00FCB7C6 /* MassSMSViewModel.swift */; };
-		39FC68A529B120BE00FCB7C6 /* MassSMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689029B120BE00FCB7C6 /* MassSMSModel.swift */; };
-		39FC68A629B120BE00FCB7C6 /* MassSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689229B120BE00FCB7C6 /* MassSMSViewController.swift */; };
-		39FC68A729B120BE00FCB7C6 /* MassSMSViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689329B120BE00FCB7C6 /* MassSMSViewController+TableView.swift */; };
-		39FC68A829B120BE00FCB7C6 /* MassSMSViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC689429B120BE00FCB7C6 /* MassSMSViewController.storyboard */; };
-		39FC68A929B120BE00FCB7C6 /* MassSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689629B120BE00FCB7C6 /* MassSMSTableViewCell.swift */; };
-		39FC68AA29B120BE00FCB7C6 /* MassSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC689729B120BE00FCB7C6 /* MassSMSTableViewCell.xib */; };
-		39FC68AB29B120BE00FCB7C6 /* MassEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689A29B120BE00FCB7C6 /* MassEmailViewModel.swift */; };
-		39FC68AC29B120BE00FCB7C6 /* MassEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689C29B120BE00FCB7C6 /* MassEmailModel.swift */; };
-		39FC68AD29B120BE00FCB7C6 /* MassEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC689E29B120BE00FCB7C6 /* MassEmailViewController.swift */; };
-		39FC68AE29B120BE00FCB7C6 /* MassEmailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC689F29B120BE00FCB7C6 /* MassEmailViewController.storyboard */; };
-		39FC68AF29B120BE00FCB7C6 /* MassEmailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68A029B120BE00FCB7C6 /* MassEmailViewController+TableView.swift */; };
-		39FC68B029B120BE00FCB7C6 /* MassEmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68A229B120BE00FCB7C6 /* MassEmailTableViewCell.swift */; };
-		39FC68B129B120BE00FCB7C6 /* MassEmailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC68A329B120BE00FCB7C6 /* MassEmailTableViewCell.xib */; };
+		39FC68F729B363F000FCB7C6 /* MassEmailandSMSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68EC29B363F000FCB7C6 /* MassEmailandSMSViewModel.swift */; };
+		39FC68F829B363F000FCB7C6 /* MassEmailandSMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68EE29B363F000FCB7C6 /* MassEmailandSMSModel.swift */; };
+		39FC68F929B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC68F129B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard */; };
+		39FC68FA29B363F000FCB7C6 /* MassEmailandSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68F229B363F000FCB7C6 /* MassEmailandSMSViewController.swift */; };
+		39FC68FB29B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68F329B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift */; };
+		39FC68FC29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */; };
+		39FC68FD29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */; };
+		39FC68FF29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */; };
+		39FC690B29B3D22400FCB7C6 /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */; };
+		39FC690D29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */; };
+		39FC690F29B3D26400FCB7C6 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC690E29B3D26400FCB7C6 /* AnnouncementsViewModel.swift */; };
+		39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691029B3D26E00FCB7C6 /* AnnouncementsModel.swift */; };
+		39FC691329B3D28300FCB7C6 /* WebisteTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691229B3D28300FCB7C6 /* WebisteTemplatesViewController.swift */; };
+		39FC691529B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC691429B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard */; };
+		39FC691F29B3D56300FCB7C6 /* LandingPagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691829B3D56300FCB7C6 /* LandingPagesViewModel.swift */; };
+		39FC692029B3D56300FCB7C6 /* LandingPagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */; };
+		39FC692129B3D56400FCB7C6 /* LandingPagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */; };
+		39FC692229B3D56400FCB7C6 /* LandingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */; };
+		39FC692C29B3D73D00FCB7C6 /* ChatbotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */; };
+		39FC692D29B3D73D00FCB7C6 /* ChatbotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */; };
+		39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */; };
+		39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */; };
+		39FC693929B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */; };
+		39FC693A29B3D75A00FCB7C6 /* SocialMediaManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */; };
+		39FC693B29B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */; };
+		39FC693C29B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */; };
 		689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */; };
 		84088BCB297930180060855E /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84088BCA297930180060855E /* BusinessModel.swift */; };
 		841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE6E62976E5DF00E86EE9 /* bussinessDetailInfoModel.swift */; };
@@ -793,20 +805,32 @@
 		39F2FF222996B8630089BD4F /* AppointmentListDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListDetailViewModel.swift; sourceTree = "<group>"; };
 		39F904DE299A895300666C85 /* ClassIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassIdentifiable.swift; sourceTree = "<group>"; };
 		39F904E0299A896B00666C85 /* NibIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifiable.swift; sourceTree = "<group>"; };
-		39FC688E29B120BE00FCB7C6 /* MassSMSViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSViewModel.swift; sourceTree = "<group>"; };
-		39FC689029B120BE00FCB7C6 /* MassSMSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSModel.swift; sourceTree = "<group>"; };
-		39FC689229B120BE00FCB7C6 /* MassSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSViewController.swift; sourceTree = "<group>"; };
-		39FC689329B120BE00FCB7C6 /* MassSMSViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassSMSViewController+TableView.swift"; sourceTree = "<group>"; };
-		39FC689429B120BE00FCB7C6 /* MassSMSViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MassSMSViewController.storyboard; sourceTree = "<group>"; };
-		39FC689629B120BE00FCB7C6 /* MassSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassSMSTableViewCell.swift; sourceTree = "<group>"; };
-		39FC689729B120BE00FCB7C6 /* MassSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassSMSTableViewCell.xib; sourceTree = "<group>"; };
-		39FC689A29B120BE00FCB7C6 /* MassEmailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailViewModel.swift; sourceTree = "<group>"; };
-		39FC689C29B120BE00FCB7C6 /* MassEmailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailModel.swift; sourceTree = "<group>"; };
-		39FC689E29B120BE00FCB7C6 /* MassEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailViewController.swift; sourceTree = "<group>"; };
-		39FC689F29B120BE00FCB7C6 /* MassEmailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MassEmailViewController.storyboard; sourceTree = "<group>"; };
-		39FC68A029B120BE00FCB7C6 /* MassEmailViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassEmailViewController+TableView.swift"; sourceTree = "<group>"; };
-		39FC68A229B120BE00FCB7C6 /* MassEmailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailTableViewCell.swift; sourceTree = "<group>"; };
-		39FC68A329B120BE00FCB7C6 /* MassEmailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailTableViewCell.xib; sourceTree = "<group>"; };
+		39FC68EC29B363F000FCB7C6 /* MassEmailandSMSViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSViewModel.swift; sourceTree = "<group>"; };
+		39FC68EE29B363F000FCB7C6 /* MassEmailandSMSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSModel.swift; sourceTree = "<group>"; };
+		39FC68F129B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MassEmailandSMSViewController.storyboard; sourceTree = "<group>"; };
+		39FC68F229B363F000FCB7C6 /* MassEmailandSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSViewController.swift; sourceTree = "<group>"; };
+		39FC68F329B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassEmailandSMSViewController+TableView.swift"; sourceTree = "<group>"; };
+		39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSTableViewCell.swift; sourceTree = "<group>"; };
+		39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSTableViewCell.xib; sourceTree = "<group>"; };
+		39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggersListViewController+TableView.swift"; sourceTree = "<group>"; };
+		39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
+		39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementsViewController.storyboard; sourceTree = "<group>"; };
+		39FC690E29B3D26400FCB7C6 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
+		39FC691029B3D26E00FCB7C6 /* AnnouncementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsModel.swift; sourceTree = "<group>"; };
+		39FC691229B3D28300FCB7C6 /* WebisteTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebisteTemplatesViewController.swift; sourceTree = "<group>"; };
+		39FC691429B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebisteTemplatesViewController.storyboard; sourceTree = "<group>"; };
+		39FC691829B3D56300FCB7C6 /* LandingPagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesViewModel.swift; sourceTree = "<group>"; };
+		39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesModel.swift; sourceTree = "<group>"; };
+		39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingPagesViewController.storyboard; sourceTree = "<group>"; };
+		39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesViewController.swift; sourceTree = "<group>"; };
+		39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotViewModel.swift; sourceTree = "<group>"; };
+		39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotModel.swift; sourceTree = "<group>"; };
+		39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotViewController.swift; sourceTree = "<group>"; };
+		39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatbotViewController.storyboard; sourceTree = "<group>"; };
+		39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerViewModel.swift; sourceTree = "<group>"; };
+		39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerModel.swift; sourceTree = "<group>"; };
+		39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerViewController.swift; sourceTree = "<group>"; };
+		39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialMediaManagerViewController.storyboard; sourceTree = "<group>"; };
 		3DBAECCF2C3ED270F1E15530 /* Pods-Growth99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.release.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.release.xcconfig"; sourceTree = "<group>"; };
 		443AB5636EFB8B64DD26D2D3 /* Pods-Growth99Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6412355B8E0D08CD421922F9 /* Pods-Growth99-Growth99UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.release.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -2007,105 +2031,271 @@
 			path = Identifiable;
 			sourceTree = "<group>";
 		};
-		39FC688B29B120BE00FCB7C6 /* Marketing */ = {
+		39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */ = {
 			isa = PBXGroup;
 			children = (
-				39FC688C29B120BE00FCB7C6 /* MassSMS */,
-				39FC689829B120BE00FCB7C6 /* MassEmail */,
+				39FC68EB29B363F000FCB7C6 /* ViewModel */,
+				39FC68ED29B363F000FCB7C6 /* Model */,
+				39FC68EF29B363F000FCB7C6 /* View */,
+				39FC68F429B363F000FCB7C6 /* CustomTableViewCell */,
 			);
-			path = Marketing;
+			path = MarketingEmailSMS;
 			sourceTree = "<group>";
 		};
-		39FC688C29B120BE00FCB7C6 /* MassSMS */ = {
+		39FC68EB29B363F000FCB7C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				39FC688D29B120BE00FCB7C6 /* ViewModel */,
-				39FC688F29B120BE00FCB7C6 /* Model */,
-				39FC689129B120BE00FCB7C6 /* View */,
-				39FC689529B120BE00FCB7C6 /* CustomCell */,
-			);
-			path = MassSMS;
-			sourceTree = "<group>";
-		};
-		39FC688D29B120BE00FCB7C6 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				39FC688E29B120BE00FCB7C6 /* MassSMSViewModel.swift */,
+				39FC68EC29B363F000FCB7C6 /* MassEmailandSMSViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		39FC688F29B120BE00FCB7C6 /* Model */ = {
+		39FC68ED29B363F000FCB7C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689029B120BE00FCB7C6 /* MassSMSModel.swift */,
+				39FC68EE29B363F000FCB7C6 /* MassEmailandSMSModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		39FC689129B120BE00FCB7C6 /* View */ = {
+		39FC68EF29B363F000FCB7C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689229B120BE00FCB7C6 /* MassSMSViewController.swift */,
-				39FC689329B120BE00FCB7C6 /* MassSMSViewController+TableView.swift */,
-				39FC689429B120BE00FCB7C6 /* MassSMSViewController.storyboard */,
+				39FC68F029B363F000FCB7C6 /* ListScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		39FC689529B120BE00FCB7C6 /* CustomCell */ = {
+		39FC68F029B363F000FCB7C6 /* ListScreen */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689629B120BE00FCB7C6 /* MassSMSTableViewCell.swift */,
-				39FC689729B120BE00FCB7C6 /* MassSMSTableViewCell.xib */,
+				39FC68F229B363F000FCB7C6 /* MassEmailandSMSViewController.swift */,
+				39FC68F329B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift */,
+				39FC68F129B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard */,
 			);
-			path = CustomCell;
+			path = ListScreen;
 			sourceTree = "<group>";
 		};
-		39FC689829B120BE00FCB7C6 /* MassEmail */ = {
+		39FC68F429B363F000FCB7C6 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689929B120BE00FCB7C6 /* ViewModel */,
-				39FC689B29B120BE00FCB7C6 /* Model */,
-				39FC689D29B120BE00FCB7C6 /* View */,
-				39FC68A129B120BE00FCB7C6 /* CustomCell */,
+				39FC68F529B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift */,
+				39FC68F629B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib */,
 			);
-			path = MassEmail;
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
-		39FC689929B120BE00FCB7C6 /* ViewModel */ = {
+		39FC690029B3D20D00FCB7C6 /* WebisteTemplates */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689A29B120BE00FCB7C6 /* MassEmailViewModel.swift */,
+				39FC690129B3D20D00FCB7C6 /* ViewModel */,
+				39FC690229B3D20D00FCB7C6 /* Model */,
+				39FC690329B3D20D00FCB7C6 /* View */,
+				39FC690429B3D20D00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = WebisteTemplates;
+			sourceTree = "<group>";
+		};
+		39FC690129B3D20D00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		39FC689B29B120BE00FCB7C6 /* Model */ = {
+		39FC690229B3D20D00FCB7C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689C29B120BE00FCB7C6 /* MassEmailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		39FC689D29B120BE00FCB7C6 /* View */ = {
+		39FC690329B3D20D00FCB7C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				39FC689E29B120BE00FCB7C6 /* MassEmailViewController.swift */,
-				39FC689F29B120BE00FCB7C6 /* MassEmailViewController.storyboard */,
-				39FC68A029B120BE00FCB7C6 /* MassEmailViewController+TableView.swift */,
+				39FC691229B3D28300FCB7C6 /* WebisteTemplatesViewController.swift */,
+				39FC691429B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		39FC68A129B120BE00FCB7C6 /* CustomCell */ = {
+		39FC690429B3D20D00FCB7C6 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				39FC68A229B120BE00FCB7C6 /* MassEmailTableViewCell.swift */,
-				39FC68A329B120BE00FCB7C6 /* MassEmailTableViewCell.xib */,
 			);
-			path = CustomCell;
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC690529B3D20E00FCB7C6 /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690729B3D20E00FCB7C6 /* Model */,
+				39FC690829B3D20E00FCB7C6 /* View */,
+				39FC690629B3D20E00FCB7C6 /* ViewModel */,
+				39FC690929B3D20E00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = Announcements;
+			sourceTree = "<group>";
+		};
+		39FC690629B3D20E00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690E29B3D26400FCB7C6 /* AnnouncementsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC690729B3D20E00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691029B3D26E00FCB7C6 /* AnnouncementsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC690829B3D20E00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC690A29B3D22400FCB7C6 /* AnnouncementsViewController.swift */,
+				39FC690C29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC690929B3D20E00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC691629B3D56300FCB7C6 /* LandingPages */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691729B3D56300FCB7C6 /* ViewModel */,
+				39FC691929B3D56300FCB7C6 /* Model */,
+				39FC691B29B3D56300FCB7C6 /* View */,
+				39FC691E29B3D56300FCB7C6 /* CustomTableViewCell */,
+			);
+			path = LandingPages;
+			sourceTree = "<group>";
+		};
+		39FC691729B3D56300FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691829B3D56300FCB7C6 /* LandingPagesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC691929B3D56300FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC691B29B3D56300FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */,
+				39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC691E29B3D56300FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC692329B3D73D00FCB7C6 /* Chatbot */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692429B3D73D00FCB7C6 /* ViewModel */,
+				39FC692629B3D73D00FCB7C6 /* Model */,
+				39FC692829B3D73D00FCB7C6 /* View */,
+				39FC692B29B3D73D00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = Chatbot;
+			sourceTree = "<group>";
+		};
+		39FC692429B3D73D00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC692629B3D73D00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC692829B3D73D00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */,
+				39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC692B29B3D73D00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		39FC693029B3D75A00FCB7C6 /* SocialMediaManager */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693329B3D75A00FCB7C6 /* Model */,
+				39FC693529B3D75A00FCB7C6 /* View */,
+				39FC693129B3D75A00FCB7C6 /* ViewModel */,
+				39FC693829B3D75A00FCB7C6 /* CustomTableViewCell */,
+			);
+			path = SocialMediaManager;
+			sourceTree = "<group>";
+		};
+		39FC693129B3D75A00FCB7C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39FC693329B3D75A00FCB7C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39FC693529B3D75A00FCB7C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */,
+				39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39FC693829B3D75A00FCB7C6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		84088B9F2977E5520060855E /* Model */ = {
@@ -3531,6 +3721,7 @@
 			isa = PBXGroup;
 			children = (
 				84B75EED2969408200962F3E /* TriggersListViewController.swift */,
+				39FC68FE29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift */,
 				84B75EEF296940C900962F3E /* TriggersListViewController.storyboard */,
 			);
 			path = ListScreen;
@@ -3577,7 +3768,12 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				39FC688B29B120BE00FCB7C6 /* Marketing */,
+				39FC693029B3D75A00FCB7C6 /* SocialMediaManager */,
+				39FC692329B3D73D00FCB7C6 /* Chatbot */,
+				39FC691629B3D56300FCB7C6 /* LandingPages */,
+				39FC690529B3D20E00FCB7C6 /* Announcements */,
+				39FC690029B3D20D00FCB7C6 /* WebisteTemplates */,
+				39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */,
 				8440B38A2999FD5E00A42097 /* FormBuilder */,
 				848A03852993FAD7004FE278 /* Templates */,
 				84D061F129670676001FE469 /* Welcome */,
@@ -4845,6 +5041,7 @@
 				DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */,
 				842C0CB9298F713B00395061 /* CreatePateintsTasksViewController.storyboard in Resources */,
 				84D0623E29670677001FE469 /* PateintListViewContoller.storyboard in Resources */,
+				39FC692129B3D56400FCB7C6 /* LandingPagesViewController.storyboard in Resources */,
 				01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */,
 				3947A8F52996776E000CA2EB /* AddEventViewController.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
@@ -4871,6 +5068,7 @@
 				842C0CB3298F713B00395061 /* PatientAppointmentViewController.storyboard in Resources */,
 				01BBA9EB29AB9450006A5DB8 /* CreateNotificationViewController.storyboard in Resources */,
 				849D3AF52997CC72003E856A /* Font Awesome 5 Free-Regular-400.otf in Resources */,
+				39FC690D29B3D23300FCB7C6 /* AnnouncementsViewController.storyboard in Resources */,
 				848FA3CB2996163700A7D2D5 /* QuestionnaireTemplateListViewController.storyboard in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
@@ -4878,6 +5076,7 @@
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
+				39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				84D063232967080E001FE469 /* DateTypeTableViewCell.xib in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
@@ -4894,7 +5093,6 @@
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
 				848FA3D6299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
-				39FC68A829B120BE00FCB7C6 /* MassSMSViewController.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
 				84D063202967080E001FE469 /* InputTypeTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
@@ -4907,13 +5105,13 @@
 				842C0CC8298F713B00395061 /* QuestionarieViewController.storyboard in Resources */,
 				3947A8F22996776E000CA2EB /* EventsTableViewCell.xib in Resources */,
 				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
+				39FC691529B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard in Resources */,
 				84D063162967080E001FE469 /* TextTypeTableViewCell.xib in Resources */,
-				39FC68AE29B120BE00FCB7C6 /* MassEmailViewController.storyboard in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
 				39F2FF212996B8110089BD4F /* AppointmentListDetailViewController.storyboard in Resources */,
-				39FC68B129B120BE00FCB7C6 /* MassEmailTableViewCell.xib in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
+				39FC68F929B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				842C0CC3298F713B00395061 /* AddNewQuestionarieTableViewCell.xib in Resources */,
@@ -4954,6 +5152,7 @@
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
+				39FC693C29B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
 				84B75EA62968CEA300962F3E /* CategoriesListTableViewCell.xib in Resources */,
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
@@ -4962,6 +5161,7 @@
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
 				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
+				39FC68FD29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib in Resources */,
 				39F2FF162996B2F40089BD4F /* AppointmentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5093,7 +5293,6 @@
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
 				842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
-				39FC68A529B120BE00FCB7C6 /* MassSMSModel.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* CustomSMSTemplateTableViewCell.swift in Sources */,
 				84D062F12967080E001FE469 /* EditLeadViewController.swift in Sources */,
@@ -5106,6 +5305,7 @@
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */,
 				842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */,
+				39FC691F29B3D56300FCB7C6 /* LandingPagesViewModel.swift in Sources */,
 				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
@@ -5141,7 +5341,6 @@
 				017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */,
 				84F610ED292A71AB00B1FB69 /* Promise+Possible.swift in Sources */,
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
-				39FC68AC29B120BE00FCB7C6 /* MassEmailModel.swift in Sources */,
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */,
@@ -5150,14 +5349,13 @@
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
-				39FC68A429B120BE00FCB7C6 /* MassSMSViewModel.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
-				39FC68AD29B120BE00FCB7C6 /* MassEmailViewController.swift in Sources */,
 				84F610FA292A71AB00B1FB69 /* TLSPublicKey.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
+				39FC692D29B3D73D00FCB7C6 /* ChatbotModel.swift in Sources */,
 				01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
@@ -5182,6 +5380,7 @@
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
 				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
+				39FC693929B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
 				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
@@ -5192,7 +5391,6 @@
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
-				39FC68AF29B120BE00FCB7C6 /* MassEmailViewController+TableView.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
 				01BBA9E929AB9447006A5DB8 /* CreateNotificationViewController.swift in Sources */,
 				84D0624429670677001FE469 /* HomeViewContoller.swift in Sources */,
@@ -5204,6 +5402,7 @@
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
 				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
+				39FC68FA29B363F000FCB7C6 /* MassEmailandSMSViewController.swift in Sources */,
 				DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */,
 				849D3AF72997CC72003E856A /* FontAwesomeStateRequirement.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
@@ -5212,16 +5411,16 @@
 				398F90FA298ECB8700DB96E4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
+				39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */,
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
 				017D574B29B0453C00D6A5A4 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
-				39FC68AB29B120BE00FCB7C6 /* MassEmailViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
-				39FC68A729B120BE00FCB7C6 /* MassSMSViewController+TableView.swift in Sources */,
 				DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */,
 				84BD33FD2994BB460050C0D8 /* EmailTemplatesListTableViewCell.swift in Sources */,
+				39FC68FC29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.swift in Sources */,
 				848FA3D12996214A00A7D2D5 /* QuestionnaireTemplateListViewController+TableView.swift in Sources */,
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
@@ -5254,9 +5453,11 @@
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				DAEF749A299D4ADB009140AE /* BusinessDetailView.swift in Sources */,
 				849D3AEF2997CC72003E856A /* FontAwesomeTabBarItem.swift in Sources */,
+				39FC692C29B3D73D00FCB7C6 /* ChatbotViewModel.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */,
 				3947A8F42996776E000CA2EB /* AddEventViewController.swift in Sources */,
+				39FC692029B3D56300FCB7C6 /* LandingPagesModel.swift in Sources */,
 				84E34C4A297035D500C58B0D /* CreateTasksViewModel.swift in Sources */,
 				849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */,
 				84D0629F2967070D001FE469 /* UserListModel.swift in Sources */,
@@ -5265,6 +5466,7 @@
 				84D0623729670677001FE469 /* PateintDetailViewController.swift in Sources */,
 				8440B399299A1B1300A42097 /* FormListTableViewCell.swift in Sources */,
 				01C7489C29B2338E0085CED2 /* BussinessSelectionViewController.swift in Sources */,
+				39FC68FB29B363F000FCB7C6 /* MassEmailandSMSViewController+TableView.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
 				84BD33F92994BB020050C0D8 /* EmailTemplateViewController+TableView.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
@@ -5329,6 +5531,7 @@
 				3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */,
 				842C0CB4298F713B00395061 /* PatientAppointmentViewController.swift in Sources */,
 				84F610CD292A71AB00B1FB69 /* DispatchTime.swift in Sources */,
+				39FC693B29B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift in Sources */,
 				84D063152967080E001FE469 /* MultipleSelectionTextTypeTableViewCell.swift in Sources */,
 				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
@@ -5342,6 +5545,7 @@
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
 				84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */,
+				39FC693A29B3D75A00FCB7C6 /* SocialMediaManagerModel.swift in Sources */,
 				01152E3829B3C63700B24627 /* CombineTimeLineViewController.swift in Sources */,
 				84F610BE292A71AA00B1FB69 /* Data+Crypto.swift in Sources */,
 				84D063082967080E001FE469 /* EmailTemplateTableViewCell.swift in Sources */,
@@ -5361,6 +5565,7 @@
 				39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */,
 				84F610F5292A71AB00B1FB69 /* ASN1DistinguishedName.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
+				39FC692229B3D56400FCB7C6 /* LandingPagesViewController.swift in Sources */,
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
 				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
@@ -5376,6 +5581,7 @@
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
 				842C0CD1298F756200395061 /* AddNewConsentsModel.swift in Sources */,
+				39FC690B29B3D22400FCB7C6 /* AnnouncementsViewController.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
@@ -5444,7 +5650,9 @@
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				849D3AEE2997CC72003E856A /* FontAwesomeExtension.swift in Sources */,
+				39FC690F29B3D26400FCB7C6 /* AnnouncementsViewModel.swift in Sources */,
 				84F6113C292A71AB00B1FB69 /* Endpoint.swift in Sources */,
+				39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */,
 				84F610BC292A71AA00B1FB69 /* Algorithm.swift in Sources */,
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
@@ -5455,6 +5663,7 @@
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
+				39FC691329B3D28300FCB7C6 /* WebisteTemplatesViewController.swift in Sources */,
 				01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
@@ -5463,7 +5672,7 @@
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
-				39FC68B029B120BE00FCB7C6 /* MassEmailTableViewCell.swift in Sources */,
+				39FC68FF29B3CDCE00FCB7C6 /* TriggersListViewController+TableView.swift in Sources */,
 				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
 				01152E1129B398CE00B24627 /* leadListViewController+TableView.swift in Sources */,
@@ -5532,6 +5741,7 @@
 				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,
 				849D3AF82997CC72003E856A /* Enum.swift in Sources */,
 				01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */,
+				39FC68F729B363F000FCB7C6 /* MassEmailandSMSViewModel.swift in Sources */,
 				01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */,
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
@@ -5559,9 +5769,9 @@
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
-				39FC68A629B120BE00FCB7C6 /* MassSMSViewController.swift in Sources */,
 				01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */,
 				849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */,
+				39FC68F829B363F000FCB7C6 /* MassEmailandSMSModel.swift in Sources */,
 				39F2FF152996B2F40089BD4F /* AppointmentTableViewCell.swift in Sources */,
 				845C39CE292276AF00D934C5 /* SwiftLoader.swift in Sources */,
 				845C39DE292276B000D934C5 /* MenuModel.swift in Sources */,

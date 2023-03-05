@@ -93,14 +93,14 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             if viewModel?.getClinicsFilterListData.count ?? 0 == 0 {
-                self.clinicsListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.clinicsListTableView.setEmptyMessage()
             } else {
                 self.clinicsListTableView.restore()
             }
             return viewModel?.getClinicsFilterListData.count ?? 0
         } else {
             if viewModel?.getClinicsListData.count ?? 0 == 0 {
-                self.clinicsListTableView.setEmptyMessage(Constant.Profile.tableViewEmptyText)
+                self.clinicsListTableView.setEmptyMessage()
             } else {
                 self.clinicsListTableView.restore()
             }

@@ -92,7 +92,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         questionTableView.register(UINib(nibName: "FormQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "FormQuestionTableViewCell")
         NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationCreateQuestion), name: Notification.Name("notificationCreateQuestion"), object: nil)
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         self.dissableUserIntraction()
         self.scrollView.delegate = self
         self.setUPInitialConstantValue()

@@ -97,7 +97,7 @@
       "imageName": "fa-plane-arrival"
     },
     {
-      "title": "Website Consultation",
+      "title": "Website Templates",
       "imageName": "fa-laptop"
     },
     {
@@ -153,12 +153,8 @@
       "imageName": "fa-book",
       "subMenuList": [
         {
-          "title": "Mass Email",
+          "title": "Mass Email and SMS",
           "imageName": "fa-envelope"
-        },
-        {
-          "title": "Mass SMS",
-          "imageName": "fa-comment-dots"
         }
       ]
     },
@@ -203,7 +199,7 @@
       ]
     },
     {
-      "title": "Announcement",
+      "title": "Announcements",
       "imageName": "fa-bullhorn"
     },
     {

@@ -18,7 +18,7 @@ class BussinessSelectionListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
         self.loginButton.layer.cornerRadius = 12
         self.loginButton.clipsToBounds = true
     }

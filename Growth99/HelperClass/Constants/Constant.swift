@@ -56,6 +56,11 @@ struct Constant {
     }
     
     struct Profile {
+        static let socialMediaManager = "Social Media Manager"
+        static let chatbot = "Chatbot"
+        static let websiteTemplatesList = "Website Templates"
+        static let announcements = "Announcements"
+        static let landingPages = "Landing Pages"
         static let appointment = "Add Appointment"
         static let editAppointment = "Edit Appointment"
         static let calender = "Calendar"
@@ -117,6 +122,9 @@ struct Constant {
         static let Timeline = "Timeline"
         static let appointmentTrigger = "Appointment"
         static let leads = "leads"
+        static let massEmailSMS = "Mass Email and SMS"
+        static let massEmail = "Mass Email"
+        static let massSMS = "Mass SMS"
         static let searchList = "Search..."
         static let homeScreen = "Home"
         static let triggerActive = "ACTIVE"

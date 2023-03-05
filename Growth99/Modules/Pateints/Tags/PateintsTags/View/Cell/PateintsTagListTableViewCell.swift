@@ -26,7 +26,7 @@ class PateintsTagListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         dateFormater = DateFormater()
         self.subView.createBorderForView(redius: 8, width: 1)
-        self.subView.addBottomShadow(color:.gray)
+        self.subView.addBottomShadow(color: .gray)
     }
     
     func configureCellWithSearch(questionarieVM: PateintsTagsListViewModelProtocol?, index: IndexPath) {
