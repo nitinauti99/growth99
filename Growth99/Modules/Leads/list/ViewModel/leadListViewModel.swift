@@ -9,9 +9,10 @@ import Foundation
 
 protocol leadListViewModelProtocol {
     func getleadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
-    func leadListDataAtIndex(index: Int) -> leadListModel?
     func leadPeginationListDataAtIndex(index: Int) -> leadListModel?
     func leadListFilterDataAtIndex(index: Int) -> leadListModel?
+    func removeLead(leadId: Int)
+    
     var getleadListData: [leadListModel] { get }
     var getleadPeginationListData: [leadListModel] { get }
     var getleadListFilterData: [leadListModel] { get }
@@ -61,7 +62,22 @@ class leadListViewModel {
               }
           }
       }
-    
+    func removeLead(leadId: Int) {
+        let finaleUrl = ApiUrl.deleteLead.appending("\(leadId)")
+     
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.leadRemovedSuccefully(mrssage: "Pateints removed successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
     func setUpData(leadListData: [leadListModel]) {
         for item in leadListData {
             if item.totalCount == nil {
@@ -83,7 +99,6 @@ class leadListViewModel {
     func leadPeginationListDataAtIndex(index: Int) -> leadListModel? {
         return self.leadListPeginationList?[index]
     }
-    
 }
 
 extension leadListViewModel: leadListViewModelProtocol {

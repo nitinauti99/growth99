@@ -104,6 +104,7 @@ struct EndPoints {
     static let getAnnouncementsList = "/api/productionRelease/all"
     static let getLeadHistory = "/api/questionnaire/contact-submissions/email/"
     static let combineLeadTimeLine = "/api/v1/audit/lead/all?leadEmail="
+    static let deleteLead = "/api/questionnaire-submissions/"
 }
 
 struct ApiUrl {
@@ -206,6 +207,7 @@ struct ApiUrl {
     static let getAnnouncementsList = EndPoints.baseURL.appending(EndPoints.getAnnouncementsList)
     static let getLeadHistory = EndPoints.baseURL.appending(EndPoints.getLeadHistory)
     static let combineLeadTimeLine = EndPoints.baseURL.appending(EndPoints.combineLeadTimeLine)
+    static let deleteLead = EndPoints.baseURL.appending(EndPoints.deleteLead)
 
 }
 

@@ -45,8 +45,8 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     var patientQuestionList = [QuestionAnswers]()
     var viewModel: leadDetailViewProtocol?
     var leadData: leadListModel?
-    var leadId: Int?
     
+    var leadId: Int?
     var selctedSmsTemplateId = Int()
     var selctedTemplate = String()
     var smsBody: String = ""
@@ -144,8 +144,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     @objc func editButtonPressed(_ sender: UIButton) {
         let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
         editLeadVC.LeadData = leadData
-        
-        self.present(editLeadVC, animated: true)
+        self.navigationController?.pushViewController(editLeadVC, animated: true)
     }
     
     func errorReceived(error: String) {

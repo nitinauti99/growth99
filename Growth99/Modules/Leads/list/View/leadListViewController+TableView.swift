@@ -21,6 +21,7 @@ extension leadListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = leadListTableViewCell()
         cell = tableView.dequeueReusableCell(withIdentifier: "leadListTableViewCell") as! leadListTableViewCell
+        cell.delegate = self
         cell.configureCell(leadVM: viewModel, index: indexPath)
         return cell
     }
@@ -31,9 +32,8 @@ extension leadListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
-//        detailController.leadData = viewModel?.leadListDataAtIndex(index: indexPath.row)
-        
-         detailController.workflowLeadId = viewModel?.leadListDataAtIndex(index: indexPath.row)?.id ?? 0
+         detailController.workflowLeadId = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.id ?? 0
+        detailController.leadData = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)
          navigationController?.pushViewController(detailController, animated: true)
     }
 }

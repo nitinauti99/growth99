@@ -31,6 +31,10 @@ extension leadDetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.qutionNameLbi.text = item.questionName
             cell.ansLbi.text = item.answerText
+
+            if item.answerText == nil {
+                cell.ansLbi.text = "-"
+            }
             if item.questionName == "Email" {
                 self.user.primaryEmailId = item.answerText
             }

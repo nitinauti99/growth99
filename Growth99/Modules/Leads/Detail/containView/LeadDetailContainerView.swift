@@ -13,6 +13,8 @@ class LeadDetailContainerView: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     var workflowLeadId = Int()
+    var leadData: leadListModel?
+
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +97,7 @@ class LeadDetailContainerView: UIViewController {
     private lazy var leadDetailVC: leadDetailViewController = {
         let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
         detailController.leadId = workflowLeadId
+        detailController.leadData = leadData
         return detailController
     }()
     

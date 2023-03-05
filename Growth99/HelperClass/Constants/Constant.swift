@@ -78,6 +78,8 @@ struct Constant {
         static let leadHistroy = "Lead Data"
         static let questionnaireDetails = "View Questionnaire"
         static let pateint = "Patients List"
+        static let createLead = "Create Lead"
+        static let editLead = "Edit Lead"
         static let createPatient = "Create Patient"
         static let editPatient = "Edit Patient"
         static let business = "Business"
