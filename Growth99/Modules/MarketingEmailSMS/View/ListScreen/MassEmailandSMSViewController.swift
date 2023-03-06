@@ -43,7 +43,8 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        
+        let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.massEmailandSMSDetailVC, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.massEmailandSMSDetailVC) as! MassEmailandSMSDetailViewController
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
     
     @IBAction func massEmailSMSSegmentSelection(_ sender: Any) {

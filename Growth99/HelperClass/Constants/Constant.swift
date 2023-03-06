@@ -133,6 +133,7 @@ struct Constant {
         static let appointmentTrigger = "Appointment"
         static let leads = "leads"
         static let massEmailSMS = "Mass Email and SMS"
+        static let createMassEmailSMS = "Create Mass Email or SMS"
         static let massEmail = "Mass Email"
         static let massSMS = "Mass SMS"
         static let searchList = "Search..."
@@ -190,5 +191,6 @@ struct Constant {
         static let eventsTableViewCell = "EventsTableViewCell"
         static let emptyEventsTableViewCell = "EmptyEventsTableViewCell"
         static let calenderViewController = "CalenderViewController"
+        static let massEmailandSMSDetailVC = "MassEmailandSMSDetailViewController"
     }    
 }
