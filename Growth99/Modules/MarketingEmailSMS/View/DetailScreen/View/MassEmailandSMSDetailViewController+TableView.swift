@@ -100,7 +100,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSLeadCellDelegate {
     func leadStatusSelectonBtn(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath) {
-        let leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
+       /* let leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
@@ -110,7 +110,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSLeadCellDelegate {
         selectionMenu.reloadInputViews()
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)*/
     }
     
     func leadSourceSelectonBtn(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath) {
