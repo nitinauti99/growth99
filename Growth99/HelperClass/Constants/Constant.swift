@@ -161,6 +161,7 @@ struct Constant {
         static let clinicsRequired = "Clinics are required."
         static let categoryNameRequired = "Category Name is required."
         static let leadListTitle = "Lead Dashboard"
+        static let deletedLeadListTitle = "Deleted Leads"
     }
     
     struct CreateLead {
