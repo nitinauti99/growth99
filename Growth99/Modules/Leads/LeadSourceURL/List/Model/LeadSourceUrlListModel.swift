@@ -6,3 +6,7 @@
 //
 
 import Foundation
+struct LeadSourceUrlListModel: Codable {
+    let sourceUrl: String?
+    let id: Int?
+}

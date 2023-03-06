@@ -111,6 +111,11 @@ struct EndPoints {
     static let creatLeadTags = "/api/tag"
     static let updateLeadTags = "/api/tag/"
     static let getDeletedLeadList = "/api/questionnaire-submission/history/pagination?page=0&size=50"
+    static let getLeadsourceurls = "/api/leadsourceurls/list"
+    static let removeLeadsourceurls = "/api/leadsourceurls/"
+    static let updateLeadSourceUrl = "/api/leadsourceurls/"
+    static let creatLeadSourceUrl = "/api/leadsourceurls"
+    static let getLeadSourceUrl = "/api/leadsourceurls/"
 }
 
 struct ApiUrl {
@@ -220,11 +225,11 @@ struct ApiUrl {
     static let creatLeadTags = EndPoints.baseURL.appending(EndPoints.creatLeadTags)
     static let updateLeadTags = EndPoints.baseURL.appending(EndPoints.updateLeadTags)
     static let getDeletedLeadList = EndPoints.baseURL.appending(EndPoints.getDeletedLeadList)
+    static let getLeadsourceurls = EndPoints.baseURL.appending(EndPoints.getLeadsourceurls)
+    static let removeLeadsourceurls = EndPoints.baseURL.appending(EndPoints.removeLeadsourceurls)
+    static let creatLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.creatLeadSourceUrl)
+    static let updateLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.updateLeadSourceUrl)
+    static let getLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.getLeadSourceUrl)
 
 }
-
-
-
-
-
 

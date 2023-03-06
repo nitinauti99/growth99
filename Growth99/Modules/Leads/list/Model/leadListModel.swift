@@ -25,7 +25,6 @@ struct leadListModel : Codable {
       let sourceUrl: String?
       let totalCount: Int?
       let questionnaireName: String?
-      
 
       enum CodingKeys: String, CodingKey {
           case lastName
