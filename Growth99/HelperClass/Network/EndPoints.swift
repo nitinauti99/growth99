@@ -116,6 +116,7 @@ struct EndPoints {
     static let updateLeadSourceUrl = "/api/leadsourceurls/"
     static let creatLeadSourceUrl = "/api/leadsourceurls"
     static let getLeadSourceUrl = "/api/leadsourceurls/"
+    static let chatconfigs = "/api/chatconfigs"
 }
 
 struct ApiUrl {
@@ -230,6 +231,5 @@ struct ApiUrl {
     static let creatLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.creatLeadSourceUrl)
     static let updateLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.updateLeadSourceUrl)
     static let getLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.getLeadSourceUrl)
-
+    static let chatconfigs = EndPoints.baseURL.appending(EndPoints.chatconfigs)
 }
-

@@ -299,7 +299,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 13 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "ChatbotViewController", pusedViewController: "ChatbotViewController")
+                pushViewControllerFromDrawerMenu(identifier: "ChatbotContainerView", pusedViewController: "ChatbotContainerView")
             default:
                 break
             }

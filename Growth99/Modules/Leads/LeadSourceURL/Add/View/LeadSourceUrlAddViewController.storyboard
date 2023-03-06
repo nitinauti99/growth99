@@ -155,7 +155,7 @@
     </scenes>
     <designables>
         <designable name="FRO-Vp-lXS">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>
