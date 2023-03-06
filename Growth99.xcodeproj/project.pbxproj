@@ -156,6 +156,17 @@
 		01EBAC8829B5C6E700110DCB /* ChatbotContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC8729B5C6E700110DCB /* ChatbotContainerView.swift */; };
 		01EBAC8A29B5C6F100110DCB /* ChatbotContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC8929B5C6F100110DCB /* ChatbotContainerView.storyboard */; };
 		01EBAC8C29B5E62800110DCB /* UITextViewExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */; };
+		01EBAC9329B6392600110DCB /* ScrapeWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC9229B6392600110DCB /* ScrapeWebsiteViewController.swift */; };
+		01EBAC9529B6392E00110DCB /* ScrapeWebsiteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC9429B6392E00110DCB /* ScrapeWebsiteViewController.storyboard */; };
+		01EBAC9729B6393A00110DCB /* ScrapeWebsiteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC9629B6393A00110DCB /* ScrapeWebsiteViewModel.swift */; };
+		01EBAC9D29B64DEA00110DCB /* chatQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC9C29B64DEA00110DCB /* chatQuestionnaireViewContoller.swift */; };
+		01EBAC9F29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC9E29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard */; };
+		01EBACA129B64E0A00110DCB /* chatQuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA029B64E0A00110DCB /* chatQuestionnaireViewModel.swift */; };
+		01EBACA329B64E2900110DCB /* chatQuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA229B64E2900110DCB /* chatQuestionnaireModel.swift */; };
+		01EBACA629B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA529B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift */; };
+		01EBACA829B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */; };
+		01EBACAB29B6519100110DCB /* chatQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */; };
+		01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -864,6 +875,17 @@
 		01EBAC8729B5C6E700110DCB /* ChatbotContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotContainerView.swift; sourceTree = "<group>"; };
 		01EBAC8929B5C6F100110DCB /* ChatbotContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatbotContainerView.storyboard; sourceTree = "<group>"; };
 		01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtenssion.swift; sourceTree = "<group>"; };
+		01EBAC9229B6392600110DCB /* ScrapeWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapeWebsiteViewController.swift; sourceTree = "<group>"; };
+		01EBAC9429B6392E00110DCB /* ScrapeWebsiteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrapeWebsiteViewController.storyboard; sourceTree = "<group>"; };
+		01EBAC9629B6393A00110DCB /* ScrapeWebsiteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapeWebsiteViewModel.swift; sourceTree = "<group>"; };
+		01EBAC9C29B64DEA00110DCB /* chatQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
+		01EBAC9E29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = chatQuestionnaireViewContoller.storyboard; sourceTree = "<group>"; };
+		01EBACA029B64E0A00110DCB /* chatQuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireViewModel.swift; sourceTree = "<group>"; };
+		01EBACA229B64E2900110DCB /* chatQuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireModel.swift; sourceTree = "<group>"; };
+		01EBACA529B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "chatQuestionnaireViewContoller+TableView.swift"; sourceTree = "<group>"; };
+		01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "chatQuestionnaireViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
+		01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
+		01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = chatQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
@@ -2152,6 +2174,97 @@
 			path = ChatBotContainerView;
 			sourceTree = "<group>";
 		};
+		01EBAC8D29B638B900110DCB /* ChatConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				39FC692629B3D73D00FCB7C6 /* Model */,
+				39FC692429B3D73D00FCB7C6 /* ViewModel */,
+				39FC692829B3D73D00FCB7C6 /* View */,
+			);
+			path = ChatConfiguration;
+			sourceTree = "<group>";
+		};
+		01EBAC8E29B638D700110DCB /* ScrapeWebsite */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC9129B638FE00110DCB /* Model */,
+				01EBAC9029B638FC00110DCB /* ViewModel */,
+				01EBAC8F29B638F900110DCB /* View */,
+			);
+			path = ScrapeWebsite;
+			sourceTree = "<group>";
+		};
+		01EBAC8F29B638F900110DCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC9229B6392600110DCB /* ScrapeWebsiteViewController.swift */,
+				01EBAC9429B6392E00110DCB /* ScrapeWebsiteViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01EBAC9029B638FC00110DCB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC9629B6393A00110DCB /* ScrapeWebsiteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01EBAC9129B638FE00110DCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01EBAC9829B64CCE00110DCB /* chatQuestionnaire  */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC9B29B64D8300110DCB /* Model */,
+				01EBAC9A29B64D8100110DCB /* ViewModel */,
+				01EBAC9929B64D7F00110DCB /* View */,
+			);
+			path = "chatQuestionnaire ";
+			sourceTree = "<group>";
+		};
+		01EBAC9929B64D7F00110DCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01EBACA429B6514800110DCB /* Cell */,
+				01EBAC9C29B64DEA00110DCB /* chatQuestionnaireViewContoller.swift */,
+				01EBAC9E29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard */,
+				01EBACA529B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift */,
+				01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01EBAC9A29B64D8100110DCB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01EBACA029B64E0A00110DCB /* chatQuestionnaireViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01EBAC9B29B64D8300110DCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01EBACA229B64E2900110DCB /* chatQuestionnaireModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01EBACA429B6514800110DCB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */,
+				01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3947A8CF2996776D000CA2EB /* CalenderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2643,9 +2756,9 @@
 			isa = PBXGroup;
 			children = (
 				01EBAC8229B5C64600110DCB /* ChatContainer */,
-				39FC692629B3D73D00FCB7C6 /* Model */,
-				39FC692429B3D73D00FCB7C6 /* ViewModel */,
-				39FC692829B3D73D00FCB7C6 /* View */,
+				01EBAC8D29B638B900110DCB /* ChatConfiguration */,
+				01EBAC8E29B638D700110DCB /* ScrapeWebsite */,
+				01EBAC9829B64CCE00110DCB /* chatQuestionnaire  */,
 			);
 			path = Chatbot;
 			sourceTree = "<group>";
@@ -5454,6 +5567,7 @@
 				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
 				01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
+				01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */,
 				84903519299572C200556D47 /* ConsentsTemplateListTableViewCell.xib in Resources */,
 				84B75EEC29692BD400962F3E /* LeadTriggersTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
@@ -5499,9 +5613,11 @@
 				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
 				8490350429954F7300556D47 /* SMSTemplatesListTableViewCell.xib in Resources */,
+				01EBAC9529B6392E00110DCB /* ScrapeWebsiteViewController.storyboard in Resources */,
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
 				848FA3D6299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.xib in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
+				01EBAC9F29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* EmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
@@ -5714,6 +5830,7 @@
 			files = (
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
 				013A4FBF29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift in Sources */,
+				01EBAC9D29B64DEA00110DCB /* chatQuestionnaireViewContoller.swift in Sources */,
 				842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */,
 				01EBAC3C29B583D000110DCB /* LeadTagsListViewModel.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
@@ -5726,9 +5843,11 @@
 				01C7489029B22E670085CED2 /* ServicesListViewController+TableView.swift in Sources */,
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
+				01EBACA329B64E2900110DCB /* chatQuestionnaireModel.swift in Sources */,
 				84D0623529670677001FE469 /* PateintDetailViewModel.swift in Sources */,
 				398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */,
 				842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */,
+				01EBACA129B64E0A00110DCB /* chatQuestionnaireViewModel.swift in Sources */,
 				39FC691F29B3D56300FCB7C6 /* LandingPagesViewModel.swift in Sources */,
 				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
@@ -5922,6 +6041,7 @@
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,
 				845C39D0292276AF00D934C5 /* KeychainItemAccessibility.swift in Sources */,
 				845C39E6292276B000D934C5 /* HyperLinkLabel.swift in Sources */,
+				01EBACAB29B6519100110DCB /* chatQuestionnaireTableViewCell.swift in Sources */,
 				84F610F0292A71AB00B1FB69 /* Possible.swift in Sources */,
 				84D0624529670677001FE469 /* UserProfile.swift in Sources */,
 				84D0628429670677001FE469 /* ForgotPasswordViewModel.swift in Sources */,
@@ -6035,6 +6155,7 @@
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
 				013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
+				01EBAC9329B6392600110DCB /* ScrapeWebsiteViewController.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
 				DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */,
 				398F90F9298ECB8700DB96E4 /* IQKeyboardManager+OrientationNotification.swift in Sources */,
@@ -6059,6 +6180,7 @@
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
 				845C39D7292276B000D934C5 /* DrawerViewContoller.swift in Sources */,
+				01EBACA629B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift in Sources */,
 				848C92AC291F6AA000502956 /* RSFirstRowSelection.swift in Sources */,
 				84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */,
 				84F610F6292A71AB00B1FB69 /* TLSCertificateDecoder.swift in Sources */,
@@ -6113,6 +6235,7 @@
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
 				01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadListListViewController.swift in Sources */,
+				01EBACA829B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift in Sources */,
 				013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				01EBAC6C29B593F500110DCB /* DeletedLeadListTableViewCell.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
@@ -6203,6 +6326,7 @@
 				842C0CB8298F713B00395061 /* CreatePateintsTasksViewModel.swift in Sources */,
 				84F610C4292A71AA00B1FB69 /* JOSEHeader.swift in Sources */,
 				84088BCB297930180060855E /* BusinessModel.swift in Sources */,
+				01EBAC9729B6393A00110DCB /* ScrapeWebsiteViewModel.swift in Sources */,
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
 				842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */,
 				01EBAC6429B58BD000110DCB /* LeadSourceUrlListModel.swift in Sources */,

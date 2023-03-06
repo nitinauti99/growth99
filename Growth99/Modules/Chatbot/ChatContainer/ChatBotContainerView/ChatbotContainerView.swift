@@ -49,40 +49,17 @@ class ChatbotContainerView: UIViewController {
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: leadTimeLineVC)
-            remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: combineTimeLineVC)
+            remove(asChildViewController: ScrapeWebsiteVC)
+            remove(asChildViewController: chatQuestionnaireVC)
             add(asChildViewController: chatConfigurationVC)
-            navigationItem.rightBarButtonItem = nil
         case 1:
-            remove(asChildViewController: tasksListVC)
+            remove(asChildViewController: chatQuestionnaireVC)
             remove(asChildViewController: chatConfigurationVC)
-            remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: combineTimeLineVC)
-            add(asChildViewController: leadTimeLineVC)
-            navigationItem.rightBarButtonItem = nil
+            add(asChildViewController: ScrapeWebsiteVC)
         case 2:
-            remove(asChildViewController: leadTimeLineVC)
+            remove(asChildViewController: ScrapeWebsiteVC)
             remove(asChildViewController: chatConfigurationVC)
-            remove(asChildViewController: leadHistoryVC)
-            remove(asChildViewController: combineTimeLineVC)
-            add(asChildViewController: tasksListVC)
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
-        case 3:
-            remove(asChildViewController: leadTimeLineVC)
-            remove(asChildViewController: chatConfigurationVC)
-            remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: combineTimeLineVC)
-            add(asChildViewController: leadHistoryVC)
-            navigationItem.rightBarButtonItem = nil
-        case 4:
-            remove(asChildViewController: leadTimeLineVC)
-            remove(asChildViewController: chatConfigurationVC)
-            remove(asChildViewController: tasksListVC)
-            remove(asChildViewController: leadHistoryVC)
-            add(asChildViewController: combineTimeLineVC)
-            navigationItem.rightBarButtonItem = nil
+            add(asChildViewController: chatQuestionnaireVC)
         default:
             break
         }
@@ -97,37 +74,16 @@ class ChatbotContainerView: UIViewController {
         return detailController
     }()
     
-    /// questionarie for Pateints
-    private lazy var leadTimeLineVC: leadTimeLineViewController = {
-        let leadTimeLineVC = UIStoryboard(name: "leadTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "leadTimeLineViewController") as! leadTimeLineViewController
-        leadTimeLineVC.leadId = workflowLeadId
-        return leadTimeLineVC
-    }()
-    
     /// task for Pateints
-    private lazy var tasksListVC: TasksListViewController = {
-        let tasksList = UIStoryboard(name: "TasksListViewController", bundle: nil).instantiateViewController(withIdentifier: "TasksListViewController") as! TasksListViewController
-        tasksList.workflowTaskLeadId = workflowLeadId
-        tasksList.screenTitile = "Lead Task"
-        return tasksList
+    private lazy var ScrapeWebsiteVC: ScrapeWebsiteViewController = {
+        let scrapeWebsiteList = UIStoryboard(name: "ScrapeWebsiteViewController", bundle: nil).instantiateViewController(withIdentifier: "ScrapeWebsiteViewController") as! ScrapeWebsiteViewController
+        return scrapeWebsiteList
     }()
-    
-    @objc func addTaskTapped(_ sender: UIButton) {
-        let createLeadTasksVC = UIStoryboard(name: "CreateLeadTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLeadTasksViewController") as! CreateLeadTasksViewController
-        createLeadTasksVC.workflowTaskLeadId = workflowLeadId
-        navigationController?.pushViewController(createLeadTasksVC, animated: true)
-    }
-    
+ 
     /// Lead History
-    private lazy var leadHistoryVC: LeadHistoryViewController = {
-        let leadHistoryList = UIStoryboard(name: "LeadHistoryViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadHistoryViewController") as! LeadHistoryViewController
-        return leadHistoryList
-    }()
-      
-    /// LeadCombine TimeLine
-    private lazy var combineTimeLineVC: CombineTimeLineViewController = {
-        let combineTimeLineVC = UIStoryboard(name: "CombineTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "CombineTimeLineViewController") as! CombineTimeLineViewController
-        return combineTimeLineVC
+    private lazy var chatQuestionnaireVC: chatQuestionnaireViewContoller = {
+        let chatQuestionnaire = UIStoryboard(name: "chatQuestionnaireViewContoller", bundle: nil).instantiateViewController(withIdentifier: "chatQuestionnaireViewContoller") as! chatQuestionnaireViewContoller
+        return chatQuestionnaire
     }()
     
    /// add VC as child view contoller
