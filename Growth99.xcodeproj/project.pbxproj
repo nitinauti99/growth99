@@ -123,6 +123,39 @@
 		01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7AB08299E8CD000821274 /* FormDetailViewController+TableView.swift */; };
 		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
 		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
+		01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */; };
+		01EBAC3A29B583C300110DCB /* LeadTagsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC3929B583C300110DCB /* LeadTagsListViewController.storyboard */; };
+		01EBAC3C29B583D000110DCB /* LeadTagsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3B29B583D000110DCB /* LeadTagsListViewModel.swift */; };
+		01EBAC3E29B583DC00110DCB /* LeadTagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3D29B583DC00110DCB /* LeadTagsModel.swift */; };
+		01EBAC4229B5843C00110DCB /* LeadTagsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC4029B5843C00110DCB /* LeadTagsListTableViewCell.swift */; };
+		01EBAC4329B5843C00110DCB /* LeadTagsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC4129B5843C00110DCB /* LeadTagsListTableViewCell.xib */; };
+		01EBAC4529B585D900110DCB /* LeadTagsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC4429B585D900110DCB /* LeadTagsListViewController+TableView.swift */; };
+		01EBAC4729B585E700110DCB /* LeadTagsListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC4629B585E700110DCB /* LeadTagsListViewController+SearchBar.swift */; };
+		01EBAC4E29B5869200110DCB /* LeadTagsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC4D29B5869200110DCB /* LeadTagsAddViewController.swift */; };
+		01EBAC5029B586A600110DCB /* LeadTagsAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC4F29B586A600110DCB /* LeadTagsAddViewController.storyboard */; };
+		01EBAC5229B586B200110DCB /* LeadTagsAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC5129B586B200110DCB /* LeadTagsAddViewModel.swift */; };
+		01EBAC5629B58AF800110DCB /* DeletedLeadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC5529B58AF800110DCB /* DeletedLeadListViewController.swift */; };
+		01EBAC5829B58B0200110DCB /* DeletedLeadListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC5729B58B0200110DCB /* DeletedLeadListViewController.storyboard */; };
+		01EBAC5A29B58B0D00110DCB /* DeletedLeadListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC5929B58B0D00110DCB /* DeletedLeadListViewModel.swift */; };
+		01EBAC5C29B58B1A00110DCB /* DeletedLeadListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC5B29B58B1A00110DCB /* DeletedLeadListModel.swift */; };
+		01EBAC5E29B58BAD00110DCB /* LeadSourceUrlListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC5D29B58BAD00110DCB /* LeadSourceUrlListViewController.swift */; };
+		01EBAC6029B58BB900110DCB /* LeadSourceUrlListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC5F29B58BB900110DCB /* LeadSourceUrlListViewController.storyboard */; };
+		01EBAC6229B58BC500110DCB /* LeadSourceUrlListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC6129B58BC500110DCB /* LeadSourceUrlListViewModel.swift */; };
+		01EBAC6429B58BD000110DCB /* LeadSourceUrlListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC6329B58BD000110DCB /* LeadSourceUrlListModel.swift */; };
+		01EBAC6629B593A300110DCB /* DeletedLeadListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC6529B593A300110DCB /* DeletedLeadListViewController+TableView.swift */; };
+		01EBAC6829B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC6729B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift */; };
+		01EBAC6C29B593F500110DCB /* DeletedLeadListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC6A29B593F500110DCB /* DeletedLeadListTableViewCell.swift */; };
+		01EBAC6D29B593F500110DCB /* DeletedLeadListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC6B29B593F500110DCB /* DeletedLeadListTableViewCell.xib */; };
+		01EBAC7529B5A87300110DCB /* LeadSourceUrlListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC7429B5A87300110DCB /* LeadSourceUrlListViewController+TableView.swift */; };
+		01EBAC7729B5A88800110DCB /* LeadSourceUrlListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC7629B5A88800110DCB /* LeadSourceUrlListViewController+SearchBar.swift */; };
+		01EBAC7A29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC7829B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift */; };
+		01EBAC7B29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC7929B5A8C000110DCB /* LeadSourceUrlListTableViewCell.xib */; };
+		01EBAC7D29B5A91200110DCB /* LeadSourceUrlAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC7C29B5A91200110DCB /* LeadSourceUrlAddViewController.swift */; };
+		01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC7E29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard */; };
+		01EBAC8129B5A93200110DCB /* LeadSourceUrlAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC8029B5A93200110DCB /* LeadSourceUrlAddViewModel.swift */; };
+		01EBAC8829B5C6E700110DCB /* ChatbotContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC8729B5C6E700110DCB /* ChatbotContainerView.swift */; };
+		01EBAC8A29B5C6F100110DCB /* ChatbotContainerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC8929B5C6F100110DCB /* ChatbotContainerView.storyboard */; };
+		01EBAC8C29B5E62800110DCB /* UITextViewExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3928E92B29B5C58A00289474 /* MassEmailandSMSPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3928E92929B5C58A00289474 /* MassEmailandSMSPatientActionTableViewCell.xib */; };
@@ -217,10 +250,10 @@
 		39FC692029B3D56300FCB7C6 /* LandingPagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */; };
 		39FC692129B3D56400FCB7C6 /* LandingPagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */; };
 		39FC692229B3D56400FCB7C6 /* LandingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */; };
-		39FC692C29B3D73D00FCB7C6 /* ChatbotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */; };
-		39FC692D29B3D73D00FCB7C6 /* ChatbotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */; };
-		39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */; };
-		39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */; };
+		39FC692C29B3D73D00FCB7C6 /* ChatConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692529B3D73D00FCB7C6 /* ChatConfigurationViewModel.swift */; };
+		39FC692D29B3D73D00FCB7C6 /* ChatConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692729B3D73D00FCB7C6 /* ChatConfigurationModel.swift */; };
+		39FC692E29B3D73D00FCB7C6 /* ChatConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC692929B3D73D00FCB7C6 /* ChatConfigurationViewController.swift */; };
+		39FC692F29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FC692A29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard */; };
 		39FC693929B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */; };
 		39FC693A29B3D75A00FCB7C6 /* SocialMediaManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */; };
 		39FC693B29B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */; };
@@ -814,6 +847,39 @@
 		01D7AB08299E8CD000821274 /* FormDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewController.swift; sourceTree = "<group>"; };
+		01EBAC3929B583C300110DCB /* LeadTagsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadTagsListViewController.storyboard; sourceTree = "<group>"; };
+		01EBAC3B29B583D000110DCB /* LeadTagsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewModel.swift; sourceTree = "<group>"; };
+		01EBAC3D29B583DC00110DCB /* LeadTagsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsModel.swift; sourceTree = "<group>"; };
+		01EBAC4029B5843C00110DCB /* LeadTagsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListTableViewCell.swift; sourceTree = "<group>"; };
+		01EBAC4129B5843C00110DCB /* LeadTagsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadTagsListTableViewCell.xib; sourceTree = "<group>"; };
+		01EBAC4429B585D900110DCB /* LeadTagsListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadTagsListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01EBAC4629B585E700110DCB /* LeadTagsListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadTagsListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01EBAC4D29B5869200110DCB /* LeadTagsAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsAddViewController.swift; sourceTree = "<group>"; };
+		01EBAC4F29B586A600110DCB /* LeadTagsAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadTagsAddViewController.storyboard; sourceTree = "<group>"; };
+		01EBAC5129B586B200110DCB /* LeadTagsAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsAddViewModel.swift; sourceTree = "<group>"; };
+		01EBAC5529B58AF800110DCB /* DeletedLeadListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedLeadListViewController.swift; sourceTree = "<group>"; };
+		01EBAC5729B58B0200110DCB /* DeletedLeadListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeletedLeadListViewController.storyboard; sourceTree = "<group>"; };
+		01EBAC5929B58B0D00110DCB /* DeletedLeadListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedLeadListViewModel.swift; sourceTree = "<group>"; };
+		01EBAC5B29B58B1A00110DCB /* DeletedLeadListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedLeadListModel.swift; sourceTree = "<group>"; };
+		01EBAC5D29B58BAD00110DCB /* LeadSourceUrlListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadSourceUrlListViewController.swift; sourceTree = "<group>"; };
+		01EBAC5F29B58BB900110DCB /* LeadSourceUrlListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadSourceUrlListViewController.storyboard; sourceTree = "<group>"; };
+		01EBAC6129B58BC500110DCB /* LeadSourceUrlListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadSourceUrlListViewModel.swift; sourceTree = "<group>"; };
+		01EBAC6329B58BD000110DCB /* LeadSourceUrlListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadSourceUrlListModel.swift; sourceTree = "<group>"; };
+		01EBAC6529B593A300110DCB /* DeletedLeadListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeletedLeadListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01EBAC6729B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeletedLeadListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01EBAC6A29B593F500110DCB /* DeletedLeadListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedLeadListTableViewCell.swift; sourceTree = "<group>"; };
+		01EBAC6B29B593F500110DCB /* DeletedLeadListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletedLeadListTableViewCell.xib; sourceTree = "<group>"; };
+		01EBAC7429B5A87300110DCB /* LeadSourceUrlListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadSourceUrlListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01EBAC7629B5A88800110DCB /* LeadSourceUrlListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadSourceUrlListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01EBAC7829B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadSourceUrlListTableViewCell.swift; sourceTree = "<group>"; };
+		01EBAC7929B5A8C000110DCB /* LeadSourceUrlListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadSourceUrlListTableViewCell.xib; sourceTree = "<group>"; };
+		01EBAC7C29B5A91200110DCB /* LeadSourceUrlAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadSourceUrlAddViewController.swift; sourceTree = "<group>"; };
+		01EBAC7E29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadSourceUrlAddViewController.storyboard; sourceTree = "<group>"; };
+		01EBAC8029B5A93200110DCB /* LeadSourceUrlAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadSourceUrlAddViewModel.swift; sourceTree = "<group>"; };
+		01EBAC8729B5C6E700110DCB /* ChatbotContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotContainerView.swift; sourceTree = "<group>"; };
+		01EBAC8929B5C6F100110DCB /* ChatbotContainerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatbotContainerView.storyboard; sourceTree = "<group>"; };
+		01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtenssion.swift; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
@@ -911,10 +977,10 @@
 		39FC691A29B3D56300FCB7C6 /* LandingPagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesModel.swift; sourceTree = "<group>"; };
 		39FC691C29B3D56300FCB7C6 /* LandingPagesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingPagesViewController.storyboard; sourceTree = "<group>"; };
 		39FC691D29B3D56300FCB7C6 /* LandingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPagesViewController.swift; sourceTree = "<group>"; };
-		39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotViewModel.swift; sourceTree = "<group>"; };
-		39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotModel.swift; sourceTree = "<group>"; };
-		39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatbotViewController.swift; sourceTree = "<group>"; };
-		39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatbotViewController.storyboard; sourceTree = "<group>"; };
+		39FC692529B3D73D00FCB7C6 /* ChatConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConfigurationViewModel.swift; sourceTree = "<group>"; };
+		39FC692729B3D73D00FCB7C6 /* ChatConfigurationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConfigurationModel.swift; sourceTree = "<group>"; };
+		39FC692929B3D73D00FCB7C6 /* ChatConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConfigurationViewController.swift; sourceTree = "<group>"; };
+		39FC692A29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatConfigurationViewController.storyboard; sourceTree = "<group>"; };
 		39FC693229B3D75A00FCB7C6 /* SocialMediaManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerViewModel.swift; sourceTree = "<group>"; };
 		39FC693429B3D75A00FCB7C6 /* SocialMediaManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerModel.swift; sourceTree = "<group>"; };
 		39FC693629B3D75A00FCB7C6 /* SocialMediaManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManagerViewController.swift; sourceTree = "<group>"; };
@@ -1687,9 +1753,8 @@
 		013A4FE629B514F500CA24B0 /* LeadTags */ = {
 			isa = PBXGroup;
 			children = (
-				013A4FEB29B5157400CA24B0 /* model */,
-				013A4FEA29B5157200CA24B0 /* ViewModel */,
-				013A4FE929B5156F00CA24B0 /* View */,
+				01EBAC4829B5866000110DCB /* List */,
+				01EBAC4929B5866B00110DCB /* Add */,
 			);
 			path = LeadTags;
 			sourceTree = "<group>";
@@ -1707,9 +1772,8 @@
 		013A4FE829B5150F00CA24B0 /* LeadSourceURL */ = {
 			isa = PBXGroup;
 			children = (
-				013A4FF129B5159D00CA24B0 /* Model */,
-				013A4FF029B5159B00CA24B0 /* ViewModel */,
-				013A4FEF29B5159900CA24B0 /* View */,
+				01EBAC6E29B5A80C00110DCB /* List */,
+				01EBAC6F29B5A81400110DCB /* Add */,
 			);
 			path = LeadSourceURL;
 			sourceTree = "<group>";
@@ -1717,6 +1781,11 @@
 		013A4FE929B5156F00CA24B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC3F29B5842400110DCB /* Cell */,
+				01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */,
+				01EBAC3929B583C300110DCB /* LeadTagsListViewController.storyboard */,
+				01EBAC4429B585D900110DCB /* LeadTagsListViewController+TableView.swift */,
+				01EBAC4629B585E700110DCB /* LeadTagsListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1724,6 +1793,7 @@
 		013A4FEA29B5157200CA24B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC3B29B583D000110DCB /* LeadTagsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1731,6 +1801,7 @@
 		013A4FEB29B5157400CA24B0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC3D29B583DC00110DCB /* LeadTagsModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1738,6 +1809,11 @@
 		013A4FEC29B5158300CA24B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC6929B593D500110DCB /* Cell */,
+				01EBAC5529B58AF800110DCB /* DeletedLeadListViewController.swift */,
+				01EBAC5729B58B0200110DCB /* DeletedLeadListViewController.storyboard */,
+				01EBAC6529B593A300110DCB /* DeletedLeadListViewController+TableView.swift */,
+				01EBAC6729B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1745,6 +1821,7 @@
 		013A4FED29B5158500CA24B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC5929B58B0D00110DCB /* DeletedLeadListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1752,6 +1829,7 @@
 		013A4FEE29B5158700CA24B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC5B29B58B1A00110DCB /* DeletedLeadListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1759,6 +1837,11 @@
 		013A4FEF29B5159900CA24B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC7329B5A86400110DCB /* Cell */,
+				01EBAC5D29B58BAD00110DCB /* LeadSourceUrlListViewController.swift */,
+				01EBAC5F29B58BB900110DCB /* LeadSourceUrlListViewController.storyboard */,
+				01EBAC7429B5A87300110DCB /* LeadSourceUrlListViewController+TableView.swift */,
+				01EBAC7629B5A88800110DCB /* LeadSourceUrlListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1766,6 +1849,7 @@
 		013A4FF029B5159B00CA24B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC6129B58BC500110DCB /* LeadSourceUrlListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1773,6 +1857,7 @@
 		013A4FF129B5159D00CA24B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC6329B58BD000110DCB /* LeadSourceUrlListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1981,6 +2066,122 @@
 				01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		01EBAC3F29B5842400110DCB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC4029B5843C00110DCB /* LeadTagsListTableViewCell.swift */,
+				01EBAC4129B5843C00110DCB /* LeadTagsListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		01EBAC4829B5866000110DCB /* List */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FEB29B5157400CA24B0 /* model */,
+				013A4FEA29B5157200CA24B0 /* ViewModel */,
+				013A4FE929B5156F00CA24B0 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		01EBAC4929B5866B00110DCB /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC4B29B5867600110DCB /* ViewModel */,
+				01EBAC4A29B5867400110DCB /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		01EBAC4A29B5867400110DCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC4D29B5869200110DCB /* LeadTagsAddViewController.swift */,
+				01EBAC4F29B586A600110DCB /* LeadTagsAddViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01EBAC4B29B5867600110DCB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC5129B586B200110DCB /* LeadTagsAddViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01EBAC6929B593D500110DCB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC6A29B593F500110DCB /* DeletedLeadListTableViewCell.swift */,
+				01EBAC6B29B593F500110DCB /* DeletedLeadListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		01EBAC6E29B5A80C00110DCB /* List */ = {
+			isa = PBXGroup;
+			children = (
+				013A4FF129B5159D00CA24B0 /* Model */,
+				013A4FF029B5159B00CA24B0 /* ViewModel */,
+				013A4FEF29B5159900CA24B0 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		01EBAC6F29B5A81400110DCB /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC7129B5A81E00110DCB /* ViewModel */,
+				01EBAC7029B5A81C00110DCB /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		01EBAC7029B5A81C00110DCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC7C29B5A91200110DCB /* LeadSourceUrlAddViewController.swift */,
+				01EBAC7E29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01EBAC7129B5A81E00110DCB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC8029B5A93200110DCB /* LeadSourceUrlAddViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01EBAC7329B5A86400110DCB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC7829B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift */,
+				01EBAC7929B5A8C000110DCB /* LeadSourceUrlListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		01EBAC8229B5C64600110DCB /* ChatContainer */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC8329B5C66F00110DCB /* ChatBotContainerView */,
+			);
+			path = ChatContainer;
+			sourceTree = "<group>";
+		};
+		01EBAC8329B5C66F00110DCB /* ChatBotContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC8729B5C6E700110DCB /* ChatbotContainerView.swift */,
+				01EBAC8929B5C6F100110DCB /* ChatbotContainerView.storyboard */,
+			);
+			path = ChatBotContainerView;
 			sourceTree = "<group>";
 		};
 		3947A8CF2996776D000CA2EB /* CalenderView */ = {
@@ -2489,6 +2690,7 @@
 		39FC692329B3D73D00FCB7C6 /* Chatbot */ = {
 			isa = PBXGroup;
 			children = (
+				01EBAC8229B5C64600110DCB /* ChatContainer */,
 				39FC692629B3D73D00FCB7C6 /* Model */,
 				39FC692429B3D73D00FCB7C6 /* ViewModel */,
 				39FC692829B3D73D00FCB7C6 /* View */,
@@ -2499,7 +2701,7 @@
 		39FC692429B3D73D00FCB7C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				39FC692529B3D73D00FCB7C6 /* ChatbotViewModel.swift */,
+				39FC692529B3D73D00FCB7C6 /* ChatConfigurationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2507,7 +2709,7 @@
 		39FC692629B3D73D00FCB7C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				39FC692729B3D73D00FCB7C6 /* ChatbotModel.swift */,
+				39FC692729B3D73D00FCB7C6 /* ChatConfigurationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2515,8 +2717,8 @@
 		39FC692829B3D73D00FCB7C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				39FC692929B3D73D00FCB7C6 /* ChatbotViewController.swift */,
-				39FC692A29B3D73D00FCB7C6 /* ChatbotViewController.storyboard */,
+				39FC692929B3D73D00FCB7C6 /* ChatConfigurationViewController.swift */,
+				39FC692A29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2527,7 +2729,6 @@
 				39FC693329B3D75A00FCB7C6 /* Model */,
 				39FC693529B3D75A00FCB7C6 /* View */,
 				39FC693129B3D75A00FCB7C6 /* ViewModel */,
-				39FC693829B3D75A00FCB7C6 /* CustomTableViewCell */,
 			);
 			path = SocialMediaManager;
 			sourceTree = "<group>";
@@ -2555,13 +2756,6 @@
 				39FC693729B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		39FC693829B3D75A00FCB7C6 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		84088B9F2977E5520060855E /* Model */ = {
@@ -3403,6 +3597,7 @@
 				84AE6D66295D6839002836ED /* CheckBox.swift */,
 				8473207A29797452003099BB /* DateFormater.swift */,
 				39B952AB29994F9B00DF1E8B /* UITableView+Extension.swift */,
+				01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */,
 			);
 			path = Extenssion;
 			sourceTree = "<group>";
@@ -5322,6 +5517,7 @@
 				397C4FD729B5117300778B8E /* AnnouncementsTableViewCell.xib in Resources */,
 				849D3AF32997CC72003E856A /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
+				01EBAC7B29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.xib in Resources */,
 				842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */,
 				84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */,
 				84EFB1A7296B22B900D8285E /* TaskListTableViewCell.xib in Resources */,
@@ -5338,7 +5534,7 @@
 				8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */,
 				013A4FBD29B4E39B00CA24B0 /* LeadInputTypeTableViewCell.xib in Resources */,
 				84D0622429670676001FE469 /* WorkingScheduleViewController.storyboard in Resources */,
-				39FC692F29B3D73D00FCB7C6 /* ChatbotViewController.storyboard in Resources */,
+				39FC692F29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard in Resources */,
 				013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
@@ -5352,6 +5548,7 @@
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
+				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
 				397C4FDB29B5AF1300778B8E /* MassEmailandSMSDetailViewController.storyboard in Resources */,
 				8490350429954F7300556D47 /* SMSTemplatesListTableViewCell.xib in Resources */,
@@ -5369,15 +5566,19 @@
 				84D0622D29670677001FE469 /* VacationScheduleViewController.storyboard in Resources */,
 				842C0CC8298F713B00395061 /* QuestionarieViewController.storyboard in Resources */,
 				3947A8F22996776E000CA2EB /* EventsTableViewCell.xib in Resources */,
+				01EBAC3A29B583C300110DCB /* LeadTagsListViewController.storyboard in Resources */,
 				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
 				39FC691529B3D28C00FCB7C6 /* WebisteTemplatesViewController.storyboard in Resources */,
 				013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */,
 				397C4FE929B5B94700778B8E /* MassEmailandSMSModuleTableViewCell.xib in Resources */,
+				01EBAC5029B586A600110DCB /* LeadTagsAddViewController.storyboard in Resources */,
 				84D0628229670677001FE469 /* ForgotPasswordViewController.storyboard in Resources */,
 				84D0623629670677001FE469 /* PateintDetailViewController.storyboard in Resources */,
 				39F2FF212996B8110089BD4F /* AppointmentListDetailViewController.storyboard in Resources */,
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
+				01EBAC4329B5843C00110DCB /* LeadTagsListTableViewCell.xib in Resources */,
 				39FC68F929B363F000FCB7C6 /* MassEmailandSMSViewController.storyboard in Resources */,
+				01EBAC6D29B593F500110DCB /* DeletedLeadListTableViewCell.xib in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				84B75EF0296940C900962F3E /* TriggersListViewController.storyboard in Resources */,
 				842C0CC3298F713B00395061 /* AddNewQuestionarieTableViewCell.xib in Resources */,
@@ -5417,6 +5618,7 @@
 				3947A8F92996776E000CA2EB /* EventEditViewController.storyboard in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
+				01EBAC8A29B5C6F100110DCB /* ChatbotContainerView.storyboard in Resources */,
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
 				013A4FBA29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib in Resources */,
@@ -5428,7 +5630,9 @@
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
 				3947A902299677EE000CA2EB /* BookingHistoryViewController.storyboard in Resources */,
 				39F2FF142996B2F40089BD4F /* AppointmentsViewController.storyboard in Resources */,
+				01EBAC5829B58B0200110DCB /* DeletedLeadListViewController.storyboard in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
+				01EBAC6029B58BB900110DCB /* LeadSourceUrlListViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
 				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
 				013A4FC129B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
@@ -5566,6 +5770,7 @@
 				DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */,
 				013A4FBF29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.swift in Sources */,
 				842C0CC4298F713B00395061 /* AddNewQuestionarieTableViewCell.swift in Sources */,
+				01EBAC3C29B583D000110DCB /* LeadTagsListViewModel.swift in Sources */,
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* CustomSMSTemplateTableViewCell.swift in Sources */,
@@ -5617,12 +5822,14 @@
 				84D063042967080E001FE469 /* CustomEmailTemplateTableViewCell.swift in Sources */,
 				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
+				01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */,
 				01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */,
 				013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
+				01EBAC6229B58BC500110DCB /* LeadSourceUrlListViewModel.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				84F610B8292A71AA00B1FB69 /* HMAC.swift in Sources */,
 				397C4FD629B5117300778B8E /* AnnouncementsTableViewCell.swift in Sources */,
@@ -5631,13 +5838,15 @@
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */,
 				84B75ECC2969035D00962F3E /* ServicesListTableViewCell.swift in Sources */,
-				39FC692D29B3D73D00FCB7C6 /* ChatbotModel.swift in Sources */,
+				39FC692D29B3D73D00FCB7C6 /* ChatConfigurationModel.swift in Sources */,
 				01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */,
+				01EBAC4229B5843C00110DCB /* LeadTagsListTableViewCell.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
 				39F2FF122996B2F40089BD4F /* AppointmentsViewController.swift in Sources */,
 				84B75EF22969461600962F3E /* TriggersListModel.swift in Sources */,
 				8473207B29797452003099BB /* DateFormater.swift in Sources */,
+				01EBAC5629B58AF800110DCB /* DeletedLeadListViewController.swift in Sources */,
 				398F90EE298ECB8700DB96E4 /* IQBarButtonItem.swift in Sources */,
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
 				849034FF29953AEC00556D47 /* SMSTemplateViewController+SearchBar.swift in Sources */,
@@ -5647,6 +5856,7 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
 				84F610B9292A71AA00B1FB69 /* HMACAlgorithm.swift in Sources */,
+				01EBAC5A29B58B0D00110DCB /* DeletedLeadListViewModel.swift in Sources */,
 				01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */,
 				01152E3629B3C60C00B24627 /* LeadHistoryModel.swift in Sources */,
 				8490350329954F7300556D47 /* SMSTemplatesListTableViewCell.swift in Sources */,
@@ -5667,7 +5877,9 @@
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
 				848FA3D5299621C200A7D2D5 /* QuestionnaireTemplateListTableViewCell.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
+				01EBAC4E29B5869200110DCB /* LeadTagsAddViewController.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
+				01EBAC5E29B58BAD00110DCB /* LeadSourceUrlListViewController.swift in Sources */,
 				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
 				01BBA9E929AB9447006A5DB8 /* CreateNotificationViewController.swift in Sources */,
@@ -5691,7 +5903,7 @@
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
 				013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */,
-				39FC692E29B3D73D00FCB7C6 /* ChatbotViewController.swift in Sources */,
+				39FC692E29B3D73D00FCB7C6 /* ChatConfigurationViewController.swift in Sources */,
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
 				017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */,
@@ -5717,6 +5929,7 @@
 				DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */,
 				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
+				01EBAC4529B585D900110DCB /* LeadTagsListViewController+TableView.swift in Sources */,
 				01152E3029B3C5E700B24627 /* LeadHistoryViewController.swift in Sources */,
 				842C0CAF298F713B00395061 /* ConsentsListViewModel.swift in Sources */,
 				01BBA9E029AB571F006A5DB8 /* NotificationListTableViewCell.swift in Sources */,
@@ -5732,7 +5945,7 @@
 				84D0622329670676001FE469 /* WorkingScheduleViewController.swift in Sources */,
 				DAEF749A299D4ADB009140AE /* BusinessDetailView.swift in Sources */,
 				849D3AEF2997CC72003E856A /* FontAwesomeTabBarItem.swift in Sources */,
-				39FC692C29B3D73D00FCB7C6 /* ChatbotViewModel.swift in Sources */,
+				39FC692C29B3D73D00FCB7C6 /* ChatConfigurationViewModel.swift in Sources */,
 				84F610CA292A71AA00B1FB69 /* LockedCollection.swift in Sources */,
 				842C0CAB298F713B00395061 /* ConsentsListModel.swift in Sources */,
 				3947A8F42996776E000CA2EB /* AddEventViewController.swift in Sources */,
@@ -5789,11 +6002,13 @@
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
 				39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
+				01EBAC8829B5C6E700110DCB /* ChatbotContainerView.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
 				DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */,
 				01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */,
+				01EBAC8129B5A93200110DCB /* LeadSourceUrlAddViewModel.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
 				8440B3952999FE5D00A42097 /* FormListModel.swift in Sources */,
 				8440B39C299A319800A42097 /* FormListViewContoller+TableView.swift in Sources */,
@@ -5818,6 +6033,7 @@
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
 				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
+				01EBAC3E29B583DC00110DCB /* LeadTagsModel.swift in Sources */,
 				013A4FD829B4E3FA00CA24B0 /* InputTypeTableViewCell.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,
 				84BD33F62994BB020050C0D8 /* EmailTemplateViewController+SearchBar.swift in Sources */,
@@ -5853,6 +6069,7 @@
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
 				01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */,
+				01EBAC6629B593A300110DCB /* DeletedLeadListViewController+TableView.swift in Sources */,
 				845C39D9292276B000D934C5 /* SubMenuTableViewCell.swift in Sources */,
 				397C4FD929B5AED700778B8E /* MassEmailandSMSDetailViewController.swift in Sources */,
 				84F61133292A71AB00B1FB69 /* Metrics.swift in Sources */,
@@ -5897,6 +6114,7 @@
 				845C39D2292276AF00D934C5 /* KYDrawerController.swift in Sources */,
 				84D0628129670677001FE469 /* RegistrationViewController.swift in Sources */,
 				01152E2429B3C1C500B24627 /* CreateLeadTasksViewModel.swift in Sources */,
+				01EBAC7A29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift in Sources */,
 				84B75EEB29692BD400962F3E /* LeadTriggersTableViewCell.swift in Sources */,
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
@@ -5905,6 +6123,8 @@
 				84E34C46297035A000C58B0D /* TasksListViewModel.swift in Sources */,
 				84F610F6292A71AB00B1FB69 /* TLSCertificateDecoder.swift in Sources */,
 				84F61123292A71AB00B1FB69 /* Number+Extension.swift in Sources */,
+				01EBAC5229B586B200110DCB /* LeadTagsAddViewModel.swift in Sources */,
+				01EBAC7529B5A87300110DCB /* LeadSourceUrlListViewController+TableView.swift in Sources */,
 				845C39CD292276AF00D934C5 /* SpinnerView.swift in Sources */,
 				DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */,
 				398F90F6298ECB8700DB96E4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
@@ -5924,6 +6144,7 @@
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
 				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,
+				01EBAC6829B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift in Sources */,
 				01152E1529B39C7400B24627 /* leadListViewController+ScrollView.swift in Sources */,
 				398967AA29B5E358007F5AE0 /* MassEmailandSMSLeadActionTableViewCell.swift in Sources */,
 				39EBABC429915872001B789D /* StringExtension1.swift in Sources */,
@@ -5954,6 +6175,7 @@
 				01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadListListViewController.swift in Sources */,
 				013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
+				01EBAC6C29B593F500110DCB /* DeletedLeadListTableViewCell.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
@@ -6016,11 +6238,13 @@
 				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
+				01EBAC7D29B5A91200110DCB /* LeadSourceUrlAddViewController.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,
 				01C748AF29B24D930085CED2 /* BussinessSelectionModel.swift in Sources */,
 				398F90F4298ECB8700DB96E4 /* IQKeyboardManagerConstants.swift in Sources */,
 				84F610C6292A71AA00B1FB69 /* DispatchIO.swift in Sources */,
 				013A4FA129B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift in Sources */,
+				01EBAC8C29B5E62800110DCB /* UITextViewExtenssion.swift in Sources */,
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,
 				01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */,
 				DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */,
@@ -6044,11 +6268,15 @@
 				84088BCB297930180060855E /* BusinessModel.swift in Sources */,
 				84F61128292A71AB00B1FB69 /* Array+Extension.swift in Sources */,
 				842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */,
+				01EBAC6429B58BD000110DCB /* LeadSourceUrlListModel.swift in Sources */,
+				01EBAC5C29B58B1A00110DCB /* DeletedLeadListModel.swift in Sources */,
 				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				849035102995679200556D47 /* ConsentsTemplateListModel.swift in Sources */,
 				3947A8EF2996776E000CA2EB /* EmptyEventsTableViewCell.swift in Sources */,
+				01EBAC7729B5A88800110DCB /* LeadSourceUrlListViewController+SearchBar.swift in Sources */,
 				39F904E1299A896B00666C85 /* NibIdentifiable.swift in Sources */,
+				01EBAC4729B585E700110DCB /* LeadTagsListViewController+SearchBar.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				848FA3CF2996166E00A7D2D5 /* QuestionnaireTemplatesModel.swift in Sources */,

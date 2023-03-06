@@ -72,6 +72,7 @@ struct EndPoints {
     static let removeProfileAppointment = "/api/appointments/"
     static let workflowPatientTasks = "/api/workflowtasks/patient/"
     static let patientTagList = "/api/ptag/list"
+    static let leadTagList = "/api/tag/list"
     static let patientAddTags = "/api/ptag/"
     static let patientCreateTags = "/api/ptag"
     static let consentsList = "/api/v1/patients/"
@@ -105,6 +106,17 @@ struct EndPoints {
     static let getLeadHistory = "/api/questionnaire/contact-submissions/email/"
     static let combineLeadTimeLine = "/api/v1/audit/lead/all?leadEmail="
     static let deleteLead = "/api/questionnaire-submissions/"
+    static let removeLeadTags = "/api/tag/"
+    static let getLeadTagDetail = "/api/tag/"
+    static let creatLeadTags = "/api/tag"
+    static let updateLeadTags = "/api/tag/"
+    static let getDeletedLeadList = "/api/questionnaire-submission/history/pagination?page=0&size=50"
+    static let getLeadsourceurls = "/api/leadsourceurls/list"
+    static let removeLeadsourceurls = "/api/leadsourceurls/"
+    static let updateLeadSourceUrl = "/api/leadsourceurls/"
+    static let creatLeadSourceUrl = "/api/leadsourceurls"
+    static let getLeadSourceUrl = "/api/leadsourceurls/"
+    static let chatconfigs = "/api/chatconfigs"
 }
 
 struct ApiUrl {
@@ -208,8 +220,16 @@ struct ApiUrl {
     static let getLeadHistory = EndPoints.baseURL.appending(EndPoints.getLeadHistory)
     static let combineLeadTimeLine = EndPoints.baseURL.appending(EndPoints.combineLeadTimeLine)
     static let deleteLead = EndPoints.baseURL.appending(EndPoints.deleteLead)
-
+    static let leadTagList = EndPoints.baseURL.appending(EndPoints.leadTagList)
+    static let removeLeadTags = EndPoints.baseURL.appending(EndPoints.removeLeadTags)
+    static let getLeadTagDetail = EndPoints.baseURL.appending(EndPoints.getLeadTagDetail)
+    static let creatLeadTags = EndPoints.baseURL.appending(EndPoints.creatLeadTags)
+    static let updateLeadTags = EndPoints.baseURL.appending(EndPoints.updateLeadTags)
+    static let getDeletedLeadList = EndPoints.baseURL.appending(EndPoints.getDeletedLeadList)
+    static let getLeadsourceurls = EndPoints.baseURL.appending(EndPoints.getLeadsourceurls)
+    static let removeLeadsourceurls = EndPoints.baseURL.appending(EndPoints.removeLeadsourceurls)
+    static let creatLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.creatLeadSourceUrl)
+    static let updateLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.updateLeadSourceUrl)
+    static let getLeadSourceUrl = EndPoints.baseURL.appending(EndPoints.getLeadSourceUrl)
+    static let chatconfigs = EndPoints.baseURL.appending(EndPoints.chatconfigs)
 }
-
-
-

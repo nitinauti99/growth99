@@ -85,6 +85,10 @@ struct Constant {
         static let business = "Business"
         static let patientDetail = " Patient Detail "
         static let leadDetail = " Lead Detail "
+        static let chatConfiguration = " Chat Configuration "
+        static let scrapeWebsite = " Scrape Website "
+        static let chatQuestionnaires = " Chat Questionnaires "
+
         static let leadTimeLine = " Lead TimeLine "
         static let leadTask = " Task "
         static let leadHistory = " History "
@@ -120,8 +124,11 @@ struct Constant {
         static let deleteConcents = "Delete Consent"
         static let tasksDetail = "Tasks Detail"
         static let patientTags = "Patient Tags"
+        static let leadSourceURLs = "Lead Source URLs"
         static let createPatientTags = "Add Patient Tag"
         static let editPatientTags = "Edit Patient Tag"
+        static let addLeadSourceURL = "Add Lead Source URL"
+        static let editLeadSourceURL = "Edit Lead Source URL"
         static let Timeline = "Timeline"
         static let appointmentTrigger = "Appointment"
         static let leads = "leads"
@@ -162,6 +169,7 @@ struct Constant {
         static let clinicsRequired = "Clinics are required."
         static let categoryNameRequired = "Category Name is required."
         static let leadListTitle = "Lead Dashboard"
+        static let deletedLeadListTitle = "Deleted Leads"
     }
     
     struct CreateLead {

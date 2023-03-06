@@ -269,8 +269,20 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        }
-        else if indexPath.section == 11 {
+        }else if(indexPath.section == 10) {
+            switch indexPath.row {
+            case 0:
+                pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "leadListViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "LeadTagsListViewController", pusedViewController: "LeadTagsListViewController")
+            case 2:
+                pushViewControllerFromDrawerMenu(identifier: "DeletedLeadListViewController", pusedViewController: "DeletedLeadListViewController")
+            case 3:
+                pushViewControllerFromDrawerMenu(identifier: "LeadSourceUrlListViewController", pusedViewController: "LeadSourceUrlListViewController")
+            default:
+                break
+            }
+        } else if indexPath.section == 11 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "MassEmailandSMSViewController", pusedViewController: "MassEmailandSMSViewController")
@@ -287,7 +299,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 13 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "ChatbotViewController", pusedViewController: "ChatbotViewController")
+                pushViewControllerFromDrawerMenu(identifier: "ChatbotContainerView", pusedViewController: "ChatbotContainerView")
             default:
                 break
             }
