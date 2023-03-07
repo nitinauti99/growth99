@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scrape Website View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ScrapeWebsiteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ScrapeWebsiteViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scrape Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRP-tq-xSp">
+                                <rect key="frame" x="20" y="79" width="353" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4x-BX-nzR">
+                                <rect key="frame" x="20" y="142" width="337" height="122"/>
+                                <string key="text">We scrape your website for questions and answers and create the scrape questionnaire from it. These questions and answers are indexed to be search from your chatbot. You can modify that chat questionnaire as you need.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5k-kQ-g8J">
+                                <rect key="frame" x="20" y="324" width="353" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Dl-3p-7A5" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="20" y="365" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rz7-ct-Ypf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mDP-mH-Uoy">
+                                <rect key="frame" x="20" y="436" width="150" height="46"/>
+                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Cnm-de-DSM"/>
+                                    <constraint firstAttribute="width" constant="150" id="Pnf-Sf-r1G"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Save">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="AvenirNext-Medium"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Nhn-U0-pEa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nRP-tq-xSp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="6wq-Ty-Zv8"/>
+                            <constraint firstItem="R5k-kQ-g8J" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="CWX-df-49V"/>
+                            <constraint firstItem="nRP-tq-xSp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="GSR-hV-LmZ"/>
+                            <constraint firstItem="4Dl-3p-7A5" firstAttribute="trailing" secondItem="R5k-kQ-g8J" secondAttribute="trailing" id="Iuh-Zl-iEc"/>
+                            <constraint firstItem="x4x-BX-nzR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="L8d-i1-AAd"/>
+                            <constraint firstItem="4Dl-3p-7A5" firstAttribute="leading" secondItem="R5k-kQ-g8J" secondAttribute="leading" id="Ppw-oW-ND8"/>
+                            <constraint firstItem="4Dl-3p-7A5" firstAttribute="top" secondItem="R5k-kQ-g8J" secondAttribute="bottom" constant="20" id="QWw-0W-6cx"/>
+                            <constraint firstItem="R5k-kQ-g8J" firstAttribute="top" secondItem="x4x-BX-nzR" secondAttribute="bottom" constant="60" id="TUO-gX-cbI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nRP-tq-xSp" secondAttribute="trailing" constant="20" id="bCm-7Y-H78"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x4x-BX-nzR" secondAttribute="trailing" constant="20" id="dX9-Fj-Q70"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="R5k-kQ-g8J" secondAttribute="trailing" constant="20" id="i9g-yo-IhJ"/>
+                            <constraint firstItem="x4x-BX-nzR" firstAttribute="top" secondItem="nRP-tq-xSp" secondAttribute="bottom" constant="30" id="oSf-jd-xHX"/>
+                            <constraint firstItem="mDP-mH-Uoy" firstAttribute="top" secondItem="4Dl-3p-7A5" secondAttribute="bottom" constant="31" id="vSw-5h-1hk"/>
+                            <constraint firstItem="mDP-mH-Uoy" firstAttribute="leading" secondItem="4Dl-3p-7A5" secondAttribute="leading" id="z1N-Sh-urC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="saveButton" destination="mDP-mH-Uoy" id="One-4A-ChH"/>
+                        <outlet property="saveUrlTextField" destination="4Dl-3p-7A5" id="YRU-OT-5Eb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

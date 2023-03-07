@@ -9,6 +9,7 @@ import Foundation
 
 protocol ChatConfigurationViewModelProtocol {
     func getChatConfigurationDataList()
+    func updateChatConfigData(param: [String: Any])
    
     var getChatConfigurationData: ChatConfigurationModel { get }
 }
@@ -36,6 +37,20 @@ class ChatConfigurationViewModel {
             }
         }
     }
+    
+    func updateChatConfigData(param: [String: Any]) {
+        self.requestManager.request(forPath: ApiUrl.updateChatConfig, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: param, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.delegate?.chatConfigurationDataUpdatedSuccessfully()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+         }
+     }
+    
 }
 
 extension ChatConfigurationViewModel: ChatConfigurationViewModelProtocol {

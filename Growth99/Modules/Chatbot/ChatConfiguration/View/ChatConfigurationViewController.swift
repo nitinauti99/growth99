@@ -10,6 +10,8 @@ import UIKit
 protocol ChatConfigurationViewControllerProtocol: AnyObject {
     func chatConfigurationDataRecived()
     func errorReceived(error: String)
+    func chatConfigurationDataUpdatedSuccessfully()
+
 }
 
 
@@ -45,6 +47,8 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
 
     @IBOutlet weak var isChatbotStatic: UIButton!
     
+    @IBOutlet weak var saveButton: UIButton!
+
     var viewModel: ChatConfigurationViewModelProtocol?
     
     override func viewDidLoad() {
@@ -55,6 +59,8 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.users
+        self.saveButton.roundCorners(corners: [.allCorners], radius: 10)
+
         self.view.ShowSpinner()
         self.viewModel?.getChatConfigurationDataList()
     }
@@ -89,7 +95,39 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         self.poweredByText.text = item?.poweredByText
         self.showPoweredBy.isSelected = item?.showPoweredBy ?? false
         self.isChatbotStatic.isSelected = item?.isChatbotStatic ?? false
-        
+    }
+    
+    func chatConfigurationDataUpdatedSuccessfully(){
+        self.viewModel?.getChatConfigurationDataList()
+    }
+    
+    @IBAction func saveButtonAction(sender: UIButton){
+        let param: [String: Any] = [
+            "botName": self.botName.text ?? "",
+            "privacyLink": self.privacyLink.text ?? "",
+            "defaultWelcomeMessage": self.defaultWelcomeMessage.text ?? "",
+            "formMessage": formMessage.text ?? "",
+            "welcomeMessage": welcomeMessage.text ?? "",
+            "faqNotFoundMessage": faqNotFoundMessage.text ?? "",
+            "appointmentBookingUrl": appointmentBookingUrl.text ?? "",
+            "enableInPersonAppointment": enableInPersonAppointment.isSelected,
+            "morningStartTime": morningStartTime.text ?? "",
+            "morningEndTime": morningEndTime.text ?? "",
+            "noonStartTime": noonStartTime.text ?? "",
+            "noonEndTime": noonEndTime.text ?? "",
+            "eveningStartTime": eveningStartTime.text ?? "",
+            "eveningEndTime": eveningEndTime.text ?? "",
+            "weeksToShow": weeksToShow.text ?? "",
+            "longCodePhoneNumber": longCodePhoneNumber.text ?? "",
+            "poweredByText": poweredByText.text ?? "",
+            "showPoweredBy": showPoweredBy.isSelected,
+            "isChatbotStatic": isChatbotStatic.isSelected,
+            "backgroundColor": viewModel?.getChatConfigurationData.backgroundColor ?? "",
+            "foregroundColor": viewModel?.getChatConfigurationData.foregroundColor ?? "",
+        ]
+       
+        self.view.ShowSpinner()
+        viewModel?.updateChatConfigData(param: param)
     }
     
     func errorReceived(error: String) {
