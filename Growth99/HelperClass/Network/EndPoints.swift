@@ -120,6 +120,11 @@ struct EndPoints {
     static let updateChatConfig = "/api/chatconfigs"
     static let scrapeURL = "/api/chatconfigs/scrap"
     static let chatQuestionare = "/api/chatquestionnaire"
+    static let createChatQuestionnaire = "/api/chatquestionnaire/"
+    static let getChatquestionnaire = "/api/chatquestionnaire/"
+    static let getChatQuestionnaireQuestion = "/api/chatquestionnaire/"
+    static let removeChatQuestionnaireQuestion = "/api/chatquestionnaire/"
+    static let createChatQuestion = "/api/chatquestionnaire/"
 }
 
 struct ApiUrl {
@@ -238,8 +243,18 @@ struct ApiUrl {
     static let updateChatConfig = EndPoints.baseURL.appending(EndPoints.updateChatConfig)
     static let scrapeURL = EndPoints.baseURL.appending(EndPoints.scrapeURL)
     static let chatQuestionare = EndPoints.baseURL.appending(EndPoints.chatQuestionare)
+    static let createChatQuestionnaire = EndPoints.baseURL.appending(EndPoints.createChatQuestionnaire)
+    static let getChatquestionnaire = EndPoints.baseURL.appending(EndPoints.getChatquestionnaire)
+    static let getChatQuestionnaireQuestion = EndPoints.baseURL.appending(EndPoints.getChatQuestionnaireQuestion)
+    static let removeChatQuestionnaireQuestion = EndPoints.baseURL.appending(EndPoints.removeChatQuestionnaireQuestion)
+    static let createChatQuestion = EndPoints.baseURL.appending(EndPoints.createChatQuestion)
 
 }
+
+
+
+
+
 
 
 

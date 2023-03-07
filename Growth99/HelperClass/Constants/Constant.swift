@@ -22,6 +22,9 @@ struct Constant {
         static let subDomainNameEmptyError = "SubDomain Name is required."
         static let refundPercentageEmptyError = "Refund Percentage is required."
         static let firstNameEmptyError = "First Name is required."
+        static let chatQuestionnaireNameEmptyError = "Chat Questionnaire Name is required."
+        static let chatQuestionnaireURLInvalidError = "refrence link is invalid"
+
         static let firstNameInvalidError = "First Name is Invalide."
         static let lastNameInvalidError = "Last Name is Invalide."
         static let invalidURLError = "Please enter the URL in correct format"
