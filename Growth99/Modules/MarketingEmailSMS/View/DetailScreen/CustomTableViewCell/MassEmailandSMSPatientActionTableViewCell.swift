@@ -9,9 +9,6 @@ import UIKit
 
 protocol MassEmailandSMSPatientCellDelegate: AnyObject {
     func nextButtonPatient(cell: MassEmailandSMSPatientActionTableViewCell, index: IndexPath)
-    func patientStatusSelectonBtn(cell: MassEmailandSMSPatientActionTableViewCell, index: IndexPath)
-    func patientAppointmentSelectonBtn(cell: MassEmailandSMSPatientActionTableViewCell, index: IndexPath)
-    func patientTagSelectonBtn(cell: MassEmailandSMSPatientActionTableViewCell, index: IndexPath)
 }
 
 class MassEmailandSMSPatientActionTableViewCell: UITableViewCell {
@@ -24,6 +21,9 @@ class MassEmailandSMSPatientActionTableViewCell: UITableViewCell {
     @IBOutlet weak var patientStatusView: UIView!
     @IBOutlet weak var patientTagView: UIView!
     @IBOutlet weak var patientAppointmentView: UIView!
+    @IBOutlet weak var patientStatusTextLabel: UILabel!
+    @IBOutlet weak var patientTagTextLabel: UILabel!
+    @IBOutlet weak var patientAppointmenTextLabel: UILabel!
 
     weak var delegate: MassEmailandSMSPatientCellDelegate?
     var indexPath = IndexPath()
@@ -50,17 +50,5 @@ class MassEmailandSMSPatientActionTableViewCell: UITableViewCell {
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonPatient(cell: self, index: indexPath)
-    }
-    
-    @IBAction func patientStatusButtonAction(sender: UIButton) {
-        self.delegate?.patientStatusSelectonBtn(cell: self, index: indexPath)
-    }
-    
-    @IBAction func patientAppointmentButtonAction(sender: UIButton) {
-        self.delegate?.patientAppointmentSelectonBtn(cell: self, index: indexPath)
-    }
-    
-    @IBAction func patientTagButtonAction(sender: UIButton) {
-        self.delegate?.patientTagSelectonBtn(cell: self, index: indexPath)
     }
 }

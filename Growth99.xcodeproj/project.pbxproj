@@ -2184,6 +2184,13 @@
 			path = ChatBotContainerView;
 			sourceTree = "<group>";
 		};
+		18CD3A6729B64FC900A2A345 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3947A8CF2996776D000CA2EB /* CalenderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2297,17 +2304,10 @@
 			children = (
 				397C4FCE29B5095000778B8E /* Model */,
 				397C4FCF29B5095000778B8E /* View */,
-				397C4FCD29B5095000778B8E /* ViewModel */,
+				18CD3A6729B64FC900A2A345 /* ViewModel */,
 				397C4FD029B5095000778B8E /* CustomTableViewCell */,
 			);
 			path = DetailScreen;
-			sourceTree = "<group>";
-		};
-		397C4FCD29B5095000778B8E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		397C4FCE29B5095000778B8E /* Model */ = {
@@ -6489,7 +6489,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
@@ -6531,7 +6531,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
