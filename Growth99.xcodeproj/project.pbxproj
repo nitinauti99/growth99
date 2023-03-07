@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
+		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
+		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
+		010EECA129B6BE5A00351358 /* CreateChatQuestionareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECA029B6BE5A00351358 /* CreateChatQuestionareModel.swift */; };
+		010EECA329B7128500351358 /* CreateChatQuestionareViewController+Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECA229B7128500351358 /* CreateChatQuestionareViewController+Tableview.swift */; };
+		010EECA529B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECA429B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift */; };
+		010EECA929B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECA729B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift */; };
+		010EECAA29B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 010EECA829B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.xib */; };
+		010EECAC29B7335000351358 /* CreateQuestionViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECAB29B7335000351358 /* CreateQuestionViewContoller.swift */; };
+		010EECAE29B7339200351358 /* CreateQuestionViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EECAD29B7339200351358 /* CreateQuestionViewContoller.storyboard */; };
+		010EECB029B733B000351358 /* CreateQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECAF29B733B000351358 /* CreateQuestionViewModel.swift */; };
 		01152DFA29B31C0300B24627 /* PateintsTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */; };
 		01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */; };
 		01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */; };
@@ -742,6 +753,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
+		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
+		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
+		010EECA029B6BE5A00351358 /* CreateChatQuestionareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareModel.swift; sourceTree = "<group>"; };
+		010EECA229B7128500351358 /* CreateChatQuestionareViewController+Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateChatQuestionareViewController+Tableview.swift"; sourceTree = "<group>"; };
+		010EECA429B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateChatQuestionareViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		010EECA729B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatQuestionnaireQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		010EECA829B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatQuestionnaireQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		010EECAB29B7335000351358 /* CreateQuestionViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewContoller.swift; sourceTree = "<group>"; };
+		010EECAD29B7339200351358 /* CreateQuestionViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateQuestionViewContoller.storyboard; sourceTree = "<group>"; };
+		010EECAF29B733B000351358 /* CreateQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewModel.swift; sourceTree = "<group>"; };
 		01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewController.swift; sourceTree = "<group>"; };
 		01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTimeLineViewController.storyboard; sourceTree = "<group>"; };
 		01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewModel.swift; sourceTree = "<group>"; };
@@ -1506,6 +1528,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010EEC9529B6BDBE00351358 /* ChatQuestionareList */ = {
+			isa = PBXGroup;
+			children = (
+				01EBAC9B29B64D8300110DCB /* Model */,
+				01EBAC9A29B64D8100110DCB /* ViewModel */,
+				01EBAC9929B64D7F00110DCB /* View */,
+			);
+			path = ChatQuestionareList;
+			sourceTree = "<group>";
+		};
+		010EEC9629B6BDD700351358 /* AddChatQuestionare */ = {
+			isa = PBXGroup;
+			children = (
+				010EEC9929B6BDF400351358 /* Model */,
+				010EEC9829B6BDF200351358 /* ViewModel */,
+				010EEC9729B6BDF000351358 /* View */,
+			);
+			path = AddChatQuestionare;
+			sourceTree = "<group>";
+		};
+		010EEC9729B6BDF000351358 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				010EECA629B7236200351358 /* Cell */,
+				010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */,
+				010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */,
+				010EECA229B7128500351358 /* CreateChatQuestionareViewController+Tableview.swift */,
+				010EECA429B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		010EEC9829B6BDF200351358 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		010EEC9929B6BDF400351358 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				010EECA029B6BE5A00351358 /* CreateChatQuestionareModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		010EECA629B7236200351358 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				010EECA729B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift */,
+				010EECA829B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		010EECB129B7365500351358 /* ChatQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				010EECB329B7367700351358 /* ViewModel */,
+				010EECB229B7367500351358 /* View */,
+			);
+			path = ChatQuestion;
+			sourceTree = "<group>";
+		};
+		010EECB229B7367500351358 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				010EECAB29B7335000351358 /* CreateQuestionViewContoller.swift */,
+				010EECAD29B7339200351358 /* CreateQuestionViewContoller.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		010EECB329B7367700351358 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				010EECAF29B733B000351358 /* CreateQuestionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		01152DF529B31BB700B24627 /* TimeLine */ = {
 			isa = PBXGroup;
 			children = (
@@ -2253,9 +2358,8 @@
 		01EBAC9829B64CCE00110DCB /* chatQuestionnaire  */ = {
 			isa = PBXGroup;
 			children = (
-				01EBAC9B29B64D8300110DCB /* Model */,
-				01EBAC9A29B64D8100110DCB /* ViewModel */,
-				01EBAC9929B64D7F00110DCB /* View */,
+				010EEC9529B6BDBE00351358 /* ChatQuestionareList */,
+				010EEC9629B6BDD700351358 /* AddChatQuestionare */,
 			);
 			path = "chatQuestionnaire ";
 			sourceTree = "<group>";
@@ -2807,6 +2911,7 @@
 				01EBAC8D29B638B900110DCB /* ChatConfiguration */,
 				01EBAC8E29B638D700110DCB /* ScrapeWebsite */,
 				01EBAC9829B64CCE00110DCB /* chatQuestionnaire  */,
+				010EECB129B7365500351358 /* ChatQuestion */,
 			);
 			path = Chatbot;
 			sourceTree = "<group>";
@@ -5614,6 +5719,7 @@
 				3947A8F52996776E000CA2EB /* AddEventViewController.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				397C4FE129B5B00600778B8E /* MassEmailandSMSDefaultTableViewCell.xib in Resources */,
+				010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */,
 				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
 				01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
@@ -5716,6 +5822,7 @@
 				017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */,
 				848EEA90299A5F7700F6E3D5 /* CreateFormViewController.storyboard in Resources */,
 				01D7AAFA299D5A6E00821274 /* FormDetailContainerView.storyboard in Resources */,
+				010EECAA29B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.xib in Resources */,
 				8490350C2995673D00556D47 /* ConsentsTemplateListViewController.storyboard in Resources */,
 				01152E3229B3C5F100B24627 /* LeadHistoryViewController.storyboard in Resources */,
 				013A4F9D29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib in Resources */,
@@ -5750,6 +5857,7 @@
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				01EBAC6029B58BB900110DCB /* LeadSourceUrlListViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
+				010EECAE29B7339200351358 /* CreateQuestionViewContoller.storyboard in Resources */,
 				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
 				013A4FC129B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				39FC68FD29B363F000FCB7C6 /* MassEmailandSMSTableViewCell.xib in Resources */,
@@ -5970,6 +6078,7 @@
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
 				849034FF29953AEC00556D47 /* SMSTemplateViewController+SearchBar.swift in Sources */,
 				84F6112F292A71AB00B1FB69 /* Response.swift in Sources */,
+				010EECA529B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift in Sources */,
 				84F610F8292A71AB00B1FB69 /* ASN1Tag.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
@@ -6022,6 +6131,7 @@
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
 				013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */,
+				010EECA929B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift in Sources */,
 				39FC692E29B3D73D00FCB7C6 /* ChatConfigurationViewController.swift in Sources */,
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
@@ -6050,6 +6160,7 @@
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
 				01EBAC4529B585D900110DCB /* LeadTagsListViewController+TableView.swift in Sources */,
 				01152E3029B3C5E700B24627 /* LeadHistoryViewController.swift in Sources */,
+				010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */,
 				842C0CAF298F713B00395061 /* ConsentsListViewModel.swift in Sources */,
 				01BBA9E029AB571F006A5DB8 /* NotificationListTableViewCell.swift in Sources */,
 				398F90F0298ECB8700DB96E4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
@@ -6130,6 +6241,7 @@
 				01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */,
 				01EBAC8129B5A93200110DCB /* LeadSourceUrlAddViewModel.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
+				010EECA129B6BE5A00351358 /* CreateChatQuestionareModel.swift in Sources */,
 				8440B3952999FE5D00A42097 /* FormListModel.swift in Sources */,
 				8440B39C299A319800A42097 /* FormListViewContoller+TableView.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
@@ -6162,6 +6274,7 @@
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
 				84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */,
+				010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */,
 				39FC693A29B3D75A00FCB7C6 /* SocialMediaManagerModel.swift in Sources */,
 				01152E3829B3C63700B24627 /* CombineTimeLineViewController.swift in Sources */,
 				84F610BE292A71AA00B1FB69 /* Data+Crypto.swift in Sources */,
@@ -6259,6 +6372,7 @@
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
 				848FA3D8299621E100A7D2D5 /* QuestionnaireTemplateListViewController+SearchBar.swift in Sources */,
 				01152E2629B3C1D400B24627 /* LeadTaskListModel.swift in Sources */,
+				010EECAC29B7335000351358 /* CreateQuestionViewContoller.swift in Sources */,
 				01152E3429B3C5FF00B24627 /* LeadHistoryViewModel.swift in Sources */,
 				84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */,
 				84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */,
@@ -6315,6 +6429,7 @@
 				017D572229AF604C00D6A5A4 /* DisplayQuestionariModel.swift in Sources */,
 				84F610E3292A71AB00B1FB69 /* Keychain.swift in Sources */,
 				847C6C44297A963E000188AE /* PateintsEditDetailModel.swift in Sources */,
+				010EECA329B7128500351358 /* CreateChatQuestionareViewController+Tableview.swift in Sources */,
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
 				842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */,
 				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
@@ -6373,6 +6488,7 @@
 				DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */,
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* NetworkQueueManager.swift in Sources */,
+				010EECB029B733B000351358 /* CreateQuestionViewModel.swift in Sources */,
 				84F610D5292A71AB00B1FB69 /* OptionalProtocol.swift in Sources */,
 				849D3AF62997CC72003E856A /* FontAwesome.swift in Sources */,
 				84B75EAD2968D7F100962F3E /* CategoriesListViewController.swift in Sources */,

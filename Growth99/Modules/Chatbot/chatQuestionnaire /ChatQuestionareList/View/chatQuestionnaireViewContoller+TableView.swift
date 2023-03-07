@@ -39,6 +39,15 @@ extension chatQuestionnaireViewContoller: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+        let detailController = UIStoryboard(name: "CreateChatQuestionareViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateChatQuestionareViewController") as! CreateChatQuestionareViewController
+        detailController.screenName = "Edit Screen"
+       
+        if isSearch {
+            detailController.chatQuestionareId = viewModel?.chatQuestionnaireFilterDataAtIndex(index: indexPath.row)?.id ?? 0
+        }else{
+            detailController.chatQuestionareId = viewModel?.chatQuestionnaireDataAtIndex(index: indexPath.row)?.id ?? 0
+        }
+         navigationController?.pushViewController(detailController, animated: true)
+        
     }
 }

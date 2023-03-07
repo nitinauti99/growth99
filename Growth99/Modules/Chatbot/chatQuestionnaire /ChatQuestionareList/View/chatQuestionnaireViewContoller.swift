@@ -28,15 +28,15 @@ class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewCon
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constant.Profile.consentsTemplatesList
-        viewModel = chatQuestionnaireViewModel(delegate: self)
+        self.viewModel = chatQuestionnaireViewModel(delegate: self)
         self.addSerchBar()
-        tableView.register(UINib(nibName: "chatQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "chatQuestionnaireTableViewCell")
+        self.tableView.register(UINib(nibName: "chatQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "chatQuestionnaireTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
-        viewModel?.getchatQuestionnaire()
+        self.viewModel?.getchatQuestionnaire()
     }
     
     func addSerchBar(){
@@ -78,12 +78,12 @@ class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewCon
     
     @objc func getPateintList() {
         self.view.ShowSpinner()
-        viewModel?.getchatQuestionnaire()
+        self.viewModel?.getchatQuestionnaire()
     }
     
     func consentsRemovedSuccefully(mrssage: String) {
         self.view.showToast(message: mrssage,color: .red)
-        viewModel?.getchatQuestionnaire()
+        self.viewModel?.getchatQuestionnaire()
     }
         
     func ConsentsTemplatesDataRecived(){

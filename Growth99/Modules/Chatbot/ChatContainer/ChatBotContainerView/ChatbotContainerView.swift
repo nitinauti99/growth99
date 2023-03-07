@@ -52,14 +52,18 @@ class ChatbotContainerView: UIViewController {
             remove(asChildViewController: ScrapeWebsiteVC)
             remove(asChildViewController: chatQuestionnaireVC)
             add(asChildViewController: chatConfigurationVC)
+            navigationItem.rightBarButtonItem = nil
         case 1:
             remove(asChildViewController: chatQuestionnaireVC)
             remove(asChildViewController: chatConfigurationVC)
             add(asChildViewController: ScrapeWebsiteVC)
+            navigationItem.rightBarButtonItem = nil
         case 2:
             remove(asChildViewController: ScrapeWebsiteVC)
             remove(asChildViewController: chatConfigurationVC)
             add(asChildViewController: chatQuestionnaireVC)
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(createChatQuestionariButtonTapped), imageName: "add")
+
         default:
             break
         }
@@ -86,6 +90,11 @@ class ChatbotContainerView: UIViewController {
         return chatQuestionnaire
     }()
     
+    @objc func createChatQuestionariButtonTapped(_ sender: UIButton){
+        let createChatQuestionareVC = UIStoryboard(name: "CreateChatQuestionareViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateChatQuestionareViewController") as! CreateChatQuestionareViewController
+       navigationController?.pushViewController(createChatQuestionareVC, animated: true)
+    }
+ 
    /// add VC as child view contoller
     private func add(asChildViewController viewController: UIViewController) {
         addChild(viewController)
