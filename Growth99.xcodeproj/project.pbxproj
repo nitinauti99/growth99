@@ -178,6 +178,7 @@
 		01EBACA829B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */; };
 		01EBACAB29B6519100110DCB /* chatQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */; };
 		01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */; };
+		18491D8929B7A72900FE72EF /* MassEmailandSMSDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491D8829B7A72900FE72EF /* MassEmailandSMSDetailViewModel.swift */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3928E92B29B5C58A00289474 /* MassEmailandSMSPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3928E92929B5C58A00289474 /* MassEmailandSMSPatientActionTableViewCell.xib */; };
@@ -925,6 +926,7 @@
 		01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = chatQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
+		18491D8829B7A72900FE72EF /* MassEmailandSMSDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSDetailViewModel.swift; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
 		39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListModel.swift; sourceTree = "<group>"; };
@@ -2523,6 +2525,7 @@
 		397C4FCD29B5095000778B8E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				18491D8829B7A72900FE72EF /* MassEmailandSMSDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -6055,6 +6058,7 @@
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
+				18491D8929B7A72900FE72EF /* MassEmailandSMSDetailViewModel.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				01EBAC6229B58BC500110DCB /* LeadSourceUrlListViewModel.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,

@@ -44,3 +44,10 @@ struct UserDTOListEmailSMS : Codable {
     let description : String?
     let provider : String?
 }
+
+struct MassEmailSMSTagListModel: Codable, Equatable {
+    let name: String?
+    let isDefault: Bool?
+    let id: Int?
+}
+
