@@ -109,25 +109,29 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
     }
     
     @objc func leadTagMethod(sender: UIButton) {
-        leadTagsArray = viewModel?.getMassEmailLeadTagsData.map({ $0.name }) as? [String]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsArray ?? [], cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+        leadTagsArray = viewModel?.getMassEmailLeadTagsData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
         let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             let cellIndexPath = IndexPath(item: row, section: 0)
             if let leadCell = self?.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSLeadActionTableViewCell {
                 if selectedList.count == 0 {
-                    leadCell.leadSourceTextLabel.text = "Select lead source"
+                    leadCell.leadTagTextLabel.text = "Select lead tag"
                 } else {
-                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
+                    leadCell.leadTagTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+                    let selectedId = selectedList.map({$0.id ?? 0})
+                    self?.selectedLeadTags  = selectedList
+                    let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
+                    self?.selectedLeadTagIds = formattedArray
                 }
             }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double((leadTagsArray?.count ?? 0) * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadTagsArray.count * 30))), arrowDirection: .up), from: self)
     }
     
     @objc func patientStatusMethod(sender: UIButton) {
@@ -176,9 +180,9 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
     }
     
     @objc func patientTagMethod(sender: UIButton) {
-        patientTagsArray = viewModel?.getMassEmailPateintsTagsData.map({ $0.name }) as? [String]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsArray ?? [], cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+        patientTagsArray = viewModel?.getMassEmailPateintsTagsData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: patientTagsArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
         let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -187,14 +191,18 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 if selectedList.count == 0 {
                     patientCell.patientTagTextLabel.text = "Select patient tag"
                 } else {
-                    patientCell.patientTagTextLabel.text = selectedList.joined(separator: ",")
+                    patientCell.patientTagTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+                    let selectedId = selectedList.map({$0.id ?? 0})
+                    self?.selectedPatientTags = selectedList
+                    let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
+                    self?.selectedPatientTagIds = formattedArray
                 }
             }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double((patientTagsArray?.count ?? 0) * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(patientTagsArray.count * 30))), arrowDirection: .up), from: self)
     }
 }
 
@@ -246,22 +254,14 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSLeadCellDelegate {
     func nextButtonLead(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath) {
-        let emailSMS = MassEmailandSMSDetailModel(cellType: "Both", LastName: "")
-        emailAndSMSDetailList.append(emailSMS)
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
+        self.view.ShowSpinner()
+        viewModel?.getMassEmailLeadStatusMethod(leadStatus: cell.leadStatusTextLabel.text ?? String.blank, moduleName: "MassLead", leadTagIds: selectedLeadTagIds, source: cell.leadSourceTextLabel.text ?? String.blank)
     }
 }
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegate {
     func nextButtonPatient(cell: MassEmailandSMSPatientActionTableViewCell, index: IndexPath) {
-        let emailSMS = MassEmailandSMSDetailModel(cellType: "Both", LastName: "")
-        emailAndSMSDetailList.append(emailSMS)
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
+        self.view.ShowSpinner()
+        viewModel?.getMassEmailPatientStatusMethod(appointmentStatus: cell.patientAppointmenTextLabel.text ?? String.blank, moduleName: "MassPatient", patientTagIds: selectedPatientTagIds, patientStatus: cell.patientStatusTextLabel.text ?? String.blank)
     }
 }
