@@ -296,7 +296,7 @@ struct Questionnaires : Codable {
     let deleted : Bool?
     let tenantId : Int?
     let id : Int?
-    let defaultQuestionnaireId : Int?
+    let defaultQuestionnaireId : String?
     let name : String?
     let isPublic : Bool?
     let chatQuestionnaire : Bool?

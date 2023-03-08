@@ -27,7 +27,7 @@ struct CreateFormModel : Codable {
     let appButtonForegroundColor : String?
     let thankYouPageMessageContactForm : String?
     let configureThankYouMessageInLandingPage : Bool?
-    let isContactForm : String?
+    let isContactForm : Bool?
     let showTitle : Bool?
     let css : String?
     let deleted : Bool?
@@ -40,7 +40,7 @@ struct CreateFormModel : Codable {
     let configureThankYouMessageInContactForm : Bool?
     let thankYouPageUrlVC : String?
     let showTextForComposer : Bool?
-    let defaultQuestionnaireId : String?
+    let defaultQuestionnaireId : Int?
     let buttonBackgroundColor : String?
     let submitButtonText : String?
     let thankYouPageMessageVC : String?

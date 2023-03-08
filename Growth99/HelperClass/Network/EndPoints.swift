@@ -125,6 +125,7 @@ struct EndPoints {
     static let getChatQuestionnaireQuestion = "/api/chatquestionnaire/"
     static let removeChatQuestionnaireQuestion = "/api/chatquestionnaire/"
     static let createChatQuestion = "/api/chatquestionnaire/"
+    static let questionnaireSubmissions = "/api/questionnaire/questionnaire-submissions/"
 }
 
 struct ApiUrl {
@@ -248,13 +249,6 @@ struct ApiUrl {
     static let getChatQuestionnaireQuestion = EndPoints.baseURL.appending(EndPoints.getChatQuestionnaireQuestion)
     static let removeChatQuestionnaireQuestion = EndPoints.baseURL.appending(EndPoints.removeChatQuestionnaireQuestion)
     static let createChatQuestion = EndPoints.baseURL.appending(EndPoints.createChatQuestion)
+    static let questionnaireSubmissions = EndPoints.baseURL.appending(EndPoints.questionnaireSubmissions)
 
 }
-
-
-
-
-
-
-
-

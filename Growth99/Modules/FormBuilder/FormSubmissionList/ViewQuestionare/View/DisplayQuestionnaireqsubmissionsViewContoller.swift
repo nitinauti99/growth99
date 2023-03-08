@@ -1,30 +1,30 @@
 //
-//  DisplayQuestionnaireViewController.swift
+//  DisplayQuestionnaireqsubmissionsViewContoller.swift
 //  Growth99
 //
-//  Created by Nitin Auti on 01/03/23.
+//  Created by Nitin Auti on 08/03/23.
 //
 
 import Foundation
 import UIKit
 
-protocol DisplayQuestionnaireViewContollerProtocol: AnyObject {
+protocol DisplayQuestionnaireqsubmissionsViewContollerProtocol: AnyObject {
     func questionnaireDataRecived()
     func errorReceived(error: String)
 }
 
-class DisplayQuestionnaireViewContoller: UIViewController, DisplayQuestionnaireViewContollerProtocol {
+class DisplayQuestionnaireqsubmissionsViewContoller: UIViewController, DisplayQuestionnaireqsubmissionsViewContollerProtocol {
     @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var questionnaireTableView: UITableView!
     
-    var viewModel: DisplayQuestionnaireViewModelProtocol?
+    var viewModel: DisplayQuestionnaireqsubmissionsViewModelProtocol?
     var questionnaireId = Int()
     var pateintId = Int()
     var screenName = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = DisplayQuestionnaireViewModel(delegate: self)
-       
+        self.viewModel = DisplayQuestionnaireqsubmissionsViewModel(delegate: self)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,12 +32,7 @@ class DisplayQuestionnaireViewContoller: UIViewController, DisplayQuestionnaireV
         self.registerTableView()
         self.title = Constant.Profile.questionnaireDetails
         self.view.ShowSpinner()
-
-        if screenName == "Form questionnaire-submissions" {
-            viewModel?.getDisplayFormQuestionnaire(questionnaireId: questionnaireId)
-        }else{
-            viewModel?.getDisplayQuestionnaire(patientId: pateintId, questionnaireId: questionnaireId)
-        }
+        viewModel?.getDisplayFormQuestionnaire(questionnaireId: questionnaireId)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +44,7 @@ class DisplayQuestionnaireViewContoller: UIViewController, DisplayQuestionnaireV
     }
     
     func registerTableView() {
-        self.questionnaireTableView.register(UINib(nibName: "DisplayQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "DisplayQuestionnaireTableViewCell")
+        self.questionnaireTableView.register(UINib(nibName: "DisplayQuestionnaireqsubmissionsTableViewCell", bundle: nil), forCellReuseIdentifier: "DisplayQuestionnaireqsubmissionsTableViewCell")
     }
     
     func questionnaireDataRecived() {
