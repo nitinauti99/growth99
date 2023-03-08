@@ -13,6 +13,10 @@ protocol MassEmailandSMSDetailViewControlProtocol: AnyObject {
     func massEmailPatientTagsDataRecived()
     func massEmailSMSPatientCountDataRecived()
     func massEmailSMSLeadCountDataRecived()
+    func massEmailSMSEQuotaCountDataReceived()
+    func massEmailSMSAuditQuotaCountDataReceived()
+    func massEmailSMSLeadStatusAllDataRecived()
+    func massEmailSMSPatientStatusAllDataRecived()
     func errorReceived(error: String)
 }
 
@@ -30,7 +34,15 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
 
     var selectedPatientTags = [MassEmailSMSTagListModel]()
     var selectedPatientTagIds: String = String.blank
-
+    
+    var emailTemplatesArray = [EmailTemplateDTOList]()
+    var selectedEmailTemplates = [EmailTemplateDTOList]()
+    var selectedemailTemplateId: String = String.blank
+    
+    var smsTemplatesArray = [SmsTemplateDTOList]()
+    var selectedSmsTemplates = [SmsTemplateDTOList]()
+    var selectedSmsTemplateId: String = String.blank
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -63,7 +75,7 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     }
     
     func massEmailPatientTagsDataRecived() {
-        self.view.HideSpinner()
+        viewModel?.getMassEmailBusinessSMSQuotaMethod()
     }
 
     func massEmailSMSPatientCountDataRecived() {
@@ -72,6 +84,28 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     
     func massEmailSMSLeadCountDataRecived() {
         bothInsertDataReceived()
+    }
+    
+    func massEmailSMSEQuotaCountDataReceived() {
+        viewModel?.getMassEmailAuditEmailQuotaMethod()
+    }
+    
+    func massEmailSMSAuditQuotaCountDataReceived() {
+        self.view.HideSpinner()
+    }
+    
+    func massEmailSMSLeadStatusAllDataRecived() {
+        viewModel?.getMassEmailPatientStatusAllMethod()
+    }
+
+    func massEmailSMSPatientStatusAllDataRecived() {
+        self.view.HideSpinner()
+        let emailSMS = MassEmailandSMSDetailModel(cellType: "Both", LastName: "")
+        emailAndSMSDetailList.append(emailSMS)
+        emailAndSMSTableView.beginUpdates()
+        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
+        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
+        emailAndSMSTableView.endUpdates()
     }
     
     func bothInsertDataReceived() {

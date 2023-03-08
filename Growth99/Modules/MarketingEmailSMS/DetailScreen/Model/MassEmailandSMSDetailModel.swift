@@ -18,14 +18,14 @@ struct MassEmailSMSDetailListModel : Codable {
     let emailTemplateDTOList : [EmailTemplateDTOList]?
 }
 
-struct EmailTemplateDTOList : Codable {
+struct EmailTemplateDTOList : Codable, Equatable {
     let id : Int?
     let name : String?
     let emailTarget : String?
     let templateFor : String?
 }
 
-struct SmsTemplateDTOList : Codable {
+struct SmsTemplateDTOList : Codable, Equatable {
     let id : Int?
     let name : String?
     let smsTarget : String?
@@ -54,4 +54,10 @@ struct MassEmailSMSTagListModel: Codable, Equatable {
 struct MassEmailSMSCountModel : Codable {
     let smsCount : Int?
     let emailCount : Int?
+}
+
+struct MassEmailSMSEQuotaCountModel : Codable {
+    let smsCount : Int?
+    let emailCount : Int?
+    let tenantId : Int?
 }

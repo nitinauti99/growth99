@@ -50,6 +50,10 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSCreateTableViewCell", for: indexPath) as? MassEmailandSMSCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = self
+            cell.networkSelectonSMSButton.tag = indexPath.row
+            cell.networkSelectonSMSButton.addTarget(self, action: #selector(networkSelectionSMSMethod), for: .touchDown)
+            cell.networkSelectonEmailButton.tag = indexPath.row
+            cell.networkSelectonEmailButton.addTarget(self, action: #selector(networkSelectionEmailMethod), for: .touchDown)
             return cell
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTimeTableViewCell", for: indexPath) as? MassEmailandSMSTimeTableViewCell else { return UITableViewCell()}
@@ -75,7 +79,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 if selectedList.count == 0 {
                     leadCell.leadStatusTextLabel.text = "Select lead status"
                 } else {
-                    leadCell.leadStatusTextLabel.text = selectedList.joined(separator: ",")
+                    leadCell.leadStatusTextLabel.text = selectedList.joined(separator: ", ")
                 }
             }
         }
@@ -98,7 +102,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 if selectedList.count == 0 {
                     leadCell.leadSourceTextLabel.text = "Select lead source"
                 } else {
-                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
+                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ", ")
                 }
             }
         }
@@ -121,7 +125,6 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     leadCell.leadTagTextLabel.text = "Select lead tag"
                 } else {
                     leadCell.leadTagTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-                    let selectedId = selectedList.map({$0.id ?? 0})
                     self?.selectedLeadTags  = selectedList
                     let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
                     self?.selectedLeadTagIds = formattedArray
@@ -146,7 +149,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 if selectedList.count == 0 {
                     patientCell.patientStatusTextLabel.text = "Select patient status"
                 } else {
-                    patientCell.patientStatusTextLabel.text = selectedList.joined(separator: ",")
+                    patientCell.patientStatusTextLabel.text = selectedList.joined(separator: ", ")
                 }
             }
         }
@@ -169,7 +172,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 if selectedList.count == 0 {
                     patientCell.patientAppointmenTextLabel.text = "Select patient appointment"
                 } else {
-                    patientCell.patientAppointmenTextLabel.text = selectedList.joined(separator: ",")
+                    patientCell.patientAppointmenTextLabel.text = selectedList.joined(separator: ", ")
                 }
             }
         }
@@ -192,7 +195,6 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     patientCell.patientTagTextLabel.text = "Select patient tag"
                 } else {
                     patientCell.patientTagTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-                    let selectedId = selectedList.map({$0.id ?? 0})
                     self?.selectedPatientTags = selectedList
                     let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
                     self?.selectedPatientTagIds = formattedArray
@@ -204,8 +206,53 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(patientTagsArray.count * 30))), arrowDirection: .up), from: self)
     }
+    
+    @objc func networkSelectionSMSMethod(sender: UIButton) {
+        smsTemplatesArray = viewModel?.getMassEmailDetailData?.smsTemplateDTOList?.filter({ $0.templateFor == "MassSMS"}) ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: smsTemplatesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        let row = sender.tag % 1000
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            let cellIndexPath = IndexPath(item: row, section: 0)
+            if let createCell = self?.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSCreateTableViewCell {
+                if selectedList.count == 0 {
+                    createCell.selectNetworkSMSTextLabel.text = "Please select network"
+                } else {
+                    createCell.selectNetworkSMSTextLabel.text = selectedItem?.name
+                    self?.selectedSmsTemplates = selectedList
+                    self?.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
+                }
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(smsTemplatesArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    @objc func networkSelectionEmailMethod(sender: UIButton) {
+        emailTemplatesArray = viewModel?.getMassEmailDetailData?.emailTemplateDTOList?.filter({ $0.templateFor == "MassEmail"}) ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: emailTemplatesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        let row = sender.tag % 1000
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            let cellIndexPath = IndexPath(item: row, section: 0)
+            if let createCell = self?.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSCreateTableViewCell {
+                if selectedList.count == 0 {
+                    createCell.selectNetworkEmailTextLabel.text = "Please select network"
+                } else {
+                    createCell.selectNetworkEmailTextLabel.text = selectedItem?.name
+                    self?.selectedEmailTemplates = selectedList
+                    self?.selectedemailTemplateId = String(selectedItem?.id ?? 0)
+                }
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(emailTemplatesArray.count * 30))), arrowDirection: .up), from: self)
+    }
 }
-
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSDefaultCellDelegate {
     func nextButtonDefault(cell: MassEmailandSMSDefaultTableViewCell, index: IndexPath) {
@@ -223,25 +270,25 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSModuleCellDelegate
         if moduleType == "patient" {
             let emailSMS = MassEmailandSMSDetailModel(cellType: "Patient", LastName: "")
             emailAndSMSDetailList.append(emailSMS)
+            emailAndSMSTableView.beginUpdates()
+            let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
+            emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
+            emailAndSMSTableView.endUpdates()
         } else if moduleType == "lead" {
             let emailSMS = MassEmailandSMSDetailModel(cellType: "Lead", LastName: "")
             emailAndSMSDetailList.append(emailSMS)
+            emailAndSMSTableView.beginUpdates()
+            let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
+            emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
+            emailAndSMSTableView.endUpdates()
         } else {
-            let emailSMS = MassEmailandSMSDetailModel(cellType: "Both", LastName: "")
-            emailAndSMSDetailList.append(emailSMS)
+            self.view.ShowSpinner()
+            viewModel?.getMassEmailLeadStatusAllMethod()
         }
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
     }
 }
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate {
-    func networkSelectonBtn(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath) {
-        
-    }
-    
     func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath) {
         let emailSMS = MassEmailandSMSDetailModel(cellType: "Time", LastName: "")
         emailAndSMSDetailList.append(emailSMS)

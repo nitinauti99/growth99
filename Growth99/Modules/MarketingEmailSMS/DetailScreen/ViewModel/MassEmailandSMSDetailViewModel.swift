@@ -14,20 +14,26 @@ protocol MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailPatientStatusMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String)
     func getMassEmailBusinessSMSQuotaMethod()
     func getMassEmailAuditEmailQuotaMethod()
-    var  getMassEmailDetailData: MassEmailandSMSDetailModel? { get }
+    func getMassEmailLeadStatusAllMethod()
+    func getMassEmailPatientStatusAllMethod()
+    var  getMassEmailDetailData: MassEmailSMSDetailListModel? { get }
     var  getMassEmailLeadTagsData: [MassEmailSMSTagListModel] { get }
     var  getMassEmailPateintsTagsData: [MassEmailSMSTagListModel] { get }
     var  getMassEmailSMSPatientCountData: MassEmailSMSCountModel? { get }
     var  getMassEmailSMSLeadCountData: MassEmailSMSCountModel? { get }
+    var  getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
+    var  getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
 }
 
 class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     var delegate: MassEmailandSMSDetailViewControlProtocol?
-    var massEmailDeatilList: MassEmailandSMSDetailModel?
+    var massEmailDeatilList: MassEmailSMSDetailListModel?
     var massEmailLeadTagsList: [MassEmailSMSTagListModel] = []
     var massEmailPateintsTagsList: [MassEmailSMSTagListModel] = []
     var massEmailSMSLeadCount: MassEmailSMSCountModel?
     var massEmailSMSPatientCount: MassEmailSMSCountModel?
+    var massEmailSMSQuotaCount: MassEmailSMSEQuotaCountModel?
+    var massEmailSMSAuditQuotaCount: MassEmailSMSEQuotaCountModel?
     
     init(delegate: MassEmailandSMSDetailViewControlProtocol? = nil) {
         self.delegate = delegate
@@ -36,7 +42,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
     func getMassEmailLeadTagsList() {
-        self.requestManager.request(forPath: ApiUrl.leadTagList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[MassEmailSMSTagListModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.leadTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let massEMailLeadTagsList):
                 self.massEmailLeadTagsList = massEMailLeadTagsList
@@ -49,7 +55,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func getMassEmailPateintsTagsList() {
-        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[MassEmailSMSTagListModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
                 self.massEmailPateintsTagsList = pateintsTagList
@@ -62,7 +68,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func getMassEmailDetailList() {
-        self.requestManager.request(forPath: ApiUrl.massEmailTrigerList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MassEmailandSMSDetailModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.massEmailTrigerList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSDetailListModel, GrowthNetworkError>) in
             switch result {
             case .success(let massEmailDeatilList):
                 self.massEmailDeatilList = massEmailDeatilList
@@ -77,7 +83,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailLeadStatusMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String) {
         let appendParam = "leadStatus=\(leadStatus)&moduleName=\(moduleName)&leadTagIds=\(leadTagIds)&source=\(source)"
         let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let massEmailSMSLeadStatus):
                 self.massEmailSMSLeadCount = massEmailSMSLeadStatus
@@ -92,7 +98,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailPatientStatusMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String) {
         let appendParam = "appointmentStatus=\(appointmentStatus)&moduleName=\(moduleName)&patientTagIds=\(patientTagIds)&patientStatus=\(patientStatus)"
         let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let massEmailSMSPatientStatus):
                 self.massEmailSMSPatientCount = massEmailSMSPatientStatus
@@ -107,11 +113,11 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailLeadStatusAllMethod() {
         let appendParam = "leadStatus=All&moduleName=All"
         let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let massEmailSMSLeadStatus):
                 self.massEmailSMSLeadCount = massEmailSMSLeadStatus
-                self.delegate?.massEmailSMSLeadCountDataRecived()
+                self.delegate?.massEmailSMSLeadStatusAllDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -122,11 +128,11 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailPatientStatusAllMethod() {
         let appendParam = "appointmentStatus=All&moduleName=All&patientTagIds=&patientStatus="
         let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: ApiUrl.massEmailAppointmentStatus, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let massEmailSMSPatientStatus):
                 self.massEmailSMSPatientCount = massEmailSMSPatientStatus
-                self.delegate?.massEmailSMSPatientCountDataRecived()
+                self.delegate?.massEmailSMSPatientStatusAllDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -135,14 +141,32 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func getMassEmailBusinessSMSQuotaMethod() {
-        
+        self.requestManager.request(forPath: ApiUrl.massEmailBusinessSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSEQuotaCountModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let massEmailSMSQuotaCount):
+                self.massEmailSMSQuotaCount = massEmailSMSQuotaCount
+                self.delegate?.massEmailSMSEQuotaCountDataReceived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
     
     func getMassEmailAuditEmailQuotaMethod() {
-        
+        self.requestManager.request(forPath: ApiUrl.massEmailAuditEmailSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSEQuotaCountModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let massEmailSMSAuditQuotaCount):
+                self.massEmailSMSAuditQuotaCount = massEmailSMSAuditQuotaCount
+                self.delegate?.massEmailSMSAuditQuotaCountDataReceived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
     
-    var getMassEmailDetailData: MassEmailandSMSDetailModel? {
+    var getMassEmailDetailData: MassEmailSMSDetailListModel? {
         return self.massEmailDeatilList
     }
     
@@ -160,6 +184,14 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     
     var getMassEmailSMSLeadCountData: MassEmailSMSCountModel? {
         return self.massEmailSMSLeadCount
+    }
+    
+    var getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? {
+        return self.massEmailSMSQuotaCount
+    }
+    
+    var getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? {
+        return self.massEmailSMSAuditQuotaCount
     }
 }
 

@@ -59,9 +59,9 @@ class AppointmentListViewModel {
             case .success(let response):
                 if response.statusCode == 200 {
                     self.delegate?.profileAppoinmentsRemoved()
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     self.delegate?.profileAppoinmentsErrorReceived(error: "Unable to delete paid appointments")
-                }else{
+                } else{
                     self.delegate?.profileAppoinmentsErrorReceived(error: "response failed")
                 }
             case .failure(let error):

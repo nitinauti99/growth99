@@ -15,6 +15,7 @@ class MassEmailandSMSTimeTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
+    @IBOutlet weak var timeFromTextField: CustomTextField!
 
     weak var delegate: MassEmailandSMSTimeCellDelegate?
     var indexPath = IndexPath()
