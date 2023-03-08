@@ -6737,6 +6737,7 @@
 				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Growth99;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calender";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authentication with TouchId or FaceID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -6779,6 +6780,7 @@
 				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Growth99;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calender";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authentication with TouchId or FaceID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
