@@ -91,6 +91,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="calendar" catalog="system"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="b4N-gw-dU5" id="B08-S2-VYp"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCE-lG-0mD">
                                 <rect key="frame" x="20" y="195" width="110" height="40"/>
@@ -128,9 +131,6 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="nextButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="hYy-AS-U6L"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -167,6 +167,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="massEmailTimeFromTextField" destination="DeW-1k-1ar" id="hNw-86-pCI"/>
                 <outlet property="subView" destination="vLT-h4-k28" id="TV2-yf-BvS"/>
                 <outlet property="subViewInside" destination="O3M-Ov-A9V" id="kok-TP-GcH"/>
             </connections>

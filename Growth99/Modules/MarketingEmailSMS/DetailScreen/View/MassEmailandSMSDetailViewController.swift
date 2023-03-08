@@ -43,10 +43,13 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     var selectedSmsTemplates = [SmsTemplateDTOList]()
     var selectedSmsTemplateId: String = String.blank
     
+    var dateFormater: DateFormaterProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
+        dateFormater = DateFormater()
         let emailSMS = MassEmailandSMSDetailModel(cellType: "Default", LastName: "")
         emailAndSMSDetailList.append(emailSMS)
         viewModel = MassEmailandSMSDetailViewModel(delegate: self)

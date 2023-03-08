@@ -15,6 +15,7 @@ class MassEmailandSMSDefaultTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
+    @IBOutlet weak var massEmailSMSTextField: CustomTextField!
 
     weak var delegate: MassEmailandSMSDefaultCellDelegate?
     var indexPath = IndexPath()

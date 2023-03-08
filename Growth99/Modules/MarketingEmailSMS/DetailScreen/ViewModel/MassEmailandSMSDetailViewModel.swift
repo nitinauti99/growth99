@@ -23,6 +23,7 @@ protocol MassEmailandSMSDetailViewModelProtocol {
     var  getMassEmailSMSLeadCountData: MassEmailSMSCountModel? { get }
     var  getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
     var  getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
+    func localToServerWithDate(date: String) -> String
 }
 
 class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
@@ -193,5 +194,19 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     var getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? {
         return self.massEmailSMSAuditQuotaCount
     }
+    
+    func localToServerWithDate(date: String) -> String {
+        let currentDate = Date()
+        let dateFormatter22 = DateFormatter()
+        dateFormatter22.string(from: currentDate)
+        dateFormatter22.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter22.dateFormat = "MM/dd/yyyy"
+        let dateWith = dateFormatter22.string(from: currentDate)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateWith + dateFormatter.string(from: date)
+    }
 }
-

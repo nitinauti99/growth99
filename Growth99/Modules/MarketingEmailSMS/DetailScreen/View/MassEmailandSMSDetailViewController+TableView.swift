@@ -57,7 +57,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
             return cell
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTimeTableViewCell", for: indexPath) as? MassEmailandSMSTimeTableViewCell else { return UITableViewCell()}
-            //            cell.delegate = self
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
@@ -256,12 +256,16 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSDefaultCellDelegate {
     func nextButtonDefault(cell: MassEmailandSMSDefaultTableViewCell, index: IndexPath) {
-        let emailSMS = MassEmailandSMSDetailModel(cellType: "Module", LastName: "")
-        emailAndSMSDetailList.append(emailSMS)
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
+        if cell.massEmailSMSTextField.text == "" {
+            cell.massEmailSMSTextField.showError(message: "Please enter Mass Email or SMS name")
+        } else {
+            let emailSMS = MassEmailandSMSDetailModel(cellType: "Module", LastName: "")
+            emailAndSMSDetailList.append(emailSMS)
+            emailAndSMSTableView.beginUpdates()
+            let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
+            emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
+            emailAndSMSTableView.endUpdates()
+        }
     }
 }
 
@@ -290,6 +294,10 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSModuleCellDelegate
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate {
     func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath) {
+        /*if cell.networkTypeSelected == "sms" || cell.networkTypeSelected == "email" {
+            if cell.selectNetworkSMSTextLabel.text == "" || cell.selectNetworkEmailTextLabel.text == "" {
+            }
+        }*/
         let emailSMS = MassEmailandSMSDetailModel(cellType: "Time", LastName: "")
         emailAndSMSDetailList.append(emailSMS)
         emailAndSMSTableView.beginUpdates()
@@ -310,5 +318,23 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegat
     func nextButtonPatient(cell: MassEmailandSMSPatientActionTableViewCell, index: IndexPath) {
         self.view.ShowSpinner()
         viewModel?.getMassEmailPatientStatusMethod(appointmentStatus: cell.patientAppointmenTextLabel.text ?? String.blank, moduleName: "MassPatient", patientTagIds: selectedPatientTagIds, patientStatus: cell.patientStatusTextLabel.text ?? String.blank)
+    }
+}
+
+
+extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
+    func nextButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath) {
+        
+    }
+    
+    func massEmailTimeFromTapped(cell: MassEmailandSMSTimeTableViewCell) {
+        guard let indexPath = emailAndSMSTableView.indexPath(for: cell) else {
+            return
+        }
+        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
+        if let vacationCell = emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSTimeTableViewCell {
+            vacationCell.updateMassEmailTimeFromTextField(with: "\(viewModel?.localToServerWithDate(date: cell.massEmailTimeFromTextField.text ?? String.blank) ?? "")")
+            vacationCell.massEmailTimeFromTextField.resignFirstResponder()
+        }
     }
 }
