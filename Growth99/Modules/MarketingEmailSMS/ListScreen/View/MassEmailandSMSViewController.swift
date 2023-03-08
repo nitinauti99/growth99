@@ -25,16 +25,21 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
-        self.getMassEmailandSMS()
-        self.registerTableView()
+        getMassEmailandSMS()
+        registerTableView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = MassEmailandSMSViewModel(delegate: self)
+        viewModel = MassEmailandSMSViewModel(delegate: self)
         setUpNavigationBar()
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+    }
+
+    @objc func getMassEmailandSMS() {
+        self.view.ShowSpinner()
+        viewModel?.getMassEmailandSMS()
     }
     
     func setUpNavigationBar() {
@@ -65,11 +70,6 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
         self.massEmailandSMSTableView.delegate = self
         self.massEmailandSMSTableView.dataSource = self
         massEmailandSMSTableView.register(UINib(nibName: "MassEmailandSMSTableViewCell", bundle: nil), forCellReuseIdentifier: "MassEmailandSMSTableViewCell")
-    }
-    
-    @objc func getMassEmailandSMS() {
-        self.view.ShowSpinner()
-        viewModel?.getMassEmailandSMS()
     }
     
     func massEmailandSMSDataRecived() {

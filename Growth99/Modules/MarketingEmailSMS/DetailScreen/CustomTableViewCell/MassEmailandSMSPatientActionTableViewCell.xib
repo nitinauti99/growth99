@@ -111,9 +111,6 @@
                                                     <constraint firstAttribute="height" constant="30" id="ay0-Xd-pMT"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SolanoGothicMVBPro-Bd" family="Solano Gothic MVB Pro" pointSize="15"/>
-                                                <connections>
-                                                    <action selector="patientStatusButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="et8-PA-5c5"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -207,9 +204,6 @@
                                                     <constraint firstAttribute="height" constant="30" id="ioC-XV-fj6"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SolanoGothicMVBPro-Bd" family="Solano Gothic MVB Pro" pointSize="15"/>
-                                                <connections>
-                                                    <action selector="patientTagButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="Q6g-kQ-BZ2"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -277,9 +271,6 @@
                                                     <constraint firstAttribute="height" constant="30" id="LQu-8R-Tdx"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SolanoGothicMVBPro-Bd" family="Solano Gothic MVB Pro" pointSize="15"/>
-                                                <connections>
-                                                    <action selector="patientAppointmentButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="rQH-W3-d2V"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -358,11 +349,14 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="patientAppointmenTextLabel" destination="DNu-jN-fpV" id="Vlq-93-Cio"/>
                 <outlet property="patientAppointmentButton" destination="B5k-Nq-7l7" id="SpV-UV-lDZ"/>
                 <outlet property="patientAppointmentView" destination="7JI-6U-MFd" id="CWD-QD-rW1"/>
                 <outlet property="patientStatusSelectonButton" destination="Q5s-bg-gj7" id="cFl-Pn-rZk"/>
+                <outlet property="patientStatusTextLabel" destination="HTW-qq-dSE" id="e8V-vk-VJU"/>
                 <outlet property="patientStatusView" destination="rhi-8Y-rUP" id="QXx-XG-ASo"/>
                 <outlet property="patientTagSelectonButton" destination="2cZ-26-1IP" id="jPm-jy-JXq"/>
+                <outlet property="patientTagTextLabel" destination="M33-Uq-uBt" id="CWX-aN-oZE"/>
                 <outlet property="patientTagView" destination="zR9-Ki-q60" id="sPH-x7-cRj"/>
                 <outlet property="subView" destination="wDQ-bO-Jai" id="5Ic-Ug-g77"/>
                 <outlet property="subViewInside" destination="gFA-Hx-Tyc" id="X7A-ZS-KYl"/>

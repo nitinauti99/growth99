@@ -12,15 +12,15 @@ protocol UserCreateViewModelProtocol {
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidEmail(_ email: String) -> Bool
     func getUserData(userId: Int)
-    var getUserProfileData: UserProfile { get }
+    var  getUserProfileData: UserProfile { get }
     func getallClinics()
-    var getAllClinicsData: [Clinics] { get }
+    var  getAllClinicsData: [Clinics] { get }
     
     func getallServiceCategories(SelectedClinics: [Int])
-    var getAllServiceCategories: [Clinics] { get }
+    var  getAllServiceCategories: [Clinics] { get }
     
     func getallService(SelectedCategories: [Int])
-    var getAllService: [Clinics] { get }
+    var  getAllService: [Clinics] { get }
     func updateProfileInfo(firstName: String, lastName:String, email: String, phone: String, roleId: Int, designation: String, clinicIds: Array<Int>, serviceCategoryIds: Array<Int>, serviceIds: Array<Int>, isProvider: Bool, description: String)
 }
 
@@ -64,7 +64,7 @@ class UserCreateViewModel {
             }
         }
     }
-        
+    
     func getallServiceCategories(SelectedClinics: [Int]){
         let finaleUrl = ApiUrl.serviceCategories + SelectedClinics.map { String($0) }.joined(separator: ",")
         self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
@@ -80,10 +80,10 @@ class UserCreateViewModel {
     }
     
     
-   func getallService(SelectedCategories: [Int]) {
-       let finaleUrl = ApiUrl.service + SelectedCategories.map { String($0) }.joined(separator: ",")
-
-       self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
+    func getallService(SelectedCategories: [Int]) {
+        let finaleUrl = ApiUrl.service + SelectedCategories.map { String($0) }.joined(separator: ",")
+        
+        self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
             case .success(let categories):
                 self.allServices = categories
@@ -119,17 +119,17 @@ class UserCreateViewModel {
                     self.delegate?.profileDataUpdated()
                 }
                 print("Successful Response", userData)
-            case .failure(let error):
+            case .failure(_):
                 self.delegate?.profileDataUpdated()
             }
         }
     }
     
-   
+    
 }
 
 extension UserCreateViewModel : UserCreateViewModelProtocol {
-  
+    
     var getAllService: [Clinics] {
         return self.allServices ?? []
     }
@@ -162,7 +162,7 @@ extension UserCreateViewModel : UserCreateViewModelProtocol {
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
+        
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }

@@ -32,7 +32,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vxg-GC-3k5">
-                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="783"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="1JO-t3-uBG"/>
@@ -44,7 +44,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vxg-GC-3k5" secondAttribute="trailing" id="0jz-vw-Fo7"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
+                            <constraint firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DTv-Wi-Rgo"/>
                             <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="Mrg-4q-sd3"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="TfC-jd-n9H"/>

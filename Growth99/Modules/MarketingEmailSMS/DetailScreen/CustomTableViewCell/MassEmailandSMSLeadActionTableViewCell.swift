@@ -9,9 +9,6 @@ import UIKit
 
 protocol MassEmailandSMSLeadCellDelegate: AnyObject {
     func nextButtonLead(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath)
-    func leadStatusSelectonBtn(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath)
-    func leadSourceSelectonBtn(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath)
-    func leadTagSelectonBtn(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath)
 }
 
 class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
@@ -24,6 +21,9 @@ class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadStatusView: UIView!
     @IBOutlet weak var leadSourceView: UIView!
     @IBOutlet weak var leadTagView: UIView!
+    @IBOutlet weak var leadStatusTextLabel: UILabel!
+    @IBOutlet weak var leadSourceTextLabel: UILabel!
+    @IBOutlet weak var leadTagTextLabel: UILabel!
 
     weak var delegate: MassEmailandSMSLeadCellDelegate?
     var indexPath = IndexPath()
@@ -50,17 +50,5 @@ class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonLead(cell: self, index: indexPath)
-    }
-    
-    @IBAction func leadStatusButtonAction(sender: UIButton) {
-        self.delegate?.leadStatusSelectonBtn(cell: self, index: indexPath)
-    }
-    
-    @IBAction func leadSourceButtonAction(sender: UIButton) {
-        self.delegate?.leadSourceSelectonBtn(cell: self, index: indexPath)
-    }
-    
-    @IBAction func leadTagButtonAction(sender: UIButton) {
-        self.delegate?.leadTagSelectonBtn(cell: self, index: indexPath)
     }
 }

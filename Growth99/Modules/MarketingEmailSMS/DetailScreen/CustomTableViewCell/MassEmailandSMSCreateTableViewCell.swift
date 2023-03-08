@@ -18,10 +18,13 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var networkSelectonButton: UIButton!
     @IBOutlet weak var networkView: UIView!
-
+    @IBOutlet private weak var smsBtn: UIButton!
+    @IBOutlet private weak var emailBtn: UIButton!
+    
     weak var delegate: MassEmailandSMSCreateCellDelegate?
     var indexPath = IndexPath()
-    
+    var networkTypeSelected: String = "sms"
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,5 +43,17 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     
     @IBAction func selectNetworkButtonAction(sender: UIButton) {
         self.delegate?.networkSelectonBtn(cell: self, index: indexPath)
+    }
+    
+    @IBAction func smsButtonAction(sender: UIButton) {
+        smsBtn.isSelected = !smsBtn.isSelected
+        networkTypeSelected = "sms"
+        emailBtn.isSelected = false
+    }
+    
+    @IBAction func emailButtonAction(sender: UIButton) {
+        emailBtn.isSelected = !emailBtn.isSelected
+        networkTypeSelected = "email"
+        smsBtn.isSelected = false
     }
 }

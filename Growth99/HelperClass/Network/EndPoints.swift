@@ -126,6 +126,11 @@ struct EndPoints {
     static let removeChatQuestionnaireQuestion = "/api/chatquestionnaire/"
     static let createChatQuestion = "/api/chatquestionnaire/"
     static let questionnaireSubmissions = "/api/questionnaire/questionnaire-submissions/"
+    static let massEmailTrigerList = "/api/v1/trigger/edit"
+    static let massEmailBusinessSMSQuota = "/api/v1/business/email-sms/quota"
+    static let massEmailAuditEmailSMSQuota = "/api/v1/audit/email-sms/count"
+    static let massEmailLeadStatus = "/api/v1/leads/count?"
+    static let massEmailAppointmentStatus = "/api/v1/patients/count?"
 }
 
 struct ApiUrl {
@@ -250,5 +255,9 @@ struct ApiUrl {
     static let removeChatQuestionnaireQuestion = EndPoints.baseURL.appending(EndPoints.removeChatQuestionnaireQuestion)
     static let createChatQuestion = EndPoints.baseURL.appending(EndPoints.createChatQuestion)
     static let questionnaireSubmissions = EndPoints.baseURL.appending(EndPoints.questionnaireSubmissions)
-
+    static let massEmailTrigerList = EndPoints.baseURL.appending(EndPoints.massEmailTrigerList)
+    static let massEmailBusinessSMSQuota = EndPoints.baseURL.appending(EndPoints.massEmailBusinessSMSQuota)
+    static let massEmailAuditEmailSMSQuota = EndPoints.baseURL.appending(EndPoints.massEmailAuditEmailSMSQuota)
+    static let massEmailLeadStatus = EndPoints.baseURL.appending(EndPoints.massEmailLeadStatus)
+    static let massEmailAppointmentStatus = EndPoints.baseURL.appending(EndPoints.massEmailAppointmentStatus)
 }
