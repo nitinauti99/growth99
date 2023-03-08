@@ -8,6 +8,7 @@
 import Foundation
 protocol DisplayQuestionnaireViewModelProtocol {
     func getDisplayQuestionnaire(patientId: Int,questionnaireId: Int)
+    func getDisplayFormQuestionnaire(questionnaireId: Int)
     func getQuestionnaireDataAtIndex(index: Int) -> PatientQuestionAnswers?
     var getQuestionnaireData: [PatientQuestionAnswers] { get }
     var getQuestionnaireName: String {get}
@@ -39,6 +40,23 @@ class DisplayQuestionnaireViewModel {
             }
         }
     }
+    
+    func getDisplayFormQuestionnaire(questionnaireId: Int) {
+        let finaleURL = ApiUrl.questionnaireSubmissions.appending("\(questionnaireId)")
+        
+        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<DisplayQuestionnaireModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let data):
+                self.questionnaireData = data.patientQuestionAnswers ?? []
+                self.questionnaireName = data.questionnaireName ?? ""
+                self.delegate?.questionnaireDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
     
     func getQuestionnaireDataAtIndex(index: Int)-> PatientQuestionAnswers? {
         return self.questionnaireData[index]

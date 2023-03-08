@@ -73,9 +73,7 @@ class FormDetailContainerView: UIViewController {
     }
     
     private lazy var formDetailVC: FormDetailViewController = {
-        guard let formDetailVC = storyboard?.instantiateViewController(withIdentifier: "FormDetailViewController") as? FormDetailViewController else {
-            fatalError("Unable to Instantiate Summary View Controller")
-        }
+        let formDetailVC = UIStoryboard(name: "FormDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "FormDetailViewController") as! FormDetailViewController
         formDetailVC.questionId = workflowFormId
         return formDetailVC
     }()
@@ -93,9 +91,9 @@ class FormDetailContainerView: UIViewController {
         return notificationListVC
     }()
     
-    private lazy var questionarieVC: QuestionarieViewController = {
-        let questionarieList = UIStoryboard(name: "QuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionarieViewController") as! QuestionarieViewController
-        questionarieList.pateintId = workflowFormId
+    private lazy var questionarieVC: QuestionnaireSubmissionsViewController = {
+        let questionarieList = UIStoryboard(name: "QuestionnaireSubmissionsViewController", bundle: nil).instantiateViewController(withIdentifier: "QuestionnaireSubmissionsViewController") as! QuestionnaireSubmissionsViewController
+        questionarieList.questionnaireId = workflowFormId
         return questionarieList
     }()
     

@@ -45,9 +45,11 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     @IBOutlet var workingScrollViewHight: NSLayoutConstraint!
 
     @IBOutlet weak var addQuestionButton: UIButton!
+    @IBOutlet weak var preViewButton: UIButton!
 
     var viewModel: FormDetailViewModelProtocol?
     var questionId = Int()
+    
     var tableViewHeight: CGFloat {
         tableView.layoutIfNeeded()
         return tableView.contentSize.height
@@ -69,20 +71,23 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         self.buttonText.text = "Submit"
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        submitButton.roundCorners(corners: [.allCorners], radius: 10)
-        CancelButton.roundCorners(corners: [.allCorners], radius: 10)
-        Show_Thank_page_URL_ContactForm_TextView.isHidden = true
-        Show_Thank_page_URL_ContactForm_TextView_SepraterHight.constant = 20
-        ConfigureThank_page_message_contactForm_TextView.isHidden = true
-        ConfigureThank_page_message_contactForm_TextView_SepraterHight.constant = 15
-        backroundImageSelctionButton.roundCorners(corners: [.allCorners], radius: 6)
-        backroundImageSelctionButton.isHidden = true
-        backroundImageSelctionButton.layer.borderWidth = 2
-        backroundImageSelctionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
-        addQuestionButton.layer.borderWidth = 2
-        addQuestionButton.roundCorners(corners: [.allCorners], radius: 5)
-        addQuestionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
-        backroundImageSelctionLBI.isHidden = true
+        self.submitButton.roundCorners(corners: [.allCorners], radius: 10)
+        self.CancelButton.roundCorners(corners: [.allCorners], radius: 10)
+        self.Show_Thank_page_URL_ContactForm_TextView.isHidden = true
+        self.Show_Thank_page_URL_ContactForm_TextView_SepraterHight.constant = 20
+        self.ConfigureThank_page_message_contactForm_TextView.isHidden = true
+        self.ConfigureThank_page_message_contactForm_TextView_SepraterHight.constant = 15
+        self.backroundImageSelctionButton.roundCorners(corners: [.allCorners], radius: 6)
+        self.backroundImageSelctionButton.isHidden = true
+        self.backroundImageSelctionButton.layer.borderWidth = 2
+        self.backroundImageSelctionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
+        self.addQuestionButton.layer.borderWidth = 2
+        self.addQuestionButton.roundCorners(corners: [.allCorners], radius: 5)
+        self.addQuestionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
+        self.preViewButton.layer.borderWidth = 2
+        self.preViewButton.roundCorners(corners: [.allCorners], radius: 5)
+        self.preViewButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
+        self.backroundImageSelctionLBI.isHidden = true
     }
     
     func FormsDataRecived(message: String){
@@ -158,6 +163,16 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(RegexList().regexArray.count * 44))), arrowDirection: .up), from: self)
     }
 
+    @IBAction func showPreView(sender: UIButton){
+        let user = UserRepository.shared
+
+        let urlSting = "https://devemr.growthemr.com/assets/static/form.html?bid=" + "\(user.bussinessId ?? 0)&fid=\(questionId)"
+        
+        if let url = URL(string: urlSting), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+        
+    }
     
     func scrollViewHeight() {
         workingScrollViewHight.constant = tableViewHeight + 1000 + 350
@@ -219,10 +234,16 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     
     @IBAction func Make_lead_generationForm(sender: UIButton){
         print("Make_lead_generationForm")
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
+        let item = viewModel?.getFormQuestionnaireData
+
+        if item?.isLeadForm == true {
             sender.isSelected = true
+        }else{
+            if sender.isSelected {
+                sender.isSelected = false
+            } else {
+                sender.isSelected = true
+            }
         }
     }
     

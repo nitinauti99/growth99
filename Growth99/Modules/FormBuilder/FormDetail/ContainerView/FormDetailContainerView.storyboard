@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Form Detail Container View-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="FormDetailContainerView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="FormDetailContainerView" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LE-uw-YG5">
+                                <rect key="frame" x="0.0" y="99" width="393" height="719"/>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwe-bm-AOu" customClass="ScrollableSegmentedControl" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="40"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ww4-0f-Fa8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="underlineSelected" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bwe-bm-AOu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MpY-if-7WG"/>
+                            <constraint firstItem="7LE-uw-YG5" firstAttribute="top" secondItem="Bwe-bm-AOu" secondAttribute="bottom" id="PMZ-0k-LDn"/>
+                            <constraint firstItem="Bwe-bm-AOu" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" id="SHk-0t-AYT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="7LE-uw-YG5" secondAttribute="bottom" id="c7H-jd-faq"/>
+                            <constraint firstItem="7LE-uw-YG5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gZp-eS-LAz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Bwe-bm-AOu" secondAttribute="trailing" id="m5Q-Gu-wdc"/>
+                            <constraint firstItem="7LE-uw-YG5" firstAttribute="top" secondItem="Bwe-bm-AOu" secondAttribute="bottom" id="ouS-Hx-HHc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7LE-uw-YG5" secondAttribute="trailing" id="ydl-b6-qOg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="7LE-uw-YG5" id="afq-j0-dq3"/>
+                        <outlet property="segmentedControl" destination="Bwe-bm-AOu" id="qdF-IO-feP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="39" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
