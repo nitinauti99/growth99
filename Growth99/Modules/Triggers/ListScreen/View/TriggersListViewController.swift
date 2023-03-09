@@ -43,7 +43,8 @@ class TriggersListViewController: UIViewController, TriggersListViewContollerPro
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        
+        let addEventVC = UIStoryboard(name: "TriggerDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerDetailViewController") as! TriggerDetailViewController
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
     
     @IBAction func triggerSegmentSelection(_ sender: Any) {

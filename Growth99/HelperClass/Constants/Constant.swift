@@ -103,6 +103,7 @@ struct Constant {
         static let emailTemplatesList = "Email Templates List"
         static let FormsList = "Forms"
         static let createForm = "Create Form"
+        static let createTrigger = "Create Trigger"
         static let smsTemplateList = "SMS Templates List"
         static let consentsTemplatesList = "Consents"
         static let leadTemplates = "Lead Templates"

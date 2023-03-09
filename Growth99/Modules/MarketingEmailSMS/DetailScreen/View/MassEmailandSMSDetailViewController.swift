@@ -44,6 +44,8 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     var selectedSmsTemplateId: String = String.blank
     
     var dateFormater: DateFormaterProtocol?
+    var patientAppointmentStatus: String = String.blank
+    var leadSource: String = String.blank
 
     override func viewDidLoad() {
         super.viewDidLoad()

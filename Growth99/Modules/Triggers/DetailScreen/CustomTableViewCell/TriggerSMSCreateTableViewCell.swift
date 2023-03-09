@@ -1,5 +1,5 @@
 //
-//  MassEmailandSMSDefaultTableViewCell.swift
+//  TriggerDefaultTableViewCell.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol MassEmailandSMSCreateCellDelegate: AnyObject {
-    func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath)
+protocol TriggerCreateCellDelegate: AnyObject {
+    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath)
 }
 
-class MassEmailandSMSCreateTableViewCell: UITableViewCell {
+class TriggerSMSCreateTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
@@ -30,7 +30,7 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var selectNetworkEmptyTextLabel: UILabel!
 
 
-    weak var delegate: MassEmailandSMSCreateCellDelegate?
+    weak var delegate: TriggerCreateCellDelegate?
     var indexPath = IndexPath()
     var networkTypeSelected: String = "sms"
 
