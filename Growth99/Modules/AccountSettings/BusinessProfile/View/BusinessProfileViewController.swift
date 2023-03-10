@@ -48,7 +48,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     
     @IBAction func imageIconbtnTapped(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
-        imagePickerController.allowsEditing = false //If you want edit option set "true"
+        imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext

@@ -28,13 +28,13 @@ protocol TriggerDetailViewModelProtocol {
 
 class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
     var delegate: TriggerDetailViewControlProtocol?
-    var TriggerDeatilList: TriggerDetailListModel?
-    var TriggerLeadTagsList: [TriggerTagListModel] = []
-    var TriggerPateintsTagsList: [TriggerTagListModel] = []
-    var TriggerSMSLeadCount: TriggerCountModel?
-    var TriggerSMSPatientCount: TriggerCountModel?
-    var TriggerSMSQuotaCount: TriggerEQuotaCountModel?
-    var TriggerSMSAuditQuotaCount: TriggerEQuotaCountModel?
+    var triggerDeatilList: TriggerDetailListModel?
+    var triggerLeadTagsList: [TriggerTagListModel] = []
+    var triggerPateintsTagsList: [TriggerTagListModel] = []
+    var triggerSMSLeadCount: TriggerCountModel?
+    var triggerSMSPatientCount: TriggerCountModel?
+    var triggerSMSQuotaCount: TriggerEQuotaCountModel?
+    var triggerSMSAuditQuotaCount: TriggerEQuotaCountModel?
     
     init(delegate: TriggerDetailViewControlProtocol? = nil) {
         self.delegate = delegate
@@ -46,7 +46,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: ApiUrl.leadTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[TriggerTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let TriggerLeadTagsList):
-                self.TriggerLeadTagsList = TriggerLeadTagsList
+                self.triggerLeadTagsList = TriggerLeadTagsList
                 self.delegate?.triggerLeadTagsDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -59,7 +59,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[TriggerTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.TriggerPateintsTagsList = pateintsTagList
+                self.triggerPateintsTagsList = pateintsTagList
                 self.delegate?.triggerPatientTagsDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -71,8 +71,8 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
     func getTriggerDetailList() {
         self.requestManager.request(forPath: ApiUrl.massEmailTrigerList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerDetailListModel, GrowthNetworkError>) in
             switch result {
-            case .success(let TriggerDeatilList):
-                self.TriggerDeatilList = TriggerDeatilList
+            case .success(let triggerDeatilList):
+                self.triggerDeatilList = triggerDeatilList
                 self.delegate?.triggerDetailDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -87,7 +87,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let TriggerSMSLeadStatus):
-                self.TriggerSMSLeadCount = TriggerSMSLeadStatus
+                self.triggerSMSLeadCount = TriggerSMSLeadStatus
                 self.delegate?.triggerSMSLeadCountDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -102,7 +102,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let TriggerSMSPatientStatus):
-                self.TriggerSMSPatientCount = TriggerSMSPatientStatus
+                self.triggerSMSPatientCount = TriggerSMSPatientStatus
                 self.delegate?.triggerSMSPatientCountDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -117,7 +117,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let TriggerSMSLeadStatus):
-                self.TriggerSMSLeadCount = TriggerSMSLeadStatus
+                self.triggerSMSLeadCount = TriggerSMSLeadStatus
                 self.delegate?.triggerSMSLeadStatusAllDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -132,7 +132,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let TriggerSMSPatientStatus):
-                self.TriggerSMSPatientCount = TriggerSMSPatientStatus
+                self.triggerSMSPatientCount = TriggerSMSPatientStatus
                 self.delegate?.triggerSMSPatientStatusAllDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -145,7 +145,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: ApiUrl.massEmailBusinessSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerEQuotaCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let TriggerSMSQuotaCount):
-                self.TriggerSMSQuotaCount = TriggerSMSQuotaCount
+                self.triggerSMSQuotaCount = TriggerSMSQuotaCount
                 self.delegate?.triggerSMSEQuotaCountDataReceived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -158,7 +158,7 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         self.requestManager.request(forPath: ApiUrl.massEmailAuditEmailSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerEQuotaCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let TriggerSMSAuditQuotaCount):
-                self.TriggerSMSAuditQuotaCount = TriggerSMSAuditQuotaCount
+                self.triggerSMSAuditQuotaCount = TriggerSMSAuditQuotaCount
                 self.delegate?.triggerSMSAuditQuotaCountDataReceived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -168,31 +168,31 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
     }
     
     var getTriggerDetailData: TriggerDetailListModel? {
-        return self.TriggerDeatilList
+        return self.triggerDeatilList
     }
     
     var getTriggerLeadTagsData: [TriggerTagListModel] {
-        return self.TriggerLeadTagsList
+        return self.triggerLeadTagsList
     }
     
     var getTriggerPateintsTagsData: [TriggerTagListModel] {
-        return self.TriggerPateintsTagsList
+        return self.triggerPateintsTagsList
     }
     
     var getTriggerSMSPatientCountData: TriggerCountModel? {
-        return self.TriggerSMSPatientCount
+        return self.triggerSMSPatientCount
     }
     
     var getTriggerSMSLeadCountData: TriggerCountModel? {
-        return self.TriggerSMSLeadCount
+        return self.triggerSMSLeadCount
     }
     
     var getTriggerSMSQuotaCountData: TriggerEQuotaCountModel? {
-        return self.TriggerSMSQuotaCount
+        return self.triggerSMSQuotaCount
     }
     
     var getTriggerSMSAuditQuotaCountData: TriggerEQuotaCountModel? {
-        return self.TriggerSMSAuditQuotaCount
+        return self.triggerSMSAuditQuotaCount
     }
     
     func localToServerWithDate(date: String) -> String {

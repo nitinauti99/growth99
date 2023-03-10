@@ -38,10 +38,11 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.leadTagSelectonButton.tag = indexPath.row
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerPatientActionTableViewCell", for: indexPath) as? TriggerPatientActionTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
+            cell.patientAppointmenTextLabel.text = statusArray[0]
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
@@ -64,7 +65,6 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func leadStatusMethod(sender: UIButton) {
-        let leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.components(separatedBy: " ").first
         }
@@ -74,9 +74,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
                 if selectedList.count == 0 {
                     leadCell.leadStatusTextLabel.text = "Select lead status"
-                    leadCell.leadStatusEmptyTextLabel.isHidden = false
                 } else {
-                    leadCell.leadStatusEmptyTextLabel.isHidden = true
                     leadCell.leadStatusTextLabel.text = selectedList.joined(separator: ", ")
                 }
             }
@@ -89,7 +87,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func leadSourceMethod(sender: UIButton) {
-        let leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook"]
+        let leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.components(separatedBy: " ").first
         }
@@ -116,7 +114,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
         }
         let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+        selectionMenu.setSelectedItems(items: selectedLeadTags) { [weak self] (selectedItem, index, selected, selectedList) in
             let cellIndexPath = IndexPath(item: row, section: 0)
             if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
                 if selectedList.count == 0 {
@@ -136,14 +134,13 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func patientAppointmentMethod(sender: UIButton) {
-        let statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: statusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.components(separatedBy: " ").first
         }
         let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             let cellIndexPath = IndexPath(item: row, section: 0)
-            if let patientCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerPatientActionTableViewCell {
+            if let patientCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerAppointmentActionTableViewCell {
                 if selectedList.count == 0 {
                     patientCell.patientAppointmenTextLabel.text = "Select patient appointment"
                 } else {
@@ -158,12 +155,12 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func networkSelectionSMSMethod(sender: UIButton) {
-        smsTemplatesArray = viewModel?.getTriggerDetailData?.smsTemplateDTOList?.filter({ $0.templateFor == "MassSMS"}) ?? []
+        smsTemplatesArray = viewModel?.getTriggerDetailData?.smsTemplateDTOList?.filter({ $0.templateFor == "Appointment"}) ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: smsTemplatesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name
         }
         let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+        selectionMenu.setSelectedItems(items: selectedSmsTemplates) { [weak self] (selectedItem, index, selected, selectedList) in
             let cellIndexPath = IndexPath(item: row, section: 0)
             if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
                 if selectedList.count == 0 {
@@ -188,7 +185,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.textLabel?.text = allClinics.name
         }
         let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+        selectionMenu.setSelectedItems(items: selectedEmailTemplates) { [weak self] (selectedItem, index, selected, selectedList) in
             let cellIndexPath = IndexPath(item: row, section: 0)
             if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
                 if selectedList.count == 0 {
@@ -211,7 +208,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
 extension TriggerDetailViewController: TriggerDefaultCellDelegate {
     func nextButtonDefault(cell: TriggerDefaultTableViewCell, index: IndexPath) {
         if cell.massEmailSMSTextField.text == "" {
-            cell.massEmailSMSTextField.showError(message: "Please enter Mass Email or SMS name")
+            cell.massEmailSMSTextField.showError(message: "Please enter trigger name")
         } else {
             let emailSMS = TriggerDetailModel(cellType: "Module", LastName: "")
             triggerDetailList.append(emailSMS)
@@ -274,12 +271,12 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
 
 extension TriggerDetailViewController: TriggerLeadCellDelegate {
     func nextButtonLead(cell: TriggerLeadActionTableViewCell, index: IndexPath) {
-        if cell.leadStatusTextLabel.text == "Select lead status" {
-            cell.leadStatusEmptyTextLabel.isHidden = false
-        } else {
-            cell.leadStatusEmptyTextLabel.isHidden = true
-            leadActionApiCallMethod(selectedCell: cell)
-        }
+        let emailSMS = TriggerDetailModel(cellType: "Both", LastName: "")
+        triggerDetailList.append(emailSMS)
+        triggerdDetailTableView.beginUpdates()
+        let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)
+        triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
+        triggerdDetailTableView.endUpdates()
     }
     
     func leadActionApiCallMethod(selectedCell: TriggerLeadActionTableViewCell) {
@@ -294,7 +291,7 @@ extension TriggerDetailViewController: TriggerLeadCellDelegate {
 }
 
 extension TriggerDetailViewController: TriggerPatientCellDelegate {
-    func nextButtonPatient(cell: TriggerPatientActionTableViewCell, index: IndexPath) {
+    func nextButtonPatient(cell: TriggerAppointmentActionTableViewCell, index: IndexPath) {
         let emailSMS = TriggerDetailModel(cellType: "Both", LastName: "")
         triggerDetailList.append(emailSMS)
         triggerdDetailTableView.beginUpdates()

@@ -239,12 +239,12 @@
 		189670B329BA6080003224ED /* TriggerDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A129BA6080003224ED /* TriggerDetailViewController+TableView.swift */; };
 		189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189670A229BA6080003224ED /* TriggerDetailViewController.storyboard */; };
 		189670B529BA6081003224ED /* TriggerTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */; };
-		189670B629BA6081003224ED /* TriggerPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A529BA6080003224ED /* TriggerPatientActionTableViewCell.xib */; };
+		189670B629BA6081003224ED /* TriggerAppointmentActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */; };
 		189670B729BA6081003224ED /* TriggerLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A629BA6080003224ED /* TriggerLeadActionTableViewCell.xib */; };
 		189670B829BA6081003224ED /* TriggerModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A729BA6080003224ED /* TriggerModuleTableViewCell.swift */; };
 		189670B929BA6081003224ED /* TriggerModuleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */; };
 		189670BA29BA6081003224ED /* TriggerDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A929BA6080003224ED /* TriggerDefaultTableViewCell.swift */; };
-		189670BB29BA6081003224ED /* TriggerPatientActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AA29BA6080003224ED /* TriggerPatientActionTableViewCell.swift */; };
+		189670BB29BA6081003224ED /* TriggerAppointmentActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AA29BA6080003224ED /* TriggerAppointmentActionTableViewCell.swift */; };
 		189670BC29BA6081003224ED /* TriggerTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AB29BA6080003224ED /* TriggerTimeTableViewCell.xib */; };
 		189670BD29BA6081003224ED /* TriggerSMSCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */; };
 		189670BE29BA6081003224ED /* TriggerSMSCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */; };
@@ -1028,12 +1028,12 @@
 		189670A129BA6080003224ED /* TriggerDetailViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TriggerDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		189670A229BA6080003224ED /* TriggerDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TriggerDetailViewController.storyboard; sourceTree = "<group>"; };
 		189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerTimeTableViewCell.swift; sourceTree = "<group>"; };
-		189670A529BA6080003224ED /* TriggerPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerPatientActionTableViewCell.xib; sourceTree = "<group>"; };
+		189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerAppointmentActionTableViewCell.xib; sourceTree = "<group>"; };
 		189670A629BA6080003224ED /* TriggerLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		189670A729BA6080003224ED /* TriggerModuleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerModuleTableViewCell.swift; sourceTree = "<group>"; };
 		189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerModuleTableViewCell.xib; sourceTree = "<group>"; };
 		189670A929BA6080003224ED /* TriggerDefaultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerDefaultTableViewCell.swift; sourceTree = "<group>"; };
-		189670AA29BA6080003224ED /* TriggerPatientActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerPatientActionTableViewCell.swift; sourceTree = "<group>"; };
+		189670AA29BA6080003224ED /* TriggerAppointmentActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerAppointmentActionTableViewCell.swift; sourceTree = "<group>"; };
 		189670AB29BA6080003224ED /* TriggerTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerTimeTableViewCell.xib; sourceTree = "<group>"; };
 		189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerSMSCreateTableViewCell.swift; sourceTree = "<group>"; };
 		189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerSMSCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -2829,8 +2829,8 @@
 				189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */,
 				189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */,
 				189670A629BA6080003224ED /* TriggerLeadActionTableViewCell.xib */,
-				189670AA29BA6080003224ED /* TriggerPatientActionTableViewCell.swift */,
-				189670A529BA6080003224ED /* TriggerPatientActionTableViewCell.xib */,
+				189670AA29BA6080003224ED /* TriggerAppointmentActionTableViewCell.swift */,
+				189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */,
 				189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */,
 				189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */,
 				189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */,
@@ -5206,8 +5206,8 @@
 			isa = PBXGroup;
 			children = (
 				84088BB82977E7F90060855E /* Model */,
-				84088BBA2977E8260060855E /* ViewModel */,
 				84088BB92977E80D0060855E /* View */,
+				84088BBA2977E8260060855E /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -6120,7 +6120,7 @@
 				013A4FDE29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib in Resources */,
 				01152E3A29B3C64000B24627 /* CombineTimeLineViewController.storyboard in Resources */,
 				013A4FD929B4E3FA00CA24B0 /* TextTypeTableViewCell.xib in Resources */,
-				189670B629BA6081003224ED /* TriggerPatientActionTableViewCell.xib in Resources */,
+				189670B629BA6081003224ED /* TriggerAppointmentActionTableViewCell.xib in Resources */,
 				013A4FC029B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib in Resources */,
 				01BBA9E129AB571F006A5DB8 /* NotificationListTableViewCell.xib in Resources */,
 				013A4FE229B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
@@ -6780,7 +6780,7 @@
 				01684C1129BAE89100DE1041 /* ChatSessionListViewController.swift in Sources */,
 				3947A8FB299677A3000CA2EB /* CalenderViewModel.swift in Sources */,
 				013A4F9C29B4B96300CA24B0 /* LeadHistoryListTableViewCell.swift in Sources */,
-				189670BB29BA6081003224ED /* TriggerPatientActionTableViewCell.swift in Sources */,
+				189670BB29BA6081003224ED /* TriggerAppointmentActionTableViewCell.swift in Sources */,
 				8490350E2995677F00556D47 /* ConsentsTemplateListViewModel.swift in Sources */,
 				849D3AF02997CC72003E856A /* FontAwesomeImageRepresentable.swift in Sources */,
 				398F90F5298ECB8700DB96E4 /* IQKeyboardManager+Position.swift in Sources */,

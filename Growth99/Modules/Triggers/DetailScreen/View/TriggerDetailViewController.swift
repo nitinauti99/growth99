@@ -46,12 +46,16 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var dateFormater: DateFormaterProtocol?
     var patientAppointmentStatus: String = String.blank
     var leadSource: String = String.blank
+    var statusArray: [String] = []
+    var leadStatusArray: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
         dateFormater = DateFormater()
+        statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
         triggerDetailList.append(emailSMS)
         viewModel = TriggerDetailViewModel(delegate: self)
@@ -135,7 +139,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerSMSCreateTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerLeadActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerLeadActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerModuleTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerModuleTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "TriggerPatientActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerPatientActionTableViewCell")
+        self.triggerdDetailTableView.register(UINib(nibName: "TriggerAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerAppointmentActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerTimeTableViewCell")
     }
 }
