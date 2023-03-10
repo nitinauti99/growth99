@@ -30,10 +30,5 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let formDetailContainerView = FormDetailContainerView.viewController()
-//        formDetailContainerView.workflowFormId = viewModel?.FormDataAtIndex(index: indexPath.row)?.id ?? 0
-//        self.navigationController?.pushViewController(formDetailContainerView, animated: true)
-    }
 }
 

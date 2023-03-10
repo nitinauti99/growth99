@@ -2172,10 +2172,10 @@
 		01D7AAF2299D59CF00821274 /* FormDetail */ = {
 			isa = PBXGroup;
 			children = (
-				01D7AAF5299D59EA00821274 /* Model */,
-				01D7AAF3299D59D800821274 /* view */,
-				01D7AAF4299D59E100821274 /* ViewModel */,
 				01D7AAF6299D5A4200821274 /* ContainerView */,
+				01D7AAF5299D59EA00821274 /* Model */,
+				01D7AAF4299D59E100821274 /* ViewModel */,
+				01D7AAF3299D59D800821274 /* view */,
 			);
 			path = FormDetail;
 			sourceTree = "<group>";
@@ -5027,8 +5027,8 @@
 			isa = PBXGroup;
 			children = (
 				84088BB82977E7F90060855E /* Model */,
-				84088BB92977E80D0060855E /* View */,
 				84088BBA2977E8260060855E /* ViewModel */,
+				84088BB92977E80D0060855E /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";

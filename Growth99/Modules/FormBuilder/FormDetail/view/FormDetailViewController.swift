@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
 protocol FormDetailViewControllerProtocol {
     func FormsDataRecived()
@@ -14,8 +15,9 @@ protocol FormDetailViewControllerProtocol {
     func formsQuestionareDataRecived()
     func updatedFormDataSuccessfully()
     func questionRemovedSuccefully(mrssage: String)
+    func recevedImageData()
 }
-class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol, FormDetailTableViewCellDelegate {
+class FormDetailViewController: UIViewController, FormDetailViewControllerProtocol, FormDetailTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     @IBOutlet weak var Make_Public: UIButton!
     @IBOutlet weak var Enable_ModernUI: UIButton!
@@ -31,15 +33,18 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     @IBOutlet weak var Show_Thank_page_URL_ContactForm_TextView_SepraterHight: NSLayoutConstraint!
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView: CustomTextField!
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView_SepraterHight: NSLayoutConstraint!
+  
     @IBOutlet weak var backroundImageSelctionLBI: UILabel!
     @IBOutlet weak var backroundImageSelctionButton: UIButton!
+    @IBOutlet weak var backroundImageSelctionHight: NSLayoutConstraint!
     @IBOutlet weak var backroundImage: UIImageView!
+    
     @IBOutlet weak var questionnaireName: CustomTextField!
     @IBOutlet weak var buttonText: CustomTextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var CancelButton: UIButton!
     @IBOutlet private weak var subView: UIView!
-    
+
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var workingScrollViewHight: NSLayoutConstraint!
@@ -114,8 +119,29 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
 
     func formsQuestionareDataRecived(){
         self.setUPVale()
+        let item = viewModel?.getFormQuestionnaireData
+        
+        if item?.enableModernUi == true {
+            if item?.backgroundImageUrl != nil {
+                guard let url = URL(string: item?.backgroundImageUrl ?? "") else {
+                    return
+                }
+                let data = try? Data(contentsOf: url)
+                self.backroundImageSelctionButton.isHidden = true
+                self.backroundImageSelctionHight.constant = 0
+                DispatchQueue.main.async {
+                    self.backroundImage.image = UIImage(data: data ?? Data())
+                }
+            }
+        }
         viewModel?.getFormDetail(questionId: questionId)
     }
+   
+    func recevedImageData(){
+        self.view?.HideSpinner()
+        //self.backroundImage.image = 
+    }
+
 
     func setUPVale() {
         let item = viewModel?.getFormQuestionnaireData
@@ -173,6 +199,41 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
         }
         
     }
+    
+    @IBAction func addBackroundImage(sender: UIButton){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = false //If you want edit option set "true"
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        present(imagePickerController, animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        self.backroundImage.image  = selectedImage
+        self.backroundImageSelctionButton.isHidden = true
+        self.backroundImageSelctionHight.constant = 0
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func editBackroundImage(sender: UIButton){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = false //If you want edit option set "true"
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteBackroundImage(sender: UIButton){
+        
+    }
+    
     
     func scrollViewHeight() {
         workingScrollViewHight.constant = tableViewHeight + 1000 + 350

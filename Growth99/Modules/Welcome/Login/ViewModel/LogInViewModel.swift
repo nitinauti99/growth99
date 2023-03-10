@@ -78,12 +78,15 @@ class LogInViewModel {
                 self.setUpUserData()
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                if error.response?.statusCode == 401 {
+                    self.delegate?.errorReceived(error: "Authentication failed")
+                }else{
+                    self.delegate?.errorReceived(error: error.localizedDescription)
+                }
                 print("Error while performing request \(error)")
             }
         }
     }
-    
     
     func setUpUserData() {
         self.user.firstName = LogInData?.firstName

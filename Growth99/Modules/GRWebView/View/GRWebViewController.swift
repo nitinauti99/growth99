@@ -26,5 +26,6 @@ class GRWebViewController: UIViewController, WKNavigationDelegate {
         let request = URLRequest(url: webViewUrl)
         webView.load(request)
         webView.allowsBackForwardNavigationGestures = true
+        webView.isExclusiveTouch = true
     }
 }
