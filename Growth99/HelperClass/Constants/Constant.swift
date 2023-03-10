@@ -8,7 +8,6 @@
 import Foundation
 
 struct Constant {
-    
     struct ErrorMessage {
         static let emailEmptyError = "Email is required"
         static let emailInvalidError = "Email is Invalid"
@@ -41,7 +40,6 @@ struct Constant {
         static let termsConditionsUrl = "https://growth99.com/terms-and-conditions/"
         static let privacyPolicyUrl = "https://growth99.com/privacy-policy/"
         static let privacyText = "I agree to Growth99 Terms & Conditions and Privacy Policy"
-
     }
     
     /// Required  Server status from requests url configured for what ever is needed
@@ -174,6 +172,12 @@ struct Constant {
         static let categoryNameRequired = "Category Name is required."
         static let leadListTitle = "Lead Dashboard"
         static let deletedLeadListTitle = "Deleted Leads"
+    }
+    
+    struct Regex {
+        static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        static let password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!])[a-zA-Z0-9@$!]{8,}$"
+        static let phone = "^[1-9][0-9]{9}$"
     }
     
     struct CreateLead {

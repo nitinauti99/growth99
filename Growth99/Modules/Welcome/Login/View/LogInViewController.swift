@@ -38,8 +38,8 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.emailTextField.text = "nitinauti99@gmail.com"
-        self.passwordTextField.text = "Password13@!"
+        self.emailTextField.text = "harsha.shanir@yopmail.com"
+        self.passwordTextField.text = "Shanir@123"
     }
     
     private func setupTexFieldValidstion() {
@@ -68,6 +68,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
             self.view.ShowSpinner()
             viewModel?.getBusinessInfo(Xtenantid: data[0].tenantId ?? 0)
         }else{
+            self.view.HideSpinner()
             let BussinessSelectionVC = UIStoryboard(name: "BussinessSelectionViewController", bundle: nil).instantiateViewController(withIdentifier: "BussinessSelectionViewController") as! BussinessSelectionViewController
             BussinessSelectionVC.bussinessSelectionData = viewModel?.getBussinessSelcetionData ?? []
             BussinessSelectionVC.modalPresentationStyle = .overFullScreen

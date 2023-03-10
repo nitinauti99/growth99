@@ -131,6 +131,7 @@ struct EndPoints {
     static let massEmailAuditEmailSMSQuota = "/api/v1/audit/email-sms/count"
     static let massEmailLeadStatus = "/api/v1/leads/count?"
     static let massEmailAppointmentStatus = "/api/v1/patients/count?"
+    static let chatSessions = "/api/chatsessions"
 }
 
 struct ApiUrl {
@@ -260,4 +261,6 @@ struct ApiUrl {
     static let massEmailAuditEmailSMSQuota = EndPoints.baseURL.appending(EndPoints.massEmailAuditEmailSMSQuota)
     static let massEmailLeadStatus = EndPoints.baseURL.appending(EndPoints.massEmailLeadStatus)
     static let massEmailAppointmentStatus = EndPoints.baseURL.appending(EndPoints.massEmailAppointmentStatus)
+    static let chatSessions = EndPoints.baseURL.appending(EndPoints.chatSessions)
 }
+

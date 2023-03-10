@@ -16,6 +16,8 @@ class BussinessSelectionViewController: UIViewController {
     
     @IBOutlet weak var BussinessSelectionTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var closeButton: UIButton!
+
     
     var isSearch : Bool = false
     var bussinessSelectionData = [BussinessSelectionModel]()
@@ -30,6 +32,10 @@ class BussinessSelectionViewController: UIViewController {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.users
         self.BussinessSelectionTableView.reloadData()
+    }
+    
+    @IBAction func closeView(sender: UIButton) {
+        self.dismiss(animated: true)
     }
     
     func registerTableView() {

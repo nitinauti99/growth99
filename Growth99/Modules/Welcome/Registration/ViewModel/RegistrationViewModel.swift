@@ -58,10 +58,8 @@ class RegistrationViewModel {
 extension RegistrationViewModel : RegistrationViewModelProtocol {
    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
+        let phone = NSPredicate(format:"SELF MATCHES %@", Constant.Regex.phone)
+        return phone.evaluate(with: phoneNumber)
     }
     
     func isValidPasswordAndReapeatPassword(_ password: String, _ repeatPassword: String) -> Bool {
@@ -72,16 +70,12 @@ extension RegistrationViewModel : RegistrationViewModelProtocol {
     }
    
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", Constant.Regex.email)
         return emailPred.evaluate(with: email)
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
-        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-
+        let passwordPred = NSPredicate(format:"SELF MATCHES %@", Constant.Regex.password)
         if passwordPred.evaluate(with: password) && password.count >= 8 {
             return true
         }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat Session List View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ChatSessionListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ChatSessionListViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaQ-aS-Z47">
+                                <rect key="frame" x="8" y="57" width="362" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="k4H-7q-Blo"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="ej1-4s-Rce"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3n8-X7-VMh">
+                                <rect key="frame" x="0.0" y="127" width="390" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="weA-xc-R0d"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="9Rr-gZ-Fdd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3n8-X7-VMh" secondAttribute="trailing" id="5zn-BP-24h"/>
+                            <constraint firstItem="3n8-X7-VMh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ECp-9N-FjR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QaQ-aS-Z47" secondAttribute="trailing" constant="20" id="PNt-c8-ibC"/>
+                            <constraint firstItem="QaQ-aS-Z47" firstAttribute="leadingMargin" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="Pvt-AZ-1lQ"/>
+                            <constraint firstAttribute="bottom" secondItem="3n8-X7-VMh" secondAttribute="bottom" id="aPx-bg-R3T"/>
+                            <constraint firstItem="QaQ-aS-Z47" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="gsN-vQ-I1r"/>
+                            <constraint firstItem="3n8-X7-VMh" firstAttribute="top" secondItem="QaQ-aS-Z47" secondAttribute="bottom" constant="10" id="n0C-vw-tPu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="QaQ-aS-Z47" id="1z7-oD-ooy"/>
+                        <outlet property="tableView" destination="3n8-X7-VMh" id="n3N-RB-nzb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40" y="-2.1327014218009479"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

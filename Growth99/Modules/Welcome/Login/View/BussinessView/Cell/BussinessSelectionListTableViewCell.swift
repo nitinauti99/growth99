@@ -16,11 +16,13 @@ class BussinessSelectionListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
         self.loginButton.layer.cornerRadius = 12
         self.loginButton.clipsToBounds = true
+        self.bussinessImage.layer.cornerRadius = 40
+        self.bussinessImage.clipsToBounds = true
+        self.bussinessImage.createBorderForView(redius: 40, width: 1)
     }
 
     @IBAction func loginButtonAction(sender: UIButton) {

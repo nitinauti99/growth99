@@ -11,6 +11,7 @@ protocol LogInViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
     func isValidPassword(_ password: String) -> Bool
     func loginValidate(email: String, password: String)
+    func getImageData(url: String)
     func getBusinessInfo(Xtenantid: Int)
     func getBussinessSelection(email: String)
     var getBussinessSelcetionData: [BussinessSelectionModel] { get}
@@ -88,6 +89,19 @@ class LogInViewModel {
         }
     }
     
+    func getImageData(url: String) {
+        self.requestManager.request(forPath: url, method: .GET) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
+                self.delegate?.LoaginDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription )
+            }
+        }
+    }
+    
     func setUpUserData() {
         self.user.firstName = LogInData?.firstName
         self.user.lastName = LogInData?.lastName
@@ -107,15 +121,12 @@ extension LogInViewModel: LogInViewModelProtocol {
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", Constant.Regex.email)
         return emailPred.evaluate(with: email)
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
-        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-        
+        let passwordPred = NSPredicate(format:"SELF MATCHES %@", Constant.Regex.password)
         if passwordPred.evaluate(with: password) && password.count >= 8 {
             return true
         }
