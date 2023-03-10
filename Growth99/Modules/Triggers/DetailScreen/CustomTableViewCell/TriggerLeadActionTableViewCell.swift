@@ -1,5 +1,5 @@
 //
-//  MassEmailandSMSDefaultTableViewCell.swift
+//  TriggerDefaultTableViewCell.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol MassEmailandSMSLeadCellDelegate: AnyObject {
-    func nextButtonLead(cell: MassEmailandSMSLeadActionTableViewCell, index: IndexPath)
+protocol TriggerLeadCellDelegate: AnyObject {
+    func nextButtonLead(cell: TriggerLeadActionTableViewCell, index: IndexPath)
 }
 
-class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
+class TriggerLeadActionTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var leadStatusSelectonButton: UIButton!
-    @IBOutlet weak var leadSourceSelectonButton: UIButton!
+    @IBOutlet weak var leadSourceTriggerSelectonButton: UIButton!
     @IBOutlet weak var leadTagSelectonButton: UIButton!
     @IBOutlet weak var leadStatusView: UIView!
     @IBOutlet weak var leadSourceView: UIView!
@@ -27,7 +27,7 @@ class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leadStatusEmptyTextLabel: UILabel!
 
-    weak var delegate: MassEmailandSMSLeadCellDelegate?
+    weak var delegate: TriggerLeadCellDelegate?
     var indexPath = IndexPath()
     
     override func awakeFromNib() {

@@ -15,15 +15,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MassEmailandSMSPatientActionTableViewCell" id="b4N-gw-dU5" customClass="MassEmailandSMSPatientActionTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="441"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TriggerLeadActionTableViewCell" id="b4N-gw-dU5" customClass="TriggerLeadActionTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b4N-gw-dU5" id="1HD-BI-YrH">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="441"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDQ-bO-Jai">
-                        <rect key="frame" x="10" y="10" width="300" height="421"/>
+                        <rect key="frame" x="10" y="10" width="300" height="420"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFA-Hx-Tyc">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -43,10 +43,10 @@
                                     <constraint firstAttribute="height" constant="50" id="y2g-4E-weH"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjP-8s-JrT" userLabel="userName">
-                                <rect key="frame" x="20" y="65" width="260" height="20.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjP-8s-JrT" userLabel="userName">
+                                <rect key="frame" x="20" y="65" width="260" height="21"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Patient status">
+                                    <fragment content="Lead status">
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="NSColor" red="0.12941" green="0.14510000000000001" blue="0.16078000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,8 +79,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhi-8Y-rUP">
-                                <rect key="frame" x="20" y="95.666666666666671" width="260" height="45.000000000000014"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhi-8Y-rUP">
+                                <rect key="frame" x="20" y="96" width="260" height="45"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6g-Kt-NwK">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
@@ -91,7 +91,7 @@
                                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select patient status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTW-qq-dSE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select lead status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTW-qq-dSE">
                                                 <rect key="frame" x="10" y="3" width="215" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,14 +140,14 @@
                                     <constraint firstItem="f6g-Kt-NwK" firstAttribute="leading" secondItem="rhi-8Y-rUP" secondAttribute="leading" id="l5W-Bb-eOn"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please select patient status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKs-VF-Tdg" userLabel="password">
-                                <rect key="frame" x="20" y="145.66666666666666" width="260" height="14"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Please select lead status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKs-VF-Tdg" userLabel="password">
+                                <rect key="frame" x="20" y="146" width="260" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Rs-8D6">
-                                <rect key="frame" x="20" y="361" width="110" height="40"/>
+                                <rect key="frame" x="20" y="360" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="Q9I-Qw-bN3"/>
@@ -163,17 +163,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="eHZ-Jz-qc0"/>
+                                    <action selector="nextButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="Dwx-SR-qyg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Patient Tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1h6-tt-muE" userLabel="userName">
-                                <rect key="frame" x="20" y="169.66666666666666" width="260" height="20.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Lead Source" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1h6-tt-muE" userLabel="userName">
+                                <rect key="frame" x="20" y="170" width="260" height="21"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <color key="textColor" red="0.12941" green="0.14510000000000001" blue="0.16078000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zR9-Ki-q60">
-                                <rect key="frame" x="20" y="200.33333333333334" width="260" height="45"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zR9-Ki-q60">
+                                <rect key="frame" x="20" y="201" width="260" height="45"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXB-vA-aDQ">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
@@ -184,7 +184,7 @@
                                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select patient tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M33-Uq-uBt">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select lead source" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M33-Uq-uBt">
                                                 <rect key="frame" x="10" y="3" width="215" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,14 +233,14 @@
                                     <constraint firstAttribute="bottom" secondItem="PXB-vA-aDQ" secondAttribute="bottom" constant="7" id="rrB-Vr-mrO"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Add Appointment Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qh-qa-XXI" userLabel="userName">
-                                <rect key="frame" x="20" y="255.33333333333329" width="260" height="20.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Lead Tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qh-qa-XXI" userLabel="userName">
+                                <rect key="frame" x="20" y="256" width="260" height="20.666666666666629"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <color key="textColor" red="0.12941" green="0.14510000000000001" blue="0.16078000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JI-6U-MFd">
-                                <rect key="frame" x="20" y="286" width="260" height="45"/>
+                                <rect key="frame" x="20" y="285" width="260" height="45"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duk-jk-efK">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
@@ -251,7 +251,7 @@
                                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select appointment status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-jN-fpV">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select lead tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-jN-fpV">
                                                 <rect key="frame" x="10" y="3" width="215" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,7 +305,6 @@
                         <constraints>
                             <constraint firstItem="rhi-8Y-rUP" firstAttribute="top" secondItem="GjP-8s-JrT" secondAttribute="bottom" constant="10" id="4Ob-af-PtJ"/>
                             <constraint firstItem="3qh-qa-XXI" firstAttribute="trailing" secondItem="1h6-tt-muE" secondAttribute="trailing" id="6N0-SU-OmV"/>
-                            <constraint firstAttribute="bottom" secondItem="adg-Rs-8D6" secondAttribute="bottom" constant="20" id="7NM-jA-v47"/>
                             <constraint firstItem="1h6-tt-muE" firstAttribute="trailing" secondItem="GjP-8s-JrT" secondAttribute="trailing" id="84U-WR-7II"/>
                             <constraint firstItem="zR9-Ki-q60" firstAttribute="leading" secondItem="1h6-tt-muE" secondAttribute="leading" id="8F1-aK-nVv"/>
                             <constraint firstItem="adg-Rs-8D6" firstAttribute="top" secondItem="7JI-6U-MFd" secondAttribute="bottom" constant="30" id="9RA-vT-08Z"/>
@@ -314,10 +313,12 @@
                             <constraint firstItem="1h6-tt-muE" firstAttribute="top" secondItem="zKs-VF-Tdg" secondAttribute="bottom" constant="10" id="BNY-6O-n9r"/>
                             <constraint firstItem="zKs-VF-Tdg" firstAttribute="leading" secondItem="rhi-8Y-rUP" secondAttribute="leading" id="G7o-hl-IrE"/>
                             <constraint firstItem="gFA-Hx-Tyc" firstAttribute="leading" secondItem="wDQ-bO-Jai" secondAttribute="leading" id="GqI-wJ-7au"/>
+                            <constraint firstAttribute="bottom" secondItem="adg-Rs-8D6" secondAttribute="bottom" constant="20" id="HNF-Hd-Mks"/>
                             <constraint firstItem="7JI-6U-MFd" firstAttribute="trailing" secondItem="3qh-qa-XXI" secondAttribute="trailing" id="Lc0-aW-exv"/>
                             <constraint firstItem="GjP-8s-JrT" firstAttribute="leading" secondItem="wDQ-bO-Jai" secondAttribute="leading" constant="20" id="LpF-bm-7lh"/>
                             <constraint firstItem="7JI-6U-MFd" firstAttribute="leading" secondItem="3qh-qa-XXI" secondAttribute="leading" id="M7O-PT-TgG"/>
                             <constraint firstItem="rhi-8Y-rUP" firstAttribute="leading" secondItem="GjP-8s-JrT" secondAttribute="leading" id="Vt2-8n-WwF"/>
+                            <constraint firstAttribute="bottom" secondItem="adg-Rs-8D6" secondAttribute="bottom" constant="20" id="WTV-ak-wso"/>
                             <constraint firstItem="zR9-Ki-q60" firstAttribute="trailing" secondItem="1h6-tt-muE" secondAttribute="trailing" id="cfj-pp-48j"/>
                             <constraint firstItem="zR9-Ki-q60" firstAttribute="top" secondItem="1h6-tt-muE" secondAttribute="bottom" constant="10" id="h4U-G1-BeH"/>
                             <constraint firstItem="gFA-Hx-Tyc" firstAttribute="top" secondItem="wDQ-bO-Jai" secondAttribute="top" id="hNI-E6-L29"/>
@@ -349,18 +350,18 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="patientAppointmenTextLabel" destination="DNu-jN-fpV" id="Vlq-93-Cio"/>
-                <outlet property="patientAppointmentButton" destination="B5k-Nq-7l7" id="SpV-UV-lDZ"/>
-                <outlet property="patientAppointmentView" destination="7JI-6U-MFd" id="CWD-QD-rW1"/>
-                <outlet property="patientStatusEmptyTextLabel" destination="zKs-VF-Tdg" id="Xxo-iO-3Eo"/>
-                <outlet property="patientStatusSelectonButton" destination="Q5s-bg-gj7" id="cFl-Pn-rZk"/>
-                <outlet property="patientStatusTextLabel" destination="HTW-qq-dSE" id="e8V-vk-VJU"/>
-                <outlet property="patientStatusView" destination="rhi-8Y-rUP" id="QXx-XG-ASo"/>
-                <outlet property="patientTagSelectonButton" destination="2cZ-26-1IP" id="jPm-jy-JXq"/>
-                <outlet property="patientTagTextLabel" destination="M33-Uq-uBt" id="CWX-aN-oZE"/>
-                <outlet property="patientTagView" destination="zR9-Ki-q60" id="sPH-x7-cRj"/>
-                <outlet property="subView" destination="wDQ-bO-Jai" id="5Ic-Ug-g77"/>
-                <outlet property="subViewInside" destination="gFA-Hx-Tyc" id="X7A-ZS-KYl"/>
+                <outlet property="leadSourceTextLabel" destination="M33-Uq-uBt" id="83Q-PP-ijd"/>
+                <outlet property="leadSourceTriggerSelectonButton" destination="2cZ-26-1IP" id="qyD-Bu-RVU"/>
+                <outlet property="leadSourceView" destination="zR9-Ki-q60" id="EBi-a9-di8"/>
+                <outlet property="leadStatusEmptyTextLabel" destination="zKs-VF-Tdg" id="7qW-Pt-u1x"/>
+                <outlet property="leadStatusSelectonButton" destination="Q5s-bg-gj7" id="3tG-9r-jE6"/>
+                <outlet property="leadStatusTextLabel" destination="HTW-qq-dSE" id="nSQ-GA-0TA"/>
+                <outlet property="leadStatusView" destination="rhi-8Y-rUP" id="O1W-uE-gtb"/>
+                <outlet property="leadTagSelectonButton" destination="B5k-Nq-7l7" id="zTt-nh-kLs"/>
+                <outlet property="leadTagTextLabel" destination="DNu-jN-fpV" id="PPp-CB-OIK"/>
+                <outlet property="leadTagView" destination="7JI-6U-MFd" id="7am-To-aaM"/>
+                <outlet property="subView" destination="wDQ-bO-Jai" id="vf5-P6-65G"/>
+                <outlet property="subViewInside" destination="wDQ-bO-Jai" id="Gru-p0-Toc"/>
             </connections>
             <point key="canvasLocation" x="209.59999999999999" y="187.68472906403943"/>
         </tableViewCell>

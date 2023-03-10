@@ -25,6 +25,8 @@ class MassEmailandSMSPatientActionTableViewCell: UITableViewCell {
     @IBOutlet weak var patientTagTextLabel: UILabel!
     @IBOutlet weak var patientAppointmenTextLabel: UILabel!
 
+    @IBOutlet weak var patientStatusEmptyTextLabel: UILabel!
+
     weak var delegate: MassEmailandSMSPatientCellDelegate?
     var indexPath = IndexPath()
     
