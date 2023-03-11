@@ -60,7 +60,7 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -129,7 +129,7 @@
     </objects>
     <designables>
         <designable name="DeW-1k-1ar">
-            <size key="intrinsicContentSize" width="90" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="98" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

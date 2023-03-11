@@ -61,3 +61,13 @@ struct TriggerEQuotaCountModel : Codable {
     let emailCount : Int?
     let tenantId : Int?
 }
+
+struct LandingPageNamesModel : Codable, Equatable {
+    let name : String?
+    let id : Int?
+}
+
+struct TriggerQuestionnaireModel : Codable, Equatable {
+    let name : String?
+    let id : Int?
+}

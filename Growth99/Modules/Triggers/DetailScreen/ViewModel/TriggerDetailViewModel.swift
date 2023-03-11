@@ -8,65 +8,30 @@
 import Foundation
 protocol TriggerDetailViewModelProtocol {
     func getTriggerDetailList()
-    func getTriggerLeadTagsList()
-    func getTriggerPateintsTagsList()
-    func getTriggerLeadStatusMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String)
-    func getTriggerPatientStatusMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String)
-    func getTriggerBusinessSMSQuotaMethod()
-    func getTriggerAuditEmailQuotaMethod()
-    func getTriggerLeadStatusAllMethod()
-    func getTriggerPatientStatusAllMethod()
+    func getLandingPageNames()
+    func getTriggerQuestionnaires()
+    func getTriggerLeadSourceUrl()
+    
     var  getTriggerDetailData: TriggerDetailListModel? { get }
-    var  getTriggerLeadTagsData: [TriggerTagListModel] { get }
-    var  getTriggerPateintsTagsData: [TriggerTagListModel] { get }
-    var  getTriggerSMSPatientCountData: TriggerCountModel? { get }
-    var  getTriggerSMSLeadCountData: TriggerCountModel? { get }
-    var  getTriggerSMSQuotaCountData: TriggerEQuotaCountModel? { get }
-    var  getTriggerSMSAuditQuotaCountData: TriggerEQuotaCountModel? { get }
+    var  getLandingPageNamesData: [LandingPageNamesModel] { get }
+    var  getTriggerQuestionnairesData: [TriggerQuestionnaireModel] { get }
+    var  getTriggerLeadSourceUrlData: [LeadSourceUrlListModel] { get }
+    
     func localToServerWithDate(date: String) -> String
 }
 
 class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
     var delegate: TriggerDetailViewControlProtocol?
     var triggerDeatilList: TriggerDetailListModel?
-    var triggerLeadTagsList: [TriggerTagListModel] = []
-    var triggerPateintsTagsList: [TriggerTagListModel] = []
-    var triggerSMSLeadCount: TriggerCountModel?
-    var triggerSMSPatientCount: TriggerCountModel?
-    var triggerSMSQuotaCount: TriggerEQuotaCountModel?
-    var triggerSMSAuditQuotaCount: TriggerEQuotaCountModel?
+    var triggerLandingPageNames: [LandingPageNamesModel] = []
+    var triggerQuestionnaires: [TriggerQuestionnaireModel] = []
+    var triggerLeadSourceUrl: [LeadSourceUrlListModel] = []
     
     init(delegate: TriggerDetailViewControlProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
-    
-    func getTriggerLeadTagsList() {
-        self.requestManager.request(forPath: ApiUrl.leadTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[TriggerTagListModel], GrowthNetworkError>) in
-            switch result {
-            case .success(let TriggerLeadTagsList):
-                self.triggerLeadTagsList = TriggerLeadTagsList
-                self.delegate?.triggerLeadTagsDataRecived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
-    
-    func getTriggerPateintsTagsList() {
-        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[TriggerTagListModel], GrowthNetworkError>) in
-            switch result {
-            case .success(let pateintsTagList):
-                self.triggerPateintsTagsList = pateintsTagList
-                self.delegate?.triggerPatientTagsDataRecived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
     
     func getTriggerDetailList() {
         self.requestManager.request(forPath: ApiUrl.massEmailTrigerList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerDetailListModel, GrowthNetworkError>) in
@@ -81,14 +46,13 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         }
     }
     
-    func getTriggerLeadStatusMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String) {
-        let appendParam = "leadStatus=\(leadStatus)&moduleName=\(moduleName)&leadTagIds=\(leadTagIds)&source=\(source)"
-        let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
+    func getTriggerLeadSourceUrl() {
+        let finaleUrl = ApiUrl.getLeadsourceurls
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[LeadSourceUrlListModel], GrowthNetworkError>) in
             switch result {
-            case .success(let TriggerSMSLeadStatus):
-                self.triggerSMSLeadCount = TriggerSMSLeadStatus
-                self.delegate?.triggerSMSLeadCountDataRecived()
+            case .success(let triggerLeadSourceUrl):
+                self.triggerLeadSourceUrl = triggerLeadSourceUrl
+                self.delegate?.triggerLeadSourceUrlDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -96,14 +60,12 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         }
     }
     
-    func getTriggerPatientStatusMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String) {
-        let appendParam = "appointmentStatus=\(appointmentStatus)&moduleName=\(moduleName)&patientTagIds=\(patientTagIds)&patientStatus=\(patientStatus)"
-        let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
+    func getLandingPageNames() {
+        self.requestManager.request(forPath: ApiUrl.triggerLandingPageNames, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[LandingPageNamesModel], GrowthNetworkError>) in
             switch result {
-            case .success(let TriggerSMSPatientStatus):
-                self.triggerSMSPatientCount = TriggerSMSPatientStatus
-                self.delegate?.triggerSMSPatientCountDataRecived()
+            case .success(let triggerLandingPageNames):
+                self.triggerLandingPageNames = triggerLandingPageNames
+                self.delegate?.triggerLandingPageNamesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -111,14 +73,12 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         }
     }
     
-    func getTriggerLeadStatusAllMethod() {
-        let appendParam = "leadStatus=All&moduleName=All"
-        let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
+    func getTriggerQuestionnaires() {
+        self.requestManager.request(forPath: ApiUrl.triggerQuestionnaire, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[TriggerQuestionnaireModel], GrowthNetworkError>) in
             switch result {
-            case .success(let TriggerSMSLeadStatus):
-                self.triggerSMSLeadCount = TriggerSMSLeadStatus
-                self.delegate?.triggerSMSLeadStatusAllDataRecived()
+            case .success(let triggerQuestionnaires):
+                self.triggerQuestionnaires = triggerQuestionnaires
+                self.delegate?.triggerQuestionnairesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -126,73 +86,21 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         }
     }
     
-    func getTriggerPatientStatusAllMethod() {
-        let appendParam = "appointmentStatus=All&moduleName=All&patientTagIds=&patientStatus="
-        let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)")
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerCountModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let TriggerSMSPatientStatus):
-                self.triggerSMSPatientCount = TriggerSMSPatientStatus
-                self.delegate?.triggerSMSPatientStatusAllDataRecived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
-    
-    func getTriggerBusinessSMSQuotaMethod() {
-        self.requestManager.request(forPath: ApiUrl.massEmailBusinessSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerEQuotaCountModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let TriggerSMSQuotaCount):
-                self.triggerSMSQuotaCount = TriggerSMSQuotaCount
-                self.delegate?.triggerSMSEQuotaCountDataReceived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
-    
-    func getTriggerAuditEmailQuotaMethod() {
-        self.requestManager.request(forPath: ApiUrl.massEmailAuditEmailSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerEQuotaCountModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let TriggerSMSAuditQuotaCount):
-                self.triggerSMSAuditQuotaCount = TriggerSMSAuditQuotaCount
-                self.delegate?.triggerSMSAuditQuotaCountDataReceived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
     
     var getTriggerDetailData: TriggerDetailListModel? {
         return self.triggerDeatilList
     }
     
-    var getTriggerLeadTagsData: [TriggerTagListModel] {
-        return self.triggerLeadTagsList
+    var  getLandingPageNamesData: [LandingPageNamesModel] {
+        return triggerLandingPageNames
     }
     
-    var getTriggerPateintsTagsData: [TriggerTagListModel] {
-        return self.triggerPateintsTagsList
+    var getTriggerQuestionnairesData: [TriggerQuestionnaireModel] {
+        return triggerQuestionnaires
     }
     
-    var getTriggerSMSPatientCountData: TriggerCountModel? {
-        return self.triggerSMSPatientCount
-    }
-    
-    var getTriggerSMSLeadCountData: TriggerCountModel? {
-        return self.triggerSMSLeadCount
-    }
-    
-    var getTriggerSMSQuotaCountData: TriggerEQuotaCountModel? {
-        return self.triggerSMSQuotaCount
-    }
-    
-    var getTriggerSMSAuditQuotaCountData: TriggerEQuotaCountModel? {
-        return self.triggerSMSAuditQuotaCount
+    var getTriggerLeadSourceUrlData: [LeadSourceUrlListModel] {
+        return triggerLeadSourceUrl
     }
     
     func localToServerWithDate(date: String) -> String {

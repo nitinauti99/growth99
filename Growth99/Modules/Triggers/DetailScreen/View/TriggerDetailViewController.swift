@@ -9,14 +9,9 @@ import UIKit
 
 protocol TriggerDetailViewControlProtocol: AnyObject {
     func triggerDetailDataRecived()
-    func triggerLeadTagsDataRecived()
-    func triggerPatientTagsDataRecived()
-    func triggerSMSPatientCountDataRecived()
-    func triggerSMSLeadCountDataRecived()
-    func triggerSMSEQuotaCountDataReceived()
-    func triggerSMSAuditQuotaCountDataReceived()
-    func triggerSMSLeadStatusAllDataRecived()
-    func triggerSMSPatientStatusAllDataRecived()
+    func triggerLandingPageNamesDataRecived()
+    func triggerQuestionnairesDataRecived()
+    func triggerLeadSourceUrlDataRecived()
     func errorReceived(error: String)
 }
 
@@ -48,6 +43,10 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var leadSource: String = String.blank
     var statusArray: [String] = []
     var leadStatusArray: [String] = []
+    var leadSourceArray: [String] = []
+    
+    var landingPagesArray = [LandingPageNamesModel]()
+    var landingFormsArray = [TriggerQuestionnaireModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +55,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         dateFormater = DateFormater()
         statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
         leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
+        leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
         triggerDetailList.append(emailSMS)
         viewModel = TriggerDetailViewModel(delegate: self)
@@ -76,35 +76,19 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     }
     
     func triggerDetailDataRecived() {
-        viewModel?.getTriggerLeadTagsList()
+        viewModel?.getLandingPageNames()
     }
     
-    func triggerLeadTagsDataRecived() {
-        viewModel?.getTriggerPateintsTagsList()
-    }
-    
-    func triggerPatientTagsDataRecived() {
-        viewModel?.getTriggerBusinessSMSQuotaMethod()
+    func triggerLandingPageNamesDataRecived() {
+        viewModel?.getTriggerQuestionnaires()
     }
 
-    func triggerSMSPatientCountDataRecived() {
-        bothInsertDataReceived()
+    func triggerQuestionnairesDataRecived() {
+        viewModel?.getTriggerLeadSourceUrl()
     }
-    
-    func triggerSMSLeadCountDataRecived() {
-        bothInsertDataReceived()
-    }
-    
-    func triggerSMSEQuotaCountDataReceived() {
-        viewModel?.getTriggerAuditEmailQuotaMethod()
-    }
-    
-    func triggerSMSAuditQuotaCountDataReceived() {
+
+    func triggerLeadSourceUrlDataRecived() {
         self.view.HideSpinner()
-    }
-    
-    func triggerSMSLeadStatusAllDataRecived() {
-        viewModel?.getTriggerPatientStatusAllMethod()
     }
 
     func triggerSMSPatientStatusAllDataRecived() {
