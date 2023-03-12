@@ -37,14 +37,13 @@ extension ChatSessionListViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailController = UIStoryboard(name: "CreateChatQuestionareViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateChatQuestionareViewController") as! CreateChatQuestionareViewController
-//        detailController.screenName = "Edit Screen"
-//
-//        if isSearch {
-//            detailController.chatQuestionareId = viewModel?.chatQuestionnaireFilterDataAtIndex(index: indexPath.row)?.id ?? 0
-//        }else{
-//            detailController.chatQuestionareId = viewModel?.chatQuestionnaireDataAtIndex(index: indexPath.row)?.id ?? 0
-//        }
-//         navigationController?.pushViewController(detailController, animated: true)
+        let detailController = UIStoryboard(name: "ChatSessionDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ChatSessionDetailViewController") as! ChatSessionDetailViewController
+
+        if isSearch {
+            detailController.chatQuestionareId = viewModel?.getChatSessionListFilterDataAtIndex(index: indexPath.row)?.id ?? 0
+        }else{
+            detailController.chatQuestionareId = viewModel?.getChatSessionListDataAtIndex(index: indexPath.row)?.id ?? 0
+        }
+         navigationController?.pushViewController(detailController, animated: true)
      }
 }

@@ -22,11 +22,12 @@ extension ChatBotTemplateViewController: UITableViewDelegate, UITableViewDataSou
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ChatBotTemplateTableViewCell", for: indexPath) as? ChatBotTemplateTableViewCell else { return UITableViewCell() }
        
         cell.configureCell(chatBotTemplateList: viewModel, index: indexPath)
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 700
     }
     
 }

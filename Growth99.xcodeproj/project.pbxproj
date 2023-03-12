@@ -96,6 +96,15 @@
 		01684C3129BCF2B600DE1041 /* ChatBotTemplateViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C3029BCF2B600DE1041 /* ChatBotTemplateViewController+TableView.swift */; };
 		01684C3429BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C3229BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift */; };
 		01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01684C3329BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib */; };
+		01684C3C29BDC10500DE1041 /* ChatSessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C3B29BDC10500DE1041 /* ChatSessionDetailViewController.swift */; };
+		01684C3E29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01684C3D29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard */; };
+		01684C4029BDC11C00DE1041 /* ChatSessionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C3F29BDC11C00DE1041 /* ChatSessionDetailViewModel.swift */; };
+		01684C4229BDC12800DE1041 /* ChatSessionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C4129BDC12800DE1041 /* ChatSessionDetailModel.swift */; };
+		01684C4629BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C4429BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift */; };
+		01684C4729BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01684C4529BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib */; };
+		01684C4A29BDC18300DE1041 /* ChatSessionBotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C4829BDC18300DE1041 /* ChatSessionBotTableViewCell.swift */; };
+		01684C4B29BDC18300DE1041 /* ChatSessionBotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01684C4929BDC18300DE1041 /* ChatSessionBotTableViewCell.xib */; };
+		01684C4D29BDC23A00DE1041 /* ChatSessionDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C4C29BDC23A00DE1041 /* ChatSessionDetailViewController+TableView.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -891,6 +900,15 @@
 		01684C3029BCF2B600DE1041 /* ChatBotTemplateViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatBotTemplateViewController+TableView.swift"; sourceTree = "<group>"; };
 		01684C3229BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotTemplateTableViewCell.swift; sourceTree = "<group>"; };
 		01684C3329BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatBotTemplateTableViewCell.xib; sourceTree = "<group>"; };
+		01684C3B29BDC10500DE1041 /* ChatSessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionDetailViewController.swift; sourceTree = "<group>"; };
+		01684C3D29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatSessionDetailViewController.storyboard; sourceTree = "<group>"; };
+		01684C3F29BDC11C00DE1041 /* ChatSessionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionDetailViewModel.swift; sourceTree = "<group>"; };
+		01684C4129BDC12800DE1041 /* ChatSessionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionDetailModel.swift; sourceTree = "<group>"; };
+		01684C4429BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionUserTableViewCell.swift; sourceTree = "<group>"; };
+		01684C4529BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatSessionUserTableViewCell.xib; sourceTree = "<group>"; };
+		01684C4829BDC18300DE1041 /* ChatSessionBotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionBotTableViewCell.swift; sourceTree = "<group>"; };
+		01684C4929BDC18300DE1041 /* ChatSessionBotTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatSessionBotTableViewCell.xib; sourceTree = "<group>"; };
+		01684C4C29BDC23A00DE1041 /* ChatSessionDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatSessionDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -2090,9 +2108,8 @@
 		01684C0C29BAE85100DE1041 /* ChatSessionList  */ = {
 			isa = PBXGroup;
 			children = (
-				01684C0F29BAE86B00DE1041 /* Model */,
-				01684C0E29BAE86800DE1041 /* ViewModel */,
-				01684C0D29BAE86600DE1041 /* View */,
+				01684C3629BDC0C200DE1041 /* List */,
+				01684C3729BDC0CC00DE1041 /* Detail */,
 			);
 			path = "ChatSessionList ";
 			sourceTree = "<group>";
@@ -2176,6 +2193,64 @@
 			children = (
 				01684C3229BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift */,
 				01684C3329BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		01684C3629BDC0C200DE1041 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				01684C0F29BAE86B00DE1041 /* Model */,
+				01684C0E29BAE86800DE1041 /* ViewModel */,
+				01684C0D29BAE86600DE1041 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		01684C3729BDC0CC00DE1041 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				01684C3A29BDC0DD00DE1041 /* Model */,
+				01684C3929BDC0DB00DE1041 /* ViewModel */,
+				01684C3829BDC0D700DE1041 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		01684C3829BDC0D700DE1041 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01684C4329BDC14200DE1041 /* Cell */,
+				01684C3B29BDC10500DE1041 /* ChatSessionDetailViewController.swift */,
+				01684C3D29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard */,
+				01684C4C29BDC23A00DE1041 /* ChatSessionDetailViewController+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01684C3929BDC0DB00DE1041 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01684C3F29BDC11C00DE1041 /* ChatSessionDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01684C3A29BDC0DD00DE1041 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01684C4129BDC12800DE1041 /* ChatSessionDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01684C4329BDC14200DE1041 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01684C4429BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift */,
+				01684C4529BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib */,
+				01684C4829BDC18300DE1041 /* ChatSessionBotTableViewCell.swift */,
+				01684C4929BDC18300DE1041 /* ChatSessionBotTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -5428,8 +5503,8 @@
 			isa = PBXGroup;
 			children = (
 				84088BB22977E76F0060855E /* Model */,
-				84088BB42977E7840060855E /* View */,
 				84088BB32977E77A0060855E /* ViewModel */,
+				84088BB42977E7840060855E /* View */,
 			);
 			path = list;
 			sourceTree = "<group>";
@@ -6100,6 +6175,7 @@
 				18491DB329B80CE000FE72EF /* MassEmailandSMSLeadActionTableViewCell.xib in Resources */,
 				39FC692F29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard in Resources */,
 				013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */,
+				01684C3E29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
@@ -6113,6 +6189,7 @@
 				013A4FE129B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				1896709429BA5E62003224ED /* LeadTriggersTableViewCell.xib in Resources */,
 				189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */,
+				01684C4729BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
@@ -6197,6 +6274,7 @@
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
 				84D062F92967080E001FE469 /* leadTimeLineTableViewCell.xib in Resources */,
 				01EBAC8A29B5C6F100110DCB /* ChatbotContainerView.storyboard in Resources */,
+				01684C4B29BDC18300DE1041 /* ChatSessionBotTableViewCell.xib in Resources */,
 				18491DB829B80CE000FE72EF /* MassEmailandSMSTimeTableViewCell.xib in Resources */,
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
@@ -6369,11 +6447,13 @@
 				398F90EA298ECB8700DB96E4 /* IQTextView.swift in Sources */,
 				842C0CBF298F713B00395061 /* AddNewQuestionarieViewModel.swift in Sources */,
 				01EBACA129B64E0A00110DCB /* chatQuestionnaireViewModel.swift in Sources */,
+				01684C4D29BDC23A00DE1041 /* ChatSessionDetailViewController+TableView.swift in Sources */,
 				39FC691F29B3D56300FCB7C6 /* LandingPagesViewModel.swift in Sources */,
 				01D9EBE929B8B65F0099761C /* QuestionnaireSubmissionsViewModel.swift in Sources */,
 				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
+				01684C4629BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
 				848A038E29941846004FE278 /* EmailTemplateViewModel.swift in Sources */,
 				849034FD29953A8B00556D47 /* SMSTemplateViewController+TableView.swift in Sources */,
@@ -6607,6 +6687,7 @@
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
 				DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */,
 				01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */,
+				01684C4A29BDC18300DE1041 /* ChatSessionBotTableViewCell.swift in Sources */,
 				01EBAC8129B5A93200110DCB /* LeadSourceUrlAddViewModel.swift in Sources */,
 				84F61138292A71AB00B1FB69 /* Log.swift in Sources */,
 				010EECA129B6BE5A00351358 /* CreateChatQuestionareModel.swift in Sources */,
@@ -6717,6 +6798,7 @@
 				8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */,
 				01684C2229BB7BBF00DE1041 /* UIIMageExtension.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
+				01684C4229BDC12800DE1041 /* ChatSessionDetailModel.swift in Sources */,
 				84B75ECF296903B000962F3E /* ServicesViewModel.swift in Sources */,
 				18491DC129B80CE000FE72EF /* MassEmailandSMSViewController+TableView.swift in Sources */,
 				84F61119292A71AB00B1FB69 /* NetworkManager+Stub.swift in Sources */,
@@ -6758,6 +6840,7 @@
 				189670B829BA6081003224ED /* TriggerModuleTableViewCell.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
 				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,
+				01684C3C29BDC10500DE1041 /* ChatSessionDetailViewController.swift in Sources */,
 				01EBAC6829B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift in Sources */,
 				01152E1529B39C7400B24627 /* leadListViewController+ScrollView.swift in Sources */,
 				39EBABC429915872001B789D /* StringExtension1.swift in Sources */,
@@ -6800,6 +6883,7 @@
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,
+				01684C4029BDC11C00DE1041 /* ChatSessionDetailViewModel.swift in Sources */,
 				842C0CCA298F713B00395061 /* QuestionarieTableViewCell.swift in Sources */,
 				842C0CB5298F713B00395061 /* PatientAppointmentViewController+TableView.swift in Sources */,
 				01D9EBE529B8B6490099761C /* QuestionnaireSubmissionsViewController.swift in Sources */,

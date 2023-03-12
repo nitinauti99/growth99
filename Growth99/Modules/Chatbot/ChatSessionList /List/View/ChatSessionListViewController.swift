@@ -24,7 +24,7 @@ class ChatSessionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addSerchBar()
-        self.title = Constant.Profile.consentsTemplatesList
+        self.title = Constant.Profile.chatSessionList
         self.viewModel = ChatSessionListViewModel(delegate: self)
         self.tableView.register(UINib(nibName: "ChatSessionListTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatSessionListTableViewCell")
     }

@@ -302,6 +302,8 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
                 pushViewControllerFromDrawerMenu(identifier: "ChatbotContainerView", pusedViewController: "ChatbotContainerView")
             case 1:
                 pushViewControllerFromDrawerMenu(identifier: "ChatSessionListViewController", pusedViewController: "ChatSessionListViewController")
+            case 2:
+                pushViewControllerFromDrawerMenu(identifier: "ChatSessionDetailViewController", pusedViewController: "ChatSessionDetailViewController")
             default:
                 break
             }

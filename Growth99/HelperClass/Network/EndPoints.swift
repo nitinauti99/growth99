@@ -135,6 +135,8 @@ struct EndPoints {
     static let chatBotTemplates = "/api/chatbottemplates"
     static let triggerLandingPageNames = "/api/v1/landingPage/pageNames"
     static let triggerQuestionnaire = "/api/v1/trigger/questionnaire"
+    static let chatBotTsSetDefaultemplates = "/api/chatbottemplates/"
+    static let chatsessionsDetail = "/api/chatsessions/"
 }
 
 struct ApiUrl {
@@ -268,6 +270,8 @@ struct ApiUrl {
     static let chatBotTemplates = EndPoints.baseURL.appending(EndPoints.chatBotTemplates)
     static let triggerLandingPageNames = EndPoints.baseURL.appending(EndPoints.triggerLandingPageNames)
     static let triggerQuestionnaire = EndPoints.baseURL.appending(EndPoints.triggerQuestionnaire)
-}
+    static let chatBotTsSetDefaultemplates = EndPoints.baseURL.appending(EndPoints.chatBotTsSetDefaultemplates)
+    static let chatsessionsDetail = EndPoints.baseURL.appending(EndPoints.chatsessionsDetail)
 
+}
 

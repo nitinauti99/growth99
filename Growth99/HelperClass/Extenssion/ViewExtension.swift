@@ -23,7 +23,7 @@ public extension UIView {
         self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
-    func createBorderForView(color: UIColor = UIColor.borderColor, redius: CGFloat = 5, width: CGFloat = 2){
+    func createBorderForView(color: UIColor = UIColor.borderColor, redius: CGFloat = 5, width: CGFloat = 2) {
         self.layer.borderWidth = width
         self.layer.cornerRadius = redius
         self.layer.shouldRasterize = false

@@ -21,10 +21,44 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="do7-mF-StA">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFQ-4e-tN3">
+                                                <rect key="frame" x="0.0" y="10" width="393" height="80"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJg-5b-VGc">
+                                                        <rect key="frame" x="20" y="25" width="142" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="7lz-TC-HwI"/>
+                                                            <constraint firstAttribute="width" constant="142" id="gGc-dS-dlS"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Default ChatBot"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T05-nl-KFz">
+                                                        <rect key="frame" x="283" y="25" width="90" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="90" id="Jyp-Tw-sx0"/>
+                                                            <constraint firstAttribute="height" constant="35" id="ahc-35-I5S"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="PREVIEW"/>
+                                                        <connections>
+                                                            <action selector="preViewButtonPressedWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZWV-Al-ewH"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="T05-nl-KFz" secondAttribute="bottom" constant="20" id="DQo-GU-9NJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dJg-5b-VGc" secondAttribute="bottom" constant="20" id="Jz6-Wl-05c"/>
+                                                    <constraint firstAttribute="height" constant="80" id="L5i-S8-0XY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="T05-nl-KFz" secondAttribute="trailing" constant="20" id="ekS-vh-AL7"/>
+                                                    <constraint firstItem="dJg-5b-VGc" firstAttribute="leading" secondItem="GFQ-4e-tN3" secondAttribute="leading" constant="20" id="u4c-F8-jgL"/>
+                                                </constraints>
+                                            </view>
                                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QF-fV-Efk">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                                <rect key="frame" x="0.0" y="110" width="393" height="600"/>
                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="600" id="XEZ-pN-HVH"/>
@@ -35,7 +69,7 @@
                                                 </wkWebViewConfiguration>
                                             </wkWebView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-Gf-z9D">
-                                                <rect key="frame" x="0.0" y="600" width="393" height="252"/>
+                                                <rect key="frame" x="0.0" y="710" width="393" height="290"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="HDT-N2-hGe"/>
@@ -45,12 +79,16 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="GFQ-4e-tN3" firstAttribute="leading" secondItem="do7-mF-StA" secondAttribute="leading" id="JuM-Br-Gdc"/>
                                             <constraint firstAttribute="trailing" secondItem="9ZD-Gf-z9D" secondAttribute="trailing" id="LFv-fC-tgP"/>
                                             <constraint firstItem="4QF-fV-Efk" firstAttribute="leading" secondItem="do7-mF-StA" secondAttribute="leading" id="N3c-sb-PBT"/>
                                             <constraint firstAttribute="trailing" secondItem="4QF-fV-Efk" secondAttribute="trailing" id="PTe-xN-VCB"/>
+                                            <constraint firstItem="4QF-fV-Efk" firstAttribute="top" secondItem="GFQ-4e-tN3" secondAttribute="bottom" constant="20" id="X6r-qO-7x9"/>
                                             <constraint firstItem="9ZD-Gf-z9D" firstAttribute="leading" secondItem="do7-mF-StA" secondAttribute="leading" id="XQU-uO-5j4"/>
+                                            <constraint firstItem="GFQ-4e-tN3" firstAttribute="top" secondItem="do7-mF-StA" secondAttribute="top" constant="10" id="fSt-Ej-nog"/>
                                             <constraint firstItem="9ZD-Gf-z9D" firstAttribute="top" secondItem="4QF-fV-Efk" secondAttribute="bottom" id="lWr-yu-nPb"/>
-                                            <constraint firstItem="4QF-fV-Efk" firstAttribute="top" secondItem="do7-mF-StA" secondAttribute="top" id="rbp-oQ-L59"/>
+                                            <constraint firstAttribute="trailing" secondItem="GFQ-4e-tN3" secondAttribute="trailing" id="ri9-Qn-bDF"/>
+                                            <constraint firstAttribute="height" constant="1000" id="v5c-O2-UE2"/>
                                             <constraint firstAttribute="bottom" secondItem="9ZD-Gf-z9D" secondAttribute="bottom" id="y0W-YG-GCa"/>
                                         </constraints>
                                     </view>
@@ -69,12 +107,13 @@
                             <constraint firstItem="Evn-Ef-mcv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="EHh-MB-277"/>
                             <constraint firstAttribute="bottom" secondItem="Evn-Ef-mcv" secondAttribute="bottom" id="K1X-cv-1hb"/>
                             <constraint firstItem="do7-mF-StA" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="MwG-Lq-SOE"/>
-                            <constraint firstItem="do7-mF-StA" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" priority="750" id="WVP-rr-YvL"/>
                             <constraint firstAttribute="trailing" secondItem="Evn-Ef-mcv" secondAttribute="trailing" id="ePy-Uf-esj"/>
                             <constraint firstItem="Evn-Ef-mcv" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="r6x-In-YsR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mainViewHight" destination="v5c-O2-UE2" id="fvF-m4-nch"/>
+                        <outlet property="preViewButton" destination="T05-nl-KFz" id="NCm-By-uD7"/>
                         <outlet property="tableView" destination="9ZD-Gf-z9D" id="QvA-r6-qOv"/>
                         <outlet property="webView" destination="4QF-fV-Efk" id="3Si-go-bcd"/>
                     </connections>

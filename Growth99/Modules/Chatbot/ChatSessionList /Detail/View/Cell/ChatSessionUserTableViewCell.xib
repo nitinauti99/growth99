@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatSessionUserTableViewCell" rowHeight="127" id="KGk-i7-Jjw" customClass="ChatSessionUserTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="127"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lxu-Ah-UYM">
+                        <rect key="frame" x="20" y="15" width="365" height="97"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatCloudRed" translatesAutoresizingMaskIntoConstraints="NO" id="KGI-F5-Qkq">
+                                <rect key="frame" x="306" y="10" width="49" height="77"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GO1-rg-jjs">
+                                <rect key="frame" x="311" y="15" width="14" height="67"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="GO1-rg-jjs" firstAttribute="bottom" secondItem="KGI-F5-Qkq" secondAttribute="bottom" constant="-5" id="1gy-NI-Fts"/>
+                            <constraint firstAttribute="trailing" secondItem="KGI-F5-Qkq" secondAttribute="trailing" constant="10" id="ACg-ew-Cwy"/>
+                            <constraint firstAttribute="bottom" secondItem="KGI-F5-Qkq" secondAttribute="bottom" constant="10" id="B17-f6-qbk"/>
+                            <constraint firstItem="KGI-F5-Qkq" firstAttribute="top" secondItem="Lxu-Ah-UYM" secondAttribute="top" constant="10" id="C1V-f1-xBP"/>
+                            <constraint firstItem="GO1-rg-jjs" firstAttribute="trailing" secondItem="KGI-F5-Qkq" secondAttribute="trailing" constant="-30" id="Y8x-VB-QIe"/>
+                            <constraint firstItem="GO1-rg-jjs" firstAttribute="top" secondItem="KGI-F5-Qkq" secondAttribute="top" constant="5" id="ZHG-ez-iSq"/>
+                            <constraint firstItem="KGI-F5-Qkq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lxu-Ah-UYM" secondAttribute="leading" constant="30" id="eVQ-xQ-1qM"/>
+                            <constraint firstAttribute="trailing" secondItem="KGI-F5-Qkq" secondAttribute="trailing" constant="10" id="jWw-rM-XJ1"/>
+                            <constraint firstItem="GO1-rg-jjs" firstAttribute="leading" secondItem="KGI-F5-Qkq" secondAttribute="leading" constant="5" id="v3j-6Z-LpK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Lxu-Ah-UYM" secondAttribute="bottom" constant="15" id="2JD-Pj-rtd"/>
+                    <constraint firstItem="Lxu-Ah-UYM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2Yj-Ek-1uR"/>
+                    <constraint firstItem="Lxu-Ah-UYM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="gED-aK-NjZ"/>
+                    <constraint firstItem="Lxu-Ah-UYM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="n9m-in-ZLX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chatUserImage" destination="KGI-F5-Qkq" id="S1M-e6-WUc"/>
+                <outlet property="message" destination="GO1-rg-jjs" id="Z8a-ux-f7V"/>
+                <outlet property="subView" destination="Lxu-Ah-UYM" id="JW2-XL-b6k"/>
+            </connections>
+            <point key="canvasLocation" x="310.68702290076334" y="45.422535211267608"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chatCloudRed" width="49" height="46"/>
+    </resources>
+</document>

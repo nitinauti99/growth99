@@ -24,12 +24,12 @@ class ChatbotContainerView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = Constant.Profile.leadDetail
+        self.title = Constant.Profile.chatConfiguration
     }
     
     func setUpSegemtControl(){
         segmentedControl.segmentStyle = .textOnly
-        segmentedControl.insertSegment(withTitle: Constant.Profile.chatConfiguration, at: 0)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.chatCustomization, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.chatBotTemplate, at: 1)
         segmentedControl.insertSegment(withTitle: Constant.Profile.scrapeWebsite, at: 2)
         segmentedControl.insertSegment(withTitle: Constant.Profile.chatQuestionnaires, at: 3)
