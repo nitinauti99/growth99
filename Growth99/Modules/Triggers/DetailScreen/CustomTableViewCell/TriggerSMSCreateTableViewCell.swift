@@ -18,7 +18,8 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var smsBtn: UIButton!
     @IBOutlet private weak var emailBtn: UIButton!
-    @IBOutlet private weak var taskBtn: UIButton!
+    @IBOutlet weak var taskBtn: UIButton!
+    @IBOutlet weak var taskLabel: UILabel!
 
     @IBOutlet weak var networkViewSMS: UIView!
     @IBOutlet weak var networkViewSMSTarget: UIView!

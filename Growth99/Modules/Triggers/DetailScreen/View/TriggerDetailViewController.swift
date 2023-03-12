@@ -44,15 +44,23 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var statusArray: [String] = []
     var leadStatusArray: [String] = []
     var leadSourceArray: [String] = []
+    var selectedLeadStatusArray: [String] = []
     
     var landingPagesArray = [LandingPageNamesModel]()
     var landingFormsArray = [TriggerQuestionnaireModel]()
+
+    var moduleSelectionType: String = String.blank
+    var smsTargetArray: [String] = []
+    var emailTargetArray: [String] = []
+    var smsTargetSelectionType: String = String.blank
+    var emailTargetSelectionType: String = String.blank
+    var taskUserListArray: [UserDTOListTrigger] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
-        dateFormater = DateFormater()
+        dateFormater = DateFormater()        
         statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
         leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]

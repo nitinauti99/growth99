@@ -32,7 +32,7 @@ struct SmsTemplateDTOListTrigger : Codable, Equatable {
     let templateFor : String?
 }
 
-struct UserDTOListTrigger : Codable {
+struct UserDTOListTrigger : Codable, Equatable {
     let gender : String?
     let phone : String?
     let firstName : String?

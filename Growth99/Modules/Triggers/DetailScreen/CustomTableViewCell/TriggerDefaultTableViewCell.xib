@@ -44,7 +44,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="trigger name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-1k-1ar" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dfgdh" borderStyle="line" placeholder="trigger name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-1k-1ar" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                 <rect key="frame" x="30" y="120" width="250" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ca4-QD-LPO"/>
@@ -129,7 +129,7 @@
     </objects>
     <designables>
         <designable name="DeW-1k-1ar">
-            <size key="intrinsicContentSize" width="98" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="90" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>

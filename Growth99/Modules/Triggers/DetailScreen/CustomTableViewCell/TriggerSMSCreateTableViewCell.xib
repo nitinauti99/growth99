@@ -81,7 +81,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-sW-pCp">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-sW-pCp">
                                 <rect key="frame" x="171" y="107" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="aUA-dq-SnC"/>
@@ -94,7 +94,7 @@
                                     <action selector="taskButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="zqB-ch-s7p"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-47-sK5">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-47-sK5">
                                 <rect key="frame" x="201" y="104" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -615,6 +615,7 @@
                 <outlet property="subView" destination="TPi-qT-Luy" id="Bym-cN-YzL"/>
                 <outlet property="subViewInside" destination="TPi-qT-Luy" id="Xb3-Yd-HNK"/>
                 <outlet property="taskBtn" destination="Xi4-sW-pCp" id="F8C-No-WNM"/>
+                <outlet property="taskLabel" destination="DbN-47-sK5" id="hqd-fb-LWt"/>
                 <outlet property="taskNameTextField" destination="8P8-0F-beF" id="YFU-OD-0ZU"/>
             </connections>
             <point key="canvasLocation" x="209.59999999999999" y="186.94581280788179"/>
@@ -622,7 +623,7 @@
     </objects>
     <designables>
         <designable name="8P8-0F-beF">
-            <size key="intrinsicContentSize" width="72.333333333333329" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="80.333333333333329" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>
