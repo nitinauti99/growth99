@@ -80,6 +80,11 @@
 		013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */; };
 		013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
+		01468DF729BE1553002BDC1F /* SMSTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DF629BE1553002BDC1F /* SMSTemplateViewController.swift */; };
+		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
+		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
+		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
+		01468E0229BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */; };
 		01684C1129BAE89100DE1041 /* ChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C1029BAE89100DE1041 /* ChatSessionListViewController.swift */; };
 		01684C1329BAE89F00DE1041 /* ChatSessionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01684C1229BAE89F00DE1041 /* ChatSessionListViewController.storyboard */; };
 		01684C1629BAE8C000DE1041 /* ChatSessionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C1529BAE8C000DE1041 /* ChatSessionListViewModel.swift */; };
@@ -485,7 +490,6 @@
 		849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */; };
 		849004A82986C31700A271AA /* PateintsTagsAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */; };
 		849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */; };
-		849034F5299536DA00556D47 /* SMSTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849034F4299536DA00556D47 /* SMSTemplateViewController.swift */; };
 		849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849034F6299536F300556D47 /* SMSTemplateViewController.storyboard */; };
 		849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849034F82995370600556D47 /* SMSTemplateViewModel.swift */; };
 		849034FB2995371E00556D47 /* SMSTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849034FA2995371E00556D47 /* SMSTemplateModel.swift */; };
@@ -896,6 +900,11 @@
 		013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
+		01468DF629BE1553002BDC1F /* SMSTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMSTemplateViewController.swift; path = ../../../../../../../../Desktop/SMSTemplateViewController.swift; sourceTree = "<group>"; };
+		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
+		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
+		01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionViewFlowLayout.swift"; sourceTree = "<group>"; };
 		01684C1029BAE89100DE1041 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
 		01684C1229BAE89F00DE1041 /* ChatSessionListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatSessionListViewController.storyboard; sourceTree = "<group>"; };
 		01684C1529BAE8C000DE1041 /* ChatSessionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewModel.swift; sourceTree = "<group>"; };
@@ -1314,7 +1323,6 @@
 		849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsAddViewController.swift; sourceTree = "<group>"; };
 		849004A72986C31700A271AA /* PateintsTagsAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTagsAddViewModel.swift; sourceTree = "<group>"; };
 		849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTagsAddViewController.storyboard; sourceTree = "<group>"; };
-		849034F4299536DA00556D47 /* SMSTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSTemplateViewController.swift; sourceTree = "<group>"; };
 		849034F6299536F300556D47 /* SMSTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SMSTemplateViewController.storyboard; sourceTree = "<group>"; };
 		849034F82995370600556D47 /* SMSTemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSTemplateViewModel.swift; sourceTree = "<group>"; };
 		849034FA2995371E00556D47 /* SMSTemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSTemplateModel.swift; sourceTree = "<group>"; };
@@ -2129,6 +2137,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		01468DFC29BE338E002BDC1F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */,
+				01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01684C0C29BAE85100DE1041 /* ChatSessionList  */ = {
 			isa = PBXGroup;
 			children = (
@@ -2349,8 +2366,11 @@
 		01684C6529BE108A00DE1041 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01468DFC29BE338E002BDC1F /* Cell */,
 				01684C6829BE10C800DE1041 /* CreateSMSTemplateViewController.swift */,
 				01684C6A29BE10D000DE1041 /* CreateSMSTemplateViewController.storyboard */,
+				01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */,
+				01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4767,7 +4787,7 @@
 			isa = PBXGroup;
 			children = (
 				8490350029954F5600556D47 /* Cell */,
-				849034F4299536DA00556D47 /* SMSTemplateViewController.swift */,
+				01468DF629BE1553002BDC1F /* SMSTemplateViewController.swift */,
 				849034F6299536F300556D47 /* SMSTemplateViewController.storyboard */,
 				849034FC29953A8B00556D47 /* SMSTemplateViewController+TableView.swift */,
 				849034FE29953AEC00556D47 /* SMSTemplateViewController+SearchBar.swift */,
@@ -6238,6 +6258,7 @@
 			files = (
 				01D9EBDA29B8B0490099761C /* FormDetailViewController.storyboard in Resources */,
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
+				01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */,
 				01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */,
@@ -6593,6 +6614,7 @@
 				849034FB2995371E00556D47 /* SMSTemplateModel.swift in Sources */,
 				84D0622029670676001FE469 /* WorkingScheduleViewModel.swift in Sources */,
 				84F610D8292A71AB00B1FB69 /* NSOperationQueue.swift in Sources */,
+				01468E0229BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift in Sources */,
 				3947A900299677EE000CA2EB /* BookingHistoryViewController.swift in Sources */,
 				84F610F1292A71AB00B1FB69 /* Promise.swift in Sources */,
 				01C748AB29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift in Sources */,
@@ -6822,7 +6844,6 @@
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
 				842C0CBD298F713B00395061 /* FillQuestionarieViewController+TableView.swift in Sources */,
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
-				849034F5299536DA00556D47 /* SMSTemplateViewController.swift in Sources */,
 				398F90F7298ECB8700DB96E4 /* IQKeyboardManager.swift in Sources */,
 				84F610FD292A71AB00B1FB69 /* TLSCertificateBlock.swift in Sources */,
 				01D7AB02299D5B2100821274 /* FormDetailModel.swift in Sources */,
@@ -6902,6 +6923,7 @@
 				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
+				01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
 				01684C5E29BDEFA900DE1041 /* UnansweredQuestionListModel.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
@@ -6936,6 +6958,7 @@
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
 				845C39D7292276B000D934C5 /* DrawerViewContoller.swift in Sources */,
+				01468DF729BE1553002BDC1F /* SMSTemplateViewController.swift in Sources */,
 				01EBACA629B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift in Sources */,
 				848C92AC291F6AA000502956 /* RSFirstRowSelection.swift in Sources */,
 				01684C5C29BDEF9F00DE1041 /* UnansweredQuestionListViewModel.swift in Sources */,
@@ -6995,6 +7018,7 @@
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
+				01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */,
 				1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */,
 				1896709229BA5E62003224ED /* TriggersListViewController.swift in Sources */,
 				39FC691329B3D28300FCB7C6 /* WebisteTemplatesViewController.swift in Sources */,

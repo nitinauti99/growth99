@@ -8,12 +8,13 @@
 import Foundation
 
 struct CreateSMSTemplateModel: Codable {
-    let name: String?
-    let id: Int?
     let createdAt: String?
-    let updatedBy: String?
-    let templateFor: String?
-    let createdBy: String?
-    let emailTemplateName: String?
+    let updatedBy: UpdatedBy?
     let updatedAt: String?
+    let deleted: Bool?
+    let id: Int?
+    let smsTemplateName: String?
+    let variable: String?
+    let label: String?
 }
+

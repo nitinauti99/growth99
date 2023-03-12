@@ -138,6 +138,7 @@ struct EndPoints {
     static let chatBotTsSetDefaultemplates = "/api/chatbottemplates/"
     static let chatsessionsDetail = "/api/chatsessions/"
     static let UnansweredQuestionList = "/api/chatquestions"
+    static let getMassSMSVariable = "/api/smstemplatenames/MassSMS/variables"
 }
 
 struct ApiUrl {
@@ -274,7 +275,6 @@ struct ApiUrl {
     static let chatBotTsSetDefaultemplates = EndPoints.baseURL.appending(EndPoints.chatBotTsSetDefaultemplates)
     static let chatsessionsDetail = EndPoints.baseURL.appending(EndPoints.chatsessionsDetail)
     static let UnansweredQuestionList = EndPoints.baseURL.appending(EndPoints.UnansweredQuestionList)
+    static let getMassSMSVariable = EndPoints.baseURL.appending(EndPoints.getMassSMSVariable)
 
 }
-
-

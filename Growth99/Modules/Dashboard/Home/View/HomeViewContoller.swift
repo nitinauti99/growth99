@@ -202,7 +202,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
         }
-        
+        selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
