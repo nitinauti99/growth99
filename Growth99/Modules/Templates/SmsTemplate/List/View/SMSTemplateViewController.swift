@@ -13,7 +13,7 @@ protocol SMSTemplateViewContollerProtocol {
     func errorReceived(error: String)
 }
 
-class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProtocol {
+class SMSTemplateViewController: UIViewController {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -27,13 +27,12 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constant.Profile.smsTemplateList
-        viewModel = SMSTemplateViewModel(delegate: self)
-        setUpSegemtcontrol()
+        self.viewModel = SMSTemplateViewModel(delegate: self)
         self.addSerchBar()
-
+        self.setUpSegemtcontrol()
+        self.tableView.register(UINib(nibName: "SMSTemplatesListTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplatesListTableViewCell")
         self.view.ShowSpinner()
-        tableView.register(UINib(nibName: "SMSTemplatesListTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplatesListTableViewCell")
-        viewModel?.getSMSTemplateList()
+        self.viewModel?.getSMSTemplateList()
     }
     
     fileprivate func setUpSegemtcontrol() {
@@ -47,53 +46,30 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         segmentedControl.fixedSegmentWidth = false
         segmentedControl.selectedSegmentIndex = selectedindex
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             tableView.reloadData()
-            // if viewModel?.getSelectedTemplate(selectedIndex: 0).count == 0 {
-            //    self.emptyMessage(parentView: self.view, message: "There is no data")
-            //  }
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 1:
             tableView.reloadData()
-            // if viewModel?.getSelectedTemplate(selectedIndex: 1).count == 0 {
-            //     self.emptyMessage(parentView: self.view, message: "There is no data")
-            //  }
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 2:
             tableView.reloadData()
-            //  if viewModel?.getSelectedTemplate(selectedIndex: 2).count == 0 {
-            //        self.emptyMessage(parentView: self.view, message: "There is no data")
-            //   }
-            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
+            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
        default:
             break
         }
     }
     
-    @objc func assignNewConsentButtonTapped(_ sender: UIButton){
-        let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
-        navigationController?.pushViewController(addNewConsentsVC, animated: true)
+    static func viewController() -> EmailTemplateViewController {
+        return UIStoryboard.init(name: "EmailTemplateViewController", bundle: nil).instantiateViewController(withIdentifier: "EmailTemplateViewController") as! EmailTemplateViewController
     }
-    
+
     @objc func addUserButtonTapped(_ sender: UIButton) {
         let addNewQuestionarieVC = UIStoryboard(name: "AddNewQuestionarieViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewQuestionarieViewController") as! AddNewQuestionarieViewController
         navigationController?.pushViewController(addNewQuestionarieVC, animated: true)
-    }
-    
-    @objc func addTaskTapped(_ sender: UIButton) {
-        let createTasksVC = UIStoryboard(name: "CreateTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateTasksViewController") as! CreateTasksViewController
-        navigationController?.pushViewController(createTasksVC, animated: true)
-    }
-    
-    static func viewController() -> EmailTemplateViewController {
-        return UIStoryboard.init(name: "EmailTemplateViewController", bundle: nil).instantiateViewController(withIdentifier: "EmailTemplateViewController") as! EmailTemplateViewController
     }
     
     func addSerchBar(){
@@ -105,21 +81,10 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         searchBar.delegate = self
     }
     
-    @objc func LeadList() {
-        self.view.ShowSpinner()
-        self.getPateintList()
-    }
-    
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
-        self.navigationController?.pushViewController(createUserVC, animated: true)
-    }
-    
-    @objc func getPateintList() {
-        self.view.ShowSpinner()
-        viewModel?.getSMSTemplateList()
-    }
+}
 
+extension SMSTemplateViewController: SMSTemplateViewContollerProtocol {
+   
     func SmsTemplatesDataRecived(){
         self.view.HideSpinner()
         self.tableView.reloadData()
@@ -129,5 +94,4 @@ class SMSTemplateViewController: UIViewController, SMSTemplateViewContollerProto
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
     }
-    
 }

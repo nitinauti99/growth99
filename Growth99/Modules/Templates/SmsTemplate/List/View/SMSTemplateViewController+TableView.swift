@@ -23,8 +23,8 @@ extension SMSTemplateViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = SMSTemplatesListTableViewCell()
-        cell = self.tableView.dequeueReusableCell(withIdentifier: "SMSTemplatesListTableViewCell", for: indexPath) as! SMSTemplatesListTableViewCell
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "SMSTemplatesListTableViewCell", for: indexPath) as? SMSTemplatesListTableViewCell else { return UITableViewCell()}
+       
         if isSearch {
             cell.configureCellisSearch(smsTemplateList: viewModel, index: indexPath, selectedIndex: segmentedControl.selectedSegmentIndex)
         }else{
@@ -38,7 +38,7 @@ extension SMSTemplateViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
     }
     
 }
