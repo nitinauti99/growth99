@@ -32,7 +32,7 @@ struct SmsTemplateDTOListTrigger : Codable, Equatable {
     let templateFor : String?
 }
 
-struct UserDTOListTrigger : Codable {
+struct UserDTOListTrigger : Codable, Equatable {
     let gender : String?
     let phone : String?
     let firstName : String?
@@ -60,4 +60,14 @@ struct TriggerEQuotaCountModel : Codable {
     let smsCount : Int?
     let emailCount : Int?
     let tenantId : Int?
+}
+
+struct LandingPageNamesModel : Codable, Equatable {
+    let name : String?
+    let id : Int?
+}
+
+struct TriggerQuestionnaireModel : Codable, Equatable {
+    let name : String?
+    let id : Int?
 }

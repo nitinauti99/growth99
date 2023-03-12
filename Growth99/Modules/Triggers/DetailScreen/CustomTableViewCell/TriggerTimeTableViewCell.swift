@@ -26,7 +26,7 @@ class TriggerTimeTableViewCell: UITableViewCell {
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        triggerTimeFromTextField.tintColor = .clear
+       triggerTimeFromTextField.tintColor = .clear
         triggerTimeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .date)
     }
     

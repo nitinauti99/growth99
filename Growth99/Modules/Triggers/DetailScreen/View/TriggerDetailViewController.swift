@@ -9,14 +9,9 @@ import UIKit
 
 protocol TriggerDetailViewControlProtocol: AnyObject {
     func triggerDetailDataRecived()
-    func triggerLeadTagsDataRecived()
-    func triggerPatientTagsDataRecived()
-    func triggerSMSPatientCountDataRecived()
-    func triggerSMSLeadCountDataRecived()
-    func triggerSMSEQuotaCountDataReceived()
-    func triggerSMSAuditQuotaCountDataReceived()
-    func triggerSMSLeadStatusAllDataRecived()
-    func triggerSMSPatientStatusAllDataRecived()
+    func triggerLandingPageNamesDataRecived()
+    func triggerQuestionnairesDataRecived()
+    func triggerLeadSourceUrlDataRecived()
     func errorReceived(error: String)
 }
 
@@ -46,12 +41,29 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var dateFormater: DateFormaterProtocol?
     var patientAppointmentStatus: String = String.blank
     var leadSource: String = String.blank
+    var statusArray: [String] = []
+    var leadStatusArray: [String] = []
+    var leadSourceArray: [String] = []
+    var selectedLeadStatusArray: [String] = []
+    
+    var landingPagesArray = [LandingPageNamesModel]()
+    var landingFormsArray = [TriggerQuestionnaireModel]()
+
+    var moduleSelectionType: String = String.blank
+    var smsTargetArray: [String] = []
+    var emailTargetArray: [String] = []
+    var smsTargetSelectionType: String = String.blank
+    var emailTargetSelectionType: String = String.blank
+    var taskUserListArray: [UserDTOListTrigger] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
-        dateFormater = DateFormater()
+        dateFormater = DateFormater()        
+        statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
+        leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
         triggerDetailList.append(emailSMS)
         viewModel = TriggerDetailViewModel(delegate: self)
@@ -72,35 +84,19 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     }
     
     func triggerDetailDataRecived() {
-        viewModel?.getTriggerLeadTagsList()
+        viewModel?.getLandingPageNames()
     }
     
-    func triggerLeadTagsDataRecived() {
-        viewModel?.getTriggerPateintsTagsList()
-    }
-    
-    func triggerPatientTagsDataRecived() {
-        viewModel?.getTriggerBusinessSMSQuotaMethod()
+    func triggerLandingPageNamesDataRecived() {
+        viewModel?.getTriggerQuestionnaires()
     }
 
-    func triggerSMSPatientCountDataRecived() {
-        bothInsertDataReceived()
+    func triggerQuestionnairesDataRecived() {
+        viewModel?.getTriggerLeadSourceUrl()
     }
-    
-    func triggerSMSLeadCountDataRecived() {
-        bothInsertDataReceived()
-    }
-    
-    func triggerSMSEQuotaCountDataReceived() {
-        viewModel?.getTriggerAuditEmailQuotaMethod()
-    }
-    
-    func triggerSMSAuditQuotaCountDataReceived() {
+
+    func triggerLeadSourceUrlDataRecived() {
         self.view.HideSpinner()
-    }
-    
-    func triggerSMSLeadStatusAllDataRecived() {
-        viewModel?.getTriggerPatientStatusAllMethod()
     }
 
     func triggerSMSPatientStatusAllDataRecived() {
@@ -135,7 +131,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerSMSCreateTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerLeadActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerLeadActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerModuleTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerModuleTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "TriggerPatientActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerPatientActionTableViewCell")
+        self.triggerdDetailTableView.register(UINib(nibName: "TriggerAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerAppointmentActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerTimeTableViewCell")
     }
 }

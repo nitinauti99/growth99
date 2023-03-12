@@ -85,12 +85,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6g-Kt-NwK">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn8-tL-2Tm">
-                                                <rect key="frame" x="10" y="3" width="215" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select patient status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTW-qq-dSE">
                                                 <rect key="frame" x="10" y="3" width="215" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
@@ -117,8 +111,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Q5s-bg-gj7" secondAttribute="trailing" id="753-Oc-f2n"/>
                                             <constraint firstItem="HTW-qq-dSE" firstAttribute="leading" secondItem="f6g-Kt-NwK" secondAttribute="leading" constant="10" id="A5T-3i-7u6"/>
-                                            <constraint firstItem="nn8-tL-2Tm" firstAttribute="bottom" secondItem="HTW-qq-dSE" secondAttribute="bottom" id="HuL-gj-6eX"/>
-                                            <constraint firstItem="nn8-tL-2Tm" firstAttribute="leading" secondItem="HTW-qq-dSE" secondAttribute="leading" id="LdL-27-Pwg"/>
                                             <constraint firstItem="HTW-qq-dSE" firstAttribute="centerY" secondItem="xCK-qg-ewS" secondAttribute="centerY" id="OYp-G4-zfY"/>
                                             <constraint firstAttribute="trailing" secondItem="xCK-qg-ewS" secondAttribute="trailing" constant="10" id="Tr2-r0-v4w"/>
                                             <constraint firstAttribute="trailing" secondItem="xCK-qg-ewS" secondAttribute="trailing" constant="10" id="XrJ-wF-I0T"/>
@@ -127,8 +119,6 @@
                                             <constraint firstItem="Q5s-bg-gj7" firstAttribute="top" secondItem="f6g-Kt-NwK" secondAttribute="top" id="h08-rs-pir"/>
                                             <constraint firstItem="Q5s-bg-gj7" firstAttribute="leading" secondItem="f6g-Kt-NwK" secondAttribute="leading" id="lMT-Nl-c7O"/>
                                             <constraint firstAttribute="height" constant="31" id="pgH-As-oxR"/>
-                                            <constraint firstItem="nn8-tL-2Tm" firstAttribute="top" secondItem="HTW-qq-dSE" secondAttribute="top" id="thB-ye-8sR"/>
-                                            <constraint firstItem="nn8-tL-2Tm" firstAttribute="trailing" secondItem="HTW-qq-dSE" secondAttribute="trailing" id="udD-ya-aee"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -178,12 +168,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXB-vA-aDQ">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7if-i8-ewy">
-                                                <rect key="frame" x="10" y="3" width="215" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select patient tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M33-Uq-uBt">
                                                 <rect key="frame" x="10" y="3" width="215" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
@@ -211,15 +195,11 @@
                                             <constraint firstAttribute="trailing" secondItem="NkZ-2i-dag" secondAttribute="trailing" constant="10" id="2lA-P2-LHe"/>
                                             <constraint firstItem="2cZ-26-1IP" firstAttribute="leading" secondItem="PXB-vA-aDQ" secondAttribute="leading" id="8TV-Yc-rat"/>
                                             <constraint firstItem="NkZ-2i-dag" firstAttribute="top" secondItem="PXB-vA-aDQ" secondAttribute="top" constant="1" id="CPv-kI-IlP"/>
-                                            <constraint firstItem="7if-i8-ewy" firstAttribute="bottom" secondItem="M33-Uq-uBt" secondAttribute="bottom" id="EoW-7L-wSV"/>
                                             <constraint firstAttribute="trailing" secondItem="2cZ-26-1IP" secondAttribute="trailing" id="EzI-td-1fv"/>
                                             <constraint firstItem="M33-Uq-uBt" firstAttribute="leading" secondItem="PXB-vA-aDQ" secondAttribute="leading" constant="10" id="NxM-fn-ODo"/>
                                             <constraint firstItem="NkZ-2i-dag" firstAttribute="leading" secondItem="M33-Uq-uBt" secondAttribute="trailing" constant="10" id="P24-r3-M5t"/>
-                                            <constraint firstItem="7if-i8-ewy" firstAttribute="top" secondItem="M33-Uq-uBt" secondAttribute="top" id="XLd-BA-1te"/>
                                             <constraint firstAttribute="trailing" secondItem="NkZ-2i-dag" secondAttribute="trailing" constant="10" id="Yfa-64-5w2"/>
                                             <constraint firstItem="M33-Uq-uBt" firstAttribute="centerY" secondItem="NkZ-2i-dag" secondAttribute="centerY" id="btC-Zg-Kg3"/>
-                                            <constraint firstItem="7if-i8-ewy" firstAttribute="leading" secondItem="M33-Uq-uBt" secondAttribute="leading" id="kdb-go-v2F"/>
-                                            <constraint firstItem="7if-i8-ewy" firstAttribute="trailing" secondItem="M33-Uq-uBt" secondAttribute="trailing" id="mcD-Ir-G84"/>
                                             <constraint firstItem="2cZ-26-1IP" firstAttribute="top" secondItem="PXB-vA-aDQ" secondAttribute="top" id="otj-cT-fdg"/>
                                             <constraint firstAttribute="height" constant="31" id="vqh-n9-mMA"/>
                                         </constraints>
@@ -245,12 +225,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duk-jk-efK">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzZ-9V-6Bs">
-                                                <rect key="frame" x="10" y="3" width="215" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select appointment status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-jN-fpV">
                                                 <rect key="frame" x="10" y="3" width="215" height="21"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
@@ -276,8 +250,6 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="vN0-73-G3F" secondAttribute="trailing" constant="10" id="BhL-sd-gb3"/>
-                                            <constraint firstItem="qzZ-9V-6Bs" firstAttribute="top" secondItem="DNu-jN-fpV" secondAttribute="top" id="FfA-R0-Qhn"/>
-                                            <constraint firstItem="qzZ-9V-6Bs" firstAttribute="leading" secondItem="DNu-jN-fpV" secondAttribute="leading" id="H3p-5W-6nZ"/>
                                             <constraint firstItem="B5k-Nq-7l7" firstAttribute="leading" secondItem="duk-jk-efK" secondAttribute="leading" id="IVo-xT-HHj"/>
                                             <constraint firstItem="DNu-jN-fpV" firstAttribute="leading" secondItem="duk-jk-efK" secondAttribute="leading" constant="10" id="Sfz-xH-a5F"/>
                                             <constraint firstItem="vN0-73-G3F" firstAttribute="top" secondItem="duk-jk-efK" secondAttribute="top" constant="1" id="Ufo-Dr-jvO"/>
@@ -286,8 +258,6 @@
                                             <constraint firstAttribute="height" constant="31" id="fBa-tk-WSV"/>
                                             <constraint firstItem="DNu-jN-fpV" firstAttribute="centerY" secondItem="vN0-73-G3F" secondAttribute="centerY" id="kAE-LQ-F3a"/>
                                             <constraint firstItem="B5k-Nq-7l7" firstAttribute="top" secondItem="duk-jk-efK" secondAttribute="top" id="sML-KL-KPY"/>
-                                            <constraint firstItem="qzZ-9V-6Bs" firstAttribute="trailing" secondItem="DNu-jN-fpV" secondAttribute="trailing" id="vzM-qw-pKW"/>
-                                            <constraint firstItem="qzZ-9V-6Bs" firstAttribute="bottom" secondItem="DNu-jN-fpV" secondAttribute="bottom" id="xYm-WA-lPU"/>
                                             <constraint firstAttribute="trailing" secondItem="vN0-73-G3F" secondAttribute="trailing" constant="10" id="zK2-C2-90T"/>
                                         </constraints>
                                     </view>

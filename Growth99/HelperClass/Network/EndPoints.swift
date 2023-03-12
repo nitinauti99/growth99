@@ -133,6 +133,8 @@ struct EndPoints {
     static let massEmailAppointmentStatus = "/api/v1/patients/count?"
     static let chatSessions = "/api/chatsessions"
     static let chatBotTemplates = "/api/chatbottemplates"
+    static let triggerLandingPageNames = "/api/v1/landingPage/pageNames"
+    static let triggerQuestionnaire = "/api/v1/trigger/questionnaire"
 }
 
 struct ApiUrl {
@@ -264,6 +266,8 @@ struct ApiUrl {
     static let massEmailAppointmentStatus = EndPoints.baseURL.appending(EndPoints.massEmailAppointmentStatus)
     static let chatSessions = EndPoints.baseURL.appending(EndPoints.chatSessions)
     static let chatBotTemplates = EndPoints.baseURL.appending(EndPoints.chatBotTemplates)
+    static let triggerLandingPageNames = EndPoints.baseURL.appending(EndPoints.triggerLandingPageNames)
+    static let triggerQuestionnaire = EndPoints.baseURL.appending(EndPoints.triggerQuestionnaire)
 }
 
 

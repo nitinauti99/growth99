@@ -15,17 +15,22 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
+    
     @IBOutlet weak var leadStatusSelectonButton: UIButton!
-    @IBOutlet weak var leadSourceTriggerSelectonButton: UIButton!
-    @IBOutlet weak var leadTagSelectonButton: UIButton!
+    @IBOutlet weak var leadLandingSelectonButton: UIButton!
+    @IBOutlet weak var leadFormSelectonButton: UIButton!
+    
     @IBOutlet weak var leadStatusView: UIView!
-    @IBOutlet weak var leadSourceView: UIView!
-    @IBOutlet weak var leadTagView: UIView!
+    @IBOutlet weak var leadLandingView: UIView!
+    @IBOutlet weak var leadFormView: UIView!
+    
     @IBOutlet weak var leadStatusTextLabel: UILabel!
-    @IBOutlet weak var leadSourceTextLabel: UILabel!
-    @IBOutlet weak var leadTagTextLabel: UILabel!
+    @IBOutlet weak var leadLandingTextLabel: UILabel!
+    @IBOutlet weak var leadFormTextLabel: UILabel!
 
     @IBOutlet weak var leadStatusEmptyTextLabel: UILabel!
+    @IBOutlet weak var leadLandingEmptyTextLabel: UILabel!
+    @IBOutlet weak var leadFormEmptyTextLabel: UILabel!
 
     weak var delegate: TriggerLeadCellDelegate?
     var indexPath = IndexPath()
@@ -40,13 +45,13 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
         leadStatusView.layer.borderWidth = 1
         leadStatusView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
-        leadSourceView.layer.cornerRadius = 4.5
-        leadSourceView.layer.borderWidth = 1
-        leadSourceView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        leadLandingView.layer.cornerRadius = 4.5
+        leadLandingView.layer.borderWidth = 1
+        leadLandingView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
-        leadTagView.layer.cornerRadius = 4.5
-        leadTagView.layer.borderWidth = 1
-        leadTagView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        leadFormView.layer.cornerRadius = 4.5
+        leadFormView.layer.borderWidth = 1
+        leadFormView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
     }
     
     // MARK: - Add and remove time methods

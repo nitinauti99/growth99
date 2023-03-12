@@ -8,10 +8,10 @@
 import UIKit
 
 protocol TriggerPatientCellDelegate: AnyObject {
-    func nextButtonPatient(cell: TriggerPatientActionTableViewCell, index: IndexPath)
+    func nextButtonPatient(cell: TriggerAppointmentActionTableViewCell, index: IndexPath)
 }
 
-class TriggerPatientActionTableViewCell: UITableViewCell {
+class TriggerAppointmentActionTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
