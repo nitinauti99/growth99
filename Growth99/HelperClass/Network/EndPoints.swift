@@ -137,6 +137,7 @@ struct EndPoints {
     static let triggerQuestionnaire = "/api/v1/trigger/questionnaire"
     static let chatBotTsSetDefaultemplates = "/api/chatbottemplates/"
     static let chatsessionsDetail = "/api/chatsessions/"
+    static let UnansweredQuestionList = "/api/chatquestions"
 }
 
 struct ApiUrl {
@@ -272,6 +273,8 @@ struct ApiUrl {
     static let triggerQuestionnaire = EndPoints.baseURL.appending(EndPoints.triggerQuestionnaire)
     static let chatBotTsSetDefaultemplates = EndPoints.baseURL.appending(EndPoints.chatBotTsSetDefaultemplates)
     static let chatsessionsDetail = EndPoints.baseURL.appending(EndPoints.chatsessionsDetail)
+    static let UnansweredQuestionList = EndPoints.baseURL.appending(EndPoints.UnansweredQuestionList)
 
 }
+
 

@@ -215,6 +215,9 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="tickdefault"/>
                                                 <state key="selected" image="tickselected"/>
+                                                <connections>
+                                                    <action selector="enableAppointmentWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hvi-uP-5Hh"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-l6-Fge">
                                                 <rect key="frame" x="15" y="985.33333333333348" width="363" height="380"/>
@@ -462,6 +465,9 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="tickdefault"/>
                                                 <state key="selected" image="tickselected"/>
+                                                <connections>
+                                                    <action selector="showPoweredChatbotFooterWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Aod-88-AKW"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Powered By On Chatbot Footer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-3I-no7">
                                                 <rect key="frame" x="45" y="1622.3333333333333" width="328" height="18"/>
@@ -630,6 +636,8 @@
                     </view>
                     <connections>
                         <outlet property="appointmentBookingUrl" destination="pgq-JZ-eiW" id="Gv1-jU-1y3"/>
+                        <outlet property="appointmentView" destination="kwU-l6-Fge" id="fOJ-cq-Wf7"/>
+                        <outlet property="appointmentViewHight" destination="NQh-nN-wNm" id="yY2-0N-7Wq"/>
                         <outlet property="botName" destination="Roy-CK-yIM" id="51m-ap-QbD"/>
                         <outlet property="defaultWelcomeMessage" destination="WyG-vy-We4" id="m8r-Cg-Gqm"/>
                         <outlet property="enableAppointment" destination="NS3-L5-aZ3" id="AFC-oE-EvV"/>
@@ -649,6 +657,8 @@
                         <outlet property="privacyLink" destination="aME-gU-dVX" id="Prf-2h-Wj2"/>
                         <outlet property="saveButton" destination="K8e-wL-JbL" id="rCB-y6-9N8"/>
                         <outlet property="showPoweredBy" destination="K5D-pg-VYJ" id="aG0-Ki-kTz"/>
+                        <outlet property="showPoweredChatbotFooterView" destination="Oe2-Rf-7Xd" id="7dH-N6-vcq"/>
+                        <outlet property="showPoweredChatbotFooterViewHight" destination="R8c-Xr-9R2" id="yrW-RG-iAt"/>
                         <outlet property="weeksToShow" destination="TqG-Xs-lLP" id="lhy-xf-yLc"/>
                         <outlet property="welcomeMessage" destination="eMB-ej-UoE" id="hSy-DA-dmv"/>
                     </connections>
@@ -660,40 +670,40 @@
     </scenes>
     <designables>
         <designable name="BPG-ee-62k">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="Qqh-Vx-2wf">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="Roy-CK-yIM">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="TEv-Pf-d22">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="TqG-Xs-lLP">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="Us2-aH-BOJ">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="WUU-CV-qye">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="XaC-vk-vep">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="aME-gU-dVX">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="e9U-Ze-ZFB">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="pgq-JZ-eiW">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
         <designable name="rw7-f3-XhS">
-            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
         </designable>
     </designables>
     <resources>

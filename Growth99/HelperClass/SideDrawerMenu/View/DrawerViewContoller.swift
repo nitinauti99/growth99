@@ -303,7 +303,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 1:
                 pushViewControllerFromDrawerMenu(identifier: "ChatSessionListViewController", pusedViewController: "ChatSessionListViewController")
             case 2:
-                pushViewControllerFromDrawerMenu(identifier: "ChatSessionDetailViewController", pusedViewController: "ChatSessionDetailViewController")
+                pushViewControllerFromDrawerMenu(identifier: "UnansweredQuestionListViewController", pusedViewController: "UnansweredQuestionListViewController")
             default:
                 break
             }

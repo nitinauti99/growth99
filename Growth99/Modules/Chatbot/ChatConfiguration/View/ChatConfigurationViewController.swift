@@ -48,6 +48,12 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
     @IBOutlet weak var isChatbotStatic: UIButton!
     
     @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var appointmentViewHight: NSLayoutConstraint!
+    @IBOutlet weak var appointmentView: UIView!
+
+    @IBOutlet weak var showPoweredChatbotFooterViewHight: NSLayoutConstraint!
+    @IBOutlet weak var showPoweredChatbotFooterView: UIView!
 
     var viewModel: ChatConfigurationViewModelProtocol?
     
@@ -60,7 +66,6 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         super.viewWillAppear(animated)
         self.title = Constant.Profile.users
         self.saveButton.roundCorners(corners: [.allCorners], radius: 10)
-
         self.view.ShowSpinner()
         self.viewModel?.getChatConfigurationDataList()
     }
@@ -70,8 +75,47 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         self.setUPUI()
     }
     
+    @IBAction func enableAppointment(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            self.appointmentViewHight.constant = 0
+            self.appointmentView.isHidden = true
+        } else {
+            sender.isSelected = true
+            self.appointmentViewHight.constant = 390
+            self.appointmentView.isHidden = false
+        }
+    }
+    
+    @IBAction func showPoweredChatbotFooter(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            self.showPoweredChatbotFooterView.isHidden = true
+            self.showPoweredChatbotFooterViewHight.constant = 0
+        } else {
+            sender.isSelected = true
+            self.showPoweredChatbotFooterView.isHidden = false
+            self.showPoweredChatbotFooterViewHight.constant = 100
+        }
+    }
+    
     func setUPUI(){
         let item = viewModel?.getChatConfigurationData
+        self.appointmentViewHight.constant = 0
+        self.appointmentView.isHidden = true
+        if item?.enableAppointment == true {
+            self.appointmentViewHight.constant = 390
+            self.appointmentView.isHidden = false
+        }
+        
+        self.showPoweredChatbotFooterView.isHidden = true
+        self.showPoweredChatbotFooterViewHight.constant = 0
+        
+        if item?.showPoweredBy == true {
+            self.showPoweredChatbotFooterView.isHidden = false
+            self.showPoweredChatbotFooterViewHight.constant = 100
+        }
+        
         self.botName.text = item?.botName
         self.privacyLink.text = item?.privacyLink
         self.defaultWelcomeMessage.text = item?.defaultWelcomeMessage
