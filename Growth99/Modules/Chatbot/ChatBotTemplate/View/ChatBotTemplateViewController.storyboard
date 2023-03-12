@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat Bot Template View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ChatBotTemplateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ChatBotTemplateViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evn-Ef-mcv">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="do7-mF-StA">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <subviews>
+                                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QF-fV-Efk">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="600" id="XEZ-pN-HVH"/>
+                                                </constraints>
+                                                <wkWebViewConfiguration key="configuration">
+                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                    <wkPreferences key="preferences"/>
+                                                </wkWebViewConfiguration>
+                                            </wkWebView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-Gf-z9D">
+                                                <rect key="frame" x="0.0" y="600" width="393" height="252"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="HDT-N2-hGe"/>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="xS9-kb-P07"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9ZD-Gf-z9D" secondAttribute="trailing" id="LFv-fC-tgP"/>
+                                            <constraint firstItem="4QF-fV-Efk" firstAttribute="leading" secondItem="do7-mF-StA" secondAttribute="leading" id="N3c-sb-PBT"/>
+                                            <constraint firstAttribute="trailing" secondItem="4QF-fV-Efk" secondAttribute="trailing" id="PTe-xN-VCB"/>
+                                            <constraint firstItem="9ZD-Gf-z9D" firstAttribute="leading" secondItem="do7-mF-StA" secondAttribute="leading" id="XQU-uO-5j4"/>
+                                            <constraint firstItem="9ZD-Gf-z9D" firstAttribute="top" secondItem="4QF-fV-Efk" secondAttribute="bottom" id="lWr-yu-nPb"/>
+                                            <constraint firstItem="4QF-fV-Efk" firstAttribute="top" secondItem="do7-mF-StA" secondAttribute="top" id="rbp-oQ-L59"/>
+                                            <constraint firstAttribute="bottom" secondItem="9ZD-Gf-z9D" secondAttribute="bottom" id="y0W-YG-GCa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="do7-mF-StA" firstAttribute="leading" secondItem="Evn-Ef-mcv" secondAttribute="leading" id="7mV-4m-ZD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="do7-mF-StA" secondAttribute="trailing" id="DaX-tI-Z9B"/>
+                                    <constraint firstAttribute="bottom" secondItem="do7-mF-StA" secondAttribute="bottom" id="bTt-H3-kpB"/>
+                                    <constraint firstItem="do7-mF-StA" firstAttribute="top" secondItem="Evn-Ef-mcv" secondAttribute="top" id="lO1-Ij-ehh"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Evn-Ef-mcv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="EHh-MB-277"/>
+                            <constraint firstAttribute="bottom" secondItem="Evn-Ef-mcv" secondAttribute="bottom" id="K1X-cv-1hb"/>
+                            <constraint firstItem="do7-mF-StA" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="MwG-Lq-SOE"/>
+                            <constraint firstItem="do7-mF-StA" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" priority="750" id="WVP-rr-YvL"/>
+                            <constraint firstAttribute="trailing" secondItem="Evn-Ef-mcv" secondAttribute="trailing" id="ePy-Uf-esj"/>
+                            <constraint firstItem="Evn-Ef-mcv" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="r6x-In-YsR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="9ZD-Gf-z9D" id="QvA-r6-qOv"/>
+                        <outlet property="webView" destination="4QF-fV-Efk" id="3Si-go-bcd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46.564885496183201" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

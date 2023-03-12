@@ -89,7 +89,7 @@ struct Constant {
         static let chatConfiguration = " Chat Configuration "
         static let scrapeWebsite = " Scrape Website "
         static let chatQuestionnaires = " Chat Questionnaires "
-
+        static let chatBotTemplate = " ChatBot Template "
         static let leadTimeLine = " Lead TimeLine "
         static let leadTask = " Task "
         static let leadHistory = " History "

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "7B1EE202-36F6-4191-96C3-C297C97D87F3"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33F4B862-2EBB-49A4-A9A2-F4704C2C9B86"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "846D662D-234A-4DAB-94B5-7809F017B2F8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "846D662D-234A-4DAB-94B5-7809F017B2F8 - 71e39977fbd9305e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.BusinessProfileViewController.imageUploadRequest(imageView: __C.UIImage, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nitinauti/Documents/growth99/Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "2056">
+               </Location>
+               <Location
+                  uuid = "846D662D-234A-4DAB-94B5-7809F017B2F8 - 70574732d28daa28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Growth99.BusinessProfileViewController.imageUploadRequest(imageView: __C.UIImage, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nitinauti/Documents/growth99/Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B821EF59-84F3-4FBE-8396-3EE947E42D53"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A29A72B-34F8-4963-AC70-99AB4028F330"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33A14DDB-02C4-4180-AB8D-2A27B9950B55"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "33A14DDB-02C4-4180-AB8D-2A27B9950B55 - 70574732d28da819"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Growth99.BusinessProfileViewController.imageUploadRequest(imageView: __C.UIImage, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nitinauti/Documents/growth99/Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "33A14DDB-02C4-4180-AB8D-2A27B9950B55 - 70574732d28da819"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Growth99.BusinessProfileViewController.imageUploadRequest(imageView: __C.UIImage, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nitinauti/Documents/growth99/Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "2068">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2E158AC-3041-4228-88DE-70E979497B10"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64E0C52D-08AA-41E0-8727-380569490BB8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/AccountSettings/BusinessProfile/View/BusinessProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "BusinessProfileViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7A2C3D9-26CE-4495-92AC-E52083888CC3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Chatbot/ChatBotTemplate/View/ChatBotTemplateViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "C7A2C3D9-26CE-4495-92AC-E52083888CC3 - 540880ec9ba03f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.ChatBotTemplateViewController.chatBotTemplateListReceivedSuccefully() -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nitinauti/Documents/growth99/Growth99/Modules/Chatbot/ChatBotTemplate/View/ChatBotTemplateViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "488">
+               </Location>
+               <Location
+                  uuid = "C7A2C3D9-26CE-4495-92AC-E52083888CC3 - 540880ec9ba03f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.ChatBotTemplateViewController.chatBotTemplateListReceivedSuccefully() -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nitinauti/Documents/growth99/Growth99/Modules/Chatbot/ChatBotTemplate/View/ChatBotTemplateViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "1828">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

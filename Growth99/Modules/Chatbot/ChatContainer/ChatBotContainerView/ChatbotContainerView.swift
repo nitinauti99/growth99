@@ -30,8 +30,9 @@ class ChatbotContainerView: UIViewController {
     func setUpSegemtControl(){
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: Constant.Profile.chatConfiguration, at: 0)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.scrapeWebsite, at: 1)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.chatQuestionnaires, at: 2)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.chatBotTemplate, at: 1)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.scrapeWebsite, at: 2)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.chatQuestionnaires, at: 3)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
@@ -51,19 +52,27 @@ class ChatbotContainerView: UIViewController {
         case 0:
             remove(asChildViewController: ScrapeWebsiteVC)
             remove(asChildViewController: chatQuestionnaireVC)
+            remove(asChildViewController: chatBotTemplateVC)
             add(asChildViewController: chatConfigurationVC)
             navigationItem.rightBarButtonItem = nil
         case 1:
-            remove(asChildViewController: chatQuestionnaireVC)
-            remove(asChildViewController: chatConfigurationVC)
-            add(asChildViewController: ScrapeWebsiteVC)
-            navigationItem.rightBarButtonItem = nil
-        case 2:
             remove(asChildViewController: ScrapeWebsiteVC)
             remove(asChildViewController: chatConfigurationVC)
+            remove(asChildViewController: chatQuestionnaireVC)
+            add(asChildViewController: chatBotTemplateVC)
+            navigationItem.rightBarButtonItem = nil
+        case 2:
+            remove(asChildViewController: chatQuestionnaireVC)
+            remove(asChildViewController: chatConfigurationVC)
+            remove(asChildViewController: chatBotTemplateVC)
+            add(asChildViewController: ScrapeWebsiteVC)
+            navigationItem.rightBarButtonItem = nil
+        case 3:
+            remove(asChildViewController: ScrapeWebsiteVC)
+            remove(asChildViewController: chatConfigurationVC)
+            remove(asChildViewController: chatBotTemplateVC)
             add(asChildViewController: chatQuestionnaireVC)
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(createChatQuestionariButtonTapped), imageName: "add")
-
         default:
             break
         }
@@ -94,6 +103,12 @@ class ChatbotContainerView: UIViewController {
         let createChatQuestionareVC = UIStoryboard(name: "CreateChatQuestionareViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateChatQuestionareViewController") as! CreateChatQuestionareViewController
        navigationController?.pushViewController(createChatQuestionareVC, animated: true)
     }
+    
+    /// Chat Boat template
+    private lazy var chatBotTemplateVC: ChatBotTemplateViewController = {
+        let chatBotTemplateVC = UIStoryboard(name: "ChatBotTemplateViewController", bundle: nil).instantiateViewController(withIdentifier: "ChatBotTemplateViewController") as! ChatBotTemplateViewController
+        return chatBotTemplateVC
+    }()
  
    /// add VC as child view contoller
     private func add(asChildViewController viewController: UIViewController) {
