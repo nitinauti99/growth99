@@ -58,7 +58,7 @@ class WorkingScheduleViewModel {
     }
         
     func getWorkingScheduleDeatils(selectedClinicId: Int) {
-        let apiURL = ApiUrl.userProfile.appending("\(UserRepository.shared.userId ?? 0)/clinic/\(selectedClinicId)/schedules/working")
+        let apiURL = ApiUrl.userProfile.appending("\(UserRepository.shared.userVariableId ?? 0)/clinic/\(selectedClinicId)/schedules/working")
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[WorkingScheduleListModel], GrowthNetworkError>) in
             switch result {
             case .success(let list):
@@ -71,7 +71,7 @@ class WorkingScheduleViewModel {
     }
     
     func sendRequestforWorkingSchedule(vacationParams: [String: Any]) {
-        let apiURL = ApiUrl.vacationSubmit.appending("\(UserRepository.shared.userId ?? 0)/schedules")
+        let apiURL = ApiUrl.vacationSubmit.appending("\(UserRepository.shared.userVariableId ?? 0)/schedules")
         self.requestManager.request(forPath: apiURL, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: vacationParams, encoding: .jsonEncoding)) { (result: Result<ResponseModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):

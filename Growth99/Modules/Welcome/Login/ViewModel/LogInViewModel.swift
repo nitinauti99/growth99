@@ -111,6 +111,7 @@ class LogInViewModel {
         self.user.roles = LogInData?.roles
         self.user.Xtenantid = LogInData?.businessId
         self.user.userId = LogInData?.id
+        self.user.userVariableId = UserRepository.shared.userId ?? 0
     }
 }
 

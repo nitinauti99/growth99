@@ -28,7 +28,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = AppointmentListViewModel(delegate: self)
-        setUpNavigationBar()
+        self.setUpNavigationBar()
     }
     
     func setUpNavigationBar() {
@@ -37,7 +37,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSerchBar()
+        self.addSerchBar()
         getProfileAppointments()
         registerTableView()
     }
@@ -58,6 +58,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     }
     
     @objc func getProfileAppointments() {
+        
         self.view.ShowSpinner()
         viewModel?.getProfileApointmentsList()
     }

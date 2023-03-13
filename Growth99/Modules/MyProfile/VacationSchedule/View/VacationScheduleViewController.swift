@@ -210,7 +210,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                 return
             }
             self.view.ShowSpinner()
-            let body = VacationParamModel(providerId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
+            let body = VacationParamModel(providerId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
             let parameters: [String: Any]  = body.toDict()
             print("Params::: \(parameters)")
             vacationViewModel?.sendRequestforVacation(vacationParams: parameters)

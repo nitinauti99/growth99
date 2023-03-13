@@ -40,6 +40,24 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.navigationController?.popViewController(animated: true)
+        if  UserRepository.shared.screenTitle == "Profile" {
+            if isSearch {
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
+            }else{
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
+            }
+            self.navigationController?.popViewController(animated: true)
+            
+        }else{
+            guard let homeVC = UIStoryboard(name: "BaseTabbar", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller") as? HomeViewContoller else {
+                return
+            }
+            if isSearch {
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
+            }else{
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
+            }
+            self.navigationController?.pushViewController(homeVC, animated: true)
+        }
     }
 }

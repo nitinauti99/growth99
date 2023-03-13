@@ -39,7 +39,7 @@ class AppointmentListViewModel {
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
 
     func getProfileApointmentsList() {
-        let apiURL = ApiUrl.profileAppointments.appending("\(UserRepository.shared.userId ?? 0)")
+        let apiURL = ApiUrl.profileAppointments.appending("\(UserRepository.shared.userVariableId ?? 0)")
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[AppointmentListModel], GrowthNetworkError>) in
             switch result {
             case .success(let profileAppoinments):

@@ -17,5 +17,10 @@ class BaseTabbarViewController: UITabBarController {
         BaseTabbarViewController.currentInstance = self
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UserRepository.shared.userVariableId = UserRepository.shared.userId ?? 0
+    }
 
 }

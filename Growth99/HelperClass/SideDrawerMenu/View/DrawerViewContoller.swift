@@ -209,6 +209,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
+                UserRepository.shared.userVariableId = UserRepository.shared.userId ?? 0
                 pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "HomeViewContoller")
                 break
             case 1:
@@ -234,6 +235,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 3:
                 pushViewControllerFromDrawerMenu(identifier: "ServicesListViewController", pusedViewController: "ServicesListViewController")
             case 4:
+                UserRepository.shared.screenTitle = "UserList"
                 pushViewControllerFromDrawerMenu(identifier: "UserListViewContoller", pusedViewController: "UserListViewContoller")
             default:
                 break

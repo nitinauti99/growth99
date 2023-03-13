@@ -20,10 +20,13 @@ class User {
     private static let Xtenantid = "Xtenantid"
     private static let roles = "roles"
     private static let userId = "userId"
+    private static let userVariableId = "userVariableId"
     private static let bussinessName = "bussinessName"
     private static let bussinessLogo = "bussinessLogo"
     private static let bussinessId = "bussinessId"
     private static let subDomainName = "subDomainName"
+    private static let screenTitle = "screenTitle"
+    
 
     var authToken: String? {
         get {
@@ -58,6 +61,15 @@ class User {
          }
          set {
              applyNewValueInKeyChain(value: newValue, key: User.userId)
+         }
+     }
+    
+    var userVariableId: Int? {
+         get {
+             KeychainWrapper.standard.integer(forKey: User.userVariableId)
+         }
+         set {
+             applyNewValueInKeyChain(value: newValue, key: User.userVariableId)
          }
      }
     
@@ -153,12 +165,22 @@ class User {
         }
     }
     
+    
     var Xtenantid: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.Xtenantid)
         }
         set {
             applyNewValueInKeyChain(value: newValue, key: User.Xtenantid)
+        }
+    }
+    
+    var screenTitle: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.screenTitle)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.screenTitle)
         }
     }
     
@@ -172,9 +194,11 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.primaryEmailId)
         KeychainWrapper.standard.removeObject(forKey: User.Xtenantid)
         KeychainWrapper.standard.removeObject(forKey: User.userId)
+        KeychainWrapper.standard.removeObject(forKey: User.userVariableId)
         KeychainWrapper.standard.removeObject(forKey: User.bussinessLogo)
         KeychainWrapper.standard.removeObject(forKey: User.bussinessName)
         KeychainWrapper.standard.removeObject(forKey: User.bussinessId)
+        KeychainWrapper.standard.removeObject(forKey: User.screenTitle)
     }
 
     private func applyNewValueInKeyChain(value: Any?, key: String) {
