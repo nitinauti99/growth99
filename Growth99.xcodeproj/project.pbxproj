@@ -80,12 +80,12 @@
 		013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */; };
 		013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
-		01468DF729BE1553002BDC1F /* SMSTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DF629BE1553002BDC1F /* SMSTemplateViewController.swift */; };
 		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
 		01468E0229BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */; };
 		01468E0C29BF7145002BDC1F /* HomeViewContoller+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */; };
+		01468E0E29BF7A97002BDC1F /* SMSTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0D29BF7A96002BDC1F /* SMSTemplateViewController.swift */; };
 		01684C1129BAE89100DE1041 /* ChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C1029BAE89100DE1041 /* ChatSessionListViewController.swift */; };
 		01684C1329BAE89F00DE1041 /* ChatSessionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01684C1229BAE89F00DE1041 /* ChatSessionListViewController.storyboard */; };
 		01684C1629BAE8C000DE1041 /* ChatSessionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C1529BAE8C000DE1041 /* ChatSessionListViewModel.swift */; };
@@ -893,12 +893,12 @@
 		013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
-		01468DF629BE1553002BDC1F /* SMSTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMSTemplateViewController.swift; path = ../../../../../../../../Desktop/SMSTemplateViewController.swift; sourceTree = "<group>"; };
 		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
 		01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionViewFlowLayout.swift"; sourceTree = "<group>"; };
 		01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewContoller+UITextField.swift"; sourceTree = "<group>"; };
+		01468E0D29BF7A96002BDC1F /* SMSTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSTemplateViewController.swift; sourceTree = "<group>"; };
 		01684C1029BAE89100DE1041 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
 		01684C1229BAE89F00DE1041 /* ChatSessionListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatSessionListViewController.storyboard; sourceTree = "<group>"; };
 		01684C1529BAE8C000DE1041 /* ChatSessionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewModel.swift; sourceTree = "<group>"; };
@@ -4757,7 +4757,7 @@
 			isa = PBXGroup;
 			children = (
 				8490350029954F5600556D47 /* Cell */,
-				01468DF629BE1553002BDC1F /* SMSTemplateViewController.swift */,
+				01468E0D29BF7A96002BDC1F /* SMSTemplateViewController.swift */,
 				849034F6299536F300556D47 /* SMSTemplateViewController.storyboard */,
 				849034FC29953A8B00556D47 /* SMSTemplateViewController+TableView.swift */,
 				849034FE29953AEC00556D47 /* SMSTemplateViewController+SearchBar.swift */,
@@ -6628,6 +6628,7 @@
 				8473207B29797452003099BB /* DateFormater.swift in Sources */,
 				01EBAC5629B58AF800110DCB /* DeletedLeadListViewController.swift in Sources */,
 				398F90EE298ECB8700DB96E4 /* IQBarButtonItem.swift in Sources */,
+				01468E0E29BF7A97002BDC1F /* SMSTemplateViewController.swift in Sources */,
 				84F610BD292A71AA00B1FB69 /* JWTEncoder.swift in Sources */,
 				849034FF29953AEC00556D47 /* SMSTemplateViewController+SearchBar.swift in Sources */,
 				84F6112F292A71AB00B1FB69 /* Response.swift in Sources */,
@@ -6923,7 +6924,6 @@
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
 				845C39D7292276B000D934C5 /* DrawerViewContoller.swift in Sources */,
-				01468DF729BE1553002BDC1F /* SMSTemplateViewController.swift in Sources */,
 				01EBACA629B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift in Sources */,
 				848C92AC291F6AA000502956 /* RSFirstRowSelection.swift in Sources */,
 				01684C5C29BDEF9F00DE1041 /* UnansweredQuestionListViewModel.swift in Sources */,
