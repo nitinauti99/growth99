@@ -195,7 +195,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 return
             }
             self.view.ShowSpinner()
-            let body = WorkingParamModel(userId: UserRepository.shared.userId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel?.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userId ?? 0, selectedSlots: selectedSlots)
+            let body = WorkingParamModel(userId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel?.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userVariableId ?? 0, selectedSlots: selectedSlots)
            
             let parameters: [String: Any]  = body.toDict()
             workingScheduleViewModel?.sendRequestforWorkingSchedule(vacationParams: parameters)

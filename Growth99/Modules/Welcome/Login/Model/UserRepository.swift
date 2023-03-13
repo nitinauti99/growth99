@@ -47,6 +47,15 @@ public class UserRepository {
         }
     }
     
+    public var userVariableId: Int? {
+        get {
+            user.userVariableId
+        }
+        set {
+            user.userVariableId = newValue
+        }
+    }
+    
     public var profilePictureUrl: String? {
         get {
             user.profilePictureUrl
@@ -64,7 +73,7 @@ public class UserRepository {
             user.authToken = newValue
         }
     }
-
+    
     public var refreshToken: String? {
         get {
             user.refreshToken
@@ -84,16 +93,16 @@ public class UserRepository {
     }
     
     
-     public var primaryMobileNumber: String? {
-         get {
-             user.primaryMobileNumber
-         }
-         set {
-             user.primaryMobileNumber = newValue
-         }
-     }
+    public var primaryMobileNumber: String? {
+        get {
+            user.primaryMobileNumber
+        }
+        set {
+            user.primaryMobileNumber = newValue
+        }
+    }
     
-
+    
     public var isUserLoged: Bool {
         get {
             user.isUserLoged
@@ -102,7 +111,7 @@ public class UserRepository {
             user.isUserLoged = newValue
         }
     }
-
+    
     public var Xtenantid: String? {
         get {
             user.Xtenantid
@@ -147,4 +156,14 @@ public class UserRepository {
             user.subDomainName = newValue
         }
     }
+    
+    public var screenTitle: String? {
+        get {
+            user.screenTitle
+        }
+        set {
+            user.screenTitle = newValue
+        }
+    }
+    
 }

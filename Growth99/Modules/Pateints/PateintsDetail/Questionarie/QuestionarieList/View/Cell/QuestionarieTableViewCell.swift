@@ -30,7 +30,7 @@ class QuestionarieTableViewCell: UITableViewCell {
     func configureCell(questionarieVM: QuestionarieViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.getQuestionarieDataAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.questionnaireName
-        self.appointmentID.text = questionarieVM?.AppointmentId
+        self.appointmentID.text = String(questionarieVM?.AppointmentId ?? 0)
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
         self.submittedDate.text = dateFormater?.serverToLocal(date: questionarieVM?.submittedDate ?? String.blank)
         self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)
@@ -45,7 +45,7 @@ class QuestionarieTableViewCell: UITableViewCell {
     func configureCellWithSearch(questionarieVM: QuestionarieViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.getQuestionarieFilterDataAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.questionnaireName
-        self.appointmentID.text = questionarieVM?.AppointmentId
+        self.appointmentID.text = String(questionarieVM?.AppointmentId ?? 0)
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
         self.submittedDate.text = questionarieVM?.submittedDate
         self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)

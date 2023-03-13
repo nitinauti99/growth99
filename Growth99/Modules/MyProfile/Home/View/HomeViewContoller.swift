@@ -55,14 +55,14 @@ class HomeViewContoller: UIViewController {
     var viewModel: HomeViewModelProtocol?
     var roleArray: [String]?
     
+    var userId: Int = 0
     var screenTitle: String = Constant.Profile.homeScreen
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
-        menuVC = sidemenuVC as! DrawerViewContoller
-        viewModel = HomeViewModel(delegate: self)
-        self.view.ShowSpinner()
-        viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
+        self.menuVC = sidemenuVC as! DrawerViewContoller
+        self.viewModel = HomeViewModel(delegate: self)
         self.navigationItem.titleView = UIImageView.navigationBarLogo()
         self.navigationItem.leftBarButtonItem =
         UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
@@ -74,6 +74,9 @@ class HomeViewContoller: UIViewController {
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
         self.setupTexFieldValidstion()
+        self.view.ShowSpinner()
+        UserRepository.shared.screenTitle = "Profile"
+        self.viewModel?.getUserData(userId: UserRepository.shared.userVariableId ?? 0)
     }
     
     @objc func sideMenuTapped(_ sender: UIButton) {

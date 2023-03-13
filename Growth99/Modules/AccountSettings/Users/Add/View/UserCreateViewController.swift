@@ -66,27 +66,10 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.view.ShowSpinner()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification:Notification) {
-        guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        self.view.frame.origin.y = -keyboardHeight.height
-    }
-    
-    @objc func keyboardWillHide(notification:Notification) {
-        self.view.frame.origin.y = 0
-    }
-        
     fileprivate func setUpUI() {
         self.saveButton.layer.cornerRadius = 12
         self.saveButton.clipsToBounds = true

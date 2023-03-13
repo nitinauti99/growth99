@@ -108,7 +108,7 @@ class HomeViewModel {
                                          "description": description,
                                          "designation": designation
         ]
-        let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userId ?? 0)")
+        let url = "https://api.growthemr.com/api/users/".appending("\(UserRepository.shared.userVariableId ?? 0)")
         
         self.requestManager.request(forPath: url, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
           
