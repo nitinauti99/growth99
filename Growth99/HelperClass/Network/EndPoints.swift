@@ -139,6 +139,9 @@ struct EndPoints {
     static let chatsessionsDetail = "/api/chatsessions/"
     static let UnansweredQuestionList = "/api/chatquestions"
     static let getMassSMSVariable = "/api/smstemplatenames/MassSMS/variables"
+    static let createSMSTemplates = "/api/smstemplates"
+    static let getLeadVariable = "/api/smstemplatenames/Lead/variables"
+    static let getAppointMEntVariable = "/api/smstemplatenames/Appointment/variables"
 }
 
 struct ApiUrl {
@@ -276,5 +279,9 @@ struct ApiUrl {
     static let chatsessionsDetail = EndPoints.baseURL.appending(EndPoints.chatsessionsDetail)
     static let UnansweredQuestionList = EndPoints.baseURL.appending(EndPoints.UnansweredQuestionList)
     static let getMassSMSVariable = EndPoints.baseURL.appending(EndPoints.getMassSMSVariable)
-
+    static let createSMSTemplates = EndPoints.baseURL.appending(EndPoints.createSMSTemplates)
+    static let getLeadVariable = EndPoints.baseURL.appending(EndPoints.getLeadVariable)
+    static let getAppointMEntVariable = EndPoints.baseURL.appending(EndPoints.getAppointMEntVariable)
 }
+
+

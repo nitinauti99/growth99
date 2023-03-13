@@ -18,17 +18,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkO-uz-ybP">
-                        <rect key="frame" x="10" y="5" width="184" height="40"/>
+                        <rect key="frame" x="10" y="2" width="184" height="43"/>
                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="selectedVariableNameWithSender:" destination="gTV-IL-0wX" eventType="touchUpInside" id="wtd-Hu-tML"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="OkO-uz-ybP" secondAttribute="trailing" constant="5" id="4bp-aY-3WH"/>
-                <constraint firstItem="OkO-uz-ybP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Scj-yT-kX2"/>
+                <constraint firstItem="OkO-uz-ybP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="Scj-yT-kX2"/>
                 <constraint firstAttribute="bottom" secondItem="OkO-uz-ybP" secondAttribute="bottom" constant="5" id="gDi-G7-avA"/>
                 <constraint firstItem="OkO-uz-ybP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qU3-9W-C2Y"/>
             </constraints>

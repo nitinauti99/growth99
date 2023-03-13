@@ -8,16 +8,27 @@
 import Foundation
 
 protocol CreateSMSTemplateViewModelProtocol {
-    func getCreateSMSTemplateList()
-    func getCreateSMSTemplateistData(index: Int)-> CreateSMSTemplateModel
+    func getMassSMSVariablesList()
+    func getAppointmentVariablesList()
+    func getLeadVariablesList()
+    func crateSMSTemplate(parameters: [String:Any])
+
+    func getMassSMSTemplateListData(index: Int)-> CreateSMSTemplateModel
+    func getLeadTemplateListData(index: Int)-> CreateSMSTemplateModel
+    func getAppointmentTemplateListData(index: Int)-> CreateSMSTemplateModel
 
     var getSMSVariableListData: [CreateSMSTemplateModel] { get }
+    var getLeadVariableListData: [CreateSMSTemplateModel] { get }
+    var getAppointMentVariableListData: [CreateSMSTemplateModel] { get }
+
 }
 
 class CreateSMSTemplateViewModel {
    
     var delegate: CreateSMSTemplateViewControllerProtocol?
     var smsVariableListData: [CreateSMSTemplateModel] = []
+    var leadVariableListData: [CreateSMSTemplateModel] = []
+    var appointmentVariableListData: [CreateSMSTemplateModel] = []
 
     init(delegate: CreateSMSTemplateViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -25,12 +36,12 @@ class CreateSMSTemplateViewModel {
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
     
-    func getCreateSMSTemplateList() {
-        self.requestManager.request(forPath: ApiUrl.getMassSMSVariable, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[CreateSMSTemplateModel], GrowthNetworkError>) in
+    func getLeadVariablesList(){
+        self.requestManager.request(forPath: ApiUrl.getLeadVariable, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[CreateSMSTemplateModel], GrowthNetworkError>) in
             switch result {
-            case .success(let smsTemplateData):
-                self.smsVariableListData = smsTemplateData
-                self.delegate?.smsVarableTListDataRecived()
+            case .success(let leadVariableListData):
+                self.leadVariableListData = leadVariableListData
+                self.delegate?.recivedLeadVariablesList()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -38,15 +49,69 @@ class CreateSMSTemplateViewModel {
         }
     }
     
-    func getCreateSMSTemplateistData(index: Int)-> CreateSMSTemplateModel {
+    func getLeadTemplateListData(index: Int)-> CreateSMSTemplateModel {
+        return self.leadVariableListData[index]
+    }
+    
+    func getAppointmentVariablesList(){
+        self.requestManager.request(forPath: ApiUrl.getAppointMEntVariable, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[CreateSMSTemplateModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let appointmentVariableListData):
+                self.appointmentVariableListData = appointmentVariableListData
+                self.delegate?.recivedAppointmentVariablesList()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func getAppointmentTemplateListData(index: Int)-> CreateSMSTemplateModel {
+        return self.appointmentVariableListData[index]
+    }
+    
+    func getMassSMSVariablesList() {
+        self.requestManager.request(forPath: ApiUrl.getMassSMSVariable, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[CreateSMSTemplateModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let smsTemplateData):
+                self.smsVariableListData = smsTemplateData
+                self.delegate?.recivedMassSMSVariablesList()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func getMassSMSTemplateListData(index: Int)-> CreateSMSTemplateModel {
         return self.smsVariableListData[index]
     }
-
+    
+    func crateSMSTemplate(parameters: [String:Any]) {
+        self.requestManager.request(forPath: ApiUrl.createSMSTemplates, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_ ):
+                self.delegate?.smsTemplateCreatedSuccessfully()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension CreateSMSTemplateViewModel: CreateSMSTemplateViewModelProtocol {
+   
+    var getLeadVariableListData: [CreateSMSTemplateModel] {
+        return self.leadVariableListData
+    }
+    
+    var getAppointMentVariableListData: [CreateSMSTemplateModel] {
+        return self.appointmentVariableListData
+    }
     
     var getSMSVariableListData: [CreateSMSTemplateModel] {
         return self.smsVariableListData
     }
+    
 }
