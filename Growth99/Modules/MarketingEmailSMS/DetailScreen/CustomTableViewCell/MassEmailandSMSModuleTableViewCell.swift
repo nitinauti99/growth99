@@ -22,12 +22,15 @@ class MassEmailandSMSModuleTableViewCell: UITableViewCell {
 
     weak var delegate: MassEmailandSMSModuleCellDelegate?
     var indexPath = IndexPath()
-    
+    let radioController: RadioButtonController = RadioButtonController()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
+        radioController.buttonsArray = [leadBtn, patientBtn, bothBtn]
+        radioController.defaultButton = leadBtn
     }
     
     // MARK: - Add and remove time methods
@@ -36,23 +39,17 @@ class MassEmailandSMSModuleTableViewCell: UITableViewCell {
     }
     
     @IBAction func leadButtonAction(sender: UIButton) {
-        leadBtn.isSelected = !leadBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "lead"
-        patientBtn.isSelected = false
-        bothBtn.isSelected = false
     }
     
     @IBAction func patientButtonAction(sender: UIButton) {
-        patientBtn.isSelected = !patientBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "patient"
-        leadBtn.isSelected = false
-        bothBtn.isSelected = false
     }
     
     @IBAction func bothButtonAction(sender: UIButton) {
-        bothBtn.isSelected = !bothBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "both"
-        leadBtn.isSelected = false
-        patientBtn.isSelected = false
     }
 }

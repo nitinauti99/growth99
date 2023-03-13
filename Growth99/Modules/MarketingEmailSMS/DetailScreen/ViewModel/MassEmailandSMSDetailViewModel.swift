@@ -24,9 +24,18 @@ protocol MassEmailandSMSDetailViewModelProtocol {
     var  getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
     var  getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
     func localToServerWithDate(date: String) -> String
+    func dateFormatterString(textField: CustomTextField) -> String
+    func timeFormatterString(textField: CustomTextField) -> String
 }
 
 class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
+    var datePicker = UIDatePicker()
+    var timePicker = UIDatePicker()
+    let formatter = DateFormatter()
+    let todaysDate = Date()
+    let dateFormatter = DateFormatter()
+    let inFormatter = DateFormatter()
+    let outFormatter = DateFormatter()
     var delegate: MassEmailandSMSDetailViewControlProtocol?
     var massEmailDeatilList: MassEmailSMSDetailListModel?
     var massEmailLeadTagsList: [MassEmailSMSTagListModel] = []
@@ -208,5 +217,24 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "h:mm a"
         return dateWith + dateFormatter.string(from: date)
+    }
+    
+    func dateFormatterString(textField: CustomTextField) -> String {
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        datePicker.minimumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        return dateFormatter.string(from: datePicker.date)
+    }
+    
+    func timeFormatterString(textField: CustomTextField) -> String {
+        timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        timePicker.datePickerMode = .time
+        formatter.timeStyle = .short
+        textField.resignFirstResponder()
+        timePicker.reloadInputViews()
+        return formatter.string(from: timePicker.date)
     }
 }

@@ -284,6 +284,7 @@
 		189670BE29BA6081003224ED /* TriggerSMSCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */; };
 		189670BF29BA6081003224ED /* TriggerDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */; };
 		189670C029BA6081003224ED /* TriggerLeadActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */; };
+		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -1098,6 +1099,7 @@
 		189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerSMSCreateTableViewCell.xib; sourceTree = "<group>"; };
 		189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerDefaultTableViewCell.xib; sourceTree = "<group>"; };
 		189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerLeadActionTableViewCell.swift; sourceTree = "<group>"; };
+		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
 		39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListModel.swift; sourceTree = "<group>"; };
@@ -4447,6 +4449,7 @@
 				39B952AB29994F9B00DF1E8B /* UITableView+Extension.swift */,
 				01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */,
 				01684C2129BB7BBF00DE1041 /* UIIMageExtension.swift */,
+				18BDB69429BFA46700AE1582 /* RadioButton.swift */,
 			);
 			path = Extenssion;
 			sourceTree = "<group>";
@@ -6717,6 +6720,7 @@
 				DAE1409C298ACCD600794F6A /* BookingHistoryViewModel.swift in Sources */,
 				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				01684C6F29BE12E000DE1041 /* CreateSMSTemplateModel.swift in Sources */,
+				18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */,
 				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
 				01EBAC4529B585D900110DCB /* LeadTagsListViewController+TableView.swift in Sources */,
 				01152E3029B3C5E700B24627 /* LeadHistoryViewController.swift in Sources */,

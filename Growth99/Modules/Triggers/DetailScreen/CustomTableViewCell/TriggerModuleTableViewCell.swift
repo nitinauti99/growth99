@@ -18,7 +18,8 @@ class TriggerModuleTableViewCell: UITableViewCell {
     @IBOutlet private weak var leadBtn: UIButton!
     @IBOutlet private weak var patientBtn: UIButton!
     var moduleTypeSelected: String = "lead"
-
+    let radioController: RadioButtonController = RadioButtonController()
+    
     weak var delegate: TriggerModuleCellDelegate?
     var indexPath = IndexPath()
     
@@ -27,6 +28,8 @@ class TriggerModuleTableViewCell: UITableViewCell {
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
+        radioController.buttonsArray = [leadBtn, patientBtn]
+        radioController.defaultButton = leadBtn
     }
     
     // MARK: - Add and remove time methods
@@ -35,14 +38,12 @@ class TriggerModuleTableViewCell: UITableViewCell {
     }
     
     @IBAction func leadButtonAction(sender: UIButton) {
-        leadBtn.isSelected = !leadBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "lead"
-        patientBtn.isSelected = false
     }
     
     @IBAction func patientButtonAction(sender: UIButton) {
-        patientBtn.isSelected = !patientBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "appointment"
-        leadBtn.isSelected = false
     }
 }
