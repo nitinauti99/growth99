@@ -85,6 +85,7 @@
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
 		01468E0229BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */; };
+		01468E0C29BF7145002BDC1F /* HomeViewContoller+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */; };
 		01684C1129BAE89100DE1041 /* ChatSessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C1029BAE89100DE1041 /* ChatSessionListViewController.swift */; };
 		01684C1329BAE89F00DE1041 /* ChatSessionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01684C1229BAE89F00DE1041 /* ChatSessionListViewController.storyboard */; };
 		01684C1629BAE8C000DE1041 /* ChatSessionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01684C1529BAE8C000DE1041 /* ChatSessionListViewModel.swift */; };
@@ -897,6 +898,7 @@
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
 		01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionViewFlowLayout.swift"; sourceTree = "<group>"; };
+		01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewContoller+UITextField.swift"; sourceTree = "<group>"; };
 		01684C1029BAE89100DE1041 /* ChatSessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewController.swift; sourceTree = "<group>"; };
 		01684C1229BAE89F00DE1041 /* ChatSessionListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatSessionListViewController.storyboard; sourceTree = "<group>"; };
 		01684C1529BAE8C000DE1041 /* ChatSessionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionListViewModel.swift; sourceTree = "<group>"; };
@@ -3624,6 +3626,7 @@
 			isa = PBXGroup;
 			children = (
 				84D061AE29670676001FE469 /* HomeViewContoller.swift */,
+				01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4862,22 +4865,22 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
-				845C39A1292276AF00D934C5 /* KeyChain */,
-				845C39C2292276AF00D934C5 /* Network */,
+				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				845C39AA292276AF00D934C5 /* Constants */,
 				845C39B8292276AF00D934C5 /* Extenssion */,
-				84F61018292A71A400B1FB69 /* GrowthCore */,
-				845C399E292276AF00D934C5 /* LoaderScreens */,
-				84F61083292A71A900B1FB69 /* GrowthNetwork */,
-				845C39AC292276AF00D934C5 /* SideDrawerMenu */,
-				39F904DD299A894800666C85 /* Identifiable */,
 				849D3ADC2997CC72003E856A /* FontAwesome */,
+				84F61018292A71A400B1FB69 /* GrowthCore */,
 				39EBABBE29915751001B789D /* GrowthDateFormats */,
+				84F61083292A71A900B1FB69 /* GrowthNetwork */,
+				39F904DD299A894800666C85 /* Identifiable */,
 				398F90CD298ECB8600DB96E4 /* IQKeyboardManagerSwift */,
-				84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */,
-				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
-				848C9298291F6A9F00502956 /* RSSelectionMenu */,
+				845C39A1292276AF00D934C5 /* KeyChain */,
 				845C39A4292276AF00D934C5 /* KYDrawerController */,
+				845C399E292276AF00D934C5 /* LoaderScreens */,
+				845C39C2292276AF00D934C5 /* Network */,
+				848C9298291F6A9F00502956 /* RSSelectionMenu */,
+				84C8F168298BDCAB0049CEAC /* ScrollableSegmentedControl */,
+				845C39AC292276AF00D934C5 /* SideDrawerMenu */,
 			);
 			path = HelperClass;
 			sourceTree = "<group>";
@@ -5003,25 +5006,25 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				01468E0329BF42DE002BDC1F /* Payments */,
-				84D061F129670676001FE469 /* Welcome */,
-				84D061AA29670676001FE469 /* Dashboard */,
-				84D0617529670676001FE469 /* MyProfile */,
 				84D0614829670676001FE469 /* AccountSettings */,
+				39FC690529B3D20E00FCB7C6 /* Announcements */,
 				84D0616629670676001FE469 /* Appointments */,
-				84D0619929670676001FE469 /* Pateints */,
-				84D062A6296707A5001FE469 /* Tasks */,
-				84D062AB2967080E001FE469 /* Triggers */,
-				39FC691629B3D56300FCB7C6 /* LandingPages */,
-				39FC690029B3D20D00FCB7C6 /* WebisteTemplates */,
+				39FC692329B3D73D00FCB7C6 /* Chatbot */,
+				84D061AA29670676001FE469 /* Dashboard */,
 				8440B38A2999FD5E00A42097 /* FormBuilder */,
-				848A03852993FAD7004FE278 /* Templates */,
+				DA45786E29707F8400CE458B /* GRWebView */,
+				39FC691629B3D56300FCB7C6 /* LandingPages */,
 				84D062B02967080E001FE469 /* Leads */,
 				39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */,
+				84D0617529670676001FE469 /* MyProfile */,
+				84D0619929670676001FE469 /* Pateints */,
+				01468E0329BF42DE002BDC1F /* Payments */,
 				39FC693029B3D75A00FCB7C6 /* SocialMediaManager */,
-				39FC692329B3D73D00FCB7C6 /* Chatbot */,
-				39FC690529B3D20E00FCB7C6 /* Announcements */,
-				DA45786E29707F8400CE458B /* GRWebView */,
+				84D062A6296707A5001FE469 /* Tasks */,
+				848A03852993FAD7004FE278 /* Templates */,
+				84D062AB2967080E001FE469 /* Triggers */,
+				39FC690029B3D20D00FCB7C6 /* WebisteTemplates */,
+				84D061F129670676001FE469 /* Welcome */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -5455,8 +5458,8 @@
 		84D0628F2967070C001FE469 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				84088BC529784E620060855E /* Add */,
 				84088BC629784E6D0060855E /* List */,
+				84088BC529784E620060855E /* Add */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -5492,8 +5495,8 @@
 		84D0629A2967070C001FE469 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				84D0629B2967070C001FE469 /* UserListTableViewCell.xib */,
 				84D0629C2967070C001FE469 /* UserListTableViewCell.swift */,
+				84D0629B2967070C001FE469 /* UserListTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -6976,6 +6979,7 @@
 				18491DC229B80CE000FE72EF /* MassEmailandSMSTableViewCell.swift in Sources */,
 				84903512299571CB00556D47 /* ConsentsTemplateListViewController+TableView.swift in Sources */,
 				848EEA94299A5FC100F6E3D5 /* CreateFormModel.swift in Sources */,
+				01468E0C29BF7145002BDC1F /* HomeViewContoller+UITextField.swift in Sources */,
 				843801522954836C00CEA664 /* PassableUIButton.swift in Sources */,
 				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,

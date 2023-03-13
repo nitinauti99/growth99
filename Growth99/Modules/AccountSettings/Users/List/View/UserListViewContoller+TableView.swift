@@ -25,6 +25,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UserListTableViewCell()
         cell = userListTableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as! UserListTableViewCell
+        cell.delegate = self
         if isSearch {
             cell.configureCell(userVM: viewModel, index: indexPath, isSearch: isSearch)
         }else{
@@ -38,6 +39,7 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         self.navigationController?.popViewController(animated: true)
     }
 }

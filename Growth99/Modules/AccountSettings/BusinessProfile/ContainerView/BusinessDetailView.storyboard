@@ -69,10 +69,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-5G-eoB">
-                                <rect key="frame" x="290" y="177" width="40" height="40"/>
+                                <rect key="frame" x="290" y="177" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7Tk-24-1no"/>
-                                    <constraint firstAttribute="width" constant="40" id="xkQ-te-1cL"/>
+                                    <constraint firstAttribute="width" constant="50" id="xkQ-te-1cL"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="" backgroundImage="editicon"/>
@@ -537,7 +537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9M-Dy-rtE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423" y="662"/>
+            <point key="canvasLocation" x="297" y="669"/>
         </scene>
         <!--Tracking Code View Controller-->
         <scene sceneID="zN4-1s-qxd">
@@ -665,7 +665,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fml-6X-Euy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3798" y="736"/>
+            <point key="canvasLocation" x="3660" y="736"/>
         </scene>
         <!--Data Studio View Controller-->
         <scene sceneID="UHk-nD-KRF">
@@ -882,7 +882,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fv-om-E4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4537" y="736"/>
+            <point key="canvasLocation" x="4374" y="736"/>
         </scene>
     </scenes>
     <designables>

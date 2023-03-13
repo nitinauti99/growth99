@@ -9,11 +9,13 @@ import Foundation
 
 protocol UserListViewModelProtocol {
     func getUserList()
-    var UserData: [UserListModel] { get }
+    func removeUser(userId: Int)
     func userDataAtIndex(index: Int) -> UserListModel?
-    var UserFilterDataData: [UserListModel] { get }
     func userFilterDataDataAtIndex(index: Int)-> UserListModel?
     func filterData(searchText: String)
+   
+    var UserData: [UserListModel] { get }
+    var UserFilterDataData: [UserListModel] { get }
 }
 
 class UserListViewModel {
@@ -32,7 +34,22 @@ class UserListViewModel {
             switch result {
             case .success(let userData):
                 self.userData = userData.reversed()
-                self.delegate?.LeadDataRecived()
+                self.delegate?.userListRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func removeUser(userId: Int){
+        let finaleUrl = ApiUrl.deleteUser.appending("\(userId)")
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.userRemovedSuccefully(message: "User removed successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -42,8 +59,6 @@ class UserListViewModel {
     
     func filterData(searchText: String) {
         self.userFilterData = (self.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-        
-        print(self.userFilterData)
     }
     
     func userDataAtIndex(index: Int)-> UserListModel? {

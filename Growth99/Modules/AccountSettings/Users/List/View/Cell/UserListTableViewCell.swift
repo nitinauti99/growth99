@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UserListTableViewCellDelegate: AnyObject {
+    func removeUser(cell: UserListTableViewCell, index: IndexPath)
+}
+
 class UserListTableViewCell: UITableViewCell {
     @IBOutlet private weak var firstName: UILabel!
     @IBOutlet private weak var lastName: UILabel!
@@ -18,6 +22,9 @@ class UserListTableViewCell: UITableViewCell {
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var subView: UIView!
     
+    var indexPath = IndexPath()
+    weak var delegate: UserListTableViewCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +43,7 @@ class UserListTableViewCell: UITableViewCell {
         self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
+        indexPath = index
     }
     
     func configureCell(userVM: UserListViewModelProtocol?, index: IndexPath) {
@@ -48,12 +56,7 @@ class UserListTableViewCell: UITableViewCell {
         self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+        indexPath = index
     }
     
     func serverToLocal(date: String) -> String {
@@ -63,6 +66,10 @@ class UserListTableViewCell: UITableViewCell {
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MMM dd yyyy h:mm a"
         return dateFormatter.string(from: date as Date)
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeUser(cell: self, index: indexPath)
     }
     
 }

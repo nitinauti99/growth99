@@ -11,32 +11,32 @@ import LocalAuthentication
 
 protocol HomeViewContollerProtocol {
     func userDataRecived()
-    func errorReceived(error: String)
     func clinicsRecived()
     func serviceCategoriesRecived()
     func serviceRecived()
     func profileDataUpdated()
+    func errorReceived(error: String)
 }
 
-class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
+class HomeViewContoller: UIViewController {
     
-    @IBOutlet private weak var firsNameTextField: CustomTextField!
-    @IBOutlet private weak var lastNameTextField: CustomTextField!
-    @IBOutlet private weak var emailTextField: CustomTextField!
-    @IBOutlet private weak var phoneNumberTextField: CustomTextField!
-    @IBOutlet private weak var passwordTextField: CustomTextField!
-    @IBOutlet private weak var clincsTextField: CustomTextField!
-    @IBOutlet private weak var servicesTextField: CustomTextField!
-    @IBOutlet private weak var serviceCategoriesTextField: CustomTextField!
-    @IBOutlet private weak var rolesTextField: CustomTextField!
-    @IBOutlet private weak var degignationTextField: CustomTextField!
+    @IBOutlet weak var firsNameTextField: CustomTextField!
+    @IBOutlet weak var lastNameTextField: CustomTextField!
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var phoneNumberTextField: CustomTextField!
+    @IBOutlet weak var passwordTextField: CustomTextField!
+    @IBOutlet weak var clincsTextField: CustomTextField!
+    @IBOutlet weak var servicesTextField: CustomTextField!
+    @IBOutlet weak var serviceCategoriesTextField: CustomTextField!
+    @IBOutlet weak var rolesTextField: CustomTextField!
+    @IBOutlet weak var degignationTextField: CustomTextField!
     
-    @IBOutlet private weak var userProvider: UISwitch!
-    @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
-    @IBOutlet private weak var userProviderView: UIView!
-    @IBOutlet private weak var descriptionTextView: UITextView!
-    @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet weak var userProvider: UISwitch!
+    @IBOutlet weak var userProviderViewHight: NSLayoutConstraint!
+    @IBOutlet weak var userProviderView: UIView!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     private var menuVC = DrawerViewContoller()
     
@@ -60,18 +60,20 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         super.viewDidLoad()
         let sidemenuVC = UIStoryboard(name: "DrawerViewContoller", bundle: Bundle.main).instantiateViewController(withIdentifier: "DrawerViewContoller")
         menuVC = sidemenuVC as! DrawerViewContoller
-        self.title =  Constant.Profile.homeScreen
         viewModel = HomeViewModel(delegate: self)
-        descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
-        descriptionTextView.layer.borderWidth = 1.0;
-        self.userProviderViewHight.constant = 0
-        self.userProviderView.isHidden = true
-        self.setupTexFieldValidstion()
         self.view.ShowSpinner()
         viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
         self.navigationItem.titleView = UIImageView.navigationBarLogo()
         self.navigationItem.leftBarButtonItem =
         UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title =  Constant.Profile.homeScreen
+        self.userProviderViewHight.constant = 0
+        self.userProviderView.isHidden = true
+        self.setupTexFieldValidstion()
     }
     
     @objc func sideMenuTapped(_ sender: UIButton) {
@@ -85,79 +87,8 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         phoneNumberTextField.text = viewModel?.getUserProfileData.phone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
         degignationTextField.text = viewModel?.getUserProfileData.designation
         descriptionTextView.text = viewModel?.getUserProfileData.description
-        saveButton.layer.cornerRadius = 12
-        saveButton.clipsToBounds = true
-        cancelButton.layer.cornerRadius = 12
-        cancelButton.clipsToBounds = true
     }
-    
-    func userDataRecived() {
-        viewModel?.getallClinics()
-        userProvider.setOn(false, animated: false)
-        if viewModel?.getUserProfileData.isProvider ?? false {
-            userProvider.setOn(true, animated: false)
-            self.userProviderViewHight.constant = 300
-            self.userProviderView.isHidden = false
-        }
-        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
-        setUpUI()
-    }
-    
-    func clinicsRecived() {
-        self.view.HideSpinner()
-        // get from user api
-        selectedClincs = viewModel?.getUserProfileData.clinics ?? []
-        
-        /// get From allclinincsapi
-        allClinics = viewModel?.getAllClinicsData ?? []
-        
-        self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
-        let selectedClincId = selectedClincs.map({$0.id ?? 0})
-        self.selectedClincIds = selectedClincId
-        if self.selectedClincIds.count > 0 {
-            self.view.ShowSpinner()
-            self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
-        }
-    }
-    
-    func serviceCategoriesRecived() {
-        // get from user api
-        selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
-        allServiceCategories = viewModel?.getAllServiceCategories ?? []
-        
-        var itemNotPresent:Bool = false
-        for item in selectedServiceCategories {
-            if allServiceCategories.contains(item) {
-                itemNotPresent =  true
-            }
-        }
-        self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? String.blank}).joined(separator: ", ")
-        let selectedList = selectedServiceCategories.map({$0.id ?? 0})
-        self.selectedServiceCategoriesIds = selectedList
-        
-        if selectedServiceCategories.count == 0 || itemNotPresent == false {
-            self.serviceCategoriesTextField.text = ""
-        }
-        self.viewModel?.getallService(SelectedCategories: selectedList)
-    }
-    
-    func serviceRecived() {
-        self.view.HideSpinner()
-        // get from user api
-        self.servicesTextField.text = ""
-        selectedService =  viewModel?.getUserProfileData.services ?? []
-        allService = viewModel?.getAllService ?? []
-        
-        let selectedList = selectedService.map({$0.id ?? 0})
-        self.selectedServiceIds = selectedList
-        self.servicesTextField.text = selectedService.map({$0.name ?? String.blank}).joined(separator: ", ")
-    }
-    
-    func profileDataUpdated(){
-        self.view.HideSpinner()
-        self.view.showToast(message: "data updated successfully", color: .black)
-        self.openUserListView()
-    }
+
     
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
@@ -169,27 +100,6 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
             self.userProviderView.isHidden = true
             self.view.layoutIfNeeded()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification:Notification) {
-        guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        self.view.frame.origin.y = -keyboardHeight.height
-    }
-    
-    @objc func keyboardWillHide(notification:Notification) {
-        self.view.frame.origin.y = 0
     }
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
@@ -299,10 +209,7 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
-//        guard let contactNumber = phoneNumberTextField.text, contactNumber.isValidMobile() else {
-//            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-//            return
-//        }
+        
         self.view.ShowSpinner()
         viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: contactNumber, roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
     }
@@ -311,36 +218,86 @@ class HomeViewContoller: UIViewController, HomeViewContollerProtocol {
         self.openUserListView()
     }
     
+    func openUserListView(){
+        let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
+        self.navigationController?.pushViewController(userListVC, animated: true)
+    }
+    
+}
+
+extension HomeViewContoller: HomeViewContollerProtocol{
+ 
+    func userDataRecived() {
+        viewModel?.getallClinics()
+        userProvider.setOn(false, animated: false)
+        if viewModel?.getUserProfileData.isProvider ?? false {
+            userProvider.setOn(true, animated: false)
+            self.userProviderViewHight.constant = 300
+            self.userProviderView.isHidden = false
+        }
+        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
+        setUpUI()
+    }
+    
+    func clinicsRecived() {
+        self.view.HideSpinner()
+        // get from user api
+        selectedClincs = viewModel?.getUserProfileData.clinics ?? []
+        
+        /// get From allclinincsapi
+        allClinics = viewModel?.getAllClinicsData ?? []
+        
+        self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
+        let selectedClincId = selectedClincs.map({$0.id ?? 0})
+        self.selectedClincIds = selectedClincId
+        if self.selectedClincIds.count > 0 {
+            self.view.ShowSpinner()
+            self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
+        }
+    }
+    
+    func serviceCategoriesRecived() {
+        // get from user api
+        selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
+        allServiceCategories = viewModel?.getAllServiceCategories ?? []
+        
+        var itemNotPresent:Bool = false
+        for item in selectedServiceCategories {
+            if allServiceCategories.contains(item) {
+                itemNotPresent =  true
+            }
+        }
+        self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? String.blank}).joined(separator: ", ")
+        let selectedList = selectedServiceCategories.map({$0.id ?? 0})
+        self.selectedServiceCategoriesIds = selectedList
+        
+        if selectedServiceCategories.count == 0 || itemNotPresent == false {
+            self.serviceCategoriesTextField.text = ""
+        }
+        self.viewModel?.getallService(SelectedCategories: selectedList)
+    }
+    
+    func serviceRecived() {
+        self.view.HideSpinner()
+        // get from user api
+        self.servicesTextField.text = ""
+        selectedService =  viewModel?.getUserProfileData.services ?? []
+        allService = viewModel?.getAllService ?? []
+        
+        let selectedList = selectedService.map({$0.id ?? 0})
+        self.selectedServiceIds = selectedList
+        self.servicesTextField.text = selectedService.map({$0.name ?? String.blank}).joined(separator: ", ")
+    }
+    
+    func profileDataUpdated(){
+        self.view.HideSpinner()
+        self.view.showToast(message: "data updated successfully", color: .black)
+        self.openUserListView()
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
     }
     
-    func openUserListView(){
-        let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
-        self.navigationController?.pushViewController(userListVC, animated: true)
-    }
-}
-
-extension HomeViewContoller: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == phoneNumberTextField {
-            guard let text = textField.text else { return false }
-            let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
-            return false
-        }
-        return true
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        
-        if textField == firsNameTextField,  textField.text == "" {
-            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
-        }
-        if textField == lastNameTextField, textField.text == "" {
-            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
-        }
-    }
 }
