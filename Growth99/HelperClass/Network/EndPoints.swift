@@ -142,6 +142,7 @@ struct EndPoints {
     static let createSMSTemplates = "/api/smstemplates"
     static let getLeadVariable = "/api/smstemplatenames/Lead/variables"
     static let getAppointMEntVariable = "/api/smstemplatenames/Appointment/variables"
+    static let getSMSTemplate = "/api/smstemplates/"
 }
 
 struct ApiUrl {
@@ -282,6 +283,8 @@ struct ApiUrl {
     static let createSMSTemplates = EndPoints.baseURL.appending(EndPoints.createSMSTemplates)
     static let getLeadVariable = EndPoints.baseURL.appending(EndPoints.getLeadVariable)
     static let getAppointMEntVariable = EndPoints.baseURL.appending(EndPoints.getAppointMEntVariable)
+    static let getSMSTemplate = EndPoints.baseURL.appending(EndPoints.getSMSTemplate)
 }
+
 
 

@@ -12,6 +12,8 @@ protocol CreateSMSTemplateViewModelProtocol {
     func getAppointmentVariablesList()
     func getLeadVariablesList()
     func crateSMSTemplate(parameters: [String:Any])
+    func updateSMSTemplate(smsTemplatesId:Int, parameters: [String:Any])
+    func getSMSTemplateData(smsTemplateId: Int)
 
     func getMassSMSTemplateListData(index: Int)-> CreateSMSTemplateModel
     func getLeadTemplateListData(index: Int)-> CreateSMSTemplateModel
@@ -20,21 +22,37 @@ protocol CreateSMSTemplateViewModelProtocol {
     var getSMSVariableListData: [CreateSMSTemplateModel] { get }
     var getLeadVariableListData: [CreateSMSTemplateModel] { get }
     var getAppointMentVariableListData: [CreateSMSTemplateModel] { get }
+    var getSMSTemplateListData: smsTemplateDataModel? { get }
 
 }
 
 class CreateSMSTemplateViewModel {
    
     var delegate: CreateSMSTemplateViewControllerProtocol?
+   
     var smsVariableListData: [CreateSMSTemplateModel] = []
     var leadVariableListData: [CreateSMSTemplateModel] = []
     var appointmentVariableListData: [CreateSMSTemplateModel] = []
+    var smsTemplateData: smsTemplateDataModel?
 
     init(delegate: CreateSMSTemplateViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    
+    func getSMSTemplateData(smsTemplateId: Int){
+        self.requestManager.request(forPath: ApiUrl.getSMSTemplate.appending("\(smsTemplateId)"), method: .GET, headers: self.requestManager.Headers()) { (result: Result<smsTemplateDataModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let smsTemplateData):
+                self.smsTemplateData = smsTemplateData
+                self.delegate?.recivedSMSTemplateData()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
     
     func getLeadVariablesList(){
         self.requestManager.request(forPath: ApiUrl.getLeadVariable, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[CreateSMSTemplateModel], GrowthNetworkError>) in
@@ -98,9 +116,25 @@ class CreateSMSTemplateViewModel {
             }
         }
     }
+    
+    func updateSMSTemplate(smsTemplatesId:Int, parameters: [String:Any]) {
+        self.requestManager.request(forPath: ApiUrl.createSMSTemplates, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_ ):
+                self.delegate?.smsTemplateCreatedSuccessfully()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension CreateSMSTemplateViewModel: CreateSMSTemplateViewModelProtocol {
+   
+    var getSMSTemplateListData: smsTemplateDataModel? {
+        return self.smsTemplateData
+    }
    
     var getLeadVariableListData: [CreateSMSTemplateModel] {
         return self.leadVariableListData

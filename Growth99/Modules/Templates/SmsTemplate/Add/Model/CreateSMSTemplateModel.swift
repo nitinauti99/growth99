@@ -18,3 +18,14 @@ struct CreateSMSTemplateModel: Codable {
     let label: String?
 }
 
+struct smsTemplateDataModel: Codable {
+    let id: Int?
+    let name: String?
+    let body: String?
+    let subject: String?
+    let defaultSmsTemplate: Bool?
+    let active: Bool?
+    let smsTemplateName: String?
+    let templateFor: String?
+    let smsTarget: String?
+}

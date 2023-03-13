@@ -12,7 +12,7 @@ protocol CreateSMSTemplateViewControllerProtocol {
     func recivedMassSMSVariablesList()
     func recivedAppointmentVariablesList()
     func recivedLeadVariablesList()
-
+    func recivedSMSTemplateData()
     func errorReceived(error: String)
     func smsTemplateCreatedSuccessfully()
 }
@@ -30,16 +30,26 @@ class CreateSMSTemplateViewController: UIViewController {
     
     var viewModel: CreateSMSTemplateViewModelProtocol?
     var selectedIndex = Int()
-    
+    var screenTitle: String = ""
+    var smsTemplateId = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constant.Profile.smsTemplateList
         self.viewModel = CreateSMSTemplateViewModel(delegate: self)
-        self.view.ShowSpinner()
-        self.viewModel?.getMassSMSVariablesList()
         self.isCustom.setOn(false, animated: false)
+        self.getSMSTemplate()
         self.collectionView.register(UINib(nibName: "CreateSMSTemplateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreateSMSTemplateCollectionViewCell")
         self.setVarableData(selectedSegmentIndex: selectedIndex)
+    }
+    
+    func getSMSTemplate(){
+        if self.screenTitle == "Edit" {
+            self.view.ShowSpinner()
+            self.viewModel?.getSMSTemplateData(smsTemplateId: smsTemplateId)
+        }else{
+            self.view.ShowSpinner()
+            self.viewModel?.getMassSMSVariablesList()
+        }
     }
     
     func setVarableData(selectedSegmentIndex: Int) {
@@ -58,6 +68,14 @@ class CreateSMSTemplateViewController: UIViewController {
         }
     }
     
+    func setUPUI(){
+        let item = viewModel?.getSMSTemplateListData
+        self.moduleTextField.text = item?.templateFor
+        self.targetTextField.text = item?.smsTarget
+        self.isCustom.setOn(item?.active ?? false, animated: false)
+        self.nameTextField.text = item?.name
+        self.bodyTextView.text = item?.body
+    }
     
     @IBAction func selectModuleAction(sender: UIButton){
         let moduleArray = ["Lead","Appointment", "Mass SMS"]
@@ -108,8 +126,9 @@ class CreateSMSTemplateViewController: UIViewController {
     }
     
     @IBAction func saveButtonAction(sender: UIButton) {
+        
         let param: [String: Any] = [
-            "id": "",
+            "id": self.smsTemplateId,
             "name": self.nameTextField.text ?? "",
             "body": self.bodyTextView.text ?? "",
             "templateFor": self.moduleTextField.text ?? "",
@@ -117,14 +136,27 @@ class CreateSMSTemplateViewController: UIViewController {
             "isCustom": self.isCustom.isSelected,
             "smsTarget": self.targetTextField.text ?? ""
         ]
-        self.view.ShowSpinner()
-        viewModel?.crateSMSTemplate(parameters: param)
+        if screenTitle == "Edit" {
+            self.view.ShowSpinner()
+            viewModel?.updateSMSTemplate(smsTemplatesId: smsTemplateId, parameters: param)
+        }else{
+            self.view.ShowSpinner()
+            viewModel?.crateSMSTemplate(parameters: param)
+        }
+      
     }
+    
+    
     
 }
 
 extension CreateSMSTemplateViewController: CreateSMSTemplateViewControllerProtocol {
    
+    func recivedSMSTemplateData(){
+        self.setUPUI()
+        self.viewModel?.getMassSMSVariablesList()
+    }
+    
     func recivedMassSMSVariablesList(){
         self.viewModel?.getAppointmentVariablesList()
     }

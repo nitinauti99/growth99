@@ -38,7 +38,16 @@ extension SMSTemplateViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.navigationController?.popViewController(animated: true)
+        let createSMSTemplateVC = UIStoryboard(name: "CreateSMSTemplateViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateSMSTemplateViewController") as! CreateSMSTemplateViewController
+        createSMSTemplateVC.screenTitle = "Edit"
+       
+        if isSearch {
+            createSMSTemplateVC.smsTemplateId = viewModel?.getTemplateFilterDataAtIndexPath(index: indexPath.row, selectedIndex: segmentedControl.selectedSegmentIndex)?.id ?? 0
+        } else {
+            createSMSTemplateVC.smsTemplateId = viewModel?.getTemplateDataAtIndexPath(index: indexPath.row, selectedIndex: segmentedControl.selectedSegmentIndex)?.id ?? 0
+        }
+        createSMSTemplateVC.selectedIndex = segmentedControl.selectedSegmentIndex
+        navigationController?.pushViewController(createSMSTemplateVC, animated: true)
     }
     
 }
