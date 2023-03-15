@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSource {
-   
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -22,53 +22,33 @@ extension PateintDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = UITableViewCell()
         
         if indexPath.section == 0 {
-            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "SMSTemplateTableViewCell") as? SMSTemplateTableViewCell else { return UITableViewCell() }
-            cell.smsSendButton.layer.cornerRadius = 5
-            cell.smsSendButton.layer.borderWidth = 1
-            cell.smsSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
-            cell.smsSendButton.addTarget(self, action: #selector(self.sendSmsTemplateList(_:)), for:.touchUpInside)
+            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "PateintSMSTemplateTableViewCell") as? PateintSMSTemplateTableViewCell else { return UITableViewCell() }
             
-            cell.smsTextFiledButton.addTarget(self, action: #selector(leadDetailViewController.smsTemplateList(_:)), for:.touchDown)
-            cell.smsTextFiled.text = "Selecte SMS template"
-            
+            cell.delegate = self
             return cell
             
         } else if indexPath.section == 1 {
+            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "PateintEmailTemplateTableViewCell") as? PateintEmailTemplateTableViewCell else { return UITableViewCell() }
             
-            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "EmailTemplateTableViewCell") as? EmailTemplateTableViewCell else { return UITableViewCell() }
-            cell.emailSendButton.layer.cornerRadius = 5
-            cell.emailSendButton.layer.borderWidth = 1
-            cell.emailSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
-            cell.emailSendButton.addTarget(self, action: #selector(self.sendEmailTemplateList(_:)), for:.touchUpInside)
-            
-            cell.emailTextFiledButton.addTarget(self, action: #selector(leadDetailViewController.emailTemplateList(_:)), for:.touchDown)
-            cell.emailTextFiled.text = "Select Email template"
-            
+            cell.delegate = self
+            self.emailBody = cell.emailTextFiled.text ?? ""
             return cell
             
         } else if indexPath.section == 2 {
-            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "CustomEmailTemplateTableViewCell") as? CustomEmailTemplateTableViewCell else { return UITableViewCell() }
-            cell.emailSendButton.layer.cornerRadius = 5
-            cell.emailSendButton.layer.borderWidth = 1
-            cell.emailSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
-            cell.emailSendButton.addTarget(self, action: #selector(self.sendCustomEmailTemplateList(_:)), for:.touchUpInside)
-            emailBody = cell.emailTextView.text
-            emailSubject = cell.emailTextFiled.text ?? String.blank
-            cell.emailSendButton.tag = indexPath.row
-            cell.errorLbi.isHidden = true
+            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "PateintCustomEmailTemplateTableViewCell") as? PateintCustomEmailTemplateTableViewCell else { return UITableViewCell() }
             
+            cell.delegate = self
+            cell.cnfigureCell(index: indexPath)
+            self.emailBody = cell.emailTextView.text
+            self.emailSubject = cell.emailTextFiled.text ?? String.blank
             return cell
             
         } else if indexPath.section == 3 {
-            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "CustomSMSTemplateTableViewCell") as? CustomSMSTemplateTableViewCell else { return UITableViewCell() }
-            cell.smsSendButton.layer.cornerRadius = 5
-            cell.smsSendButton.layer.borderWidth = 1
-            cell.smsSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
-            smsBody = cell.smsTextView.text
-            cell.smsSendButton.addTarget(self, action: #selector(self.sendCustomSMSTemplateList(_:)), for:.touchUpInside)
-            cell.smsSendButton.tag = indexPath.row
-            cell.errorLbi.isHidden = true
-            
+            guard let cell = pateintDetailTableView.dequeueReusableCell(withIdentifier: "PateintCustomSMSTemplateTableViewCell") as? PateintCustomSMSTemplateTableViewCell else { return UITableViewCell() }
+           
+            cell.delegate = self
+            cell.cnfigureCell(index: indexPath)
+            self.smsBody = cell.smsTextView.text
             return cell
         }
         return cell

@@ -120,10 +120,10 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func registerCell() {
         pateintDetailTableView.register(UINib(nibName: "questionAnswersTableViewCell", bundle: nil), forCellReuseIdentifier: "questionAnswersTableViewCell")
-        pateintDetailTableView.register(UINib(nibName: "SMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplateTableViewCell")
-        pateintDetailTableView.register(UINib(nibName: "CustomSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomSMSTemplateTableViewCell")
-        pateintDetailTableView.register(UINib(nibName: "EmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "EmailTemplateTableViewCell")
-        pateintDetailTableView.register(UINib(nibName: "CustomEmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomEmailTemplateTableViewCell")
+        pateintDetailTableView.register(UINib(nibName: "PateintSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintSMSTemplateTableViewCell")
+        pateintDetailTableView.register(UINib(nibName: "PateintCustomSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintCustomSMSTemplateTableViewCell")
+        pateintDetailTableView.register(UINib(nibName: "PateintEmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintEmailTemplateTableViewCell")
+        pateintDetailTableView.register(UINib(nibName: "PateintCustomEmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintCustomEmailTemplateTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -163,7 +163,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func recivedPateintDetail() {
@@ -226,68 +226,80 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         }
     }
     
-    ///  multiple selection with selction false
-    @objc func smsTemplateList(_ textField: UITextField){
-        let list = viewModel?.smsTemplateListData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
-            textField.text = selectedItem?.name
-            self?.selctedSmsTemplateId = selectedItem?.id ?? 0
-        }
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.reloadInputViews()
-        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
-    }
-    ///  multiple selection with selction false
-    @objc func emailTemplateList(_ textField: UITextField){
-        let list = viewModel?.emailTemplateListData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
-            textField.text = selectedItem?.name
-            self?.selctedSmsTemplateId = selectedItem?.id ?? 0
-        }
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.reloadInputViews()
-        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
-    }
-    
-    @objc func sendSmsTemplateList(_ sender: UIButton) {
-        self.selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
-        self.sendTemplate()
-    }
-    
-    @objc func sendEmailTemplateList(_ sender: UIButton) {
-        self.selctedTemplate = "\(pateintData?.id ?? 0)/email-template/\(self.selctedSmsTemplateId)"
-        self.sendTemplate()
-    }
-    
-    @objc func sendCustomSMSTemplateList(_ sender: UIButton) {
-        let cellIndexPath = IndexPath(item: sender.tag, section: 4)
-        if let cell = pateintDetailTableView.cellForRow(at: cellIndexPath) as? CustomSMSTemplateTableViewCell {
-            if let txtField = cell.smsTextView.text, txtField == "" {
-                cell.errorLbi.isHidden = false
-                return
-            }
-            self.view.ShowSpinner()
-            viewModel?.sendCustomSMS(leadId: pateintData?.id ?? 0, phoneNumber: "", body: cell.smsTextView.text)
-        }
-    }
-    
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
        self.view.showToast(message: responseMessage, color: .black)
     }
     
+    func emailSendSuccessfully(responseMessage: String)  {
+        self.view.HideSpinner()
+       self.view.showToast(message: responseMessage, color: .black)
+    }
     
-    @objc func sendCustomEmailTemplateList(_ sender: UIButton) {
-        let cellIndexPath = IndexPath(item: sender.tag, section: 3)
-        if let cell = pateintDetailTableView.cellForRow(at: cellIndexPath) as? CustomEmailTemplateTableViewCell {
+}
+
+extension PateintDetailViewController: PateintSMSTemplateTableViewCellDelegate,
+                                       PateintCustomSMSTemplateTableViewCellDelegate{
+   
+    func selectSMSTemplate(cell: PateintSMSTemplateTableViewCell) {
+        let list = viewModel?.smsTemplateListData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
+            cell.smsTextFiled.text = selectedItem?.name
+            self?.selctedSmsTemplateId = selectedItem?.id ?? 0
+        }
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.reloadInputViews()
+        selectionMenu.show(style: .popover(sourceView: cell.smsTextFiledButton, size: CGSize(width: cell.smsTextFiledButton.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
+    }
+    
+    func sendSMSTemplateList() {
+        self.selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
+        self.view.ShowSpinner()
+        viewModel?.sendSMSTemplate(template: selctedTemplate)
+    }
+    
+    func sendCustomSMSTemplateList(cell: PateintCustomSMSTemplateTableViewCell, index: IndexPath) {
+      
+        if let txtField = cell.smsTextView.text, txtField == "" {
+            cell.errorLbi.isHidden = false
+            return
+        }
+        self.view.ShowSpinner()
+        viewModel?.sendCustomSMS(leadId: pateintData?.id ?? 0, phoneNumber: "", body: cell.smsTextView.text)
+    }
+    
+}
+
+extension PateintDetailViewController: PateintEmailTemplateTableViewCellDelegate,
+                                       PateintCustomEmailTemplateTableViewCellDelegate {
+    
+    func selectEmailTemplate(cell: PateintEmailTemplateTableViewCell) {
+        let list = viewModel?.emailTemplateListData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
+            cell.emailTextFiled.text = selectedItem?.name
+            self?.selctedSmsTemplateId = selectedItem?.id ?? 0
+        }
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.reloadInputViews()
+        selectionMenu.show(style: .popover(sourceView: cell.emailTextFiledButton, size: CGSize(width: cell.emailTextFiledButton.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
+    }
+    
+    func sendEmailTemplateList() {
+        self.selctedTemplate = "\(pateintData?.id ?? 0)/email-template/\(self.selctedSmsTemplateId)"
+       
+        self.view.ShowSpinner()
+        viewModel?.sendEmailTemplate(template: selctedTemplate)
+    }
+    
+    func sendCustomEmailTemplateList(cell: PateintCustomEmailTemplateTableViewCell) {
             if let txtField = cell.emailTextFiled.text, txtField == ""  {
                 cell.emailTextFiled.showError(message: "Email Subject is required.")
                 return
@@ -298,19 +310,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
             }
             self.view.ShowSpinner()
             viewModel?.sendCustomEmail(leadId: pateintData?.id ?? 0, email: pateintData?.email ?? String.blank, subject: cell.emailTextFiled.text ?? String.blank, body: cell.emailTextView.text)
-        }
     }
-    
-    func emailSendSuccessfully(responseMessage: String)  {
-        self.view.HideSpinner()
-       self.view.showToast(message: responseMessage, color: .black)
-    }
-    
-    func sendTemplate() {
-        self.view.ShowSpinner()
-        viewModel?.sendTemplate(template: selctedTemplate)
-    }
-    
 }
 
 extension PateintDetailViewController: UIScrollViewDelegate {

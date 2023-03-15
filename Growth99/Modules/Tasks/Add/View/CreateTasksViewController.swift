@@ -73,7 +73,7 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
         return dateFormatter.string(from: datePicker.date)
     }
     
-    @objc func buttonAction(_ sender: PassableUIButton!){
+    @objc func buttonAction(_ sender: UIButton!){
         leadTextField.text = ""
         for button in buttons {
             button.isSelected = false

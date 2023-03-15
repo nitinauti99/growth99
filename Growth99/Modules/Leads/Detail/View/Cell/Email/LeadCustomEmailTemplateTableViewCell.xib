@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeadCustomEmailTemplateTableViewCell" rowHeight="364" id="KGk-i7-Jjw" customClass="LeadCustomEmailTemplateTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="557" height="369"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="557" height="369"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcm-hm-ij4">
+                        <rect key="frame" x="10" y="10" width="537" height="349"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9K-JL-hfQ">
+                                <rect key="frame" x="10" y="20" width="517" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Custom Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqH-eF-pCB">
+                                        <rect key="frame" x="30" y="12.5" width="141" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="BBM-Oh-LbH"/>
+                                    <constraint firstItem="AqH-eF-pCB" firstAttribute="centerY" secondItem="W9K-JL-hfQ" secondAttribute="centerY" id="RN7-zm-3Tt"/>
+                                    <constraint firstItem="AqH-eF-pCB" firstAttribute="leading" secondItem="W9K-JL-hfQ" secondAttribute="leading" constant="30" id="Sr3-6c-ce4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqO-B1-MEw" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="33" y="85" width="486" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="g5c-8q-BQt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-Ob-etf" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="33" y="294" width="120" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Arg-4N-qrK"/>
+                                    <constraint firstAttribute="height" constant="35" id="Zvi-lX-khj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="   + Send Email">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendCustomEmailTemplateListWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fd5-i2-lbJ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lwm-JX-w5T" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="23" y="155" width="484" height="109"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Email Body is required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgF-Cl-e1q">
+                                <rect key="frame" x="23" y="269" width="110.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lgF-Cl-e1q" firstAttribute="top" secondItem="lwm-JX-w5T" secondAttribute="bottom" constant="5" id="GCu-Vm-BLQ"/>
+                            <constraint firstItem="UqO-B1-MEw" firstAttribute="top" secondItem="W9K-JL-hfQ" secondAttribute="bottom" constant="20" id="GxK-F8-POy"/>
+                            <constraint firstItem="ZQ6-Ob-etf" firstAttribute="leading" secondItem="UqO-B1-MEw" secondAttribute="leading" id="JBN-Ur-ybc"/>
+                            <constraint firstItem="W9K-JL-hfQ" firstAttribute="leading" secondItem="kcm-hm-ij4" secondAttribute="leading" constant="10" id="L5P-4G-her"/>
+                            <constraint firstItem="lgF-Cl-e1q" firstAttribute="leading" secondItem="lwm-JX-w5T" secondAttribute="leading" id="MRO-d9-GF3"/>
+                            <constraint firstItem="lwm-JX-w5T" firstAttribute="top" secondItem="UqO-B1-MEw" secondAttribute="bottom" constant="25" id="MSs-lN-dSL"/>
+                            <constraint firstAttribute="trailing" secondItem="lwm-JX-w5T" secondAttribute="trailing" constant="30" id="Qe4-rV-WOU"/>
+                            <constraint firstItem="W9K-JL-hfQ" firstAttribute="top" secondItem="kcm-hm-ij4" secondAttribute="top" constant="20" id="UcE-hZ-kB3"/>
+                            <constraint firstItem="UqO-B1-MEw" firstAttribute="trailing" secondItem="kcm-hm-ij4" secondAttribute="trailingMargin" constant="-10" id="Yz7-ZJ-ZZ0"/>
+                            <constraint firstAttribute="bottom" secondItem="ZQ6-Ob-etf" secondAttribute="bottom" constant="20" id="bsP-vK-1im"/>
+                            <constraint firstAttribute="trailing" secondItem="W9K-JL-hfQ" secondAttribute="trailing" constant="10" id="dLW-Vr-wRc"/>
+                            <constraint firstItem="ZQ6-Ob-etf" firstAttribute="top" secondItem="lwm-JX-w5T" secondAttribute="bottom" constant="30" id="ePE-Nc-QWl"/>
+                            <constraint firstItem="lwm-JX-w5T" firstAttribute="leading" secondItem="kcm-hm-ij4" secondAttribute="leadingMargin" constant="15" id="iU1-sS-c2x"/>
+                            <constraint firstItem="UqO-B1-MEw" firstAttribute="leading" secondItem="kcm-hm-ij4" secondAttribute="leadingMargin" constant="25" id="mBa-hL-75n"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kcm-hm-ij4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Jnx-P4-rqN"/>
+                    <constraint firstAttribute="bottom" secondItem="kcm-hm-ij4" secondAttribute="bottom" constant="10" id="YNW-XX-aB7"/>
+                    <constraint firstAttribute="trailing" secondItem="kcm-hm-ij4" secondAttribute="trailing" constant="10" id="ojK-bL-f88"/>
+                    <constraint firstItem="kcm-hm-ij4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="pse-Cs-7b9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="emailSendButton" destination="ZQ6-Ob-etf" id="4mv-F7-JY7"/>
+                <outlet property="emailTextFiled" destination="UqO-B1-MEw" id="Dvq-rF-wdQ"/>
+                <outlet property="emailTextView" destination="lwm-JX-w5T" id="rdy-4j-S7P"/>
+                <outlet property="errorLbi" destination="lgF-Cl-e1q" id="MQC-xo-QfU"/>
+                <outlet property="subView" destination="kcm-hm-ij4" id="mCR-WJ-inL"/>
+            </connections>
+            <point key="canvasLocation" x="305.07246376811594" y="194.53125"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="UqO-B1-MEw">
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

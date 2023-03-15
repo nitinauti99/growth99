@@ -23,7 +23,7 @@
                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-Vz-ya9" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-Vz-ya9">
                         <rect key="frame" x="20" y="50.5" width="80" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Ta5-3z-aDs"/>
@@ -36,7 +36,7 @@
                         </state>
                         <state key="selected" image="tickselected"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-Pd-XmY" customClass="PassableUIButton" customModule="Growth99" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-Pd-XmY">
                         <rect key="frame" x="120" y="50.5" width="80" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Wl6-TI-96U"/>

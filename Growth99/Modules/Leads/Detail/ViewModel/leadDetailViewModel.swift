@@ -11,21 +11,24 @@ protocol leadDetailViewProtocol {
     func getQuestionnaireList(questionnaireId: Int)
     func getSMSDefaultList()
     func getEmailDefaultList()
-    var questionnaireDetailListData: [QuestionAnswers]? { get }
-    var smsTemplateListData: [SMStemplatesListDetailModel]? { get }
-    var emailTemplateListData: [EmailTemplatesListDetailModel]? { get }
-    func sendTemplate(template: String)
+    func sendSMSTemplate(template: String)
+    func sendEmailTemplate(template: String)
     func updateLeadStatus(template: String)
-    var leadStatus:String { get }
     func sendCustomSMS(leadId: Int, phoneNumber: String, body: String)
     func sendCustomEmail(leadId: Int, email: String,subject:String, body: String)
+    func getQuestionnaireDetailList(index: Int) -> QuestionAnswers?
+   
+    var leadStatus:String { get }
+    var getQuestionnaireDetailListData: [QuestionAnswers]? { get }
+    var smsTemplateListData: [SMStemplatesListDetailModel]? { get }
+    var emailTemplateListData: [EmailTemplatesListDetailModel]? { get }
 
 }
 
 class leadDetailViewModel {
     var delegate: leadDetailViewControllerProtocol?
+  
     var questionnaireDetailList: QuestionnaireDetailList?
-
     var smstemplatesListDetail = [SMStemplatesListDetailModel]()
     var emailTemplatesListDetail = [EmailTemplatesListDetailModel]()
 
@@ -48,6 +51,10 @@ class leadDetailViewModel {
                 print("Error while performing request \(error)")
             }
         }
+    }
+    
+    func getQuestionnaireDetailList(index: Int)-> QuestionAnswers? {
+        return self.questionnaireDetailList?.questionAnswers?[index]
     }
     
     func getSMSDefaultList() {
@@ -76,13 +83,26 @@ class leadDetailViewModel {
         }
     }
     
-    func sendTemplate(template: String) {
-        self.requestManager.request(forPath: ApiUrl.updateQuestionnaireSubmission.appending(template), method: .OPTIONS, headers: self.requestManager.Headers()) { [weak self] result in
+    func sendSMSTemplate(template: String) {
+        self.requestManager.request(forPath: ApiUrl.sendSMStoLead.appending(template), method: .POST, headers: self.requestManager.Headers()) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.smsSend(responseMessage: "SMS Send Successfully")
+                self.delegate?.smsSendSuccessfully(responseMessage: "sms send Successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func sendEmailTemplate(template: String) {
+        self.requestManager.request(forPath: ApiUrl.sendSMStoLead.appending(template), method: .POST, headers: self.requestManager.Headers()) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
+                self.delegate?.emailSendSuccessfully(responseMessage: "email send Successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -108,12 +128,15 @@ class leadDetailViewModel {
             "phoneNumber": phoneNumber,
             "body": body,
         ]
-        self.requestManager.request(forPath: ApiUrl.sendCustomsms, method: .OPTIONS, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.sendCustomsms, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.smsSendSuccessfully(responseMessage: "sms send Successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.smsSendSuccessfully(responseMessage: "sms send Successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while sending email")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -132,7 +155,11 @@ class leadDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.emailSendSuccessfully(responseMessage: "email send Successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.emailSendSuccessfully(responseMessage: "email send Successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while sending email")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -143,7 +170,7 @@ class leadDetailViewModel {
 }
 
 extension leadDetailViewModel: leadDetailViewProtocol {
-  
+
     var leadStatus: String {
         return  self.questionnaireDetailList?.leadStatus ?? String.blank
     }
@@ -156,7 +183,7 @@ extension leadDetailViewModel: leadDetailViewProtocol {
         return self.emailTemplatesListDetail
     }
     
-    var questionnaireDetailListData: [QuestionAnswers]? {
+    var getQuestionnaireDetailListData: [QuestionAnswers]? {
         return self.questionnaireDetailList?.questionAnswers ?? []
     }
     
