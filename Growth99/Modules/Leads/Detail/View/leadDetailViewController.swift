@@ -12,13 +12,12 @@ protocol leadDetailViewControllerProtocol: AnyObject {
     func recivedQuestionnaireList()
     func recivedSmsTemplateList()
     func recivedEmailTemplateList()
-    func smsSend(responseMessage: String)
     func updatedLeadStatusRecived(responseMessage: String)
     func smsSendSuccessfully(responseMessage: String)
     func emailSendSuccessfully(responseMessage: String)
 }
 
-class leadDetailViewController: UIViewController,leadDetailViewControllerProtocol {
+class leadDetailViewController: UIViewController,questionAnswersTableViewCellDelegate {
    
     @IBOutlet private weak var symptoms: UILabel!
     @IBOutlet private weak var gender: UILabel!
@@ -31,7 +30,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     @IBOutlet private weak var sourceURL: UILabel!
     @IBOutlet private weak var landingPage: UILabel!
     @IBOutlet private weak var createdAt: UILabel!
-    @IBOutlet private weak var scrollViewHight: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewHight: NSLayoutConstraint!
     @IBOutlet weak var anslistTableView: UITableView!
     @IBOutlet private weak var newButton: UIButton!
     @IBOutlet private weak var coldButton: UIButton!
@@ -48,11 +47,6 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     var leadId: Int?
     var selctedSmsTemplateId = Int()
-    var selctedTemplate = String()
-    var smsBody: String = ""
-    var emailBody: String = ""
-    var emailSubject: String = ""
-    let user = UserRepository.shared
 
     var tableViewHeight: CGFloat {
         anslistTableView.layoutIfNeeded()
@@ -61,25 +55,21 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(updateLeadInfo))
-       let timeLine = UIBarButtonItem(title: "TimeLine", style: .plain, target: self, action: #selector(leadTimeLiine))
-        navigationItem.rightBarButtonItems = [editButton, timeLine]
-
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationLeadList"), object: nil)
         self.view.ShowSpinner()
-        self.viewModel = leadDetailViewModel(delegate: self)
-        viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
         self.registerCell()
         self.fullName.text = leadData?.fullName
-        buttons = [newButton, coldButton, warmButton, hotButton, wonButton, deadButton]
+        self.navigationController?.title = "Lead Detail"
+        self.viewModel = leadDetailViewModel(delegate: self)
+        self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
+        self.buttons = [newButton, coldButton, warmButton, hotButton, wonButton, deadButton]
     }
    
     func registerCell() {
         anslistTableView.register(UINib(nibName: "questionAnswersTableViewCell", bundle: nil), forCellReuseIdentifier: "questionAnswersTableViewCell")
-        anslistTableView.register(UINib(nibName: "SMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "SMSTemplateTableViewCell")
-        anslistTableView.register(UINib(nibName: "CustomSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomSMSTemplateTableViewCell")
-        anslistTableView.register(UINib(nibName: "EmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "EmailTemplateTableViewCell")
-        anslistTableView.register(UINib(nibName: "CustomEmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomEmailTemplateTableViewCell")
+        anslistTableView.register(UINib(nibName: "LeadSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadSMSTemplateTableViewCell")
+        anslistTableView.register(UINib(nibName: "LeadCustomSMSTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadCustomSMSTemplateTableViewCell")
+        anslistTableView.register(UINib(nibName: "LeadEmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadEmailTemplateTableViewCell")
+        anslistTableView.register(UINib(nibName: "LeadCustomEmailTemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadCustomEmailTemplateTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,12 +92,7 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         self.view.ShowSpinner()
         viewModel?.updateLeadStatus(template: "\(leadId ?? 0)/status/\(str.uppercased())")
     }
-    
-    func updatedLeadStatusRecived(responseMessage: String) {
-        self.view.showToast(message: responseMessage, color: .black)
-        viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
-    }
-    
+
     func setLeadStatus(status: String) {
         if status == "NEW" {
             newButton.isSelected = true
@@ -124,127 +109,25 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         }
     }
     
-    @objc func updateLeadInfo() {
-        let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
-        editLeadVC.LeadData = leadData
-        self.present(editLeadVC, animated: true)
-    }
-    
-    @objc func leadTimeLiine() {
-        let editLeadVC = UIStoryboard(name: "leadTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "leadTimeLineViewController") as! leadTimeLineViewController
-        editLeadVC.leadId = leadId ?? 0
-        self.navigationController?.pushViewController(editLeadVC, animated: true)
-    }
-    
-    @objc func updateUI(){
-        self.navigationController?.popViewController(animated: true)
-        self.navigationController?.title = "Lead Detail"
-    }
-
-    @objc func editButtonPressed(_ sender: UIButton) {
+    func editButtonPressed(cell: questionAnswersTableViewCell) {
         let editLeadVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
         editLeadVC.LeadData = leadData
         self.navigationController?.pushViewController(editLeadVC, animated: true)
     }
     
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
-    func recivedQuestionnaireList() {
-        patientQuestionList = viewModel?.questionnaireDetailListData ?? []
-        anslistTableView.reloadData()
-        scrollViewHight.constant = tableViewHeight + 500
-        view.setNeedsLayout()
-        self.setLeadStatus(status: viewModel?.leadStatus ?? String.blank)
-        viewModel?.getSMSDefaultList()
-    }
-    
-    func recivedSmsTemplateList(){
-        viewModel?.getEmailDefaultList()
-    }
-    
-    func recivedEmailTemplateList(){
-        self.view.HideSpinner()
-    }
+}
 
-    func smsSend(responseMessage: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        anslistTableView.reloadData()
-    }
-    
-    ///  multiple selection with selction false
-    @objc func smsTemplateList(_ textField: UITextField){
-        let list = viewModel?.smsTemplateListData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
-            textField.text = selectedItem?.name
-            self?.selctedSmsTemplateId = selectedItem?.id ?? 0
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
-    }
-    
-    ///  multiple selection with selction false
-    @objc func emailTemplateList(_ textField: UITextField){
-        let list = viewModel?.emailTemplateListData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
-            textField.text = selectedItem?.name
-            self?.selctedSmsTemplateId = selectedItem?.id ?? 0
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.show(style: .popover(sourceView: textField, size: CGSize(width: textField.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
-    }
-    
-     @objc func sendSmsTemplateList(_ sender: UIButton) {
-         selctedTemplate =  "\(leadId ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
-         self.sendTemplate()
-    }
-    
-    @objc func sendEmailTemplateList(_ sender: UIButton) {
-        selctedTemplate = "\(leadId ?? 0)/email-template/\(self.selctedSmsTemplateId)"
-        self.sendTemplate()
-    }
-    
-    @objc func sendCustomSMSTemplateList(_ sender: UIButton) {
-        let cellIndexPath = IndexPath(item: sender.tag, section: 4)
-        if let cell = anslistTableView.cellForRow(at: cellIndexPath) as? CustomSMSTemplateTableViewCell {
-            if let txtField = cell.smsTextView.text, txtField == "" {
-                cell.errorLbi.isHidden = false
-                return
-            }
-            self.view.ShowSpinner()
-            viewModel?.sendCustomSMS(leadId: leadData?.id ?? 0, phoneNumber: leadData?.PhoneNumber ?? String.blank, body: cell.smsTextView.text)
-        }
-    }
-    
+extension leadDetailViewController: leadDetailViewControllerProtocol {
+
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: .black)
+        anslistTableView.reloadData()
     }
-   
-
-    @objc func sendCustomEmailTemplateList(_ sender: UIButton) {
-        let cellIndexPath = IndexPath(item: sender.tag, section: 3)
-        if let cell = anslistTableView.cellForRow(at: cellIndexPath) as? CustomEmailTemplateTableViewCell {
-            if let txtField = cell.emailTextFiled.text, txtField == ""  {
-                cell.emailTextFiled.showError(message: "Email Subject is required.")
-                return
-            }
-            if let txtField = cell.emailTextView.text, txtField == ""  {
-                cell.errorLbi.isHidden = false
-                return
-            }
-            self.view.ShowSpinner()
-            viewModel?.sendCustomEmail(leadId: leadId ?? 0, email: leadData?.Email ?? String.blank, subject: cell.emailTextFiled.text ?? String.blank, body: cell.emailTextView.text)
-         }
+    
+    func updatedLeadStatusRecived(responseMessage: String) {
+        self.view.showToast(message: responseMessage, color: .black)
+        viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
     }
     
     func emailSendSuccessfully(responseMessage: String)  {
@@ -252,20 +135,24 @@ class leadDetailViewController: UIViewController,leadDetailViewControllerProtoco
         self.view.showToast(message: responseMessage, color: .black)
     }
     
-    func sendTemplate() {
-        self.view.ShowSpinner()
-        viewModel?.sendTemplate(template: selctedTemplate)
-     }
-    
-}
-
-extension leadDetailViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewHight.constant = tableViewHeight + 500
+    func recivedEmailTemplateList(){
+        self.view.HideSpinner()
     }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        scrollViewHight.constant = tableViewHeight + 500
+    
+    func recivedSmsTemplateList(){
+        viewModel?.getEmailDefaultList()
+    }
+    
+    func recivedQuestionnaireList() {
+        self.anslistTableView.reloadData()
+        self.scrollViewHight.constant = tableViewHeight + 500
+        view.setNeedsLayout()
+        self.setLeadStatus(status: viewModel?.leadStatus ?? String.blank)
+        self.viewModel?.getSMSDefaultList()
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
     }
 }

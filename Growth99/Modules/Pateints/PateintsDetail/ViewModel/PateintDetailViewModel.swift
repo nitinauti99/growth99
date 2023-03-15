@@ -11,12 +11,14 @@ protocol PateintDetailViewModelProtocol {
     func getpateintsList(pateintId: Int)
     func getSMSDefaultList()
     func getEmailDefaultList()
-    func sendTemplate(template: String)
+    func sendEmailTemplate(template: String)
+    func sendSMSTemplate(template: String)
     func updatePateintStatus(template: String)
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func sendCustomSMS(leadId: Int, phoneNumber: String, body: String)
     func sendCustomEmail(leadId: Int, email: String,subject:String, body: String)
     func updatePateintsInfo(pateintId: Int, inputString: String, ansString: String)
+    
     var pateintsDetailListData: PateintsDetailListModel? { get }
     var smsTemplateListData: [SMStemplatesListDetailModel]? { get }
     var emailTemplateListData: [EmailTemplatesListDetailModel]? { get }
@@ -76,13 +78,34 @@ class PateintDetailViewModel {
         }
     }
     
-    func sendTemplate(template: String) {
-        self.requestManager.request(forPath: ApiUrl.smstemplates.appending(template), method: .OPTIONS, headers: self.requestManager.Headers()) { [weak self] result in
+    func sendSMSTemplate(template: String) {
+        self.requestManager.request(forPath: ApiUrl.sendSMSToPateints.appending(template), method: .POST, headers: self.requestManager.Headers()) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.smsSend(responseMessage: "SMS Send Successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.smsSend(responseMessage: "SMS Send Successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while sendeing email")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func sendEmailTemplate(template: String) {
+        self.requestManager.request(forPath: ApiUrl.sendSMSToPateints.appending(template), method: .POST, headers: self.requestManager.Headers()) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
+                if response.statusCode == 200 {
+                    self.delegate?.smsSend(responseMessage: "SMS Send Successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while sendeing SMS")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -126,7 +149,7 @@ class PateintDetailViewModel {
             "phoneNumber": phoneNumber,
             "body": body,
         ]
-        self.requestManager.request(forPath: ApiUrl.sendCustomsms, method: .OPTIONS, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.sendCustomsms, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):

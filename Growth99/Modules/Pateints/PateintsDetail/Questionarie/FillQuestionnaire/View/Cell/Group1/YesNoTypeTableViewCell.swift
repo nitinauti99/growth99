@@ -9,8 +9,8 @@ import UIKit
 
 class YesNoTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var questionnaireName: UILabel!
-    @IBOutlet weak var yesTypeButton: PassableUIButton!
-    @IBOutlet weak var NoTypeButton: PassableUIButton!
+    @IBOutlet weak var yesTypeButton: UIButton!
+    @IBOutlet weak var NoTypeButton: UIButton!
     var buttons = [UIButton]()
 
     override func awakeFromNib() {
