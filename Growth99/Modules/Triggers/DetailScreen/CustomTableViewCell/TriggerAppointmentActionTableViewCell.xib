@@ -64,13 +64,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Appointment Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qh-qa-XXI" userLabel="userName">
-                                <rect key="frame" x="20" y="70" width="260" height="25"/>
+                                <rect key="frame" x="20" y="70" width="260" height="20.666666666666671"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <color key="textColor" red="0.12941" green="0.14510000000000001" blue="0.16078000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JI-6U-MFd">
-                                <rect key="frame" x="20" y="105" width="260" height="45"/>
+                                <rect key="frame" x="20" y="100.66666666666667" width="260" height="45.000000000000014"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duk-jk-efK">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
@@ -130,21 +130,29 @@
                                     <constraint firstAttribute="trailing" secondItem="duk-jk-efK" secondAttribute="trailing" id="X71-YD-x6r"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please select appointment status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6D-uN-ond" userLabel="password">
+                                <rect key="frame" x="30" y="150.66666666666666" width="250" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3qh-qa-XXI" firstAttribute="top" secondItem="gFA-Hx-Tyc" secondAttribute="bottom" constant="20" id="3Ez-qJ-4OU"/>
                             <constraint firstAttribute="bottom" secondItem="adg-Rs-8D6" secondAttribute="bottom" constant="20" id="7NM-jA-v47"/>
-                            <constraint firstItem="adg-Rs-8D6" firstAttribute="top" secondItem="7JI-6U-MFd" secondAttribute="bottom" constant="30" id="9RA-vT-08Z"/>
                             <constraint firstItem="7JI-6U-MFd" firstAttribute="top" secondItem="3qh-qa-XXI" secondAttribute="bottom" constant="10" id="Acg-E8-RRs"/>
+                            <constraint firstItem="s6D-uN-ond" firstAttribute="top" secondItem="7JI-6U-MFd" secondAttribute="bottom" constant="5" id="Cz1-hc-W6M"/>
                             <constraint firstItem="gFA-Hx-Tyc" firstAttribute="leading" secondItem="wDQ-bO-Jai" secondAttribute="leading" id="GqI-wJ-7au"/>
                             <constraint firstItem="7JI-6U-MFd" firstAttribute="trailing" secondItem="3qh-qa-XXI" secondAttribute="trailing" id="Lc0-aW-exv"/>
                             <constraint firstItem="7JI-6U-MFd" firstAttribute="leading" secondItem="3qh-qa-XXI" secondAttribute="leading" id="M7O-PT-TgG"/>
                             <constraint firstItem="3qh-qa-XXI" firstAttribute="leading" secondItem="wDQ-bO-Jai" secondAttribute="leading" constant="20" id="OEO-qf-fEO"/>
                             <constraint firstAttribute="trailing" secondItem="3qh-qa-XXI" secondAttribute="trailing" constant="20" id="blB-h4-JJA"/>
+                            <constraint firstItem="s6D-uN-ond" firstAttribute="trailing" secondItem="7JI-6U-MFd" secondAttribute="trailing" id="ehz-wH-ukJ"/>
                             <constraint firstItem="gFA-Hx-Tyc" firstAttribute="top" secondItem="wDQ-bO-Jai" secondAttribute="top" id="hNI-E6-L29"/>
                             <constraint firstAttribute="trailing" secondItem="gFA-Hx-Tyc" secondAttribute="trailing" id="hP2-30-M29"/>
                             <constraint firstItem="adg-Rs-8D6" firstAttribute="leading" secondItem="3qh-qa-XXI" secondAttribute="leading" id="kwN-yT-Kne"/>
+                            <constraint firstItem="s6D-uN-ond" firstAttribute="leading" secondItem="7JI-6U-MFd" secondAttribute="leading" constant="10" id="pvx-qm-DNL"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -165,6 +173,7 @@
             <connections>
                 <outlet property="patientAppointmenTextLabel" destination="DNu-jN-fpV" id="Vlq-93-Cio"/>
                 <outlet property="patientAppointmentButton" destination="B5k-Nq-7l7" id="SpV-UV-lDZ"/>
+                <outlet property="patientAppointmentEmptyTextLbl" destination="s6D-uN-ond" id="QWk-wP-rLf"/>
                 <outlet property="patientAppointmentView" destination="7JI-6U-MFd" id="CWD-QD-rW1"/>
                 <outlet property="subView" destination="wDQ-bO-Jai" id="5Ic-Ug-g77"/>
                 <outlet property="subViewInside" destination="gFA-Hx-Tyc" id="X7A-ZS-KYl"/>
@@ -176,6 +185,9 @@
         <image name="dropDown" width="15" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

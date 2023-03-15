@@ -13,11 +13,19 @@ protocol TriggerDetailViewControlProtocol: AnyObject {
     func triggerQuestionnairesDataRecived()
     func triggerLeadSourceUrlDataRecived()
     func errorReceived(error: String)
+    
+    func createTriggerDataReceived()
+    func createAppointmentDataReceived()
 }
 
 class TriggerDetailViewController: UIViewController, TriggerDetailViewControlProtocol {
     
     @IBOutlet weak var triggerdDetailTableView: UITableView!
+    
+    @IBOutlet weak var submitBtnHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var submitViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     var triggerDetailList = [TriggerDetailModel]()
     var viewModel: TriggerDetailViewModelProtocol?
@@ -26,7 +34,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var selectedLeadTags = [TriggerTagListModel]()
     var selectedLeadTagIds: String = String.blank
-
+    
     var selectedPatientTags = [TriggerTagListModel]()
     var selectedPatientTagIds: String = String.blank
     
@@ -41,32 +49,52 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var dateFormater: DateFormaterProtocol?
     var patientAppointmentStatus: String = String.blank
     var leadSource: String = String.blank
-    var statusArray: [String] = []
-    var leadStatusArray: [String] = []
-    var leadSourceArray: [String] = []
-    var selectedLeadStatusArray: [String] = []
     
-    var landingPagesArray = [LandingPageNamesModel]()
-    var landingFormsArray = [TriggerQuestionnaireModel]()
-
+    var leadSourceArray: [String] = []
+    var selectedLeadSources: [String] = []
+    var leadLandingPagesArray = [LandingPageNamesModel]()
+    var selectedLeadLandingPages: [LandingPageNamesModel] = []
+    var leadFormsArray = [LandingPageNamesModel]()
+    var selectedleadForms: [LandingPageNamesModel] = []
+    var appointmentStatusArray: [String] = []
+    var selectedAppointmentStatus: [String] = []
+    
+    var triggersCreateData = [TriggerCreateData]()
+    
     var moduleSelectionType: String = String.blank
     var smsTargetArray: [String] = []
     var emailTargetArray: [String] = []
     var smsTargetSelectionType: String = String.blank
     var emailTargetSelectionType: String = String.blank
     var taskUserListArray: [UserDTOListTrigger] = []
+    var selectedTaskTemplate: Int = 0
+    
+    var moduleName: String = String.blank
+    var selectedNetworkType: String = String.blank
+    var templateId: Int = 0
+    
+    var selectedTriggerTime: String = String.blank
+    var selectedTriggerFrequency: String = String.blank
+    var taskName: String = String.blank
+    var selectedTriggerTarget: String = String.blank
+    var leadTriggerTarget: String = String.blank
+    var cinicTriggerTarget: String = String.blank
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
-        dateFormater = DateFormater()        
-        statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
-        leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
+        dateFormater = DateFormater()
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
+        
+        
+        appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
         triggerDetailList.append(emailSMS)
         viewModel = TriggerDetailViewModel(delegate: self)
+        submitBtn.isEnabled = false
+        submitBtn.backgroundColor = UIColor(hexString: "#6AC1E7")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,15 +118,15 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     func triggerLandingPageNamesDataRecived() {
         viewModel?.getTriggerQuestionnaires()
     }
-
+    
     func triggerQuestionnairesDataRecived() {
         viewModel?.getTriggerLeadSourceUrl()
     }
-
+    
     func triggerLeadSourceUrlDataRecived() {
         self.view.HideSpinner()
     }
-
+    
     func triggerSMSPatientStatusAllDataRecived() {
         self.view.HideSpinner()
         let emailSMS = TriggerDetailModel(cellType: "Both", LastName: "")
@@ -119,6 +147,20 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         triggerdDetailTableView.endUpdates()
     }
     
+    func createTriggerDataReceived() {
+        triggerAppointmentCreateSucessfull()
+    }
+    
+    func createAppointmentDataReceived() {
+        triggerAppointmentCreateSucessfull()
+    }
+    
+    func triggerAppointmentCreateSucessfull() {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Trigger created sucessfully", color: .black)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
@@ -134,4 +176,14 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerAppointmentActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerTimeTableViewCell")
     }
+    
+    func createNewTriggerCell(cellNameType: String) {
+        let emailSMS = TriggerDetailModel(cellType: cellNameType, LastName: String.blank)
+        triggerDetailList.append(emailSMS)
+        triggerdDetailTableView.beginUpdates()
+        let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)
+        triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
+        triggerdDetailTableView.endUpdates()
+    }
+    
 }

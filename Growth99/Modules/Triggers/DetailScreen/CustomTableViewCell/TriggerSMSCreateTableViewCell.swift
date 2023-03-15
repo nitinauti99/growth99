@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TriggerCreateCellDelegate: AnyObject {
-    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath)
+    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String)
 }
 
 class TriggerSMSCreateTableViewCell: UITableViewCell {
@@ -83,7 +83,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
-        self.delegate?.nextButtonCreate(cell: self, index: indexPath)
+        self.delegate?.nextButtonCreate(cell: self, index: indexPath, triggerNetworkType: networkTypeSelected)
     }
 
     @IBAction func smsButtonAction(sender: UIButton) {

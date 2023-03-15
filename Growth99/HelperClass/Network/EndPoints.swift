@@ -147,6 +147,7 @@ struct EndPoints {
     static let marketingMassLead = "/api/trigger/mass-lead"
     static let marketingMassPatient = "/api/trigger/mass-patient"
     static let marketingMassLeadPatient = "/api/trigger/mass-lead-patient"
+    static let createTriggerAppointment = "/api/trigger/appointment"
 }
 
 struct ApiUrl {
@@ -292,5 +293,6 @@ struct ApiUrl {
     static let marketingMassLead = EndPoints.baseURL.appending(EndPoints.marketingMassLead)
     static let marketingMassPatient = EndPoints.baseURL.appending(EndPoints.marketingMassPatient)
     static let marketingMassLeadPatient = EndPoints.baseURL.appending(EndPoints.marketingMassLeadPatient)
+    static let createTriggerAppointment = EndPoints.baseURL.appending(EndPoints.createTriggerAppointment)
 }
 

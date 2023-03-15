@@ -264,7 +264,6 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
         }
     }
     
-    
     var getMassEmailDetailData: MassEmailSMSDetailListModel? {
         return self.massEmailDeatilList
     }

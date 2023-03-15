@@ -3199,8 +3199,8 @@
 		1896709A29BA6080003224ED /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
-				1896709B29BA6080003224ED /* ViewModel */,
 				1896709D29BA6080003224ED /* Model */,
+				1896709B29BA6080003224ED /* ViewModel */,
 				1896709F29BA6080003224ED /* View */,
 				189670A329BA6080003224ED /* CustomTableViewCell */,
 			);

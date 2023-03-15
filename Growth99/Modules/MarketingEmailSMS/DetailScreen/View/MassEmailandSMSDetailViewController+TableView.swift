@@ -408,9 +408,11 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
         }
         
         if smsEmailModuleSelectionType == "lead" {
+            
             marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModel(name: moduleName, moduleName: "MassLead", triggerConditions: leadStatusSelected, leadTags: selectedLeadTags, patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: leadSourceSelected)
+            
             let parameters: [String: Any]  = params.toDict()
             viewModel?.postMassLeadDataMethod(leadDataParms: parameters)
             

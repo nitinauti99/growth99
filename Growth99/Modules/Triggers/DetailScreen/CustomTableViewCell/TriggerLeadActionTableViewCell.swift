@@ -24,11 +24,11 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadLandingView: UIView!
     @IBOutlet weak var leadFormView: UIView!
     
-    @IBOutlet weak var leadStatusTextLabel: UILabel!
+    @IBOutlet weak var leadSourceTextLabel: UILabel!
     @IBOutlet weak var leadLandingTextLabel: UILabel!
     @IBOutlet weak var leadFormTextLabel: UILabel!
 
-    @IBOutlet weak var leadStatusEmptyTextLabel: UILabel!
+    @IBOutlet weak var leadSourceEmptyTextLabel: UILabel!
     @IBOutlet weak var leadLandingEmptyTextLabel: UILabel!
     @IBOutlet weak var leadFormEmptyTextLabel: UILabel!
 

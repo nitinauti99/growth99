@@ -297,9 +297,9 @@
                 <outlet property="leadLandingSelectonButton" destination="2cZ-26-1IP" id="xTd-KK-nOA"/>
                 <outlet property="leadLandingTextLabel" destination="M33-Uq-uBt" id="stg-0e-IFY"/>
                 <outlet property="leadLandingView" destination="zR9-Ki-q60" id="jOv-w2-w2h"/>
-                <outlet property="leadStatusEmptyTextLabel" destination="zKs-VF-Tdg" id="glV-y6-ScO"/>
+                <outlet property="leadSourceEmptyTextLabel" destination="zKs-VF-Tdg" id="fSm-ne-LfK"/>
+                <outlet property="leadSourceTextLabel" destination="HTW-qq-dSE" id="tmX-do-6fm"/>
                 <outlet property="leadStatusSelectonButton" destination="Q5s-bg-gj7" id="1ih-63-mJo"/>
-                <outlet property="leadStatusTextLabel" destination="HTW-qq-dSE" id="8HO-qk-j8d"/>
                 <outlet property="leadStatusView" destination="rhi-8Y-rUP" id="g79-Fq-57A"/>
                 <outlet property="subView" destination="wDQ-bO-Jai" id="5Ic-Ug-g77"/>
                 <outlet property="subViewInside" destination="gFA-Hx-Tyc" id="X7A-ZS-KYl"/>
