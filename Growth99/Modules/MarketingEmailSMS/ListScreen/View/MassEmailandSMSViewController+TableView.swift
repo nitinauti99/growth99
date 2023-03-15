@@ -91,12 +91,12 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
         if isSearch {
-            editVC.appointmentId = viewModel?.getMassEmailandSMSFilterData[indexPath.row].id
+//            editVC.appointmentId = viewModel?.getMassEmailandSMSFilterData[indexPath.row].id
             // editVC.editMassEmailData = viewModel?.getMassEmailFilterListData[indexPath.row]
         } else {
-            editVC.appointmentId = viewModel?.getMassEmailandSMSData[indexPath.row].id
+//            editVC.appointmentId = viewModel?.getMassEmailandSMSData[indexPath.row].id
             // editVC.editMassEmailData = viewModel?.getMassEmailListData[indexPath.row]
         }
         navigationController?.pushViewController(editVC, animated: true)

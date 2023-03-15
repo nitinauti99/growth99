@@ -18,6 +18,7 @@ protocol TriggerDetailViewModelProtocol {
     var  getTriggerLeadSourceUrlData: [LeadSourceUrlListModel] { get }
     
     func localToServerWithDate(date: String) -> String
+    func timeFormatterString(textField: CustomTextField) -> String
 }
 
 class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
@@ -26,7 +27,8 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
     var triggerLandingPageNames: [LandingPageNamesModel] = []
     var triggerQuestionnaires: [TriggerQuestionnaireModel] = []
     var triggerLeadSourceUrl: [LeadSourceUrlListModel] = []
-    
+    var timePicker = UIDatePicker()
+
     init(delegate: TriggerDetailViewControlProtocol? = nil) {
         self.delegate = delegate
     }
@@ -116,5 +118,15 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "h:mm a"
         return dateWith + dateFormatter.string(from: date)
+    }
+    
+    func timeFormatterString(textField: CustomTextField) -> String {
+        timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        timePicker.datePickerMode = .time
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        textField.resignFirstResponder()
+        timePicker.reloadInputViews()
+        return formatter.string(from: timePicker.date)
     }
 }

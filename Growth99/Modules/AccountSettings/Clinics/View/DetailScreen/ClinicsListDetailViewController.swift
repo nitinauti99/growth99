@@ -501,7 +501,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         
         let params = ClinicParamModel(name: clinicName, contactNumber: contactNumber, address: address, notificationEmail: notificationEmail, notificationSMS: notificationSmsTextField.text, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, countryCode: countryCode, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
         let parameters: [String: Any]  = params.toDict()
-        print("Sample params:: \(parameters)")
 
         if self.title == Constant.Profile.createClinic {
             httpMethodType = .POST

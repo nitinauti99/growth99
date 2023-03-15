@@ -146,6 +146,9 @@ struct EndPoints {
     static let deleteUser = "/api/public/users/delete?userId="
     static let sendSMSToPateints = "/api/v1/patient/"
     static let sendSMStoLead = "/api/questionnaire-submission/lead/"
+    static let marketingMassLead = "/api/trigger/mass-lead"
+    static let marketingMassPatient = "/api/trigger/mass-patient"
+    static let marketingMassLeadPatient = "/api/trigger/mass-lead-patient"
 }
 
 struct ApiUrl {
@@ -290,5 +293,7 @@ struct ApiUrl {
     static let deleteUser = EndPoints.baseURL.appending(EndPoints.deleteUser)
     static let sendSMSToPateints = EndPoints.baseURL.appending(EndPoints.sendSMSToPateints)
     static let sendSMStoLead = EndPoints.baseURL.appending(EndPoints.sendSMStoLead)
-
+    static let marketingMassLead = EndPoints.baseURL.appending(EndPoints.marketingMassLead)
+    static let marketingMassPatient = EndPoints.baseURL.appending(EndPoints.marketingMassPatient)
+    static let marketingMassLeadPatient = EndPoints.baseURL.appending(EndPoints.marketingMassLeadPatient)
 }

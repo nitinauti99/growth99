@@ -22,6 +22,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
         if emailAndSMSDetailList[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSDefaultTableViewCell", for: indexPath) as? MassEmailandSMSDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
+            moduleName = cell.massEmailSMSTextField.text ?? String.blank
             return cell
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Module" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSModuleTableViewCell", for: indexPath) as? MassEmailandSMSModuleTableViewCell else { return UITableViewCell()}
@@ -51,6 +52,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSCreateTableViewCell", for: indexPath) as? MassEmailandSMSCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = self
+            networkTypeSelected = cell.networkTypeSelected
             cell.networkSelectonSMSButton.tag = indexPath.row
             cell.networkSelectonSMSButton.addTarget(self, action: #selector(networkSelectionSMSMethod), for: .touchDown)
             cell.networkSelectonEmailButton.tag = indexPath.row
@@ -60,6 +62,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTimeTableViewCell", for: indexPath) as? MassEmailandSMSTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.updateMassEmailTimeFromTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")")
+            selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
             return cell
         }
         return UITableViewCell()
@@ -84,7 +87,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 } else {
                     leadCell.leadStatusEmptyTextLabel.isHidden = true
                     self?.leadStatusSelected = selectedList
-                    leadCell.leadStatusTextLabel.text = selectedList.joined(separator: ", ")
+                    leadCell.leadStatusTextLabel.text = selectedList.joined(separator: ",")
                 }
             }
         }
@@ -108,7 +111,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     leadCell.leadSourceTextLabel.text = "Select lead source"
                 } else {
                     self?.leadSourceSelected = selectedList
-                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ", ")
+                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
                 }
             }
         }
@@ -158,7 +161,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                 } else {
                     patientCell.patientStatusEmptyTextLabel.isHidden = true
                     self?.paymentStatusSelected = selectedList
-                    patientCell.patientStatusTextLabel.text = selectedList.joined(separator: ", ")
+                    patientCell.patientStatusTextLabel.text = selectedList.joined(separator: ",")
                 }
             }
         }
@@ -182,7 +185,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     patientCell.patientAppointmenTextLabel.text = "Select patient appointment"
                 } else {
                     self?.appointmentStatusSelected = selectedList
-                    patientCell.patientAppointmenTextLabel.text = selectedList.joined(separator: ", ")
+                    patientCell.patientAppointmenTextLabel.text = selectedList.joined(separator: ",")
                 }
             }
         }
@@ -286,6 +289,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSDefaultCellDelegat
         if cell.massEmailSMSTextField.text == "" {
             cell.massEmailSMSTextField.showError(message: "Please enter Mass Email or SMS name")
         } else {
+            moduleName = cell.massEmailSMSTextField.text ?? String.blank
             let emailSMS = MassEmailandSMSDetailModel(cellType: "Module", LastName: "")
             emailAndSMSDetailList.append(emailSMS)
             emailAndSMSTableView.beginUpdates()
@@ -323,25 +327,26 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSModuleCellDelegate
 }
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate {
-    func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath) {
+    func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath, networkType: String) {
         if cell.networkTypeSelected == "sms" {
             if cell.selectNetworkSMSTextLabel.text == "Please select network" {
                 cell.selectNetworkEmptyTextLabel.isHidden = false
             } else {
                 cell.selectNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton()
+                setupNetworkNextButton(networkTypeSelected: networkType)
             }
         } else {
             if cell.selectNetworkEmailTextLabel.text == "Please select network" {
                 cell.selectNetworkEmptyTextLabel.isHidden = false
             } else {
                 cell.selectNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton()
+                setupNetworkNextButton(networkTypeSelected: networkType)
             }
         }
     }
     
-    func setupNetworkNextButton() {
+    func setupNetworkNextButton(networkTypeSelected: String) {
+        self.networkTypeSelected = networkTypeSelected
         let emailSMS = MassEmailandSMSDetailModel(cellType: "Time", LastName: "")
         emailAndSMSDetailList.append(emailSMS)
         emailAndSMSTableView.beginUpdates()
@@ -393,10 +398,42 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegat
     }
 }
 
-
 extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
-    func nextButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath) {
+    func submitButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath) {
+        self.view.ShowSpinner()
+        if networkTypeSelected == "sms" {
+            templateId = Int(selectedSmsTemplateId) ?? 0
+        } else {
+            templateId = Int(selectedemailTemplateId) ?? 0
+        }
         
+        if smsEmailModuleSelectionType == "lead" {
+            marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
+            
+            let params = MarketingLeadModel(name: moduleName, moduleName: "MassLead", triggerConditions: leadStatusSelected, leadTags: selectedLeadTags, patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: leadSourceSelected)
+            let parameters: [String: Any]  = params.toDict()
+            viewModel?.postMassLeadDataMethod(leadDataParms: parameters)
+            
+        } else if smsEmailModuleSelectionType == "patient" {
+   
+            marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "AppointmentPatient", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
+            
+            let params = MarketingLeadModel(name: moduleName, moduleName: "MassPatient", triggerConditions: appointmentStatusSelected, leadTags: [], patientTags: selectedPatientTags, patientStatus: paymentStatusSelected, triggerData: marketingTriggersData, source: [])
+            let parameters: [String: Any]  = params.toDict()
+            viewModel?.postMassPatientDataMethod(patientDataParms: parameters)
+            
+        } else {
+            marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "All", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
+            
+            let params = MarketingLeadModel(name: moduleName, moduleName: "All", triggerConditions: ["All"], leadTags: [], patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: [])
+            let parameters: [String: Any]  = params.toDict()
+
+            viewModel?.postMassLeadPatientDataMethod(leadPatientDataParms: parameters)
+        }
+    }
+    
+    func cancelButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func massEmailTimeFromTapped(cell: MassEmailandSMSTimeTableViewCell) {
@@ -406,6 +443,8 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSTimeTableViewCell {
             vacationCell.updateMassEmailTimeFromTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")")
+            selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
+
         }
     }
 }

@@ -8,8 +8,9 @@
 import UIKit
 
 protocol MassEmailandSMSTimeCellDelegate: AnyObject {
-    func nextButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath)
+    func submitButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath)
     func massEmailTimeFromTapped(cell: MassEmailandSMSTimeTableViewCell)
+    func cancelButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath)
 }
 
 class MassEmailandSMSTimeTableViewCell: UITableViewCell {
@@ -39,7 +40,12 @@ class MassEmailandSMSTimeTableViewCell: UITableViewCell {
     }
     
     // MARK: - Add and remove time methods
-    @IBAction func nextButtonAction(sender: UIButton) {
-        self.delegate?.nextButtonTime(cell: self, index: indexPath)
+    @IBAction func submitButtonAction(sender: UIButton) {
+        self.delegate?.submitButtonTime(cell: self, index: indexPath)
+    }
+    
+    // MARK: - Add and remove time methods
+    @IBAction func cancelButtonAction(sender: UIButton) {
+        self.delegate?.cancelButtonTime(cell: self, index: indexPath)
     }
 }
