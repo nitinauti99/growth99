@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MassEmailandSMSCreateCellDelegate: AnyObject {
-    func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath)
+    func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath, networkType: String)
 }
 
 class MassEmailandSMSCreateTableViewCell: UITableViewCell {
@@ -34,15 +34,12 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     weak var delegate: MassEmailandSMSCreateCellDelegate?
     var indexPath = IndexPath()
     var networkTypeSelected: String = "sms"
-    let radioController: RadioButtonController = RadioButtonController()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        radioController.buttonsArray = [networkSelectonSMSButton, networkSelectonEmailButton]
-        radioController.defaultButton = networkSelectonSMSButton
 
         networkViewEmail.layer.cornerRadius = 4.5
         networkViewEmail.layer.borderWidth = 1
@@ -55,20 +52,22 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
-        self.delegate?.nextButtonCreate(cell: self, index: indexPath)
+        self.delegate?.nextButtonCreate(cell: self, index: indexPath, networkType: networkTypeSelected)
     }
 
     @IBAction func smsButtonAction(sender: UIButton) {
-        radioController.buttonArrayUpdated(buttonSelected: sender)
+        smsBtn.isSelected = !smsBtn.isSelected
         networkViewEmail.isHidden = true
         networkViewSMS.isHidden = false
         networkTypeSelected = "sms"
+        emailBtn.isSelected = false
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
-        radioController.buttonArrayUpdated(buttonSelected: sender)
+        emailBtn.isSelected = !emailBtn.isSelected
         networkViewEmail.isHidden = false
         networkViewSMS.isHidden = true
         networkTypeSelected = "email"
+        smsBtn.isSelected = false
     }
 }

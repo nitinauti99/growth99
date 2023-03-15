@@ -54,15 +54,11 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     var indexPath = IndexPath()
     var networkTypeSelected: String = "sms"
 
-    let radioController: RadioButtonController = RadioButtonController()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        radioController.buttonsArray = [networkSMSNetworkSelectonButton, networkEmailNetworkSelectonButton, assignTaskNetworkSelectonButton]
-        radioController.defaultButton = networkSMSNetworkSelectonButton
         
         networkViewEmailTarget.layer.cornerRadius = 4.5
         networkViewEmailTarget.layer.borderWidth = 1
@@ -91,26 +87,32 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     }
 
     @IBAction func smsButtonAction(sender: UIButton) {
-        radioController.buttonArrayUpdated(buttonSelected: sender)
+        smsBtn.isSelected = !smsBtn.isSelected
         networkViewSMS.isHidden = false
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = true
         networkTypeSelected = "sms"
+        emailBtn.isSelected = false
+        taskBtn.isSelected = false
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
-        radioController.buttonArrayUpdated(buttonSelected: sender)
+        emailBtn.isSelected = !emailBtn.isSelected
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = false
         networkViewTask.isHidden = true
         networkTypeSelected = "email"
+        smsBtn.isSelected = false
+        taskBtn.isSelected = false
     }
     
     @IBAction func taskButtonAction(sender: UIButton) {
-        radioController.buttonArrayUpdated(buttonSelected: sender)
+        taskBtn.isSelected = !taskBtn.isSelected
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = false
         networkTypeSelected = "task"
+        smsBtn.isSelected = false
+        emailBtn.isSelected = false
     }
 }

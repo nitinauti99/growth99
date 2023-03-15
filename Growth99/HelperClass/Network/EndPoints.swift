@@ -144,6 +144,9 @@ struct EndPoints {
     static let getAppointMEntVariable = "/api/smstemplatenames/Appointment/variables"
     static let getSMSTemplate = "/api/smstemplates/"
     static let deleteUser = "/api/public/users/delete?userId="
+    static let marketingMassLead = "/api/trigger/mass-lead"
+    static let marketingMassPatient = "/api/trigger/mass-patient"
+    static let marketingMassLeadPatient = "/api/trigger/mass-lead-patient"
 }
 
 struct ApiUrl {
@@ -286,6 +289,8 @@ struct ApiUrl {
     static let getAppointMEntVariable = EndPoints.baseURL.appending(EndPoints.getAppointMEntVariable)
     static let getSMSTemplate = EndPoints.baseURL.appending(EndPoints.getSMSTemplate)
     static let deleteUser = EndPoints.baseURL.appending(EndPoints.deleteUser)
-
+    static let marketingMassLead = EndPoints.baseURL.appending(EndPoints.marketingMassLead)
+    static let marketingMassPatient = EndPoints.baseURL.appending(EndPoints.marketingMassPatient)
+    static let marketingMassLeadPatient = EndPoints.baseURL.appending(EndPoints.marketingMassLeadPatient)
 }
 

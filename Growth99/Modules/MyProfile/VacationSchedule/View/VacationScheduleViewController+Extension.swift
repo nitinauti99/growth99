@@ -157,8 +157,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
         if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
             vacationCell.updateTimeToTextField(with: self.vacationViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? String.blank)
-          }
-      }
+        }
+    }
 }
 
 extension VacationScheduleViewController: UITextFieldDelegate {

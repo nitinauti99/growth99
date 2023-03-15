@@ -68,7 +68,7 @@ struct SmsTemplate : Codable {
     let smsTarget : String?
     let defaultSmsTemplate : Bool?
     let active : Bool?
-    let isCustom : String?
+    let isCustom : Bool?
     let isCloneTemplate : Bool?
 }
 
@@ -114,9 +114,9 @@ struct EmailSMSTemplate : Codable {
     let defaultEmailTemplate : Bool?
     let identifier : String?
     let updatedBy : UpdatedByEmail?
-    let isCustom : String?
+    let isCustom : Bool?
     let emailTemplateName : String?
-    let isCloneTemplate : String?
+    let isCloneTemplate : Bool?
 }
 
 struct CreatedByEmail : Codable {

@@ -18,10 +18,15 @@ protocol MassEmailandSMSDetailViewControlProtocol: AnyObject {
     func massEmailSMSLeadStatusAllDataRecived()
     func massEmailSMSPatientStatusAllDataRecived()
     func errorReceived(error: String)
+    
+    func marketingMassLeadDataReceived()
+    func marketingMassPatientDataReceived()
+    func marketingMassLeadPatientDataReceived()
+
 }
 
 class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDetailViewControlProtocol {
-    
+
     @IBOutlet weak var emailAndSMSTableView: UITableView!
     
     var emailAndSMSDetailList = [MassEmailandSMSDetailModel]()
@@ -53,6 +58,14 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     var appointmentStatusSelected: [String] = []
     var smsEmailModuleSelectionType: String = String.blank
     var smsEmailTargetSelectionType: String = String.blank
+
+    var moduleName: String = String.blank
+    var marketingTriggersData = [MarketingTriggerData]()
+    
+    var networkTypeSelected: String = String.blank
+    var templateId: Int = 0
+    
+    var selectedTimeSlot: String = String.blank
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +121,24 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     
     func massEmailSMSLeadStatusAllDataRecived() {
         viewModel?.getMassEmailPatientStatusAllMethod()
+    }
+    
+    func marketingMassLeadDataReceived() {
+        smsEmailSubmitReponseReceived()
+    }
+    
+    func marketingMassPatientDataReceived() {
+        smsEmailSubmitReponseReceived()
+    }
+    
+    func marketingMassLeadPatientDataReceived() {
+        smsEmailSubmitReponseReceived()
+    }
+    
+    func smsEmailSubmitReponseReceived() {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Trigger created sucessfully", color: .black)
+        self.navigationController?.popViewController(animated: true)
     }
 
     func massEmailSMSPatientStatusAllDataRecived() {

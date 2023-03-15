@@ -73,6 +73,29 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
         } else if triggerDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerTimeTableViewCell", for: indexPath) as? TriggerTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = self
+            if moduleSelectionType == "lead" {
+                cell.timeRangeView.isHidden = true
+                cell.timeFrequencyLbl.isHidden = true
+                cell.timeRangeLbl.isHidden = true
+                cell.scheduledBasedOnTextField.isHidden = true
+                cell.scheduleBasedonLbl.isHidden = true
+                cell.timeFrequencyButton.isHidden = true
+                cell.timeRangeButton.isHidden = true
+            } else {
+                cell.timeRangeView.isHidden = false
+                cell.timeFrequencyLbl.isHidden = false
+                cell.timeRangeLbl.isHidden = false
+                cell.scheduledBasedOnTextField.isHidden = false
+                cell.scheduleBasedonLbl.isHidden = false
+                cell.timeFrequencyButton.isHidden = false
+                cell.timeRangeButton.isHidden = false
+            }
+            cell.timeHourlyButton.tag = indexPath.row
+            cell.timeHourlyButton.addTarget(self, action: #selector(timeHourlyButtonMethod), for: .touchDown)
+
+            cell.scheduledBasedOnButton.tag = indexPath.row
+            cell.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnButtonMethod), for: .touchDown)
+
             return cell
         }
         return UITableViewCell()
@@ -305,6 +328,40 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(taskUserListArray.count * 30))), arrowDirection: .up), from: self)
     }
+    
+    @objc func timeHourlyButtonMethod(sender: UIButton) {
+        let timeHourlyArray = ["Min", "Hour", "Day"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        let row = sender.tag % 1000
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            let cellIndexPath = IndexPath(item: row, section: 0)
+            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
+                createCell.timeHourlyTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    @objc func scheduledBasedOnButtonMethod(sender: UIButton) {
+        let scheduledBasedOnArray = ["Appointment Created Date", "Before Appointment Date", "After Appointment Date"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: scheduledBasedOnArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        let row = sender.tag % 1000
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            let cellIndexPath = IndexPath(item: row, section: 0)
+            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
+                createCell.scheduledBasedOnTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
+    }
 }
 
 extension TriggerDetailViewController: TriggerDefaultCellDelegate {
@@ -416,18 +473,28 @@ extension TriggerDetailViewController: TriggerPatientCellDelegate {
 }
 
 extension TriggerDetailViewController: TriggerTimeCellDelegate {
-    func nextButtonTime(cell: TriggerTimeTableViewCell, index: IndexPath) {
+    
+    func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         
     }
     
-    func triggerTimeFromTapped(cell: TriggerTimeTableViewCell) {
-        guard let indexPath = triggerdDetailTableView.indexPath(for: cell) else {
+    func buttontimeRangeStartTapped(cell: TriggerTimeTableViewCell) {
+        guard let indexPath = self.triggerdDetailTableView.indexPath(for: cell) else {
             return
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let vacationCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
-            vacationCell.updatetriggerTimeFromTextField(with: "\(viewModel?.localToServerWithDate(date: cell.triggerTimeFromTextField.text ?? String.blank) ?? "")")
-            vacationCell.triggerTimeFromTextField.resignFirstResponder()
+        if let  triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
+            triggerTimeCell.updateTimeRangeStartTextField(with: self.viewModel?.timeFormatterString(textField: cell.timeRangeStartTimeTF) ?? String.blank)
+        }
+    }
+    
+    func buttontimeRangeEndTapped(cell: TriggerTimeTableViewCell) {
+        guard let indexPath = self.triggerdDetailTableView.indexPath(for: cell) else {
+            return
+        }
+        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
+        if let triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
+            triggerTimeCell.updateTimeRangeEndTextField(with: self.viewModel?.timeFormatterString(textField: cell.timeRangeEndTimeTF) ?? String.blank)
         }
     }
 }
