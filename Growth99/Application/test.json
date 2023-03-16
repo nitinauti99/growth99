@@ -169,6 +169,10 @@
         {
           "title": "Post Calender",
           "imageName": "fa-calendar-alt"
+        },
+        {
+          "title": "Media Library",
+          "imageName": "fa-image"
         }
       ]
     },

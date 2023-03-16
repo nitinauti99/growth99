@@ -140,12 +140,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             pushViewControllerFromDrawerMenu(identifier: "TriggersListViewController", pusedViewController: "TriggersListViewController")
         } else if(title == Constant.Profile.formBuilder) {
             pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
-        } else if(title == Constant.Profile.websiteTemplatesList) {
-            pushViewControllerFromDrawerMenu(identifier: "WebisteTemplatesViewController", pusedViewController:  "WebisteTemplatesViewController")
         } else if(title == Constant.Profile.announcements) {
             pushViewControllerFromDrawerMenu(identifier: "AnnouncementsViewController", pusedViewController: "AnnouncementsViewController")
-        } else if(title == Constant.Profile.landingPages) {
-            pushViewControllerFromDrawerMenu(identifier: "LandingPagesViewController", pusedViewController: "LandingPagesViewController")
         }
     }
 }
@@ -294,7 +290,15 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 10 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "SocialMediaManagerViewController", pusedViewController: "SocialMediaManagerViewController")
+                pushViewControllerFromDrawerMenu(identifier: "SocialProfilesViewController", pusedViewController: "SocialProfilesViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "LabelsViewController", pusedViewController: "LabelsViewController")
+            case 2:
+                pushViewControllerFromDrawerMenu(identifier: "PostsViewController", pusedViewController: "PostsViewController")
+            case 3:
+                pushViewControllerFromDrawerMenu(identifier: "PostCalenderViewController", pusedViewController: "PostCalenderViewController")
+            case 4:
+                pushViewControllerFromDrawerMenu(identifier: "MediaLibraryViewController", pusedViewController: "MediaLibraryViewController")
             default:
                 break
             }
