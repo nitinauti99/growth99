@@ -49,6 +49,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var assignTaskEmptyTextLabel: UILabel!
     @IBOutlet weak var assignTaskNetworkSelectonButton: UIButton!
     @IBOutlet weak var assignTaskNetworkTextLabel: UILabel!
+    @IBOutlet weak var createNextButton: UIButton!
 
     weak var delegate: TriggerCreateCellDelegate?
     var indexPath = IndexPath()

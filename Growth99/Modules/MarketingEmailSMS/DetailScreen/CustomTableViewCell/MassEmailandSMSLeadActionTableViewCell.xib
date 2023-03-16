@@ -350,6 +350,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="leadNextButton" destination="adg-Rs-8D6" id="BAE-a9-sMk"/>
                 <outlet property="leadSourceSelectonButton" destination="2cZ-26-1IP" id="FXL-a2-29x"/>
                 <outlet property="leadSourceTextLabel" destination="M33-Uq-uBt" id="83Q-PP-ijd"/>
                 <outlet property="leadSourceView" destination="zR9-Ki-q60" id="EBi-a9-di8"/>

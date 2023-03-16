@@ -19,18 +19,24 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadStatusSelectonButton: UIButton!
     @IBOutlet weak var leadLandingSelectonButton: UIButton!
     @IBOutlet weak var leadFormSelectonButton: UIButton!
-    
+    @IBOutlet weak var leadSourceUrlSelectonButton: UIButton!
+
     @IBOutlet weak var leadStatusView: UIView!
     @IBOutlet weak var leadLandingView: UIView!
     @IBOutlet weak var leadFormView: UIView!
-    
+    @IBOutlet weak var leadSourceURLView: UIView!
+
     @IBOutlet weak var leadSourceTextLabel: UILabel!
     @IBOutlet weak var leadLandingTextLabel: UILabel!
     @IBOutlet weak var leadFormTextLabel: UILabel!
+    @IBOutlet weak var leadSourceUrlTextLabel: UILabel!
 
     @IBOutlet weak var leadSourceEmptyTextLabel: UILabel!
     @IBOutlet weak var leadLandingEmptyTextLabel: UILabel!
     @IBOutlet weak var leadFormEmptyTextLabel: UILabel!
+    @IBOutlet weak var leadSourceUrlEmptyTextLabel: UILabel!
+
+    @IBOutlet weak var leadNextButton: UIButton!
 
     weak var delegate: TriggerLeadCellDelegate?
     var indexPath = IndexPath()
@@ -52,6 +58,10 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
         leadFormView.layer.cornerRadius = 4.5
         leadFormView.layer.borderWidth = 1
         leadFormView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        
+        leadSourceURLView.layer.cornerRadius = 4.5
+        leadSourceURLView.layer.borderWidth = 1
+        leadSourceURLView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
     }
     
     // MARK: - Add and remove time methods

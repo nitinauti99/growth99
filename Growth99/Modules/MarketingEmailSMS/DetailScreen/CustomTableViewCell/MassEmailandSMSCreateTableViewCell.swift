@@ -30,6 +30,7 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var selectNetworkEmptyTextLabel: UILabel!
 
     @IBOutlet weak var smsEmailCountTextLabel: UILabel!
+    @IBOutlet weak var createNextButton: UIButton!
 
     weak var delegate: MassEmailandSMSCreateCellDelegate?
     var indexPath = IndexPath()

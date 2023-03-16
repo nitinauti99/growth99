@@ -123,6 +123,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="defaultNextButton" destination="zCE-lG-0mD" id="McP-Yf-pKH"/>
                 <outlet property="massEmailSMSTextField" destination="DeW-1k-1ar" id="cr8-nF-GP5"/>
                 <outlet property="subView" destination="vLT-h4-k28" id="TV2-yf-BvS"/>
                 <outlet property="subViewInside" destination="O3M-Ov-A9V" id="kok-TP-GcH"/>
@@ -132,7 +133,7 @@
     </objects>
     <designables>
         <designable name="DeW-1k-1ar">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>

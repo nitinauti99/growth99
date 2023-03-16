@@ -44,7 +44,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dfgdh" borderStyle="line" placeholder="trigger name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-1k-1ar" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="trigger name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-1k-1ar" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                 <rect key="frame" x="30" y="120" width="250" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ca4-QD-LPO"/>
@@ -121,6 +121,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="massEmailSMSTextField" destination="DeW-1k-1ar" id="cr8-nF-GP5"/>
+                <outlet property="moduleNextButton" destination="zCE-lG-0mD" id="aIt-MQ-P9r"/>
                 <outlet property="subView" destination="vLT-h4-k28" id="TV2-yf-BvS"/>
                 <outlet property="subViewInside" destination="O3M-Ov-A9V" id="kok-TP-GcH"/>
             </connections>
@@ -129,7 +130,7 @@
     </objects>
     <designables>
         <designable name="DeW-1k-1ar">
-            <size key="intrinsicContentSize" width="90" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="98" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

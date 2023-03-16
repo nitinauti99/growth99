@@ -590,6 +590,7 @@
                 <outlet property="assignTaskEmptyTextLabel" destination="PIg-xc-kOB" id="Fbt-K4-Qf9"/>
                 <outlet property="assignTaskNetworkSelectonButton" destination="xuo-uR-xA5" id="g1u-Ag-6EZ"/>
                 <outlet property="assignTaskNetworkTextLabel" destination="Y7h-x6-1pG" id="OK3-u4-s2p"/>
+                <outlet property="createNextButton" destination="HIS-ga-GBU" id="NAb-SU-cE6"/>
                 <outlet property="emailBtn" destination="YPa-6I-DH1" id="VxS-cH-VTD"/>
                 <outlet property="networkEmailNetworkSelectonButton" destination="9oW-ZM-HBR" id="aYp-PS-dEy"/>
                 <outlet property="networkEmailTagetSelectonButton" destination="gmA-XP-8Ub" id="Dhr-4U-Kih"/>
@@ -623,7 +624,7 @@
     </objects>
     <designables>
         <designable name="8P8-0F-beF">
-            <size key="intrinsicContentSize" width="72.333333333333329" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="80.333333333333329" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

@@ -17,6 +17,8 @@ class TriggerModuleTableViewCell: UITableViewCell {
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet private weak var leadBtn: UIButton!
     @IBOutlet private weak var patientBtn: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+
     var moduleTypeSelected: String = "lead"
     let radioController: RadioButtonController = RadioButtonController()
     

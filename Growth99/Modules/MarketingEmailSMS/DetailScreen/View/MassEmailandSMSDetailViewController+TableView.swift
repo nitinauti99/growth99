@@ -290,12 +290,8 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSDefaultCellDelegat
             cell.massEmailSMSTextField.showError(message: "Please enter Mass Email or SMS name")
         } else {
             moduleName = cell.massEmailSMSTextField.text ?? String.blank
-            let emailSMS = MassEmailandSMSDetailModel(cellType: "Module", LastName: "")
-            emailAndSMSDetailList.append(emailSMS)
-            emailAndSMSTableView.beginUpdates()
-            let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-            emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-            emailAndSMSTableView.endUpdates()
+            cell.defaultNextButton.isEnabled = false
+            createNewMassEmailSMSCell(cellNameType: "Module")
         }
     }
 }
@@ -304,20 +300,12 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSModuleCellDelegate
     func nextButtonModule(cell: MassEmailandSMSModuleTableViewCell, index: IndexPath, moduleType: String) {
         if moduleType == "patient" {
             smsEmailModuleSelectionType = moduleType
-            let emailSMS = MassEmailandSMSDetailModel(cellType: "Patient", LastName: "")
-            emailAndSMSDetailList.append(emailSMS)
-            emailAndSMSTableView.beginUpdates()
-            let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-            emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-            emailAndSMSTableView.endUpdates()
+            cell.moduleNextButton.isEnabled = false
+            createNewMassEmailSMSCell(cellNameType: "Patient")
         } else if moduleType == "lead" {
             smsEmailModuleSelectionType = moduleType
-            let emailSMS = MassEmailandSMSDetailModel(cellType: "Lead", LastName: "")
-            emailAndSMSDetailList.append(emailSMS)
-            emailAndSMSTableView.beginUpdates()
-            let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-            emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-            emailAndSMSTableView.endUpdates()
+            cell.moduleNextButton.isEnabled = false
+            createNewMassEmailSMSCell(cellNameType: "Lead")
         } else {
             smsEmailModuleSelectionType = moduleType
             self.view.ShowSpinner()
@@ -333,26 +321,22 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
                 cell.selectNetworkEmptyTextLabel.isHidden = false
             } else {
                 cell.selectNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkTypeSelected: networkType)
+                setupNetworkNextButton(networkTypeSelected: networkType, cell: cell)
             }
         } else {
             if cell.selectNetworkEmailTextLabel.text == "Please select network" {
                 cell.selectNetworkEmptyTextLabel.isHidden = false
             } else {
                 cell.selectNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkTypeSelected: networkType)
+                setupNetworkNextButton(networkTypeSelected: networkType, cell: cell)
             }
         }
     }
     
-    func setupNetworkNextButton(networkTypeSelected: String) {
+    func setupNetworkNextButton(networkTypeSelected: String, cell: MassEmailandSMSCreateTableViewCell) {
         self.networkTypeSelected = networkTypeSelected
-        let emailSMS = MassEmailandSMSDetailModel(cellType: "Time", LastName: "")
-        emailAndSMSDetailList.append(emailSMS)
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
+        cell.createNextButton.isEnabled = false
+        createNewMassEmailSMSCell(cellNameType: "Time")
     }
 }
 
@@ -362,6 +346,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSLeadCellDelegate {
             cell.leadStatusEmptyTextLabel.isHidden = false
         } else {
             cell.leadStatusEmptyTextLabel.isHidden = true
+            cell.leadNextButton.isEnabled = false
             leadActionApiCallMethod(selectedCell: cell)
         }
     }
@@ -383,6 +368,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegat
             cell.patientStatusEmptyTextLabel.isHidden = false
         } else {
             cell.patientStatusEmptyTextLabel.isHidden = true
+            cell.patientNextButton.isEnabled = false
             patientActionApiCallMethod(selectedCell: cell)
         }
     }

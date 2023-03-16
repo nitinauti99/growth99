@@ -9,6 +9,7 @@ import UIKit
 
 protocol TriggerTimeCellDelegate: AnyObject {
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath)
+    func nextBtnAction(cell: TriggerTimeTableViewCell, index: IndexPath)
     func buttontimeRangeStartTapped(cell: TriggerTimeTableViewCell)
     func buttontimeRangeEndTapped(cell: TriggerTimeTableViewCell)
 }
@@ -37,12 +38,15 @@ class TriggerTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var timeRangeLbl: UILabel!
 
     @IBOutlet weak var addAnotherConditionButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+
     @IBOutlet weak var timeHourlyButton: UIButton!
     @IBOutlet weak var scheduledBasedOnButton: UIButton!
 
     weak var delegate: TriggerTimeCellDelegate?
     var indexPath = IndexPath()
-    
+    var timerTypeSelected: String = "Frequency"
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -78,6 +82,7 @@ class TriggerTimeTableViewCell: UITableViewCell {
         timeFrequencyButton.isSelected = !timeFrequencyButton.isSelected
         timeFrequencyView.isHidden = false
         timeRangeView.isHidden = true
+        timerTypeSelected = "Frequency"
         timeRangeButton.isSelected = false
     }
     
@@ -85,10 +90,15 @@ class TriggerTimeTableViewCell: UITableViewCell {
         timeRangeButton.isSelected = !timeRangeButton.isSelected
         timeFrequencyView.isHidden = true
         timeRangeView.isHidden = false
+        timerTypeSelected = "Range"
         timeFrequencyButton.isSelected = false
     }
     
     @IBAction func addAnotherConditionBtnAction(sender: UIButton) {
         self.delegate?.addAnotherConditionButton(cell: self, index: indexPath)
+    }
+    
+    @IBAction func nextBtnAction(sender: UIButton) {
+        self.delegate?.nextBtnAction(cell: self, index: indexPath)
     }
 }

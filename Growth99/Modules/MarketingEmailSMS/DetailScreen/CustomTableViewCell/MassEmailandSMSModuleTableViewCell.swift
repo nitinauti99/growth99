@@ -18,6 +18,7 @@ class MassEmailandSMSModuleTableViewCell: UITableViewCell {
     @IBOutlet private weak var leadBtn: UIButton!
     @IBOutlet private weak var patientBtn: UIButton!
     @IBOutlet private weak var bothBtn: UIButton!
+    @IBOutlet weak var moduleNextButton: UIButton!
     var moduleTypeSelected: String = "lead"
 
     weak var delegate: MassEmailandSMSModuleCellDelegate?

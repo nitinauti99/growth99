@@ -165,6 +165,7 @@
             <connections>
                 <outlet property="bothBtn" destination="TQB-Kl-Rwk" id="MfT-Uk-Ian"/>
                 <outlet property="leadBtn" destination="EfR-LS-Lw4" id="O4P-nC-UDN"/>
+                <outlet property="moduleNextButton" destination="HIS-ga-GBU" id="Fa2-e3-EtP"/>
                 <outlet property="patientBtn" destination="YPa-6I-DH1" id="fTT-51-zLg"/>
                 <outlet property="subView" destination="TPi-qT-Luy" id="Ved-10-4XL"/>
                 <outlet property="subViewInside" destination="mxq-Xf-JcD" id="Fxn-n0-eX2"/>

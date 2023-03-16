@@ -322,6 +322,7 @@
                 <outlet property="patientAppointmenTextLabel" destination="DNu-jN-fpV" id="Vlq-93-Cio"/>
                 <outlet property="patientAppointmentButton" destination="B5k-Nq-7l7" id="SpV-UV-lDZ"/>
                 <outlet property="patientAppointmentView" destination="7JI-6U-MFd" id="CWD-QD-rW1"/>
+                <outlet property="patientNextButton" destination="adg-Rs-8D6" id="FNU-lq-bHd"/>
                 <outlet property="patientStatusEmptyTextLabel" destination="zKs-VF-Tdg" id="Xxo-iO-3Eo"/>
                 <outlet property="patientStatusSelectonButton" destination="Q5s-bg-gj7" id="cFl-Pn-rZk"/>
                 <outlet property="patientStatusTextLabel" destination="HTW-qq-dSE" id="e8V-vk-VJU"/>

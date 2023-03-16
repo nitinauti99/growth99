@@ -24,6 +24,7 @@ class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadStatusTextLabel: UILabel!
     @IBOutlet weak var leadSourceTextLabel: UILabel!
     @IBOutlet weak var leadTagTextLabel: UILabel!
+    @IBOutlet weak var leadNextButton: UIButton!
 
     @IBOutlet weak var leadStatusEmptyTextLabel: UILabel!
 

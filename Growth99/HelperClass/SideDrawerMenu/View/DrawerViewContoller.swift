@@ -258,7 +258,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        } else if indexPath.section == 9 {
+        } else if indexPath.section == 7 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "EmailTemplateViewController", pusedViewController: "EmailTemplateViewController")
@@ -271,7 +271,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        }else if(indexPath.section == 10) {
+        }else if(indexPath.section == 8) {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "leadListViewController")
@@ -284,21 +284,21 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        } else if indexPath.section == 11 {
+        } else if indexPath.section == 9 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "MassEmailandSMSViewController", pusedViewController: "MassEmailandSMSViewController")
             default:
                 break
             }
-        } else if indexPath.section == 12 {
+        } else if indexPath.section == 10 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "SocialMediaManagerViewController", pusedViewController: "SocialMediaManagerViewController")
             default:
                 break
             }
-        } else if indexPath.section == 13 {
+        } else if indexPath.section == 11 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "ChatbotContainerView", pusedViewController: "ChatbotContainerView")

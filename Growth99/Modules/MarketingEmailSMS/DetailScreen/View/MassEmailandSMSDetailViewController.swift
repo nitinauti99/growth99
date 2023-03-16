@@ -143,22 +143,12 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
 
     func massEmailSMSPatientStatusAllDataRecived() {
         self.view.HideSpinner()
-        let emailSMS = MassEmailandSMSDetailModel(cellType: "Both", LastName: "")
-        emailAndSMSDetailList.append(emailSMS)
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
+        createNewMassEmailSMSCell(cellNameType: "Both")
     }
     
     func bothInsertDataReceived() {
         self.view.HideSpinner()
-        let emailSMS = MassEmailandSMSDetailModel(cellType: "Both", LastName: "")
-        emailAndSMSDetailList.append(emailSMS)
-        emailAndSMSTableView.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
-        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
-        emailAndSMSTableView.endUpdates()
+        createNewMassEmailSMSCell(cellNameType: "Both")
     }
     
     func errorReceived(error: String) {
@@ -175,5 +165,14 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
         self.emailAndSMSTableView.register(UINib(nibName: "MassEmailandSMSModuleTableViewCell", bundle: nil), forCellReuseIdentifier: "MassEmailandSMSModuleTableViewCell")
         self.emailAndSMSTableView.register(UINib(nibName: "MassEmailandSMSPatientActionTableViewCell", bundle: nil), forCellReuseIdentifier: "MassEmailandSMSPatientActionTableViewCell")
         self.emailAndSMSTableView.register(UINib(nibName: "MassEmailandSMSTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "MassEmailandSMSTimeTableViewCell")
+    }
+    
+    func createNewMassEmailSMSCell(cellNameType: String) {
+        let emailSMS = MassEmailandSMSDetailModel(cellType: cellNameType, LastName: "")
+        emailAndSMSDetailList.append(emailSMS)
+        emailAndSMSTableView.beginUpdates()
+        let indexPath = IndexPath(row: (emailAndSMSDetailList.count) - 1, section: 0)
+        emailAndSMSTableView.insertRows(at: [indexPath], with: .fade)
+        emailAndSMSTableView.endUpdates()
     }
 }

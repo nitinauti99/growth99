@@ -63,14 +63,14 @@
                                     <action selector="nextButtonActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="eHZ-Jz-qc0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Appointment Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qh-qa-XXI" userLabel="userName">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Appointment Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qh-qa-XXI" userLabel="userName">
                                 <rect key="frame" x="20" y="70" width="260" height="20.666666666666671"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <color key="textColor" red="0.12941" green="0.14510000000000001" blue="0.16078000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JI-6U-MFd">
-                                <rect key="frame" x="20" y="100.66666666666667" width="260" height="45.000000000000014"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7JI-6U-MFd">
+                                <rect key="frame" x="20" y="100.66666666666669" width="260" height="45"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duk-jk-efK">
                                         <rect key="frame" x="0.0" y="7" width="260" height="31"/>
@@ -130,7 +130,7 @@
                                     <constraint firstAttribute="trailing" secondItem="duk-jk-efK" secondAttribute="trailing" id="X71-YD-x6r"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please select appointment status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6D-uN-ond" userLabel="password">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Please select appointment status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6D-uN-ond" userLabel="password">
                                 <rect key="frame" x="30" y="150.66666666666666" width="250" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
@@ -151,6 +151,7 @@
                             <constraint firstItem="s6D-uN-ond" firstAttribute="trailing" secondItem="7JI-6U-MFd" secondAttribute="trailing" id="ehz-wH-ukJ"/>
                             <constraint firstItem="gFA-Hx-Tyc" firstAttribute="top" secondItem="wDQ-bO-Jai" secondAttribute="top" id="hNI-E6-L29"/>
                             <constraint firstAttribute="trailing" secondItem="gFA-Hx-Tyc" secondAttribute="trailing" id="hP2-30-M29"/>
+                            <constraint firstItem="adg-Rs-8D6" firstAttribute="top" secondItem="s6D-uN-ond" secondAttribute="bottom" constant="15.33" id="kcm-rY-t07"/>
                             <constraint firstItem="adg-Rs-8D6" firstAttribute="leading" secondItem="3qh-qa-XXI" secondAttribute="leading" id="kwN-yT-Kne"/>
                             <constraint firstItem="s6D-uN-ond" firstAttribute="leading" secondItem="7JI-6U-MFd" secondAttribute="leading" constant="10" id="pvx-qm-DNL"/>
                         </constraints>
@@ -171,6 +172,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="appointmentNextButton" destination="adg-Rs-8D6" id="0Ns-GO-tb7"/>
                 <outlet property="patientAppointmenTextLabel" destination="DNu-jN-fpV" id="Vlq-93-Cio"/>
                 <outlet property="patientAppointmentButton" destination="B5k-Nq-7l7" id="SpV-UV-lDZ"/>
                 <outlet property="patientAppointmentEmptyTextLbl" destination="s6D-uN-ond" id="QWk-wP-rLf"/>

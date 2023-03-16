@@ -59,8 +59,12 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var appointmentStatusArray: [String] = []
     var selectedAppointmentStatus: [String] = []
     
-    var triggersCreateData = [TriggerCreateData]()
+    var leadSourceUrlArray = [LeadSourceUrlListModel]()
+    var selectedLeadSourceUrl = [LeadSourceUrlListModel]()
     
+    var triggersCreateData = [TriggerCreateData]()
+    var triggersAppointmentCreateData = [TriggerAppointmentCreateData]()
+
     var moduleSelectionType: String = String.blank
     var smsTargetArray: [String] = []
     var emailTargetArray: [String] = []
@@ -79,6 +83,15 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var selectedTriggerTarget: String = String.blank
     var leadTriggerTarget: String = String.blank
     var cinicTriggerTarget: String = String.blank
+    var timerTypeSelected: String = String.blank
+    
+    var appointmentSelectedStatus: String = String.blank
+    var scheduledBasedOnSelected: String = String.blank
+    var orderOfConditionTrigger: Int = 0
+    var addAnotherClicked: String = String.blank
+    
+    var landingPage: String = String.blank
+    var landingForm: String = String.blank
 
     override func viewDidLoad() {
         super.viewDidLoad()

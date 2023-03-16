@@ -87,9 +87,7 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let createTriggersVC = UIStoryboard(name: "TriggersAddViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggersAddViewController") as! TriggersAddViewController
-        //        //        createTriggersVC.selectedCategoryID = viewModel?.userData[indexPath.row].id ?? 0
-        //        //        createTriggersVC.screenTitle = Constant.Profile.editTriggers
-        //        self.navigationController?.pushViewController(createTriggersVC, animated: true)
+        let createTriggersVC = UIStoryboard(name: "TriggerDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerDetailViewController") as! TriggerDetailViewController
+        self.navigationController?.pushViewController(createTriggersVC, animated: true)
     }
 }
