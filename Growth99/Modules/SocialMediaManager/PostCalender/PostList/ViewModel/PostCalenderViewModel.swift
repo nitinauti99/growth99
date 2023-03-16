@@ -1,13 +1,13 @@
 //
-//  CalenderViewModel.swift
+//  PostCalenderViewModel.swift
 //  Growth99
 //
-//  Created by Exaze Technologies on 16/01/23.
+//  Created by Apple on 16/03/23.
 //
 
 import Foundation
 
-protocol CalenderViewModelProtocol {
+protocol PostCalenderViewModelProtocol {
     func getallClinics()
     var  getAllClinicsData: [Clinics] { get }
     
@@ -30,9 +30,9 @@ protocol CalenderViewModelProtocol {
 }
 
 
-class CalenderViewModel: CalenderViewModelProtocol {
+class PostCalenderViewModel: PostCalenderViewModelProtocol {
     
-    var delegate: CalenderViewContollerProtocol?
+    var delegate: PostCalenderViewContollerProtocol?
     var allClinics: [Clinics]?
     var serviceListData: [ServiceList] = []
     var providerListData: [UserDTOList] = []
@@ -41,7 +41,7 @@ class CalenderViewModel: CalenderViewModelProtocol {
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
     
-    init(delegate: CalenderViewContollerProtocol? = nil) {
+    init(delegate: PostCalenderViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
@@ -198,4 +198,5 @@ class CalenderViewModel: CalenderViewModelProtocol {
         let date24 = dateFormatter.string(from: date)
         return date24
     }
+    
 }

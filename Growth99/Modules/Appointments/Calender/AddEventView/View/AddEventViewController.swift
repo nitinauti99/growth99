@@ -66,6 +66,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
         notesTextView.layer.borderWidth = 1.0
         setUpNavigationBar()
