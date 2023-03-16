@@ -86,10 +86,6 @@
 		01468E0229BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */; };
 		01468E0C29BF7145002BDC1F /* HomeViewContoller+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */; };
 		01468E0E29BF7A97002BDC1F /* SMSTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E0D29BF7A96002BDC1F /* SMSTemplateViewController.swift */; };
-		01468E1E29BF8F6A002BDC1F /* SocialProfilesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E1D29BF8F6A002BDC1F /* SocialProfilesListViewController.swift */; };
-		01468E2029BF8F75002BDC1F /* SocialProfilesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01468E1F29BF8F75002BDC1F /* SocialProfilesListViewController.storyboard */; };
-		01468E2229BF8F81002BDC1F /* SocialProfilesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E2129BF8F81002BDC1F /* SocialProfilesListViewModel.swift */; };
-		01468E2429BF8F8C002BDC1F /* SocialProfilesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E2329BF8F8C002BDC1F /* SocialProfilesListModel.swift */; };
 		01468E2829C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E2629C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.swift */; };
 		01468E2929C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468E2729C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.xib */; };
 		01468E2C29C0D7B5002BDC1F /* PateintEmailTemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468E2A29C0D7B5002BDC1F /* PateintEmailTemplateTableViewCell.swift */; };
@@ -915,10 +911,6 @@
 		01468E0129BE3A07002BDC1F /* CreateSMSTemplateViewController+CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionViewFlowLayout.swift"; sourceTree = "<group>"; };
 		01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewContoller+UITextField.swift"; sourceTree = "<group>"; };
 		01468E0D29BF7A96002BDC1F /* SMSTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSTemplateViewController.swift; sourceTree = "<group>"; };
-		01468E1D29BF8F6A002BDC1F /* SocialProfilesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesListViewController.swift; sourceTree = "<group>"; };
-		01468E1F29BF8F75002BDC1F /* SocialProfilesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialProfilesListViewController.storyboard; sourceTree = "<group>"; };
-		01468E2129BF8F81002BDC1F /* SocialProfilesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesListViewModel.swift; sourceTree = "<group>"; };
-		01468E2329BF8F8C002BDC1F /* SocialProfilesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesListModel.swift; sourceTree = "<group>"; };
 		01468E2629C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintSMSTemplateTableViewCell.swift; sourceTree = "<group>"; };
 		01468E2729C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintSMSTemplateTableViewCell.xib; sourceTree = "<group>"; };
 		01468E2A29C0D7B5002BDC1F /* PateintEmailTemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintEmailTemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -2162,152 +2154,6 @@
 				01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		01468E0329BF42DE002BDC1F /* Payments */ = {
-			isa = PBXGroup;
-			children = (
-				01468E0629BF42F7002BDC1F /* Model */,
-				01468E0529BF42F4002BDC1F /* ViewModel */,
-				01468E0429BF42F2002BDC1F /* View */,
-			);
-			path = Payments;
-			sourceTree = "<group>";
-		};
-		01468E0429BF42F2002BDC1F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		01468E0529BF42F4002BDC1F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		01468E0629BF42F7002BDC1F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		01468E0F29BF8B16002BDC1F /* Social Media */ = {
-			isa = PBXGroup;
-			children = (
-				01468E1429BF8B85002BDC1F /* Social Profile */,
-				01468E1329BF8B7D002BDC1F /* Labels */,
-				01468E1229BF8B7A002BDC1F /* Posts */,
-				01468E1129BF8B77002BDC1F /* Post Calender */,
-				01468E1029BF8B74002BDC1F /* Media Library */,
-			);
-			path = "Social Media";
-			sourceTree = "<group>";
-		};
-		01468E1029BF8B74002BDC1F /* Media Library */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Media Library";
-			sourceTree = "<group>";
-		};
-		01468E1129BF8B77002BDC1F /* Post Calender */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Post Calender";
-			sourceTree = "<group>";
-		};
-		01468E1229BF8B7A002BDC1F /* Posts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Posts;
-			sourceTree = "<group>";
-		};
-		01468E1329BF8B7D002BDC1F /* Labels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Labels;
-			sourceTree = "<group>";
-		};
-		01468E1429BF8B85002BDC1F /* Social Profile */ = {
-			isa = PBXGroup;
-			children = (
-				01468E1829BF8C0D002BDC1F /* List */,
-				01468E1929BF8C16002BDC1F /* Edit */,
-			);
-			path = "Social Profile";
-			sourceTree = "<group>";
-		};
-		01468E1529BF8BE7002BDC1F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				01468E1D29BF8F6A002BDC1F /* SocialProfilesListViewController.swift */,
-				01468E1F29BF8F75002BDC1F /* SocialProfilesListViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		01468E1629BF8BEA002BDC1F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				01468E2129BF8F81002BDC1F /* SocialProfilesListViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		01468E1729BF8BED002BDC1F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				01468E2329BF8F8C002BDC1F /* SocialProfilesListModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		01468E1829BF8C0D002BDC1F /* List */ = {
-			isa = PBXGroup;
-			children = (
-				01468E1729BF8BED002BDC1F /* Model */,
-				01468E1629BF8BEA002BDC1F /* ViewModel */,
-				01468E1529BF8BE7002BDC1F /* View */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		01468E1929BF8C16002BDC1F /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				01468E1C29BF8C3E002BDC1F /* Model */,
-				01468E1B29BF8C3C002BDC1F /* ViewModel */,
-				01468E1A29BF8C39002BDC1F /* View */,
-			);
-			path = Edit;
-			sourceTree = "<group>";
-		};
-		01468E1A29BF8C39002BDC1F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		01468E1B29BF8C3C002BDC1F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		01468E1C29BF8C3E002BDC1F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		01468E2529C0D741002BDC1F /* Cell */ = {
@@ -5222,8 +5068,6 @@
 				39FC68EA29B363F000FCB7C6 /* MarketingEmailSMS */,
 				84D0617529670676001FE469 /* MyProfile */,
 				84D0619929670676001FE469 /* Pateints */,
-				01468E0329BF42DE002BDC1F /* Payments */,
-				01468E0F29BF8B16002BDC1F /* Social Media */,
 				39FC693029B3D75A00FCB7C6 /* SocialMediaManager */,
 				84D062A6296707A5001FE469 /* Tasks */,
 				848A03852993FAD7004FE278 /* Templates */,
@@ -6583,7 +6427,6 @@
 				18491DB829B80CE000FE72EF /* MassEmailandSMSTimeTableViewCell.xib in Resources */,
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
-				01468E2029BF8F75002BDC1F /* SocialProfilesListViewController.storyboard in Resources */,
 				013A4FBA29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
 				39FC693C29B3D75A00FCB7C6 /* SocialMediaManagerViewController.storyboard in Resources */,
@@ -6831,7 +6674,6 @@
 				84F6112F292A71AB00B1FB69 /* Response.swift in Sources */,
 				010EECA529B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift in Sources */,
 				84F610F8292A71AB00B1FB69 /* ASN1Tag.swift in Sources */,
-				01468E2429BF8F8C002BDC1F /* SocialProfilesListModel.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
 				01D9EBF429B8B83D0099761C /* QuestionnaireSubmissionsViewController+TableView.swift in Sources */,
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
@@ -7083,7 +6925,6 @@
 				01468E2C29C0D7B5002BDC1F /* PateintEmailTemplateTableViewCell.swift in Sources */,
 				84F610DA292A71AB00B1FB69 /* StringExtension.swift in Sources */,
 				845C39E3292276B000D934C5 /* ViewExtension.swift in Sources */,
-				01468E1E29BF8F6A002BDC1F /* SocialProfilesListViewController.swift in Sources */,
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */,
 				189670B529BA6081003224ED /* TriggerTimeTableViewCell.swift in Sources */,
@@ -7346,7 +7187,6 @@
 				013A4FC329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0622C29670677001FE469 /* VacationScheduleViewController+Extension.swift in Sources */,
 				84B75EC12969011B00962F3E /* ClinicsListTableViewCell.swift in Sources */,
-				01468E2229BF8F81002BDC1F /* SocialProfilesListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
