@@ -23,7 +23,7 @@ protocol CreateLeadViewModelProtocol {
 class CreateLeadViewModel {
     var delegate: CreateLeadViewControllerProtocol?
   
-    var questionnaireId = QuestionnaireId()
+    var questionnaireId: Int?
     var questionnaireListInfo:  QuestionnaireList?
     var questionnaireList = [PatientQuestionAnswersList]()
     var questionnaireFilterList = [PatientQuestionAnswersList]()
@@ -40,7 +40,7 @@ class CreateLeadViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.questionnaireId = data
+                self.questionnaireId = data.id ?? 0
                 self.delegate?.QuestionnaireIdRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -51,7 +51,7 @@ class CreateLeadViewModel {
 
     /// get QuestionnaireList
     func getQuestionnaireList() {
-        let finaleUrl = ApiUrl.getQuestionnaireList + "\(self.questionnaireId.id ?? 0)"
+        let finaleUrl = ApiUrl.getQuestionnaireList + "\(self.questionnaireId ?? 0)"
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result<QuestionnaireList, GrowthNetworkError>) in
             switch result {
             case .success(let list):
@@ -69,7 +69,7 @@ class CreateLeadViewModel {
     
     /// create lead
     func createLead(patientQuestionAnswers:[String: Any]) {
-        let finaleUrl = ApiUrl.createLead + "\(String(describing: self.questionnaireId.id))"
+        let finaleUrl = ApiUrl.createLead + "\(String(describing: self.questionnaireId))"
 
         self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
