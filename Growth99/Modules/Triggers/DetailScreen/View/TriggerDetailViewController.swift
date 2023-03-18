@@ -105,6 +105,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
         triggerDetailList.append(emailSMS)
+        
         viewModel = TriggerDetailViewModel(delegate: self)
         submitBtn.isEnabled = false
         submitBtn.backgroundColor = UIColor(hexString: "#6AC1E7")

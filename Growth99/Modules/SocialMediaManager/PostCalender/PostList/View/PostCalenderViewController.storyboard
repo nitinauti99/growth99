@@ -194,7 +194,7 @@
                         <outlet property="calenderScrollViewHight" destination="igv-gD-AYM" id="BNn-ON-vgf"/>
                         <outlet property="calenderSegmentControl" destination="9K5-hu-CeF" id="kpP-Uu-ydU"/>
                         <outlet property="calenderscrollview" destination="bGX-2s-NI9" id="mni-3p-lI7"/>
-                        <outlet property="eventListView" destination="DMo-Ic-ruJ" id="wlz-R9-H56"/>
+                        <outlet property="postCalenderTableview" destination="DMo-Ic-ruJ" id="FNi-15-6c9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SP-wz-HjV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
