@@ -292,7 +292,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "SocialProfilesListViewController", pusedViewController: "SocialProfilesListViewController")
             case 1:
-                pushViewControllerFromDrawerMenu(identifier: "LabelsViewController", pusedViewController: "LabelsViewController")
+                pushViewControllerFromDrawerMenu(identifier: "LabelListViewController", pusedViewController: "LabelListViewController")
             case 2:
                 pushViewControllerFromDrawerMenu(identifier: "PostsViewController", pusedViewController: "PostsViewController")
             case 3:
