@@ -201,6 +201,10 @@
 		01D9EC0129B8D5090099761C /* DisplayQuestionnaireqsubmissionsViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D9EC0029B8D5090099761C /* DisplayQuestionnaireqsubmissionsViewContoller+TableView.swift */; };
 		01D9EC0429B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D9EC0229B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.swift */; };
 		01D9EC0529B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D9EC0329B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.xib */; };
+		01DBA98529C5654300CBA51D /* SocialProfilesListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA98429C5654300CBA51D /* SocialProfilesListViewController+TableView.swift */; };
+		01DBA98729C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA98629C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift */; };
+		01DBA98D29C5660000CBA51D /* SocialProfilesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA98C29C5660000CBA51D /* SocialProfilesListTableViewCell.swift */; };
+		01DBA98F29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DBA98E29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib */; };
 		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
 		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
 		01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */; };
@@ -296,11 +300,9 @@
 		189670BF29BA6081003224ED /* TriggerDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */; };
 		189670C029BA6081003224ED /* TriggerLeadActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */; };
 		189E3EC929C390F400B94190 /* SocialProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EC829C390F400B94190 /* SocialProfilesViewController.swift */; };
-		189E3ECB29C3910600B94190 /* SocialProfilesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3ECA29C3910600B94190 /* SocialProfilesViewController.storyboard */; };
-		189E3ECD29C3911E00B94190 /* SocialProfilesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ECC29C3911E00B94190 /* SocialProfilesModel.swift */; };
+		189E3ECB29C3910600B94190 /* SocialProfilesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3ECA29C3910600B94190 /* SocialProfilesListViewController.storyboard */; };
+		189E3ECD29C3911E00B94190 /* SocialProfilesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ECC29C3911E00B94190 /* SocialProfilesListModel.swift */; };
 		189E3ECF29C3912900B94190 /* SocialProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ECE29C3912900B94190 /* SocialProfilesViewModel.swift */; };
-		189E3ED229C3914000B94190 /* SocialProfilesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ED029C3914000B94190 /* SocialProfilesTableViewCell.swift */; };
-		189E3ED329C3914000B94190 /* SocialProfilesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E3ED129C3914000B94190 /* SocialProfilesTableViewCell.xib */; };
 		189E3ED529C3915700B94190 /* LabelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ED429C3915700B94190 /* LabelsModel.swift */; };
 		189E3ED729C3916200B94190 /* LabelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ED629C3916200B94190 /* LabelsViewModel.swift */; };
 		189E3ED929C3917200B94190 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ED829C3917200B94190 /* LabelsViewController.swift */; };
@@ -1048,6 +1050,10 @@
 		01D9EC0029B8D5090099761C /* DisplayQuestionnaireqsubmissionsViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayQuestionnaireqsubmissionsViewContoller+TableView.swift"; sourceTree = "<group>"; };
 		01D9EC0229B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireqsubmissionsTableViewCell.swift; sourceTree = "<group>"; };
 		01D9EC0329B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayQuestionnaireqsubmissionsTableViewCell.xib; sourceTree = "<group>"; };
+		01DBA98429C5654300CBA51D /* SocialProfilesListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialProfilesListViewController+TableView.swift"; sourceTree = "<group>"; };
+		01DBA98629C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialProfilesListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01DBA98C29C5660000CBA51D /* SocialProfilesListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialProfilesListTableViewCell.swift; sourceTree = "<group>"; };
+		01DBA98E29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialProfilesListTableViewCell.xib; sourceTree = "<group>"; };
 		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewController.swift; sourceTree = "<group>"; };
@@ -1144,11 +1150,9 @@
 		189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerDefaultTableViewCell.xib; sourceTree = "<group>"; };
 		189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerLeadActionTableViewCell.swift; sourceTree = "<group>"; };
 		189E3EC829C390F400B94190 /* SocialProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesViewController.swift; sourceTree = "<group>"; };
-		189E3ECA29C3910600B94190 /* SocialProfilesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialProfilesViewController.storyboard; sourceTree = "<group>"; };
-		189E3ECC29C3911E00B94190 /* SocialProfilesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesModel.swift; sourceTree = "<group>"; };
+		189E3ECA29C3910600B94190 /* SocialProfilesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialProfilesListViewController.storyboard; sourceTree = "<group>"; };
+		189E3ECC29C3911E00B94190 /* SocialProfilesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesListModel.swift; sourceTree = "<group>"; };
 		189E3ECE29C3912900B94190 /* SocialProfilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesViewModel.swift; sourceTree = "<group>"; };
-		189E3ED029C3914000B94190 /* SocialProfilesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesTableViewCell.swift; sourceTree = "<group>"; };
-		189E3ED129C3914000B94190 /* SocialProfilesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SocialProfilesTableViewCell.xib; sourceTree = "<group>"; };
 		189E3ED429C3915700B94190 /* LabelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsModel.swift; sourceTree = "<group>"; };
 		189E3ED629C3916200B94190 /* LabelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewModel.swift; sourceTree = "<group>"; };
 		189E3ED829C3917200B94190 /* LabelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
@@ -3365,9 +3369,8 @@
 			isa = PBXGroup;
 			children = (
 				189E3EC529C38E6000B94190 /* Model */,
-				189E3EC629C38E6000B94190 /* View */,
 				189E3EC429C38E6000B94190 /* ViewModel */,
-				189E3EC729C38E6000B94190 /* CustomTableViewCell */,
+				189E3EC629C38E6000B94190 /* View */,
 			);
 			path = SocialProfiles;
 			sourceTree = "<group>";
@@ -3383,7 +3386,7 @@
 		189E3EC529C38E6000B94190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				189E3ECC29C3911E00B94190 /* SocialProfilesModel.swift */,
+				189E3ECC29C3911E00B94190 /* SocialProfilesListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3391,19 +3394,22 @@
 		189E3EC629C38E6000B94190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				189E3EC729C38E6000B94190 /* Cell */,
+				189E3ECA29C3910600B94190 /* SocialProfilesListViewController.storyboard */,
 				189E3EC829C390F400B94190 /* SocialProfilesViewController.swift */,
-				189E3ECA29C3910600B94190 /* SocialProfilesViewController.storyboard */,
+				01DBA98429C5654300CBA51D /* SocialProfilesListViewController+TableView.swift */,
+				01DBA98629C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		189E3EC729C38E6000B94190 /* CustomTableViewCell */ = {
+		189E3EC729C38E6000B94190 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				189E3ED029C3914000B94190 /* SocialProfilesTableViewCell.swift */,
-				189E3ED129C3914000B94190 /* SocialProfilesTableViewCell.xib */,
+				01DBA98E29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib */,
+				01DBA98C29C5660000CBA51D /* SocialProfilesListTableViewCell.swift */,
 			);
-			path = CustomTableViewCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		189E3F0629C3980900B94190 /* AddPost */ = {
@@ -6558,11 +6564,10 @@
 				189670B929BA6081003224ED /* TriggerModuleTableViewCell.xib in Resources */,
 				01EBAC9F29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
-				189E3ED329C3914000B94190 /* SocialProfilesTableViewCell.xib in Resources */,
 				01468E2929C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* LeadEmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
-				189E3ECB29C3910600B94190 /* SocialProfilesViewController.storyboard in Resources */,
+				189E3ECB29C3910600B94190 /* SocialProfilesListViewController.storyboard in Resources */,
 				01D9EC0529B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.xib in Resources */,
 				18491DB229B80CE000FE72EF /* MassEmailandSMSPatientActionTableViewCell.xib in Resources */,
 				013A4FA229B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib in Resources */,
@@ -6628,6 +6633,7 @@
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
 				84D0628C29670677001FE469 /* LogInViewController.storyboard in Resources */,
+				01DBA98F29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
 				842C0CCF298F749E00395061 /* AddNewConsentsViewController.storyboard in Resources */,
 				3947A8F92996776E000CA2EB /* EventEditViewController.storyboard in Resources */,
@@ -6851,7 +6857,6 @@
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */,
 				01684C6029BDEFEA00DE1041 /* UnansweredQuestionListViewController+TableView.swift in Sources */,
-				189E3ED229C3914000B94190 /* SocialProfilesTableViewCell.swift in Sources */,
 				01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */,
 				013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
@@ -7003,6 +7008,7 @@
 				8440B399299A1B1300A42097 /* FormListTableViewCell.swift in Sources */,
 				01C7489C29B2338E0085CED2 /* BussinessSelectionViewController.swift in Sources */,
 				84F610D0292A71AB00B1FB69 /* JSONSerialization.swift in Sources */,
+				01DBA98D29C5660000CBA51D /* SocialProfilesListTableViewCell.swift in Sources */,
 				84BD33F92994BB020050C0D8 /* EmailTemplateViewController+TableView.swift in Sources */,
 				84F6112E292A71AB00B1FB69 /* AnyEncodable.swift in Sources */,
 				84F610E4292A71AB00B1FB69 /* TaskSequencer.swift in Sources */,
@@ -7035,6 +7041,7 @@
 				84F610C2292A71AA00B1FB69 /* Base64.swift in Sources */,
 				845C39D6292276B000D934C5 /* DrawerViewModel.swift in Sources */,
 				84F61131292A71AB00B1FB69 /* MultipartUpload.swift in Sources */,
+				01DBA98529C5654300CBA51D /* SocialProfilesListViewController+TableView.swift in Sources */,
 				01152E1329B39C3600B24627 /* leadListViewController+SearchBar.swift in Sources */,
 				8473208929798048003099BB /* PateintListViewContoller+SerachBar.swift in Sources */,
 				DAEF749C299D530A009140AE /* PersonalizationViewController.swift in Sources */,
@@ -7047,8 +7054,9 @@
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
 				01EBAC8829B5C6E700110DCB /* ChatbotContainerView.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* ParameterEncoder.swift in Sources */,
+				01DBA98729C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift in Sources */,
 				848CBAB62971A9D500681049 /* TaskAllUserListModel.swift in Sources */,
-				189E3ECD29C3911E00B94190 /* SocialProfilesModel.swift in Sources */,
+				189E3ECD29C3911E00B94190 /* SocialProfilesListModel.swift in Sources */,
 				189E3ED729C3916200B94190 /* LabelsViewModel.swift in Sources */,
 				01684C1E29BAECF200DE1041 /* ChatSessionListViewController+TableView.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
