@@ -290,7 +290,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 10 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "SocialProfilesViewController", pusedViewController: "SocialProfilesViewController")
+                pushViewControllerFromDrawerMenu(identifier: "SocialProfilesListViewController", pusedViewController: "SocialProfilesListViewController")
             case 1:
                 pushViewControllerFromDrawerMenu(identifier: "LabelsViewController", pusedViewController: "LabelsViewController")
             case 2:
