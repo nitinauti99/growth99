@@ -283,6 +283,7 @@
 		18491DC129B80CE000FE72EF /* MassEmailandSMSViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491DA829B80CDF00FE72EF /* MassEmailandSMSViewController+TableView.swift */; };
 		18491DC229B80CE000FE72EF /* MassEmailandSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491DAA29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.swift */; };
 		18491DC329B80CE000FE72EF /* MassEmailandSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18491DAB29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.xib */; };
+		189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189171CE29C608F50095031A /* AddPostViewModel.swift */; };
 		1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708429BA5E62003224ED /* TriggersViewModel.swift */; };
 		1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708629BA5E62003224ED /* TriggersListModel.swift */; };
 		1896709129BA5E62003224ED /* TriggersListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708829BA5E62003224ED /* TriggersListViewController+TableView.swift */; };
@@ -1141,6 +1142,7 @@
 		18491DA829B80CDF00FE72EF /* MassEmailandSMSViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassEmailandSMSViewController+TableView.swift"; sourceTree = "<group>"; };
 		18491DAA29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSTableViewCell.swift; sourceTree = "<group>"; };
 		18491DAB29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSTableViewCell.xib; sourceTree = "<group>"; };
+		189171CE29C608F50095031A /* AddPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModel.swift; sourceTree = "<group>"; };
 		1896708429BA5E62003224ED /* TriggersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersViewModel.swift; sourceTree = "<group>"; };
 		1896708629BA5E62003224ED /* TriggersListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersListModel.swift; sourceTree = "<group>"; };
 		1896708829BA5E62003224ED /* TriggersListViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TriggersListViewController+TableView.swift"; sourceTree = "<group>"; };
@@ -3512,6 +3514,7 @@
 		189E3F0729C3980900B94190 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				189171CE29C608F50095031A /* AddPostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -6956,6 +6959,7 @@
 				189E3EFB29C392C500B94190 /* MediaLibraryModel.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				84F610B7292A71AA00B1FB69 /* CompactJSONEncoder.swift in Sources */,
+				189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				01EBAC6229B58BC500110DCB /* LeadSourceUrlListViewModel.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
