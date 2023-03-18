@@ -109,6 +109,7 @@ struct Constant {
         static let FormsList = "Forms"
         static let createForm = "Create Form"
         static let createTrigger = "Create Trigger"
+        static let editTrigger = "Edit Trigger"
         static let smsTemplateList = "SMS Templates List"
         static let consentsTemplatesList = "Consents"
         static let chatSessionList = "Chat Session List"

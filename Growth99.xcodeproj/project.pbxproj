@@ -283,6 +283,11 @@
 		18491DC129B80CE000FE72EF /* MassEmailandSMSViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491DA829B80CDF00FE72EF /* MassEmailandSMSViewController+TableView.swift */; };
 		18491DC229B80CE000FE72EF /* MassEmailandSMSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491DAA29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.swift */; };
 		18491DC329B80CE000FE72EF /* MassEmailandSMSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18491DAB29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.xib */; };
+		1883F10729C63DA10080997B /* TriggerEditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F0F329C63DA10080997B /* TriggerEditDetailViewModel.swift */; };
+		1883F10829C63DA10080997B /* TriggerEditDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F0F529C63DA10080997B /* TriggerEditDetailModel.swift */; };
+		1883F10929C63DA10080997B /* TriggerEditDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F0F729C63DA10080997B /* TriggerEditDetailViewController+TableView.swift */; };
+		1883F10A29C63DA10080997B /* TriggerEditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F0F829C63DA10080997B /* TriggerEditDetailViewController.swift */; };
+		1883F10B29C63DA10080997B /* TriggerEditDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1883F0F929C63DA10080997B /* TriggerEditDetailViewController.storyboard */; };
 		189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189171CE29C608F50095031A /* AddPostViewModel.swift */; };
 		1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708429BA5E62003224ED /* TriggersViewModel.swift */; };
 		1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708629BA5E62003224ED /* TriggersListModel.swift */; };
@@ -1142,6 +1147,11 @@
 		18491DA829B80CDF00FE72EF /* MassEmailandSMSViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MassEmailandSMSViewController+TableView.swift"; sourceTree = "<group>"; };
 		18491DAA29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSTableViewCell.swift; sourceTree = "<group>"; };
 		18491DAB29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSTableViewCell.xib; sourceTree = "<group>"; };
+		1883F0F329C63DA10080997B /* TriggerEditDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditDetailViewModel.swift; sourceTree = "<group>"; };
+		1883F0F529C63DA10080997B /* TriggerEditDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditDetailModel.swift; sourceTree = "<group>"; };
+		1883F0F729C63DA10080997B /* TriggerEditDetailViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TriggerEditDetailViewController+TableView.swift"; sourceTree = "<group>"; };
+		1883F0F829C63DA10080997B /* TriggerEditDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditDetailViewController.swift; sourceTree = "<group>"; };
+		1883F0F929C63DA10080997B /* TriggerEditDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TriggerEditDetailViewController.storyboard; sourceTree = "<group>"; };
 		189171CE29C608F50095031A /* AddPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModel.swift; sourceTree = "<group>"; };
 		1896708429BA5E62003224ED /* TriggersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersViewModel.swift; sourceTree = "<group>"; };
 		1896708629BA5E62003224ED /* TriggersListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersListModel.swift; sourceTree = "<group>"; };
@@ -3207,6 +3217,42 @@
 				18491DAB29B80CDF00FE72EF /* MassEmailandSMSTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		1883F0F129C63DA10080997B /* EditScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1883F0F229C63DA10080997B /* ViewModel */,
+				1883F0F429C63DA10080997B /* Model */,
+				1883F0F629C63DA10080997B /* View */,
+			);
+			path = EditScreen;
+			sourceTree = "<group>";
+		};
+		1883F0F229C63DA10080997B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1883F0F329C63DA10080997B /* TriggerEditDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1883F0F429C63DA10080997B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1883F0F529C63DA10080997B /* TriggerEditDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1883F0F629C63DA10080997B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1883F0F829C63DA10080997B /* TriggerEditDetailViewController.swift */,
+				1883F0F729C63DA10080997B /* TriggerEditDetailViewController+TableView.swift */,
+				1883F0F929C63DA10080997B /* TriggerEditDetailViewController.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1896708229BA5E62003224ED /* ListScreen */ = {
@@ -5868,6 +5914,7 @@
 			isa = PBXGroup;
 			children = (
 				1896708229BA5E62003224ED /* ListScreen */,
+				1883F0F129C63DA10080997B /* EditScreen */,
 				1896709A29BA6080003224ED /* DetailScreen */,
 			);
 			path = Triggers;
@@ -6578,6 +6625,7 @@
 				01D9EBE729B8B6510099761C /* QuestionnaireSubmissionsViewController.storyboard in Resources */,
 				01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */,
 				3947A8F52996776E000CA2EB /* AddEventViewController.storyboard in Resources */,
+				1883F10B29C63DA10080997B /* TriggerEditDetailViewController.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */,
 				189E3F0129C392E200B94190 /* MediaLibraryTableViewCell.xib in Resources */,
@@ -7014,6 +7062,7 @@
 				013A4FBE29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.swift in Sources */,
 				01152E1829B3BA6E00B24627 /* LeadDetailContainerView.swift in Sources */,
 				842C0CAC298F713B00395061 /* ConsentsListViewController.swift in Sources */,
+				1883F10929C63DA10080997B /* TriggerEditDetailViewController+TableView.swift in Sources */,
 				84D0623C29670677001FE469 /* PateintListTableViewCell.swift in Sources */,
 				01EBAC4E29B5869200110DCB /* LeadTagsAddViewController.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
@@ -7048,6 +7097,7 @@
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				189670BA29BA6081003224ED /* TriggerDefaultTableViewCell.swift in Sources */,
 				3947A8F02996776E000CA2EB /* EventsTableViewCell.swift in Sources */,
+				1883F10A29C63DA10080997B /* TriggerEditDetailViewController.swift in Sources */,
 				017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */,
 				847320852979789A003099BB /* PateintEditViewModel.swift in Sources */,
 				84D0622B29670677001FE469 /* VacationModel.swift in Sources */,
@@ -7287,6 +7337,7 @@
 				01152E2429B3C1C500B24627 /* CreateLeadTasksViewModel.swift in Sources */,
 				01EBAC7A29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift in Sources */,
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
+				1883F10729C63DA10080997B /* TriggerEditDetailViewModel.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
 				845C39D7292276B000D934C5 /* DrawerViewContoller.swift in Sources */,
 				01EBACA629B6515600110DCB /* chatQuestionnaireViewContoller+TableView.swift in Sources */,
@@ -7353,6 +7404,7 @@
 				1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */,
 				1896709229BA5E62003224ED /* TriggersListViewController.swift in Sources */,
 				01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */,
+				1883F10829C63DA10080997B /* TriggerEditDetailModel.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
 				01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */,
