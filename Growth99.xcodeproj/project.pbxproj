@@ -210,6 +210,9 @@
 		01DBA99B29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA99A29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift */; };
 		01DBA99F29C5C4D500CBA51D /* LabelsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA99E29C5C4D500CBA51D /* LabelsViewController+TableView.swift */; };
 		01DBA9A129C5C4E700CBA51D /* LabelsViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9A029C5C4E700CBA51D /* LabelsViewController+SearchBar.swift */; };
+		01DBA9A829C5E13200CBA51D /* CreateLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9A729C5E13200CBA51D /* CreateLabelViewController.swift */; };
+		01DBA9AA29C5E13900CBA51D /* CreateLabelViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DBA9A929C5E13900CBA51D /* CreateLabelViewController.storyboard */; };
+		01DBA9AC29C5E14400CBA51D /* CreateLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9AB29C5E14400CBA51D /* CreateLabelViewModel.swift */; };
 		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
 		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
 		01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */; };
@@ -1064,6 +1067,9 @@
 		01DBA99A29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSocialProfileViewModel.swift; sourceTree = "<group>"; };
 		01DBA99E29C5C4D500CBA51D /* LabelsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LabelsViewController+TableView.swift"; sourceTree = "<group>"; };
 		01DBA9A029C5C4E700CBA51D /* LabelsViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LabelsViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01DBA9A729C5E13200CBA51D /* CreateLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLabelViewController.swift; sourceTree = "<group>"; };
+		01DBA9A929C5E13900CBA51D /* CreateLabelViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLabelViewController.storyboard; sourceTree = "<group>"; };
+		01DBA9AB29C5E14400CBA51D /* CreateLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLabelViewModel.swift; sourceTree = "<group>"; };
 		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewController.swift; sourceTree = "<group>"; };
@@ -2857,6 +2863,42 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		01DBA9A229C5E0C100CBA51D /* List */ = {
+			isa = PBXGroup;
+			children = (
+				189E3EB629C38E6000B94190 /* Model */,
+				189E3EB729C38E6000B94190 /* View */,
+				189E3EB529C38E6000B94190 /* ViewModel */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		01DBA9A329C5E0DE00CBA51D /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				01DBA9A529C5E0F700CBA51D /* ViewModel */,
+				01DBA9A429C5E0F400CBA51D /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		01DBA9A429C5E0F400CBA51D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01DBA9A729C5E13200CBA51D /* CreateLabelViewController.swift */,
+				01DBA9A929C5E13900CBA51D /* CreateLabelViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01DBA9A529C5E0F700CBA51D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01DBA9AB29C5E14400CBA51D /* CreateLabelViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		01EBAC3F29B5842400110DCB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3315,9 +3357,8 @@
 		189E3EB429C38E6000B94190 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
-				189E3EB629C38E6000B94190 /* Model */,
-				189E3EB729C38E6000B94190 /* View */,
-				189E3EB529C38E6000B94190 /* ViewModel */,
+				01DBA9A229C5E0C100CBA51D /* List */,
+				01DBA9A329C5E0DE00CBA51D /* Add */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -6612,6 +6653,7 @@
 				189670B929BA6081003224ED /* TriggerModuleTableViewCell.xib in Resources */,
 				01EBAC9F29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
+				01DBA9AA29C5E13900CBA51D /* CreateLabelViewController.storyboard in Resources */,
 				01468E2929C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.xib in Resources */,
 				84D063012967080E001FE469 /* LeadEmailTemplateTableViewCell.xib in Resources */,
 				84D0622829670677001FE469 /* ChangePasswordViewController.storyboard in Resources */,
@@ -6871,6 +6913,7 @@
 				848A038E29941846004FE278 /* EmailTemplateViewModel.swift in Sources */,
 				01684C5929BDEF8F00DE1041 /* UnansweredQuestionListTableViewCell.swift in Sources */,
 				849034FD29953A8B00556D47 /* SMSTemplateViewController+TableView.swift in Sources */,
+				01DBA9AC29C5E14400CBA51D /* CreateLabelViewModel.swift in Sources */,
 				842C0CC6298F713B00395061 /* QuestionarieViewModel.swift in Sources */,
 				3947A901299677EE000CA2EB /* BookingHistoryViewController+TableView.swift in Sources */,
 				39F2FF1F2996B8020089BD4F /* AppointmentListDetailViewController.swift in Sources */,
@@ -7407,6 +7450,7 @@
 				18491DB729B80CE000FE72EF /* MassEmailandSMSPatientActionTableViewCell.swift in Sources */,
 				189670B129BA6080003224ED /* TriggerDetailModel.swift in Sources */,
 				849D3AF82997CC72003E856A /* Enum.swift in Sources */,
+				01DBA9A829C5E13200CBA51D /* CreateLabelViewController.swift in Sources */,
 				01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */,
 				01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */,
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,

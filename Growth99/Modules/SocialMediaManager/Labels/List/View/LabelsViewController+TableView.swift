@@ -40,13 +40,14 @@ extension LabelListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = UIStoryboard(name: "CreateSocialProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateSocialProfileViewController") as! CreateSocialProfileViewController
-        detailController.socialProfilesScreenName = "Edit Screen"
+        let detailController = UIStoryboard(name: "CreateLabelViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLabelViewController") as! CreateLabelViewController
+        
+        detailController.screenName = "Edit Screen"
 
         if self.isSearch {
-            detailController.socialProfileId = viewModel?.labelFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
+            detailController.labelId = viewModel?.labelFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
         }else{
-            detailController.socialProfileId = viewModel?.labelListDataAtIndex(index: indexPath.row)?.id ?? 0
+            detailController.labelId = viewModel?.labelListDataAtIndex(index: indexPath.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)
     }

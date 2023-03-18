@@ -47,8 +47,8 @@ class LabelListViewController: UIViewController {
     }
     
     @objc func creatUser() {
-        let PateintsTagsAddVC = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-       // PateintsTagsAddVC.LabelScreenName = "Create Screen"
+        let PateintsTagsAddVC = UIStoryboard(name: "CreateLabelViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLabelViewController") as! CreateLabelViewController
+        PateintsTagsAddVC.screenName = "Create Screen"
         self.navigationController?.pushViewController(PateintsTagsAddVC, animated: true)
     }
     
