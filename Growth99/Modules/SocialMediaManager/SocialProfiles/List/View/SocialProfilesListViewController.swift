@@ -12,7 +12,7 @@ import UIKit
 
 protocol SocialProfilesListViewControllerProtocol: AnyObject {
     func socialProfilesListRecived()
-    func pateintTagRemovedSuccefully(message: String)
+    func socialProfilesRemovedSuccefully(message: String)
     func errorReceived(error: String)
 }
 
@@ -62,18 +62,17 @@ class SocialProfilesListViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
     }
-    
 }
 
 extension SocialProfilesListViewController: SocialProfilesListTableViewCellDelegate{
    
     func editSocialProfiles(cell: SocialProfilesListTableViewCell, index: IndexPath) {
-        let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-       // detailController.SocialProfilesScreenName = "Edit Screen"
+        let detailController = UIStoryboard(name: "CreateSocialProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateSocialProfileViewController") as! CreateSocialProfileViewController
+        detailController.socialProfilesScreenName = "Edit Screen"
         if self.isSearch {
-            detailController.patientTagId = viewModel?.socialProfilesFilterListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.socialProfileId = viewModel?.socialProfilesFilterListDataAtIndex(index: index.row)?.id ?? 0
         }else{
-            detailController.patientTagId = viewModel?.socialProfilesListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.socialProfileId = viewModel?.socialProfilesListDataAtIndex(index: index.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)
     }
@@ -117,7 +116,7 @@ extension SocialProfilesListViewController: SocialProfilesListViewControllerProt
         }
     }
     
-    func pateintTagRemovedSuccefully(message: String){
+    func socialProfilesRemovedSuccefully(message: String){
         self.view.showToast(message: message, color: .red)
         viewModel?.getSocialProfilesList()
     }

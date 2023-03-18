@@ -44,11 +44,11 @@ class SocialProfilesListViewModel {
     }
     
     func removeSocialProfiles(socialProfilesId: Int) {
-        self.requestManager.request(forPath: ApiUrl.removePatientsTags.appending("\(socialProfilesId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.socialProfileList.appending("/\(socialProfilesId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.pateintTagRemovedSuccefully(message: data.success ?? String.blank)
+                self.delegate?.socialProfilesRemovedSuccefully(message: data.success ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

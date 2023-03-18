@@ -15,6 +15,7 @@ protocol SocialProfilesListTableViewCellDelegate: AnyObject {
 class SocialProfilesListTableViewCell: UITableViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var id: UILabel!
+    @IBOutlet private weak var imageName: UILabel!
     @IBOutlet private weak var questionnaireSelection: UIButton!
     @IBOutlet weak var subView: UIView!
     
@@ -29,17 +30,19 @@ class SocialProfilesListTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
     }
     
-    func configureCellWithSearch(questionarieVM: SocialProfilesListViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.socialProfilesFilterListDataAtIndex(index: index.row)
-        self.name.text = questionarieVM?.name
-        self.id.text = String(questionarieVM?.id ?? 0)
+    func configureCellWithSearch(socialProfileVM: SocialProfilesListViewModelProtocol?, index: IndexPath) {
+        let socialProfileVM = socialProfileVM?.socialProfilesFilterListDataAtIndex(index: index.row)
+        self.name.text = socialProfileVM?.name
+        self.imageName.text = socialProfileVM?.socialChannel
+        self.id.text = String(socialProfileVM?.id ?? 0)
         indexPath = index
     }
     
-    func configureCell(questionarieVM: SocialProfilesListViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.socialProfilesListDataAtIndex(index: index.row)
-        self.name.text = questionarieVM?.name
-        self.id.text = String(questionarieVM?.id ?? 0)
+    func configureCell(socialProfileVM: SocialProfilesListViewModelProtocol?, index: IndexPath) {
+        let socialProfileVM = socialProfileVM?.socialProfilesListDataAtIndex(index: index.row)
+        self.name.text = socialProfileVM?.name
+        self.imageName.text = socialProfileVM?.socialChannel
+        self.id.text = String(socialProfileVM?.id ?? 0)
         indexPath = index
     }
     

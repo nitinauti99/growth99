@@ -205,6 +205,9 @@
 		01DBA98729C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA98629C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift */; };
 		01DBA98D29C5660000CBA51D /* SocialProfilesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA98C29C5660000CBA51D /* SocialProfilesListTableViewCell.swift */; };
 		01DBA98F29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DBA98E29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib */; };
+		01DBA99729C5A2D200CBA51D /* CreateSocialProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA99629C5A2D200CBA51D /* CreateSocialProfileViewController.swift */; };
+		01DBA99929C5A2DA00CBA51D /* CreateSocialProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DBA99829C5A2DA00CBA51D /* CreateSocialProfileViewController.storyboard */; };
+		01DBA99B29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA99A29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift */; };
 		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
 		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
 		01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */; };
@@ -1054,6 +1057,9 @@
 		01DBA98629C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialProfilesListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		01DBA98C29C5660000CBA51D /* SocialProfilesListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialProfilesListTableViewCell.swift; sourceTree = "<group>"; };
 		01DBA98E29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialProfilesListTableViewCell.xib; sourceTree = "<group>"; };
+		01DBA99629C5A2D200CBA51D /* CreateSocialProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSocialProfileViewController.swift; sourceTree = "<group>"; };
+		01DBA99829C5A2DA00CBA51D /* CreateSocialProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateSocialProfileViewController.storyboard; sourceTree = "<group>"; };
+		01DBA99A29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSocialProfileViewModel.swift; sourceTree = "<group>"; };
 		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewController.swift; sourceTree = "<group>"; };
@@ -2811,6 +2817,42 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		01DBA99029C5A23D00CBA51D /* List */ = {
+			isa = PBXGroup;
+			children = (
+				189E3EC529C38E6000B94190 /* Model */,
+				189E3EC429C38E6000B94190 /* ViewModel */,
+				189E3EC629C38E6000B94190 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		01DBA99229C5A25E00CBA51D /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				01DBA99429C5A26F00CBA51D /* ViewModel */,
+				01DBA99329C5A26D00CBA51D /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		01DBA99329C5A26D00CBA51D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01DBA99629C5A2D200CBA51D /* CreateSocialProfileViewController.swift */,
+				01DBA99829C5A2DA00CBA51D /* CreateSocialProfileViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01DBA99429C5A26F00CBA51D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01DBA99A29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		01EBAC3F29B5842400110DCB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3368,9 +3410,8 @@
 		189E3EC329C38E6000B94190 /* SocialProfiles */ = {
 			isa = PBXGroup;
 			children = (
-				189E3EC529C38E6000B94190 /* Model */,
-				189E3EC429C38E6000B94190 /* ViewModel */,
-				189E3EC629C38E6000B94190 /* View */,
+				01DBA99029C5A23D00CBA51D /* List */,
+				01DBA99229C5A25E00CBA51D /* Add */,
 			);
 			path = SocialProfiles;
 			sourceTree = "<group>";
@@ -6556,6 +6597,7 @@
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
 				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
+				01DBA99929C5A2DA00CBA51D /* CreateSocialProfileViewController.storyboard in Resources */,
 				8490350429954F7300556D47 /* SMSTemplatesListTableViewCell.xib in Resources */,
 				01EBAC9529B6392E00110DCB /* ScrapeWebsiteViewController.storyboard in Resources */,
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
@@ -7155,9 +7197,11 @@
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
 				01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */,
 				01468E3D29C1F297002BDC1F /* leadDetailViewController+SMSTemplate.swift in Sources */,
+				01DBA99729C5A2D200CBA51D /* CreateSocialProfileViewController.swift in Sources */,
 				DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */,
 				01684C5E29BDEFA900DE1041 /* UnansweredQuestionListModel.swift in Sources */,
 				84D063132967080E001FE469 /* CreateLeadViewModel.swift in Sources */,
+				01DBA99B29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift in Sources */,
 				01468E3029C0D7E8002BDC1F /* PateintCustomEmailTemplateTableViewCell.swift in Sources */,
 				1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */,
 				013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,

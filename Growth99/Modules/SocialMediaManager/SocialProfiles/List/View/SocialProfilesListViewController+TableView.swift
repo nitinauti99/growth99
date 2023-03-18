@@ -28,9 +28,9 @@ extension SocialProfilesListViewController: UITableViewDelegate, UITableViewData
 
         cell.delegate = self
         if isSearch {
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+            cell.configureCell(socialProfileVM: viewModel, index: indexPath)
         }else{
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+            cell.configureCell(socialProfileVM: viewModel, index: indexPath)
         }
         return cell
     }
@@ -40,13 +40,13 @@ extension SocialProfilesListViewController: UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-        detailController.pateintsTagScreenName = "Edit Screen"
+        let detailController = UIStoryboard(name: "CreateSocialProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateSocialProfileViewController") as! CreateSocialProfileViewController
+        detailController.socialProfilesScreenName = "Edit Screen"
 
         if self.isSearch {
-           // detailController.patientTagId = viewModel?.getSocialProfilesFilterData(index: indexPath.row)?.id ?? 0
+            detailController.socialProfileId = viewModel?.socialProfilesFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
         }else{
-           // detailController.patientTagId = viewModel?.getSocialProfilesData(index: indexPath.row)?.id ?? 0
+            detailController.socialProfileId = viewModel?.socialProfilesListDataAtIndex(index: indexPath.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)
     }
