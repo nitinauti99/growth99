@@ -17,7 +17,7 @@ class BusinessDetailView: UIViewController {
 
     var workflowTaskPatientId = Int()
     var selectedindex = 0
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     override func viewDidLoad() {
         super.viewDidLoad()

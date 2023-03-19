@@ -13,7 +13,7 @@ public enum GrowthNetworkError: Error {
     case invalidResponse
 
     /// Failed JSON serialization for [response](x-source-tag://ResponseTag)
-    case jsonMapping(Response)
+    case jsonMapping(GrowthResponse)
 
     /// Failed JSON serialization due to no data at a specific keypath
     case jsonSerializationNoDataAtKeyPath(String)
@@ -22,7 +22,7 @@ public enum GrowthNetworkError: Error {
     case missingURL
 
     /// Failed to map object with a specific `Error` for [response](x-source-tag://ResponseTag)
-    case objectMapping(Error, Response)
+    case objectMapping(Error, GrowthResponse)
 
     /// Failed parameter encoding due to a specific `Error`
     case parameterEncoding(Error)
@@ -46,7 +46,7 @@ public enum GrowthNetworkError: Error {
     case requestMapping(String)
 
     /// [Response](x-source-tag://ResponseTag) does not have the required status code
-    case statusCode(Response)
+    case statusCode(GrowthResponse)
 
     /// Unable to complete request due to failed token refresh
     case tokenRefreshFailed
@@ -59,7 +59,7 @@ public enum GrowthNetworkError: Error {
 public extension GrowthNetworkError {
 
     /// [Response](x-source-tag://ResponseTag) associated to a `GrowthNetworkError`.
-    var response: Response? {
+    var response: GrowthResponse? {
         switch self {
         case .encodingFailed:
             return nil

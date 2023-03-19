@@ -28,7 +28,7 @@ class CombineTimeLineViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     
     func leadCreation(leadId: Int) {

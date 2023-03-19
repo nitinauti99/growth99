@@ -16,9 +16,19 @@ extension UnansweredQuestionListViewController: UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getUnansweredQuestionFilterListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getUnansweredQuestionFilterListData.count ?? 0
         } else {
-            return viewModel?.getUnansweredQuestionListData.count ?? 0
+            if viewModel?.getUnansweredQuestionListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
+            return viewModel?.getUnansweredQuestionListData.count  ?? 0
         }
     }
     

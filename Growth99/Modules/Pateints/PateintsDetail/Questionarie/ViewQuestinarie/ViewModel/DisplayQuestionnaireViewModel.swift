@@ -23,7 +23,7 @@ class DisplayQuestionnaireViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     func getDisplayQuestionnaire(patientId: Int,questionnaireId: Int) {
         let finaleURL = ApiUrl.patientsQuestionnaireDetail.appending("\(patientId)/questionnaire/\(questionnaireId)/questions")

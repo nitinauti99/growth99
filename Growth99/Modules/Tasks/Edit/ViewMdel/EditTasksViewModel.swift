@@ -43,7 +43,7 @@ class EditTasksViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     func getTaskDetail(taskId: Int) {
         let finaleUrl = ApiUrl.taskDetail + "\(taskId)"

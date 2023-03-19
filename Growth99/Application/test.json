@@ -63,10 +63,6 @@
         {
           "title": "Booking History",
           "imageName": "fa-address-card"
-        },
-        {
-          "title": "Payment",
-          "imageName": "fa-money-bill-alt"
         }
       ]
     },

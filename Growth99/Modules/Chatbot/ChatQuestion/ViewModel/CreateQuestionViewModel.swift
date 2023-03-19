@@ -20,7 +20,7 @@ class CreateQuestionViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     /// api is used for create chat Questionnaire
     func createQuestion(question: String, answer:String, referenceLink: String, chatQuestionId: Int) {

@@ -5,7 +5,7 @@ import Foundation
  Used to convert a requestable protocol to a concrete type
 */
 /// - Tag: EndpointTag
-internal class Endpoint {
+internal class GrowthEndpoint {
 
     let path: String
     let method: HTTPMethod
@@ -43,11 +43,11 @@ internal class Endpoint {
         - newHeaderField: the new header field with which it should be updated
      
      */
-    func update(headerField field: String, with newHeaderField: HTTPHeader) -> Endpoint {
+    func update(headerField field: String, with newHeaderField: HTTPHeader) -> GrowthEndpoint {
         self.httpHeaderFields?.removeAll { $0.key == field }
         self.httpHeaderFields?.append(newHeaderField)
 
-        return Endpoint(path: path, method: method, task: task, httpHeaderFields: self.httpHeaderFields)
+        return GrowthEndpoint(path: path, method: method, task: task, httpHeaderFields: self.httpHeaderFields)
     }
 
     /**
@@ -57,13 +57,13 @@ internal class Endpoint {
        - task: the new [Task](x-source-tag://TaskTag) with which current object should be updated.
     
     */
-    func replacing(task: RequestTask) -> Endpoint {
-        Endpoint(path: path, method: method, task: task, httpHeaderFields: httpHeaderFields)
+    func replacing(task: RequestTask) -> GrowthEndpoint {
+        GrowthEndpoint(path: path, method: method, task: task, httpHeaderFields: httpHeaderFields)
     }
 
 }
 
-extension Endpoint {
+extension GrowthEndpoint {
 
     /**
     Create a `URLRequest` based on the existing properties of [Endpoint](x-source-tag://EndpointTag).

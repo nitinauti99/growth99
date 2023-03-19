@@ -29,8 +29,7 @@ class LogInViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
-    
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getBussinessSelection(email: String) {
         let finaleURL = ApiUrl.getBussinessSelection.appending("byemail?email=\(email)")

@@ -23,7 +23,7 @@ class ChatSessionDetailViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getChatSessionDetail(chatSessionId: Int) {
         self.requestManager.request(forPath: ApiUrl.chatsessionsDetail.appending("\(chatSessionId)/messages"), method: .GET, headers: self.requestManager.Headers()) { (result: Result<[ChatSessionDetailModel], GrowthNetworkError>) in

@@ -111,9 +111,6 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.pateintListTableView.reloadData()
-        if viewModel?.getPateintData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
     
     func errorReceived(error: String) {

@@ -277,7 +277,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         paymentLinkTextField.text = viewModel?.getClinicsListData?.paymentLink ?? String.blank
         
         let tenentID = UserRepository.shared.Xtenantid ?? String.blank
-        let clinicURL = "https://devemr.growthemr.com/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
+        let clinicURL = "https://app.growth99.com/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
         onlineLinkWithURLTextView.text = clinicURL
         
         let filteredMondayArray = viewModel?.getClinicsListData?.businessHours?.filter{$0.dayOfWeek == "MONDAY"}

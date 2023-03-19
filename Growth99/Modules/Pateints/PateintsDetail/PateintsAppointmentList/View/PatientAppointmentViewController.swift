@@ -80,9 +80,6 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         self.view.HideSpinner()
         patientsAppointmentList = viewModel?.getPatientsAppointmentList ?? []
         self.tableView.reloadData()
-        if viewModel?.getPatientsAppointmentList.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
     
     func errorReceivedBookingHistory(error: String) {

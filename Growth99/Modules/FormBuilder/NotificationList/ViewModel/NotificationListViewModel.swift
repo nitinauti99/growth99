@@ -26,7 +26,7 @@ class NotificationListViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getNotificationListList(questionId: Int) {
         let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications")

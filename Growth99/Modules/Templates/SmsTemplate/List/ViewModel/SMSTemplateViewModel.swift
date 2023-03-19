@@ -39,7 +39,7 @@ class SMSTemplateViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getSMSTemplateList() {
         self.requestManager.request(forPath: ApiUrl.smsTemplatesList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[SMSTemplateModel], GrowthNetworkError>) in

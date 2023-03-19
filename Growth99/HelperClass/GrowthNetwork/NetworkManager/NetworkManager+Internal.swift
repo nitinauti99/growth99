@@ -7,7 +7,7 @@ extension NetworkManager {
     func internalRequest(request: Requestable,
                          completionQueue: DispatchQueue = DispatchQueue.main,
                          progressBlock: ((Progress) -> Void)? = nil,
-                         completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                         completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
         switch request.stub.behavior {
         case .never:
             switch request.task {
@@ -39,7 +39,7 @@ extension NetworkManager {
     func dataRequest(request: Requestable,
                      completionQueue: DispatchQueue = DispatchQueue.main,
                      progressBlock: ((Progress) -> Void)? = nil,
-                     completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                     completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
         let endpoint = self.endpointMapping(for: request)
         let result = self.requestMapping(for: endpoint)
 
@@ -101,7 +101,7 @@ extension NetworkManager {
                        multipartFormHeader: HTTPHeader? = nil,
                        completionQueue: DispatchQueue = DispatchQueue.main,
                        progressBlock: ((Progress) -> Void)? = nil,
-                       completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                       completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
         let endpoint = self.endpointMapping(for: request, multipartFormHeader: multipartFormHeader)
         let result = self.requestMapping(for: endpoint)
 
@@ -153,7 +153,7 @@ extension NetworkManager {
                          downloadLocation: URL,
                          completionQueue: DispatchQueue = DispatchQueue.main,
                          progressBlock: ((Progress) -> Void)? = nil,
-                         completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                         completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
         let endpoint = self.endpointMapping(for: request)
         let result = self.requestMapping(for: endpoint)
 
@@ -199,7 +199,7 @@ extension NetworkManager {
         }
     }
 
-    private func createResponse(for request: URLRequest, operation: DataTaskOperation) -> Result<Response, GrowthNetworkError> {
+    private func createResponse(for request: URLRequest, operation: DataTaskOperation) -> Result<GrowthResponse, GrowthNetworkError> {
         self.remove(operation: operation)
 
         if operation.isCancelled {
@@ -227,7 +227,7 @@ extension NetworkManager {
             return .failure(.invalidResponse)
         }
 
-        return .success(Response(statusCode: response.statusCode, data: data, request: request, response: response, metrics: operation.metrics))
+        return .success(GrowthResponse(statusCode: response.statusCode, data: data, request: request, response: response, metrics: operation.metrics))
     }
 }
 
@@ -241,17 +241,17 @@ extension NetworkManager: DataTaskOperationProtocol {
 
 extension NetworkManager {
 
-    func endpointMapping(for request: Requestable, multipartFormHeader: HTTPHeader? = nil) -> Endpoint {
+    func endpointMapping(for request: Requestable, multipartFormHeader: HTTPHeader? = nil) -> GrowthEndpoint {
         let path = request.baseURL.appending(request.path)
         guard let multipartFormHeader = multipartFormHeader else {
-            return Endpoint(path: path, method: request.method, task: request.task, cachePolicy: request.cachePolicy, httpHeaderFields: request.headerFields)
+            return GrowthEndpoint(path: path, method: request.method, task: request.task, cachePolicy: request.cachePolicy, httpHeaderFields: request.headerFields)
         }
 
         let updatedRequest = request.updateHeaderFields([multipartFormHeader])
-        return Endpoint(path: path, method: updatedRequest.method, task: updatedRequest.task, httpHeaderFields: updatedRequest.headerFields)
+        return GrowthEndpoint(path: path, method: updatedRequest.method, task: updatedRequest.task, httpHeaderFields: updatedRequest.headerFields)
     }
 
-    func requestMapping(for endpoint: Endpoint) -> Result<URLRequest, GrowthNetworkError> {
+    func requestMapping(for endpoint: GrowthEndpoint) -> Result<URLRequest, GrowthNetworkError> {
         do {
             let urlRequest = try endpoint.urlRequest()
             return .success(urlRequest)
@@ -314,25 +314,9 @@ extension NetworkManager: URLSessionDelegate {
             return
         }
 
-        guard let pinningPolicy = self.pinningPolicy else {
-            completionHandler(.performDefaultHandling, nil)
-            return
-        }
-
         guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
             let trust = challenge.protectionSpace.serverTrust else {
             completionHandler(.performDefaultHandling, nil)
-            return
-        }
-
-        let host = challenge.protectionSpace.host
-        let result = pinningPolicy.pin(with: trust, host: host)
-
-        guard result.isSuccess else {
-            if let error = result.error {
-                Log.error("Failed trust evaluation for the specified certificates and policies. Error \(error.localizedDescription)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
-            }
-            completionHandler(.cancelAuthenticationChallenge, nil)
             return
         }
 
@@ -360,7 +344,7 @@ extension NetworkManager: URLSessionDataDelegate {
 
         guard let taskOperation = operation, let transactionMetrics = metrics.transactionMetrics.first else { return }
 
-        let newMetrics = Metrics(sessionTaskTransactionMetrics: transactionMetrics, taskInterval: metrics.taskInterval.duration)
+        let newMetrics = GrowthMetrics(sessionTaskTransactionMetrics: transactionMetrics, taskInterval: metrics.taskInterval.duration)
         taskOperation.metrics = newMetrics
     }
 

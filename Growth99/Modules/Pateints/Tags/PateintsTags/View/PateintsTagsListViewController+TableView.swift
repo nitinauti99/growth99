@@ -16,8 +16,18 @@ extension PateintsTagsListViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getPateintsTagsFilterData.count ?? 0 == 0 {
+                self.pateintsTagsListTableview.setEmptyMessage()
+            } else {
+                self.pateintsTagsListTableview.restore()
+            }
             return viewModel?.getPateintsTagsFilterData.count ?? 0
         } else {
+            if viewModel?.getPateintsTagsData.count ?? 0 == 0 {
+                self.pateintsTagsListTableview.setEmptyMessage()
+            } else {
+                self.pateintsTagsListTableview.restore()
+            }
             return viewModel?.getPateintsTagsData.count ?? 0
         }
     }

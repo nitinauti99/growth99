@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="height" constant="150" id="G5q-Q3-TCg"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-5G-eoB">
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-5G-eoB">
                                 <rect key="frame" x="290" y="177" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7Tk-24-1no"/>
@@ -76,9 +76,6 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="" backgroundImage="editicon"/>
-                                <connections>
-                                    <action selector="imageIconbtnTapped:" destination="IlC-uo-g6W" eventType="touchUpInside" id="7i4-n1-UwX"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecd-ef-lm3" userLabel="userName">
                                 <rect key="frame" x="30" y="323" width="330" height="21"/>

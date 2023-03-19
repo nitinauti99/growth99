@@ -55,7 +55,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getMassEmailLeadTagsList() {
         self.requestManager.request(forPath: ApiUrl.leadTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSTagListModel], GrowthNetworkError>) in

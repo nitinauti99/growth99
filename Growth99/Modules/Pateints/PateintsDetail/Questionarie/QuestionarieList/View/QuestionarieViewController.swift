@@ -81,9 +81,6 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.questionarieListTableView.reloadData()
-        if viewModel?.getQuestionarieDataList.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
     
     func errorReceived(error: String) {

@@ -16,8 +16,18 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getTaskFilterData.count ?? 0 == 0 {
+                self.taskListTableView.setEmptyMessage()
+            } else {
+                self.taskListTableView.restore()
+            }
             return viewModel?.getTaskFilterData.count ?? 0
         } else {
+            if viewModel?.getTaskData.count ?? 0 == 0 {
+                self.taskListTableView.setEmptyMessage()
+            } else {
+                self.taskListTableView.restore()
+            }
             return viewModel?.getTaskData.count ?? 0
         }
     }
@@ -40,7 +50,6 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editVC = UIStoryboard(name: "EditTasksViewController", bundle: nil).instantiateViewController(withIdentifier: "EditTasksViewController") as! EditTasksViewController
         editVC.screenTitile = self.screenTitile
-
         if isSearch {
             editVC.taskId = viewModel?.taskFilterDataAtIndex(index: indexPath.row)?.id ?? 0
             editVC.workflowTaskPatient = viewModel?.taskDataAtIndex(index: indexPath.row)?.patientId ?? 0

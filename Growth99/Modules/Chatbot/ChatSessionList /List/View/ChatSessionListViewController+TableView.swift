@@ -16,9 +16,19 @@ extension ChatSessionListViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getChatSessionListFilterListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getChatSessionListFilterListData.count ?? 0
         } else {
-            return viewModel?.getChatSessionListData.count ?? 0
+            if viewModel?.getChatSessionListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
+            return viewModel?.getChatSessionListData.count  ?? 0
         }
     }
     

@@ -50,13 +50,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Jul 14 2022 12:00 AM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahZ-iO-Bmh">
-                                <rect key="frame" x="103" y="125" width="253" height="21"/>
+                                <rect key="frame" x="103" y="125" width="253" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poj-7B-tuM" userLabel="CreatedDateLbi">
-                                <rect key="frame" x="13" y="125" width="80" height="21"/>
+                                <rect key="frame" x="13" y="122" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="O4c-ba-Lea"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WX-fO-mQ9" userLabel="IdLbi">
-                                <rect key="frame" x="13" y="156" width="80" height="20"/>
+                                <rect key="frame" x="13" y="154" width="80" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="HpL-xT-ITY"/>
                                 </constraints>
@@ -74,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Production Release - 6/08/2022 and 19/08/2022" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEL-eK-3cu">
-                                <rect key="frame" x="103" y="156" width="253" height="29"/>
+                                <rect key="frame" x="103" y="149.5" width="253" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                             <constraint firstItem="ahZ-iO-Bmh" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="CBU-4b-vld"/>
                             <constraint firstAttribute="trailing" secondItem="7Fz-I2-Mji" secondAttribute="trailing" constant="10" id="CWp-J3-lbk"/>
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="leading" secondItem="SRX-mT-mQW" secondAttribute="leading" id="CvN-N7-sug"/>
-                            <constraint firstItem="6WX-fO-mQ9" firstAttribute="top" secondItem="Poj-7B-tuM" secondAttribute="bottom" constant="10" id="Mae-0u-bbN"/>
+                            <constraint firstItem="6WX-fO-mQ9" firstAttribute="centerY" secondItem="PEL-eK-3cu" secondAttribute="centerY" id="IGr-6a-sLM"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="trailing" secondItem="SRX-mT-mQW" secondAttribute="trailing" id="Nvb-jg-Sz8"/>
                             <constraint firstItem="6WX-fO-mQ9" firstAttribute="leading" secondItem="Poj-7B-tuM" secondAttribute="leading" id="UMO-3D-YGY"/>
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="centerY" secondItem="ahZ-iO-Bmh" secondAttribute="centerY" id="Y6J-oa-12Z"/>
@@ -116,10 +116,9 @@
                             <constraint firstItem="PEL-eK-3cu" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="j4A-zf-xiW"/>
                             <constraint firstItem="7Fz-I2-Mji" firstAttribute="top" secondItem="SRX-mT-mQW" secondAttribute="top" id="pDd-VK-Q70"/>
                             <constraint firstItem="ahZ-iO-Bmh" firstAttribute="trailing" secondItem="7Fz-I2-Mji" secondAttribute="trailing" id="px0-Ld-OFV"/>
-                            <constraint firstAttribute="bottom" secondItem="6WX-fO-mQ9" secondAttribute="bottom" constant="20" id="q0f-Dp-5xl"/>
                             <constraint firstItem="6WX-fO-mQ9" firstAttribute="trailing" secondItem="Poj-7B-tuM" secondAttribute="trailing" id="qCA-aW-aAd"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="top" secondItem="SRX-mT-mQW" secondAttribute="bottom" constant="10" id="r78-Um-Ake"/>
-                            <constraint firstItem="PEL-eK-3cu" firstAttribute="top" secondItem="6WX-fO-mQ9" secondAttribute="top" id="uPv-t3-ap5"/>
+                            <constraint firstAttribute="bottom" secondItem="PEL-eK-3cu" secondAttribute="bottom" constant="17.5" id="xVN-6Y-2ys"/>
                             <constraint firstItem="ahZ-iO-Bmh" firstAttribute="top" secondItem="QcW-JG-wMb" secondAttribute="bottom" constant="5" id="zq4-hp-TZ4"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

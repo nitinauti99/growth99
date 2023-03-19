@@ -8,7 +8,7 @@
 import Foundation
 
 struct EndPoints {
-    static let baseURL = "https://api.growthemr.com"
+    static let baseURL = "https://api.growth99.com"
     static let auth = "/api/user/auth"
     static let register = "/api/account/register"
     static let forgotPassword = "/api/public/users/forgot-password"

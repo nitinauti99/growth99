@@ -23,7 +23,7 @@ class ChatConfigurationViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getChatConfigurationDataList() {
         self.requestManager.request(forPath: ApiUrl.chatconfigs, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ChatConfigurationModel, GrowthNetworkError>) in

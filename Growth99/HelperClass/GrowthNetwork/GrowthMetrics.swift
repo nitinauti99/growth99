@@ -5,7 +5,7 @@ import Foundation
  A value type encapsulating the metrics for a session task.
 */
 /// - Tag: MetricsTag
-public struct Metrics {
+public struct GrowthMetrics {
 
     /// The time taken for the URLSession task to complete the name lookup for the resource.
     private(set) var domainLookupTimeInterval: TimeInterval?
@@ -58,7 +58,7 @@ public struct Metrics {
 
 }
 
-extension Metrics: CustomStringConvertible {
+extension GrowthMetrics: CustomStringConvertible {
 
     /// A textual representation of the total time interval between when a task is instantiated and when the task is completed.
     public var description: String {

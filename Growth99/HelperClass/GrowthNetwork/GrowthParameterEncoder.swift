@@ -4,7 +4,7 @@ import Foundation
 public typealias Parameters = [String: Any]
 
 /// Protocol to encode specified url/body parameters
-public protocol ParameterEncoder {
+public protocol GrowthParameterEncoder {
     func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws
 }
 
@@ -45,7 +45,7 @@ public enum ParameterEncoding {
 }
 
 /// JSONParameterEncoder type to perform json encoding
-public struct JSONParameterEncoder: ParameterEncoder {
+public struct JSONParameterEncoder: GrowthParameterEncoder {
 
     public func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
         do {
@@ -62,7 +62,7 @@ public struct JSONParameterEncoder: ParameterEncoder {
 }
 
 /// URLParameterEncoder type to perform url encoding
-public struct URLParameterEncoder: ParameterEncoder {
+public struct URLParameterEncoder: GrowthParameterEncoder {
 
     /// The encoding to use for `Array` parameters.
     public let arrayEncoding: ArrayEncoding

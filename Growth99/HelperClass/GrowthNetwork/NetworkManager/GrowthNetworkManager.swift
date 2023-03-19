@@ -20,14 +20,12 @@ open class NetworkManager: NSObject {
     internal var authenticator: Authenticator?
 
     /// QueueManager responsible for handling network operationQueue.
-    internal let networkQueueManager = NetworkQueueManager()
+    internal let networkQueueManager = GrowthNetworkQueueManager()
 
     /// Queue responsible for read-write operation for taskToOperation property.
     internal let taskToOperationRWLock = ReadersWriterLock(label: "com.apple.GrowthHTTPNetwork.taskToOperation")
 
     /// Certificate `Bundle` directory provided to grab all the certificates.
-    public private(set) var pinningPolicy: PinningPolicy?
-
     /// A Boolean to set whether certificate pinning is required by the client.
     public var optIntoCertificatePinning = false
 
@@ -42,13 +40,11 @@ open class NetworkManager: NSObject {
                 rootQueue: DispatchQueue? = nil,
                 logger: Logger = OSLogger.shared,
                 logSettings: LogSettings = .default,
-                authenticator: Authenticator? = nil,
-                pinningPolicy: PinningPolicy? = nil) {
+                authenticator: Authenticator? = nil) {
 
         self.logger = logger
         self.logSettings = logSettings
         self.authenticator = authenticator
-        self.pinningPolicy = pinningPolicy
         self.networkQueueManager.networkRequestOperationQueue.underlyingQueue = rootQueue
         self.networkQueueManager.safeNetworkRequestOperationQueue.underlyingQueue = rootQueue
         super.init()
@@ -85,7 +81,7 @@ open class NetworkManager: NSObject {
     public func request(requestable: Requestable,
                         completionQueue: DispatchQueue = DispatchQueue.main,
                         progressBlock: ((Progress) -> Void)? = nil,
-                        completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                        completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
 
         var cancellable: Cancellable = CancellableWrapper()
 
@@ -156,7 +152,7 @@ open class NetworkManager: NSObject {
                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                         completionQueue: DispatchQueue = DispatchQueue.main,
                         progressBlock: ((Progress) -> Void)? = nil,
-                        completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                        completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
         let requestable = RequestableType(path: path, method: method, task: task, headerFields: headers, mode: mode, stub: stub)
 
         return self.request(requestable: requestable, completionQueue: completionQueue, progressBlock: progressBlock, completion: completion)

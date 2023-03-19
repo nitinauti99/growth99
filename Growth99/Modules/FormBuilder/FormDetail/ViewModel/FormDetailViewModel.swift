@@ -34,7 +34,7 @@ class FormDetailViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     /// get form question detail data
     func getFormQuestionnaireData(questionnaireId: Int) {

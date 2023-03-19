@@ -65,11 +65,6 @@ class LeadSourceUrlListViewController: UIViewController, LeadSourceUrlListViewCo
     func leadTagListRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
-        if viewModel?.getLeadSourceUrlData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }else{
-            self.emptyMessage(parentView: self.view, message: "")
-        }
     }
     
     func errorReceived(error: String) {

@@ -77,9 +77,6 @@ class TasksListViewController: UIViewController, TasksListViewControllerProtocol
         self.view.HideSpinner()
         self.taskListTableView.setContentOffset(.zero, animated: true)
         self.taskListTableView.reloadData()
-        if viewModel?.getTaskData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
     
     func errorReceived(error: String) {

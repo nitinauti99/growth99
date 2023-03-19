@@ -16,8 +16,18 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getNotificationFilterListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getNotificationFilterListData.count ?? 0
         } else {
+            if viewModel?.getNotificationListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getNotificationListData.count ?? 0
         }
     }

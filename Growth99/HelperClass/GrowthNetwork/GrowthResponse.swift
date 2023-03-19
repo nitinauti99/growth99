@@ -1,7 +1,7 @@
 
 import Foundation
 
-public final class Response: CustomDebugStringConvertible {
+public final class GrowthResponse: CustomDebugStringConvertible {
 
     /// The status code of the response.
     public let statusCode: Int
@@ -16,9 +16,9 @@ public final class Response: CustomDebugStringConvertible {
     public let response: HTTPURLResponse?
 
     /// Metrics object encapsulating the performance metrics collected during the execution of this URLSession task
-    public let metrics: Metrics?
+    public let metrics: GrowthMetrics?
 
-    public init(statusCode: Int, data: Data, request: URLRequest? = nil, response: HTTPURLResponse? = nil, metrics: Metrics? = nil) {
+    public init(statusCode: Int, data: Data, request: URLRequest? = nil, response: HTTPURLResponse? = nil, metrics: GrowthMetrics? = nil) {
         self.statusCode = statusCode
         self.data = data
         self.request = request
@@ -66,7 +66,7 @@ public final class Response: CustomDebugStringConvertible {
     }
 }
 
-extension Response {
+extension GrowthResponse {
 
     func responseDescription(for logSettings: LogSettings) -> String {
         var components: [String] = ["\r"]
@@ -115,7 +115,7 @@ extension Response {
     }
 }
 
-public extension Response {
+public extension GrowthResponse {
 
     /**
      Returns the `Response` if the `statusCode` falls within the specified range.
@@ -123,7 +123,7 @@ public extension Response {
      - statusCodes: The range of acceptable status codes.
      - throws: `NetworkError.statusCode` when others are encountered.
      */
-    func filter<R: RangeExpression>(statusCodes: R) throws -> Response where R.Bound == Int {
+    func filter<R: RangeExpression>(statusCodes: R) throws -> GrowthResponse where R.Bound == Int {
         guard statusCodes.contains(statusCode) else {
             throw GrowthNetworkError.statusCode(self)
         }
@@ -138,7 +138,7 @@ public extension Response {
      
     - throws: `NetworkError.statusCode` when others are encountered.
     */
-    func filter(statusCodes: Set<Int>) throws -> Response {
+    func filter(statusCodes: Set<Int>) throws -> GrowthResponse {
         guard statusCodes.contains(self.statusCode) else {
             throw GrowthNetworkError.statusCode(self)
         }
@@ -151,7 +151,7 @@ public extension Response {
      - statusCode: The acceptable status code.
      - throws: `NetworkError.statusCode` when others are encountered.
      */
-    func filter(statusCode: Int) throws -> Response {
+    func filter(statusCode: Int) throws -> GrowthResponse {
         try self.filter(statusCodes: statusCode...statusCode)
     }
 
@@ -160,7 +160,7 @@ public extension Response {
      
      - throws: `NetworkError.statusCode` when others are encountered.
      */
-    func filterSuccessfulStatusCodes() throws -> Response {
+    func filterSuccessfulStatusCodes() throws -> GrowthResponse {
         try self.filter(statusCodes: 200...299)
     }
 
@@ -169,7 +169,7 @@ public extension Response {
      
      - throws: `NetworkError.statusCode` when others are encountered.
      */
-    func filterSuccessfulStatusAndRedirectCodes() throws -> Response {
+    func filterSuccessfulStatusAndRedirectCodes() throws -> GrowthResponse {
         try self.filter(statusCodes: 200...399)
     }
 
@@ -255,9 +255,9 @@ private struct DecodableWrapper<T: Decodable>: Decodable {
     let value: T
 }
 
-extension Response: Equatable {
+extension GrowthResponse: Equatable {
 
-    public static func == (lhs: Response, rhs: Response) -> Bool {
+    public static func == (lhs: GrowthResponse, rhs: GrowthResponse) -> Bool {
         guard lhs.statusCode == rhs.statusCode else {
             return false
         }

@@ -15,6 +15,11 @@ extension QuestionnaireSubmissionsViewController: UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel?.getQuestionarieDataList.count ?? 0 == 0 {
+            self.questionarieListTableView.setEmptyMessage()
+        } else {
+            self.questionarieListTableView.restore()
+        }
         return viewModel?.getQuestionarieDataList.count ?? 0
     }
     

@@ -31,7 +31,7 @@ class MassEmailandSMSViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getMassEmailandSMS() {
         self.requestManager.request(forPath: ApiUrl.getAllEmailandSMS, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[MassEmailandSMSModel], GrowthNetworkError>) in

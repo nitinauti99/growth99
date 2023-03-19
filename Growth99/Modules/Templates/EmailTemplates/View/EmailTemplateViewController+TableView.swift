@@ -16,9 +16,19 @@ extension EmailTemplateViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getSelectedTemplateFilterData(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getSelectedTemplateFilterData(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
         } else {
-            return viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0
+            if viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
+            return viewModel?.getSelectedTemplate(selectedIndex: segmentedControl.selectedSegmentIndex).count  ?? 0
         }
     }
     
@@ -38,7 +48,6 @@ extension EmailTemplateViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
     }
     
 }

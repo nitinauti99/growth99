@@ -22,7 +22,7 @@ protocol DataTaskOperationProtocol: AnyObject {
     var dataTaskIdentifier: Int?
     var progressBlock: ((Progress) -> Void)?
     var operationResponse: OperationResponse?
-    var metrics: Metrics?
+    var metrics: GrowthMetrics?
     private(set) var session: URLSession
     private var progress = Progress()
     private var observation: NSKeyValueObservation?

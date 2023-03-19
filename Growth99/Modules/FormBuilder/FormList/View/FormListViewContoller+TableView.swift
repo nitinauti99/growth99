@@ -19,8 +19,18 @@ extension FormListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getFormFilterListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getFormFilterListData.count ?? 0
         } else {
+            if viewModel?.getFormListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getFormListData.count ?? 0
         }
     }

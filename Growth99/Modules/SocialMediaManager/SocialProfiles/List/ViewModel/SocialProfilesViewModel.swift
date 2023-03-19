@@ -28,7 +28,7 @@ class SocialProfilesListViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getSocialProfilesList() {
         self.requestManager.request(forPath: ApiUrl.socialProfileList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[SocialProfilesListModel], GrowthNetworkError>) in

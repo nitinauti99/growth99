@@ -16,9 +16,19 @@ extension ConsentsTemplateListViewController: UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            if viewModel?.getConsentsTemplateFilterListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
             return viewModel?.getConsentsTemplateFilterListData.count ?? 0
         } else {
-            return viewModel?.getConsentsTemplateListData.count ?? 0
+            if viewModel?.getConsentsTemplateListData.count ?? 0 == 0 {
+                self.tableView.setEmptyMessage()
+            } else {
+                self.tableView.restore()
+            }
+            return viewModel?.getConsentsTemplateListData.count  ?? 0
         }
     }
     
@@ -39,6 +49,5 @@ extension ConsentsTemplateListViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
     }
 }

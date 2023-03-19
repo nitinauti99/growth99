@@ -65,11 +65,6 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     func pateintsTagListRecived() {
         self.view.HideSpinner()
         self.pateintsTagsListTableview.reloadData()
-        if viewModel?.getPateintsTagsData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }else{
-            self.emptyMessage(parentView: self.view, message: "")
-        }
     }
     
     func errorReceived(error: String) {

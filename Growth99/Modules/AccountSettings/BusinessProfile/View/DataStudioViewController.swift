@@ -14,7 +14,7 @@ class DataStudioViewController: UIViewController, UITextViewDelegate {
 
     var bussinessInfoData: BusinessSubDomainModel?
 
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
 
     override func viewDidLoad() {
         super.viewDidLoad()

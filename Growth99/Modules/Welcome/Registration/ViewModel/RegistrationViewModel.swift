@@ -23,7 +23,7 @@ class RegistrationViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func registration(firstName: String, lastName: String, email: String, phoneNumber: String, password: String, repeatPassword: String, businesName: String, agreeTerms: Bool) {
         

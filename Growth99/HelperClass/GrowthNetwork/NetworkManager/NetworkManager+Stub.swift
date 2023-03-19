@@ -7,7 +7,7 @@ extension NetworkManager {
     @discardableResult
     func stubRequest(stub: Stub,
                      completionQueue: DispatchQueue = DispatchQueue.main,
-                     completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> Cancellable {
+                     completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
         guard self.session != nil else { return CancellableWrapper() }
 
         let cancellableToken = CancellableWrapper()
@@ -34,24 +34,24 @@ extension NetworkManager {
         return cancellableToken
     }
 
-    private func createStubFunction(stubResponse: StubResponse, completion: @escaping (Result<Response, GrowthNetworkError>) -> Void) -> (() -> Void) {
+    private func createStubFunction(stubResponse: StubResponse, completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> (() -> Void) {
         // swiftlint:disable
         return {
             switch stubResponse {
             case .networkResponse(let statusCode, let data):
-                let response = Response(statusCode: statusCode, data: data)
+                let response = GrowthResponse(statusCode: statusCode, data: data)
                 completion(.success(response))
             case .networkJSONResponse(let statusCode, let jsonString):
                 let data = Data(jsonString.utf8)
-                let response = Response(statusCode: statusCode, data: data)
+                let response = GrowthResponse(statusCode: statusCode, data: data)
                 completion(.success(response))
             case .response(let customResponse, let data):
-                let response = Response(statusCode: customResponse.statusCode, data: data, response: customResponse)
+                let response = GrowthResponse(statusCode: customResponse.statusCode, data: data, response: customResponse)
                 completion(.success(response))
             case .fileResponse(let statusCode, let url):
                 do {
                     let data = try Data(contentsOf: url, options: .mappedIfSafe)
-                    let response = Response(statusCode: statusCode, data: data)
+                    let response = GrowthResponse(statusCode: statusCode, data: data)
                     completion(.success(response))
                 } catch {
                     completion(.failure(GrowthNetworkError.invalidResponse))
@@ -60,7 +60,7 @@ extension NetworkManager {
                 completion(.failure(error))
             case .none:
                 // For none, stub will return an empty success response
-                let response = Response(statusCode: 200, data: Data())
+                let response = GrowthResponse(statusCode: 200, data: Data())
                 completion(.success(response))
             }
         }

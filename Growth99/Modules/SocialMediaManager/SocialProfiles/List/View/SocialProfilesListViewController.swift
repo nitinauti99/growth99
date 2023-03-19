@@ -106,11 +106,6 @@ extension SocialProfilesListViewController: SocialProfilesListViewControllerProt
     func socialProfilesListRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
-        if viewModel?.getSocialProfilesData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }else{
-            self.emptyMessage(parentView: self.view, message: "")
-        }
     }
     
     func socialProfilesRemovedSuccefully(message: String){

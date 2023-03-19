@@ -24,7 +24,7 @@ class QuestionnaireSubmissionsViewModelModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getQuestionarieList(pateintId: Int) {
         let finaleUrl = ApiUrl.questionnaireFormURL + "\(pateintId)" + "/questionnaire-submissions"

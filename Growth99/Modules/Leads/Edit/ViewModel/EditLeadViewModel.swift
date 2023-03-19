@@ -30,7 +30,7 @@ class EditLeadViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func updateLeadAmmount(questionnaireId: Int, ammount: Int) {
         let finaleUrl = ApiUrl.updateQuestionnaireSubmissionAmmount + "\(questionnaireId)" + "/amount?amount=" + "\(ammount)"

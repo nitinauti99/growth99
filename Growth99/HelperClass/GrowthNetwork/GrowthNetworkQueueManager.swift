@@ -2,7 +2,7 @@
 import Foundation
 
 /// Type to handle network tasks queuing
-internal class NetworkQueueManager {
+internal class GrowthNetworkQueueManager {
 
     /// Should be set only for networkRequestOperationQueue and before any operation is added
     /// otherwise it will result in an exception

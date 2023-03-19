@@ -30,7 +30,7 @@ class FillQuestionarieViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getQuestionnaireData(pateintId: Int,  questionnaireId: Int) {
         let finaleUrl = ApiUrl.getPatientsQuestionnaire + "\(pateintId)" + "/questionnaire/" + "\(questionnaireId)" + "/questions"

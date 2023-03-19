@@ -71,9 +71,6 @@ class ConsentsListViewController: UIViewController, ConsentsListViewControllerPr
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
-        if viewModel?.consentsDataList.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
     
     func errorReceived(error: String) {

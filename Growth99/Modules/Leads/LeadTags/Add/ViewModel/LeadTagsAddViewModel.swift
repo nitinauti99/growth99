@@ -22,7 +22,7 @@ class LeadTagsAddViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func LeadTagsDetails(leadTagId: Int) {
         let finaleUrl = ApiUrl.getLeadTagDetail + "\(leadTagId)"

@@ -9,8 +9,8 @@ import Foundation
 
 class RequestManager: NetworkManager {
 
-    override init(configuration: URLSessionConfiguration = .default, rootQueue: DispatchQueue? = nil, logger: Logger = OSLogger.shared, logSettings: LogSettings = .default, authenticator: Authenticator? = nil, pinningPolicy: PinningPolicy? = nil) {
-        super.init(configuration: configuration, rootQueue: rootQueue, authenticator: authenticator, pinningPolicy: pinningPolicy)
+    override init(configuration: URLSessionConfiguration = .default, rootQueue: DispatchQueue? = nil, logger: Logger = OSLogger.shared, logSettings: LogSettings = .default, authenticator: Authenticator? = nil) {
+        super.init(configuration: configuration, rootQueue: rootQueue, authenticator: authenticator)
     }
 
     convenience init() {

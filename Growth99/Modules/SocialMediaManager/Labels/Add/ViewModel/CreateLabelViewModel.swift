@@ -24,7 +24,7 @@ class CreateLabelViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default, pinningPolicy: PinningPolicy(bundle: Bundle.main, type: .certificate))
+    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
     
     func getCreateLabelDetails(labelId:Int) {
         let finaleUrl = ApiUrl.createMediaPostLabels + "/\(labelId)"

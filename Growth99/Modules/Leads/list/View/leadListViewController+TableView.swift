@@ -13,8 +13,13 @@ extension leadListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel?.getleadPeginationListData.count ?? 0 == 0 {
+            self.tableView.setEmptyMessage()
+        } else {
+            self.tableView.restore()
+        }
         return viewModel?.getleadPeginationListData.count ?? 0
     }
     
@@ -32,8 +37,8 @@ extension leadListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
-         detailController.workflowLeadId = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.id ?? 0
+        detailController.workflowLeadId = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.id ?? 0
         detailController.leadData = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)
-         navigationController?.pushViewController(detailController, animated: true)
+        navigationController?.pushViewController(detailController, animated: true)
     }
 }

@@ -107,11 +107,6 @@ extension LabelListViewController: LabelListViewControllerProtocol {
     func labelListRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
-        if viewModel?.getLabelData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }else{
-            self.emptyMessage(parentView: self.view, message: "")
-        }
     }
     
     func labelRemovedSuccefully(message: String){

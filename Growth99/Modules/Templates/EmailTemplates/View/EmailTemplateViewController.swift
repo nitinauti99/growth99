@@ -56,22 +56,11 @@ class EmailTemplateViewController: UIViewController, EmailTemplateViewContollerP
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 0).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
             navigationItem.rightBarButtonItem = nil
         case 1:
             tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 1).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
-//            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 2:
             tableView.reloadData()
-            //            if viewModel?.getSelectedTemplate(selectedIndex: 2).count == 0 {
-            //               self.emptyMessage(parentView: self.view, message: "There is no data")
-            //            }
-//            navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addTaskTapped), imageName: "add")
         default:
             break
         }

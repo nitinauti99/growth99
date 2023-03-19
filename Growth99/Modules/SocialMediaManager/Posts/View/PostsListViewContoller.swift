@@ -22,7 +22,7 @@ class PostsListViewContoller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.pateint
+        self.title = Constant.Profile.postLibrary
         self.viewModel = PostsListViewModel(delegate: self)
         self.setBarButton()
      }
@@ -63,9 +63,6 @@ extension PostsListViewContoller: PostsListViewContollerProtocol {
     func postListDataRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
-        if viewModel?.getPostsListData.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
     
     func errorReceived(error: String) {

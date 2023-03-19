@@ -42,8 +42,5 @@ class PateintsTimeLineViewController: UIViewController,
     func recivedPateintsTimeLineData() {
         self.view.HideSpinner()
         self.pateintsTimeLineTableView.reloadData()
-        if viewModel?.getPateintsTimeLineData?.count == 0 {
-            self.emptyMessage(parentView: self.view, message: "There is no data to show")
-        }
     }
 }
