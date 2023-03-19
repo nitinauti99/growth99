@@ -87,7 +87,12 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let createTriggersVC = UIStoryboard(name: "TriggerDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerDetailViewController") as! TriggerDetailViewController
+        let createTriggersVC = UIStoryboard(name: "TriggerEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerEditDetailViewController") as! TriggerEditDetailViewController
+        if isSearch {
+            createTriggersVC.triggerId = viewModel?.getTriggersFilterData[indexPath.row].id
+        } else {
+            createTriggersVC.triggerId = viewModel?.getTriggersData[indexPath.row].id
+        }
         self.navigationController?.pushViewController(createTriggersVC, animated: true)
     }
 }

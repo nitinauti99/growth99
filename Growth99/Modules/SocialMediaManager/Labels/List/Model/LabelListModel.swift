@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LabelListModel: Codable {
+struct LabelListModel: Codable, Equatable {
     let createdAt : String?
     let updatedAt : String?
     let createdBy : CreatedBy?

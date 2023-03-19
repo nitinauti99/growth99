@@ -1,5 +1,5 @@
 //
-//  TriggerDetailViewController.swift
+//  TriggerEditDetailViewController.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol TriggerDetailViewControlProtocol: AnyObject {
-    func triggerDetailDataRecived()
-    func triggerLandingPageNamesDataRecived()
-    func triggerQuestionnairesDataRecived()
-    func triggerLeadSourceUrlDataRecived()
+protocol TriggerEditDetailViewControlProtocol: AnyObject {
+    func triggerEditDetailDataRecived()
+    func triggerEditLandingPageNamesDataRecived()
+    func triggerEditQuestionnairesDataRecived()
+    func triggerEditLeadSourceUrlDataRecived()
     func errorReceived(error: String)
-    
-    func createTriggerDataReceived()
-    func createAppointmentDataReceived()
+    func triggerEditSelectedDataRecived()
+    func createEditTriggerDataReceived()
+    func createEditAppointmentDataReceived()
 }
 
-class TriggerDetailViewController: UIViewController, TriggerDetailViewControlProtocol {
+class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewControlProtocol {
     
     @IBOutlet weak var triggerdDetailTableView: UITableView!
     
@@ -27,23 +27,23 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     
-    var triggerDetailList = [TriggerDetailModel]()
-    var viewModel: TriggerDetailViewModelProtocol?
-    var leadTagsArray = [TriggerTagListModel]()
-    var patientTagsArray = [TriggerTagListModel]()
+    var triggerDetailList = [TriggerEditDetailModel]()
+    var viewModel: TriggerEditDetailViewModelProtocol?
+    var leadTagsArray = [TriggerEditTagListModel]()
+    var patientTagsArray = [TriggerEditTagListModel]()
     
-    var selectedLeadTags = [TriggerTagListModel]()
+    var selectedLeadTags = [TriggerEditTagListModel]()
     var selectedLeadTagIds: String = String.blank
     
-    var selectedPatientTags = [TriggerTagListModel]()
+    var selectedPatientTags = [TriggerEditTagListModel]()
     var selectedPatientTagIds: String = String.blank
     
-    var emailTemplatesArray = [EmailTemplateDTOListTrigger]()
-    var selectedEmailTemplates = [EmailTemplateDTOListTrigger]()
+    var emailTemplatesArray = [EmailEditTemplateDTOListTrigger]()
+    var selectedEmailTemplates = [EmailEditTemplateDTOListTrigger]()
     var selectedemailTemplateId: String = String.blank
     
-    var smsTemplatesArray = [SmsTemplateDTOListTrigger]()
-    var selectedSmsTemplates = [SmsTemplateDTOListTrigger]()
+    var smsTemplatesArray = [SmsTemplateEditDTOListTrigger]()
+    var selectedSmsTemplates = [SmsTemplateEditDTOListTrigger]()
     var selectedSmsTemplateId: String = String.blank
     
     var dateFormater: DateFormaterProtocol?
@@ -52,25 +52,25 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var leadSourceArray: [String] = []
     var selectedLeadSources: [String] = []
-    var leadLandingPagesArray = [LandingPageNamesModel]()
-    var selectedLeadLandingPages: [LandingPageNamesModel] = []
-    var leadFormsArray = [LandingPageNamesModel]()
-    var selectedleadForms: [LandingPageNamesModel] = []
+    var leadLandingPagesArray = [EditLandingPageNamesModel]()
+    var selectedLeadLandingPages: [EditLandingPageNamesModel] = []
+    var leadFormsArray = [EditLandingPageNamesModel]()
+    var selectedleadForms: [EditLandingPageNamesModel] = []
     var appointmentStatusArray: [String] = []
     var selectedAppointmentStatus: [String] = []
     
     var leadSourceUrlArray = [LeadSourceUrlListModel]()
     var selectedLeadSourceUrl = [LeadSourceUrlListModel]()
     
-    var triggersCreateData = [TriggerCreateData]()
-    var triggersAppointmentCreateData = [TriggerAppointmentCreateData]()
+    var triggersCreateData = [TriggerEditCreateData]()
+    var triggersAppointmentCreateData = [TriggerEditAppointmentCreateData]()
 
     var moduleSelectionType: String = String.blank
     var smsTargetArray: [String] = []
     var emailTargetArray: [String] = []
     var smsTargetSelectionType: String = String.blank
     var emailTargetSelectionType: String = String.blank
-    var taskUserListArray: [UserDTOListTrigger] = []
+    var taskUserListArray: [UserDTOListEditTrigger] = []
     var selectedTaskTemplate: Int = 0
     
     var moduleName: String = String.blank
@@ -92,6 +92,8 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var landingPage: String = String.blank
     var landingForm: String = String.blank
+    
+    var triggerId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,14 +101,10 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         registerTableView()
         dateFormater = DateFormater()
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
-        
-        
+
         appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
         
-        let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
-        triggerDetailList.append(emailSMS)
-        
-        viewModel = TriggerDetailViewModel(delegate: self)
+        viewModel = TriggerEditDetailViewModel(delegate: self)
         submitBtn.isEnabled = false
         submitBtn.backgroundColor = UIColor(hexString: "#6AC1E7")
     }
@@ -117,33 +115,58 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     }
     
     func setUpNavigationBar() {
-        self.title = Constant.Profile.createTrigger
+        self.title = Constant.Profile.editTrigger
     }
     
     @objc func getTriggerDetails() {
         self.view.ShowSpinner()
-        viewModel?.getTriggerDetailList()
+        viewModel?.getSelectedTriggerList(selectedTriggerId: triggerId ?? 0)
     }
     
-    func triggerDetailDataRecived() {
-        viewModel?.getLandingPageNames()
+    func triggerEditSelectedDataRecived() {
+        viewModel?.getTriggerDetailListEdit()
     }
     
-    func triggerLandingPageNamesDataRecived() {
-        viewModel?.getTriggerQuestionnaires()
+    func triggerEditDetailDataRecived() {
+        viewModel?.getLandingPageNamesEdit()
     }
     
-    func triggerQuestionnairesDataRecived() {
-        viewModel?.getTriggerLeadSourceUrl()
+    func triggerEditLandingPageNamesDataRecived() {
+        viewModel?.getTriggerQuestionnairesEdit()
     }
     
-    func triggerLeadSourceUrlDataRecived() {
+    func triggerEditQuestionnairesDataRecived() {
+        viewModel?.getTriggerLeadSourceUrlEdit()
+    }
+    
+    func triggerEditLeadSourceUrlDataRecived() {
         self.view.HideSpinner()
+        let defaultScreen = TriggerEditDetailModel(cellType: "Default", LastName: "")
+        let moduleScreen = TriggerEditDetailModel(cellType: "Module", LastName: "")
+        let leadScreen = TriggerEditDetailModel(cellType: "Lead", LastName: "")
+        let appointmentScreen = TriggerEditDetailModel(cellType: "Appointment", LastName: "")
+        let createScreen = TriggerEditDetailModel(cellType: "Both", LastName: "")
+        let timeScreen = TriggerEditDetailModel(cellType: "Time", LastName: "")
+        
+        let modelData = viewModel?.getTriggerEditListData
+        
+        if modelData?.name != "" && modelData?.moduleName != "" {
+            triggerDetailList.append(defaultScreen)
+            triggerDetailList.append(moduleScreen)
+            if modelData?.moduleName == "leads" {
+                triggerDetailList.append(leadScreen)
+            } else if modelData?.moduleName == "appointment" {
+                triggerDetailList.append(appointmentScreen)
+            }
+            triggerDetailList.append(createScreen)
+            triggerDetailList.append(timeScreen)
+        }
+        triggerdDetailTableView.reloadData()
     }
     
     func triggerSMSPatientStatusAllDataRecived() {
         self.view.HideSpinner()
-        let emailSMS = TriggerDetailModel(cellType: "Both", LastName: "")
+        let emailSMS = TriggerEditDetailModel(cellType: "Both", LastName: "")
         triggerDetailList.append(emailSMS)
         triggerdDetailTableView.beginUpdates()
         let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)
@@ -153,7 +176,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     func bothInsertDataReceived() {
         self.view.HideSpinner()
-        let emailSMS = TriggerDetailModel(cellType: "Both", LastName: "")
+        let emailSMS = TriggerEditDetailModel(cellType: "Both", LastName: "")
         triggerDetailList.append(emailSMS)
         triggerdDetailTableView.beginUpdates()
         let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)
@@ -161,11 +184,11 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         triggerdDetailTableView.endUpdates()
     }
     
-    func createTriggerDataReceived() {
+    func createEditTriggerDataReceived() {
         triggerAppointmentCreateSucessfull()
     }
     
-    func createAppointmentDataReceived() {
+    func createEditAppointmentDataReceived() {
         triggerAppointmentCreateSucessfull()
     }
     
@@ -192,7 +215,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     }
     
     func createNewTriggerCell(cellNameType: String) {
-        let emailSMS = TriggerDetailModel(cellType: cellNameType, LastName: String.blank)
+        let emailSMS = TriggerEditDetailModel(cellType: cellNameType, LastName: String.blank)
         triggerDetailList.append(emailSMS)
         triggerdDetailTableView.beginUpdates()
         let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)

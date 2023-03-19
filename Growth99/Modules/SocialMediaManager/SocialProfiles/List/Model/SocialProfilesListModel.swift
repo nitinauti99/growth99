@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SocialProfilesListModel: Codable {
+struct SocialProfilesListModel: Codable, Equatable {
     let name: String?
     let socialChannel: String?
     let id: Int?

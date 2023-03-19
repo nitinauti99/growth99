@@ -151,8 +151,11 @@ struct EndPoints {
     static let marketingMassLeadPatient = "/api/trigger/mass-lead-patient"
     static let createTriggerAppointment = "/api/trigger/appointment"
     static let socialProfileList = "/api/social-profiles"
+    static let socialMediaPostsList = "/api/v1/socialMediaPosts/list"
     static let socialMediaPostLabels = "/api/socialMediaPostLabels/list"
     static let createMediaPostLabels = "/api/socialMediaPostLabel"
+    static let createSocialMediaPost = "/api/socialMediaPost"
+    static let editTrigger = "/api/trigger/"
 }
 
 struct ApiUrl {
@@ -302,7 +305,10 @@ struct ApiUrl {
     static let marketingMassLeadPatient = EndPoints.baseURL.appending(EndPoints.marketingMassLeadPatient)
     static let createTriggerAppointment = EndPoints.baseURL.appending(EndPoints.createTriggerAppointment)
     static let socialProfileList = EndPoints.baseURL.appending(EndPoints.socialProfileList)
+    static let socialMediaPostsList = EndPoints.baseURL.appending(EndPoints.socialMediaPostsList)
     static let socialMediaPostLabels = EndPoints.baseURL.appending(EndPoints.socialMediaPostLabels)
     static let createMediaPostLabels = EndPoints.baseURL.appending(EndPoints.createMediaPostLabels)
+    static let createSocialMediaPost = EndPoints.baseURL.appending(EndPoints.createSocialMediaPost)
+    static let editTrigger = EndPoints.baseURL.appending(EndPoints.editTrigger)
 }
 
