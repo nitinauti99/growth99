@@ -88,10 +88,26 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let createTriggersVC = UIStoryboard(name: "TriggerEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerEditDetailViewController") as! TriggerEditDetailViewController
-        if isSearch {
-            createTriggersVC.triggerId = viewModel?.getTriggersFilterData[indexPath.row].id
-        } else {
-            createTriggersVC.triggerId = viewModel?.getTriggersData[indexPath.row].id
+        let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                let filteredArray = viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.leads})
+                createTriggersVC.triggerId = filteredArray?[indexPath.row].id
+            } else {
+                let filteredArray = viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.leads})
+                createTriggersVC.triggerId = filteredArray?[indexPath.row].id
+            }
+        case 1:
+            if isSearch {
+                let filteredArray = viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
+                createTriggersVC.triggerId = filteredArray?[indexPath.row].id
+            } else {
+                let filteredArray = viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
+                createTriggersVC.triggerId = filteredArray?[indexPath.row].id
+            }
+        default:
+            break
         }
         self.navigationController?.pushViewController(createTriggersVC, animated: true)
     }

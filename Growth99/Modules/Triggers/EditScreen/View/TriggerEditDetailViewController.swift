@@ -141,6 +141,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     
     func triggerEditLeadSourceUrlDataRecived() {
         self.view.HideSpinner()
+        
         let defaultScreen = TriggerEditDetailModel(cellType: "Default", LastName: "")
         let moduleScreen = TriggerEditDetailModel(cellType: "Module", LastName: "")
         let leadScreen = TriggerEditDetailModel(cellType: "Lead", LastName: "")
@@ -155,12 +156,16 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
             triggerDetailList.append(moduleScreen)
             if modelData?.moduleName == "leads" {
                 triggerDetailList.append(leadScreen)
-            } else if modelData?.moduleName == "appointment" {
+            } else if modelData?.moduleName == "Appointment" {
                 triggerDetailList.append(appointmentScreen)
             }
             triggerDetailList.append(createScreen)
             triggerDetailList.append(timeScreen)
         }
+        selectedLeadSources = modelData?.triggerConditions ?? []
+        selectedLeadLandingPages = modelData?.landingPages ?? []
+        selectedleadForms = modelData?.forms ?? []
+        selectedLeadSourceUrl = modelData?.sourceUrls ?? []
         triggerdDetailTableView.reloadData()
     }
     
