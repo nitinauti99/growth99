@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CountryPicker
 
 protocol ClinicsDetailListVCProtocol: AnyObject {
     func clinicUpdateReceived(responeMessage: String)
@@ -218,7 +217,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBAction func countrySelectionButton(sender: UIButton) {
        startPicker()
     }
-    
+
     private func startPicker() {
         let countryPicker = CountryPickerViewController()
         countryPicker.title = "Select Country Code"

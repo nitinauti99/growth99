@@ -291,6 +291,15 @@
 		1883F10929C63DA10080997B /* TriggerEditDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F0F729C63DA10080997B /* TriggerEditDetailViewController+TableView.swift */; };
 		1883F10A29C63DA10080997B /* TriggerEditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F0F829C63DA10080997B /* TriggerEditDetailViewController.swift */; };
 		1883F10B29C63DA10080997B /* TriggerEditDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1883F0F929C63DA10080997B /* TriggerEditDetailViewController.storyboard */; };
+		1883F12629C7571E0080997B /* CountryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F11929C7571E0080997B /* CountryPickerCell.swift */; };
+		1883F12829C7571E0080997B /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 1883F11C29C7571E0080997B /* countries.json */; };
+		1883F12929C7571E0080997B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F11D29C7571E0080997B /* Config.swift */; };
+		1883F12A29C7571E0080997B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F11F29C7571E0080997B /* UIView+Extension.swift */; };
+		1883F12C29C7571E0080997B /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12129C7571E0080997B /* UIStackView+Extension.swift */; };
+		1883F12D29C7571E0080997B /* ColorCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12229C7571E0080997B /* ColorCompatibility.swift */; };
+		1883F12E29C7571E0080997B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12329C7571E0080997B /* Country.swift */; };
+		1883F12F29C7571E0080997B /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12429C7571E0080997B /* CountryManager.swift */; };
+		1883F13029C7571E0080997B /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12529C7571E0080997B /* CountryPickerViewController.swift */; };
 		189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189171CE29C608F50095031A /* AddPostViewModel.swift */; };
 		1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708429BA5E62003224ED /* TriggersViewModel.swift */; };
 		1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708629BA5E62003224ED /* TriggersListModel.swift */; };
@@ -850,7 +859,6 @@
 		DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */; };
 		DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */; };
 		DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */; };
-		DAEF74C6299E1589009140AE /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = DAEF74C5299E1589009140AE /* CountryPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1156,6 +1164,15 @@
 		1883F0F729C63DA10080997B /* TriggerEditDetailViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TriggerEditDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		1883F0F829C63DA10080997B /* TriggerEditDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditDetailViewController.swift; sourceTree = "<group>"; };
 		1883F0F929C63DA10080997B /* TriggerEditDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TriggerEditDetailViewController.storyboard; sourceTree = "<group>"; };
+		1883F11929C7571E0080997B /* CountryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerCell.swift; sourceTree = "<group>"; };
+		1883F11C29C7571E0080997B /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		1883F11D29C7571E0080997B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		1883F11F29C7571E0080997B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		1883F12129C7571E0080997B /* UIStackView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		1883F12229C7571E0080997B /* ColorCompatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCompatibility.swift; sourceTree = "<group>"; };
+		1883F12329C7571E0080997B /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		1883F12429C7571E0080997B /* CountryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
+		1883F12529C7571E0080997B /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		189171CE29C608F50095031A /* AddPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModel.swift; sourceTree = "<group>"; };
 		1896708429BA5E62003224ED /* TriggersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersViewModel.swift; sourceTree = "<group>"; };
 		1896708629BA5E62003224ED /* TriggersListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersListModel.swift; sourceTree = "<group>"; };
@@ -1740,7 +1757,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */,
-				DAEF74C6299E1589009140AE /* CountryPicker in Frameworks */,
 				689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3264,6 +3280,38 @@
 				1883F0F929C63DA10080997B /* TriggerEditDetailViewController.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1883F11829C7571E0080997B /* CountryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				1883F11929C7571E0080997B /* CountryPickerCell.swift */,
+				1883F11A29C7571E0080997B /* Resources */,
+				1883F11D29C7571E0080997B /* Config.swift */,
+				1883F11E29C7571E0080997B /* Extensions */,
+				1883F12229C7571E0080997B /* ColorCompatibility.swift */,
+				1883F12329C7571E0080997B /* Country.swift */,
+				1883F12429C7571E0080997B /* CountryManager.swift */,
+				1883F12529C7571E0080997B /* CountryPickerViewController.swift */,
+			);
+			path = CountryPicker;
+			sourceTree = "<group>";
+		};
+		1883F11A29C7571E0080997B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1883F11C29C7571E0080997B /* countries.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1883F11E29C7571E0080997B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1883F11F29C7571E0080997B /* UIView+Extension.swift */,
+				1883F12129C7571E0080997B /* UIStackView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1896708229BA5E62003224ED /* ListScreen */ = {
@@ -5266,6 +5314,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				1883F11829C7571E0080997B /* CountryPicker */,
 				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				845C39AA292276AF00D934C5 /* Constants */,
 				845C39B8292276AF00D934C5 /* Extenssion */,
@@ -6516,7 +6565,6 @@
 			);
 			name = Growth99;
 			packageProductDependencies = (
-				DAEF74C5299E1589009140AE /* CountryPicker */,
 			);
 			productName = Growth99;
 			productReference = 848F4D7A28F1C160007AC421 /* Growth99.app */;
@@ -6594,7 +6642,6 @@
 			);
 			mainGroup = 848F4D7128F1C160007AC421;
 			packageReferences = (
-				DAEF74C4299E1589009140AE /* XCRemoteSwiftPackageReference "CountryPicker" */,
 			);
 			productRefGroup = 848F4D7B28F1C160007AC421 /* Products */;
 			projectDirPath = "";
@@ -6746,6 +6793,7 @@
 				017D571929AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
 				01684C6B29BE10D000DE1041 /* CreateSMSTemplateViewController.storyboard in Resources */,
+				1883F12829C7571E0080997B /* countries.json in Resources */,
 				18491DB529B80CE000FE72EF /* MassEmailandSMSModuleTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* LeadSMSTemplateTableViewCell.xib in Resources */,
 				8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */,
@@ -7039,6 +7087,7 @@
 				010EECA529B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift in Sources */,
 				84F610F8292A71AB00B1FB69 /* ASN1Tag.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
+				1883F12929C7571E0080997B /* Config.swift in Sources */,
 				01D9EBF429B8B83D0099761C /* QuestionnaireSubmissionsViewController+TableView.swift in Sources */,
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				84F610F4292A71AB00B1FB69 /* DERObject.swift in Sources */,
@@ -7097,6 +7146,7 @@
 				01684C3429BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift in Sources */,
 				013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */,
 				010EECA929B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift in Sources */,
+				1883F12D29C7571E0080997B /* ColorCompatibility.swift in Sources */,
 				39FC692E29B3D73D00FCB7C6 /* ChatConfigurationViewController.swift in Sources */,
 				017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */,
 				189670BA29BA6081003224ED /* TriggerDefaultTableViewCell.swift in Sources */,
@@ -7110,6 +7160,7 @@
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
+				1883F12C29C7571E0080997B /* UIStackView+Extension.swift in Sources */,
 				01D7AB06299E572700821274 /* FormDetailTableViewCell.swift in Sources */,
 				01BBA9F129AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift in Sources */,
 				84F61100292A71AB00B1FB69 /* CollectionDifference+Additions.swift in Sources */,
@@ -7238,6 +7289,7 @@
 				39B952AC29994F9B00DF1E8B /* UITableView+Extension.swift in Sources */,
 				189E3EE929C391FA00B94190 /* PostsViewModel.swift in Sources */,
 				84D0630A2967080E001FE469 /* EmailTemplatesListDetailModel.swift in Sources */,
+				1883F13029C7571E0080997B /* CountryPickerViewController.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
 				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
 				01EBAC3E29B583DC00110DCB /* LeadTagsModel.swift in Sources */,
@@ -7318,6 +7370,7 @@
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				01EBAC9329B6392600110DCB /* ScrapeWebsiteViewController.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
+				1883F12E29C7571E0080997B /* Country.swift in Sources */,
 				DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */,
 				398F90F9298ECB8700DB96E4 /* IQKeyboardManager+OrientationNotification.swift in Sources */,
 				84D0622129670676001FE469 /* WorkingScheduleModel.swift in Sources */,
@@ -7403,6 +7456,7 @@
 				848EEA94299A5FC100F6E3D5 /* CreateFormModel.swift in Sources */,
 				01468E0C29BF7145002BDC1F /* HomeViewContoller+UITextField.swift in Sources */,
 				843801522954836C00CEA664 /* GrowthCutomButton.swift in Sources */,
+				1883F12A29C7571E0080997B /* UIView+Extension.swift in Sources */,
 				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
 				01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */,
@@ -7500,6 +7554,7 @@
 				013A4FA129B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.swift in Sources */,
 				01EBAC8C29B5E62800110DCB /* UITextViewExtenssion.swift in Sources */,
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,
+				1883F12629C7571E0080997B /* CountryPickerCell.swift in Sources */,
 				01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */,
 				DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */,
 				84F610F7292A71AB00B1FB69 /* OID.swift in Sources */,
@@ -7532,6 +7587,7 @@
 				01EBAC5C29B58B1A00110DCB /* DeletedLeadListModel.swift in Sources */,
 				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
+				1883F12F29C7571E0080997B /* CountryManager.swift in Sources */,
 				189E3EFD29C392D100B94190 /* MediaLibraryViewModel.swift in Sources */,
 				849035102995679200556D47 /* ConsentsTemplateListModel.swift in Sources */,
 				3947A8EF2996776E000CA2EB /* EmptyEventsTableViewCell.swift in Sources */,
@@ -7949,25 +8005,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DAEF74C4299E1589009140AE /* XCRemoteSwiftPackageReference "CountryPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mobven/CountryPicker.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DAEF74C5299E1589009140AE /* CountryPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DAEF74C4299E1589009140AE /* XCRemoteSwiftPackageReference "CountryPicker" */;
-			productName = CountryPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 848F4D7228F1C160007AC421 /* Project object */;
 }
