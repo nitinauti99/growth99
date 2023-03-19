@@ -156,6 +156,7 @@ struct EndPoints {
     static let createMediaPostLabels = "/api/socialMediaPostLabel"
     static let createSocialMediaPost = "/api/socialMediaPost"
     static let editTrigger = "/api/trigger/"
+    static let socialMediaPosts = "/api/v1/socialMediaPosts/pagination/list?page=0&size=50"
 }
 
 struct ApiUrl {
@@ -310,5 +311,5 @@ struct ApiUrl {
     static let createMediaPostLabels = EndPoints.baseURL.appending(EndPoints.createMediaPostLabels)
     static let createSocialMediaPost = EndPoints.baseURL.appending(EndPoints.createSocialMediaPost)
     static let editTrigger = EndPoints.baseURL.appending(EndPoints.editTrigger)
+    static let socialMediaPosts = EndPoints.baseURL.appending(EndPoints.socialMediaPosts)
 }
-

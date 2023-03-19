@@ -18,7 +18,6 @@ class PostsListTableViewCell: UITableViewCell {
     @IBOutlet private weak var post: UILabel!
     @IBOutlet private weak var hashtag: UILabel!
     @IBOutlet private weak var postLabel: UILabel!
-    
     @IBOutlet private weak var approve: UILabel!
     @IBOutlet private weak var sheduledDate: UILabel!
     @IBOutlet private weak var CreatedDate: UILabel!
@@ -33,37 +32,22 @@ class PostsListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        dateFormater = DateFormater()
+        self.dateFormater = DateFormater()
     }
 
     func configureCell(userVM: PostsListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.pateintDataAtIndex(index: index.row)
+        let userVM = userVM?.postsListDataAtIndex(index: index.row)
+      
         self.id.text = String(userVM?.id ?? 0)
-        self.post.text = userVM?.post
-        self.hashtag.text = userVM?.hashtag
-        self.postLabel.text = (userVM?.postLabels ?? []).
-        self.approve.text = userVM?.approved
-        self.CreatedDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
-        self.sheduledDate.text =  dateFormater?.serverToLocal(date: userVM?.scheduledDate ?? String.blank)
-        
+        self.post.text = userVM?.post ?? "-"
+        self.hashtag.text = userVM?.hashtag ?? "-"
+//        self.postLabel.text = userVM?.postLabels.map({$0.name ?? String.blank}).joined(separator: ", ")
+        self.approve.text = String(userVM?.approved ?? false)
+        self.CreatedDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank) ?? "-"
+        self.sheduledDate.text =  dateFormater?.serverToLocal(date: userVM?.scheduledDate ?? String.blank) ?? "-"
         indexPath = index
     }
 
-    func configureCellWithSearch(userVM: PostsListViewModelProtocol?, index: IndexPath) {
-        let userVM = userVM?.pateintFilterDataAtIndex(index: index.row)
-        self.firstName.text = userVM?.firstName
-        self.lastName.text = userVM?.lastName
-        self.id.text = String(userVM?.id ?? 0)
-        self.email.text = userVM?.email
-        self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
-        self.updatedDate.text =  dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
-        self.createdBy.text = userVM?.createdBy
-        self.updatedBy.text = userVM?.updatedBy
-        let movement = userVM?.patientStatus
-        pateintStatusLbi.text = userVM?.patientStatus
-        pateintStatusImage.image = UIImage(named: movement?.lowercased() ?? String.blank)
-        indexPath = index
-    }
     
     @IBAction func editButtonPressed() {
         self.delegate?.editPosts(cell: self, index: indexPath)

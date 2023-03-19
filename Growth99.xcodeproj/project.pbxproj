@@ -146,8 +146,8 @@
 		01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */; };
 		01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */; };
 		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
-		01A2007029C61A9D00A7DD59 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2006E29C61A9D00A7DD59 /* PostsTableViewCell.swift */; };
-		01A2007129C61A9D00A7DD59 /* PostsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A2006F29C61A9D00A7DD59 /* PostsTableViewCell.xib */; };
+		01A2007729C746A900A7DD59 /* PostsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */; };
+		01A2007829C746A900A7DD59 /* PostsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */; };
 		01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */; };
 		01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */; };
 		01BBA9D829AB5452006A5DB8 /* NotificationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D729AB5452006A5DB8 /* NotificationListViewModel.swift */; };
@@ -216,7 +216,6 @@
 		01DBA9AA29C5E13900CBA51D /* CreateLabelViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DBA9A929C5E13900CBA51D /* CreateLabelViewController.storyboard */; };
 		01DBA9AC29C5E14400CBA51D /* CreateLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9AB29C5E14400CBA51D /* CreateLabelViewModel.swift */; };
 		01DBA9AE29C618D800CBA51D /* PostsListViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */; };
-		01DBA9B029C618EB00CBA51D /* PostsListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9AF29C618EB00CBA51D /* PostsListViewContoller+SearchBar.swift */; };
 		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
 		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
 		01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */; };
@@ -328,8 +327,8 @@
 		189E3EDE29C391A400B94190 /* LabelListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EDC29C391A400B94190 /* LabelListTableViewCell.swift */; };
 		189E3EDF29C391A400B94190 /* LabelListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E3EDD29C391A400B94190 /* LabelListTableViewCell.xib */; };
 		189E3EE329C391CA00B94190 /* PostsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EE229C391CA00B94190 /* PostsListModel.swift */; };
-		189E3EE529C391D900B94190 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EE429C391D900B94190 /* PostsViewController.swift */; };
-		189E3EE729C391E100B94190 /* PostsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3EE629C391E100B94190 /* PostsViewController.storyboard */; };
+		189E3EE529C391D900B94190 /* PostsListViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EE429C391D900B94190 /* PostsListViewContoller.swift */; };
+		189E3EE729C391E100B94190 /* PostsListViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */; };
 		189E3EE929C391FA00B94190 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EE829C391FA00B94190 /* PostsViewModel.swift */; };
 		189E3EFB29C392C500B94190 /* MediaLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFA29C392C500B94190 /* MediaLibraryModel.swift */; };
 		189E3EFD29C392D100B94190 /* MediaLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFC29C392D100B94190 /* MediaLibraryViewModel.swift */; };
@@ -1011,8 +1010,8 @@
 		01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintEditViewController+UITextField.swift"; sourceTree = "<group>"; };
 		01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintViewContoller+UITextfiled.swift"; sourceTree = "<group>"; };
 		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
-		01A2006E29C61A9D00A7DD59 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostsTableViewCell.swift; path = Growth99/Modules/SocialMediaManager/Posts/View/Cell/PostsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		01A2006F29C61A9D00A7DD59 /* PostsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostsTableViewCell.xib; path = Growth99/Modules/SocialMediaManager/Posts/View/Cell/PostsTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostsListTableViewCell.xib; sourceTree = "<group>"; };
+		01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsListTableViewCell.swift; sourceTree = "<group>"; };
 		01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationListViewController.storyboard; sourceTree = "<group>"; };
 		01BBA9D729AB5452006A5DB8 /* NotificationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewModel.swift; sourceTree = "<group>"; };
@@ -1081,7 +1080,6 @@
 		01DBA9A929C5E13900CBA51D /* CreateLabelViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLabelViewController.storyboard; sourceTree = "<group>"; };
 		01DBA9AB29C5E14400CBA51D /* CreateLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLabelViewModel.swift; sourceTree = "<group>"; };
 		01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+TableView.swift"; sourceTree = "<group>"; };
-		01DBA9AF29C618EB00CBA51D /* PostsListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
 		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewController.swift; sourceTree = "<group>"; };
@@ -1194,8 +1192,8 @@
 		189E3EDC29C391A400B94190 /* LabelListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListTableViewCell.swift; sourceTree = "<group>"; };
 		189E3EDD29C391A400B94190 /* LabelListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelListTableViewCell.xib; sourceTree = "<group>"; };
 		189E3EE229C391CA00B94190 /* PostsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListModel.swift; sourceTree = "<group>"; };
-		189E3EE429C391D900B94190 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
-		189E3EE629C391E100B94190 /* PostsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsViewController.storyboard; sourceTree = "<group>"; };
+		189E3EE429C391D900B94190 /* PostsListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewContoller.swift; sourceTree = "<group>"; };
+		189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsListViewContoller.storyboard; sourceTree = "<group>"; };
 		189E3EE829C391FA00B94190 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		189E3EFA29C392C500B94190 /* MediaLibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryModel.swift; sourceTree = "<group>"; };
 		189E3EFC29C392D100B94190 /* MediaLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewModel.swift; sourceTree = "<group>"; };
@@ -2580,6 +2578,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		01A2007429C746A900A7DD59 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */,
+				01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01BBA9CF29AB53A6006A5DB8 /* NotificationList */ = {
 			isa = PBXGroup;
 			children = (
@@ -3390,23 +3397,12 @@
 		189E3EB229C38E6000B94190 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				189E3EB329C38E6000B94190 /* Cell */,
-				189E3EE629C391E100B94190 /* PostsViewController.storyboard */,
-				189E3EE429C391D900B94190 /* PostsViewController.swift */,
+				01A2007429C746A900A7DD59 /* Cell */,
+				189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */,
+				189E3EE429C391D900B94190 /* PostsListViewContoller.swift */,
 				01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */,
-				01DBA9AF29C618EB00CBA51D /* PostsListViewContoller+SearchBar.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		189E3EB329C38E6000B94190 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				01A2006E29C61A9D00A7DD59 /* PostsTableViewCell.swift */,
-				01A2006F29C61A9D00A7DD59 /* PostsTableViewCell.xib */,
-			);
-			name = Cell;
-			path = ../Cell;
 			sourceTree = "<group>";
 		};
 		189E3EB429C38E6000B94190 /* Labels */ = {
@@ -6670,7 +6666,6 @@
 				18491DC329B80CE000FE72EF /* MassEmailandSMSTableViewCell.xib in Resources */,
 				84D062A02967070D001FE469 /* UserCreateViewController.storyboard in Resources */,
 				84B8B81F2973A8A000742B42 /* EditTasksViewController.storyboard in Resources */,
-				01A2007129C61A9D00A7DD59 /* PostsTableViewCell.xib in Resources */,
 				01684C5629BDEF7300DE1041 /* UnansweredQuestionListViewController.storyboard in Resources */,
 				84D0627F29670677001FE469 /* RegistrationViewController.storyboard in Resources */,
 				8473208329797885003099BB /* PateintEditViewController.storyboard in Resources */,
@@ -6679,7 +6674,7 @@
 				18491DB329B80CE000FE72EF /* MassEmailandSMSLeadActionTableViewCell.xib in Resources */,
 				39FC692F29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard in Resources */,
 				013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */,
-				189E3EE729C391E100B94190 /* PostsViewController.storyboard in Resources */,
+				189E3EE729C391E100B94190 /* PostsListViewContoller.storyboard in Resources */,
 				01684C3E29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				189E3F0529C3930300B94190 /* MediaLibraryViewController.storyboard in Resources */,
@@ -6689,6 +6684,7 @@
 				01684C2A29BCE3B500DE1041 /* ChatBotTemplateViewController.storyboard in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
+				01A2007729C746A900A7DD59 /* PostsListTableViewCell.xib in Resources */,
 				18491DBB29B80CE000FE72EF /* MassEmailandSMSDefaultTableViewCell.xib in Resources */,
 				013A4FDD29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* LeadCustomEmailTemplateTableViewCell.xib in Resources */,
@@ -7007,7 +7003,6 @@
 				01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */,
 				01684C6029BDEFEA00DE1041 /* UnansweredQuestionListViewController+TableView.swift in Sources */,
 				01152E0429B31E7F00B24627 /* PateintsTimeLineTableViewCell.swift in Sources */,
-				01DBA9B029C618EB00CBA51D /* PostsListViewContoller+SearchBar.swift in Sources */,
 				013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */,
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				01D9EBF129B8B6A70099761C /* QuestionnaireSubmissionsTableViewCell.swift in Sources */,
@@ -7273,6 +7268,7 @@
 				84F610C7292A71AA00B1FB69 /* DispatchGroup.swift in Sources */,
 				398F90FC298ECB8700DB96E4 /* IQUIViewController+Additions.swift in Sources */,
 				849D3AF42997CC72003E856A /* FontAwesomeTextRepresentable.swift in Sources */,
+				01A2007829C746A900A7DD59 /* PostsListTableViewCell.swift in Sources */,
 				01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */,
 				84D062A52967070D001FE469 /* UserListTableViewCell.swift in Sources */,
 				398F90EB298ECB8700DB96E4 /* IQKeyboardManager+Internal.swift in Sources */,
@@ -7296,7 +7292,6 @@
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
 				013A4FC229B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
-				01A2007029C61A9D00A7DD59 /* PostsTableViewCell.swift in Sources */,
 				842C0CD1298F756200395061 /* AddNewConsentsModel.swift in Sources */,
 				39FC690B29B3D22400FCB7C6 /* AnnouncementsViewController.swift in Sources */,
 				01468E2C29C0D7B5002BDC1F /* PateintEmailTemplateTableViewCell.swift in Sources */,
@@ -7551,7 +7546,7 @@
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
 				189670C029BA6081003224ED /* TriggerLeadActionTableViewCell.swift in Sources */,
 				848EEA8E299A5F6300F6E3D5 /* CreateFormViewController.swift in Sources */,
-				189E3EE529C391D900B94190 /* PostsViewController.swift in Sources */,
+				189E3EE529C391D900B94190 /* PostsListViewContoller.swift in Sources */,
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
