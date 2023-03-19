@@ -22,7 +22,7 @@ class PateintsTagsAddViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func pateintsTagsDetails(pateintsTagId: Int) {
         let finaleUrl = ApiUrl.patientAddTags + "\(pateintsTagId)"

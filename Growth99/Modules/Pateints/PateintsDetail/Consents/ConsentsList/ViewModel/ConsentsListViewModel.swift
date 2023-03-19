@@ -25,7 +25,7 @@ class ConsentsListViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getConsentsList(pateintId: Int) {
         let finaleUrl = ApiUrl.consentsList + "\(pateintId)" + "/consents"

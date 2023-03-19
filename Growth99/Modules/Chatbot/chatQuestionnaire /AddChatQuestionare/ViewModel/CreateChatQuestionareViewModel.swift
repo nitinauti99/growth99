@@ -37,7 +37,7 @@ class CreateChatQuestionareViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     /// api is used for create chat Questionnaire
     func createchatQuestionnaire(name: String){

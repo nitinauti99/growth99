@@ -24,7 +24,7 @@ class CreateLabelViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getCreateLabelDetails(labelId:Int) {
         let finaleUrl = ApiUrl.createMediaPostLabels + "/\(labelId)"

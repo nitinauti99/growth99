@@ -39,7 +39,7 @@ class EmailTemplateViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getEmailTemplateList() {
         self.requestManager.request(forPath: ApiUrl.emailTemplatesList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[EmailTemplateListModel], GrowthNetworkError>) in

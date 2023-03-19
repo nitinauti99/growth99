@@ -19,7 +19,7 @@ class CreateFormViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func saveCreateForm(formData:[String: Any]) {
         self.requestManager.request(forPath: ApiUrl.createFrom, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: formData, encoding: .jsonEncoding)) { (result: Result<CreateFormModel, GrowthNetworkError>) in

@@ -24,7 +24,7 @@ class CreateNotificationViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func createNotification(questionId: Int,params: [String: Any]) {
         

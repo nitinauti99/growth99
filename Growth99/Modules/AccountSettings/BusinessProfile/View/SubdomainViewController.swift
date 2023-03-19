@@ -12,7 +12,7 @@ class SubdomainViewController: UIViewController {
     @IBOutlet private weak var subDomainNameTextField: CustomTextField!
     var bussinessInfoData: BusinessSubDomainModel?
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     let user = UserRepository.shared
 
     override func viewDidLoad() {

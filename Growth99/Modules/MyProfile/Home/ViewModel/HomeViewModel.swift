@@ -35,7 +35,7 @@ class HomeViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getUserData(userId: Int) {
         let url = ApiUrl.userProfile.appending("\(userId)")

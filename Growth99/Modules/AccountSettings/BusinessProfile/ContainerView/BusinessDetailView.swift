@@ -17,7 +17,7 @@ class BusinessDetailView: UIViewController {
 
     var workflowTaskPatientId = Int()
     var selectedindex = 0
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     override func viewDidLoad() {
         super.viewDidLoad()

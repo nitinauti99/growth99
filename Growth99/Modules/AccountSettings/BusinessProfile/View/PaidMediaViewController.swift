@@ -14,7 +14,7 @@ class PaidMediaViewController: UIViewController, UITextViewDelegate {
 
     var bussinessInfoData: BusinessSubDomainModel?
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -20,7 +20,7 @@ class BusinessProfileViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func saveBusinessInfo(name: String, trainingBusiness: Bool) {
         let finaleUrl = ApiUrl.bussinessInfo + "\(UserRepository.shared.Xtenantid ?? String.blank)"

@@ -34,7 +34,7 @@ class BookingHistoryViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     func getCalenderInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int) {
         let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"

@@ -18,9 +18,6 @@ public enum JSONRoot {
     }
 }
 
-/**
- * Objects conforming to JSONSerializable can be serializing to JSON
- */
 public protocol JSONSerializable {
     /**
      * Should return an Any instance which can be consumed by JSONSerialization for serialization to JSON

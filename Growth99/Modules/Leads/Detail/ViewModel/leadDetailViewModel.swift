@@ -36,7 +36,7 @@ class leadDetailViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getQuestionnaireList(questionnaireId: Int) {
         let finaleUrl = ApiUrl.getQuestionnaireDetailList + "\(questionnaireId)"

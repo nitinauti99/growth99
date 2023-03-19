@@ -26,7 +26,7 @@ class ChatBotTemplateViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getChatBotTemplateList() {
         self.requestManager.request(forPath: ApiUrl.chatBotTemplates, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[ChatBotTemplateModel], GrowthNetworkError>) in

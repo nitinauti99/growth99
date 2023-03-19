@@ -2,15 +2,15 @@
 
 import Foundation
 
-extension NetworkManager {
+extension GrowthNetworkManager {
 
     @discardableResult
     func stubRequest(stub: Stub,
                      completionQueue: DispatchQueue = DispatchQueue.main,
-                     completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
-        guard self.session != nil else { return CancellableWrapper() }
+                     completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
+        guard self.session != nil else { return GrowthCancellableWrapper() }
 
-        let cancellableToken = CancellableWrapper()
+        let cancellableToken = GrowthCancellableWrapper()
         let stubCallback: () -> Void = self.createStubFunction(stubResponse: stub.response, completion: completion)
 
         switch stub.behavior {
@@ -59,7 +59,6 @@ extension NetworkManager {
             case .networkError(let error):
                 completion(.failure(error))
             case .none:
-                // For none, stub will return an empty success response
                 let response = GrowthResponse(statusCode: 200, data: Data())
                 completion(.success(response))
             }

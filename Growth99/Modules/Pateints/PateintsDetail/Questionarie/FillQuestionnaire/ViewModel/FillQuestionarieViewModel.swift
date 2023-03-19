@@ -30,7 +30,7 @@ class FillQuestionarieViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getQuestionnaireData(pateintId: Int,  questionnaireId: Int) {
         let finaleUrl = ApiUrl.getPatientsQuestionnaire + "\(pateintId)" + "/questionnaire/" + "\(questionnaireId)" + "/questions"

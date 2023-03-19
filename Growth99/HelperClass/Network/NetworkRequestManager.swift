@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RequestManager: NetworkManager {
+class GrowthRequestManager: GrowthNetworkManager {
 
     override init(configuration: URLSessionConfiguration = .default, rootQueue: DispatchQueue? = nil, logger: Logger = OSLogger.shared, logSettings: LogSettings = .default, authenticator: Authenticator? = nil) {
         super.init(configuration: configuration, rootQueue: rootQueue, authenticator: authenticator)

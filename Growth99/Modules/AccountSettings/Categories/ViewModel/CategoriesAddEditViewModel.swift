@@ -26,7 +26,7 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     func getCategoriesInfo(categoryId: Int) {
         let finalURL = ApiUrl.createCategories + "/\(categoryId)"

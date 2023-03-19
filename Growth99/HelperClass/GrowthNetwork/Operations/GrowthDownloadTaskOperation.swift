@@ -1,7 +1,7 @@
 
 import Foundation
 
-class DownloadTaskOperation: DataTaskOperation {
+class GrowthDownloadTaskOperation: GrowthDataTaskOperation {
 
     private let downloadLocationURL: URL
     private var observation: NSKeyValueObservation?

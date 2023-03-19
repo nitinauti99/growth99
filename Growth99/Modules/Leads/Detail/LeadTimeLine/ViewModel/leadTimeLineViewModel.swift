@@ -27,7 +27,7 @@ class leadTimeLineViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     
     func leadCreation(leadId: Int) {

@@ -27,7 +27,7 @@ class chatQuestionnaireViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getchatQuestionnaire() {
         self.requestManager.request(forPath: ApiUrl.chatQuestionare, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[chatQuestionnaireModel], GrowthNetworkError>) in

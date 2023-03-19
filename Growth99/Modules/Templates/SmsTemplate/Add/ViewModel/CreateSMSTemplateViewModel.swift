@@ -39,7 +39,7 @@ class CreateSMSTemplateViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getSMSTemplateData(smsTemplateId: Int){
         self.requestManager.request(forPath: ApiUrl.getSMSTemplate.appending("\(smsTemplateId)"), method: .GET, headers: self.requestManager.Headers()) { (result: Result<smsTemplateDataModel, GrowthNetworkError>) in

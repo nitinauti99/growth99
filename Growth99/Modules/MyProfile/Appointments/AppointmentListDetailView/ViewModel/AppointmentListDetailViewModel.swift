@@ -54,7 +54,7 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getEditAppointmentsForPateint(appointmentsId: Int) {
         let finaleUrl = ApiUrl.editAppoints + "\(appointmentsId)"

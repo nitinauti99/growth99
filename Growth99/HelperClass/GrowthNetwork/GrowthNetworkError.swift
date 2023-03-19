@@ -3,19 +3,10 @@ import Foundation
 
 public enum GrowthNetworkError: Error {
 
-    /// Encoding failed
     case encodingFailed
-
-    /// Invalid data with successful status code
     case invalidDataWithSuccessfulStatusCode
-
-    /// Invalid response
     case invalidResponse
-
-    /// Failed JSON serialization for [response](x-source-tag://ResponseTag)
     case jsonMapping(GrowthResponse)
-
-    /// Failed JSON serialization due to no data at a specific keypath
     case jsonSerializationNoDataAtKeyPath(String)
 
     /// Missing URL in `URLRequest`

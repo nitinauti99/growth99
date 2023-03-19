@@ -26,7 +26,7 @@ class NotificationListViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getNotificationListList(questionId: Int) {
         let finaleURL = ApiUrl.notificationList.appending("\(questionId)/notifications")

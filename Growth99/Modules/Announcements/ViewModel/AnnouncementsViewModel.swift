@@ -30,7 +30,7 @@ class AnnouncementsViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getAnnouncements() {
         self.requestManager.request(forPath: ApiUrl.getAnnouncementsList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[AnnouncementsModel], GrowthNetworkError>) in

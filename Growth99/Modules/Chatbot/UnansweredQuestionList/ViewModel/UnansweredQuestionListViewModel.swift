@@ -20,7 +20,7 @@ class UnansweredQuestionListViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getUnansweredQuestionList() {
         self.requestManager.request(forPath: ApiUrl.UnansweredQuestionList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[UnansweredQuestionListModel], GrowthNetworkError>) in

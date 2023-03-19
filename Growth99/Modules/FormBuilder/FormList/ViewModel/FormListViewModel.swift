@@ -26,7 +26,7 @@ class FormListViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getFormList() {
         self.requestManager.request(forPath: ApiUrl.FormsList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[FormListModel], GrowthNetworkError>) in

@@ -10,10 +10,10 @@ internal struct OperationResponse {
 }
 
 protocol DataTaskOperationProtocol: AnyObject {
-    func didStart(operation: DataTaskOperation, for task: URLSessionTask)
+    func didStart(operation: GrowthDataTaskOperation, for task: URLSessionTask)
 }
 
- class DataTaskOperation: Operation, Cancellable {
+ class GrowthDataTaskOperation: Operation, GrowthCancellable {
 
     private let dataTaskLock = ReadersWriterLock(label: "com.apple.ist.remobile.GrowthHTTPNetwork.dataTaskOperation")
 

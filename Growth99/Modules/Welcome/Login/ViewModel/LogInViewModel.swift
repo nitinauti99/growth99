@@ -29,7 +29,7 @@ class LogInViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getBussinessSelection(email: String) {
         let finaleURL = ApiUrl.getBussinessSelection.appending("byemail?email=\(email)")

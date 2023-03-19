@@ -22,7 +22,7 @@ class LeadSourceUrlAddViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func LeadSourceUrlDetails(leadTagId: Int) {
         let finaleUrl = ApiUrl.getLeadSourceUrl + "\(leadTagId)"

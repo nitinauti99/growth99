@@ -1,7 +1,7 @@
 
 import Foundation
 
-internal class UploadTaskOperation: DataTaskOperation {
+internal class GrowthUploadTaskOperation: GrowthDataTaskOperation {
 
     private let data: Data?
     private let url: URL?

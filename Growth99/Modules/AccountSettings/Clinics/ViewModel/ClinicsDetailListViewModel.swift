@@ -27,7 +27,7 @@ class ClinicsDetailListViewModel: ClinicsDetailListViewModelProtocol {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     func getselectedClinicDetail(clinicId: Int) {
         self.requestManager.request(forPath: ApiUrl.selectedClinic + "\(clinicId)", method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ClinicsDetailListModel, GrowthNetworkError>) in

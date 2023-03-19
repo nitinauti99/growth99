@@ -23,7 +23,7 @@ class DisplayQuestionnaireViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     func getDisplayQuestionnaire(patientId: Int,questionnaireId: Int) {
         let finaleURL = ApiUrl.patientsQuestionnaireDetail.appending("\(patientId)/questionnaire/\(questionnaireId)/questions")

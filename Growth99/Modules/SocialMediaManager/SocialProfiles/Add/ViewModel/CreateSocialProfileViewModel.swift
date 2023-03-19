@@ -24,7 +24,7 @@ class SocialProfileViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getSocialProfileDetails(socialProfileId:Int) {
         let finaleUrl = ApiUrl.socialProfileList + "/\(socialProfileId)"

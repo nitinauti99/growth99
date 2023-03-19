@@ -1,13 +1,13 @@
 
 import Foundation
 
-extension NetworkManager {
+extension GrowthNetworkManager {
 
     @discardableResult
     func internalRequest(request: Requestable,
                          completionQueue: DispatchQueue = DispatchQueue.main,
                          progressBlock: ((Progress) -> Void)? = nil,
-                         completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
+                         completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         switch request.stub.behavior {
         case .never:
             switch request.task {
@@ -39,7 +39,7 @@ extension NetworkManager {
     func dataRequest(request: Requestable,
                      completionQueue: DispatchQueue = DispatchQueue.main,
                      progressBlock: ((Progress) -> Void)? = nil,
-                     completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
+                     completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         let endpoint = self.endpointMapping(for: request)
         let result = self.requestMapping(for: endpoint)
 
@@ -52,10 +52,10 @@ extension NetworkManager {
             )
 
             guard let session = self.session else {
-                return CancellableWrapper()
+                return GrowthCancellableWrapper()
             }
 
-            let dataTaskOperation = DataTaskOperation(session, urlRequest, completionQueue)
+            let dataTaskOperation = GrowthDataTaskOperation(session, urlRequest, completionQueue)
             dataTaskOperation.delegate = self
 
             dataTaskOperation.completionBlock = { [weak self] in
@@ -90,7 +90,7 @@ extension NetworkManager {
         case .failure(let error):
             Log.error("Error mapping request for endpoint: \(endpoint)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
             completionQueue.async { completion(.failure(error)) }
-            return CancellableWrapper()
+            return GrowthCancellableWrapper()
         }
     }
 
@@ -101,7 +101,7 @@ extension NetworkManager {
                        multipartFormHeader: HTTPHeader? = nil,
                        completionQueue: DispatchQueue = DispatchQueue.main,
                        progressBlock: ((Progress) -> Void)? = nil,
-                       completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
+                       completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         let endpoint = self.endpointMapping(for: request, multipartFormHeader: multipartFormHeader)
         let result = self.requestMapping(for: endpoint)
 
@@ -113,9 +113,9 @@ extension NetworkManager {
                 shouldLog: self.logSettings.shouldAllowLogging
             )
 
-            guard let session = self.session else { return CancellableWrapper() }
+            guard let session = self.session else { return GrowthCancellableWrapper() }
 
-            let uploadTaskOperation = UploadTaskOperation(session, urlRequest, completionQueue, data: data, url: url)
+            let uploadTaskOperation = GrowthUploadTaskOperation(session, urlRequest, completionQueue, data: data, url: url)
             uploadTaskOperation.delegate = self
 
             uploadTaskOperation.completionBlock = { [weak self] in
@@ -144,7 +144,7 @@ extension NetworkManager {
         case .failure(let error):
             Log.error("Error mapping request for endpoint: \(endpoint)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
             completion(.failure(error))
-            return CancellableWrapper()
+            return GrowthCancellableWrapper()
         }
     }
 
@@ -153,7 +153,7 @@ extension NetworkManager {
                          downloadLocation: URL,
                          completionQueue: DispatchQueue = DispatchQueue.main,
                          progressBlock: ((Progress) -> Void)? = nil,
-                         completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
+                         completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         let endpoint = self.endpointMapping(for: request)
         let result = self.requestMapping(for: endpoint)
 
@@ -165,9 +165,9 @@ extension NetworkManager {
                 shouldLog: self.logSettings.shouldAllowLogging
             )
 
-            guard let session = self.session else { return CancellableWrapper() }
+            guard let session = self.session else { return GrowthCancellableWrapper() }
 
-            let downloadTaskOperation = DownloadTaskOperation(session, urlRequest, completionQueue, downloadLocationURL: downloadLocation)
+            let downloadTaskOperation = GrowthDownloadTaskOperation(session, urlRequest, completionQueue, downloadLocationURL: downloadLocation)
             downloadTaskOperation.delegate = self
             downloadTaskOperation.completionBlock = { [weak self] in
                 guard let self = self else {
@@ -195,11 +195,11 @@ extension NetworkManager {
         case .failure(let error):
             Log.error("Error mapping request for endpoint: \(endpoint)", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
             completion(.failure(error))
-            return CancellableWrapper()
+            return GrowthCancellableWrapper()
         }
     }
 
-    private func createResponse(for request: URLRequest, operation: DataTaskOperation) -> Result<GrowthResponse, GrowthNetworkError> {
+    private func createResponse(for request: URLRequest, operation: GrowthDataTaskOperation) -> Result<GrowthResponse, GrowthNetworkError> {
         self.remove(operation: operation)
 
         if operation.isCancelled {
@@ -231,15 +231,15 @@ extension NetworkManager {
     }
 }
 
-extension NetworkManager: DataTaskOperationProtocol {
+extension GrowthNetworkManager: DataTaskOperationProtocol {
 
-    func didStart(operation: DataTaskOperation, for task: URLSessionTask) {
+    func didStart(operation: GrowthDataTaskOperation, for task: URLSessionTask) {
         self.update(operation: operation, task: task)
     }
 
 }
 
-extension NetworkManager {
+extension GrowthNetworkManager {
 
     func endpointMapping(for request: Requestable, multipartFormHeader: HTTPHeader? = nil) -> GrowthEndpoint {
         let path = request.baseURL.appending(request.path)
@@ -281,7 +281,6 @@ extension NetworkManager {
 
             return task
         }
-
         self.taskToOperationRWLock.write { [weak self] in
             guard let self = self else { return }
             guard let sessionTask = sessionTask else { return }
@@ -292,22 +291,7 @@ extension NetworkManager {
 
 }
 
-extension NetworkManager: URLSessionDelegate {
-
-    /**
-    Requests credentials from the delegate in response to a session-level authentication request from the remote server.
-    
-     This method is called in two situations:
-     - When a remote server asks for client certificates or Windows NT LAN Manager (NTLM) authentication, to allow your app to provide appropriate credentials
-     - When a session first establishes a connection to a remote server that uses SSL or TLS, to allow your app to verify the server’s certificate chain
-
-     - Parameters:
-        - session: The session containing the task that requested authentication.
-        - challenge: An object that contains the request for authentication.
-        - completionHandler: A handler that your delegate method must call. This completion handler takes the following parameters::
-            - disposition—One of several constants that describes how the challenge should be handled.
-            - credential—The credential that should be used for authentication if disposition is NSURLSessionAuthChallengeUseCredential, otherwise NULL.
-    */
+extension GrowthNetworkManager: URLSessionDelegate {
     public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         guard self.optIntoCertificatePinning else {
             completionHandler(.performDefaultHandling, nil)
@@ -325,21 +309,12 @@ extension NetworkManager: URLSessionDelegate {
 
 }
 
-extension NetworkManager: URLSessionDataDelegate {
-
-    /**
-     Tells the delegate that the session finished collecting metrics for the task.
-     
-     - parameters:
-        - session: The `URLsession` collecting the metrics.
-        - task: The `URLSessionTask` whose metrics have been collected.
-        - metrics: The collected `URLSessionTaskMetrics`.
-    */
+extension GrowthNetworkManager: URLSessionDataDelegate {
     public func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
-        let operation: DataTaskOperation? = self.taskToOperationRWLock.read { [weak self] in
+        let operation: GrowthDataTaskOperation? = self.taskToOperationRWLock.read { [weak self] in
             guard let self = self else { return nil }
 
-            return self.taskToOperation[task] as? DataTaskOperation
+            return self.taskToOperation[task] as? GrowthDataTaskOperation
         }
 
         guard let taskOperation = operation, let transactionMetrics = metrics.transactionMetrics.first else { return }

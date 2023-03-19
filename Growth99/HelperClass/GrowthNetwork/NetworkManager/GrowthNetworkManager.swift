@@ -1,41 +1,20 @@
 
 import Foundation
 
-/// Type responsible for managing network requests for the specified URLSession
-open class NetworkManager: NSObject {
+open class GrowthNetworkManager: NSObject {
 
-    /// URLSession associated with the manager.
     internal var session: URLSession?
-
-    /// Queue on which all the network requests would be running. Defaults to nil.
     internal var rootQueue: DispatchQueue?
-
-    /// Internal type to have a mapping between operations.
     internal var identifierToOperations = [Int: Operation]()
-
-    /// Internal type to have a mapping between operations and the corresponding sessionTask.
     internal var taskToOperation = [URLSessionTask: Operation]()
-
-    /// Mechanism responsible for handling reauth flow in an event of token expiry. User to add, defaults to nil.
     internal var authenticator: Authenticator?
-
-    /// QueueManager responsible for handling network operationQueue.
     internal let networkQueueManager = GrowthNetworkQueueManager()
-
-    /// Queue responsible for read-write operation for taskToOperation property.
     internal let taskToOperationRWLock = ReadersWriterLock(label: "com.apple.GrowthHTTPNetwork.taskToOperation")
-
-    /// Certificate `Bundle` directory provided to grab all the certificates.
-    /// A Boolean to set whether certificate pinning is required by the client.
     public var optIntoCertificatePinning = false
-
     public var logger: Logger
-
-    /// Network log settings to provide varied degree of logging options.
     public var logSettings: LogSettings
-
     public var window: UIWindow?
-
+    
     public init(configuration: URLSessionConfiguration = .default,
                 rootQueue: DispatchQueue? = nil,
                 logger: Logger = OSLogger.shared,
@@ -53,44 +32,28 @@ open class NetworkManager: NSObject {
         self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
 
-    /**
-     Convenience init to initialize NetworkManager with default configuration
-    
-    */
     override convenience init() {
         self.init(configuration: .default)
     }
 
-    /**
-     Denitializer for NetworkManager to invalidate/flush objects which could lead to a leak
-     */
     deinit {
         self.session?.invalidateAndCancel()
     }
 
-    /**
-     Make a fetch request for a requestable type which responds back with a ```Result``` type containing ```Response``` and ```Error```
-    
-     - parameters:
-         - requestable: any [Requestable](x-source-tag://RequestableTag) type to contain path, method, task, baseUrl.
-         - completionQueue: queue on which the completionBlock will be called.
-         - progressBlock: block to send the progress back for every request.
-         - completion: completion block which would contain a Result type.
-    */
     @discardableResult
     public func request(requestable: Requestable,
                         completionQueue: DispatchQueue = DispatchQueue.main,
                         progressBlock: ((Progress) -> Void)? = nil,
-                        completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
+                        completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
 
-        var cancellable: Cancellable = CancellableWrapper()
+        var cancellable: GrowthCancellable = GrowthCancellableWrapper()
 
         if let authenticator = self.authenticator, authenticator.authTokenState == .tokenExpired, !self.networkQueueManager.areRequestsSuspended {
 
             self.networkQueueManager.suspendNetworkQueue()
             authenticator.performTokenRefresh { [weak self] didRefreshToken, newTokenHeaders in
                 guard let self = self else { return }
-                guard didRefreshToken, let dataTaskOperations = self.networkQueueManager.networkRequestOperationQueue.operations as? [DataTaskOperation] else {
+                guard didRefreshToken, let dataTaskOperations = self.networkQueueManager.networkRequestOperationQueue.operations as? [GrowthDataTaskOperation] else {
                     Log.error("Token refresh was not successful", logger: self.logger, shouldLog: self.logSettings.shouldAllowLogging)
                     completionQueue.async { completion(.failure(.tokenRefreshFailed)) }
                     return
@@ -122,7 +85,7 @@ open class NetworkManager: NSObject {
     public func request<T: Decodable>(requestable: Requestable,
                                       completionQueue: DispatchQueue = DispatchQueue.main,
                                       progressBlock: ((Progress) -> Void)? = nil,
-                                      completion: @escaping (Result<T, GrowthNetworkError>) -> Void) -> Cancellable {
+                                      completion: @escaping (Result<T, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         self.request(requestable: requestable, completionQueue: completionQueue, progressBlock: progressBlock) { result in
             switch result {
             case .success(let response):
@@ -152,7 +115,7 @@ open class NetworkManager: NSObject {
                         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                         completionQueue: DispatchQueue = DispatchQueue.main,
                         progressBlock: ((Progress) -> Void)? = nil,
-                        completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> Cancellable {
+                        completion: @escaping (Result<GrowthResponse, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         let requestable = RequestableType(path: path, method: method, task: task, headerFields: headers, mode: mode, stub: stub)
 
         return self.request(requestable: requestable, completionQueue: completionQueue, progressBlock: progressBlock, completion: completion)
@@ -169,7 +132,7 @@ open class NetworkManager: NSObject {
                                       cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                       completionQueue: DispatchQueue = DispatchQueue.main,
                                       progressBlock: ((Progress) -> Void)? = nil,
-                                      completion: @escaping (Result<T, GrowthNetworkError>) -> Void) -> Cancellable {
+                                      completion: @escaping (Result<T, GrowthNetworkError>) -> Void) -> GrowthCancellable {
         let requestable = RequestableType(path: path, method: method, task: task, headerFields: headers, mode: mode, stub: stub)
 
         return self.request(requestable: requestable, progressBlock: progressBlock, completion: completion)

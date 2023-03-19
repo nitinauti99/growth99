@@ -1,10 +1,9 @@
 
 import Foundation
 
-internal class CancellableWrapper: Cancellable {
-
+internal class GrowthCancellableWrapper: GrowthCancellable {
+    
     var isCancelled = false
-
     func cancel() {
         self.isCancelled = true
     }

@@ -3,21 +3,16 @@ import Foundation
 
 public typealias Parameters = [String: Any]
 
-/// Protocol to encode specified url/body parameters
 public protocol GrowthParameterEncoder {
     func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws
 }
 
-/// Enum to provide encoding types
 public enum ParameterEncoding {
 
-    /// Encodes url parameters with [ArrayEncoding](x-source-tag://ArrayEncodingTag) and [BoolEncoding](x-source-tag://BoolEncodingTag)
     case urlEncoding(arrayEncoding: URLParameterEncoder.ArrayEncoding = .noBrackets, boolEncoding: URLParameterEncoder.BoolEncoding = .numeric)
 
-    /// to encode json body parameters
     case jsonEncoding
 
-    /// to encode both url and body parameters present in the request with [ArrayEncoding](x-source-tag://ArrayEncodingTag) and [BoolEncoding](x-source-tag://BoolEncodingTag)
     case urlAndJsonEncoding(arrayEncoding: URLParameterEncoder.ArrayEncoding = .noBrackets, boolEncoding: URLParameterEncoder.BoolEncoding = .numeric)
 
     public func encode(urlRequest: inout URLRequest, bodyParameters: Parameters?, urlParameters: Parameters?) throws {
@@ -44,7 +39,6 @@ public enum ParameterEncoding {
 
 }
 
-/// JSONParameterEncoder type to perform json encoding
 public struct JSONParameterEncoder: GrowthParameterEncoder {
 
     public func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
@@ -61,21 +55,12 @@ public struct JSONParameterEncoder: GrowthParameterEncoder {
 
 }
 
-/// URLParameterEncoder type to perform url encoding
 public struct URLParameterEncoder: GrowthParameterEncoder {
 
-    /// The encoding to use for `Array` parameters.
     public let arrayEncoding: ArrayEncoding
-
-    /// The encoding to use for `Bool` parameters.
     public let boolEncoding: BoolEncoding
-
-    /// Configure how `Array` parameters are encoded
-    /// - Tag: ArrayEncodingTag
     public enum ArrayEncoding {
-        /// An empty set of square brackets is appended to the key for every value. This is the default behavior.
         case brackets
-        /// No brackets are appended. The key is encoded as is.
         case noBrackets
 
         func encode(key: String) -> String {
@@ -88,12 +73,8 @@ public struct URLParameterEncoder: GrowthParameterEncoder {
         }
     }
 
-    /// Configures how `Bool` parameters are encoded.
-    /// - Tag: BoolEncodingTag
     public enum BoolEncoding {
-        /// Encode `true` as `1` and `false` as `0`. This is the default behavior.
         case numeric
-        /// Encode `true` and `false` as string literals.
         case literal
 
         func encode(value: Bool) -> String {
@@ -137,7 +118,6 @@ public struct URLParameterEncoder: GrowthParameterEncoder {
         return components.map { "\($0)=\($1)" }.joined(separator: "&")
     }
 
-    // Using Alamofire's way of creating components since it handles all the different cases properly
     private func queryComponents(fromKey key: String, value: Any) -> [(String, String)] {
         var components: [(String, String)] = []
 

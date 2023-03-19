@@ -24,7 +24,7 @@ class PateintEditViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getPateintList(pateintId: Int) {
         let finaleUrl = ApiUrl.patientsEditDetail + "\(pateintId)"

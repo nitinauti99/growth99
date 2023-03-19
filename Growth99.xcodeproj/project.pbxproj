@@ -774,14 +774,14 @@
 		84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61070292A71A500B1FB69 /* String+Additions.swift */; };
 		84F61114292A71AB00B1FB69 /* GrowthParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61084292A71A900B1FB69 /* GrowthParameterEncoder.swift */; };
 		84F61116292A71AB00B1FB69 /* GrowthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61087292A71A900B1FB69 /* GrowthNetworkManager.swift */; };
-		84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61089292A71A900B1FB69 /* NetworkManager+Internal.swift */; };
-		84F61119292A71AB00B1FB69 /* NetworkManager+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108A292A71A900B1FB69 /* NetworkManager+Stub.swift */; };
+		84F61118292A71AB00B1FB69 /* GrowthNetworkManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61089292A71A900B1FB69 /* GrowthNetworkManager+Internal.swift */; };
+		84F61119292A71AB00B1FB69 /* GrowthNetworkManager+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108A292A71A900B1FB69 /* GrowthNetworkManager+Stub.swift */; };
 		84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108B292A71A900B1FB69 /* GrowthNetworkError.swift */; };
-		84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108D292A71A900B1FB69 /* CancellableWrapper.swift */; };
-		84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108E292A71A900B1FB69 /* Cancellable.swift */; };
-		84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61090292A71A900B1FB69 /* DownloadTaskOperation.swift */; };
-		84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61091292A71A900B1FB69 /* UploadTaskOperation.swift */; };
-		84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61092292A71A900B1FB69 /* DataTaskOperation.swift */; };
+		84F6111B292A71AB00B1FB69 /* GrowthCancellableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108D292A71A900B1FB69 /* GrowthCancellableWrapper.swift */; };
+		84F6111C292A71AB00B1FB69 /* GrowthCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6108E292A71A900B1FB69 /* GrowthCancellable.swift */; };
+		84F6111D292A71AB00B1FB69 /* GrowthDownloadTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61090292A71A900B1FB69 /* GrowthDownloadTaskOperation.swift */; };
+		84F6111E292A71AB00B1FB69 /* GrowthUploadTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61091292A71A900B1FB69 /* GrowthUploadTaskOperation.swift */; };
+		84F6111F292A71AB00B1FB69 /* GrowthDataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61092292A71A900B1FB69 /* GrowthDataTaskOperation.swift */; };
 		84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61095292A71A900B1FB69 /* URL+Extension.swift */; };
 		84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61096292A71A900B1FB69 /* URLRequest+Extension.swift */; };
 		84F61123292A71AB00B1FB69 /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F61097292A71A900B1FB69 /* Number+Extension.swift */; };
@@ -1636,14 +1636,14 @@
 		84F61070292A71A500B1FB69 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		84F61084292A71A900B1FB69 /* GrowthParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthParameterEncoder.swift; sourceTree = "<group>"; };
 		84F61087292A71A900B1FB69 /* GrowthNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthNetworkManager.swift; sourceTree = "<group>"; };
-		84F61089292A71A900B1FB69 /* NetworkManager+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Internal.swift"; sourceTree = "<group>"; };
-		84F6108A292A71A900B1FB69 /* NetworkManager+Stub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Stub.swift"; sourceTree = "<group>"; };
+		84F61089292A71A900B1FB69 /* GrowthNetworkManager+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GrowthNetworkManager+Internal.swift"; sourceTree = "<group>"; };
+		84F6108A292A71A900B1FB69 /* GrowthNetworkManager+Stub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GrowthNetworkManager+Stub.swift"; sourceTree = "<group>"; };
 		84F6108B292A71A900B1FB69 /* GrowthNetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthNetworkError.swift; sourceTree = "<group>"; };
-		84F6108D292A71A900B1FB69 /* CancellableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellableWrapper.swift; sourceTree = "<group>"; };
-		84F6108E292A71A900B1FB69 /* Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
-		84F61090292A71A900B1FB69 /* DownloadTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTaskOperation.swift; sourceTree = "<group>"; };
-		84F61091292A71A900B1FB69 /* UploadTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTaskOperation.swift; sourceTree = "<group>"; };
-		84F61092292A71A900B1FB69 /* DataTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTaskOperation.swift; sourceTree = "<group>"; };
+		84F6108D292A71A900B1FB69 /* GrowthCancellableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthCancellableWrapper.swift; sourceTree = "<group>"; };
+		84F6108E292A71A900B1FB69 /* GrowthCancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthCancellable.swift; sourceTree = "<group>"; };
+		84F61090292A71A900B1FB69 /* GrowthDownloadTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthDownloadTaskOperation.swift; sourceTree = "<group>"; };
+		84F61091292A71A900B1FB69 /* GrowthUploadTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthUploadTaskOperation.swift; sourceTree = "<group>"; };
+		84F61092292A71A900B1FB69 /* GrowthDataTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthDataTaskOperation.swift; sourceTree = "<group>"; };
 		84F61095292A71A900B1FB69 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		84F61096292A71A900B1FB69 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
 		84F61097292A71A900B1FB69 /* Number+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
@@ -6279,8 +6279,8 @@
 			isa = PBXGroup;
 			children = (
 				84F61087292A71A900B1FB69 /* GrowthNetworkManager.swift */,
-				84F61089292A71A900B1FB69 /* NetworkManager+Internal.swift */,
-				84F6108A292A71A900B1FB69 /* NetworkManager+Stub.swift */,
+				84F61089292A71A900B1FB69 /* GrowthNetworkManager+Internal.swift */,
+				84F6108A292A71A900B1FB69 /* GrowthNetworkManager+Stub.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -6288,8 +6288,8 @@
 		84F6108C292A71A900B1FB69 /* CancellableBlock */ = {
 			isa = PBXGroup;
 			children = (
-				84F6108D292A71A900B1FB69 /* CancellableWrapper.swift */,
-				84F6108E292A71A900B1FB69 /* Cancellable.swift */,
+				84F6108D292A71A900B1FB69 /* GrowthCancellableWrapper.swift */,
+				84F6108E292A71A900B1FB69 /* GrowthCancellable.swift */,
 			);
 			path = CancellableBlock;
 			sourceTree = "<group>";
@@ -6297,9 +6297,9 @@
 		84F6108F292A71A900B1FB69 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				84F61090292A71A900B1FB69 /* DownloadTaskOperation.swift */,
-				84F61091292A71A900B1FB69 /* UploadTaskOperation.swift */,
-				84F61092292A71A900B1FB69 /* DataTaskOperation.swift */,
+				84F61090292A71A900B1FB69 /* GrowthDownloadTaskOperation.swift */,
+				84F61091292A71A900B1FB69 /* GrowthUploadTaskOperation.swift */,
+				84F61092292A71A900B1FB69 /* GrowthDataTaskOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -6950,7 +6950,7 @@
 				017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */,
 				84F610ED292A71AB00B1FB69 /* Promise+Possible.swift in Sources */,
 				84D063042967080E001FE469 /* LeadCustomEmailTemplateTableViewCell.swift in Sources */,
-				84F6111C292A71AB00B1FB69 /* Cancellable.swift in Sources */,
+				84F6111C292A71AB00B1FB69 /* GrowthCancellable.swift in Sources */,
 				398F90FB298ECB8700DB96E4 /* IQUIScrollView+Additions.swift in Sources */,
 				01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */,
 				01684C6029BDEFEA00DE1041 /* UnansweredQuestionListViewController+TableView.swift in Sources */,
@@ -7073,7 +7073,7 @@
 				84B75E9E2968CCB700962F3E /* ClinicsListViewModel.swift in Sources */,
 				01684C6F29BE12E000DE1041 /* CreateSMSTemplateModel.swift in Sources */,
 				18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */,
-				84F6111F292A71AB00B1FB69 /* DataTaskOperation.swift in Sources */,
+				84F6111F292A71AB00B1FB69 /* GrowthDataTaskOperation.swift in Sources */,
 				01EBAC4529B585D900110DCB /* LeadTagsListViewController+TableView.swift in Sources */,
 				01152E3029B3C5E700B24627 /* LeadHistoryViewController.swift in Sources */,
 				010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */,
@@ -7195,7 +7195,7 @@
 				84F610EE292A71AB00B1FB69 /* Future+SequenceType.swift in Sources */,
 				84EFC28129255487003B3C06 /* UIViewController+Extension.swift in Sources */,
 				01D9EBEB29B8B66C0099761C /* QuestionnaireSubmissionsModel.swift in Sources */,
-				84F6111B292A71AB00B1FB69 /* CancellableWrapper.swift in Sources */,
+				84F6111B292A71AB00B1FB69 /* GrowthCancellableWrapper.swift in Sources */,
 				010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */,
 				01152E3829B3C63700B24627 /* CombineTimeLineViewController.swift in Sources */,
 				01684C2029BAED0700DE1041 /* ChatSessionListViewController+SearchBar.swift in Sources */,
@@ -7269,14 +7269,14 @@
 				84D0624229670677001FE469 /* UpdateUserProfile.swift in Sources */,
 				8473208729797FE5003099BB /* PateintListViewContoller+TableView.swift in Sources */,
 				01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */,
-				84F6111D292A71AB00B1FB69 /* DownloadTaskOperation.swift in Sources */,
+				84F6111D292A71AB00B1FB69 /* GrowthDownloadTaskOperation.swift in Sources */,
 				8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */,
 				01684C2229BB7BBF00DE1041 /* UIIMageExtension.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
 				01684C4229BDC12800DE1041 /* ChatSessionDetailModel.swift in Sources */,
 				84B75ECF296903B000962F3E /* ServicesViewModel.swift in Sources */,
 				18491DC129B80CE000FE72EF /* MassEmailandSMSViewController+TableView.swift in Sources */,
-				84F61119292A71AB00B1FB69 /* NetworkManager+Stub.swift in Sources */,
+				84F61119292A71AB00B1FB69 /* GrowthNetworkManager+Stub.swift in Sources */,
 				1896709529BA5E62003224ED /* LeadTriggersTableViewCell.swift in Sources */,
 				84D0623829670677001FE469 /* PateintDetailViewController+Tableview.swift in Sources */,
 				398F90FF298ECB8700DB96E4 /* IQNSArray+Sort.swift in Sources */,
@@ -7317,7 +7317,7 @@
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
 				189670B829BA6081003224ED /* TriggerModuleTableViewCell.swift in Sources */,
 				84F610DE292A71AB00B1FB69 /* SortDescriptor.swift in Sources */,
-				84F61118292A71AB00B1FB69 /* NetworkManager+Internal.swift in Sources */,
+				84F61118292A71AB00B1FB69 /* GrowthNetworkManager+Internal.swift in Sources */,
 				01684C3C29BDC10500DE1041 /* ChatSessionDetailViewController.swift in Sources */,
 				01EBAC6829B593C300110DCB /* DeletedLeadListViewController+SearchBar.swift in Sources */,
 				01152E1529B39C7400B24627 /* leadListViewController+ScrollView.swift in Sources */,
@@ -7426,7 +7426,7 @@
 				013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */,
 				189E3F0029C392E200B94190 /* MediaLibraryTableViewCell.swift in Sources */,
 				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
-				84F6111E292A71AB00B1FB69 /* UploadTaskOperation.swift in Sources */,
+				84F6111E292A71AB00B1FB69 /* GrowthUploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
 				01EBAC7D29B5A91200110DCB /* LeadSourceUrlAddViewController.swift in Sources */,
 				84F610D6292A71AB00B1FB69 /* DictionaryExtension.swift in Sources */,

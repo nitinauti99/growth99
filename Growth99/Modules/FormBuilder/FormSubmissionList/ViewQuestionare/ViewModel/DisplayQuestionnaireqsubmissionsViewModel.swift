@@ -24,7 +24,7 @@ class DisplayQuestionnaireqsubmissionsViewModel {
         self.delegate = delegate
     }
     
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getDisplayFormQuestionnaire(questionnaireId: Int) {
         let finaleURL = ApiUrl.questionnaireSubmissions.appending("\(questionnaireId)")

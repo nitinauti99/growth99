@@ -36,7 +36,7 @@ class AppointmentListViewModel {
         self.delegate = delegate
     }
 
-    private var requestManager = RequestManager(configuration: URLSessionConfiguration.default)
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     func getProfileApointmentsList() {
         let apiURL = ApiUrl.profileAppointments.appending("\(UserRepository.shared.userVariableId ?? 0)")
