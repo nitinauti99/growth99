@@ -87,7 +87,7 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let createTriggersVC = UIStoryboard(name: "TriggerEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerEditDetailViewController") as! TriggerEditDetailViewController
+       /* let createTriggersVC = UIStoryboard(name: "TriggerEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerEditDetailViewController") as! TriggerEditDetailViewController
         let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
         switch selectedIndex {
         case 0:
@@ -109,6 +109,6 @@ extension TriggersListViewController: UITableViewDelegate, UITableViewDataSource
         default:
             break
         }
-        self.navigationController?.pushViewController(createTriggersVC, animated: true)
+        self.navigationController?.pushViewController(createTriggersVC, animated: true)*/
     }
 }
