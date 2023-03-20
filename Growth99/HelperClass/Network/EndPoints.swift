@@ -160,7 +160,8 @@ struct EndPoints {
     static let socialMediaPosts = "/api/v1/socialMediaPosts/pagination/list?page=0&size=500"
     static let socialMediaPostLabelsList = "/api/socialMediaPostLabels/list"
     static let socialProfilesList = "/api/social-profiles"
-
+    static let socialMediaTagList = "/api/socialMedia/tag/list"
+    static let socialMediaLibraries = "/api/socialMedia/libraries?"
 }
 
 struct ApiUrl {
@@ -318,4 +319,7 @@ struct ApiUrl {
     static let socialMediaPosts = EndPoints.baseURL.appending(EndPoints.socialMediaPosts)
     static let socialMediaPostLabelsList = EndPoints.baseURL.appending(EndPoints.socialMediaPostLabelsList)
     static let socialProfilesList = EndPoints.baseURL.appending(EndPoints.socialProfilesList)
+    static let socialMediaTagList = EndPoints.baseURL.appending(EndPoints.socialMediaTagList)
+    static let socialMediaLibraries = EndPoints.baseURL.appending(EndPoints.socialMediaLibraries)
 }
+
