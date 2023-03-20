@@ -298,7 +298,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 3:
                 pushViewControllerFromDrawerMenu(identifier: "PostCalenderViewController", pusedViewController: "PostCalenderViewController")
             case 4:
-                pushViewControllerFromDrawerMenu(identifier: "MediaLibraryViewController", pusedViewController: "MediaLibraryViewController")
+                pushViewControllerFromDrawerMenu(identifier: "MediaLibraryListViewController", pusedViewController: "MediaLibraryListViewController")
             default:
                 break
             }

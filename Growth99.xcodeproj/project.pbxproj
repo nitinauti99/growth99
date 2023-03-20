@@ -138,6 +138,7 @@
 		016F660E29C8555A00B1D248 /* CreatePostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016F660D29C8555A00B1D248 /* CreatePostViewController.storyboard */; };
 		016F661029C8556900B1D248 /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F660F29C8556900B1D248 /* CreatePostViewModel.swift */; };
 		016F661229C8557400B1D248 /* CreatePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F661129C8557400B1D248 /* CreatePostModel.swift */; };
+		016F661429C8956700B1D248 /* MediaLibraryListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F661329C8956700B1D248 /* MediaLibraryListViewController+TableView.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -343,12 +344,12 @@
 		189E3EE529C391D900B94190 /* PostsListViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EE429C391D900B94190 /* PostsListViewContoller.swift */; };
 		189E3EE729C391E100B94190 /* PostsListViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */; };
 		189E3EE929C391FA00B94190 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EE829C391FA00B94190 /* PostsViewModel.swift */; };
-		189E3EFB29C392C500B94190 /* MediaLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFA29C392C500B94190 /* MediaLibraryModel.swift */; };
-		189E3EFD29C392D100B94190 /* MediaLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFC29C392D100B94190 /* MediaLibraryViewModel.swift */; };
-		189E3F0029C392E200B94190 /* MediaLibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFE29C392E200B94190 /* MediaLibraryTableViewCell.swift */; };
-		189E3F0129C392E200B94190 /* MediaLibraryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E3EFF29C392E200B94190 /* MediaLibraryTableViewCell.xib */; };
-		189E3F0329C392F800B94190 /* MediaLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0229C392F800B94190 /* MediaLibraryViewController.swift */; };
-		189E3F0529C3930300B94190 /* MediaLibraryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3F0429C3930300B94190 /* MediaLibraryViewController.storyboard */; };
+		189E3EFB29C392C500B94190 /* MediaLibraryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFA29C392C500B94190 /* MediaLibraryListModel.swift */; };
+		189E3EFD29C392D100B94190 /* MediaLibraryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFC29C392D100B94190 /* MediaLibraryListViewModel.swift */; };
+		189E3F0029C392E200B94190 /* MediaLibraryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EFE29C392E200B94190 /* MediaLibraryListTableViewCell.swift */; };
+		189E3F0129C392E200B94190 /* MediaLibraryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E3EFF29C392E200B94190 /* MediaLibraryListTableViewCell.xib */; };
+		189E3F0329C392F800B94190 /* MediaLibraryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0229C392F800B94190 /* MediaLibraryListViewController.swift */; };
+		189E3F0529C3930300B94190 /* MediaLibraryListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3F0429C3930300B94190 /* MediaLibraryListViewController.storyboard */; };
 		189E3F1429C3980900B94190 /* PostCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */; };
 		189E3F1529C3980900B94190 /* PostCalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0D29C3980900B94190 /* PostCalenderModel.swift */; };
 		189E3F1629C3980900B94190 /* PostCalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0F29C3980900B94190 /* PostCalenderViewController.swift */; };
@@ -988,6 +989,7 @@
 		016F660D29C8555A00B1D248 /* CreatePostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePostViewController.storyboard; sourceTree = "<group>"; };
 		016F660F29C8556900B1D248 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
 		016F661129C8557400B1D248 /* CreatePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostModel.swift; sourceTree = "<group>"; };
+		016F661329C8956700B1D248 /* MediaLibraryListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryListViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -1194,12 +1196,12 @@
 		189E3EE429C391D900B94190 /* PostsListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewContoller.swift; sourceTree = "<group>"; };
 		189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsListViewContoller.storyboard; sourceTree = "<group>"; };
 		189E3EE829C391FA00B94190 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
-		189E3EFA29C392C500B94190 /* MediaLibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryModel.swift; sourceTree = "<group>"; };
-		189E3EFC29C392D100B94190 /* MediaLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewModel.swift; sourceTree = "<group>"; };
-		189E3EFE29C392E200B94190 /* MediaLibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryTableViewCell.swift; sourceTree = "<group>"; };
-		189E3EFF29C392E200B94190 /* MediaLibraryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaLibraryTableViewCell.xib; sourceTree = "<group>"; };
-		189E3F0229C392F800B94190 /* MediaLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewController.swift; sourceTree = "<group>"; };
-		189E3F0429C3930300B94190 /* MediaLibraryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaLibraryViewController.storyboard; sourceTree = "<group>"; };
+		189E3EFA29C392C500B94190 /* MediaLibraryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryListModel.swift; sourceTree = "<group>"; };
+		189E3EFC29C392D100B94190 /* MediaLibraryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryListViewModel.swift; sourceTree = "<group>"; };
+		189E3EFE29C392E200B94190 /* MediaLibraryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryListTableViewCell.swift; sourceTree = "<group>"; };
+		189E3EFF29C392E200B94190 /* MediaLibraryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaLibraryListTableViewCell.xib; sourceTree = "<group>"; };
+		189E3F0229C392F800B94190 /* MediaLibraryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryListViewController.swift; sourceTree = "<group>"; };
+		189E3F0429C3930300B94190 /* MediaLibraryListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaLibraryListViewController.storyboard; sourceTree = "<group>"; };
 		189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderViewModel.swift; sourceTree = "<group>"; };
 		189E3F0D29C3980900B94190 /* PostCalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderModel.swift; sourceTree = "<group>"; };
 		189E3F0F29C3980900B94190 /* PostCalenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderViewController.swift; sourceTree = "<group>"; };
@@ -3503,9 +3505,8 @@
 			isa = PBXGroup;
 			children = (
 				189E3EBB29C38E6000B94190 /* Model */,
-				189E3EBC29C38E6000B94190 /* View */,
 				189E3EBA29C38E6000B94190 /* ViewModel */,
-				189E3EBD29C38E6000B94190 /* CustomTableViewCell */,
+				189E3EBC29C38E6000B94190 /* View */,
 			);
 			path = MediaLibrary;
 			sourceTree = "<group>";
@@ -3513,7 +3514,7 @@
 		189E3EBA29C38E6000B94190 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				189E3EFC29C392D100B94190 /* MediaLibraryViewModel.swift */,
+				189E3EFC29C392D100B94190 /* MediaLibraryListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3521,7 +3522,7 @@
 		189E3EBB29C38E6000B94190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				189E3EFA29C392C500B94190 /* MediaLibraryModel.swift */,
+				189E3EFA29C392C500B94190 /* MediaLibraryListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3529,19 +3530,21 @@
 		189E3EBC29C38E6000B94190 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				189E3F0229C392F800B94190 /* MediaLibraryViewController.swift */,
-				189E3F0429C3930300B94190 /* MediaLibraryViewController.storyboard */,
+				189E3EBD29C38E6000B94190 /* Cell */,
+				189E3F0229C392F800B94190 /* MediaLibraryListViewController.swift */,
+				189E3F0429C3930300B94190 /* MediaLibraryListViewController.storyboard */,
+				016F661329C8956700B1D248 /* MediaLibraryListViewController+TableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		189E3EBD29C38E6000B94190 /* CustomTableViewCell */ = {
+		189E3EBD29C38E6000B94190 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				189E3EFE29C392E200B94190 /* MediaLibraryTableViewCell.swift */,
-				189E3EFF29C392E200B94190 /* MediaLibraryTableViewCell.xib */,
+				189E3EFE29C392E200B94190 /* MediaLibraryListTableViewCell.swift */,
+				189E3EFF29C392E200B94190 /* MediaLibraryListTableViewCell.xib */,
 			);
-			path = CustomTableViewCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		189E3EBE29C38E6000B94190 /* PostCalender */ = {
@@ -6636,7 +6639,7 @@
 				1883F10B29C63DA10080997B /* TriggerEditDetailViewController.storyboard in Resources */,
 				DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */,
 				010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */,
-				189E3F0129C392E200B94190 /* MediaLibraryTableViewCell.xib in Resources */,
+				189E3F0129C392E200B94190 /* MediaLibraryListTableViewCell.xib in Resources */,
 				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
 				01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
@@ -6682,7 +6685,7 @@
 				189E3EE729C391E100B94190 /* PostsListViewContoller.storyboard in Resources */,
 				01684C3E29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
-				189E3F0529C3930300B94190 /* MediaLibraryViewController.storyboard in Resources */,
+				189E3F0529C3930300B94190 /* MediaLibraryListViewController.storyboard in Resources */,
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84BD33F72994BB020050C0D8 /* EmailTemplateViewController.storyboard in Resources */,
@@ -7012,7 +7015,7 @@
 				84F610E5292A71AB00B1FB69 /* Trie.swift in Sources */,
 				01D9EBF129B8B6A70099761C /* QuestionnaireSubmissionsTableViewCell.swift in Sources */,
 				01DBA99F29C5C4D500CBA51D /* LabelsViewController+TableView.swift in Sources */,
-				189E3EFB29C392C500B94190 /* MediaLibraryModel.swift in Sources */,
+				189E3EFB29C392C500B94190 /* MediaLibraryListModel.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
 				189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
@@ -7284,6 +7287,7 @@
 				848F4D8028F1C160007AC421 /* SceneDelegate.swift in Sources */,
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
 				01BBA9DA29AB5461006A5DB8 /* NotificationListModel.swift in Sources */,
+				016F661429C8956700B1D248 /* MediaLibraryListViewController+TableView.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
@@ -7426,7 +7430,7 @@
 				01C7484929B0E9F40085CED2 /* TasksListViewController+SearchBar.swift in Sources */,
 				84B2293429314CF8006E8292 /* CustomTextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
-				189E3F0329C392F800B94190 /* MediaLibraryViewController.swift in Sources */,
+				189E3F0329C392F800B94190 /* MediaLibraryListViewController.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				013A4FA429B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift in Sources */,
 				017D572229AF604C00D6A5A4 /* DisplayQuestionariModel.swift in Sources */,
@@ -7479,7 +7483,7 @@
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
 				013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */,
-				189E3F0029C392E200B94190 /* MediaLibraryTableViewCell.swift in Sources */,
+				189E3F0029C392E200B94190 /* MediaLibraryListTableViewCell.swift in Sources */,
 				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
 				84F6111E292A71AB00B1FB69 /* GrowthUploadTaskOperation.swift in Sources */,
 				84F6112B292A71AB00B1FB69 /* Authenticator.swift in Sources */,
@@ -7524,7 +7528,7 @@
 				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				1883F12F29C7571E0080997B /* CountryManager.swift in Sources */,
-				189E3EFD29C392D100B94190 /* MediaLibraryViewModel.swift in Sources */,
+				189E3EFD29C392D100B94190 /* MediaLibraryListViewModel.swift in Sources */,
 				849035102995679200556D47 /* ConsentsTemplateListModel.swift in Sources */,
 				3947A8EF2996776E000CA2EB /* EmptyEventsTableViewCell.swift in Sources */,
 				189E3EE329C391CA00B94190 /* PostsListModel.swift in Sources */,
