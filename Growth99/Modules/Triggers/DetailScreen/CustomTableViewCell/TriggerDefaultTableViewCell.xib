@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="trigger name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-1k-1ar" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="30" y="120" width="250" height="45"/>
+                                <rect key="frame" x="30" y="120" width="260" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ca4-QD-LPO"/>
                                 </constraints>
@@ -95,7 +95,7 @@
                             <constraint firstItem="Ce2-Eq-7f4" firstAttribute="leading" secondItem="vLT-h4-k28" secondAttribute="leading" constant="20" id="IyG-VQ-e1i"/>
                             <constraint firstItem="O3M-Ov-A9V" firstAttribute="top" secondItem="vLT-h4-k28" secondAttribute="top" id="MDU-ne-Xmu"/>
                             <constraint firstItem="O3M-Ov-A9V" firstAttribute="leading" secondItem="vLT-h4-k28" secondAttribute="leading" id="Sd3-BM-rbo"/>
-                            <constraint firstItem="DeW-1k-1ar" firstAttribute="trailing" secondItem="Ce2-Eq-7f4" secondAttribute="trailing" id="TP0-Qh-xgO"/>
+                            <constraint firstItem="DeW-1k-1ar" firstAttribute="trailing" secondItem="Ce2-Eq-7f4" secondAttribute="trailing" constant="10" id="TP0-Qh-xgO"/>
                             <constraint firstAttribute="bottom" secondItem="zCE-lG-0mD" secondAttribute="bottom" constant="20" id="ZoN-8F-lLV"/>
                             <constraint firstItem="DeW-1k-1ar" firstAttribute="top" secondItem="Ce2-Eq-7f4" secondAttribute="bottom" constant="15" id="eJ1-Ed-hOa"/>
                             <constraint firstItem="zCE-lG-0mD" firstAttribute="top" secondItem="DeW-1k-1ar" secondAttribute="bottom" constant="30" id="iwG-0B-HxP"/>
@@ -130,7 +130,7 @@
     </objects>
     <designables>
         <designable name="DeW-1k-1ar">
-            <size key="intrinsicContentSize" width="98" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="90" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>

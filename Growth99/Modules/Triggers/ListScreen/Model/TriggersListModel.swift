@@ -46,8 +46,8 @@ struct EmailTemplateTrigger : Codable {
     let emailTarget : String?
     let questionnaire : String?
     let identifier : String?
-    let isCustom : String?
-    let isCloneTemplate : String?
+    let isCustom : Bool?
+    let isCloneTemplate : Bool?
 }
 
 struct BpmnEmailsTrigger : Codable {
@@ -129,8 +129,8 @@ struct SmsTemplateTrigger : Codable {
     let smsTarget : String?
     let defaultSmsTemplate : Bool?
     let active : Bool?
-    let isCustom : String?
-    let isCloneTemplate : String?
+    let isCustom : Bool?
+    let isCloneTemplate : Bool?
 }
 
 struct BpmnTasksTrigger : Codable {

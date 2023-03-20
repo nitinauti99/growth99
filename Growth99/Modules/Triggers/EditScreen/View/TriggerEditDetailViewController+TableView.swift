@@ -47,6 +47,17 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.leadFormSelectonButton.tag = indexPath.row
             cell.leadSourceUrlSelectonButton.addTarget(self, action: #selector(leadSourceUrlMethod), for: .touchDown)
             cell.leadSourceUrlSelectonButton.tag = indexPath.row
+            
+            cell.leadSourceTextLabel.text = viewModel?.getTriggerEditListData?.triggerConditions?.joined(separator: ",")
+            if (viewModel?.getTriggerEditListData?.landingPages?.count ?? 0) > 0 {
+                cell.leadLandingTextLabel.text = viewModel?.getTriggerEditListData?.landingPages?[0].name
+            }
+            if (viewModel?.getTriggerEditListData?.forms?.count ?? 0) > 0 {
+                cell.leadFormTextLabel.text = viewModel?.getTriggerEditListData?.forms?[0].name
+            }
+            if (viewModel?.getTriggerEditListData?.sourceUrls?.count ?? 0) > 0 {
+                cell.leadSourceUrlTextLabel.text = viewModel?.getTriggerEditListData?.sourceUrls?[0].sourceUrl
+            }
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}

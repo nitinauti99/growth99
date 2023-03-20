@@ -205,7 +205,7 @@ struct Consents : Codable {
     let body : String?
     let isDefault : Bool?
     let tag : String?
-    let isCustom : String?
+    let isCustom : Bool?
 }
 
 struct Patient : Codable {
