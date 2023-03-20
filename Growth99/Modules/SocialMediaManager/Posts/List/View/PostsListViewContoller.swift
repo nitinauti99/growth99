@@ -46,14 +46,8 @@ class PostsListViewContoller: UIViewController {
 
     
     @objc func creatPost() {
-//        let createUserVC = UIStoryboard(name: "CreatePostsViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePostsViewContoller") as! CreatePostsViewContoller
-//        self.navigationController?.pushViewController(createUserVC, animated: true)
-    }
-
-    func editPatieint(cell: PostsListTableViewCell, index: IndexPath) {
-//        let editVC = UIStoryboard(name: "PostsEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PostsEditViewController") as! PostsEditViewController
-//        editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
-//        self.navigationController?.pushViewController(editVC, animated: true)
+        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        self.navigationController?.pushViewController(createPostVC, animated: true)
     }
   
 }

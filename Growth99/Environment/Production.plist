@@ -7,6 +7,6 @@
 	<key>merchantUrlScheme</key>
 	<string>growth99</string>
 	<key>baseUrl</key>
-	<string>https://ws.moovetshop.com/</string>
+	<string>https://api.growth99.com</string>
 </dict>
 </plist>

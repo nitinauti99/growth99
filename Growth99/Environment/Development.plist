@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>baseUrl</key>
-	<string>https://sandbox.src.mastercard.com/srci/</string>
+	<string>https://api.growthemr.com</string>
 	<key>environmentName</key>
 	<string>Development</string>
 	<key>merchantUrlScheme</key>

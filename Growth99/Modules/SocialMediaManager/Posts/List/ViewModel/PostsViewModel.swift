@@ -16,6 +16,8 @@ protocol PostsListViewModelProtocol {
 class PostsListViewModel {
     var delegate: PostsListViewContollerProtocol?
     var postsListData: [PostsListModel] = []
+    var postPeginationList:  [PostsListModel] = []
+    var totalCount: Int? = 0
     
     init(delegate: PostsListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -28,11 +30,21 @@ class PostsListViewModel {
         self.requestManager.request(forPath: ApiUrl.socialMediaPosts, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PostsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let postsListData):
-                self.postsListData = postsListData
+                self.setUpData(postListData: postsListData)
                 self.delegate?.postListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func setUpData(postListData: [PostsListModel]) {
+        for item in postListData {
+            if item.totalCount == nil {
+                self.postPeginationList.append(item)
+            }else{
+                self.totalCount = item.totalCount ?? 0
             }
         }
     }
@@ -56,15 +68,15 @@ class PostsListViewModel {
     }
     
     func postsListDataAtIndex(index: Int)-> PostsListModel? {
-        return self.postsListData[index]
+        return self.postPeginationList[index]
     }
+    
 }
 
 extension PostsListViewModel: PostsListViewModelProtocol {
-  
     
     var getPostsListData: [PostsListModel] {
-        return self.postsListData
+        return self.postPeginationList
     }
     
 }

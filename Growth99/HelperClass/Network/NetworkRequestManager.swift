@@ -48,4 +48,34 @@ class GrowthRequestManager: GrowthNetworkManager {
          return queryItems
      }
     
+    func getBaseUrl() -> String {
+        guard let path = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+            print("Path not found")
+            return ""
+        }
+        
+        guard let dictionary = NSDictionary(contentsOfFile: path) else {
+            print("Unable to get dictionary from path")
+            return ""
+        }
+        
+        if let config = dictionary.object(forKey: "Config") {
+           
+            guard let path = Bundle.main.path(forResource: config as? String, ofType: "plist") else {
+                print("Path not found")
+                return ""
+            }
+            
+            guard let dictionary = NSDictionary(contentsOfFile: path) else {
+                print("Unable to get dictionary from path")
+                return ""
+            }
+            
+            print(dictionary)
+
+         return  dictionary.object(forKey: "baseUrl") as! String
+        }
+        
+        return ""
+    }
 }

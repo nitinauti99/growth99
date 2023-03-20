@@ -16,7 +16,7 @@ struct PostsListModel: Codable {
     let approved: Bool?
     let post: String?
     let createdBy: String?
-    let tenantId: String?
+    let tenantId: Int?
     let name: String?
     let id: Int?
     let hashtag: String?

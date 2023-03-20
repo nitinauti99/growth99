@@ -8,7 +8,8 @@
 import Foundation
 
 struct EndPoints {
-    static let baseURL = "https://api.growth99.com"
+    static let baseURL = GrowthRequestManager(configuration: URLSessionConfiguration.default).getBaseUrl()
+    
     static let auth = "/api/user/auth"
     static let register = "/api/account/register"
     static let forgotPassword = "/api/public/users/forgot-password"
@@ -156,7 +157,10 @@ struct EndPoints {
     static let createMediaPostLabels = "/api/socialMediaPostLabel"
     static let createSocialMediaPost = "/api/socialMediaPost"
     static let editTrigger = "/api/trigger/"
-    static let socialMediaPosts = "/api/v1/socialMediaPosts/pagination/list?page=0&size=50"
+    static let socialMediaPosts = "/api/v1/socialMediaPosts/pagination/list?page=0&size=500"
+    static let socialMediaPostLabelsList = "/api/socialMediaPostLabels/list"
+    static let socialProfilesList = "/api/social-profiles"
+
 }
 
 struct ApiUrl {
@@ -312,4 +316,6 @@ struct ApiUrl {
     static let createSocialMediaPost = EndPoints.baseURL.appending(EndPoints.createSocialMediaPost)
     static let editTrigger = EndPoints.baseURL.appending(EndPoints.editTrigger)
     static let socialMediaPosts = EndPoints.baseURL.appending(EndPoints.socialMediaPosts)
+    static let socialMediaPostLabelsList = EndPoints.baseURL.appending(EndPoints.socialMediaPostLabelsList)
+    static let socialProfilesList = EndPoints.baseURL.appending(EndPoints.socialProfilesList)
 }

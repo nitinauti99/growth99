@@ -8,7 +8,6 @@
 import UIKit
 
 protocol PostsListTableViewCellDelegate: AnyObject {
-    func editPosts(cell: PostsListTableViewCell, index: IndexPath)
     func detailPosts(cell: PostsListTableViewCell, index: IndexPath)
 }
 
@@ -41,16 +40,12 @@ class PostsListTableViewCell: UITableViewCell {
         self.id.text = String(userVM?.id ?? 0)
         self.post.text = userVM?.post ?? "-"
         self.hashtag.text = userVM?.hashtag ?? "-"
-//        self.postLabel.text = userVM?.postLabels.map({$0.name ?? String.blank}).joined(separator: ", ")
+        let list: [String] = (userVM?.postLabels ?? []).map({$0.name ?? String.blank})
+        self.postLabel.text = list.joined(separator: ", ")
         self.approve.text = String(userVM?.approved ?? false)
         self.CreatedDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank) ?? "-"
         self.sheduledDate.text =  dateFormater?.serverToLocal(date: userVM?.scheduledDate ?? String.blank) ?? "-"
         indexPath = index
-    }
-
-    
-    @IBAction func editButtonPressed() {
-        self.delegate?.editPosts(cell: self, index: indexPath)
     }
     
     @IBAction func detailButtonPressed() {
