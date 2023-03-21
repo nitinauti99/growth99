@@ -50,8 +50,8 @@ class MediaLibraryListViewController: UIViewController {
     }
     
     @objc func creatPost() {
-        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
-        self.navigationController?.pushViewController(createPostVC, animated: true)
+        let mediaTagsListVC = UIStoryboard(name: "MediaTagsListViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsListViewController") as! MediaTagsListViewController
+        self.navigationController?.pushViewController(mediaTagsListVC, animated: true)
     }
     
 }

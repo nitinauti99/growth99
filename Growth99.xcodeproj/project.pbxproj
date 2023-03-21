@@ -139,6 +139,14 @@
 		016F661029C8556900B1D248 /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F660F29C8556900B1D248 /* CreatePostViewModel.swift */; };
 		016F661229C8557400B1D248 /* CreatePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F661129C8557400B1D248 /* CreatePostModel.swift */; };
 		016F661429C8956700B1D248 /* MediaLibraryListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F661329C8956700B1D248 /* MediaLibraryListViewController+TableView.swift */; };
+		016F661F29C97D6200B1D248 /* MediaTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F661E29C97D6200B1D248 /* MediaTagsListViewController.swift */; };
+		016F662129C97D7000B1D248 /* MediaTagsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016F662029C97D7000B1D248 /* MediaTagsListViewController.storyboard */; };
+		016F662629C97D8E00B1D248 /* MediaTagsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F662429C97D8E00B1D248 /* MediaTagsListTableViewCell.swift */; };
+		016F662729C97D8E00B1D248 /* MediaTagsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016F662529C97D8E00B1D248 /* MediaTagsListTableViewCell.xib */; };
+		016F662929C97D9A00B1D248 /* MediaTagsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F662829C97D9A00B1D248 /* MediaTagsListViewModel.swift */; };
+		016F662B29C97DA300B1D248 /* MediaTagsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F662A29C97DA300B1D248 /* MediaTagsListModel.swift */; };
+		016F662D29C9824500B1D248 /* MediaTagsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F662C29C9824500B1D248 /* MediaTagsListViewController+TableView.swift */; };
+		016F662F29C9825D00B1D248 /* MediaTagsListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F662E29C9825D00B1D248 /* MediaTagsListViewController+SearchBar.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -990,6 +998,14 @@
 		016F660F29C8556900B1D248 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
 		016F661129C8557400B1D248 /* CreatePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostModel.swift; sourceTree = "<group>"; };
 		016F661329C8956700B1D248 /* MediaLibraryListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryListViewController+TableView.swift"; sourceTree = "<group>"; };
+		016F661E29C97D6200B1D248 /* MediaTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTagsListViewController.swift; sourceTree = "<group>"; };
+		016F662029C97D7000B1D248 /* MediaTagsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaTagsListViewController.storyboard; sourceTree = "<group>"; };
+		016F662429C97D8E00B1D248 /* MediaTagsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTagsListTableViewCell.swift; sourceTree = "<group>"; };
+		016F662529C97D8E00B1D248 /* MediaTagsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaTagsListTableViewCell.xib; sourceTree = "<group>"; };
+		016F662829C97D9A00B1D248 /* MediaTagsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTagsListViewModel.swift; sourceTree = "<group>"; };
+		016F662A29C97DA300B1D248 /* MediaTagsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTagsListModel.swift; sourceTree = "<group>"; };
+		016F662C29C9824500B1D248 /* MediaTagsListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaTagsListViewController+TableView.swift"; sourceTree = "<group>"; };
+		016F662E29C9825D00B1D248 /* MediaTagsListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaTagsListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -2561,6 +2577,53 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		016F661A29C97D0E00B1D248 /* MediaTags */ = {
+			isa = PBXGroup;
+			children = (
+				016F661D29C97D3700B1D248 /* Model */,
+				016F661C29C97D3500B1D248 /* ViewModel */,
+				016F661B29C97D3300B1D248 /* View */,
+			);
+			path = MediaTags;
+			sourceTree = "<group>";
+		};
+		016F661B29C97D3300B1D248 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				016F662229C97D7400B1D248 /* Cell */,
+				016F661E29C97D6200B1D248 /* MediaTagsListViewController.swift */,
+				016F662029C97D7000B1D248 /* MediaTagsListViewController.storyboard */,
+				016F662C29C9824500B1D248 /* MediaTagsListViewController+TableView.swift */,
+				016F662E29C9825D00B1D248 /* MediaTagsListViewController+SearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		016F661C29C97D3500B1D248 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				016F662829C97D9A00B1D248 /* MediaTagsListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		016F661D29C97D3700B1D248 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				016F662A29C97DA300B1D248 /* MediaTagsListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		016F662229C97D7400B1D248 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				016F662429C97D8E00B1D248 /* MediaTagsListTableViewCell.swift */,
+				016F662529C97D8E00B1D248 /* MediaTagsListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
 			isa = PBXGroup;
 			children = (
@@ -3515,6 +3578,7 @@
 			isa = PBXGroup;
 			children = (
 				016F661929C8D22200B1D248 /* List */,
+				016F661A29C97D0E00B1D248 /* MediaTags */,
 			);
 			path = MediaLibrary;
 			sourceTree = "<group>";
@@ -6661,6 +6725,7 @@
 				84D062A12967070D001FE469 /* UserListViewContoller.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */,
+				016F662729C97D8E00B1D248 /* MediaTagsListTableViewCell.xib in Resources */,
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				01684C1329BAE89F00DE1041 /* ChatSessionListViewController.storyboard in Resources */,
@@ -6707,6 +6772,7 @@
 				013A4FE129B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				1896709429BA5E62003224ED /* LeadTriggersTableViewCell.xib in Resources */,
 				189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */,
+				016F662129C97D7000B1D248 /* MediaTagsListViewController.storyboard in Resources */,
 				01684C4729BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
@@ -6980,6 +7046,7 @@
 				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
+				016F662929C97D9A00B1D248 /* MediaTagsListViewModel.swift in Sources */,
 				01684C4629BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift in Sources */,
 				84D0623929670677001FE469 /* PateintListViewContoller.swift in Sources */,
 				848A038E29941846004FE278 /* EmailTemplateViewModel.swift in Sources */,
@@ -7081,6 +7148,7 @@
 				01EBAC4E29B5869200110DCB /* LeadTagsAddViewController.swift in Sources */,
 				84F6111A292A71AB00B1FB69 /* GrowthNetworkError.swift in Sources */,
 				01EBAC5E29B58BAD00110DCB /* LeadSourceUrlListViewController.swift in Sources */,
+				016F662629C97D8E00B1D248 /* MediaTagsListTableViewCell.swift in Sources */,
 				39EBABC02991576B001B789D /* GrowthDateFormats.swift in Sources */,
 				398F90F8298ECB8700DB96E4 /* IQKeyboardManager+Debug.swift in Sources */,
 				01BBA9E929AB9447006A5DB8 /* CreateNotificationViewController.swift in Sources */,
@@ -7324,6 +7392,7 @@
 				1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */,
 				013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
+				016F662D29C9824500B1D248 /* MediaTagsListViewController+TableView.swift in Sources */,
 				01EBAC9329B6392600110DCB /* ScrapeWebsiteViewController.swift in Sources */,
 				84D063572967EA81001FE469 /* TasksListViewController.swift in Sources */,
 				1883F12E29C7571E0080997B /* Country.swift in Sources */,
@@ -7396,6 +7465,7 @@
 				1896709129BA5E62003224ED /* TriggersListViewController+TableView.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
+				016F662B29C97DA300B1D248 /* MediaTagsListModel.swift in Sources */,
 				849D3AEE2997CC72003E856A /* FontAwesomeExtension.swift in Sources */,
 				39FC690F29B3D26400FCB7C6 /* AnnouncementsViewModel.swift in Sources */,
 				013A4FDC29B4E3FA00CA24B0 /* TextTypeTableViewCell.swift in Sources */,
@@ -7454,11 +7524,13 @@
 				8440B3932999FE4900A42097 /* FormListViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
+				016F661F29C97D6200B1D248 /* MediaTagsListViewController.swift in Sources */,
 				84D0628B29670677001FE469 /* User.swift in Sources */,
 				845C39D4292276B000D934C5 /* Constant.swift in Sources */,
 				848C92AB291F6AA000502956 /* RSSelectionMenuDelegate.swift in Sources */,
 				01152E0C29B38C4D00B24627 /* PateintsTagsListViewController+TableView.swift in Sources */,
 				398F90EC298ECB8700DB96E4 /* IQPreviousNextView.swift in Sources */,
+				016F662F29C9825D00B1D248 /* MediaTagsListViewController+SearchBar.swift in Sources */,
 				398F9100298ECB8700DB96E4 /* IQKeyboardManager+UITextFieldViewNotification.swift in Sources */,
 				01152E0729B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift in Sources */,
 				398F90FE298ECB8700DB96E4 /* IQUIView+Hierarchy.swift in Sources */,
