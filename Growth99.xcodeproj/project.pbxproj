@@ -150,6 +150,12 @@
 		016F663629C9ADE300B1D248 /* MediaTagsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F663529C9ADE300B1D248 /* MediaTagsAddViewController.swift */; };
 		016F663829C9ADF500B1D248 /* MediaTagsAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016F663729C9ADF500B1D248 /* MediaTagsAddViewController.storyboard */; };
 		016F663A29C9AE0300B1D248 /* MediaTagsAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F663929C9AE0300B1D248 /* MediaTagsAddViewModel.swift */; };
+		016F664029C9EF8600B1D248 /* MediaLibraryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F663F29C9EF8600B1D248 /* MediaLibraryAddViewController.swift */; };
+		016F664229C9EF8E00B1D248 /* MediaLibraryAddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016F664129C9EF8E00B1D248 /* MediaLibraryAddViewController.storyboard */; };
+		016F664429C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664329C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift */; };
+		016F664629C9EFA600B1D248 /* MediaLibraryAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */; };
+		016F664829CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */; };
+		016F664A29CA13E000B1D248 /* UIImageView+Extenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -1012,6 +1018,12 @@
 		016F663529C9ADE300B1D248 /* MediaTagsAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTagsAddViewController.swift; sourceTree = "<group>"; };
 		016F663729C9ADF500B1D248 /* MediaTagsAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaTagsAddViewController.storyboard; sourceTree = "<group>"; };
 		016F663929C9AE0300B1D248 /* MediaTagsAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTagsAddViewModel.swift; sourceTree = "<group>"; };
+		016F663F29C9EF8600B1D248 /* MediaLibraryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryAddViewController.swift; sourceTree = "<group>"; };
+		016F664129C9EF8E00B1D248 /* MediaLibraryAddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MediaLibraryAddViewController.storyboard; sourceTree = "<group>"; };
+		016F664329C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryAddViewModel.swift; sourceTree = "<group>"; };
+		016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryAddModel.swift; sourceTree = "<group>"; };
+		016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryAddViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
+		016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extenssion.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -2642,7 +2654,6 @@
 		016F663129C9ADAA00B1D248 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				016F663429C9ADB700B1D248 /* Model */,
 				016F663329C9ADB500B1D248 /* ViewModel */,
 				016F663229C9ADB300B1D248 /* View */,
 			);
@@ -2666,11 +2677,40 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
-		016F663429C9ADB700B1D248 /* Model */ = {
+		016F663B29C9EEC200B1D248 /* AddMediaLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				016F663E29C9EEFE00B1D248 /* Model */,
+				016F663D29C9EEFB00B1D248 /* ViewModel */,
+				016F663C29C9EEF900B1D248 /* View */,
 			);
-			name = Model;
+			path = AddMediaLibrary;
+			sourceTree = "<group>";
+		};
+		016F663C29C9EEF900B1D248 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				016F663F29C9EF8600B1D248 /* MediaLibraryAddViewController.swift */,
+				016F664129C9EF8E00B1D248 /* MediaLibraryAddViewController.storyboard */,
+				016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		016F663D29C9EEFB00B1D248 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				016F664329C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		016F663E29C9EEFE00B1D248 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
@@ -3627,6 +3667,7 @@
 			isa = PBXGroup;
 			children = (
 				016F661929C8D22200B1D248 /* List */,
+				016F663B29C9EEC200B1D248 /* AddMediaLibrary */,
 				016F661A29C97D0E00B1D248 /* MediaTags */,
 			);
 			path = MediaLibrary;
@@ -5020,6 +5061,7 @@
 				01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */,
 				01684C2129BB7BBF00DE1041 /* UIIMageExtension.swift */,
 				18BDB69429BFA46700AE1582 /* RadioButton.swift */,
+				016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */,
 			);
 			path = Extenssion;
 			sourceTree = "<group>";
@@ -6765,6 +6807,7 @@
 				01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */,
+				016F664229C9EF8E00B1D248 /* MediaLibraryAddViewController.storyboard in Resources */,
 				84903519299572C200556D47 /* ConsentsTemplateListTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
 				01D9EBFA29B8D2D30099761C /* DisplayQuestionnaireqsubmissionsViewContoller.storyboard in Resources */,
@@ -7082,6 +7125,7 @@
 				84D0624329670677001FE469 /* HomeViewModel.swift in Sources */,
 				01C7484729B0E8F90085CED2 /* TasksListViewController+TableView.swift in Sources */,
 				01C7489029B22E670085CED2 /* ServicesListViewController+TableView.swift in Sources */,
+				016F664829CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift in Sources */,
 				84F610EF292A71AB00B1FB69 /* Future.swift in Sources */,
 				84F610DF292A71AB00B1FB69 /* Time.swift in Sources */,
 				01EBACA329B64E2900110DCB /* chatQuestionnaireModel.swift in Sources */,
@@ -7180,6 +7224,7 @@
 				01684C2E29BCEF7300DE1041 /* ChatBotTemplateModel.swift in Sources */,
 				18491DB429B80CE000FE72EF /* MassEmailandSMSModuleTableViewCell.swift in Sources */,
 				849004A62986C2CD00A271AA /* PateintsTagsAddViewController.swift in Sources */,
+				016F664429C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift in Sources */,
 				01152E0029B31C2A00B24627 /* PateintsTimeLineModel.swift in Sources */,
 				84D0623329670677001FE469 /* VacationsHeadeView.swift in Sources */,
 				84F610EC292A71AB00B1FB69 /* PeekableIterator.swift in Sources */,
@@ -7432,6 +7477,7 @@
 				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
+				016F664A29CA13E000B1D248 /* UIImageView+Extenssion.swift in Sources */,
 				01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */,
 				01468E3D29C1F297002BDC1F /* leadDetailViewController+SMSTemplate.swift in Sources */,
 				01DBA99729C5A2D200CBA51D /* CreateSocialProfileViewController.swift in Sources */,
@@ -7457,6 +7503,7 @@
 				8473208729797FE5003099BB /* PateintListViewContoller+TableView.swift in Sources */,
 				01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* GrowthDownloadTaskOperation.swift in Sources */,
+				016F664029C9EF8600B1D248 /* MediaLibraryAddViewController.swift in Sources */,
 				8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */,
 				01684C2229BB7BBF00DE1041 /* UIIMageExtension.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
@@ -7676,6 +7723,7 @@
 				848EEA8E299A5F6300F6E3D5 /* CreateFormViewController.swift in Sources */,
 				189E3EE529C391D900B94190 /* PostsListViewContoller.swift in Sources */,
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
+				016F664629C9EFA600B1D248 /* MediaLibraryAddModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,
 				84B75ED1296904DA00962F3E /* ServicesListModel.swift in Sources */,
 				01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */,

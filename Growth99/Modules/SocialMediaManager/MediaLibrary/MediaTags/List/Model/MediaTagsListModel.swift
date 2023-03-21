@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaTagListModel: Codable {
+struct MediaTagListModel: Codable, Equatable {
     let name: String?
     let isDefault: Bool?
     let id: Int?

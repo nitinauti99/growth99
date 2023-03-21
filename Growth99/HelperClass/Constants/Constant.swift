@@ -181,6 +181,8 @@ struct Constant {
         static let categoryNameRequired = "Category Name is required."
         static let leadListTitle = "Lead Dashboard"
         static let deletedLeadListTitle = "Deleted Leads"
+        static let editMediaLibrary = "Edit Image"
+        static let createMediaLibrary = "Add Image"
     }
     
     struct Regex {
