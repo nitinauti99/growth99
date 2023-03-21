@@ -40,14 +40,15 @@ extension MediaTagsListViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailController = UIStoryboard(name: "MediaTagssAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagssAddViewController") as! MediaTagsAddViewController
-//        detailController.leadTagScreenName = "Edit Screen"
-//
-//        if self.isSearch {
-//            detailController.patientTagId = viewModel?.leadTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
-//        }else{
-//            detailController.patientTagId = viewModel?.leadTagsListDataAtIndex(index: indexPath.row)?.id ?? 0
-//        }
-   //     navigationController?.pushViewController(detailController, animated: true)
+        let detailController = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
+        detailController.mediaTagScreenName = "Edit Screen"
+
+        if self.isSearch {
+            detailController.mediaTagId = viewModel?.mediaTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
+        }else{
+            detailController.mediaTagId = viewModel?.mediaTagsListDataAtIndex(index: indexPath.row)?.id ?? 0
+        }
+        navigationController?.pushViewController(detailController, animated: true)
     }
+    
 }

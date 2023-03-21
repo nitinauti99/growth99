@@ -163,6 +163,7 @@ struct EndPoints {
     static let socialMediaTagList = "/api/socialMedia/tag/list"
     static let socialMediaLibraries = "/api/socialMedia/libraries?"
     static let socialMediaTaglist = "/api/socialMedia/tag/list"
+    static let mediaTagUrl = "/api/socialMedia/tag/"
 }
 
 struct ApiUrl {
@@ -212,14 +213,14 @@ struct ApiUrl {
     static let patientsConsentsList = EndPoints.baseURL.appending(EndPoints.patientsConsentsList)
     static let removePatientsTags = EndPoints.baseURL.appending(EndPoints.removePatientsTags)
     static let patientsQuestionnaireDetail = EndPoints.baseURL.appending(EndPoints.patientsQuestionnaireDetail)
-
+    
     static let emailTemplatesList = EndPoints.baseURL.appending(EndPoints.emailTemplatesList)
     static let smsTemplatesList = EndPoints.baseURL.appending(EndPoints.smsTemplatesList)
     static let consentsTemplatesList = EndPoints.baseURL.appending(EndPoints.consentsTemplatesList)
     static let questionnaireTemplatesList = EndPoints.baseURL.appending(EndPoints.questionnaireTemplatesList)
     static let removeConsents = EndPoints.baseURL.appending(EndPoints.removeConsents)
     static let removeQuestionnaire = EndPoints.baseURL.appending(EndPoints.removeQuestionnaire)
-
+    
     static let smstemplates = EndPoints.baseURL.appending(EndPoints.smstemplates)
     static let emailTemplates = EndPoints.baseURL.appending(EndPoints.emailTemplates)
     static let updatePatientsInfo = EndPoints.baseURL.appending(EndPoints.updatePatientsInfo)
@@ -323,5 +324,5 @@ struct ApiUrl {
     static let socialMediaTagList = EndPoints.baseURL.appending(EndPoints.socialMediaTagList)
     static let socialMediaLibraries = EndPoints.baseURL.appending(EndPoints.socialMediaLibraries)
     static let socialMediaTaglist = EndPoints.baseURL.appending(EndPoints.socialMediaTaglist)
-
+    static let mediaTagUrl = EndPoints.baseURL.appending(EndPoints.mediaTagUrl)
 }

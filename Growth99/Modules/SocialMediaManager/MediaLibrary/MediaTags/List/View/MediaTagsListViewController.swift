@@ -8,9 +8,9 @@
 import UIKit
 
 protocol MediaTagsListViewControllerProtocol: AnyObject {
-    func leadTagListRecived()
+    func mediaTagListRecived()
     func errorReceived(error: String)
-    func leadTagRemovedSuccefully(message: String)
+    func mediaTagRemovedSuccefully(message: String)
 }
 
 class MediaTagsListViewController: UIViewController {
@@ -45,9 +45,9 @@ class MediaTagsListViewController: UIViewController {
     }
     
     @objc func creatUser() {
-//        let leadTagsAddVC = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
-//        leadTagsAddVC.leadTagScreenName = "Create Screen"
-//        self.navigationController?.pushViewController(leadTagsAddVC, animated: true)
+        let mediaTagsAddVC = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
+        mediaTagsAddVC.mediaTagScreenName = "Create Screen"
+        self.navigationController?.pushViewController(mediaTagsAddVC, animated: true)
     }
     
     func addSerchBar(){
@@ -62,7 +62,7 @@ class MediaTagsListViewController: UIViewController {
 }
 extension MediaTagsListViewController: MediaTagsListViewControllerProtocol {
     
-    func leadTagListRecived() {
+    func mediaTagListRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
     }
@@ -73,7 +73,7 @@ extension MediaTagsListViewController: MediaTagsListViewControllerProtocol {
     }
     
     
-    func leadTagRemovedSuccefully(message: String){
+    func mediaTagRemovedSuccefully(message: String){
         self.view.showToast(message: message, color: .red)
         viewModel?.getMediaTagsList()
     }
@@ -86,18 +86,18 @@ extension MediaTagsListViewController: MediaTagsListTableViewCellDelegate{
         var tagId: Int = 0
        
         if self.isSearch {
-            tagId = self.viewModel?.leadTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
-            tagName = self.viewModel?.leadTagsFilterListDataAtIndex(index: index.row)?.name ?? String.blank
+            tagId = self.viewModel?.mediaTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            tagName = self.viewModel?.mediaTagsFilterListDataAtIndex(index: index.row)?.name ?? String.blank
         }else{
-            tagId = self.viewModel?.leadTagsListDataAtIndex(index: index.row)?.id ?? 0
-            tagName = self.viewModel?.leadTagsListDataAtIndex(index: index.row)?.name ?? String.blank
+            tagId = self.viewModel?.mediaTagsListDataAtIndex(index: index.row)?.id ?? 0
+            tagName = self.viewModel?.mediaTagsListDataAtIndex(index: index.row)?.name ?? String.blank
         }
         
         let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()
-            self?.viewModel?.removeMediaTag(leadId: tagId)
+            self?.viewModel?.removeMediaTag(mediaId: tagId)
         })
         cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
         alert.addAction(cancelAlert)
@@ -108,13 +108,13 @@ extension MediaTagsListViewController: MediaTagsListTableViewCellDelegate{
 
 
     func editMediaTag(cell: MediaTagsListTableViewCell, index: IndexPath) {
-//        let detailController = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
-//        detailController.leadTagScreenName = "Edit Screen"
-//        if self.isSearch {
-//            detailController.patientTagId = viewModel?.leadTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
-//        }else{
-//            detailController.patientTagId = viewModel?.leadTagsListDataAtIndex(index: index.row)?.id ?? 0
-//        }
-   //     navigationController?.pushViewController(detailController, animated: true)
+        let detailController = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
+        detailController.mediaTagScreenName = "Edit Screen"
+        if self.isSearch {
+            detailController.mediaTagId = viewModel?.mediaTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
+        }else{
+            detailController.mediaTagId = viewModel?.mediaTagsListDataAtIndex(index: index.row)?.id ?? 0
+        }
+        navigationController?.pushViewController(detailController, animated: true)
     }
 }

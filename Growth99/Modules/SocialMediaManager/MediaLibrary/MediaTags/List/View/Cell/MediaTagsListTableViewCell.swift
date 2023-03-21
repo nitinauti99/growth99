@@ -33,14 +33,14 @@ class MediaTagsListTableViewCell: UITableViewCell {
     }
     
     func configureCellWithSearch(questionarieVM: MediaTagsListViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.leadTagsFilterListDataAtIndex(index: index.row)
+        let questionarieVM = questionarieVM?.mediaTagsFilterListDataAtIndex(index: index.row)
         self.name.text = questionarieVM?.name
         self.id.text = String(questionarieVM?.id ?? 0)
         indexPath = index
     }
     
     func configureCell(questionarieVM: MediaTagsListViewModelProtocol?, index: IndexPath) {
-        let questionarieVM = questionarieVM?.leadTagsListDataAtIndex(index: index.row)
+        let questionarieVM = questionarieVM?.mediaTagsListDataAtIndex(index: index.row)
         self.name.text = questionarieVM?.name
         self.id.text = String(questionarieVM?.id ?? 0)
         indexPath = index
