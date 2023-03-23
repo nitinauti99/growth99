@@ -152,7 +152,7 @@
                                                     <constraint firstItem="rjj-ER-J1b" firstAttribute="top" secondItem="VBe-od-4XS" secondAttribute="bottom" constant="9.9999999999999716" id="yhz-oy-wfp"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9it-7d-Rlm" customClass="HyperLinkLabel" customModule="Growth99" customModuleProvider="target">
+                                            <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9it-7d-Rlm" customClass="HyperLinkLabel" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="521" width="280" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="iK4-Pw-8zE"/>
@@ -211,7 +211,6 @@
                         <outlet property="emailTextField" destination="4Hn-Qt-BQe" id="bQm-f7-FFo"/>
                         <outlet property="forgotPasswoardLbl" destination="VBe-od-4XS" id="uia-Bn-uLo"/>
                         <outlet property="loginButton" destination="1bv-bA-KDe" id="J4Y-Vh-rfx"/>
-                        <outlet property="loginSignUpLbl" destination="9it-7d-Rlm" id="M7S-bi-3iM"/>
                         <outlet property="loginView" destination="MB0-bP-HPM" id="NNT-VN-t0S"/>
                         <outlet property="passwordTextField" destination="rjj-ER-J1b" id="CJe-BA-mIO"/>
                     </connections>
