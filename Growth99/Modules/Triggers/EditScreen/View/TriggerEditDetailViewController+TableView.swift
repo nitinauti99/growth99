@@ -88,11 +88,35 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 cell.taskBtn.isHidden = true
                 cell.taskLabel.isHidden = true
             }
+            
+            for index in viewModel?.getTriggerEditListData?.triggerData ?? [] {
+                if index.triggerType == "SMS" {
+                    cell.smsBtn.isSelected = true
+                    cell.emailBtn.isSelected = true
+                    cell.taskBtn.isSelected = true
+                    
+                    cell.selectSMSTargetTextLabel.text = index.triggerType
+                     let selectSMSNetworkName = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == index.triggerTemplate ?? 0} ) ?? []
+                    cell.selectSMSNetworkTextLabel.text = selectSMSNetworkName[0].name ?? String.blank
+                } else if index.triggerType == "EMAIL" {
+                    cell.smsBtn.isSelected = false
+                    cell.emailBtn.isSelected = true
+                    cell.taskBtn.isSelected = false
+                    
+                    cell.selectEmailTargetTextLabel.text = index.triggerType
+                    let selectEmailNetworkName = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.id == index.triggerTemplate ?? 0} ) ?? []
+                    cell.selectEmailNetworkTextLabel.text = selectEmailNetworkName[0].name ?? String.blank
+                } else {
+                    cell.smsBtn.isSelected = false
+                    cell.emailBtn.isSelected = false
+                    cell.taskBtn.isSelected = true
+                }
+            }
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerTimeTableViewCell", for: indexPath) as? TriggerTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            if moduleSelectionType == "lead" {
+            if viewModel?.getTriggerEditListData?.triggerData?[0].triggerTarget == "lead" {
                 cell.timeRangeView.isHidden = false
                 cell.timeFrequencyLbl.isHidden = false
                 cell.timeRangeLbl.isHidden = false
@@ -111,10 +135,20 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 cell.timeRangeButton.isHidden = true
                 cell.scheduledBasedOnButton.isEnabled = true
             }
+            if viewModel?.getTriggerEditListData?.triggerData?[0].timerType == "Frequency" {
+                cell.timeFrequencyButton.isSelected = true
+                cell.timeRangeButton.isSelected = false
+            } else {
+                cell.timeFrequencyButton.isSelected = false
+                cell.timeRangeButton.isSelected = true
+            }
             cell.timeHourlyButton.tag = indexPath.row
             cell.timeHourlyButton.addTarget(self, action: #selector(timeHourlyButtonMethod), for: .touchDown)
             cell.scheduledBasedOnButton.tag = indexPath.row
             cell.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnButtonMethod), for: .touchDown)
+            cell.timeHourlyTextField.text = viewModel?.getTriggerEditListData?.triggerData?[0].triggerFrequency ?? ""
+            let triggerTime = viewModel?.getTriggerEditListData?.triggerData?[0].triggerTime
+            cell.timeDurationTextField.text = String(triggerTime ?? 0)
             return cell
         }
         return UITableViewCell()

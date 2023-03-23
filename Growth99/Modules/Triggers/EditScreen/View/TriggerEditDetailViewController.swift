@@ -58,7 +58,9 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var selectedleadForms: [EditLandingPageNamesModel] = []
     var appointmentStatusArray: [String] = []
     var selectedAppointmentStatus: [String] = []
-    
+    var selectedSMSNetwork = [SmsTemplateEditDTOListTrigger]()
+    var selectedEmailNetwork = [EmailEditTemplateDTOListTrigger]()
+
     var leadSourceUrlArray = [LeadSourceUrlListModel]()
     var selectedLeadSourceUrl = [LeadSourceUrlListModel]()
     
@@ -159,8 +161,11 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
             } else if modelData?.moduleName == "Appointment" {
                 triggerDetailList.append(appointmentScreen)
             }
-            triggerDetailList.append(createScreen)
-            triggerDetailList.append(timeScreen)
+            
+            for _ in 1...(modelData?.triggerData?.count ?? 0) {
+                triggerDetailList.append(createScreen)
+                triggerDetailList.append(timeScreen)
+            }
         }
         selectedLeadSources = modelData?.triggerConditions ?? []
         selectedLeadLandingPages = modelData?.landingPages ?? []
