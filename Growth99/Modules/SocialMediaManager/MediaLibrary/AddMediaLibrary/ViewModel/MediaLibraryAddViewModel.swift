@@ -11,7 +11,7 @@ protocol MediaLibraryAddViewModelProtocol {
     func getSocialMediaTagList()
     func getMediaLibraryDetails(mediaTagId: Int)
     func saveMediaLibraryDetails(mediaTagId:Int, name: String)
-    func createMediaLibraryDetails(tageId: [Int], imageData: String)
+    func createMediaLibraryDetails(tageId: [Int], image: UIImage)
     
     var getSocialMediaTagListData: [MediaTagListModel]? { get }
     var mediaMediaLibraryDetailsData: MediaTagListModel? { get }
@@ -43,7 +43,7 @@ class MediaLibraryAddViewModel {
     
     func getMediaLibraryDetails(mediaTagId: Int) {
         let finaleUrl = ApiUrl.mediaTagUrl + "\(mediaTagId)"
-
+        
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< MediaTagListModel, GrowthNetworkError>) in
             switch result {
             case .success(let mediaTagDict):
@@ -74,21 +74,24 @@ class MediaLibraryAddViewModel {
         }
     }
     
-    func createMediaLibraryDetails(tageId: [Int], imageData: String) {
-        let parameters: Parameters = [
-            "tags": tageId.map { String($0) }.joined(separator: ","),
-            "file": imageData
-        ]
-        self.requestManager.request(forPath: ApiUrl.socialMediaLibrary, method: .POST, headers: self.requestManager.Headers(),task:.requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  (result: Result< MediaTagListModel, GrowthNetworkError>) in
+    func createMediaLibraryDetails(tageId: [Int], image: UIImage) {
+        let tagIds = tageId.map { String($0) }.joined(separator: ",")
+        
+        self.requestManager.request(requestable: MediaImage.upload(image: image.pngData() ?? Data(), str: tageId)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let mediaMediaLibraryDetails):
-                self.mediaMediaLibraryDetailsDict = mediaMediaLibraryDetails
-                self.delegate?.saveMediaTagList(responseMessage:"Media MediaLibrary details Saved")
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.saveMediaTagList(responseMessage:"Media MediaLibrary details Saved")
+                } else {
+                    self.delegate?.errorReceived(error: "error")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
             }
         }
+    
     }
 }
 

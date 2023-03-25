@@ -9,13 +9,22 @@ import Foundation
 
 
 protocol CreatePostViewModelProtocol {
-    ///get all task list
+    ///get all  SocialMediaPost list
     func getSocialMediaPostLabelsList()
     var getSocialMediaPostLabelsListData: [SocialMediaPostLabelsList] { get }
     
-    /// get all patients list
-    func getsocialProfilesList()
-    var getsocialProfilesListData: [SocialProfilesList] { get }
+    /// get all SocialProfiles
+    func getSocialProfilesList()
+    var getSocialProfilesListData: [SocialProfilesList] { get }
+    
+    /// get social post
+     func getSocialPost(postId: Int)
+    
+    /// get PostImage From lbrariesList
+    func getSocialPostImageFromLbrariesList(page: Int,size: Int, search: String, tags: Int)
+    var getSocialPostImageList: [Content] { get }
+    func getSocialPostImageListDataAtIndex(index: Int)-> Content?
+
     
     /// create patients user
     func createPost(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
@@ -26,15 +35,20 @@ class CreatePostViewModel {
   
     var socialMediaPostLabelsListData: [SocialMediaPostLabelsList] = []
     var socialProfilesListData: [SocialProfilesList] = []
-
-    var delegate: CreatePostViewControllerProtocol?
+    var socialPostData: PostsListModel?
+    var socialPostImageList: [Content] = []
     
-    init(delegate: CreatePostViewControllerProtocol? = nil) {
+    var delegate: CreatePostViewControllerProtocol?
+    var addImageDelegate: PostImageListViewControllerProtocol?
+    
+    init(delegate: CreatePostViewControllerProtocol? = nil, addImageDelegate : PostImageListViewControllerProtocol? = nil) {
         self.delegate = delegate
+        self.addImageDelegate = addImageDelegate
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
+    // to get Social Media PostLabel list
     func getSocialMediaPostLabelsList() {
         self.requestManager.request(forPath: ApiUrl.socialMediaPostLabelsList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[SocialMediaPostLabelsList], GrowthNetworkError>) in
             switch result {
@@ -48,7 +62,8 @@ class CreatePostViewModel {
         }
     }
     
-    func getsocialProfilesList() {
+    // to get social media social-profiles list
+    func getSocialProfilesList() {
         self.requestManager.request(forPath: ApiUrl.socialProfilesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[SocialProfilesList], GrowthNetworkError>) in
             switch result {
             case .success(let socialProfilesList):
@@ -61,8 +76,38 @@ class CreatePostViewModel {
         }
     }
     
+    // to get social post from list based selected id
+    func getSocialPost(postId: Int) {
+        self.requestManager.request(forPath: ApiUrl.createSocialMediaPost.appending("/\(postId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result< PostsListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let postsData):
+                self.socialPostData = postsData
+                self.delegate?.socialPostRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    /// get image from imageLibrary
+    func getSocialPostImageFromLbrariesList(page: Int,size: Int, search: String, tags: Int) {
+        let url = "page=\(page)&size=\(size)&search=\(search)&tags="
+      
+        self.requestManager.request(forPath: ApiUrl.socialMediaLibraries.appending(url), method: .GET, headers: self.requestManager.Headers()) {  (result: Result< MediaLibraryListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let pateintsTagList):
+                self.socialPostImageList = pateintsTagList.content ?? []
+                self.delegate?.socialPostImageListRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
     func createPost(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String){
-        var urlParameter: Parameters = [
+        let urlParameter: Parameters = [
                 "name": name,
                 "description": description,
                 "workflowTaskStatus": workflowTaskStatus,
@@ -84,17 +129,27 @@ class CreatePostViewModel {
             }
         }
     }
+    
+    func getSocialPostImageListDataAtIndex(index: Int)-> Content? {
+        return self.socialPostImageList[index]
+    }
+
 
 }
 
 extension CreatePostViewModel: CreatePostViewModelProtocol {
+    
    
     var getSocialMediaPostLabelsListData: [SocialMediaPostLabelsList] {
         return self.socialMediaPostLabelsListData
     }
 
-    var getsocialProfilesListData: [SocialProfilesList] {
+    var getSocialProfilesListData: [SocialProfilesList] {
         return self.socialProfilesListData
     }
 
+    var getSocialPostImageList: [Content] {
+        return self.getSocialPostImageList
+    }
+        
 }

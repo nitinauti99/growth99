@@ -329,4 +329,3 @@ struct ApiUrl {
     static let socialMediaLibrary = EndPoints.baseURL.appending(EndPoints.socialMediaLibrary)
 
 }
-

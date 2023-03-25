@@ -25,6 +25,7 @@ class SocialProfilesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialProfilesData.count ?? 0)
         self.viewModel = SocialProfilesListViewModel(delegate: self)
         self.setBarButton()
     }
@@ -43,13 +44,33 @@ class SocialProfilesListViewController: UIViewController {
     }
     
     func setBarButton(){
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(creatUser), imageName: "add")
+        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(openSocialPlatform), imageName: "add")
     }
     
-    @objc func creatUser() {
-        let PateintsTagsAddVC = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
-       // PateintsTagsAddVC.SocialProfilesScreenName = "Create Screen"
-        self.navigationController?.pushViewController(PateintsTagsAddVC, animated: true)
+    @objc func openSocialPlatform(sender: UIButton) {
+        let rolesArray = ["Facebook", "Instagram", "Linkedin"]
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
+            cell.textLabel?.text = taskUserList
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+            print(text ?? "")
+            if text == "Facebook" {
+                if let url = URL(string: "https://www.facebook.com/login/"), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }else if (text == "Instagram") {
+                if let url = URL(string: "https://www.instagram.com/accounts/login/"), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }else {
+                if let url = URL(string: "https://www.linkedin.com/login"), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: 150, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
     func addSerchBar(){
@@ -87,7 +108,7 @@ extension SocialProfilesListViewController: SocialProfilesListTableViewCellDeleg
             tagName = self.viewModel?.socialProfilesListDataAtIndex(index: index.row)?.name ?? String.blank
         }
         
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Social Profile", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()
@@ -105,11 +126,12 @@ extension SocialProfilesListViewController: SocialProfilesListViewControllerProt
     
     func socialProfilesListRecived() {
         self.view.HideSpinner()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialProfilesData.count ?? 0)
         self.tableView.reloadData()
     }
     
     func socialProfilesRemovedSuccefully(message: String){
-        self.view.showToast(message: message, color: .red)
+        self.view.showToast(message: message, color: .systemGreen)
         viewModel?.getSocialProfilesList()
     }
     

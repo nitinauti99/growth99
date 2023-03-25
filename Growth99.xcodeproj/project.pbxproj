@@ -156,6 +156,13 @@
 		016F664629C9EFA600B1D248 /* MediaLibraryAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */; };
 		016F664829CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */; };
 		016F664A29CA13E000B1D248 /* UIImageView+Extenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */; };
+		016F664D29CF03E800B1D248 /* MediaImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664C29CF03E800B1D248 /* MediaImage.swift */; };
+		016F664F29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */; };
+		016F665229CF49ED00B1D248 /* PostImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665129CF49ED00B1D248 /* PostImageListViewController.swift */; };
+		016F665429CF49F900B1D248 /* PostImageListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016F665329CF49F900B1D248 /* PostImageListViewController.storyboard */; };
+		016F665829CF4B9A00B1D248 /* PostImageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665629CF4B9A00B1D248 /* PostImageListTableViewCell.swift */; };
+		016F665929CF4B9A00B1D248 /* PostImageListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016F665729CF4B9A00B1D248 /* PostImageListTableViewCell.xib */; };
+		016F665B29CF500300B1D248 /* PostImageListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -1024,6 +1031,13 @@
 		016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryAddModel.swift; sourceTree = "<group>"; };
 		016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryAddViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
 		016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extenssion.swift"; sourceTree = "<group>"; };
+		016F664C29CF03E800B1D248 /* MediaImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaImage.swift; sourceTree = "<group>"; };
+		016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePostViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
+		016F665129CF49ED00B1D248 /* PostImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageListViewController.swift; sourceTree = "<group>"; };
+		016F665329CF49F900B1D248 /* PostImageListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostImageListViewController.storyboard; sourceTree = "<group>"; };
+		016F665629CF4B9A00B1D248 /* PostImageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageListTableViewCell.swift; sourceTree = "<group>"; };
+		016F665729CF4B9A00B1D248 /* PostImageListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageListTableViewCell.xib; sourceTree = "<group>"; };
+		016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostImageListViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -2565,6 +2579,7 @@
 			children = (
 				016F660B29C8554E00B1D248 /* CreatePostViewController.swift */,
 				016F660D29C8555A00B1D248 /* CreatePostViewController.storyboard */,
+				016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2701,6 +2716,7 @@
 			isa = PBXGroup;
 			children = (
 				016F664329C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift */,
+				016F664C29CF03E800B1D248 /* MediaImage.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2711,6 +2727,26 @@
 				016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		016F665029CF498F00B1D248 /* AddImage */ = {
+			isa = PBXGroup;
+			children = (
+				016F665529CF4B8500B1D248 /* Cell */,
+				016F665129CF49ED00B1D248 /* PostImageListViewController.swift */,
+				016F665329CF49F900B1D248 /* PostImageListViewController.storyboard */,
+				016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */,
+			);
+			name = AddImage;
+			sourceTree = "<group>";
+		};
+		016F665529CF4B8500B1D248 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				016F665629CF4B9A00B1D248 /* PostImageListTableViewCell.swift */,
+				016F665729CF4B9A00B1D248 /* PostImageListTableViewCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
@@ -3586,6 +3622,7 @@
 			children = (
 				016F660629C8550F00B1D248 /* List */,
 				016F660729C8551900B1D248 /* Add */,
+				016F665029CF498F00B1D248 /* AddImage */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -6810,6 +6847,7 @@
 				016F664229C9EF8E00B1D248 /* MediaLibraryAddViewController.storyboard in Resources */,
 				84903519299572C200556D47 /* ConsentsTemplateListTableViewCell.xib in Resources */,
 				845C39D5292276B000D934C5 /* DrawerViewContoller.storyboard in Resources */,
+				016F665429CF49F900B1D248 /* PostImageListViewController.storyboard in Resources */,
 				01D9EBFA29B8D2D30099761C /* DisplayQuestionnaireqsubmissionsViewContoller.storyboard in Resources */,
 				016F663829C9ADF500B1D248 /* MediaTagsAddViewController.storyboard in Resources */,
 				01468E3529C0D80B002BDC1F /* PateintCustomSMSTemplateTableViewCell.xib in Resources */,
@@ -6855,6 +6893,7 @@
 				DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */,
 				845C39D8292276B000D934C5 /* MenuTableViewCell.xib in Resources */,
 				84BD33F72994BB020050C0D8 /* EmailTemplateViewController.storyboard in Resources */,
+				016F665929CF4B9A00B1D248 /* PostImageListTableViewCell.xib in Resources */,
 				01684C2A29BCE3B500DE1041 /* ChatBotTemplateViewController.storyboard in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
@@ -7139,6 +7178,7 @@
 				01D9EBE929B8B65F0099761C /* QuestionnaireSubmissionsViewModel.swift in Sources */,
 				017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */,
 				01BBA9DC29AB5690006A5DB8 /* NotificationListViewController+TableView.swift in Sources */,
+				016F665229CF49ED00B1D248 /* PostImageListViewController.swift in Sources */,
 				84D0628929670677001FE469 /* LogInViewModel.swift in Sources */,
 				016F662929C97D9A00B1D248 /* MediaTagsListViewModel.swift in Sources */,
 				01684C4629BDC16B00DE1041 /* ChatSessionUserTableViewCell.swift in Sources */,
@@ -7152,6 +7192,7 @@
 				39F2FF1F2996B8020089BD4F /* AppointmentListDetailViewController.swift in Sources */,
 				84D0628A29670677001FE469 /* LoginModel.swift in Sources */,
 				84B75EA52968CEA300962F3E /* CategoriesListTableViewCell.swift in Sources */,
+				016F664D29CF03E800B1D248 /* MediaImage.swift in Sources */,
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
 				842C0CD7298F75CE00395061 /* ConsentsTableViewCell.swift in Sources */,
@@ -7232,6 +7273,7 @@
 				849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */,
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
+				016F665B29CF500300B1D248 /* PostImageListViewController+TableView.swift in Sources */,
 				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
 				013A4FDA29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
@@ -7268,6 +7310,7 @@
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
 				189E3ECF29C3912900B94190 /* SocialProfilesViewModel.swift in Sources */,
 				01684C3429BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift in Sources */,
+				016F664F29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift in Sources */,
 				013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */,
 				010EECA929B7237A00351358 /* ChatQuestionnaireQuestionTableViewCell.swift in Sources */,
 				1883F12D29C7571E0080997B /* ColorCompatibility.swift in Sources */,
@@ -7634,6 +7677,7 @@
 				01152E0729B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift in Sources */,
 				398F90FE298ECB8700DB96E4 /* IQUIView+Hierarchy.swift in Sources */,
 				84F61135292A71AB00B1FB69 /* HTTPMethod.swift in Sources */,
+				016F665829CF4B9A00B1D248 /* PostImageListTableViewCell.swift in Sources */,
 				842C0CDB298FC12200395061 /* PateintsTagListTableViewCell.swift in Sources */,
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
 				189670B329BA6080003224ED /* TriggerDetailViewController+TableView.swift in Sources */,

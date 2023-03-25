@@ -11,6 +11,8 @@ import UIKit
 protocol CreatePostViewControllerProtocol: AnyObject {
     func socialMediaPostLabelsListRecived()
     func socialProfilesListRecived()
+    func socialPostRecived()
+    func socialPostImageListRecived()
     func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
 }
@@ -25,17 +27,22 @@ class CreatePostViewController: UIViewController {
     @IBOutlet private weak var PostTextView: UITextView!
     @IBOutlet private weak var upLoadImageButton: UIButton!
     @IBOutlet private weak var selectFromLibButton: UIButton!
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var postImageViewButtonHight: NSLayoutConstraint!
 
     var viewModel: CreatePostViewModelProtocol?
     var dateFormater: DateFormaterProtocol?
     var postId = Int()
     var selectedPostLabels = [Int]()
     var selectedSocialProfiles = [Int]()
-
+    var screenName = ""
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreatePostViewModel(delegate: self)
         self.dateFormater = DateFormater()
+        self.postImageView.isHidden = true
+        self.postImageViewButtonHight.constant = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,17 +50,18 @@ class CreatePostViewController: UIViewController {
         self.view.ShowSpinner()
         self.viewModel?.getSocialMediaPostLabelsList()
     }
+    
+    func setUpUI(){
+        
+    }
 
     @IBAction func cancelButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-
-    @IBAction func uploadImageButton(sender: UIButton) {
-        
-    }
     
     @IBAction func uploadImageFromLibButton(sender: UIButton) {
-        
+        self.view.ShowSpinner()
+        self.viewModel?.getSocialPostImageFromLbrariesList(page: 0, size: 10, search: "", tags: 0)
     }
     
     @IBAction func createTaskUser(sender: UIButton) {
@@ -86,13 +94,33 @@ class CreatePostViewController: UIViewController {
 
 extension CreatePostViewController: CreatePostViewControllerProtocol {
   
+    /// received social-profiles list
     func socialMediaPostLabelsListRecived(){
-        self.viewModel?.getsocialProfilesList()
+        self.viewModel?.getSocialProfilesList()
     }
     
     func socialProfilesListRecived(){
-        self.view.HideSpinner()
+        if screenName == "Edit" {
+            self.viewModel?.getSocialPost(postId: postId)
+        }else{
+            self.view.HideSpinner()
+            self.setUpUI()
+        }
     }
+    
+    func socialPostRecived() {
+        self.view.HideSpinner()
+        self.setUpUI()
+    }
+    
+    func socialPostImageListRecived() {
+        self.view.HideSpinner()
+        let detailController = UIStoryboard(name: "PostImageListViewController", bundle: nil).instantiateViewController(withIdentifier: "PostImageListViewController") as! PostImageListViewController
+        detailController.modalPresentationStyle = .currentContext
+        self.present(detailController, animated: true)
+
+    }
+
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
@@ -124,7 +152,7 @@ extension CreatePostViewController {
     }
     
     @IBAction func openSocialChanelListDropDwon(sender: UIButton) {
-        let rolesArray = viewModel?.getsocialProfilesListData ?? []
+        let rolesArray = viewModel?.getSocialProfilesListData ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.name
         }

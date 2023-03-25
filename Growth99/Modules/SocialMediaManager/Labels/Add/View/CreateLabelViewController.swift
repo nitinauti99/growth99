@@ -26,21 +26,19 @@ class CreateLabelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLabelViewModel(delegate: self)
-        if self.screenName == "Edit Screen" {
-            self.view.ShowSpinner()
-            viewModel?.getCreateLabelDetails(labelId: labelId)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.screenName == "Edit Screen" {
+            self.view.ShowSpinner()
+            viewModel?.getCreateLabelDetails(labelId: labelId)
             self.LeadTagsLBI.text = "Edit Post Label"
-            self.title = Constant.Profile.editPatientTags
+            self.title = Constant.Profile.editPostLabel
             self.createSocialTextField.text = viewModel?.getCreateLabelDetailsData?.name ?? String.blank
         }else{
             self.LeadTagsLBI.text = "Create Post Label"
-            self.title = Constant.Profile.createPatientTags
+            self.title = Constant.Profile.addPostLabel
         }
     }
     
@@ -50,7 +48,8 @@ class CreateLabelViewController: UIViewController {
     
     @IBAction func saveAction(sender: UIButton) {
         if let textField = createSocialTextField.text,  textField == "" {
-            createSocialTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            createSocialTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            return
         }
         self.view.ShowSpinner()
         if self.screenName == "Edit Screen" {
@@ -59,7 +58,6 @@ class CreateLabelViewController: UIViewController {
             viewModel?.createLabelDetails(name: self.createSocialTextField.text ?? String.blank)
         }
     }
-    
 }
 
 extension CreateLabelViewController: CreateLabelViewControllerProtocol {
@@ -73,7 +71,7 @@ extension CreateLabelViewController: CreateLabelViewControllerProtocol {
    
     func saveCreateSocialList(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: .systemGreen)
         self.navigationController?.popViewController(animated: true)
     }
     

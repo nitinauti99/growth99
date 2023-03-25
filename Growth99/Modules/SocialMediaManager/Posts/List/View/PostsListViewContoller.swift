@@ -24,6 +24,7 @@ class PostsListViewContoller: UIViewController {
         super.viewDidLoad()
         self.title = Constant.Profile.postLibrary
         self.viewModel = PostsListViewModel(delegate: self)
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getPostsListData.count ?? 0)
         self.setBarButton()
      }
     
@@ -56,6 +57,7 @@ extension PostsListViewContoller: PostsListViewContollerProtocol {
    
     func postListDataRecived() {
         self.view.HideSpinner()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getPostsListData.count ?? 0)
         self.tableView.reloadData()
     }
     
@@ -67,14 +69,23 @@ extension PostsListViewContoller: PostsListViewContollerProtocol {
 
 
 extension PostsListViewContoller: PostsListTableViewCellDelegate {
-   
+    
     func editPosts(cell: PostsListTableViewCell, index: IndexPath) {
+        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        createPostVC.screenName = "Edit"
+        self.navigationController?.pushViewController(createPostVC, animated: true)
+    }
+    
+    func deletePosts(cell: PostsListTableViewCell, index: IndexPath) {
         
     }
     
-    func detailPosts(cell: PostsListTableViewCell, index: IndexPath) {
+    func approvePosts(cell: PostsListTableViewCell, index: IndexPath) {
         
     }
     
-    
+    func postedPosts(cell: PostsListTableViewCell, index: IndexPath) {
+        
+    }
+   
 }

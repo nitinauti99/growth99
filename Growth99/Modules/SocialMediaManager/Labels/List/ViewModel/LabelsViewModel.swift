@@ -44,11 +44,17 @@ class LabelListViewModel {
     }
     
     func removeLabel(LabelId: Int) {
-        self.requestManager.request(forPath: ApiUrl.socialMediaPostLabels.appending("/\(LabelId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.createMediaPostLabels.appending("/\(LabelId)"), method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.labelRemovedSuccefully(message: data.success ?? String.blank)
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.labelRemovedSuccefully(message: "Post Label deleted successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "The Label associated with post cannot be deleted")
+                }else {
+                    self.delegate?.errorReceived(error: "internal server error")
+             }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
