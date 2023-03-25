@@ -11,6 +11,7 @@ protocol AddPostViewControllerProtocol: AnyObject {
     func postLabelListRecived()
     func postSocialProfilesListRecived()
     func errorReceived(error: String)
+    func postSocialProfilesListDataRecived(responseMessage: String)
 }
 
 class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -78,6 +79,10 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     
     func postLabelListRecived() {
         addPostCalenderViewModel?.getPostSocialProfilesList()
+    }
+    
+    func postSocialProfilesListDataRecived(responseMessage: String) {
+        
     }
     
     func postSocialProfilesListRecived() {
@@ -203,6 +208,6 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     }
     
     @IBAction func submitButton(sender: UIButton) {
-        
+        addPostCalenderViewModel?.uploadSelectedPostImage(image: addPostImageView.image!)
     }
 }
