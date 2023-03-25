@@ -16,6 +16,7 @@ protocol ServicesListDetailViewContollerProtocol {
     func serviceCategoriesReceived()
     func createServiceSucessfullyReceived(message: String)
     func selectedServiceDataReceived()
+    func serviceImageUploadReceived(responseMessage: String)
 }
 
 class ServicesListDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ServicesListDetailViewContollerProtocol {
@@ -53,6 +54,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
 
     var screenTitle: String = String.blank
     var serviceId: Int?
+    
+    var selectedPickerImage: UIImage?
 
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
@@ -231,8 +234,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     }
     
     func createServiceSucessfullyReceived(message: String) {
+        self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: serviceId ?? 0)
+    }
+    
+    func serviceImageUploadReceived(responseMessage: String) {
         self.view.HideSpinner()
-        if message == Constant.Profile.createService {
+        if responseMessage == Constant.Profile.createService {
             self.view.showToast(message: "Service Create Sucessfully", color: .black)
         } else {
             self.view.showToast(message: "Service Updated Sucessfully", color: .black)
@@ -404,6 +411,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         serviceImageView.image  = selectedImage
+        selectedPickerImage = selectedImage
         serviceImageViewHeight.constant = 200
         serviceImageViewTop.constant = 20
         contentViewHeight.constant = 1550

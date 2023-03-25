@@ -63,7 +63,6 @@ class BusinessProfileViewModel {
 
 extension BusinessProfileViewModel: BusinessProfileViewModelProtocol { }
 
-
 enum BusinessImage {
     case upload(image: Data)
 }
@@ -85,7 +84,7 @@ extension BusinessImage: Requestable {
     }
     
     var path: String {
-        "api/businesses/1413/logo"
+        "api/businesses/\(UserRepository.shared.Xtenantid ?? "")/logo"
     }
     
     var method: HTTPMethod {

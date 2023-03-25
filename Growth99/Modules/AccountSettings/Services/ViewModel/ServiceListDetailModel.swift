@@ -29,6 +29,7 @@ protocol ServiceListDetailViewModelProtocol {
                               showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int)
     func getUserSelectedService(serviceID: Int)
     var  getUserSelectedServiceData: ServiceDetailModel? { get }
+    func uploadSelectedServiceImage(image: UIImage, selectedServiceId:Int)
 
 }
 
@@ -181,4 +182,56 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     var getUserSelectedServiceData: ServiceDetailModel? {
         return self.serviceDetailListData
     }
+    
+    func uploadSelectedServiceImage(image: UIImage, selectedServiceId: Int) {
+        self.requestManager.request(requestable: ServicesImage.upload(image: image.pngData() ?? Data())) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
 }
+
+
+enum ServicesImage {
+    case upload(image: Data)
+}
+
+extension ServicesImage: Requestable {
+    
+    var baseURL: String {
+        "https://api.growthemr.com/"
+    }
+    
+    var headerFields: [HTTPHeader]? {
+        [.custom(key: "x-tenantid", value: UserRepository.shared.Xtenantid ?? String.blank),
+             .custom(key: "Content-Type", value: "application/json"),
+             .authorization("Bearer "+(UserRepository.shared.authToken ?? String.blank))]
+    }
+    
+    var requestMode: RequestMode {
+        .noAuth
+    }
+    
+    var path: String {
+        "api/services/6013/image"
+    }
+    
+    var method: HTTPMethod {
+        .POST
+    }
+    
+    var task: RequestTask {
+        switch self {
+        case let .upload(data):
+            let multipartFormData = [MultipartFormData(formDataType: .data(data), fieldName: "file", name: "", mimeType: "image/png")]
+            return .multipartUpload(multipartFormData)
+        }
+    }
+}
+

@@ -62,38 +62,6 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         self.dismiss(animated: true, completion: nil)
     }
     
-   /* func uploadImage(selectedImage: UIImage) {
-        let boundary = UUID().uuidString
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        var urlRequest = URLRequest(url: URL(string: "https://api.growthemr.com/api/businesses/1413/logo")!)
-        urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
-        urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
-        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        urlRequest.httpMethod = "POST"
-        
-        var data = Data()
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\("blob")\"\r\n".data(using: .utf8)!)
-        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-        data.append(selectedImage.pngData()!)
-        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-        
-        session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
-            if(error != nil){
-                print("\(error!.localizedDescription)")
-            }
-            
-            guard let responseData = responseData else {
-                print("no response data")
-                return
-            }
-            
-            if let responseString = String(data: responseData, encoding: .utf8) {
-                print("uploaded to: \(responseString)")
-            }
-        }).resume()
-    }*/
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
