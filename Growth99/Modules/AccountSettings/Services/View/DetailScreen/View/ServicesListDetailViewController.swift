@@ -105,7 +105,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceDescTextView.layer.borderWidth = 1.0
         if self.title == Constant.Profile.createService {
             removeImageViewBtn.isHidden = true
-            contentViewHeight.constant = 1300
+            contentViewHeight.constant = 1350
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
         } else {
@@ -196,7 +196,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             serviceImageView.image = nil
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
-            contentViewHeight.constant = 1300
+            contentViewHeight.constant = 1350
             removeImageViewBtn.isHidden = true
         } else {
             self.serviceImageView.sd_setImage(with: URL(string: servicesAddViewModel?.getUserSelectedServiceData?.imageUrl ?? String.blank), placeholderImage: nil)
@@ -417,7 +417,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceImageView.image = nil
         serviceImageViewHeight.constant = 0
         serviceImageViewTop.constant = 0
-        contentViewHeight.constant = 1300
+        contentViewHeight.constant = 1350
         removeImageViewBtn.isHidden = true
         imageRemoved = true
         serviceImageViewBtn.setTitle("Choose Service Image", for: .normal)

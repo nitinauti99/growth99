@@ -168,9 +168,9 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
             }
         }
         selectedLeadSources = modelData?.triggerConditions ?? []
-        selectedLeadLandingPages = modelData?.landingPages ?? []
-        selectedleadForms = modelData?.forms ?? []
-        selectedLeadSourceUrl = modelData?.sourceUrls ?? []
+//        selectedLeadLandingPages = modelData?.landingPages ?? []
+//        selectedleadForms = modelData?.forms ?? []
+//        selectedLeadSourceUrl = modelData?.sourceUrls ?? []
         triggerdDetailTableView.reloadData()
     }
     
