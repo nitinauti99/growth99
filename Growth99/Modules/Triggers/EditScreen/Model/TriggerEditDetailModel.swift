@@ -337,16 +337,19 @@ struct EditLandingPageNamesModel : Codable, Equatable {
 
 struct TriggerEditModel : Codable {
     let id : Int?
-    let sourceUrls : [LeadSourceUrlListModel]?
+    let sourceUrls : String?
     let patientTags : String?
     let triggerConditions : [String]?
-    let forms : [EditLandingPageNamesModel]?
+    let forms : [Int]?
+    let isTriggerForLeadStatus : Bool?
+    let toLeadStatus : String?
     let triggerData : [TriggerEditData]?
-    let landingPages : [EditLandingPageNamesModel]?
+    let landingPages : String?
     let moduleName : String?
     let source : String?
     let executionStatus : String?
     let patientStatus : String?
+    let fromLeadStatus : String?
     let leadTags : String?
     let triggerActionName : String?
     let name : String?
@@ -354,20 +357,20 @@ struct TriggerEditModel : Codable {
 
 struct TriggerEditData : Codable {
     let id : String?
-    let triggerType : String?
-    let triggerTemplate : Int?
-    let userId : String?
-    let triggerTime : Int?
-    let actionIndex : Int?
-    let addNew : Bool?
-    let showBorder : Bool?
-    let taskName : String?
-    let orderOfCondition : Int?
-    let triggerFrequency : String?
-    let triggerTarget : String?
-    let dateType : String?
-    let scheduledDateTime : String?
     let timerType : String?
-    let startTime : String?
+    let triggerTarget : String?
+    let triggerFrequency : String?
+    let actionIndex : Int?
+    let dateType : String?
+    let triggerTime : Int?
+    let showBorder : Bool?
+    let userId : String?
+    let scheduledDateTime : String?
+    let triggerTemplate : Int?
+    let addNew : Bool?
     let endTime : String?
+    let triggerType : String?
+    let taskName : String?
+    let startTime : String?
+    let orderOfCondition : Int?
 }
