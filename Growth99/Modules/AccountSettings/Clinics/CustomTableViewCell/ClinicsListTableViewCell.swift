@@ -18,20 +18,22 @@ class ClinicsListTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     
     var indexPath = IndexPath()
+    var dateFormater: DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
+        dateFormater = DateFormater()
+
     }
     func configureCell(clinicsFilterList: ClinicsListViewModelProtocol?, index: IndexPath, isSearch: Bool) {
         let clinicsFilterListData = clinicsFilterList?.getClinicsFilterDataAtIndex(index: index.row)
         self.nameLabel.text = clinicsFilterListData?.name
         self.id.text = String(clinicsFilterListData?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: clinicsFilterListData?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: clinicsFilterListData?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: clinicsFilterListData?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: clinicsFilterListData?.updatedAt ?? String.blank)
         self.createdBy.text = clinicsFilterListData?.createdBy
         self.updatedBy.text = clinicsFilterListData?.updatedBy
         indexPath = index
@@ -41,8 +43,8 @@ class ClinicsListTableViewCell: UITableViewCell {
         let clinicsList = clinicsListData?.getClinicsDataAtIndex(index: index.row)
         self.nameLabel.text = clinicsList?.name
         self.id.text = String(clinicsList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: clinicsList?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: clinicsList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: clinicsList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: clinicsList?.updatedAt ?? String.blank)
         self.createdBy.text = clinicsList?.createdBy
         self.updatedBy.text = clinicsList?.updatedBy
         indexPath = index

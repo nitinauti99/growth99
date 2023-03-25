@@ -24,13 +24,14 @@ class UserListTableViewCell: UITableViewCell {
     
     var indexPath = IndexPath()
     weak var delegate: UserListTableViewCellDelegate?
+    var dateFormater: DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
+        dateFormater = DateFormater()
     }
     
     func configureCell(userVM: UserListViewModelProtocol?, index: IndexPath, isSearch:Bool) {
@@ -39,8 +40,8 @@ class UserListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
         indexPath = index
@@ -52,8 +53,8 @@ class UserListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: userVM?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
         indexPath = index

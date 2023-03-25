@@ -177,6 +177,7 @@
                 <outlet property="patientAppointmentButton" destination="B5k-Nq-7l7" id="SpV-UV-lDZ"/>
                 <outlet property="patientAppointmentEmptyTextLbl" destination="s6D-uN-ond" id="QWk-wP-rLf"/>
                 <outlet property="patientAppointmentView" destination="7JI-6U-MFd" id="CWD-QD-rW1"/>
+                <outlet property="patientNextButton" destination="adg-Rs-8D6" id="zHY-vl-kRx"/>
                 <outlet property="subView" destination="wDQ-bO-Jai" id="5Ic-Ug-g77"/>
                 <outlet property="subViewInside" destination="gFA-Hx-Tyc" id="X7A-ZS-KYl"/>
             </connections>

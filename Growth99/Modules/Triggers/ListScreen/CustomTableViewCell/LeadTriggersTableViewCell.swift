@@ -26,13 +26,15 @@ class LeadTriggersTableViewCell: UITableViewCell {
     
     weak var delegate: TriggerSourceDelegate?
     var indexPath = IndexPath()
+    var dateFormater : DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
+        dateFormater = DateFormater()
+
     }
     
     
@@ -46,9 +48,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
             self.sourceLabel.text = triggerFilterList?.triggerActionName
         }
         self.moduleLabel.text = triggerFilterList?.moduleName
-        self.createdDate.text =  self.serverToLocal(date: triggerFilterList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocal(date: triggerFilterList?.createdAt ?? String.blank)
         self.createdBy.text = triggerFilterList?.createdBy
-        self.updatedDate.text =  self.serverToLocal(date: triggerFilterList?.updatedAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: triggerFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = triggerFilterList?.updatedBy
         if triggerFilterList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)
@@ -68,9 +70,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
             self.sourceLabel.text = triggerList?.triggerActionName
         }
         self.moduleLabel.text = triggerList?.moduleName
-        self.createdDate.text =  self.serverToLocal(date: triggerList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocal(date: triggerList?.createdAt ?? String.blank)
         self.createdBy.text = triggerList?.createdBy
-        self.updatedDate.text =  self.serverToLocal(date: triggerList?.updatedAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: triggerList?.updatedAt ?? String.blank)
         self.updatedBy.text = triggerList?.updatedBy
         if triggerList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)

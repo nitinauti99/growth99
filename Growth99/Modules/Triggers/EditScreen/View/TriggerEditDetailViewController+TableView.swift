@@ -22,6 +22,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         if triggerDetailList[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerDefaultTableViewCell", for: indexPath) as? TriggerDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
+            cell.moduleNextButton.isHidden = true
             moduleName = viewModel?.getTriggerEditListData?.name ?? ""
             cell.massEmailSMSTextField.text = viewModel?.getTriggerEditListData?.name ?? ""
             return cell
@@ -36,6 +37,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 cell.leadBtn.isSelected = false
                 cell.patientBtn.isSelected = true
             }
+            cell.nextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadActionTableViewCell", for: indexPath) as? TriggerLeadActionTableViewCell else { return UITableViewCell()}
@@ -59,6 +61,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
 //            if (viewModel?.getTriggerEditListData?.sourceUrls?.count ?? 0) > 0 {
 //                cell.leadSourceUrlTextLabel.text = viewModel?.getTriggerEditListData?.sourceUrls?[0].sourceUrl
 //            }
+            cell.leadNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
@@ -66,6 +69,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
             cell.patientAppointmenTextLabel.text = appointmentStatusArray[0]
+            cell.patientNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
@@ -99,9 +103,12 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                     
                     cell.selectSMSTargetTextLabel.text = index.triggerTarget
                     
-                     let selectSMSNetworkName = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == index.triggerTemplate ?? 0} ) ?? []                    
-                    cell.selectSMSNetworkTextLabel.text = selectSMSNetworkName[0].name ?? String.blank
-                    
+                     let selectSMSNetworkName = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == index.triggerTemplate ?? 0} ) ?? []
+                    if selectSMSNetworkName.count > 0 {
+                        cell.selectSMSNetworkTextLabel.text = selectSMSNetworkName[0].name ?? String.blank
+                    } else {
+                        cell.selectSMSNetworkTextLabel.text = ""
+                    }
                 } else if index.triggerType == "EMAIL" {
                     cell.smsBtn.isSelected = false
                     cell.emailBtn.isSelected = true
@@ -594,7 +601,6 @@ extension TriggerEditDetailViewController: TriggerDefaultCellDelegate {
         } else {
             moduleName = cell.massEmailSMSTextField.text ?? String.blank
             cell.moduleNextButton.isEnabled = false
-            createNewTriggerCell(cellNameType: "Module")
         }
     }
 }
@@ -603,10 +609,8 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
     func nextButtonModule(cell: TriggerModuleTableViewCell, index: IndexPath, moduleType: String) {
         if moduleType == "appointment" {
             moduleSelectionType = moduleType
-            createNewTriggerCell(cellNameType: "Appointment")
         } else if moduleType == "lead" {
             moduleSelectionType = moduleType
-            createNewTriggerCell(cellNameType: "Lead")
         }
         cell.nextButton.isEnabled = false
         scrollToBottom()
@@ -630,7 +634,6 @@ extension TriggerEditDetailViewController: TriggerLeadCellDelegate {
             cell.leadLandingEmptyTextLabel.isHidden = true
             cell.leadFormEmptyTextLabel.isHidden = true
             scrollToBottom()
-            createNewTriggerCell(cellNameType: "Both")
         }
     }
 }
@@ -640,7 +643,6 @@ extension TriggerEditDetailViewController: TriggerPatientCellDelegate {
         scrollToBottom()
         cell.appointmentNextButton.isEnabled = false
         appointmentSelectedStatus = cell.patientAppointmenTextLabel.text ?? ""
-        createNewTriggerCell(cellNameType: "Both")
     }
 }
 
@@ -686,7 +688,6 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectedNetworkType = networkType
         selectedTriggerTarget = triggerTarget
         scrollToBottom()
-        createNewTriggerCell(cellNameType: "Time")
     }
 }
 

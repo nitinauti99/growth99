@@ -21,6 +21,7 @@ class TriggerAppointmentActionTableViewCell: UITableViewCell {
     @IBOutlet weak var patientAppointmenTextLabel: UILabel!
     @IBOutlet weak var patientAppointmentEmptyTextLbl: UILabel!
     @IBOutlet weak var appointmentNextButton: UIButton!
+    @IBOutlet weak var patientNextButton: UIButton!
 
     weak var delegate: TriggerPatientCellDelegate?
     var indexPath = IndexPath()

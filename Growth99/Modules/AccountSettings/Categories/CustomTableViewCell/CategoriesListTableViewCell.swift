@@ -18,21 +18,22 @@ class CategoriesListTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     
     var indexPath = IndexPath()
+    var dateFormater: DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
+        dateFormater = DateFormater()
     }
 
     func configureCell(categoriesFilterList: CategoriesListViewModelProtocol?, index: IndexPath, isSearch: Bool) {
         let categoriesList = categoriesFilterList?.getCategoriesFilterDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index
@@ -42,8 +43,8 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesListData?.getCategoriesDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index

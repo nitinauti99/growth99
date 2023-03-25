@@ -18,20 +18,22 @@ class ServicesListTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     
     var indexPath = IndexPath()
+    var dateFormater: DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
+        dateFormater = DateFormater()
+
     }
     func configureCell(serviceFilterList: ServiceListViewModelProtocol?, index: IndexPath, isSearch: Bool) {
         let serviceList = serviceFilterList?.getServiceFilterDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index
@@ -41,8 +43,8 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceListData?.getServiceDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text =  self.serverToLocal(date: serviceList?.createdAt ?? String.blank)
-        self.updatedDate.text =  self.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocal(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index

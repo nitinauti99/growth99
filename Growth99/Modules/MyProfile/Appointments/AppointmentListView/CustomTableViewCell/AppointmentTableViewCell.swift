@@ -70,10 +70,11 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         } else {
             self.sourceLabel.text = "-"
         }
-        self.appointmentDateLabel.text = "\(dateFormater?.serverToLocalCreatedDate(date: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank) \(dateFormater?.utcToLocal(timeString: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank)"
+        self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: profileAppointmentListData?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
-        self.createdDate.text = "\(dateFormater?.serverToLocalCreatedDate(date: profileAppointmentListData?.createdAt ?? String.blank) ?? String.blank) \(dateFormater?.utcToLocal(timeString: profileAppointmentListData?.createdAt ?? String.blank) ?? String.blank)"
+        self.createdDate.text = dateFormater?.serverToLocal(date: profileAppointmentListData?.createdAt ?? String.blank)
+
         indexPath = index
     }
     

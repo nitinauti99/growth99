@@ -35,11 +35,17 @@ class DateFormater: DateFormaterProtocol {
     
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        guard let date = dateFormatter.date(from: date) else { return ""}
-        dateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-        return dateFormatter.string(from: date)
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+
+        if let date = dateFormatter.date(from: date) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: "GMT-6")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
+        }
+        return ""
     }
     
     func serverToLocalCreatedDate(date: String) -> String {

@@ -903,31 +903,31 @@
     </scenes>
     <designables>
         <designable name="9ha-c6-Poj">
-            <size key="intrinsicContentSize" width="9" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="17" height="30.333333333333332"/>
         </designable>
         <designable name="AVg-us-WgC">
-            <size key="intrinsicContentSize" width="99.333333333333329" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="92.333333333333329" height="30.333333333333332"/>
         </designable>
         <designable name="Dkv-5T-p7r">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
         <designable name="HAc-og-Quv">
-            <size key="intrinsicContentSize" width="159" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="152" height="30.333333333333332"/>
         </designable>
         <designable name="b86-j9-qJE">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
         <designable name="nRa-3b-s4x">
-            <size key="intrinsicContentSize" width="9" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="17" height="30.333333333333332"/>
         </designable>
         <designable name="tK9-TA-zmI">
-            <size key="intrinsicContentSize" width="118" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="111" height="30.333333333333332"/>
         </designable>
         <designable name="xKV-US-rN6">
-            <size key="intrinsicContentSize" width="174.66666666666666" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="167.66666666666666" height="30.333333333333332"/>
         </designable>
         <designable name="xLO-rr-zwc">
-            <size key="intrinsicContentSize" width="124.33333333333333" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="117.33333333333333" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

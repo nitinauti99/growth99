@@ -38,8 +38,6 @@ class UserListViewContoller: UIViewController {
         self.title = Constant.Profile.users
         self.view.ShowSpinner()
         self.viewModel?.getUserList()
-        self.navigationItem.setHidesBackButton(true, animated: true)
-
     }
     
     @objc func addUserButtonTapped(_ sender: UIButton) {

@@ -29,13 +29,14 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     
     weak var delegate: MassEmailandSMSDelegate?
     var indexPath = IndexPath()
+    var dateFormater : DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
+        dateFormater = DateFormater()
     }
     
     func configureCell(massEmailFilterList: MassEmailandSMSModel?, index: IndexPath, isSearch: Bool) {
@@ -50,9 +51,9 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.executionStatusLabel.text = massEmailFilterList?.executionStatus
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
         //self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.scheduledDateTime ?? String.blank)
-        self.createdDate.text =  self.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailFilterList?.createdBy
-        self.updatedDate.text =  self.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailFilterList?.updatedBy
         if massEmailFilterList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)
@@ -74,9 +75,9 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.executionStatusLabel.text = massEmailList?.executionStatus
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
       //  self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailList?.scheduledDateTime ?? String.blank)
-        self.createdDate.text =  self.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailList?.createdBy
-        self.updatedDate.text =  self.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailList?.updatedBy
         if massEmailList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)
