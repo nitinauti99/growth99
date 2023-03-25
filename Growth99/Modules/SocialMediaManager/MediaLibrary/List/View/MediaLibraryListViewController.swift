@@ -27,6 +27,7 @@ class MediaLibraryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialMediaLibrariesData.count ?? 0)
         self.title = Constant.Profile.postLibrary
         self.viewModel = MediaLibraryListViewModel(delegate: self)
         self.setBarButton()
@@ -67,9 +68,6 @@ class MediaLibraryListViewController: UIViewController {
         }
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: 150, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-        
-        
-
     }
     
 }
@@ -78,6 +76,7 @@ extension MediaLibraryListViewController: MediaLibraryListViewControllerProtocol
     
     func socialMediaLibrariesListRecived() {
         self.view.HideSpinner()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialMediaLibrariesData.count ?? 0)
         self.tableView.reloadData()
     }
     

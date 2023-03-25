@@ -51,6 +51,7 @@ class CreateSocialProfileViewController: UIViewController {
     @IBAction func saveAction(sender: UIButton) {
         if let textField = createSocialTextField.text,  textField == "" {
             createSocialTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            return
         }
         self.view.ShowSpinner()
         if self.socialProfilesScreenName == "Edit Screen" {

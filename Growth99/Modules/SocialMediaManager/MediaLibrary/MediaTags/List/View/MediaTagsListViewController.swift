@@ -23,6 +23,7 @@ class MediaTagsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getMediaTagsData.count ?? 0)
         self.viewModel = MediaTagsListViewModel(delegate: self)
         self.setBarButton()
     }
@@ -64,6 +65,7 @@ extension MediaTagsListViewController: MediaTagsListViewControllerProtocol {
     
     func mediaTagListRecived() {
         self.view.HideSpinner()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getMediaTagsData.count ?? 0)
         self.tableView.reloadData()
     }
     

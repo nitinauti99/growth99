@@ -43,11 +43,17 @@ class MediaLibraryListViewModel {
     }
     
     func removeSocialMediaLibraries(socialMediaLibrariesId: Int) {
-        self.requestManager.request(forPath: ApiUrl.socialMediaPostLabels.appending("/\(socialMediaLibrariesId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.socialMediaLibrary.appending("/\(socialMediaLibrariesId)"), method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.socialMediaLibrariesRemovedSuccefully(message: data.success ?? String.blank)
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.socialMediaLibrariesRemovedSuccefully(message: "deletd Social Media Libraries")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "service failed")
+                } else{
+                    self.delegate?.errorReceived(error: "responce failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

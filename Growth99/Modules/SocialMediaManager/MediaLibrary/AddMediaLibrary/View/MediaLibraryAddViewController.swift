@@ -21,6 +21,9 @@ class MediaLibraryAddViewController: UIViewController {
     @IBOutlet weak var mediaImage: UIImageView!
     @IBOutlet weak var browseImagButtonHight: NSLayoutConstraint!
     
+    let boundary: String = "------WebKitFormBoundarytgue2M7DLZIlgYY2"
+
+    
     var viewModel: MediaLibraryAddViewModelProtocol?
     var mediaTagId = Int()
     var mediaTagScreenName = String()
@@ -58,6 +61,7 @@ class MediaLibraryAddViewController: UIViewController {
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             self?.mediaLibraryTextField.text  = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedPostLabels = selectedList.map({$0.id ?? 0})
+            
          }
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
@@ -80,19 +84,54 @@ class MediaLibraryAddViewController: UIViewController {
         if self.mediaTagScreenName == "Edit Screen" {
             self.viewModel?.saveMediaLibraryDetails(mediaTagId: mediaTagId, name: mediaLibraryTextField.text ?? String.blank)
         }else{
-            let imageStringData = convertImageToBase64(image: mediaImage.image!)
-            print("get base64 image string", imageStringData)
+            guard let image = self.mediaImage.image else { return  }
             
-            self.view.ShowSpinner()
-            viewModel?.createMediaLibraryDetails(tageId: self.selectedPostLabels, imageData: imageStringData)
-        }
-    }
-    
-    func convertImageToBase64(image: UIImage) -> String {
-          let imageData = image.pngData()!
-          return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-      }
-    
+//            viewModel?.createMediaLibraryDetails(tageId:  self.selectedPostLabels, image: image)
+
+            
+            let filename = "avatar.png"
+            let boundary = UUID().uuidString
+            let fieldName = "tags"
+            let tagIds = selectedPostLabels.map { String($0) }.joined(separator: ",")
+
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+
+            var urlRequest = URLRequest(url: URL(string: "https://api.growthemr.com/api/socialMedia/library")!)
+            urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
+            urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
+            urlRequest.httpMethod = "POST"
+
+            urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+            var data = Data()
+            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            data.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n \(tagIds)".data(using: .utf8)!)
+
+            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+            data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+            data.append(image.pngData()!)
+            data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+
+            session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
+
+                if(error != nil){
+                    print("\(error!.localizedDescription)")
+                }
+
+                guard let responseData = responseData else {
+                    print("no response data")
+                    return
+                }
+
+                if let responseString = String(data: responseData, encoding: .utf8) {
+                    print("uploaded to: \(responseString)")
+                    self.view.HideSpinner()
+                }
+            }).resume()
+       }
+   }
 }
 
 extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
@@ -116,3 +155,12 @@ extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
     }
     
 }
+
+//extension Data {
+//    
+//    mutating func append(_ string: String) {
+//        if let data = string.data(using: .utf8) {
+//            self.append(data)
+//        }
+//    }
+//}

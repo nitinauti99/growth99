@@ -26,7 +26,6 @@ class PostsListViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getPostsList() {
-        
         self.requestManager.request(forPath: ApiUrl.socialMediaPosts, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PostsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let postsListData):

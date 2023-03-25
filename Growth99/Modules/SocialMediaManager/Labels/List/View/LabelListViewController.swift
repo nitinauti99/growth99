@@ -26,6 +26,7 @@ class LabelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = LabelListViewModel(delegate: self)
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getLabelData.count ?? 0)
         self.setBarButton()
     }
         
@@ -39,7 +40,7 @@ class LabelListViewController: UIViewController {
         self.registerTableView()
         self.view.ShowSpinner()
         self.viewModel?.getLabelList()
-        self.title = Constant.Profile.socialProfiles
+        self.title = Constant.Profile.postLabel
     }
     
     func setBarButton(){
@@ -65,12 +66,13 @@ class LabelListViewController: UIViewController {
 extension LabelListViewController: LabelListTableViewCellDelegate{
    
     func editLabel(cell: LabelListTableViewCell, index: IndexPath) {
-        let detailController = UIStoryboard(name: "CreateSocialProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateSocialProfileViewController") as! CreateSocialProfileViewController
-        detailController.socialProfilesScreenName = "Edit Screen"
+        let detailController = UIStoryboard(name: "CreateLabelViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLabelViewController") as! CreateLabelViewController
+        
+        detailController.screenName = "Edit Screen"
         if self.isSearch {
-            detailController.socialProfileId = viewModel?.labelFilterListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.labelId = viewModel?.labelFilterListDataAtIndex(index: index.row)?.id ?? 0
         }else{
-            detailController.socialProfileId = viewModel?.labelListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.labelId = viewModel?.labelListDataAtIndex(index: index.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)
     }
@@ -87,7 +89,7 @@ extension LabelListViewController: LabelListTableViewCellDelegate{
             tagName = self.viewModel?.labelListDataAtIndex(index: index.row)?.name ?? String.blank
         }
         
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Post Label", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()
@@ -106,6 +108,7 @@ extension LabelListViewController: LabelListViewControllerProtocol {
     
     func labelListRecived() {
         self.view.HideSpinner()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getLabelData.count ?? 0)
         self.tableView.reloadData()
     }
     
@@ -116,6 +119,6 @@ extension LabelListViewController: LabelListViewControllerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
