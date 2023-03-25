@@ -21,8 +21,8 @@ protocol TriggerEditDetailViewModelProtocol {
     func localToServerWithDateEdit(date: String) -> String
     func timeFormatterStringEdit(textField: CustomTextField) -> String
     
-    func createTriggerDataMethodEdit(triggerDataParms: [String: Any])
-    func createAppointmentDataMethodEdit(appointmentDataParms: [String: Any])
+    func createTriggerDataMethodEdit(triggerDataParms: [String: Any], selectedTriggerid: Int)
+    func createAppointmentDataMethodEdit(appointmentDataParms: [String: Any], selectedTriggerid: Int)
     func getSelectedTriggerList(selectedTriggerId: Int) 
 }
 
@@ -113,8 +113,8 @@ class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
         }
     }
     
-    func createTriggerDataMethodEdit(triggerDataParms: [String: Any]) {
-        self.requestManager.request(forPath: ApiUrl.getAllTriggers, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: triggerDataParms, encoding: .jsonEncoding)) {  [weak self] result in
+    func createTriggerDataMethodEdit(triggerDataParms: [String: Any], selectedTriggerid: Int) {
+        self.requestManager.request(forPath: ApiUrl.editTrigger.appending("\(selectedTriggerid)"), method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: triggerDataParms, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
@@ -132,8 +132,8 @@ class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
         }
     }
     
-    func createAppointmentDataMethodEdit(appointmentDataParms: [String: Any]) {
-        self.requestManager.request(forPath: ApiUrl.createTriggerAppointment, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: appointmentDataParms, encoding: .jsonEncoding)) {  [weak self] result in
+    func createAppointmentDataMethodEdit(appointmentDataParms: [String: Any], selectedTriggerid: Int) {
+        self.requestManager.request(forPath: ApiUrl.createTriggerAppointment.appending("/\(selectedTriggerid)"), method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: appointmentDataParms, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
