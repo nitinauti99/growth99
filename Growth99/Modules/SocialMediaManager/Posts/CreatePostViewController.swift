@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
+protocol PostImageListViewControllerDelegateProtocol: AnyObject {
+    func getSocialPostImageListDataAtIndex(content: Content)
+}
+
 protocol CreatePostViewControllerProtocol: AnyObject {
     func socialMediaPostLabelsListRecived()
     func socialProfilesListRecived()
     func socialPostRecived()
-    func socialPostImageListRecived()
     func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
 }
@@ -22,7 +25,6 @@ class CreatePostViewController: UIViewController {
     @IBOutlet private weak var hashtagTextField: CustomTextField!
     @IBOutlet private weak var labelTextField: CustomTextField!
     @IBOutlet private weak var scheduleDateTextField: CustomTextField!
-    @IBOutlet private weak var scheduleTimeTextField: CustomTextField!
     @IBOutlet private weak var socialChannelTextField: CustomTextField!
     @IBOutlet private weak var PostTextView: UITextView!
     @IBOutlet private weak var upLoadImageButton: UIButton!
@@ -36,7 +38,7 @@ class CreatePostViewController: UIViewController {
     var selectedPostLabels = [Int]()
     var selectedSocialProfiles = [Int]()
     var screenName = ""
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreatePostViewModel(delegate: self)
@@ -49,19 +51,27 @@ class CreatePostViewController: UIViewController {
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
         self.viewModel?.getSocialMediaPostLabelsList()
+        self.scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .dateAndTime)
+    }
+    
+    @objc func dateFromButtonPressed() {
+        self.scheduleDateTextField.text = self.dateFormater?.dateAndtimeFormatterString(textField: self.scheduleDateTextField)
     }
     
     func setUpUI(){
         
     }
-
+   
     @IBAction func cancelButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func uploadImageFromLibButton(sender: UIButton) {
-        self.view.ShowSpinner()
-        self.viewModel?.getSocialPostImageFromLbrariesList(page: 0, size: 10, search: "", tags: 0)
+        let detailController = UIStoryboard(name: "PostImageListViewController", bundle: nil).instantiateViewController(withIdentifier: "PostImageListViewController") as! PostImageListViewController
+        
+        detailController.modalPresentationStyle = .overFullScreen
+        detailController.delegate = self
+        self.present(detailController, animated: true)
     }
     
     @IBAction func createTaskUser(sender: UIButton) {
@@ -77,11 +87,6 @@ class CreatePostViewController: UIViewController {
         if let scheduleDateTextField = self.scheduleDateTextField.text,  scheduleDateTextField == "" {
             return
         }
-        
-        if let scheduleTimeTextField = self.scheduleTimeTextField.text,  scheduleTimeTextField == "" {
-            return
-        }
-        
         if let socialChannelTextField = self.socialChannelTextField.text,  socialChannelTextField == "" {
             return
         }
@@ -112,15 +117,6 @@ extension CreatePostViewController: CreatePostViewControllerProtocol {
         self.view.HideSpinner()
         self.setUpUI()
     }
-    
-    func socialPostImageListRecived() {
-        self.view.HideSpinner()
-        let detailController = UIStoryboard(name: "PostImageListViewController", bundle: nil).instantiateViewController(withIdentifier: "PostImageListViewController") as! PostImageListViewController
-        detailController.modalPresentationStyle = .currentContext
-        self.present(detailController, animated: true)
-
-    }
-
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
@@ -164,4 +160,14 @@ extension CreatePostViewController {
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
+}
+
+extension CreatePostViewController: PostImageListViewControllerDelegateProtocol {
+   
+    func getSocialPostImageListDataAtIndex(content: Content) {
+        self.postImageView.sd_setImage(with: URL(string:content.location ?? ""), placeholderImage: UIImage(named: "logo"), context: nil)
+        self.postImageView.isHidden = false
+        self.postImageViewButtonHight.constant = 150
+    }
+
 }

@@ -23,14 +23,7 @@ extension BussinessSelectionViewController: UITableViewDelegate, UITableViewData
         cell = BussinessSelectionTableView.dequeueReusableCell(withIdentifier: "BussinessSelectionListTableViewCell") as! BussinessSelectionListTableViewCell
         let item = bussinessSelectionData[indexPath.row]
         cell.bussinessName.text = item.name
-        cell.bussinessImage.image = UIImage(named: "growthCircleIcon")
-        if let url = URL(string: item.logoUrl?.replacingOccurrences(of: "\"", with: "") ?? "") {
-           UIImage.loadFrom(url: url) { image in
-               if image != nil {
-                   cell.bussinessImage.image = self.resizeImage(image: image ?? UIImage(), targetSize: CGSize(width: 60, height: 60))
-               }
-            }
-        }
+        cell.bussinessImage.sd_setImage(with: URL(string: item.logoUrl ?? ""), placeholderImage: UIImage(named: "growthCircleIcon"), context: nil)
         cell.buttoneTapCallback = {
             self.loginbuttonPressed(selectedIndex: indexPath)
         }

@@ -19,6 +19,7 @@ protocol DateFormaterProtocol: AnyObject {
     func localToServerWithDate(date: String) -> String
     func serverToLocalDate(date: String) -> String
     func serverToLocalPateintTimeLineDate(date: String) -> String
+    func dateAndtimeFormatterString(textField: CustomTextField) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
@@ -118,6 +119,30 @@ class DateFormater: DateFormaterProtocol {
         textField.resignFirstResponder()
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)
+    }
+    
+    func dateAndtimeFormatterString(textField: CustomTextField) -> String {
+        var datePicker = UIDatePicker()
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let todaysDate = Date()
+        datePicker.minimumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        let date =  dateFormatter.string(from: datePicker.date)
+
+        var timePicker = UIDatePicker()
+        timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        timePicker.datePickerMode = .time
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        textField.resignFirstResponder()
+        timePicker.reloadInputViews()
+        let time = formatter.string(from: timePicker.date)
+
+        return (date + " " + time)
     }
     
     func timeFormatterString(textField: CustomTextField) -> String {

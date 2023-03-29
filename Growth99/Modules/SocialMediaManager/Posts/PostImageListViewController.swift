@@ -16,30 +16,33 @@ class PostImageListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-    var viewModel: CreatePostViewModelProtocol?
+    
+    var viewModel: PostImageListViewModel?
+    var delegate : PostImageListViewControllerDelegateProtocol?
     
     let page: Int? = 0
     var size: Int? = 10
     var search: String? = ""
     var tags = Int()
     
-    func setuViewModel(viewModel: CreatePostViewModelProtocol?){
-        self.viewModel = viewModel
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel = PostImageListViewModel(delegate: self)
         self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialPostImageList.count ?? 0)
-        self.title = Constant.Profile.postLibrary
+        self.view.ShowSpinner()
+        self.viewModel?.getSocialPostImageFromLbrariesList(page: page ?? 0, size: size ?? 10, search: search ?? "", tags: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.ShowSpinner()
-        self.viewModel?.getSocialPostImageFromLbrariesList(page: page ?? 0, size: size ?? 10, search: search ?? "", tags: 0)
         self.registerTableView()
     }
     
+    @IBAction func closePost(sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     func registerTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self

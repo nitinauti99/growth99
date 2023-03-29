@@ -112,7 +112,7 @@ extension MediaLibraryListViewController: MediaLibraryListTableViewCellDelegate 
     }
     
     func editMediaLibrary(cell: MediaLibraryListTableViewCell, index: IndexPath) {
-        let detailController = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
+        let detailController = UIStoryboard(name: "MediaLibraryAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaLibraryAddViewController") as! MediaLibraryAddViewController
         detailController.mediaTagScreenName = "Edit Screen"
         detailController.mediaTagId = viewModel?.socialMediaLibrariesListDataAtIndex(index: index.row)?.id ?? 0
         navigationController?.pushViewController(detailController, animated: true)

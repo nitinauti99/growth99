@@ -28,7 +28,7 @@ class PostImageListTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
     }
     
-    func configureCell(mediaLibraryListVM: CreatePostViewModelProtocol?, index: IndexPath) {
+    func configureCell(mediaLibraryListVM: PostImageListViewModel?, index: IndexPath) {
         let mediaLibraryListVM = mediaLibraryListVM?.getSocialPostImageListDataAtIndex(index: index.row)
         self.fileName.text = mediaLibraryListVM?.filename
         self.createBy.text = String(mediaLibraryListVM?.createdBy?.firstName ?? "")

@@ -14,13 +14,18 @@ protocol MediaLibraryAddViewModelProtocol {
     func createMediaLibraryDetails(tageId: [Int], image: UIImage)
     
     var getSocialMediaTagListData: [MediaTagListModel]? { get }
+    var getSocialMediaInfoDtails: Content? { get }
     var mediaMediaLibraryDetailsData: MediaTagListModel? { get }
+
 }
 
 class MediaLibraryAddViewModel {
     var delegate: MediaLibraryAddViewControllerProtocol?
-    var mediaMediaLibraryDetailsDict: MediaTagListModel?
+  
     var socialMediaTagListData: [MediaTagListModel]?
+    var socialMediaInfoDtails : Content?
+    var mediaLibraryDetailsDict: MediaTagListModel?
+
     
     init(delegate: MediaLibraryAddViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -28,6 +33,7 @@ class MediaLibraryAddViewModel {
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
+    /// ge tag list for media
     func getSocialMediaTagList() {
         self.requestManager.request(forPath: ApiUrl.socialMediaTagList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< [MediaTagListModel], GrowthNetworkError>) in
             switch result {
@@ -41,14 +47,15 @@ class MediaLibraryAddViewModel {
         }
     }
     
+    // get edit media info details based media id
     func getMediaLibraryDetails(mediaTagId: Int) {
-        let finaleUrl = ApiUrl.mediaTagUrl + "\(mediaTagId)"
+        let finaleUrl = ApiUrl.editSocialMediaLibrary + "/\(mediaTagId)"
         
-        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< MediaTagListModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< Content, GrowthNetworkError>) in
             switch result {
             case .success(let mediaTagDict):
-                self.mediaMediaLibraryDetailsDict = mediaTagDict
-                self.delegate?.socialMediaTagListRecived()
+                self.socialMediaInfoDtails = mediaTagDict
+                self.delegate?.mediaLibraryDetailsRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -65,7 +72,7 @@ class MediaLibraryAddViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task:.requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  (result: Result< MediaTagListModel, GrowthNetworkError>) in
             switch result {
             case .success(let mediaMediaLibraryDetails):
-                self.mediaMediaLibraryDetailsDict = mediaMediaLibraryDetails
+                self.mediaLibraryDetailsDict = mediaMediaLibraryDetails
                 self.delegate?.saveMediaTagList(responseMessage:"Media MediaLibrary details Saved")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -100,8 +107,12 @@ extension MediaLibraryAddViewModel: MediaLibraryAddViewModelProtocol {
     var getSocialMediaTagListData: [MediaTagListModel]? {
         return self.socialMediaTagListData
     }
-
+    
+    var getSocialMediaInfoDtails: Content? {
+        return self.socialMediaInfoDtails
+    }
+  
     var mediaMediaLibraryDetailsData: MediaTagListModel? {
-        return self.mediaMediaLibraryDetailsDict
+        return self.mediaLibraryDetailsDict
     }
 }

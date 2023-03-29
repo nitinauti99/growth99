@@ -12,13 +12,13 @@
         <!--Post Image List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="PostImageListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PostImageListViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostImageListViewController" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PostImageListViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-wE-DEc">
-                                <rect key="frame" x="0.0" y="48" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bew-D5-IMi"/>
                                 </constraints>
@@ -32,22 +32,36 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vxg-GC-3k5">
-                                <rect key="frame" x="0.0" y="113" width="414" height="783"/>
+                                <rect key="frame" x="0.0" y="173" width="414" height="723"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="1JO-t3-uBG"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="TGe-aL-pZS"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-gd-UlP">
+                                <rect key="frame" x="354" y="48" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9pI-QW-3CY"/>
+                                    <constraint firstAttribute="width" constant="40" id="ckf-sM-zrA"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="CloseIcon"/>
+                                <connections>
+                                    <action selector="closePostWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kd7-ww-rJ7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vxg-GC-3k5" secondAttribute="trailing" id="0jz-vw-Fo7"/>
                             <constraint firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
+                            <constraint firstItem="jBH-gd-UlP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-20" id="8tu-xh-ooq"/>
+                            <constraint firstItem="jBH-gd-UlP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AK8-fG-gWO"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DTv-Wi-Rgo"/>
                             <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="Mrg-4q-sd3"/>
-                            <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="TfC-jd-n9H"/>
+                            <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="TfC-jd-n9H"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="top" secondItem="WEA-wE-DEc" secondAttribute="bottom" constant="5" id="X2C-SF-RYA"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yfl-wr-yyI"/>
                         </constraints>
@@ -63,6 +77,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CloseIcon" width="74" height="74"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

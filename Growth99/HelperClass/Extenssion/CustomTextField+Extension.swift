@@ -13,7 +13,6 @@ extension CustomTextField {
     func setOnTextChangeListener(onTextChanged :@escaping () -> Void){
         if #available(iOS 14.0, *) {
             self.addAction(UIAction() { action in
-                
             }, for: .editingChanged)
         } else {
             // Fallback on earlier versions

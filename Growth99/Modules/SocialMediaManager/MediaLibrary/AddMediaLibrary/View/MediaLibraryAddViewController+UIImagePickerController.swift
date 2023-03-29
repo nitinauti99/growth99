@@ -22,6 +22,8 @@ extension MediaLibraryAddViewController: UIImagePickerControllerDelegate, UINavi
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         self.mediaImage.image  = selectedImage
         self.mediaImage.isHidden = false
+        self.deleteBackroundImageButton.isHidden = false
+        self.browseImageButton.isHidden = true
         self.browseImagButtonHight.constant = 210
         self.dismiss(animated: true, completion: nil)
     }
@@ -38,9 +40,4 @@ extension MediaLibraryAddViewController: UIImagePickerControllerDelegate, UINavi
         imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         present(imagePickerController, animated: true, completion: nil)
     }
-    
-    @IBAction func deleteBackroundImage(sender: UIButton){
-        
-    }
-    
-}
+ }

@@ -64,8 +64,7 @@ struct SocialTags : Codable {
     let deleted : Bool?
     let tenantId : Int?
     let id : Int?
-    let libraryTag : LibraryTag?
-    
+    let libraryTag : MediaTagListModel?
 }
 
 struct Sort : Codable {

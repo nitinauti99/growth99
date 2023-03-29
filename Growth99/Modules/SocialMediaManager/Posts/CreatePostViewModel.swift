@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol CreatePostViewModelProtocol {
     ///get all  SocialMediaPost list
     func getSocialMediaPostLabelsList()
@@ -19,13 +18,7 @@ protocol CreatePostViewModelProtocol {
     
     /// get social post
      func getSocialPost(postId: Int)
-    
-    /// get PostImage From lbrariesList
-    func getSocialPostImageFromLbrariesList(page: Int,size: Int, search: String, tags: Int)
-    var getSocialPostImageList: [Content] { get }
-    func getSocialPostImageListDataAtIndex(index: Int)-> Content?
 
-    
     /// create patients user
     func createPost(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
       
@@ -90,22 +83,6 @@ class CreatePostViewModel {
         }
     }
     
-    /// get image from imageLibrary
-    func getSocialPostImageFromLbrariesList(page: Int,size: Int, search: String, tags: Int) {
-        let url = "page=\(page)&size=\(size)&search=\(search)&tags="
-      
-        self.requestManager.request(forPath: ApiUrl.socialMediaLibraries.appending(url), method: .GET, headers: self.requestManager.Headers()) {  (result: Result< MediaLibraryListModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let pateintsTagList):
-                self.socialPostImageList = pateintsTagList.content ?? []
-                self.delegate?.socialPostImageListRecived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
-            }
-        }
-    }
-    
     func createPost(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String){
         let urlParameter: Parameters = [
                 "name": name,
@@ -129,10 +106,6 @@ class CreatePostViewModel {
             }
         }
     }
-    
-    func getSocialPostImageListDataAtIndex(index: Int)-> Content? {
-        return self.socialPostImageList[index]
-    }
 
 
 }
@@ -146,10 +119,6 @@ extension CreatePostViewModel: CreatePostViewModelProtocol {
 
     var getSocialProfilesListData: [SocialProfilesList] {
         return self.socialProfilesListData
-    }
-
-    var getSocialPostImageList: [Content] {
-        return self.getSocialPostImageList
     }
         
 }

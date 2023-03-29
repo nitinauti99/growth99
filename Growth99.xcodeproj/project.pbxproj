@@ -163,6 +163,7 @@
 		016F665829CF4B9A00B1D248 /* PostImageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665629CF4B9A00B1D248 /* PostImageListTableViewCell.swift */; };
 		016F665929CF4B9A00B1D248 /* PostImageListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016F665729CF4B9A00B1D248 /* PostImageListTableViewCell.xib */; };
 		016F665B29CF500300B1D248 /* PostImageListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */; };
+		016F665F29D1617A00B1D248 /* PostImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665E29D1617A00B1D248 /* PostImageListViewModel.swift */; };
 		017D571329AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */; };
 		017D571529AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */; };
 		017D571729AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */; };
@@ -1038,6 +1039,7 @@
 		016F665629CF4B9A00B1D248 /* PostImageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageListTableViewCell.swift; sourceTree = "<group>"; };
 		016F665729CF4B9A00B1D248 /* PostImageListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageListTableViewCell.xib; sourceTree = "<group>"; };
 		016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostImageListViewController+TableView.swift"; sourceTree = "<group>"; };
+		016F665E29D1617A00B1D248 /* PostImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageListViewModel.swift; sourceTree = "<group>"; };
 		017D571229AF57B600D6A5A4 /* QuestionarieViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+TableView.swift"; sourceTree = "<group>"; };
 		017D571429AF57FD00D6A5A4 /* QuestionarieViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionarieViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		017D571629AF5F0B00D6A5A4 /* DisplayQuestionnaireViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireViewContoller.swift; sourceTree = "<group>"; };
@@ -2732,10 +2734,8 @@
 		016F665029CF498F00B1D248 /* AddImage */ = {
 			isa = PBXGroup;
 			children = (
-				016F665529CF4B8500B1D248 /* Cell */,
-				016F665129CF49ED00B1D248 /* PostImageListViewController.swift */,
-				016F665329CF49F900B1D248 /* PostImageListViewController.storyboard */,
-				016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */,
+				016F665D29D1616900B1D248 /* ViewModel */,
+				016F665C29D1616100B1D248 /* View */,
 			);
 			name = AddImage;
 			sourceTree = "<group>";
@@ -2747,6 +2747,25 @@
 				016F665729CF4B9A00B1D248 /* PostImageListTableViewCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		016F665C29D1616100B1D248 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				016F665529CF4B8500B1D248 /* Cell */,
+				016F665129CF49ED00B1D248 /* PostImageListViewController.swift */,
+				016F665329CF49F900B1D248 /* PostImageListViewController.storyboard */,
+				016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		016F665D29D1616900B1D248 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				016F665E29D1617A00B1D248 /* PostImageListViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		017D571A29AF5F5E00D6A5A4 /* ViewQuestinarie */ = {
@@ -2886,7 +2905,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		01C7489829B2334E0085CED2 /* BussinessView */ = {
+		01C7489829B2334E0085CED2 /* BussinessSelection */ = {
 			isa = PBXGroup;
 			children = (
 				01C748A329B233FE0085CED2 /* Cell */,
@@ -2894,7 +2913,7 @@
 				01C7489D29B233980085CED2 /* BussinessSelectionViewController.storyboard */,
 				01C748AA29B2363B0085CED2 /* BussinessSelectionViewController+TableView.swift */,
 			);
-			path = BussinessView;
+			path = BussinessSelection;
 			sourceTree = "<group>";
 		};
 		01C748A329B233FE0085CED2 /* Cell */ = {
@@ -4498,7 +4517,7 @@
 		84088BB92977E80D0060855E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				01C7489829B2334E0085CED2 /* BussinessView */,
+				01C7489829B2334E0085CED2 /* BussinessSelection */,
 				84D0620729670676001FE469 /* LogInViewController.swift */,
 				84D0620429670676001FE469 /* LogInViewController.storyboard */,
 			);
@@ -7748,6 +7767,7 @@
 				842C0CC2298F713B00395061 /* AddNewQuestionarieViewController.swift in Sources */,
 				01EBAC6429B58BD000110DCB /* LeadSourceUrlListModel.swift in Sources */,
 				01EBAC5C29B58B1A00110DCB /* DeletedLeadListModel.swift in Sources */,
+				016F665F29D1617A00B1D248 /* PostImageListViewModel.swift in Sources */,
 				842C0CD3298F759100395061 /* AddNewConsentsViewModel.swift in Sources */,
 				845C39E4292276B000D934C5 /* UITapGestureRecognizerExtension.swift in Sources */,
 				1883F12F29C7571E0080997B /* CountryManager.swift in Sources */,

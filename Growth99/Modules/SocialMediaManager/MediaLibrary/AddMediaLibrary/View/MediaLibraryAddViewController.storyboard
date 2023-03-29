@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-d0-ghm">
-                                <rect key="frame" x="160" y="523.33333333333337" width="110" height="40"/>
+                                <rect key="frame" x="175" y="523.33333333333337" width="110" height="40"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NTW-2X-QLm"/>
@@ -102,20 +102,20 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y5v-Jy-IM0">
-                                <rect key="frame" x="30" y="250" width="250" height="150"/>
+                                <rect key="frame" x="30" y="250" width="260" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Eol-3c-Rxh"/>
-                                    <constraint firstAttribute="width" constant="250" id="xjR-hO-EgD"/>
+                                    <constraint firstAttribute="width" constant="260" id="xjR-hO-EgD"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1V-9w-5Bn">
-                                <rect key="frame" x="30" y="433.33333333333331" width="150" height="40"/>
+                                <rect key="frame" x="30" y="433.33333333333331" width="130" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Oik-u9-iSE"/>
+                                    <constraint firstAttribute="width" constant="130" id="Oik-u9-iSE"/>
                                     <constraint firstAttribute="height" constant="40" id="Vrv-ht-T8j"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Browse for file"/>
@@ -138,6 +138,27 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-i0-HJu">
+                                <rect key="frame" x="170" y="433.33333333333331" width="120" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MCW-e1-F20"/>
+                                    <constraint firstAttribute="width" constant="120" id="so2-Gd-jyA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Remove"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteBackroundImageWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="I8P-hk-Ik9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -148,7 +169,8 @@
                             <constraint firstItem="bN3-ef-Uit" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Kny-tF-xqD"/>
                             <constraint firstItem="V9u-mR-rvP" firstAttribute="top" secondItem="E1V-9w-5Bn" secondAttribute="bottom" constant="50" id="Llc-Qj-2Te"/>
                             <constraint firstItem="3Xy-rX-LR3" firstAttribute="top" secondItem="FRO-Vp-lXS" secondAttribute="top" id="PA0-d8-vLD"/>
-                            <constraint firstItem="vmL-d0-ghm" firstAttribute="leading" secondItem="V9u-mR-rvP" secondAttribute="trailing" constant="20" id="QmT-K8-Wi1"/>
+                            <constraint firstItem="aTj-i0-HJu" firstAttribute="trailing" secondItem="Y5v-Jy-IM0" secondAttribute="trailing" id="PyD-Re-nqX"/>
+                            <constraint firstItem="vmL-d0-ghm" firstAttribute="leading" secondItem="V9u-mR-rvP" secondAttribute="trailing" constant="35" id="QmT-K8-Wi1"/>
                             <constraint firstItem="KeD-4t-6ht" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Rzb-EF-5BK"/>
                             <constraint firstItem="DO2-7b-jGQ" firstAttribute="leading" secondItem="KeD-4t-6ht" secondAttribute="leading" id="VyJ-lj-E9r"/>
                             <constraint firstItem="Y5v-Jy-IM0" firstAttribute="top" secondItem="3Xy-rX-LR3" secondAttribute="bottom" constant="26.666666666666657" id="WUD-l7-dzg"/>
@@ -164,11 +186,14 @@
                             <constraint firstItem="3Xy-rX-LR3" firstAttribute="leading" secondItem="FRO-Vp-lXS" secondAttribute="leading" id="mxk-91-pBO"/>
                             <constraint firstItem="Y5v-Jy-IM0" firstAttribute="leading" secondItem="KeD-4t-6ht" secondAttribute="leading" id="szk-AX-j5V"/>
                             <constraint firstItem="3Xy-rX-LR3" firstAttribute="bottom" secondItem="FRO-Vp-lXS" secondAttribute="bottom" id="vtq-4U-ywK"/>
+                            <constraint firstItem="aTj-i0-HJu" firstAttribute="centerY" secondItem="E1V-9w-5Bn" secondAttribute="centerY" id="yJd-zK-TTl"/>
                             <constraint firstItem="DO2-7b-jGQ" firstAttribute="top" secondItem="E1V-9w-5Bn" secondAttribute="bottom" constant="15" id="ztn-KL-jDo"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="browseImagButtonHight" destination="klt-cq-AmC" id="j1X-GP-c3g"/>
+                        <outlet property="browseImageButton" destination="E1V-9w-5Bn" id="Lbc-NP-2s3"/>
+                        <outlet property="deleteBackroundImageButton" destination="aTj-i0-HJu" id="7sW-nS-EU3"/>
                         <outlet property="mediaImage" destination="Y5v-Jy-IM0" id="BGu-DT-qWH"/>
                         <outlet property="mediaLibraryLBI" destination="bN3-ef-Uit" id="ZHl-uZ-aPf"/>
                         <outlet property="mediaLibraryTextField" destination="FRO-Vp-lXS" id="Yxy-GH-Drr"/>

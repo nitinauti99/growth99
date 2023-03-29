@@ -10,8 +10,9 @@ import UIKit
 
 protocol MediaLibraryAddViewControllerProtocol: AnyObject {
     func socialMediaTagListRecived()
-    func errorReceived(error: String)
+    func mediaLibraryDetailsRecived()
     func saveMediaTagList(responseMessage:String)
+    func errorReceived(error: String)
 }
 
 class MediaLibraryAddViewController: UIViewController {
@@ -20,14 +21,14 @@ class MediaLibraryAddViewController: UIViewController {
     @IBOutlet weak var mediaLibraryLBI: UILabel!
     @IBOutlet weak var mediaImage: UIImageView!
     @IBOutlet weak var browseImagButtonHight: NSLayoutConstraint!
-    
-    let boundary: String = "------WebKitFormBoundarytgue2M7DLZIlgYY2"
+    @IBOutlet weak var browseImageButton: UIButton!
+    @IBOutlet weak var deleteBackroundImageButton: UIButton!
 
-    
     var viewModel: MediaLibraryAddViewModelProtocol?
     var mediaTagId = Int()
     var mediaTagScreenName = String()
     var selectedPostLabels = [Int]()
+    var selectedTagList: [MediaTagListModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +42,35 @@ class MediaLibraryAddViewController: UIViewController {
         self.viewModel?.getSocialMediaTagList()
         
         if self.mediaTagScreenName == "Edit Screen" {
-            self.view.ShowSpinner()
-            self.viewModel?.getMediaLibraryDetails(mediaTagId: mediaTagId)
             self.mediaLibraryLBI.text = "Edit Image"
             self.title = Constant.Profile.editMediaLibrary
-            self.mediaLibraryTextField.text = viewModel?.mediaMediaLibraryDetailsData?.name ?? String.blank
         }else{
             self.mediaLibraryLBI.text = "Add Image"
             self.title = Constant.Profile.createMediaLibrary
+            self.deleteBackroundImageButton.isHidden = true
         }
+    }
+    
+    func setUPUI(){
+        let item = viewModel?.getSocialMediaInfoDtails
+        let libraryTag = (item?.socialTags ?? []).map({$0.libraryTag}).map({$0?.name})
+        self.selectedTagList = (item?.socialTags ?? []).map({$0.libraryTag!}).map({$0})
+       
+        self.selectedPostLabels = (item?.socialTags ?? []).map({$0.libraryTag!}).map({$0.id ?? 0})
+       
+        self.mediaLibraryTextField.text = (libraryTag.map({$0 ?? ""})).joined(separator: ", ")
+        self.mediaImage.sd_setImage(with: URL(string: item?.location ?? ""), placeholderImage: UIImage(named: "growthCircleIcon"), context: nil)
+        self.mediaImage.isHidden = false
+        self.deleteBackroundImageButton.isHidden = false
+        self.browseImageButton.isHidden = true
+        self.browseImagButtonHight.constant = 210
+    }
+    
+    @IBAction func deleteBackroundImage(sender: UIButton){
+        self.deleteBackroundImageButton.isHidden = true
+        self.browseImageButton.isHidden = false
+        self.browseImagButtonHight.constant = 20
+        self.mediaImage.image = nil
     }
     
     @IBAction func openSocialMediaTagList(sender: UIButton){
@@ -58,7 +79,8 @@ class MediaLibraryAddViewController: UIViewController {
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.name
         }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+      
+        selectionMenu.setSelectedItems(items: selectedTagList ?? []) { [weak self] (text, index, selected, selectedList) in
             self?.mediaLibraryTextField.text  = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedPostLabels = selectedList.map({$0.id ?? 0})
             
@@ -79,59 +101,62 @@ class MediaLibraryAddViewController: UIViewController {
     @IBAction func saveAction(sender: UIButton) {
         if let textField = mediaLibraryTextField.text,  textField == "" {
             self.mediaLibraryTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            return
         }
         self.view.ShowSpinner()
-        if self.mediaTagScreenName == "Edit Screen" {
-            self.viewModel?.saveMediaLibraryDetails(mediaTagId: mediaTagId, name: mediaLibraryTextField.text ?? String.blank)
+        guard let image = self.mediaImage.image else { return  }
+        let filename = "sample"
+        let boundary = UUID().uuidString
+        let tagIds = selectedPostLabels.map { String($0) }.joined(separator: ",")
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        var url = String()
+        var methodType = String()
+        if  self.mediaTagScreenName == "Edit Screen" {
+            url = "https://api.growthemr.com/api/socialMedia/library/\(mediaTagId)"
+            methodType = "PUT"
         }else{
-            guard let image = self.mediaImage.image else { return  }
+            url = "https://api.growthemr.com/api/socialMedia/library"
+            methodType = "POST"
+        }
+        
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        
+        urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
+        urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
+        urlRequest.httpMethod = methodType
+        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        var data = Data()
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n \(tagIds)".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+        data.append(image.pngData()!)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             
-//            viewModel?.createMediaLibraryDetails(tageId:  self.selectedPostLabels, image: image)
-
+            if(error != nil){
+                print("\(error!.localizedDescription)")
+            }
             
-            let filename = "avatar.png"
-            let boundary = UUID().uuidString
-            let fieldName = "tags"
-            let tagIds = selectedPostLabels.map { String($0) }.joined(separator: ",")
-
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-
-            var urlRequest = URLRequest(url: URL(string: "https://api.growthemr.com/api/socialMedia/library")!)
-            urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
-            urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
-            urlRequest.httpMethod = "POST"
-
-            urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-
-            var data = Data()
-            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-            data.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n \(tagIds)".data(using: .utf8)!)
-
-            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-            data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
-            data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-            data.append(image.pngData()!)
-            data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-
-            session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
-
-                if(error != nil){
-                    print("\(error!.localizedDescription)")
-                }
-
-                guard let responseData = responseData else {
-                    print("no response data")
-                    return
-                }
-
-                if let responseString = String(data: responseData, encoding: .utf8) {
-                    print("uploaded to: \(responseString)")
+            guard let responseData = responseData else {
+                print("no response data")
+                return
+            }
+            
+            if let responseString = String(data: responseData, encoding: .utf8) {
+                print("uploaded to: \(responseString)")
+                DispatchQueue.main.async {
                     self.view.HideSpinner()
+                    self.navigationController?.popViewController(animated: true)
                 }
-            }).resume()
-       }
-   }
+            }
+        }).resume()
+    }
 }
 
 extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
@@ -139,8 +164,14 @@ extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
     func socialMediaTagListRecived() {
         self.view.HideSpinner()
         if mediaTagScreenName == "Edit Screen" {
-            self.mediaLibraryTextField.text = viewModel?.mediaMediaLibraryDetailsData?.name ?? String.blank
+            self.view.ShowSpinner()
+            self.viewModel?.getMediaLibraryDetails(mediaTagId: mediaTagId)
         }
+    }
+    
+    func mediaLibraryDetailsRecived(){
+        self.view.HideSpinner()
+        self.setUPUI()
     }
     
     func saveMediaTagList(responseMessage:String) {
@@ -153,14 +184,4 @@ extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
     }
-    
 }
-
-//extension Data {
-//    
-//    mutating func append(_ string: String) {
-//        if let data = string.data(using: .utf8) {
-//            self.append(data)
-//        }
-//    }
-//}

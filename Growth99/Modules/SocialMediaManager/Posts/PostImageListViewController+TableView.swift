@@ -32,15 +32,9 @@ extension PostImageListViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailController = UIStoryboard(name: "CreateLabelViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLabelViewController") as! CreateLabelViewController
-//
-//        detailController.screenName = "Edit Screen"
-//
-//        if self.isSearch {
-//            detailController.labelId = viewModel?.labelFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
-//        }else{
-//            detailController.labelId = viewModel?.labelListDataAtIndex(index: indexPath.row)?.id ?? 0
-//        }
-//        navigationController?.pushViewController(detailController, animated: true)
+        let content = viewModel?.getSocialPostImageListDataAtIndex(index: indexPath.row)
+        self.delegate?.getSocialPostImageListDataAtIndex(content: content!)
+        self.dismiss(animated: true)
+      
     }
 }
