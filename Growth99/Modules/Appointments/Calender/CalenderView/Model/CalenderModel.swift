@@ -296,12 +296,12 @@ struct Questionnaires : Codable {
     let deleted : Bool?
     let tenantId : Int?
     let id : Int?
-    let defaultQuestionnaireId : String?
+    let defaultQuestionnaireId : Int?
     let name : String?
     let isPublic : Bool?
     let chatQuestionnaire : Bool?
     let questionnaireSource : String?
-    let isContactForm : String?
+    let isContactForm : Bool?
     let isG99ReviewForm : Bool?
     let isLeadForm : Bool?
     let showTitle : Bool?

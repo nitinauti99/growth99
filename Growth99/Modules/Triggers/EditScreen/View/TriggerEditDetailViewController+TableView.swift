@@ -52,15 +52,15 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.leadSourceUrlSelectonButton.tag = indexPath.row
             
             cell.leadSourceTextLabel.text = viewModel?.getTriggerEditListData?.triggerConditions?.joined(separator: ",")
-//            if (viewModel?.getTriggerEditListData?.landingPages?.count ?? 0) > 0 {
-//                cell.leadLandingTextLabel.text = viewModel?.getTriggerEditListData?.landingPages?[0].name
-//            }
-//            if (viewModel?.getTriggerEditListData?.forms?.count ?? 0) > 0 {
-//                cell.leadFormTextLabel.text = viewModel?.getTriggerEditListData?.forms?[0].name
-//            }
-//            if (viewModel?.getTriggerEditListData?.sourceUrls?.count ?? 0) > 0 {
-//                cell.leadSourceUrlTextLabel.text = viewModel?.getTriggerEditListData?.sourceUrls?[0].sourceUrl
-//            }
+            if (viewModel?.getTriggerEditListData?.landingPages?.count ?? 0) > 0 {
+                cell.leadLandingTextLabel.text = String(viewModel?.getTriggerEditListData?.landingPages?[0] ?? 0)
+            }
+            if (viewModel?.getTriggerEditListData?.forms?.count ?? 0) > 0 {
+                cell.leadFormTextLabel.text = String(viewModel?.getTriggerEditListData?.forms?[0] ?? 0)
+            }
+            if (viewModel?.getTriggerEditListData?.sourceUrls?.count ?? 0) > 0 {
+                cell.leadSourceUrlTextLabel.text = String(viewModel?.getTriggerEditListData?.sourceUrls?[0] ?? 0)
+            }
             cell.leadNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {

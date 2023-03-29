@@ -337,14 +337,14 @@ struct EditLandingPageNamesModel : Codable, Equatable {
 
 struct TriggerEditModel : Codable {
     let id : Int?
-    let sourceUrls : String?
+    let sourceUrls : [Int]?
     let patientTags : String?
     let triggerConditions : [String]?
     let forms : [Int]?
     let isTriggerForLeadStatus : Bool?
     let toLeadStatus : String?
     let triggerData : [TriggerEditData]?
-    let landingPages : String?
+    let landingPages : [Int]?
     let moduleName : String?
     let source : String?
     let executionStatus : String?

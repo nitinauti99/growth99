@@ -87,9 +87,9 @@ struct MarketingSMSEmailResModel : Codable {
     let name : String?
     let moduleName : String?
     let triggerActionName : String?
-    let landingPages : String?
+    let landingPages : [String]?
     let forms : String?
-    let sourceUrls : String?
+    let sourceUrls : [Int]?
     let triggerConditions : [String]?
     let source : [String]?
     let emailFlag : Bool?
