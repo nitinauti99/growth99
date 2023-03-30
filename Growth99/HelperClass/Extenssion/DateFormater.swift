@@ -19,7 +19,8 @@ protocol DateFormaterProtocol: AnyObject {
     func localToServerWithDate(date: String) -> String
     func serverToLocalDate(date: String) -> String
     func serverToLocalPateintTimeLineDate(date: String) -> String
-    func dateAndtimeFormatterString(textField: CustomTextField) -> String
+    func localToServerSocial(date: String, time: String) -> String
+    
 }
 
 class DateFormater: DateFormaterProtocol {
@@ -87,6 +88,24 @@ class DateFormater: DateFormaterProtocol {
         return dateFormatter.string(from: date)
     }
     
+    func localToServerSocial(date: String, time: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let convertedDate = dateFormatter.string(from: date)
+      
+        var timePicker = DateFormatter()
+        timePicker.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "h:mm"
+        let time = dateFormatter.date(from: time) ?? Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        let finalTime = formatter.string(from: time)
+        return (convertedDate + " " + finalTime)
+    }
+    
     func localToServerWithDate(date: String) -> String {
         let currentDate = Date()
         let currentTime = date
@@ -120,30 +139,7 @@ class DateFormater: DateFormaterProtocol {
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)
     }
-    
-    func dateAndtimeFormatterString(textField: CustomTextField) -> String {
-        var datePicker = UIDatePicker()
-        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
-        datePicker.minimumDate = todaysDate
-        textField.resignFirstResponder()
-        datePicker.reloadInputViews()
-        let date =  dateFormatter.string(from: datePicker.date)
 
-        var timePicker = UIDatePicker()
-        timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        timePicker.datePickerMode = .time
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        textField.resignFirstResponder()
-        timePicker.reloadInputViews()
-        let time = formatter.string(from: timePicker.date)
-
-        return (date + " " + time)
-    }
     
     func timeFormatterString(textField: CustomTextField) -> String {
         var timePicker = UIDatePicker()

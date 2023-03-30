@@ -25,8 +25,9 @@ class CreatePostViewController: UIViewController {
     @IBOutlet private weak var hashtagTextField: CustomTextField!
     @IBOutlet private weak var labelTextField: CustomTextField!
     @IBOutlet private weak var scheduleDateTextField: CustomTextField!
+    @IBOutlet private weak var scheduleTimeTextField: CustomTextField!
     @IBOutlet private weak var socialChannelTextField: CustomTextField!
-    @IBOutlet private weak var PostTextView: UITextView!
+    @IBOutlet private weak var PostTextView: CustomTextView!
     @IBOutlet private weak var upLoadImageButton: UIButton!
     @IBOutlet private weak var selectFromLibButton: UIButton!
     @IBOutlet weak var postImageView: UIImageView!
@@ -51,11 +52,17 @@ class CreatePostViewController: UIViewController {
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
         self.viewModel?.getSocialMediaPostLabelsList()
-        self.scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .dateAndTime)
+        self.scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        
+        self.scheduleTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromButtonPressed), mode: .time)
     }
     
     @objc func dateFromButtonPressed() {
-        self.scheduleDateTextField.text = self.dateFormater?.dateAndtimeFormatterString(textField: self.scheduleDateTextField)
+        self.scheduleDateTextField.text = self.dateFormater?.dateFormatterString(textField: self.scheduleDateTextField)
+    }
+    
+    @objc func timeFromButtonPressed() {
+        self.scheduleTimeTextField.text = self.dateFormater?.timeFormatterString(textField: self.scheduleTimeTextField)
     }
     
     func setUpUI(){
@@ -92,7 +99,88 @@ class CreatePostViewController: UIViewController {
         }
         
         self.view.ShowSpinner()
-//        viewModel?.createPost(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank), workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+       
+        guard let image = self.postImageView.image else { return  }
+        let filename = "blob"
+        let boundary = UUID().uuidString
+        let socialMediaPostLabelId = self.selectedPostLabels.map { String($0) }.joined(separator: ",")
+        let socialProfileIds = self.selectedSocialProfiles.map { String($0) }.joined(separator: ",")
+
+        let scheduledDate = dateFormater?.localToServerSocial(date: (self.scheduleDateTextField.text ?? ""), time: (self.scheduleTimeTextField.text ?? ""))
+        
+        //"2023-03-30 23:39:00 +0530"
+        
+        print(dateFormater?.localToServerSocial(date: (self.scheduleDateTextField.text ?? "") , time: (self.scheduleTimeTextField.text ?? "")))
+        
+        let name = ""
+        let label = ""
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        var url = String()
+        var methodType = String()
+        if  self.screenName == "Edit Screen" {
+            url = "https://api.growthemr.com/api/socialMediaPost/\(postId)"
+            methodType = "PUT"
+        }else{
+            url = "https://api.growthemr.com/api/socialMediaPost"
+            methodType = "POST"
+        }
+        
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        
+        urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
+        urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
+        urlRequest.httpMethod = methodType
+        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        var data = Data()
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"name\"\r\n\r\n \(name)".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"hashtag\"\r\n\r\n \(self.hashtagTextField.text ?? "")".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"label\"\r\n\r\n \(label)".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"post\"\r\n\r\n \(self.PostTextView.text ?? "")".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"socialMediaPostLabelId\"\r\n\r\n \(socialMediaPostLabelId)".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"scheduledDate\"\r\n\r\n \(String(describing: scheduledDate))".data(using: .utf8)!)
+
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"socialProfileIds\"\r\n\r\n \(socialProfileIds)".data(using: .utf8)!)
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+        data.append(image.pngData()!)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
+            
+            if(error != nil){
+                print("\(error!.localizedDescription)")
+            }
+            
+            guard let responseData = responseData else {
+                print("no response data")
+                return
+            }
+            
+            if let responseString = String(data: responseData, encoding: .utf8) {
+                print("uploaded to: \(responseString)")
+                DispatchQueue.main.async {
+                    self.view.HideSpinner()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }).resume()
     }
     
 }
