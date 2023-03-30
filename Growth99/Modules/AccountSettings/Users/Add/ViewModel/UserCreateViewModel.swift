@@ -9,6 +9,7 @@ import Foundation
 
 protocol UserCreateViewModelProtocol {
     func isValidFirstName(_ firstName: String) -> Bool
+    func isValidLastName(_ lastName: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidEmail(_ email: String) -> Bool
     func getUserData(userId: Int)
@@ -149,17 +150,21 @@ extension UserCreateViewModel : UserCreateViewModelProtocol {
     }
     
     func isValidFirstName(_ firstName: String) -> Bool {
-        if firstName.count > 0 {
-            return true
-        }
-        return false
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
+    func isValidLastName(_ lastName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isLastName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isLastName.evaluate(with: lastName)
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
+        let regex = Constant.Regex.phone
+        let isPhoneNo = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isPhoneNo.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {

@@ -300,7 +300,7 @@ extension HomeViewContoller: HomeViewContollerProtocol{
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "user updated successfully", color: .systemGreen)
+        self.view.showToast(message: "user updated successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.openUserListView()
         })

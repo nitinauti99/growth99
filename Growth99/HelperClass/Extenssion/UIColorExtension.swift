@@ -32,4 +32,8 @@ public extension UIColor {
     func appThemeColor() -> UIColor {
         return UIColor.init(hexString: "009EDE")
     }
+    
+    func successMessageColor() -> UIColor {
+        return UIColor.init(hexString: "#66A15A")
+    }
 }

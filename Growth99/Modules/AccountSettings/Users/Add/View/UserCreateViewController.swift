@@ -85,7 +85,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "user created successfully", color: .systemGreen)
+        self.view.showToast(message: "user created successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.openUserListView()
         })
@@ -322,12 +322,22 @@ extension UserCreateViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         
-        if textField == firsNameTextField,  textField.text == "" {
+        if let textField = firsNameTextField, textField.text == "" {
             firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
         }
+        
+        if let isFirstName =  self.viewModel?.isValidFirstName(self.firsNameTextField.text ?? ""), isFirstName == false  {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
+        }
+        
         if textField == lastNameTextField, textField.text == "" {
             lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
         }
+        
+        if let isLastName =  self.viewModel?.isValidLastName(self.lastNameTextField.text ?? ""), isLastName == false {
+            self.lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
+        }
+        
         if textField == phoneNumberTextField, textField.text == "" {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
         }

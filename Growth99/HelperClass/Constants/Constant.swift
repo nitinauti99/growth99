@@ -191,6 +191,8 @@ struct Constant {
         static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         static let password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!])[a-zA-Z0-9@$!]{8,}$"
         static let phone = "^[1-9][0-9]{9}$"
+        static let nameWithoutSpace = "^[a-zA-Z]*$"
+        static let nameWithSpace = "^[a-zA-Z]([a-zA-Z ]*)?$"
     }
     
     struct CreateLead {

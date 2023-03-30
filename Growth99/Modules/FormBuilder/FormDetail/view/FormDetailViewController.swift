@@ -113,7 +113,7 @@ class FormDetailViewController: UIViewController, FormDetailViewControllerProtoc
     }
     
     func updatedFormDataSuccessfully(){
-        self.view.showToast(message: "Form Data Updated Successfully", color: .black)
+        self.view.showToast(message: "Form Data Updated Successfully", color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
 
