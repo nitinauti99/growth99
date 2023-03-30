@@ -106,12 +106,10 @@ class CreatePostViewController: UIViewController {
         let socialMediaPostLabelId = self.selectedPostLabels.map { String($0) }.joined(separator: ",")
         let socialProfileIds = self.selectedSocialProfiles.map { String($0) }.joined(separator: ",")
 
-        let scheduledDate = dateFormater?.localToServerSocial(date: (self.scheduleDateTextField.text ?? ""), time: (self.scheduleTimeTextField.text ?? ""))
+        let str: String = (self.scheduleDateTextField.text ?? "") + " " + (self.scheduleTimeTextField.text ?? "")
         
-        //"2023-03-30 23:39:00 +0530"
-        
-        print(dateFormater?.localToServerSocial(date: (self.scheduleDateTextField.text ?? "") , time: (self.scheduleTimeTextField.text ?? "")))
-        
+        var scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
+                
         let name = ""
         let label = ""
         

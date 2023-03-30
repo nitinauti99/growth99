@@ -19,7 +19,7 @@ protocol DateFormaterProtocol: AnyObject {
     func localToServerWithDate(date: String) -> String
     func serverToLocalDate(date: String) -> String
     func serverToLocalPateintTimeLineDate(date: String) -> String
-    func localToServerSocial(date: String, time: String) -> String
+    func localToServerSocial(date: String) -> String
     
 }
 
@@ -88,22 +88,13 @@ class DateFormater: DateFormaterProtocol {
         return dateFormatter.string(from: date)
     }
     
-    func localToServerSocial(date: String, time: String) -> String {
+    func localToServerSocial(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let convertedDate = dateFormatter.string(from: date)
-      
-        var timePicker = DateFormatter()
-        timePicker.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "h:mm"
-        let time = dateFormatter.date(from: time) ?? Date()
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        let finalTime = formatter.string(from: time)
-        return (convertedDate + " " + finalTime)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: date)
     }
     
     func localToServerWithDate(date: String) -> String {
