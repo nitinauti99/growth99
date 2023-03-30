@@ -222,6 +222,7 @@ class HomeViewContoller: UIViewController {
     }
     
     func openUserListView(){
+       
         let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
         self.navigationController?.pushViewController(userListVC, animated: true)
     }
@@ -231,7 +232,7 @@ class HomeViewContoller: UIViewController {
 extension HomeViewContoller: HomeViewContollerProtocol{
  
     func userDataRecived() {
-        viewModel?.getallClinics()
+        self.viewModel?.getallClinics()
         userProvider.setOn(false, animated: false)
         if viewModel?.getUserProfileData.isProvider ?? false {
             userProvider.setOn(true, animated: false)
@@ -239,7 +240,7 @@ extension HomeViewContoller: HomeViewContollerProtocol{
             self.userProviderView.isHidden = false
         }
         self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
-        setUpUI()
+        self.setUpUI()
     }
     
     func clinicsRecived() {
@@ -248,7 +249,7 @@ extension HomeViewContoller: HomeViewContollerProtocol{
         selectedClincs = viewModel?.getUserProfileData.clinics ?? []
         
         /// get From allclinincsapi
-        allClinics = viewModel?.getAllClinicsData ?? []
+        self.allClinics = viewModel?.getAllClinicsData ?? []
         
         self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
         let selectedClincId = selectedClincs.map({$0.id ?? 0})
@@ -277,7 +278,12 @@ extension HomeViewContoller: HomeViewContollerProtocol{
         if selectedServiceCategories.count == 0 || itemNotPresent == false {
             self.serviceCategoriesTextField.text = ""
         }
-        self.viewModel?.getallService(SelectedCategories: selectedList)
+        self.view.HideSpinner()
+
+        if self.selectedServiceCategories.count > 0 {
+            self.view.ShowSpinner()
+            self.viewModel?.getallService(SelectedCategories: selectedList)
+        }
     }
     
     func serviceRecived() {
@@ -294,8 +300,10 @@ extension HomeViewContoller: HomeViewContollerProtocol{
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "data updated successfully", color: .black)
-        self.openUserListView()
+        self.view.showToast(message: "user updated successfully", color: .systemGreen)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.openUserListView()
+        })
     }
     
     func errorReceived(error: String) {

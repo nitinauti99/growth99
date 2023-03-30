@@ -25,9 +25,8 @@ class ForgotPasswordViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func sendRequestGetPassword(email: String) {
-        let parameter: Parameters = ["email": email,
-        ]
-        self.requestManager.request(forPath: ApiUrl.forgotPassword, method: .GET,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+
+        self.requestManager.request(forPath: ApiUrl.forgotPassword.appending("?username=\(email)"), method: .GET) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):

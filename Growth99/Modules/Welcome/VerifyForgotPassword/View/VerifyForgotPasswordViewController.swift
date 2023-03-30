@@ -25,11 +25,12 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     @IBOutlet weak var veificationCodeTextField: CustomTextField!
 
     var viewModel: VerifyForgotPasswordViewModelProtocol?
-
+    var email = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.subView.createBorderForView(redius: 10, width: 1)
-        viewModel = VerifyForgotPasswordViewModel(delegate: self)
+        self.viewModel = VerifyForgotPasswordViewModel(delegate: self)
         self.subView.addBottomShadow(color: .gray)
         self.setUpUI()
     }
@@ -37,6 +38,7 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     func setUpUI(){
         self.continueButton.layer.cornerRadius = 12
         self.continueButton.clipsToBounds = true
+        self.emailTextField.text = email
         signUpLbl.updateHyperLinkText { _ in
             self.openRegistrationView()
         }
@@ -47,6 +49,8 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
+        self.view.showToast(message: responseMessage, color: .systemGreen)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func errorReceived(error: String) {
@@ -89,8 +93,8 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
             return
         }
         
-         self.view.ShowSpinner()
-         viewModel?.verifyForgotPasswordRequest(email: email, password: password, confirmPassword: confirmPassword, confirmationPCode: veificationCode)
+        self.view.ShowSpinner()
+        self.viewModel?.verifyForgotPasswordRequest(email: email, password: password, confirmPassword: confirmPassword, confirmationPCode: veificationCode)
     }
     
     func openRegistrationView(){

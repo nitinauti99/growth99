@@ -31,7 +31,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     @IBOutlet private weak var userProvider: UISwitch!
     @IBOutlet private weak var userProviderViewHight: NSLayoutConstraint!
     @IBOutlet private weak var userProviderView: UIView!
-    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var descriptionTextView: CustomTextView!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     
@@ -54,20 +54,19 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = UserCreateViewModel(delegate: self)
-        descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
-        descriptionTextView.layer.borderWidth = 1.0;
+        self.viewModel = UserCreateViewModel(delegate: self)
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
         self.setupTexFieldValidstion()
         self.title = Constant.Profile.createUser
-        userProvider.setOn(false, animated: false)
+        self.userProvider.setOn(false, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        /// get all user role
         self.view.ShowSpinner()
-        viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
+        self.viewModel?.getUserData(userId: UserRepository.shared.userId ?? 0)
     }
     
     fileprivate func setUpUI() {
@@ -77,16 +76,19 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         self.cancelButton.clipsToBounds = true
     }
     
+    /// user Role recived
     func userDataRecived() {
         self.view.HideSpinner()
-        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
-        setUpUI()
+        self.rolesTextField.text = self.viewModel?.getUserProfileData.roles?.name ?? String.blank
+        self.setUpUI()
     }
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "data updated successfully", color: .black)
-        self.openUserListView()
+        self.view.showToast(message: "user created successfully", color: .systemGreen)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.openUserListView()
+        })
     }
     
     @IBAction func switchIsChanged(sender: UISwitch) {
@@ -97,8 +99,9 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
             self.clincsTextField.text = ""
             self.servicesTextField.text = ""
             self.serviceCategoriesTextField.text = ""
+            /// only if user is provided then only calling api for clinics
             self.view.ShowSpinner()
-            viewModel?.getallClinics()
+            self.viewModel?.getallClinics()
         } else {
             self.userProviderViewHight.constant = 0
             self.userProviderView.isHidden = true
@@ -106,17 +109,23 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         }
     }
     
+    /// recived all clincs
     func clinicsRecived() {
-        /// get From allclinincsapi
-        allClinics = viewModel?.getAllClinicsData ?? []
+        self.allClinics = viewModel?.getAllClinicsData ?? []
         let selectedClincId = selectedClincs.map({$0.id ?? 0})
         self.selectedClincIds = selectedClincId
-        self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
+        self.view.HideSpinner()
+        /// if only ServiceCategories is get called we have selcted clincs
+        if self.selectedClincIds.count > 0 {
+            self.view.ShowSpinner()
+            self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
+        }
     }
   
+    /// recived ServiceCategories list for selected clinincs
     func serviceCategoriesRecived() {
         // get from user api
-        allServiceCategories = viewModel?.getAllServiceCategories ?? []
+        self.allServiceCategories = viewModel?.getAllServiceCategories ?? []
         var itemNotPresent:Bool = false
         for item in selectedServiceCategories {
             if allServiceCategories.contains(item) {
@@ -129,14 +138,21 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         if selectedServiceCategories.count == 0 || itemNotPresent == false {
             self.serviceCategoriesTextField.text = ""
         }
-        self.viewModel?.getallService(SelectedCategories: selectedList)
+        self.view.HideSpinner()
+        
+        /// call Service only if we have selected ServiceCategories
+        if self.selectedServiceCategories.count > 0 {
+            self.view.ShowSpinner()
+            self.viewModel?.getallService(SelectedCategories: selectedList)
+
+        }
     }
     
     func serviceRecived() {
         self.view.HideSpinner()
         // get from user api
         self.servicesTextField.text = ""
-        allService = viewModel?.getAllService ?? []
+        self.allService = viewModel?.getAllService ?? []
         let selectedList = selectedService.map({$0.id ?? 0})
         self.selectedServiceIds = selectedList
     }

@@ -58,12 +58,12 @@ class VerifyForgotPasswordViewModel {
             "confirmationCode": confirmationPCode
            ]
        
-        self.requestManager.request(forPath: ApiUrl.VerifyforgotPassword, method: .GET,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.VerifyforgotPassword, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.LoaginDataRecived(responseMessage: "")
+                self.delegate?.LoaginDataRecived(responseMessage: "Password changed successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription )
             }

@@ -73,7 +73,8 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
     }
     
     func openVerifyPasswordView(){
-        let verifyPVC = UIStoryboard(name: "VerifyForgotPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "VerifyForgotPasswordViewController")
+        let verifyPVC = UIStoryboard(name: "VerifyForgotPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "VerifyForgotPasswordViewController") as! VerifyForgotPasswordViewController
+        verifyPVC.email = self.emailTextField.text ?? ""
         self.navigationController?.pushViewController(verifyPVC, animated: true)
     }
     

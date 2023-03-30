@@ -106,7 +106,7 @@ extension UserListViewContoller: UserListViewContollerProtocol{
     
     func userRemovedSuccefully(message: String){
         self.view.showToast(message: message, color: .red)
-        viewModel?.getUserList()
+        self.viewModel?.getUserList()
     }
     
 }

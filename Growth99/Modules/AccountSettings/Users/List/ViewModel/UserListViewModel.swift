@@ -49,7 +49,7 @@ class UserListViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.userRemovedSuccefully(message: "User removed successfully")
+                self.delegate?.userRemovedSuccefully(message: "User deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

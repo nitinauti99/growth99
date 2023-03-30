@@ -37,8 +37,8 @@ class UserCreateViewModel {
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
+    /// get user Role
     func getUserData(userId: Int) {
-        
         let url = ApiUrl.userProfile.appending("\(userId)")
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) { (result: Result<UserProfile, GrowthNetworkError>) in
             switch result {
@@ -52,6 +52,7 @@ class UserCreateViewModel {
         }
     }
     
+    /// get all clinics
     func getallClinics(){
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
@@ -65,6 +66,7 @@ class UserCreateViewModel {
         }
     }
     
+    /// get call ServiceCategories for selected clinics
     func getallServiceCategories(SelectedClinics: [Int]){
         let finaleUrl = ApiUrl.serviceCategories + SelectedClinics.map { String($0) }.joined(separator: ",")
         self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
@@ -79,7 +81,7 @@ class UserCreateViewModel {
         }
     }
     
-    
+    /// get all Service from selected ServiceCategories ids
     func getallService(SelectedCategories: [Int]) {
         let finaleUrl = ApiUrl.service + SelectedCategories.map { String($0) }.joined(separator: ",")
         
@@ -114,7 +116,7 @@ class UserCreateViewModel {
             switch result {
             case .success(let userData):
                 if userData.email == nil {
-                    self.delegate?.errorReceived(error: "email is alredy exist")
+                    self.delegate?.errorReceived(error: "email already exists")
                 }else{
                     self.delegate?.profileDataUpdated()
                 }
