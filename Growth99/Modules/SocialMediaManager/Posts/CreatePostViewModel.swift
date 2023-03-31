@@ -18,7 +18,8 @@ protocol CreatePostViewModelProtocol {
     
     /// get social post
      func getSocialPost(postId: Int)
-
+     var getSocailPostData: socialMediaPostModel? { get }
+     
     /// create patients user
     func createPost(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
       
@@ -28,7 +29,7 @@ class CreatePostViewModel {
   
     var socialMediaPostLabelsListData: [SocialMediaPostLabelsList] = []
     var socialProfilesListData: [SocialProfilesList] = []
-    var socialPostData: PostsListModel?
+    var socialPostData: socialMediaPostModel?
     var socialPostImageList: [Content] = []
     
     var delegate: CreatePostViewControllerProtocol?
@@ -71,7 +72,7 @@ class CreatePostViewModel {
     
     // to get social post from list based selected id
     func getSocialPost(postId: Int) {
-        self.requestManager.request(forPath: ApiUrl.createSocialMediaPost.appending("/\(postId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result< PostsListModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.createSocialMediaPost.appending("/\(postId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result< socialMediaPostModel, GrowthNetworkError>) in
             switch result {
             case .success(let postsData):
                 self.socialPostData = postsData
@@ -111,7 +112,6 @@ class CreatePostViewModel {
 }
 
 extension CreatePostViewModel: CreatePostViewModelProtocol {
-    
    
     var getSocialMediaPostLabelsListData: [SocialMediaPostLabelsList] {
         return self.socialMediaPostLabelsListData
@@ -120,5 +120,12 @@ extension CreatePostViewModel: CreatePostViewModelProtocol {
     var getSocialProfilesListData: [SocialProfilesList] {
         return self.socialProfilesListData
     }
+    
+    var getSocailPostData: socialMediaPostModel? {
+        return self.socialPostData
+    }
+    
+    
+    
         
 }

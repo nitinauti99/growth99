@@ -19,9 +19,42 @@ struct SocialMediaPostLabelsList: Codable, Equatable {
     let isDefault : Bool?
 }
 
-
 struct SocialProfilesList: Codable, Equatable {
     let id : Int?
     let socialChannel : String?
+}
+
+
+struct socialMediaPostModel: Codable {
+    let socialMediaPostLabel : String?
+    let post : String?
+    let deleted : Bool?
+    let hashtag : String?
+    let socialMediaPostImages : [String]?
+    let createdAt : String?
+    let sent : Bool?
+    let isDefault : Bool?
     let name : String?
+    let updatedAt : String?
+    let socialProfiles : [SocialProfilesList]?
+    let createdBy : CreatedBy?
+    let tenantId : Int?
+    let id : Int?
+    let label : String?
+    let approvedDate : String?
+    let updatedBy : UpdatedBy?
+    let postLabels : [PostLabelsEdit]?
+    let scheduledDate : String?
+    let approved : Bool?
+}
+
+struct PostLabelsEdit : Codable {
+    let deleted : Bool?
+    let id : Int?
+    let socialMediaPostLabel : SocialMediaPostLabelsList?
+    let tenantId : Int?
+    let updatedBy : UpdatedBy?
+    let updatedAt : String?
+    let createdAt : String?
+    let createdBy : CreatedBy?
 }

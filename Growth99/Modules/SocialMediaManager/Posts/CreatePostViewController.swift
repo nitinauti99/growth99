@@ -39,7 +39,9 @@ class CreatePostViewController: UIViewController {
     var selectedPostLabels = [Int]()
     var selectedSocialProfiles = [Int]()
     var screenName = ""
-    
+    var selectedPostLabel = [SocialMediaPostLabelsList]()
+    var selectedProfile = [SocialProfilesList]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreatePostViewModel(delegate: self)
@@ -66,6 +68,19 @@ class CreatePostViewController: UIViewController {
     }
     
     func setUpUI(){
+        let item = viewModel?.getSocailPostData
+        self.hashtagTextField.text = item?.hashtag
+        let list: [String] = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.name ?? ""})
+        self.labelTextField.text = list.joined(separator: ",")
+        self.selectedPostLabel = (item?.postLabels ?? []).map({$0.socialMediaPostLabel!})
+        
+        let profileList: [String] = (item?.socialProfiles ?? []).map({$0.socialChannel ?? ""})
+        self.socialChannelTextField.text = profileList.joined(separator: ",")
+        self.selectedProfile = (item?.socialProfiles ?? []).map({$0})
+        
+        self.PostTextView.text = item?.post
+        print(item?.scheduledDate)
+        
         
     }
    
@@ -108,7 +123,7 @@ class CreatePostViewController: UIViewController {
 
         let str: String = (self.scheduleDateTextField.text ?? "") + " " + (self.scheduleTimeTextField.text ?? "")
         
-        var scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
+        let scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
                 
         let name = ""
         let label = ""
@@ -195,7 +210,6 @@ extension CreatePostViewController: CreatePostViewControllerProtocol {
             self.viewModel?.getSocialPost(postId: postId)
         }else{
             self.view.HideSpinner()
-            self.setUpUI()
         }
     }
     
@@ -224,7 +238,7 @@ extension CreatePostViewController {
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.name
         }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+        selectionMenu.setSelectedItems(items: self.selectedPostLabel) { [weak self] (text, index, selected, selectedList) in
             self?.labelTextField.text  = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedPostLabels = selectedList.map({$0.id ?? 0})
          }
@@ -236,10 +250,10 @@ extension CreatePostViewController {
     @IBAction func openSocialChanelListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.getSocialProfilesListData ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.name
+            cell.textLabel?.text = taskUserList.socialChannel
         }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-            self?.socialChannelTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+        selectionMenu.setSelectedItems(items: self.selectedProfile) { [weak self] (text, index, selected, selectedList) in
+            self?.socialChannelTextField.text = selectedList.map({$0.socialChannel ?? String.blank}).joined(separator: ", ")
             self?.selectedSocialProfiles = selectedList.map({$0.id ?? 0})
         }
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

@@ -73,6 +73,7 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
     func editPosts(cell: PostsListTableViewCell, index: IndexPath) {
         let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
         createPostVC.screenName = "Edit"
+        createPostVC.postId = viewModel?.postsListDataAtIndex(index: index.row)?.id ?? 0
         self.navigationController?.pushViewController(createPostVC, animated: true)
     }
     
