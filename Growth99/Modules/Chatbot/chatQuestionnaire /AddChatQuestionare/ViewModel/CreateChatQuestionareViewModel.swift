@@ -123,7 +123,7 @@ class CreateChatQuestionareViewModel {
     }
     
     func filterData(searchText: String) {
-        self.chatQuestionnaireQuestionfilterData = (self.chatQuestionnaireQuestionData.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.chatQuestionnaireQuestionfilterData = (self.chatQuestionnaireQuestionData?.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func chatQuestionnaireQuestionFilterDataAtIndex(index: Int) -> ChatQuestionareListModel? {

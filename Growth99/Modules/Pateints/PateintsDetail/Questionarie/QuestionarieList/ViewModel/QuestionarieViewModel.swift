@@ -43,7 +43,7 @@ class QuestionarieViewModel {
     }
     
     func filterData(searchText: String) {
-        self.questionarieFilterData = (self.questionarieData.filter { $0.questionnaireName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.questionarieFilterData = (self.questionarieData.filter { $0.questionnaireName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.questionnaireId ?? 0) == searchText })
     }
     
     func getQuestionarieDataAtIndex(index: Int)-> QuestionarieModel? {
