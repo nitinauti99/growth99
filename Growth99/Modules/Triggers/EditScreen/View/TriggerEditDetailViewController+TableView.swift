@@ -163,7 +163,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             }
             print(finalArray.count)
 
-            cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel)
+            cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
           
             return cell
         }

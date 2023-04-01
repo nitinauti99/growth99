@@ -17,19 +17,21 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
     var selectedNetworkEditTrigger: String = ""
     var viewModel: TriggerEditDetailViewModelProtocol?
     var selctionType: String = ""
-
+    var view: TriggerEditDetailViewController?
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.registerTableView()
     }
     
-    func configureCell(triggerEditData: [TriggerEditData], index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?) {
+    func configureCell(triggerEditData: [TriggerEditData], index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?, viewController: TriggerEditDetailViewController) {
         indexPath = index
         moduleSelectionEditTrigger = moduleSelectionTypeTrigger
         selectedNetworkEditTrigger = selectedNetworkType
         trigerData = triggerEditData
         viewModel = parentViewModel
+        view = viewController
     }
     
     func registerTableView() {
@@ -56,8 +58,9 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
         if item.type == "Create" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
             cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionTypeTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
+            cell.delegate = view
             return cell
-       
+
         }else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerTimeTableViewCell", for: indexPath) as? TriggerTimeTableViewCell else { return UITableViewCell()}
            
