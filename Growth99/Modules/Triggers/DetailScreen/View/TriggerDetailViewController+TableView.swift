@@ -49,7 +49,6 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
-            cell.delegate = self
             cell.networkSMSTagetSelectonButton.tag = indexPath.row
             cell.networkSMSTagetSelectonButton.addTarget(self, action: #selector(smsTargetSelectionMethod), for: .touchDown)
             cell.networkSMSNetworkSelectonButton.tag = indexPath.row
@@ -587,53 +586,17 @@ extension TriggerDetailViewController: TriggerPatientCellDelegate {
     }
 }
 
-extension TriggerDetailViewController: TriggerCreateCellDelegate {
-    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
-        if cell.networkTypeSelected == "sms" {
-            if cell.selectSMSTargetTextLabel.text == "Select trigger target" {
-                cell.selectSMSTagetEmptyTextLabel.isHidden = false
-            } else if cell.selectSMSNetworkTextLabel.text == "Select network" {
-                cell.selectSMSNetworkEmptyTextLabel.isHidden = false
-            } else {
-                cell.createNextButton.isEnabled = false
-                cell.selectSMSTagetEmptyTextLabel.isHidden = true
-                cell.selectSMSNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
-            }
-        } else if cell.networkTypeSelected == "email" {
-            if cell.selectEmailTargetTextLabel.text == "Select trigger target" {
-                cell.selectEmailTagetEmptyTextLabel.isHidden = false
-            } else if cell.selectEmailNetworkTextLabel.text == "Select network" {
-                cell.selectEmailNetworkEmptyTextLabel.isHidden = false
-            } else {
-                cell.createNextButton.isEnabled = false
-                cell.selectEmailTagetEmptyTextLabel.isHidden = true
-                cell.selectEmailNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType,  triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
-            }
-        } else {
-            if cell.taskNameTextField.text == String.blank {
-                cell.taskNameTextField.showError(message: "Please enter task name")
-            } else if cell.assignTaskNetworkTextLabel.text == "Select network" {
-                cell.assignTaskEmptyTextLabel.isHidden = false
-            } else {
-                cell.createNextButton.isEnabled = false
-                cell.assignTaskEmptyTextLabel.isHidden = true
-                taskName = cell.taskNameTextField.text ?? ""
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "lead")
-            }
-        }
+extension TriggerDetailViewController: TriggerTimeCellDelegate {
+  
+   
+    func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
+        
     }
     
-    func setupNetworkNextButton(networkType: String, triggerTarget: String) {
-        selectedNetworkType = networkType
-        selectedTriggerTarget = triggerTarget
-        scrollToBottom()
-        createNewTriggerCell(cellNameType: "Time")
+    func scheduledBasedOnButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
+        
     }
-}
-
-extension TriggerDetailViewController: TriggerTimeCellDelegate {
+    
     
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         

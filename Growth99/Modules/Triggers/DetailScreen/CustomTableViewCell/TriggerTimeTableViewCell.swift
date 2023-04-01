@@ -12,6 +12,10 @@ protocol TriggerTimeCellDelegate: AnyObject {
     func nextBtnAction(cell: TriggerTimeTableViewCell, index: IndexPath)
     func buttontimeRangeStartTapped(cell: TriggerTimeTableViewCell)
     func buttontimeRangeEndTapped(cell: TriggerTimeTableViewCell)
+   
+    func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath)
+    func scheduledBasedOnButton(cell: TriggerTimeTableViewCell, index: IndexPath)
+    
 }
 
 class TriggerTimeTableViewCell: UITableViewCell {

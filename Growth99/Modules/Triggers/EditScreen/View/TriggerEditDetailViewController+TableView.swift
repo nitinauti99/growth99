@@ -19,6 +19,8 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       let cell = UITableViewCell()
+       
         if triggerDetailList[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerDefaultTableViewCell", for: indexPath) as? TriggerDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
@@ -146,100 +148,21 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.patientNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
-            cell.delegate = self
-            cell.networkSMSTagetSelectonButton.tag = indexPath.row
-            cell.networkSMSTagetSelectonButton.addTarget(self, action: #selector(smsTargetSelectionMethod), for: .touchDown)
-            cell.networkSMSNetworkSelectonButton.tag = indexPath.row
-            cell.networkSMSNetworkSelectonButton.addTarget(self, action: #selector(smsNetworkSelectionMethod), for: .touchDown)
-            
-            cell.networkEmailTagetSelectonButton.tag = indexPath.row
-            cell.networkEmailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
-            cell.networkEmailNetworkSelectonButton.tag = indexPath.row
-            cell.networkEmailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
-            
-            if moduleSelectionType == "lead" {
-                cell.taskBtn.isHidden = false
-                cell.taskLabel.isHidden = false
-                cell.assignTaskNetworkSelectonButton.tag = indexPath.row
-                cell.assignTaskNetworkSelectonButton.addTarget(self, action: #selector(taskNetworkSelectionMethod), for: .touchDown)
-            } else {
-                cell.taskBtn.isHidden = true
-                cell.taskLabel.isHidden = true
-            }
-            
-            selectedNetworkType = cell.networkTypeSelected
-            for childItem in triggerEditChildData {
-                if childItem.triggerType == "SMS" {
-                    cell.smsBtn.isSelected = true
-                    cell.emailBtn.isSelected = false
-                    cell.taskBtn.isSelected = false
-                    
-                    cell.selectSMSTargetTextLabel.text = childItem.triggerTarget
-                     let selectSMSNetworkName = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == childItem.triggerTemplate ?? 0} ) ?? []
-                    if selectSMSNetworkName.count > 0 {
-                        cell.selectSMSNetworkTextLabel.text = selectSMSNetworkName[0].name ?? String.blank
-                    } else {
-                        cell.selectSMSNetworkTextLabel.text = ""
-                    }
-                } else if childItem.triggerType == "EMAIL" {
-                    cell.smsBtn.isSelected = false
-                    cell.emailBtn.isSelected = true
-                    cell.taskBtn.isSelected = false
-                    
-                    cell.selectEmailTargetTextLabel.text = childItem.triggerType
-                    let selectEmailNetworkName = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.id == childItem.triggerTemplate ?? 0} ) ?? []
-                    cell.selectEmailNetworkTextLabel.text = selectEmailNetworkName[0].name ?? String.blank
-                } else {
-                    cell.smsBtn.isSelected = false
-                    cell.emailBtn.isSelected = false
-                    cell.taskBtn.isSelected = true
-                }
-            }
-            return cell
-        } else if triggerDetailList[indexPath.row].cellType == "Time" {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerTimeTableViewCell", for: indexPath) as? TriggerTimeTableViewCell else { return UITableViewCell()}
-            cell.delegate = self
-            if viewModel?.getTriggerEditListData?.triggerData?[0].triggerTarget == "lead" {
-                cell.timeRangeView.isHidden = false
-                cell.timeFrequencyLbl.isHidden = false
-                cell.timeRangeLbl.isHidden = false
-                cell.scheduledBasedOnTextField.isHidden = true
-                cell.scheduleBasedonLbl.isHidden = true
-                cell.timeFrequencyButton.isHidden = false
-                cell.timeRangeButton.isHidden = false
-                cell.scheduledBasedOnButton.isEnabled = false
-            } else {
-                cell.timeRangeView.isHidden = true
-                cell.timeFrequencyLbl.isHidden = true
-                cell.timeRangeLbl.isHidden = true
-                cell.scheduledBasedOnTextField.isHidden = false
-                cell.scheduleBasedonLbl.isHidden = false
-                cell.timeFrequencyButton.isHidden = true
-                cell.timeRangeButton.isHidden = true
-                cell.scheduledBasedOnButton.isEnabled = true
-            }
-            if viewModel?.getTriggerEditListData?.triggerData?[0].timerType == "Frequency" {
-                cell.timeFrequencyButton.isSelected = true
-                cell.timeRangeButton.isSelected = false
-            } else {
-                cell.timeFrequencyButton.isSelected = false
-                cell.timeRangeButton.isSelected = true
-            }
-            cell.timeHourlyButton.tag = indexPath.row
-            cell.timeHourlyButton.addTarget(self, action: #selector(timeHourlyButtonMethod), for: .touchDown)
-            cell.scheduledBasedOnButton.tag = indexPath.row
-            cell.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnButtonMethod), for: .touchDown)
-            cell.timeHourlyTextField.text = viewModel?.getTriggerEditListData?.triggerData?[0].triggerFrequency ?? ""
-            let triggerTime = viewModel?.getTriggerEditListData?.triggerData?[0].triggerTime
-            cell.timeDurationTextField.text = String(triggerTime ?? 0)
-            return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerParentCreateTableViewCell", for: indexPath) as? TriggerParentCreateTableViewCell else { return UITableViewCell()}
+          
+            cell.configureCell(triggerEditData: viewModel?.getTriggerEditListData?.triggerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
         }
-        return UITableViewCell()
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if triggerDetailList[indexPath.row].cellType  == "Both" {
+            return 1000
+
+        }else{
+            return UITableView.automaticDimension
+        }
     }
     
     @objc func leadSouceMethod(sender: UIButton) {
@@ -525,51 +448,6 @@ extension TriggerEditDetailViewController: TriggerPatientCellDelegate {
     }
 }
 
-extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
-    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
-        if cell.networkTypeSelected == "sms" {
-            if cell.selectSMSTargetTextLabel.text == "Select trigger target" {
-                cell.selectSMSTagetEmptyTextLabel.isHidden = false
-            } else if cell.selectSMSNetworkTextLabel.text == "Select network" {
-                cell.selectSMSNetworkEmptyTextLabel.isHidden = false
-            } else {
-                cell.createNextButton.isEnabled = false
-                cell.selectSMSTagetEmptyTextLabel.isHidden = true
-                cell.selectSMSNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
-            }
-        } else if cell.networkTypeSelected == "email" {
-            if cell.selectEmailTargetTextLabel.text == "Select trigger target" {
-                cell.selectEmailTagetEmptyTextLabel.isHidden = false
-            } else if cell.selectEmailNetworkTextLabel.text == "Select network" {
-                cell.selectEmailNetworkEmptyTextLabel.isHidden = false
-            } else {
-                cell.createNextButton.isEnabled = false
-                cell.selectEmailTagetEmptyTextLabel.isHidden = true
-                cell.selectEmailNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType,  triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
-            }
-        } else {
-            if cell.taskNameTextField.text == String.blank {
-                cell.taskNameTextField.showError(message: "Please enter task name")
-            } else if cell.assignTaskNetworkTextLabel.text == "Select network" {
-                cell.assignTaskEmptyTextLabel.isHidden = false
-            } else {
-                cell.createNextButton.isEnabled = false
-                cell.assignTaskEmptyTextLabel.isHidden = true
-                taskName = cell.taskNameTextField.text ?? ""
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "lead")
-            }
-        }
-    }
-    
-    func setupNetworkNextButton(networkType: String, triggerTarget: String) {
-        selectedNetworkType = networkType
-        selectedTriggerTarget = triggerTarget
-        scrollToBottom()
-    }
-}
-
 extension TriggerEditDetailViewController: TriggerTimeCellDelegate {
     
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
@@ -687,8 +565,53 @@ extension TriggerEditDetailViewController: TriggerTimeCellDelegate {
     }
 }
 
-extension TriggerEditDetailViewController: TriggerParentLeadCellDelegate {
-    func smsTargetButton(cell: TriggerParentCreateTableViewCell, index: IndexPath, sender: UIButton) {
+extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
+    
+    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
+        if cell.networkTypeSelected == "sms" {
+            if cell.selectSMSTargetTextLabel.text == "Select trigger target" {
+                cell.selectSMSTagetEmptyTextLabel.isHidden = false
+            } else if cell.selectSMSNetworkTextLabel.text == "Select network" {
+                cell.selectSMSNetworkEmptyTextLabel.isHidden = false
+            } else {
+                cell.createNextButton.isEnabled = false
+                cell.selectSMSTagetEmptyTextLabel.isHidden = true
+                cell.selectSMSNetworkEmptyTextLabel.isHidden = true
+                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
+            }
+        } else if cell.networkTypeSelected == "email" {
+            if cell.selectEmailTargetTextLabel.text == "Select trigger target" {
+                cell.selectEmailTagetEmptyTextLabel.isHidden = false
+            } else if cell.selectEmailNetworkTextLabel.text == "Select network" {
+                cell.selectEmailNetworkEmptyTextLabel.isHidden = false
+            } else {
+                cell.createNextButton.isEnabled = false
+                cell.selectEmailTagetEmptyTextLabel.isHidden = true
+                cell.selectEmailNetworkEmptyTextLabel.isHidden = true
+                setupNetworkNextButton(networkType: triggerNetworkType,  triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
+            }
+        } else {
+            if cell.taskNameTextField.text == String.blank {
+                cell.taskNameTextField.showError(message: "Please enter task name")
+            } else if cell.assignTaskNetworkTextLabel.text == "Select network" {
+                cell.assignTaskEmptyTextLabel.isHidden = false
+            } else {
+                cell.createNextButton.isEnabled = false
+                cell.assignTaskEmptyTextLabel.isHidden = true
+                taskName = cell.taskNameTextField.text ?? ""
+                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "lead")
+            }
+        }
+    }
+    
+    func setupNetworkNextButton(networkType: String, triggerTarget: String) {
+        selectedNetworkType = networkType
+        selectedTriggerTarget = triggerTarget
+        scrollToBottom()
+    }
+    
+    /// set cell drop dwon action
+    func smsTargetButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, sender: UIButton) {
         if moduleSelectionType == "lead" {
             smsTargetArray = ["Leads", "Clinic"]
             
@@ -700,26 +623,26 @@ extension TriggerEditDetailViewController: TriggerParentLeadCellDelegate {
             cell.textLabel?.text = allClinics
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: index, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.selectSMSTargetTextLabel.text = "Select trigger target"
-                    createCell.selectSMSNetworkTextLabel.text = "Select network"
-                    createCell.selectSMSTagetEmptyTextLabel.isHidden = false
-                } else {
-                    createCell.selectSMSTagetEmptyTextLabel.isHidden = true
-                    createCell.selectSMSNetworkTextLabel.text = "Select network"
-                    createCell.selectSMSTargetTextLabel.text = selectedItem
-                    self?.smsTargetSelectionType = selectedItem ?? String.blank
-                }
+            if selectedList.count == 0 {
+                cell.selectSMSTargetTextLabel.text = "Select trigger target"
+                cell.selectSMSNetworkTextLabel.text = "Select network"
+                cell.selectSMSTagetEmptyTextLabel.isHidden = false
+            } else {
+                cell.selectSMSTagetEmptyTextLabel.isHidden = true
+                cell.selectSMSNetworkTextLabel.text = "Select network"
+                cell.selectSMSTargetTextLabel.text = selectedItem
+                self?.smsTargetSelectionType = selectedItem ?? String.blank
             }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(smsTargetArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.networkSMSTagetSelectonButton, size: CGSize(width: cell.networkSMSTagetSelectonButton.frame.width, height: (Double(smsTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    @objc func smsNetworkSelectionMethod(sender: UIButton) {
+    
+    
+    func smsNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
+        
         if moduleSelectionType == "lead" && smsTargetSelectionType == "Leads" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Lead"}) ?? []
         } else  if moduleSelectionType == "lead" && smsTargetSelectionType == "Clinic" {
@@ -733,57 +656,24 @@ extension TriggerEditDetailViewController: TriggerParentLeadCellDelegate {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: smsTemplatesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name
         }
-        let row = sender.tag % 1000
+        
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.selectSMSNetworkTextLabel.text = "Select network"
-                    createCell.selectSMSNetworkEmptyTextLabel.isHidden = false
-                } else {
-                    createCell.selectSMSNetworkEmptyTextLabel.isHidden = true
-                    createCell.selectSMSNetworkTextLabel.text = selectedItem?.name
-                    self?.selectedSmsTemplates = selectedList
-                    self?.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
-                }
+            if selectedList.count == 0 {
+                cell.selectSMSNetworkTextLabel.text = "Select network"
+                cell.selectSMSNetworkEmptyTextLabel.isHidden = false
+            } else {
+                cell.selectSMSNetworkEmptyTextLabel.isHidden = true
+                cell.selectSMSNetworkTextLabel.text = selectedItem?.name
+                self?.selectedSmsTemplates = selectedList
+                self?.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
             }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(smsTemplatesArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.networkSMSNetworkSelectonButton, size: CGSize(width: cell.networkSMSNetworkSelectonButton.frame.width, height: (Double(smsTemplatesArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func smsNetworkButton(cell: TriggerParentCreateTableViewCell, index: IndexPath) {
-        <#code#>
-    }
-    
-    func emailTargetButton(cell: TriggerParentCreateTableViewCell, index: IndexPath) {
-        <#code#>
-    }
-    
-    func emailNetworkButton(cell: TriggerParentCreateTableViewCell, index: IndexPath) {
-        <#code#>
-    }
-    
-    func taskNetworkNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
-        <#code#>
-    }
-    
-    func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
-        <#code#>
-    }
-    
-    func scheduledBasedOnButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
-        <#code#>
-    }
-    
-    
-    
-    @objc func smsTargetSelectionMethod(sender: UIButton) {
-      
-    }
-    
-    @objc func emailTargetSelectionMethod(sender: UIButton) {
+    func emailTargetButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
         if moduleSelectionType == "lead" {
             emailTargetArray = ["Leads", "Clinic"]
             
@@ -794,28 +684,24 @@ extension TriggerEditDetailViewController: TriggerParentLeadCellDelegate {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: emailTargetArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.selectEmailTargetTextLabel.text = "Select trigger target"
-                    createCell.selectEmailTagetEmptyTextLabel.isHidden = false
-                    createCell.selectEmailNetworkTextLabel.text = "Select network"
-                } else {
-                    createCell.selectEmailTagetEmptyTextLabel.isHidden = true
-                    createCell.selectEmailNetworkTextLabel.text = "Select network"
-                    createCell.selectEmailTargetTextLabel.text = selectedItem
-                    self?.emailTargetSelectionType = selectedItem ?? String.blank
-                }
+            if selectedList.count == 0 {
+                cell.selectEmailTargetTextLabel.text = "Select trigger target"
+                cell.selectEmailTagetEmptyTextLabel.isHidden = false
+                cell.selectEmailNetworkTextLabel.text = "Select network"
+            } else {
+                cell.selectEmailTagetEmptyTextLabel.isHidden = true
+                cell.selectEmailNetworkTextLabel.text = "Select network"
+                cell.selectEmailTargetTextLabel.text = selectedItem
+                self?.emailTargetSelectionType = selectedItem ?? String.blank
             }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(emailTargetArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.networkEmailTagetSelectonButton, size: CGSize(width: cell.networkEmailTagetSelectonButton.frame.width, height: (Double(emailTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    @objc func emailNetworkSelectionMethod(sender: UIButton) {
+    func emailNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
         if moduleSelectionType == "lead" && emailTargetSelectionType == "Leads" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.emailTarget == "Lead"}) ?? []
         } else  if moduleSelectionType == "lead" && emailTargetSelectionType == "Clinic" {
@@ -829,85 +715,71 @@ extension TriggerEditDetailViewController: TriggerParentLeadCellDelegate {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: emailTemplatesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics.name
         }
-        let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.selectEmailNetworkTextLabel.text = "Select network"
-                    createCell.selectEmailNetworkEmptyTextLabel.isHidden = false
-                } else {
-                    createCell.selectEmailNetworkEmptyTextLabel.isHidden = true
-                    createCell.selectEmailNetworkTextLabel.text = selectedItem?.name
-                    self?.selectedEmailTemplates = selectedList
-                    self?.selectedemailTemplateId = String(selectedItem?.id ?? 0)
-                }
+            if selectedList.count == 0 {
+                cell.selectEmailNetworkTextLabel.text = "Select network"
+                cell.selectEmailNetworkEmptyTextLabel.isHidden = false
+            } else {
+                cell.selectEmailNetworkEmptyTextLabel.isHidden = true
+                cell.selectEmailNetworkTextLabel.text = selectedItem?.name
+                self?.selectedEmailTemplates = selectedList
+                self?.selectedemailTemplateId = String(selectedItem?.id ?? 0)
             }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(emailTemplatesArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.networkEmailNetworkSelectonButton, size: CGSize(width: cell.networkEmailNetworkSelectonButton.frame.width, height: (Double(emailTemplatesArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    @objc func taskNetworkSelectionMethod(sender: UIButton) {
+    func taskNetworkNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
         taskUserListArray = viewModel?.getTriggerDetailDataEdit?.userDTOList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: taskUserListArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = "\(allClinics.firstName ?? "") \(allClinics.lastName ?? "")"
         }
-        let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.assignTaskNetworkTextLabel.text = "Select network"
-                    createCell.assignTaskEmptyTextLabel.isHidden = false
+            
+               if selectedList.count == 0 {
+                    cell.assignTaskNetworkTextLabel.text = "Select network"
+                   cell.assignTaskEmptyTextLabel.isHidden = false
                 } else {
-                    createCell.assignTaskEmptyTextLabel.isHidden = true
+                    cell.assignTaskEmptyTextLabel.isHidden = true
                     self?.selectedTaskTemplate = selectedItem?.id ?? 0
-                    createCell.assignTaskNetworkTextLabel.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
+                    cell.assignTaskNetworkTextLabel.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
                 }
-            }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(taskUserListArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.assignTaskNetworkSelectonButton, size: CGSize(width: cell.assignTaskNetworkSelectonButton.frame.width, height: (Double(taskUserListArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    @objc func timeHourlyButtonMethod(sender: UIButton) {
+    func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         let timeHourlyArray = ["Min", "Hour", "Day"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
                 if selectedList.count == 0 {
-                    createCell.timeHourlyTextField.showError(message: "Please enter time duration")
+                    cell.timeHourlyTextField.showError(message: "Please enter time duration")
                 } else {
-                    createCell.timeHourlyTextField.text = selectedItem
+                    cell.timeHourlyTextField.text = selectedItem
                 }
-            }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.timeHourlyButton, size: CGSize(width:  cell.timeHourlyButton.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    @objc func scheduledBasedOnButtonMethod(sender: UIButton) {
+    func scheduledBasedOnButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         let scheduledBasedOnArray = ["Appointment Created Date", "Before Appointment Date", "After Appointment Date"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: scheduledBasedOnArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
-                createCell.scheduledBasedOnTextField.text = selectedItem
+                cell.scheduledBasedOnTextField.text = selectedItem
             }
-        }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.timeRangeButton, size: CGSize(width: cell.timeRangeButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
     }
+    
 }
