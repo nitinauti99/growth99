@@ -158,7 +158,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
 //
 //        let questionnairesSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
 //        selectedQuestionnaires = questionnairesSelectedArray
-                
+//                
         if servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking == true {
             disableButton.isSelected = true
         } else {

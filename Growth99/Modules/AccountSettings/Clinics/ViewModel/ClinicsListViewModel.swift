@@ -64,7 +64,7 @@ class ClinicsListViewModel {
 extension ClinicsListViewModel: ClinicsListViewModelProtocol {
 
     func getClinicsFilterData(searchText: String) {
-        self.clinicListFilterData = (self.getClinicsListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.clinicListFilterData = (self.getClinicsListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getClinicsDataAtIndex(index: Int)-> ClinicsListModel? {

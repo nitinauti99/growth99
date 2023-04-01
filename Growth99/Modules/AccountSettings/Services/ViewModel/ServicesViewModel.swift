@@ -63,7 +63,7 @@ class ServiceListViewModel {
 extension ServiceListViewModel: ServiceListViewModelProtocol {
 
     func getServiceFilterData(searchText: String) {
-        self.serviceFilterData = (self.getServiceListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.serviceFilterData = (self.getServiceListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getServiceDataAtIndex(index: Int)-> ServiceList? {
