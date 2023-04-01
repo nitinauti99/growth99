@@ -89,9 +89,8 @@ extension VerifyForgotPasswordViewModel : VerifyForgotPasswordViewModelProtocol 
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
-        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-        
+        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@\\$]).{8,}$"
+        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
         if passwordPred.evaluate(with: password) && password.count >= 8 {
             return true
         }

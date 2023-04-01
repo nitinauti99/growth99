@@ -28,10 +28,10 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
         cancelButton.layer.cornerRadius = 12
         self.navigationItem.title = Constant.Profile.changePasswordTitle
     }
-
+    
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
-       self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: .black)
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -41,24 +41,24 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     }
     
     @IBAction func savePasswordButton(sender: UIButton) {
-
+        
         guard let oldPassword = oldPasswordTextField.text, !oldPassword.isEmpty else {
             oldPasswordTextField.showError(message: Constant.ErrorMessage.oldPasswordEmptyError)
             return
         }
-
+        
         guard let passwordValidate = viewModel?.isValidPassword(oldPassword), passwordValidate else {
             oldPasswordTextField.showError(message: Constant.ErrorMessage.oldPasswordEmptyError)
             return
         }
-
+        
         guard let newPassword = newPasswordTextField.text, !newPassword.isEmpty else {
-            newPasswordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
+            newPasswordTextField.showError(message: "New password required")
             return
         }
         
         guard let verifyNewPassword = verifyPasswordTextField.text, !verifyNewPassword.isEmpty else {
-            newPasswordTextField.showError(message: Constant.ErrorMessage.confirmPasswordEmptyError)
+            newPasswordTextField.showError(message: "Password must contain one small character, one upper case character, one number and one of (!, @, $). It must be minimum 8 characters long.")
             return
         }
         
@@ -66,12 +66,11 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
             verifyPasswordTextField.showError(message: Constant.ErrorMessage.PasswordMissmatchError)
             return
         }
-         self.view.ShowSpinner()
+        self.view.ShowSpinner()
         viewModel?.verifyChangePasswordRequest(email: "nitinauti99@gmail.com", oldPassword: oldPassword, newPassword: newPassword, verifyNewPassword: verifyNewPassword)
     }
     
     @IBAction func cancelPasswordButton(sender: UIButton) {
-        
-        
+        self.navigationController?.popViewController(animated: true)
     }
 }
