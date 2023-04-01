@@ -56,7 +56,7 @@ class LeadSourceUrlListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.leadTagsFilterList = (self.leadTagsList.filter { $0.sourceUrl?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.leadTagsFilterList = (self.leadTagsList.filter { $0.sourceUrl?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func leadTagsListDataAtIndex(index: Int)-> LeadSourceUrlListModel? {
@@ -69,7 +69,7 @@ class LeadSourceUrlListViewModel {
 }
 
 extension LeadSourceUrlListViewModel: LeadSourceUrlListViewModelProtocol {
-   
+    
     var getLeadSourceUrlData: [LeadSourceUrlListModel] {
         return self.leadTagsList
     }

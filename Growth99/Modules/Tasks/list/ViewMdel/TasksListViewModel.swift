@@ -67,10 +67,9 @@ class TasksListViewModel {
             }
         }
     }
-
-
+    
     func filterData(searchText: String) {
-       self.taskFilterList = (self.taskList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.taskFilterList = (self.taskList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func taskDataAtIndex(index: Int)-> TaskDTOList? {
@@ -83,7 +82,7 @@ class TasksListViewModel {
 }
 
 extension TasksListViewModel: TasksListViewModelProtocol {
-  
+    
     var getTaskFilterData: [TaskDTOList] {
         return self.taskFilterList
     }

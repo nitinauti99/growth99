@@ -12,7 +12,7 @@ protocol LeadHistoryViewModelProtocol {
     func leadHistoryDataAtIndex(index: Int) -> LeadHistoryModel?
     func leadHistoryFilterDataAtIndex(index: Int)-> LeadHistoryModel?
     func filterData(searchText: String)
-  
+    
     var  getLeadHistroyData: [LeadHistoryModel] { get }
     var  getLeadHistroyFilterData: [LeadHistoryModel] { get }
 }
@@ -22,7 +22,7 @@ class LeadHistoryViewModel {
     var leadHistroyData: [LeadHistoryModel] = []
     var leadHistroyFilterData: [LeadHistoryModel] = []
     let user = UserRepository.shared
-
+    
     init(delegate: LeadHistoryViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -44,8 +44,7 @@ class LeadHistoryViewModel {
     }
     
     func filterData(searchText: String) {
-        self.leadHistroyFilterData = (self.leadHistroyData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-          print(self.leadHistroyFilterData)
+        self.leadHistroyFilterData = (self.leadHistroyData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func leadHistoryDataAtIndex(index: Int)-> LeadHistoryModel? {
@@ -58,11 +57,11 @@ class LeadHistoryViewModel {
 }
 
 extension LeadHistoryViewModel: LeadHistoryViewModelProtocol {
-   
+    
     var getLeadHistroyFilterData: [LeadHistoryModel] {
-         return self.leadHistroyFilterData
+        return self.leadHistroyFilterData
     }
-
+    
     var getLeadHistroyData: [LeadHistoryModel] {
         return self.leadHistroyData
     }

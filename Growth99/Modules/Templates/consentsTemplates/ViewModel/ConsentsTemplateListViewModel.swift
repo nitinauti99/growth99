@@ -44,7 +44,7 @@ class ConsentsTemplateListViewModel {
     
     func removeConsents(consentsId: Int) {
         let finaleUrl = ApiUrl.removeConsents + "\(consentsId)"
-
+        
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -64,8 +64,7 @@ class ConsentsTemplateListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.consentsTemplateFilterData = (self.consentsTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-        print(self.consentsTemplateFilterData)
+        self.consentsTemplateFilterData = (self.consentsTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func consentsTemplateFilterDataAtIndex(index: Int) -> ConsentsTemplateListModel? {

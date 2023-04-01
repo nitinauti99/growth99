@@ -45,7 +45,7 @@ class AddNewConsentsViewModel {
         let str = ApiUrl.createConsentPatients.appending("\(patient)/consents/assign?consentIds=")
         
         let finaleUrl = str + consentsIds.map { String($0.id ?? 0) }.joined(separator: ",")
-
+        
         let urlParameter: [String: Any] = [
             "consentIds": consentsIds.map { String($0.id ?? 0) }.joined(separator: ","),
         ]
@@ -62,7 +62,7 @@ class AddNewConsentsViewModel {
     }
     
     func filterData(searchText: String) {
-       self.consentsFilterData = (self.consentsData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.consentsFilterData = (self.consentsData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getConsentsDataAtIndex(index: Int)-> AddNewConsentsModel? {
@@ -75,7 +75,7 @@ class AddNewConsentsViewModel {
 }
 
 extension AddNewConsentsViewModel: AddNewConsentsViewModelProtocol {
-   
+    
     var getConsentsDataList: [AddNewConsentsModel] {
         return self.consentsData
     }

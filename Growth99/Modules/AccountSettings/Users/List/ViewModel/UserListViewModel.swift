@@ -58,7 +58,7 @@ class UserListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.userFilterData = (self.UserData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.userFilterData = (self.userData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func userDataAtIndex(index: Int)-> UserListModel? {

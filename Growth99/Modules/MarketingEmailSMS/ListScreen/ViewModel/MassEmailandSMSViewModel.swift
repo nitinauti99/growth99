@@ -10,7 +10,7 @@ import Foundation
 protocol MassEmailandSMSViewModelProtocol {
     func getMassEmailandSMS()
     func getSwitchOnButton(massEmailandSMSId: String, massEmailandSMStatus: String)
-
+    
     func getMassEmailandSMSFilterData(searchText: String)
     
     func getMassEmailandSMSDataAtIndex(index: Int)-> MassEmailandSMSModel?
@@ -68,7 +68,7 @@ extension MassEmailandSMSViewModel: MassEmailandSMSViewModelProtocol {
     }
     
     func getMassEmailandSMSFilterData(searchText: String) {
-        self.massEmailListFilterData = (self.getMassEmailandSMSData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.massEmailListFilterData = (self.getMassEmailandSMSData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getMassEmailandSMSDataAtIndex(index: Int)-> MassEmailandSMSModel? {
@@ -82,8 +82,8 @@ extension MassEmailandSMSViewModel: MassEmailandSMSViewModelProtocol {
     var getMassEmailandSMSData: [MassEmailandSMSModel] {
         return self.massEmailList
     }
-   
+    
     var getMassEmailandSMSFilterData: [MassEmailandSMSModel] {
-         return self.massEmailListFilterData
+        return self.massEmailListFilterData
     }
 }

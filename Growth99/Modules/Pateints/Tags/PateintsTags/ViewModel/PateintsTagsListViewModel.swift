@@ -56,7 +56,7 @@ class PateintsTagsListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.pateintsTagsFilterList = (self.pateintsTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.pateintsTagsFilterList = (self.pateintsTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func pateintsTagsListDataAtIndex(index: Int)-> PateintsTagListModel? {
@@ -69,7 +69,7 @@ class PateintsTagsListViewModel {
 }
 
 extension PateintsTagsListViewModel: PateintsTagsListViewModelProtocol {
-   
+    
     var getPateintsTagsData: [PateintsTagListModel] {
         return self.pateintsTagsList
     }

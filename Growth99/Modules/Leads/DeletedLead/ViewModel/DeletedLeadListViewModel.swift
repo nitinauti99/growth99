@@ -20,7 +20,7 @@ protocol DeletedLeadListViewModelProtocol {
 class DeletedLeadListViewModel {
     var deletedLeadList: [DeletedLeadListModel] = []
     var deletedFilterLeadList: [DeletedLeadListModel] = []
-        
+    
     var delegate: DeletedLeadListViewControllerProtocol?
     
     init(delegate: DeletedLeadListViewControllerProtocol? = nil) {
@@ -30,19 +30,19 @@ class DeletedLeadListViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getDeletedLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String) {
-          
-          self.requestManager.request(forPath: ApiUrl.getDeletedLeadList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[DeletedLeadListModel], GrowthNetworkError>) in
-              switch result {
-              case .success(let LeadData):
-                  self.setUpData(leadListData: LeadData)
-                  self.delegate?.DeletedLeadListDataRecived()
-              case .failure(let error):
-                  self.delegate?.errorReceived(error: error.localizedDescription)
-                  print("Error while performing request \(error)")
-              }
-          }
+        
+        self.requestManager.request(forPath: ApiUrl.getDeletedLeadList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[DeletedLeadListModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let LeadData):
+                self.setUpData(leadListData: LeadData)
+                self.delegate?.DeletedLeadListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
-   
+    
     func setUpData(leadListData: [DeletedLeadListModel]) {
         for item in leadListData {
             if item.totalCount == nil {
@@ -53,9 +53,9 @@ class DeletedLeadListViewModel {
     
     
     func filterData(searchText: String) {
-       self.deletedFilterLeadList = (self.deletedLeadList.filter { $0.email?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.deletedFilterLeadList = (self.deletedLeadList.filter { $0.email?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
-   
+    
     func deletedLeadListDataAtIndex(index: Int)-> DeletedLeadListModel? {
         return self.deletedLeadList[index]
     }
@@ -66,7 +66,7 @@ class DeletedLeadListViewModel {
 }
 
 extension DeletedLeadListViewModel: DeletedLeadListViewModelProtocol {
-
+    
     var getDeletedLeadListData : [DeletedLeadListModel] {
         return self.deletedLeadList
     }

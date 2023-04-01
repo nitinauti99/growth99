@@ -36,7 +36,7 @@ class UnansweredQuestionListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.unansweredQuestionFilterList = (self.unansweredQuestionList.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.unansweredQuestionFilterList = (self.unansweredQuestionList.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getUnansweredQuestionListFilterDataAtIndex(index: Int) -> UnansweredQuestionListModel? {

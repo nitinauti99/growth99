@@ -44,7 +44,7 @@ class chatQuestionnaireViewModel {
     
     func removeChatQuestionnaire(chatQuestionnaireId: Int) {
         let finaleUrl = ApiUrl.removeConsents + "\(chatQuestionnaireId)"
-
+        
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -64,7 +64,7 @@ class chatQuestionnaireViewModel {
     }
     
     func filterData(searchText: String) {
-        self.chatQuestionnaireFilterListData = (self.chatQuestionnaireData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.chatQuestionnaireFilterListData = (self.chatQuestionnaireData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func chatQuestionnaireFilterDataAtIndex(index: Int) -> chatQuestionnaireModel? {

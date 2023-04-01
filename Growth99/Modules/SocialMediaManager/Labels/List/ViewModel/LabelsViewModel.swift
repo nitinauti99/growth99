@@ -13,7 +13,7 @@ protocol LabelListViewModelProtocol {
     func labelFilterListDataAtIndex(index: Int)-> LabelListModel?
     func removeLabel(LabelId: Int)
     func filterData(searchText: String)
-   
+    
     var getLabelData: [LabelListModel] { get }
     var getLabelFilterData: [LabelListModel] { get }
 }
@@ -54,7 +54,7 @@ class LabelListViewModel {
                     self.delegate?.errorReceived(error: "The Label associated with post cannot be deleted")
                 }else {
                     self.delegate?.errorReceived(error: "internal server error")
-             }
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -63,7 +63,7 @@ class LabelListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.labelFilterList = (self.labelList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.labelFilterList = (self.labelList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func labelListDataAtIndex(index: Int)-> LabelListModel? {
@@ -76,7 +76,7 @@ class LabelListViewModel {
 }
 
 extension LabelListViewModel: LabelListViewModelProtocol {
-       
+    
     var getLabelData: [LabelListModel] {
         return self.labelList
     }

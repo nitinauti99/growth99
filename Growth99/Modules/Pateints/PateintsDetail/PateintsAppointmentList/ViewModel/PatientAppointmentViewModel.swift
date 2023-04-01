@@ -20,11 +20,11 @@ protocol PatientAppointmentViewModelProtocol {
 
 class PatientAppointmentViewModel {
     var delegate: PatientAppointmentViewControllerProtocol?
-   
+    
     var patientsAppointmentList: [PatientsAppointmentListModel] = []
     var patientsAppointmentFilterList: [PatientsAppointmentListModel] = []
     var patientsModel : AppointmentDTOList?
-
+    
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
     
@@ -33,10 +33,10 @@ class PatientAppointmentViewModel {
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
-
+    
     func getPatientAppointmentList(pateintId: Int) {
         let finaleUrl = ApiUrl.PatientAppointmenList + "\(pateintId)" + "/appointments"
-       
+        
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[PatientsAppointmentListModel], GrowthNetworkError>) in
             switch result {
             case .success(let PateintsAppointmentList):
@@ -50,7 +50,7 @@ class PatientAppointmentViewModel {
     
     func getPatientAppointmentsForAppointment(pateintId: Int) {
         let finaleUrl = ApiUrl.PatientAppointmenList + "\(pateintId)"
-       
+        
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) { (result: Result< AppointmentDTOList, GrowthNetworkError>) in
             switch result {
             case .success(let PateintsAppointmentList):
@@ -63,7 +63,7 @@ class PatientAppointmentViewModel {
     }
     
     func filterData(searchText: String) {
-       self.patientsAppointmentFilterList = (self.patientsAppointmentList.filter { $0.patientName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.patientsAppointmentFilterList = (self.patientsAppointmentList.filter { $0.patientName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func patientListAtIndex(index: Int) -> PatientsAppointmentListModel? {
@@ -76,7 +76,7 @@ class PatientAppointmentViewModel {
 }
 
 extension PatientAppointmentViewModel : PatientAppointmentViewModelProtocol {
-
+    
     var getPatientsAppointmentList : [PatientsAppointmentListModel] {
         return self.patientsAppointmentList
     }
@@ -88,5 +88,5 @@ extension PatientAppointmentViewModel : PatientAppointmentViewModelProtocol {
     var getPatientsForAppointments : AppointmentDTOList? {
         return self.patientsModel
     }
-
+    
 }

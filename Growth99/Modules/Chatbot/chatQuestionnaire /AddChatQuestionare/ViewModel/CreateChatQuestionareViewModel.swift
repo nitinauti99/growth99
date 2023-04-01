@@ -10,20 +10,20 @@ import Foundation
 protocol CreateChatQuestionareViewModelProtocol {
     func createchatQuestionnaire(name: String)
     func updateChatQuestionnaire(chatquestionnaireId: Int, name: String)
-
+    
     /// for edit flow
     func getChatquestionnaire(questionnaireId: Int)
     func getChatQuestionnaireQuestionList(QuestionId:Int)
     func removeChatQuestionnaireQuestionList(questionnaireId: Int ,questionId: Int)
-
+    
     func chatQuestionnaireQuestionDataAtIndex(index: Int) -> ChatQuestionareListModel?
     func chatQuestionnaireQuestionFilterDataAtIndex(index: Int)-> ChatQuestionareListModel?
     func filterData(searchText: String)
-
+    
     var getChatquestionnaireData: ChatQuestionareModel? { get }
     var getChatQuestionnaireQuestion: [ChatQuestionareListModel]? { get }
     var getChatQuestionnaireQuestionFilter: [ChatQuestionareListModel]? { get }
-
+    
 }
 
 class CreateChatQuestionareViewModel {
@@ -123,7 +123,7 @@ class CreateChatQuestionareViewModel {
     }
     
     func filterData(searchText: String) {
-        self.chatQuestionnaireQuestionfilterData = (self.chatQuestionnaireQuestionData?.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.chatQuestionnaireQuestionfilterData = (self.chatQuestionnaireQuestionData.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func chatQuestionnaireQuestionFilterDataAtIndex(index: Int) -> ChatQuestionareListModel? {
@@ -137,7 +137,7 @@ class CreateChatQuestionareViewModel {
 }
 
 extension CreateChatQuestionareViewModel: CreateChatQuestionareViewModelProtocol {
-   
+    
     var getChatQuestionnaireQuestion: [ChatQuestionareListModel]? {
         return self.chatQuestionnaireQuestionData
     }
@@ -145,7 +145,7 @@ extension CreateChatQuestionareViewModel: CreateChatQuestionareViewModelProtocol
     var getChatQuestionnaireQuestionFilter: [ChatQuestionareListModel]? {
         return self.chatQuestionnaireQuestionfilterData
     }
-   
+    
     var getChatquestionnaireData: ChatQuestionareModel? {
         return chatquestionnaireData
     }

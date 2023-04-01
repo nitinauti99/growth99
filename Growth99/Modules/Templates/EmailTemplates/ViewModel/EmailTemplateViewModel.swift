@@ -14,10 +14,10 @@ protocol EmailTemplateViewModelProtocol {
     
     var getTemplateListData: [EmailTemplateListModel] { get }
     var getTemplateFilterListData: [EmailTemplateListModel] { get }
-
+    
     func getSelectedTemplate(selectedIndex: Int) ->[Any]
     func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any]
-
+    
     func getEmailTemplateList()
     func filterData(searchText: String)
     
@@ -28,7 +28,7 @@ protocol EmailTemplateViewModelProtocol {
 class EmailTemplateViewModel {
     var delegate: EmailTemplateViewContollerProtocol?
     var emailTemplateListData: [EmailTemplateListModel] = []
-   
+    
     var emailTemplateFilterData: [EmailTemplateListModel] = []
     
     var leadTemplateListData: [Any] = []
@@ -66,8 +66,8 @@ class EmailTemplateViewModel {
             }
         }
     }
-
-   func getSelectedTemplate(selectedIndex: Int) -> [Any] {
+    
+    func getSelectedTemplate(selectedIndex: Int) -> [Any] {
         if selectedIndex == 0 {
             return leadTemplateListData
         }else if (selectedIndex == 1){
@@ -78,12 +78,11 @@ class EmailTemplateViewModel {
     }
     
     func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any] {
-           return self.emailTemplateFilterData
+        return self.emailTemplateFilterData
     }
     
     func filterData(searchText: String) {
-        self.emailTemplateFilterData = (self.emailTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-        print(self.emailTemplateFilterData)
+        self.emailTemplateFilterData = (self.emailTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex:Int) -> EmailTemplateListModel? {
@@ -102,7 +101,7 @@ class EmailTemplateViewModel {
 }
 
 extension EmailTemplateViewModel: EmailTemplateViewModelProtocol {
-  
+    
     var getTemplateListData: [EmailTemplateListModel] {
         return self.emailTemplateListData
     }
@@ -118,10 +117,10 @@ extension EmailTemplateViewModel: EmailTemplateViewModelProtocol {
     var getAppointmentTemplateListData: [Any] {
         return self.apppointmentTemplateListData
     }
-
+    
     var getMassEmailTemplateListData: [Any] {
         return self.massEmailTemplateListData
     }
-
+    
     
 }

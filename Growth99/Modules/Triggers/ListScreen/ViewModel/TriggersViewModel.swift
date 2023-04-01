@@ -62,9 +62,9 @@ extension TriggersListViewModel: TriggersListViewModelProtocol {
     func removeSelectedMassEmail(MassEmailId: Int) {
         
     }
-
+    
     func getTriggersFilterData(searchText: String) {
-        self.triggersFilterData = (self.getTriggersData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.triggersFilterData = (self.getTriggersData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getTriggersDataAtIndex(index: Int)-> TriggersListModel? {
@@ -78,8 +78,8 @@ extension TriggersListViewModel: TriggersListViewModelProtocol {
     var getTriggersData: [TriggersListModel] {
         return self.triggersListData
     }
-   
+    
     var getTriggersFilterData: [TriggersListModel] {
-         return self.triggersFilterData
+        return self.triggersFilterData
     }
 }

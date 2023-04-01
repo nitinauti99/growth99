@@ -42,7 +42,7 @@ class ConsentsListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.consentsFilterList = (self.consentsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.consentsFilterList = (self.consentsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func consentsListAtIndex(index: Int)-> ConsentsListModel? {

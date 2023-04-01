@@ -14,7 +14,7 @@ protocol SMSTemplateViewModelProtocol {
     
     var getTemplateListData: [SMSTemplateModel] { get }
     var getTemplateFilterListData: [SMSTemplateModel] { get }
-
+    
     func getSelectedTemplate(selectedIndex: Int) ->[Any]
     func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any]
     
@@ -68,8 +68,7 @@ class SMSTemplateViewModel {
     }
     
     func filterData(searchText: String) {
-        self.smsTemplateFilterData = (self.smsTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-        print(self.smsTemplateFilterData)
+        self.smsTemplateFilterData = (self.smsTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any] {
@@ -109,14 +108,10 @@ class SMSTemplateViewModel {
             return massSMSTemplateListData[index] as? SMSTemplateModel
         }
     }
-    
-    //    func SMSTemplateFilterDataDataAtIndex(index: Int)-> SMSTemplateListModel? {
-    //        return self.SMSTemplateListData[index]
-    //    }
 }
 
 extension SMSTemplateViewModel: SMSTemplateViewModelProtocol {
-   
+    
     var getLeadTemplateListData: [Any] {
         return self.leadTemplateListData
     }
@@ -136,6 +131,4 @@ extension SMSTemplateViewModel: SMSTemplateViewModelProtocol {
     var getTemplateListData: [SMSTemplateModel] {
         return self.smsTemplateListData
     }
-    
-    
 }

@@ -13,7 +13,7 @@ protocol SocialProfilesListViewModelProtocol {
     func socialProfilesFilterListDataAtIndex(index: Int)-> SocialProfilesListModel?
     func removeSocialProfiles(socialProfilesId: Int)
     func filterData(searchText: String)
-   
+    
     var getSocialProfilesData: [SocialProfilesListModel] { get }
     var getSocialProfilesFilterData: [SocialProfilesListModel] { get }
 }
@@ -61,7 +61,7 @@ class SocialProfilesListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.socialProfilesFilterList = (self.socialProfilesList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.socialProfilesFilterList = (self.socialProfilesList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func socialProfilesListDataAtIndex(index: Int)-> SocialProfilesListModel? {
@@ -74,7 +74,7 @@ class SocialProfilesListViewModel {
 }
 
 extension SocialProfilesListViewModel: SocialProfilesListViewModelProtocol {
-       
+    
     var getSocialProfilesData: [SocialProfilesListModel] {
         return self.socialProfilesList
     }

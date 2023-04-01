@@ -21,7 +21,7 @@ class NotificationListViewModel {
     var delegate: NotificationListViewContollerProtocol?
     var notificationListData: [NotificationListModel] = []
     var notificationFilteListrData: [NotificationListModel] = []
-        
+    
     init(delegate: NotificationListViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -44,22 +44,21 @@ class NotificationListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.notificationListData = (self.notificationListData.filter { $0.toEmail?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.notificationListData = (self.notificationListData.filter { $0.toEmail?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
-   
     func getNotificationListDataAtIndexPath(index: Int) -> NotificationListModel? {
         return notificationListData[index]
-
+        
     }
     
     func getNotificationFilterDataAtIndexPath(index: Int) -> NotificationListModel? {
         return self.notificationFilteListrData[index]
     }
-
-   func removeNotification(questionId: Int,notificationId: Int) {
+    
+    func removeNotification(questionId: Int,notificationId: Int) {
         let finaleUrl = ApiUrl.notificationList.appending("\(questionId)/notifications/\(notificationId)")
-
+        
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -77,7 +76,7 @@ class NotificationListViewModel {
             }
         }
     }
-
+    
 }
 
 extension NotificationListViewModel: NotificationListViewModelProtocol {

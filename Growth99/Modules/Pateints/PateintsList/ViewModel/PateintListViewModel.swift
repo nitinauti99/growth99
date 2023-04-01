@@ -64,7 +64,7 @@ class PateintListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.pateintFilterData = (self.pateintListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.pateintFilterData = (self.pateintListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func pateintFilterDataAtIndex(index: Int)-> PateintListModel? {

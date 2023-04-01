@@ -55,7 +55,7 @@ class MediaTagsListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.mediaTagsFilterList = (self.mediaTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.mediaTagsFilterList = (self.mediaTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func mediaTagsListDataAtIndex(index: Int)-> MediaTagListModel? {
@@ -68,7 +68,7 @@ class MediaTagsListViewModel {
 }
 
 extension MediaTagsListViewModel: MediaTagsListViewModelProtocol {
-   
+    
     var getMediaTagsData: [MediaTagListModel] {
         return self.mediaTagsList
     }

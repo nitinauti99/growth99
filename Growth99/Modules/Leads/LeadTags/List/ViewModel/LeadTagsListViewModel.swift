@@ -55,7 +55,7 @@ class LeadTagsListViewModel {
     }
     
     func filterData(searchText: String) {
-       self.leadTagsFilterList = (self.leadTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.leadTagsFilterList = (self.leadTagsList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func leadTagsListDataAtIndex(index: Int)-> PateintsTagListModel? {
@@ -68,7 +68,7 @@ class LeadTagsListViewModel {
 }
 
 extension LeadTagsListViewModel: LeadTagsListViewModelProtocol {
-   
+    
     var getLeadTagsData: [PateintsTagListModel] {
         return self.leadTagsList
     }

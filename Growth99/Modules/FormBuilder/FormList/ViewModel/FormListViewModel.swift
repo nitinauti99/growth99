@@ -43,7 +43,7 @@ class FormListViewModel {
     
     func removeConsents(consentsId: Int) {
         let finaleUrl = ApiUrl.removeQuestionnaire + "\(consentsId)"
-
+        
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -63,8 +63,7 @@ class FormListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.FormFilterData = (self.FormListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
-        print(self.FormFilterData)
+        self.FormFilterData = (self.FormListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
     }
     
     func formFilterDataAtIndex(index: Int) -> FormListModel? {
