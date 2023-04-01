@@ -65,7 +65,7 @@ class HomeViewContoller: UIViewController {
         self.viewModel = HomeViewModel(delegate: self)
         self.navigationItem.titleView = UIImageView.navigationBarLogo()
         self.navigationItem.leftBarButtonItem =
-        UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "menu")
+        UIButton.barButtonTarget(target: self, action: #selector(sideMenuTapped), imageName: "sidemenu")
     }
     
     override func viewWillAppear(_ animated: Bool) {

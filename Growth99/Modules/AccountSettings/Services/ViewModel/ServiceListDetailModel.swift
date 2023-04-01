@@ -15,6 +15,8 @@ protocol ServiceListDetailViewModelProtocol {
     func getallConsents()
     var  getAllConsentsData: [ConsentListModel] { get }
     
+    func getAddServiceList()
+    
     func getallQuestionnaires()
     var  getAllQuestionnairesData: [QuestionnaireListModel] { get }
     
@@ -30,6 +32,7 @@ protocol ServiceListDetailViewModelProtocol {
     func getUserSelectedService(serviceID: Int)
     var  getUserSelectedServiceData: ServiceDetailModel? { get }
     func uploadSelectedServiceImage(image: UIImage, selectedServiceId:Int)
+    var  getAddServiceListData: [ServiceList] { get }
 
 }
 
@@ -42,12 +45,26 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     var allserviceCategories: [Clinics]?
     var serviceDetailListData: ServiceDetailModel?
     var apiURL: String = String.blank
+    var serviceAddList: [ServiceList] = []
 
     init(delegate: ServicesListDetailViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
+    
+    func getAddServiceList() {
+        self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let serviceData):
+                self.serviceAddList = serviceData.serviceList ?? []
+                self.delegate?.serviceAddListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
     
     func getallClinics() {
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[Clinics], GrowthNetworkError>) in
@@ -116,6 +133,10 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     
     var getAllServiceCategoriesData: [Clinics] {
         return self.allserviceCategories ?? []
+    }
+    
+    var  getAddServiceListData: [ServiceList] {
+        return self.serviceAddList ?? []
     }
 
     func createServiceAPICall(name: String, serviceCategoryId: Int, durationInMinutes: Int,

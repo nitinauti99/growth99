@@ -14,6 +14,8 @@ protocol CategoriesAddEditViewModelProtocol {
     func editCategories(selectedCategorieId: Int)
     func getCategoriesInfo(categoryId: Int)
     var  getAllCategoriesData: ServiceDetailModel? { get }
+    var  getAddCategoriesListData: [CategoriesListModel] { get }
+    func getAddCategoriesList()
 }
 
 class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
@@ -21,13 +23,26 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     var allClinics: [Clinics]?
     var serviceCategoryList: ServiceDetailModel?
     var addCategoriesResponse: CategoriesAddEditModel?
-    
+    var addCategoriesList: [CategoriesListModel] = []
     init(delegate: CategoriesAddViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
+    func getAddCategoriesList() {
+        self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
+            switch result {
+            case .success(let categoriesListData):
+                self.addCategoriesList = categoriesListData
+                self.delegate?.addCategoriesDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
     func getCategoriesInfo(categoryId: Int) {
         let finalURL = ApiUrl.createCategories + "/\(categoryId)"
         self.requestManager.request(forPath: finalURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<ServiceDetailModel, GrowthNetworkError>) in
@@ -87,5 +102,9 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     
     var getAllClinicsData: [Clinics] {
         return self.allClinics ?? []
+    }
+    
+    var getAddCategoriesListData: [CategoriesListModel] {
+        return self.addCategoriesList
     }
 }

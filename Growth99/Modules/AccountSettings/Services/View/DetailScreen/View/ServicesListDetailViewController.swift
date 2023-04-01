@@ -17,6 +17,7 @@ protocol ServicesListDetailViewContollerProtocol {
     func createServiceSucessfullyReceived(message: String)
     func selectedServiceDataReceived()
     func serviceImageUploadReceived(responseMessage: String)
+    func serviceAddListDataRecived()
 }
 
 class ServicesListDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ServicesListDetailViewContollerProtocol {
@@ -81,6 +82,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var selectedQuestionnairesIds = [Int]()
 
     var servicesAddViewModel: ServiceListDetailViewModelProtocol?
+    
     var imageRemoved: Bool = true
     var isPreBookingCostAllowed: Bool = false
     var showInPublicBooking: Bool = false
@@ -91,15 +93,19 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         super.viewDidLoad()
         self.title = screenTitle
         servicesAddViewModel = ServiceListDetailModel(delegate: self)
-        getClinicInfo()
+        getAddServices()
         setupUI()
         enableButton.isSelected = true
         hideButton.isSelected = false
         disableButton.isSelected = false
     }
     
-    func getClinicInfo() {
+    func getAddServices() {
         self.view.ShowSpinner()
+        servicesAddViewModel?.getAddServiceList()
+    }
+    
+    func serviceAddListDataRecived() {
         servicesAddViewModel?.getallClinics()
     }
 
@@ -438,6 +444,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     @IBAction func saveServiceButtonAction(sender: UIButton) {
         guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
             serviceNameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            return
+        }
+        
+        guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName }), !serviceNameContain else {
+            serviceNameTextField.showError(message: "Service with this name already present.")
             return
         }
         

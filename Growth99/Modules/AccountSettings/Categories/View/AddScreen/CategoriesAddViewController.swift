@@ -12,6 +12,7 @@ protocol CategoriesAddViewContollerProtocol {
     func clinicsRecived()
     func addCategoriesResponse()
     func categoriesResponseReceived()
+    func addCategoriesDataRecived()
 }
 
 class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol {
@@ -22,6 +23,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     var allClinics = [Clinics]()
     
     var selectedClincs = [Clinics]()
+    var allCategoriesName = [String]()
     
     var selectedClincIds = [Int]()
     var categoriesAddViewModel: CategoriesAddEditViewModelProtocol?
@@ -34,18 +36,22 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         super.viewDidLoad()
         categoriesAddViewModel = CategoriesAddEditViewModel(delegate: self)
         setUpNavigationBar()
-        getClinicInfo()
+        getAddCategoriesListInfo()
     }
     
     func setUpNavigationBar() {
         self.title = screenTitle
     }
     
-    func getClinicInfo() {
+    func getAddCategoriesListInfo() {
         self.view.ShowSpinner()
-        categoriesAddViewModel?.getallClinics()
+        categoriesAddViewModel?.getAddCategoriesList()
     }
     
+    func addCategoriesDataRecived() {
+        categoriesAddViewModel?.getallClinics()
+    }
+
     func clinicsRecived() {
         self.view.HideSpinner()
         allClinics = categoriesAddViewModel?.getAllClinicsData ?? []
@@ -99,7 +105,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -115,13 +121,18 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     }
     
     @IBAction func saveButtonAction(sender: UIButton) {
-        guard let dateFrom = clincsTextField.text, !dateFrom.isEmpty else {
+        guard let clincsText = clincsTextField.text, !clincsText.isEmpty else {
             clincsTextField.showError(message: Constant.Profile.clinicsRequired)
             return
         }
         
-        guard let dateTo = categoriesNameTextField.text, !dateTo.isEmpty else {
+        guard let categoriesName = categoriesNameTextField.text, !categoriesName.isEmpty else {
             categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
+            return
+        }
+        
+        guard let categoriesNameContain = categoriesAddViewModel?.getAddCategoriesListData.contains(where: { $0.name == categoriesName }), !categoriesNameContain else {
+            categoriesNameTextField.showError(message: "Category with this name already present.")
             return
         }
         

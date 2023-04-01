@@ -12,7 +12,7 @@ extension UIBarButtonItem {
     
     class func createMenu(target: AnyObject, action: Selector) -> UIBarButtonItem {
         let menuButton = UIButton()
-        menuButton.setImage(UIImage(named: "menu"), for: .normal)
+        menuButton.setImage(UIImage(named: "sidemenu"), for: .normal)
         menuButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         menuButton.addTarget(target, action: action, for: .touchUpInside)
         let barButtonItem = UIBarButtonItem()
