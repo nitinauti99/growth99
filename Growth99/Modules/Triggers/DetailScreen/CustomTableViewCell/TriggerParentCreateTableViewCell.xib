@@ -18,11 +18,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="500" height="1331"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vOq-q4-Dbw">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="1320"/>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vOq-q4-Dbw">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="2000"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1320" id="azn-qd-1tw"/>
+                            <constraint firstAttribute="height" constant="2000" id="azn-qd-1tw"/>
                         </constraints>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="rnD-aE-Ztj"/>

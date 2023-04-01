@@ -24,13 +24,12 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
         self.registerTableView()
     }
     
-    func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?) {
+    func configureCell(triggerEditData: [TriggerEditData], index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?) {
         indexPath = index
         moduleSelectionEditTrigger = moduleSelectionTypeTrigger
         selectedNetworkEditTrigger = selectedNetworkType
-        trigerData = triggerEditData ?? []
+        trigerData = triggerEditData
         viewModel = parentViewModel
-        selctionType = "Create"
     }
     
     func registerTableView() {
@@ -52,8 +51,9 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if selctionType == "Create" {
+        let item = trigerData[indexPath.row]
+       
+        if item.type == "Create" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
             cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionTypeTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             return cell

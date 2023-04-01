@@ -373,4 +373,27 @@ struct TriggerEditData : Codable {
     let taskName : String?
     let startTime : String?
     let orderOfCondition : Int?
+    let type: String?
+    
+    init(id: String?, timerType: String?, triggerTarget: String?, triggerFrequency: String?, actionIndex: Int?, dateType: String?, triggerTime: Int?, showBorder: Bool?, userId: String?, scheduledDateTime: String?, triggerTemplate: Int?, addNew: Bool?, endTime: String?, triggerType: String?, taskName: String?, startTime: String?, orderOfCondition: Int?, type: String?) {
+        self.id = id
+        self.timerType = timerType
+        self.triggerTarget = triggerTarget
+        self.triggerFrequency = triggerFrequency
+        self.actionIndex = actionIndex
+        self.dateType = dateType
+        self.triggerTime = triggerTime
+        self.showBorder = showBorder
+        self.userId = userId
+        self.scheduledDateTime = scheduledDateTime
+        self.triggerTemplate = triggerTemplate
+        self.addNew = addNew
+        self.endTime = endTime
+        self.triggerType = triggerType
+        self.taskName = taskName
+        self.startTime = startTime
+        self.orderOfCondition = orderOfCondition
+        self.type = type
+    }
 }
+
