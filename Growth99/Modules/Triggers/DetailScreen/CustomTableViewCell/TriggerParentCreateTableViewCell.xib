@@ -14,15 +14,15 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TriggerParentCreateTableViewCell" rowHeight="1331" id="KGk-i7-Jjw" customClass="TriggerParentCreateTableViewCell" customModule="Growth99" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="500" height="1331"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="500" height="1331"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vOq-q4-Dbw">
-                        <rect key="frame" x="10" y="10" width="480" height="1311"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="1320"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1311" id="azn-qd-1tw"/>
+                            <constraint firstAttribute="height" constant="1320" id="azn-qd-1tw"/>
                         </constraints>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="rnD-aE-Ztj"/>
@@ -31,10 +31,10 @@
                     </tableView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vOq-q4-Dbw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Cwi-es-CJT"/>
-                    <constraint firstAttribute="bottom" secondItem="vOq-q4-Dbw" secondAttribute="bottom" constant="10" id="k2y-dH-2aa"/>
-                    <constraint firstAttribute="trailing" secondItem="vOq-q4-Dbw" secondAttribute="trailing" constant="10" id="pdq-kY-pan"/>
-                    <constraint firstItem="vOq-q4-Dbw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="r0B-cg-84q"/>
+                    <constraint firstItem="vOq-q4-Dbw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Cwi-es-CJT"/>
+                    <constraint firstAttribute="bottom" secondItem="vOq-q4-Dbw" secondAttribute="bottom" id="k2y-dH-2aa"/>
+                    <constraint firstAttribute="trailing" secondItem="vOq-q4-Dbw" secondAttribute="trailing" id="pdq-kY-pan"/>
+                    <constraint firstItem="vOq-q4-Dbw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="r0B-cg-84q"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

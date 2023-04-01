@@ -150,7 +150,8 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerParentCreateTableViewCell", for: indexPath) as? TriggerParentCreateTableViewCell else { return UITableViewCell()}
           
-            cell.configureCell(triggerEditData: viewModel?.getTriggerEditListData?.triggerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
+            cell.configureCell(triggerEditData: viewModel?.getTriggerEditListData?.triggerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel)
+            return cell
         }
         
         return cell
@@ -638,8 +639,6 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: cell.networkSMSTagetSelectonButton, size: CGSize(width: cell.networkSMSTagetSelectonButton.frame.width, height: (Double(smsTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
-    
-    
     
     func smsNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
         

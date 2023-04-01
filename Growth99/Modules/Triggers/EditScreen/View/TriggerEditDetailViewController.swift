@@ -163,12 +163,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
             } else if modelData?.moduleName == "Appointment" {
                 triggerDetailList.append(appointmentScreen)
             }
-            
-            for childItem in modelData?.triggerData ?? [] {
-                triggerEditChildData.append(childItem)
-                triggerDetailList.append(createScreen)
-                triggerDetailList.append(timeScreen)
-            }
+            triggerDetailList.append(createScreen)
         }
         selectedLeadSources = modelData?.triggerConditions ?? []
 //        selectedLeadLandingPages = modelData?.landingPages ?? []
