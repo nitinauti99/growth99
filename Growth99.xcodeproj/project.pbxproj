@@ -848,6 +848,8 @@
 		DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA45787229707FA900CE458B /* GRWebViewController.storyboard */; };
 		DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578762971325200CE458B /* ServicesListDetailViewController.swift */; };
 		DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */; };
+		DA54A8A329D8761B00DB333F /* TriggerParentCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */; };
+		DA54A8A429D8761B00DB333F /* TriggerParentCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */; };
 		DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */; };
 		DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */; };
 		DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */; };
@@ -1739,6 +1741,8 @@
 		DA45787229707FA900CE458B /* GRWebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GRWebViewController.storyboard; sourceTree = "<group>"; };
 		DA4578762971325200CE458B /* ServicesListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListDetailViewController.swift; sourceTree = "<group>"; };
 		DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListDetailViewController.storyboard; sourceTree = "<group>"; };
+		DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerParentCreateTableViewCell.swift; sourceTree = "<group>"; };
+		DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TriggerParentCreateTableViewCell.xib; sourceTree = "<group>"; };
 		DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListDetailModel.swift; sourceTree = "<group>"; };
 		DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -3629,6 +3633,8 @@
 				189670AA29BA6080003224ED /* TriggerAppointmentActionTableViewCell.swift */,
 				189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */,
 				189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */,
+				DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */,
+				DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */,
 				189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */,
 				189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */,
 				189670AB29BA6080003224ED /* TriggerTimeTableViewCell.xib */,
@@ -6937,6 +6943,7 @@
 				842C0CB0298F713B00395061 /* ConsentsListViewController.storyboard in Resources */,
 				8497A04028FF11E200CBA26C /* Staging.plist in Resources */,
 				01468E3129C0D7E8002BDC1F /* PateintCustomEmailTemplateTableViewCell.xib in Resources */,
+				DA54A8A429D8761B00DB333F /* TriggerParentCreateTableViewCell.xib in Resources */,
 				189670B929BA6081003224ED /* TriggerModuleTableViewCell.xib in Resources */,
 				01EBAC9F29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
@@ -7511,6 +7518,7 @@
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
 				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
+				DA54A8A329D8761B00DB333F /* TriggerParentCreateTableViewCell.swift in Sources */,
 				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
 				01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */,
 				01EBAC6629B593A300110DCB /* DeletedLeadListViewController+TableView.swift in Sources */,

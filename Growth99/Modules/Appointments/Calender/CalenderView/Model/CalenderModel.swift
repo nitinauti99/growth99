@@ -300,7 +300,7 @@ struct Patient : Codable {
     let clinics : [String]?
     let services : [String]?
     let userServiceCategories : [String]?
-    let allowCreateBusiness : String?
+    let allowCreateBusiness : Bool?
     let patientTags : [String]?
     let patientStatus : String?
 }

@@ -193,7 +193,7 @@ struct UserTrigger : Codable {
     let clinics : [ClinicsServices]?
     let services : [ServicesTrigger]?
     let userServiceCategories : [UserServiceCategories]?
-    let allowCreateBusiness : String?
+    let allowCreateBusiness : Bool?
     let patientTags : [String]?
     let patientStatus : String?
     let isPassWordSent : Bool?

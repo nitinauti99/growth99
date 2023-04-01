@@ -96,6 +96,8 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var landingForm: String = String.blank
     
     var triggerId: Int?
+    
+    var triggerEditChildData : [TriggerEditData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,7 +164,8 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
                 triggerDetailList.append(appointmentScreen)
             }
             
-            for _ in 1...(modelData?.triggerData?.count ?? 0) {
+            for childItem in modelData?.triggerData ?? [] {
+                triggerEditChildData.append(childItem)
                 triggerDetailList.append(createScreen)
                 triggerDetailList.append(timeScreen)
             }
@@ -217,11 +220,10 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         self.triggerdDetailTableView.delegate = self
         self.triggerdDetailTableView.dataSource = self
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerDefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerDefaultTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "TriggerSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerSMSCreateTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerLeadActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerLeadActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerModuleTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerModuleTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerAppointmentActionTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "TriggerTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerTimeTableViewCell")
+        self.triggerdDetailTableView.register(UINib(nibName: "TriggerParentCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerParentCreateTableViewCell")
     }
     
     func createNewTriggerCell(cellNameType: String) {
