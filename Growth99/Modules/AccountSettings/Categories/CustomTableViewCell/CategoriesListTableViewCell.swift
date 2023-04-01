@@ -7,6 +7,12 @@
 
 import UIKit
 
+
+protocol CategoriesListCellDelegate: AnyObject {
+    func removeSelectedCategorie(cell: CategoriesListTableViewCell, index: IndexPath)
+    func editCategories(cell: CategoriesListTableViewCell, index: IndexPath)
+}
+
 class CategoriesListTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
@@ -19,6 +25,7 @@ class CategoriesListTableViewCell: UITableViewCell {
     
     var indexPath = IndexPath()
     var dateFormater: DateFormaterProtocol?
+    weak var delegate: CategoriesListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,6 +70,15 @@ class CategoriesListTableViewCell: UITableViewCell {
         let date = dateFormatter.date(from: date)
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date! as Date)
+    }
+    
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeSelectedCategorie(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editCategories(cell: self, index: indexPath)
     }
     
 }

@@ -10,6 +10,7 @@ import UIKit
 protocol ServicesListViewContollerProtocol: AnyObject {
     func serviceListDataRecived()
     func errorReceived(error: String)
+    func serviceRemovedSuccefully(message: String)
 }
 
 class ServicesListViewController: UIViewController, ServicesListViewContollerProtocol {

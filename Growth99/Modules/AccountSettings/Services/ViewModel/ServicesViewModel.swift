@@ -18,6 +18,7 @@ protocol ServiceListViewModelProtocol {
     
     var  getServiceListData: [ServiceList] { get }
     var  getServiceFilterListData: [ServiceList] { get }
+    func removeSelectedCService(serviceId: Int)
 }
 
 class ServiceListViewModel {
@@ -38,6 +39,19 @@ class ServiceListViewModel {
             case .success(let serviceData):
                 self.serviceList = serviceData.serviceList ?? []
                 self.delegate?.serviceListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func removeSelectedCService(serviceId: Int) {
+        self.requestManager.request(forPath: ApiUrl.editService.appending("\(serviceId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.serviceRemovedSuccefully(message: data.success ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

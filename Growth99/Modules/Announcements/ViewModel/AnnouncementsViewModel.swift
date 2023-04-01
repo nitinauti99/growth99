@@ -52,7 +52,7 @@ extension AnnouncementsViewModel: AnnouncementsViewModelProtocol {
     }
     
     func getAnnouncementsFilterData(searchText: String) {
-        self.announcementsListFilterData = (self.getAnnouncementsData.filter { $0.description?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() })
+        self.announcementsListFilterData = (self.getAnnouncementsData.filter { String($0.id ?? 0) == searchText })
     }
     
     func getAnnouncementsDataAtIndex(index: Int)-> AnnouncementsModel? {

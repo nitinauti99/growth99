@@ -7,6 +7,12 @@
 
 import UIKit
 
+
+protocol ClinicsListCellDelegate: AnyObject {
+    func removeSelectedClinic(cell: ClinicsListTableViewCell, index: IndexPath)
+    func editClinic(cell: ClinicsListTableViewCell, index: IndexPath)
+}
+
 class ClinicsListTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
@@ -19,6 +25,7 @@ class ClinicsListTableViewCell: UITableViewCell {
     
     var indexPath = IndexPath()
     var dateFormater: DateFormaterProtocol?
+    weak var delegate: ClinicsListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,12 +57,6 @@ class ClinicsListTableViewCell: UITableViewCell {
         indexPath = index
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -63,6 +64,14 @@ class ClinicsListTableViewCell: UITableViewCell {
         let date = dateFormatter.date(from: date)
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date! as Date)
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeSelectedClinic(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editClinic(cell: self, index: indexPath)
     }
     
 }

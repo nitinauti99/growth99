@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ServiceListCellDelegate: AnyObject {
+    func removeSelectedService(cell: ServicesListTableViewCell, index: IndexPath)
+    func editServices(cell: ServicesListTableViewCell, index: IndexPath)
+}
+
 class ServicesListTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
@@ -19,6 +24,7 @@ class ServicesListTableViewCell: UITableViewCell {
     
     var indexPath = IndexPath()
     var dateFormater: DateFormaterProtocol?
+    weak var delegate: ServiceListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -75,5 +81,13 @@ class ServicesListTableViewCell: UITableViewCell {
         return dateFormatter.string(from: date)
         }
         return nil
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeSelectedService(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editServices(cell: self, index: indexPath)
     }
 }

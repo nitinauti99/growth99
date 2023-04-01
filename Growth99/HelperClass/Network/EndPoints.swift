@@ -46,6 +46,7 @@ struct EndPoints {
     static let updatePatientsInfo = "/api/patient/"
     static let categoriesList = "/api/v1/serviceCategories/all"
     static let createCategories = "/api/servicecategories"
+    static let deleteCategories = "/api/servicecategories/"
     static let createService = "/api/services"
     static let editService = "/api/services/"
     static let getAllServices = "/api/v1/services/all"
@@ -72,6 +73,8 @@ struct EndPoints {
     static let removePatient = "/api/public/users/delete?"
     static let removeProfileAppointment = "/api/appointments/"
     static let workflowPatientTasks = "/api/workflowtasks/patient/"
+    
+    
     static let patientTagList = "/api/ptag/list"
     static let leadTagList = "/api/tag/list"
     static let patientAddTags = "/api/ptag/"
@@ -330,5 +333,6 @@ struct ApiUrl {
     static let mediaTagUrl = EndPoints.baseURL.appending(EndPoints.mediaTagUrl)
     static let socialMediaLibrary = EndPoints.baseURL.appending(EndPoints.socialMediaLibrary)
     static let editSocialMediaLibrary = EndPoints.baseURL.appending(EndPoints.editSocialMediaLibrary)
+    static let deleteCategories = EndPoints.baseURL.appending(EndPoints.deleteCategories)
 }
 

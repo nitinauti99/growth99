@@ -10,6 +10,7 @@ import UIKit
 protocol CategoriesListViewContollerProtocol: AnyObject {
     func CategoriesDataRecived()
     func errorReceived(error: String)
+    func categoriesRemovedSuccefully(message: String)
 }
 
 class CategoriesListViewController: UIViewController, CategoriesListViewContollerProtocol {
@@ -76,7 +77,7 @@ class CategoriesListViewController: UIViewController, CategoriesListViewContolle
     }
 }
 
-extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSource {
+extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSource, CategoriesListCellDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -102,6 +103,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = CategoriesListTableViewCell()
+        cell.delegate = self
         cell = categoriesListTableView.dequeueReusableCell(withIdentifier: "CategoriesListTableViewCell") as! CategoriesListTableViewCell
         if isSearch {
             cell.configureCell(categoriesFilterList: viewModel, index: indexPath, isSearch: isSearch)
@@ -124,6 +126,52 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             createCategoriesVC.categoryId = viewModel?.getCategoriesListData[indexPath.row].id
         }
         self.navigationController?.pushViewController(createCategoriesVC, animated: true)
+    }
+    
+    func editCategories(cell: CategoriesListTableViewCell, index: IndexPath) {
+        let createCategoriesVC = UIStoryboard(name: "CategoriesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "CategoriesAddViewController") as! CategoriesAddViewController
+        createCategoriesVC.screenTitle = Constant.Profile.editCategories
+        if isSearch {
+            createCategoriesVC.categoryId = viewModel?.getCategoriesFilterListData[index.row].id
+        } else {
+            createCategoriesVC.categoryId = viewModel?.getCategoriesListData[index.row].id
+        }
+        self.navigationController?.pushViewController(createCategoriesVC, animated: true)
+    }
+    
+    func removeSelectedCategorie(cell: CategoriesListTableViewCell, index: IndexPath) {
+        var selectedClinicId = Int()
+        if isSearch {
+            selectedClinicId = viewModel?.getCategoriesFilterListData[index.row].id ?? 0
+            let alert = UIAlertController(title: "Delete Categorie", message: "Are you sure you want to delete \(viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            selectedClinicId = viewModel?.getCategoriesListData[index.row].id ?? 0
+            let alert = UIAlertController(title: "Delete Categorie", message: "Are you sure you want to delete \(viewModel?.getCategoriesDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func categoriesRemovedSuccefully(message: String) {
+        self.getCategoriesList()
     }
 }
 

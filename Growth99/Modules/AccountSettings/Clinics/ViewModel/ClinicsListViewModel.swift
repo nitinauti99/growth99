@@ -18,6 +18,8 @@ protocol ClinicsListViewModelProtocol {
     
     var  getClinicsListData: [ClinicsListModel] { get }
     var  getClinicsFilterListData: [ClinicsListModel] { get }
+    
+    func removeSelectedClinic(clinicId: Int)
 }
 
 class ClinicsListViewModel {
@@ -38,6 +40,19 @@ class ClinicsListViewModel {
             case .success(let clinicListData):
                 self.clinicList = clinicListData
                 self.delegate?.ClinicsDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func removeSelectedClinic(clinicId: Int) {
+        self.requestManager.request(forPath: ApiUrl.selectedClinic.appending("\(clinicId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.clinicRemovedSuccefully(message: data.success ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

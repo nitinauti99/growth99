@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource, ServiceListCellDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -34,6 +34,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = ServicesListTableViewCell()
+        cell.delegate = self
         cell = servicesListTableView.dequeueReusableCell(withIdentifier: "ServicesListTableViewCell") as! ServicesListTableViewCell
         if isSearch {
             cell.configureCell(serviceFilterList: viewModel, index: indexPath, isSearch: isSearch)
@@ -59,5 +60,54 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
             createServiceVC.serviceId = viewModel?.getServiceListData[indexPath.row].id
         }
         self.navigationController?.pushViewController(createServiceVC, animated: true)
+    }
+    
+    
+    func editServices(cell: ServicesListTableViewCell, index: IndexPath) {
+        guard let createServiceVC = UIViewController.loadStoryboard("ServicesListDetailViewController", "ServicesListDetailViewController") as? ServicesListDetailViewController else {
+            fatalError("Failed to load ServicesListDetailViewController from storyboard.")
+        }
+        createServiceVC.screenTitle = Constant.Profile.editService
+        if isSearch {
+            createServiceVC.serviceId = viewModel?.getServiceFilterListData[index.row].id
+        } else {
+            createServiceVC.serviceId = viewModel?.getServiceListData[index.row].id
+        }
+        self.navigationController?.pushViewController(createServiceVC, animated: true)
+    }
+    
+    func removeSelectedService(cell: ServicesListTableViewCell, index: IndexPath) {
+        var selectedServiceId = Int()
+        if isSearch {
+            selectedServiceId = viewModel?.getServiceFilterListData[index.row].id ?? 0
+            let alert = UIAlertController(title: "Delete Service", message: "Are you sure you want to delete \(viewModel?.getServiceFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedCService(serviceId: selectedServiceId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            selectedServiceId = viewModel?.getServiceListData[index.row].id ?? 0
+            let alert = UIAlertController(title: "Delete Service", message: "Are you sure you want to delete \(viewModel?.getServiceDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedCService(serviceId: selectedServiceId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func serviceRemovedSuccefully(message: String) {
+        self.getUserList()
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 protocol ClinicsListViewContollerProtocol: AnyObject {
     func ClinicsDataRecived()
     func errorReceived(error: String)
+    func clinicRemovedSuccefully(message: String)
 }
 
 class ClinicsListViewController: UIViewController, ClinicsListViewContollerProtocol {
@@ -84,7 +85,7 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     }
 }
 
-extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource, ClinicsListCellDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -110,6 +111,7 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = ClinicsListTableViewCell()
+        cell.delegate = self
         cell = clinicsListTableView.dequeueReusableCell(withIdentifier: "ClinicsListTableViewCell") as! ClinicsListTableViewCell
         if isSearch {
             cell.configureCell(clinicsFilterList: viewModel, index: indexPath, isSearch: isSearch)
@@ -132,6 +134,52 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource 
             clinicDetailVC.clinicId = viewModel?.getClinicsListData[indexPath.row].id
         }
         self.navigationController?.pushViewController(clinicDetailVC, animated: true)
+    }
+    
+    func editClinic(cell: ClinicsListTableViewCell, index: IndexPath) {
+        let clinicDetailVC = UIStoryboard(name: "ClinicsListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsListDetailViewController") as! ClinicsListDetailViewController
+        clinicDetailVC.screenTitle = Constant.Profile.editClinic
+        if isSearch {
+            clinicDetailVC.clinicId = viewModel?.getClinicsFilterListData[index.row].id
+        } else {
+            clinicDetailVC.clinicId = viewModel?.getClinicsListData[index.row].id
+        }
+        self.navigationController?.pushViewController(clinicDetailVC, animated: true)
+    }
+    
+    func removeSelectedClinic(cell: ClinicsListTableViewCell, index: IndexPath) {
+        var selectedClinicId = Int()
+        if isSearch {
+            selectedClinicId = viewModel?.getClinicsFilterListData[index.row].id ?? 0
+            let alert = UIAlertController(title: "Delete Clinic", message: "Are you sure you want to delete \(viewModel?.getClinicsFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedClinic(clinicId: selectedClinicId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            selectedClinicId = viewModel?.getClinicsListData[index.row].id ?? 0
+            let alert = UIAlertController(title: "Delete Clinic", message: "Are you sure you want to delete \(viewModel?.getClinicsDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedClinic(clinicId: selectedClinicId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func clinicRemovedSuccefully(message: String) {
+        self.getClinicsList()
     }
 }
 

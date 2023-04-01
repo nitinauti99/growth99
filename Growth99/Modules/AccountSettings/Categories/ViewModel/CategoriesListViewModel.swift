@@ -17,6 +17,7 @@ protocol CategoriesListViewModelProtocol {
     
     var  getCategoriesListData: [CategoriesListModel] { get }
     var  getCategoriesFilterListData: [CategoriesListModel] { get }
+    func removeSelectedCategorie(categorieId: Int)
 }
 
 class CategoriesListViewModel {
@@ -54,6 +55,19 @@ class CategoriesListViewModel {
             case .failure(let error):
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func removeSelectedCategorie(categorieId: Int) {
+        self.requestManager.request(forPath: ApiUrl.deleteCategories.appending("\(categorieId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+            switch result {
+            case .success(let data):
+                print(data)
+                self.delegate?.categoriesRemovedSuccefully(message: data.success ?? String.blank)
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }
