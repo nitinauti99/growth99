@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TriggerTimeTableViewCell" rowHeight="210" id="b4N-gw-dU5" customClass="TriggerTimeTableViewCell" customModule="Growth99" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TriggerEditTimeTableViewCell" rowHeight="210" id="b4N-gw-dU5" customClass="TriggerEditTimeTableViewCell" customModule="Growth99" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b4N-gw-dU5" id="1HD-BI-YrH">
@@ -374,6 +374,7 @@
             <connections>
                 <outlet property="addAnotherConditionButton" destination="HIS-ga-GBU" id="Rd2-nC-WdG"/>
                 <outlet property="nextButton" destination="PJl-MB-LML" id="bA2-aa-ZPr"/>
+                <outlet property="orLabel" destination="jCb-95-qCx" id="K9n-bp-byh"/>
                 <outlet property="scheduleBasedonLbl" destination="LSe-NS-IdX" id="Iqd-xC-Wda"/>
                 <outlet property="scheduledBasedOnButton" destination="AAp-9q-fGi" id="bto-xD-eMl"/>
                 <outlet property="scheduledBasedOnTextField" destination="2BQ-OR-yuq" id="qCK-4g-ihT"/>

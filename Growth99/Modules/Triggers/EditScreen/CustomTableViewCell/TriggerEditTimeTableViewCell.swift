@@ -1,5 +1,5 @@
 //
-//  TriggerDefaultTableViewCell.swift
+//  TriggerEditTimeTableViewCell.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol TriggerTimeCellDelegate: AnyObject {
-    func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath)
-    func nextBtnAction(cell: TriggerTimeTableViewCell, index: IndexPath)
-    func buttontimeRangeStartTapped(cell: TriggerTimeTableViewCell)
-    func buttontimeRangeEndTapped(cell: TriggerTimeTableViewCell)
+protocol TriggerEditTimeCellDelegate: AnyObject {
+    func addAnotherConditionButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
+    func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath)
+    func buttontimeRangeStartTapped(cell: TriggerEditTimeTableViewCell)
+    func buttontimeRangeEndTapped(cell: TriggerEditTimeTableViewCell)
    
-    func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath)
-    func scheduledBasedOnButton(cell: TriggerTimeTableViewCell, index: IndexPath)
+    func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
+    func scheduledBasedOnButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     
 }
 
-class TriggerTimeTableViewCell: UITableViewCell {
+class TriggerEditTimeTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
@@ -42,16 +42,17 @@ class TriggerTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var timeRangeLbl: UILabel!
 
     @IBOutlet weak var addAnotherConditionButton: UIButton!
+    @IBOutlet weak var orLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
 
     @IBOutlet weak var timeHourlyButton: UIButton!
     @IBOutlet weak var scheduledBasedOnButton: UIButton!
 
-    weak var delegate: TriggerTimeCellDelegate?
+    weak var delegate: TriggerEditTimeCellDelegate?
     var indexPath = IndexPath()
     var timerTypeSelected: String = "Frequency"
     var trigerTimeData: [TriggerEditData] = []
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -67,8 +68,22 @@ class TriggerTimeTableViewCell: UITableViewCell {
     func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?){
         self.indexPath = index
         self.trigerTimeData = triggerEditData ?? []
+
         
-        if triggerEditData?[0].triggerTarget == "lead" {
+        /*if let lastItem = trigerTimeData?[indexPath.row]-1 {
+            // Do something with lastItem
+            print(lastItem)
+            addAnotherConditionButton.isHidden = false
+            nextButton.isHidden = false
+            orLabel.isHidden = false
+        } else {
+            addAnotherConditionButton.isHidden = true
+            nextButton.isHidden = true
+            orLabel.isHidden = true
+            print("triggerEditData is nil or empty")
+        }*/
+        
+        if triggerEditData?[indexPath.row].triggerTarget == "lead" {
             self.timeRangeView.isHidden = false
             self.timeFrequencyLbl.isHidden = false
             self.timeRangeLbl.isHidden = false
@@ -87,12 +102,16 @@ class TriggerTimeTableViewCell: UITableViewCell {
             self.timeRangeButton.isHidden = true
             self.scheduledBasedOnButton.isEnabled = true
         }
-        if triggerEditData?[0].timerType == "Frequency" {
+        if triggerEditData?[indexPath.row].timerType == "Frequency" {
             self.timeFrequencyButton.isSelected = true
             self.timeRangeButton.isSelected = false
+            timeFrequencyView.isHidden = false
+            timeRangeView.isHidden = true
         } else {
             self.timeFrequencyButton.isSelected = false
             self.timeRangeButton.isSelected = true
+            timeFrequencyView.isHidden = true
+            timeRangeView.isHidden = false
         }
         self.timeHourlyButton.tag = indexPath.row
         self.timeHourlyButton.addTarget(self, action: #selector(timeHourlySelectionMethod), for: .touchDown)

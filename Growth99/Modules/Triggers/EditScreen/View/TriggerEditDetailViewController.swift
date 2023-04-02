@@ -96,7 +96,8 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var landingForm: String = String.blank
     
     var triggerId: Int?
-    
+    var finalArray = [TriggerEditData]()
+
     var triggerEditChildData : [TriggerEditData] = []
 
     override func viewDidLoad() {

@@ -150,7 +150,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerParentCreateTableViewCell", for: indexPath) as? TriggerParentCreateTableViewCell else { return UITableViewCell()}
           
-            var finalArray = [TriggerEditData]()
 
             for item in viewModel?.getTriggerEditListData?.triggerData ?? [] {
                
@@ -161,7 +160,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 finalArray.append(creatChild)
                 finalArray.append(createTimechild)
             }
-            print(finalArray.count)
 
             cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
           
@@ -173,7 +171,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if triggerDetailList[indexPath.row].cellType  == "Both" {
-            return 2000
+            return CGFloat(finalArray.count * 465 + 150)
 
         }else{
             return UITableView.automaticDimension
@@ -463,9 +461,40 @@ extension TriggerEditDetailViewController: TriggerPatientCellDelegate {
     }
 }
 
-extension TriggerEditDetailViewController: TriggerTimeCellDelegate {
+extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
+    func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
+        let timeHourlyArray = ["Min", "Hour", "Day"]
+               let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+                   cell.textLabel?.text = allClinics
+               }
+               selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+                       if selectedList.count == 0 {
+                           cell.timeHourlyTextField.showError(message: "Please enter time duration")
+                       } else {
+                           cell.timeHourlyTextField.text = selectedItem
+                       }
+               }
+               selectionMenu.reloadInputViews()
+               selectionMenu.showEmptyDataLabel(text: "No Result Found")
+               selectionMenu.show(style: .popover(sourceView: cell.timeHourlyButton, size: CGSize(width:  cell.timeHourlyButton.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
+    }
     
-    func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
+    func scheduledBasedOnButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
+        let scheduledBasedOnArray = ["Appointment Created Date", "Before Appointment Date", "After Appointment Date"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: scheduledBasedOnArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+                cell.scheduledBasedOnTextField.text = selectedItem
+            }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: cell.timeRangeButton, size: CGSize(width: cell.timeRangeButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    
+    
+    func addAnotherConditionButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
         
         if triggerDetailList.count == 4 {
             orderOfConditionTrigger = orderOfConditionTrigger + 2
@@ -508,7 +537,7 @@ extension TriggerEditDetailViewController: TriggerTimeCellDelegate {
         }
     }
     
-    func nextBtnAction(cell: TriggerTimeTableViewCell, index: IndexPath) {
+    func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
         if moduleSelectionType == "lead" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
@@ -559,22 +588,22 @@ extension TriggerEditDetailViewController: TriggerTimeCellDelegate {
         }
     }
     
-    func buttontimeRangeStartTapped(cell: TriggerTimeTableViewCell) {
+    func buttontimeRangeStartTapped(cell: TriggerEditTimeTableViewCell) {
         guard let indexPath = self.triggerdDetailTableView.indexPath(for: cell) else {
             return
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let  triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
+        if let  triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditTimeTableViewCell {
             triggerTimeCell.updateTimeRangeStartTextField(with: self.viewModel?.timeFormatterStringEdit(textField: cell.timeRangeStartTimeTF) ?? String.blank)
         }
     }
     
-    func buttontimeRangeEndTapped(cell: TriggerTimeTableViewCell) {
+    func buttontimeRangeEndTapped(cell: TriggerEditTimeTableViewCell) {
         guard let indexPath = self.triggerdDetailTableView.indexPath(for: cell) else {
             return
         }
         let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell {
+        if let triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditTimeTableViewCell {
             triggerTimeCell.updateTimeRangeEndTextField(with: self.viewModel?.timeFormatterStringEdit(textField: cell.timeRangeEndTimeTF) ?? String.blank)
         }
     }
@@ -654,15 +683,15 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.networkSMSTagetSelectonButton, size: CGSize(width: cell.networkSMSTagetSelectonButton.frame.width, height: (Double(smsTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func smsNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
+    func smsNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, smsTargetType: String) {
         
-        if moduleSelectionType == "lead" && smsTargetSelectionType == "Leads" {
+        if moduleSelectionType == "lead" && smsTargetType == "Leads" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Lead"}) ?? []
-        } else  if moduleSelectionType == "lead" && smsTargetSelectionType == "Clinic" {
+        } else if moduleSelectionType == "lead" && smsTargetType == "Clinic" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Clinic"}) ?? []
-        } else if moduleSelectionType == "appointment" && smsTargetSelectionType == "Patient" {
+        } else if moduleSelectionType == "appointment" && smsTargetType == "Patient" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.smsTarget == "Patient"}) ?? []
-        } else if moduleSelectionType == "appointment" && smsTargetSelectionType == "Clinic" {
+        } else if moduleSelectionType == "appointment" && smsTargetType == "Clinic" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.smsTarget == "Clinic"}) ?? []
         }
         
@@ -714,14 +743,14 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.networkEmailTagetSelectonButton, size: CGSize(width: cell.networkEmailTagetSelectonButton.frame.width, height: (Double(emailTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func emailNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
-        if moduleSelectionType == "lead" && emailTargetSelectionType == "Leads" {
+    func emailNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, emailTargetType: String) {
+        if moduleSelectionType == "lead" && emailTargetType == "Leads" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.emailTarget == "Lead"}) ?? []
-        } else  if moduleSelectionType == "lead" && emailTargetSelectionType == "Clinic" {
+        } else if moduleSelectionType == "lead" && emailTargetType == "Clinic" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.emailTarget == "Clinic"}) ?? []
-        } else if moduleSelectionType == "appointment" && emailTargetSelectionType == "Patient" {
+        } else if moduleSelectionType == "appointment" && emailTargetType == "Patient" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.emailTarget == "Patient"}) ?? []
-        } else if moduleSelectionType == "appointment" && emailTargetSelectionType == "Clinic" {
+        } else if moduleSelectionType == "appointment" && emailTargetType == "Clinic" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.emailTarget == "Clinic"}) ?? []
         }
         
@@ -765,34 +794,5 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.assignTaskNetworkSelectonButton, size: CGSize(width: cell.assignTaskNetworkSelectonButton.frame.width, height: (Double(taskUserListArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
-        let timeHourlyArray = ["Min", "Hour", "Day"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-                if selectedList.count == 0 {
-                    cell.timeHourlyTextField.showError(message: "Please enter time duration")
-                } else {
-                    cell.timeHourlyTextField.text = selectedItem
-                }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: cell.timeHourlyButton, size: CGSize(width:  cell.timeHourlyButton.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    func scheduledBasedOnButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
-        let scheduledBasedOnArray = ["Appointment Created Date", "Before Appointment Date", "After Appointment Date"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: scheduledBasedOnArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-                cell.scheduledBasedOnTextField.text = selectedItem
-            }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: cell.timeRangeButton, size: CGSize(width: cell.timeRangeButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
-    }
     
 }

@@ -850,6 +850,8 @@
 		DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */; };
 		DA54A8A329D8761B00DB333F /* TriggerParentCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */; };
 		DA54A8A429D8761B00DB333F /* TriggerParentCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */; };
+		DA54A8A829D9798300DB333F /* TriggerEditTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */; };
+		DA54A8A929D9798300DB333F /* TriggerEditTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA54A8A729D9798300DB333F /* TriggerEditTimeTableViewCell.xib */; };
 		DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */; };
 		DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */; };
 		DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */; };
@@ -1743,6 +1745,8 @@
 		DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerParentCreateTableViewCell.swift; sourceTree = "<group>"; };
 		DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TriggerParentCreateTableViewCell.xib; sourceTree = "<group>"; };
+		DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditTimeTableViewCell.swift; sourceTree = "<group>"; };
+		DA54A8A729D9798300DB333F /* TriggerEditTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerEditTimeTableViewCell.xib; sourceTree = "<group>"; };
 		DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListDetailModel.swift; sourceTree = "<group>"; };
 		DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -3473,6 +3477,7 @@
 		1883F0F129C63DA10080997B /* EditScreen */ = {
 			isa = PBXGroup;
 			children = (
+				DA54A8A529D9795B00DB333F /* CustomTableViewCell */,
 				1883F0F229C63DA10080997B /* ViewModel */,
 				1883F0F429C63DA10080997B /* Model */,
 				1883F0F629C63DA10080997B /* View */,
@@ -6685,6 +6690,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DA54A8A529D9795B00DB333F /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */,
+				DA54A8A729D9798300DB333F /* TriggerEditTimeTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
 		DAE1408E298ACCD600794F6A /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -7007,6 +7021,7 @@
 				01152E3229B3C5F100B24627 /* LeadHistoryViewController.storyboard in Resources */,
 				013A4F9D29B4B96300CA24B0 /* LeadHistoryListTableViewCell.xib in Resources */,
 				013A4FDE29B4E3FA00CA24B0 /* InputTypeTableViewCell.xib in Resources */,
+				DA54A8A929D9798300DB333F /* TriggerEditTimeTableViewCell.xib in Resources */,
 				01152E3A29B3C64000B24627 /* CombineTimeLineViewController.storyboard in Resources */,
 				013A4FD929B4E3FA00CA24B0 /* TextTypeTableViewCell.xib in Resources */,
 				189670B629BA6081003224ED /* TriggerAppointmentActionTableViewCell.xib in Resources */,
@@ -7653,6 +7668,7 @@
 				01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */,
 				398F90ED298ECB8700DB96E4 /* IQTitleBarButtonItem.swift in Sources */,
 				01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */,
+				DA54A8A829D9798300DB333F /* TriggerEditTimeTableViewCell.swift in Sources */,
 				1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */,
 				1896709229BA5E62003224ED /* TriggersListViewController.swift in Sources */,
 				01D7AB09299E8CD000821274 /* FormDetailViewController+TableView.swift in Sources */,

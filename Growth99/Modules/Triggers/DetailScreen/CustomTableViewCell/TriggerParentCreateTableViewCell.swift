@@ -38,7 +38,7 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
         self.parentTableView.delegate = self
         self.parentTableView.dataSource = self
         self.parentTableView.register(UINib(nibName: "TriggerSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerSMSCreateTableViewCell")
-        self.parentTableView.register(UINib(nibName: "TriggerTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerTimeTableViewCell")
+        self.parentTableView.register(UINib(nibName: "TriggerEditTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditTimeTableViewCell")
     }
     
 }
@@ -57,21 +57,19 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
        
         if item.type == "Create" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
-            cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionTypeTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             cell.delegate = view
+            cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             return cell
 
-        }else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerTimeTableViewCell", for: indexPath) as? TriggerTimeTableViewCell else { return UITableViewCell()}
-           
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditTimeTableViewCell", for: indexPath) as? TriggerEditTimeTableViewCell else { return UITableViewCell()}
+            cell.delegate = view
+            cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             return cell
         }
-       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-   
+    }   
 }

@@ -355,7 +355,7 @@ struct TriggerEditModel : Codable {
     let name : String?
 }
 
-struct TriggerEditData : Codable {
+struct TriggerEditData : Codable, Equatable {
     let id : String?
     let timerType : String?
     let triggerTarget : String?
