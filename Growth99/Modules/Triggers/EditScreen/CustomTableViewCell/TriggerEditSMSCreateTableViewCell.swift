@@ -66,7 +66,8 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     var networkTypeSelected: String = "sms"
     var indexPath = IndexPath()
     var trigerCreateData: [TriggerEditData] = []
-
+    var triggerTargetName: String = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -104,7 +105,8 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             networkViewEmail.isHidden = true
             networkViewTask.isHidden = true
             
-            self.selectSMSTargetTextLabel.text = triggerEditData?[index.row].triggerTarget
+            triggerTargetName = triggerEditData?[index.row].triggerTarget ?? ""
+            self.selectSMSTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectSMSNetworkName = parentViewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectSMSNetworkName.count > 0 {
                 self.selectSMSNetworkTextLabel.text = selectSMSNetworkName[0].name ?? String.blank
@@ -117,8 +119,8 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             self.smsBtn.isSelected = false
             self.emailBtn.isSelected = true
             self.taskBtn.isSelected = false
-            
-            self.selectEmailTargetTextLabel.text = triggerEditData?[index.row].triggerTarget
+            triggerTargetName = triggerEditData?[index.row].triggerTarget ?? ""
+            self.selectEmailTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectEmailNetworkName = parentViewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectEmailNetworkName.count > 0 {
                 self.selectEmailNetworkTextLabel.text = selectEmailNetworkName[0].name ?? String.blank

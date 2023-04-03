@@ -117,9 +117,24 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.timeHourlyButton.addTarget(self, action: #selector(timeHourlySelectionMethod), for: .touchDown)
         self.scheduledBasedOnButton.tag = indexPath.row
         self.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnMethod), for: .touchDown)
-        self.timeHourlyTextField.text = triggerEditData?[0].triggerFrequency ?? ""
-        let triggerTime = triggerEditData?[0].triggerTime
-        self.timeDurationTextField.text = String(triggerTime ?? 0)
+        
+        if triggerEditData?.count ?? 0 > 0 {
+            self.timeHourlyTextField.text = triggerEditData?[0].triggerFrequency ?? ""
+            let triggerTime = triggerEditData?[0].triggerTime
+            self.timeDurationTextField.text = String(triggerTime ?? 0)
+            
+            if triggerEditData?[0].dateType == "APPOINTMENT_CREATED" {
+                self.scheduledBasedOnTextField.text = "Appointment Created Date"
+            } else if triggerEditData?[0].dateType == "APPOINTMENT_BEFORE" {
+                self.scheduledBasedOnTextField.text = "Before Appointment Date"
+            } else {
+                self.scheduledBasedOnTextField.text = "After Appointment Date"
+            }
+        } else {
+            self.timeHourlyTextField.text = ""
+            self.timeDurationTextField.text = ""
+            self.scheduledBasedOnTextField.text = ""
+        }
     }
     
     @objc func timeHourlySelectionMethod(sender: UIButton) {

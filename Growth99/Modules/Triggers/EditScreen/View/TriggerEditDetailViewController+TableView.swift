@@ -144,7 +144,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.delegate = self
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
-            cell.patientAppointmenTextLabel.text = appointmentStatusArray[0]
+            cell.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.triggerActionName
             cell.patientNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
@@ -489,7 +489,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
             }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: cell.timeRangeButton, size: CGSize(width: cell.timeRangeButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: cell.scheduledBasedOnButton, size: CGSize(width: cell.scheduledBasedOnButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
     }
     
     
@@ -780,5 +780,5 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: cell.assignTaskNetworkSelectonButton, size: CGSize(width: cell.assignTaskNetworkSelectonButton.frame.width, height: (Double(taskUserListArray.count * 30))), arrowDirection: .up), from: self)
-    }    
+    }
 }
