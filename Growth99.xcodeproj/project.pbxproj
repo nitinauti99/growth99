@@ -853,6 +853,8 @@
 		DA54A8A829D9798300DB333F /* TriggerEditTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */; };
 		DA54A8A929D9798300DB333F /* TriggerEditTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA54A8A729D9798300DB333F /* TriggerEditTimeTableViewCell.xib */; };
 		DA588DD9297170A0005BA304 /* ServiceListDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */; };
+		DA64B91F29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA64B91D29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib */; };
+		DA64B92029DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA64B91E29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift */; };
 		DAE14098298ACCD600794F6A /* BookingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */; };
 		DAE14099298ACCD600794F6A /* BookingHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */; };
 		DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */; };
@@ -1748,6 +1750,8 @@
 		DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditTimeTableViewCell.swift; sourceTree = "<group>"; };
 		DA54A8A729D9798300DB333F /* TriggerEditTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerEditTimeTableViewCell.xib; sourceTree = "<group>"; };
 		DA588DD8297170A0005BA304 /* ServiceListDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListDetailModel.swift; sourceTree = "<group>"; };
+		DA64B91D29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerEditSMSCreateTableViewCell.xib; sourceTree = "<group>"; };
+		DA64B91E29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditSMSCreateTableViewCell.swift; sourceTree = "<group>"; };
 		DAE1408F298ACCD600794F6A /* BookingHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		DAE14090298ACCD600794F6A /* BookingHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		DAE14092298ACCD600794F6A /* BookingHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingHistoryModel.swift; sourceTree = "<group>"; };
@@ -6693,6 +6697,8 @@
 		DA54A8A529D9795B00DB333F /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				DA64B91E29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift */,
+				DA64B91D29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib */,
 				DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */,
 				DA54A8A729D9798300DB333F /* TriggerEditTimeTableViewCell.xib */,
 			);
@@ -6861,6 +6867,7 @@
 			files = (
 				01D9EBDA29B8B0490099761C /* FormDetailViewController.storyboard in Resources */,
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
+				DA64B91F29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib in Resources */,
 				189E3F1829C3980900B94190 /* PostCalenderTableViewCell.xib in Resources */,
 				01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */,
 				01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */,
@@ -7350,6 +7357,7 @@
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
 				189E3ECF29C3912900B94190 /* SocialProfilesViewModel.swift in Sources */,
+				DA64B92029DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift in Sources */,
 				01684C3429BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.swift in Sources */,
 				016F664F29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift in Sources */,
 				013A4FB929B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift in Sources */,

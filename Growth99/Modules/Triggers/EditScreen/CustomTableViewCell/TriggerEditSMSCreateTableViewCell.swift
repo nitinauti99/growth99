@@ -1,5 +1,5 @@
 //
-//  TriggerDefaultTableViewCell.swift
+//  TriggerEditSMSCreateTableViewCell.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-protocol TriggerCreateCellDelegate: AnyObject {
-    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String)
+protocol TriggerEditCreateCellDelegate: AnyObject {
+    func nextButtonCreate(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String)
    
     // sms selection
-    func smsTargetButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, sender: UIButton)
-    func smsNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, smsTargetType: String)
+    func smsTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, sender: UIButton)
+    func smsNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, smsTargetType: String)
    
     // email selection
-    func emailTargetButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath)
-    func emailNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, emailTargetType: String)
+    func emailTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath)
+    func emailNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, emailTargetType: String)
     
     // task selction
-    func taskNetworkNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath)
+    func taskNetworkNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath)
 }
 
-class TriggerSMSCreateTableViewCell: UITableViewCell {
+class TriggerEditSMSCreateTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
@@ -62,7 +62,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var assignTaskNetworkTextLabel: UILabel!
     @IBOutlet weak var createNextButton: UIButton!
 
-    weak var delegate: TriggerCreateCellDelegate?
+    weak var delegate: TriggerEditCreateCellDelegate?
     var networkTypeSelected: String = "sms"
     var indexPath = IndexPath()
     var trigerCreateData: [TriggerEditData] = []
@@ -154,7 +154,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     }
     
     @objc func smsNetworkSelectionMethod(sender: UIButton) {
-        self.delegate?.smsNetworkButton(cell: self, index: indexPath, smsTargetType: trigerCreateData[indexPath.row].triggerTarget ?? "")
+        self.delegate?.smsNetworkButton(cell: self, index: indexPath, smsTargetType: self.selectSMSTargetTextLabel.text ?? "")
     }
     
     @objc func emailTargetSelectionMethod(sender: UIButton) {
@@ -162,7 +162,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     }
     
     @objc func emailNetworkSelectionMethod(sender: UIButton) {
-        self.delegate?.emailNetworkButton(cell: self, index: indexPath, emailTargetType: trigerCreateData[indexPath.row].triggerTarget ?? "")
+        self.delegate?.emailNetworkButton(cell: self, index: indexPath, emailTargetType: self.selectEmailTargetTextLabel.text ?? "")
     }
     
     @objc func taskNetworkSelectionMethod(sender: UIButton) {

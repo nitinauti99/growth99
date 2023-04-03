@@ -589,29 +589,17 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     }
     
     func buttontimeRangeStartTapped(cell: TriggerEditTimeTableViewCell) {
-        guard let indexPath = self.triggerdDetailTableView.indexPath(for: cell) else {
-            return
-        }
-        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let  triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditTimeTableViewCell {
-            triggerTimeCell.updateTimeRangeStartTextField(with: self.viewModel?.timeFormatterStringEdit(textField: cell.timeRangeStartTimeTF) ?? String.blank)
-        }
+        cell.updateTimeRangeStartTextField(with: self.viewModel?.timeFormatterStringEdit(textField: cell.timeRangeStartTimeTF) ?? String.blank)
     }
     
     func buttontimeRangeEndTapped(cell: TriggerEditTimeTableViewCell) {
-        guard let indexPath = self.triggerdDetailTableView.indexPath(for: cell) else {
-            return
-        }
-        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let triggerTimeCell = self.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditTimeTableViewCell {
-            triggerTimeCell.updateTimeRangeEndTextField(with: self.viewModel?.timeFormatterStringEdit(textField: cell.timeRangeEndTimeTF) ?? String.blank)
-        }
+        cell.updateTimeRangeEndTextField(with: self.viewModel?.timeFormatterStringEdit(textField: cell.timeRangeEndTimeTF) ?? String.blank)
     }
 }
 
-extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
+extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     
-    func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
+    func nextButtonCreate(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
         if cell.networkTypeSelected == "sms" {
             if cell.selectSMSTargetTextLabel.text == "Select trigger target" {
                 cell.selectSMSTagetEmptyTextLabel.isHidden = false
@@ -655,7 +643,7 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
     }
     
     /// set cell drop dwon action
-    func smsTargetButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, sender: UIButton) {
+    func smsTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, sender: UIButton) {
         if moduleSelectionType == "lead" {
             smsTargetArray = ["Leads", "Clinic"]
             
@@ -683,7 +671,7 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.networkSMSTagetSelectonButton, size: CGSize(width: cell.networkSMSTagetSelectonButton.frame.width, height: (Double(smsTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func smsNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, smsTargetType: String) {
+    func smsNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, smsTargetType: String) {
         
         if moduleSelectionType == "lead" && smsTargetType == "Leads" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Lead"}) ?? []
@@ -715,7 +703,7 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.networkSMSNetworkSelectonButton, size: CGSize(width: cell.networkSMSNetworkSelectonButton.frame.width, height: (Double(smsTemplatesArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func emailTargetButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
+    func emailTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath) {
         if moduleSelectionType == "lead" {
             emailTargetArray = ["Leads", "Clinic"]
             
@@ -743,7 +731,7 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.networkEmailTagetSelectonButton, size: CGSize(width: cell.networkEmailTagetSelectonButton.frame.width, height: (Double(emailTargetArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func emailNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath, emailTargetType: String) {
+    func emailNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, emailTargetType: String) {
         if moduleSelectionType == "lead" && emailTargetType == "Leads" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.emailTarget == "Lead"}) ?? []
         } else if moduleSelectionType == "lead" && emailTargetType == "Clinic" {
@@ -773,7 +761,7 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.show(style: .popover(sourceView: cell.networkEmailNetworkSelectonButton, size: CGSize(width: cell.networkEmailNetworkSelectonButton.frame.width, height: (Double(emailTemplatesArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    func taskNetworkNetworkButton(cell: TriggerSMSCreateTableViewCell, index: IndexPath) {
+    func taskNetworkNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath) {
         taskUserListArray = viewModel?.getTriggerDetailDataEdit?.userDTOList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: taskUserListArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = "\(allClinics.firstName ?? "") \(allClinics.lastName ?? "")"
@@ -792,7 +780,5 @@ extension TriggerEditDetailViewController: TriggerCreateCellDelegate {
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: cell.assignTaskNetworkSelectonButton, size: CGSize(width: cell.assignTaskNetworkSelectonButton.frame.width, height: (Double(taskUserListArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    
+    }    
 }

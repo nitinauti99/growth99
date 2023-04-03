@@ -37,7 +37,7 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
     func registerTableView() {
         self.parentTableView.delegate = self
         self.parentTableView.dataSource = self
-        self.parentTableView.register(UINib(nibName: "TriggerSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerSMSCreateTableViewCell")
+        self.parentTableView.register(UINib(nibName: "TriggerEditSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditSMSCreateTableViewCell")
         self.parentTableView.register(UINib(nibName: "TriggerEditTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditTimeTableViewCell")
     }
     
@@ -56,7 +56,7 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
         let item = trigerData[indexPath.row]
        
         if item.type == "Create" {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditSMSCreateTableViewCell", for: indexPath) as? TriggerEditSMSCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = view
             cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             return cell
