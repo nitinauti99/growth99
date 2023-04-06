@@ -416,13 +416,25 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1N-Q8-SM5" userLabel="userProviderView">
                                                                 <rect key="frame" x="0.0" y="786" width="354" height="300"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clinics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4b-vb-afx">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4b-vb-afx">
                                                                         <rect key="frame" x="10" y="15" width="344" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="aU6-ho-DGP"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Clinics ">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                            <fragment content="*">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-wg-Ipq" userLabel="Clinics" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -453,13 +465,25 @@
                                                                             <action selector="textFieldOpenDropDownClinincsWithSender:" destination="PWp-z9-Ypz" eventType="touchUpInside" id="vRm-rU-c23"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6w-Ol-Az1" userLabel="serviceCategory">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6w-Ol-Az1" userLabel="serviceCategory">
                                                                         <rect key="frame" x="10" y="111" width="344" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="bam-hm-gQ8"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Service category ">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                            <fragment content="*">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="AvenirNext-Medium"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U5u-aw-l21" userLabel="ServiceCategory" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -490,13 +514,25 @@
                                                                             <action selector="textFieldOpenDropDownServiceCategoriesWithSender:" destination="PWp-z9-Ypz" eventType="touchUpInside" id="0BE-ln-pGQ"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIF-ko-S2C" userLabel="Service">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIF-ko-S2C" userLabel="Service">
                                                                         <rect key="frame" x="10" y="207" width="344" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="rWF-ny-RYe"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Services ">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                            <fragment content="*">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="AvenirNext-Medium"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xJW-WU-nu4" userLabel="Service" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">

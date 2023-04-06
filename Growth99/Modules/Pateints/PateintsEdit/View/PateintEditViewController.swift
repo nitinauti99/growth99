@@ -13,7 +13,7 @@ protocol PateintEditViewControllerProtocol: AnyObject {
     func recivedPateintDetail()
 }
 
-class PateintEditViewController: UIViewController,  PateintEditViewControllerProtocol {
+class PateintEditViewController: UIViewController {
     
     @IBOutlet weak var firsNameTextField: CustomTextField!
     @IBOutlet weak var lastNameTextField: CustomTextField!
@@ -29,33 +29,24 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
     @IBOutlet weak var zipCodeTextField: CustomTextField!
         @IBOutlet weak var createdAtTextField: CustomTextField!
     @IBOutlet weak var pateintListTableView: UITableView!
-    @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet weak var noteTextView: CustomTextView!
     
     var dateFormater: DateFormaterProtocol?
     var viewModel: PateintEditViewModelProtocol?
     var pateintId = Int()
-    var isSearch : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintEditViewModel(delegate: self)
         self.title = Constant.Profile.editPatient
         self.view.ShowSpinner()
-        viewModel?.getPateintList(pateintId: pateintId)
-        dateFormater = DateFormater()
-        noteTextView.layer.borderWidth = 1
-        noteTextView.layer.borderColor = UIColor.gray.cgColor
-        noteTextView.layer.cornerRadius = 5
-        dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        self.viewModel?.getPateintList(pateintId: pateintId)
+        self.dateFormater = DateFormater()
+        self.dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
     }
     
     @objc func dateFromButtonPressed() {
-        dateTextField.text = self.dateFormater?.dateFormatterString(textField: dateTextField)
-    }
-    
-    func recivedPateintDetail() {
-        self.view.HideSpinner()
-        self.setUPUI()
+        dateTextField.text = self.dateFormater?.dateFormatterStringBirthDate(textField: dateTextField)
     }
     
     func setUPUI(){
@@ -75,34 +66,11 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
         self.noteTextView.text = item?.notes
     }
     
-    func setUPTextFieldAction(){
-        self.phoneNumberTextField.addTarget(self, action:
-                                                #selector(PateintEditViewController.textFieldDidChange(_:)),
-                                            for: UIControl.Event.editingChanged)
-        self.lastNameTextField.addTarget(self, action:
-                                            #selector(PateintEditViewController.textFieldDidChange(_:)),
-                                         for: UIControl.Event.editingChanged)
-        self.firsNameTextField.addTarget(self, action:
-                                            #selector(PateintEditViewController.textFieldDidChange(_:)),
-                                         for: UIControl.Event.editingChanged)
-        
-        self.emailTextField.addTarget(self, action:
-                                        #selector(PateintEditViewController.textFieldDidChange(_:)),
-                                      for: UIControl.Event.editingChanged)
-    }
-    
-    func pateintCreatedSuccessfully(responseMessage: String) {
-        self.view.HideSpinner()
-       self.view.showToast(message: responseMessage, color: .black)
+    @IBAction func cancelButtonClicked(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
-    @IBAction func openGenderSelction(sender: UIButton) {
+    @IBAction func openGenderSelction(sender: UITextField) {
         let list =  ["Male","Female"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
@@ -117,45 +85,30 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     @IBAction func saveAction(sender: UIButton) {
         
-        guard let textField = firsNameTextField.text,  !textField.isEmpty else {
+        guard let textField = firsNameTextField.text, !textField.isEmpty else {
             firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
         
-        guard let textField = lastNameTextField.text, !textField.isEmpty else {
+        guard let textField = lastNameTextField.text, !textField.isEmpty else  {
             lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
             return
         }
         
-        guard let textField  = genderTextField.text,  !textField.isEmpty else {
-            genderTextField.showError(message: Constant.ErrorMessage.genderEmptyError)
-            return
-        }
-        
-        guard let textField  = phoneNumberTextField.text, !textField.isEmpty else {
+        guard let textField = phoneNumberTextField.text, !textField.isEmpty else {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
-        }
+         }
         
-        guard let textField  = phoneNumberTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false, !textField.isEmpty else {
+        guard let textField = phoneNumberTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField), phoneNumberValidate else {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return
         }
         
-        guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
-            return
-        }
-        
-        guard let emailValidate = viewModel?.isValidEmail(email), emailValidate else {
-            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+        guard let textField = genderTextField.text,  !textField.isEmpty else  {
+            genderTextField.showError(message: Constant.ErrorMessage.genderEmptyError)
             return
         }
         
@@ -176,7 +129,26 @@ class PateintEditViewController: UIViewController,  PateintEditViewControllerPro
             "notes": noteTextView.text ?? String.blank,
             "username": emailTextField.text ?? String.blank
         ]
-        viewModel?.updatePateintsDetail(patientsId: pateintId, parameters: param)
+        self.viewModel?.updatePateintsDetail(patientsId: pateintId, parameters: param)
     }
 }
 
+extension PateintEditViewController: PateintEditViewControllerProtocol{
+   
+    func pateintCreatedSuccessfully(responseMessage: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage, color: .black)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func recivedPateintDetail() {
+        self.view.HideSpinner()
+        self.setUPUI()
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
+    }
+    
+}

@@ -10,9 +10,12 @@ import Foundation
 protocol PateintEditViewModelProtocol {
     func getPateintList(pateintId: Int) 
     func updatePateintsDetail(patientsId: Int, parameters: [String:Any])
+    func isFirstName(_ firstName: String) -> Bool
+    func isLastName(_ lastName: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     func isValidEmail(_ email: String) -> Bool
-    func isValid(testStr:String) -> Bool
+    func isGender(_ gender: String) -> Bool
+    
     var getPateintEditData: PateintsEditDetailModel? { get }
 }
 
@@ -64,25 +67,33 @@ extension PateintEditViewModel: PateintEditViewModelProtocol{
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        guard phoneNumber.count > 10, phoneNumber.count < 10, !phoneNumber.isEmpty else {
-            return false
-        }
-        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[1-9][0-9]{9}$")
-        return predicateTest.evaluate(with: phoneNumber)
+        let regex = Constant.Regex.phone
+        let isPhoneNo = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isPhoneNo.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegEx = Constant.Regex.email
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     
-    func isValid(testStr:String) -> Bool {
-        guard testStr.count > 1, !testStr.isEmpty else {
-            return false
-        }
-       let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z]*$")
-        return predicateTest.evaluate(with: testStr)
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
+    func isLastName(_ lastName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: lastName)
+    }
+    
+    func isGender(_ gender: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: gender)
     }
 }
 

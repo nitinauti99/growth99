@@ -37,7 +37,7 @@
                                                                 <attributes>
                                                                     <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <color key="NSColor" red="0.28627000000000002" green="0.31373000000000001" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <real key="NSKern" value="0.0"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
@@ -47,7 +47,7 @@
                                                             <fragment content=" ">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.23529" green="0.25881999999999999" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
                                                                     </paragraphStyle>
@@ -56,7 +56,7 @@
                                                             <fragment content="*">
                                                                 <attributes>
                                                                     <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
                                                                     </paragraphStyle>
@@ -82,6 +82,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="EXw-7Y-Gbb"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="AJV-LP-09k"/>
                                                         </connections>
                                                     </textField>
@@ -95,7 +96,7 @@
                                                                 <attributes>
                                                                     <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <color key="NSColor" red="0.28627000000000002" green="0.31373000000000001" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <real key="NSKern" value="0.0"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
@@ -105,7 +106,7 @@
                                                             <fragment content=" ">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.23529" green="0.25881999999999999" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
                                                                     </paragraphStyle>
@@ -114,7 +115,7 @@
                                                             <fragment content="*">
                                                                 <attributes>
                                                                     <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
                                                                     </paragraphStyle>
@@ -140,6 +141,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="COX-6S-U0Q"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="swP-Sg-0PQ"/>
                                                         </connections>
                                                     </textField>
@@ -188,7 +190,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
@@ -198,6 +200,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="VOF-v0-7ho"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="x05-7Y-O8P"/>
                                                         </connections>
                                                     </textField>
@@ -247,7 +250,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
@@ -257,6 +260,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="5uh-g1-4lV"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="dpn-h6-ui1"/>
                                                         </connections>
                                                     </textField>
@@ -318,27 +322,22 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="openGenderSelctionWithSender:" destination="Y6W-OH-hqX" eventType="touchDown" id="336-eJ-bjV"/>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="CYk-66-IOE"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="OBk-2K-q6Y"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ody-p9-bft">
-                                                        <rect key="frame" x="50" y="426" width="310" height="45"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <connections>
-                                                            <action selector="openGenderSelctionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Ty-XO-vee"/>
-                                                        </connections>
-                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEX-Ew-6xr" userLabel="userName">
                                                         <rect key="frame" x="40" y="491" width="310" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="joy-lS-4wc"/>
                                                         </constraints>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="Date">
+                                                            <fragment content="Date of Birth">
                                                                 <attributes>
                                                                     <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <color key="NSColor" red="0.28627450980392155" green="0.31372549019607843" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                     <real key="NSKern" value="0.0"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                         <tabStops/>
@@ -441,7 +440,7 @@
                                                         </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-an-tey">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-an-tey" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="1192" width="310" height="100"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -450,11 +449,22 @@
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" systemColor="systemGray3Color"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="3eZ-zv-7df"/>
                                                         </connections>
                                                     </textView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPv-W6-Lrn">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPv-W6-Lrn" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="50" y="1322" width="110" height="40"/>
                                                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -466,16 +476,15 @@
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Submit"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="12"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="saveActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="njz-3W-jOY"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gal-Zi-yxD">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gal-Zi-yxD" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="180" y="1322" width="110" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                                         <constraints>
@@ -487,10 +496,9 @@
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="12"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qo5-RR-7dQ" userLabel="userName">
@@ -499,7 +507,7 @@
                                                             <constraint firstAttribute="height" constant="20" id="ddY-1D-7qV"/>
                                                         </constraints>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="Address Line1">
+                                                            <fragment content="Address Line2">
                                                                 <attributes>
                                                                     <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <color key="NSColor" red="0.28627450980392155" green="0.31372549019607843" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -702,7 +710,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
@@ -726,7 +734,6 @@
                                                     <constraint firstItem="HnC-QP-uY9" firstAttribute="top" secondItem="Pkp-n8-LJ1" secondAttribute="bottom" constant="10" id="2nI-Ob-KWa"/>
                                                     <constraint firstItem="h2e-Ek-Bhn" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="4bR-aC-xPY"/>
                                                     <constraint firstItem="ALl-nf-b9U" firstAttribute="top" secondItem="HnC-QP-uY9" secondAttribute="bottom" constant="20" id="5pw-Uv-nH4"/>
-                                                    <constraint firstItem="Ody-p9-bft" firstAttribute="bottom" secondItem="led-N5-l7i" secondAttribute="bottom" id="5qJ-Kb-E4d"/>
                                                     <constraint firstItem="led-N5-l7i" firstAttribute="top" secondItem="DYK-ig-R1h" secondAttribute="bottom" constant="10" id="5zn-BA-kJB"/>
                                                     <constraint firstItem="uhT-an-tey" firstAttribute="top" secondItem="mIv-dl-Pix" secondAttribute="bottom" constant="16" id="6Sh-b6-kaM"/>
                                                     <constraint firstItem="led-N5-l7i" firstAttribute="trailing" secondItem="DYK-ig-R1h" secondAttribute="trailing" constant="10" id="6XW-mC-Meg"/>
@@ -743,7 +750,6 @@
                                                     <constraint firstItem="GJc-dW-YcI" firstAttribute="top" secondItem="xKV-US-rN6" secondAttribute="bottom" constant="20" id="F9v-Kw-QUl"/>
                                                     <constraint firstItem="M0f-wd-CER" firstAttribute="trailing" secondItem="ALl-nf-b9U" secondAttribute="trailing" constant="10" id="FC2-nu-Y84"/>
                                                     <constraint firstItem="5JJ-xg-u8q" firstAttribute="trailing" secondItem="Kf4-Xr-0r8" secondAttribute="trailing" id="Gfh-yZ-WBt"/>
-                                                    <constraint firstItem="Ody-p9-bft" firstAttribute="trailing" secondItem="led-N5-l7i" secondAttribute="trailing" id="Gfl-zJ-QSQ"/>
                                                     <constraint firstItem="5JJ-xg-u8q" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="Gnw-tE-bqN"/>
                                                     <constraint firstItem="10w-eu-Q5o" firstAttribute="top" secondItem="fV8-Kv-yNT" secondAttribute="bottom" constant="20" id="H25-8d-cwt"/>
                                                     <constraint firstItem="fV8-Kv-yNT" firstAttribute="top" secondItem="ujO-n7-SOd" secondAttribute="bottom" constant="10" id="HE2-lX-5W8"/>
@@ -751,7 +757,6 @@
                                                     <constraint firstItem="Qo5-RR-7dQ" firstAttribute="leading" secondItem="h2e-Ek-Bhn" secondAttribute="leading" id="HXD-vz-RUg"/>
                                                     <constraint firstItem="Dkv-5T-p7r" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" constant="10" id="Hf1-Ll-Ee1"/>
                                                     <constraint firstItem="qse-JJ-epp" firstAttribute="leading" secondItem="Aru-SN-rLi" secondAttribute="leading" id="Hge-6D-ioh"/>
-                                                    <constraint firstItem="Ody-p9-bft" firstAttribute="top" secondItem="led-N5-l7i" secondAttribute="top" id="IdU-Nd-pqD"/>
                                                     <constraint firstItem="Dkv-5T-p7r" firstAttribute="top" secondItem="Kf4-Xr-0r8" secondAttribute="bottom" constant="10" id="Ld2-sk-UmT"/>
                                                     <constraint firstItem="gal-Zi-yxD" firstAttribute="leading" secondItem="fPv-W6-Lrn" secondAttribute="trailing" constant="20" id="M2v-yC-dQd"/>
                                                     <constraint firstItem="5Cv-qK-hww" firstAttribute="leading" secondItem="Kf4-Xr-0r8" secondAttribute="leading" id="MTe-tq-CDX"/>
@@ -765,7 +770,6 @@
                                                     <constraint firstItem="AVg-us-WgC" firstAttribute="trailing" secondItem="5Cv-qK-hww" secondAttribute="trailing" constant="10" id="VW3-eq-LfA"/>
                                                     <constraint firstItem="xKV-US-rN6" firstAttribute="trailing" secondItem="5JJ-xg-u8q" secondAttribute="trailing" constant="10" id="XJy-nY-df4"/>
                                                     <constraint firstItem="DYK-ig-R1h" firstAttribute="trailing" secondItem="GJc-dW-YcI" secondAttribute="trailing" id="ZOo-Fl-DQa"/>
-                                                    <constraint firstItem="Ody-p9-bft" firstAttribute="leading" secondItem="led-N5-l7i" secondAttribute="leading" id="ZY9-p3-awN"/>
                                                     <constraint firstItem="Aru-SN-rLi" firstAttribute="leading" secondItem="h2e-Ek-Bhn" secondAttribute="leading" constant="10" id="ZtB-sL-HW4"/>
                                                     <constraint firstItem="xKV-US-rN6" firstAttribute="leading" secondItem="5JJ-xg-u8q" secondAttribute="leading" constant="10" id="auC-XH-Zr4"/>
                                                     <constraint firstItem="HnC-QP-uY9" firstAttribute="trailing" secondItem="Pkp-n8-LJ1" secondAttribute="trailing" constant="10" id="bjR-zi-hMk"/>
@@ -863,40 +867,40 @@
     </scenes>
     <designables>
         <designable name="AVg-us-WgC">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="Aru-SN-rLi">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="CAl-gs-Dsd">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="Dkv-5T-p7r">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="HnC-QP-uY9">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="M0f-wd-CER">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="b86-j9-qJE">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="30" height="25.333333333333332"/>
         </designable>
         <designable name="fV8-Kv-yNT">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="led-N5-l7i">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="19" height="25.333333333333332"/>
         </designable>
         <designable name="qse-JJ-epp">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="xKV-US-rN6">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
         <designable name="xLO-rr-zwc">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
         </designable>
     </designables>
     <resources>
@@ -907,6 +911,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

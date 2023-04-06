@@ -15,6 +15,7 @@ struct Constant {
         static let passwordInvalidError = "Password is Invalid"
         static let passwordMissmatchError = "Confirm password should be same as password"
         static let genderEmptyError = "Gender is required"
+        static let genderInvalidError = "Gender is Invalid"
         static let repeatPasswordEmptyError = "Repeat password is Required."
         static let repeatPasswordInvalidError = "Repeat password is Invalid."
         static let nameEmptyError = "Name is required."

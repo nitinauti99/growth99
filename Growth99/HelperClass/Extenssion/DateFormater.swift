@@ -20,6 +20,7 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalDate(date: String) -> String
     func serverToLocalPateintTimeLineDate(date: String) -> String
     func localToServerSocial(date: String) -> String
+    func dateFormatterStringBirthDate(textField: CustomTextField) -> String
     
 }
 
@@ -131,6 +132,18 @@ class DateFormater: DateFormaterProtocol {
         return dateFormatter.string(from: datePicker.date)
     }
 
+    func dateFormatterStringBirthDate(textField: CustomTextField) -> String {
+        var datePicker = UIDatePicker()
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let todaysDate = Date()
+        datePicker.maximumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        return dateFormatter.string(from: datePicker.date)
+    }
     
     func timeFormatterString(textField: CustomTextField) -> String {
         var timePicker = UIDatePicker()
