@@ -53,8 +53,13 @@ class AddNewConsentsViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.consnetSendToPateintSuccessfully()
+                if response.statusCode == 200 {
+                    self.delegate?.consnetSendToPateintSuccessfully()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "Unable to assign consents to patient.")
+                } else{
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

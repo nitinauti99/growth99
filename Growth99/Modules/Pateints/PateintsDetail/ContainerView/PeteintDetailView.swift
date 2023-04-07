@@ -151,6 +151,7 @@ class PeteintDetailView: UIViewController {
     
     @objc func addNewConsentButtonTapped(_ sender: UIButton){
         let addNewConsentsVC = UIStoryboard(name: "AddNewConsentsViewController", bundle: nil).instantiateViewController(withIdentifier: "AddNewConsentsViewController") as! AddNewConsentsViewController
+        addNewConsentsVC.pateintId = workflowTaskPatientId
         navigationController?.pushViewController(addNewConsentsVC, animated: true)
     }
     

@@ -97,12 +97,11 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
             }
         }
         self.view.ShowSpinner()
-        viewModel?.sendConsentsListToPateint(patient:pateintId, consentsIds: consentsIdArray)
-        
+        viewModel?.sendConsentsListToPateint(patient: pateintId, consentsIds: consentsIdArray)
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
