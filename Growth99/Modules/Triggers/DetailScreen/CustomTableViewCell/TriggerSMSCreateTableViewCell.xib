@@ -624,7 +624,7 @@
     </objects>
     <designables>
         <designable name="8P8-0F-beF">
-            <size key="intrinsicContentSize" width="72.333333333333329" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="72.333333333333329" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

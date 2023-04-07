@@ -127,7 +127,7 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                <real key="value" value="20"/>
+                                                <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -189,10 +189,10 @@
     </scenes>
     <designables>
         <designable name="T0e-A0-BIM">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="bfM-di-qon">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="19" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

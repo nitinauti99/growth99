@@ -35,7 +35,7 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                <real key="value" value="15"/>
+                                <real key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textField>
@@ -73,7 +73,7 @@
     </objects>
     <designables>
         <designable name="dLI-ce-Fkb">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
     </designables>
     <resources>

@@ -247,7 +247,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                                <real key="value" value="15"/>
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
@@ -375,25 +375,25 @@
     </scenes>
     <designables>
         <designable name="SG2-Bj-68Q">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="SdW-Vh-wEH">
-            <size key="intrinsicContentSize" width="19" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="19" height="18.666666666666668"/>
         </designable>
         <designable name="Shw-eJ-wpg">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="Tfy-Kk-CG5">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="kF6-r0-M2u">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="pEf-ug-FVU">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="wZO-p6-Lpj">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
     </designables>
     <resources>

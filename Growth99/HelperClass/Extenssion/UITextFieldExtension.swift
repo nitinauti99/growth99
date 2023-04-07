@@ -12,10 +12,11 @@ import UIKit
 
     fileprivate var lblError: UILabel = UILabel()
     fileprivate let paddingX: CGFloat = 0
-    fileprivate let paddingHeight:CGFloat = 0
-    fileprivate var borderLayer:CALayer = CALayer()
-    public var dtLayer:CALayer = CALayer()
-    public var borderWidth: CGFloat = 0.5{
+    fileprivate let paddingHeight: CGFloat = 0
+    fileprivate var borderLayer: CALayer = CALayer()
+    public var dtLayer: CALayer = CALayer()
+    
+    public var borderWidth: CGFloat = 0.5 {
         didSet{
             let borderStyle = dtborderStyle;
             dtborderStyle = borderStyle
@@ -63,31 +64,10 @@ import UIKit
         didSet{
             borderLayer.removeFromSuperlayer()
             switch dtborderStyle {
-            case .none:
-                dtLayer.cornerRadius        = 0.0
-                dtLayer.borderWidth         = 0.0
             case .rounded:
-                dtLayer.cornerRadius        = 4.5
+                dtLayer.cornerRadius        = 4
                 dtLayer.borderWidth         = borderWidth
                 dtLayer.borderColor         = borderColor.cgColor
-            case .sqare:
-                dtLayer.cornerRadius        = 0.0
-                dtLayer.borderWidth         = borderWidth
-                dtLayer.borderColor         = borderColor.cgColor
-            case .bottom,.left,.right,.top:
-                dtLayer.cornerRadius        = 0.0
-                dtLayer.borderWidth         = 0.0
-                borderLayer.backgroundColor = borderColor.cgColor
-                if dtborderStyle == .bottom {
-                    borderLayer.frame = CGRect(x: 0, y: dtLayer.bounds.size.height - borderWidth, width: dtLayer.bounds.size.width, height: borderWidth)
-                }else if dtborderStyle == .left {
-                    borderLayer.frame = CGRect(x: 0, y: 0, width: borderWidth, height: dtLayer.bounds.size.height)
-                }else if dtborderStyle == .right{
-                    borderLayer.frame = CGRect(x: dtLayer.bounds.size.width - borderWidth, y: 0, width: borderWidth, height: dtLayer.bounds.size.height)
-                }else{
-                    borderLayer.frame = CGRect(x: 0, y: 0, width: dtLayer.bounds.size.width, height: borderWidth)
-                }
-                dtLayer.addSublayer(borderLayer)
             }
         }
     }
@@ -112,7 +92,7 @@ import UIKit
         }
     }
     
-    public var paddingYFloatLabel:CGFloat = 3.0 {
+    public var paddingYFloatLabel:CGFloat = 0 {
         didSet{ invalidateIntrinsicContentSize() }
     }
     
@@ -123,10 +103,8 @@ import UIKit
     @IBInspectable public var borderColor:UIColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0){
         didSet{
             switch dtborderStyle {
-            case .none,.rounded,.sqare:
+            case .rounded:
                 dtLayer.borderColor = borderColor.cgColor
-            case .bottom,.right,.top,.left:
-                borderLayer.backgroundColor = borderColor.cgColor
             }
         }
     }
@@ -134,10 +112,8 @@ import UIKit
     public var canShowBorder:Bool = true {
         didSet{
             switch dtborderStyle {
-            case .none,.rounded,.sqare:
+            case .rounded:
                 dtLayer.isHidden = !canShowBorder
-            case .bottom,.right,.top,.left:
-                borderLayer.isHidden = !canShowBorder
             }
         }
     }
@@ -163,7 +139,6 @@ import UIKit
     
     fileprivate var dtLayerHeight:CGFloat{
         return bounds.height
-       // return showErrorLabel ? floor(bounds.height - lblError.bounds.size.height - paddingYErrorLabel) : bounds.height
     }
  
     fileprivate var placeholderFinal:String{
@@ -310,7 +285,7 @@ import UIKit
         
         if showErrorLabel {
             return CGSize(width: textFieldIntrinsicContentSize.width,
-                          height: textFieldIntrinsicContentSize.height + paddingYFloatLabel + paddingYErrorLabel + lblError.bounds.size.height + paddingHeight)
+                          height: textFieldIntrinsicContentSize.height + paddingYErrorLabel + lblError.bounds.size.height + paddingHeight)
         }else{
             return CGSize(width: textFieldIntrinsicContentSize.width,
                           height: textFieldIntrinsicContentSize.height + paddingYFloatLabel + paddingHeight)
@@ -335,14 +310,16 @@ import UIKit
         return rect
     }
     
+    
     override public func layoutSubviews() {
         super.layoutSubviews()
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        dtLayer.frame = CGRect(x: bounds.origin.x - 10,
+        /// for fixing border allignment need to fix x position
+        dtLayer.frame = CGRect(x: bounds.origin.x - 7,
                                y: bounds.origin.y,
-                               width: bounds.width,
+                               width: bounds.width + 12,
                                height: bounds.height)
         let borderStype = dtborderStyle
         dtborderStyle = borderStype
@@ -364,11 +341,5 @@ public extension String {
 }
 
 public enum DTBorderStyle{
-    case none
     case rounded
-    case sqare
-    case top
-    case bottom
-    case left
-    case right
 }

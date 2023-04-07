@@ -282,10 +282,10 @@
     </objects>
     <designables>
         <designable name="72s-jM-X3a">
-            <size key="intrinsicContentSize" width="30" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="30" height="22.333333333333332"/>
         </designable>
         <designable name="n9F-aQ-qaW">
-            <size key="intrinsicContentSize" width="30" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="30" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>
