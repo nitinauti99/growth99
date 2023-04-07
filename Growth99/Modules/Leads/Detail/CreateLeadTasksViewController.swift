@@ -103,7 +103,7 @@ class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewContr
     }
     
     @IBAction func openStatusListDropDwon(sender: UIButton) {
-        let rolesArray = ["Completed", "Incompleted"]
+        let rolesArray = ["Completed", "InComplete"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.components(separatedBy: " ").first

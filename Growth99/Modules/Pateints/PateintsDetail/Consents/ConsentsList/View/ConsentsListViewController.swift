@@ -24,9 +24,10 @@ class ConsentsListViewController: UIViewController, ConsentsListViewControllerPr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSerchBar()
+        self.addSerchBar()
         self.registerTableView()
         self.viewModel = ConsentsListViewModel(delegate: self)
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.consentsDataList.count ?? 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +72,7 @@ class ConsentsListViewController: UIViewController, ConsentsListViewControllerPr
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.consentsDataList.count ?? 0)
     }
     
     func errorReceived(error: String) {

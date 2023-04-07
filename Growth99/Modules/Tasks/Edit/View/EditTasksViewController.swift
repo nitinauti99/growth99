@@ -72,7 +72,7 @@ class EditTasksViewController: UIViewController{
         usersTextField.text = taskDetail?.userName
         statusTextField.text = taskDetail?.status
         DeadlineTextField.text =  taskDetail?.deadLine
-        DeadlineTextField.text = dateFormater?.dateFormatterString(textField: DeadlineTextField)
+        DeadlineTextField.text = dateFormater?.serverToLocalDate(date: taskDetail?.deadLine ?? "")
         descriptionTextView.text = taskDetail?.description
         workflowTaskUser = taskDetail?.userId ?? 0
     }
@@ -152,7 +152,8 @@ class EditTasksViewController: UIViewController{
                 if let viewControllers = self.navigationController?.viewControllers {
                     for controller in viewControllers {
                         if controller is LeadDetailContainerView {
-                            (controller as! LeadDetailContainerView).selectedindex = 0
+                            let userInfo = [ "selectedIndex" : 0 ]
+                            NotificationCenter.default.post(name: Notification.Name("changeLeadSegment"), object: nil,userInfo: userInfo)
                             self.navigationController?.popToViewController(controller, animated: true)
                         }
                     }
@@ -161,7 +162,8 @@ class EditTasksViewController: UIViewController{
                 if let viewControllers = self.navigationController?.viewControllers {
                     for controller in viewControllers {
                         if controller is PeteintDetailView {
-                            (controller as! PeteintDetailView).selectedindex = 0
+                            let userInfo = [ "selectedIndex" : 0 ]
+                            NotificationCenter.default.post(name: Notification.Name("changeSegment"), object: nil,userInfo: userInfo)
                             self.navigationController?.popToViewController(controller, animated: true)
                         }
                     }
@@ -244,7 +246,7 @@ extension EditTasksViewController: EditTasksViewControllerProtocol{
 extension EditTasksViewController {
    
     @IBAction func openStatusListDropDwon(sender: UIButton) {
-        let rolesArray = ["Completed", "Incompleted"]
+        let rolesArray = ["Completed", "InComplete"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.components(separatedBy: " ").first

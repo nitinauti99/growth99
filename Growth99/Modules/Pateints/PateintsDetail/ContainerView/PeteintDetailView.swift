@@ -15,6 +15,7 @@ class PeteintDetailView: UIViewController {
     var workflowTaskPatientId = Int()
     var pateintsEmail = String()
     var selectedindex = 0
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSegemtControl()
@@ -43,7 +44,7 @@ class PeteintDetailView: UIViewController {
     
     @objc func notificationReceived(_ notification: Notification) {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
-        self.selectedindex = segment
+        segmentedControl.selectedSegmentIndex = segment
         self.selectionDidChange(sender: segmentedControl)
     }
   
