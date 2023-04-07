@@ -23,6 +23,10 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
         dateFormater = DateFormater()
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.questionnaireSelection.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for: .normal)
+    }
     
     func configureCell(questionarieVM: AddNewQuestionarieViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.questionarieDataAtIndex(index: index.row)
@@ -40,9 +44,9 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
     
     @IBAction func selectionButtonPressed(sender: UIButton) {
         if sender.isSelected {
-            sender.setBackgroundImage(#imageLiteral(resourceName: "tickselected"), for: .normal)
+            sender.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for: .normal)
         } else {
-            sender.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for:.normal)
+            sender.setBackgroundImage(#imageLiteral(resourceName: "tickselected"), for:.normal)
         }
         sender.isSelected = !sender.isSelected
     }

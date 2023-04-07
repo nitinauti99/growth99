@@ -25,6 +25,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.questionarieListTableView.setEmptyMessage(arrayCount: viewModel?.getQuestionarieDataList.count ?? 0)
         self.viewModel = QuestionarieViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI), name: Notification.Name("NotificationQuestionarieList"), object: nil)
     }
@@ -81,6 +82,7 @@ class QuestionarieViewController: UIViewController, QuestionarieViewControllerPr
     func LeadDataRecived() {
         self.view.HideSpinner()
         self.questionarieListTableView.reloadData()
+        self.questionarieListTableView.setEmptyMessage(arrayCount: viewModel?.getQuestionarieDataList.count ?? 0)
     }
     
     func errorReceived(error: String) {
