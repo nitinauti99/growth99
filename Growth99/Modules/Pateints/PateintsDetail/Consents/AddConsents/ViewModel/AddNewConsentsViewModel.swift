@@ -62,7 +62,7 @@ class AddNewConsentsViewModel {
     }
     
     func filterData(searchText: String) {
-        self.consentsFilterData = (self.consentsData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased()})
+        self.consentsFilterData = (self.consentsData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0).prefix(searchText.count) == searchText })
     }
     
     func getConsentsDataAtIndex(index: Int)-> AddNewConsentsModel? {

@@ -63,7 +63,7 @@ class PatientAppointmentViewModel {
     }
     
     func filterData(searchText: String) {
-        self.patientsAppointmentFilterList = (self.patientsAppointmentList.filter { $0.patientName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.patientsAppointmentFilterList = (self.patientsAppointmentList.filter { $0.patientName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0).prefix(searchText.count) == searchText})
     }
     
     func patientListAtIndex(index: Int) -> PatientsAppointmentListModel? {

@@ -26,7 +26,7 @@ extension AddNewConsentsViewController: UITableViewDelegate, UITableViewDataSour
         var cell = ConsentsTableViewCell()
         cell = tableView.dequeueReusableCell(withIdentifier: "ConsentsTableViewCell", for: indexPath) as! ConsentsTableViewCell
         if isSearch {
-            cell.configureCell(consentsVM: viewModel, index: indexPath)
+            cell.configureCellWithSearch(consentsVM: viewModel, index: indexPath)
         } else {
             cell.configureCell(consentsVM: viewModel, index: indexPath)
         }
