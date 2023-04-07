@@ -11,22 +11,21 @@ protocol CreateTasksViewControllerProtocol: AnyObject {
     func taskUserListRecived()
     func taskPatientsListRecived()
     func taskQuestionnaireSubmissionListRecived()
-    func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
+    func errorReceived(error: String)
 }
 
-class CreateTasksViewController: UIViewController , CreateTasksViewControllerProtocol{
+class CreateTasksViewController: UIViewController {
     
-    @IBOutlet private weak var nameTextField: CustomTextField!
-    @IBOutlet private weak var usersTextField: CustomTextField!
-    @IBOutlet private weak var statusTextField: CustomTextField!
-    @IBOutlet private weak var DeadlineTextField: CustomTextField!
-    @IBOutlet private weak var leadTextField: CustomTextField!
+    @IBOutlet weak var nameTextField: CustomTextField!
+    @IBOutlet weak var usersTextField: CustomTextField!
+    @IBOutlet weak var statusTextField: CustomTextField!
+    @IBOutlet weak var DeadlineTextField: CustomTextField!
+    @IBOutlet weak var leadTextField: CustomTextField!
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var leadButton: UIButton!
     @IBOutlet private weak var patientButton: UIButton!
     @IBOutlet private weak var leadOrPatientLabel: UILabel!
-
 
     var viewModel: CreateTasksViewModelProtocol?
     var buttons = [UIButton]()
@@ -90,90 +89,12 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
          }
     }
     
-    func taskUserListRecived(){
-        self.viewModel?.getTaskPatientsList()
-    }
-    
-    func taskPatientsListRecived(){
-        self.viewModel?.getQuestionnaireSubmissionList()
-    }
-    
-    func taskQuestionnaireSubmissionListRecived(){
-        self.view.HideSpinner()
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
-    func taskUserCreatedSuccessfully(responseMessage: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
-    }
-
+   
     @IBAction func cancelButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func openStatusListDropDwon(sender: UIButton) {
-       let rolesArray = ["Completed", "Incompleted"]
-       
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.components(separatedBy: " ").first
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-            self?.statusTextField.text  = text
-         }
-        selectionMenu.dismissAutomatically = true
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    @IBAction func openUserListDropDwon(sender: UIButton) {
-        let rolesArray = viewModel?.taskUserList ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.firstName
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-            self?.usersTextField.text  = text?.firstName
-            self?.workflowTaskUser = text?.id ?? 0
-        }
-        selectionMenu.dismissAutomatically = true
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    @IBAction func openTaskLeadOrPateintsListDropDwon(sender: UIButton) {
-        if leadOrPatientSelected == "Lead" {
-            let finaleListArray = viewModel?.taskQuestionnaireSubmissionList ?? []
-            let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: finaleListArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-                cell.textLabel?.text = taskUserList.fullName
-            }
-            selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-                self?.leadTextField.text  = text?.fullName
-                self?.questionnaireSubmissionId = text?.id ?? 0
-             }
-            selectionMenu.dismissAutomatically = true
-            selectionMenu.tableView?.selectionStyle = .single
-            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(finaleListArray.count * 44))), arrowDirection: .down), from: self)
-      
-        } else {
-            let finaleListArray = viewModel?.taskPatientsList ?? []
-            let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: finaleListArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-                cell.textLabel?.text = taskUserList.name
-            }
-            selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-                self?.leadTextField.text  = text?.name
-                self?.workflowTaskPatient = text?.id ?? 0
-             }
-            selectionMenu.dismissAutomatically = true
-            selectionMenu.tableView?.selectionStyle = .single
-            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(finaleListArray.count * 44))), arrowDirection: .down), from: self)
-        }
-    }
-    
+   
     @IBAction func createTaskUser(sender: UIButton) {
       
         if let textField = nameTextField.text,  textField == "" {
@@ -198,6 +119,33 @@ class CreateTasksViewController: UIViewController , CreateTasksViewControllerPro
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: date)
+    }
+    
+}
+
+extension CreateTasksViewController: CreateTasksViewControllerProtocol {
+    
+    func taskUserListRecived(){
+        self.viewModel?.getTaskPatientsList()
+    }
+    
+    func taskPatientsListRecived(){
+        self.viewModel?.getQuestionnaireSubmissionList()
+    }
+    
+    func taskQuestionnaireSubmissionListRecived(){
+        self.view.HideSpinner()
+    }
+ 
+    func taskUserCreatedSuccessfully(responseMessage: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .red)
     }
     
 }

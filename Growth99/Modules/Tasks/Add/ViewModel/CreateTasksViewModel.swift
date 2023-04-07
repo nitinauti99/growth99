@@ -25,7 +25,9 @@ protocol CreateTasksViewModelProtocol {
     
     /// create patients user
     func createTaskUser(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
-      
+  
+    func isFirstName(_ firstName: String) -> Bool
+
 }
 
 class CreateTasksViewModel {
@@ -146,4 +148,10 @@ extension CreateTasksViewModel: CreateTasksViewModelProtocol {
         return self.taskQuestionnaireSubmissionListArray[index]
     }
    
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
 }

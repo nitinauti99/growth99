@@ -9,39 +9,37 @@ import Foundation
 import UIKit
 
 protocol PatientAppointmentViewControllerProtocol: AnyObject {
-    func errorReceivedBookingHistory(error: String)
     func patientAppointmentListDataRecived()
     func patientAppointmentDataRecived()
+    func errorReceivedBookingHistory(error: String)
 }
 
-class PatientAppointmentViewController: UIViewController, PatientAppointmentViewControllerProtocol,
-                                        PatientAppointmentListTableViewCellDelegate {
+class PatientAppointmentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     var viewModel: PatientAppointmentViewModelProtocol?
-    var isSearch : Bool = false
-    var patientsAppointmentListFilterData = [PatientsAppointmentListModel]()
-    var patientsAppointmentList = [PatientsAppointmentListModel]()
     var pateintId = Int()
-
+    var isSearch : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getPatientsAppointmentList.count ?? 0)
         self.viewModel = PatientAppointmentViewModel(delegate: self)
         self.title = Constant.Profile.appointmentDetail
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSerchBar()
+        self.addSerchBar()
         self.registerTableView()
         self.view.ShowSpinner()
-        viewModel?.getPatientAppointmentsForAppointment(pateintId: pateintId)
+        self.viewModel?.getPatientAppointmentsForAppointment(pateintId: pateintId)
     }
     
     func registerTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        tableView.register(UINib(nibName: "PatientAppointmentListTableViewCell", bundle: nil), forCellReuseIdentifier: "PatientAppointmentListTableViewCell")
+        self.tableView.register(UINib(nibName: "PatientAppointmentListTableViewCell", bundle: nil), forCellReuseIdentifier: "PatientAppointmentListTableViewCell")
     }
     
     func addSerchBar() {
@@ -52,11 +50,27 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
     }
+}
+
+extension PatientAppointmentViewController: PatientAppointmentViewControllerProtocol {
     
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
-        self.navigationController?.pushViewController(createUserVC, animated: true)
+    func patientAppointmentDataRecived() {
+        viewModel?.getPatientAppointmentList(pateintId: pateintId)
     }
+    
+    func patientAppointmentListDataRecived() {
+        self.view.HideSpinner()
+        self.tableView.reloadData()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getPatientsAppointmentList.count ?? 0)
+    }
+    
+    func errorReceivedBookingHistory(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
+    }
+}
+
+extension PatientAppointmentViewController: PatientAppointmentListTableViewCellDelegate{
     
     func editPatientAppointment(cell: PatientAppointmentListTableViewCell, index: IndexPath){
         let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
@@ -64,26 +78,5 @@ class PatientAppointmentViewController: UIViewController, PatientAppointmentView
         editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
         editVC.appointmentId  = patientAppointmentListVM?.id
         navigationController?.pushViewController(editVC, animated: true)
-    }
-
-    func getBookingHistory() {
-        self.view.ShowSpinner()
-        viewModel?.getPatientAppointmentList(pateintId: pateintId)
-    }
-    
-    func patientAppointmentDataRecived() {
-        viewModel?.getPatientAppointmentList(pateintId: pateintId)
-    }
-    
-    
-    func patientAppointmentListDataRecived() {
-        self.view.HideSpinner()
-        patientsAppointmentList = viewModel?.getPatientsAppointmentList ?? []
-        self.tableView.reloadData()
-    }
-    
-    func errorReceivedBookingHistory(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
     }
 }

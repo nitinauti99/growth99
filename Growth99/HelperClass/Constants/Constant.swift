@@ -19,6 +19,7 @@ struct Constant {
         static let repeatPasswordEmptyError = "Repeat password is Required."
         static let repeatPasswordInvalidError = "Repeat password is Invalid."
         static let nameEmptyError = "Name is required."
+        static let nameInvalidError = "Name is Invalid."
         static let subDomainNameEmptyError = "SubDomain Name is required."
         static let refundPercentageEmptyError = "Refund Percentage is required."
         static let firstNameEmptyError = "First Name is required."
@@ -30,6 +31,9 @@ struct Constant {
         static let invalidURLError = "Please enter the URL in correct format"
         static let emptyURLError = "Please fill the above field with valid URL"
         static let lastNameEmptyError = "Last Name is required."
+        static let userFiledEmptyError = "Please select user"
+        static let statusFiledEmptyError = "Please select status"
+
         static let phoneNumberEmptyError = "Phone number is required."
         static let phoneNumberInvalidError = "Phone number is Invalid"
         static let businessnameEmptyError = "Business name is required."

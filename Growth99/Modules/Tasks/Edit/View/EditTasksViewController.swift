@@ -12,12 +12,12 @@ protocol EditTasksViewControllerProtocol: AnyObject {
     func taskUserListRecived()
     func taskPatientsListRecived()
     func taskQuestionnaireSubmissionListRecived()
-    func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
     func receivedTaskDetail()
+    func errorReceived(error: String)
 }
 
-class EditTasksViewController: UIViewController , EditTasksViewControllerProtocol{
+class EditTasksViewController: UIViewController{
     
     @IBOutlet private weak var nameTextField: CustomTextField!
     @IBOutlet private weak var usersTextField: CustomTextField!
@@ -140,36 +140,6 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         }
     }
     
-    func receivedTaskDetail(){
-        self.viewModel?.getTaskUserList()
-        setUPUI()
-    }
-    
-    
-    func taskUserListRecived(){
-        self.viewModel?.getTaskPatientsList()
-    }
-    
-    func taskPatientsListRecived(){
-        self.viewModel?.getQuestionnaireSubmissionList()
-    }
-    
-    func taskQuestionnaireSubmissionListRecived(){
-        self.setupLeadOrPatientDetail()
-        self.view.HideSpinner()
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
-    func taskUserCreatedSuccessfully(responseMessage: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     @IBAction func cancelButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -211,7 +181,68 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
             }
         }
     }
+   
+    @IBAction func createTaskUser(sender: UIButton) {
+        
+        if let textField = nameTextField.text,  textField == "" {
+            return
+        }
+        
+        if let textField = usersTextField.text,  textField == "" {
+            return
+        }
+        
+        if let textField = statusTextField.text,  textField == "" {
+            return
+        }
+        self.view.ShowSpinner()
+        viewModel?.createTaskUser(patientId: taskId, name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank) , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+    }
     
+    func serverToLocalInputWorking(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter.string(from: date)
+    }
+}
+
+extension EditTasksViewController: EditTasksViewControllerProtocol{
+    func receivedTaskDetail(){
+        self.viewModel?.getTaskUserList()
+        setUPUI()
+    }
+    
+    
+    func taskUserListRecived(){
+        self.viewModel?.getTaskPatientsList()
+    }
+    
+    func taskPatientsListRecived(){
+        self.viewModel?.getQuestionnaireSubmissionList()
+    }
+    
+    func taskQuestionnaireSubmissionListRecived(){
+        self.setupLeadOrPatientDetail()
+        self.view.HideSpinner()
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
+    }
+    
+    func taskUserCreatedSuccessfully(responseMessage: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension EditTasksViewController {
+   
     @IBAction func openStatusListDropDwon(sender: UIButton) {
         let rolesArray = ["Completed", "Incompleted"]
         
@@ -268,29 +299,4 @@ class EditTasksViewController: UIViewController , EditTasksViewControllerProtoco
         }
     }
     
-    @IBAction func createTaskUser(sender: UIButton) {
-        
-        if let textField = nameTextField.text,  textField == "" {
-            return
-        }
-        
-        if let textField = usersTextField.text,  textField == "" {
-            return
-        }
-        
-        if let textField = statusTextField.text,  textField == "" {
-            return
-        }
-        self.view.ShowSpinner()
-        viewModel?.createTaskUser(patientId: taskId, name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank) , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
-    }
-    
-    func serverToLocalInputWorking(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        return dateFormatter.string(from: date)
-    }
 }

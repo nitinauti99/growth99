@@ -32,7 +32,7 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
                 return
             }
             
-            guard let firstName = firsNameTextField.text, let firstNameValidate = viewModel?.isLastName(firstName), firstNameValidate else {
+            guard let firstName = firsNameTextField.text, let firstNameValidate = viewModel?.isFirstName(firstName), firstNameValidate else {
                 firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
                 return
             }

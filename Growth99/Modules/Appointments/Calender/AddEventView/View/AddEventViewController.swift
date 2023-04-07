@@ -63,6 +63,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     var selectedTime: String = String.blank
     var appointmentTypeSelected: String = "InPerson"
     var screenTitile = String()
+    var pateintsEmail = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +147,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     }
     
     func setUPUI(){
-        let item = eventViewModel?.getPatientsAppointmentList[0]
+        let item = eventViewModel?.getPatientsAppointmentList.filter({ $0.email == pateintsEmail})[0]
         self.emailTextField.text = item?.email
         self.firstNameTextField.text = item?.firstName
         self.lastNameTextField.text = item?.lastName

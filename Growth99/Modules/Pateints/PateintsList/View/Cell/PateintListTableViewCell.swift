@@ -52,7 +52,7 @@ class PateintListTableViewCell: UITableViewCell {
         self.updatedBy.text = userVM?.updatedBy
         let movement = userVM?.patientStatus
         pateintStatusLbi.text = userVM?.patientStatus
-        pateintStatusImage.image = UIImage(named: movement?.lowercased() ?? String.blank)
+        pateintStatusImage.image = UIImage(named: movement?.uppercased() ?? String.blank)
         indexPath = index
     }
 
@@ -68,7 +68,7 @@ class PateintListTableViewCell: UITableViewCell {
         self.updatedBy.text = userVM?.updatedBy
         let movement = userVM?.patientStatus
         pateintStatusLbi.text = userVM?.patientStatus
-        pateintStatusImage.image = UIImage(named: movement?.lowercased() ?? String.blank)
+        pateintStatusImage.image = UIImage(named: movement?.uppercased() ?? String.blank)
         indexPath = index
     }
     @IBAction func deleteButtonPressed() {

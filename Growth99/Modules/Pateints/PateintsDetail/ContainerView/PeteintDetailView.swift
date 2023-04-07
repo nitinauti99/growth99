@@ -13,6 +13,7 @@ class PeteintDetailView: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     var workflowTaskPatientId = Int()
+    var pateintsEmail = String()
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,6 +164,7 @@ class PeteintDetailView: UIViewController {
         let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
         addEventVC.screenTitile = "Pateints Appointment"
         addEventVC.userSelectedDate = "Manual"
+        addEventVC.pateintsEmail = pateintsEmail
         navigationController?.pushViewController(addEventVC, animated: true)
     }
   

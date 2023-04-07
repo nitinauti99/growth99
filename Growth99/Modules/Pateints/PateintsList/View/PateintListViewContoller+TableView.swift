@@ -42,10 +42,12 @@ extension PateintListViewContoller: UITableViewDelegate, UITableViewDataSource {
         if isSearch {
             let PeteintDetail = PeteintDetailView.viewController()
             PeteintDetail.workflowTaskPatientId = viewModel?.pateintFilterDataAtIndex(index: indexPath.row)?.id ?? 0
+            PeteintDetail.pateintsEmail = viewModel?.pateintFilterDataAtIndex(index: indexPath.row)?.email ?? ""
             self.navigationController?.pushViewController(PeteintDetail, animated: true)
         }else{
             let PeteintDetail = PeteintDetailView.viewController()
             PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: indexPath.row)?.id ?? 0
+            PeteintDetail.pateintsEmail = viewModel?.pateintDataAtIndex(index: indexPath.row)?.email ?? ""
             self.navigationController?.pushViewController(PeteintDetail, animated: true)
         }
    

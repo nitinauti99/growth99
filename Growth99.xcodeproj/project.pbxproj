@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0100C6F429E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */; };
+		0100C6F629E04D1500B48138 /* CreateTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
 		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
@@ -889,6 +891,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+OepnDropDown.swift"; sourceTree = "<group>"; };
+		0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
@@ -6349,6 +6353,8 @@
 			children = (
 				84E34C4B2970365800C58B0D /* CreateTasksViewController.swift */,
 				84E34C4D29703E0000C58B0D /* CreateTasksViewController.storyboard */,
+				0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */,
+				0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7598,6 +7604,7 @@
 				84F6111D292A71AB00B1FB69 /* GrowthDownloadTaskOperation.swift in Sources */,
 				016F664029C9EF8600B1D248 /* MediaLibraryAddViewController.swift in Sources */,
 				8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */,
+				0100C6F429E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift in Sources */,
 				01684C2229BB7BBF00DE1041 /* UIIMageExtension.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
 				01684C4229BDC12800DE1041 /* ChatSessionDetailModel.swift in Sources */,
@@ -7714,6 +7721,7 @@
 				842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */,
 				843A7A902976A0140063FA2D /* BusinessProfileViewModel.swift in Sources */,
 				01152DFA29B31C0300B24627 /* PateintsTimeLineViewController.swift in Sources */,
+				0100C6F629E04D1500B48138 /* CreateTasksViewController+TextField.swift in Sources */,
 				8440B3932999FE4900A42097 /* FormListViewModel.swift in Sources */,
 				84F610D3292A71AB00B1FB69 /* CollectionTypeExtenssion.swift in Sources */,
 				84B75EC8296902E600962F3E /* ServicesListViewController.swift in Sources */,
