@@ -21,6 +21,7 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalPateintTimeLineDate(date: String) -> String
     func localToServerSocial(date: String) -> String
     func dateFormatterStringBirthDate(textField: CustomTextField) -> String
+    func serverToLocalDateFormate(date: String) -> String 
     
 }
 
@@ -68,6 +69,16 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    func serverToLocalDateFormate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
         return dateFormatter.string(from: date)
     }
     

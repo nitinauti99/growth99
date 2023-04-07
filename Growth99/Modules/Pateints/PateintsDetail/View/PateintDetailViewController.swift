@@ -74,7 +74,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     @objc func dateFromButtonPressed() {
-        dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
+        self.dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
     }
     
     @IBAction func openQuestionarieList (sender: UIButton) {
@@ -149,7 +149,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
-       self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
         viewModel?.getpateintsList(pateintId: pateintData?.id ?? 0)
     }
     
@@ -184,7 +184,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         gender.text = pateintData?.gender ?? "-"
         notes.text = pateintData?.notes ?? "-"
         self.dateOfBirth.text = pateintData?.dateOfBirth ?? "-"
-        let dateOfBirth = dateFormater?.dateFormatterString(textField: dateOfBirth)
+        let dateOfBirth = dateFormater?.serverToLocalDateFormate(date: pateintData?.dateOfBirth ?? "")
         self.dateOfBirth.text = dateOfBirth ?? "-"
         self.fullName.text = (pateintData?.firstName ?? String.blank) + " " + (pateintData?.lastName ?? String.blank)
     }
@@ -202,7 +202,6 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
-    
    
     func recivedSmsTemplateList(){
         viewModel?.getEmailDefaultList()
@@ -213,27 +212,27 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     func smsSend(responseMessage: String) {
-        self.view.HideSpinner()
-       self.view.showToast(message: responseMessage, color: .black)
-        pateintDetailTableView.reloadData()
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.pateintDetailTableView.reloadData()
+        self.viewModel?.getpateintsList(pateintId: self.workflowTaskPatientId)
     }
     
     func updatedPateintsInfo(responseMessage: String) {
         DispatchQueue.main.async {
             self.view.HideSpinner()
-           self.view.showToast(message: responseMessage, color: .black)
+            self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
             self.setUpClearColor()
         }
     }
     
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-       self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
     }
     
     func emailSendSuccessfully(responseMessage: String)  {
         self.view.HideSpinner()
-       self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
     }
     
 }
@@ -249,6 +248,7 @@ extension PateintDetailViewController: PateintSMSTemplateTableViewCellDelegate,
         selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
             cell.smsTextFiled.text = selectedItem?.name
             self?.selctedSmsTemplateId = selectedItem?.id ?? 0
+            cell.smsSendButton.isUserInteractionEnabled = true
         }
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -263,7 +263,6 @@ extension PateintDetailViewController: PateintSMSTemplateTableViewCellDelegate,
     }
     
     func sendCustomSMSTemplateList(cell: PateintCustomSMSTemplateTableViewCell, index: IndexPath) {
-      
         if let txtField = cell.smsTextView.text, txtField == "" {
             cell.errorLbi.isHidden = false
             return
@@ -285,6 +284,7 @@ extension PateintDetailViewController: PateintEmailTemplateTableViewCellDelegate
         selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
             cell.emailTextFiled.text = selectedItem?.name
             self?.selctedSmsTemplateId = selectedItem?.id ?? 0
+            cell.emailSendButton.isUserInteractionEnabled = true
         }
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

@@ -60,7 +60,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-Ob-etf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-Ob-etf" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                 <rect key="frame" x="33" y="245" width="120" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Arg-4N-qrK"/>
@@ -71,6 +71,17 @@
                                 <state key="normal" title="   + Send Email">
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sendCustomEmailTemplateListWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Lux-AB-ksP"/>
                                 </connections>
@@ -142,7 +153,7 @@
     </objects>
     <designables>
         <designable name="UqO-B1-MEw">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="21.5"/>
         </designable>
     </designables>
     <resources>

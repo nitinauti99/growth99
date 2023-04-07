@@ -24,9 +24,6 @@ class PateintCustomEmailTemplateTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.emailSendButton.layer.cornerRadius = 5
-        self.emailSendButton.layer.borderWidth = 1
-        self.emailSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
     }

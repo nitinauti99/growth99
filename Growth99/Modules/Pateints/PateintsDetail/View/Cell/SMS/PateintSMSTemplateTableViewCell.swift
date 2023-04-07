@@ -25,9 +25,7 @@ class PateintSMSTemplateTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        self.smsSendButton.layer.cornerRadius = 5
-        self.smsSendButton.layer.borderWidth = 1
-        self.smsSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
+        self.smsSendButton.isUserInteractionEnabled = false
     }
 
     @IBAction func selectSMSTemplate(sender: UIButton) {
@@ -36,6 +34,5 @@ class PateintSMSTemplateTableViewCell: UITableViewCell {
     
     @IBAction func sendSMSTemplateList(sender: UIButton) {
         delegate?.sendSMSTemplateList()
-
     }
 }

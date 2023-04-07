@@ -137,8 +137,10 @@ extension PateintEditViewController: PateintEditViewControllerProtocol{
    
     func pateintCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func recivedPateintDetail() {

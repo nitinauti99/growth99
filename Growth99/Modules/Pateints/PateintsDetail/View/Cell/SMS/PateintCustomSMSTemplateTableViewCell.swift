@@ -23,9 +23,6 @@ class PateintCustomSMSTemplateTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.smsSendButton.layer.cornerRadius = 5
-        self.smsSendButton.layer.borderWidth = 1
-        self.smsSendButton.layer.borderColor = UIColor.init(hexString: "009EDE").cgColor
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
     }

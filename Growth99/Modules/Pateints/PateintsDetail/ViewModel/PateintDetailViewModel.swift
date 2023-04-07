@@ -85,9 +85,9 @@ class PateintDetailViewModel {
             case .success(let response):
                 print(response)
                 if response.statusCode == 200 {
-                    self.delegate?.smsSend(responseMessage: "SMS Send Successfully")
+                    self.delegate?.smsSend(responseMessage: "SMS sent successfully")
                 } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while sendeing email")
+                    self.delegate?.errorReceived(error: "We are facing issue while sending SMS")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -102,9 +102,9 @@ class PateintDetailViewModel {
             case .success(let response):
                 print(response)
                 if response.statusCode == 200 {
-                    self.delegate?.smsSend(responseMessage: "SMS Send Successfully")
+                    self.delegate?.smsSend(responseMessage: "Email sent successfully")
                 } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while sendeing SMS")
+                    self.delegate?.errorReceived(error: "We are facing issue while sending Email")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -118,7 +118,7 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.updatedLeadStatusRecived(responseMessage: "Lead Status updated Successfully")
+                self.delegate?.updatedLeadStatusRecived(responseMessage: "Pateint status updated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -136,7 +136,7 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.updatedPateintsInfo(responseMessage: "Pateints Information updated Successfully")
+                self.delegate?.updatedPateintsInfo(responseMessage: "Pateints edited successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -154,7 +154,7 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.smsSendSuccessfully(responseMessage: "sms send Successfully")
+                self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -173,7 +173,7 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.emailSendSuccessfully(responseMessage: "email send Successfully")
+                self.delegate?.emailSendSuccessfully(responseMessage: "Email sent successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -196,11 +196,9 @@ extension PateintDetailViewModel: PateintDetailViewModelProtocol {
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^[1-9][0-9]{9}$")
-        if  predicateTest.evaluate(with: phoneNumber) {
-            return true
-        }else{
-            return false
-        }
+        let regex = Constant.Regex.phone
+        let isPhoneNo = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isPhoneNo.evaluate(with: phoneNumber)
     }
+    
 }
