@@ -19,66 +19,21 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingCustomTableViewCell", for: indexPath) as? WorkingCustomTableViewCell else { fatalError("Unexpected Error") }
-            
-            cell.workingClinicSelectonButton.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
-            cell.workingClinicSelectonButton.tag = (indexPath.section * 1000) + indexPath.row
-
-            if isEmptyResponse == false {
-              
-                let item = workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days
-                cell.updateTextLabel(with: item)
-
-                cell.workingClinicSelectonButton.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
-
-                cell.timeToTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
-                
-                cell.timeFromTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
-                
-            } else {
-                cell.timeFromTextField.text = String.blank
-                cell.timeToTextField.text = String.blank
-                cell.workingClinicTextLabel.text = Constant.Profile.selectDay
-            }
-            cell.buttoneRemoveDaysTapCallback = {
-                self.deleteDaysRow(selectedSection: indexPath, selectedIndex: indexPath.row)
-            }
-            cell.delegate = self
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingCustomTableViewCell", for: indexPath) as? WorkingCustomTableViewCell else { fatalError("Unexpected Error") }
+        if isEmptyResponse == false {
+            let item = workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days
+            cell.updateTextLabel(with: item)
+            cell.timeFromTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
+            cell.timeToTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
+        } else {
+            cell.timeFromTextField.text = String.blank
+            cell.timeToTextField.text = String.blank
         }
-    
-    @objc func myTargetFunction(sender: UIButton) {
-        let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
-      
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+        cell.buttoneRemoveDaysTapCallback = {
+            self.deleteDaysRow(selectedSection: indexPath, selectedIndex: indexPath.row)
         }
-        let row = sender.tag % 1000
-        let section = sender.tag / 1000
-        
-        let selectedArray = workingListModel?[section].userScheduleTimings?[row].days
-        selectionMenu.setSelectedItems(items: selectedArray ?? []) { [weak self] (selectedItem, index, selected, selectedList) in
-            print(selectedList)
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let workingCell = self?.workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                if selectedList.count == 0 {
-                    workingCell.workingClinicTextLabel.text = Constant.Profile.selectDay
-                }
-                else if selectedList.count > 3 {
-                    workingCell.workingClinicTextLabel.text = "\(selectedList.count) \(Constant.Profile.days)"
-                    workingCell.supportWorkingClinicTextLabel.text = selectedList.joined(separator: ",")
-                } else {
-                    let sentence = selectedList.joined(separator: ", ")
-                    workingCell.workingClinicTextLabel.text = sentence
-                    workingCell.supportWorkingClinicTextLabel.text = selectedList.joined(separator: ",")
-                }
-            }
-         }
-        
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(daysArray.count * 30))), arrowDirection: .up), from: self)
+        cell.delegate = self
+        return cell
     }
     
     @objc func deleteDaysRow(selectedSection: IndexPath, selectedIndex: Int) {
@@ -91,25 +46,13 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         }
         workingScrollViewHight.constant = tableViewHeight + 650
     }
-
+    
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell) {
-        guard let indexPath = workingListTableView.indexPath(for: cell) else {
-            return
-        }
-        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-            vacationCell.updateTimeFromTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? String.blank)
-        }
+        cell.updateTimeFromTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeFromTextField) ?? String.blank)
     }
     
     func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell) {
-        guard let indexPath = workingListTableView.indexPath(for: cell) else {
-            return
-        }
-        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let vacationCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-            vacationCell.updateTimeToTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? String.blank)
-        }
+        cell.updateTimeToTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? String.blank)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -119,7 +62,31 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.estimatedRowHeight
     }
-
+    
+    func selectDayButtonTapped(cell: WorkingCustomTableViewCell) {
+        let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: selectedDays) { (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.selectDayTextField.text = String.blank
+                cell.selectDayTextField.showError(message: "Please select day")
+            }
+            else if selectedList.count > 3 {
+                cell.selectDayTextField.text = "\(selectedList.count) \(Constant.Profile.days)"
+            } else {
+                let sentence = selectedList.joined(separator: ", ")
+                cell.selectDayTextField.text = sentence
+            }
+            self.selectedDays = selectedList
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: cell.selectDayButton, size: CGSize(width: cell.selectDayButton.frame.width, height: (Double(daysArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
 }
 
 extension WorkingScheduleViewController: UITextFieldDelegate {

@@ -84,7 +84,6 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
             let clinic = Clinics(isDefault: false, name: selectedName, id: selectedId)
             selectedClincs.append(clinic)
         }
-        
         clincsTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
     }
     

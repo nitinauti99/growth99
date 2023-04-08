@@ -93,7 +93,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func clinicsRecived() {
@@ -107,12 +107,15 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Clinic Dropdown API Response method
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.vacationScheduleUpdate, color: .black)
+        self.view.showToast(message: Constant.Profile.vacationScheduleUpdate, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func apiErrorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     // MARK: - Vacations List API Response method
@@ -196,7 +199,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                     }
                     if headerView.dateToTextField.text == String.blank {
                         isValidateVacationArray.insert(false, at: indexValue)
-                        headerView.dateToTextField.showError(message: Constant.Profile.chooseToTime)
+                        headerView.dateToTextField.showError(message: Constant.Profile.chooseToDate)
                         return
                     } else {
                         isValidateVacationArray.insert(true, at: indexValue)

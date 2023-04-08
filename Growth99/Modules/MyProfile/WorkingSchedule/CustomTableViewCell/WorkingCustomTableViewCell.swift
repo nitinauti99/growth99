@@ -9,16 +9,19 @@ import UIKit
 
 
 protocol WorkingCellSubclassDelegate: AnyObject {
+    func selectDayButtonTapped(cell: WorkingCustomTableViewCell)
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell)
     func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell)
 }
 
 class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    
+    @IBOutlet weak var selectDayTextField: CustomTextField!
+    @IBOutlet weak var selectDayButton: UIButton!
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
     @IBOutlet weak var workingClinicTextLabel: UILabel!
-    @IBOutlet weak var supportWorkingClinicTextLabel: UILabel!
     @IBOutlet weak var workingClinicErrorTextLabel: UILabel!
     @IBOutlet weak var workingClinicSelectonButton: UIButton!
     @IBOutlet weak var workingListExpandHeightConstraint: NSLayoutConstraint!
@@ -37,9 +40,6 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         timeToTextField.tintColor = .clear
         timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .time)
         timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .time)
-        workingTextView.layer.cornerRadius = 4.5
-        workingTextView.layer.borderWidth = 1
-        workingTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         
         subView.layer.borderWidth = 1
         subView.layer.cornerRadius = 5
@@ -68,16 +68,19 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func updateTextLabel(with content: [String]?) {
-        self.supportWorkingClinicTextLabel.text = content?.joined(separator: ",")
         if content?.count ?? 0 > 3 {
-            workingClinicTextLabel.text = "\(content?.count ?? 0) \(Constant.Profile.days)"
+            selectDayTextField.text = "\(content?.count ?? 0) \(Constant.Profile.days)"
         } else {
-            let sentence = content?.joined(separator: ", ")
-            workingClinicTextLabel.text = sentence
+            let sentence = content?.joined(separator: ",")
+            selectDayTextField.text = sentence
         }
     }
     
     @IBAction func deleteWorkingButtonAction(sender: UIButton) {
         buttoneRemoveDaysTapCallback()
+    }
+    
+    @IBAction func selectDayBtnAction(sender: UIButton) {
+        self.delegate?.selectDayButtonTapped(cell: self)
     }
 }

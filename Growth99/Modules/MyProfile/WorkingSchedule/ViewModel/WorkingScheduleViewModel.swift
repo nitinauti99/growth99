@@ -147,12 +147,12 @@ extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
     }
     
     func serverToLocalTimeInput(timeString: String) -> String {
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "hh:mm a"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let date = dateFormatter.date(from: timeString) ?? Date()
         dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.amSymbol = "AM"
-        dateFormatter.pmSymbol = "PM"
-        return dateFormatter.string(from: dateFormatter.date(from: timeString) ?? Date())
+        let time24 = dateFormatter.string(from: date)
+        return time24
     }
 }
 

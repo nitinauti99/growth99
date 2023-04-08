@@ -50,7 +50,6 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VacationsCustomTableViewCell", for: indexPath) as? VacationsCustomTableViewCell else { fatalError("Unexpected Error") }
-        
         if isEmptyResponse == false {
             cell.updateTimeFromTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank) ?? String.blank)
             cell.updateTimeToTextField(with: vacationViewModel?.serverToLocalTime(timeString: vacationsList[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank) ?? String.blank)
@@ -76,7 +75,6 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         if (totalcount == 0) {
             cell.borderView.isHidden = false
         }else if (totalcount > 0 && indexPath.row == totalcount) {
-            print("last Index")
             cell.borderView.isHidden = false
             cell.removeTimeButton.isHidden = false
         }

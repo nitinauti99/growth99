@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -56,7 +56,7 @@
                                     <imageReference key="value" image="calendar" catalog="system" symbolScale="large"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="20"/>
+                                    <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="color">
                                     <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,7 +103,7 @@
                                     <imageReference key="value" image="calendar" catalog="system" symbolScale="large"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="20"/>
+                                    <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="color">
                                     <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -165,15 +165,15 @@
     </objects>
     <designables>
         <designable name="1sa-cX-NhE">
-            <size key="intrinsicContentSize" width="29" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="30" height="22.333333333333332"/>
         </designable>
         <designable name="JU5-8c-E99">
-            <size key="intrinsicContentSize" width="29" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="30" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>
         <image name="CloseIcon" width="24.666666030883789" height="24.666666030883789"/>
-        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
