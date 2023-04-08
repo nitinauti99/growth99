@@ -11,6 +11,8 @@ protocol PateintsTagsAddViewModelProtocol {
     func pateintsTagsDetails(pateintsTagId:Int)
     func savePateintsTagsDetails(pateintsTagId:Int, name: String)
     func createPateintsTagsDetails(name: String)
+    func NameValidation(_ Name: String)-> Bool
+    
     var pateintsTagsDetailsData: PateintsTagListModel? { get }
 }
 
@@ -49,7 +51,7 @@ class PateintsTagsAddViewModel {
             switch result {
             case .success(let pateintsTagDict):
                 self.pateintsTagsDetailsDict = pateintsTagDict
-                self.delegate?.savePateintsTagList(responseMessage:"Pateints Tags details Saved")
+                self.delegate?.savePateintsTagList(responseMessage:"Tags updated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -66,7 +68,7 @@ class PateintsTagsAddViewModel {
             switch result {
             case .success(let pateintsTagDict):
                 self.pateintsTagsDetailsDict = pateintsTagDict
-                self.delegate?.savePateintsTagList(responseMessage:"Pateints Tags details Saved")
+                self.delegate?.savePateintsTagList(responseMessage:"Tag Ccreated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -80,4 +82,11 @@ extension PateintsTagsAddViewModel: PateintsTagsAddViewModelProtocol {
     var pateintsTagsDetailsData: PateintsTagListModel? {
         return self.pateintsTagsDetailsDict
     }
+    
+    func NameValidation(_ Name: String)-> Bool {
+        let emailRegEx = Constant.Regex.email
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: Name)
+    }
+    
 }

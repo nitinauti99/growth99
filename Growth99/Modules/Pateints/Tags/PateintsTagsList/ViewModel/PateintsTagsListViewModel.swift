@@ -32,7 +32,7 @@ class PateintsTagsListViewModel {
         self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PateintsTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.pateintsTagsList = pateintsTagList
+                self.pateintsTagsList = pateintsTagList.reversed()
                 self.delegate?.pateintsTagListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -45,9 +45,8 @@ class PateintsTagsListViewModel {
         self.requestManager.request(forPath: ApiUrl.removePatientsTags.appending("\(pateintsTagid)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
             
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.pateintTagRemovedSuccefully(mrssage: data.success ?? String.blank)
+            case .success(_ ):
+                self.delegate?.pateintTagRemovedSuccefully(mrssage: "Tag deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

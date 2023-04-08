@@ -4674,7 +4674,7 @@
 		842C0C67298F704B00395061 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
-				849004902985935900A271AA /* PateintsTags */,
+				849004902985935900A271AA /* PateintsTagsList */,
 				849004A12986C22A00A271AA /* PateintsTagsAdd */,
 			);
 			path = Tags;
@@ -5370,14 +5370,14 @@
 			path = Growth99UITests;
 			sourceTree = "<group>";
 		};
-		849004902985935900A271AA /* PateintsTags */ = {
+		849004902985935900A271AA /* PateintsTagsList */ = {
 			isa = PBXGroup;
 			children = (
 				849004932985937000A271AA /* Model */,
 				849004922985936C00A271AA /* ViewModel */,
 				849004912985936800A271AA /* View */,
 			);
-			path = PateintsTags;
+			path = PateintsTagsList;
 			sourceTree = "<group>";
 		};
 		849004912985936800A271AA /* View */ = {

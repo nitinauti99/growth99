@@ -10,11 +10,11 @@ import UIKit
 
 protocol PateintsTagsListViewControllerProtocol: AnyObject {
     func pateintsTagListRecived()
-    func errorReceived(error: String)
     func pateintTagRemovedSuccefully(mrssage: String)
+    func errorReceived(error: String)
 }
 
-class PateintsTagsListViewController: UIViewController, PateintsTagsListViewControllerProtocol,PateintsTagListTableViewCellDelegate {
+class PateintsTagsListViewController: UIViewController {
    
     @IBOutlet weak var pateintsTagsListTableview: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -36,10 +36,10 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSerchBar()
+        self.addSerchBar()
         self.registerTableView()
         self.view.ShowSpinner()
-        viewModel?.getPateintsTagsList()
+        self.viewModel?.getPateintsTagsList()
         self.title = Constant.Profile.patientTags
     }
     
@@ -50,6 +50,7 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
     @objc func creatUser() {
         let PateintsTagsAddVC = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
         PateintsTagsAddVC.pateintsTagScreenName = "Create Screen"
+        PateintsTagsAddVC.pateintsTagsList = viewModel?.getPateintsTagsData
         self.navigationController?.pushViewController(PateintsTagsAddVC, animated: true)
     }
     
@@ -61,17 +62,29 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
     }
-    
+}
+
+extension PateintsTagsListViewController: PateintsTagsListViewControllerProtocol {
+   
     func pateintsTagListRecived() {
         self.view.HideSpinner()
         self.pateintsTagsListTableview.reloadData()
     }
     
+    func pateintTagRemovedSuccefully(mrssage: String){
+        self.view.showToast(message: mrssage, color: UIColor().successMessageColor())
+        self.viewModel?.getPateintsTagsList()
+    }
+
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
+}
+
+extension PateintsTagsListViewController: PateintsTagListTableViewCellDelegate {
+  
     func removePatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
         var tagName : String = ""
         var tagId: Int = 0
@@ -96,15 +109,11 @@ class PateintsTagsListViewController: UIViewController, PateintsTagsListViewCont
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
-    func pateintTagRemovedSuccefully(mrssage: String){
-        self.view.showToast(message: mrssage, color: .red)
-        viewModel?.getPateintsTagsList()
-    }
-
+   
     func editPatieintTag(cell: PateintsTagListTableViewCell, index: IndexPath) {
         let detailController = UIStoryboard(name: "PateintsTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintsTagsAddViewController") as! PateintsTagsAddViewController
         detailController.pateintsTagScreenName = "Edit Screen"
+        detailController.pateintsTagsList = viewModel?.getPateintsTagsData
         if self.isSearch {
             detailController.patientTagId = viewModel?.pateintsTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
         }else{

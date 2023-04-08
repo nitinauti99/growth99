@@ -22,7 +22,8 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     var viewModel: PateintsTagsAddViewModelProtocol?
     var patientTagId = Int()
     var pateintsTagScreenName = String()
-    
+    var pateintsTagsList: [PateintsTagListModel]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PateintsTagsAddViewModel(delegate: self)
@@ -53,7 +54,7 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
@@ -62,8 +63,10 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     func savePateintsTagList(responseMessage:String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     @IBAction func cancelAction(sender: UIButton) {
@@ -72,13 +75,38 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     @IBAction func saveAction(sender: UIButton) {
         if let textField = PateintsTagsTextField.text,  textField == "" {
-            PateintsTagsTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            PateintsTagsTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            return
         }
-        self.view.ShowSpinner()
         if pateintsTagScreenName == "Edit Screen" {
+            self.view.ShowSpinner()
             viewModel?.savePateintsTagsDetails(pateintsTagId: patientTagId, name: PateintsTagsTextField.text ?? String.blank)
         }else{
+            if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
+                PateintsTagsTextField.showError(message: "Tag with this name already present.")
+                return
+            }
+            self.view.ShowSpinner()
             viewModel?.createPateintsTagsDetails(name: PateintsTagsTextField.text ?? String.blank)
+        }
+    }
+    
+}
+
+extension PateintsTagsAddViewController: UITextFieldDelegate  {
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+       
+        if textField == PateintsTagsTextField {
+            guard let textField = PateintsTagsTextField.text, !textField.isEmpty else {
+                PateintsTagsTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+                return
+            }
+            
+            if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
+                PateintsTagsTextField.showError(message: "Tag with this name already present.")
+                return
+            }
         }
     }
     
