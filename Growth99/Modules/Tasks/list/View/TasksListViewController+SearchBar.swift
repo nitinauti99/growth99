@@ -21,4 +21,8 @@ extension TasksListViewController: UISearchBarDelegate {
         searchBar.text = ""
         taskListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

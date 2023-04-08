@@ -21,4 +21,8 @@ extension PateintsTagsListViewController: UISearchBarDelegate {
         searchBar.text = ""
         pateintsTagsListTableview.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

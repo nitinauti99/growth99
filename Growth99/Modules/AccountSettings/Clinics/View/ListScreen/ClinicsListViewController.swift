@@ -196,5 +196,9 @@ extension ClinicsListViewController: UISearchBarDelegate {
         searchBar.text = ""
         clinicsListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 

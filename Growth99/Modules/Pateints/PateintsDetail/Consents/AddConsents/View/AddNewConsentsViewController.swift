@@ -75,6 +75,8 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
     
     func consnetSendToPateintSuccessfully(){
         self.view.HideSpinner()
+        self.view.showToast(message: "Consent send to patient.", color: UIColor().successMessageColor())
+
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -96,8 +98,10 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
                 }
             }
         }
-        self.view.ShowSpinner()
-        viewModel?.sendConsentsListToPateint(patient: pateintId, consentsIds: consentsIdArray)
+        if consentsIdArray.count > 0{
+           self.view.ShowSpinner()
+           viewModel?.sendConsentsListToPateint(patient: pateintId, consentsIds: consentsIdArray)
+        }
     }
     
     func errorReceived(error: String) {

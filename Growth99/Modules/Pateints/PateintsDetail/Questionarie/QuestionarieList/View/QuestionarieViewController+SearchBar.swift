@@ -21,4 +21,8 @@ extension QuestionarieViewController: UISearchBarDelegate {
         searchBar.text = ""
         questionarieListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

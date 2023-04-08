@@ -20,4 +20,8 @@ extension ConsentsListViewController: UISearchBarDelegate {
         searchBar.text = ""
         tableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

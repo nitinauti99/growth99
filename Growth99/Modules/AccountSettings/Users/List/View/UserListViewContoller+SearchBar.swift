@@ -21,4 +21,8 @@ extension UserListViewContoller: UISearchBarDelegate {
         searchBar.text = ""
         userListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

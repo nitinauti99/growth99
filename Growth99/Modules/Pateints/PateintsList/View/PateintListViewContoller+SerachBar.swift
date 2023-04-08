@@ -21,5 +21,9 @@ extension PateintListViewContoller:  UISearchBarDelegate {
         searchBar.text = ""
         pateintListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 

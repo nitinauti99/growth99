@@ -134,4 +134,8 @@ extension AppointmentsViewController:  UISearchBarDelegate {
         searchBar.text = ""
         appointmentsTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

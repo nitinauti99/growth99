@@ -188,4 +188,8 @@ extension CategoriesListViewController:  UISearchBarDelegate {
         searchBar.text = ""
         categoriesListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
