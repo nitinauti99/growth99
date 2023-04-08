@@ -76,7 +76,12 @@ class CategoriesListViewModel {
 extension CategoriesListViewModel: CategoriesListViewModelProtocol {
 
     func getCategoriesFilterData(searchText: String) {
-        self.categoriesListFilterData = (self.getCategoriesListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.categoriesListFilterData = self.getCategoriesListData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func getCategoriesDataAtIndex(index: Int)-> CategoriesListModel? {

@@ -119,7 +119,13 @@ class BookingHistoryViewModel {
 extension BookingHistoryViewModel: BookingHistoryViewModelProtocol {
 
     func getBookingHistoryFilterData(searchText: String) {
-        self.bookingHistoryListFilterData = (self.getBookingHistoryListData.filter { $0.patientFirstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.bookingHistoryListFilterData = self.getBookingHistoryListData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.patientFirstName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let lastNameMatch = task.patientLastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || lastNameMatch || idMatch
+        }
     }
     
     func getBookingHistoryDataAtIndex(index: Int)-> AppointmentDTOList? {

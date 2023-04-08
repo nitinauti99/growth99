@@ -16,11 +16,16 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     @IBOutlet weak var oldPasswordTextField: CustomTextField!
     @IBOutlet weak var newPasswordTextField: CustomTextField!
     @IBOutlet weak var verifyPasswordTextField: CustomTextField!
+    let user = UserRepository.shared
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = VerifyForgotPasswordViewModel(delegate: self)
         setUpNavigationBar()
+        oldPasswordTextField.text = "Password2@!"
+        newPasswordTextField.text = "Password3@!"
+        verifyPasswordTextField.text = "Password3@!"
     }
     
     func setUpNavigationBar() {
@@ -67,7 +72,7 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
             return
         }
         self.view.ShowSpinner()
-        viewModel?.verifyChangePasswordRequest(email: "nitinauti99@gmail.com", oldPassword: oldPassword, newPassword: newPassword, verifyNewPassword: verifyNewPassword)
+        viewModel?.verifyChangePasswordRequest(email: "yogesh123@growth99.com", oldPassword: oldPassword, newPassword: newPassword, verifyNewPassword: verifyNewPassword)
     }
     
     @IBAction func cancelPasswordButton(sender: UIButton) {

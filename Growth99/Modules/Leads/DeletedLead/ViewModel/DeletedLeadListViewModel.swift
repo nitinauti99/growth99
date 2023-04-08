@@ -53,7 +53,12 @@ class DeletedLeadListViewModel {
     
     
     func filterData(searchText: String) {
-        self.deletedFilterLeadList = (self.deletedLeadList.filter { $0.email?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.deletedFilterLeadList = self.deletedLeadList.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.email?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func deletedLeadListDataAtIndex(index: Int)-> DeletedLeadListModel? {

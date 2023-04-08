@@ -63,7 +63,12 @@ class AddNewQuestionarieViewModel {
     }
     
     func filterData(searchText: String) {
-       self.questionarieFilterData = (self.questionarieData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.questionarieFilterData = self.questionarieData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func questionarieDataAtIndex(index: Int)-> AddNewQuestionarieModel? {

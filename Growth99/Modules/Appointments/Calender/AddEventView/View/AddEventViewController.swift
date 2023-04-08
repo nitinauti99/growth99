@@ -19,12 +19,12 @@ protocol AddEventViewControllerProtocol: AnyObject {
 }
 
 class AddEventViewController: UIViewController, CalenderViewContollerProtocol, AddEventViewControllerProtocol {
-
+    
     @IBOutlet private weak var emailTextField: CustomTextField!
     @IBOutlet private weak var firstNameTextField: CustomTextField!
     @IBOutlet private weak var lastNameTextField: CustomTextField!
     @IBOutlet private weak var phoneNumberTextField: CustomTextField!
-
+    
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var providersTextField: CustomTextField!
@@ -34,10 +34,10 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     @IBOutlet private weak var inPersonBtn: UIButton!
     @IBOutlet private weak var virtualBtn: UIButton!
     @IBOutlet private weak var dateSelectionButton: UIButton!
-
+    
     var addEventViewModel: CalenderViewModelProtocol?
     var eventViewModel: AddEventViewModelProtocol?
-
+    
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = Int()
@@ -74,7 +74,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         addEventViewModel = CalenderViewModel(delegate: self)
         eventViewModel = AddEventViewModel(delegate: self)
         //emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
-       // phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
+        // phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -88,11 +88,10 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.appointment
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(closeEventClicked), imageName: "iconCircleCross")
         setupEventUI()
     }
     
-   func setupEventUI() {
+    func setupEventUI() {
         if userSelectedDate == "Manual" {
             dateTextField.isUserInteractionEnabled = true
             dateTextField.leftPadding = 25
@@ -119,7 +118,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         super.viewWillAppear(animated)
         self.getClinicsData()
     }
- 
+    
     func getClinicsData() {
         self.view.ShowSpinner()
         addEventViewModel?.getallClinics()
@@ -173,7 +172,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     func getPhoneNumberDataRecived() {
         
     }
-
+    
     func getEmailAddressDataRecived() {
         
     }
@@ -191,25 +190,17 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         
     }
     
-    
-    @objc func closeEventClicked(_ sender: UIButton) {
-        self.dismiss(animated: true)
-    }
-    
     @IBAction func cancelButton(sender: UIButton) {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func appoinmentCreated(apiResponse: AppoinmentModel) {
         self.view.HideSpinner()
         let userInfo = ["clinicId": selectedClincIds, "providerId": selectedProvidersIds, "serviceId": selectedServicesIds] as [String : Any]
         NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil, userInfo: userInfo)
-        self.navigationController?.dismiss(animated: true)
-        if self.screenTitile == "Pateints Appointment" {
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
-
+    
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
@@ -378,14 +369,6 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
     }
     
-    @IBAction func canecelButtonAction(sender: UIButton) {
-        if self.screenTitile == "Pateints Appointment" {
-            self.navigationController?.popViewController(animated: true)
-        }
-        self.navigationController?.dismiss(animated: true)
-        
-    }
-    
     @IBAction func inPersonButtonAction(sender: UIButton) {
         inPersonBtn.isSelected = !inPersonBtn.isSelected
         appointmentTypeSelected = "InPerson"
@@ -398,6 +381,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         appointmentTypeSelected = "Virtual"
     }
 }
+
 extension AddEventViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -52,7 +52,13 @@ extension AnnouncementsViewModel: AnnouncementsViewModelProtocol {
     }
     
     func getAnnouncementsFilterData(searchText: String) {
-        self.announcementsListFilterData = (self.getAnnouncementsData.filter { $0.description?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText || String($0.url ?? "") == searchText})
+        self.announcementsListFilterData = self.getAnnouncementsData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.description?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let urlMatch = task.url?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || urlMatch || idMatch
+        }
     }
     
     func getAnnouncementsDataAtIndex(index: Int)-> AnnouncementsModel? {

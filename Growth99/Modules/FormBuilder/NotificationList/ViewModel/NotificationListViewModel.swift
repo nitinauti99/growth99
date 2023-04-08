@@ -44,7 +44,12 @@ class NotificationListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.notificationListData = (self.notificationListData.filter { $0.toEmail?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.notificationListData = self.notificationListData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.toEmail?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func getNotificationListDataAtIndexPath(index: Int) -> NotificationListModel? {

@@ -304,9 +304,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
         let addEventVC = UIStoryboard(name: "AddPostViewController", bundle: nil).instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        let navController = UINavigationController(rootViewController: addEventVC)
-        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
     
     @IBAction func calenderSegmentSelection(_ sender: Any) {
@@ -337,9 +335,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
             calendar.setCurrentPage(date, animated: true)
         }
         let addEventVC = UIStoryboard(name: "AddPostViewController", bundle: nil).instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        let navController = UINavigationController(rootViewController: addEventVC)
-        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
 }
 
