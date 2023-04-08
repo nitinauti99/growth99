@@ -83,4 +83,8 @@ extension AnnouncementsViewController: UISearchBarDelegate {
         searchBar.text = ""
         announcementsTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

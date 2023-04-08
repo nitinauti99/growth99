@@ -21,4 +21,8 @@ extension LeadHistoryViewController: UISearchBarDelegate {
         searchBar.text = ""
         self.tableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

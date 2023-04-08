@@ -96,6 +96,10 @@ extension TriggersListViewController: UISearchBarDelegate {
         searchBar.text = ""
         triggersListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension TriggersListViewController: TriggerSourceDelegate {

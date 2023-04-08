@@ -97,6 +97,10 @@ extension MassEmailandSMSViewController: UISearchBarDelegate {
         searchBar.text = ""
         massEmailandSMSTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension MassEmailandSMSViewController: MassEmailandSMSDelegate {

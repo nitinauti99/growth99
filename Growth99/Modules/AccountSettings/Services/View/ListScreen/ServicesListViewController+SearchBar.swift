@@ -21,4 +21,8 @@ extension ServicesListViewController: UISearchBarDelegate {
         searchBar.text = ""
         servicesListTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

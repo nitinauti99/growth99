@@ -154,4 +154,8 @@ extension BookingHistoryViewContoller:  UISearchBarDelegate {
         searchBar.text = ""
         bookingHistoryTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

@@ -24,4 +24,8 @@ extension leadListViewController:  UISearchBarDelegate {
         self.currentPage = 0
         self.getleadList()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
