@@ -36,7 +36,12 @@ class UnansweredQuestionListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.unansweredQuestionFilterList = (self.unansweredQuestionList.filter { $0.question?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.unansweredQuestionFilterList = self.unansweredQuestionList.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.question?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func getUnansweredQuestionListFilterDataAtIndex(index: Int) -> UnansweredQuestionListModel? {

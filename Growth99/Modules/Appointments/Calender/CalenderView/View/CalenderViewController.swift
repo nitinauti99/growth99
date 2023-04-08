@@ -324,9 +324,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
         let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
         addEventVC.userSelectedDate = "Manual"
-        let navController = UINavigationController(rootViewController: addEventVC)
-        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
 
     @IBAction func calenderSegmentSelection(_ sender: Any) {
@@ -358,9 +356,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
         addEventVC.userSelectedDate = selectedDates.first ?? String.blank
-        let navController = UINavigationController(rootViewController: addEventVC)
-        navController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
 
     @IBAction func selectClinicButtonAction(sender: UIButton) {

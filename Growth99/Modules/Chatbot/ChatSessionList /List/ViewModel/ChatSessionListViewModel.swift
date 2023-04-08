@@ -43,7 +43,12 @@ class ChatSessionListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.chatSessionListFilterListData = (self.chatSessionListData.filter { $0.email?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.chatSessionListFilterListData = self.chatSessionListData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.email?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func getChatSessionListFilterDataAtIndex(index: Int) -> ChatSessionListModel? {

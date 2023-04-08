@@ -472,6 +472,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             return
         }
         
+        if let serviceCost = Double(serviceCostTextField.text ?? ""), let depositCost = Double(depositCostTextField.text ?? ""),
+           depositCost > serviceCost {
+            depositCostTextField.showError(message: "Deposit cost cannot be greater than the service cost")
+            return
+        }
+        
         guard let serviceUrl = serviceUrlTextField.text, serviceUrl.validateUrl() else {
             serviceUrlTextField.showError(message: "Service URL is invalid.")
             return

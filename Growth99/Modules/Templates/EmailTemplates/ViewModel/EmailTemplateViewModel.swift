@@ -82,7 +82,12 @@ class EmailTemplateViewModel {
     }
     
     func filterData(searchText: String) {
-        self.emailTemplateFilterData = (self.emailTemplateListData.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.emailTemplateFilterData = self.emailTemplateListData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
     }
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex:Int) -> EmailTemplateListModel? {

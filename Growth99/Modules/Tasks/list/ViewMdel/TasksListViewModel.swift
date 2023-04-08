@@ -69,8 +69,21 @@ class TasksListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.taskFilterList = (self.taskList.filter { $0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.taskFilterList = self.taskList.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            let statusMatch = task.status?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let userNameMatch = task.userName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            return nameMatch || idMatch || statusMatch || userNameMatch
+        }
     }
+    
+    @IBOutlet private weak var id: UILabel!
+    @IBOutlet private weak var taskName: UILabel!
+    @IBOutlet private weak var assignedTo: UILabel!
+    @IBOutlet private weak var status: UILabel!
+    
     
     func taskDataAtIndex(index: Int)-> TaskDTOList? {
         return self.taskList[index]

@@ -151,7 +151,14 @@ class AppointmentListViewModel {
 extension AppointmentListViewModel: AppointmentViewModelProtocol {
 
     func getProfileFilterData(searchText: String) {
-        self.profileAppoinmentListFilterData = (self.getProfileAppoinmentListData.filter { $0.patientFirstname?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.profileAppoinmentListFilterData = self.getProfileAppoinmentListData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.patientLastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            let statusMatch = task.patientLastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let userNameMatch = task.paymentStatus?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            return nameMatch || idMatch || statusMatch || userNameMatch
+        }
     }
     
     func getProfileDataAtIndex(index: Int)-> AppointmentListModel? {

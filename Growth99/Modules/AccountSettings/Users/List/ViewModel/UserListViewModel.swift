@@ -58,7 +58,13 @@ class UserListViewModel {
     }
     
     func filterData(searchText: String) {
-        self.userFilterData = (self.userData.filter { $0.firstName?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased() || String($0.id ?? 0) == searchText })
+        self.userFilterData = self.userData.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.firstName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let lastNameMatch = task.lastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || lastNameMatch || idMatch
+        }
     }
     
     func userDataAtIndex(index: Int)-> UserListModel? {

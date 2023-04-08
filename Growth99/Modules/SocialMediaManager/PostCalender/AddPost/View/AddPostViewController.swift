@@ -69,7 +69,6 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = "Add Post"
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(closeEventClicked), imageName: "iconCircleCross")
     }
     
     func getSocialProfileList() {
@@ -99,10 +98,6 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     
     func errorReceived(error: String) {
         
-    }
-    
-    @objc func closeEventClicked(_ sender: UIButton) {
-        self.dismiss(animated: true)
     }
     
     @IBAction func selectLabelBtn(sender: UIButton) {
@@ -204,7 +199,7 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     }
     
     @IBAction func cancelButton(sender: UIButton) {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func submitButton(sender: UIButton) {
