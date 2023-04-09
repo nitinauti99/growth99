@@ -37,7 +37,7 @@
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="serachLeadListWithSender:" destination="LBF-ol-tIj" eventType="touchUpInside" id="iQy-Yb-aoW"/>
+                                    <action selector="serachleadListWithSender:" destination="LBF-ol-tIj" eventType="touchUpInside" id="TFt-KD-SLk"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UL-kV-9ZP">

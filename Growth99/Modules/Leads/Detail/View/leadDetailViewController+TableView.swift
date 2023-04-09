@@ -69,7 +69,7 @@ extension leadDetailViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 4 {
             return 250
         } else {
-            return 80
+            return UITableView.automaticDimension
         }
     }
     

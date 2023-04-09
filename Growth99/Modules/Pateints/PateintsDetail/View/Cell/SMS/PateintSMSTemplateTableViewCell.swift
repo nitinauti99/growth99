@@ -9,7 +9,7 @@ import UIKit
 
 protocol PateintSMSTemplateTableViewCellDelegate: AnyObject {
     func selectSMSTemplate(cell: PateintSMSTemplateTableViewCell)
-    func sendSMSTemplateList()
+    func sendSMSTemplateList(cell: PateintSMSTemplateTableViewCell)
 }
 
 class PateintSMSTemplateTableViewCell: UITableViewCell {
@@ -33,6 +33,6 @@ class PateintSMSTemplateTableViewCell: UITableViewCell {
     }
     
     @IBAction func sendSMSTemplateList(sender: UIButton) {
-        delegate?.sendSMSTemplateList()
+        delegate?.sendSMSTemplateList(cell: self)
     }
 }

@@ -10,11 +10,11 @@ import UIKit
 
 protocol leadListViewControllerProtocol: AnyObject {
     func leadListDataRecived()
-    func errorReceived(error: String)
     func leadRemovedSuccefully(mrssage: String)
+    func errorReceived(error: String)
 }
 
-class leadListViewController: UIViewController, leadListViewControllerProtocol,leadListTableViewCellDelegate {
+class leadListViewController: UIViewController, leadListTableViewCellDelegate {
    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -77,7 +77,7 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol,l
         self.tableView.register(UINib(nibName: "leadListTableViewCell", bundle: nil), forCellReuseIdentifier: "leadListTableViewCell")
     }
     
-    @IBAction func serachleadListList(sender: UIButton) {
+    @IBAction func serachleadList(sender: UIButton) {
         if searchBar.text == "" {
             return
         }
@@ -108,11 +108,6 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol,l
         self.present(alert, animated: true, completion: nil)
     }
     
-    func leadRemovedSuccefully(mrssage: String){
-        self.view.showToast(message: mrssage, color: .red)
-        self.getleadList()
-    }
-
     func editLead(cell: leadListTableViewCell, index: IndexPath) {
         let editVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
         editVC.LeadId = viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
@@ -130,6 +125,15 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol,l
         self.viewModel?.getleadList(page: currentPage, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
     }
     
+}
+
+extension leadListViewController: leadListViewControllerProtocol {
+   
+    func leadRemovedSuccefully(mrssage: String){
+        self.view.showToast(message: mrssage, color: UIColor().successMessageColor())
+        self.getleadList()
+    }
+    
     func leadListDataRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
@@ -139,4 +143,5 @@ class leadListViewController: UIViewController, leadListViewControllerProtocol,l
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
     }
+    
 }

@@ -23,10 +23,14 @@ extension leadDetailViewController: LeadSMSTemplateTableViewCellDelegate,
         selectionMenu.show(style: .popover(sourceView: cell.smsTextFiledButton, size: CGSize(width: cell.smsTextFiledButton.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
     
-    func sendSMSTemplateList() {
-        self.view.ShowSpinner()
+    func sendSMSTemplateList(cell: LeadSMSTemplateTableViewCell) {
         let selctedTemplate =  "\(leadId ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
-        self.viewModel?.sendEmailTemplate(template: selctedTemplate)
+        
+        if cell.smsTextFiled.text == "" {
+            return
+        }
+        self.view.ShowSpinner()
+        self.viewModel?.sendSMSTemplate(template: selctedTemplate)
     }
     
     func sendCustomSMSTemplateList(cell: LeadCustomSMSTemplateTableViewCell, index: IndexPath) {

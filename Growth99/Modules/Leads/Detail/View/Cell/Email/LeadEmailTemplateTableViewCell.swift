@@ -9,7 +9,7 @@ import UIKit
 
 protocol LeadEmailTemplateTableViewCellDelegate: AnyObject {
     func selectEmailTemplate(cell: LeadEmailTemplateTableViewCell)
-    func sendEmailTemplateList()
+    func sendEmailTemplateList(cell: LeadEmailTemplateTableViewCell)
 }
 
 class LeadEmailTemplateTableViewCell: UITableViewCell {
@@ -32,7 +32,7 @@ class LeadEmailTemplateTableViewCell: UITableViewCell {
     }
     
     @IBAction func sendEmailTemplateList(sender: UIButton) {
-        self.delegate?.sendEmailTemplateList()
+        self.delegate?.sendEmailTemplateList(cell: self)
     }
     
 }

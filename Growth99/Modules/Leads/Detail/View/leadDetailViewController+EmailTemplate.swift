@@ -22,7 +22,11 @@ extension leadDetailViewController: LeadEmailTemplateTableViewCellDelegate, Lead
         selectionMenu.show(style: .popover(sourceView: cell.emailTextFiledButton, size: CGSize(width: cell.emailTextFiledButton.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
     
-    func sendEmailTemplateList() {
+    func sendEmailTemplateList(cell: LeadEmailTemplateTableViewCell) {
+        if cell.emailTextFiled.text == "" {
+            return
+        }
+        self.view.ShowSpinner()
         let selctedTemplate = "\(leadId ?? 0)/email-template/\(self.selctedSmsTemplateId)"
         self.viewModel?.sendEmailTemplate(template: selctedTemplate)
     }

@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mb9-PJ-Up9">
-                        <rect key="frame" x="31" y="15" width="252" height="18"/>
+                        <rect key="frame" x="35" y="15" width="244" height="18"/>
                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgu-kH-LeC">
-                        <rect key="frame" x="31" y="52" width="252" height="18"/>
+                        <rect key="frame" x="35" y="52" width="244" height="18"/>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -49,6 +49,7 @@
                     <constraint firstItem="Sgu-kH-LeC" firstAttribute="trailing" secondItem="mb9-PJ-Up9" secondAttribute="trailing" id="EIy-Sh-Lf4"/>
                     <constraint firstItem="Sgu-kH-LeC" firstAttribute="leading" secondItem="mb9-PJ-Up9" secondAttribute="leading" id="lCg-5B-Zca"/>
                     <constraint firstItem="Sgu-kH-LeC" firstAttribute="top" secondItem="mb9-PJ-Up9" secondAttribute="bottom" constant="19" id="o5O-fL-ppr"/>
+                    <constraint firstAttribute="bottom" secondItem="Sgu-kH-LeC" secondAttribute="bottom" constant="24" id="oaT-1q-S8R"/>
                     <constraint firstItem="V3Q-uq-u5d" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-5" id="p23-7C-cR5"/>
                     <constraint firstAttribute="trailing" secondItem="V3Q-uq-u5d" secondAttribute="trailing" constant="20" id="sq9-Dn-rU4"/>
                 </constraints>

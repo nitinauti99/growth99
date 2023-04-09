@@ -121,18 +121,18 @@ extension leadDetailViewController: leadDetailViewControllerProtocol {
 
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
         anslistTableView.reloadData()
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
-        self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
         viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
     }
     
     func emailSendSuccessfully(responseMessage: String)  {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
     }
     
     func recivedEmailTemplateList(){
@@ -153,6 +153,6 @@ extension leadDetailViewController: leadDetailViewControllerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }

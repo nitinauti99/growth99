@@ -256,8 +256,12 @@ extension PateintDetailViewController: PateintSMSTemplateTableViewCellDelegate,
         selectionMenu.show(style: .popover(sourceView: cell.smsTextFiledButton, size: CGSize(width: cell.smsTextFiledButton.frame.width, height: (Double(list.count * 44) + 10)), arrowDirection: .up), from: self)
     }
     
-    func sendSMSTemplateList() {
+    func sendSMSTemplateList(cell: PateintSMSTemplateTableViewCell) {
         self.selctedTemplate =  "\(pateintData?.id ?? 0)/sms-template/\(self.selctedSmsTemplateId)"
+       
+        if cell.smsTextFiled.text == "" {
+            return
+        }
         self.view.ShowSpinner()
         viewModel?.sendSMSTemplate(template: selctedTemplate)
     }

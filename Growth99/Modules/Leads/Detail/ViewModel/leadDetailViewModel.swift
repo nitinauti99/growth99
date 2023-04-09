@@ -89,7 +89,7 @@ class leadDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.smsSendSuccessfully(responseMessage: "sms send Successfully")
+                self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent Successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -102,7 +102,7 @@ class leadDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.emailSendSuccessfully(responseMessage: "email send Successfully")
+                self.delegate?.emailSendSuccessfully(responseMessage: "Email sent Successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -115,7 +115,7 @@ class leadDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.updatedLeadStatusRecived(responseMessage: "Lead Status updated Successfully")
+                self.delegate?.updatedLeadStatusRecived(responseMessage: "Lead Status updated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

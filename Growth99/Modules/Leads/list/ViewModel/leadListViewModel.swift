@@ -62,6 +62,7 @@ class leadListViewModel {
               }
           }
       }
+   
     func removeLead(leadId: Int) {
         let finaleUrl = ApiUrl.deleteLead.appending("\(leadId)")
      
@@ -70,7 +71,7 @@ class leadListViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.leadRemovedSuccefully(mrssage: "Pateints removed successfully")
+                self.delegate?.leadRemovedSuccefully(mrssage: "Lead deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
