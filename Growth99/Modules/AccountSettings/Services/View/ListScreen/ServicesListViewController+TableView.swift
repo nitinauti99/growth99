@@ -28,7 +28,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
             } else {
                 self.servicesListTableView.restore()
             }
-            return viewModel?.getServiceListData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)}).count ?? 0
+            return viewModel?.getServiceListData.count ?? 0
         }
     }
     

@@ -166,4 +166,12 @@ public class UserRepository {
         }
     }
     
+    public var selectedServiceId: Int? {
+        get {
+            user.selectedServiceId
+        }
+        set {
+            user.selectedServiceId = newValue
+        }
+    }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 protocol CategoriesListViewModelProtocol {
     func getCategoriesList()
- 
+    
     func getCategoriesFilterData(searchText: String)
     
     func getCategoriesDataAtIndex(index: Int)-> CategoriesListModel?
@@ -26,7 +26,7 @@ class CategoriesListViewModel {
     
     var categoriesList: [CategoriesListModel] = []
     var categoriesListFilterData: [CategoriesListModel] = []
-
+    
     
     init(delegate: CategoriesListViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -38,7 +38,7 @@ class CategoriesListViewModel {
         self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
             switch result {
             case .success(let categoriesListData):
-                self.categoriesList = categoriesListData
+                self.categoriesList = categoriesListData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.CategoriesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -74,7 +74,7 @@ class CategoriesListViewModel {
 }
 
 extension CategoriesListViewModel: CategoriesListViewModelProtocol {
-
+    
     func getCategoriesFilterData(searchText: String) {
         self.categoriesListFilterData = self.getCategoriesListData.filter { task in
             let searchText = searchText.lowercased()
@@ -95,8 +95,8 @@ extension CategoriesListViewModel: CategoriesListViewModelProtocol {
     var getCategoriesListData: [CategoriesListModel] {
         return self.categoriesList
     }
-   
+    
     var getCategoriesFilterListData: [CategoriesListModel] {
-         return self.categoriesListFilterData
+        return self.categoriesListFilterData
     }
 }

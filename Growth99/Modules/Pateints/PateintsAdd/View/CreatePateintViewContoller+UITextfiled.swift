@@ -25,7 +25,7 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
     }
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
-       
+        
         if textField == firsNameTextField {
             guard let textField = firsNameTextField.text, !textField.isEmpty else {
                 firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
@@ -37,7 +37,7 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
                 return
             }
             
-        }else if (textField == lastNameTextField) {
+        } else if (textField == lastNameTextField) {
             guard let textField = lastNameTextField.text, !textField.isEmpty else  {
                 lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
                 return
@@ -47,8 +47,7 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
                 lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
                 return
             }
-       
-        }else if (textField == emailTextField) {
+        } else if (textField == emailTextField) {
             guard let emailText = emailTextField.text, !emailText.isEmpty else {
                 emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
                 return
@@ -57,8 +56,8 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
                 emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
                 return
             }
-       
-        }else if (textField == phoneNumberTextField) {
+            
+        } else if (textField == phoneNumberTextField) {
             guard let phoneNumber  = phoneNumberTextField.text, !phoneNumber.isEmpty else {
                 phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
                 return
@@ -68,8 +67,8 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
                 phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
                 return
             }
-       
-        }else if (textField == genderTextField) {
+            
+        } else if (textField == genderTextField) {
             guard let gender  = genderTextField.text, !gender.isEmpty else {
                 genderTextField.showError(message: Constant.ErrorMessage.genderEmptyError)
                 return
@@ -88,31 +87,31 @@ extension CreatePateintViewContoller: UITextFieldDelegate  {
                 firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
                 return
             }
-                    
-        }else if (textField == lastNameTextField) {
+            
+        } else if (textField == lastNameTextField) {
             guard let textField = lastNameTextField.text, !textField.isEmpty else  {
                 lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
                 return
             }
-                
-        }else if (textField == emailTextField) {
+            
+        } else if (textField == emailTextField) {
             guard let emailText = emailTextField.text, !emailText.isEmpty else {
                 emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
                 return
             }
-        
-        }else if (textField == phoneNumberTextField) {
+            
+        } else if (textField == phoneNumberTextField) {
             guard let phoneNumber  = phoneNumberTextField.text, !phoneNumber.isEmpty else {
                 phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
                 return
             }
-       
-        }else if (textField == genderTextField) {
+            
+        } else if (textField == genderTextField) {
             guard let gender  = genderTextField.text, !gender.isEmpty else {
                 genderTextField.showError(message: Constant.ErrorMessage.genderEmptyError)
                 return
             }
-    
+            
         }
     }
 }

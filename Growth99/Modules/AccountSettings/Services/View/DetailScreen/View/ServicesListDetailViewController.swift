@@ -132,6 +132,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceNameTextField.text = servicesAddViewModel?.getUserSelectedServiceData?.name ?? String.blank
         
         userClinics = servicesAddViewModel?.getUserSelectedServiceData?.clinics ?? []
+
         selectClinicTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
         
         serviceDurationTextField.text = "\(servicesAddViewModel?.getUserSelectedServiceData?.durationInMinutes ?? 0)"

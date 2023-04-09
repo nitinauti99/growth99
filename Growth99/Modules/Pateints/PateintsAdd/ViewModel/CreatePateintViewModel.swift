@@ -41,7 +41,7 @@ class CreatePateintViewModel {
  
 }
 
-extension CreatePateintViewModel: CreatePateintViewModelProtocol{
+extension CreatePateintViewModel: CreatePateintViewModelProtocol {
 
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         let regex = Constant.Regex.phone

@@ -136,7 +136,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     }
     
     var  getAddServiceListData: [ServiceList] {
-        return self.serviceAddList ?? []
+        return self.serviceAddList
     }
 
     func createServiceAPICall(name: String, serviceCategoryId: Int, durationInMinutes: Int,
@@ -205,6 +205,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     }
     
     func uploadSelectedServiceImage(image: UIImage, selectedServiceId: Int) {
+        UserRepository.shared.selectedServiceId = selectedServiceId
         self.requestManager.request(requestable: ServicesImage.upload(image: image.pngData() ?? Data())) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -226,9 +227,9 @@ enum ServicesImage {
 extension ServicesImage: Requestable {
     
     var baseURL: String {
-        "https://api.growthemr.com/"
+        EndPoints.baseURL
     }
-    
+
     var headerFields: [HTTPHeader]? {
         [.custom(key: "x-tenantid", value: UserRepository.shared.Xtenantid ?? String.blank),
              .custom(key: "Content-Type", value: "application/json"),
@@ -240,7 +241,7 @@ extension ServicesImage: Requestable {
     }
     
     var path: String {
-        "api/services/6013/image"
+        "/api/services/".appending("\(UserRepository.shared.selectedServiceId ?? 0)/image")
     }
     
     var method: HTTPMethod {

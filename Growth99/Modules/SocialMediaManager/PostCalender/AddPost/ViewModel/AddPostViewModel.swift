@@ -110,7 +110,7 @@ enum AddPostImage {
 extension AddPostImage: Requestable {
     
     var baseURL: String {
-        "https://api.growthemr.com/"
+        EndPoints.baseURL
     }
     
     var headerFields: [HTTPHeader]? {
@@ -124,7 +124,7 @@ extension AddPostImage: Requestable {
     }
     
     var path: String {
-        "api/socialMediaPost"
+        "/api/socialMediaPost"
     }
     
     var method: HTTPMethod {

@@ -38,7 +38,7 @@ class ClinicsListViewModel {
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[ClinicsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let clinicListData):
-                self.clinicList = clinicListData
+                self.clinicList = clinicListData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.ClinicsDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
