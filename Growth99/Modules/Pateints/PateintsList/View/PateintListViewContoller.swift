@@ -10,11 +10,11 @@ import UIKit
 
 protocol PateintListViewContollerProtocol: AnyObject {
     func LeadDataRecived()
-    func errorReceived(error: String)
     func pateintRemovedSuccefully(mrssage: String)
+    func errorReceived(error: String)
 }
 
-class PateintListViewContoller: UIViewController, PateintListViewContollerProtocol, PateintListTableViewCellDelegate {
+class PateintListViewContoller: UIViewController {
     
     @IBOutlet weak var pateintListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -33,7 +33,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSerchBar()
+        self.addSerchBar()
         self.getPateintList()
         self.registerTableView()
     }
@@ -41,7 +41,7 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
     func registerTableView() {
         self.pateintListTableView.delegate = self
         self.pateintListTableView.dataSource = self
-        pateintListTableView.register(UINib(nibName: "PateintListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintListTableViewCell")
+        self.pateintListTableView.register(UINib(nibName: "PateintListTableViewCell", bundle: nil), forCellReuseIdentifier: "PateintListTableViewCell")
     }
     
     func setBarButton(){
@@ -70,6 +70,46 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
         let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
         self.navigationController?.pushViewController(createUserVC, animated: true)
     }
+
+    @objc func getPateintList() {
+        self.view.ShowSpinner()
+        self.viewModel?.getPateintList()
+    }
+}
+
+extension PateintListViewContoller: PateintListViewContollerProtocol {
+   
+    func LeadDataRecived() {
+        self.view.HideSpinner()
+        self.pateintListTableView.reloadData()
+    }
+    
+    func pateintRemovedSuccefully(mrssage: String){
+        viewModel?.getPateintList()
+        self.view.showToast(message: mrssage, color: .black)
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
+    }
+    
+}
+
+extension PateintListViewContoller: PateintListTableViewCellDelegate {
+   
+    func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {
+        let editVC = UIStoryboard(name: "PateintEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintEditViewController") as! PateintEditViewController
+        editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
+        self.navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
+        let PeteintDetail = PeteintDetailView.viewController()
+        PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
+        PeteintDetail.pateintsEmail = viewModel?.pateintDataAtIndex(index: index.row)?.email ?? ""
+        self.navigationController?.pushViewController(PeteintDetail, animated: true)
+    }
     
     func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
         let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.pateintDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
@@ -85,37 +125,5 @@ class PateintListViewContoller: UIViewController, PateintListViewContollerProtoc
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
-    @objc func getPateintList() {
-        self.view.ShowSpinner()
-        viewModel?.getPateintList()
-    }
     
-    func pateintRemovedSuccefully(mrssage: String){
-        viewModel?.getPateintList()
-        self.view.showToast(message: mrssage, color: .black)
-    }
-
-    func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let editVC = UIStoryboard(name: "PateintEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintEditViewController") as! PateintEditViewController
-        editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
-        self.navigationController?.pushViewController(editVC, animated: true)
-    }
-    
-    func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let PeteintDetail = PeteintDetailView.viewController()
-        PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
-        PeteintDetail.pateintsEmail = viewModel?.pateintDataAtIndex(index: index.row)?.email ?? ""
-        self.navigationController?.pushViewController(PeteintDetail, animated: true)
-    }
-    
-    func LeadDataRecived() {
-        self.view.HideSpinner()
-        self.pateintListTableView.reloadData()
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
 }

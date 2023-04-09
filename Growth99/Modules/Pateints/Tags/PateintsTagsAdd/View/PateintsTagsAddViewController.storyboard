@@ -78,6 +78,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="y35-fh-mdM"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Q60-5r-CYC"/>
                                 </connections>
                             </textField>

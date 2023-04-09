@@ -35,6 +35,7 @@ extension TasksListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = TaskListTableViewCell()
         cell = taskListTableView.dequeueReusableCell(withIdentifier: "TaskListTableViewCell") as! TaskListTableViewCell
+        cell.delegate = self
         if isSearch {
             cell.configureCellWithSearch(userVM: viewModel, index: indexPath)
         }else{

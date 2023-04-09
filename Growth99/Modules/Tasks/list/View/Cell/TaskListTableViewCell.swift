@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol TaskListTableViewCellDelegate: AnyObject {
+    func removeTask(cell: TaskListTableViewCell, index: IndexPath)
+    func editTask(cell: TaskListTableViewCell, index: IndexPath)
+}
+
 class TaskListTableViewCell: UITableViewCell {
     @IBOutlet private weak var id: UILabel!
     @IBOutlet private weak var taskName: UILabel!
@@ -15,9 +20,10 @@ class TaskListTableViewCell: UITableViewCell {
     @IBOutlet private weak var createdDate: UILabel!
     @IBOutlet private weak var deadLine: UILabel!
     @IBOutlet private weak var subView: UIView!
-
-    
+    weak var delegate: TaskListTableViewCellDelegate?
+    var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,6 +40,7 @@ class TaskListTableViewCell: UITableViewCell {
         self.status.text = userVM?.status
         self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
         self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
+        indexPath = index
     }
     
     func configureCellWithSearch(userVM: TasksListViewModelProtocol?, index: IndexPath) {
@@ -44,11 +51,14 @@ class TaskListTableViewCell: UITableViewCell {
         self.status.text = userVM?.status
         self.createdDate.text =  dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
         self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
+        indexPath = index
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeTask(cell: self, index: indexPath)
     }
-
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editTask(cell: self, index: indexPath)
+    }
 }

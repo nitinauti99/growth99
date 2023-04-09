@@ -29,9 +29,9 @@
                                                     <constraint firstAttribute="height" constant="20" id="CW8-Vs-vPO"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="First Name ">
+                                                    <fragment content="Name ">
                                                         <attributes>
-                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <font key="NSFont" size="15" name="Avenir-Heavy"/>
                                                         </attributes>
                                                     </fragment>

@@ -19,7 +19,7 @@ protocol EditTasksViewControllerProtocol: AnyObject {
 
 class EditTasksViewController: UIViewController{
     
-    @IBOutlet private weak var nameTextField: CustomTextField!
+    @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet private weak var usersTextField: CustomTextField!
     @IBOutlet private weak var statusTextField: CustomTextField!
     @IBOutlet private weak var DeadlineTextField: CustomTextField!
@@ -52,12 +52,10 @@ class EditTasksViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = EditTasksViewModel(delegate: self)
-        descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
-        descriptionTextView.layer.borderWidth = 1.0;
         self.view.ShowSpinner()
         self.viewModel?.getTaskDetail(taskId: taskId)
         self.title = Constant.Profile.tasksDetail
-        dateFormater = DateFormater()
+        self.dateFormater = DateFormater()
     }
     
     func setUPUI() {

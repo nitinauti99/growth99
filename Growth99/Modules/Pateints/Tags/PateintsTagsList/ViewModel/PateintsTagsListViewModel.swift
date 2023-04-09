@@ -32,7 +32,7 @@ class PateintsTagsListViewModel {
         self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PateintsTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.pateintsTagsList = pateintsTagList.reversed()
+                self.pateintsTagsList = pateintsTagList
                 self.delegate?.pateintsTagListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

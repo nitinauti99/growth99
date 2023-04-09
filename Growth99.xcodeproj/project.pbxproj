@@ -180,6 +180,7 @@
 		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
 		01A2007729C746A900A7DD59 /* PostsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */; };
 		01A2007829C746A900A7DD59 /* PostsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */; };
+		01B2F63029E1DB700071384E /* EditTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2F62F29E1DB700071384E /* EditTasksViewController+TextField.swift */; };
 		01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */; };
 		01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */; };
 		01BBA9D829AB5452006A5DB8 /* NotificationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D729AB5452006A5DB8 /* NotificationListViewModel.swift */; };
@@ -1064,6 +1065,7 @@
 		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
 		01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostsListTableViewCell.xib; sourceTree = "<group>"; };
 		01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsListTableViewCell.swift; sourceTree = "<group>"; };
+		01B2F62F29E1DB700071384E /* EditTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationListViewController.storyboard; sourceTree = "<group>"; };
 		01BBA9D729AB5452006A5DB8 /* NotificationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewModel.swift; sourceTree = "<group>"; };
@@ -6384,6 +6386,7 @@
 			children = (
 				84B8B81C2973A88300742B42 /* EditTasksViewController.swift */,
 				84B8B81E2973A8A000742B42 /* EditTasksViewController.storyboard */,
+				01B2F62F29E1DB700071384E /* EditTasksViewController+TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7545,6 +7548,7 @@
 				39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
+				01B2F63029E1DB700071384E /* EditTasksViewController+TextField.swift in Sources */,
 				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
 				DA54A8A329D8761B00DB333F /* TriggerParentCreateTableViewCell.swift in Sources */,

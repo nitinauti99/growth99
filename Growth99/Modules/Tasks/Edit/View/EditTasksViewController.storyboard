@@ -23,13 +23,24 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zw0-qK-huL" userLabel="Mainview">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1384"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J4-lJ-Ipw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J4-lJ-Ipw">
                                                 <rect key="frame" x="23" y="30" width="353" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="CW8-Vs-vPO"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <nil key="textColor"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Name ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lrc-7C-of5" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -44,6 +55,10 @@
                                                         <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="Go0-d4-8Lg"/>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Jdm-mH-yHE"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdN-Lv-IAr" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="161" width="354" height="45"/>
@@ -69,13 +84,24 @@
                                                     <action selector="openUserListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9qK-b6-DeY"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign Task to Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2H-iD-kFf">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2H-iD-kFf">
                                                 <rect key="frame" x="23" y="133" width="353" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="h2m-FT-f6C"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <nil key="textColor"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Assign Task to Users ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6K-Rj-VXW">
@@ -87,7 +113,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gob-qB-pfY">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gob-qB-pfY" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="264" width="359" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -96,6 +122,14 @@
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" systemColor="systemGray4Color"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textView>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-f7-VgA" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="422" width="354" height="45"/>
@@ -121,13 +155,24 @@
                                                     <action selector="openStatusListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="er8-EM-ngd"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-rO-1CF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-rO-1CF">
                                                 <rect key="frame" x="23" y="394" width="366" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Llq-J0-dTA"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <nil key="textColor"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Status ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="0.14913000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nt7-qn-Y0H" userLabel="DeadlineTextfiled" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -527,31 +572,31 @@
     </scenes>
     <designables>
         <designable name="LoW-f7-VgA">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="QDp-hp-wog">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="bmi-YC-6bI">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jdN-Lv-IAr">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="lrc-7C-of5">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="mze-hG-8dZ">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="nt7-qn-Y0H">
-            <size key="intrinsicContentSize" width="19" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="qg1-oU-mok">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="ss6-BP-XHc">
-            <size key="intrinsicContentSize" width="4" height="21.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>
@@ -564,6 +609,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

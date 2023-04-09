@@ -30,6 +30,8 @@ protocol EditTasksViewModelProtocol {
     
     /// create patients user
     func createTaskUser(patientId: Int, name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
+    
+    func isNameValidate(_ name: String)-> Bool
 }
 
 class EditTasksViewModel {
@@ -179,4 +181,10 @@ extension EditTasksViewModel: EditTasksViewModelProtocol {
         return self.taskQuestionnaireSubmissionListArray[index]
     }
    
+    func isNameValidate(_ name: String)-> Bool {
+        let regex = Constant.Regex.nameWithSpace
+        let isName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isName.evaluate(with: name)
+    }
+
 }

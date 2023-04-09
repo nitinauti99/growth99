@@ -14,6 +14,8 @@ protocol TasksListViewModelProtocol {
     func taskDataAtIndex(index: Int) -> TaskDTOList?
     func taskFilterDataAtIndex(index: Int)-> TaskDTOList?
     func filterData(searchText: String)
+    func removeTask(taskId: Int)
+    
     var getTaskData: [TaskDTOList] { get }
     var getTaskFilterData: [TaskDTOList] { get }
 }
@@ -61,6 +63,20 @@ class TasksListViewModel {
             case .success(let taskList):
                 self.taskList = taskList.taskDTOList.reversed()
                 self.delegate?.tasksDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func removeTask(taskId: Int){
+        let finaleUrl = ApiUrl.taskDetail.appending("\(taskId)")
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_ ):
+                self.delegate?.taskRemovedSuccefully(message: "Pateints removed successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
