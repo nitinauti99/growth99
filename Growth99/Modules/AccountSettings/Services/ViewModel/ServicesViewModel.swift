@@ -37,7 +37,7 @@ class ServiceListViewModel {
         self.requestManager.request(forPath: ApiUrl.getAllServices, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<ServiceListModel, GrowthNetworkError>) in
             switch result {
             case .success(let serviceData):
-                self.serviceList = serviceData.serviceList ?? []
+                self.serviceList = serviceData.serviceList?.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)}) ?? []
                 self.delegate?.serviceListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

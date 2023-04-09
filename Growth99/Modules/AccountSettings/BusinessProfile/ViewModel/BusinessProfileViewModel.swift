@@ -70,7 +70,7 @@ enum BusinessImage {
 extension BusinessImage: Requestable {
     
     var baseURL: String {
-        "https://api.growthemr.com/"
+        EndPoints.baseURL
     }
     
     var headerFields: [HTTPHeader]? {
@@ -84,7 +84,7 @@ extension BusinessImage: Requestable {
     }
     
     var path: String {
-        "api/businesses/\(UserRepository.shared.Xtenantid ?? "")/logo"
+        "/api/businesses/\(UserRepository.shared.Xtenantid ?? "")/logo"
     }
     
     var method: HTTPMethod {

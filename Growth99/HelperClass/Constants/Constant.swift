@@ -25,7 +25,7 @@ struct Constant {
         static let firstNameEmptyError = "First Name is required."
         static let chatQuestionnaireNameEmptyError = "Chat Questionnaire Name is required."
         static let chatQuestionnaireURLInvalidError = "refrence link is invalid"
-
+        
         static let firstNameInvalidError = "First Name is Invalid."
         static let lastNameInvalidError = "Last Name is Invalid."
         static let invalidURLError = "Please enter the URL in correct format"
@@ -33,7 +33,7 @@ struct Constant {
         static let lastNameEmptyError = "Last Name is required."
         static let userFiledEmptyError = "Please select user"
         static let statusFiledEmptyError = "Please select status"
-
+        
         static let phoneNumberEmptyError = "Phone number is required."
         static let phoneNumberInvalidError = "Phone number is Invalid"
         static let businessnameEmptyError = "Business name is required."
@@ -220,5 +220,5 @@ struct Constant {
         static let emptyEventsTableViewCell = "EmptyEventsTableViewCell"
         static let calenderViewController = "CalenderViewController"
         static let massEmailandSMSDetailVC = "MassEmailandSMSDetailViewController"
-    }    
+    }
 }

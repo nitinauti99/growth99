@@ -104,7 +104,7 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource,
             } else {
                 self.clinicsListTableView.restore()
             }
-            return viewModel?.getClinicsListData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)}).count ?? 0
+            return viewModel?.getClinicsListData.count ?? 0
         }
     }
     

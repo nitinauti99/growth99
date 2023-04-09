@@ -14,7 +14,7 @@ enum MediaImage {
 extension MediaImage: Requestable {
     
     var baseURL: String {
-        "https://api.growthemr.com/api/"
+        EndPoints.baseURL
     }
     
     var headerFields: [HTTPHeader]? {
@@ -27,7 +27,7 @@ extension MediaImage: Requestable {
     }
     
     var path: String {
-        "socialMedia/library"
+        "/socialMedia/library"
     }
     
     var method: HTTPMethod {

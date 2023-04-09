@@ -26,7 +26,7 @@ class User {
     private static let bussinessId = "bussinessId"
     private static let subDomainName = "subDomainName"
     private static let screenTitle = "screenTitle"
-    
+    private static let selectedServiceId = "selectedServiceId"
 
     var authToken: String? {
         get {
@@ -184,6 +184,15 @@ class User {
         }
     }
     
+    var selectedServiceId: Int? {
+         get {
+             KeychainWrapper.standard.integer(forKey: User.selectedServiceId)
+         }
+         set {
+             applyNewValueInKeyChain(value: newValue, key: User.selectedServiceId)
+         }
+     }
+    
     func removKeyChainValues() {
         KeychainWrapper.standard.removeObject(forKey: User.authToken)
         KeychainWrapper.standard.removeObject(forKey: User.firstName)
@@ -199,6 +208,7 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.bussinessName)
         KeychainWrapper.standard.removeObject(forKey: User.bussinessId)
         KeychainWrapper.standard.removeObject(forKey: User.screenTitle)
+        KeychainWrapper.standard.removeObject(forKey: User.selectedServiceId)
     }
 
     private func applyNewValueInKeyChain(value: Any?, key: String) {
