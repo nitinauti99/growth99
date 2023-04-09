@@ -15,13 +15,13 @@ protocol ClinicsDetailListVCProtocol: AnyObject {
 }
 
 class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol, UITextFieldDelegate, UITextViewDelegate {
-
+    
     @IBOutlet private weak var clinicNameTextField: CustomTextField!
     @IBOutlet private weak var contactNumberTextField: CustomTextField!
     @IBOutlet private weak var timeZoneTextField: CustomTextField!
     @IBOutlet private weak var addressField: CustomTextField!
     @IBOutlet private weak var aboutClinicTextView: UITextView!
-
+    
     @IBOutlet private weak var notificationEmailTextField: CustomTextField!
     @IBOutlet private weak var countryCodeTextField: CustomTextField!
     @IBOutlet private weak var notificationSmsTextField: CustomTextField!
@@ -29,7 +29,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBOutlet private weak var websiteURLTextField: CustomTextField!
     @IBOutlet private weak var appointmentURLTextField: CustomTextField!
     @IBOutlet private weak var giftCardTextView: UITextView!
-
+    
     @IBOutlet private weak var giftcardURLTextField: CustomTextField!
     @IBOutlet private weak var instagramURLTextField: CustomTextField!
     @IBOutlet private weak var twitterURLTextField: CustomTextField!
@@ -38,35 +38,35 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBOutlet private weak var mondayBtn: UIButton!
     @IBOutlet private weak var mondayStartTimeTF: CustomTextField!
     @IBOutlet private weak var mondayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var tuesdayBtn: UIButton!
     @IBOutlet private weak var tuesdayStartTimeTF: CustomTextField!
     @IBOutlet private weak var tuesdayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var wednesdayBtn: UIButton!
     @IBOutlet private weak var wednesdayStartTimeTF: CustomTextField!
     @IBOutlet private weak var wednesdayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var thursdayBtn: UIButton!
     @IBOutlet private weak var thursdayStartTimeTF: CustomTextField!
     @IBOutlet private weak var thursdayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var fridayBtn: UIButton!
     @IBOutlet private weak var fridayStartTimeTF: CustomTextField!
     @IBOutlet private weak var fridayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var saturdayBtn: UIButton!
     @IBOutlet private weak var saturdayStartTimeTF: CustomTextField!
     @IBOutlet private weak var saturdayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var sundayBtn: UIButton!
     @IBOutlet private weak var sundayStartTimeTF: CustomTextField!
     @IBOutlet private weak var sundayEndTimeTF: CustomTextField!
-
+    
     @IBOutlet private weak var onlineLinkWithoutURLView: UIView!
     @IBOutlet private weak var onlineLinkWithURLView: UIView!
     @IBOutlet private weak var onlineLinkWithURLTextView: UITextView!
-
+    
     var clinicId: Int?
     var screenTitle: String = String.blank
     var dateFormater: DateFormaterProtocol?
@@ -74,7 +74,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     var viewModel: ClinicsDetailListViewModelProtocol?
     var businessHours = [BusinessHoursAccount]()
     var httpMethodType: HTTPMethod = .POST
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ClinicsDetailListViewModel(delegate: self)
@@ -82,7 +82,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         setupUI()
         dateFormater = DateFormater()
         getSelectedClinicsList()
-       
+        
         mondayStartTimeTF.tintColor = .clear
         mondayEndTimeTF.tintColor = .clear
         tuesdayStartTimeTF.tintColor = .clear
@@ -172,7 +172,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         self.view.ShowSpinner()
         viewModel?.getselectedClinicDetail(clinicId: clinicId ?? 0)
     }
-
+    
     func setUpNavigationBar() {
         self.title = screenTitle
     }
@@ -185,17 +185,19 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     }
     
     @IBAction func cancelButton(sender: UIButton) {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
-
+    
     func clinicUpdateReceived(responeMessage: String) {
         self.view.HideSpinner()
         if responeMessage == Constant.Profile.editClinic {
-            self.view.showToast(message: "Clinic details updated sucessfully", color: .black)
+            self.view.showToast(message: "Clinic details updated sucessfully", color: UIColor().successMessageColor())
         } else {
-            self.view.showToast(message: "Clinic created sucessfully", color: .black)
+            self.view.showToast(message: "Clinic created sucessfully", color: UIColor().successMessageColor())
         }
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     @IBAction func timeZoneSelectionButton(sender: UIButton) {
         if timeZoneList?.count == 0 {
@@ -215,9 +217,9 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     }
     
     @IBAction func countrySelectionButton(sender: UIButton) {
-       startPicker()
+        startPicker()
     }
-
+    
     private func startPicker() {
         let countryPicker = CountryPickerViewController()
         countryPicker.title = "Select Country Code"
@@ -233,7 +235,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.currencyTextField.text = selectedItem
-         }
+        }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(currencyArray.count * 30))), arrowDirection: .up), from: self)
@@ -301,7 +303,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             tuesdayStartTimeTF.text = dateFormater?.utcToLocalAccounts(timeString: filteredTuesdayArray?.first?.openHour ?? String.blank)
             tuesdayEndTimeTF.text = dateFormater?.utcToLocalAccounts(timeString: filteredTuesdayArray?.first?.closeHour ?? String.blank)
         }
-
+        
         let filteredWednesdayArray = viewModel?.getClinicsListData?.businessHours?.filter{$0.dayOfWeek == "WEDNESDAY"}
         if filteredWednesdayArray?.count == 0 {
             wednesdayBtn.isSelected = false
@@ -356,8 +358,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             sundayStartTimeTF.text = dateFormater?.utcToLocalAccounts(timeString: filteredSundayArray?.first?.openHour ?? String.blank)
             sundayEndTimeTF.text = dateFormater?.utcToLocalAccounts(timeString: filteredSundayArray?.first?.closeHour ?? String.blank)
         }
-        
-        
     }
     
     func errorReceived(error: String) {
@@ -404,11 +404,11 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             contactNumberTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
-//        
-//        guard let contactNumber = contactNumberTextField.text, contactNumber.isValidMobile() else {
-//            contactNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-//            return
-//        }
+        //
+        //        guard let contactNumber = contactNumberTextField.text, contactNumber.isValidMobile() else {
+        //            contactNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+        //            return
+        //        }
         
         guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
             timeZoneTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
@@ -429,7 +429,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             notificationEmailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
-
+        
         guard let countryCode = countryCodeTextField.text, !countryCode.isEmpty else {
             countryCodeTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
@@ -440,67 +440,67 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             return
         }
         
-       /* guard let websiteURL = websiteURLTextField.text, websiteURL.validateUrl() else {
-            websiteURLTextField.showError(message: "website URL is invalid.")
-            return
-        }
-        
-        guard let appointmentURL = appointmentURLTextField.text, appointmentURL.validateUrl() else {
-            appointmentURLTextField.showError(message: "Appointment URL is invalid.")
-            return
-        }
-        
-        guard let giftcardURL = instagramURLTextField.text, giftcardURL.validateUrl() else {
-            giftcardURLTextField.showError(message: "Giftcard URL is invalid.")
-            return
-        }
-        
-        guard let instagramURL = instagramURLTextField.text, instagramURL.validateUrl() else {
-            instagramURLTextField.showError(message: "Instagram URL is invalid.")
-            return
-        }
-        
-        guard let twitterURL = twitterURLTextField.text, twitterURL.validateUrl() else {
-            twitterURLTextField.showError(message: "Twitter URL is invalid.")
-            return
-        }
-        
-        guard let paymentLinkURL = paymentLinkTextField.text, paymentLinkURL.validateUrl() else {
-            paymentLinkTextField.showError(message: "PaymentLink URL is invalid.")
-            return
-        }*/
+        /* guard let websiteURL = websiteURLTextField.text, websiteURL.validateUrl() else {
+         websiteURLTextField.showError(message: "website URL is invalid.")
+         return
+         }
+         
+         guard let appointmentURL = appointmentURLTextField.text, appointmentURL.validateUrl() else {
+         appointmentURLTextField.showError(message: "Appointment URL is invalid.")
+         return
+         }
+         
+         guard let giftcardURL = instagramURLTextField.text, giftcardURL.validateUrl() else {
+         giftcardURLTextField.showError(message: "Giftcard URL is invalid.")
+         return
+         }
+         
+         guard let instagramURL = instagramURLTextField.text, instagramURL.validateUrl() else {
+         instagramURLTextField.showError(message: "Instagram URL is invalid.")
+         return
+         }
+         
+         guard let twitterURL = twitterURLTextField.text, twitterURL.validateUrl() else {
+         twitterURLTextField.showError(message: "Twitter URL is invalid.")
+         return
+         }
+         
+         guard let paymentLinkURL = paymentLinkTextField.text, paymentLinkURL.validateUrl() else {
+         paymentLinkTextField.showError(message: "PaymentLink URL is invalid.")
+         return
+         }*/
         
         if mondayBtn.isSelected {
             businessHours.append(BusinessHoursAccount(dayOfWeek: "MONDAY", openHour: dateFormater?.localToServerWithDate(date: mondayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: mondayEndTimeTF.text ?? String.blank)))
         }
         
         if tuesdayBtn.isSelected {
-           businessHours.append(BusinessHoursAccount(dayOfWeek: "TUESDAY", openHour: dateFormater?.localToServerWithDate(date: tuesdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: tuesdayEndTimeTF.text ?? String.blank)))
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "TUESDAY", openHour: dateFormater?.localToServerWithDate(date: tuesdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: tuesdayEndTimeTF.text ?? String.blank)))
         }
         
         if wednesdayBtn.isSelected {
-           businessHours.append(BusinessHoursAccount(dayOfWeek: "WEDNESDAY", openHour: dateFormater?.localToServerWithDate(date: wednesdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: wednesdayEndTimeTF.text ?? String.blank)))
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "WEDNESDAY", openHour: dateFormater?.localToServerWithDate(date: wednesdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: wednesdayEndTimeTF.text ?? String.blank)))
         }
         
         if thursdayBtn.isSelected {
-           businessHours.append(BusinessHoursAccount(dayOfWeek: "THURSDAY", openHour: dateFormater?.localToServerWithDate(date: thursdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: thursdayEndTimeTF.text ?? String.blank)))
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "THURSDAY", openHour: dateFormater?.localToServerWithDate(date: thursdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: thursdayEndTimeTF.text ?? String.blank)))
         }
         
         if fridayBtn.isSelected {
-           businessHours.append(BusinessHoursAccount(dayOfWeek: "FRIDAY", openHour: dateFormater?.localToServerWithDate(date: fridayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: fridayEndTimeTF.text ?? String.blank)))
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "FRIDAY", openHour: dateFormater?.localToServerWithDate(date: fridayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: fridayEndTimeTF.text ?? String.blank)))
         }
         
         if saturdayBtn.isSelected {
-           businessHours.append(BusinessHoursAccount(dayOfWeek: "SATURDAY", openHour: dateFormater?.localToServerWithDate(date: saturdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: saturdayEndTimeTF.text ?? String.blank)))
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "SATURDAY", openHour: dateFormater?.localToServerWithDate(date: saturdayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: saturdayEndTimeTF.text ?? String.blank)))
         }
         
         if sundayBtn.isSelected {
-           businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
+            businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
         }
         
         let params = ClinicParamModel(name: clinicName, contactNumber: contactNumber, address: address, notificationEmail: notificationEmail, notificationSMS: notificationSmsTextField.text, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, countryCode: countryCode, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
         let parameters: [String: Any]  = params.toDict()
-
+        
         if self.title == Constant.Profile.createClinic {
             httpMethodType = .POST
         } else {

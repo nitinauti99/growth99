@@ -478,11 +478,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             return
         }
         
-        guard let serviceUrl = serviceUrlTextField.text, serviceUrl.validateUrl() else {
-            serviceUrlTextField.showError(message: "Service URL is invalid.")
-            return
-        }
-        
         self.view.ShowSpinner()
         
         if self.title == Constant.Profile.createService {
@@ -495,7 +490,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
                                                    durationInMinutes: Int(serviceDuration) ?? 0,
                                                    serviceCost: Int(serviceCost) ?? 0,
                                                    description: serviceDescTextView.text ?? String.blank,
-                                                   serviceURL: serviceUrl,
+                                                   serviceURL: "",
                                                    consentIds: selectedConsentIds,
                                                    questionnaireIds: selectedQuestionnairesIds,
                                                    clinicIds: selectedClincIds,
