@@ -62,5 +62,5 @@ struct QuestionnaireId : Codable {
     let description : String?
     let subHeading : String?
     let backgroundImageUrl : String?
-    let showLogo : String?
+    let showLogo : Bool?
 }

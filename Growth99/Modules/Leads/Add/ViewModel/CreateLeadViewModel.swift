@@ -118,40 +118,5 @@ extension CreateLeadViewModel: CreateLeadViewModelProtocol {
         let textFieldValidation = NSPredicate(format:"SELF MATCHES %@", regex)
         return textFieldValidation.evaluate(with: textField)
     }
-    
-    func isValidFirstName(_ firstName: String) -> Bool {
-        if firstName.count > 0 {
-            return true
-        }
-        return false
-    }
-    
-    func isValidLastName(_ lastName: String) -> Bool {
-        if lastName.count > 0 {
-            return true
-        }
-        return false
-    }
-    
-    func isValidMessage(_ message: String) -> Bool {
-        if message.count > 0 {
-            return true
-        }
-        return false
-    }
-    
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
-    }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
 
 }

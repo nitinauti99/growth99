@@ -46,6 +46,7 @@
 		01152E3A29B3C64000B24627 /* CombineTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152E3929B3C64000B24627 /* CombineTimeLineViewController.storyboard */; };
 		01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */; };
 		01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */; };
+		0131D32929E46DB7009D11C1 /* EditLeadViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131D32829E46DB7009D11C1 /* EditLeadViewController+UITextField.swift */; };
 		013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */; };
 		013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */; };
 		013A4F9929B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */; };
@@ -931,6 +932,7 @@
 		01152E3929B3C64000B24627 /* CombineTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CombineTimeLineViewController.storyboard; sourceTree = "<group>"; };
 		01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineViewModel.swift; sourceTree = "<group>"; };
 		01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineModel.swift; sourceTree = "<group>"; };
+		0131D32829E46DB7009D11C1 /* EditLeadViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditLeadViewController+UITextField.swift"; sourceTree = "<group>"; };
 		013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
 		013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
 		013A4F9829B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadHistoryViewController+SearchBar.swift"; sourceTree = "<group>"; };
@@ -4404,6 +4406,7 @@
 			children = (
 				84D062B32967080E001FE469 /* EditLeadViewController.swift */,
 				84D062B42967080E001FE469 /* EditLeadViewController.storyboard */,
+				0131D32829E46DB7009D11C1 /* EditLeadViewController+UITextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7486,6 +7489,7 @@
 				DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */,
 				01DBA9A129C5C4E700CBA51D /* LabelsViewController+SearchBar.swift in Sources */,
 				01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */,
+				0131D32929E46DB7009D11C1 /* EditLeadViewController+UITextField.swift in Sources */,
 				01684C4A29BDC18300DE1041 /* ChatSessionBotTableViewCell.swift in Sources */,
 				01EBAC8129B5A93200110DCB /* LeadSourceUrlAddViewModel.swift in Sources */,
 				01468E3F29C1F2C9002BDC1F /* leadDetailViewController+EmailTemplate.swift in Sources */,

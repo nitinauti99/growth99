@@ -10,7 +10,7 @@ import Foundation
 
 struct DisplayQuestionnaireModel: Codable{
     let id : Int?
-    let showLogo : Int?
+    let showLogo : Bool?
     let questionnaireName: String?
     let patientQuestionAnswers: [PatientQuestionAnswers]?
 }

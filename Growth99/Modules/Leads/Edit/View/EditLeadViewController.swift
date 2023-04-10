@@ -49,10 +49,9 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     
     func LeadDataRecived() {
         viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammountTextField.text ?? String.blank) ?? 0)
-        do {
-           sleep(5)
-        }
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
         viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
     }
     
@@ -63,7 +62,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
    private func setUpUI() {
@@ -107,15 +106,6 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             return
         }
         
-        guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.CreateLead.emailEmptyError)
-            return
-        }
-        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.CreateLead.emailInvalidError)
-            return
-        }
-        
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
             phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberEmptyError)
             return
@@ -126,6 +116,15 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
             return
         }
         
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailTextField.showError(message: Constant.CreateLead.emailEmptyError)
+            return
+        }
+        guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
+            emailTextField.showError(message: Constant.CreateLead.emailInvalidError)
+            return
+        }
+                
         guard let ammount = ammountTextField.text, !ammount.isEmpty else {
             ammountTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
             return
@@ -135,3 +134,5 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
         viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phoneNumber: phoneNumberTextField.text ?? String.blank, leadStatus: leadStatusTextField.text ?? String.blank)
      }
 }
+
+

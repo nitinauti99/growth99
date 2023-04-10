@@ -17,13 +17,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="418" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xO2-kl-8gX" userLabel="userName">
-                        <rect key="frame" x="20" y="15" width="368" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xO2-kl-8gX" userLabel="userName">
+                        <rect key="frame" x="20" y="15" width="43.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="63p-7z-316"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                        <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Name">
+                                <attributes>
+                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <font key="NSFont" size="15" name="AvenirNext-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dLI-ce-Fkb" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -38,14 +45,29 @@
                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="textFieldDidChange:" destination="KGk-i7-Jjw" eventType="editingChanged" id="tVW-Mz-6xi"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="Zcc-Vh-eSY"/>
+                        </connections>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQt-gY-3aT">
+                        <rect key="frame" x="67" y="15" width="8" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="OQE-JB-AaJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xO2-kl-8gX" firstAttribute="trailing" secondItem="dLI-ce-Fkb" secondAttribute="trailing" id="0xe-is-2Bd"/>
                     <constraint firstItem="dLI-ce-Fkb" firstAttribute="top" secondItem="xO2-kl-8gX" secondAttribute="bottom" constant="6" id="6l3-0a-If9"/>
                     <constraint firstAttribute="bottom" secondItem="dLI-ce-Fkb" secondAttribute="bottom" constant="15" id="A8a-sV-taR"/>
+                    <constraint firstItem="eQt-gY-3aT" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="dLI-ce-Fkb" secondAttribute="trailing" id="Slc-yP-FdZ"/>
                     <constraint firstItem="dLI-ce-Fkb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="ZVE-8Q-jun"/>
+                    <constraint firstItem="eQt-gY-3aT" firstAttribute="leading" secondItem="xO2-kl-8gX" secondAttribute="trailing" constant="3.5" id="cho-M6-cE2"/>
                     <constraint firstItem="xO2-kl-8gX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ed1-qc-Emv"/>
+                    <constraint firstItem="eQt-gY-3aT" firstAttribute="top" secondItem="xO2-kl-8gX" secondAttribute="top" id="tXz-WD-2af"/>
                     <constraint firstItem="dLI-ce-Fkb" firstAttribute="leading" secondItem="xO2-kl-8gX" secondAttribute="leading" constant="10" id="xG0-3D-daX"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dLI-ce-Fkb" secondAttribute="trailing" constant="10" id="zKR-4s-5Nw"/>
                 </constraints>
@@ -55,7 +77,7 @@
                 <outlet property="inputeTypeTextField" destination="dLI-ce-Fkb" id="bMh-K9-9jY"/>
                 <outlet property="questionnaireName" destination="xO2-kl-8gX" id="eUd-ge-Kjw"/>
             </connections>
-            <point key="canvasLocation" x="200.00000000000003" y="82.700892857142847"/>
+            <point key="canvasLocation" x="200.00000000000003" y="82.03125"/>
         </tableViewCell>
     </objects>
     <designables>

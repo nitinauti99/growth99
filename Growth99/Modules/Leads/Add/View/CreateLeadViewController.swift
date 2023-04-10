@@ -15,26 +15,16 @@ protocol CreateLeadViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
 }
 
-class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtocol ,LeadMultipleSelectionWithDropDownTypeTableViewCellDelegate{
+class CreateLeadViewController: UIViewController{
 
     @IBOutlet weak var submitButton : UIButton!
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
     @IBOutlet weak var tableView : UITableView!
-    @IBOutlet weak var customViewHight : NSLayoutConstraint!
     
     var viewModel: CreateLeadViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
-    var buttons = [UIButton]()
-    var patientQuestionList = [PatientQuestionAnswersList]()
-   
-    var listArray = [PatientQuestionChoices]()
-    
-    private lazy var inputTypeTextField: CustomTextField = {
-        let textField = CustomTextField()
-        return textField
-    }()
-    
+
     private var tableViewHeight: CGFloat {
         tableView.layoutIfNeeded()
         return tableView.contentSize.height
@@ -49,6 +39,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.title = "Create Lead"
         self.view.ShowSpinner()
         self.viewModel?.getQuestionnaireId()
     }
@@ -73,49 +64,7 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
         
         tableView.register(UINib(nibName: "LeadMultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
     }
-    
-    /// api Call
-    func QuestionnaireIdRecived() {
-        viewModel?.getQuestionnaireList()
-    }
-    
-    /// recvied QuestionnaireList
-    func QuestionnaireListRecived() {
-        view.HideSpinner()
-        self.tableView.reloadData()
-        customViewHight.constant = tableViewHeight + 320
-    }
-    
-    // show drop down list
-    func showDropDownQuestionchoice(cell: LeadMultipleSelectionWithDropDownTypeTableViewCell, index: IndexPath) {
-        let questionarieVM = viewModel?.getLeadQuestionnaireListAtIndex(index: index.row)
-        let patientQuestionChoices = questionarieVM?.patientQuestionChoices ?? []
-
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: patientQuestionChoices, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.choiceName?.components(separatedBy: " ").first
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
-            cell.dropDownTypeTextField.text = selectedItem?.choiceName
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.show(style: .popover(sourceView: cell.dropDownButton, size: CGSize(width: cell.dropDownButton.frame.width, height: (Double(patientQuestionChoices.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    ///  created Lead on existing datanaviagte to lead list
-    func LeadDataRecived() {
-        view.HideSpinner()
-        do {
-            sleep(5)
-        }
-        self.dismiss(animated: true)
-        NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
-    }
-    
-    func errorReceived(error: String) {
-        view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
+        
     @IBAction func closeButtonClicked() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -291,13 +240,49 @@ class CreateLeadViewController: UIViewController, CreateLeadViewControllerProtoc
     }
 }
 
-extension CreateLeadViewController: UIScrollViewDelegate {
+extension CreateLeadViewController: CreateLeadViewControllerProtocol {
+    /// api Call
+    func QuestionnaireIdRecived() {
+        viewModel?.getQuestionnaireList()
+    }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 320
+    /// recvied QuestionnaireList
+    func QuestionnaireListRecived() {
+        view.HideSpinner()
+        self.tableView.reloadData()
+        //customViewHight.constant = tableViewHeight + 320
     }
 
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 320
+    
+    ///  created Lead on existing datanaviagte to lead list
+    func LeadDataRecived() {
+        view.HideSpinner()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
+        NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
     }
+    
+    func errorReceived(error: String) {
+        view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
+    }
+}
+
+extension CreateLeadViewController: LeadMultipleSelectionWithDropDownTypeTableViewCellDelegate {
+    // show drop down list
+    func showDropDownQuestionchoice(cell: LeadMultipleSelectionWithDropDownTypeTableViewCell, index: IndexPath) {
+        let questionarieVM = viewModel?.getLeadQuestionnaireListAtIndex(index: index.row)
+        let patientQuestionChoices = questionarieVM?.patientQuestionChoices ?? []
+
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: patientQuestionChoices, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.choiceName?.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
+            cell.dropDownTypeTextField.text = selectedItem?.choiceName
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.show(style: .popover(sourceView: cell.dropDownButton, size: CGSize(width: cell.dropDownButton.frame.width, height: (Double(patientQuestionChoices.count * 44))), arrowDirection: .up), from: self)
+    }
+    
 }

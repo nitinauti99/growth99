@@ -79,6 +79,9 @@
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.4935217851" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="LiA-x0-YEe"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyF-sz-XS9" userLabel="userName">
                                                         <rect key="frame" x="25" y="106" width="340" height="20"/>
@@ -101,6 +104,10 @@
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="bY5-Bt-dq9"/>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="d5m-6B-dDv"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kR-2C-XKL" userLabel="password">
                                                         <rect key="frame" x="25" y="192" width="340" height="20"/>
@@ -123,6 +130,10 @@
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="vvt-ke-7DE"/>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="V1J-fe-e8R"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hb-dE-uUY" userLabel="userName">
                                                         <rect key="frame" x="25" y="278" width="340" height="20"/>
@@ -145,6 +156,10 @@
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="thI-As-lKx"/>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="Joy-od-6bp"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEf-ug-FVU" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                         <rect key="frame" x="25" y="390" width="340" height="45"/>
@@ -158,6 +173,10 @@
                                                                 <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="0.48631488719999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="kEO-AO-zTU"/>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="ThV-cG-5Xp"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCd-Zp-6x2" userLabel="password">
                                                         <rect key="frame" x="25" y="364" width="340" height="20"/>

@@ -17,10 +17,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="384" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRY-vi-fJj" userLabel="userName">
-                        <rect key="frame" x="20" y="15" width="334" height="20"/>
-                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                        <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRY-vi-fJj" userLabel="userName">
+                        <rect key="frame" x="20" y="15" width="31" height="20"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Dob">
+                                <attributes>
+                                    <color key="NSColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="15" name="AvenirNext-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSy-Gn-zdm" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99">
@@ -39,13 +46,24 @@
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="Bm8-1N-XXU"/>
                         </connections>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCs-95-UhW">
+                        <rect key="frame" x="53" y="15" width="8" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="HQi-kn-8Xb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="YSy-Gn-zdm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="4FW-5d-FSl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="YSy-Gn-zdm" secondAttribute="trailing" constant="10" id="J2d-8z-F9k"/>
-                    <constraint firstItem="ZRY-vi-fJj" firstAttribute="trailing" secondItem="YSy-Gn-zdm" secondAttribute="trailing" id="L4g-BC-Wla"/>
+                    <constraint firstItem="zCs-95-UhW" firstAttribute="top" secondItem="ZRY-vi-fJj" secondAttribute="top" id="L5O-Vo-mVQ"/>
+                    <constraint firstItem="zCs-95-UhW" firstAttribute="leading" secondItem="ZRY-vi-fJj" secondAttribute="trailing" constant="2" id="MdL-TZ-09f"/>
                     <constraint firstItem="ZRY-vi-fJj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="WfS-ff-NDV"/>
                     <constraint firstItem="YSy-Gn-zdm" firstAttribute="top" secondItem="ZRY-vi-fJj" secondAttribute="bottom" constant="6" id="YAx-2p-Yuq"/>
+                    <constraint firstItem="zCs-95-UhW" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="YSy-Gn-zdm" secondAttribute="trailing" id="jSW-Mo-x9i"/>
                     <constraint firstItem="ZRY-vi-fJj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pQa-PT-Da9"/>
                     <constraint firstAttribute="bottom" secondItem="YSy-Gn-zdm" secondAttribute="bottom" constant="19" id="zZh-RJ-DDl"/>
                 </constraints>
@@ -55,12 +73,12 @@
                 <outlet property="dateTypeTextField" destination="YSy-Gn-zdm" id="IkA-S6-xC4"/>
                 <outlet property="questionnaireName" destination="ZRY-vi-fJj" id="jio-TS-IWX"/>
             </connections>
-            <point key="canvasLocation" x="184.05797101449278" y="73.325892857142847"/>
+            <point key="canvasLocation" x="184.05797101449278" y="72.65625"/>
         </tableViewCell>
     </objects>
     <designables>
         <designable name="YSy-Gn-zdm">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
     </designables>
 </document>

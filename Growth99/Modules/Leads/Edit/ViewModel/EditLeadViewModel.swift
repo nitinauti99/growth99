@@ -12,11 +12,12 @@ protocol EditLeadViewModelProtocol {
     func updateLeadAmmount(questionnaireId: Int, ammount: Int)
     func getLeadList(page: Int, size: Int, statusFilter: String, sourceFilter: String, search: String, leadTagFilter: String)
     func leadDataAtIndex(index: Int) -> leadListModel
-    func isValidEmail(_ email: String) -> Bool
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+   
     func isValidFirstName(_ firstName: String) -> Bool
-    func isValidLastName(_ lastName: String) -> Bool
-    func isValidMessage(_ message: String) -> Bool
+    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    func isValidEmail(_ email: String) -> Bool
+    func isValidAmmount(_ ammount: String) -> Bool
+   
     var leadUserData: [leadListModel]? { get }
 }
 
@@ -118,39 +119,28 @@ extension EditLeadViewModel: EditLeadViewModelProtocol {
         return self.leadData
     }
     
-    func isValidFirstName(_ firstName: String) -> Bool {
-        if firstName.count > 0 {
-            return true
-        }
-        return false
-    }
-    
-    func isValidLastName(_ lastName: String) -> Bool {
-        if lastName.count > 0 {
-            return true
-        }
-        return false
-    }
-    
-    func isValidMessage(_ message: String) -> Bool {
-        if message.count > 0 {
-            return true
-        }
-        return false
-    }
-    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
+        let regex = Constant.Regex.phone
+        let isPhoneNo = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isPhoneNo.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
+        let emailRegEx = Constant.Regex.email
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    
+    func isValidFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
+    func isValidAmmount(_ ammount: String) -> Bool {
+        let regex = Constant.Regex.number
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: ammount)
     }
 
 }
