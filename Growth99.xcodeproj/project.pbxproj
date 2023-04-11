@@ -850,6 +850,9 @@
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
+		DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */; };
+		DA0C735C29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */; };
+		DA0C735E29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */; };
 		DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45787029707F9F00CE458B /* GRWebViewController.swift */; };
 		DA45787329707FA900CE458B /* GRWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA45787229707FA900CE458B /* GRWebViewController.storyboard */; };
 		DA4578772971325200CE458B /* ServicesListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578762971325200CE458B /* ServicesListDetailViewController.swift */; };
@@ -873,8 +876,6 @@
 		DAEF74A2299D532F009140AE /* TrackingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A1299D532F009140AE /* TrackingCodeViewController.swift */; };
 		DAEF74A4299D533B009140AE /* DataStudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A3299D533B009140AE /* DataStudioViewController.swift */; };
 		DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */; };
-		DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */; };
-		DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1753,6 +1754,9 @@
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
+		DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
+		DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController+TextField.swift"; sourceTree = "<group>"; };
+		DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClinicsListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA45787029707F9F00CE458B /* GRWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRWebViewController.swift; sourceTree = "<group>"; };
 		DA45787229707FA900CE458B /* GRWebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GRWebViewController.storyboard; sourceTree = "<group>"; };
 		DA4578762971325200CE458B /* ServicesListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListDetailViewController.swift; sourceTree = "<group>"; };
@@ -1776,8 +1780,6 @@
 		DAEF74A1299D532F009140AE /* TrackingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCodeViewController.swift; sourceTree = "<group>"; };
 		DAEF74A3299D533B009140AE /* DataStudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStudioViewController.swift; sourceTree = "<group>"; };
 		DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidMediaViewController.swift; sourceTree = "<group>"; };
-		DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndicationReportViewController.swift; sourceTree = "<group>"; };
-		DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSMSAuditViewController.swift; sourceTree = "<group>"; };
 		E506E9461890E5340262A1A3 /* Pods-Growth99-Growth99UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99-Growth99UITests.debug.xcconfig"; path = "Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Growth99UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF2EEEBEC58168C141CED376 /* Pods-Growth99Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99Tests.release.xcconfig"; path = "Target Support Files/Pods-Growth99Tests/Pods-Growth99Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99_Growth99UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4185,6 +4187,7 @@
 			isa = PBXGroup;
 			children = (
 				39F2FF1E2996B8020089BD4F /* AppointmentListDetailViewController.swift */,
+				DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */,
 				39F2FF202996B8110089BD4F /* AppointmentListDetailViewController.storyboard */,
 			);
 			path = View;
@@ -5760,8 +5763,6 @@
 				DAEF74A1299D532F009140AE /* TrackingCodeViewController.swift */,
 				DAEF74A3299D533B009140AE /* DataStudioViewController.swift */,
 				DAEF74A5299D5346009140AE /* PaidMediaViewController.swift */,
-				DAEF74A7299D5352009140AE /* SyndicationReportViewController.swift */,
-				DAEF74A9299D535E009140AE /* EmailSMSAuditViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5987,6 +5988,7 @@
 			isa = PBXGroup;
 			children = (
 				84D0618629670676001FE469 /* ChangePasswordViewController.swift */,
+				DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */,
 				84D0618729670676001FE469 /* ChangePasswordViewController.storyboard */,
 			);
 			path = ChangePassword;
@@ -6673,6 +6675,7 @@
 			isa = PBXGroup;
 			children = (
 				DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */,
+				DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */,
 				DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */,
 			);
 			path = DetailScreen;
@@ -7262,6 +7265,7 @@
 				84F610CF292A71AB00B1FB69 /* Locks.swift in Sources */,
 				84F61137292A71AB00B1FB69 /* Task.swift in Sources */,
 				842C0CD7298F75CE00395061 /* ConsentsTableViewCell.swift in Sources */,
+				DA0C735C29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift in Sources */,
 				848C92AD291F6AA000502956 /* RSSelectionMenuSearchDelegate.swift in Sources */,
 				84F61122292A71AB00B1FB69 /* URLRequest+Extension.swift in Sources */,
 				84D0623B29670677001FE469 /* PateintListModel.swift in Sources */,
@@ -7366,7 +7370,6 @@
 				01D9EBF829B8D2C80099761C /* DisplayQuestionnaireqsubmissionsViewContoller.swift in Sources */,
 				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
-				DAEF74A8299D5352009140AE /* SyndicationReportViewController.swift in Sources */,
 				18491DC029B80CE000FE72EF /* MassEmailandSMSViewController.swift in Sources */,
 				849D3AF72997CC72003E856A /* FontAwesomeStateRequirement.swift in Sources */,
 				DA45787129707F9F00CE458B /* GRWebViewController.swift in Sources */,
@@ -7393,6 +7396,7 @@
 				DAEF74A6299D5346009140AE /* PaidMediaViewController.swift in Sources */,
 				84BD33FD2994BB460050C0D8 /* EmailTemplatesListTableViewCell.swift in Sources */,
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
+				DA0C735E29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				1883F12C29C7571E0080997B /* UIStackView+Extension.swift in Sources */,
@@ -7482,6 +7486,7 @@
 				84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */,
 				84F610E0292A71AB00B1FB69 /* Optional.swift in Sources */,
 				39F2FF232996B8630089BD4F /* AppointmentListDetailViewModel.swift in Sources */,
+				DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
 				39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
@@ -7493,7 +7498,6 @@
 				189E3ED729C3916200B94190 /* LabelsViewModel.swift in Sources */,
 				01684C1E29BAECF200DE1041 /* ChatSessionListViewController+TableView.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
-				DAEF74AA299D535E009140AE /* EmailSMSAuditViewController.swift in Sources */,
 				01DBA9A129C5C4E700CBA51D /* LabelsViewController+SearchBar.swift in Sources */,
 				01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */,
 				0131D32929E46DB7009D11C1 /* EditLeadViewController+UITextField.swift in Sources */,

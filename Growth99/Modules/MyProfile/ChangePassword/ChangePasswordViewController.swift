@@ -17,15 +17,11 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     @IBOutlet weak var newPasswordTextField: CustomTextField!
     @IBOutlet weak var verifyPasswordTextField: CustomTextField!
     let user = UserRepository.shared
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = VerifyForgotPasswordViewModel(delegate: self)
         setUpNavigationBar()
-        oldPasswordTextField.text = "Password2@!"
-        newPasswordTextField.text = "Password3@!"
-        verifyPasswordTextField.text = "Password3@!"
     }
     
     func setUpNavigationBar() {
@@ -36,13 +32,15 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
     
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popToRootViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func savePasswordButton(sender: UIButton) {

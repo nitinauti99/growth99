@@ -29,7 +29,7 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
-
+    
     func getAddCategoriesList() {
         self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
             switch result {
@@ -92,7 +92,6 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
             switch result {
             case .success(let addResponse):
                 self.addCategoriesResponse = addResponse
-//                self.delegate?.editCategoriesResponse()
             case .failure(let error):
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)

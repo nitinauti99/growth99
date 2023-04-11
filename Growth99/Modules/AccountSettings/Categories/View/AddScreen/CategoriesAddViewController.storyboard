@@ -87,7 +87,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id1-B0-crS">
-                                        <rect key="frame" x="30" y="232.33333333333331" width="110" height="40"/>
+                                        <rect key="frame" x="120" y="262.33333333333331" width="110" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="rwu-bl-eIM"/>
@@ -107,7 +107,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsN-BU-1dV">
-                                        <rect key="frame" x="160" y="232.33333333333331" width="110" height="40"/>
+                                        <rect key="frame" x="250" y="262.33333333333331" width="110" height="40"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="AKv-Zt-iyQ"/>
@@ -143,6 +143,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="sXg-eh-pfY"/>
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="v0i-Qq-Rhi"/>
                                         </connections>
                                     </textField>
@@ -185,7 +186,7 @@
                                     <constraint firstItem="WCP-Yl-h96" firstAttribute="leading" secondItem="68o-vV-EaJ" secondAttribute="leading" id="9cN-ja-nle"/>
                                     <constraint firstItem="4Uu-Dq-PCd" firstAttribute="trailing" secondItem="bfM-di-qon" secondAttribute="trailing" id="EFx-R3-5Cl"/>
                                     <constraint firstItem="WCP-Yl-h96" firstAttribute="top" secondItem="bfM-di-qon" secondAttribute="bottom" constant="16" id="GMY-jX-GUp"/>
-                                    <constraint firstItem="Id1-B0-crS" firstAttribute="leading" secondItem="68o-vV-EaJ" secondAttribute="leading" id="KsL-60-NgA"/>
+                                    <constraint firstItem="UsN-BU-1dV" firstAttribute="top" secondItem="T0e-A0-BIM" secondAttribute="bottom" constant="70" id="L9M-dH-Xnl"/>
                                     <constraint firstItem="4Uu-Dq-PCd" firstAttribute="leading" secondItem="bfM-di-qon" secondAttribute="leading" id="RxK-bi-Ojg"/>
                                     <constraint firstItem="UsN-BU-1dV" firstAttribute="top" secondItem="Id1-B0-crS" secondAttribute="top" id="SXd-2T-jfQ"/>
                                     <constraint firstItem="bfM-di-qon" firstAttribute="top" secondItem="68o-vV-EaJ" secondAttribute="bottom" constant="10" id="WR8-sJ-9jO"/>
@@ -193,10 +194,10 @@
                                     <constraint firstItem="T0e-A0-BIM" firstAttribute="leading" secondItem="WCP-Yl-h96" secondAttribute="leading" constant="10" id="Y0X-tQ-6UD"/>
                                     <constraint firstItem="68o-vV-EaJ" firstAttribute="leading" secondItem="bQd-Av-l75" secondAttribute="leading" constant="30" id="i5C-Fi-Xau"/>
                                     <constraint firstItem="4Uu-Dq-PCd" firstAttribute="top" secondItem="bfM-di-qon" secondAttribute="top" id="l11-MW-1LK"/>
-                                    <constraint firstItem="Id1-B0-crS" firstAttribute="top" secondItem="T0e-A0-BIM" secondAttribute="bottom" constant="40" id="mgg-Fs-0mG"/>
                                     <constraint firstItem="bfM-di-qon" firstAttribute="leading" secondItem="68o-vV-EaJ" secondAttribute="leading" constant="10" id="sGm-r1-Yhf"/>
                                     <constraint firstItem="bfM-di-qon" firstAttribute="trailing" secondItem="68o-vV-EaJ" secondAttribute="trailing" constant="10" id="swf-q3-0Sk"/>
                                     <constraint firstItem="UsN-BU-1dV" firstAttribute="leading" secondItem="Id1-B0-crS" secondAttribute="trailing" constant="20" id="sxt-gT-jWh"/>
+                                    <constraint firstItem="UsN-BU-1dV" firstAttribute="trailing" secondItem="68o-vV-EaJ" secondAttribute="trailing" id="uUQ-gy-wk2"/>
                                     <constraint firstItem="T0e-A0-BIM" firstAttribute="trailing" secondItem="WCP-Yl-h96" secondAttribute="trailing" constant="10" id="vpN-pu-hLB"/>
                                     <constraint firstItem="4Uu-Dq-PCd" firstAttribute="bottom" secondItem="bfM-di-qon" secondAttribute="bottom" id="z8q-g8-nNY"/>
                                     <constraint firstItem="T0e-A0-BIM" firstAttribute="top" secondItem="WCP-Yl-h96" secondAttribute="bottom" constant="10" id="zDh-7R-sdA"/>

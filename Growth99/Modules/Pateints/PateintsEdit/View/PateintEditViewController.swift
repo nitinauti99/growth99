@@ -27,7 +27,7 @@ class PateintEditViewController: UIViewController {
     @IBOutlet weak var stateTextField: CustomTextField!
     @IBOutlet weak var countryTextField: CustomTextField!
     @IBOutlet weak var zipCodeTextField: CustomTextField!
-        @IBOutlet weak var createdAtTextField: CustomTextField!
+    @IBOutlet weak var createdAtTextField: CustomTextField!
     @IBOutlet weak var pateintListTableView: UITableView!
     @IBOutlet weak var noteTextView: CustomTextView!
     
@@ -49,7 +49,7 @@ class PateintEditViewController: UIViewController {
         dateTextField.text = self.dateFormater?.dateFormatterStringBirthDate(textField: dateTextField)
     }
     
-    func setUPUI(){
+    func setUPUI() {
         let item = viewModel?.getPateintEditData
         self.firsNameTextField.text = item?.firstName
         self.lastNameTextField.text = item?.lastName
@@ -133,7 +133,7 @@ class PateintEditViewController: UIViewController {
     }
 }
 
-extension PateintEditViewController: PateintEditViewControllerProtocol{
+extension PateintEditViewController: PateintEditViewControllerProtocol {
    
     func pateintCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()

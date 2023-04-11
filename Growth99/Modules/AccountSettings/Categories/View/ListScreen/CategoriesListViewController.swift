@@ -67,13 +67,12 @@ class CategoriesListViewController: UIViewController, CategoriesListViewContolle
     
     func CategoriesDataRecived() {
         self.view.HideSpinner()
-        self.categoriesListTableView.setContentOffset(.zero, animated: true)
         self.categoriesListTableView.reloadData()
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
 

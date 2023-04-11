@@ -12,16 +12,16 @@ protocol BusinessProfileViewControllerProtocol {
     func saveBusinessDetailReceived(responseMessage: String)
 }
 
-class BusinessProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, BusinessProfileViewControllerProtocol {
-   
+class BusinessProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, BusinessProfileViewControllerProtocol, UITextFieldDelegate {
+    
     @IBOutlet private weak var nameTextField: CustomTextField!
     @IBOutlet private weak var businessImageView: UIImageView!
     @IBOutlet private weak var businessNoteImageView: UIImageView!
-
+    
     var viewModel: BusinessProfileViewModelProtocol?
     var bussinessInfoData: BusinessSubDomainModel?
     let user = UserRepository.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -54,7 +54,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         imagePickerController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         present(imagePickerController, animated: true, completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         businessImageView.image  = selectedImage
@@ -73,5 +73,36 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         }
         self.view.ShowSpinner()
         viewModel?.saveBusinessInfo(name: name, trainingBusiness: false)
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        if textField == nameTextField {
+            guard let textField = nameTextField.text, !textField.isEmpty else {
+                nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+                return
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == nameTextField {
+            guard let textField = nameTextField.text, !textField.isEmpty else {
+                nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+                return
+            }
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = Int()
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+        currentString.replacingCharacters(in: range, with: string) as NSString
+        if textField == nameTextField {
+            maxLength = 30
+            nameTextField.hideError()
+            return newString.length <= maxLength
+        }
+        return true
     }
 }

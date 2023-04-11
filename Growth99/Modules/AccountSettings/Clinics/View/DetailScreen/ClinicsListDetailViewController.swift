@@ -14,58 +14,58 @@ protocol ClinicsDetailListVCProtocol: AnyObject {
     func errorReceived(error: String)
 }
 
-class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol, UITextFieldDelegate, UITextViewDelegate {
+class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProtocol, UITextViewDelegate {
     
-    @IBOutlet private weak var clinicNameTextField: CustomTextField!
-    @IBOutlet private weak var contactNumberTextField: CustomTextField!
-    @IBOutlet private weak var timeZoneTextField: CustomTextField!
-    @IBOutlet private weak var addressField: CustomTextField!
-    @IBOutlet private weak var aboutClinicTextView: UITextView!
+    @IBOutlet weak var clinicNameTextField: CustomTextField!
+    @IBOutlet weak var contactNumberTextField: CustomTextField!
+    @IBOutlet weak var timeZoneTextField: CustomTextField!
+    @IBOutlet weak var addressField: CustomTextField!
+    @IBOutlet weak var aboutClinicTextView: UITextView!
     
-    @IBOutlet private weak var notificationEmailTextField: CustomTextField!
-    @IBOutlet private weak var countryCodeTextField: CustomTextField!
-    @IBOutlet private weak var notificationSmsTextField: CustomTextField!
-    @IBOutlet private weak var currencyTextField: CustomTextField!
-    @IBOutlet private weak var websiteURLTextField: CustomTextField!
-    @IBOutlet private weak var appointmentURLTextField: CustomTextField!
-    @IBOutlet private weak var giftCardTextView: UITextView!
+    @IBOutlet weak var notificationEmailTextField: CustomTextField!
+    @IBOutlet weak var countryCodeTextField: CustomTextField!
+    @IBOutlet weak var notificationSmsTextField: CustomTextField!
+    @IBOutlet weak var currencyTextField: CustomTextField!
+    @IBOutlet weak var websiteURLTextField: CustomTextField!
+    @IBOutlet weak var appointmentURLTextField: CustomTextField!
+    @IBOutlet weak var giftCardTextView: UITextView!
     
-    @IBOutlet private weak var giftcardURLTextField: CustomTextField!
-    @IBOutlet private weak var instagramURLTextField: CustomTextField!
-    @IBOutlet private weak var twitterURLTextField: CustomTextField!
-    @IBOutlet private weak var paymentLinkTextField: CustomTextField!
+    @IBOutlet weak var giftcardURLTextField: CustomTextField!
+    @IBOutlet weak var instagramURLTextField: CustomTextField!
+    @IBOutlet weak var twitterURLTextField: CustomTextField!
+    @IBOutlet weak var paymentLinkTextField: CustomTextField!
     
-    @IBOutlet private weak var mondayBtn: UIButton!
-    @IBOutlet private weak var mondayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var mondayEndTimeTF: CustomTextField!
+    @IBOutlet weak var mondayBtn: UIButton!
+    @IBOutlet weak var mondayStartTimeTF: CustomTextField!
+    @IBOutlet weak var mondayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var tuesdayBtn: UIButton!
-    @IBOutlet private weak var tuesdayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var tuesdayEndTimeTF: CustomTextField!
+    @IBOutlet weak var tuesdayBtn: UIButton!
+    @IBOutlet weak var tuesdayStartTimeTF: CustomTextField!
+    @IBOutlet weak var tuesdayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var wednesdayBtn: UIButton!
-    @IBOutlet private weak var wednesdayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var wednesdayEndTimeTF: CustomTextField!
+    @IBOutlet weak var wednesdayBtn: UIButton!
+    @IBOutlet weak var wednesdayStartTimeTF: CustomTextField!
+    @IBOutlet weak var wednesdayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var thursdayBtn: UIButton!
-    @IBOutlet private weak var thursdayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var thursdayEndTimeTF: CustomTextField!
+    @IBOutlet weak var thursdayBtn: UIButton!
+    @IBOutlet weak var thursdayStartTimeTF: CustomTextField!
+    @IBOutlet weak var thursdayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var fridayBtn: UIButton!
-    @IBOutlet private weak var fridayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var fridayEndTimeTF: CustomTextField!
+    @IBOutlet weak var fridayBtn: UIButton!
+    @IBOutlet weak var fridayStartTimeTF: CustomTextField!
+    @IBOutlet weak var fridayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var saturdayBtn: UIButton!
-    @IBOutlet private weak var saturdayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var saturdayEndTimeTF: CustomTextField!
+    @IBOutlet weak var saturdayBtn: UIButton!
+    @IBOutlet weak var saturdayStartTimeTF: CustomTextField!
+    @IBOutlet weak var saturdayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var sundayBtn: UIButton!
-    @IBOutlet private weak var sundayStartTimeTF: CustomTextField!
-    @IBOutlet private weak var sundayEndTimeTF: CustomTextField!
+    @IBOutlet weak var sundayBtn: UIButton!
+    @IBOutlet weak var sundayStartTimeTF: CustomTextField!
+    @IBOutlet weak var sundayEndTimeTF: CustomTextField!
     
-    @IBOutlet private weak var onlineLinkWithoutURLView: UIView!
-    @IBOutlet private weak var onlineLinkWithURLView: UIView!
-    @IBOutlet private weak var onlineLinkWithURLTextView: UITextView!
+    @IBOutlet weak var onlineLinkWithoutURLView: UIView!
+    @IBOutlet weak var onlineLinkWithURLView: UIView!
+    @IBOutlet weak var onlineLinkWithURLTextView: UITextView!
     
     var clinicId: Int?
     var screenTitle: String = String.blank
@@ -220,7 +220,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         startPicker()
     }
     
-    private func startPicker() {
+    func startPicker() {
         let countryPicker = CountryPickerViewController()
         countryPicker.title = "Select Country Code"
         countryPicker.selectedCountry = "US"
@@ -404,11 +404,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             contactNumberTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
-        //
-        //        guard let contactNumber = contactNumberTextField.text, contactNumber.isValidMobile() else {
-        //            contactNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-        //            return
-        //        }
         
         guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
             timeZoneTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
@@ -439,36 +434,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             currencyTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
-        
-        /* guard let websiteURL = websiteURLTextField.text, websiteURL.validateUrl() else {
-         websiteURLTextField.showError(message: "website URL is invalid.")
-         return
-         }
-         
-         guard let appointmentURL = appointmentURLTextField.text, appointmentURL.validateUrl() else {
-         appointmentURLTextField.showError(message: "Appointment URL is invalid.")
-         return
-         }
-         
-         guard let giftcardURL = instagramURLTextField.text, giftcardURL.validateUrl() else {
-         giftcardURLTextField.showError(message: "Giftcard URL is invalid.")
-         return
-         }
-         
-         guard let instagramURL = instagramURLTextField.text, instagramURL.validateUrl() else {
-         instagramURLTextField.showError(message: "Instagram URL is invalid.")
-         return
-         }
-         
-         guard let twitterURL = twitterURLTextField.text, twitterURL.validateUrl() else {
-         twitterURLTextField.showError(message: "Twitter URL is invalid.")
-         return
-         }
-         
-         guard let paymentLinkURL = paymentLinkTextField.text, paymentLinkURL.validateUrl() else {
-         paymentLinkTextField.showError(message: "PaymentLink URL is invalid.")
-         return
-         }*/
         
         if mondayBtn.isSelected {
             businessHours.append(BusinessHoursAccount(dayOfWeek: "MONDAY", openHour: dateFormater?.localToServerWithDate(date: mondayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: mondayEndTimeTF.text ?? String.blank)))
@@ -509,20 +474,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         
         self.view.ShowSpinner()
         viewModel?.updateUserSelectedClinic(clinicParms: parameters, clinicId: clinicId ?? 0 , urlMethod: httpMethodType, screenTitle: self.title ?? String.blank)
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == mondayStartTimeTF || textField == mondayEndTimeTF || textField == tuesdayStartTimeTF || textField == tuesdayEndTimeTF || textField == wednesdayStartTimeTF || textField == wednesdayEndTimeTF || textField == thursdayStartTimeTF || textField == thursdayEndTimeTF || textField == fridayStartTimeTF || textField == fridayEndTimeTF || textField == saturdayStartTimeTF || textField == saturdayEndTimeTF || textField == sundayStartTimeTF || textField == sundayEndTimeTF  {
-            return false
-        } else if textField == contactNumberTextField {
-            guard let text = textField.text else { return false }
-            let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
-            return false
-        }
-        else {
-            return true
-        }
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {

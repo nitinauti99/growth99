@@ -72,18 +72,17 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     func profileAppointmentsReceived() {
         self.view.HideSpinner()
         DispatchQueue.main.async {
-            self.appointmentsTableView.setContentOffset(.zero, animated: true)
             self.appointmentsTableView.reloadData()
         }
     }
     
     func profileAppoinmentsErrorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func profileAppoinmentsRemoved() {
-        self.view.showToast(message: "Appointment Deleted Sucessfully", color: .black)
+        self.view.showToast(message: "Appointment Deleted Sucessfully", color: UIColor().successMessageColor())
         viewModel?.getProfileApointmentsList()
     }
     

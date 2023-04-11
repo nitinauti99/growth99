@@ -88,8 +88,6 @@ class BusinessDetailView: UIViewController {
         remove(asChildViewController: trackingCodeVC)
         remove(asChildViewController: dataStudioVC)
         remove(asChildViewController: paidMediaVC)
-        remove(asChildViewController: SyndicationReportVC)
-        remove(asChildViewController: emailSMSAuditVC)
         add(asChildViewController: businessProfileVC)
     }
     
@@ -102,8 +100,6 @@ class BusinessDetailView: UIViewController {
              remove(asChildViewController: trackingCodeVC)
              remove(asChildViewController: dataStudioVC)
              remove(asChildViewController: paidMediaVC)
-             remove(asChildViewController: SyndicationReportVC)
-             remove(asChildViewController: emailSMSAuditVC)
              add(asChildViewController: businessProfileVC)
          case 1:
              remove(asChildViewController: businessProfileVC)
@@ -111,8 +107,6 @@ class BusinessDetailView: UIViewController {
              remove(asChildViewController: trackingCodeVC)
              remove(asChildViewController: dataStudioVC)
              remove(asChildViewController: paidMediaVC)
-             remove(asChildViewController: SyndicationReportVC)
-             remove(asChildViewController: emailSMSAuditVC)
              add(asChildViewController: subdomainVC)
          case 2:
              remove(asChildViewController: personalizationVC)
@@ -120,8 +114,6 @@ class BusinessDetailView: UIViewController {
              remove(asChildViewController: trackingCodeVC)
              remove(asChildViewController: dataStudioVC)
              remove(asChildViewController: paidMediaVC)
-             remove(asChildViewController: SyndicationReportVC)
-             remove(asChildViewController: emailSMSAuditVC)
              add(asChildViewController: refundPolicyVC)
          case 3:
              remove(asChildViewController: personalizationVC)
@@ -129,8 +121,6 @@ class BusinessDetailView: UIViewController {
              remove(asChildViewController: businessProfileVC)
              remove(asChildViewController: dataStudioVC)
              remove(asChildViewController: paidMediaVC)
-             remove(asChildViewController: SyndicationReportVC)
-             remove(asChildViewController: emailSMSAuditVC)
              add(asChildViewController: trackingCodeVC)
          case 4:
              remove(asChildViewController: personalizationVC)
@@ -139,8 +129,6 @@ class BusinessDetailView: UIViewController {
              remove(asChildViewController: businessProfileVC)
              remove(asChildViewController: businessProfileVC)
              remove(asChildViewController: paidMediaVC)
-             remove(asChildViewController: SyndicationReportVC)
-             remove(asChildViewController: emailSMSAuditVC)
              add(asChildViewController: dataStudioVC)
          case 5:
              remove(asChildViewController: businessProfileVC)
@@ -149,8 +137,6 @@ class BusinessDetailView: UIViewController {
              remove(asChildViewController: refundPolicyVC)
              remove(asChildViewController: trackingCodeVC)
              remove(asChildViewController: dataStudioVC)
-             remove(asChildViewController: SyndicationReportVC)
-             remove(asChildViewController: emailSMSAuditVC)
              add(asChildViewController: paidMediaVC)
          default:
              break
@@ -229,22 +215,6 @@ class BusinessDetailView: UIViewController {
     
     private lazy var paidMediaVC: PaidMediaViewController = {
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "PaidMediaViewController") as? PaidMediaViewController else {
-               fatalError("Unable to Instantiate Summary View Controller")
-           }
-        detailController.bussinessInfoData = bussinessInfoData
-        return detailController
-    }()
-    
-    private lazy var SyndicationReportVC: SyndicationReportViewController = {
-        guard let detailController = storyboard?.instantiateViewController(withIdentifier: "SyndicationReportViewController") as? SyndicationReportViewController else {
-               fatalError("Unable to Instantiate Summary View Controller")
-           }
-        detailController.bussinessInfoData = bussinessInfoData
-        return detailController
-    }()
-    
-    private lazy var emailSMSAuditVC: EmailSMSAuditViewController = {
-        guard let detailController = storyboard?.instantiateViewController(withIdentifier: "EmailSMSAuditViewController") as? EmailSMSAuditViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }
         detailController.bussinessInfoData = bussinessInfoData

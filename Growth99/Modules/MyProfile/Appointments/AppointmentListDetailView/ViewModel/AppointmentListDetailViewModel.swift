@@ -8,8 +8,6 @@
 import Foundation
 
 protocol AppointmentListDetailVMProtocol {
-    func isValidEmail(_ email: String) -> Bool
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
     var  getAllDatesData: [String] { get }
     var  getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
@@ -38,6 +36,11 @@ protocol AppointmentListDetailVMProtocol {
     
     func sendProviderListEditEvent(providerParams: Int)
     var  providerDataEditEvent: [UserDTOList] { get }
+    
+    func isFirstName(_ firstName: String) -> Bool
+    func isLastName(_ lastName: String) -> Bool
+    func isValidEmail(_ email: String) -> Bool
+    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
 }
 
 class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
@@ -300,15 +303,26 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         return self.editBookingHistoryData
     }
     
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
+    func isLastName(_ lastName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: lastName)
+    }
+    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
+        let regex = Constant.Regex.phone
+        let isPhoneNo = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isPhoneNo.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegEx = Constant.Regex.email
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }

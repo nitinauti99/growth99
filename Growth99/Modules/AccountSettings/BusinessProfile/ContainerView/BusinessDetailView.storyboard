@@ -123,6 +123,10 @@
                                         <color key="value" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="IlC-uo-g6W" eventType="editingChanged" id="hsI-Lc-PrD"/>
+                                    <outlet property="delegate" destination="IlC-uo-g6W" id="Tsw-4E-HHh"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bd-mX-e6A">
                                 <rect key="frame" x="30" y="421" width="340" height="60"/>
@@ -477,6 +481,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textFieldDidChange:" destination="y0k-jf-MOv" eventType="editingChanged" id="vev-eS-KFH"/>
                                     <outlet property="delegate" destination="y0k-jf-MOv" id="jGy-st-J5S"/>
                                 </connections>
                             </textField>
@@ -882,16 +887,16 @@
     </scenes>
     <designables>
         <designable name="0Qy-rb-C8B">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="EZ8-oA-7NQ">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="jfl-rF-4Ej">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="tda-YN-Uzo">
-            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

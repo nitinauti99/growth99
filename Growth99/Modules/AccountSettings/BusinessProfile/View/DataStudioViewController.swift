@@ -61,4 +61,28 @@ class DataStudioViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == dataStudioCodeTextView {
+            guard let textField = dataStudioCodeTextView.text, !textField.isEmpty else {
+                errorLabel.text = Constant.ErrorMessage.emptyURLError
+                errorLabel.isHidden = false
+                return
+            }
+            errorLabel.text = ""
+            errorLabel.isHidden = true
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == dataStudioCodeTextView {
+            guard let textView = dataStudioCodeTextView.text, !textView.isEmpty else {
+                errorLabel.text = Constant.ErrorMessage.emptyURLError
+                errorLabel.isHidden = false
+                return
+            }
+            errorLabel.text = ""
+            errorLabel.isHidden = true
+        }
+    }
 }

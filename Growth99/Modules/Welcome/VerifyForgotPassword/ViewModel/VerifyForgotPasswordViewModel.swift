@@ -28,26 +28,29 @@ class VerifyForgotPasswordViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func verifyChangePasswordRequest(email: String, oldPassword: String, newPassword: String, verifyNewPassword: String) {
-        
         let parameter: Parameters = [
             "userName": email,
             "oldPassword": oldPassword,
             "newPassword": newPassword,
             "confirmPassword": verifyNewPassword
         ]
-        
-        self.requestManager.request(forPath: ApiUrl.changeUserPassword, method: .POST, task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.changeUserPassword, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                self.delegate?.LoaginDataRecived(responseMessage: "Password changes sucessfully")
+                if response.statusCode == 200 {
+                    self.delegate?.LoaginDataRecived(responseMessage: "Password changed sucessfully")
+                }else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while change password")
+                }else{
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }
-    
-    
     
     func verifyForgotPasswordRequest(email: String,  password: String, confirmPassword: String, confirmationPCode: String) {
         let parameter: Parameters = [
@@ -55,8 +58,8 @@ class VerifyForgotPasswordViewModel {
             "password": password,
             "confirmPassword": confirmPassword,
             "confirmationCode": confirmationPCode
-           ]
-       
+        ]
+        
         self.requestManager.request(forPath: ApiUrl.VerifyforgotPassword, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -72,7 +75,7 @@ class VerifyForgotPasswordViewModel {
 
 
 extension VerifyForgotPasswordViewModel : VerifyForgotPasswordViewModelProtocol {
-
+    
     func isValidPasswordAndCoinfirmationPassword(_ password: String, _ confirmPassword: String) -> Bool {
         if password == confirmPassword {
             return true

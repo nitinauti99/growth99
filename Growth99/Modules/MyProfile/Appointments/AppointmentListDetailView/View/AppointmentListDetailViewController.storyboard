@@ -79,6 +79,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="iK1-Aw-hY9"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="AJV-LP-09k"/>
                                                         </connections>
                                                     </textField>
@@ -135,6 +136,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="UFw-ik-cN2"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="swP-Sg-0PQ"/>
                                                         </connections>
                                                     </textField>
@@ -191,6 +193,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="WIq-Na-ldS"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="x05-7Y-O8P"/>
                                                         </connections>
                                                     </textField>
@@ -247,6 +250,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="BcS-OF-4pO"/>
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="dpn-h6-ui1"/>
                                                         </connections>
                                                     </textField>
@@ -1067,34 +1071,34 @@
     </scenes>
     <designables>
         <designable name="AVg-us-WgC">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="Aru-SN-rLi">
-            <size key="intrinsicContentSize" width="19" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="19" height="22.333333333333332"/>
         </designable>
         <designable name="Dkv-5T-p7r">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="TPZ-hI-lRM">
-            <size key="intrinsicContentSize" width="118.33333333333333" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="118.33333333333333" height="22.333333333333332"/>
         </designable>
         <designable name="b86-j9-qJE">
-            <size key="intrinsicContentSize" width="19" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="19" height="22.333333333333332"/>
         </designable>
         <designable name="led-N5-l7i">
-            <size key="intrinsicContentSize" width="99.333333333333329" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="99.333333333333329" height="22.333333333333332"/>
         </designable>
         <designable name="nRa-3b-s4x">
-            <size key="intrinsicContentSize" width="117.66666666666667" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="117.66666666666667" height="22.333333333333332"/>
         </designable>
         <designable name="qUM-Bw-jEG">
-            <size key="intrinsicContentSize" width="19" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="19" height="22.333333333333332"/>
         </designable>
         <designable name="xKV-US-rN6">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="xLO-rr-zwc">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

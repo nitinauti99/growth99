@@ -15,7 +15,7 @@ protocol CategoriesAddViewContollerProtocol {
     func addCategoriesDataRecived()
 }
 
-class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol {
+class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol, UITextFieldDelegate {
     
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var categoriesNameTextField: CustomTextField!
@@ -31,7 +31,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     var categoryName: String = String.blank
     var categoryId: Int?
     var userClinics = [ClinicsServices]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         categoriesAddViewModel = CategoriesAddEditViewModel(delegate: self)
@@ -51,7 +51,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     func addCategoriesDataRecived() {
         categoriesAddViewModel?.getallClinics()
     }
-
+    
     func clinicsRecived() {
         self.view.HideSpinner()
         allClinics = categoriesAddViewModel?.getAllClinicsData ?? []
@@ -89,13 +89,15 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     
     func addCategoriesResponse() {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.addCategorie, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: Constant.Profile.addCategorie, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func clinincsDropDown(sender: UIButton) {
@@ -147,5 +149,36 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     
     @IBAction func cancelButtonAction(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        if textField == categoriesNameTextField {
+            guard let textField = categoriesNameTextField.text, !textField.isEmpty else {
+                categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
+                return
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == categoriesNameTextField {
+            guard let textField = categoriesNameTextField.text, !textField.isEmpty else {
+                categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
+                return
+            }
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = Int()
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+        currentString.replacingCharacters(in: range, with: string) as NSString
+        if textField == categoriesNameTextField {
+            maxLength = 30
+            categoriesNameTextField.hideError()
+            return newString.length <= maxLength
+        }
+        return true
     }
 }
