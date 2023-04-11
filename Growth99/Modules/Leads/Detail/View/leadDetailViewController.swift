@@ -55,11 +55,11 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.ShowSpinner()
         self.registerCell()
         self.fullName.text = leadData?.fullName
         self.navigationController?.title = "Lead Detail"
         self.viewModel = leadDetailViewModel(delegate: self)
+        self.view.ShowSpinner()
         self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
         self.buttons = [newButton, coldButton, warmButton, hotButton, wonButton, deadButton]
     }
@@ -122,17 +122,21 @@ extension leadDetailViewController: leadDetailViewControllerProtocol {
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
-        anslistTableView.reloadData()
+        self.anslistTableView.reloadData()
+        self.view.ShowSpinner()
+        self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
     }
     
     func updatedLeadStatusRecived(responseMessage: String) {
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
-        viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
+        self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
     }
     
     func emailSendSuccessfully(responseMessage: String)  {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.view.ShowSpinner()
+        self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
     }
     
     func recivedEmailTemplateList(){
@@ -140,13 +144,13 @@ extension leadDetailViewController: leadDetailViewControllerProtocol {
     }
     
     func recivedSmsTemplateList(){
-        viewModel?.getEmailDefaultList()
+        self.viewModel?.getEmailDefaultList()
     }
     
     func recivedQuestionnaireList() {
         self.anslistTableView.reloadData()
         self.scrollViewHight.constant = tableViewHeight + 500
-        view.setNeedsLayout()
+        self.view.setNeedsLayout()
         self.setLeadStatus(status: viewModel?.leadStatus ?? String.blank)
         self.viewModel?.getSMSDefaultList()
     }

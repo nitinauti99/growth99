@@ -141,8 +141,11 @@ struct Constant {
         static let deleteConcents = "Delete Consent"
         static let tasksDetail = "Tasks Detail"
         static let patientTags = "Patient Tags"
+        static let leadTags = "Lead Tags"
         static let leadSourceURLs = "Lead Source URLs"
         static let createPatientTags = "Add Patient Tag"
+        static let addLeadTags = "Add Lead Tag"
+        static let  editLeadTags = "Edit Lead Tag"
         static let addPostLabel = "Add Post Label"
         static let editPatientTags = "Edit Patient Tag"
         static let editPostLabel = "Edit Post Label"
@@ -201,15 +204,6 @@ struct Constant {
         static let nameWithSpace = "^[a-zA-Z]([a-zA-Z ]*)?$"
         static let number = "[1-9][0-9]*"
 
-    }
-    
-    struct CreateLead {
-        static let emailEmptyError = "The Email field is required."
-        static let emailInvalidError = "Please Input Valid Email!"
-        static let firstNameEmptyError = "The First Name field is required."
-        static let lastNameEmptyError = "The Last Name field is required."
-        static let phoneNumberEmptyError = "The Phone Number field is required."
-        static let phoneNumberInvalidError = "Please Input Valid Number!"
     }
     
     struct ViewIdentifier {

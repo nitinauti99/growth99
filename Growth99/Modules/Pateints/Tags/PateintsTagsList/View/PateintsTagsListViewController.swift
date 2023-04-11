@@ -28,6 +28,7 @@ class PateintsTagsListViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = PateintsTagsListViewModel(delegate: self)
         self.setBarButton()
+        self.pateintsTagsListTableview.setEmptyMessage(arrayCount: viewModel?.getPateintsTagsData.count ?? 0)
     }
         
     func registerTableView() {
@@ -69,6 +70,7 @@ extension PateintsTagsListViewController: PateintsTagsListViewControllerProtocol
     func pateintsTagListRecived() {
         self.view.HideSpinner()
         self.pateintsTagsListTableview.reloadData()
+        self.pateintsTagsListTableview.setEmptyMessage(arrayCount: viewModel?.getPateintsTagsData.count ?? 0)
     }
     
     func pateintTagRemovedSuccefully(mrssage: String){
@@ -80,7 +82,6 @@ extension PateintsTagsListViewController: PateintsTagsListViewControllerProtocol
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
     }
-    
 }
 
 extension PateintsTagsListViewController: PateintsTagListTableViewCellDelegate {

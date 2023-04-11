@@ -40,13 +40,13 @@ extension LeadTagsListViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = UIStoryboard(name: "LeadTagssAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadTagssAddViewController") as! LeadTagsAddViewController
+        let detailController = UIStoryboard(name: "LeadTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadTagsAddViewController") as! LeadTagsAddViewController
         detailController.leadTagScreenName = "Edit Screen"
 
         if self.isSearch {
-            detailController.patientTagId = viewModel?.leadTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
+            detailController.leadTagId = viewModel?.leadTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
         }else{
-            detailController.patientTagId = viewModel?.leadTagsListDataAtIndex(index: indexPath.row)?.id ?? 0
+            detailController.leadTagId = viewModel?.leadTagsListDataAtIndex(index: indexPath.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)
     }

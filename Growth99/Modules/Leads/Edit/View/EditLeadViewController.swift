@@ -8,13 +8,13 @@
 import UIKit
 
 protocol EditLeadViewControllerProtocol: AnyObject {
-    func LeadDataRecived()
+    func LeadDataRecived(message: String)
     func errorReceived(error: String)
     func updateLeadAmmountSaved()
     func updateLeadDadaRecived()
 }
 
-class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
+class EditLeadViewController: UIViewController {
   
     @IBOutlet weak var idTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
@@ -46,24 +46,7 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
     @IBAction func closeButtonClicked() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    func LeadDataRecived() {
-        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammountTextField.text ?? String.blank) ?? 0)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.navigationController?.popViewController(animated: true)
-        })
-        viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
-    }
-    
-    func updateLeadDadaRecived() {
-        self.view.HideSpinner()
-        NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
-    }
+   
     
    private func setUpUI() {
        saveButton.roundCorners(corners: [.allCorners], radius: 10)
@@ -94,39 +77,34 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    func updateLeadAmmountSaved() {
-        
-    }
-
-    
     @IBAction func submitButtonClicked() {
         
         guard let name = nameTextField.text, !name.isEmpty else {
-            nameTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
+            nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
         
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberEmptyError)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
         
         guard let phoneNumberIsValid = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberIsValid else {
-            phoneNumberTextField.showError(message: Constant.CreateLead.phoneNumberInvalidError)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return
         }
         
         guard let email = emailTextField.text, !email.isEmpty else {
-            emailTextField.showError(message: Constant.CreateLead.emailEmptyError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
         guard let emailIsValid = viewModel?.isValidEmail(email), emailIsValid else {
-            emailTextField.showError(message: Constant.CreateLead.emailInvalidError)
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
                 
         guard let ammount = ammountTextField.text, !ammount.isEmpty else {
-            ammountTextField.showError(message: Constant.CreateLead.firstNameEmptyError)
+            ammountTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
         view.ShowSpinner()
@@ -136,3 +114,29 @@ class EditLeadViewController: UIViewController, EditLeadViewControllerProtocol {
 }
 
 
+
+extension EditLeadViewController: EditLeadViewControllerProtocol {
+    
+    func LeadDataRecived(message: String) {
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        viewModel?.updateLeadAmmount(questionnaireId: LeadData?.id ?? 0, ammount: Int(ammountTextField.text ?? String.blank) ?? 0)
+      
+        //viewModel?.getLeadList(page: 0, size: 10, statusFilter: "", sourceFilter: "", search: "", leadTagFilter: "")
+    }
+    
+    func updateLeadAmmountSaved() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
+    func updateLeadDadaRecived() {
+        self.view.HideSpinner()
+        NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .red)
+    }
+}

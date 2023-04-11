@@ -10,7 +10,7 @@ import UIKit
 
 protocol leadListViewControllerProtocol: AnyObject {
     func leadListDataRecived()
-    func leadRemovedSuccefully(mrssage: String)
+    func leadRemovedSuccefully(message: String)
     func errorReceived(error: String)
 }
 
@@ -129,19 +129,19 @@ class leadListViewController: UIViewController, leadListTableViewCellDelegate {
 
 extension leadListViewController: leadListViewControllerProtocol {
    
-    func leadRemovedSuccefully(mrssage: String){
-        self.view.showToast(message: mrssage, color: UIColor().successMessageColor())
-        self.getleadList()
-    }
-    
     func leadListDataRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
     }
     
+    func leadRemovedSuccefully(message: String){
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        self.getleadList()
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

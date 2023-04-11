@@ -296,6 +296,8 @@
 		01EBACA829B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */; };
 		01EBACAB29B6519100110DCB /* chatQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */; };
 		01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */; };
+		01FB530D29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB530C29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift */; };
+		01FB530F29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB530E29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift */; };
 		18491DAC29B80CE000FE72EF /* MassEmailandSMSDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491D8C29B80CDF00FE72EF /* MassEmailandSMSDetailViewModel.swift */; };
 		18491DAD29B80CE000FE72EF /* MassEmailandSMSDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491D8E29B80CDF00FE72EF /* MassEmailandSMSDetailModel.swift */; };
 		18491DAE29B80CE000FE72EF /* MassEmailandSMSDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18491D9029B80CDF00FE72EF /* MassEmailandSMSDetailViewController.swift */; };
@@ -1182,6 +1184,8 @@
 		01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "chatQuestionnaireViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
 		01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = chatQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
+		01FB530C29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintsTagsAddViewController+TextField.swift"; sourceTree = "<group>"; };
+		01FB530E29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadTagsAddViewController+textFiedld.swift"; sourceTree = "<group>"; };
 		11C590CAF572F9A763746555 /* Pods-Growth99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Growth99.debug.xcconfig"; path = "Target Support Files/Pods-Growth99/Pods-Growth99.debug.xcconfig"; sourceTree = "<group>"; };
 		18491D8C29B80CDF00FE72EF /* MassEmailandSMSDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSDetailViewModel.swift; sourceTree = "<group>"; };
 		18491D8E29B80CDF00FE72EF /* MassEmailandSMSDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSDetailModel.swift; sourceTree = "<group>"; };
@@ -3211,6 +3215,7 @@
 			children = (
 				01EBAC4D29B5869200110DCB /* LeadTagsAddViewController.swift */,
 				01EBAC4F29B586A600110DCB /* LeadTagsAddViewController.storyboard */,
+				01FB530E29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5436,6 +5441,7 @@
 			children = (
 				849004A52986C2CD00A271AA /* PateintsTagsAddViewController.swift */,
 				849004A92986D56900A271AA /* PateintsTagsAddViewController.storyboard */,
+				01FB530C29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7293,6 +7299,7 @@
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
 				397C4FD629B5117300778B8E /* AnnouncementsTableViewCell.swift in Sources */,
 				84F61139292A71AB00B1FB69 /* Logger.swift in Sources */,
+				01FB530F29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift in Sources */,
 				84D062FF2967080E001FE469 /* QuestionnaireDetailList.swift in Sources */,
 				18491DAE29B80CE000FE72EF /* MassEmailandSMSDetailViewController.swift in Sources */,
 				01BBA9E329AB573F006A5DB8 /* NotificationListViewController+SearchBar.swift in Sources */,
@@ -7717,6 +7724,7 @@
 				84B2293429314CF8006E8292 /* CustomTextField+Extension.swift in Sources */,
 				84EFB1A6296B22B900D8285E /* TaskListTableViewCell.swift in Sources */,
 				189E3F0329C392F800B94190 /* MediaLibraryListViewController.swift in Sources */,
+				01FB530D29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift in Sources */,
 				84D0628829670677001FE469 /* UserRepository.swift in Sources */,
 				013A4FA429B4C68600CA24B0 /* CombineTimeLineViewController+TableView.swift in Sources */,
 				017D572229AF604C00D6A5A4 /* DisplayQuestionariModel.swift in Sources */,

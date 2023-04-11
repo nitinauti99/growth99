@@ -64,7 +64,7 @@ class EditLeadViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.LeadDataRecived()
+                self.delegate?.LeadDataRecived(message: "Lead edited successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

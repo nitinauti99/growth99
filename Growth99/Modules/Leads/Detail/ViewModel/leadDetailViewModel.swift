@@ -88,8 +88,11 @@ class leadDetailViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent Successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "Unable to sent SMS")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -102,7 +105,11 @@ class leadDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.emailSendSuccessfully(responseMessage: "Email sent Successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.emailSendSuccessfully(responseMessage: "Email sent successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "Unable to sent email")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -114,8 +121,11 @@ class leadDetailViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.updatedLeadStatusRecived(responseMessage: "Lead Status updated successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.updatedLeadStatusRecived(responseMessage: "Lead status updated successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while updating lead status")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -133,9 +143,9 @@ class leadDetailViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.smsSendSuccessfully(responseMessage: "sms send Successfully")
+                    self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent successfully")
                 } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while sending email")
+                    self.delegate?.errorReceived(error: "System error occured. Please try again or contact support")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -156,9 +166,9 @@ class leadDetailViewModel {
             case .success(let response):
                 print(response)
                 if response.statusCode == 200 {
-                    self.delegate?.emailSendSuccessfully(responseMessage: "email send Successfully")
+                    self.delegate?.emailSendSuccessfully(responseMessage: "Email sent successfully")
                 } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while sending email")
+                    self.delegate?.errorReceived(error: "System error occured. Please try again or contact support")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

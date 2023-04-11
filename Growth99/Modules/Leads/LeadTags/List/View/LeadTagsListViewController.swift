@@ -14,9 +14,9 @@ protocol LeadTagsListViewControllerProtocol: AnyObject {
     func leadTagRemovedSuccefully(message: String)
 }
 
-class LeadTagsListViewController: UIViewController, LeadTagsListViewControllerProtocol,LeadTagsListTableViewCellDelegate {
-  
-   
+class LeadTagsListViewController: UIViewController {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -29,8 +29,9 @@ class LeadTagsListViewController: UIViewController, LeadTagsListViewControllerPr
         super.viewDidLoad()
         self.viewModel = LeadTagsListViewModel(delegate: self)
         self.setBarButton()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getLeadTagsData.count ?? 0)
     }
-        
+    
     func registerTableView() {
         self.tableView.register(UINib(nibName: "LeadTagsListTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadTagsListTableViewCell")
     }
@@ -41,7 +42,7 @@ class LeadTagsListViewController: UIViewController, LeadTagsListViewControllerPr
         self.registerTableView()
         self.view.ShowSpinner()
         self.viewModel?.getLeadTagsList()
-        self.title = Constant.Profile.patientTags
+        self.title = Constant.Profile.leadTags
     }
     
     func setBarButton(){
@@ -51,6 +52,7 @@ class LeadTagsListViewController: UIViewController, LeadTagsListViewControllerPr
     @objc func creatUser() {
         let leadTagsAddVC = UIStoryboard(name: "LeadTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadTagsAddViewController") as! LeadTagsAddViewController
         leadTagsAddVC.leadTagScreenName = "Create Screen"
+        leadTagsAddVC.leadTagsList = viewModel?.getLeadTagsData
         self.navigationController?.pushViewController(leadTagsAddVC, animated: true)
     }
     
@@ -63,16 +65,28 @@ class LeadTagsListViewController: UIViewController, LeadTagsListViewControllerPr
         searchBar.delegate = self
     }
     
+}
+
+extension LeadTagsListViewController: LeadTagsListViewControllerProtocol {
+   
     func leadTagListRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
+        self.tableView.setEmptyMessage(arrayCount: viewModel?.getLeadTagsData.count ?? 0)
+    }
+    
+    func leadTagRemovedSuccefully(message: String){
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        viewModel?.getLeadTagsList()
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
-    
+}
+
+extension LeadTagsListViewController: LeadTagsListTableViewCellDelegate {
     func removeLeadTag(cell: LeadTagsListTableViewCell, index: IndexPath) {
         var tagName : String = ""
         var tagId: Int = 0
@@ -98,18 +112,15 @@ class LeadTagsListViewController: UIViewController, LeadTagsListViewControllerPr
         self.present(alert, animated: true, completion: nil)
     }
 
-    func leadTagRemovedSuccefully(message: String){
-        self.view.showToast(message: message, color: .red)
-        viewModel?.getLeadTagsList()
-    }
-
     func editLeadTag(cell: LeadTagsListTableViewCell, index: IndexPath) {
         let detailController = UIStoryboard(name: "LeadTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadTagsAddViewController") as! LeadTagsAddViewController
         detailController.leadTagScreenName = "Edit Screen"
+        detailController.leadTagsList = viewModel?.getLeadTagsData
+
         if self.isSearch {
-            detailController.patientTagId = viewModel?.leadTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.leadTagId = viewModel?.leadTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
         }else{
-            detailController.patientTagId = viewModel?.leadTagsListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.leadTagId = viewModel?.leadTagsListDataAtIndex(index: index.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)
     }

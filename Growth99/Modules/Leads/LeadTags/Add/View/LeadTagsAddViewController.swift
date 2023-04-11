@@ -10,17 +10,18 @@ import UIKit
 
 protocol LeadTagsAddViewControllerProtocol: AnyObject {
     func pateintsTagListRecived()
-    func errorReceived(error: String)
     func savePateintsTagList(responseMessage:String)
+    func errorReceived(error: String)
 }
 
-class LeadTagsAddViewController: UIViewController, LeadTagsAddViewControllerProtocol {
+class LeadTagsAddViewController: UIViewController {
     
-    @IBOutlet private weak var LeadTagsTextField: CustomTextField!
-    @IBOutlet private weak var LeadTagsLBI: UILabel!
+    @IBOutlet weak var LeadTagsTextField: CustomTextField!
+    @IBOutlet weak var LeadTagsLBI: UILabel!
     
     var viewModel: LeadTagsAddViewModelProtocol?
-    var patientTagId = Int()
+    var leadTagsList: [LeadTagListModel]?
+    var leadTagId = Int()
     var leadTagScreenName = String()
     
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class LeadTagsAddViewController: UIViewController, LeadTagsAddViewControllerProt
         self.viewModel = LeadTagsAddViewModel(delegate: self)
         if leadTagScreenName == "Edit Screen" {
             self.view.ShowSpinner()
-            viewModel?.LeadTagsDetails(leadTagId: patientTagId)
+            viewModel?.LeadTagsDetails(leadTagId: leadTagId)
         }
     }
     
@@ -36,14 +37,43 @@ class LeadTagsAddViewController: UIViewController, LeadTagsAddViewControllerProt
         super.viewWillAppear(animated)
         if leadTagScreenName == "Edit Screen" {
             self.LeadTagsLBI.text = "Edit Lead Tag"
-            self.title = Constant.Profile.editPatientTags
+            self.title = Constant.Profile.editLeadTags
             self.LeadTagsTextField.text = viewModel?.LeadTagsDetailsData?.name ?? String.blank
         }else{
             self.LeadTagsLBI.text = "Create Lead Tag"
-            self.title = Constant.Profile.createPatientTags
+            self.title = Constant.Profile.addLeadTags
         }
     }
     
+    @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
+        self.view.ShowSpinner()
+    }
+
+    @IBAction func cancelAction(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveAction(sender: UIButton) {
+        if let textField = LeadTagsTextField.text,  textField == "" {
+            LeadTagsTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            return
+        }
+        if leadTagScreenName == "Edit Screen" {
+            self.view.ShowSpinner()
+            self.viewModel?.saveLeadTagsDetails(leadTagId: leadTagId, name: LeadTagsTextField.text ?? String.blank)
+        }else{
+            if let isValuePresent = self.leadTagsList?.filter({ $0.name?.lowercased() == self.LeadTagsTextField.text}), isValuePresent.count > 0 {
+                self.LeadTagsTextField.showError(message: "Tag with this name already present.")
+                return
+            }
+            self.view.ShowSpinner()
+            self.viewModel?.createLeadTagsDetails(name: LeadTagsTextField.text ?? String.blank)
+        }
+    }
+    
+}
+
+extension LeadTagsAddViewController: LeadTagsAddViewControllerProtocol {
     func pateintsTagListRecived() {
         self.view.HideSpinner()
         if leadTagScreenName == "Edit Screen" {
@@ -51,35 +81,16 @@ class LeadTagsAddViewController: UIViewController, LeadTagsAddViewControllerProt
         }
     }
     
+    func savePateintsTagList(responseMessage:String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .black)
     }
-    
-    @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
-        self.view.ShowSpinner()
-    }
-    
-    func savePateintsTagList(responseMessage:String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func cancelAction(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func saveAction(sender: UIButton) {
-        if let textField = LeadTagsTextField.text,  textField == "" {
-            LeadTagsTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
-        }
-        self.view.ShowSpinner()
-        if leadTagScreenName == "Edit Screen" {
-            viewModel?.saveLeadTagsDetails(leadTagId: patientTagId, name: LeadTagsTextField.text ?? String.blank)
-        }else{
-            viewModel?.createLeadTagsDetails(name: LeadTagsTextField.text ?? String.blank)
-        }
-    }
-    
 }
