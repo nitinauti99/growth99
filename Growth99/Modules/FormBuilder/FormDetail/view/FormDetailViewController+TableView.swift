@@ -11,19 +11,33 @@ import UIKit
 extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return viewModel?.getFormDetailData.count ?? 0
+        if section == 0 {
+            return 1
+        }else{
+            return viewModel?.getFormDetailData.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = FormDetailTableViewCell()
-        cell = self.tableView.dequeueReusableCell(withIdentifier: "FormDetailTableViewCell", for: indexPath) as! FormDetailTableViewCell
-        cell.delegate = self
-        cell.configureCell(tableView: tableView, FormList: viewModel, index: indexPath)
-        return cell
+       
+        if indexPath.section == 0 {
+            var cell = CreateQuestionnaireTableViewCell()
+            cell = self.tableView.dequeueReusableCell(withIdentifier: "CreateQuestionnaireTableViewCell", for: indexPath) as! CreateQuestionnaireTableViewCell
+            cell.delegate = self
+            cell.configureCell(tableView: tableView, viewModel: viewModel, index: indexPath)
+            return cell
+        }else{
+            var cell = FormDetailTableViewCell()
+            cell = self.tableView.dequeueReusableCell(withIdentifier: "FormDetailTableViewCell", for: indexPath) as! FormDetailTableViewCell
+            cell.delegate = self
+            cell.configureCell(tableView: tableView, FormList: viewModel, index: indexPath)
+            return cell
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
