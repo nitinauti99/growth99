@@ -38,8 +38,8 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.emailTextField.text = "yogesh123@growth99.com"
-        self.passwordTextField.text = "Password2@!"
+        self.emailTextField.text = "harsha.shanir@yopmail.com"
+        self.passwordTextField.text = "Shanir@123"
     }
     
     private func setupTexFieldValidstion() {

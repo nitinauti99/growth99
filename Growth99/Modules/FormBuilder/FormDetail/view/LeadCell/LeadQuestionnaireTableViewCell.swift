@@ -1,21 +1,21 @@
 //
-//  FormDetailTableViewCell.swift
+//  LeadQuestionnaireTableViewCell.swift
 //  Growth99
 //
-//  Created by Nitin Auti on 16/02/23.
+//  Created by Nitin Auti on 12/04/23.
 //
 
 import UIKit
 
-protocol FormDetailTableViewCellDelegate: AnyObject {
-    func reloadForm(cell: FormDetailTableViewCell, index: IndexPath)
-    func showRegexList(cell: FormDetailTableViewCell, sender: UIButton, index: IndexPath)
+protocol LeadQuestionnaireTableViewCellDelegate: AnyObject {
+    func reloadForm(cell: LeadQuestionnaireTableViewCell, index: IndexPath)
+    func showRegexList(cell: LeadQuestionnaireTableViewCell, sender: UIButton, index: IndexPath)
     func saveFormData(item: [String: Any])
     func deleteQuestion(name: String, id: Int)
-    func deleteNotSsavedQuestion(cell: FormDetailTableViewCell, index: IndexPath)
+    func deleteNotSsavedQuestion(cell: LeadQuestionnaireTableViewCell, index: IndexPath)
 }
 
-class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegate {
+class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegate {
     
     @IBOutlet weak var questionNameTextfield: CustomTextField!
     @IBOutlet weak var requiredButton: UIButton!
@@ -71,25 +71,18 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBOutlet weak var questionTableView: UITableView!
     @IBOutlet weak var questionTableViewHight: NSLayoutConstraint!
     
-    @IBOutlet weak var deletButton: UIButton!
-    @IBOutlet weak var deletButtonWidth: NSLayoutConstraint!
-
-    @IBOutlet weak var bottomDeletButton: UIButton!
-    @IBOutlet weak var bottomDeletButtonSepraterWidth: NSLayoutConstraint!
-
     var tableView: UITableView?
     var indexPath = IndexPath()
     var buttons = [UIButton]()
     var questionArray = [QuestionChoices]()
     var formList : FormDetailModel?
-    weak var delegate: FormDetailTableViewCellDelegate?
+    weak var delegate: LeadQuestionnaireTableViewCellDelegate?
     var crateQuestion = false
     var regexListArray = [String]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        /// Register TablView
-        questionTableView.register(UINib(nibName: "FormQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "FormQuestionTableViewCell")
+        self.questionTableView.register(UINib(nibName: "FormQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "FormQuestionTableViewCell")
         NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationCreateQuestion), name: Notification.Name("notificationCreateQuestion"), object: nil)
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
@@ -114,9 +107,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.selectedCheckBoxNOButton.isSelected = false
         self.editButton.isHidden = true
         self.saveButton.isHidden = true
-        self.deletButton.isHidden = true
         self.crateQuestion = false
-        self.bottomDeletButton.isHidden = true
     }
     
     /// when we are creating new question notification get called
@@ -144,30 +135,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         
     }
     
-    /// based below condition we shwo delete button on form
-    private func showDeleteReloadButton() {
-        if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" {
-            self.editButton.isHidden = false // shwoing edit button
-            self.deletButton.isHidden = true
-            self.deletButtonWidth.constant = 0
-        }else {
-            self.editButton.isHidden = false // shwoing edit button
-            self.deletButton.isHidden = false
-        }
-    }
-    
-    func showDeletebuttonOnAddQuestion(){
-        if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" {
-            self.saveButton.isHidden = false
-            self.cancelButton.isHidden = false
-            self.bottomDeletButton.isHidden = true
-        }else{
-            self.saveButton.isHidden = false
-            self.cancelButton.isHidden = false
-            self.bottomDeletButton.isHidden = false
-            self.bottomDeletButtonSepraterWidth.constant = 100
-        }
-    }
     
     @IBAction func openDropDownRegexList(sender: UIButton){
         delegate?.showRegexList(cell: self, sender: sender, index: indexPath)
@@ -176,7 +143,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     /// setUp Data for UI
     func setUPUI(_ FormList: FormDetailViewModelProtocol?, _ index: IndexPath) {
         self.indexPath = index
-        self.bottomDeletButton.isHidden = false
         self.dissableUserIntraction()
         self.formList = FormList?.FormDataAtIndex(index: index.row)
         self.questionNameTextfield.text = formList?.name
@@ -191,12 +157,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.cancelButton.addTarget(self,
                                     action: #selector(self.cancelButtonAction(sender:)),
                                     for: .touchUpInside)
-
-       
         if self.crateQuestion == true {
             self.saveButton.isHidden = false
-            self.bottomDeletButton.isHidden = false
-            self.bottomDeletButtonSepraterWidth.constant = 30
             self.editButton.isHidden = true
             self.cancelButton.isHidden = true
             self.hideValidationView()
@@ -204,24 +166,19 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             self.bottomViewHight.constant = 76
             self.enableUserIntraction()
         }else{
-            self.showDeleteReloadButton()
             self.saveButton.isHidden = true
-            self.bottomDeletButton.isHidden = true
             self.bottomView.isHidden = true
             self.bottomViewHight.constant = 0
             self.editButton.isHidden = false
-
         }
         
         // based on below condtion we are shwoing validated:
         if formList?.validate == true {
             self.showValiDationView()
             self.saveButton.isHidden = true
-            self.bottomDeletButton.isHidden = true
             self.bottomViewHight.constant = 0
             self.editButton.isHidden = false
         }
-        
     }
     
     func showValiDationView(){
@@ -266,12 +223,10 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     
     /// Disable all filed user intraction
     func dissableUserIntraction() {
-        self.questionNameTextfield.isUserInteractionEnabled = false
         self.requiredButton.isUserInteractionEnabled = false
         self.hiddenButton.isUserInteractionEnabled = false
         self.validateButton.isUserInteractionEnabled = false
         self.validationMessageTextfield.isUserInteractionEnabled = false
-        self.questionNameTextfield.isUserInteractionEnabled = false
         self.inputBoxButton.isUserInteractionEnabled = false
         self.textButton.isUserInteractionEnabled = false
         self.yesNoButton.isUserInteractionEnabled = false
@@ -283,12 +238,10 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     
     /// enable allfiled user intraction
     func enableUserIntraction() {
-        self.questionNameTextfield.isUserInteractionEnabled = true
         self.requiredButton.isUserInteractionEnabled = true
         self.hiddenButton.isUserInteractionEnabled = true
         self.validateButton.isUserInteractionEnabled = true
         self.validationMessageTextfield.isUserInteractionEnabled = true
-        self.questionNameTextfield.isUserInteractionEnabled = true
         self.inputBoxButton.isUserInteractionEnabled = true
         self.textButton.isUserInteractionEnabled = true
         self.yesNoButton.isUserInteractionEnabled = true
@@ -296,106 +249,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.multipleSelectionButton.isUserInteractionEnabled = true
         self.fileButton.isUserInteractionEnabled = true
         self.regexTextfield.isUserInteractionEnabled = true
-    }
-    
-    func selctionType(selctionType: String){
-        switch selctionType {
-        case  "Input":
-            self.inputBoxButton.isSelected = true
-        case "Text":
-            self.textButton.isSelected = true
-        case "Yes_No":
-            self.yesNoButton.isSelected = true
-        case  "Date":
-            self.dateButton.isSelected = true
-        case "Multiple_Selection_Text":
-            self.multipleSelectionButton.isSelected = true
-        case "File":
-            self.fileButton.isSelected = true
-        default:
-            break
-        }
-    }
-    
-    func getSelctionType() -> String {
-        if self.inputBoxButton.isSelected == true {
-            return "Input"
-        }
-        if self.textButton.isSelected == true {
-            return "Text"
-        }
-        if self.yesNoButton.isSelected == true {
-            return "Yes_No"
-        }
-        if self.dateButton.isSelected == true {
-            return "Date"
-        }
-        if self.multipleSelectionButton.isSelected == true {
-            return "Multiple_Selection_Text"
-        }
-        if self.fileButton.isSelected == true {
-            return "File"
-        }
-        return ""
-    }
-    
-    func getRegexForSelctionType(selctionType: String) -> String {
-        switch selctionType {
-        case  "Email":
-            return "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
-        case "Phone":
-            return "^[1-9][0-9]{9}$"
-        case "Name including white space":
-            return "^[a-zA-Z]([a-zA-Z ]*)?$"
-        case  "Name without space":
-            return "^[a-zA-Z]*$"
-        case "User name contain special character without space":
-            return "^[^\n ]*$"
-        case "Date validation dd/MM/yyyy or dd-MM-yyyy":
-            return "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$"
-        case "Date validation MM/dd/yyyy or MM-dd-yyyy":
-            return "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$"
-        case "Date validation yyyy/MM/dd or yyyy-MM-dd":
-            return "^((?:19|20|21)[0-9][0-9])[-/](0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])$"
-        default:
-            return ""
-        }
-    }
-    
-    func getRegexTypeFromRegex(regex: String) -> String {
-        if regex == "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"{
-            return "Email"
-        }
-        
-        if regex == "^[1-9][0-9]{9}$" {
-            return "Phone"
-        }
-        
-        if regex == "^[a-zA-Z]([a-zA-Z ]*)?$"{
-            return "Name including white space"
-        }
-        
-        if regex == "^[a-zA-Z]*$"{
-            return "Name without space"
-        }
-        
-        if regex == "^[^\n ]*$"{
-            return "User name contain special character without space"
-        }
-        
-        if regex == "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$" {
-            return "Date validation dd/MM/yyyy or dd-MM-yyyy"
-        }
-        
-        if regex == "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$" {
-            return "Date validation MM/dd/yyyy or MM-dd-yyyy"
-        }
-        
-        if regex == "^((?:19|20|21)[0-9][0-9])[-/](0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])$" {
-            return "Date validation yyyy/MM/dd or yyyy-MM-dd"
-        }
-        
-        return ""
     }
     
     func setUPButtonAction(){
@@ -469,7 +322,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.bottomView.isHidden = false
         self.bottomViewHight.constant = 76
         self.enableUserIntraction()
-        self.showDeletebuttonOnAddQuestion()
+        self.saveButton.isHidden = false
        
         if multipleSelectionButton.isSelected == true {
             self.multipleSelectionView.isHidden = false
@@ -492,10 +345,9 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBAction func cancelButtonAction(sender: UIButton) {
         self.bottomView.isHidden = true
         self.bottomViewHight.constant = 0
-        self.bottomDeletButton.isHidden = true
         self.dissableUserIntraction()
         self.hideMutipleSelctionView()
-        delegate?.reloadForm(cell: self, index: indexPath)
+        self.delegate?.reloadForm(cell: self, index: indexPath)
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
@@ -545,24 +397,24 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     }
     
     func hideCheckBoxView(){
-        checkBoxView.isHidden = true
-        checkBoxViewHight.constant = 0
+        self.checkBoxView.isHidden = true
+        self.checkBoxViewHight.constant = 0
     }
     
     func showCheckBoxView(){
-        checkBoxView.isHidden = false
-        checkBoxViewHight.constant = 90
+        self.checkBoxView.isHidden = false
+        self.checkBoxViewHight.constant = 90
     }
     
     /// Hide/ show QuestionView
     func hideAddQuestionView(){
-        addQuestionView.isHidden = true
-        addQuestionViewHight.constant = 0
+        self.addQuestionView.isHidden = true
+        self.addQuestionViewHight.constant = 0
     }
     
     func showAddQuestionView(){
-        addQuestionView.isHidden = false
-        addQuestionViewHight.constant = 40
+        self.addQuestionView.isHidden = false
+        self.addQuestionViewHight.constant = 40
     }
     
     /// multiselction YES / No type
@@ -571,7 +423,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             sender.isSelected = false
         } else {
             sender.isSelected = true
-            multipleChoiceNOButton.isSelected = false
+            self.multipleChoiceNOButton.isSelected = false
             self.hideDropDownView()
             self.hideCheckBoxView()
         }
@@ -582,8 +434,8 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             sender.isSelected = false
         } else {
             sender.isSelected = true
-            multipleChoiceYESButton.isSelected = false
-            showMultSelctionView()
+            self.multipleChoiceYESButton.isSelected = false
+            self.showMultSelctionView()
         }
     }
     
@@ -721,9 +573,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.bottomView.isHidden = true
         self.bottomViewHight.constant = 0
         self.dissableUserIntraction()
-//        self.bottomDeletButton.isHidden = true
         var formData: [String: Any] = [:]
-        
         if formList?.id == 0 {
             formData = self.saveFromData()
         }else{
@@ -794,7 +644,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     }
 }
 
-extension FormDetailTableViewCell: UIScrollViewDelegate {
+extension LeadQuestionnaireTableViewCell: UIScrollViewDelegate {
     
     internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x != 0 {
@@ -803,4 +653,106 @@ extension FormDetailTableViewCell: UIScrollViewDelegate {
     }
 }
 
+extension LeadQuestionnaireTableViewCell {
+  
+    func selctionType(selctionType: String){
+        switch selctionType {
+        case  "Input":
+            self.inputBoxButton.isSelected = true
+        case "Text":
+            self.textButton.isSelected = true
+        case "Yes_No":
+            self.yesNoButton.isSelected = true
+        case  "Date":
+            self.dateButton.isSelected = true
+        case "Multiple_Selection_Text":
+            self.multipleSelectionButton.isSelected = true
+        case "File":
+            self.fileButton.isSelected = true
+        default:
+            break
+        }
+    }
+    
+    func getSelctionType() -> String {
+        if self.inputBoxButton.isSelected == true {
+            return "Input"
+        }
+        if self.textButton.isSelected == true {
+            return "Text"
+        }
+        if self.yesNoButton.isSelected == true {
+            return "Yes_No"
+        }
+        if self.dateButton.isSelected == true {
+            return "Date"
+        }
+        if self.multipleSelectionButton.isSelected == true {
+            return "Multiple_Selection_Text"
+        }
+        if self.fileButton.isSelected == true {
+            return "File"
+        }
+        return ""
+    }
+   
+    func getRegexForSelctionType(selctionType: String) -> String {
+        switch selctionType {
+        case  "Email":
+            return Constant.Regex.email
+        case "Phone":
+            return Constant.Regex.phone
+        case "Name including white space":
+            return Constant.Regex.nameWithSpace
+        case  "Name without space":
+            return Constant.Regex.nameWithoutSpace
+        case "User name contain special character without space":
+            return Constant.Regex.specialCharacterWithoutSpace
+        case "Date validation dd/MM/yyyy or dd-MM-yyyy":
+            return Constant.Regex.DateValidationDateMounthYear
+        case "Date validation MM/dd/yyyy or MM-dd-yyyy":
+            return Constant.Regex.DateValidationMounthDateYear
+        case "Date validation yyyy/MM/dd or yyyy-MM-dd":
+            return Constant.Regex.DateValidationYearMounthDate
+        default:
+            return ""
+        }
+    }
+    
+    func getRegexTypeFromRegex(regex: String) -> String {
+        if regex == Constant.Regex.email {
+            return "Email"
+        }
+        
+        if regex == Constant.Regex.phone {
+            return "Phone"
+        }
+        
+        if regex == Constant.Regex.nameWithSpace {
+            return "Name including white space"
+        }
+        
+        if regex == Constant.Regex.nameWithoutSpace {
+            return "Name without space"
+        }
+        
+        if regex == Constant.Regex.specialCharacterWithoutSpace {
+            return "User name contain special character without space"
+        }
+        
+        if regex == Constant.Regex.DateValidationDateMounthYear {
+            return "Date validation dd/MM/yyyy or dd-MM-yyyy"
+        }
+        
+        if regex == Constant.Regex.DateValidationMounthDateYear {
+            return "Date validation MM/dd/yyyy or MM-dd-yyyy"
+        }
+        
+        if regex == Constant.Regex.DateValidationYearMounthDate {
+            return "Date validation yyyy/MM/dd or yyyy-MM-dd"
+        }
+        
+        return ""
+    }
+}
 

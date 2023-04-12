@@ -197,12 +197,16 @@ struct Constant {
     }
     
     struct Regex {
-        static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        static let email = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
         static let password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!])[a-zA-Z0-9@$!]{8,}$"
         static let phone = "^[1-9][0-9]{9}$"
         static let nameWithoutSpace = "^[a-zA-Z]*$"
         static let nameWithSpace = "^[a-zA-Z]([a-zA-Z ]*)?$"
         static let number = "[1-9][0-9]*"
+        static let specialCharacterWithoutSpace = "^[^\n ]*$"
+        static let DateValidationDateMounthYear = "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$"
+        static let DateValidationMounthDateYear = "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$"
+        static let DateValidationYearMounthDate = "^((?:19|20|21)[0-9][0-9])[-/](0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])$"
 
     }
     

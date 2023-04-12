@@ -23,7 +23,6 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
         if indexPath.section == 0 {
             var cell = CreateQuestionnaireTableViewCell()
             cell = self.tableView.dequeueReusableCell(withIdentifier: "CreateQuestionnaireTableViewCell", for: indexPath) as! CreateQuestionnaireTableViewCell
@@ -31,13 +30,22 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(tableView: tableView, viewModel: viewModel, index: indexPath)
             return cell
         }else{
-            var cell = FormDetailTableViewCell()
-            cell = self.tableView.dequeueReusableCell(withIdentifier: "FormDetailTableViewCell", for: indexPath) as! FormDetailTableViewCell
-            cell.delegate = self
-            cell.configureCell(tableView: tableView, FormList: viewModel, index: indexPath)
-            return cell
+            let formList = viewModel?.FormDataAtIndex(index: indexPath.row)
+          
+            if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number"  {
+                var cell = LeadQuestionnaireTableViewCell()
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "LeadQuestionnaireTableViewCell", for: indexPath) as! LeadQuestionnaireTableViewCell
+                cell.delegate = self
+                cell.configureCell(tableView: tableView, FormList: viewModel, index: indexPath)
+                return cell
+            } else{
+                var cell = FormDetailTableViewCell()
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "FormDetailTableViewCell", for: indexPath) as! FormDetailTableViewCell
+                cell.delegate = self
+                cell.configureCell(tableView: tableView, FormList: viewModel, index: indexPath)
+                return cell
+            }
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

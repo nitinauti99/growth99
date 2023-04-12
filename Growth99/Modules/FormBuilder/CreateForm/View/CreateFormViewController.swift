@@ -64,8 +64,10 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     
     func FormsDataRecived(message: String){
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func errorReceived(error: String) {

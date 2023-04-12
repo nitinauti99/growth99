@@ -1,14 +1,14 @@
 //
-//  FormDetailTableViewCell+TableView.swift
+//  LeadQuestionnaireTableViewCell+tableView.swift
 //  Growth99
 //
-//  Created by Nitin Auti on 27/02/23.
+//  Created by Nitin Auti on 12/04/23.
 //
 
 import Foundation
 import UIKit
 
-extension FormDetailTableViewCell: UITableViewDelegate, UITableViewDataSource {
+extension LeadQuestionnaireTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questionArray.count

@@ -39,6 +39,8 @@ class FormDetailViewController: UIViewController {
     func registerCell(){
         self.tableView.register(UINib(nibName: "FormDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "FormDetailTableViewCell")
         self.tableView.register(UINib(nibName: "CreateQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "CreateQuestionnaireTableViewCell")
+        self.tableView.register(UINib(nibName: "LeadQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadQuestionnaireTableViewCell")
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,24 +61,19 @@ class FormDetailViewController: UIViewController {
         }
     }
     
-    func deleteNotSsavedQuestion(cell: FormDetailTableViewCell, index: IndexPath) {
-        viewModel?.removeFormData(index: index)
-        self.tableView.deleteRows(at: [index], with: .automatic)
-        self.tableView?.performBatchUpdates(nil, completion: nil)
-        self.tableView.reloadData()
-    }
-    
     @IBAction func addQuestionAction(sender:UIButton) {
         let createdBy = CreatedBy(firstName: "", lastName: "", email: "", username: "")
         let updatedBy =  UpdatedBy(firstName: "", lastName: "", email: "", username: "")
 
         let formItem  = FormDetailModel(createdAt: "", updatedAt: "", createdBy: createdBy, updatedBy: updatedBy, deleted: false, tenantId: 0, id: 0, name: "", type: "", answer: "", required: false, questionOrder:0, allowMultipleSelection: false, allowLabelsDisplayWithImages: false, hidden: false, validate: false, regex: "", validationMessage: "", showDropDown: false, preSelectCheckbox: false, description: "", subHeading: "", questionChoices: [], questionImages: [])
         
-        viewModel?.addFormDetailData(item: formItem)
+        self.viewModel?.addFormDetailData(item: formItem)
+        
         NotificationCenter.default.post(name: Notification.Name("notificationCreateQuestion"), object: nil)
-        let indexPath = IndexPath(row: (viewModel?.getFormDetailData.count ?? 0) - 1 , section: 0)
-        tableView.insertRows(at: [indexPath], with: .none)
-        tableView.reloadData()
+        
+        let indexPath = IndexPath(row: (viewModel?.getFormDetailData.count ?? 0) - 1 , section: 1)
+        self.tableView.insertRows(at: [indexPath], with: .none)
+        self.tableView.reloadData()
     }
     
     @IBAction func cancelAction(sender: UIButton){
@@ -130,32 +127,22 @@ extension FormDetailViewController: FormDetailViewControllerProtocol {
     
     func FormsDataRecived(message: String){
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func formsQuestionareDataRecived(){
         self.tableView.reloadData()
-
-//        if item?.enableModernUi == true {
-//            if item?.backgroundImageUrl != nil {
-//                guard let url = URL(string: item?.backgroundImageUrl ?? "") else {
-//                    return
-//                }
-//                let data = try? Data(contentsOf: url)
-//                self.backroundImageSelctionButton.isHidden = true
-//                self.backroundImageSelctionHight.constant = 0
-//                DispatchQueue.main.async {
-//                    self.backroundImage.image = UIImage(data: data ?? Data())
-//                }
-//            }
-//        }
         viewModel?.getFormDetail(questionId: questionId)
     }
     
     func updatedFormDataSuccessfully(){
         self.view.showToast(message: "Form Data Updated Successfully", color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 
     func questionRemovedSuccefully(mrssage: String) {
@@ -197,8 +184,48 @@ extension FormDetailViewController: FormDetailTableViewCellDelegate {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(RegexList().regexArray.count * 44))), arrowDirection: .up), from: self)
     }
     
+    func deleteNotSsavedQuestion(cell: FormDetailTableViewCell, index: IndexPath) {
+        viewModel?.removeFormData(index: index)
+        self.tableView.deleteRows(at: [index], with: .automatic)
+        self.tableView?.performBatchUpdates(nil, completion: nil)
+        self.tableView.reloadData()
+    }
+    
     func saveFormData(item: [String : Any]) {
         self.view.ShowSpinner()
         viewModel?.updateQuestionFormData(questionnaireId: self.questionId, formData: item)
     }
+}
+
+extension FormDetailViewController: LeadQuestionnaireTableViewCellDelegate{
+   
+    func reloadForm(cell: LeadQuestionnaireTableViewCell, index: IndexPath) {
+        tableView.beginUpdates()
+        self.tableView.reloadRows(at: [index], with: UITableView.RowAnimation.none)
+        tableView.endUpdates()
+    }
+    
+    func showRegexList(cell: LeadQuestionnaireTableViewCell, sender: UIButton, index: IndexPath) {
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: RegexList().regexArray, cellType: .subTitle) { (cell, list, indexPath) in
+            cell.textLabel?.text = list
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.regexTextfield.text = ""
+            cell.regexTextfield.text = selectedItem
+            selectionMenu.dismissAutomatically = true
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(RegexList().regexArray.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+   
+    func deleteNotSsavedQuestion(cell: LeadQuestionnaireTableViewCell, index: IndexPath) {
+        self.view.ShowSpinner()
+        viewModel?.removeFormData(index: index)
+        self.tableView.deleteRows(at: [index], with: .automatic)
+        self.tableView?.performBatchUpdates(nil, completion: nil)
+        self.tableView.reloadData()
+    }
+    
 }

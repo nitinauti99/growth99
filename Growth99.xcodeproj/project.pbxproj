@@ -252,6 +252,9 @@
 		01DBA9AE29C618D800CBA51D /* PostsListViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */; };
 		01DD578B29A224B400C03A69 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */; };
 		01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */; };
+		01E348E429E6C998003B2456 /* LeadQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E348E229E6C998003B2456 /* LeadQuestionnaireTableViewCell.swift */; };
+		01E348E529E6C998003B2456 /* LeadQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E348E329E6C998003B2456 /* LeadQuestionnaireTableViewCell.xib */; };
+		01E348E729E6D8E5003B2456 /* LeadQuestionnaireTableViewCell+tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E348E629E6D8E4003B2456 /* LeadQuestionnaireTableViewCell+tableView.swift */; };
 		01EBAC3829B583AE00110DCB /* LeadTagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */; };
 		01EBAC3A29B583C300110DCB /* LeadTagsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EBAC3929B583C300110DCB /* LeadTagsListViewController.storyboard */; };
 		01EBAC3C29B583D000110DCB /* LeadTagsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBAC3B29B583D000110DCB /* LeadTagsListViewModel.swift */; };
@@ -1144,6 +1147,9 @@
 		01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+TableView.swift"; sourceTree = "<group>"; };
 		01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		01DD578A29A224B400C03A69 /* FormQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		01E348E229E6C998003B2456 /* LeadQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
+		01E348E329E6C998003B2456 /* LeadQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
+		01E348E629E6D8E4003B2456 /* LeadQuestionnaireTableViewCell+tableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadQuestionnaireTableViewCell+tableView.swift"; sourceTree = "<group>"; };
 		01EBAC3729B583AE00110DCB /* LeadTagsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewController.swift; sourceTree = "<group>"; };
 		01EBAC3929B583C300110DCB /* LeadTagsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeadTagsListViewController.storyboard; sourceTree = "<group>"; };
 		01EBAC3B29B583D000110DCB /* LeadTagsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTagsListViewModel.swift; sourceTree = "<group>"; };
@@ -2971,8 +2977,9 @@
 		01D7AAF3299D59D800821274 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				01FB531029E5B7DE00C8559F /* SectionCell */,
-				01D7AB03299E56F800821274 /* Cell */,
+				01FB531029E5B7DE00C8559F /* FormDetailCell */,
+				01E348E129E6C8D6003B2456 /* LeadCell */,
+				01D7AB03299E56F800821274 /* FormCell */,
 				01D7AAFB299D5AF700821274 /* FormDetailViewController.swift */,
 				01D9EBD929B8B0490099761C /* FormDetailViewController.storyboard */,
 				01D7AB08299E8CD000821274 /* FormDetailViewController+TableView.swift */,
@@ -3005,7 +3012,7 @@
 			path = ContainerView;
 			sourceTree = "<group>";
 		};
-		01D7AB03299E56F800821274 /* Cell */ = {
+		01D7AB03299E56F800821274 /* FormCell */ = {
 			isa = PBXGroup;
 			children = (
 				01DD578929A224B400C03A69 /* FormQuestionTableViewCell.swift */,
@@ -3014,7 +3021,7 @@
 				01D7AB05299E572700821274 /* FormDetailTableViewCell.xib */,
 				01BBA9F029AD0108006A5DB8 /* FormDetailTableViewCell+TableView.swift */,
 			);
-			path = Cell;
+			path = FormCell;
 			sourceTree = "<group>";
 		};
 		01D9EBDB29B8B44E0099761C /* FormSubmissionList */ = {
@@ -3189,6 +3196,16 @@
 				01DBA9AB29C5E14400CBA51D /* CreateLabelViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01E348E129E6C8D6003B2456 /* LeadCell */ = {
+			isa = PBXGroup;
+			children = (
+				01E348E229E6C998003B2456 /* LeadQuestionnaireTableViewCell.swift */,
+				01E348E329E6C998003B2456 /* LeadQuestionnaireTableViewCell.xib */,
+				01E348E629E6D8E4003B2456 /* LeadQuestionnaireTableViewCell+tableView.swift */,
+			);
+			path = LeadCell;
 			sourceTree = "<group>";
 		};
 		01EBAC3F29B5842400110DCB /* Cell */ = {
@@ -3398,14 +3415,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		01FB531029E5B7DE00C8559F /* SectionCell */ = {
+		01FB531029E5B7DE00C8559F /* FormDetailCell */ = {
 			isa = PBXGroup;
 			children = (
 				01FB531129E5B83600C8559F /* CreateQuestionnaireTableViewCell.swift */,
 				01FB531229E5B83600C8559F /* CreateQuestionnaireTableViewCell.xib */,
 				01FB531529E5BED200C8559F /* CreateQuestionnaireTableViewCell+ImageView.swift */,
 			);
-			path = SectionCell;
+			path = FormDetailCell;
 			sourceTree = "<group>";
 		};
 		18491D8A29B80CDF00FE72EF /* DetailScreen */ = {
@@ -7014,6 +7031,7 @@
 				01D9EC0529B8D5410099761C /* DisplayQuestionnaireqsubmissionsTableViewCell.xib in Resources */,
 				18491DB229B80CE000FE72EF /* MassEmailandSMSPatientActionTableViewCell.xib in Resources */,
 				013A4FA229B4C61400CA24B0 /* LeadCombineTimeLineTableViewCell.xib in Resources */,
+				01E348E529E6C998003B2456 /* LeadQuestionnaireTableViewCell.xib in Resources */,
 				8497A03F28FF11E200CBA26C /* Development.plist in Resources */,
 				189E3F1729C3980900B94190 /* PostCalenderViewController.storyboard in Resources */,
 				8440B3912999FDCF00A42097 /* FormListViewController.storyboard in Resources */,
@@ -7584,6 +7602,7 @@
 				01B2F63029E1DB700071384E /* EditTasksViewController+TextField.swift in Sources */,
 				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
+				01E348E729E6D8E5003B2456 /* LeadQuestionnaireTableViewCell+tableView.swift in Sources */,
 				DA54A8A329D8761B00DB333F /* TriggerParentCreateTableViewCell.swift in Sources */,
 				842C0CAE298F713B00395061 /* ConsentsListTableViewCell.swift in Sources */,
 				01C7488829B21A470085CED2 /* AddNewConsentsViewController+searchBar.swift in Sources */,
@@ -7655,6 +7674,7 @@
 				84D0628129670677001FE469 /* RegistrationViewController.swift in Sources */,
 				01152E2429B3C1C500B24627 /* CreateLeadTasksViewModel.swift in Sources */,
 				01EBAC7A29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift in Sources */,
+				01E348E429E6C998003B2456 /* LeadQuestionnaireTableViewCell.swift in Sources */,
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
 				1883F10729C63DA10080997B /* TriggerEditDetailViewModel.swift in Sources */,
 				84D0624629670677001FE469 /* ClinicsModel.swift in Sources */,
