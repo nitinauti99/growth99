@@ -54,9 +54,9 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
     func setUpUI(){
         self.loginButton.layer.cornerRadius = 12
         self.loginButton.clipsToBounds = true
-        loginSignUpLbl.updateHyperLinkText { _ in
-            self.openRegistrationView()
-        }
+//        loginSignUpLbl.updateHyperLinkText { _ in
+//            self.openRegistrationView()
+//        }
         forgotPasswoardLbl.updateHyperLinkText { _ in
             self.openForgotPasswordView()
         }

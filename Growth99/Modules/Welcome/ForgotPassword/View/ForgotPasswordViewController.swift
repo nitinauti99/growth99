@@ -39,9 +39,9 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
     func setUpUI(){
         self.sendRequestButton.layer.cornerRadius = 12
         self.sendRequestButton.clipsToBounds = true
-        signUpLbl.updateHyperLinkText { _ in
-            self.openRegistrationView()
-        }
+//        signUpLbl.updateHyperLinkText { _ in
+//            self.openRegistrationView()
+//        }
         
         signInLbl.updateHyperLinkText { _ in
             self.openLoginView()
