@@ -57,7 +57,6 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         self.viewModel = UserCreateViewModel(delegate: self)
         self.userProviderViewHight.constant = 0
         self.userProviderView.isHidden = true
-        self.setupTexFieldValidstion()
         self.title = Constant.Profile.createUser
         self.userProvider.setOn(false, animated: false)
     }
@@ -246,18 +245,6 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         }
     }
     
-    private func setupTexFieldValidstion() {
-        self.phoneNumberTextField.addTarget(self, action:
-                                                #selector(HomeViewContoller.textFieldDidChange(_:)),
-                                            for: UIControl.Event.editingChanged)
-        self.lastNameTextField.addTarget(self, action:
-                                            #selector(HomeViewContoller.textFieldDidChange(_:)),
-                                         for: UIControl.Event.editingChanged)
-        self.firsNameTextField.addTarget(self, action:
-                                            #selector(HomeViewContoller.textFieldDidChange(_:)),
-                                         for: UIControl.Event.editingChanged)
-    }
-    
     @IBAction func saveUserProfile() {
         if let textField = firsNameTextField,  textField.text == "" {
             firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
@@ -320,29 +307,45 @@ extension UserCreateViewController: UITextFieldDelegate {
         return true
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
         
-        if let textField = firsNameTextField, textField.text == "" {
-            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
-        }
-        
-        if let isFirstName =  self.viewModel?.isValidFirstName(self.firsNameTextField.text ?? ""), isFirstName == false  {
-            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
-        }
-        
-        if textField == lastNameTextField, textField.text == "" {
-            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
-        }
-        
-        if let isLastName =  self.viewModel?.isValidLastName(self.lastNameTextField.text ?? ""), isLastName == false {
-            self.lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
-        }
-        
-        if textField == phoneNumberTextField, textField.text == "" {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
-        }
-        if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+        if (textField ==  firsNameTextField) {
+            if let textField = firsNameTextField, textField.text == "" {
+                firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            }
+            
+            if let isFirstName =  self.viewModel?.isValidFirstName(self.firsNameTextField.text ?? ""), isFirstName == false  {
+                firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
+            }
+     
+        } else if (textField ==  lastNameTextField) {
+            if textField == lastNameTextField, textField.text == "" {
+                lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
+            }
+            
+            if let isLastName =  self.viewModel?.isValidLastName(self.lastNameTextField.text ?? ""), isLastName == false {
+                self.lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
+            }
+     
+        } else if (textField == emailTextField) {
+            guard let emailText = emailTextField.text, !emailText.isEmpty else {
+                emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+                return
+            }
+            guard let emailText = emailTextField.text, let emailValidate = viewModel?.isValidEmail(emailText), emailValidate else {
+                emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+                return
+            }
+       
+        } else if (textField == phoneNumberTextField) {
+            
+            if textField == phoneNumberTextField, textField.text == "" {
+                phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            }
+            if textField == phoneNumberTextField, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
+                phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            }
         }
     }
+    
 }
