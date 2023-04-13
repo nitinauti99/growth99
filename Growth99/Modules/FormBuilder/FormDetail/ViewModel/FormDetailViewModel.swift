@@ -106,9 +106,9 @@ class FormDetailViewModel {
             switch result {
             case .success(let response):
                 if(response.statusCode == 200){
-                    self.delegate?.questionRemovedSuccefully(mrssage: "Consents removed successfully")
+                    self.delegate?.questionRemovedSuccefully(mrssage: "Question deleted successf")
                 }else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
+                    self.delegate?.errorReceived(error: "Internal server error")
                 } else{
                     self.delegate?.errorReceived(error: "response failed")
                 }

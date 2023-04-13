@@ -60,6 +60,9 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
         backroundImageSelctionButton.layer.borderWidth = 2
         backroundImageSelctionButton.layer.borderColor = UIColor(hexString: "#009EDE").cgColor
         backroundImageSelctionLBI.isHidden = true
+        self.questionnaireName.addTarget(self, action:
+                                            #selector(self.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
     }
     
     func FormsDataRecived(message: String){
@@ -173,6 +176,12 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     }
     
     @IBAction func saveAction(sender: UIButton){
+        
+        guard let questionnaireName  = questionnaireName.text, !questionnaireName.isEmpty else {
+                questionnaireName.showError(message: "Questionnaire Name is required")
+                return
+            }
+        
         let createFormList: [String : Any] = [
             "name": self.questionnaireName.text ?? String.blank,
             "isPublic": self.Make_Public.isSelected,
@@ -204,10 +213,25 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
             "configureThankYouMessageInLandingPage": false,
             "configureThankYouMessageInVC": false,
             "thankYouPageMessageLandingPage": "",
-            "thankYouPageMessageVC": ""
+            "isG99ReviewForm": false,
+            "thankYouPageMessageVC": "",
+            "showLogo": false
         ]
-        
         self.view.ShowSpinner()
         viewModel?.saveCreateForm(formData: createFormList)
+    }
+}
+
+extension CreateFormViewController: UITextFieldDelegate {
+   
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == questionnaireName {
+            guard let phoneNumber  = questionnaireName.text, !phoneNumber.isEmpty else {
+                questionnaireName.showError(message: "Questionnaire Name is required")
+                return
+            }
+        }
+        
     }
 }

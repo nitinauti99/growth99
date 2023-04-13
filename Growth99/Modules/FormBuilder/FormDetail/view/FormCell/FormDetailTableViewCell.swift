@@ -607,6 +607,10 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }
     }
     @IBAction func saveFormData(sender: UIButton){
+        guard let questionnaireName  = questionNameTextfield.text, !questionnaireName.isEmpty else {
+            questionNameTextfield.showError(message: "Questionnaire is required")
+                return
+        }
         self.bottomView.isHidden = true
         self.bottomViewHight.constant = 0
         self.bottomDeletButton.isHidden = true
@@ -618,6 +622,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         }else{
             formData = self.updateFromData()
         }
+    
         delegate?.saveFormData(item: formData)
     }
     

@@ -16,9 +16,10 @@ protocol CreateNotificationViewContollerProtocol {
 
 class CreateNotificationViewController: UIViewController, CreateNotificationViewContollerProtocol {
    
-    @IBOutlet private weak var notificationTypeTextField: CustomTextField!
-    @IBOutlet private weak var selectedNotificationTypeTextField: CustomTextField!
+    @IBOutlet  weak var notificationTypeTextField: CustomTextField!
+    @IBOutlet  weak var selectedNotificationTypeTextField: CustomTextField!
     @IBOutlet private weak var notificationTypeLBI: UILabel!
+    @IBOutlet private weak var saveButton: UIButton!
 
     var viewModel: CreateNotificationViewModelProtocol?
     var categoryName: String = String.blank
@@ -27,7 +28,8 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     var screenName: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = CreateNotificationViewModel(delegate: self)
+        self.viewModel = CreateNotificationViewModel(delegate: self)
+        self.saveButton.isUserInteractionEnabled = false
         if screenName == "Edit Notification" {
             self.view.ShowSpinner()
            viewModel?.getCreateCreateNotification(questionId: questionId, notificationId: notificationId)
@@ -54,6 +56,7 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
             }else{
                 self?.notificationTypeLBI.text = "Phone Number"
             }
+            self?.saveButton.isUserInteractionEnabled = true
             self?.notificationTypeTextField.text  = selectedItem
             selectionMenu.dismissAutomatically = true
         }
@@ -95,8 +98,14 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         var params: [String : Any] = [:]
 
         if self.notificationTypeTextField.text == "SMS" {
+            guard let phoneNumber  = selectedNotificationTypeTextField.text, !phoneNumber.isEmpty else {
+                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+                return
+            }
+            
             if let textField  = selectedNotificationTypeTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
                 selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+                return
             }
             params = [
                "notificationType": "SMS",
@@ -104,9 +113,14 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
                "messageText": "",
                "phoneNumber": selectedNotificationTypeTextField.text ?? String.blank,
            ]
-        }else{
+        }else {
+            guard let emailText = selectedNotificationTypeTextField.text, !emailText.isEmpty else {
+                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+                return
+            }
             if let textField  = selectedNotificationTypeTextField.text, let emailValidate = viewModel?.isValidEmail(textField), emailValidate == false {
                 selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+                return
             }
             params = [
                "notificationType": "EMAIL",
@@ -133,12 +147,23 @@ extension CreateNotificationViewController: UITextFieldDelegate {
    
     @objc func textFieldDidChange(_ textField: UITextField) {
         if self.notificationTypeTextField.text == "SMS" {
-            if let textField  = selectedNotificationTypeTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
+            guard let phoneNumber  = selectedNotificationTypeTextField.text, !phoneNumber.isEmpty else {
+                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+                return
+            }
+            
+            guard let phoneNumber  = selectedNotificationTypeTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberValidate else {
                 selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+                return
             }
         }else{
-            if let textField  = selectedNotificationTypeTextField.text, let emailValidate = viewModel?.isValidEmail(textField), emailValidate == false {
+            guard let emailText = selectedNotificationTypeTextField.text, !emailText.isEmpty else {
+                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+                return
+            }
+            guard let emailText = selectedNotificationTypeTextField.text, let emailValidate = viewModel?.isValidEmail(emailText), emailValidate else {
                 selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+                return
             }
         }
     }

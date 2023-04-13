@@ -32,7 +32,7 @@ class FormListViewModel {
         self.requestManager.request(forPath: ApiUrl.FormsList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[FormListModel], GrowthNetworkError>) in
             switch result {
             case .success(let FormData):
-                self.FormListData = FormData.reversed()
+                self.FormListData = FormData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.FormsDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -49,9 +49,9 @@ class FormListViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.consentsRemovedSuccefully(mrssage: "Consents removed successfully")
+                    self.delegate?.consentsRemovedSuccefully(message: "The Questionnaire has been deleted.")
                 }else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
+                    self.delegate?.errorReceived(error: "Internal server error")
                 }else{
                     self.delegate?.errorReceived(error: "response failed")
                 }

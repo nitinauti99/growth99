@@ -258,6 +258,9 @@ class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCell
         dateButton.addTarget(self, action: #selector(self.buttonAction(_ :)), for:.touchUpInside)
         multipleSelectionButton.addTarget(self, action: #selector(self.buttonAction(_ :)), for:.touchUpInside)
         fileButton.addTarget(self, action: #selector(self.buttonAction(_ :)), for:.touchUpInside)
+        self.questionNameTextfield.addTarget(self, action:
+                                            #selector(self.textFieldDidChange(_:)),
+                                            for: UIControl.Event.editingChanged)
     }
     
     /// set selected button based server data
@@ -570,6 +573,10 @@ class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCell
         }
     }
     @IBAction func saveFormData(sender: UIButton){
+        guard let questionnaireName  = questionNameTextfield.text, !questionnaireName.isEmpty else {
+            questionNameTextfield.showError(message: "Questionnaire is required")
+                return
+        }
         self.bottomView.isHidden = true
         self.bottomViewHight.constant = 0
         self.dissableUserIntraction()
@@ -756,3 +763,16 @@ extension LeadQuestionnaireTableViewCell {
     }
 }
 
+extension LeadQuestionnaireTableViewCell: UITextFieldDelegate {
+   
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == questionNameTextfield {
+            guard let phoneNumber  = questionNameTextfield.text, !phoneNumber.isEmpty else {
+                questionNameTextfield.showError(message: "Questionnaire Name is required")
+                return
+            }
+        }
+        
+    }
+}

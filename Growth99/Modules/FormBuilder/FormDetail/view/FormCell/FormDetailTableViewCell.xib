@@ -723,13 +723,13 @@
     </objects>
     <designables>
         <designable name="Q8h-Or-F2B">
-            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="ilC-0W-F0u">
-            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="vHa-hD-TxE">
-            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
     </designables>
     <resources>

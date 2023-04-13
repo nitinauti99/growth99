@@ -45,6 +45,9 @@
                                                         <color key="value" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="AX0-Mt-zaf"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6X-3s-TaT" userLabel="password">
                                                 <rect key="frame" x="30" y="113" width="320.66666666666669" height="20"/>
@@ -474,16 +477,16 @@
     </scenes>
     <designables>
         <designable name="Omk-di-beB">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="YtF-6d-P42">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="liT-VZ-MDy">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
         <designable name="tdh-h1-HxX">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

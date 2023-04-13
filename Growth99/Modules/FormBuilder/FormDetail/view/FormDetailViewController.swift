@@ -141,7 +141,8 @@ extension FormDetailViewController: FormDetailViewControllerProtocol {
     func updatedFormDataSuccessfully(){
         self.view.showToast(message: "Form Data Updated Successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.navigationController?.popViewController(animated: true)
+            self.view.ShowSpinner()
+            self.viewModel?.getFormQuestionnaireData(questionnaireId: self.questionId)
         })
     }
 

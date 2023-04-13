@@ -179,6 +179,7 @@
                     <connections>
                         <outlet property="notificationTypeLBI" destination="WCP-Yl-h96" id="IZA-Ga-3pz"/>
                         <outlet property="notificationTypeTextField" destination="bfM-di-qon" id="prx-wr-3Ud"/>
+                        <outlet property="saveButton" destination="Id1-B0-crS" id="8UT-nu-HUD"/>
                         <outlet property="selectedNotificationTypeTextField" destination="T0e-A0-BIM" id="qLb-bP-gmp"/>
                     </connections>
                 </viewController>

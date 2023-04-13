@@ -11,7 +11,7 @@ import UIKit
 protocol FormListViewControllerProtocol {
     func FormsDataRecived()
     func errorReceived(error: String)
-    func consentsRemovedSuccefully(mrssage: String)
+    func consentsRemovedSuccefully(message: String)
 }
 
 class FormListViewController: UIViewController, FormListViewControllerProtocol, FormListTableViewCellDelegate {
@@ -90,12 +90,14 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     
     @objc func getPateintList() {
         self.view.ShowSpinner()
-        viewModel?.getFormList()
+        self.viewModel?.getFormList()
     }
     
-    func consentsRemovedSuccefully(mrssage: String) {
-        self.view.showToast(message: mrssage,color: .red)
-        viewModel?.getFormList()
+    func consentsRemovedSuccefully(message: String) {
+        self.view.showToast(message: message,color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.viewModel?.getFormList()
+        })
     }
     
     func FormsDataRecived(){

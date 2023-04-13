@@ -63,6 +63,7 @@ class FormDetailContainerView: UIViewController {
             remove(asChildViewController: notificationListVC)
             remove(asChildViewController: formDetailVC)
             add(asChildViewController: questionarieVC)
+            navigationItem.rightBarButtonItem = nil
         default:
             break
         }

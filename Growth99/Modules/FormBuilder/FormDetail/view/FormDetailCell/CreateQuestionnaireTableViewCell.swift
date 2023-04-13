@@ -223,7 +223,13 @@ extension CreateQuestionnaireTableViewCell {
         delegate?.popToView()
     }
     @IBAction func saveAction(sender: UIButton){
+        guard let questionnaire  = questionnaireName.text, !questionnaire.isEmpty else {
+            questionnaireName.showError(message: "Questionnaire Name is required")
+                return
+        }
+        
         let createFormList: [String : Any] = [
+            
             "name": self.questionnaireName.text ?? String.blank,
             "isPublic": self.Make_Public.isSelected,
             "enableModernUi": self.Enable_ModernUI.isSelected,
@@ -257,6 +263,7 @@ extension CreateQuestionnaireTableViewCell {
             "thankYouPageMessageLandingPage": "",
             "thankYouPageMessageVC": ""
         ]
+        
         delegate?.saveFoemData(data: createFormList)
     }
     
