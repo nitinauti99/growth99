@@ -49,7 +49,7 @@ class SMSTemplateViewModel {
                 self.setTemplate()
                 self.delegate?.SmsTemplatesDataRecived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                self.delegate?.errorReceived(error: "Unable to load email template.")
                 print("Error while performing request \(error)")
             }
         }

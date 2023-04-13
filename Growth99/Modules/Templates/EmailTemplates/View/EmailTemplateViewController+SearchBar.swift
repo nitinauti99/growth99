@@ -11,7 +11,7 @@ import UIKit
 extension EmailTemplateViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.filterData(searchText: searchText)
+        viewModel?.filterData(searchText: searchText, selectedIndex: segmentedControl.selectedSegmentIndex)
         isSearch = true
         tableView.reloadData()
     }

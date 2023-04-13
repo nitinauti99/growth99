@@ -19,7 +19,7 @@ protocol EmailTemplateViewModelProtocol {
     func getSelectedTemplateFilterData(selectedIndex: Int)-> [Any]
     
     func getEmailTemplateList()
-    func filterData(searchText: String)
+    func filterData(searchText: String, selectedIndex: Int)
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
     func getTemplateFilterDataAtIndexPath(index: Int, selectedIndex: Int) -> EmailTemplateListModel?
@@ -31,9 +31,9 @@ class EmailTemplateViewModel {
     
     var emailTemplateFilterData: [EmailTemplateListModel] = []
     
-    var leadTemplateListData: [Any] = []
-    var apppointmentTemplateListData: [Any] = []
-    var massEmailTemplateListData: [Any] = []
+    var leadTemplateListData: [EmailTemplateListModel] = []
+    var apppointmentTemplateListData: [EmailTemplateListModel] = []
+    var massEmailTemplateListData: [EmailTemplateListModel] = []
     
     init(delegate: EmailTemplateViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -61,7 +61,7 @@ class EmailTemplateViewModel {
                 leadTemplateListData.append(template)
             }else if (template.templateFor == "Appointment"){
                 apppointmentTemplateListData.append(template)
-            }else {
+            }else if (template.templateFor == "MassEmail"){
                 massEmailTemplateListData.append(template)
             }
         }
@@ -81,22 +81,39 @@ class EmailTemplateViewModel {
         return self.emailTemplateFilterData
     }
     
-    func filterData(searchText: String) {
-        self.emailTemplateFilterData = self.emailTemplateListData.filter { task in
-            let searchText = searchText.lowercased()
-            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+    func filterData(searchText: String, selectedIndex: Int) {
+        if selectedIndex == 0 {
+            self.emailTemplateFilterData = self.leadTemplateListData.filter { task in
+                let searchText = searchText.lowercased()
+                let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+                let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+                return nameMatch || idMatch
+            }
+            
+        }else if (selectedIndex == 1){
+            self.emailTemplateFilterData = self.apppointmentTemplateListData.filter { task in
+                let searchText = searchText.lowercased()
+                let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+                let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+                return nameMatch || idMatch
+            }
+        }else {
+            self.emailTemplateFilterData = self.massEmailTemplateListData.filter { task in
+                let searchText = searchText.lowercased()
+                let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+                let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+                return nameMatch || idMatch
+            }
         }
     }
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex:Int) -> EmailTemplateListModel? {
         if selectedIndex == 0 {
-            return leadTemplateListData[index] as? EmailTemplateListModel
+            return leadTemplateListData[index]
         }else if (selectedIndex == 1){
-            return apppointmentTemplateListData[index] as? EmailTemplateListModel
+            return apppointmentTemplateListData[index]
         }else {
-            return massEmailTemplateListData[index] as? EmailTemplateListModel
+            return massEmailTemplateListData[index]
         }
     }
     
