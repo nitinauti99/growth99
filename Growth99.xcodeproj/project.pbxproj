@@ -860,6 +860,7 @@
 		DA06999429E9671D002E060A /* AddEventViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */; };
 		DA06999629E96EEA002E060A /* AddPostViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */; };
 		DA06999829E96F07002E060A /* EventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */; };
+		DA06999A29E9B482002E060A /* ServicesListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999929E9B482002E060A /* ServicesListDetailViewController+TextField.swift */; };
 		DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */; };
 		DA0C735C29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */; };
 		DA0C735E29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */; };
@@ -1774,6 +1775,7 @@
 		DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEventViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventEditViewController+TextField.swift"; sourceTree = "<group>"; };
+		DA06999929E9B482002E060A /* ServicesListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClinicsListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -6740,6 +6742,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4578762971325200CE458B /* ServicesListDetailViewController.swift */,
+				DA06999929E9B482002E060A /* ServicesListDetailViewController+TextField.swift */,
 				DA4578782971326100CE458B /* ServicesListDetailViewController.storyboard */,
 			);
 			path = View;
@@ -7495,6 +7498,7 @@
 				84F610E8292A71AB00B1FB69 /* Device.swift in Sources */,
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
+				DA06999A29E9B482002E060A /* ServicesListDetailViewController+TextField.swift in Sources */,
 				01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,

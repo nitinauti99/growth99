@@ -33,7 +33,7 @@ protocol ServiceListDetailViewModelProtocol {
     var  getUserSelectedServiceData: ServiceDetailModel? { get }
     func uploadSelectedServiceImage(image: UIImage, selectedServiceId:Int)
     var  getAddServiceListData: [ServiceList] { get }
-
+    func isFirstName(_ firstName: String) -> Bool
 }
 
 class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
@@ -216,6 +216,12 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
                 print("Error while performing request \(error)")
             }
         }
+    }
+    
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
     }
 }
 

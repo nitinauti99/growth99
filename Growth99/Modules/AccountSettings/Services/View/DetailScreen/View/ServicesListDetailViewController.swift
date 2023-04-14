@@ -22,36 +22,34 @@ protocol ServicesListDetailViewContollerProtocol {
 
 class ServicesListDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ServicesListDetailViewContollerProtocol {
     
-    @IBOutlet private weak var serviceNameTextField: CustomTextField!
-    @IBOutlet private weak var selectClinicTextField: CustomTextField!
-    @IBOutlet private weak var serviceDurationTextField: CustomTextField!
-    @IBOutlet private weak var serviceCategoryTextField: CustomTextField!
-    @IBOutlet private weak var serviceCostTextField: CustomTextField!
-    @IBOutlet private weak var serviceUrlTextField: CustomTextField!
-    @IBOutlet private weak var depositCostTextField: CustomTextField!
-    @IBOutlet private weak var serviceDescTextView: UITextView!
-    @IBOutlet private weak var serviceConsentTextField: CustomTextField!
-    @IBOutlet private weak var serviceQuestionarieTextField: CustomTextField!
-    @IBOutlet private weak var serviceImageViewBtn: UIButton!
-    @IBOutlet private weak var removeImageViewBtn: UIButton!
-    @IBOutlet private weak var serviceImageView: UIImageView!
-    @IBOutlet private weak var serviceImageViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var serviceImageViewTop: NSLayoutConstraint!
-    @IBOutlet private weak var contentViewHeight: NSLayoutConstraint!
-    
-    @IBOutlet private weak var hideButton: UIButton!
-    @IBOutlet private weak var disableButton: UIButton!
-    @IBOutlet private weak var enableButton: UIButton!
+    @IBOutlet weak var serviceNameTextField: CustomTextField!
+    @IBOutlet weak var selectClinicTextField: CustomTextField!
+    @IBOutlet weak var serviceDurationTextField: CustomTextField!
+    @IBOutlet weak var serviceCategoryTextField: CustomTextField!
+    @IBOutlet weak var serviceCostTextField: CustomTextField!
+    @IBOutlet weak var serviceUrlTextField: CustomTextField!
+    @IBOutlet weak var depositCostTextField: CustomTextField!
+    @IBOutlet weak var serviceDescTextView: UITextView!
+    @IBOutlet weak var serviceConsentTextField: CustomTextField!
+    @IBOutlet weak var serviceQuestionarieTextField: CustomTextField!
+    @IBOutlet weak var serviceImageViewBtn: UIButton!
+    @IBOutlet weak var removeImageViewBtn: UIButton!
+    @IBOutlet weak var serviceImageView: UIImageView!
+    @IBOutlet weak var serviceImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var serviceImageViewTop: NSLayoutConstraint!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var hideButton: UIButton!
+    @IBOutlet weak var disableButton: UIButton!
+    @IBOutlet weak var enableButton: UIButton!
+    @IBOutlet weak var enableCollectBtnHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var enableCollectLabelHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var enableCollectLabelTopConstant: NSLayoutConstraint!
 
-    @IBOutlet private weak var enableCollectBtnHeightConstant: NSLayoutConstraint!
-    @IBOutlet private weak var enableCollectLabelHeightConstant: NSLayoutConstraint!
-    @IBOutlet private weak var enableCollectLabelTopConstant: NSLayoutConstraint!
+    @IBOutlet weak var depositCostLabelHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var depositCostLabelTopConstant: NSLayoutConstraint!
 
-    @IBOutlet private weak var depositCostLabelHeightConstant: NSLayoutConstraint!
-    @IBOutlet private weak var depositCostLabelTopConstant: NSLayoutConstraint!
-
-    @IBOutlet private weak var depositCostTFTopConstant: NSLayoutConstraint!
-    @IBOutlet private weak var depositCostTFHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var depositCostTFTopConstant: NSLayoutConstraint!
+    @IBOutlet weak var depositCostTFHeightConstant: NSLayoutConstraint!
 
     var screenTitle: String = String.blank
     var serviceId: Int?
@@ -444,32 +442,27 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     
     @IBAction func saveServiceButtonAction(sender: UIButton) {
         guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
-            serviceNameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
-            return
-        }
-        
-        guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName }), !serviceNameContain else {
-            serviceNameTextField.showError(message: "Service with this name already present.")
+            serviceNameTextField.showError(message: "Service Name is required.")
             return
         }
         
         guard let selectClinic = selectClinicTextField.text, !selectClinic.isEmpty else {
-            selectClinicTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            selectClinicTextField.showError(message: "Clinic Name are required.")
             return
         }
         
         guard let serviceDuration = serviceDurationTextField.text, !serviceDuration.isEmpty else {
-            serviceDurationTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            serviceDurationTextField.showError(message: "Service duration is required.")
             return
         }
         
         guard let serviceCategory = serviceCategoryTextField.text, !serviceCategory.isEmpty else {
-            serviceCategoryTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            serviceCategoryTextField.showError(message: "Service Category is required.")
             return
         }
         
         guard let serviceCost = serviceCostTextField.text, !serviceCost.isEmpty else {
-            serviceCostTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            serviceCostTextField.showError(message: "Service Cost is required.")
             return
         }
         
@@ -480,7 +473,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         self.view.ShowSpinner()
-        
         if self.title == Constant.Profile.createService {
             httpMethodType = .POST
         } else {
