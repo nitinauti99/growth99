@@ -61,7 +61,7 @@ class MassEmailandSMSViewModel {
     }
     
     func removeSelectedMassEmail(massEmailId: Int) {
-        let finaleUrl = ApiUrl.editTrigger.appending("\(massEmailId)")
+        /*let finaleUrl = ApiUrl.editTrigger.appending("\(massEmailId)")
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -70,7 +70,7 @@ class MassEmailandSMSViewModel {
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
-        }
+        }*/
     }
 }
 
