@@ -9,6 +9,8 @@ import UIKit
 
 protocol TriggerSourceDelegate: AnyObject {
     func didTapSwitchButton(triggerId: String, triggerStatus: String)
+    func removeSelectedTrigger(cell: LeadTriggersTableViewCell, index: IndexPath)
+    func editSelectedTrigger(cell: LeadTriggersTableViewCell, index: IndexPath)
 }
 
 class LeadTriggersTableViewCell: UITableViewCell {
@@ -27,14 +29,14 @@ class LeadTriggersTableViewCell: UITableViewCell {
     weak var delegate: TriggerSourceDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
         dateFormater = DateFormater()
-
+        
     }
     
     
@@ -81,7 +83,7 @@ class LeadTriggersTableViewCell: UITableViewCell {
         }
         indexPath = index
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -102,5 +104,13 @@ class LeadTriggersTableViewCell: UITableViewCell {
         let date = dateFormatter.date(from: date)
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date! as Date)
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeSelectedTrigger(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editSelectedTrigger(cell: self, index: indexPath)
     }
 }

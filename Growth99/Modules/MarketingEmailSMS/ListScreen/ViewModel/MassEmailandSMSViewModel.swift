@@ -18,8 +18,7 @@ protocol MassEmailandSMSViewModelProtocol {
     
     var  getMassEmailandSMSData: [MassEmailandSMSModel] { get }
     var  getMassEmailandSMSFilterData: [MassEmailandSMSModel] { get }
-    
-    func removeSelectedMassEmail(MassEmailId: Int)
+    func removeSelectedMassEmail(massEmailId: Int)
 }
 
 class MassEmailandSMSViewModel {
@@ -60,13 +59,23 @@ class MassEmailandSMSViewModel {
             }
         }
     }
+    
+    func removeSelectedMassEmail(massEmailId: Int) {
+        let finaleUrl = ApiUrl.editTrigger.appending("\(massEmailId)")
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_ ):
+                self.delegate?.triggerRemovedSuccefully(message: "Trigger deleted successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension MassEmailandSMSViewModel: MassEmailandSMSViewModelProtocol {
-    func removeSelectedMassEmail(MassEmailId: Int) {
-        
-    }
-    
+   
     func getMassEmailandSMSFilterData(searchText: String) {
         self.massEmailListFilterData = self.getMassEmailandSMSData.filter { task in
             let searchText = searchText.lowercased()

@@ -3628,8 +3628,8 @@
 		1896708B29BA5E62003224ED /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1896708C29BA5E62003224ED /* LeadTriggersTableViewCell.xib */,
 				1896708D29BA5E62003224ED /* LeadTriggersTableViewCell.swift */,
+				1896708C29BA5E62003224ED /* LeadTriggersTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";

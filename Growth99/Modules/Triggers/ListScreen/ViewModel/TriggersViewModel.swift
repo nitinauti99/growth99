@@ -16,6 +16,7 @@ protocol TriggersListViewModelProtocol {
     func getTriggersFilterDataAtIndex(index: Int)-> TriggersListModel?
     var  getTriggersData: [TriggersListModel] { get }
     var  getTriggersFilterData: [TriggersListModel] { get }
+    func removeSelectedTrigger(selectedId: Int)
 }
 
 class TriggersListViewModel {
@@ -44,7 +45,7 @@ class TriggersListViewModel {
     
     func getSwitchOnButton(triggerId: String, triggerStatus: String) {
         let parameter: [String: Any] = [triggerStatus: ""]
-        let url = "\(ApiUrl.getAllTriggers)/status\(triggerId)"
+        let url = "\(ApiUrl.getAllTriggers)/status/\(triggerId)"
         self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<[TriggersListModel], GrowthNetworkError>) in
             switch result {
             case .success(let triggerData):
@@ -53,6 +54,19 @@ class TriggersListViewModel {
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func removeSelectedTrigger(selectedId: Int) {
+        let finaleUrl = ApiUrl.editTrigger.appending("\(selectedId)")
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(_ ):
+                self.delegate?.triggerRemovedSuccefully(message: "Trigger deleted successfully")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }

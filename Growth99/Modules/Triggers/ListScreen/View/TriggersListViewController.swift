@@ -10,6 +10,7 @@ import UIKit
 protocol TriggersListViewContollerProtocol: AnyObject {
     func TriggersDataRecived()
     func errorReceived(error: String)
+    func triggerRemovedSuccefully(message: String)
 }
 
 class TriggersListViewController: UIViewController, TriggersListViewContollerProtocol {
@@ -99,13 +100,5 @@ extension TriggersListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-}
-
-extension TriggersListViewController: TriggerSourceDelegate {
-    
-    func didTapSwitchButton(triggerId: String, triggerStatus: String) {
-        self.view.ShowSpinner()
-        viewModel?.getSwitchOnButton(triggerId: triggerId, triggerStatus: triggerStatus)
     }
 }
