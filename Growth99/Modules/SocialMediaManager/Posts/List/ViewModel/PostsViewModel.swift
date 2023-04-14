@@ -58,7 +58,7 @@ class PostsListViewModel {
 //            switch result {
 //            case .success(let data):
 //                print(data)
-//                self.delegate?.pateintRemovedSuccefully(mrssage: "Postss removed successfully")
+//                self.delegate?.pateintRemovedSuccefully(mrssage: "Postss deleted successfully")
 //            case .failure(let error):
 //                self.delegate?.errorReceived(error: error.localizedDescription)
 //                print("Error while performing request \(error)")

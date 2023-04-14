@@ -51,7 +51,7 @@ class PateintListViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.pateintRemovedSuccefully(mrssage: "Pateints removed successfully")
+                self.delegate?.pateintRemovedSuccefully(mrssage: "Pateints deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

@@ -47,7 +47,7 @@ class LeadSourceUrlListViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.leadSoureceUrlRemovedSuccefully(message:"lead Sourece url removed successfully")
+                self.delegate?.leadSoureceUrlRemovedSuccefully(message:"lead Sourece url deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

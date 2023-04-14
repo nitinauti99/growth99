@@ -50,7 +50,7 @@ class chatQuestionnaireViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.consentsRemovedSuccefully(mrssage: "chatQuestionnaire removed successfully")
+                    self.delegate?.consentsRemovedSuccefully(mrssage: "chatQuestionnaire deleted successfully")
                 }else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "To Delete These chatQuestionnaire Form, Please remove it for the service attched")
                 }else{

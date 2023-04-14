@@ -15,26 +15,26 @@ protocol AddPostViewControllerProtocol: AnyObject {
 }
 
 class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBOutlet private weak var hastagTextField: UITextField!
-    @IBOutlet private weak var labelTextField: UITextField!
-    @IBOutlet private weak var scheduledDateTextField: CustomTextField!
-    @IBOutlet private weak var scheduledTimeTextField: CustomTextField!
-    @IBOutlet private weak var socialProfileTextField: UITextField!
-    @IBOutlet private weak var postTextView: UITextView!
-    @IBOutlet private weak var postWarningView: UIView!
-    @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var contentViewHeightConstant: NSLayoutConstraint!
-    @IBOutlet private weak var postWarningViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var addPostImageView: UIImageView!
-    @IBOutlet private weak var addPostImageViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var addImagePickerBtn: UIButton!
-    @IBOutlet private weak var addImageLibraryBtn: UIButton!
-    @IBOutlet private weak var deleteImageButton: UIButton!
-    @IBOutlet private weak var deleteImageButtonHeight: NSLayoutConstraint!
-    @IBOutlet private weak var addImagePickerBtnHeight: NSLayoutConstraint!
-    @IBOutlet private weak var addImageLibraryBtnHeight: NSLayoutConstraint!
-    @IBOutlet private weak var addImagePickerBtnTop: NSLayoutConstraint!
-    @IBOutlet private weak var addImageLibraryBtnTop: NSLayoutConstraint!
+    @IBOutlet weak var hastagTextField: CustomTextField!
+    @IBOutlet weak var labelTextField: CustomTextField!
+    @IBOutlet weak var scheduledDateTextField: CustomTextField!
+    @IBOutlet weak var scheduledTimeTextField: CustomTextField!
+    @IBOutlet weak var socialProfileTextField: CustomTextField!
+    @IBOutlet weak var postTextView: UITextView!
+    @IBOutlet weak var postWarningView: UIView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var postWarningViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var addPostImageView: UIImageView!
+    @IBOutlet weak var addPostImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var addImagePickerBtn: UIButton!
+    @IBOutlet weak var addImageLibraryBtn: UIButton!
+    @IBOutlet weak var deleteImageButton: UIButton!
+    @IBOutlet weak var deleteImageButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var addImagePickerBtnHeight: NSLayoutConstraint!
+    @IBOutlet weak var addImageLibraryBtnHeight: NSLayoutConstraint!
+    @IBOutlet weak var addImagePickerBtnTop: NSLayoutConstraint!
+    @IBOutlet weak var addImageLibraryBtnTop: NSLayoutConstraint!
 
     var addPostCalenderViewModel: AddPostViewModelProtocol?
     
@@ -203,6 +203,31 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     }
     
     @IBAction func submitButton(sender: UIButton) {
+        guard let hastagText = hastagTextField.text, !hastagText.isEmpty else {
+            hastagTextField.showError(message: "Hastag is required.")
+            return
+        }
+        
+        guard let labelText = labelTextField.text, !labelText.isEmpty else {
+            labelTextField.showError(message: "Label is required.")
+            return
+        }
+        
+        guard let scheduledDate = scheduledDateTextField.text, !scheduledDate.isEmpty else {
+            scheduledDateTextField.showError(message: "Scheduled Date is required.")
+            return
+        }
+        
+        guard let scheduledTime = scheduledTimeTextField.text, !scheduledTime.isEmpty else {
+            scheduledTimeTextField.showError(message: "Scheduled Time is required.")
+            return
+        }
+        
+        guard let socialProfile = socialProfileTextField.text, !socialProfile.isEmpty else {
+            socialProfileTextField.showError(message: "Social Profile is required.")
+            return
+        }
+        self.view.ShowSpinner()
         addPostCalenderViewModel?.uploadSelectedPostImage(image: addPostImageView.image!)
     }
 }

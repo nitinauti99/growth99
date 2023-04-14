@@ -69,7 +69,7 @@ class NotificationListViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.notificationRemovedSuccefully(message: "notification removed successfully")
+                    self.delegate?.notificationRemovedSuccefully(message: "notification deleted successfully")
                 }else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
                 }else{

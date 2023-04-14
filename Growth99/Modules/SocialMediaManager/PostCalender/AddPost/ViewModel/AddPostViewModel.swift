@@ -12,7 +12,7 @@ protocol AddPostViewModelProtocol {
     var  getPostSocialProfilesListData: [SocialProfilesListModel] { get }
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
-    func uploadSelectedPostImage(image: UIImage) 
+    func uploadSelectedPostImage(image: UIImage)
 }
 
 class AddPostViewModel: AddPostViewModelProtocol {
