@@ -157,6 +157,10 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
                 categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
                 return
             }
+            guard let categoriesName = categoriesNameTextField.text, let categoriesNameValidate = categoriesAddViewModel?.isFirstName(categoriesName), categoriesNameValidate else {
+                categoriesNameTextField.showError(message: "Category Name is invalid.")
+                return
+            }
         }
     }
     

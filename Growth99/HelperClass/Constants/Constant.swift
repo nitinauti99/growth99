@@ -185,7 +185,7 @@ struct Constant {
         static let chooseToTime = "Please choose to time"
         static let chooseFromDate = "Please choose from date"
         static let chooseToDate = "Please choose to date"
-        static let addCategorie = "Categorie add sucessfully"
+        static let addCategorie = "Categorie created sucessfully"
         static let workingScheduleUpdate = "Working schedule updated sucessfully"
         static let vacationScheduleUpdate = "Vacation schedule updated sucessfully"
         static let clinicsRequired = "Clinics are required."
