@@ -55,7 +55,6 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
     
     @objc func updateUI() {
         self.getUserList()
-        self.view.ShowSpinner()
     }
     
     func addSerchBar() {

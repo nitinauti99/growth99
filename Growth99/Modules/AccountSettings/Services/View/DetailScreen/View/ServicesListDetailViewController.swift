@@ -247,9 +247,9 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     func serviceImageUploadReceived(responseMessage: String) {
         self.view.HideSpinner()
         if responseMessage == Constant.Profile.createService {
-            self.view.showToast(message: "Service Create Sucessfully", color: .black)
+            self.view.showToast(message: "Service created sucessfully", color: .black)
         } else {
-            self.view.showToast(message: "Service Updated Sucessfully", color: .black)
+            self.view.showToast(message: "Service updated sucessfully", color: .black)
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -265,7 +265,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -301,7 +301,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allConsent, cellType: .subTitle) { (cell, allConsent, indexPath) in
-            cell.textLabel?.text = allConsent.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allConsent.name
         }
         
         selectionMenu.setSelectedItems(items: selectedConsent) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -322,7 +322,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allQuestionnaires, cellType: .subTitle) { (cell, allQuestionnaires, indexPath) in
-            cell.textLabel?.text = allQuestionnaires.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allQuestionnaires.name
         }
         
         selectionMenu.setSelectedItems(items: selectedQuestionnaires) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -343,7 +343,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allServiceCategories, cellType: .subTitle) { (cell, allServiceCategories, indexPath) in
-            cell.textLabel?.text = allServiceCategories.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServiceCategories.name
         }
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in

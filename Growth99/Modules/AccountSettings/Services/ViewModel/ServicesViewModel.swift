@@ -45,16 +45,16 @@ class ServiceListViewModel {
             }
         }
     }
-    
+
     func removeSelectedCService(serviceId: Int) {
-        self.requestManager.request(forPath: ApiUrl.editService.appending("\(serviceId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+        let finaleUrl = ApiUrl.editService.appending("\(serviceId)")
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.serviceRemovedSuccefully(message: data.success ?? String.blank)
+            case .success(_ ):
+                self.delegate?.serviceRemovedSuccefully(message: "Service deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
             }
         }
     }
