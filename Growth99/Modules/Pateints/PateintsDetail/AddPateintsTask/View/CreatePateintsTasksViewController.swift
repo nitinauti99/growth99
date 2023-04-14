@@ -9,17 +9,17 @@ import UIKit
 
 protocol CreatePateintsTasksViewControllerProtocol: AnyObject {
     func taskUserListRecived()
-    func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
+    func errorReceived(error: String)
 }
 
-class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksViewControllerProtocol{
+class CreatePateintsTasksViewController: UIViewController {
     
-    @IBOutlet private weak var nameTextField: CustomTextField!
-    @IBOutlet private weak var usersTextField: CustomTextField!
-    @IBOutlet private weak var statusTextField: CustomTextField!
-    @IBOutlet private weak var DeadlineTextField: CustomTextField!
-    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet weak var nameTextField: CustomTextField!
+    @IBOutlet weak var usersTextField: CustomTextField!
+    @IBOutlet weak var statusTextField: CustomTextField!
+    @IBOutlet weak var DeadlineTextField: CustomTextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
 
     var viewModel: CreatePateintsTasksViewModelProtocol?
     var workflowTaskUser = Int()
@@ -46,9 +46,10 @@ class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksV
     }
     
     func setUPUI() {
-        DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
-        descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
-        descriptionTextView.layer.borderWidth = 1.0;
+        self.statusTextField.text = "InComplete"
+        self.DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        self.descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
+        self.descriptionTextView.layer.borderWidth = 1.0;
     }
     
     @objc func dateFromButtonPressed() {
@@ -68,65 +69,24 @@ class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksV
         return dateFormatter.string(from: datePicker.date)
     }
     
-    
-    func taskUserListRecived(){
-        self.view.HideSpinner()
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
-    func taskUserCreatedSuccessfully(responseMessage: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
-    }
-
     @IBAction func cancelButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
- 
-    @IBAction func openUserListDropDwon(sender: UIButton) {
-        let rolesArray = viewModel?.taskUserList ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.firstName
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-            self?.usersTextField.text  = text?.firstName
-            self?.workflowTaskUser = text?.id ?? 0
-        }
-        selectionMenu.dismissAutomatically = true
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    @IBAction func openStatusListDropDwon(sender: UIButton) {
-        let rolesArray = ["Completed", "InComplete"]
-       
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.components(separatedBy: " ").first
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-            self?.statusTextField.text  = text
-         }
-        selectionMenu.dismissAutomatically = true
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-    }
-        
+         
     @IBAction func createTaskUser(sender: UIButton) {
       
         if let textField = nameTextField.text,  textField == "" {
+            nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
       
         if let textField = usersTextField.text,  textField == "" {
+            usersTextField.showError(message: "Please select user")
             return
         }
         
         if let textField = statusTextField.text,  textField == "" {
+            statusTextField.showError(message: "Status is required")
             return
         }
         self.view.ShowSpinner()
@@ -142,4 +102,52 @@ class CreatePateintsTasksViewController: UIViewController , CreatePateintsTasksV
         return dateFormatter.string(from: date)
     }
     
+}
+
+extension CreatePateintsTasksViewController: CreatePateintsTasksViewControllerProtocol{
+    func taskUserListRecived(){
+        self.view.HideSpinner()
+    }
+    
+    func taskUserCreatedSuccessfully(responseMessage: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: responseMessage, color: .black)
+        self.navigationController?.popViewController(animated: true)
+    }
+  
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
+    }
+}
+
+extension CreatePateintsTasksViewController {
+   
+    @IBAction func openUserListDropDwon(sender: UITextField) {
+        let rolesArray = viewModel?.taskUserList ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
+            cell.textLabel?.text = taskUserList.firstName
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+            self?.usersTextField.text  = text?.firstName
+            self?.workflowTaskUser = text?.id ?? 0
+        }
+        selectionMenu.dismissAutomatically = true
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+    @IBAction func openStatusListDropDwon(sender: UITextField) {
+        let rolesArray = ["Completed", "InComplete"]
+       
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
+            cell.textLabel?.text = taskUserList.components(separatedBy: " ").first
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+            self?.statusTextField.text  = text
+         }
+        selectionMenu.dismissAutomatically = true
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
+    }
 }

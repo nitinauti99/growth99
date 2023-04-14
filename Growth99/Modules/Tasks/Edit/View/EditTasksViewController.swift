@@ -89,6 +89,7 @@ class EditTasksViewController: UIViewController{
             leadOrPatientLbi.text = "Lead Information"
             goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
             leadOrPatientSelected = "Lead"
+            self.questionnaireSubmissionId = taskDetail?.leadDTO?.id ?? 0
 
         }else {
             patientButton.isSelected = true
@@ -98,6 +99,7 @@ class EditTasksViewController: UIViewController{
             lastNameTextField.text = taskDetail?.patientDTO?.lastName
             phoneNumberTextField.text = taskDetail?.patientDTO?.phoneNumber
             emailTextField.text = taskDetail?.patientDTO?.email
+            self.questionnaireSubmissionId = taskDetail?.patientDTO?.id ?? 0
             leadOrPatientLbi.text = "Patient Information"
             goToDetailPageButton.setTitle("Go To Patient Detail", for: .normal)
             leadOrPatientSelected = "Patient"
@@ -210,11 +212,11 @@ class EditTasksViewController: UIViewController{
 }
 
 extension EditTasksViewController: EditTasksViewControllerProtocol{
+   
     func receivedTaskDetail(){
         self.viewModel?.getTaskUserList()
         setUPUI()
     }
-    
     
     func taskUserListRecived(){
         self.viewModel?.getTaskPatientsList()
@@ -237,7 +239,9 @@ extension EditTasksViewController: EditTasksViewControllerProtocol{
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 }
 
