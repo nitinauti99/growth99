@@ -10,11 +10,11 @@ import UIKit
 
 protocol CreateLeadTasksViewControllerProtocol: AnyObject {
     func taskUserListRecived()
-    func errorReceived(error: String)
     func taskUserCreatedSuccessfully(responseMessage: String)
+    func errorReceived(error: String)
 }
 
-class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewControllerProtocol{
+class CreateLeadTasksViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var usersTextField: CustomTextField!
@@ -34,7 +34,7 @@ class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewContr
         self.viewModel?.getTaskUserList()
         dateFormater = DateFormater()
         self.title = Constant.Profile.createTasks
-        setUPUI()
+        self.setUPUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,9 +46,10 @@ class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewContr
     }
     
     func setUPUI() {
-        DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
-        descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
-        descriptionTextView.layer.borderWidth = 1.0;
+        self.DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        self.descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
+        self.descriptionTextView.layer.borderWidth = 1.0;
+        self.statusTextField.text = "InComplete"
     }
     
     @objc func dateFromButtonPressed() {
@@ -67,27 +68,60 @@ class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewContr
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)
     }
+   
+    @IBAction func cancelButton(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
+    @IBAction func createTaskUser(sender: UIButton) {
+      
+        if let textField = nameTextField.text,  textField == "" {
+            return
+        }
+      
+        if let textField = usersTextField.text,  textField == "" {
+            return
+        }
+        
+        if let textField = statusTextField.text,  textField == "" {
+            return
+        }
+        self.view.ShowSpinner()
+        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank), questionnaireSubmissionId: workflowTaskLeadId)
+      }
     
+    func serverToLocalInputWorking(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter.string(from: date)
+    }
+    
+}
+
+extension CreateLeadTasksViewController: CreateLeadTasksViewControllerProtocol {
+   
     func taskUserListRecived(){
         self.view.HideSpinner()
     }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
-    }
-    
+
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: .black)
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func cancelButton(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .black)
     }
- 
+    
+}
+
+extension CreateLeadTasksViewController {
+    
     @IBAction func openUserListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.taskUserList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
@@ -116,30 +150,4 @@ class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewContr
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
         
-    @IBAction func createTaskUser(sender: UIButton) {
-      
-        if let textField = nameTextField.text,  textField == "" {
-            return
-        }
-      
-        if let textField = usersTextField.text,  textField == "" {
-            return
-        }
-        
-        if let textField = statusTextField.text,  textField == "" {
-            return
-        }
-        self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank), questionnaireSubmissionId: workflowTaskLeadId)
-      }
-    
-    func serverToLocalInputWorking(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        return dateFormatter.string(from: date)
-    }
-    
 }
