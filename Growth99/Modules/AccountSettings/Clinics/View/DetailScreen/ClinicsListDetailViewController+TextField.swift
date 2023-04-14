@@ -45,8 +45,7 @@ extension ClinicsListDetailViewController: UITextFieldDelegate  {
                 addressField.showError(message: "Address is invalid.")
                 return
             }
-        }
-        else if (textField == notificationEmailTextField) {
+        } else if (textField == notificationEmailTextField) {
             guard let emailText = notificationEmailTextField.text, !emailText.isEmpty else {
                 notificationEmailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
                 return

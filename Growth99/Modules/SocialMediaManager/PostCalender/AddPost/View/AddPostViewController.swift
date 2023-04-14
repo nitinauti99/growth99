@@ -87,7 +87,7 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     func postSocialProfilesListRecived() {
         if addPostCalenderViewModel?.getPostSocialProfilesListData.count == 0 {
             postWarningViewHeight.constant = 100
-            contentViewHeightConstant.constant = 900
+            contentViewHeightConstant.constant = 950
         } else {
             showDeleteButton(btnHidden: true, btnHeight: 0)
             postWarningViewHeight.constant = 0
@@ -151,7 +151,7 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
             let imageSize: Int = imgData.count
             print("size of image in MB: %f ", (Double(imageSize) / 1024.0 / 1024).rounded())
             addPostImageView.image  = selectedImage
-            adjustUI(postImageViewHeight: 200, contentViewHeight: 1000, pickerBtnTop: 0, libraryBtnTop: 0, pickerBtnHeight: 0, libraryBtnHeight: 0)
+            adjustUI(postImageViewHeight: 200, contentViewHeight: 1050, pickerBtnTop: 0, libraryBtnTop: 0, pickerBtnHeight: 0, libraryBtnHeight: 0)
             showDeleteButton(btnHidden: false, btnHeight: 30)
         }
         self.dismiss(animated: true, completion: nil)
@@ -177,7 +177,7 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     }
     
     func deleteImagefromView() {
-        adjustUI(postImageViewHeight: 0, contentViewHeight: 900, pickerBtnTop: 10, libraryBtnTop: 15, pickerBtnHeight: 40, libraryBtnHeight: 40)
+        adjustUI(postImageViewHeight: 0, contentViewHeight: 950, pickerBtnTop: 10, libraryBtnTop: 15, pickerBtnHeight: 40, libraryBtnHeight: 40)
         showDeleteButton(btnHidden: true, btnHeight: 0)
     }
     

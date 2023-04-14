@@ -24,21 +24,21 @@ protocol EditEventViewControllerProtocol: AnyObject {
 
 class EventEditViewController: UIViewController, EditEventViewControllerProtocol {
 
-    @IBOutlet private weak var emailTextField: CustomTextField!
-    @IBOutlet private weak var firstNameTextField: CustomTextField!
-    @IBOutlet private weak var lastNameTextField: CustomTextField!
-    @IBOutlet private weak var phoneNumberTextField: CustomTextField!
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var firstNameTextField: CustomTextField!
+    @IBOutlet weak var lastNameTextField: CustomTextField!
+    @IBOutlet weak var phoneNumberTextField: CustomTextField!
 
-    @IBOutlet private weak var clincsTextField: CustomTextField!
-    @IBOutlet private weak var servicesTextField: CustomTextField!
-    @IBOutlet private weak var providersTextField: CustomTextField!
-    @IBOutlet private weak var appoinmentStatusField: CustomTextField!
-    @IBOutlet private weak var dateTextField: CustomTextField!
-    @IBOutlet private weak var timeTextField: CustomTextField!
-    @IBOutlet private weak var notesTextView: UITextView!
-    @IBOutlet private weak var inPersonBtn: UIButton!
-    @IBOutlet private weak var virtualBtn: UIButton!
-    @IBOutlet private weak var dateSelectionButton: UIButton!
+    @IBOutlet weak var clincsTextField: CustomTextField!
+    @IBOutlet weak var servicesTextField: CustomTextField!
+    @IBOutlet weak var providersTextField: CustomTextField!
+    @IBOutlet weak var appoinmentStatusField: CustomTextField!
+    @IBOutlet weak var dateTextField: CustomTextField!
+    @IBOutlet weak var timeTextField: CustomTextField!
+    @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var inPersonBtn: UIButton!
+    @IBOutlet weak var virtualBtn: UIButton!
+    @IBOutlet weak var dateSelectionButton: UIButton!
 
     var eventViewModel: EditEventViewModelProtocol?
     
@@ -82,14 +82,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         //emailTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
        // phoneNumberTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == emailTextField {
-            eventViewModel?.checkUserEmailAddress(emailAddress: emailTextField.text ?? String.blank)
-        } else if textField == phoneNumberTextField {
-            eventViewModel?.checkUserPhoneNumber(phoneNumber: phoneNumberTextField.text ?? String.blank)
-        }
     }
     
     // MARK: - setUpNavigationBar
@@ -362,10 +354,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             return
         }
         
-        if let textField = phoneNumberTextField.text, let phoneNumberValidate = eventViewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-        }
-        
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
             phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)
             return
@@ -435,16 +423,3 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         appointmentTypeSelected = "Virtual"
     }
 }
-extension EventEditViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == phoneNumberTextField {
-            guard let text = textField.text else { return false }
-            let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
-            return false
-        }
-        return true
-    }
-}
-

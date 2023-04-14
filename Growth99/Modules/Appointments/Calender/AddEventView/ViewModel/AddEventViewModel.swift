@@ -9,8 +9,8 @@ import Foundation
 
 protocol AddEventViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
-
+    func isLastName(_ lastName: String) -> Bool
+    func isFirstName(_ firstName: String) -> Bool
     var  getAllDatesData: [String] { get }
     var  getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
@@ -223,16 +223,21 @@ extension AddEventViewModel : AddEventViewModelProtocol {
         return self.patientsAppointmentList
     }
     
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
-    }
-    
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+
+    func isLastName(_ lastName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: lastName)
     }
 }

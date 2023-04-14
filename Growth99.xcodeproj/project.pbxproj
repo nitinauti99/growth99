@@ -857,6 +857,9 @@
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
+		DA06999429E9671D002E060A /* AddEventViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */; };
+		DA06999629E96EEA002E060A /* AddPostViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */; };
+		DA06999829E96F07002E060A /* EventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */; };
 		DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */; };
 		DA0C735C29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */; };
 		DA0C735E29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */; };
@@ -1768,6 +1771,9 @@
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
+		DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEventViewController+TextField.swift"; sourceTree = "<group>"; };
+		DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostViewController+TextField.swift"; sourceTree = "<group>"; };
+		DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventEditViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735B29E5D8BD007D0076 /* ChangePasswordViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735D29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClinicsListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -3891,6 +3897,7 @@
 			isa = PBXGroup;
 			children = (
 				189E3F1A29C3997000B94190 /* AddPostViewController.swift */,
+				DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */,
 				189E3F1C29C3997D00B94190 /* AddPostViewController.storyboard */,
 			);
 			path = View;
@@ -4008,6 +4015,7 @@
 			isa = PBXGroup;
 			children = (
 				3947A8E02996776E000CA2EB /* AddEventViewController.swift */,
+				DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */,
 				3947A8E12996776E000CA2EB /* AddEventViewController.storyboard */,
 			);
 			path = View;
@@ -4034,6 +4042,7 @@
 			isa = PBXGroup;
 			children = (
 				3947A8E92996776E000CA2EB /* EventEditViewController.swift */,
+				DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */,
 				3947A8EA2996776E000CA2EB /* EventEditViewController.storyboard */,
 			);
 			path = View;
@@ -7617,6 +7626,7 @@
 				845C39CF292276AF00D934C5 /* KeychainWrapper.swift in Sources */,
 				842C0CC9298F713B00395061 /* QuestionarieViewController.swift in Sources */,
 				189670B529BA6081003224ED /* TriggerTimeTableViewCell.swift in Sources */,
+				DA06999829E96F07002E060A /* EventEditViewController+TextField.swift in Sources */,
 				01C7489429B22F090085CED2 /* UserListViewContoller+TableView.swift in Sources */,
 				18491DAD29B80CE000FE72EF /* MassEmailandSMSDetailModel.swift in Sources */,
 				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
@@ -7709,6 +7719,7 @@
 				DAEF74A4299D533B009140AE /* DataStudioViewController.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
 				1896709129BA5E62003224ED /* TriggersListViewController+TableView.swift in Sources */,
+				DA06999429E9671D002E060A /* AddEventViewController+TextField.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
 				016F662B29C97DA300B1D248 /* MediaTagsListModel.swift in Sources */,
@@ -7840,6 +7851,7 @@
 				189670B129BA6080003224ED /* TriggerDetailModel.swift in Sources */,
 				849D3AF82997CC72003E856A /* Enum.swift in Sources */,
 				01DBA9A829C5E13200CBA51D /* CreateLabelViewController.swift in Sources */,
+				DA06999629E96EEA002E060A /* AddPostViewController+TextField.swift in Sources */,
 				01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */,
 				01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */,
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
