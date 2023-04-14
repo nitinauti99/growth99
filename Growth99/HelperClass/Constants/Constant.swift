@@ -202,6 +202,7 @@ struct Constant {
         static let phone = "^[1-9][0-9]{9}$"
         static let nameWithoutSpace = "^[a-zA-Z]*$"
         static let nameWithSpace = "^[a-zA-Z]([a-zA-Z ]*)?$"
+        static let nameWithNumbers = "^[a-zA-Z]([a-zA-Z0-9 ]*)?$"
         static let number = "[1-9][0-9]*"
         static let specialCharacterWithoutSpace = "^[^\n ]*$"
         static let DateValidationDateMounthYear = "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$"

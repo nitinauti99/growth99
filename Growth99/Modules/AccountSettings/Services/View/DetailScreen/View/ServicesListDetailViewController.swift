@@ -93,9 +93,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         servicesAddViewModel = ServiceListDetailModel(delegate: self)
         getAddServices()
         setupUI()
-        enableButton.isSelected = true
-        hideButton.isSelected = false
-        disableButton.isSelected = false
     }
     
     func getAddServices() {
@@ -115,6 +112,14 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             contentViewHeight.constant = 1350
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
+            enableButton.isSelected = false
+            hideButton.isSelected = false
+            disableButton.isSelected = false
+            depositCostLabelTopConstant.constant = 0
+            depositCostLabelHeightConstant.constant = 0
+            depositCostTFTopConstant.constant = 0
+            depositCostTFHeightConstant.constant = 0
+            depositCostTextField.isHidden = true
         } else {
             servicesAddViewModel?.getUserSelectedService(serviceID: serviceId ?? 0)
             removeImageViewBtn.isHidden = false
@@ -183,10 +188,10 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             enableCollectLabelHeightConstant.constant = 36
             enableCollectBtnHeightConstant.constant = 15
             enableCollectLabelTopConstant.constant = 16
-            depositCostLabelTopConstant.constant = 0
-            depositCostLabelHeightConstant.constant = 0
-            depositCostTFTopConstant.constant = 0
-            depositCostTFHeightConstant.constant = 0
+            depositCostLabelTopConstant.constant = 16
+            depositCostLabelHeightConstant.constant = 18
+            depositCostTFTopConstant.constant = 10
+            depositCostTFHeightConstant.constant = 45
         }
         
         if servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed == true {

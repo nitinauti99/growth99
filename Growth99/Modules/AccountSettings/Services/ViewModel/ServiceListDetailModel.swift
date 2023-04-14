@@ -219,7 +219,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     }
     
     func isFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithSpace
+        let regex = Constant.Regex.nameWithNumbers
         let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
         return isFirstName.evaluate(with: firstName)
     }
