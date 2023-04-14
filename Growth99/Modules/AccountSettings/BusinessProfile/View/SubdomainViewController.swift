@@ -51,6 +51,10 @@ class SubdomainViewController: UIViewController, UITextFieldDelegate {
                 subDomainNameTextField.showError(message: Constant.ErrorMessage.subDomainNameEmptyError)
                 return
             }
+            guard let subDomainName = subDomainNameTextField.text, isFirstName(subDomainName) else {
+                subDomainNameTextField.showError(message: "SubDomain Name is invalid.")
+                return
+            }
         }
     }
     
@@ -74,5 +78,11 @@ class SubdomainViewController: UIViewController, UITextFieldDelegate {
             return newString.length <= maxLength
         }
         return true
+    }
+    
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
     }
 }

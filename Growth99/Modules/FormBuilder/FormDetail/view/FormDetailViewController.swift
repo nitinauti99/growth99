@@ -55,7 +55,7 @@ class FormDetailViewController: UIViewController {
     
     @IBAction func showPreView(sender: UIButton){
         let user = UserRepository.shared
-        let urlSting = "https://app.growth99.com/assets/static/form.html?bid=" + "\(user.bussinessId ?? 0)&fid=\(questionId)"
+        let urlSting = "\(EndPoints.baseURL)/assets/static/form.html?bid=" + "\(user.bussinessId ?? 0)&fid=\(questionId)"
         if let url = URL(string: urlSting), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }

@@ -26,14 +26,14 @@ class ClinicsListTableViewCell: UITableViewCell {
     var indexPath = IndexPath()
     var dateFormater: DateFormaterProtocol?
     weak var delegate: ClinicsListCellDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
         dateFormater = DateFormater()
-
+        
     }
     func configureCell(clinicsFilterList: ClinicsListViewModelProtocol?, index: IndexPath, isSearch: Bool) {
         let clinicsFilterListData = clinicsFilterList?.getClinicsFilterDataAtIndex(index: index.row)
@@ -73,5 +73,4 @@ class ClinicsListTableViewCell: UITableViewCell {
     @IBAction func editButtonPressed() {
         self.delegate?.editClinic(cell: self, index: indexPath)
     }
-    
 }

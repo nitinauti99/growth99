@@ -17,7 +17,6 @@ extension CreateTasksViewController: UITextFieldDelegate {
                 nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
                 return
             }
-            
             guard let firstName = nameTextField.text, let firstNameValidate = viewModel?.isFirstName(firstName), firstNameValidate else {
                 nameTextField.showError(message: Constant.ErrorMessage.nameInvalidError)
                 return

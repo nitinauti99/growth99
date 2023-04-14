@@ -48,14 +48,14 @@ class ClinicsListViewModel {
     }
     
     func removeSelectedClinic(clinicId: Int) {
-        self.requestManager.request(forPath: ApiUrl.selectedClinic.appending("\(clinicId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
+        let finaleUrl = ApiUrl.selectedClinic.appending("\(clinicId)")
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.clinicRemovedSuccefully(message: data.success ?? String.blank)
+            case .success(_ ):
+                self.delegate?.clinicRemovedSuccefully(message: "Clinic removed successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
             }
         }
     }

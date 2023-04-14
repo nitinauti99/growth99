@@ -76,7 +76,7 @@ class CategoriesListViewController: UIViewController, CategoriesListViewContolle
     }
 }
 
-extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSource, CategoriesListCellDelegate {
+extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -102,8 +102,8 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = CategoriesListTableViewCell()
-        cell.delegate = self
         cell = categoriesListTableView.dequeueReusableCell(withIdentifier: "CategoriesListTableViewCell") as! CategoriesListTableViewCell
+        cell.delegate = self
         if isSearch {
             cell.configureCell(categoriesFilterList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
@@ -126,6 +126,9 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
         }
         self.navigationController?.pushViewController(createCategoriesVC, animated: true)
     }
+}
+
+extension CategoriesListViewController: CategoriesListCellDelegate {
     
     func editCategories(cell: CategoriesListTableViewCell, index: IndexPath) {
         let createCategoriesVC = UIStoryboard(name: "CategoriesAddViewController", bundle: nil).instantiateViewController(withIdentifier: "CategoriesAddViewController") as! CategoriesAddViewController
@@ -168,8 +171,9 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    func categoriesRemovedSuccefully(message: String) {
+
+    func categoriesRemovedSuccefully(message: String){
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.getCategoriesList()
     }
 }

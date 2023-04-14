@@ -181,7 +181,7 @@ class DateFormater: DateFormaterProtocol {
     
     func utcToLocalAccounts(timeString: String) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.dateFormat = "yyyy-mm-dd'T'HH:mm:ss.sssZ"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         if let date = dateFormatter.date(from: timeString) {
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")

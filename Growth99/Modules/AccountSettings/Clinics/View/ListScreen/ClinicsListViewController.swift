@@ -80,11 +80,11 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
 
-extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource, ClinicsListCellDelegate {
+extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -110,8 +110,8 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = ClinicsListTableViewCell()
-        cell.delegate = self
         cell = clinicsListTableView.dequeueReusableCell(withIdentifier: "ClinicsListTableViewCell") as! ClinicsListTableViewCell
+        cell.delegate = self
         if isSearch {
             cell.configureCell(clinicsFilterList: viewModel, index: indexPath, isSearch: isSearch)
         } else {
@@ -134,7 +134,9 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource,
         }
         self.navigationController?.pushViewController(clinicDetailVC, animated: true)
     }
-    
+}
+
+extension ClinicsListViewController: ClinicsListCellDelegate {
     func editClinic(cell: ClinicsListTableViewCell, index: IndexPath) {
         let clinicDetailVC = UIStoryboard(name: "ClinicsListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "ClinicsListDetailViewController") as! ClinicsListDetailViewController
         clinicDetailVC.screenTitle = Constant.Profile.editClinic
@@ -177,7 +179,8 @@ extension ClinicsListViewController: UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    func clinicRemovedSuccefully(message: String) {
+    func clinicRemovedSuccefully(message: String){
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.getClinicsList()
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 protocol BusinessProfileViewModelProtocol {
     func saveBusinessInfo(name: String, trainingBusiness: Bool)
     func uploadSelectedImage(image: UIImage)
+    func isFirstName(_ firstName: String) -> Bool 
 }
 
 class BusinessProfileViewModel {
@@ -59,6 +60,11 @@ class BusinessProfileViewModel {
         }
     }
     
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
 }
 
 extension BusinessProfileViewModel: BusinessProfileViewModelProtocol { }

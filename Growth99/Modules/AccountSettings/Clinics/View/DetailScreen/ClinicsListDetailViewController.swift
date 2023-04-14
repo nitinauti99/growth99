@@ -279,7 +279,8 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         paymentLinkTextField.text = viewModel?.getClinicsListData?.paymentLink ?? String.blank
         
         let tenentID = UserRepository.shared.Xtenantid ?? String.blank
-        let clinicURL = "https://app.growth99.com/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
+        
+        let clinicURL = "\(EndPoints.baseURL)/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
         onlineLinkWithURLTextView.text = clinicURL
         
         let filteredMondayArray = viewModel?.getClinicsListData?.businessHours?.filter{$0.dayOfWeek == "MONDAY"}
@@ -401,17 +402,17 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         guard let contactNumber = contactNumberTextField.text, !contactNumber.isEmpty else {
-            contactNumberTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            contactNumberTextField.showError(message: "Contact Number is required.")
             return
         }
         
         guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
-            timeZoneTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            timeZoneTextField.showError(message: "Timezone is required.")
             return
         }
         
         guard let address = addressField.text, !address.isEmpty else {
-            addressField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            addressField.showError(message: "Addess is required.")
             return
         }
         
@@ -426,12 +427,12 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         guard let countryCode = countryCodeTextField.text, !countryCode.isEmpty else {
-            countryCodeTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            countryCodeTextField.showError(message: "Country Code is required.")
             return
         }
         
         guard let currency = currencyTextField.text, !currency.isEmpty else {
-            currencyTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            currencyTextField.showError(message: "Currency is required.")
             return
         }
         
