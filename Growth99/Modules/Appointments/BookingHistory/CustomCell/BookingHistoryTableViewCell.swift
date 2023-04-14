@@ -10,11 +10,10 @@ import UIKit
 protocol BookingHistoryListTableViewCellDelegate: AnyObject {
     func removeAppointment(cell: BookingHistoryTableViewCell, index: IndexPath)
     func editAppointment(cell: BookingHistoryTableViewCell, index: IndexPath)
-    func paymentBookingHistory(cell: BookingHistoryTableViewCell, index: IndexPath)
 }
 
 class BookingHistoryTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var createdDate: UILabel!
@@ -27,7 +26,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var appointmentDateLabel: UILabel!
     @IBOutlet weak var paymetStatusLabel: UILabel!
     @IBOutlet weak var appointmentStatusLabel: UILabel!
-
+    
     var dateFormater: DateFormaterProtocol?
     weak var delegate: BookingHistoryListTableViewCellDelegate?
     var indexPath = IndexPath()
@@ -38,7 +37,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
         dateFormater = DateFormater()
     }
-
+    
     func configureCell(bookingHistoryFilterList: BookingHistoryViewModelProtocol?, index: IndexPath, isSearch: Bool) {
         let bookingHistoryFilterList = bookingHistoryFilterList?.getBookingHistoryFilterDataAtIndex(index: index.row)
         self.id.text = String(bookingHistoryFilterList?.id ?? 0)
@@ -89,7 +88,7 @@ class BookingHistoryTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "MMM d yyyy"
         return dateFormatter.string(from: date)
     }
-
+    
     func serverToLocalCreatedDate(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -111,16 +110,12 @@ class BookingHistoryTableViewCell: UITableViewCell {
         }
         return nil
     }
-
+    
     @IBAction func deleteButtonPressed() {
         self.delegate?.removeAppointment(cell: self, index: indexPath)
     }
     
     @IBAction func editButtonPressed() {
         self.delegate?.editAppointment(cell: self, index: indexPath)
-    }
-
-    @IBAction func paymentButtonPressed() {
-        self.delegate?.paymentBookingHistory(cell: self, index: indexPath)
     }
 }

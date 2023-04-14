@@ -95,7 +95,7 @@ extension UserListViewContoller: UserListViewContollerProtocol{
    
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func userListRecived() {
@@ -105,9 +105,8 @@ extension UserListViewContoller: UserListViewContollerProtocol{
     }
     
     func userRemovedSuccefully(message: String){
-        self.view.showToast(message: message, color: .red)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.viewModel?.getUserList()
     }
-    
 }
 

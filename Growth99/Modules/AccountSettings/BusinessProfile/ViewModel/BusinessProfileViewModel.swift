@@ -26,24 +26,26 @@ class BusinessProfileViewModel {
     
     func saveBusinessInfo(name: String, trainingBusiness: Bool) {
         let finaleUrl = ApiUrl.bussinessInfo + "\(UserRepository.shared.Xtenantid ?? String.blank)"
-        let parameter: [String : Any] = ["name": name,
-                                         "trainingBusiness": trainingBusiness
-        ]
-        
-        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<BusinessModel, GrowthNetworkError>) in
+        let parameter: [String : Any] = ["name": name, "trainingBusiness": trainingBusiness]
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
             switch result {
-            case .success(let response):
-                self.user.bussinessName = response.name
-                self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated sucessfully")
+            case .success(_): break
+                /*if response.statusCode == 200 {
+                    self.user.bussinessName = response.name
+                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated sucessfully.")
+                } else if response.statusCode == 500 {
+                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Unable to update busniess information.")
+                } else {
+                    self.delegate?.saveBusinessDetailReceived(responseMessage: "response failed")
+                }*/
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                self?.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
             }
         }
     }
     
     func uploadSelectedImage(image: UIImage) {
-        
         self.requestManager.request(requestable: BusinessImage.upload(image: image.pngData() ?? Data())) { [weak self] result in
             guard let self = self else { return }
             switch result {

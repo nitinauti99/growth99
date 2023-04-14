@@ -59,3 +59,53 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
         navigationController?.pushViewController(editVC, animated: true)
     }
 }
+
+extension BookingHistoryViewContoller: BookingHistoryListTableViewCellDelegate {
+    func editAppointment(cell: BookingHistoryTableViewCell, index: IndexPath) {
+        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        if isSearch {
+            editVC.appointmentId = viewModel?.getBookingHistoryFilterListData[index.row].id
+            editVC.editBookingHistoryData = viewModel?.getBookingHistoryFilterListData[index.row]
+        } else {
+            editVC.appointmentId = viewModel?.getBookingHistoryListData[index.row].id
+            editVC.editBookingHistoryData = viewModel?.getBookingHistoryListData[index.row]
+        }
+        navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func removeAppointment(cell: BookingHistoryTableViewCell, index: IndexPath) {
+        var selectedClinicId = Int()
+        if isSearch {
+            selectedClinicId = self.viewModel?.getBookingHistoryFilterDataAtIndex(index: index.row)?.id ?? 0
+            let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getBookingHistoryFilterDataAtIndex(index: index.row)?.patientFirstName ?? String.blank) \(viewModel?.getBookingHistoryFilterDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedBookingHistory(bookingHistoryId: selectedClinicId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            selectedClinicId = self.viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.id ?? 0
+            let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.patientFirstName ?? String.blank) \(viewModel?.getBookingHistoryDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeSelectedBookingHistory(bookingHistoryId: selectedClinicId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func appointmentRemovedSuccefully(message: String, status: Int){
+        if status == 200 {
+            self.view.showToast(message: message, color: UIColor().successMessageColor())
+        } else {
+            self.view.showToast(message: message, color: .red)
+        }
+        self.getBookingHistory()
+    }
+}
