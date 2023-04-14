@@ -33,7 +33,7 @@ class TriggersListViewModel {
         self.requestManager.request(forPath: ApiUrl.getAllTriggers, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[TriggersListModel], GrowthNetworkError>) in
             switch result {
             case .success(let triggerData):
-                self.triggersListData = triggerData
+                self.triggersListData = triggerData.sorted(by: { ($0.updatedAt ?? String.blank) > ($1.updatedAt ?? String.blank)})
                 self.delegate?.TriggersDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
