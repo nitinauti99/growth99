@@ -137,6 +137,8 @@ class EditTasksViewModel {
                     self.delegate?.taskUserCreatedSuccessfully(responseMessage: "Updated successfully")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "Internal server error")
+                } else {
+                    self.delegate?.errorReceived(error: "Lead not found.")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

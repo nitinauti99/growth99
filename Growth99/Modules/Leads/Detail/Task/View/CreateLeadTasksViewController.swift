@@ -32,7 +32,7 @@ class CreateLeadTasksViewController: UIViewController {
         self.viewModel = CreateLeadTasksViewModel(delegate: self)
         self.view.ShowSpinner()
         self.viewModel?.getTaskUserList()
-        dateFormater = DateFormater()
+        self.dateFormater = DateFormater()
         self.title = Constant.Profile.createTasks
         self.setUPUI()
     }

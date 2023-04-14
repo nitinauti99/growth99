@@ -74,6 +74,7 @@
 		013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */; };
 		013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
+		014549BF29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */; };
 		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
@@ -972,6 +973,7 @@
 		013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
+		014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintsTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -4883,6 +4885,7 @@
 			children = (
 				842C0C8A298F713B00395061 /* CreatePateintsTasksViewController.swift */,
 				842C0C89298F713B00395061 /* CreatePateintsTasksViewController.storyboard */,
+				014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7793,6 +7796,7 @@
 				398F90FE298ECB8700DB96E4 /* IQUIView+Hierarchy.swift in Sources */,
 				84F61135292A71AB00B1FB69 /* HTTPMethod.swift in Sources */,
 				016F665829CF4B9A00B1D248 /* PostImageListTableViewCell.swift in Sources */,
+				014549BF29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift in Sources */,
 				842C0CDB298FC12200395061 /* PateintsTagListTableViewCell.swift in Sources */,
 				84F61121292A71AB00B1FB69 /* URL+Extension.swift in Sources */,
 				189670B329BA6080003224ED /* TriggerDetailViewController+TableView.swift in Sources */,
