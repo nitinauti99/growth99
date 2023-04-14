@@ -20,8 +20,8 @@ protocol EditTasksViewControllerProtocol: AnyObject {
 class EditTasksViewController: UIViewController{
     
     @IBOutlet weak var nameTextField: CustomTextField!
-    @IBOutlet private weak var usersTextField: CustomTextField!
-    @IBOutlet private weak var statusTextField: CustomTextField!
+    @IBOutlet weak var usersTextField: CustomTextField!
+    @IBOutlet weak var statusTextField: CustomTextField!
     @IBOutlet private weak var DeadlineTextField: CustomTextField!
     @IBOutlet private weak var leadTextField: CustomTextField!
     @IBOutlet private weak var descriptionTextView: UITextView!
@@ -243,7 +243,7 @@ extension EditTasksViewController: EditTasksViewControllerProtocol{
 
 extension EditTasksViewController {
    
-    @IBAction func openStatusListDropDwon(sender: UIButton) {
+    @IBAction func openStatusListDropDwon(sender: UITextField) {
         let rolesArray = ["Completed", "InComplete"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
@@ -257,7 +257,7 @@ extension EditTasksViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openUserListDropDwon(sender: UIButton) {
+    @IBAction func openUserListDropDwon(sender: UITextField) {
         let rolesArray = viewModel?.taskUserList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.firstName

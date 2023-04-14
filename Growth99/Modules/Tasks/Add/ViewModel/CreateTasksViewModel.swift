@@ -112,8 +112,11 @@ class CreateTasksViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.taskUserCreatedSuccessfully(responseMessage: "task User Created Successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.taskUserCreatedSuccessfully(responseMessage: "Task saved successfully.")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

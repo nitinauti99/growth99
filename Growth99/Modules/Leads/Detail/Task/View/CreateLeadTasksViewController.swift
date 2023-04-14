@@ -122,7 +122,7 @@ extension CreateLeadTasksViewController: CreateLeadTasksViewControllerProtocol {
 
 extension CreateLeadTasksViewController {
     
-    @IBAction func openUserListDropDwon(sender: UIButton) {
+    @IBAction func openUserListDropDwon(sender: UITextField) {
         let rolesArray = viewModel?.taskUserList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.firstName
@@ -136,7 +136,7 @@ extension CreateLeadTasksViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openStatusListDropDwon(sender: UIButton) {
+    @IBAction func openStatusListDropDwon(sender: UITextField) {
         let rolesArray = ["Completed", "InComplete"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
