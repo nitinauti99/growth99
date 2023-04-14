@@ -211,7 +211,7 @@ class EditTasksViewController: UIViewController{
     }
 }
 
-extension EditTasksViewController: EditTasksViewControllerProtocol{
+extension EditTasksViewController: EditTasksViewControllerProtocol {
    
     func receivedTaskDetail(){
         self.viewModel?.getTaskUserList()
