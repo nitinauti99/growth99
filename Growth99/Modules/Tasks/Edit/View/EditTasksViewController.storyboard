@@ -60,7 +60,7 @@
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Jdm-mH-yHE"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdN-Lv-IAr" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdN-Lv-IAr" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="161" width="354" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="X4o-qa-FvN"/>
@@ -76,14 +76,12 @@
                                                         <real key="value" value="12"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqw-zh-3YN" userLabel="userList">
-                                                <rect key="frame" x="35" y="161" width="354" height="45"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
-                                                    <action selector="openUserListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9qK-b6-DeY"/>
+                                                    <action selector="openUserListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchDown" id="R1q-go-lFo"/>
+                                                    <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="8hO-KZ-VDE"/>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="5MD-kL-eWB"/>
                                                 </connections>
-                                            </button>
+                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2H-iD-kFf">
                                                 <rect key="frame" x="23" y="133" width="353" height="20"/>
                                                 <constraints>
@@ -131,7 +129,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-f7-VgA" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-f7-VgA" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="422" width="354" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="hcO-XP-pkx"/>
@@ -147,14 +145,12 @@
                                                         <real key="value" value="12"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu5-PQ-q2D" userLabel="statusList">
-                                                <rect key="frame" x="35" y="422" width="354" height="45"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
-                                                    <action selector="openStatusListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="er8-EM-ngd"/>
+                                                    <action selector="openStatusListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchDown" id="CFy-ob-kQq"/>
+                                                    <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="sJU-A2-W0s"/>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="cbk-uL-pXc"/>
                                                 </connections>
-                                            </button>
+                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-rO-1CF">
                                                 <rect key="frame" x="23" y="394" width="366" height="20"/>
                                                 <constraints>
@@ -477,7 +473,6 @@
                                             <constraint firstItem="QDp-hp-wog" firstAttribute="top" secondItem="jZZ-gp-S9v" secondAttribute="bottom" constant="8" id="GmN-fN-Yb8"/>
                                             <constraint firstItem="S3s-tV-0y9" firstAttribute="bottom" secondItem="QDp-hp-wog" secondAttribute="bottom" id="Idp-l0-mpj"/>
                                             <constraint firstItem="ZVH-17-Njv" firstAttribute="leading" secondItem="Bai-AZ-SVZ" secondAttribute="leading" id="Ikn-5l-hdb"/>
-                                            <constraint firstItem="vqw-zh-3YN" firstAttribute="top" secondItem="jdN-Lv-IAr" secondAttribute="top" id="Ius-d8-jow"/>
                                             <constraint firstItem="c6K-Rj-VXW" firstAttribute="leading" secondItem="E2H-iD-kFf" secondAttribute="leading" id="J1w-a5-kNc"/>
                                             <constraint firstItem="p6e-rO-1CF" firstAttribute="top" secondItem="Gob-qB-pfY" secondAttribute="bottom" constant="30" id="Jdm-g7-2it"/>
                                             <constraint firstItem="C9W-9t-bMw" firstAttribute="leading" secondItem="ZVH-17-Njv" secondAttribute="leading" id="JiD-Sq-45p"/>
@@ -495,28 +490,21 @@
                                             <constraint firstItem="Iwk-mz-23o" firstAttribute="leading" secondItem="WFg-cu-bDz" secondAttribute="trailing" constant="20" id="RlU-RA-N0N"/>
                                             <constraint firstItem="p6e-rO-1CF" firstAttribute="leading" secondItem="E2H-iD-kFf" secondAttribute="leading" id="Sw0-e0-9Bg"/>
                                             <constraint firstItem="7J4-lJ-Ipw" firstAttribute="top" secondItem="zw0-qK-huL" secondAttribute="top" constant="30" id="T2a-My-wBK"/>
-                                            <constraint firstItem="Vu5-PQ-q2D" firstAttribute="bottom" secondItem="LoW-f7-VgA" secondAttribute="bottom" id="Tmp-S8-p3n"/>
-                                            <constraint firstItem="vqw-zh-3YN" firstAttribute="trailing" secondItem="jdN-Lv-IAr" secondAttribute="trailing" id="U4e-cp-Tqu"/>
                                             <constraint firstItem="Bai-AZ-SVZ" firstAttribute="leading" secondItem="p6e-rO-1CF" secondAttribute="leading" id="Uyd-o4-Jrn"/>
                                             <constraint firstItem="E2H-iD-kFf" firstAttribute="trailing" secondItem="7J4-lJ-Ipw" secondAttribute="trailing" id="Uzr-oy-AUK"/>
                                             <constraint firstItem="jZZ-gp-S9v" firstAttribute="top" secondItem="C9W-9t-bMw" secondAttribute="bottom" constant="26" id="XpU-AV-gbI"/>
                                             <constraint firstItem="C9W-9t-bMw" firstAttribute="top" secondItem="ZVH-17-Njv" secondAttribute="bottom" constant="15" id="bAS-mz-hp3"/>
                                             <constraint firstAttribute="trailing" secondItem="ZVH-17-Njv" secondAttribute="trailing" constant="20" id="bKS-zu-d6N"/>
                                             <constraint firstItem="WFg-cu-bDz" firstAttribute="leading" secondItem="QDp-hp-wog" secondAttribute="leading" id="c3N-uO-LmW"/>
-                                            <constraint firstItem="Vu5-PQ-q2D" firstAttribute="leading" secondItem="LoW-f7-VgA" secondAttribute="leading" id="d2r-Wc-oqm"/>
                                             <constraint firstAttribute="trailing" secondItem="jZZ-gp-S9v" secondAttribute="trailing" constant="20" id="fKS-1E-MOJ"/>
                                             <constraint firstItem="lrc-7C-of5" firstAttribute="leading" secondItem="zw0-qK-huL" secondAttribute="leading" constant="35" id="fZZ-xS-vBa"/>
-                                            <constraint firstItem="Vu5-PQ-q2D" firstAttribute="trailing" secondItem="LoW-f7-VgA" secondAttribute="trailing" id="gJa-Pi-5lc"/>
                                             <constraint firstItem="E2H-iD-kFf" firstAttribute="leading" secondItem="7J4-lJ-Ipw" secondAttribute="leading" id="gRH-vh-pRg"/>
                                             <constraint firstItem="jZR-10-5GB" firstAttribute="leading" secondItem="zw0-qK-huL" secondAttribute="leading" constant="10" id="ggg-HW-tlz"/>
-                                            <constraint firstItem="Vu5-PQ-q2D" firstAttribute="top" secondItem="LoW-f7-VgA" secondAttribute="top" id="hS3-ut-7Wz"/>
                                             <constraint firstItem="jZR-10-5GB" firstAttribute="top" secondItem="WFg-cu-bDz" secondAttribute="bottom" constant="40" id="k3M-Gw-owq"/>
-                                            <constraint firstItem="vqw-zh-3YN" firstAttribute="leading" secondItem="jdN-Lv-IAr" secondAttribute="leading" id="mpf-GB-FaV"/>
                                             <constraint firstAttribute="trailing" secondItem="lrc-7C-of5" secondAttribute="trailing" constant="25" id="o1h-FC-z4G"/>
                                             <constraint firstItem="Gob-qB-pfY" firstAttribute="leading" secondItem="jdN-Lv-IAr" secondAttribute="leading" constant="-10" id="oXM-Yl-tLw"/>
                                             <constraint firstItem="LoW-f7-VgA" firstAttribute="trailing" secondItem="jdN-Lv-IAr" secondAttribute="trailing" id="pSA-rU-yuO"/>
                                             <constraint firstItem="lrc-7C-of5" firstAttribute="top" secondItem="7J4-lJ-Ipw" secondAttribute="bottom" constant="8" id="qzl-O2-yfa"/>
-                                            <constraint firstItem="vqw-zh-3YN" firstAttribute="bottom" secondItem="jdN-Lv-IAr" secondAttribute="bottom" id="tGc-La-a0W"/>
                                             <constraint firstItem="jdN-Lv-IAr" firstAttribute="trailing" secondItem="lrc-7C-of5" secondAttribute="trailing" id="ueC-8q-Yl1"/>
                                             <constraint firstItem="nt7-qn-Y0H" firstAttribute="leading" secondItem="LoW-f7-VgA" secondAttribute="leading" id="v0U-fa-kwz"/>
                                             <constraint firstItem="QDp-hp-wog" firstAttribute="leading" secondItem="nt7-qn-Y0H" secondAttribute="leading" id="vED-LR-3Bp"/>
@@ -572,31 +560,31 @@
     </scenes>
     <designables>
         <designable name="LoW-f7-VgA">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="QDp-hp-wog">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="bmi-YC-6bI">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="jdN-Lv-IAr">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="lrc-7C-of5">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="mze-hG-8dZ">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="nt7-qn-Y0H">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="qg1-oU-mok">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="ss6-BP-XHc">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
     </designables>
     <resources>

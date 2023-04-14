@@ -140,7 +140,9 @@ extension CreateTasksViewController: CreateTasksViewControllerProtocol {
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 
     func errorReceived(error: String) {

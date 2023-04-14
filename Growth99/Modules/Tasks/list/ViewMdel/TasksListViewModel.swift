@@ -75,8 +75,12 @@ class TasksListViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_ ):
-                self.delegate?.taskRemovedSuccefully(message: "Pateints removed successfully")
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.taskRemovedSuccefully(message: "Task deleted succesfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
