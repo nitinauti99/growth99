@@ -10,11 +10,13 @@ import Foundation
 protocol CreateLeadTasksViewModelProtocol {
     ///get all task list
     func getTaskUserList()
-    var taskUserList: [TaskAllUserListModel] { get }
     func taskUserListAtIndex(index: Int) -> TaskAllUserListModel?
-    
+    func isValidFirstName(_ firstName: String) -> Bool
+
     /// create patients user
     func createTaskUser(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, questionnaireSubmissionId: Int)
+    
+    var taskUserList: [TaskAllUserListModel] { get }
 }
 
 class CreateLeadTasksViewModel {
@@ -74,4 +76,10 @@ extension CreateLeadTasksViewModel: CreateLeadTasksViewModelProtocol {
          return self.taskUserList[index]
      }
    
+    func isValidFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
 }

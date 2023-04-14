@@ -16,11 +16,11 @@ protocol CreateLeadTasksViewControllerProtocol: AnyObject {
 
 class CreateLeadTasksViewController: UIViewController , CreateLeadTasksViewControllerProtocol{
     
-    @IBOutlet private weak var nameTextField: CustomTextField!
-    @IBOutlet private weak var usersTextField: CustomTextField!
-    @IBOutlet private weak var statusTextField: CustomTextField!
-    @IBOutlet private weak var DeadlineTextField: CustomTextField!
-    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet weak var nameTextField: CustomTextField!
+    @IBOutlet weak var usersTextField: CustomTextField!
+    @IBOutlet weak var statusTextField: CustomTextField!
+    @IBOutlet weak var DeadlineTextField: CustomTextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
 
     var viewModel: CreateLeadTasksViewModelProtocol?
     var workflowTaskUser = Int()
