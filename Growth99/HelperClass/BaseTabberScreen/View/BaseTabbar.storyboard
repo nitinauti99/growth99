@@ -832,7 +832,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Select Clinic" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzu-kM-8lq" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="35" y="36.5" width="364" height="45"/>
+                                                        <rect key="frame" x="35" y="36.5" width="354" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="lWa-OR-Z6v"/>
                                                         </constraints>
@@ -848,7 +848,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                                <real key="value" value="25"/>
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
@@ -866,7 +866,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Select Services" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfk-FX-j6V" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="35" y="124" width="364" height="45"/>
+                                                        <rect key="frame" x="35" y="124" width="354" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="lQo-ne-ZLX"/>
                                                         </constraints>
@@ -882,7 +882,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                                <real key="value" value="25"/>
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
@@ -900,7 +900,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Select Provider" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Szr-pV-NLf" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="35" y="211.5" width="364" height="45"/>
+                                                        <rect key="frame" x="35" y="211.5" width="354" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="S6L-EB-UER"/>
                                                         </constraints>
@@ -916,7 +916,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                                <real key="value" value="25"/>
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
@@ -1039,14 +1039,14 @@
                                                     <constraint firstItem="ecp-8z-7nN" firstAttribute="leading" secondItem="PB8-5m-yMc" secondAttribute="leading" id="5vO-Ac-gbv"/>
                                                     <constraint firstItem="PB8-5m-yMc" firstAttribute="top" secondItem="9Z4-42-K2D" secondAttribute="top" constant="10" id="72n-DT-I3x"/>
                                                     <constraint firstItem="exH-u2-7Hs" firstAttribute="top" secondItem="Cfk-FX-j6V" secondAttribute="bottom" constant="16" id="9AD-3z-5DS"/>
-                                                    <constraint firstItem="Cfk-FX-j6V" firstAttribute="trailing" secondItem="Twq-OS-YmB" secondAttribute="trailing" constant="10" id="9FF-JB-4fC"/>
-                                                    <constraint firstItem="Szr-pV-NLf" firstAttribute="trailing" secondItem="exH-u2-7Hs" secondAttribute="trailing" constant="10" id="Abo-Cx-nN3"/>
+                                                    <constraint firstItem="Cfk-FX-j6V" firstAttribute="trailing" secondItem="Twq-OS-YmB" secondAttribute="trailing" id="9FF-JB-4fC"/>
+                                                    <constraint firstItem="Szr-pV-NLf" firstAttribute="trailing" secondItem="exH-u2-7Hs" secondAttribute="trailing" id="Abo-Cx-nN3"/>
                                                     <constraint firstItem="Szr-pV-NLf" firstAttribute="leading" secondItem="exH-u2-7Hs" secondAttribute="leading" constant="10" id="JBi-7f-LkK"/>
                                                     <constraint firstItem="Cfk-FX-j6V" firstAttribute="top" secondItem="Twq-OS-YmB" secondAttribute="bottom" constant="10" id="JyJ-mh-Drm"/>
                                                     <constraint firstItem="Cfk-FX-j6V" firstAttribute="leading" secondItem="Twq-OS-YmB" secondAttribute="leading" constant="10" id="KuO-jI-h1r"/>
                                                     <constraint firstItem="MSs-eL-bLe" firstAttribute="trailing" secondItem="Fxw-vh-pem" secondAttribute="trailing" id="Kyj-id-ZSr"/>
                                                     <constraint firstItem="Fxw-vh-pem" firstAttribute="top" secondItem="Szr-pV-NLf" secondAttribute="bottom" constant="16" id="LRZ-rA-rrE"/>
-                                                    <constraint firstItem="jzu-kM-8lq" firstAttribute="trailing" secondItem="PB8-5m-yMc" secondAttribute="trailing" constant="10" id="Mh1-Uq-eP1"/>
+                                                    <constraint firstItem="jzu-kM-8lq" firstAttribute="trailing" secondItem="PB8-5m-yMc" secondAttribute="trailing" id="Mh1-Uq-eP1"/>
                                                     <constraint firstItem="PB8-5m-yMc" firstAttribute="leading" secondItem="9Z4-42-K2D" secondAttribute="leading" constant="25" id="OZX-MF-0L1"/>
                                                     <constraint firstItem="Twq-OS-YmB" firstAttribute="top" secondItem="jzu-kM-8lq" secondAttribute="bottom" constant="16" id="PTl-Pt-m7T"/>
                                                     <constraint firstAttribute="trailing" secondItem="3yI-ka-1rO" secondAttribute="trailing" id="PyO-LX-VVv"/>

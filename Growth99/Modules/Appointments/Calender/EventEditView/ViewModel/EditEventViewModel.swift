@@ -9,7 +9,8 @@ import Foundation
 
 protocol EditEventViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    func isLastName(_ lastName: String) -> Bool
+    func isFirstName(_ firstName: String) -> Bool
     var  getAllDatesData: [String] { get }
     var  getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
@@ -49,7 +50,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
     var allClinicsEditEvent: [Clinics]?
     var serviceListDataEditEvent: [ServiceList] = []
     var providerListDataEditEvent: [UserDTOList] = []
-
+    
     init(delegate: EditEventViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -265,7 +266,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return dateFormatter.string(from: date)
     }
-
+    
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -274,7 +275,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date)
     }
-
+    
     func localInputeDateToServer(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -295,16 +296,9 @@ class EditEventViewModel: EditEventViewModelProtocol {
         }
         return nil
     }
-  
+    
     var getAppointmentsForPateintData: AppointmentDTOList? {
         return self.editBookingHistoryData
-    }
-    
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -312,5 +306,16 @@ class EditEventViewModel: EditEventViewModelProtocol {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
+    
+    func isFirstName(_ firstName: String) -> Bool {
+        let regex = Constant.Regex.nameWithSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
+    func isLastName(_ lastName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: lastName)
+    }
 }
-

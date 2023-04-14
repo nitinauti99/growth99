@@ -365,7 +365,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
 
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -385,7 +385,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServices.name
         }
 
         selectionMenu.setSelectedItems(items: selectedServices) { [weak self] (selectedItem, index, selected, selectedList) in
