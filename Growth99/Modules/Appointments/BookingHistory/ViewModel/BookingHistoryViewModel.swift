@@ -61,7 +61,7 @@ class BookingHistoryViewModel {
                 } else if response.statusCode == 500 {
                     self.delegate?.appointmentRemovedSuccefully(message: "Unable to delete the appointment.", status: response.statusCode)
                 } else {
-                    self.delegate?.errorReceivedBookingHistory(error: "reponse failed.")
+                    self.delegate?.errorReceivedBookingHistory(error: "Internal server error")
                 }
             case .failure(let error):
                 self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)

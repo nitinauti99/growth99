@@ -59,26 +59,25 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
-    
-    var createSelectedClinicsarray = [Clinics]()
-    
+        
     var allServiceCategories = [Clinics]()
     var selectedServiceCategories = [Clinics]()
     var selectedServiceCategoriesId = Int()
     
     var allConsent = [ConsentListModel]()
-    var userClinics = [ClinicsServices]()
     var selectedConsent = [ConsentListModel]()
-    var servicecategory: ServiceCategory?
-    var serviceClinic: Clinic?
-    var consents = [Consents]()
-    var questionnaires = [Questionnaires]()
     var selectedConsentIds = [Int]()
     
     var allQuestionnaires = [QuestionnaireListModel]()
     var selectedQuestionnaires = [QuestionnaireListModel]()
     var selectedQuestionnairesIds = [Int]()
+    
+    var userClinics = [ClinicsServices]()
+    var userConsents = [Consents]()
+    var userQuestionnaires = [Questionnaires]()
 
+    var servicecategory: ServiceCategory?
+    var serviceClinic: Clinic?
     var servicesAddViewModel: ServiceListDetailViewModelProtocol?
     
     var imageRemoved: Bool = true
@@ -109,7 +108,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceDescTextView.layer.borderWidth = 1.0
         if self.title == Constant.Profile.createService {
             removeImageViewBtn.isHidden = true
-            contentViewHeight.constant = 1350
+            contentViewHeight.constant = 1400
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
             enableButton.isSelected = false
@@ -133,36 +132,38 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     
     func setupUserSelectedUI() {
         serviceNameTextField.text = servicesAddViewModel?.getUserSelectedServiceData?.name ?? String.blank
-        
         userClinics = servicesAddViewModel?.getUserSelectedServiceData?.clinics ?? []
-
         selectClinicTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
+        for item in userClinics {
+            selectedClincs.append(Clinics(isDefault: item.clinic?.isDefault, name: item.clinic?.name, id: item.clinic?.id))
+            selectedClincIds.append(item.clinic?.id ?? 0)
+        }
         
         serviceDurationTextField.text = "\(servicesAddViewModel?.getUserSelectedServiceData?.durationInMinutes ?? 0)"
-       
         servicecategory = servicesAddViewModel?.getUserSelectedServiceData?.serviceCategory
         serviceCategoryTextField.text = servicecategory.map({$0.name ?? String.blank})
-                
+        selectedServiceCategories.append(Clinics(isDefault: servicecategory?.isDefault, name: servicecategory?.name, id: servicecategory?.id))
+        selectedServiceCategoriesId = servicecategory.map({ $0.id ?? 0}) ?? 0
+        
         serviceCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.serviceCost ?? 0.0)
-        
         serviceUrlTextField.text = servicesAddViewModel?.getUserSelectedServiceData?.serviceURL ?? String.blank
-        
         depositCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.preBookingCost ?? 0.0)
-
         serviceDescTextView.text = servicesAddViewModel?.getUserSelectedServiceData?.description
         
-        consents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
-        serviceConsentTextField.text = consents.map({$0.name ?? String.blank}).joined(separator: ", ")
+        userConsents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
+        serviceConsentTextField.text = userConsents.map({$0.name ?? String.blank}).joined(separator: ", ")
+        for item in userConsents {
+//            selectedConsent.append(ConsentListModel(createdAt: item?.createdAt, updatedBy: item?.updatedBy, createdBy: item?.createdBy, name: item?.name, id: item?.id, updatedAt: item?.updatedAt))
+            selectedConsentIds.append(item.id ?? 0)
+        }
         
-        questionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
-        serviceQuestionarieTextField.text = questionnaires.map({$0.name ?? String.blank}).joined(separator: ", ")
+        userQuestionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
+        serviceQuestionarieTextField.text = userQuestionnaires.map({$0.name ?? String.blank}).joined(separator: ", ")
+        for item in userQuestionnaires {
+//            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item?.createdAt, updatedBy: item?.createdAt, noOfQuestions: item?.createdAt, isContactForm: item?.createdAt, createdBy: item?.createdAt, name: item?.createdAt, id: item?.createdAt, isG99ReviewForm: item?.createdAt, updatedAt: item?.createdAt))
+            selectedQuestionnairesIds.append(item.id ?? 0)
+        }
         
-//        let consentSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
-//        selectedConsent = consentSelectedArray
-//
-//        let questionnairesSelectedArray = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
-//        selectedQuestionnaires = questionnairesSelectedArray
-//                
         if servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking == true {
             disableButton.isSelected = true
         } else {
@@ -209,7 +210,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             serviceImageView.image = nil
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
-            contentViewHeight.constant = 1350
+            contentViewHeight.constant = 1400
             removeImageViewBtn.isHidden = true
         } else {
             self.serviceImageView.sd_setImage(with: URL(string: servicesAddViewModel?.getUserSelectedServiceData?.imageUrl ?? String.blank), placeholderImage: nil)
@@ -435,7 +436,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceImageView.image = nil
         serviceImageViewHeight.constant = 0
         serviceImageViewTop.constant = 0
-        contentViewHeight.constant = 1350
+        contentViewHeight.constant = 1400
         removeImageViewBtn.isHidden = true
         imageRemoved = true
         serviceImageViewBtn.setTitle("Choose Service Image", for: .normal)

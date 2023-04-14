@@ -209,8 +209,14 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
         self.requestManager.request(requestable: ServicesImage.upload(image: image.pngData() ?? Data())) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_):
-                break
+            case .success(let response):
+                if response.statusCode == 200 {
+                    print("Api sucess")
+                } else if (response.statusCode == 500) {
+                    print("Api failre")
+                } else {
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
