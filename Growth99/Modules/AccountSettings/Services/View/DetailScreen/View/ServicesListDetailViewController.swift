@@ -173,15 +173,16 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         if servicesAddViewModel?.getUserSelectedServiceData?.priceVaries == true {
             hideButton.isSelected = true
             enableButton.isSelected = false
+            depositCostTextField.isHidden = true
             depositCostTextField.text = String.blank
             enableCollectLabelHeightConstant.constant = 0
             enableCollectBtnHeightConstant.constant = 0
             enableCollectLabelTopConstant.constant = 0
+            
             depositCostLabelTopConstant.constant = 0
             depositCostLabelHeightConstant.constant = 0
             depositCostTFTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
-            depositCostTextField.isHidden = true
         } else {
             hideButton.isSelected = false
             enableButton.isSelected = true
@@ -189,6 +190,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             enableCollectLabelHeightConstant.constant = 36
             enableCollectBtnHeightConstant.constant = 15
             enableCollectLabelTopConstant.constant = 16
+            
             depositCostLabelTopConstant.constant = 16
             depositCostLabelHeightConstant.constant = 18
             depositCostTFTopConstant.constant = 10
@@ -196,13 +198,19 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         if servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed == true {
+            enableButton.isSelected = true
             depositCostTextField.isHidden = false
+            depositCostLabelTopConstant.constant = 16
             depositCostTFHeightConstant.constant = 45
             depositCostTFTopConstant.constant = 10
+            depositCostLabelHeightConstant.constant = 18
         } else {
+            enableButton.isSelected = false
             depositCostTextField.isHidden = true
+            depositCostLabelTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
             depositCostTFTopConstant.constant = 0
+            depositCostLabelHeightConstant.constant = 0
         }
         
         let imageUrl = servicesAddViewModel?.getUserSelectedServiceData?.imageUrl
