@@ -455,7 +455,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     }
     
     @IBAction func saveServiceButtonAction(sender: UIButton) {
-        guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
+       /* guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
             serviceNameTextField.showError(message: "Service Name is required.")
             return
         }
@@ -508,6 +508,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
                                                    isPreBookingCostAllowed: isPreBookingCostAllowed,
                                                    showInPublicBooking: showInPublicBooking,
                                                    priceVaries: false, httpMethod: httpMethodType, isScreenFrom: self.title ?? String.blank, serviceId: serviceId ?? 0)
+        */
 
     }
     
