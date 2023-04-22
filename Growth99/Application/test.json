@@ -75,7 +75,7 @@
           "imageName": "fa-bed"
         },
         {
-          "title": "Patients Tags",
+          "title": "Patient Tags",
           "imageName": "fa-tags"
         }
       ]
@@ -123,7 +123,7 @@
           "imageName": "fa-list-ol"
         },
         {
-          "title": "Leads Tags",
+          "title": "Lead Tags",
           "imageName": "fa-tags"
         },
         {
@@ -151,7 +151,7 @@
       "imageName": "fa-hashtag",
       "subMenuList": [
         {
-          "title": "Social Profile",
+          "title": "Social Profiles",
           "imageName": "fa-facebook"
         },
         {
@@ -181,7 +181,7 @@
           "imageName": "fa-user-cog"
         },
         {
-          "title": "Chat Session",
+          "title": "Chat Sessions",
           "imageName": "fa-comments"
         },
         {

@@ -91,7 +91,7 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       /* let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
+        let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
         if isSearch {
 //            editVC.appointmentId = viewModel?.getMassEmailandSMSFilterData[indexPath.row].id
             // editVC.editMassEmailData = viewModel?.getMassEmailFilterListData[indexPath.row]
@@ -99,6 +99,6 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
 //            editVC.appointmentId = viewModel?.getMassEmailandSMSData[indexPath.row].id
             // editVC.editMassEmailData = viewModel?.getMassEmailListData[indexPath.row]
         }
-        navigationController?.pushViewController(editVC, animated: true)*/
+        navigationController?.pushViewController(editVC, animated: true)
     }
 }
