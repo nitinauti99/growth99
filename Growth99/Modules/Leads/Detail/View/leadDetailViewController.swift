@@ -57,7 +57,7 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
         super.viewDidLoad()
         self.registerCell()
         self.fullName.text = leadData?.fullName
-        self.navigationController?.title = "Lead Detail"
+        self.title = "Lead Detail"
         self.viewModel = leadDetailViewModel(delegate: self)
         self.view.ShowSpinner()
         self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)

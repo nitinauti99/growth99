@@ -78,6 +78,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="openUserListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchDown" id="R1q-go-lFo"/>
+                                                    <action selector="openUserListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Rgi-Lm-zav"/>
                                                     <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="8hO-KZ-VDE"/>
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="5MD-kL-eWB"/>
                                                 </connections>
@@ -187,6 +188,9 @@
                                                         <real key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="E7J-2V-0PR"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bai-AZ-SVZ">
                                                 <rect key="frame" x="23" y="497" width="366" height="20"/>

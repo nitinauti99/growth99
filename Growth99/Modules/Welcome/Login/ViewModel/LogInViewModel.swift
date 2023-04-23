@@ -40,7 +40,11 @@ class LogInViewModel {
                 self.bussinessSelcetionData = userData
                 self.delegate?.bussinessSelectionDataRecived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                if error.response?.statusCode == 404 {
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }else{
+                    self.delegate?.errorReceived(error: GrowthNetworkError.errorDomain)
+                }
                 print("Error while performing request \(error)")
             }
         }

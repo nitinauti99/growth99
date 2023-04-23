@@ -43,6 +43,14 @@ class questionAnswersTableViewCell: UITableViewCell {
             self.editButton.setImage(image, for: .normal)
             self.editButton.tintColor = UIColor.init(hexString: "009EDE")
         }
+        
+        if patientQuestionList?.questionName?.replacingOccurrences(of: "\"", with: "", options: NSString.CompareOptions.literal, range:nil) == "y/n?" {
+            if  patientQuestionList?.answerText == "false" {
+                self.ansLbi.text = "No"
+            }else{
+                self.ansLbi.text = "Yes"
+            }
+        }
     }
     
     @IBAction func editButtonPressed(sender: UIButton) {

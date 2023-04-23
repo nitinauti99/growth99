@@ -116,8 +116,6 @@ class EditTasksViewController: UIViewController{
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
-        datePicker.minimumDate = todaysDate
         textField.resignFirstResponder()
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)
@@ -247,7 +245,7 @@ extension EditTasksViewController: EditTasksViewControllerProtocol {
 
 extension EditTasksViewController {
    
-    @IBAction func openStatusListDropDwon(sender: UITextField) {
+    @IBAction func openStatusListDropDwon(sender: UIButton) {
         let rolesArray = ["Completed", "InComplete"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
@@ -261,7 +259,7 @@ extension EditTasksViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openUserListDropDwon(sender: UITextField) {
+    @IBAction func openUserListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.taskUserList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.firstName

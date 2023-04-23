@@ -21,7 +21,8 @@ class CreateLeadViewController: UIViewController{
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
     @IBOutlet weak var tableView : UITableView!
-    
+    @IBOutlet weak var scrollViewHight : NSLayoutConstraint!
+
     var viewModel: CreateLeadViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
 
@@ -29,7 +30,7 @@ class CreateLeadViewController: UIViewController{
         tableView.layoutIfNeeded()
         return tableView.contentSize.height
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLeadViewModel(delegate: self)
@@ -42,6 +43,28 @@ class CreateLeadViewController: UIViewController{
         self.title = "Create Lead"
         self.view.ShowSpinner()
         self.viewModel?.getQuestionnaireId()
+        self.scrollViewHeight()
+
+    }
+    
+    func scrollViewHeight() {
+        var tableViewHight = CGFloat()
+        let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
+        
+        for item in patientQuestionList {
+            if item.questionType  == "Input" || item.questionType == "Yes_No" || item.questionType == "Date" {
+                tableViewHight += 100
+            }else if (item.questionType  == "Text") {
+                tableViewHight += 200
+            }else if (item.questionType  == "Multiple_Selection_Text") {
+                if item.showDropDown == true {
+                    tableViewHight += 100
+                }else {
+                    tableViewHight += CGFloat((item.patientQuestionChoices?.count ?? 0) * 100)
+                }
+            }
+        }
+        self.scrollViewHight.constant = tableViewHight + 100
     }
     
     private func setUpUI(){
@@ -60,7 +83,7 @@ class CreateLeadViewController: UIViewController{
         
         tableView.register(UINib(nibName: "LeadMultipleSelectionTextTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadMultipleSelectionTextTypeTableViewCell")
         
-        tableView.register(UINib(nibName: "LeadMultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionWithDropDownTypeTableViewCell")
+        tableView.register(UINib(nibName: "LeadMultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadMultipleSelectionWithDropDownTypeTableViewCell")
         
         tableView.register(UINib(nibName: "LeadMultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
     }
@@ -73,10 +96,10 @@ class CreateLeadViewController: UIViewController{
     @IBAction func submitButtonClicked() {
         let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
 
-        for index in 0..<(patientQuestionList.count ) {
+        for index in 0..<(patientQuestionList.count) {
             let cellIndexPath = IndexPath(item: index, section: 0)
             let item = patientQuestionList[cellIndexPath.row]
-            
+
             ///  /// 1. questionnaireType ->  InputType
             if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadInputTypeTableViewCell {
                 print(InputTypeCell.questionnaireName.text ?? String.blank)
@@ -250,13 +273,15 @@ extension CreateLeadViewController: CreateLeadViewControllerProtocol {
     func QuestionnaireListRecived() {
         view.HideSpinner()
         self.tableView.reloadData()
-        //customViewHight.constant = tableViewHeight + 320
+        self.scrollViewHeight()
     }
 
     
     ///  created Lead on existing datanaviagte to lead list
     func LeadDataRecived() {
         view.HideSpinner()
+        self.view.showToast(message: "Data submited successfully", color: UIColor().successMessageColor())
+
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.navigationController?.popViewController(animated: true)
         })
@@ -285,4 +310,15 @@ extension CreateLeadViewController: LeadMultipleSelectionWithDropDownTypeTableVi
         selectionMenu.show(style: .popover(sourceView: cell.dropDownButton, size: CGSize(width: cell.dropDownButton.frame.width, height: (Double(patientQuestionChoices.count * 44))), arrowDirection: .up), from: self)
     }
     
+}
+
+extension CreateLeadViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewHeight()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewHeight()
+    }
 }

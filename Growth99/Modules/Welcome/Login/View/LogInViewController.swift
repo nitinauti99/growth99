@@ -64,6 +64,10 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
     
     func bussinessSelectionDataRecived() {
         let data = viewModel?.getBussinessSelcetionData ?? []
+        if data.count == 0 {
+            return
+        }
+      
         if data.count == 1 {
             self.view.ShowSpinner()
             viewModel?.getBusinessInfo(Xtenantid: data[0].tenantId ?? 0)
@@ -94,7 +98,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func showPassword(sender: UIButton){
