@@ -744,11 +744,11 @@
             </objects>
             <point key="canvasLocation" x="1323" y="-427"/>
         </scene>
-        <!--Appointment-->
+        <!--Calender-->
         <scene sceneID="XhH-gG-7Jt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9IF-Lu-2SF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Appointment" image="calendar_check_tab" id="bjP-dp-rVo"/>
+                    <tabBarItem key="tabBarItem" title="Calender" image="calendar_check_tab" id="bjP-dp-rVo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cAE-M9-Xu4">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
