@@ -17,7 +17,7 @@ class SMSTemplateViewController: UIViewController {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     var viewModel: SMSTemplateViewModelProtocol?
     
     var workflowTaskPatientId = Int()
@@ -52,15 +52,18 @@ class SMSTemplateViewController: UIViewController {
     }
 
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
+        if self.searchBar.text == "" {
+            self.isSearch = false
+        }
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            tableView.reloadData()
+            self.tableView.reloadData()
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 1:
-            tableView.reloadData()
+            self.tableView.reloadData()
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 2:
-            tableView.reloadData()
+            self.tableView.reloadData()
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
        default:
             break

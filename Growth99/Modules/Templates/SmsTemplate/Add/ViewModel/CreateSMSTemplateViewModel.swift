@@ -109,8 +109,14 @@ class CreateSMSTemplateViewModel {
         self.requestManager.request(forPath: ApiUrl.createSMSTemplates, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_ ):
-                self.delegate?.smsTemplateCreatedSuccessfully()
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.smsTemplateCreatedSuccessfully()
+                }else if response.statusCode == 500 {
+                    self.delegate?.errorReceived(error: "Failed update SMSTemplate")
+                }else{
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -118,11 +124,17 @@ class CreateSMSTemplateViewModel {
     }
     
     func updateSMSTemplate(smsTemplatesId:Int, parameters: [String:Any]) {
-        self.requestManager.request(forPath: ApiUrl.createSMSTemplates, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.createSMSTemplates.appending("/\(smsTemplatesId)"), method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_ ):
-                self.delegate?.smsTemplateCreatedSuccessfully()
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.smsTemplateCreatedSuccessfully()
+                }else if response.statusCode == 500 {
+                    self.delegate?.errorReceived(error: "Failed update SMSTemplate")
+                }else{
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

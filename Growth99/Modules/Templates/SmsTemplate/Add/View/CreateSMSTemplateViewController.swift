@@ -34,20 +34,22 @@ class CreateSMSTemplateViewController: UIViewController {
     var smsTemplateId = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.smsTemplateList
         self.viewModel = CreateSMSTemplateViewModel(delegate: self)
         self.isCustom.setOn(false, animated: false)
         self.getSMSTemplate()
+        self.targetTextField.placeholder = "Select Target"
         self.collectionView.register(UINib(nibName: "CreateSMSTemplateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreateSMSTemplateCollectionViewCell")
         self.setVarableData(selectedSegmentIndex: selectedIndex)
     }
     
     func getSMSTemplate(){
         if self.screenTitle == "Edit" {
+            self.title = Constant.Profile.editSMSTemplate
             self.view.ShowSpinner()
             self.viewModel?.getSMSTemplateData(smsTemplateId: smsTemplateId)
         }else{
             self.view.ShowSpinner()
+            self.title = Constant.Profile.createSMSTemplate
             self.viewModel?.getMassSMSVariablesList()
         }
     }
@@ -56,13 +58,13 @@ class CreateSMSTemplateViewController: UIViewController {
         switch selectedSegmentIndex {
         case 0:
             self.moduleTextField.text = "Lead"
-            collectionView.reloadData()
+            self.collectionView.reloadData()
         case 1:
             self.moduleTextField.text = "Appointment"
-            collectionView.reloadData()
+            self.collectionView.reloadData()
         case 2:
             self.moduleTextField.text = "Mass SMS"
-            collectionView.reloadData()
+            self.collectionView.reloadData()
        default:
             break
         }
@@ -85,6 +87,9 @@ class CreateSMSTemplateViewController: UIViewController {
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
             self?.moduleTextField.text  = text
+            self?.targetTextField.text = ""
+            self?.targetTextField.placeholder = "Select Target"
+
             if text == "Lead" {
                 self?.selectedIndex = 0
                 self?.collectionView.reloadData()
@@ -101,7 +106,16 @@ class CreateSMSTemplateViewController: UIViewController {
     }
     
     @IBAction func selectTargetAction(sender: UIButton){
-        let moduleArray = ["Lead","Clinic"]
+        var moduleArray = [String]()
+        
+        if self.moduleTextField.text == "Lead" {
+            moduleArray = ["Lead","Clinic"]
+        }else if(self.moduleTextField.text == "Appointment"){
+            moduleArray = ["Patient","Clinic"]
+        }else{
+            moduleArray = ["Lead","Patient"]
+        }
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: moduleArray, cellType: .subTitle) { (cell, module, indexPath) in
             cell.textLabel?.text = module
         }
@@ -127,26 +141,43 @@ class CreateSMSTemplateViewController: UIViewController {
     
     @IBAction func saveButtonAction(sender: UIButton) {
         
+        guard let textField = moduleTextField.text, !textField.isEmpty else {
+            moduleTextField.showError(message: "Please select module")
+            return
+        }
+        
+        guard let textField = targetTextField.text, !textField.isEmpty else {
+            targetTextField.showError(message: "Please select target")
+            return
+        }
+        
+        guard let textField = nameTextField.text, !textField.isEmpty else {
+            nameTextField.showError(message: "Name is required.")
+            return
+        }
+        
+        guard let textView = bodyTextView.text, !textView.isEmpty else {
+            return
+        }
+        
         let param: [String: Any] = [
             "id": self.smsTemplateId,
             "name": self.nameTextField.text ?? "",
             "body": self.bodyTextView.text ?? "",
-            "templateFor": self.moduleTextField.text ?? "",
+            "templateFor": (self.moduleTextField.text ?? "").removingWhitespaces(),
             "smsTemplateName": "",
             "isCustom": self.isCustom.isSelected,
             "smsTarget": self.targetTextField.text ?? ""
         ]
-        if screenTitle == "Edit" {
+        
+        if self.screenTitle == "Edit" {
             self.view.ShowSpinner()
-            viewModel?.updateSMSTemplate(smsTemplatesId: smsTemplateId, parameters: param)
+            self.viewModel?.updateSMSTemplate(smsTemplatesId: smsTemplateId, parameters: param)
         }else{
             self.view.ShowSpinner()
-            viewModel?.crateSMSTemplate(parameters: param)
+            self.viewModel?.crateSMSTemplate(parameters: param)
         }
-      
     }
-    
-    
     
 }
 
@@ -175,12 +206,19 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateViewControllerProtoc
     
     func smsTemplateCreatedSuccessfully(){
         self.view.HideSpinner()
-        self.navigationController?.popViewController(animated: true)
+        if self.screenTitle == "Edit" {
+            self.view.showToast(message: "SMS Template updated successfully.", color: UIColor().successMessageColor())
+        }else{
+            self.view.showToast(message: "SMS Template saved successfully.", color: UIColor().successMessageColor())
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
 
@@ -191,4 +229,23 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
         let str: String = " ${\(variable ?? "")} "
         self.bodyTextView.text += str
     }
+}
+
+extension CreateSMSTemplateViewController: UITextFieldDelegate {
+   
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        if textField == nameTextField {
+            guard let textField = nameTextField.text, !textField.isEmpty else {
+                nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+                return
+            }
+        }
+    }
+    
+}
+
+extension String {
+    func removingWhitespaces() -> String {
+            return components(separatedBy: .whitespaces).joined()
+        }
 }

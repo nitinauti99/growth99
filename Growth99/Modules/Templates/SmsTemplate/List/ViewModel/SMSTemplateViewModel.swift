@@ -20,7 +20,7 @@ protocol SMSTemplateViewModelProtocol {
     
     func getSMSTemplateList()
     
-    func filterData(searchText: String)
+    func filterData(searchText: String, selectedIndex: Int)
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex: Int) -> SMSTemplateModel?
     func getTemplateFilterDataAtIndexPath(index: Int, selectedIndex: Int) -> SMSTemplateModel?
@@ -31,9 +31,9 @@ class SMSTemplateViewModel {
     var smsTemplateListData: [SMSTemplateModel] = []
     var smsTemplateFilterData: [SMSTemplateModel] = []
     
-    var leadTemplateListData: [Any] = []
-    var apppointmentTemplateListData: [Any] = []
-    var massSMSTemplateListData: [Any] = []
+    var leadTemplateListData: [SMSTemplateModel] = []
+    var apppointmentTemplateListData: [SMSTemplateModel] = []
+    var massSMSTemplateListData: [SMSTemplateModel] = []
     
     init(delegate: SMSTemplateViewContollerProtocol? = nil) {
         self.delegate = delegate
@@ -59,20 +59,40 @@ class SMSTemplateViewModel {
         for template in self.smsTemplateListData {
             if template.templateFor == "Lead" {
                 leadTemplateListData.append(template)
+                leadTemplateListData.sort(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
             }else if (template.templateFor == "Appointment"){
                 apppointmentTemplateListData.append(template)
+                apppointmentTemplateListData.sort(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
             }else {
                 massSMSTemplateListData.append(template)
+                massSMSTemplateListData.sort(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
             }
         }
     }
     
-    func filterData(searchText: String) {
-        self.smsTemplateFilterData = self.smsTemplateListData.filter { task in
-            let searchText = searchText.lowercased()
-            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+    func filterData(searchText: String, selectedIndex: Int) {
+        if selectedIndex == 0 {
+            self.smsTemplateFilterData = self.leadTemplateListData.filter { task in
+                let searchText = searchText.lowercased()
+                let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+                let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+                return nameMatch || idMatch
+            }
+            
+        }else if (selectedIndex == 1){
+            self.smsTemplateFilterData = self.apppointmentTemplateListData.filter { task in
+                let searchText = searchText.lowercased()
+                let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+                let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+                return nameMatch || idMatch
+            }
+        }else {
+            self.smsTemplateFilterData = self.massSMSTemplateListData.filter { task in
+                let searchText = searchText.lowercased()
+                let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+                let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+                return nameMatch || idMatch
+            }
         }
     }
     
@@ -82,11 +102,11 @@ class SMSTemplateViewModel {
     
     func getTemplateDataAtIndexPath(index: Int, selectedIndex:Int) -> SMSTemplateModel? {
         if selectedIndex == 0 {
-            return leadTemplateListData[index] as? SMSTemplateModel
+            return leadTemplateListData[index]
         }else if (selectedIndex == 1){
-            return apppointmentTemplateListData[index] as? SMSTemplateModel
+            return apppointmentTemplateListData[index]
         }else {
-            return massSMSTemplateListData[index] as? SMSTemplateModel
+            return massSMSTemplateListData[index]
         }
     }
     
@@ -106,11 +126,11 @@ class SMSTemplateViewModel {
     
     func smsTemplateDataAtIndex(index: Int, selectedIndex: Int) -> SMSTemplateModel?{
         if selectedIndex == 0 {
-            return leadTemplateListData[index] as? SMSTemplateModel
+            return leadTemplateListData[index]
         }else if (selectedIndex == 1){
-            return apppointmentTemplateListData[index] as? SMSTemplateModel
+            return apppointmentTemplateListData[index]
         }else {
-            return massSMSTemplateListData[index] as? SMSTemplateModel
+            return massSMSTemplateListData[index]
         }
     }
 }

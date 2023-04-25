@@ -117,6 +117,8 @@ struct Constant {
         static let createTrigger = "Create Trigger"
         static let editTrigger = "Edit Trigger"
         static let smsTemplateList = "SMS Templates List"
+        static let createSMSTemplate = "Create SMS Template"
+        static let editSMSTemplate =  "Edit SMS Template"
         static let consentsTemplatesList = "Consents"
         static let chatSessionList = "Chat Session List"
         static let leadTemplates = "Lead Templates"
