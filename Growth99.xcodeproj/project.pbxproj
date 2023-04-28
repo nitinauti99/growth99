@@ -75,6 +75,7 @@
 		013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
 		014549BF29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */; };
+		01454A0129FC36C100237E60 /* UserCreateViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */; };
 		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
@@ -975,6 +976,7 @@
 		013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
 		014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintsTasksViewController+TextField.swift"; sourceTree = "<group>"; };
+		01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCreateViewController+TextField.swift"; sourceTree = "<group>"; };
 		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -4695,6 +4697,7 @@
 			children = (
 				84D062992967070C001FE469 /* UserCreateViewController.swift */,
 				84D062962967070C001FE469 /* UserCreateViewController.storyboard */,
+				01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7753,6 +7756,7 @@
 				1883F10829C63DA10080997B /* TriggerEditDetailModel.swift in Sources */,
 				3947A8F32996776E000CA2EB /* AddEventViewModel.swift in Sources */,
 				849D3AF12997CC72003E856A /* FontAwesomeImageView.swift in Sources */,
+				01454A0129FC36C100237E60 /* UserCreateViewController+TextField.swift in Sources */,
 				01BBA9EF29AB9469006A5DB8 /* CreateNotificationModel.swift in Sources */,
 				84D0630D2967080E001FE469 /* leadListListViewController.swift in Sources */,
 				01EBACA829B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift in Sources */,

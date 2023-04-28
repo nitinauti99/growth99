@@ -33,7 +33,8 @@ class ConsentsTemplateListViewModel {
         self.requestManager.request(forPath: ApiUrl.consentsTemplatesList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[ConsentsTemplateListModel], GrowthNetworkError>) in
             switch result {
             case .success(let ConsentsTemplateData):
-                self.consentsTemplateListData = ConsentsTemplateData
+                self.consentsTemplateListData = ConsentsTemplateData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
+                
                 self.delegate?.ConsentsTemplatesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

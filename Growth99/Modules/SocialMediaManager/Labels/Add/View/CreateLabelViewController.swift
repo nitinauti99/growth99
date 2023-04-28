@@ -71,12 +71,27 @@ extension CreateLabelViewController: CreateLabelViewControllerProtocol {
    
     func saveCreateSocialList(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .systemGreen)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
+
+extension CreateLabelViewController: UITextFieldDelegate {
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        
+        if (textField ==  createSocialTextField) {
+            if let textField = createSocialTextField, textField.text == "" {
+                createSocialTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            }
+         }
+    }
+}
+

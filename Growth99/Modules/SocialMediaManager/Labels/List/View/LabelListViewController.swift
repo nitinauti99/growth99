@@ -113,8 +113,8 @@ extension LabelListViewController: LabelListViewControllerProtocol {
     }
     
     func labelRemovedSuccefully(message: String){
-        self.view.showToast(message: message, color: .red)
-        viewModel?.getLabelList()
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        self.viewModel?.getLabelList()
     }
     
     func errorReceived(error: String) {

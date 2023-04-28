@@ -17,7 +17,7 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
     @IBOutlet private weak var createdAt: UILabel!
     @IBOutlet private weak var createdBy: UILabel!
     @IBOutlet private weak var updatedAt: UILabel!
-    @IBOutlet private weak var templateFor: UILabel!
+    @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var editButtonAction: UIButton!
 
@@ -37,7 +37,7 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         self.name.text = consentsTemplateList?.name
         self.id.text = String(consentsTemplateList?.id ?? 0)
         self.createdBy.text = consentsTemplateList?.createdBy
-        self.templateFor.text = consentsTemplateList?.templateFor
+        self.updatedBy.text = consentsTemplateList?.updatedBy
         self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? String.blank)
         self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? String.blank)
         indexPath = index
@@ -48,7 +48,7 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         self.name.text = consentsTemplateList?.name
         self.id.text = String(consentsTemplateList?.id ?? 0)
         self.createdBy.text = consentsTemplateList?.createdBy
-        self.templateFor.text = consentsTemplateList?.templateFor
+        self.updatedBy.text = consentsTemplateList?.updatedBy
         self.createdAt.text = dateFormater?.serverToLocal(date: consentsTemplateList?.createdAt ?? String.blank)
         self.updatedAt.text =  dateFormater?.serverToLocal(date: consentsTemplateList?.updatedAt ?? String.blank)
         indexPath = index

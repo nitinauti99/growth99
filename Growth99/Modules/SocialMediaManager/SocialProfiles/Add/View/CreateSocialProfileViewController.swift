@@ -36,11 +36,11 @@ class CreateSocialProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         if self.socialProfilesScreenName == "Edit Screen" {
             self.LeadTagsLBI.text = "Edit Channel"
-            self.title = Constant.Profile.editPatientTags
+            self.title = "Edit Social Profile"
             self.createSocialTextField.text = viewModel?.getSocialProfileDetailsData?.name ?? String.blank
         }else{
             self.LeadTagsLBI.text = "Create Channel"
-            self.title = Constant.Profile.createPatientTags
+            self.title = "Creat Social Profile"
         }
     }
     
@@ -50,7 +50,7 @@ class CreateSocialProfileViewController: UIViewController {
     
     @IBAction func saveAction(sender: UIButton) {
         if let textField = createSocialTextField.text,  textField == "" {
-            createSocialTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            createSocialTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
         self.view.ShowSpinner()
@@ -74,12 +74,26 @@ extension CreateSocialProfileViewController: CreateSocialProfileViewControllerPr
    
     func saveCreateSocialList(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
+    }
+}
+
+extension CreateSocialProfileViewController: UITextFieldDelegate {
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        
+        if (textField ==  createSocialTextField) {
+            if let textField = createSocialTextField, textField.text == "" {
+                createSocialTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            }
+         }
     }
 }

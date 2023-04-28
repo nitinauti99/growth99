@@ -34,7 +34,7 @@ class LabelListViewModel {
         self.requestManager.request(forPath: ApiUrl.socialMediaPostLabels, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[LabelListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.labelList = pateintsTagList
+                self.labelList = pateintsTagList.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.labelListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -51,7 +51,7 @@ class LabelListViewModel {
                 if response.statusCode == 200 {
                     self.delegate?.labelRemovedSuccefully(message: "Post Label deleted successfully")
                 } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "The Label associated with post cannot be deleted")
+                    self.delegate?.labelRemovedSuccefully(message: "The Label associated with post cannot be deleted")
                 }else {
                     self.delegate?.errorReceived(error: "internal server error")
                 }

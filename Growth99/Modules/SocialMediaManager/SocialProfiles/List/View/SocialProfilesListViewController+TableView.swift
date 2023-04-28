@@ -28,7 +28,7 @@ extension SocialProfilesListViewController: UITableViewDelegate, UITableViewData
 
         cell.delegate = self
         if isSearch {
-            cell.configureCell(socialProfileVM: viewModel, index: indexPath)
+            cell.configureCellWithSearch(socialProfileVM: viewModel, index: indexPath)
         }else{
             cell.configureCell(socialProfileVM: viewModel, index: indexPath)
         }

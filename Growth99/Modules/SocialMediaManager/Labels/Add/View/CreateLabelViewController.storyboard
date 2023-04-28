@@ -78,6 +78,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="rVR-Lt-wOy"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Q60-5r-CYC"/>
                                 </connections>
                             </textField>
@@ -151,7 +152,7 @@
     </scenes>
     <designables>
         <designable name="FRO-Vp-lXS">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

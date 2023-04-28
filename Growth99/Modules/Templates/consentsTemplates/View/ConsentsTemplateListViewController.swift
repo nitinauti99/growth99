@@ -82,7 +82,7 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
     }
     
     func consentsRemovedSuccefully(mrssage: String) {
-        self.view.showToast(message: mrssage,color: .red)
+        self.view.showToast(message: mrssage,color: UIColor().successMessageColor())
         viewModel?.getConsentsTemplateList()
     }
         
@@ -95,7 +95,7 @@ class ConsentsTemplateListViewController: UIViewController, ConsentsTemplateList
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

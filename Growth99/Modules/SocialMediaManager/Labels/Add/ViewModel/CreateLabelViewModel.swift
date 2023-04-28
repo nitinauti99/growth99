@@ -51,7 +51,7 @@ class CreateLabelViewModel {
             switch result {
             case .success(let pateintsTagDict):
                 self.socialProfileDetails = pateintsTagDict
-                self.delegate?.saveCreateSocialList(responseMessage:"Post Label updated successfully")
+                self.delegate?.saveCreateSocialList(responseMessage:"Post label updated successfully.")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

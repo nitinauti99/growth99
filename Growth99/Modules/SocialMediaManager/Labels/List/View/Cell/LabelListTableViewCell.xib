@@ -131,8 +131,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="createDate" destination="5Wh-Fl-pfQ" id="7VT-yu-Dr7"/>
                 <outlet property="id" destination="RdZ-5F-oh4" id="cEq-br-6Os"/>
-                <outlet property="imageName" destination="5Wh-Fl-pfQ" id="pFf-kY-kqe"/>
                 <outlet property="name" destination="827-vx-zoe" id="11w-Me-8sA"/>
                 <outlet property="subView" destination="oi9-sb-3tD" id="DxF-KP-GYM"/>
             </connections>

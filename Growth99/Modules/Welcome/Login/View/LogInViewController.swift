@@ -65,6 +65,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
     func bussinessSelectionDataRecived() {
         let data = viewModel?.getBussinessSelcetionData ?? []
         if data.count == 0 {
+            self.view.HideSpinner()
             return
         }
       

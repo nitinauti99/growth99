@@ -15,7 +15,7 @@ protocol LabelListTableViewCellDelegate: AnyObject {
 class LabelListTableViewCell: UITableViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var id: UILabel!
-    @IBOutlet private weak var imageName: UILabel!
+    @IBOutlet private weak var createDate: UILabel!
     @IBOutlet private weak var questionnaireSelection: UIButton!
     @IBOutlet weak var subView: UIView!
     
@@ -33,7 +33,7 @@ class LabelListTableViewCell: UITableViewCell {
     func configureCellWithSearch(socialProfileVM: LabelListViewModelProtocol?, index: IndexPath) {
         let socialProfileVM = socialProfileVM?.labelFilterListDataAtIndex(index: index.row)
         self.name.text = socialProfileVM?.name
-        self.imageName.text = dateFormater?.serverToLocalPateintTimeLineDate(date: socialProfileVM?.createdAt ?? String.blank)
+        self.createDate.text = dateFormater?.serverToLocalPateintTimeLineDate(date: socialProfileVM?.createdAt ?? String.blank)
         self.id.text = String(socialProfileVM?.id ?? 0)
         indexPath = index
     }
@@ -41,7 +41,7 @@ class LabelListTableViewCell: UITableViewCell {
     func configureCell(socialProfileVM: LabelListViewModelProtocol?, index: IndexPath) {
         let socialProfileVM = socialProfileVM?.labelListDataAtIndex(index: index.row)
         self.name.text = socialProfileVM?.name
-        self.imageName.text = dateFormater?.serverToLocalPateintTimeLineDate(date: socialProfileVM?.createdAt ?? String.blank)
+        self.createDate.text = dateFormater?.serverToLocal(date: socialProfileVM?.createdAt ?? String.blank)
         self.id.text = String(socialProfileVM?.id ?? 0)
         indexPath = index
     }
