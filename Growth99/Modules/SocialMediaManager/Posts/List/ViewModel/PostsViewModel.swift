@@ -10,12 +10,16 @@ import Foundation
 protocol PostsListViewModelProtocol {
     func getPostsList()
     func postsListDataAtIndex(index: Int) -> PostsListModel?
+    func postsFilterListDataAtIndex(index: Int) -> PostsListModel?
     var  getPostsListData: [PostsListModel] { get }
+    var  getPostsFilterListData: [PostsListModel] { get }
+    func filterData(searchText: String)
 }
 
 class PostsListViewModel {
     var delegate: PostsListViewContollerProtocol?
     var postsListData: [PostsListModel] = []
+    var postsFilterListData: [PostsListModel] = []
     var postPeginationList:  [PostsListModel] = []
     var totalCount: Int? = 0
     
@@ -29,6 +33,8 @@ class PostsListViewModel {
         self.requestManager.request(forPath: ApiUrl.socialMediaPosts, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[PostsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let postsListData):
+                self.postPeginationList = []
+                
                 self.setUpData(postListData: postsListData)
                 self.delegate?.postListDataRecived()
             case .failure(let error):
@@ -70,12 +76,29 @@ class PostsListViewModel {
         return self.postPeginationList[index]
     }
     
+    func postsFilterListDataAtIndex(index: Int)-> PostsListModel? {
+        return self.postsFilterListData[index]
+    }
+    
+    func filterData(searchText: String) {
+        self.postsFilterListData = self.postPeginationList.filter { task in
+            let searchText = searchText.lowercased()
+            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch
+        }
+    }
+    
 }
 
 extension PostsListViewModel: PostsListViewModelProtocol {
+   
+    var getPostsFilterListData: [PostsListModel] {
+        return self.postsFilterListData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
+    }
     
     var getPostsListData: [PostsListModel] {
-        return self.postPeginationList
+        return self.postPeginationList.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
     }
     
 }

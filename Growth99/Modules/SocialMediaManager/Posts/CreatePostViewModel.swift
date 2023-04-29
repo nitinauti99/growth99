@@ -22,6 +22,8 @@ protocol CreatePostViewModelProtocol {
      
     /// create patients user
     func createPost(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String)
+    
+    func isValidHashTag(_ text: String)-> Bool
       
 }
 
@@ -125,7 +127,9 @@ extension CreatePostViewModel: CreatePostViewModelProtocol {
         return self.socialPostData
     }
     
-    
-    
-        
+    func isValidHashTag(_ text: String)-> Bool {
+        let hashTagRegEx = Constant.Regex.hashTag
+        let hashTagPred = NSPredicate(format:"SELF MATCHES %@", hashTagRegEx)
+        return hashTagPred.evaluate(with: text)
+    }
 }

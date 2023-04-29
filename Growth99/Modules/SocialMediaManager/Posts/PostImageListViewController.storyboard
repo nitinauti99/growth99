@@ -39,29 +39,51 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="TGe-aL-pZS"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-gd-UlP">
-                                <rect key="frame" x="354" y="48" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUb-f1-Ycg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvp-me-xra">
+                                        <rect key="frame" x="135.5" y="50.5" width="143.5" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-gd-UlP">
+                                        <rect key="frame" x="359" y="44" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="9pI-QW-3CY"/>
+                                            <constraint firstAttribute="width" constant="40" id="ckf-sM-zrA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="X"/>
+                                        <connections>
+                                            <action selector="closePostWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kd7-ww-rJ7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9pI-QW-3CY"/>
-                                    <constraint firstAttribute="width" constant="40" id="ckf-sM-zrA"/>
+                                    <constraint firstAttribute="trailing" secondItem="jBH-gd-UlP" secondAttribute="trailing" constant="15" id="05s-kD-PGB"/>
+                                    <constraint firstItem="Rvp-me-xra" firstAttribute="centerX" secondItem="bUb-f1-Ycg" secondAttribute="centerX" id="5Sj-ox-E1p"/>
+                                    <constraint firstItem="jBH-gd-UlP" firstAttribute="centerY" secondItem="bUb-f1-Ycg" secondAttribute="centerY" constant="10" id="SXe-Jz-hsk"/>
+                                    <constraint firstItem="Rvp-me-xra" firstAttribute="centerY" secondItem="bUb-f1-Ycg" secondAttribute="centerY" constant="10" id="wZU-Fn-9T8"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="CloseIcon"/>
-                                <connections>
-                                    <action selector="closePostWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kd7-ww-rJ7"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vxg-GC-3k5" secondAttribute="trailing" id="0jz-vw-Fo7"/>
                             <constraint firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
-                            <constraint firstItem="jBH-gd-UlP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-20" id="8tu-xh-ooq"/>
-                            <constraint firstItem="jBH-gd-UlP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AK8-fG-gWO"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DTv-Wi-Rgo"/>
+                            <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="bUb-f1-Ycg" secondAttribute="bottom" id="Imq-K1-Pkr"/>
                             <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="Mrg-4q-sd3"/>
+                            <constraint firstItem="bUb-f1-Ycg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="OlN-e5-dcJ"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="TfC-jd-n9H"/>
+                            <constraint firstItem="bUb-f1-Ycg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Ub2-1S-jR9"/>
+                            <constraint firstItem="bUb-f1-Ycg" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Uwm-md-j95"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="top" secondItem="WEA-wE-DEc" secondAttribute="bottom" constant="5" id="X2C-SF-RYA"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yfl-wr-yyI"/>
                         </constraints>
@@ -73,11 +95,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="35"/>
+            <point key="canvasLocation" x="24.637681159420293" y="34.821428571428569"/>
         </scene>
     </scenes>
     <resources>
-        <image name="CloseIcon" width="74" height="74"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

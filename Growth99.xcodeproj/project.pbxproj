@@ -76,6 +76,8 @@
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
 		014549BF29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */; };
 		01454A0129FC36C100237E60 /* UserCreateViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */; };
+		01454A0329FCD13100237E60 /* PostsListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */; };
+		01454A0529FCD66800237E60 /* CreatePostViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */; };
 		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
@@ -977,6 +979,8 @@
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
 		014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintsTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCreateViewController+TextField.swift"; sourceTree = "<group>"; };
+		01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
+		01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePostViewController+TextField.swift"; sourceTree = "<group>"; };
 		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -2577,6 +2581,7 @@
 				016F660B29C8554E00B1D248 /* CreatePostViewController.swift */,
 				016F660D29C8555A00B1D248 /* CreatePostViewController.storyboard */,
 				016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */,
+				01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -3729,6 +3734,7 @@
 				189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */,
 				189E3EE429C391D900B94190 /* PostsListViewContoller.swift */,
 				01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */,
+				01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4327,8 +4333,8 @@
 				189E3EC329C38E6000B94190 /* SocialProfiles */,
 				189E3EB429C38E6000B94190 /* Labels */,
 				189E3EAF29C38E6000B94190 /* Posts */,
-				189E3EBE29C38E6000B94190 /* PostCalender */,
 				189E3EB929C38E6000B94190 /* MediaLibrary */,
+				189E3EBE29C38E6000B94190 /* PostCalender */,
 			);
 			path = SocialMediaManager;
 			sourceTree = "<group>";
@@ -7552,6 +7558,7 @@
 				8440B3952999FE5D00A42097 /* FormListModel.swift in Sources */,
 				8440B39C299A319800A42097 /* FormListViewContoller+TableView.swift in Sources */,
 				84F610D4292A71AB00B1FB69 /* ColorExtension.swift in Sources */,
+				01454A0329FCD13100237E60 /* PostsListViewContoller+SearchBar.swift in Sources */,
 				DAEF749E299D5315009140AE /* SubdomainViewController.swift in Sources */,
 				189E3EC929C390F400B94190 /* SocialProfilesListViewController.swift in Sources */,
 				84D0630F2967080E001FE469 /* leadListTableViewCell.swift in Sources */,
@@ -7572,6 +7579,7 @@
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
 				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
 				01EBAC3E29B583DC00110DCB /* LeadTagsModel.swift in Sources */,
+				01454A0529FCD66800237E60 /* CreatePostViewController+TextField.swift in Sources */,
 				013A4FD829B4E3FA00CA24B0 /* InputTypeTableViewCell.swift in Sources */,
 				01684C1829BAE8CB00DE1041 /* ChatSessionListModel.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,

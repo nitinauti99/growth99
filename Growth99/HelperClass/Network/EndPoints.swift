@@ -169,6 +169,7 @@ struct EndPoints {
     static let mediaTagUrl = "/api/socialMedia/tag/"
     static let socialMediaLibrary = "/api/socialMedia/library"
     static let editSocialMediaLibrary = "/api/socialMedia/libraries"
+    static let socialMediaPost = "/api/socialMediaPost"
 
 }
 
@@ -334,5 +335,6 @@ struct ApiUrl {
     static let socialMediaLibrary = EndPoints.baseURL.appending(EndPoints.socialMediaLibrary)
     static let editSocialMediaLibrary = EndPoints.baseURL.appending(EndPoints.editSocialMediaLibrary)
     static let deleteCategories = EndPoints.baseURL.appending(EndPoints.deleteCategories)
-}
+    static let socialMediaPost = EndPoints.baseURL.appending(EndPoints.socialMediaPost)
 
+}

@@ -24,6 +24,8 @@ struct Constant {
         static let subDomainNameEmptyError = "SubDomain Name is required."
         static let refundPercentageEmptyError = "Refund Percentage is required."
         static let firstNameEmptyError = "First Name is required."
+        static let hashTagEmptyError = "Hashtag is required."
+        static let hashTagInvalidError = "Hashtag is invalid."
         static let chatQuestionnaireNameEmptyError = "Chat Questionnaire Name is required."
         static let chatQuestionnaireURLInvalidError = "refrence link is invalid"
         
@@ -206,6 +208,7 @@ struct Constant {
         static let nameWithSpace = "^[a-zA-Z]([a-zA-Z ]*)?$"
         static let nameWithNumbers = "^[a-zA-Z]([a-zA-Z0-9 ]*)?$"
         static let number = "[1-9][0-9]*"
+        static let hashTag = "#[a-zA-Z0-9]*$"
         static let specialCharacterWithoutSpace = "^[^\n ]*$"
         static let DateValidationDateMounthYear = "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$"
         static let DateValidationMounthDateYear = "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$"

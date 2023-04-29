@@ -30,7 +30,7 @@ struct socialMediaPostModel: Codable {
     let post : String?
     let deleted : Bool?
     let hashtag : String?
-    let socialMediaPostImages : [String]?
+    let socialMediaPostImages : [SocialMediaPostImages]?
     let createdAt : String?
     let sent : Bool?
     let isDefault : Bool?
@@ -46,6 +46,20 @@ struct socialMediaPostModel: Codable {
     let postLabels : [PostLabelsEdit]?
     let scheduledDate : String?
     let approved : Bool?
+}
+
+struct SocialMediaPostImages : Codable {
+    let location : String?
+    let fileId : String?
+    let deleted : Bool?
+    let id : Int?
+    let contentType : String?
+    let tenantId : Int?
+    let updatedBy : UpdatedBy?
+    let updatedAt : String?
+    let createdAt : String?
+    let createdBy : CreatedBy?
+    let filename : String?
 }
 
 struct PostLabelsEdit : Codable {

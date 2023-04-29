@@ -35,6 +35,15 @@ class PostsListViewContoller: UIViewController {
         self.registerTableView()
     }
     
+    func addSerchBar(){
+        self.searchBar.searchBarStyle = UISearchBar.Style.default
+        self.searchBar.placeholder = "Search..."
+        self.searchBar.sizeToFit()
+        self.searchBar.isTranslucent = false
+        self.searchBar.backgroundImage = UIImage()
+        self.searchBar.delegate = self
+    }
+    
     func registerTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -73,8 +82,13 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
     func editPosts(cell: PostsListTableViewCell, index: IndexPath) {
         let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
         createPostVC.screenName = "Edit"
-        createPostVC.postId = viewModel?.postsListDataAtIndex(index: index.row)?.id ?? 0
-        self.navigationController?.pushViewController(createPostVC, animated: true)
+        if self.isSearch {
+            createPostVC.postId = viewModel?.postsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            self.navigationController?.pushViewController(createPostVC, animated: true)
+        }else{
+            createPostVC.postId = viewModel?.postsListDataAtIndex(index: index.row)?.id ?? 0
+            self.navigationController?.pushViewController(createPostVC, animated: true)
+        }
     }
     
     func deletePosts(cell: PostsListTableViewCell, index: IndexPath) {
@@ -86,7 +100,16 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
     }
     
     func postedPosts(cell: PostsListTableViewCell, index: IndexPath) {
+        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        createPostVC.isPosted = true
         
+        if self.isSearch {
+            createPostVC.postId = viewModel?.postsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            self.navigationController?.pushViewController(createPostVC, animated: true)
+        }else{
+            createPostVC.postId = viewModel?.postsListDataAtIndex(index: index.row)?.id ?? 0
+            self.navigationController?.pushViewController(createPostVC, animated: true)
+        }
     }
    
 }

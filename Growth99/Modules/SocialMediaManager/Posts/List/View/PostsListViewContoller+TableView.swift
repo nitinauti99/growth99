@@ -15,14 +15,22 @@ extension PostsListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.getPostsListData.count ?? 0
+        if isSearch {
+            return viewModel?.getPostsFilterListData.count ?? 0
+        }else{
+            return viewModel?.getPostsListData.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = PostsListTableViewCell()
         cell = tableView.dequeueReusableCell(withIdentifier: "PostsListTableViewCell") as! PostsListTableViewCell
         cell.delegate = self
-        cell.configureCell(userVM: viewModel, index: indexPath)
+        if isSearch {
+            cell.configureCellWithSearch(userVM: viewModel, index: indexPath)
+        }else{
+            cell.configureCell(userVM: viewModel, index: indexPath)
+        }
         return cell
     }
     
@@ -31,15 +39,15 @@ extension PostsListViewContoller: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if isSearch {
-//            let PeteintDetail = PeteintDetailView.viewController()
-//            PeteintDetail.workflowTaskPatientId = viewModel?.pateintFilterDataAtIndex(index: indexPath.row)?.id ?? 0
-//            self.navigationController?.pushViewController(PeteintDetail, animated: true)
-//        }else{
-//            let PeteintDetail = PeteintDetailView.viewController()
-//            PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: indexPath.row)?.id ?? 0
-//            self.navigationController?.pushViewController(PeteintDetail, animated: true)
-//        }
+        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        createPostVC.screenName = "Edit"
+        if self.isSearch {
+            createPostVC.postId = viewModel?.postsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
+            self.navigationController?.pushViewController(createPostVC, animated: true)
+        }else{
+            createPostVC.postId = viewModel?.postsListDataAtIndex(index: indexPath.row)?.id ?? 0
+            self.navigationController?.pushViewController(createPostVC, animated: true)
+        }
     }
     
 }

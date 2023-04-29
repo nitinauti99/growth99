@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 protocol PostImageListViewControllerDelegateProtocol: AnyObject {
     func getSocialPostImageListDataAtIndex(content: Content)
@@ -22,14 +23,15 @@ protocol CreatePostViewControllerProtocol: AnyObject {
 
 class CreatePostViewController: UIViewController {
     
-    @IBOutlet private weak var hashtagTextField: CustomTextField!
-    @IBOutlet private weak var labelTextField: CustomTextField!
+    @IBOutlet weak var hashtagTextField: CustomTextField!
+    @IBOutlet weak var labelTextField: CustomTextField!
     @IBOutlet private weak var scheduleDateTextField: CustomTextField!
-    @IBOutlet private weak var scheduleTimeTextField: CustomTextField!
-    @IBOutlet private weak var socialChannelTextField: CustomTextField!
+    @IBOutlet weak var scheduleTimeTextField: CustomTextField!
+    @IBOutlet weak var socialChannelTextField: CustomTextField!
     @IBOutlet private weak var PostTextView: CustomTextView!
-    @IBOutlet private weak var upLoadImageButton: UIButton!
-    @IBOutlet private weak var selectFromLibButton: UIButton!
+    @IBOutlet weak var upLoadImageButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var selectFromLibButton: UIButton!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postImageViewButtonHight: NSLayoutConstraint!
 
@@ -39,6 +41,8 @@ class CreatePostViewController: UIViewController {
     var selectedPostLabels = [Int]()
     var selectedSocialProfiles = [Int]()
     var screenName = ""
+    var isPosted = false
+
     var selectedPostLabel = [SocialMediaPostLabelsList]()
     var selectedProfile = [SocialProfilesList]()
 
@@ -57,6 +61,14 @@ class CreatePostViewController: UIViewController {
         self.scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         
         self.scheduleTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromButtonPressed), mode: .time)
+        if isPosted == true {
+            saveButton.isUserInteractionEnabled = false
+        }
+        if self.screenName == "Edit" {
+            self.title = "Edit Post"
+        }else{
+            self.title = "Create Post"
+        }
     }
     
     @objc func dateFromButtonPressed() {
@@ -72,16 +84,31 @@ class CreatePostViewController: UIViewController {
         self.hashtagTextField.text = item?.hashtag
         let list: [String] = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.name ?? ""})
         self.labelTextField.text = list.joined(separator: ",")
-        self.selectedPostLabel = (item?.postLabels ?? []).map({$0.socialMediaPostLabel!})
         
         let profileList: [String] = (item?.socialProfiles ?? []).map({$0.socialChannel ?? ""})
         self.socialChannelTextField.text = profileList.joined(separator: ",")
+       
         self.selectedProfile = (item?.socialProfiles ?? []).map({$0})
+        self.selectedPostLabel = (item?.postLabels ?? []).map({$0.socialMediaPostLabel!})
+
+        self.selectedSocialProfiles = (item?.socialProfiles ?? []).map({$0.id ?? 0})
+        self.selectedPostLabels = (item?.postLabels ?? []).map({$0.id ?? 0})
+
+        let dateString = self.dateFormater?.serverToLocalTimeAndDateFormate(date: (item?.createdAt) ?? "").components(separatedBy: " ")
+
+        if dateString != nil {
+            self.scheduleDateTextField.text = dateString?[0]
+            self.scheduleTimeTextField.text = dateString?[1].appending(" " + (dateString?[2] ?? ""))
+        }
         
+        if (item?.socialMediaPostImages?.count ?? 0) >= 1 {
+            self.postImageView.sd_setImage(with: URL(string: item?.socialMediaPostImages?[0].location ?? ""), placeholderImage: UIImage(named: "growthCircleIcon"), context: nil)
+            self.postImageViewButtonHight.constant = 150
+            self.postImageView.isHidden = false
+            self.upLoadImageButton.setTitle("Remove", for: .normal)
+            self.selectFromLibButton.isHidden = true
+        }
         self.PostTextView.text = item?.post
-        print(item?.scheduledDate)
-        
-        
     }
    
     @IBAction func cancelButton(sender: UIButton) {
@@ -93,29 +120,34 @@ class CreatePostViewController: UIViewController {
         
         detailController.modalPresentationStyle = .overFullScreen
         detailController.delegate = self
+        self.postImageView.image  = nil
         self.present(detailController, animated: true)
     }
     
     @IBAction func createTaskUser(sender: UIButton) {
         
         if let hashtagTextField = self.hashtagTextField.text,  hashtagTextField == "" {
+            self.hashtagTextField.showError(message: Constant.ErrorMessage.hashTagEmptyError)
             return
         }
         
         if let labelTextField = self.labelTextField.text,  labelTextField == "" {
+            self.labelTextField.showError(message: "Label is required")
             return
         }
         
         if let scheduleDateTextField = self.scheduleDateTextField.text,  scheduleDateTextField == "" {
+            self.scheduleDateTextField.showError(message: "Social Channel is required")
             return
         }
         if let socialChannelTextField = self.socialChannelTextField.text,  socialChannelTextField == "" {
+            self.socialChannelTextField.showError(message: "Social Channel is required")
             return
         }
         
         self.view.ShowSpinner()
+        let image = self.postImageView.image ?? UIImage()
        
-        guard let image = self.postImageView.image else { return  }
         let filename = "blob"
         let boundary = UUID().uuidString
         let socialMediaPostLabelId = self.selectedPostLabels.map { String($0) }.joined(separator: ",")
@@ -125,18 +157,18 @@ class CreatePostViewController: UIViewController {
         
         let scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
                 
-        let name = ""
+        let name = "name"
         let label = ""
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         var url = String()
         var methodType = String()
-        if  self.screenName == "Edit Screen" {
-            url = "https://api.growthemr.com/api/socialMediaPost/\(postId)"
+        if  self.screenName == "Edit" {
+            url = ApiUrl.socialMediaPost.appending("/\(postId)")
             methodType = "PUT"
         }else{
-            url = "https://api.growthemr.com/api/socialMediaPost"
+            url = ApiUrl.socialMediaPost
             methodType = "POST"
         }
         
@@ -172,26 +204,31 @@ class CreatePostViewController: UIViewController {
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
         data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-        data.append(image.pngData()!)
+        data.append(image.pngData() ?? data)
         data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
         
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             
             if(error != nil){
+                self.view.HideSpinner()
                 print("\(error!.localizedDescription)")
             }
             
             guard let responseData = responseData else {
                 print("no response data")
+                self.view.HideSpinner()
                 return
             }
             
             if let responseString = String(data: responseData, encoding: .utf8) {
                 print("uploaded to: \(responseString)")
+                
                 DispatchQueue.main.async {
                     self.view.HideSpinner()
-                    self.navigationController?.popViewController(animated: true)
-                }
+                    self.view.showToast(message: "Social media post updated successfully.", color: UIColor().successMessageColor())
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                        self.navigationController?.popViewController(animated: true)
+                    })                }
             }
         }).resume()
     }
@@ -220,34 +257,41 @@ extension CreatePostViewController: CreatePostViewControllerProtocol {
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 }
 
 extension CreatePostViewController {
    
-    @IBAction func openLabelListDropDwon(sender: UIButton) {
+    @IBAction func openLabelListDropDwon(sender: UITextField) {
         let rolesArray = viewModel?.getSocialMediaPostLabelsListData ?? []
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.name
         }
+       
         selectionMenu.setSelectedItems(items: self.selectedPostLabel) { [weak self] (text, index, selected, selectedList) in
             self?.labelTextField.text  = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedPostLabels = selectedList.map({$0.id ?? 0})
+            self?.selectedPostLabel = selectedList
+            if selectedList.count == 0 {
+                self?.labelTextField.showError(message: "Label is required")
+            }
          }
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openSocialChanelListDropDwon(sender: UIButton) {
+    @IBAction func openSocialChanelListDropDwon(sender: UITextField) {
         let rolesArray = viewModel?.getSocialProfilesListData ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.socialChannel
@@ -255,6 +299,10 @@ extension CreatePostViewController {
         selectionMenu.setSelectedItems(items: self.selectedProfile) { [weak self] (text, index, selected, selectedList) in
             self?.socialChannelTextField.text = selectedList.map({$0.socialChannel ?? String.blank}).joined(separator: ", ")
             self?.selectedSocialProfiles = selectedList.map({$0.id ?? 0})
+            self?.selectedProfile = selectedList
+            if selectedList.count == 0 {
+                self?.socialChannelTextField.showError(message: "Social Channel is required")
+            }
         }
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox

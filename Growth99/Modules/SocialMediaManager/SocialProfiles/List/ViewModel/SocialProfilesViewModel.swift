@@ -34,7 +34,7 @@ class SocialProfilesListViewModel {
         self.requestManager.request(forPath: ApiUrl.socialProfileList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[SocialProfilesListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.socialProfilesList = pateintsTagList.
+                self.socialProfilesList = pateintsTagList
                 self.delegate?.socialProfilesListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
