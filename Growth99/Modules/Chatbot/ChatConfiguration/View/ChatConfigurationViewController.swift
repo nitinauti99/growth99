@@ -19,10 +19,19 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
     
     @IBOutlet weak var botName: CustomTextField!
     @IBOutlet weak var privacyLink: CustomTextField!
+    
     @IBOutlet weak var defaultWelcomeMessage: CustomTextView!
+    @IBOutlet weak var defaultWelcomeMessageLBI: UILabel!
+    
     @IBOutlet weak var formMessage: CustomTextView!
+    @IBOutlet weak var formMessageLBI: UILabel!
+
     @IBOutlet weak var welcomeMessage: CustomTextView!
+    @IBOutlet weak var welcomeMessageLBI: UILabel!
+
     @IBOutlet weak var faqNotFoundMessage: CustomTextView!
+    @IBOutlet weak var faqNotFoundMessageLBI: UILabel!
+
     @IBOutlet weak var appointmentBookingUrl: CustomTextField!
     @IBOutlet weak var enableAppointment: UIButton!
     @IBOutlet weak var enableInPersonAppointment: UIButton!
@@ -146,6 +155,32 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
     }
     
     @IBAction func saveButtonAction(sender: UIButton){
+        
+        guard let textField = botName.text, !textField.isEmpty else {
+            botName.showError(message: "Bot Name is required.")
+            return
+        }
+        
+        guard let textField = defaultWelcomeMessage.text, !textField.isEmpty else {
+            defaultWelcomeMessageLBI.isHidden = false
+            return
+        }
+        
+        guard let textField = formMessage.text, !textField.isEmpty else {
+            formMessageLBI.isHidden = false
+            return
+        }
+        
+        guard let textField = welcomeMessage.text, !textField.isEmpty else {
+            welcomeMessageLBI.isHidden = false
+            return
+        }
+        
+        guard let textField = faqNotFoundMessage.text, !textField.isEmpty else {
+            faqNotFoundMessageLBI.isHidden = false
+            return
+        }
+        
         let param: [String: Any] = [
             "botName": self.botName.text ?? "",
             "privacyLink": self.privacyLink.text ?? "",
