@@ -82,6 +82,7 @@
 		01454A0929FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0829FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift */; };
 		01454A0B29FD87E300237E60 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01454A0A29FD87E300237E60 /* Photos.framework */; };
 		01454A0D29FE12F400237E60 /* MediaTagsAddViewController+textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0C29FE12F400237E60 /* MediaTagsAddViewController+textField.swift */; };
+		01454A0F29FE82E800237E60 /* ChatConfigurationViewController+TextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0E29FE82E800237E60 /* ChatConfigurationViewController+TextFiled.swift */; };
 		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
@@ -989,6 +990,7 @@
 		01454A0829FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryListViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		01454A0A29FD87E300237E60 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		01454A0C29FE12F400237E60 /* MediaTagsAddViewController+textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaTagsAddViewController+textField.swift"; sourceTree = "<group>"; };
+		01454A0E29FE82E800237E60 /* ChatConfigurationViewController+TextFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatConfigurationViewController+TextFiled.swift"; sourceTree = "<group>"; };
 		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -4335,6 +4337,7 @@
 			children = (
 				39FC692929B3D73D00FCB7C6 /* ChatConfigurationViewController.swift */,
 				39FC692A29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard */,
+				01454A0E29FE82E800237E60 /* ChatConfigurationViewController+TextFiled.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7841,6 +7844,7 @@
 				189E3ED929C3917200B94190 /* LabelListViewController.swift in Sources */,
 				84EFB1A9296C4C4B00D8285E /* TasksListModel.swift in Sources */,
 				01D9EBFC29B8D3700099761C /* DisplayQuestionnaireqsubmissionsViewModel.swift in Sources */,
+				01454A0F29FE82E800237E60 /* ChatConfigurationViewController+TextFiled.swift in Sources */,
 				01684C1129BAE89100DE1041 /* ChatSessionListViewController.swift in Sources */,
 				189E3F1929C3980900B94190 /* PostCalenderTableViewCell.swift in Sources */,
 				3947A8FB299677A3000CA2EB /* CalenderViewModel.swift in Sources */,

@@ -23,13 +23,29 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTs-j2-7Cq">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1900"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pin-sp-1Dr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pin-sp-1Dr">
                                                 <rect key="frame" x="23" y="13" width="347" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="YBc-6Y-5kZ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Bot Name ">
+                                                        <attributes>
+                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="15" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="22" name="Helvetica-Bold"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <real key="NSStrokeWidth" value="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Roy-CK-yIM" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -45,6 +61,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="tFs-Ou-ASx"/>
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="w6M-ty-5zY"/>
                                                 </connections>
                                             </textField>
@@ -57,13 +74,29 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Message (This message will appear before user submit the form)*" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-Vm-ql0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-Vm-ql0">
                                                 <rect key="frame" x="23" y="199" width="347" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="2iM-ZL-aJo"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Welcome Message (This message will appear before user submit the form) ">
+                                                        <attributes>
+                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <real key="NSStrokeWidth" value="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Welcome Message (This message will appear before user submit the form)*" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-vy-We4" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
@@ -83,6 +116,9 @@
                                                         <color key="value" systemColor="systemGray4Color"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="CJh-bU-pHa"/>
+                                                </connections>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aME-gU-dVX" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="144" width="333" height="45"/>
@@ -97,17 +133,33 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form Title Message (This message will appear on the form title)*" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-qh-wuC">
-                                                <rect key="frame" x="23" y="362" width="347" height="45"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-qh-wuC">
+                                                <rect key="frame" x="23" y="382" width="347" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="9jj-EM-jNu"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Form Title Message (This message will appear on the form title) ">
+                                                        <attributes>
+                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="22" name="Helvetica-Bold"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <real key="NSStrokeWidth" value="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j7s-II-2mg" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="417" width="353" height="100"/>
+                                                <rect key="frame" x="20" y="437" width="353" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="9Uh-ya-Pku"/>
@@ -123,18 +175,39 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="WNk-RV-gY6"/>
+                                                </connections>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Message (This message will appear after user submit the form)*" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sa9-ft-0pq">
-                                                <rect key="frame" x="23" y="525" width="347" height="45"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sa9-ft-0pq">
+                                                <rect key="frame" x="23" y="567" width="347" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="Nwa-O0-aYj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Welcome Message (This message will appear after user submit the form) ">
+                                                        <attributes>
+                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                            <font key="NSOriginalFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <font key="NSOriginalFont" size="14" name="Avenir-Heavy"/>
+                                                            <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <real key="NSStrokeWidth" value="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eMB-ej-UoE" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="23" y="580" width="347" height="100"/>
+                                                <rect key="frame" x="23" y="622" width="347" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="ZXG-kN-azQ"/>
@@ -150,18 +223,37 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="MvE-yJ-Wwd"/>
+                                                </connections>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ not found Message*" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcp-GJ-Ihr">
-                                                <rect key="frame" x="23" y="690" width="347" height="45"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcp-GJ-Ihr">
+                                                <rect key="frame" x="23" y="752" width="347" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="ENQ-NW-T7k"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="FAQ not found Message ">
+                                                        <attributes>
+                                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <real key="NSStrokeWidth" value="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iWu-AJ-u3C" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="23" y="745" width="347" height="100"/>
+                                                <rect key="frame" x="23" y="807" width="347" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="E5M-MH-Bwk"/>
@@ -177,9 +269,12 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="UoY-Vq-sAw"/>
+                                                </connections>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign Task to Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgQ-cM-DtF">
-                                                <rect key="frame" x="23" y="855" width="347" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Clinic Appointment Booking URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgQ-cM-DtF">
+                                                <rect key="frame" x="23" y="937" width="347" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="zUK-GP-nUN"/>
                                                 </constraints>
@@ -188,7 +283,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pgq-JZ-eiW" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="885" width="337" height="45"/>
+                                                <rect key="frame" x="30" y="967" width="337" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="cOw-F5-e3F"/>
                                                 </constraints>
@@ -201,13 +296,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Appointment in Bot?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3h-mi-8A8">
-                                                <rect key="frame" x="54" y="949.66666666666663" width="319" height="20.666666666666629"/>
+                                                <rect key="frame" x="54" y="1031.6666666666667" width="319" height="20.666666666666742"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS3-L5-aZ3">
-                                                <rect key="frame" x="19" y="950" width="20" height="20"/>
+                                                <rect key="frame" x="19" y="1032" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Da7-N0-4jY"/>
                                                     <constraint firstAttribute="width" constant="20" id="yRv-ca-1Gr"/>
@@ -220,7 +315,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-l6-Fge">
-                                                <rect key="frame" x="15" y="985.33333333333348" width="363" height="380"/>
+                                                <rect key="frame" x="15" y="1067.3333333333333" width="363" height="380"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oni-Kh-GBZ">
                                                         <rect key="frame" x="5" y="0.0" width="20" height="20"/>
@@ -252,22 +347,37 @@
                                                         <state key="selected" image="tickselected"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Virtual Appointment Type in Bot?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pb-el-MGQ">
-                                                        <rect key="frame" x="40" y="35.333333333333258" width="323" height="19.333333333333329"/>
+                                                        <rect key="frame" x="40" y="35.333333333333485" width="323" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning (Start - End) *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31y-ka-fWU">
-                                                        <rect key="frame" x="5" y="79.999999999999886" width="338" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31y-ka-fWU">
+                                                        <rect key="frame" x="5" y="80" width="338" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="gU2-iq-Xrr"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Morning (Start - End) ">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="13" name="Avenir-Medium"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="*">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="22" name="Helvetica-Bold"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <real key="NSStrokeWidth" value="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEv-Pf-d22" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="114.99999999999989" width="156.66666666666666" height="45"/>
+                                                        <rect key="frame" x="10" y="115" width="156.66666666666666" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="JCy-1L-nYf"/>
                                                         </constraints>
@@ -280,7 +390,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-ee-62k" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="191.66666666666663" y="114.99999999999989" width="156.33333333333337" height="45"/>
+                                                        <rect key="frame" x="191.66666666666663" y="115" width="156.33333333333337" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="CIF-Hf-apg"/>
                                                         </constraints>
@@ -292,14 +402,29 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Afternoon (Start - End) *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGr-lf-0ef">
-                                                        <rect key="frame" x="10" y="175.99999999999989" width="333" height="18"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGr-lf-0ef">
+                                                        <rect key="frame" x="10" y="176" width="333" height="25.333333333333343"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Afternoon (Start - End) ">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="13" name="Avenir-Medium"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="*">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="22" name="Helvetica-Bold"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <real key="NSStrokeWidth" value="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUU-CV-qye" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="208.99999999999989" width="154" height="45"/>
+                                                        <rect key="frame" x="10" y="216.33333333333348" width="154" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="uhW-lE-p6t"/>
                                                         </constraints>
@@ -312,7 +437,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rw7-f3-XhS" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="189" y="208.99999999999989" width="154" height="45"/>
+                                                        <rect key="frame" x="189" y="216.33333333333348" width="154" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="36p-iR-gkj"/>
                                                         </constraints>
@@ -324,17 +449,32 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening (Start - End) *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTf-DI-81s">
-                                                        <rect key="frame" x="10" y="268.99999999999989" width="333" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTf-DI-81s">
+                                                        <rect key="frame" x="10" y="276.33333333333348" width="333" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="PZx-24-Qin"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Evening (Start - End) ">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="13" name="Avenir-Medium"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="*">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="22" name="Helvetica-Bold"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <real key="NSStrokeWidth" value="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-Vx-2wf" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="303.99999999999989" width="154" height="45"/>
+                                                        <rect key="frame" x="10" y="311.33333333333348" width="154" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="yqd-ib-n2K"/>
                                                         </constraints>
@@ -347,7 +487,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Us2-aH-BOJ" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="189" y="303.99999999999989" width="154" height="45"/>
+                                                        <rect key="frame" x="189" y="311.33333333333348" width="154" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="nAq-HM-Hrk"/>
                                                         </constraints>
@@ -402,14 +542,29 @@
                                                     <constraint firstItem="1wi-CC-RGD" firstAttribute="leading" secondItem="oni-Kh-GBZ" secondAttribute="trailing" constant="15" id="xVU-P2-ZNK"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weeks To Show *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujw-tB-hi8">
-                                                <rect key="frame" x="20" y="1380.3333333333333" width="353" height="18"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujw-tB-hi8">
+                                                <rect key="frame" x="20" y="1462.3333333333333" width="353" height="25.333333333333258"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Weeks To Show ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="13" name="Avenir-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="22" name="Helvetica-Bold"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <real key="NSStrokeWidth" value="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-Xs-lLP" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="1413.3333333333333" width="348" height="45"/>
+                                                <rect key="frame" x="25" y="1502.6666666666667" width="348" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="NJ4-hZ-2dP"/>
                                                 </constraints>
@@ -422,13 +577,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Code Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHC-iC-WhF">
-                                                <rect key="frame" x="20" y="1478.3333333333333" width="353" height="18"/>
+                                                <rect key="frame" x="20" y="1567.6666666666667" width="353" height="18"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9U-Ze-ZFB" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="1511.3333333333333" width="348" height="45"/>
+                                                <rect key="frame" x="25" y="1600.6666666666667" width="348" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="bXF-Q9-bXp"/>
                                                 </constraints>
@@ -441,7 +596,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQZ-RA-ecm">
-                                                <rect key="frame" x="15" y="1576.3333333333333" width="20" height="20"/>
+                                                <rect key="frame" x="15" y="1665.6666666666667" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="B5X-eu-KXv"/>
                                                     <constraint firstAttribute="width" constant="20" id="gBo-FB-9lk"/>
@@ -451,13 +606,13 @@
                                                 <state key="selected" image="tickselected"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Show moving animation on chatbot icon ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dN7-HY-49b">
-                                                <rect key="frame" x="45" y="1577.3333333333333" width="328" height="18"/>
+                                                <rect key="frame" x="45" y="1666.6666666666667" width="328" height="18"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5D-pg-VYJ">
-                                                <rect key="frame" x="15" y="1621.3333333333333" width="20" height="20"/>
+                                                <rect key="frame" x="15" y="1710.6666666666667" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="8xu-py-fBq"/>
                                                     <constraint firstAttribute="width" constant="20" id="VN1-2B-pBy"/>
@@ -470,22 +625,37 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Powered By On Chatbot Footer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-3I-no7">
-                                                <rect key="frame" x="45" y="1622.3333333333333" width="328" height="18"/>
+                                                <rect key="frame" x="45" y="1711.6666666666667" width="328" height="18"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oe2-Rf-7Xd">
-                                                <rect key="frame" x="15" y="1661.3333333333333" width="363" height="100"/>
+                                                <rect key="frame" x="15" y="1750.6666666666667" width="363" height="100"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your URL for powered by *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="514-yn-d1d">
-                                                        <rect key="frame" x="15" y="10" width="333" height="18"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="514-yn-d1d">
+                                                        <rect key="frame" x="15" y="9.9999999999999982" width="333" height="19.333333333333329"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Add your URL for powered by ">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="*">
+                                                                <attributes>
+                                                                    <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="14" name="Avenir-Heavy"/>
+                                                                    <real key="NSKern" value="0.0"/>
+                                                                    <color key="NSStrokeColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <real key="NSStrokeWidth" value="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XaC-vk-vep" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="38" width="333" height="45"/>
+                                                        <rect key="frame" x="15" y="39.333333333333258" width="333" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="YQh-Q3-46A"/>
                                                         </constraints>
@@ -510,7 +680,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-wL-JbL">
-                                                <rect key="frame" x="15" y="1781.3333333333333" width="150" height="46"/>
+                                                <rect key="frame" x="15" y="1870.6666666666667" width="150" height="46"/>
                                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="D7p-ow-nkG"/>
@@ -532,9 +702,34 @@
                                                     <action selector="saveButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lsb-dd-c9X"/>
                                                 </connections>
                                             </button>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Welcome Message is required." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-fR-hQ2">
+                                                <rect key="frame" x="30" y="355" width="343" height="17"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form Message is required." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dln-Xp-UaZ">
+                                                <rect key="frame" x="30" y="540" width="343" height="17"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Welcome Message is required." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIV-zK-5iv">
+                                                <rect key="frame" x="33" y="725" width="337" height="17"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ Message is required." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h2-EF-85E">
+                                                <rect key="frame" x="33" y="910" width="337" height="17"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="5h2-EF-85E" firstAttribute="trailing" secondItem="iWu-AJ-u3C" secondAttribute="trailing" id="0Ax-DD-vdY"/>
                                             <constraint firstItem="iWu-AJ-u3C" firstAttribute="leading" secondItem="xcp-GJ-Ihr" secondAttribute="leading" id="1Qv-VG-H93"/>
                                             <constraint firstItem="Pin-sp-1Dr" firstAttribute="top" secondItem="mTs-j2-7Cq" secondAttribute="topMargin" constant="5" id="2Bv-GU-Xgl"/>
                                             <constraint firstItem="iWu-AJ-u3C" firstAttribute="top" secondItem="xcp-GJ-Ihr" secondAttribute="bottom" constant="10" id="2v9-v9-gWd"/>
@@ -555,13 +750,16 @@
                                             <constraint firstItem="j7s-II-2mg" firstAttribute="leading" secondItem="WyG-vy-We4" secondAttribute="leading" id="BAu-9A-Q8D"/>
                                             <constraint firstItem="ujw-tB-hi8" firstAttribute="top" secondItem="kwU-l6-Fge" secondAttribute="bottom" constant="15" id="BVx-8Y-WQV"/>
                                             <constraint firstItem="lQZ-RA-ecm" firstAttribute="top" secondItem="e9U-Ze-ZFB" secondAttribute="bottom" constant="20" id="Bmc-UG-XzW"/>
-                                            <constraint firstItem="rYM-qh-wuC" firstAttribute="top" secondItem="WyG-vy-We4" secondAttribute="bottom" constant="10" id="CAl-DJ-tqK"/>
+                                            <constraint firstItem="rYM-qh-wuC" firstAttribute="top" secondItem="WyG-vy-We4" secondAttribute="bottom" constant="30" id="CAl-DJ-tqK"/>
                                             <constraint firstItem="K5D-pg-VYJ" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="15" id="CNH-hv-sdr"/>
+                                            <constraint firstItem="iIV-zK-5iv" firstAttribute="trailing" secondItem="eMB-ej-UoE" secondAttribute="trailing" id="D3Y-sW-66z"/>
                                             <constraint firstItem="aME-gU-dVX" firstAttribute="top" secondItem="TSc-57-ufg" secondAttribute="bottom" constant="8" symbolic="YES" id="DRG-8t-Jb9"/>
                                             <constraint firstItem="dN7-HY-49b" firstAttribute="centerY" secondItem="lQZ-RA-ecm" secondAttribute="centerY" id="DwR-Uq-1YH"/>
+                                            <constraint firstItem="coJ-fR-hQ2" firstAttribute="top" secondItem="WyG-vy-We4" secondAttribute="bottom" constant="3" id="E0I-Rm-2Zh"/>
                                             <constraint firstAttribute="trailing" secondItem="NHC-iC-WhF" secondAttribute="trailing" constant="20" id="EAw-eE-gQ1"/>
                                             <constraint firstItem="TqG-Xs-lLP" firstAttribute="top" secondItem="ujw-tB-hi8" secondAttribute="bottom" constant="15.000000000000114" id="EtW-Kl-gwB"/>
                                             <constraint firstAttribute="trailing" secondItem="DS8-3I-no7" secondAttribute="trailing" constant="20" id="FIh-LR-Sln"/>
+                                            <constraint firstItem="dln-Xp-UaZ" firstAttribute="trailing" secondItem="j7s-II-2mg" secondAttribute="trailing" id="Fga-8G-IGt"/>
                                             <constraint firstItem="sa9-ft-0pq" firstAttribute="leading" secondItem="rYM-qh-wuC" secondAttribute="leading" id="G0a-ms-61Q"/>
                                             <constraint firstItem="aME-gU-dVX" firstAttribute="trailing" secondItem="Roy-CK-yIM" secondAttribute="trailing" id="G74-UT-zdK"/>
                                             <constraint firstAttribute="trailing" secondItem="Roy-CK-yIM" secondAttribute="trailing" constant="30" id="IVH-OH-6Ay"/>
@@ -570,7 +768,9 @@
                                             <constraint firstItem="DS8-3I-no7" firstAttribute="leading" secondItem="K5D-pg-VYJ" secondAttribute="trailing" constant="10" id="Kx7-ds-Zg8"/>
                                             <constraint firstItem="TSc-57-ufg" firstAttribute="leading" secondItem="Pin-sp-1Dr" secondAttribute="leading" id="L4D-Zd-sAe"/>
                                             <constraint firstItem="Roy-CK-yIM" firstAttribute="top" secondItem="Pin-sp-1Dr" secondAttribute="bottom" constant="8" id="L9u-9u-2Oq"/>
-                                            <constraint firstItem="xcp-GJ-Ihr" firstAttribute="top" secondItem="eMB-ej-UoE" secondAttribute="bottom" constant="10" id="Nay-gw-H5R"/>
+                                            <constraint firstItem="iIV-zK-5iv" firstAttribute="top" secondItem="eMB-ej-UoE" secondAttribute="bottom" constant="3" id="M2q-Sk-cMY"/>
+                                            <constraint firstItem="xcp-GJ-Ihr" firstAttribute="top" secondItem="eMB-ej-UoE" secondAttribute="bottom" constant="30" id="Nay-gw-H5R"/>
+                                            <constraint firstItem="coJ-fR-hQ2" firstAttribute="leading" secondItem="WyG-vy-We4" secondAttribute="leading" constant="10" id="Nmy-oU-i55"/>
                                             <constraint firstItem="FgQ-cM-DtF" firstAttribute="trailing" secondItem="xcp-GJ-Ihr" secondAttribute="trailing" id="OBI-Ve-hNk"/>
                                             <constraint firstItem="Pin-sp-1Dr" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leadingMargin" constant="15" id="PM9-uy-o9D"/>
                                             <constraint firstItem="2ly-Vm-ql0" firstAttribute="top" secondItem="aME-gU-dVX" secondAttribute="bottom" constant="10" id="QT6-85-H1R"/>
@@ -581,12 +781,14 @@
                                             <constraint firstItem="NHC-iC-WhF" firstAttribute="top" secondItem="TqG-Xs-lLP" secondAttribute="bottom" constant="20" id="WQz-6O-7Lr"/>
                                             <constraint firstItem="e9U-Ze-ZFB" firstAttribute="leading" secondItem="NHC-iC-WhF" secondAttribute="leading" constant="5" id="WSc-RN-PZC"/>
                                             <constraint firstItem="Oe2-Rf-7Xd" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="15" id="X3t-Jp-Xg2"/>
+                                            <constraint firstItem="dln-Xp-UaZ" firstAttribute="leading" secondItem="j7s-II-2mg" secondAttribute="leading" constant="10" id="XTH-G8-fGL"/>
                                             <constraint firstItem="NHC-iC-WhF" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="20" id="YcD-5K-u6b"/>
                                             <constraint firstAttribute="trailing" secondItem="kwU-l6-Fge" secondAttribute="trailing" constant="15" id="YoM-pH-TxE"/>
+                                            <constraint firstItem="iIV-zK-5iv" firstAttribute="leading" secondItem="eMB-ej-UoE" secondAttribute="leading" constant="10" id="Ysa-MF-Iq2"/>
                                             <constraint firstItem="pgq-JZ-eiW" firstAttribute="trailing" secondItem="iWu-AJ-u3C" secondAttribute="trailing" constant="-3" id="aOQ-64-BbF"/>
                                             <constraint firstItem="aME-gU-dVX" firstAttribute="leading" secondItem="Roy-CK-yIM" secondAttribute="leading" id="bGu-ba-AeQ"/>
                                             <constraint firstItem="ujw-tB-hi8" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="20" id="ba0-9Y-jdv"/>
-                                            <constraint firstItem="FgQ-cM-DtF" firstAttribute="top" secondItem="iWu-AJ-u3C" secondAttribute="bottom" constant="10" id="cIO-In-qgx"/>
+                                            <constraint firstItem="FgQ-cM-DtF" firstAttribute="top" secondItem="iWu-AJ-u3C" secondAttribute="bottom" constant="30" id="cIO-In-qgx"/>
                                             <constraint firstAttribute="trailing" secondItem="dN7-HY-49b" secondAttribute="trailing" constant="20" id="dSP-xG-GoQ"/>
                                             <constraint firstItem="pgq-JZ-eiW" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="30" id="dT9-5G-lSw"/>
                                             <constraint firstItem="K8e-wL-JbL" firstAttribute="top" secondItem="Oe2-Rf-7Xd" secondAttribute="bottom" constant="20" id="dgD-OO-CHZ"/>
@@ -599,19 +801,23 @@
                                             <constraint firstItem="iWu-AJ-u3C" firstAttribute="trailing" secondItem="xcp-GJ-Ihr" secondAttribute="trailing" id="jnd-g6-M27"/>
                                             <constraint firstItem="rYM-qh-wuC" firstAttribute="trailing" secondItem="2ly-Vm-ql0" secondAttribute="trailing" id="kg4-yt-znv"/>
                                             <constraint firstAttribute="trailing" secondItem="e9U-Ze-ZFB" secondAttribute="trailing" constant="20" id="mps-YQ-Z6N"/>
+                                            <constraint firstItem="5h2-EF-85E" firstAttribute="leading" secondItem="iWu-AJ-u3C" secondAttribute="leading" constant="10" id="mrK-it-mCN"/>
                                             <constraint firstItem="K5D-pg-VYJ" firstAttribute="top" secondItem="lQZ-RA-ecm" secondAttribute="bottom" constant="25" id="msh-gQ-odr"/>
                                             <constraint firstItem="J3h-mi-8A8" firstAttribute="centerY" secondItem="NS3-L5-aZ3" secondAttribute="centerY" id="o5Z-hP-P9u"/>
                                             <constraint firstItem="j7s-II-2mg" firstAttribute="trailing" secondItem="WyG-vy-We4" secondAttribute="trailing" id="o9Z-zl-Liv"/>
                                             <constraint firstAttribute="height" constant="1900" id="pmL-RL-AP9"/>
+                                            <constraint firstItem="5h2-EF-85E" firstAttribute="top" secondItem="iWu-AJ-u3C" secondAttribute="bottom" constant="3" id="qTA-1S-3G1"/>
                                             <constraint firstItem="2ly-Vm-ql0" firstAttribute="trailing" secondItem="TSc-57-ufg" secondAttribute="trailing" id="qu3-kU-Z1p"/>
                                             <constraint firstItem="FgQ-cM-DtF" firstAttribute="leading" secondItem="xcp-GJ-Ihr" secondAttribute="leading" id="rPo-Dv-azI"/>
                                             <constraint firstItem="NS3-L5-aZ3" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="19" id="sGM-j9-BxK"/>
                                             <constraint firstItem="kwU-l6-Fge" firstAttribute="top" secondItem="J3h-mi-8A8" secondAttribute="bottom" constant="15" id="t2e-gJ-JF6"/>
-                                            <constraint firstItem="sa9-ft-0pq" firstAttribute="top" secondItem="j7s-II-2mg" secondAttribute="bottom" constant="8" symbolic="YES" id="tWD-Md-caY"/>
+                                            <constraint firstItem="sa9-ft-0pq" firstAttribute="top" secondItem="j7s-II-2mg" secondAttribute="bottom" constant="30" id="tWD-Md-caY"/>
                                             <constraint firstItem="e9U-Ze-ZFB" firstAttribute="top" secondItem="NHC-iC-WhF" secondAttribute="bottom" constant="15.000000000000114" id="tYk-qL-G3e"/>
                                             <constraint firstItem="Oe2-Rf-7Xd" firstAttribute="top" secondItem="K5D-pg-VYJ" secondAttribute="bottom" constant="20" id="tuc-Nd-J7z"/>
                                             <constraint firstItem="kwU-l6-Fge" firstAttribute="leading" secondItem="mTs-j2-7Cq" secondAttribute="leading" constant="15" id="wKh-KE-QKc"/>
                                             <constraint firstItem="eMB-ej-UoE" firstAttribute="leading" secondItem="sa9-ft-0pq" secondAttribute="leading" id="x9W-2j-lXI"/>
+                                            <constraint firstItem="coJ-fR-hQ2" firstAttribute="trailing" secondItem="WyG-vy-We4" secondAttribute="trailing" id="xDX-M4-MmM"/>
+                                            <constraint firstItem="dln-Xp-UaZ" firstAttribute="top" secondItem="j7s-II-2mg" secondAttribute="bottom" constant="3" id="yfO-jh-hCJ"/>
                                             <constraint firstAttribute="trailing" secondItem="J3h-mi-8A8" secondAttribute="trailing" constant="20" id="yr7-Ym-oaN"/>
                                         </constraints>
                                     </view>
@@ -640,13 +846,16 @@
                         <outlet property="appointmentViewHight" destination="NQh-nN-wNm" id="yY2-0N-7Wq"/>
                         <outlet property="botName" destination="Roy-CK-yIM" id="51m-ap-QbD"/>
                         <outlet property="defaultWelcomeMessage" destination="WyG-vy-We4" id="m8r-Cg-Gqm"/>
+                        <outlet property="defaultWelcomeMessageLBI" destination="coJ-fR-hQ2" id="Spb-j4-KOS"/>
                         <outlet property="enableAppointment" destination="NS3-L5-aZ3" id="AFC-oE-EvV"/>
                         <outlet property="enableInPersonAppointment" destination="oni-Kh-GBZ" id="126-gQ-TtA"/>
                         <outlet property="enableVirtualAppointment" destination="hUH-FJ-dIx" id="hV7-HP-M5z"/>
                         <outlet property="eveningEndTime" destination="Us2-aH-BOJ" id="J4h-MB-Eie"/>
                         <outlet property="eveningStartTime" destination="Qqh-Vx-2wf" id="jV0-dR-zA7"/>
                         <outlet property="faqNotFoundMessage" destination="iWu-AJ-u3C" id="CB9-QL-9HU"/>
+                        <outlet property="faqNotFoundMessageLBI" destination="5h2-EF-85E" id="zpr-R0-SUV"/>
                         <outlet property="formMessage" destination="j7s-II-2mg" id="L7E-H5-lRe"/>
+                        <outlet property="formMessageLBI" destination="dln-Xp-UaZ" id="B2E-dM-AV7"/>
                         <outlet property="isChatbotStatic" destination="lQZ-RA-ecm" id="d4W-cC-gCz"/>
                         <outlet property="longCodePhoneNumber" destination="e9U-Ze-ZFB" id="2eb-vA-tww"/>
                         <outlet property="morningEndTime" destination="BPG-ee-62k" id="rIp-yd-41g"/>
@@ -661,6 +870,7 @@
                         <outlet property="showPoweredChatbotFooterViewHight" destination="R8c-Xr-9R2" id="yrW-RG-iAt"/>
                         <outlet property="weeksToShow" destination="TqG-Xs-lLP" id="lhy-xf-yLc"/>
                         <outlet property="welcomeMessage" destination="eMB-ej-UoE" id="hSy-DA-dmv"/>
+                        <outlet property="welcomeMessageLBI" destination="iIV-zK-5iv" id="zlO-n2-Gou"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -670,40 +880,40 @@
     </scenes>
     <designables>
         <designable name="BPG-ee-62k">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="Qqh-Vx-2wf">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="Roy-CK-yIM">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="TEv-Pf-d22">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="TqG-Xs-lLP">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="Us2-aH-BOJ">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="WUU-CV-qye">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="XaC-vk-vep">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="aME-gU-dVX">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="e9U-Ze-ZFB">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="pgq-JZ-eiW">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="rw7-f3-XhS">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
     </designables>
     <resources>
