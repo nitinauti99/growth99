@@ -55,19 +55,19 @@ class LeadSourceUrlAddViewController: UIViewController, LeadSourceUrlAddViewCont
     
     func createdLeadSourceUrlList(message: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
     
     func updateLeadSourceUrlList(message:String) {
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func cancelAction(sender: UIButton) {

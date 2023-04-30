@@ -171,13 +171,13 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     func triggerAppointmentCreateSucessfull() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Trigger created sucessfully", color: .black)
+        self.view.showToast(message: "Trigger created sucessfully", color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func registerTableView() {

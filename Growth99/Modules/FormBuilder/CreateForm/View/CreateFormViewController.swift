@@ -75,7 +75,7 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func Make_Public(sender: UIButton){

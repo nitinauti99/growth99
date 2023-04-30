@@ -43,7 +43,7 @@ class BusinessDetailView: UIViewController {
                 self.segmentedControl.selectedSegmentIndex = self.selectedindex
             case .failure(let error):
                 self.view.HideSpinner()
-                self.view.showToast(message: error.localizedDescription, color: .black)
+                self.view.showToast(message: error.localizedDescription, color: .red)
             }
         }
     }

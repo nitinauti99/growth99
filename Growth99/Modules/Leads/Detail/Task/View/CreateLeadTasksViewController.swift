@@ -109,13 +109,13 @@ extension CreateLeadTasksViewController: CreateLeadTasksViewControllerProtocol {
 
     func taskUserCreatedSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

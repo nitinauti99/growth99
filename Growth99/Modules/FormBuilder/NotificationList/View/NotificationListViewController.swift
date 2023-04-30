@@ -72,7 +72,7 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
     
     func notificationRemovedSuccefully(message: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         viewModel?.getNotificationListList(questionId: questionId)
     }
     
@@ -84,7 +84,7 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

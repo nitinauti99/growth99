@@ -182,7 +182,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func eventDataReceived() {
@@ -196,13 +196,13 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment Cancelled Sucessfully", color: .black)
+        self.view.showToast(message: "Appointment Cancelled Sucessfully", color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
 
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {

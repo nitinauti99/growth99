@@ -89,12 +89,12 @@ extension MediaLibraryListViewController: MediaLibraryListViewControllerProtocol
     
     func socialMediaLibrariesRemovedSuccefully(message: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
 

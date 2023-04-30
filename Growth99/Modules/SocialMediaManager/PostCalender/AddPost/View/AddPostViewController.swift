@@ -53,6 +53,10 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
         scheduledDateTextField.addInputViewDatePicker(target: self, selector: #selector(scheduledDateBtnPressed), mode: .date)
         scheduledTimeTextField.addInputViewDatePicker(target: self, selector: #selector(scheduledTimeBtnPressed), mode: .time)
         addPostCalenderViewModel = AddPostViewModel(delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getSocialProfileList()
     }
     
@@ -98,6 +102,12 @@ class AddPostViewController: UIViewController, AddPostViewControllerProtocol, UI
     
     func errorReceived(error: String) {
         
+    }
+    
+    @IBAction func addLabelBtn(sender: UIButton) {
+        let addLabelVC = UIStoryboard(name: "CreateLabelViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLabelViewController") as! CreateLabelViewController
+        addLabelVC.screenName = "Create Screen"
+        self.navigationController?.pushViewController(addLabelVC, animated: true)
     }
     
     @IBAction func selectLabelBtn(sender: UIButton) {

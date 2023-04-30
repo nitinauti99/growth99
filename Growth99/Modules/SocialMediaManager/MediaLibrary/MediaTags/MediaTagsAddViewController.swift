@@ -54,7 +54,7 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @objc func SendtoPatientButtonTapped(_ sender: UIButton) {

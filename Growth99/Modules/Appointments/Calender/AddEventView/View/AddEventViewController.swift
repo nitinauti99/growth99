@@ -175,7 +175,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func eventDataReceived() {
@@ -195,7 +195,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {

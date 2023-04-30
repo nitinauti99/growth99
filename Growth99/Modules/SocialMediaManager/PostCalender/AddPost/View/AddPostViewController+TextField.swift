@@ -12,8 +12,13 @@ extension AddPostViewController: UITextFieldDelegate  {
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         if textField == hastagTextField {
-            guard let textField = hastagTextField.text, !textField.isEmpty else {
-                hastagTextField.showError(message: "Hashtag is required.")
+            if let textField = hastagTextField, textField.text == "" {
+                hastagTextField.showError(message: Constant.ErrorMessage.hashTagEmptyError)
+                return
+            }
+          
+            if let isFirstName = self.addPostCalenderViewModel?.isValidHashTag(self.hastagTextField.text ?? ""), isFirstName == false  {
+                hastagTextField.showError(message: Constant.ErrorMessage.hashTagInvalidError)
                 return
             }
         }

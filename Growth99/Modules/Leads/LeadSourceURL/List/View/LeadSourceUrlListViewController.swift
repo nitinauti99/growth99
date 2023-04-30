@@ -69,7 +69,7 @@ class LeadSourceUrlListViewController: UIViewController, LeadSourceUrlListViewCo
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func removeLeadTag(cell: LeadSourceUrlListTableViewCell, index: IndexPath) {

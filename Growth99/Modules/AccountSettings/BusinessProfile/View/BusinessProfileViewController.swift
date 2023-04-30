@@ -38,12 +38,12 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func saveBusinessDetailReceived(responseMessage: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
     }
     
     @IBAction func imageIconbtnTapped(_ sender: Any) {

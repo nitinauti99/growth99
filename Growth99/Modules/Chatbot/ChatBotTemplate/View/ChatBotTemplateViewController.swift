@@ -51,7 +51,7 @@ extension ChatBotTemplateViewController: ChatBotTemplateViewControllerProtocol {
    
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func scrollViewHeight() {

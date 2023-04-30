@@ -24,7 +24,7 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.FormsList
+        self.title = Constant.Profile.questionnaire
         viewModel = FormListViewModel(delegate: self)
         self.addSerchBar()
         self.setBarButton()
@@ -109,7 +109,7 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

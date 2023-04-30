@@ -68,7 +68,7 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     
     func addCategoriesResponse() {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.addCategorie, color: .black)
+        self.view.showToast(message: Constant.Profile.addCategorie, color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -85,12 +85,12 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func createdNotificationSuccessfully(message: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: message, color: .black)
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.navigationController?.popViewController(animated: true)
     }
     

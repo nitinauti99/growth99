@@ -290,7 +290,7 @@ extension CreateLeadViewController: CreateLeadViewControllerProtocol {
     
     func errorReceived(error: String) {
         view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
 }
 
