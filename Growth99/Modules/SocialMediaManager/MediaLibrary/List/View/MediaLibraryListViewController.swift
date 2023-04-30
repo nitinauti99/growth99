@@ -19,16 +19,15 @@ class MediaLibraryListViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     
     var viewModel: MediaLibraryListViewModelProtocol?
-    let page: Int? = 0
+    var page: Int? = 0
     var size: Int? = 10
     var search: String? = ""
     var tags = Int()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialMediaLibrariesData.count ?? 0)
-        self.title = Constant.Profile.postLibrary
+        self.title = Constant.Profile.MediaLibrary
         self.viewModel = MediaLibraryListViewModel(delegate: self)
         self.setBarButton()
     }
@@ -38,6 +37,14 @@ class MediaLibraryListViewController: UIViewController {
         self.view.ShowSpinner()
         self.viewModel?.getSocialMediaLibrariesList(page: page ?? 0, size: size ?? 10, search: search ?? "", tags: 0)
         self.registerTableView()
+    }
+    
+    @IBAction func serachleadList(sender: UIButton) {
+        if searchBar.text == "" {
+            return
+        }
+        self.view.ShowSpinner()
+        self.viewModel?.getSocialMediaLibrariesList(page: page ?? 0, size: size ?? 10, search: searchBar.text  ?? "", tags: 0)
     }
     
     func registerTableView() {
@@ -98,7 +105,7 @@ extension MediaLibraryListViewController: MediaLibraryListTableViewCellDelegate 
         var mediaLibraryId = self.viewModel?.socialMediaLibrariesListDataAtIndex(index: index.row)?.id ?? 0
         var mediaLibraryName = self.viewModel?.socialMediaLibrariesListDataAtIndex(index: index.row)?.filename ?? String.blank
 
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(mediaLibraryName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Image", message: "Are you sure you want to delete \n\(mediaLibraryName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                         handler: { [weak self] _ in
             self?.view.ShowSpinner()

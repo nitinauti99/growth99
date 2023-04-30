@@ -228,7 +228,8 @@ class CreatePostViewController: UIViewController {
                     self.view.showToast(message: "Social media post updated successfully.", color: UIColor().successMessageColor())
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                         self.navigationController?.popViewController(animated: true)
-                    })                }
+                    })
+                }
             }
         }).resume()
     }

@@ -71,7 +71,6 @@ class leadListViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                
                 self.delegate?.leadRemovedSuccefully(message: "Lead deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

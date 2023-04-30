@@ -36,11 +36,11 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
         super.viewWillAppear(animated)
         if mediaTagScreenName == "Edit Screen" {
             self.MediaTagsLBI.text = "Edit Media Tag"
-            self.title = Constant.Profile.editPatientTags
+            self.title = "Edit Tag"
             self.MediaTagsTextField.text = viewModel?.mediaTagsDetailsData?.name ?? String.blank
         }else{
             self.MediaTagsLBI.text = "Create Media Tag"
-            self.title = Constant.Profile.createPatientTags
+            self.title = "Add Tag"
         }
     }
     
@@ -72,7 +72,8 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
     
     @IBAction func saveAction(sender: UIButton) {
         if let textField = MediaTagsTextField.text,  textField == "" {
-            MediaTagsTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            MediaTagsTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            return
         }
         self.view.ShowSpinner()
         if mediaTagScreenName == "Edit Screen" {

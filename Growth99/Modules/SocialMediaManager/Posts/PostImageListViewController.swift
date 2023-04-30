@@ -20,7 +20,7 @@ class PostImageListViewController: UIViewController {
     var viewModel: PostImageListViewModel?
     var delegate : PostImageListViewControllerDelegateProtocol?
     
-    let page: Int? = 0
+    var page: Int? = 0
     var size: Int? = 10
     var search: String? = ""
     var tags = Int()
@@ -28,13 +28,20 @@ class PostImageListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.viewModel = PostImageListViewModel(delegate: self)
         self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialPostImageList.count ?? 0)
         self.view.ShowSpinner()
         self.viewModel?.getSocialPostImageFromLbrariesList(page: page ?? 0, size: size ?? 10, search: search ?? "", tags: 0)
     }
     
+    @IBAction func serachleadList(sender: UIButton) {
+        if searchBar.text == "" {
+            return
+        }
+        self.view.ShowSpinner()
+        self.viewModel?.getSocialPostImageFromLbrariesList(page: page ?? 0, size: size ?? 10, search: searchBar.text ?? "", tags: 0)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Choose Image"

@@ -78,6 +78,9 @@
 		01454A0129FC36C100237E60 /* UserCreateViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */; };
 		01454A0329FCD13100237E60 /* PostsListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */; };
 		01454A0529FCD66800237E60 /* CreatePostViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */; };
+		01454A0729FD42FD00237E60 /* PostImageListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0629FD42FD00237E60 /* PostImageListViewController+SearchBar.swift */; };
+		01454A0929FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0829FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift */; };
+		01454A0B29FD87E300237E60 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01454A0A29FD87E300237E60 /* Photos.framework */; };
 		01468DFB29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */; };
 		01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */; };
 		01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */; };
@@ -981,6 +984,9 @@
 		01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCreateViewController+TextField.swift"; sourceTree = "<group>"; };
 		01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
 		01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePostViewController+TextField.swift"; sourceTree = "<group>"; };
+		01454A0629FD42FD00237E60 /* PostImageListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostImageListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01454A0829FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		01454A0A29FD87E300237E60 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		01468DFA29BE338A002BDC1F /* CreateSMSTemplateViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSMSTemplateViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		01468DFD29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSMSTemplateCollectionViewCell.swift; sourceTree = "<group>"; };
 		01468DFE29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateSMSTemplateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1820,6 +1826,7 @@
 			files = (
 				84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */,
 				689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */,
+				01454A0B29FD87E300237E60 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2756,6 +2763,7 @@
 				016F665129CF49ED00B1D248 /* PostImageListViewController.swift */,
 				016F665329CF49F900B1D248 /* PostImageListViewController.storyboard */,
 				016F665A29CF500300B1D248 /* PostImageListViewController+TableView.swift */,
+				01454A0629FD42FD00237E60 /* PostImageListViewController+SearchBar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -3818,6 +3826,7 @@
 				189E3F0229C392F800B94190 /* MediaLibraryListViewController.swift */,
 				189E3F0429C3930300B94190 /* MediaLibraryListViewController.storyboard */,
 				016F661329C8956700B1D248 /* MediaLibraryListViewController+TableView.swift */,
+				01454A0829FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5585,6 +5594,7 @@
 		8497A01128F9CB3300CBA26C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01454A0A29FD87E300237E60 /* Photos.framework */,
 				84FDC1B129586E3A002821BB /* LocalAuthentication.framework */,
 				84872B082917D7FF0063DD3B /* SDWebImage.framework */,
 				84872B052917D61F0063DD3B /* AlamofireImage.framework */,
@@ -7464,6 +7474,7 @@
 				84F6111F292A71AB00B1FB69 /* GrowthDataTaskOperation.swift in Sources */,
 				01EBAC4529B585D900110DCB /* LeadTagsListViewController+TableView.swift in Sources */,
 				01152E3029B3C5E700B24627 /* LeadHistoryViewController.swift in Sources */,
+				01454A0929FD71B400237E60 /* MediaLibraryListViewController+SearchBar.swift in Sources */,
 				010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */,
 				842C0CAF298F713B00395061 /* ConsentsListViewModel.swift in Sources */,
 				01BBA9E029AB571F006A5DB8 /* NotificationListTableViewCell.swift in Sources */,
@@ -7903,6 +7914,7 @@
 				189670C029BA6081003224ED /* TriggerLeadActionTableViewCell.swift in Sources */,
 				848EEA8E299A5F6300F6E3D5 /* CreateFormViewController.swift in Sources */,
 				189E3EE529C391D900B94190 /* PostsListViewContoller.swift in Sources */,
+				01454A0729FD42FD00237E60 /* PostImageListViewController+SearchBar.swift in Sources */,
 				84B75EA02968CD8B00962F3E /* CategoriesListModel.swift in Sources */,
 				016F664629C9EFA600B1D248 /* MediaLibraryAddModel.swift in Sources */,
 				84F610D7292A71AB00B1FB69 /* ArrayExtension.swift in Sources */,

@@ -33,6 +33,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        //2023-04-26T06:26:27.772+0000
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
         return dateFormatter.string(from: date)

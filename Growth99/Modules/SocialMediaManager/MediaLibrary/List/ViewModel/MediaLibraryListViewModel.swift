@@ -48,7 +48,7 @@ class MediaLibraryListViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.socialMediaLibrariesRemovedSuccefully(message: "deletd Social Media Libraries")
+                    self.delegate?.socialMediaLibrariesRemovedSuccefully(message: "Image deleted successfully")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "service failed")
                 } else{

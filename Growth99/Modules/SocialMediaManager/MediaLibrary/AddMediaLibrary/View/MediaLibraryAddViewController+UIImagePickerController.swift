@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Photos
 
 extension MediaLibraryAddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
    
@@ -25,6 +26,11 @@ extension MediaLibraryAddViewController: UIImagePickerControllerDelegate, UINavi
         self.deleteBackroundImageButton.isHidden = false
         self.browseImageButton.isHidden = true
         self.browseImagButtonHight.constant = 210
+        if let asset = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.phAsset.rawValue)] as? PHAsset {
+            let assetResources = PHAssetResource.assetResources(for: asset)
+            print(assetResources.first!.originalFilename)
+            self.imageName = assetResources.first!.originalFilename
+          }
         self.dismiss(animated: true, completion: nil)
     }
 

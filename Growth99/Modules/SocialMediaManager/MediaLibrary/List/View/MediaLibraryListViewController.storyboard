@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-wE-DEc">
-                                <rect key="frame" x="0.0" y="48" width="414" height="60"/>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-wE-DEc">
+                                <rect key="frame" x="0.0" y="48" width="334" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bew-D5-IMi"/>
                                 </constraints>
@@ -39,6 +39,21 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="TGe-aL-pZS"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHf-dh-7vQ">
+                                <rect key="frame" x="334" y="62.5" width="69" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="f8f-Ly-0mp"/>
+                                    <constraint firstAttribute="height" constant="31" id="j4Q-l4-JbK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="serachleadListWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yf6-rK-77r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,7 +61,9 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vxg-GC-3k5" secondAttribute="trailing" id="0jz-vw-Fo7"/>
                             <constraint firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DTv-Wi-Rgo"/>
-                            <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="Mrg-4q-sd3"/>
+                            <constraint firstItem="xHf-dh-7vQ" firstAttribute="centerY" secondItem="WEA-wE-DEc" secondAttribute="centerY" id="Fnw-R4-rWn"/>
+                            <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" constant="80" id="Mrg-4q-sd3"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xHf-dh-7vQ" secondAttribute="trailing" constant="11" id="Plq-9q-J34"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="TfC-jd-n9H"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="top" secondItem="WEA-wE-DEc" secondAttribute="bottom" constant="5" id="X2C-SF-RYA"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yfl-wr-yyI"/>

@@ -31,10 +31,12 @@ class PostImageListTableViewCell: UITableViewCell {
     func configureCell(mediaLibraryListVM: PostImageListViewModel?, index: IndexPath) {
         let mediaLibraryListVM = mediaLibraryListVM?.getSocialPostImageListDataAtIndex(index: index.row)
         self.fileName.text = mediaLibraryListVM?.filename
-        self.createBy.text = String(mediaLibraryListVM?.createdBy?.firstName ?? "")
+        self.createBy.text = "By" + (mediaLibraryListVM?.createdBy?.firstName ?? "")
         let libraryTag = (mediaLibraryListVM?.socialTags ?? []).map({$0.libraryTag}).map({$0?.name})
         self.tags.text = (libraryTag.map({$0 ?? ""})).joined(separator: ", ")
         self.imageName.sd_setImage(with: URL(string:mediaLibraryListVM?.location ?? ""), placeholderImage: UIImage(named: "logo"), context: nil)
+        self.createdAt.text =  "On" + (self.dateFormater?.serverToLocal(date: (mediaLibraryListVM?.createdAt) ?? "") ?? "")
+
         indexPath = index
     }
 

@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-wE-DEc">
-                                <rect key="frame" x="0.0" y="108" width="414" height="60"/>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEA-wE-DEc">
+                                <rect key="frame" x="0.0" y="108" width="337" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bew-D5-IMi"/>
                                 </constraints>
@@ -71,6 +71,21 @@
                                     <constraint firstItem="Rvp-me-xra" firstAttribute="centerY" secondItem="bUb-f1-Ycg" secondAttribute="centerY" constant="10" id="wZU-Fn-9T8"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3N-jZ-Brb">
+                                <rect key="frame" x="337" y="122.5" width="69" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="Dnj-MR-fRD"/>
+                                    <constraint firstAttribute="height" constant="31" id="jHh-Ix-ZuH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="serachleadListWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cm1-1I-R3Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -79,13 +94,15 @@
                             <constraint firstAttribute="bottom" secondItem="Vxg-GC-3k5" secondAttribute="bottom" id="3dA-Pe-pqz"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DTv-Wi-Rgo"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="bUb-f1-Ycg" secondAttribute="bottom" id="Imq-K1-Pkr"/>
-                            <constraint firstAttribute="trailing" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="Mrg-4q-sd3"/>
                             <constraint firstItem="bUb-f1-Ycg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="OlN-e5-dcJ"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="TfC-jd-n9H"/>
                             <constraint firstItem="bUb-f1-Ycg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Ub2-1S-jR9"/>
                             <constraint firstItem="bUb-f1-Ycg" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Uwm-md-j95"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="r3N-jZ-Brb" secondAttribute="trailing" constant="8" id="WJO-j0-QWX"/>
                             <constraint firstItem="Vxg-GC-3k5" firstAttribute="top" secondItem="WEA-wE-DEc" secondAttribute="bottom" constant="5" id="X2C-SF-RYA"/>
                             <constraint firstItem="WEA-wE-DEc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yfl-wr-yyI"/>
+                            <constraint firstItem="r3N-jZ-Brb" firstAttribute="leading" secondItem="WEA-wE-DEc" secondAttribute="trailing" id="obI-HI-GUM"/>
+                            <constraint firstItem="r3N-jZ-Brb" firstAttribute="centerY" secondItem="WEA-wE-DEc" secondAttribute="centerY" id="x1R-bu-YxR"/>
                         </constraints>
                     </view>
                     <connections>

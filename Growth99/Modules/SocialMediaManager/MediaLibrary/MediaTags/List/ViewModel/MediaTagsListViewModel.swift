@@ -32,7 +32,7 @@ class MediaTagsListViewModel {
         self.requestManager.request(forPath: ApiUrl.socialMediaTaglist, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[MediaTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
-                self.mediaTagsList = pateintsTagList
+                self.mediaTagsList = pateintsTagList.reversed()
                 self.delegate?.mediaTagListRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -42,11 +42,15 @@ class MediaTagsListViewModel {
     }
     
     func removeMediaTag(mediaId: Int) {
-        self.requestManager.request(forPath: ApiUrl.mediaTagUrl.appending("\(mediaId)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< MediaTagRemove, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.mediaTagUrl.appending("\(mediaId)"), method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.mediaTagRemovedSuccefully(message: data.success ?? String.blank)
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.mediaTagRemovedSuccefully(message: "Tag deleted successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "The Tag Associated With A Media Cannot Be Deleted. To Delete, Remove This Tag From The Media")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

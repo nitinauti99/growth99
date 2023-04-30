@@ -27,6 +27,8 @@ class MediaLibraryAddViewController: UIViewController {
     var viewModel: MediaLibraryAddViewModelProtocol?
     var mediaTagId = Int()
     var mediaTagScreenName = String()
+    var imageName = String()
+
     var selectedPostLabels = [Int]()
     var selectedTagList: [MediaTagListModel]?
 
@@ -83,7 +85,7 @@ class MediaLibraryAddViewController: UIViewController {
         selectionMenu.setSelectedItems(items: selectedTagList ?? []) { [weak self] (text, index, selected, selectedList) in
             self?.mediaLibraryTextField.text  = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedPostLabels = selectedList.map({$0.id ?? 0})
-            
+            self?.selectedTagList = selectedList
          }
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
@@ -100,30 +102,36 @@ class MediaLibraryAddViewController: UIViewController {
     
     @IBAction func saveAction(sender: UIButton) {
         if let textField = mediaLibraryTextField.text,  textField == "" {
-            self.mediaLibraryTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            self.mediaLibraryTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
+            return
+        }
+        
+        guard let image = mediaImage.image, image != nil else {
             return
         }
         self.view.ShowSpinner()
         guard let image = self.mediaImage.image else { return  }
-        let filename = "sample"
         let boundary = UUID().uuidString
         let tagIds = selectedPostLabels.map { String($0) }.joined(separator: ",")
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         var url = String()
         var methodType = String()
+        var message = String()
+        
         if  self.mediaTagScreenName == "Edit Screen" {
-            url = "https://api.growthemr.com/api/socialMedia/library/\(mediaTagId)"
+            url = ApiUrl.socialMediaLibrary.appending("/\(mediaTagId)")
+            message = "Social media post updated successfully"
             methodType = "PUT"
         }else{
-            url = "https://api.growthemr.com/api/socialMedia/library"
+            url = ApiUrl.socialMediaLibrary
             methodType = "POST"
+            message = "Social media library created successfully"
         }
         
         var urlRequest = URLRequest(url: URL(string: url)!)
-        
         urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
-        urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer " + (UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
         urlRequest.httpMethod = methodType
         urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
@@ -132,7 +140,7 @@ class MediaLibraryAddViewController: UIViewController {
         data.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n \(tagIds)".data(using: .utf8)!)
         
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(self.imageName)\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
         data.append(image.pngData()!)
         data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
@@ -151,8 +159,11 @@ class MediaLibraryAddViewController: UIViewController {
             if let responseString = String(data: responseData, encoding: .utf8) {
                 print("uploaded to: \(responseString)")
                 DispatchQueue.main.async {
-                    self.view.HideSpinner()
-                    self.navigationController?.popViewController(animated: true)
+                       self.view.HideSpinner()
+                       self.view.showToast(message: message, color: UIColor().successMessageColor())
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                          self.navigationController?.popViewController(animated: true)
+                    })
                 }
             }
         }).resume()
