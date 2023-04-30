@@ -351,7 +351,6 @@
 		1883F12E29C7571E0080997B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12329C7571E0080997B /* Country.swift */; };
 		1883F12F29C7571E0080997B /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12429C7571E0080997B /* CountryManager.swift */; };
 		1883F13029C7571E0080997B /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883F12529C7571E0080997B /* CountryPickerViewController.swift */; };
-		189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189171CE29C608F50095031A /* AddPostViewModel.swift */; };
 		1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708429BA5E62003224ED /* TriggersViewModel.swift */; };
 		1896709029BA5E62003224ED /* TriggersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708629BA5E62003224ED /* TriggersListModel.swift */; };
 		1896709129BA5E62003224ED /* TriggersListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896708829BA5E62003224ED /* TriggersListViewController+TableView.swift */; };
@@ -402,8 +401,6 @@
 		189E3F1729C3980900B94190 /* PostCalenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3F1029C3980900B94190 /* PostCalenderViewController.storyboard */; };
 		189E3F1829C3980900B94190 /* PostCalenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E3F1229C3980900B94190 /* PostCalenderTableViewCell.xib */; };
 		189E3F1929C3980900B94190 /* PostCalenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F1329C3980900B94190 /* PostCalenderTableViewCell.swift */; };
-		189E3F1B29C3997000B94190 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F1A29C3997000B94190 /* AddPostViewController.swift */; };
-		189E3F1D29C3997D00B94190 /* AddPostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3F1C29C3997D00B94190 /* AddPostViewController.storyboard */; };
 		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
@@ -866,7 +863,6 @@
 		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
 		DA06999429E9671D002E060A /* AddEventViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */; };
-		DA06999629E96EEA002E060A /* AddPostViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */; };
 		DA06999829E96F07002E060A /* EventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */; };
 		DA06999A29E9B482002E060A /* ServicesListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06999929E9B482002E060A /* ServicesListDetailViewController+TextField.swift */; };
 		DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */; };
@@ -1260,7 +1256,6 @@
 		1883F12329C7571E0080997B /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		1883F12429C7571E0080997B /* CountryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
 		1883F12529C7571E0080997B /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
-		189171CE29C608F50095031A /* AddPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModel.swift; sourceTree = "<group>"; };
 		1896708429BA5E62003224ED /* TriggersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersViewModel.swift; sourceTree = "<group>"; };
 		1896708629BA5E62003224ED /* TriggersListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggersListModel.swift; sourceTree = "<group>"; };
 		1896708829BA5E62003224ED /* TriggersListViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TriggersListViewController+TableView.swift"; sourceTree = "<group>"; };
@@ -1311,8 +1306,6 @@
 		189E3F1029C3980900B94190 /* PostCalenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCalenderViewController.storyboard; sourceTree = "<group>"; };
 		189E3F1229C3980900B94190 /* PostCalenderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalenderTableViewCell.xib; sourceTree = "<group>"; };
 		189E3F1329C3980900B94190 /* PostCalenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderTableViewCell.swift; sourceTree = "<group>"; };
-		189E3F1A29C3997000B94190 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
-		189E3F1C29C3997D00B94190 /* AddPostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPostViewController.storyboard; sourceTree = "<group>"; };
 		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
@@ -1789,7 +1782,6 @@
 		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEventViewController+TextField.swift"; sourceTree = "<group>"; };
-		DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPostViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA06999729E96F07002E060A /* EventEditViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventEditViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA06999929E9B482002E060A /* ServicesListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServicesListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
 		DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentListDetailViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -3744,10 +3736,10 @@
 			isa = PBXGroup;
 			children = (
 				01A2007429C746A900A7DD59 /* Cell */,
-				189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */,
 				189E3EE429C391D900B94190 /* PostsListViewContoller.swift */,
 				01DBA9AD29C618D800CBA51D /* PostsListViewContoller+TableView.swift */,
 				01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */,
+				189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3849,7 +3841,6 @@
 			isa = PBXGroup;
 			children = (
 				189E3F0929C3980900B94190 /* PostList */,
-				189E3F0629C3980900B94190 /* AddPost */,
 			);
 			path = PostCalender;
 			sourceTree = "<group>";
@@ -3898,33 +3889,6 @@
 				01DBA98C29C5660000CBA51D /* SocialProfilesListTableViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		189E3F0629C3980900B94190 /* AddPost */ = {
-			isa = PBXGroup;
-			children = (
-				189E3F0829C3980900B94190 /* View */,
-				189E3F0729C3980900B94190 /* ViewModel */,
-			);
-			path = AddPost;
-			sourceTree = "<group>";
-		};
-		189E3F0729C3980900B94190 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				189171CE29C608F50095031A /* AddPostViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		189E3F0829C3980900B94190 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				189E3F1A29C3997000B94190 /* AddPostViewController.swift */,
-				DA06999529E96EEA002E060A /* AddPostViewController+TextField.swift */,
-				189E3F1C29C3997D00B94190 /* AddPostViewController.storyboard */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		189E3F0929C3980900B94190 /* PostList */ = {
@@ -7095,7 +7059,6 @@
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
-				189E3F1D29C3997D00B94190 /* AddPostViewController.storyboard in Resources */,
 				01D7AB07299E572700821274 /* FormDetailTableViewCell.xib in Resources */,
 				8440B39A299A1B1300A42097 /* FormListTableViewCell.xib in Resources */,
 				017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */,
@@ -7358,7 +7321,6 @@
 				01DBA99F29C5C4D500CBA51D /* LabelsViewController+TableView.swift in Sources */,
 				189E3EFB29C392C500B94190 /* MediaLibraryListModel.swift in Sources */,
 				01D7AB00299D5B1300821274 /* FormDetailViewModel.swift in Sources */,
-				189171CF29C608F50095031A /* AddPostViewModel.swift in Sources */,
 				84BD33F82994BB020050C0D8 /* EmailTemplateViewController.swift in Sources */,
 				01EBAC6229B58BC500110DCB /* LeadSourceUrlListViewModel.swift in Sources */,
 				84B8B81D2973A88400742B42 /* EditTasksViewController.swift in Sources */,
@@ -7886,7 +7848,6 @@
 				189670B129BA6080003224ED /* TriggerDetailModel.swift in Sources */,
 				849D3AF82997CC72003E856A /* Enum.swift in Sources */,
 				01DBA9A829C5E13200CBA51D /* CreateLabelViewController.swift in Sources */,
-				DA06999629E96EEA002E060A /* AddPostViewController+TextField.swift in Sources */,
 				01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */,
 				01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */,
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
@@ -7915,7 +7876,6 @@
 				39F904E1299A896B00666C85 /* NibIdentifiable.swift in Sources */,
 				01EBAC4729B585E700110DCB /* LeadTagsListViewController+SearchBar.swift in Sources */,
 				84F6112D292A71AB00B1FB69 /* NetworkMonitor.swift in Sources */,
-				189E3F1B29C3997000B94190 /* AddPostViewController.swift in Sources */,
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,

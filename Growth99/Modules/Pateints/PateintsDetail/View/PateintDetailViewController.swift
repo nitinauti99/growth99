@@ -130,6 +130,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         super.viewWillAppear(animated)
         self.registerCell()
         setUpClearColor()
+        dateOfBirth.tintColor = .clear
         dateOfBirth.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         
         newButton.addTarget(self, action: #selector(self.pateintStatusTemplate(_:)), for:.touchUpInside)

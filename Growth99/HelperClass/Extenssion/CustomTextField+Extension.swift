@@ -24,7 +24,7 @@ extension CustomTextField {
         //Add DatePicker as inputView
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = mode
-        if #available(iOS 13.4, *) {
+        if #available(iOS 14, *) {
             datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
         } else {
             // Fallback on earlier versions
@@ -45,7 +45,7 @@ extension CustomTextField {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = mode
         datePicker.minuteInterval = 30
-        if #available(iOS 13.4, *) {
+        if #available(iOS 14, *) {
             datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
         } else {
             // Fallback on earlier versions

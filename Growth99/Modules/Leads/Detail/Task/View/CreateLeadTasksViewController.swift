@@ -46,6 +46,7 @@ class CreateLeadTasksViewController: UIViewController {
     }
     
     func setUPUI() {
+        DeadlineTextField.tintColor = .clear
         self.DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         self.descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         self.descriptionTextView.layer.borderWidth = 1.0;

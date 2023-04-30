@@ -44,10 +44,9 @@ extension PostsListViewContoller: UITableViewDelegate, UITableViewDataSource {
         if self.isSearch {
             createPostVC.postId = viewModel?.postsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
             self.navigationController?.pushViewController(createPostVC, animated: true)
-        }else{
+        } else {
             createPostVC.postId = viewModel?.postsListDataAtIndex(index: indexPath.row)?.id ?? 0
             self.navigationController?.pushViewController(createPostVC, animated: true)
         }
     }
-    
 }

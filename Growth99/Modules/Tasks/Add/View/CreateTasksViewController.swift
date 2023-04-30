@@ -51,6 +51,7 @@ class CreateTasksViewController: UIViewController {
     func setUPUI() {
         leadButton.addTarget(self, action: #selector(CreateTasksViewController.buttonAction(_ :)), for:.touchUpInside)
         patientButton.addTarget(self, action: #selector(CreateTasksViewController.buttonAction(_ :)), for:.touchUpInside)
+        DeadlineTextField.tintColor = .clear
         DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         buttons = [leadButton, patientButton]
     }

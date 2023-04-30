@@ -58,15 +58,16 @@ class CreatePostViewController: UIViewController {
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
         self.viewModel?.getSocialMediaPostLabelsList()
-        self.scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
-        
-        self.scheduleTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromButtonPressed), mode: .time)
+        scheduleDateTextField.tintColor = .clear
+        scheduleTimeTextField.tintColor = .clear
+        scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        scheduleTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromButtonPressed), mode: .time)
         if isPosted == true {
             saveButton.isUserInteractionEnabled = false
         }
         if self.screenName == "Edit" {
             self.title = "Edit Post"
-        }else{
+        } else {
             self.title = "Create Post"
         }
     }
@@ -246,7 +247,7 @@ extension CreatePostViewController: CreatePostViewControllerProtocol {
     func socialProfilesListRecived(){
         if screenName == "Edit" {
             self.viewModel?.getSocialPost(postId: postId)
-        }else{
+        } else {
             self.view.HideSpinner()
         }
     }
@@ -272,7 +273,7 @@ extension CreatePostViewController: CreatePostViewControllerProtocol {
 
 extension CreatePostViewController {
    
-    @IBAction func openLabelListDropDwon(sender: UITextField) {
+    @IBAction func openLabelListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.getSocialMediaPostLabelsListData ?? []
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
@@ -292,7 +293,7 @@ extension CreatePostViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openSocialChanelListDropDwon(sender: UITextField) {
+    @IBAction func openSocialChanelListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.getSocialProfilesListData ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.socialChannel

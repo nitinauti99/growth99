@@ -63,6 +63,7 @@ class EditTasksViewController: UIViewController{
         self.subView.addBottomShadow(color: .gray)
         leadButton.addTarget(self, action: #selector(EditTasksViewController.buttonAction(_ :)), for:.touchUpInside)
         patientButton.addTarget(self, action: #selector(EditTasksViewController.buttonAction(_ :)), for:.touchUpInside)
+        DeadlineTextField.tintColor = .clear
         DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         buttons = [leadButton, patientButton]
         let taskDetail = viewModel?.taskDetailData

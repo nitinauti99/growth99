@@ -40,6 +40,7 @@ class CreatePateintViewContoller: UIViewController {
         self.viewModel = CreatePateintViewModel(delegate: self)
         self.title = Constant.Profile.createPatient
         dateFormater = DateFormater()
+        dateTextField.tintColor = .clear
         dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
     }
     

@@ -106,7 +106,7 @@ class FormDetailViewModel {
             switch result {
             case .success(let response):
                 if(response.statusCode == 200){
-                    self.delegate?.questionRemovedSuccefully(mrssage: "Question deleted successf")
+                    self.delegate?.questionRemovedSuccefully(mrssage: "Question deleted successfully")
                 }else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "Internal server error")
                 } else{

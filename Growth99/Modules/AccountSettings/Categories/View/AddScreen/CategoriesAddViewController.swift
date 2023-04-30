@@ -23,9 +23,9 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     var allClinics = [Clinics]()
     
     var selectedClincs = [Clinics]()
+    var selectedClincIds = [Int]()
     var allCategoriesName = [String]()
     
-    var selectedClincIds = [Int]()
     var categoriesAddViewModel: CategoriesAddEditViewModelProtocol?
     var screenTitle: String = Constant.Profile.addCategories
     var categoryName: String = String.blank

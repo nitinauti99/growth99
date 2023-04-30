@@ -47,7 +47,8 @@ class CreatePateintsTasksViewController: UIViewController {
     
     func setUPUI() {
         self.statusTextField.text = "InComplete"
-        self.DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        DeadlineTextField.tintColor = .clear
+        DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         self.descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         self.descriptionTextView.layer.borderWidth = 1.0;
     }

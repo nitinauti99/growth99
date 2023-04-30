@@ -42,7 +42,8 @@ class PateintEditViewController: UIViewController {
         self.view.ShowSpinner()
         self.viewModel?.getPateintList(pateintId: pateintId)
         self.dateFormater = DateFormater()
-        self.dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+        dateTextField.tintColor = .clear
+        dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
     }
     
     @objc func dateFromButtonPressed() {

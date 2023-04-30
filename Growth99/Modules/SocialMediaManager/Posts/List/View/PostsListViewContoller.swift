@@ -102,7 +102,6 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
     func postedPosts(cell: PostsListTableViewCell, index: IndexPath) {
         let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
         createPostVC.isPosted = true
-        
         if self.isSearch {
             createPostVC.postId = viewModel?.postsFilterListDataAtIndex(index: index.row)?.id ?? 0
             self.navigationController?.pushViewController(createPostVC, animated: true)

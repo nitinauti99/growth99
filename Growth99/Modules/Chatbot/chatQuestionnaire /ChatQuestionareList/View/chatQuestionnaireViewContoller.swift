@@ -58,7 +58,7 @@ class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewCon
             consentsId =  viewModel?.chatQuestionnaireFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         
-        let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(consentsName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Chat Questionnaires" , message: "Are you sure you want to delete \n\(consentsName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()

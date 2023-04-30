@@ -154,7 +154,7 @@ class DateFormater: DateFormaterProtocol {
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)
     }
-
+    
     func dateFormatterStringBirthDate(textField: CustomTextField) -> String {
         var datePicker = UIDatePicker()
         datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()

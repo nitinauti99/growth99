@@ -95,15 +95,22 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                        <real key="value" value="12"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="openLabelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchDown" id="H74-kO-Dcq"/>
                                                     <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="RdY-ku-LfI"/>
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="lQB-Pu-1Vl"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttD-h1-RJZ">
+                                                <rect key="frame" x="35" y="156" width="354" height="45"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                <connections>
+                                                    <action selector="openLabelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rMK-xX-I8L"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-rO-1CF">
                                                 <rect key="frame" x="23" y="226" width="366" height="20"/>
                                                 <constraints>
@@ -138,9 +145,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="celenderIcon"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                        <real key="value" value="12"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Ro1-Jr-Y24"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZZ-gp-S9v">
                                                 <rect key="frame" x="23" y="575" width="371" height="20"/>
@@ -164,7 +174,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QDp-hp-wog" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="23" y="603" width="366" height="45"/>
+                                                <rect key="frame" x="35" y="603" width="354" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="R5Q-iu-tWc"/>
                                                 </constraints>
@@ -176,15 +186,23 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="dropDown"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                        <real key="value" value="15"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="openSocialChanelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchDown" id="hTK-w3-IJj"/>
                                                     <action selector="textFieldDidChange:" destination="Y6W-OH-hqX" eventType="editingChanged" id="KO5-aU-xdp"/>
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="tLf-La-8lK"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zH-Fc-k8N">
+                                                <rect key="frame" x="35" y="603" width="354" height="45"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                <connections>
+                                                    <action selector="openLabelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9qT-EK-XY9"/>
+                                                    <action selector="openSocialChanelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="A8K-id-Idc"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFg-cu-bDz">
                                                 <rect key="frame" x="23" y="915" width="110" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -237,7 +255,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uS2-xx-4f9" customClass="CustomTextView" customModule="Growth99" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="450" width="354" height="100"/>
+                                                <rect key="frame" x="30" y="450" width="359" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="9Lc-lJ-EW0"/>
@@ -339,9 +357,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="celenderIcon"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                        <real key="value" value="12"/>
+                                                        <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="BEK-VE-bTW"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0T-xP-QWW">
                                                 <rect key="frame" x="23" y="324" width="366" height="20"/>
@@ -383,11 +404,16 @@
                                             <constraint firstItem="DmH-s7-7sN" firstAttribute="trailing" secondItem="jZZ-gp-S9v" secondAttribute="trailing" id="C7s-VM-zif"/>
                                             <constraint firstItem="jdN-Lv-IAr" firstAttribute="leading" secondItem="lrc-7C-of5" secondAttribute="leading" id="D4z-md-HnP"/>
                                             <constraint firstItem="QDp-hp-wog" firstAttribute="top" secondItem="jZZ-gp-S9v" secondAttribute="bottom" constant="8" id="GmN-fN-Yb8"/>
+                                            <constraint firstItem="ttD-h1-RJZ" firstAttribute="top" secondItem="jdN-Lv-IAr" secondAttribute="top" id="Hof-gQ-eTZ"/>
+                                            <constraint firstItem="ttD-h1-RJZ" firstAttribute="leading" secondItem="jdN-Lv-IAr" secondAttribute="leading" id="I8a-ve-XvU"/>
                                             <constraint firstItem="ocw-2x-GZb" firstAttribute="top" secondItem="QDp-hp-wog" secondAttribute="bottom" constant="15" id="NX2-Bw-xvk"/>
+                                            <constraint firstItem="QDp-hp-wog" firstAttribute="leading" secondItem="4wi-zj-pub" secondAttribute="leading" id="Ntr-gt-z3h"/>
                                             <constraint firstItem="7J4-lJ-Ipw" firstAttribute="leading" secondItem="zw0-qK-huL" secondAttribute="leadingMargin" constant="15" id="O5f-wg-Ko4"/>
                                             <constraint firstItem="E2H-iD-kFf" firstAttribute="top" secondItem="lrc-7C-of5" secondAttribute="bottom" constant="25" id="OEx-QL-5yV"/>
                                             <constraint firstItem="LoW-f7-VgA" firstAttribute="leading" secondItem="jdN-Lv-IAr" secondAttribute="leading" id="Ong-zX-qPR"/>
                                             <constraint firstItem="4wi-zj-pub" firstAttribute="trailing" secondItem="LoW-f7-VgA" secondAttribute="trailing" id="Ovg-Fh-r8L"/>
+                                            <constraint firstItem="uS2-xx-4f9" firstAttribute="trailing" secondItem="4wi-zj-pub" secondAttribute="trailing" id="R7M-Db-njI"/>
+                                            <constraint firstItem="ttD-h1-RJZ" firstAttribute="trailing" secondItem="jdN-Lv-IAr" secondAttribute="trailing" id="Rfg-UL-ghV"/>
                                             <constraint firstItem="Iwk-mz-23o" firstAttribute="leading" secondItem="WFg-cu-bDz" secondAttribute="trailing" constant="20" id="RlU-RA-N0N"/>
                                             <constraint firstItem="711-uj-wVh" firstAttribute="leading" secondItem="jZZ-gp-S9v" secondAttribute="leading" id="SWY-Nl-B12"/>
                                             <constraint firstItem="p6e-rO-1CF" firstAttribute="leading" secondItem="E2H-iD-kFf" secondAttribute="leading" id="Sw0-e0-9Bg"/>
@@ -397,26 +423,29 @@
                                             <constraint firstItem="t1g-dT-9q7" firstAttribute="trailing" secondItem="p6e-rO-1CF" secondAttribute="trailing" id="Z6a-Ex-XGD"/>
                                             <constraint firstItem="QDp-hp-wog" firstAttribute="trailing" secondItem="t1g-dT-9q7" secondAttribute="trailing" id="Zie-RQ-79B"/>
                                             <constraint firstItem="jZZ-gp-S9v" firstAttribute="leading" secondItem="t1g-dT-9q7" secondAttribute="leading" id="Zj2-8i-MLB"/>
+                                            <constraint firstItem="9zH-Fc-k8N" firstAttribute="leading" secondItem="QDp-hp-wog" secondAttribute="leading" id="Zol-9o-SZt"/>
                                             <constraint firstItem="jZZ-gp-S9v" firstAttribute="top" secondItem="uS2-xx-4f9" secondAttribute="bottom" constant="25" id="b39-eR-W3p"/>
                                             <constraint firstItem="WFg-cu-bDz" firstAttribute="top" secondItem="DmH-s7-7sN" secondAttribute="bottom" constant="30" id="b8H-PT-gFO"/>
                                             <constraint firstItem="uS2-xx-4f9" firstAttribute="leading" secondItem="zw0-qK-huL" secondAttribute="leading" constant="30" id="cRu-eI-SxS"/>
+                                            <constraint firstItem="9zH-Fc-k8N" firstAttribute="bottom" secondItem="QDp-hp-wog" secondAttribute="bottom" id="eoy-Vb-gOb"/>
                                             <constraint firstAttribute="trailing" secondItem="jZZ-gp-S9v" secondAttribute="trailing" constant="20" id="fKS-1E-MOJ"/>
                                             <constraint firstItem="lrc-7C-of5" firstAttribute="leading" secondItem="zw0-qK-huL" secondAttribute="leading" constant="35" id="fZZ-xS-vBa"/>
                                             <constraint firstItem="E2H-iD-kFf" firstAttribute="leading" secondItem="7J4-lJ-Ipw" secondAttribute="leading" id="gRH-vh-pRg"/>
-                                            <constraint firstItem="QDp-hp-wog" firstAttribute="leading" secondItem="t1g-dT-9q7" secondAttribute="leading" id="hac-ZC-SoA"/>
                                             <constraint firstItem="WFg-cu-bDz" firstAttribute="leading" secondItem="711-uj-wVh" secondAttribute="leading" id="k75-f2-W7D"/>
                                             <constraint firstItem="4wi-zj-pub" firstAttribute="leading" secondItem="LoW-f7-VgA" secondAttribute="leading" id="kMr-E6-bW4"/>
                                             <constraint firstItem="4wi-zj-pub" firstAttribute="top" secondItem="Z0T-xP-QWW" secondAttribute="bottom" constant="8" id="kgy-ZE-wPn"/>
                                             <constraint firstAttribute="trailing" secondItem="lrc-7C-of5" secondAttribute="trailing" constant="25" id="o1h-FC-z4G"/>
                                             <constraint firstItem="711-uj-wVh" firstAttribute="top" secondItem="QDp-hp-wog" secondAttribute="bottom" constant="150" id="oqa-NM-D4p"/>
                                             <constraint firstItem="LoW-f7-VgA" firstAttribute="trailing" secondItem="jdN-Lv-IAr" secondAttribute="trailing" id="pSA-rU-yuO"/>
+                                            <constraint firstItem="9zH-Fc-k8N" firstAttribute="top" secondItem="QDp-hp-wog" secondAttribute="top" id="qQF-kY-fnP"/>
                                             <constraint firstItem="lrc-7C-of5" firstAttribute="top" secondItem="7J4-lJ-Ipw" secondAttribute="bottom" constant="8" id="qzl-O2-yfa"/>
                                             <constraint firstItem="DmH-s7-7sN" firstAttribute="leading" secondItem="jZZ-gp-S9v" secondAttribute="leading" id="r7g-Fx-c7A"/>
-                                            <constraint firstAttribute="trailing" secondItem="uS2-xx-4f9" secondAttribute="trailing" constant="30" id="sF8-lf-hgk"/>
+                                            <constraint firstItem="ttD-h1-RJZ" firstAttribute="bottom" secondItem="jdN-Lv-IAr" secondAttribute="bottom" id="tzc-iJ-Cm5"/>
                                             <constraint firstItem="jdN-Lv-IAr" firstAttribute="trailing" secondItem="lrc-7C-of5" secondAttribute="trailing" id="ueC-8q-Yl1"/>
                                             <constraint firstItem="t1g-dT-9q7" firstAttribute="leading" secondItem="p6e-rO-1CF" secondAttribute="leading" id="urm-8m-tJj"/>
                                             <constraint firstItem="Z0T-xP-QWW" firstAttribute="trailing" secondItem="p6e-rO-1CF" secondAttribute="trailing" id="vDL-wP-CFo"/>
                                             <constraint firstItem="Z0T-xP-QWW" firstAttribute="leading" secondItem="p6e-rO-1CF" secondAttribute="leading" id="xA4-DW-26Z"/>
+                                            <constraint firstItem="9zH-Fc-k8N" firstAttribute="trailing" secondItem="QDp-hp-wog" secondAttribute="trailing" id="xJy-jF-a5p"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -460,19 +489,19 @@
     </scenes>
     <designables>
         <designable name="4wi-zj-pub">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="LoW-f7-VgA">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="QDp-hp-wog">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="jdN-Lv-IAr">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="lrc-7C-of5">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
     </designables>
     <resources>

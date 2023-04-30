@@ -57,7 +57,7 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
             notificationName = viewModel?.getNotificationFilterDataAtIndexPath(index: index.row)?.notificationType ?? String.blank
             notificationId =  viewModel?.getNotificationFilterDataAtIndexPath(index: index.row)?.id ?? 0
         }
-        let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(notificationName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Notification" , message: "Are you sure you want to delete \n\(notificationName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()

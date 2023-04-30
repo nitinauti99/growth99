@@ -293,8 +293,12 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let addPostVC = UIStoryboard(name: "AddPostViewController", bundle: nil).instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        self.navigationController?.pushViewController(addPostVC, animated: true)
+        let section = self.sections[indexPath.section]
+        let headline = section.headlines[indexPath.row]
+        let editPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        editPostVC.screenName = "Edit"
+        editPostVC.postId = headline.id ?? 0
+        self.navigationController?.pushViewController(editPostVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -302,8 +306,8 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
-        let addEventVC = UIStoryboard(name: "AddPostViewController", bundle: nil).instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        self.navigationController?.pushViewController(addEventVC, animated: true)
+        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        self.navigationController?.pushViewController(createPostVC, animated: true)
     }
     
     @IBAction func calenderSegmentSelection(_ sender: Any) {
@@ -333,8 +337,8 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
-        let addEventVC = UIStoryboard(name: "AddPostViewController", bundle: nil).instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
-        self.navigationController?.pushViewController(addEventVC, animated: true)
+        let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
+        self.navigationController?.pushViewController(createPostVC, animated: true)
     }
 }
 
