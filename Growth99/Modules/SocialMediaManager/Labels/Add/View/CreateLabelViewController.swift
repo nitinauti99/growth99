@@ -22,7 +22,8 @@ class CreateLabelViewController: UIViewController {
     var viewModel: CreateLabelViewModelProtocol?
     var labelId = Int()
     var screenName = String()
-    
+    var isScreenFrom = String()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateLabelViewModel(delegate: self)

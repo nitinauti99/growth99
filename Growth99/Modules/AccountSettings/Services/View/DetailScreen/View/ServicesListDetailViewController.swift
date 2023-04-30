@@ -259,16 +259,16 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     func serviceImageUploadReceived(responseMessage: String) {
         self.view.HideSpinner()
         if responseMessage == Constant.Profile.createService {
-            self.view.showToast(message: "Service created sucessfully", color: .black)
+            self.view.showToast(message: "Service created sucessfully", color: UIColor().successMessageColor())
         } else {
-            self.view.showToast(message: "Service updated sucessfully", color: .black)
+            self.view.showToast(message: "Service updated sucessfully", color: UIColor().successMessageColor())
         }
         self.navigationController?.popViewController(animated: true)
     }
 
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {

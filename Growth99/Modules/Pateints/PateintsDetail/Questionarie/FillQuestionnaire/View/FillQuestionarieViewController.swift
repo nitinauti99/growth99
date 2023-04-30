@@ -114,7 +114,7 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
     
     func errorReceived(error: String) {
         view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func cancelButtonClicked(sender: UIButton) {

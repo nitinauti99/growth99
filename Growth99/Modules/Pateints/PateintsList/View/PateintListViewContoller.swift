@@ -86,12 +86,12 @@ extension PateintListViewContoller: PateintListViewContollerProtocol {
     
     func pateintRemovedSuccefully(mrssage: String){
         viewModel?.getPateintList()
-        self.view.showToast(message: mrssage, color: .black)
+        self.view.showToast(message: mrssage, color: UIColor().successMessageColor())
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
 }

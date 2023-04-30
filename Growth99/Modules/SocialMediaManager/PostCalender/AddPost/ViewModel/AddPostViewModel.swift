@@ -13,6 +13,7 @@ protocol AddPostViewModelProtocol {
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
     func uploadSelectedPostImage(image: UIImage)
+    func isValidHashTag(_ text: String)-> Bool
 }
 
 class AddPostViewModel: AddPostViewModelProtocol {
@@ -100,6 +101,14 @@ class AddPostViewModel: AddPostViewModelProtocol {
         textField.resignFirstResponder()
         timePicker.reloadInputViews()
         return formatter.string(from: timePicker.date)
+    }
+    
+    func isValidHashTag(_ text: String) -> Bool {
+        let pattern = "^#[a-zA-Z0-9_]+$"
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let range = NSRange(location: 0, length: text.utf16.count)
+        let matches = regex.matches(in: text, range: range)
+        return !matches.isEmpty
     }
 }
 

@@ -85,7 +85,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc func notificationReceived(_ notification: Notification) {
-        self.view.showToast(message: "Post created sucessfully", color: .black)
+        self.view.showToast(message: "Post created sucessfully", color: UIColor().successMessageColor())
         postCalenderTableview.reloadData()
     }
     
@@ -119,7 +119,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

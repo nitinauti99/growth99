@@ -90,6 +90,7 @@ struct Constant {
         static let services = "Services"
         static let users = "Users"
         static let leadHistroy = "Lead Data"
+        static let questionnaire = "Questionnaire"
         static let questionnaireDetails = "View Questionnaire"
         static let unansweredQuestionList = "Unanswered Question List"
         static let pateint = "Patients"

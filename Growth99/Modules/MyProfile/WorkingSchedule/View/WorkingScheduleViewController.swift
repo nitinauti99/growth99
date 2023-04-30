@@ -88,7 +88,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func clinicsRecived() {
@@ -144,7 +144,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     func apiErrorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func wcListResponseRecived(apiResponse: [WorkingScheduleListModel]) {
@@ -201,13 +201,13 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                             return
                         }
                         if startTime < endTime {
-                            self.view.showToast(message: "Start time is before end time", color: .black)
+                            self.view.showToast(message: "Start time is before end time", color: .red)
                             return
                         } else if startTime == endTime {
-                            self.view.showToast(message: "Start time and end time cannot be same", color: .black)
+                            self.view.showToast(message: "Start time and end time cannot be same", color: .red)
                             return
                         } else if startTime > endTime {
-                            self.view.showToast(message: "Start time is after end time", color: .black)
+                            self.view.showToast(message: "Start time is after end time", color: .red)
                             return
                         } else {
                             isValidateArray.insert(true, at: childIndex)

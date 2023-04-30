@@ -52,7 +52,7 @@ class CreateQuestionViewContoller: UIViewController, CreateQuestionViewContoller
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func cancelAction(sender: UIButton) {

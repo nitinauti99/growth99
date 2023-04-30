@@ -181,7 +181,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     func eventDataReceived() {
@@ -201,7 +201,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
 
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .black)
+        self.view.showToast(message: error, color: .red)
     }
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {
