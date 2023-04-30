@@ -238,6 +238,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.titleLabel?.textColor = UIColor.red
                         cell.statusButton.layer.borderColor = UIColor.red.cgColor
                     }
+                    cell.timeLabel.text = postCalenderViewModel?.serverToLocalCalender(date: headline.scheduledDate ?? "")
                     cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -260,6 +261,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.layer.borderColor = UIColor.red.cgColor
                     }
                     cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
+                    cell.timeLabel.text = postCalenderViewModel?.serverToLocalCalender(date: headline.scheduledDate ?? "")
                     cell.selectionStyle = .none
                     return cell
                 }
@@ -280,6 +282,7 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.titleLabel?.textColor = UIColor.red
                         cell.statusButton.layer.borderColor = UIColor.red.cgColor
                     }
+                    cell.timeLabel.text = postCalenderViewModel?.serverToLocalCalender(date: headline.scheduledDate ?? "")
                     cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -290,12 +293,8 @@ class PostCalenderViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       /* let section = self.sections[indexPath.section]
-        let headline = section.headlines[indexPath.row]
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-        editVC.appointmentId = headline.id
-        editVC.editBookingHistoryData = headline
-        navigationController?.pushViewController(editVC, animated: true)*/
+        let addPostVC = UIStoryboard(name: "AddPostViewController", bundle: nil).instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
+        self.navigationController?.pushViewController(addPostVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

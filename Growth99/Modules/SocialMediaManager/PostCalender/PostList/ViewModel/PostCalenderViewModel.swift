@@ -19,6 +19,7 @@ protocol PostCalenderViewModelProtocol {
     func appointmentListCountLessthan() -> Int
     
     func serverToLocal(date: String) -> String
+    func serverToLocalCalender(date: String) -> String
 }
 
 
@@ -123,6 +124,18 @@ class PostCalenderViewModel: PostCalenderViewModelProtocol {
         return outFormatter.string(from: date)
     }
     
+    func serverToLocalCalender(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let dateString = dateFormatter.date(from: date) {
+            dateFormatter.dateFormat = "h:mm a"
+            let timeString = dateFormatter.string(from: dateString)
+            return timeString
+        }
+        return ""
+    }
+    
     func serverToLocalTimeInput(timeString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -134,5 +147,4 @@ class PostCalenderViewModel: PostCalenderViewModelProtocol {
         let date24 = dateFormatter.string(from: date)
         return date24
     }
-    
 }
