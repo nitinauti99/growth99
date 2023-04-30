@@ -50,7 +50,7 @@ class MediaTagsAddViewModel {
             switch result {
             case .success(let mediaTagsDetails):
                 self.mediaTagsDetailsDict = mediaTagsDetails
-                self.delegate?.saveMediaTagList(responseMessage:"Media Tags details Saved")
+                self.delegate?.saveMediaTagList(responseMessage:"Tag updated successfully.")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -67,7 +67,7 @@ class MediaTagsAddViewModel {
             switch result {
             case .success(let mediaTagsDetails):
                 self.mediaTagsDetailsDict = mediaTagsDetails
-                self.delegate?.saveMediaTagList(responseMessage:"Media Tags details Saved")
+                self.delegate?.saveMediaTagList(responseMessage:"Tag created successfully.")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

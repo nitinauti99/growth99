@@ -16,13 +16,14 @@ protocol MediaTagsAddViewControllerProtocol: AnyObject {
 
 class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerProtocol {
     
-    @IBOutlet private weak var MediaTagsTextField: CustomTextField!
+    @IBOutlet weak var MediaTagsTextField: CustomTextField!
     @IBOutlet private weak var MediaTagsLBI: UILabel!
     
     var viewModel: MediaTagsAddViewModelProtocol?
     var mediaTagId = Int()
     var mediaTagScreenName = String()
-    
+    var mediaTagsList: [MediaTagListModel]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = MediaTagsAddViewModel(delegate: self)
@@ -36,11 +37,11 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
         super.viewWillAppear(animated)
         if mediaTagScreenName == "Edit Screen" {
             self.MediaTagsLBI.text = "Edit Media Tag"
-            self.title = "Edit Tag"
+            self.title = "Edit Media Tag"
             self.MediaTagsTextField.text = viewModel?.mediaTagsDetailsData?.name ?? String.blank
         }else{
             self.MediaTagsLBI.text = "Create Media Tag"
-            self.title = "Add Tag"
+            self.title = "Create Media Tag"
         }
     }
     
@@ -62,8 +63,10 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
     
     func saveMediaTagList(responseMessage:String) {
         self.view.HideSpinner()
-        self.view.showToast(message: responseMessage, color: .black)
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+          self.navigationController?.popViewController(animated: true)
+      })
     }
     
     @IBAction func cancelAction(sender: UIButton) {
@@ -75,10 +78,15 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
             MediaTagsTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
-        self.view.ShowSpinner()
         if mediaTagScreenName == "Edit Screen" {
+            self.view.ShowSpinner()
             viewModel?.saveMediaTagsDetails(mediaTagId: mediaTagId, name: MediaTagsTextField.text ?? String.blank)
         }else{
+            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text}), isValuePresent.count > 0 {
+                self.MediaTagsTextField.showError(message: "Tag with this name already present.")
+                return
+            }
+            self.view.ShowSpinner()
             viewModel?.createMediaTagsDetails(name: MediaTagsTextField.text ?? String.blank)
         }
     }

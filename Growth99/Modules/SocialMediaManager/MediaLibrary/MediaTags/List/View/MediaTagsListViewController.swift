@@ -47,6 +47,7 @@ class MediaTagsListViewController: UIViewController {
     
     @objc func creatUser() {
         let mediaTagsAddVC = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
+        mediaTagsAddVC.mediaTagsList = viewModel?.getMediaTagsData
         mediaTagsAddVC.mediaTagScreenName = "Create Screen"
         self.navigationController?.pushViewController(mediaTagsAddVC, animated: true)
     }
