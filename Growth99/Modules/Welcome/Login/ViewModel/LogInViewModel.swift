@@ -24,7 +24,7 @@ class LogInViewModel {
     let user = UserRepository.shared
     var bussinessData: bussinessDetailInfoModel?
     var bussinessSelcetionData: [BussinessSelectionModel] = []
-
+    
     init(delegate: LogInViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -67,13 +67,13 @@ class LogInViewModel {
             }
         }
     }
-
+    
     func loginValidate(email: String, password: String) {
         let parameter: Parameters = ["email": email,
                                      "password": password,
                                      "businessId": self.user.bussinessId ?? 0
         ]
-        self.requestManager.request(forPath: ApiUrl.auth, method: .POST,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.auth, method: .POST, task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result<LoginModel, GrowthNetworkError>) in
             
             switch result {
             case .success(let logInData):
@@ -83,8 +83,8 @@ class LogInViewModel {
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
                 if error.response?.statusCode == 401 {
-                    self.delegate?.errorReceived(error: "Authentication failed")
-                }else{
+                    self.delegate?.errorReceived(error: "The email or password is incorrect. Please check and try again.")
+                } else {
                     self.delegate?.errorReceived(error: error.localizedDescription)
                 }
                 print("Error while performing request \(error)")
