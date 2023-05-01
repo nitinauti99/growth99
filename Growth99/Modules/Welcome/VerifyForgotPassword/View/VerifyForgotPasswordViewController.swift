@@ -101,7 +101,7 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     }
     
     func openLoginView() {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
