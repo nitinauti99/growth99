@@ -34,6 +34,8 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
 
     @IBOutlet weak var appointmentBookingUrl: CustomTextField!
     @IBOutlet weak var enableAppointment: UIButton!
+    @IBOutlet weak var enableAppointmentLBI: UILabel!
+
     @IBOutlet weak var enableInPersonAppointment: UIButton!
     @IBOutlet weak var enableVirtualAppointment: UIButton!
 
@@ -93,6 +95,32 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
             sender.isSelected = true
             self.appointmentViewHight.constant = 390
             self.appointmentView.isHidden = false
+        }
+    }
+    
+    @IBAction func enableInPersonAppointment(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            if enableInPersonAppointment.isSelected == false &&
+                enableVirtualAppointment.isSelected == false{
+                enableAppointmentLBI.isHidden = false
+            }
+        } else {
+            sender.isSelected = true
+            enableAppointmentLBI.isHidden = true
+        }
+    }
+    
+    @IBAction func enableVirtualAppointment(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            if enableInPersonAppointment.isSelected == false &&
+                enableVirtualAppointment.isSelected == false{
+                enableAppointmentLBI.isHidden = false
+            }
+        } else {
+            sender.isSelected = true
+            enableAppointmentLBI.isHidden = true
         }
     }
     
@@ -178,6 +206,11 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         
         guard let textField = faqNotFoundMessage.text, !textField.isEmpty else {
             faqNotFoundMessageLBI.isHidden = false
+            return
+        }
+        
+        guard let textField = weeksToShow.text, !textField.isEmpty else {
+            weeksToShow.showError(message: " Weeks to show is required.")
             return
         }
         

@@ -9,6 +9,8 @@ import Foundation
 
 
 protocol CreateQuestionViewModelProtocol {
+    func updateQuestion(question: String, answer:String, referenceLink: String, chatQuestionId: Int, questionareId: Int)
+
     func createQuestion(question: String, answer:String, referenceLink: String, chatQuestionId: Int)
     func isValidUrl(url: String) -> Bool
 }
@@ -36,7 +38,7 @@ class CreateQuestionViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.chatQuestionCreated()
+                self.delegate?.chatQuestionCreated(message: "Question Created successfully.")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -44,6 +46,30 @@ class CreateQuestionViewModel {
         }
         
     }
+    
+    func updateQuestion(question: String, answer:String, referenceLink: String, chatQuestionId: Int, questionareId: Int){
+        let parameters: Parameters = [
+            "question": question,
+            "answer": answer,
+            "referenceLink": referenceLink,
+            "id": questionareId
+
+        ]
+        let finalURL = ApiUrl.createChatQuestion.appending("\(chatQuestionId)/chatquestions")
+        
+        self.requestManager.request(forPath: finalURL, method: .POST, headers: self.requestManager.Headers(),task:.requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
+                self.delegate?.chatQuestionUpdated(message: "Question added successfully.")
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
     
 }
 

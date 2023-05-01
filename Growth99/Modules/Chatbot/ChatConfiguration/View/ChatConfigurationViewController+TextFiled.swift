@@ -18,6 +18,22 @@ extension ChatConfigurationViewController: UITextFieldDelegate  {
                 return
             }
         }
+        
+        if textField == appointmentBookingUrl {
+            guard let url  = appointmentBookingUrl.text, let phoneURLValidate = viewModel?.isURLValid(url: url), phoneURLValidate else {
+                appointmentBookingUrl.showError(message: "Booking URL is invalid (should start with http)")
+                return
+            }
+        }
+        
+        if textField == weeksToShow {
+            guard let textField = weeksToShow.text, !textField.isEmpty else {
+                weeksToShow.showError(message: " Weeks to show is required.")
+                return
+            }
+        }
+        
+        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

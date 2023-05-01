@@ -10,6 +10,7 @@ import Foundation
 protocol ChatConfigurationViewModelProtocol {
     func getChatConfigurationDataList()
     func updateChatConfigData(param: [String: Any])
+    func isURLValid(url: String) -> Bool
    
     var getChatConfigurationData: ChatConfigurationModel { get }
 }
@@ -58,4 +59,11 @@ extension ChatConfigurationViewModel: ChatConfigurationViewModelProtocol {
     var getChatConfigurationData: ChatConfigurationModel{
         return self.chatConfigurationData!
     }
+    
+    func isURLValid(url: String) -> Bool {
+        let regex = Constant.Regex.urlValidation
+        let isURL = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isURL.evaluate(with: url)
+    }
+
 }

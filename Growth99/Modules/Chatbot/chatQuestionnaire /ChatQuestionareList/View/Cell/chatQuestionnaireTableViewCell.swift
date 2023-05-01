@@ -8,7 +8,8 @@
 import UIKit
 
 protocol chatQuestionnaireTableViewCellDelegate: AnyObject {
-    func removePatieint(cell: chatQuestionnaireTableViewCell, index: IndexPath)
+    func removeChatQuestionnaire(cell: chatQuestionnaireTableViewCell, index: IndexPath)
+    func editChatQuestionnaire(cell: chatQuestionnaireTableViewCell, index: IndexPath)
 }
 
 class chatQuestionnaireTableViewCell: UITableViewCell {
@@ -52,7 +53,12 @@ class chatQuestionnaireTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButtonPressed() {
-        self.delegate?.removePatieint(cell: self, index: indexPath)
+        self.delegate?.removeChatQuestionnaire(cell: self, index: indexPath)
     }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editChatQuestionnaire(cell: self, index: indexPath)
+    }
+    
     
 }

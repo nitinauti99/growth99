@@ -47,7 +47,8 @@ class ChatSessionListViewModel {
             let searchText = searchText.lowercased()
             let nameMatch = task.email?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            let phone = String(task.phone ?? "").prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch || idMatch || phone
         }
     }
     

@@ -41,7 +41,8 @@ extension CreateChatQuestionareViewController: UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "CreateQuestionViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreateQuestionViewContoller") as! CreateQuestionViewContoller
         detailController.screenName = "Edit Screen"
-       
+        detailController.chatQuestionareId = chatQuestionareId
+
         if isSearch {
             detailController.chatQuestionData = viewModel?.chatQuestionnaireQuestionFilterDataAtIndex(index: indexPath.row)
         }else{

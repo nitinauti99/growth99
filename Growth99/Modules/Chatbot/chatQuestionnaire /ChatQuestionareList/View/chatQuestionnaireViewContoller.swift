@@ -14,7 +14,7 @@ protocol chatQuestionnaireViewContollerProtocol {
     func consentsRemovedSuccefully(mrssage: String)
 }
 
-class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewContollerProtocol,chatQuestionnaireTableViewCellDelegate {
+class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewContollerProtocol {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -48,7 +48,40 @@ class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewCon
         searchBar.delegate = self
     }
     
-    func removePatieint(cell: chatQuestionnaireTableViewCell, index: IndexPath) {
+    @objc func creatUser() {
+        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
+        self.navigationController?.pushViewController(createUserVC, animated: true)
+    }
+    
+    @objc func getPateintList() {
+        self.view.ShowSpinner()
+        self.viewModel?.getchatQuestionnaire()
+    }
+}
+
+extension chatQuestionnaireViewContoller {
+   
+    func consentsRemovedSuccefully(mrssage: String) {
+        self.view.showToast(message: mrssage,color: UIColor().successMessageColor())
+        self.viewModel?.getchatQuestionnaire()
+    }
+        
+    func ConsentsTemplatesDataRecived(){
+        self.view.HideSpinner()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+     }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .red)
+    }
+}
+
+extension chatQuestionnaireViewContoller: chatQuestionnaireTableViewCellDelegate {
+   
+    func removeChatQuestionnaire(cell: chatQuestionnaireTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var consentsId = Int()
             consentsName = viewModel?.chatQuestionnaireDataAtIndex(index: index.row)?.name ?? String.blank
@@ -71,31 +104,15 @@ class chatQuestionnaireViewContoller: UIViewController, chatQuestionnaireViewCon
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
-        self.navigationController?.pushViewController(createUserVC, animated: true)
-    }
-    
-    @objc func getPateintList() {
-        self.view.ShowSpinner()
-        self.viewModel?.getchatQuestionnaire()
-    }
-    
-    func consentsRemovedSuccefully(mrssage: String) {
-        self.view.showToast(message: mrssage,color: .red)
-        self.viewModel?.getchatQuestionnaire()
-    }
-        
-    func ConsentsTemplatesDataRecived(){
-        self.view.HideSpinner()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+    func editChatQuestionnaire(cell: chatQuestionnaireTableViewCell, index: IndexPath){
+        let detailController = UIStoryboard(name: "CreateChatQuestionareViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateChatQuestionareViewController") as! CreateChatQuestionareViewController
+        detailController.screenName = "Edit Screen"
+       
+        if isSearch {
+            detailController.chatQuestionareId = viewModel?.chatQuestionnaireFilterDataAtIndex(index: index.row)?.id ?? 0
+        }else{
+            detailController.chatQuestionareId = viewModel?.chatQuestionnaireDataAtIndex(index: index.row)?.id ?? 0
         }
-     }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
+         navigationController?.pushViewController(detailController, animated: true)
     }
-    
 }

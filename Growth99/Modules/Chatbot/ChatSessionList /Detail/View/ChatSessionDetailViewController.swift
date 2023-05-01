@@ -21,9 +21,10 @@ class ChatSessionDetailViewController: UIViewController {
     var viewModel: ChatSessionDetailViewModelProtocol?
     var isSearch: Bool = false
     var chatQuestionareId = Int()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.chatSessionList
+        self.title = "Chat Session"
         self.viewModel = ChatSessionDetailViewModel(delegate: self)
         self.registerCell()
     }

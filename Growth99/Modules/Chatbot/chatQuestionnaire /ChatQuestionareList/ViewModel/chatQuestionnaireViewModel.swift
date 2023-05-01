@@ -43,16 +43,16 @@ class chatQuestionnaireViewModel {
     }
     
     func removeChatQuestionnaire(chatQuestionnaireId: Int) {
-        let finaleUrl = ApiUrl.removeConsents + "\(chatQuestionnaireId)"
+        let finaleUrl = ApiUrl.chatQuestionare + "/\(chatQuestionnaireId)"
         
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.consentsRemovedSuccefully(mrssage: "chatQuestionnaire deleted successfully")
+                    self.delegate?.consentsRemovedSuccefully(mrssage: "Chat questionnaire deleted successfully.")
                 }else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "To Delete These chatQuestionnaire Form, Please remove it for the service attched")
+                    self.delegate?.errorReceived(error: "To Delete These Chat Questionnaire Form, Please remove it for the service attched")
                 }else{
                     self.delegate?.errorReceived(error: "response failed")
                 }

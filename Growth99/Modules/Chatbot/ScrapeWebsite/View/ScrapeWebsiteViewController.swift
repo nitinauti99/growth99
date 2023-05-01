@@ -34,7 +34,7 @@ class ScrapeWebsiteViewController: UIViewController, ScrapeWebsiteViewController
     
     func errorReceived(error: String){
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .green)
+        self.view.showToast(message: error, color: .red)
     }
    
     func scrapeWebsiteDataUpdatedSuccessfully(){
@@ -43,7 +43,27 @@ class ScrapeWebsiteViewController: UIViewController, ScrapeWebsiteViewController
     }
     
     @IBAction func saveButton(sender: UIButton) {
+        guard let textField = saveUrlTextField.text, !textField.isEmpty else {
+            self.saveUrlTextField.showError(message: "URL is required.")
+            return
+        }
+        
         self.view.ShowSpinner()
         viewModel?.updateChatConfigData(url: saveUrlTextField.text ?? "")
+    }
+}
+
+
+extension ScrapeWebsiteViewController: UITextFieldDelegate  {
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        
+        if textField == saveUrlTextField {
+            guard let textField = saveUrlTextField.text, !textField.isEmpty else {
+                self.saveUrlTextField.showError(message: "URL is required.")
+                return
+            }
+        }
+        
     }
 }

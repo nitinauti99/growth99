@@ -81,6 +81,7 @@ extension ChatBotTemplateViewController: ChatBotTemplateViewControllerProtocol {
     
     func setChatBotTemplateSuccefully(){
         self.view.ShowSpinner()
+        self.view.showToast(message: "Default Chatbot updated successfully", color: UIColor().successMessageColor())
         self.viewModel?.getChatBotTemplateList()
     }
 }
