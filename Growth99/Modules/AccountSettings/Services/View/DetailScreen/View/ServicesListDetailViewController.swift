@@ -263,7 +263,9 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         } else {
             self.view.showToast(message: "Service updated sucessfully", color: UIColor().successMessageColor())
         }
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     func errorReceived(error: String) {

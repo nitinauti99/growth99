@@ -23,13 +23,11 @@ extension LeadSourceUrlListViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "LeadSourceUrlListTableViewCell", for: indexPath) as? LeadSourceUrlListTableViewCell else { return UITableViewCell() }
-
         cell.delegate = self
         if isSearch {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
-        }else{
+        } else {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }
         return cell
@@ -38,14 +36,13 @@ extension LeadSourceUrlListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "LeadSourceUrlsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadSourceUrlsAddViewController") as! LeadSourceUrlAddViewController
         detailController.leadTagScreenName = "Edit Screen"
-
         if self.isSearch {
             detailController.leadSourceUrlId = viewModel?.leadTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
-        }else{
+        } else {
             detailController.leadSourceUrlId = viewModel?.leadTagsListDataAtIndex(index: indexPath.row)?.id ?? 0
         }
         navigationController?.pushViewController(detailController, animated: true)

@@ -204,7 +204,9 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     func triggerAppointmentCreateSucessfull() {
         self.view.HideSpinner()
         self.view.showToast(message: "Trigger created sucessfully", color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorReceived(error: String) {

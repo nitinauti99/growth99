@@ -45,12 +45,10 @@ class LeadSourceUrlListViewModel {
         self.requestManager.request(forPath: ApiUrl.removeLeadsourceurls.appending("\(leadId)"), method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.leadSoureceUrlRemovedSuccefully(message:"lead Sourece url deleted successfully")
+            case .success(_):
+                self.delegate?.leadSoureceUrlRemovedSuccefully(message:"Lead Source URL deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
             }
         }
     }

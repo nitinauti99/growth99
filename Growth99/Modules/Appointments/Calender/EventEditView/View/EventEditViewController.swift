@@ -197,7 +197,9 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
         self.view.showToast(message: "Appointment Cancelled Sucessfully", color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     func errorEventReceived(error: String) {

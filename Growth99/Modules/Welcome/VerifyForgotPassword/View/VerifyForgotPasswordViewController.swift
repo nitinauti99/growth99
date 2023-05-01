@@ -16,14 +16,13 @@ protocol VerifyForgotPasswordViewProtocol: AnyObject {
 
 class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPasswordViewProtocol {
     @IBOutlet weak var subView: UIView!
-    @IBOutlet weak var signUpLbl: HyperLinkLabel!
     @IBOutlet weak var signInLbl: HyperLinkLabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     @IBOutlet weak var confirmPasswordTextField: CustomTextField!
     @IBOutlet weak var veificationCodeTextField: CustomTextField!
-
+    
     var viewModel: VerifyForgotPasswordViewModelProtocol?
     var email = String()
     
@@ -39,9 +38,6 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
         self.continueButton.layer.cornerRadius = 12
         self.continueButton.clipsToBounds = true
         self.emailTextField.text = email
-        signUpLbl.updateHyperLinkText { _ in
-            self.openRegistrationView()
-        }
         signInLbl.updateHyperLinkText { _ in
             self.openLoginView()
         }
@@ -50,7 +46,9 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     func LoaginDataRecived(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: .systemGreen)
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorReceived(error: String) {
@@ -59,7 +57,7 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
     }
     
     @IBAction func sendRequestButton(sender: UIButton){
-       
+        
         guard let email = emailTextField.text, !email.isEmpty else {
             emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
@@ -72,12 +70,12 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
             passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return
         }
-
+        
         guard let passwordValidate = viewModel?.isValidPassword(password), passwordValidate else {
             passwordTextField.showError(message: Constant.ErrorMessage.passwordInvalidError)
             return
         }
-
+        
         guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {
             confirmPasswordTextField.showError(message: Constant.ErrorMessage.confirmPasswordEmptyError)
             return
@@ -97,12 +95,12 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
         self.viewModel?.verifyForgotPasswordRequest(email: email, password: password, confirmPassword: confirmPassword, confirmationPCode: veificationCode)
     }
     
-    func openRegistrationView(){
+    func openRegistrationView() {
         let RVC = UIStoryboard(name: "RegistrationViewController", bundle: nil).instantiateViewController(withIdentifier: "RegistrationViewController")
         self.navigationController?.pushViewController(RVC, animated: true)
     }
     
-    func openLoginView(){
+    func openLoginView() {
         self.navigationController?.popViewController(animated: true)
     }
     

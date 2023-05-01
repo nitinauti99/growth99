@@ -281,10 +281,9 @@ extension CreateLeadViewController: CreateLeadViewControllerProtocol {
     func LeadDataRecived() {
         view.HideSpinner()
         self.view.showToast(message: "Data submited successfully", color: UIColor().successMessageColor())
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
-        })
+        }
         NotificationCenter.default.post(name: Notification.Name("NotificationLeadList"), object: nil)
     }
     
