@@ -208,12 +208,12 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateViewControllerProtoc
         self.view.HideSpinner()
         if self.screenTitle == "Edit" {
             self.view.showToast(message: "SMS Template updated successfully.", color: UIColor().successMessageColor())
-        }else{
+        } else {
             self.view.showToast(message: "SMS Template saved successfully.", color: UIColor().successMessageColor())
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
-        })
+        }
     }
 
     func errorReceived(error: String) {

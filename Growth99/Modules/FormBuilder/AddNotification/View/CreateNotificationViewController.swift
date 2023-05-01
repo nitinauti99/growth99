@@ -91,7 +91,9 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     func createdNotificationSuccessfully(message: String) {
         self.view.HideSpinner()
         self.view.showToast(message: message, color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func saveButtonAction(sender: UIButton) {

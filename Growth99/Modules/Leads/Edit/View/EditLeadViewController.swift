@@ -125,9 +125,9 @@ extension EditLeadViewController: EditLeadViewControllerProtocol {
     }
     
     func updateLeadAmmountSaved() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
-        })
+        }
     }
     
     func updateLeadDadaRecived() {

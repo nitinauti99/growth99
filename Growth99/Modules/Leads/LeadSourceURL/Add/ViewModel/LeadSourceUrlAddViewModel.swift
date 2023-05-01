@@ -26,7 +26,6 @@ class LeadSourceUrlAddViewModel {
     
     func LeadSourceUrlDetails(leadTagId: Int) {
         let finaleUrl = ApiUrl.getLeadSourceUrl + "\(leadTagId)"
-
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< LeadSourceUrlListModel, GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagDict):
@@ -48,7 +47,7 @@ class LeadSourceUrlAddViewModel {
             guard let self = self else { return }
             switch result {
             case .success(_ ):
-                self.delegate?.updateLeadSourceUrlList(message:"Lead SourceUrl updated")
+                self.delegate?.updateLeadSourceUrlList(message:"Lead Source URL updated successfully.")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -64,7 +63,7 @@ class LeadSourceUrlAddViewModel {
             switch result {
             case .success(let pateintsTagDict):
                 self.LeadSourceUrlDetailsDict = pateintsTagDict
-                self.delegate?.createdLeadSourceUrlList(message:"Lead SourceUrl created")
+                self.delegate?.createdLeadSourceUrlList(message:"Lead Source URL created successfully.")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -74,7 +73,7 @@ class LeadSourceUrlAddViewModel {
 }
 
 extension LeadSourceUrlAddViewModel: LeadSourceUrlAddViewModelProtocol {
-
+    
     var LeadSourceUrlDetailsData: LeadSourceUrlListModel? {
         return self.LeadSourceUrlDetailsDict
     }

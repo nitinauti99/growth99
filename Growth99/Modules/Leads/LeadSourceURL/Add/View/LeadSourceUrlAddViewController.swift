@@ -13,14 +13,12 @@ protocol LeadSourceUrlAddViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
     func updateLeadSourceUrlList(message:String)
     func createdLeadSourceUrlList(message:String)
-
 }
 
 class LeadSourceUrlAddViewController: UIViewController, LeadSourceUrlAddViewControllerProtocol {
-  
     
-    @IBOutlet private weak var leadSourceUrlTextField: CustomTextField!
-    @IBOutlet private weak var leadSourceUrlLBI: UILabel!
+    @IBOutlet weak var leadSourceUrlTextField: CustomTextField!
+    @IBOutlet weak var leadSourceUrlLBI: UILabel!
     
     var viewModel: LeadSourceUrlAddViewModelProtocol?
     var leadSourceUrlId = Int()
@@ -40,7 +38,7 @@ class LeadSourceUrlAddViewController: UIViewController, LeadSourceUrlAddViewCont
         if leadTagScreenName == "Edit Screen" {
             self.leadSourceUrlLBI.text = "Edit Lead Source URL"
             self.title = Constant.Profile.editLeadSourceURL
-        }else{
+        } else {
             self.leadSourceUrlLBI.text = "Create Lead Source URL"
             self.title = Constant.Profile.addLeadSourceURL
         }
@@ -56,13 +54,17 @@ class LeadSourceUrlAddViewController: UIViewController, LeadSourceUrlAddViewCont
     func createdLeadSourceUrlList(message: String) {
         self.view.HideSpinner()
         self.view.showToast(message: message, color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func updateLeadSourceUrlList(message:String) {
         self.view.HideSpinner()
         self.view.showToast(message: message, color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorReceived(error: String) {
@@ -75,15 +77,15 @@ class LeadSourceUrlAddViewController: UIViewController, LeadSourceUrlAddViewCont
     }
     
     @IBAction func saveAction(sender: UIButton) {
-        if let textField = leadSourceUrlTextField.text,  textField == "" {
-            leadSourceUrlTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+        guard let textField = leadSourceUrlTextField.text, !textField.isEmpty else {
+            leadSourceUrlTextField.showError(message: "Source URL is required.")
+            return
         }
         self.view.ShowSpinner()
         if leadTagScreenName == "Edit Screen" {
             viewModel?.updateLeadSourceUrlDetails(leadTagId: leadSourceUrlId, name: leadSourceUrlTextField.text ?? String.blank)
-        }else{
+        } else {
             viewModel?.createLeadSourceUrlDetails(name: leadSourceUrlTextField.text ?? String.blank)
         }
     }
-    
 }

@@ -76,8 +76,9 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
     func consnetSendToPateintSuccessfully(){
         self.view.HideSpinner()
         self.view.showToast(message: "Consent send to patient.", color: UIColor().successMessageColor())
-
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

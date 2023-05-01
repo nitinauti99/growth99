@@ -84,7 +84,7 @@ class LeadSourceUrlListViewController: UIViewController, LeadSourceUrlListViewCo
             tagName = self.viewModel?.leadTagsListDataAtIndex(index: index.row)?.sourceUrl ?? String.blank
         }
         
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Lead Source URL", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()

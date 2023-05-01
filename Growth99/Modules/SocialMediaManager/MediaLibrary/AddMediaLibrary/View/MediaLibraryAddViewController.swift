@@ -23,15 +23,15 @@ class MediaLibraryAddViewController: UIViewController {
     @IBOutlet weak var browseImagButtonHight: NSLayoutConstraint!
     @IBOutlet weak var browseImageButton: UIButton!
     @IBOutlet weak var deleteBackroundImageButton: UIButton!
-
+    
     var viewModel: MediaLibraryAddViewModelProtocol?
     var mediaTagId = Int()
     var mediaTagScreenName = String()
     var imageName = String()
-
+    
     var selectedPostLabels = [Int]()
     var selectedTagList: [MediaTagListModel]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = MediaLibraryAddViewModel(delegate: self)
@@ -57,9 +57,9 @@ class MediaLibraryAddViewController: UIViewController {
         let item = viewModel?.getSocialMediaInfoDtails
         let libraryTag = (item?.socialTags ?? []).map({$0.libraryTag}).map({$0?.name})
         self.selectedTagList = (item?.socialTags ?? []).map({$0.libraryTag!}).map({$0})
-       
+        
         self.selectedPostLabels = (item?.socialTags ?? []).map({$0.libraryTag!}).map({$0.id ?? 0})
-       
+        
         self.mediaLibraryTextField.text = (libraryTag.map({$0 ?? ""})).joined(separator: ", ")
         self.mediaImage.sd_setImage(with: URL(string: item?.location ?? ""), placeholderImage: UIImage(named: "growthCircleIcon"), context: nil)
         self.mediaImage.isHidden = false
@@ -77,21 +77,21 @@ class MediaLibraryAddViewController: UIViewController {
     
     @IBAction func openSocialMediaTagList(sender: UIButton){
         let rolesArray = viewModel?.getSocialMediaTagListData ?? []
-       
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.name
         }
-      
+        
         selectionMenu.setSelectedItems(items: selectedTagList ?? []) { [weak self] (text, index, selected, selectedList) in
             self?.mediaLibraryTextField.text  = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedPostLabels = selectedList.map({$0.id ?? 0})
             self?.selectedTagList = selectedList
-         }
+        }
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
-  
+    
     @objc func SendtoPatientButtonTapped(_ sender: UIButton) {
         self.view.ShowSpinner()
     }
@@ -159,11 +159,11 @@ class MediaLibraryAddViewController: UIViewController {
             if let responseString = String(data: responseData, encoding: .utf8) {
                 print("uploaded to: \(responseString)")
                 DispatchQueue.main.async {
-                       self.view.HideSpinner()
-                       self.view.showToast(message: message, color: UIColor().successMessageColor())
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                          self.navigationController?.popViewController(animated: true)
-                    })
+                    self.view.HideSpinner()
+                    self.view.showToast(message: message, color: UIColor().successMessageColor())
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
             }
         }).resume()
@@ -171,7 +171,7 @@ class MediaLibraryAddViewController: UIViewController {
 }
 
 extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
-   
+    
     func socialMediaTagListRecived() {
         self.view.HideSpinner()
         if mediaTagScreenName == "Edit Screen" {
@@ -188,7 +188,9 @@ extension MediaLibraryAddViewController : MediaLibraryAddViewControllerProtocol{
     func saveMediaTagList(responseMessage:String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorReceived(error: String) {
