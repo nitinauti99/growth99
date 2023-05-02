@@ -55,7 +55,7 @@ class FormDetailViewController: UIViewController {
     
     @IBAction func showPreView(sender: UIButton){
         let user = UserRepository.shared
-        let urlSting = "\(EndPoints.baseURL)/assets/static/form.html?bid=" + "\(user.bussinessId ?? 0)&fid=\(questionId)"
+        let urlSting = "https://devemr.growthemr.com/assets/static/form.html?bid=" + "\(user.bussinessId ?? 0)&fid=\(questionId)"
         if let url = URL(string: urlSting), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
@@ -139,7 +139,7 @@ extension FormDetailViewController: FormDetailViewControllerProtocol {
     }
     
     func updatedFormDataSuccessfully(){
-        self.view.showToast(message: "Form Data Updated Successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Question Saved Successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.view.ShowSpinner()
             self.viewModel?.getFormQuestionnaireData(questionnaireId: self.questionId)

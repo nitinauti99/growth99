@@ -32,7 +32,7 @@ class QuestionnaireSubmissionsViewModelModel {
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[QuestionnaireSubmissionsModel], GrowthNetworkError>) in
             switch result {
             case .success(let questionarieData):
-                self.questionarieData = questionarieData
+                self.questionarieData = questionarieData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

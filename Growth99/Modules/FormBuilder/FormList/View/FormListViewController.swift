@@ -14,7 +14,7 @@ protocol FormListViewControllerProtocol {
     func consentsRemovedSuccefully(message: String)
 }
 
-class FormListViewController: UIViewController, FormListViewControllerProtocol, FormListTableViewCellDelegate {
+class FormListViewController: UIViewController {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -60,7 +60,45 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         searchBar.delegate = self
     }
     
-    func removePatieint(cell: FormListTableViewCell, index: IndexPath) {
+    @objc func creatUser() {
+        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
+        self.navigationController?.pushViewController(createUserVC, animated: true)
+    }
+    
+    @objc func getPateintList() {
+        self.view.ShowSpinner()
+        self.viewModel?.getFormList()
+    }
+    
+   
+    
+}
+
+extension FormListViewController: FormListViewControllerProtocol {
+   
+    func consentsRemovedSuccefully(message: String) {
+        self.view.showToast(message: message,color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.viewModel?.getFormList()
+        })
+    }
+    
+    func FormsDataRecived(){
+        self.view.HideSpinner()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .red)
+    }
+}
+
+extension FormListViewController: FormListTableViewCellDelegate {
+   
+    func removeFromItem(cell: FormListTableViewCell, index: IndexPath) {
         var consentsName : String = ""
         var consentsId = Int()
         consentsName = viewModel?.FormDataAtIndex(index: index.row)?.name ?? String.blank
@@ -83,33 +121,15 @@ class FormListViewController: UIViewController, FormListViewControllerProtocol, 
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc func creatUser() {
-        let createUserVC = UIStoryboard(name: "CreatePateintViewContoller", bundle: nil).instantiateViewController(withIdentifier: "CreatePateintViewContoller") as! CreatePateintViewContoller
-        self.navigationController?.pushViewController(createUserVC, animated: true)
-    }
-    
-    @objc func getPateintList() {
-        self.view.ShowSpinner()
-        self.viewModel?.getFormList()
-    }
-    
-    func consentsRemovedSuccefully(message: String) {
-        self.view.showToast(message: message,color: UIColor().successMessageColor())
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.viewModel?.getFormList()
-        })
-    }
-    
-    func FormsDataRecived(){
-        self.view.HideSpinner()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+   
+    func editFormItem(cell: FormListTableViewCell, index: IndexPath){
+        let formDetailContainerView = FormDetailContainerView.viewController()
+        if isSearch {
+            formDetailContainerView.workflowFormId = viewModel?.formFilterDataAtIndex(index: index.row)?.id ?? 0
+        }else{
+            formDetailContainerView.workflowFormId = viewModel?.FormDataAtIndex(index: index.row)?.id ?? 0
         }
+        self.navigationController?.pushViewController(formDetailContainerView, animated: true)
     }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
-    }
-    
+
 }

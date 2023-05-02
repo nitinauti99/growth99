@@ -7,6 +7,8 @@
 
 protocol NotificationListTableViewCellDelegate: AnyObject {
     func removeNotification(cell: NotificationListTableViewCell, index: IndexPath)
+    func editNotification(cell: NotificationListTableViewCell, index: IndexPath)
+
 }
 
 class NotificationListTableViewCell: UITableViewCell {
@@ -51,6 +53,10 @@ class NotificationListTableViewCell: UITableViewCell {
     
     @IBAction func deleteButtonPressed() {
         self.delegate?.removeNotification(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editNotification(cell: self, index: indexPath)
     }
 }
 

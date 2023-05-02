@@ -30,9 +30,11 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         super.viewDidLoad()
         self.viewModel = CreateNotificationViewModel(delegate: self)
         self.saveButton.isUserInteractionEnabled = false
+        self.title = Constant.Profile.creatNotification
         if screenName == "Edit Notification" {
+            self.title = "Edit Notification"
             self.view.ShowSpinner()
-           viewModel?.getCreateCreateNotification(questionId: questionId, notificationId: notificationId)
+            self.viewModel?.getCreateCreateNotification(questionId: questionId, notificationId: notificationId)
         }
         self.selectedNotificationTypeTextField.addTarget(self, action:
                                                 #selector(self.textFieldDidChange(_:)),
@@ -41,7 +43,6 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     }
     
     func setUpNavigationBar() {
-        self.title = Constant.Profile.creatNotification
     }
     
     @IBAction func notificationTypeDropDown(sender: UIButton) {
@@ -76,10 +77,13 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         self.view.HideSpinner()
         let data = viewModel?.getgetNotificationData
         self.notificationTypeTextField.text = data?.notificationType
+        self.saveButton.isUserInteractionEnabled = true
         if data?.notificationType == "EMAIL" {
             self.selectedNotificationTypeTextField.text = data?.toEmail
+            self.notificationTypeLBI.text = "To"
         }else{
             self.selectedNotificationTypeTextField.text = data?.phoneNumber
+            self.notificationTypeLBI.text = "Phone Number"
         }
     }
     
@@ -105,10 +109,6 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
                 return
             }
             
-            if let textField  = selectedNotificationTypeTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
-                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-                return
-            }
             params = [
                "notificationType": "SMS",
                "toEmail": "",
@@ -146,6 +146,16 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
 }
 
 extension CreateNotificationViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if self.notificationTypeTextField.text == "SMS" {
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
+        }
+        return true
+    }
    
     @objc func textFieldDidChange(_ textField: UITextField) {
         if self.notificationTypeTextField.text == "SMS" {

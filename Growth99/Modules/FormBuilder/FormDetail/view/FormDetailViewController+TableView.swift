@@ -32,7 +32,7 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
         }else{
             let formList = viewModel?.FormDataAtIndex(index: indexPath.row)
           
-            if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number"  {
+            if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" || formList?.name == "Symptoms" || formList?.name == "Gender"  {
                 var cell = LeadQuestionnaireTableViewCell()
                 cell = self.tableView.dequeueReusableCell(withIdentifier: "LeadQuestionnaireTableViewCell", for: indexPath) as! LeadQuestionnaireTableViewCell
                 cell.delegate = self
