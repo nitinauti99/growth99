@@ -406,12 +406,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         self.view.ShowSpinner()
         eventViewModel?.deleteSelectedAppointment(deleteAppoinmentId: self.editBookingHistoryData?.id ?? 0)
     }
-    
-    @IBAction func gotoPatientAction(sender: UIButton) {
-        let peteintDetail = PeteintDetailView.viewController()
-        peteintDetail.workflowTaskPatientId = editBookingHistoryData?.id ?? 0
-        self.navigationController?.pushViewController(peteintDetail, animated: true)
-    }
 
     @IBAction func inPersonButtonAction(sender: UIButton) {
         inPersonBtn.isSelected = !inPersonBtn.isSelected
