@@ -34,7 +34,7 @@ class NotificationListTableViewCell: UITableViewCell {
     func configureCell(NotificationList: NotificationListViewModelProtocol?, index: IndexPath) {
         let NotificationList = NotificationList?.getNotificationListDataAtIndexPath(index: index.row)
         self.notificationType.text = NotificationList?.notificationType
-        self.phoneNumber.text = String(NotificationList?.id ?? 0)
+        self.phoneNumber.text = String(NotificationList?.phoneNumber ?? "")
         self.toEmail.text = NotificationList?.toEmail
         self.createdDate.text = dateFormater?.serverToLocal(date: NotificationList?.createdAt ?? String.blank)
         self.updatedDate.text =  dateFormater?.serverToLocal(date: NotificationList?.updatedAt ?? String.blank)
@@ -44,7 +44,7 @@ class NotificationListTableViewCell: UITableViewCell {
     func configureCellisSearch(NotificationList: NotificationListViewModelProtocol?, index: IndexPath) {
         let NotificationList = NotificationList?.getNotificationFilterDataAtIndexPath(index: index.row)
         self.notificationType.text = NotificationList?.notificationType
-        self.phoneNumber.text = String(NotificationList?.id ?? 0)
+        self.phoneNumber.text = String(NotificationList?.phoneNumber ?? "")
         self.toEmail.text = NotificationList?.toEmail
         self.createdDate.text = dateFormater?.serverToLocal(date: NotificationList?.createdAt ?? String.blank)
         self.updatedDate.text =  dateFormater?.serverToLocal(date: NotificationList?.updatedAt ?? String.blank)
