@@ -205,7 +205,7 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
             "activeSideColor": "#003b6f",
             "textForComposer": "",
             "emailTemplateId": "",
-            "submitButtonText": "Submit",
+            "submitButtonText": buttonText.text ?? "",
             "showThankYouPageUrlLinkInVC": false,
             "showThankYouPageUrlLinkInLandingPage": false,
             "thankYouPageUrlVC": "",
@@ -218,7 +218,7 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
             "showLogo": false
         ]
         self.view.ShowSpinner()
-        viewModel?.saveCreateForm(formData: createFormList)
+        self.viewModel?.saveCreateForm(formData: createFormList)
     }
 }
 

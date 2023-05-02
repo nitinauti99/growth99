@@ -253,7 +253,7 @@ extension CreateQuestionnaireTableViewCell {
             "activeSideColor": "#003b6f",
             "textForComposer": "",
             "emailTemplateId": "",
-            "submitButtonText": "Submit",
+            "submitButtonText": self.buttonText.text ?? "",
             "showThankYouPageUrlLinkInVC": false,
             "showThankYouPageUrlLinkInLandingPage": false,
             "thankYouPageUrlVC": "",

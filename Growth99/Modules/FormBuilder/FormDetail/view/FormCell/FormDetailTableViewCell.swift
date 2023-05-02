@@ -48,7 +48,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBOutlet weak var scrollViewHight: NSLayoutConstraint!
     
     /// multiple selection View
-    @IBOutlet weak var multipleChoiceButton: UIButton!
     @IBOutlet weak var dropDownButton: UIButton!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var multipleChoiceView: UIView!
@@ -388,15 +387,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
-    /// multiple selction view
-    @IBAction func multipleChoiceButton(sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            self.buttonAction(sender)
-        }
-    }
-    
     func hideMultipleChocesView(){
         multipleChoiceView.isHidden = true
         multipleChoiceViewHight.constant = 0
@@ -657,7 +647,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "answer": "",
             "id": NSNull(),
             "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
-            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "allowMultipleSelection": multipleSelectionButton.isSelected,
             "questionChoices": questionListArray,
             "showDropDown": self.dropDownYESButton.isSelected,
             "preSelectCheckbox": self.selctedCheckBoxYESButton.isSelected,
@@ -679,7 +669,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "answer": "",
             "id": NSNull(),
             "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
-            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "allowMultipleSelection": multipleSelectionButton.isSelected,
             "questionChoices": [ ],
             "questionImages": [],
             "validationMessage": self.validationMessageTextfield.text ?? ""

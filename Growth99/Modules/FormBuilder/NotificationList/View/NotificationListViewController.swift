@@ -14,7 +14,7 @@ protocol NotificationListViewContollerProtocol {
     func notificationRemovedSuccefully(message: String)
 }
 
-class NotificationListViewController: UIViewController, NotificationListViewContollerProtocol,NotificationListTableViewCellDelegate {
+class NotificationListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -27,15 +27,15 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constant.Profile.notificationList
-        viewModel = NotificationListViewModel(delegate: self)
-        tableView.register(UINib(nibName: "NotificationListTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationListTableViewCell")
+        self.viewModel = NotificationListViewModel(delegate: self)
+        self.tableView.register(UINib(nibName: "NotificationListTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationListTableViewCell")
         self.addSerchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
-        viewModel?.getNotificationListList(questionId: questionId)
+        self.viewModel?.getNotificationListList(questionId: questionId)
 
     }
 
@@ -48,6 +48,29 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
         searchBar.delegate = self
     }
     
+}
+
+extension NotificationListViewController: NotificationListViewContollerProtocol {
+    func notificationRemovedSuccefully(message: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        viewModel?.getNotificationListList(questionId: questionId)
+    }
+    
+    
+    func NotificationListsDataRecived(){
+        self.view.HideSpinner()
+        self.tableView.reloadData()
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .red)
+    }
+}
+
+extension NotificationListViewController: NotificationListTableViewCellDelegate {
+   
     func removeNotification(cell: NotificationListTableViewCell, index: IndexPath) {
         var notificationName : String = ""
         var notificationId = Int()
@@ -70,21 +93,22 @@ class NotificationListViewController: UIViewController, NotificationListViewCont
         self.present(alert, animated: true, completion: nil)
     }
     
-    func notificationRemovedSuccefully(message: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: message, color: UIColor().successMessageColor())
-        viewModel?.getNotificationListList(questionId: questionId)
-    }
     
-    
-    func NotificationListsDataRecived(){
-        self.view.HideSpinner()
-        self.tableView.reloadData()
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
+    func editNotification(cell: NotificationListTableViewCell, index: IndexPath) {
+        
+        let createNotificationVC = UIStoryboard(name: "CreateNotificationViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateNotificationViewController") as! CreateNotificationViewController
+        var notificationId = Int()
+        if isSearch {
+            notificationId =  viewModel?.getNotificationFilterDataAtIndexPath(index: index.row)?.id ?? 0
+        }else{
+            notificationId = viewModel?.getNotificationListDataAtIndexPath(index: index.row)?.id ?? 0
+
+        }
+        createNotificationVC.questionId = questionId
+        createNotificationVC.notificationId = notificationId
+        createNotificationVC.screenName = "Edit Notification"
+        self.navigationController?.pushViewController(createNotificationVC, animated: true)
+
     }
     
 }

@@ -5,7 +5,9 @@
 //
 
 protocol FormListTableViewCellDelegate: AnyObject {
-    func removePatieint(cell: FormListTableViewCell, index: IndexPath)
+    func removeFromItem(cell: FormListTableViewCell, index: IndexPath)
+    func editFormItem(cell: FormListTableViewCell, index: IndexPath)
+
 }
 
 class FormListTableViewCell: UITableViewCell {
@@ -17,6 +19,7 @@ class FormListTableViewCell: UITableViewCell {
     @IBOutlet private weak var templateFor: UILabel!
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var editButtonAction: UIButton!
+    @IBOutlet weak var deletButtonAction: UIButton!
 
     var dateFormater: DateFormaterProtocol?
     weak var delegate: FormListTableViewCellDelegate?
@@ -34,6 +37,10 @@ class FormListTableViewCell: UITableViewCell {
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
         self.NumberOfQustion.text = String(FormList?.noOfQuestions ?? 0)
+        deletButtonAction.isHidden =  false
+        if FormList?.isContactForm == true {
+            deletButtonAction.isHidden =  true
+        }
         self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? String.blank)
         self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? String.blank)
         indexPath = index
@@ -43,6 +50,10 @@ class FormListTableViewCell: UITableViewCell {
         let FormList = FormList?.FormDataAtIndex(index: index.row)
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
+        deletButtonAction.isHidden =  false
+        if FormList?.isContactForm == true {
+            deletButtonAction.isHidden =  true
+        }
         self.NumberOfQustion.text = String((FormList?.noOfQuestions ?? Int("-")) ?? 0)
         self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? String.blank)
         self.updatedAt.text =  dateFormater?.serverToLocal(date: FormList?.updatedAt ?? String.blank)
@@ -50,7 +61,11 @@ class FormListTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButtonPressed() {
-        self.delegate?.removePatieint(cell: self, index: indexPath)
+        self.delegate?.removeFromItem(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editFormItem(cell: self, index: indexPath)
     }
     
 }

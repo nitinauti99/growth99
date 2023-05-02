@@ -53,7 +53,11 @@ extension FormListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let formDetailContainerView = FormDetailContainerView.viewController()
-        formDetailContainerView.workflowFormId = viewModel?.FormDataAtIndex(index: indexPath.row)?.id ?? 0
+        if isSearch {
+            formDetailContainerView.workflowFormId = viewModel?.formFilterDataAtIndex(index: indexPath.row)?.id ?? 0
+        }else{
+            formDetailContainerView.workflowFormId = viewModel?.FormDataAtIndex(index: indexPath.row)?.id ?? 0
+        }
         self.navigationController?.pushViewController(formDetailContainerView, animated: true)
     }
 }

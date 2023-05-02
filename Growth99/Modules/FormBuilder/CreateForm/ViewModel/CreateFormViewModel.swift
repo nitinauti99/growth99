@@ -8,8 +8,7 @@
 import Foundation
 
 protocol CreateFormViewModelProtocol {
-    func saveCreateForm(formData:[String: Any])
-    
+    func saveCreateForm(formData:[String: Any])    
 }
 
 class CreateFormViewModel {
