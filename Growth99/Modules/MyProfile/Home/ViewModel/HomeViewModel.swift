@@ -9,8 +9,9 @@ import Foundation
 
 protocol HomeViewModelProtocol {
     func isValidFirstName(_ firstName: String) -> Bool
-    func isValidPassword(_ password: String) -> Bool
+    func isValidLastName(_ lastName: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    func isValidEmail(_ email: String) -> Bool
     func getUserData(userId: Int)
     var getUserProfileData: UserProfile { get }
     func getallClinics()
@@ -72,8 +73,11 @@ class HomeViewModel {
                 self.allserviceCategories = allserviceCategories
                 self.delegate?.serviceCategoriesRecived()
             case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                if error.response?.statusCode == 500 {
+                    self.delegate?.errorReceived(error: "Unable to load service category for selected clinic")
+                }else{
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             }
         }
     }
@@ -83,14 +87,17 @@ class HomeViewModel {
        let finaleUrl = ApiUrl.service + SelectedCategories.map { String($0) }.joined(separator: ",")
 
        self.requestManager.request(forPath: finaleUrl, method: .GET,headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
-            switch result {
-            case .success(let categories):
-                self.allServices = categories
-                self.delegate?.serviceRecived()
-            case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
-            }
+           switch result {
+           case .success(let categories):
+               self.allServices = categories
+               self.delegate?.serviceRecived()
+           case .failure(let error):
+               if error.response?.statusCode == 500 {
+                   self.delegate?.errorReceived(error: "Unable to load service for selected clinic and category.")
+               }else{
+                   self.delegate?.errorReceived(error: "Internal server error")
+               }
+           }
         }
     }
     
@@ -143,26 +150,26 @@ class HomeViewModel {
 extension HomeViewModel : HomeViewModelProtocol {
     
     func isValidFirstName(_ firstName: String) -> Bool {
-        if firstName.count > 0 {
-            return true
-        }
-        return false
+        let regex = Constant.Regex.nameWithoutSpace
+        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isFirstName.evaluate(with: firstName)
+    }
+    
+    func isValidLastName(_ lastName: String) -> Bool {
+        let regex = Constant.Regex.nameWithoutSpace
+        let isLastName = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isLastName.evaluate(with: lastName)
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
+        let regex = Constant.Regex.phone
+        let isPhoneNo = NSPredicate(format:"SELF MATCHES %@", regex)
+        return isPhoneNo.evaluate(with: phoneNumber)
     }
-
-    func isValidPassword(_ password: String) -> Bool {
-        let passwordRegEx = "^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&?]).*$"
-        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-
-        if passwordPred.evaluate(with: password) && password.count >= 8 {
-            return true
-        }
-        return false
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = Constant.Regex.email
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }

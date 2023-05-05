@@ -9,6 +9,7 @@ import UIKit
 
 protocol UserListTableViewCellDelegate: AnyObject {
     func removeUser(cell: UserListTableViewCell, index: IndexPath)
+    func editUser(cell: UserListTableViewCell, index: IndexPath)
 }
 
 class UserListTableViewCell: UITableViewCell {
@@ -73,4 +74,7 @@ class UserListTableViewCell: UITableViewCell {
         self.delegate?.removeUser(cell: self, index: indexPath)
     }
     
+    @IBAction func editButtonPressed() {
+        self.delegate?.editUser(cell: self, index: indexPath)
+    }
 }

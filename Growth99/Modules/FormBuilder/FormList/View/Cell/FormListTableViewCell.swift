@@ -23,13 +23,13 @@ class FormListTableViewCell: UITableViewCell {
 
     var dateFormater: DateFormaterProtocol?
     weak var delegate: FormListTableViewCellDelegate?
-
     var indexPath = IndexPath()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        dateFormater = DateFormater()
+        self.dateFormater = DateFormater()
     }
 
     func configureCellisSearch(FormList: FormListViewModelProtocol?, index: IndexPath) {

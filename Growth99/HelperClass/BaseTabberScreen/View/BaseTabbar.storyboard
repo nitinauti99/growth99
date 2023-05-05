@@ -100,7 +100,7 @@
         <!--Base Tabbar View Controller-->
         <scene sceneID="t2x-oH-iuO">
             <objects>
-                <tabBarController storyboardIdentifier="tabbarScreen" id="1Gu-kT-kQt" customClass="BaseTabbarViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbarScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Gu-kT-kQt" customClass="BaseTabbarViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZN9-zN-jGU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
