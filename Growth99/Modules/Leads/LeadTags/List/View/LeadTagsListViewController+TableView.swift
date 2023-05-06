@@ -28,7 +28,7 @@ extension LeadTagsListViewController: UITableViewDelegate, UITableViewDataSource
 
         cell.delegate = self
         if isSearch {
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+            cell.configureCellWithSearch(questionarieVM: viewModel, index: indexPath)
         }else{
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }

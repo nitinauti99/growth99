@@ -47,7 +47,7 @@ class VerifyForgotPasswordViewController: UIViewController, VerifyForgotPassword
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: .systemGreen)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     

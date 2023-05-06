@@ -109,7 +109,7 @@ class HomeViewContoller: UIViewController {
         self.rolesTextField.text = ""
         let rolesArray = [viewModel?.getUserProfileData.roles?.name]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics
             self.rolesTextField.text  = allClinics?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
@@ -208,13 +208,64 @@ class HomeViewContoller: UIViewController {
     }
     
     @IBAction func saveUserProfile() {
-        guard let contactNumber = phoneNumberTextField.text, !contactNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+       
+        if let textField = firsNameTextField,  textField.text == "" {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
         
+        if let isFirstName =  self.viewModel?.isValidFirstName(self.firsNameTextField.text ?? ""), isFirstName == false  {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
+            return
+        }
+        
+        if let textField = lastNameTextField, textField.text == "" {
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
+            return
+        }
+        if let isLastName =  self.viewModel?.isValidLastName(self.lastNameTextField.text ?? ""), isLastName == false {
+            self.lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
+            return
+        }
+        
+        guard let email = emailTextField.text, !email.isEmpty else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
+            return
+        }
+
+        guard let emailValidate = viewModel?.isValidEmail(email), emailValidate else {
+            emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            return
+        }
+
+        if let textField = phoneNumberTextField, textField.text == "" {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            return
+        }
+        if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+            return
+        }
+        
+        if userProvider.isOn {
+            if let textField = clincsTextField,  textField.text == "" {
+                clincsTextField.showError(message: "Clinics are required.")
+                return
+            }
+            
+            if let textField = serviceCategoriesTextField,  textField.text == "" {
+                serviceCategoriesTextField.showError(message: "Service Categories are required.")
+                return
+            }
+            
+            if let textField = servicesTextField,  textField.text == "" {
+                servicesTextField.showError(message: " Services are required.")
+                return
+            }
+        }
+        
         self.view.ShowSpinner()
-        viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: contactNumber, roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
+        self.viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: phoneNumberTextField.text ?? "", roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
     }
     
     @IBAction func cancelUserProfile(){
@@ -262,6 +313,8 @@ extension HomeViewContoller: HomeViewContollerProtocol{
     
     func serviceCategoriesRecived() {
         // get from user api
+        self.serviceCategoriesTextField.text = ""
+        self.servicesTextField.text = ""
         selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
         allServiceCategories = viewModel?.getAllServiceCategories ?? []
         
@@ -292,7 +345,6 @@ extension HomeViewContoller: HomeViewContollerProtocol{
         self.servicesTextField.text = ""
         selectedService =  viewModel?.getUserProfileData.services ?? []
         allService = viewModel?.getAllService ?? []
-        
         let selectedList = selectedService.map({$0.id ?? 0})
         self.selectedServiceIds = selectedList
         self.servicesTextField.text = selectedService.map({$0.name ?? String.blank}).joined(separator: ", ")
@@ -300,7 +352,7 @@ extension HomeViewContoller: HomeViewContollerProtocol{
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "user updated successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "User updated successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.openUserListView()
         })

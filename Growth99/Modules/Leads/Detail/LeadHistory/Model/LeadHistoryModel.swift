@@ -19,7 +19,7 @@ struct LeadHistoryModel: Codable {
     let sourceUrl : String?
     let firstName : String?
     let createdAt : String?
-    let leadTags : [String]?
+    let leadTags : [LeadTags]?
     let id : Int?
     let phoneNumber : String?
     let symptoms : String?
@@ -56,10 +56,16 @@ struct LeadHistoryModel: Codable {
         sourceUrl = try values.decodeIfPresent(String.self, forKey: .sourceUrl)
         firstName = try values.decodeIfPresent(String.self, forKey: .firstName)
         createdAt = try values.decodeIfPresent(String.self, forKey: .createdAt)
-        leadTags = try values.decodeIfPresent([String].self, forKey: .leadTags)
+        leadTags = try values.decodeIfPresent([LeadTags].self, forKey: .leadTags)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
         symptoms = try values.decodeIfPresent(String.self, forKey: .symptoms)
     }
 
+    
+}
+
+struct LeadTags: Codable {
+    let name : String?
+    let id : Int?
 }

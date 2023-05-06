@@ -84,7 +84,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     
     func profileDataUpdated(){
         self.view.HideSpinner()
-        self.view.showToast(message: "user created successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "User created successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.openUserListView()
         })
@@ -124,6 +124,8 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     /// recived ServiceCategories list for selected clinincs
     func serviceCategoriesRecived() {
         // get from user api
+        self.serviceCategoriesTextField.text = ""
+        self.servicesTextField.text = ""
         self.allServiceCategories = viewModel?.getAllServiceCategories ?? []
         var itemNotPresent:Bool = false
         for item in selectedServiceCategories {
@@ -160,7 +162,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         self.rolesTextField.text = ""
         let rolesArray = [viewModel?.getUserProfileData.roles?.name]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics
             self.rolesTextField.text  = allClinics?.components(separatedBy: " ").first
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
@@ -176,7 +178,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -197,7 +199,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
     @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServiceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
-            cell.textLabel?.text = serviceCategories.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = serviceCategories.name
         }
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -250,10 +252,21 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
             firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
+        
+        if let isFirstName =  self.viewModel?.isValidFirstName(self.firsNameTextField.text ?? ""), isFirstName == false  {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
+            return
+        }
+        
         if let textField = lastNameTextField, textField.text == "" {
             lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
             return
         }
+        if let isLastName =  self.viewModel?.isValidLastName(self.lastNameTextField.text ?? ""), isLastName == false {
+            self.lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
+            return
+        }
+        
         guard let email = emailTextField.text, !email.isEmpty else {
             emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
@@ -268,9 +281,26 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
             return
         }
-        if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
+        if let textField = phoneNumberTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(textField), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return
+        }
+        
+        if userProvider.isOn {
+            if let textField = clincsTextField,  textField.text == "" {
+                clincsTextField.showError(message: "Clinics are required.")
+                return
+            }
+            
+            if let textField = serviceCategoriesTextField,  textField.text == "" {
+                serviceCategoriesTextField.showError(message: "Service Categories are required.")
+                return
+            }
+            
+            if let textField = servicesTextField,  textField.text == "" {
+                servicesTextField.showError(message: " Services are required.")
+                return
+            }
         }
         
         self.view.ShowSpinner()

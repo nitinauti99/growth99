@@ -89,6 +89,29 @@ extension UserListViewContoller: UserListTableViewCellDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func editUser(cell: UserListTableViewCell, index: IndexPath) {
+       
+        if  UserRepository.shared.screenTitle == "Profile" {
+            if isSearch {
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+            } else {
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+            }
+            self.navigationController?.popViewController(animated: true)
+            
+        } else {
+            guard let homeVC = UIStoryboard(name: "BaseTabbar", bundle: nil).instantiateViewController(withIdentifier: "HomeViewContoller") as? HomeViewContoller else {
+                return
+            }
+            if isSearch {
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+            } else {
+                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+            }
+            self.navigationController?.pushViewController(homeVC, animated: true)
+        }
+    }
+
 }
 
 extension UserListViewContoller: UserListViewContollerProtocol{
