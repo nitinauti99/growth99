@@ -133,7 +133,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             mainVcIntial.isNavigationBarHidden = true
             appDel.window?.rootViewController = mainVcIntial
         } else if title == Constant.SideMenu.helpTraining {
-//            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController: "GRWebViewController")
+            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController:           "GRWebViewController")
         } else if title == Constant.Profile.tasks {
             pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
         } else if title == Constant.Profile.triggers {
@@ -142,6 +142,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
         } else if(title == Constant.Profile.announcements) {
             pushViewControllerFromDrawerMenu(identifier: "AnnouncementsViewController", pusedViewController: "AnnouncementsViewController")
+        }else if title == Constant.SideMenu.helpTraining {
+            pushViewControllerFromDrawerMenu(identifier: "GRWebViewController", pusedViewController:           "GRWebViewController")
         }
     }
 }

@@ -98,7 +98,7 @@ extension PateintsTagsListViewController: PateintsTagListTableViewCellDelegate {
             tagName = self.viewModel?.pateintsTagsListDataAtIndex(index: index.row)?.name ?? String.blank
         }
         
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Patient Tag", message: "Are you sure you want to delete \n\(tagName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()

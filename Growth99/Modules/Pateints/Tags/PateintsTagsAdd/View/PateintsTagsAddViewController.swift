@@ -74,18 +74,21 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     }
     
     @IBAction func saveAction(sender: UIButton) {
+     
         if let textField = PateintsTagsTextField.text,  textField == "" {
             PateintsTagsTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
+        
+        if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
+            PateintsTagsTextField.showError(message: "Tag with this name already present.")
+            return
+        }
+        
         if pateintsTagScreenName == "Edit Screen" {
             self.view.ShowSpinner()
             viewModel?.savePateintsTagsDetails(pateintsTagId: patientTagId, name: PateintsTagsTextField.text ?? String.blank)
         }else{
-            if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
-                PateintsTagsTextField.showError(message: "Tag with this name already present.")
-                return
-            }
             self.view.ShowSpinner()
             viewModel?.createPateintsTagsDetails(name: PateintsTagsTextField.text ?? String.blank)
         }
