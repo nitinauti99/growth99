@@ -125,7 +125,7 @@ class HomeViewContoller: UIViewController {
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -147,7 +147,7 @@ class HomeViewContoller: UIViewController {
     @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServiceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
-            cell.textLabel?.text = serviceCategories.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = serviceCategories.name
         }
         
         selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -176,7 +176,7 @@ class HomeViewContoller: UIViewController {
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allService, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServices.name
         }
         
         selectionMenu.setSelectedItems(items: selectedService) { [weak self] (text, index, selected, selectedList) in

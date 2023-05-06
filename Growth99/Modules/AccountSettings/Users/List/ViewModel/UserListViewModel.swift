@@ -62,8 +62,9 @@ class UserListViewModel {
             let searchText = searchText.lowercased()
             let nameMatch = task.firstName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let lastNameMatch = task.lastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let emailMatch = task.email?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || lastNameMatch || idMatch
+            return nameMatch || lastNameMatch || idMatch || emailMatch
         }
     }
     

@@ -16,10 +16,6 @@ extension ServicesListDetailViewController: UITextFieldDelegate  {
                 serviceNameTextField.showError(message: "Service Name is required.")
                 return
             }
-            guard let name = serviceNameTextField.text, let nameValidate = servicesAddViewModel?.isFirstName(name), nameValidate else {
-                serviceNameTextField.showError(message: "Service Name is invalid.")
-                return
-            }
             guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName}), !serviceNameContain else {
                 serviceNameTextField.showError(message: "Service with this name already present.")
                 return

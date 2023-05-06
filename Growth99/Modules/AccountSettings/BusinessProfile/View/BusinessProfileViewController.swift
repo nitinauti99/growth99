@@ -81,10 +81,6 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
                 nameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
                 return
             }
-            guard let name = nameTextField.text, let nameValidate = viewModel?.isFirstName(name), nameValidate else {
-                nameTextField.showError(message: "Name is invalid.")
-                return
-            }
         }
     }
     
