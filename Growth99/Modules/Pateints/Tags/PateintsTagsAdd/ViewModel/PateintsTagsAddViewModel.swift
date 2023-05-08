@@ -51,7 +51,7 @@ class PateintsTagsAddViewModel {
             switch result {
             case .success(let pateintsTagDict):
                 self.pateintsTagsDetailsDict = pateintsTagDict
-                self.delegate?.savePateintsTagList(responseMessage:"Tags updated successfully")
+                self.delegate?.savePateintsTagList(responseMessage:"Tag Updated Successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -68,7 +68,7 @@ class PateintsTagsAddViewModel {
             switch result {
             case .success(let pateintsTagDict):
                 self.pateintsTagsDetailsDict = pateintsTagDict
-                self.delegate?.savePateintsTagList(responseMessage:"Tag Ccreated successfully")
+                self.delegate?.savePateintsTagList(responseMessage:"Tag Created Successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

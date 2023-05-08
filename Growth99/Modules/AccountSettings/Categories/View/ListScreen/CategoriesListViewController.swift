@@ -145,7 +145,7 @@ extension CategoriesListViewController: CategoriesListCellDelegate {
         var selectedClinicId = Int()
         if isSearch {
             selectedClinicId = viewModel?.getCategoriesFilterListData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Categorie", message: "Are you sure you want to delete \(viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
             let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
                 self?.view.ShowSpinner()
                 self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
@@ -156,7 +156,7 @@ extension CategoriesListViewController: CategoriesListCellDelegate {
             self.present(alert, animated: true, completion: nil)
         } else {
             selectedClinicId = viewModel?.getCategoriesListData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Categorie", message: "Are you sure you want to delete \(viewModel?.getCategoriesDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
             let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
                 self?.view.ShowSpinner()
                 self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)

@@ -176,7 +176,7 @@ class HomeViewContoller: UIViewController {
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allService, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServices.name
         }
         
         selectionMenu.setSelectedItems(items: selectedService) { [weak self] (text, index, selected, selectedList) in

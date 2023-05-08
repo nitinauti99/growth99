@@ -462,6 +462,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             return
         }
         
+        guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName}), !serviceNameContain else {
+            serviceNameTextField.showError(message: "Service with this name already present.")
+            return
+        }
+        
         guard let selectClinic = selectClinicTextField.text, !selectClinic.isEmpty else {
             selectClinicTextField.showError(message: "Clinic Name are required.")
             return

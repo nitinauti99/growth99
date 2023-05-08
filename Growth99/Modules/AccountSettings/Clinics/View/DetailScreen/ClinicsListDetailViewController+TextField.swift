@@ -26,10 +26,6 @@ extension ClinicsListDetailViewController: UITextFieldDelegate  {
                 clinicNameTextField.showError(message: "Clinic Name is required.")
                 return
             }
-            guard let name = clinicNameTextField.text, let nameValidate = viewModel?.isFirstName(name), nameValidate else {
-                clinicNameTextField.showError(message: "Clinic Name is invalid.")
-                return
-            }
         } else if (textField == contactNumberTextField) {
             guard let textField = contactNumberTextField.text, !textField.isEmpty else  {
                 contactNumberTextField.showError(message: "Contact Number is required.")

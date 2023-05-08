@@ -13,6 +13,7 @@ protocol CategoriesAddViewContollerProtocol {
     func addCategoriesResponse()
     func categoriesResponseReceived()
     func addCategoriesDataRecived()
+    func updatedCategoriesResponse()
 }
 
 class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerProtocol, UITextFieldDelegate {
@@ -95,6 +96,14 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         }
     }
     
+    func updatedCategoriesResponse() {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Category updated successfully", color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
@@ -144,7 +153,11 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         }
         self.view.ShowSpinner()
         let params: [String : Any] = ["name": categoriesNameTextField.text ?? String.blank, "clinicIds": selectedClincIds]
-        categoriesAddViewModel?.createCategories(addCategoriesParams: params)
+        if title == Constant.Profile.editCategories {
+            categoriesAddViewModel?.editCategories(addCategoriesParams: params, selectedCategorieId: categoryId ?? 0)
+        } else {
+            categoriesAddViewModel?.createCategories(addCategoriesParams: params)
+        }
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {
@@ -155,10 +168,6 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         if textField == categoriesNameTextField {
             guard let textField = categoriesNameTextField.text, !textField.isEmpty else {
                 categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
-                return
-            }
-            guard let categoriesName = categoriesNameTextField.text, let categoriesNameValidate = categoriesAddViewModel?.isFirstName(categoriesName), categoriesNameValidate else {
-                categoriesNameTextField.showError(message: "Category Name is invalid.")
                 return
             }
         }

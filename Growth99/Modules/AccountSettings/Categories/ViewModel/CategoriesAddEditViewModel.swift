@@ -11,7 +11,7 @@ protocol CategoriesAddEditViewModelProtocol {
     func getallClinics()
     var  getAllClinicsData: [Clinics] { get }
     func createCategories(addCategoriesParams: [String: Any])
-    func editCategories(selectedCategorieId: Int)
+    func editCategories(addCategoriesParams: [String: Any], selectedCategorieId: Int)
     func getCategoriesInfo(categoryId: Int)
     var  getAllCategoriesData: ServiceDetailModel? { get }
     var  getAddCategoriesListData: [CategoriesListModel] { get }
@@ -88,11 +88,12 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
         }
     }
     
-    func editCategories(selectedCategorieId: Int) {
-        self.requestManager.request(forPath: ApiUrl.createCategories.appending("/\(selectedCategorieId)"), method: .GET, headers: self.requestManager.Headers()) { (result: Result<CategoriesAddEditModel, GrowthNetworkError>) in
+    func editCategories(addCategoriesParams: [String: Any], selectedCategorieId: Int) {
+        self.requestManager.request(forPath: ApiUrl.createCategories.appending("/\(selectedCategorieId)"), method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: addCategoriesParams, encoding: .jsonEncoding)) { (result: Result<CategoriesAddEditModel, GrowthNetworkError>) in
             switch result {
             case .success(let addResponse):
                 self.addCategoriesResponse = addResponse
+                self.delegate?.updatedCategoriesResponse()
             case .failure(let error):
                 print(error)
                 self.delegate?.errorReceived(error: error.localizedDescription)
