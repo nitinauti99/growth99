@@ -25,6 +25,7 @@ class leadListViewModel {
     
     var leadListPeginationList: [leadListModel]?
     var totalCount: Int = 0
+    var totalUnreadLead: Int = 0
     
     var delegate: leadListViewControllerProtocol?
     
@@ -85,6 +86,7 @@ class leadListViewModel {
                 self.leadListPeginationList?.append(item)
             }else{
                 self.totalCount = item.totalCount ?? 0
+                self.totalUnreadLead = item.totalUnreadLead ?? 0
             }
         }
     }

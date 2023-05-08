@@ -24,6 +24,7 @@ struct leadListModel : Codable {
       let landingPage: String?
       let sourceUrl: String?
       let totalCount: Int?
+      let totalUnreadLead: Int?
       let questionnaireName: String?
 
       enum CodingKeys: String, CodingKey {
@@ -44,6 +45,7 @@ struct leadListModel : Codable {
           case sourceUrl
           case totalCount
           case questionnaireName
+          case totalUnreadLead
       }
 
       init(from decoder: Decoder) throws {
@@ -64,6 +66,7 @@ struct leadListModel : Codable {
           landingPage = try values.decodeIfPresent(String.self, forKey: .landingPage)
           sourceUrl = try values.decodeIfPresent(String.self, forKey: .sourceUrl)
           totalCount = try values.decodeIfPresent(Int.self, forKey: .totalCount)
+          totalUnreadLead = try values.decodeIfPresent(Int.self, forKey: .totalUnreadLead)
           questionnaireName = try values.decodeIfPresent(String.self, forKey: .questionnaireName)
       }
 
