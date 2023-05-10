@@ -1,5 +1,5 @@
 //
-//  CalenderViewController.swift
+//  CalendarViewController.swift
 //  Growth99
 //
 //  Created by admin on 24/12/22.
@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-protocol CalenderViewContollerProtocol {
+protocol CalendarViewContollerProtocol {
     func errorReceived(error: String)
     func clinicsReceived()
     func serviceListDataRecived()
@@ -37,27 +37,27 @@ struct MonthSection {
 }
 
 
-class CalenderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalenderViewContollerProtocol, FSCalendarDataSource, FSCalendarDelegate {
+class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalendarViewContollerProtocol, FSCalendarDataSource, FSCalendarDelegate {
 
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var eventListView: UITableView!
-    @IBOutlet var calenderscrollview: UIScrollView!
-    @IBOutlet var calenderScrollViewHight: NSLayoutConstraint!
+    @IBOutlet var calendarscrollview: UIScrollView!
+    @IBOutlet var calendarScrollViewHight: NSLayoutConstraint!
 
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var providersTextField: CustomTextField!
     @IBOutlet private weak var addAppointmnetView: UIView!
 
-    @IBOutlet private weak var calenderSegmentControl: UISegmentedControl!
+    @IBOutlet private weak var calendarSegmentControl: UISegmentedControl!
 
     var time = Date()
     var titles: [String] = []
     var startDates: [Date] = []
     var endDates: [Date] = []
-    var defaultCalender: String = Constant.Profile.calenderDefault
+    var defaultCalendar: String = Constant.Profile.CalendarDefault
 
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
@@ -72,7 +72,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedProvidersIds = [Int]()
 
     var appoinmentListData = [AppointmentDTOList]()
-    var calenderViewModel: CalenderViewModelProtocol?
+    var calendarViewModel: CalendarViewModelProtocol?
 
     var eventTypeSelected: String = "upcoming"
 
@@ -87,7 +87,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         self.calendar.select(Date())
-        calenderViewModel = CalenderViewModel(delegate: self)
+        calendarViewModel = CalendarViewModel(delegate: self)
         self.calendar.scope = .month
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
         eventListView.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
@@ -101,27 +101,27 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpNavigationBar()
-        calenderSegmentControl.selectedSegmentIndex = 0
+        calendarSegmentControl.selectedSegmentIndex = 0
         eventTypeSelected = "upcoming"
         getClinicsData()
         eventListView.reloadData()
     }
 
     @objc func notificationReceived(_ notification: Notification) {
-        self.view.showToast(message: "Appoinment created sucessfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Appoinment created successfully", color: UIColor().successMessageColor())
         guard let selectedClincIds = notification.userInfo?["clinicId"] as? String else { return }
         guard let selectedProvidersIds = notification.userInfo?["providerId"] as? String else { return }
         guard let selectedServicesIds = notification.userInfo?["serviceId"] as? String else { return }
-        self.calenderViewModel?.getCalenderInfoList(clinicId: Int(selectedClincIds) ?? 0, providerId: Int(selectedProvidersIds) ?? 0, serviceId: Int(selectedServicesIds) ?? 0)
+        self.calendarViewModel?.getCalendarInfoList(clinicId: Int(selectedClincIds) ?? 0, providerId: Int(selectedProvidersIds) ?? 0, serviceId: Int(selectedServicesIds) ?? 0)
         eventListView.reloadData()
     }
 
     func setUpNavigationBar() {
-        self.title = Constant.Profile.calender
+        self.title = Constant.Profile.Calendar
     }
     func getClinicsData() {
         self.view.ShowSpinner()
-        calenderViewModel?.getallClinics()
+        calendarViewModel?.getallClinics()
     }
 
     func getFormattedDate(date: Date, format: String) -> String {
@@ -131,31 +131,31 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func scrollViewHeight() {
-        calenderScrollViewHight.constant = tableViewHeight + 800
+        calendarScrollViewHight.constant = tableViewHeight + 800
     }
 
     func clinicsReceived() {
-        selectedClincs = calenderViewModel?.getAllClinicsData ?? []
-        allClinics = calenderViewModel?.getAllClinicsData ?? []
-        self.calenderViewModel?.getServiceList()
+        selectedClincs = calendarViewModel?.getAllClinicsData ?? []
+        allClinics = calendarViewModel?.getAllClinicsData ?? []
+        self.calendarViewModel?.getServiceList()
     }
 
     func serviceListDataRecived() {
-        selectedServices = calenderViewModel?.serviceData ?? []
-        allServices = calenderViewModel?.serviceData ?? []
+        selectedServices = calendarViewModel?.serviceData ?? []
+        allServices = calendarViewModel?.serviceData ?? []
         self.view.HideSpinner()
     }
 
     func providerListDataRecived() {
-        selectedProviders = calenderViewModel?.providerData ?? []
-        allProviders = calenderViewModel?.providerData ?? []
+        selectedProviders = calendarViewModel?.providerData ?? []
+        allProviders = calendarViewModel?.providerData ?? []
         self.view.HideSpinner()
         eventListView.reloadData()
     }
 
     func appointmentListDataRecived() {
         self.view.HideSpinner()
-        appoinmentListData = calenderViewModel?.appointmentInfoListData ?? []
+        appoinmentListData = calendarViewModel?.appointmentInfoListData ?? []
         self.sections = MonthSection.group(headlines: self.appoinmentListData)
         self.sections.sort { lhs, rhs in lhs.month < rhs.month }
         self.eventListView.setContentOffset(.zero, animated: true)
@@ -274,7 +274,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                     cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].patientLastName ?? String.blank)"
 
-                    cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate ?? String.blank)
+                    cell.eventsDateCreated.text = calendarViewModel?.serverToLocal(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate ?? String.blank)
                     cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -286,7 +286,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                     cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientLastName ?? String.blank)"
-                    cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate ?? String.blank)
+                    cell.eventsDateCreated.text = calendarViewModel?.serverToLocal(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate ?? String.blank)
                     cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -298,7 +298,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                     cell.eventsTitle.text = "\(headline.patientFirstName ?? String.blank) \(headline.patientLastName ?? String.blank)"
-                    cell.eventsDateCreated.text = calenderViewModel?.serverToLocal(date: headline.appointmentStartDate ?? String.blank)
+                    cell.eventsDateCreated.text = calendarViewModel?.serverToLocal(date: headline.appointmentStartDate ?? String.blank)
                     cell.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -327,8 +327,8 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.pushViewController(addEventVC, animated: true)
     }
 
-    @IBAction func calenderSegmentSelection(_ sender: Any) {
-        switch calenderSegmentControl.selectedSegmentIndex {
+    @IBAction func CalendarSegmentSelection(_ sender: Any) {
+        switch calendarSegmentControl.selectedSegmentIndex {
         case 0:
             eventTypeSelected = "upcoming"
             eventListView.reloadData()
@@ -395,7 +395,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
             self?.selectedServicesIds = selectedId
             self?.providersTextField.text = "Select Provider"
             self?.view.ShowSpinner()
-            self?.calenderViewModel?.sendProviderList(providerParams: self?.selectedServicesIds.first ?? 0)
+            self?.calendarViewModel?.sendProviderList(providerParams: self?.selectedServicesIds.first ?? 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -417,7 +417,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
             self?.selectedProviders = selectedList
             self?.selectedProvidersIds = selectedId
             self?.view.ShowSpinner()
-            self?.calenderViewModel?.getCalenderInfoList(clinicId: self?.selectedClincIds.first ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceId: self?.selectedServicesIds.first ?? 0)
+            self?.calendarViewModel?.getCalendarInfoList(clinicId: self?.selectedClincIds.first ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceId: self?.selectedServicesIds.first ?? 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -426,7 +426,7 @@ class CalenderViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 
-extension CalenderViewController: UIScrollViewDelegate {
+extension CalendarViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHeight()

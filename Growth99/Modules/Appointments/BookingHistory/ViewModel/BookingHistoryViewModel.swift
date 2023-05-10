@@ -9,7 +9,7 @@ import Foundation
 
 protocol BookingHistoryViewModelProtocol {
     
-    func getCalenderInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int)
+    func getCalendarInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int)
     
     func getBookingHistoryFilterData(searchText: String)
     
@@ -36,10 +36,10 @@ class BookingHistoryViewModel {
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
-    func getCalenderInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int) {
+    func getCalendarInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int) {
         let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"
-        let apiURL = ApiUrl.calenderInfo.appending("\(url)")
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalenderInfoListModel, GrowthNetworkError>) in
+        let apiURL = ApiUrl.CalendarInfo.appending("\(url)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalendarInfoListModel, GrowthNetworkError>) in
             switch result {
             case .success(let appointmentDTOListData):
                 self.bookingHistoryList = appointmentDTOListData.appointmentDTOList ?? []
@@ -57,7 +57,7 @@ class BookingHistoryViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.appointmentRemovedSuccefully(message: "Appointment deleted sucessfully.", status: response.statusCode)
+                    self.delegate?.appointmentRemovedSuccefully(message: "Appointment deleted successfully.", status: response.statusCode)
                 } else if response.statusCode == 500 {
                     self.delegate?.appointmentRemovedSuccefully(message: "Unable to delete the appointment.", status: response.statusCode)
                 } else {

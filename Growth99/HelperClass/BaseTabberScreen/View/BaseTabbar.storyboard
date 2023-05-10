@@ -744,11 +744,11 @@
             </objects>
             <point key="canvasLocation" x="1323" y="-427"/>
         </scene>
-        <!--Calender-->
+        <!--Calendar-->
         <scene sceneID="XhH-gG-7Jt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9IF-Lu-2SF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calender" image="calendar_check_tab" id="bjP-dp-rVo"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar_check_tab" id="bjP-dp-rVo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cAE-M9-Xu4">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -763,10 +763,10 @@
             </objects>
             <point key="canvasLocation" x="-500" y="1004"/>
         </scene>
-        <!--Calender Base View Controller-->
+        <!--Calendar Base View Controller-->
         <scene sceneID="Ix3-ey-2dD">
             <objects>
-                <viewController id="dvV-Kw-qo7" customClass="CalenderBaseViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dvV-Kw-qo7" customClass="CalendarBaseViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wRC-79-SR6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -808,10 +808,10 @@
             </objects>
             <point key="canvasLocation" x="306" y="1704"/>
         </scene>
-        <!--Calender View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="EDy-y2-DKW">
             <objects>
-                <viewController storyboardIdentifier="CalenderViewController" id="Cdl-e9-HqO" customClass="CalenderViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarViewController" id="Cdl-e9-HqO" customClass="CalendarViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lpU-Aa-KQt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1020,7 +1020,7 @@
                                                                 </segments>
                                                                 <color key="selectedSegmentTintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
-                                                                    <action selector="calenderSegmentSelection:" destination="Cdl-e9-HqO" eventType="valueChanged" id="QrE-Tl-dZz"/>
+                                                                    <action selector="CalendarSegmentSelection:" destination="Cdl-e9-HqO" eventType="valueChanged" id="QrE-Tl-dZz"/>
                                                                 </connections>
                                                             </segmentedControl>
                                                         </subviews>
@@ -1121,10 +1121,10 @@
                         <outlet property="addAppointmnetView" destination="Ys2-E9-yUW" id="yKi-nH-jaF"/>
                         <outlet property="calendar" destination="JD4-CL-Yi6" id="Z6q-Rf-70s"/>
                         <outlet property="calendarHeightConstraint" destination="6yh-bg-YrF" id="qwg-Ov-7Xs"/>
+                        <outlet property="calendarScrollViewHight" destination="WnV-oi-xKl" id="vGH-Li-y9w"/>
+                        <outlet property="calendarSegmentControl" destination="DfQ-Py-gvR" id="8i1-R6-s9W"/>
                         <outlet property="calendarViewHeightConstraint" destination="EoV-9G-Y32" id="qtQ-rj-WkR"/>
-                        <outlet property="calenderScrollViewHight" destination="WnV-oi-xKl" id="cIK-kM-Cfp"/>
-                        <outlet property="calenderSegmentControl" destination="DfQ-Py-gvR" id="J7v-wJ-9og"/>
-                        <outlet property="calenderscrollview" destination="6Az-JU-V6A" id="kkf-XE-Fkb"/>
+                        <outlet property="calendarscrollview" destination="6Az-JU-V6A" id="dXh-0l-3mB"/>
                         <outlet property="clincsTextField" destination="jzu-kM-8lq" id="4pM-F6-R1J"/>
                         <outlet property="eventListView" destination="3Vg-SQ-tU0" id="d9V-fs-OIU"/>
                         <outlet property="providersTextField" destination="Szr-pV-NLf" id="M7f-xK-b2H"/>
@@ -1138,40 +1138,40 @@
     </scenes>
     <designables>
         <designable name="2bn-9i-Rf8">
-            <size key="intrinsicContentSize" width="4" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="6ap-Gu-wfc">
-            <size key="intrinsicContentSize" width="4" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="71M-Ey-Ckk">
-            <size key="intrinsicContentSize" width="19" height="18.5"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="Cfk-FX-j6V">
-            <size key="intrinsicContentSize" width="117.5" height="22"/>
+            <size key="intrinsicContentSize" width="110.5" height="30"/>
         </designable>
         <designable name="Ncb-Vy-p3O">
-            <size key="intrinsicContentSize" width="4" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Szr-pV-NLf">
-            <size key="intrinsicContentSize" width="118.5" height="22"/>
+            <size key="intrinsicContentSize" width="111.5" height="30"/>
         </designable>
         <designable name="U5u-aw-l21">
-            <size key="intrinsicContentSize" width="19" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="W62-Z0-RHA">
-            <size key="intrinsicContentSize" width="4" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="Wu1-x8-b6o">
-            <size key="intrinsicContentSize" width="4" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="jzu-kM-8lq">
-            <size key="intrinsicContentSize" width="99.5" height="22"/>
+            <size key="intrinsicContentSize" width="92.5" height="30"/>
         </designable>
         <designable name="xJW-WU-nu4">
-            <size key="intrinsicContentSize" width="19" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
         <designable name="zJe-wg-Ipq">
-            <size key="intrinsicContentSize" width="19" height="18.5"/>
+            <size key="intrinsicContentSize" width="12" height="26.5"/>
         </designable>
     </designables>
     <resources>

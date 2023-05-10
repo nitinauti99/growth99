@@ -191,9 +191,9 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     func clinicUpdateReceived(responeMessage: String) {
         self.view.HideSpinner()
         if responeMessage == Constant.Profile.editClinic {
-            self.view.showToast(message: "Clinic details updated sucessfully", color: UIColor().successMessageColor())
+            self.view.showToast(message: "Clinic details updated successfully", color: UIColor().successMessageColor())
         } else {
-            self.view.showToast(message: "Clinic created sucessfully", color: UIColor().successMessageColor())
+            self.view.showToast(message: "Clinic created successfully", color: UIColor().successMessageColor())
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)

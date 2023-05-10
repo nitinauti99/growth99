@@ -39,7 +39,7 @@ extension CustomTextField {
         self.inputAccessoryView = toolBar
     }
     
-    func addInputViewDatePickerCalender(target: Any, selector: Selector, mode: UIDatePicker.Mode) {
+    func addInputViewDatePickerCalendar(target: Any, selector: Selector, mode: UIDatePicker.Mode) {
         let screenWidth = UIScreen.main.bounds.width
         //Add DatePicker as inputView
         let datePicker = UIDatePicker()

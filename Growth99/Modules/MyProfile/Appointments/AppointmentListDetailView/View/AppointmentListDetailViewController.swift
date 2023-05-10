@@ -195,7 +195,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment Cancelled Sucessfully", color: .red)
+        self.view.showToast(message: "Appointment Canceled Successfully", color: .red)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }
@@ -305,7 +305,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self?.selectedDate = selectedList[0]
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -387,7 +387,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         self.view.ShowSpinner()
-        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calendar", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {

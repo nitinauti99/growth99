@@ -37,7 +37,7 @@ class SubdomainViewController: UIViewController, UITextFieldDelegate {
             case .success(let response):
                 self.view?.HideSpinner()
                 self.user.subDomainName = response.subDomainName
-                self.view?.showToast(message: "Information updated sucessfully.", color: UIColor().successMessageColor())
+                self.view?.showToast(message: "Information updated successfully", color: UIColor().successMessageColor())
             case .failure(let error):
                 self.view?.HideSpinner()
                 self.view?.showToast(message: error.localizedDescription, color: .red)

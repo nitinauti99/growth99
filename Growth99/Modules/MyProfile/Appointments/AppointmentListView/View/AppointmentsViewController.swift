@@ -82,7 +82,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     }
     
     func profileAppoinmentsRemoved() {
-        self.view.showToast(message: "Appointment Deleted Sucessfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Appointment Deleted successfully", color: UIColor().successMessageColor())
         viewModel?.getProfileApointmentsList()
     }
     

@@ -19,12 +19,6 @@
 			</dict>
 		</dict>
 	</dict>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app requires access to the photo library.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>This app does not require access to the microphone.</string>
-    <key>NSCameraUsageDescription</key>
-    <string>This app requires access to the camera.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Font Awesome 6 Brands-Regular-400</string>

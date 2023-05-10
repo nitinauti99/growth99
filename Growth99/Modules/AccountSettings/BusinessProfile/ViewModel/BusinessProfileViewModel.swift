@@ -32,7 +32,7 @@ class BusinessProfileViewModel {
             case .success(_): break
                 /*if response.statusCode == 200 {
                     self.user.bussinessName = response.name
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated sucessfully.")
+                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated successfully")
                 } else if response.statusCode == 500 {
                     self.delegate?.saveBusinessDetailReceived(responseMessage: "Unable to update busniess information.")
                 } else {
@@ -51,7 +51,7 @@ class BusinessProfileViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated sucessfully")
+                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated successfully")
                 } else {
                     self.delegate?.saveBusinessDetailReceived(responseMessage: "response failed")
                 }

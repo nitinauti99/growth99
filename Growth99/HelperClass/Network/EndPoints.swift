@@ -60,7 +60,7 @@ struct EndPoints {
     static let questionnaireList = "/api/v1/questionnaire"
     static let taskDetail = "/api/workflowtasks/"
     static let providerList = "/api/v1/users/services/providers?serviceId="
-    static let calenderInfo = "/api/v1/appointments/calendar/filter?clinicId="
+    static let CalendarInfo = "/api/v1/appointments/calendar/filter?clinicId="
     static let bussinessInfo = "/api/businesses/"
     static let getBussinessInfo = "/api/public/v1/businesses/"
     static let newAppointment = "/api/appointments/new"
@@ -244,7 +244,7 @@ struct ApiUrl {
     static let questionnaireList = EndPoints.baseURL.appending(EndPoints.questionnaireList)
     static let taskDetail = EndPoints.baseURL.appending(EndPoints.taskDetail)
     static let providerList = EndPoints.baseURL.appending(EndPoints.providerList)
-    static let calenderInfo = EndPoints.baseURL.appending(EndPoints.calenderInfo)
+    static let CalendarInfo = EndPoints.baseURL.appending(EndPoints.CalendarInfo)
     static let bussinessInfo = EndPoints.baseURL.appending(EndPoints.bussinessInfo)
     static let getBussinessInfo = EndPoints.baseURL.appending(EndPoints.getBussinessInfo)
     static let newAppointment = EndPoints.baseURL.appending(EndPoints.newAppointment)

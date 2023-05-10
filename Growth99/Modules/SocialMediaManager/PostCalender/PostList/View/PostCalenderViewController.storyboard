@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Post Calender View Controller-->
+        <!--Post Calendar View Controller-->
         <scene sceneID="fiS-Fu-c7p">
             <objects>
-                <viewController storyboardIdentifier="PostCalenderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ice-9J-uRq" customClass="PostCalenderViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostCalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ice-9J-uRq" customClass="PostCalendarViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PxM-0g-QCC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +119,7 @@
                                                                 </segments>
                                                                 <color key="selectedSegmentTintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
-                                                                    <action selector="calenderSegmentSelection:" destination="Ice-9J-uRq" eventType="valueChanged" id="cW0-xD-RKz"/>
+                                                                    <action selector="CalendarSegmentSelection:" destination="Ice-9J-uRq" eventType="valueChanged" id="cW0-xD-RKz"/>
                                                                 </connections>
                                                             </segmentedControl>
                                                         </subviews>
@@ -190,11 +190,11 @@
                         <outlet property="addAppointmnetView" destination="BR9-hh-4Vd" id="WaK-7d-NQ3"/>
                         <outlet property="calendar" destination="Mob-cb-wd4" id="mPc-7F-NPz"/>
                         <outlet property="calendarHeightConstraint" destination="jCZ-Db-KPP" id="GjM-Jf-44u"/>
+                        <outlet property="calendarScrollViewHight" destination="igv-gD-AYM" id="65Y-GN-gV6"/>
+                        <outlet property="calendarSegmentControl" destination="9K5-hu-CeF" id="g3w-M4-4d9"/>
                         <outlet property="calendarViewHeightConstraint" destination="qXG-BW-aNJ" id="Zr7-TA-ZLG"/>
-                        <outlet property="calenderScrollViewHight" destination="igv-gD-AYM" id="BNn-ON-vgf"/>
-                        <outlet property="calenderSegmentControl" destination="9K5-hu-CeF" id="kpP-Uu-ydU"/>
-                        <outlet property="calenderscrollview" destination="bGX-2s-NI9" id="mni-3p-lI7"/>
-                        <outlet property="postCalenderTableview" destination="DMo-Ic-ruJ" id="FNi-15-6c9"/>
+                        <outlet property="calendarscrollview" destination="bGX-2s-NI9" id="Aqu-0V-iDP"/>
+                        <outlet property="postCalendarTableview" destination="DMo-Ic-ruJ" id="FNi-15-6c9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SP-wz-HjV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

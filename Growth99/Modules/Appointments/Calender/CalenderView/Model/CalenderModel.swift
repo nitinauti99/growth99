@@ -18,7 +18,7 @@ struct UserDTOList: Codable, Equatable {
     let provider: String?
 }
 
-struct CalenderInfoListModel: Codable {
+struct CalendarInfoListModel: Codable {
     let appointmentDTOList: [AppointmentDTOList]?
 }
 

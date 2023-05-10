@@ -15,7 +15,7 @@ protocol AddEventViewModelProtocol {
     var  getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>)
-    func timeInputCalender(date: String) -> String
+    func timeInputCalendar(date: String) -> String
     func serverToLocal(date: String) -> String
     func utcToLocal(dateStr: String) -> String?
     func serverToLocalInputWorking(date: String) -> String
@@ -148,7 +148,7 @@ class AddEventViewModel {
         return allTimes
     }
     
-    func timeInputCalender(date: String) -> String {
+    func timeInputCalendar(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

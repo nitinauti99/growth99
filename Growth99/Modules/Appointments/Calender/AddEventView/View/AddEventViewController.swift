@@ -18,7 +18,7 @@ protocol AddEventViewControllerProtocol: AnyObject {
     func patientAppointmentListDataRecived()
 }
 
-class AddEventViewController: UIViewController, CalenderViewContollerProtocol, AddEventViewControllerProtocol {
+class AddEventViewController: UIViewController, CalendarViewContollerProtocol, AddEventViewControllerProtocol {
     
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var firstNameTextField: CustomTextField!
@@ -34,7 +34,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
     @IBOutlet weak var virtualBtn: UIButton!
     @IBOutlet weak var dateSelectionButton: UIButton!
     
-    var addEventViewModel: CalenderViewModelProtocol?
+    var addEventViewModel: CalendarViewModelProtocol?
     var eventViewModel: AddEventViewModelProtocol?
     
     var allClinics = [Clinics]()
@@ -70,7 +70,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         notesTextView.layer.borderColor = UIColor.gray.cgColor
         notesTextView.layer.borderWidth = 1.0
         setUpNavigationBar()
-        addEventViewModel = CalenderViewModel(delegate: self)
+        addEventViewModel = CalendarViewModel(delegate: self)
         eventViewModel = AddEventViewModel(delegate: self)
         //emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
         // phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -281,7 +281,7 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
             self?.selectedDate = selectedList[0]
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalender(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -355,9 +355,9 @@ class AddEventViewController: UIViewController, CalenderViewContollerProtocol, A
         }
         self.view.ShowSpinner()
         if self.userSelectedDate == "Manual" {
-            eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
+            eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calendar", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
         } else {
-            eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.localInputeDateToServer(date: dateTextField.text ?? String.blank), time: eventViewModel?.timeInputCalender(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calender", appointmentDate: eventViewModel?.localInputToServerInput(date: dateTextField.text ?? String.blank)))
+            eventViewModel?.createAppoinemnetMethod(addEventModel: NewAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.localInputeDateToServer(date: dateTextField.text ?? String.blank), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calendar", appointmentDate: eventViewModel?.localInputToServerInput(date: dateTextField.text ?? String.blank)))
         }
     }
     

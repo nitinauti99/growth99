@@ -61,7 +61,7 @@ class RefundPolicyViewController: UIViewController {
             switch result {
             case .success(_):
                 self.view?.HideSpinner()
-                self.view?.showToast(message: "Information updated sucessfully.", color: UIColor().successMessageColor())
+                self.view?.showToast(message: "Information updated successfully", color: UIColor().successMessageColor())
             case .failure(let error):
                 self.view?.HideSpinner()
                 self.view?.showToast(message: error.localizedDescription, color: .red)

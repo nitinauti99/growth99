@@ -51,7 +51,7 @@ class ConsentsTemplateListViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.consentsRemovedSuccefully(mrssage: "Consents deleted successfully")
+                    self.delegate?.consentsRemovedSuccefully(mrssage: "Consent deleted successfully")
                 }else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "To Delete These Consents Form, Please remove it for the service attched")
                 }else{

@@ -8100,8 +8100,11 @@
 				INFOPLIST_FILE = Growth99/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Growth99;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calender";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calendar";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to the camera.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authentication with TouchId or FaceID";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app does not require access to the microphone.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LogInViewController;
@@ -8144,8 +8147,11 @@
 				INFOPLIST_FILE = Growth99/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Growth99;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calender";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access your calendar";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to the camera.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authentication with TouchId or FaceID";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app does not require access to the microphone.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LogInViewController;

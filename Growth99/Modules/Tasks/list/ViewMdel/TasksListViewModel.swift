@@ -78,7 +78,7 @@ class TasksListViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.taskRemovedSuccefully(message: "Task deleted succesfully")
+                    self.delegate?.taskRemovedSuccefully(message: "Task deleted successfully")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "Internal server error")
                 }

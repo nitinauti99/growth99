@@ -14,7 +14,7 @@ protocol ServicesListDetailViewContollerProtocol {
     func consentReceived()
     func questionnairesReceived()
     func serviceCategoriesReceived()
-    func createServiceSucessfullyReceived(message: String)
+    func createServiceSuccessfullyReceived(message: String)
     func selectedServiceDataReceived()
     func serviceImageUploadReceived(responseMessage: String)
     func serviceAddListDataRecived()
@@ -252,16 +252,16 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         self.view.HideSpinner()
     }
     
-    func createServiceSucessfullyReceived(message: String) {
+    func createServiceSuccessfullyReceived(message: String) {
         self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: serviceId ?? 0)
     }
     
     func serviceImageUploadReceived(responseMessage: String) {
         self.view.HideSpinner()
         if responseMessage == Constant.Profile.createService {
-            self.view.showToast(message: "Service created sucessfully", color: UIColor().successMessageColor())
+            self.view.showToast(message: "Service created successfully", color: UIColor().successMessageColor())
         } else {
-            self.view.showToast(message: "Service updated sucessfully", color: UIColor().successMessageColor())
+            self.view.showToast(message: "Service updated successfully", color: UIColor().successMessageColor())
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)

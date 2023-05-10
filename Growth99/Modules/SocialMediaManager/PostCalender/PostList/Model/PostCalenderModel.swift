@@ -1,5 +1,5 @@
 //
-//  PostCalenderModel.swift
+//  PostCalendarModel.swift
 //  Growth99
 //
 //  Created by Apple on 16/03/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostCalenderListModel : Codable {
+struct PostCalendarListModel : Codable {
     let postLabels : [PostListLabels]?
     let scheduledDate : String?
     let label : String?

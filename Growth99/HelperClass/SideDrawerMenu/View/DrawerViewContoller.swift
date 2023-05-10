@@ -133,11 +133,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             mainVcIntial.isNavigationBarHidden = true
             appDel.window?.rootViewController = mainVcIntial
         } else if title == Constant.SideMenu.helpTraining {
-//            let mainViewController = UIStoryboard(name: "GRWebViewController", bundle: Bundle.main).instantiateViewController(withIdentifier: "GRWebViewController")
-//            mainViewController.webViewUrl = URL(string: "https://support.growth99.com/portal/en/kb/growth99-plus")
-//            mainViewController.webViewTitle = "Help Center"
-//            (BaseTabbarViewController.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(mainViewController, animated: true)
-//            self.hideSideMenu()
         } else if title == Constant.Profile.tasks {
             pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
         } else if title == Constant.Profile.triggers {
@@ -243,7 +238,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 2 {
             switch indexPath.row {
             case 0:
-                pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "CalenderViewController")
+                pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "CalendarViewController")
             case 1:
                 pushViewControllerFromDrawerMenu(identifier: "BookingHistoryViewController", pusedViewController: "BookingHistoryViewController")
             default:
@@ -300,7 +295,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 2:
                 pushViewControllerFromDrawerMenu(identifier: "PostsListViewContoller", pusedViewController: "PostsListViewContoller")
             case 3:
-                pushViewControllerFromDrawerMenu(identifier: "PostCalenderViewController", pusedViewController: "PostCalenderViewController")
+                pushViewControllerFromDrawerMenu(identifier: "PostCalendarViewController", pusedViewController: "PostCalendarViewController")
             case 4:
                 pushViewControllerFromDrawerMenu(identifier: "MediaLibraryListViewController", pusedViewController: "MediaLibraryListViewController")
             default:

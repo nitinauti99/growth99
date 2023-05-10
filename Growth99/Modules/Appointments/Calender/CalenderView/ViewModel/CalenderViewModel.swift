@@ -1,5 +1,5 @@
 //
-//  CalenderViewModel.swift
+//  CalendarViewModel.swift
 //  Growth99
 //
 //  Created by Exaze Technologies on 16/01/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CalenderViewModelProtocol {
+protocol CalendarViewModelProtocol {
     func getallClinics()
     var  getAllClinicsData: [Clinics] { get }
     
@@ -17,7 +17,7 @@ protocol CalenderViewModelProtocol {
     func sendProviderList(providerParams: Int)
     var  providerData: [UserDTOList] { get }
     
-    func getCalenderInfoList(clinicId: Int, providerId: Int, serviceId: Int)
+    func getCalendarInfoList(clinicId: Int, providerId: Int, serviceId: Int)
     var  appointmentInfoListData: [AppointmentDTOList] { get }
     
     func dateFormatterString(textField: CustomTextField) -> String
@@ -30,9 +30,9 @@ protocol CalenderViewModelProtocol {
 }
 
 
-class CalenderViewModel: CalenderViewModelProtocol {
+class CalendarViewModel: CalendarViewModelProtocol {
     
-    var delegate: CalenderViewContollerProtocol?
+    var delegate: CalendarViewContollerProtocol?
     var allClinics: [Clinics]?
     var serviceListData: [ServiceList] = []
     var providerListData: [UserDTOList] = []
@@ -41,7 +41,7 @@ class CalenderViewModel: CalenderViewModelProtocol {
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
     
-    init(delegate: CalenderViewContollerProtocol? = nil) {
+    init(delegate: CalendarViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
@@ -98,10 +98,10 @@ class CalenderViewModel: CalenderViewModelProtocol {
         return self.providerListData
     }
     
-    func getCalenderInfoList(clinicId: Int, providerId: Int, serviceId: Int) {
+    func getCalendarInfoList(clinicId: Int, providerId: Int, serviceId: Int) {
         let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"
-        let apiURL = ApiUrl.calenderInfo.appending("\(url)")
-        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalenderInfoListModel, GrowthNetworkError>) in
+        let apiURL = ApiUrl.CalendarInfo.appending("\(url)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalendarInfoListModel, GrowthNetworkError>) in
             switch result {
             case .success(let appointmentDTOListData):
                 self.appoinmentListData = appointmentDTOListData.appointmentDTOList ?? []

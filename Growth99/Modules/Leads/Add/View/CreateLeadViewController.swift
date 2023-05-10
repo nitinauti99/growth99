@@ -280,7 +280,7 @@ extension CreateLeadViewController: CreateLeadViewControllerProtocol {
     ///  created Lead on existing datanaviagte to lead list
     func LeadDataRecived() {
         view.HideSpinner()
-        self.view.showToast(message: "Data submited successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Data submitted successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }

@@ -174,7 +174,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.createServiceSucessfullyReceived(message: isScreenFrom)
+                    self.delegate?.createServiceSuccessfullyReceived(message: isScreenFrom)
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "We are facing issue while creating service")
                 } else {

@@ -25,7 +25,7 @@ protocol EditEventViewModelProtocol {
     func utcToLocal(dateStr: String) -> String?
     func serverToLocalInputWorking(date: String) -> String
     func appointmentDateInput(date: String) -> String
-    func timeInputCalender(date: String) -> String
+    func timeInputCalendar(date: String) -> String
 
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
     func getEditAppointmentsForPateint(appointmentsId: Int)
@@ -229,7 +229,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
         return allTimes
     }
     
-    func timeInputCalender(date: String) -> String {
+    func timeInputCalendar(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

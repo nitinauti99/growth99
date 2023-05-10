@@ -1,5 +1,5 @@
 //
-//  PostCalenderViewModel.swift
+//  PostCalendarViewModel.swift
 //  Growth99
 //
 //  Created by Apple on 16/03/23.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-protocol PostCalenderViewModelProtocol {
+protocol PostCalendarViewModelProtocol {
    
-    func getPostCalenderList()
-    var  postCalenderListData: [PostCalenderListModel] { get }
+    func getPostCalendarList()
+    var  postCalendarListData: [PostCalendarListModel] { get }
     
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
@@ -19,45 +19,45 @@ protocol PostCalenderViewModelProtocol {
     func appointmentListCountLessthan() -> Int
     
     func serverToLocal(date: String) -> String
-    func serverToLocalCalender(date: String) -> String
+    func serverToLocalCalendar(date: String) -> String
 }
 
 
-class PostCalenderViewModel: PostCalenderViewModelProtocol {
+class PostCalendarViewModel: PostCalendarViewModelProtocol {
 
-    var delegate: PostCalenderViewContollerProtocol?
-    var postCalenderList: [PostCalenderListModel] = []
+    var delegate: PostCalendarViewContollerProtocol?
+    var postCalendarList: [PostCalendarListModel] = []
     
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
     
-    init(delegate: PostCalenderViewContollerProtocol? = nil) {
+    init(delegate: PostCalendarViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
    
-    func getPostCalenderList() {
-        self.requestManager.request(forPath: ApiUrl.socialMediaPostsList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[PostCalenderListModel], GrowthNetworkError>) in
+    func getPostCalendarList() {
+        self.requestManager.request(forPath: ApiUrl.socialMediaPostsList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[PostCalendarListModel], GrowthNetworkError>) in
             switch result {
-            case .success(let postCalenderList):
-                self.postCalenderList = postCalenderList
-                self.delegate?.postCalenderListDataRecived()
+            case .success(let postCalendarList):
+                self.postCalendarList = postCalendarList
+                self.delegate?.postCalendarListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }
-    var postCalenderListData: [PostCalenderListModel] {
-        return self.postCalenderList
+    var postCalendarListData: [PostCalendarListModel] {
+        return self.postCalendarList
     }
     
     func appointmentListCountGreaterthan() -> Int {
-        return self.postCalenderList.filter({$0.scheduledDate?.toDate() ?? Date() > Date()}).count
+        return self.postCalendarList.filter({$0.scheduledDate?.toDate() ?? Date() > Date()}).count
     }
     
     func appointmentListCountLessthan() -> Int {
-        return self.postCalenderList.filter({$0.scheduledDate?.toDate() ?? Date() < Date()}).count
+        return self.postCalendarList.filter({$0.scheduledDate?.toDate() ?? Date() < Date()}).count
     }
     
     func dateFormatterString(textField: CustomTextField) -> String {
@@ -124,7 +124,7 @@ class PostCalenderViewModel: PostCalenderViewModelProtocol {
         return outFormatter.string(from: date)
     }
     
-    func serverToLocalCalender(date: String) -> String {
+    func serverToLocalCalendar(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

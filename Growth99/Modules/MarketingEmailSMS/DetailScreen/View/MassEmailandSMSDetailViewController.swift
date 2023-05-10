@@ -137,7 +137,7 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     
     func smsEmailSubmitReponseReceived() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Trigger created sucessfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Trigger created successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }

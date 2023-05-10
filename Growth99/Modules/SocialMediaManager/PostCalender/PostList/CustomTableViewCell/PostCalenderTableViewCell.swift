@@ -1,5 +1,5 @@
 //
-//  PostCalenderTableViewCell.swift
+//  PostCalendarTableViewCell.swift
 //  Growth99
 //
 //  Created by Apple on 16/03/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostCalenderTableViewCell: UITableViewCell {
+class PostCalendarTableViewCell: UITableViewCell {
 
     @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var statusButton: UIButton!

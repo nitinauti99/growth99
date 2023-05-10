@@ -70,7 +70,7 @@ class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContoller
     
     @objc func getBookingHistory() {
         self.view.ShowSpinner()
-        viewModel?.getCalenderInfoListBookingHistory(clinicId: 0, providerId: 0, serviceId: 0)
+        viewModel?.getCalendarInfoListBookingHistory(clinicId: 0, providerId: 0, serviceId: 0)
     }
     
     fileprivate lazy var dateFormatter: DateFormatter = {
