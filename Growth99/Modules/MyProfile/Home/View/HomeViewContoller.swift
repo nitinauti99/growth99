@@ -110,7 +110,7 @@ class HomeViewContoller: UIViewController {
         let rolesArray = [viewModel?.getUserProfileData.roles?.name]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
-            self.rolesTextField.text  = allClinics?.components(separatedBy: " ").first
+            self.rolesTextField.text  = allClinics
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true

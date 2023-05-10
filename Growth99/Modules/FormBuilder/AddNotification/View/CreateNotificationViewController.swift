@@ -48,7 +48,7 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     @IBAction func notificationTypeDropDown(sender: UIButton) {
         let notificationArray = ["EMAIL", "SMS"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: notificationArray, cellType: .subTitle) { (cell, list, indexPath) in
-            cell.textLabel?.text = list.components(separatedBy: " ").first
+            cell.textLabel?.text = list
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectedNotificationTypeTextField.text = ""

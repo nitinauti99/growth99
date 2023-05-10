@@ -66,7 +66,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
     func selectDayButtonTapped(cell: WorkingCustomTableViewCell) {
         let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics
         }
         selectionMenu.setSelectedItems(items: selectedDays) { (selectedItem, index, selected, selectedList) in
             if selectedList.count == 0 {

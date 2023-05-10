@@ -163,7 +163,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         let rolesArray = [viewModel?.getUserProfileData.roles?.name]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
-            self.rolesTextField.text  = allClinics?.components(separatedBy: " ").first
+            self.rolesTextField.text  = allClinics
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true
@@ -228,7 +228,7 @@ class UserCreateViewController: UIViewController,UserCreateViewControllerProtoco
         }
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allService, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServices.name
         }
         
         selectionMenu.setSelectedItems(items: selectedService) { [weak self] (text, index, selected, selectedList) in

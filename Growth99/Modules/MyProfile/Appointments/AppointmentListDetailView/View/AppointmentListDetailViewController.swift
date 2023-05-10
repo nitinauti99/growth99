@@ -212,7 +212,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -241,7 +241,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
                 
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.serviceName?.components(separatedBy: " ").first
+            cell.textLabel?.text = allServices.serviceName
         }
         selectionMenu.setSelectedItems(items: createSelectedServicesarray) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.servicesTextField.text = selectedList.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
@@ -282,7 +282,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     @IBAction func selectAppoinmentStatusButtonAction(sender: UIButton) {
         let statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: statusArray, cellType: .subTitle) { (cell, allStatus, indexPath) in
-            cell.textLabel?.text = allStatus.components(separatedBy: " ").first
+            cell.textLabel?.text = allStatus
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.appoinmentStatusField.text = selectedItem
@@ -297,7 +297,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? String.blank)
+            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates)
         }
         
         selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -318,7 +318,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? String.blank)
+            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes)
         }
         
         selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in

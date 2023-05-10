@@ -121,7 +121,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         let rolesArray = workingScheduleViewModel?.getAllClinicsData ?? []
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.name
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             selectionMenu.dismissAutomatically = true

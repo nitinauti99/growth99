@@ -144,7 +144,7 @@ extension CreatePateintsTasksViewController {
         let rolesArray = ["Completed", "InComplete"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.components(separatedBy: " ").first
+            cell.textLabel?.text = taskUserList
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
             self?.statusTextField.text  = text

@@ -300,7 +300,7 @@ extension CreateLeadViewController: LeadMultipleSelectionWithDropDownTypeTableVi
         let patientQuestionChoices = questionarieVM?.patientQuestionChoices ?? []
 
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: patientQuestionChoices, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.choiceName?.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics.choiceName
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] ( selectedItem, index, selected, selectedList) in
             cell.dropDownTypeTextField.text = selectedItem?.choiceName

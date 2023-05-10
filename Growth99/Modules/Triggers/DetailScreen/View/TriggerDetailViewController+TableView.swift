@@ -263,7 +263,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     @objc func patientAppointmentMethod(sender: UIButton) {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: appointmentStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.components(separatedBy: " ").first
+            cell.textLabel?.text = allClinics
         }
         let row = sender.tag % 1000
         selectionMenu.setSelectedItems(items: selectedAppointmentStatus) { [weak self] (selectedItem, index, selected, selectedList) in

@@ -205,7 +205,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeZoneList ?? [], cellType: .subTitle) { (cell, alltimezone, indexPath) in
-            cell.textLabel?.text = alltimezone.components(separatedBy: " ").first
+            cell.textLabel?.text = alltimezone
         }
         
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -231,7 +231,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBAction func currencySelectionButton(sender: UIButton) {
         let currencyArray = ["USD", "GBP", "CAD", "EUR", "JPY", "CHF", "ZAR", "AUD", "NZD"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: currencyArray, cellType: .subTitle) { (cell, allCurrency, indexPath) in
-            cell.textLabel?.text = allCurrency.components(separatedBy: " ").first
+            cell.textLabel?.text = allCurrency
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.currencyTextField.text = selectedItem

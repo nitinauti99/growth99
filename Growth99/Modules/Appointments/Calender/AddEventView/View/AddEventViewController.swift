@@ -273,7 +273,7 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates.components(separatedBy: ", ").first ?? String.blank)
+            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates)
         }
         
         selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
@@ -294,7 +294,7 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes.components(separatedBy: ", ").first ?? String.blank)
+            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes)
         }
         
         selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in
