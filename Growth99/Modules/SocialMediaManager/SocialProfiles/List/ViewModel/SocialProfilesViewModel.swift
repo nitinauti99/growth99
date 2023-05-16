@@ -64,8 +64,9 @@ class SocialProfilesListViewModel {
         self.socialProfilesFilterList = self.socialProfilesList.filter { task in
             let searchText = searchText.lowercased()
             let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let socialChannelMatch = task.socialChannel?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            return nameMatch || socialChannelMatch || idMatch
         }
     }
     
