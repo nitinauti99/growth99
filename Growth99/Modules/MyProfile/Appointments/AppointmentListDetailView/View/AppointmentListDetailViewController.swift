@@ -195,7 +195,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment Canceled Successfully", color: .red)
+        self.view.showToast(message: "Appointment cancelled successfully", color: .red)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }

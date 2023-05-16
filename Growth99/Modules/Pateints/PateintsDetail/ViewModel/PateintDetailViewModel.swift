@@ -118,7 +118,7 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.updatedLeadStatusRecived(responseMessage: "Pateint status updated successfully")
+                self.delegate?.updatedLeadStatusRecived(responseMessage: "Patient status updated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -136,7 +136,7 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.updatedPateintsInfo(responseMessage: "Pateints edited successfully")
+                self.delegate?.updatedPateintsInfo(responseMessage: "Patient edited successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

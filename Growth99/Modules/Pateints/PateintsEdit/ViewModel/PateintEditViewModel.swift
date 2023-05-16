@@ -51,7 +51,7 @@ class PateintEditViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.pateintCreatedSuccessfully(responseMessage: "Pateint updated succefully")
+                self.delegate?.pateintCreatedSuccessfully(responseMessage: "Patient updated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

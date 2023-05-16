@@ -164,7 +164,7 @@ class PeteintDetailView: UIViewController {
     
     @objc func addAppointMentButtonTapped(_ sender: UIButton){
         let addEventVC = UIStoryboard(name: "AddEventViewController", bundle: nil).instantiateViewController(withIdentifier: "AddEventViewController") as! AddEventViewController
-        addEventVC.screenTitile = "Pateints Appointment"
+        addEventVC.screenTitile = "Patients Appointment"
         addEventVC.userSelectedDate = "Manual"
         addEventVC.pateintsEmail = pateintsEmail
         navigationController?.pushViewController(addEventVC, animated: true)

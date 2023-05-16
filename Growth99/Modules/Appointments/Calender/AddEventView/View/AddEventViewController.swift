@@ -126,7 +126,7 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         selectedServices = []
         allServices = addEventViewModel?.serviceData ?? []
         self.view.HideSpinner()
-        if self.screenTitile == "Pateints Appointment" {
+        if self.screenTitile == "Patients Appointment" {
             self.view.ShowSpinner()
             self.eventViewModel?.getPateintsAppointData()
         }

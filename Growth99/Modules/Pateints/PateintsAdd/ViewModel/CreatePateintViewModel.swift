@@ -31,7 +31,7 @@ class CreatePateintViewModel {
             switch result {
             case .success(let data):
                 print(data)
-                self.delegate?.pateintCreatedSuccessfully(responseMessage: "Pateint created succefully")
+                self.delegate?.pateintCreatedSuccessfully(responseMessage: "Patient created successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
