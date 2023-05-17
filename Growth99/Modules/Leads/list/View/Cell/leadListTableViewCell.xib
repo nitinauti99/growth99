@@ -242,6 +242,13 @@
                                     <action selector="deleteButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eZ6-KH-5u4"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cornerTagNotif" translatesAutoresizingMaskIntoConstraints="NO" id="3Ig-0z-Jg9">
+                                <rect key="frame" x="292" y="5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="4YF-p7-j0i"/>
+                                    <constraint firstAttribute="width" constant="25" id="k3q-Zo-M5h"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -265,6 +272,7 @@
                             <constraint firstItem="qKG-5P-WAz" firstAttribute="top" secondItem="nTh-Bt-JVZ" secondAttribute="bottom" constant="5" id="JFA-O5-2TH"/>
                             <constraint firstItem="a5X-8z-g2R" firstAttribute="trailing" secondItem="7S1-xz-rNF" secondAttribute="trailing" id="JTu-we-SrZ"/>
                             <constraint firstItem="zZ4-ug-96p" firstAttribute="leading" secondItem="Thh-X6-Tul" secondAttribute="leading" id="KSS-Oo-ALv"/>
+                            <constraint firstItem="3Ig-0z-Jg9" firstAttribute="top" secondItem="a57-xT-cvM" secondAttribute="top" constant="5" id="KpU-NY-822"/>
                             <constraint firstItem="Opz-AE-hI8" firstAttribute="leading" secondItem="kAr-Ed-VB1" secondAttribute="trailing" constant="15" id="NIR-up-KOs"/>
                             <constraint firstItem="7S1-xz-rNF" firstAttribute="top" secondItem="KAt-f4-aIw" secondAttribute="bottom" constant="5" id="O7Y-AG-35s"/>
                             <constraint firstItem="nTh-Bt-JVZ" firstAttribute="top" secondItem="Thh-X6-Tul" secondAttribute="bottom" constant="5" id="PFD-Mw-hlg"/>
@@ -294,6 +302,7 @@
                             <constraint firstItem="KAt-f4-aIw" firstAttribute="trailing" secondItem="biT-CJ-Ebe" secondAttribute="trailing" id="kQd-VJ-r4c"/>
                             <constraint firstItem="QYY-CA-XXw" firstAttribute="leading" secondItem="xJY-Sl-hqA" secondAttribute="trailing" constant="12" id="kUK-Wh-5aT"/>
                             <constraint firstItem="a5X-8z-g2R" firstAttribute="leading" secondItem="biT-CJ-Ebe" secondAttribute="leading" id="kcd-7W-riQ"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ig-0z-Jg9" secondAttribute="trailing" constant="5" id="l41-AZ-n3N"/>
                             <constraint firstItem="aku-BY-J0J" firstAttribute="top" secondItem="a5X-8z-g2R" secondAttribute="bottom" constant="5" id="lfA-va-zdb"/>
                             <constraint firstItem="X66-cG-QO7" firstAttribute="top" secondItem="a57-xT-cvM" secondAttribute="top" constant="15" id="onN-5P-sYr"/>
                             <constraint firstItem="Dly-0V-Vr0" firstAttribute="leading" secondItem="aku-BY-J0J" secondAttribute="leading" id="p2S-cl-z06"/>
@@ -335,6 +344,7 @@
                 <outlet property="leadStatusLbi" destination="QYY-CA-XXw" id="zwb-7V-SPH"/>
                 <outlet property="phoneNumber" destination="a5X-8z-g2R" id="c7B-4r-yvJ"/>
                 <outlet property="subView" destination="a57-xT-cvM" id="HvQ-BB-Nz7"/>
+                <outlet property="unReadImage" destination="3Ig-0z-Jg9" id="Y5G-QU-Tvu"/>
             </connections>
             <point key="canvasLocation" x="153.62318840579712" y="68.303571428571431"/>
         </tableViewCell>
@@ -344,5 +354,6 @@
         <image name="Detail" width="79" height="67"/>
         <image name="Edit" width="66" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
+        <image name="cornerTagNotif" width="13.5" height="13.5"/>
     </resources>
 </document>

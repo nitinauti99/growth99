@@ -17,6 +17,7 @@ protocol leadListViewModelProtocol {
     var getleadPeginationListData: [leadListModel] { get }
     var getleadListFilterData: [leadListModel] { get }
     var leadListTotalCount: Int { get }
+    var leadListUnreadCount: Int { get }
 }
 
 class leadListViewModel {
@@ -109,7 +110,11 @@ extension leadListViewModel: leadListViewModelProtocol {
     var leadListTotalCount: Int {
         return totalCount
     }
-    
+   
+    var leadListUnreadCount: Int {
+        return totalUnreadLead
+    }
+
     var getleadListData : [leadListModel] {
         return self.leadList
     }

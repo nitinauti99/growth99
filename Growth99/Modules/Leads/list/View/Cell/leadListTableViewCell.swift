@@ -25,6 +25,7 @@ class leadListTableViewCell: UITableViewCell {
     @IBOutlet private weak var leadStatusLbi: UILabel!
     @IBOutlet private weak var leadFormNameLbi: UILabel!
     @IBOutlet private weak var leadSourceLbi: UILabel!
+    @IBOutlet private weak var unReadImage: UIImageView!
 
     var indexPath = IndexPath()
     weak var delegate: leadListTableViewCellDelegate?
@@ -49,6 +50,11 @@ class leadListTableViewCell: UITableViewCell {
         leadFormNameLbi.text = leadVM?.questionnaireName
         leadSourceLbi.text = leadVM?.leadSource
         indexPath = index
+        if leadVM?.leadRead == true {
+            self.unReadImage.isHidden = true
+        }else{
+            self.unReadImage.isHidden = false
+        }
     }
     
     @IBAction func deleteButtonPressed() {

@@ -14,6 +14,7 @@ struct leadListModel : Codable {
       let Email: String?
       let Message: String?
       let leadSource: String?
+      let leadRead: Bool?
       let fullName: String?
       let firstName: String?
       let createdAt: String?
@@ -36,6 +37,7 @@ struct leadListModel : Codable {
           case leadSource
           case fullName
           case firstName
+          case leadRead
           case createdAt
           case id
           case PhoneNumber = "Phone Number"
@@ -51,6 +53,7 @@ struct leadListModel : Codable {
       init(from decoder: Decoder) throws {
           let values = try decoder.container(keyedBy: CodingKeys.self)
           lastName = try values.decodeIfPresent(String.self, forKey: .lastName)
+          leadRead = try values.decodeIfPresent(Bool.self, forKey: .leadRead)
           leadStatus = try values.decodeIfPresent(String.self, forKey: .leadStatus)
           amount = try values.decodeIfPresent(Int.self, forKey: .amount)
           Email = try values.decodeIfPresent(String.self, forKey: .Email)

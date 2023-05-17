@@ -22,11 +22,14 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
 
     }
     
-    @objc func updateBadge(_ notification: Notification) {
-        guard let segment = notification.userInfo?["totalUnreadLead"] as? Int else { return }
-        
-        
-        
+    @objc func updateBadge(notification: Notification) {
+        let segment = notification.userInfo?["totalUnreadCount"] as? Int
+        if BaseTabbarViewController.currentInstance?.tabBar.selectedItem?.title == "Lead" {
+            if let tabItems = BaseTabbarViewController.currentInstance?.tabBar.items {
+                let tabItem = tabItems[1]
+                tabItem.badgeValue = String(segment ?? 0)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

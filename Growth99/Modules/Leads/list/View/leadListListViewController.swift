@@ -132,6 +132,8 @@ extension leadListViewController: leadListViewControllerProtocol {
     func leadListDataRecived() {
         self.view.HideSpinner()
         self.tableView.reloadData()
+        let userInfo = [ "totalUnreadCount" : viewModel?.leadListUnreadCount ?? 0]
+        NotificationCenter.default.post(name: Notification.Name("updateBadge"), object: nil,userInfo: userInfo)
     }
     
     func leadRemovedSuccefully(message: String){
