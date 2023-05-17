@@ -80,7 +80,7 @@ class CreatePostViewController: UIViewController {
         self.scheduleTimeTextField.text = self.dateFormater?.timeFormatterString(textField: self.scheduleTimeTextField)
     }
     
-    func setUpUI(){
+    func setUpUI() {
         let item = viewModel?.getSocailPostData
         self.hashtagTextField.text = item?.hashtag
         let list: [String] = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.name ?? ""})
@@ -137,12 +137,18 @@ class CreatePostViewController: UIViewController {
             return
         }
         
-        if let scheduleDateTextField = self.scheduleDateTextField.text,  scheduleDateTextField == "" {
-            self.scheduleDateTextField.showError(message: "Social Channel is required")
+        if let scheduleDateTextField = self.scheduleDateTextField.text, scheduleDateTextField == "" {
+            self.scheduleDateTextField.showError(message: "Schedule date is required")
             return
         }
-        if let socialChannelTextField = self.socialChannelTextField.text,  socialChannelTextField == "" {
-            self.socialChannelTextField.showError(message: "Social Channel is required")
+        
+        if let scheduleTimeTextField = self.scheduleTimeTextField.text, scheduleTimeTextField == "" {
+            self.scheduleTimeTextField.showError(message: "Schedule time is required")
+            return
+        }
+        
+        if let socialChannelTextField = self.socialChannelTextField.text, socialChannelTextField == "" {
+            self.socialChannelTextField.showError(message: "Social channel is required")
             return
         }
         

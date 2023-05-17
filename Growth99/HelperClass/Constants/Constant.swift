@@ -128,6 +128,7 @@ struct Constant {
         static let appointmentTemplates = "Appointment Templates"
         static let eventTemplates = "Event Templates"
         static let massEmailTemplates = "Mass Email Templates"
+        static let massSMSTemplates = "Mass SMS Templates"
         static let Questionnarie = "Questionnaire"
         static let tasks = "Tasks"
         static let createTasks = "Create Task"

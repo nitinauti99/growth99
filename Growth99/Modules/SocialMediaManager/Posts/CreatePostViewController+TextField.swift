@@ -16,19 +16,19 @@ extension CreatePostViewController: UITextFieldDelegate {
                 hashtagTextField.showError(message: Constant.ErrorMessage.hashTagEmptyError)
                 return
             }
-          
+            
             if let isFirstName =  self.viewModel?.isValidHashTag(self.hashtagTextField.text ?? ""), isFirstName == false  {
                 hashtagTextField.showError(message: Constant.ErrorMessage.hashTagInvalidError)
                 return
             }
-     
+            
         } else if (textField ==  labelTextField) {
             if textField == labelTextField, textField.text == "" {
                 labelTextField.showError(message: "Label is required")
             }
-        }else if (textField == socialChannelTextField) {
+        } else if (textField == socialChannelTextField) {
             if textField == socialChannelTextField, textField.text == "" {
-                self.socialChannelTextField.showError(message: "Social Channel is required")
+                self.socialChannelTextField.showError(message: "Social channel is required")
             }
         }
     }
@@ -38,9 +38,9 @@ extension CreatePostViewController: UITextFieldDelegate {
             if textField == labelTextField, textField.text == "" {
                 labelTextField.showError(message: "Label is required")
             }
-        }else if (textField == socialChannelTextField) {
+        } else if (textField == socialChannelTextField) {
             if textField == socialChannelTextField, textField.text == "" {
-                self.socialChannelTextField.showError(message: "Social Channel is required")
+                self.socialChannelTextField.showError(message: "Social channel is required")
             }
         }
     }

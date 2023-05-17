@@ -55,15 +55,21 @@ class EmailTemplateViewController: UIViewController, EmailTemplateViewContollerP
     @objc private func selectionDidChange(sender:ScrollableSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            tableView.reloadData()
+            clearSearchBar()
             navigationItem.rightBarButtonItem = nil
         case 1:
-            tableView.reloadData()
+            clearSearchBar()
         case 2:
-            tableView.reloadData()
+            clearSearchBar()
         default:
             break
         }
+    }
+    
+    func clearSearchBar() {
+        isSearch = false
+        searchBar.text = ""
+        tableView.reloadData()
     }
     
     func addSerchBar(){

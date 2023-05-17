@@ -43,7 +43,7 @@ class SMSTemplateViewController: UIViewController {
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: Constant.Profile.leadTemplates, at: 0)
         segmentedControl.insertSegment(withTitle: Constant.Profile.appointmentTemplates, at: 1)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.massEmailTemplates, at: 2)
+        segmentedControl.insertSegment(withTitle: Constant.Profile.massSMSTemplates, at: 2)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 3
         segmentedControl.underlineSelected = true
@@ -57,17 +57,23 @@ class SMSTemplateViewController: UIViewController {
         }
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            self.tableView.reloadData()
+            clearSearchBar()
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 1:
-            self.tableView.reloadData()
+            clearSearchBar()
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
         case 2:
-            self.tableView.reloadData()
+            clearSearchBar()
             navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(addUserButtonTapped), imageName: "add")
        default:
             break
         }
+    }
+    
+    func clearSearchBar() {
+        isSearch = false
+        searchBar.text = ""
+        tableView.reloadData()
     }
 
     @objc func addUserButtonTapped(_ sender: UIButton) {
