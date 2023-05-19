@@ -742,7 +742,7 @@ extension FormDetailTableViewCell {
             return Constant.Regex.email
         case "Phone":
             return Constant.Regex.phone
-        case "Name including white space":
+        case "Name including space":
             return Constant.Regex.nameWithSpace
         case  "Name without space":
             return Constant.Regex.nameWithoutSpace
@@ -769,7 +769,7 @@ extension FormDetailTableViewCell {
         }
         
         if regex == Constant.Regex.nameWithSpace {
-            return "Name including white space"
+            return "Name including space"
         }
         
         if regex == Constant.Regex.nameWithoutSpace {

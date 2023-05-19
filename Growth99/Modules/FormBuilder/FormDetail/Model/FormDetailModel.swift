@@ -121,7 +121,7 @@ struct RegexList: Codable, Equatable {
     var regexArray: [String] = [
         "Email",
         "Phone",
-        "Name including white space",
+        "Name including space",
         "Name without space",
         "User name contain special character without space",
         "Date validation dd/MM/yyyy or dd-MM-yyyy",

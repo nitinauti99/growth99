@@ -49,7 +49,7 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = Constant.Profile.Questionnarie
+        self.title = "Assign Questionnaire"
     }
     
     func addSerchBar(){

@@ -24,7 +24,7 @@ class FormListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.questionnaire
+        self.title = "Forms"
         viewModel = FormListViewModel(delegate: self)
         self.addSerchBar()
         self.setBarButton()
