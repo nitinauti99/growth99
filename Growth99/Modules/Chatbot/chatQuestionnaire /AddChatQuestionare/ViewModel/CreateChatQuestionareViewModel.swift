@@ -49,7 +49,7 @@ class CreateChatQuestionareViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.saveChatQuestionaire(message:"chat Questionaire details Saved")
+                self.delegate?.saveChatQuestionaire(message:"Chat questionnaire details saved")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -67,7 +67,7 @@ class CreateChatQuestionareViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.saveChatQuestionaire(message:"chat Questionaire details Saved")
+                self.delegate?.saveChatQuestionaire(message:"Chat questionnaire updated successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

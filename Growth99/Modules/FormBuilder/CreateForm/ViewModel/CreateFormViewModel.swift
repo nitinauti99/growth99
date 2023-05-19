@@ -25,7 +25,7 @@ class CreateFormViewModel {
             switch result {
             case .success(let FormData):
                 print(FormData)
-                self.delegate?.FormsDataRecived(message: "Form Data Saved Successfully")
+                self.delegate?.FormsDataRecived(message: "Questionnaire saved successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

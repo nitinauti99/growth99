@@ -81,7 +81,7 @@ class FormDetailViewController: UIViewController {
     }
     
     func deleteQuestion(name: String, id: Int){
-        let alert = UIAlertController(title: Constant.Profile.deleteConcents , message: "Are you sure you want to delete \n\(name)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Delete Question", message: "Are you sure you want to delete \n\(name)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                         handler: { [weak self] _ in
             self?.view.ShowSpinner()
@@ -139,7 +139,7 @@ extension FormDetailViewController: FormDetailViewControllerProtocol {
     }
     
     func updatedFormDataSuccessfully(){
-        self.view.showToast(message: "Question Saved Successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Questionnaire updated successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.view.ShowSpinner()
             self.viewModel?.getFormQuestionnaireData(questionnaireId: self.questionId)

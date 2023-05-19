@@ -598,7 +598,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     }
     @IBAction func saveFormData(sender: UIButton){
         guard let questionnaireName  = questionNameTextfield.text, !questionnaireName.isEmpty else {
-            questionNameTextfield.showError(message: "Questionnaire is required")
+            questionNameTextfield.showError(message: "Question is required")
                 return
         }
         self.bottomView.isHidden = true
