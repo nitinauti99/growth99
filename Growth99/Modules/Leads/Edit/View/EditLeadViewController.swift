@@ -104,9 +104,14 @@ class EditLeadViewController: UIViewController {
         }
                 
         guard let ammount = ammountTextField.text, !ammount.isEmpty else {
-            ammountTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
+            ammountTextField.showError(message: Constant.ErrorMessage.ammountEmptyError)
             return
         }
+        
+        if ammountTextField.text == "0" {
+            return
+        }
+        
         view.ShowSpinner()
         let id = Int(idTextField.text ?? String.blank) ?? 0
         viewModel?.updateLead(questionnaireId: id, name: nameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phoneNumber: phoneNumberTextField.text ?? String.blank, leadStatus: leadStatusTextField.text ?? String.blank)

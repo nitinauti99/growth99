@@ -153,8 +153,11 @@ class PateintDetailViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "System error occured. Please try again or contact support")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
@@ -172,8 +175,11 @@ class PateintDetailViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.emailSendSuccessfully(responseMessage: "Email sent successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.emailSendSuccessfully(responseMessage: "Email sent successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "System error occured. Please try again or contact support")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

@@ -13,6 +13,7 @@ struct EndPoints {
     static let auth = "/api/user/auth"
     static let register = "/api/account/register"
     static let forgotPassword = "/api/public/users/forgot-password"
+    static let byemail = "/api/public/users/byemail?email="
     static let VerifyforgotPassword = "/api/public/users/forgot-password"
     static let userProfile = "/api/v1/user/"
     static let allClinics = "/api/v1/clinics/allClinics"
@@ -336,5 +337,7 @@ struct ApiUrl {
     static let editSocialMediaLibrary = EndPoints.baseURL.appending(EndPoints.editSocialMediaLibrary)
     static let deleteCategories = EndPoints.baseURL.appending(EndPoints.deleteCategories)
     static let socialMediaPost = EndPoints.baseURL.appending(EndPoints.socialMediaPost)
+    static let byemail = EndPoints.baseURL.appending(EndPoints.byemail)
 
 }
+

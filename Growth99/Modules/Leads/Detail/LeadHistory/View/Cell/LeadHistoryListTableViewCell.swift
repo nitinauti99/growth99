@@ -7,7 +7,11 @@
 
 import UIKit
 
-import UIKit
+protocol LeadHistoryListTableViewCellDelegate: AnyObject {
+    func removeLead(cell: LeadHistoryListTableViewCell, index: IndexPath)
+    func editLead(cell: LeadHistoryListTableViewCell, index: IndexPath)
+    func detailLead(cell: LeadHistoryListTableViewCell, index: IndexPath)
+}
 
 class LeadHistoryListTableViewCell: UITableViewCell {
     @IBOutlet private weak var id: UILabel!
@@ -20,6 +24,9 @@ class LeadHistoryListTableViewCell: UITableViewCell {
     @IBOutlet private weak var createdDate: UILabel!
     @IBOutlet private weak var subView: UIView!
     
+    var indexPath = IndexPath()
+    weak var delegate: LeadHistoryListTableViewCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,6 +44,7 @@ class LeadHistoryListTableViewCell: UITableViewCell {
         self.leadStatus.text = userVM?.leadStatus
         self.landingPages.text = userVM?.landingPage
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        indexPath = index
     }
     
     func configureCell(userVM: LeadHistoryViewModelProtocol?, index: IndexPath) {
@@ -49,6 +57,7 @@ class LeadHistoryListTableViewCell: UITableViewCell {
         self.leadStatus.text = userVM?.leadStatus
         self.landingPages.text = userVM?.landingPage
         self.createdDate.text =  self.serverToLocal(date: userVM?.createdAt ?? String.blank)
+        indexPath = index
     }
     
     func serverToLocal(date: String) -> String {
@@ -60,4 +69,15 @@ class LeadHistoryListTableViewCell: UITableViewCell {
         return dateFormatter.string(from: date as Date)
     }
     
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.removeLead(cell: self, index: indexPath)
+    }
+    
+    @IBAction func editButtonPressed() {
+        self.delegate?.editLead(cell: self, index: indexPath)
+    }
+    
+    @IBAction func detailButtonPressed() {
+        self.delegate?.detailLead(cell: self, index: indexPath)
+    }
 }

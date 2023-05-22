@@ -45,6 +45,8 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
             if let tabItems = tabBarController.tabBar.items {
                 let tabItem = tabItems[1]
                 tabItem.badgeValue = totalUnreadLead
+                let tabItem2 = tabItems[2]
+                tabItem2.badgeValue = totalUnreadLead
             }
         }
      }

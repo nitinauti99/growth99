@@ -34,7 +34,7 @@ class LeadHistoryViewModel {
         self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[LeadHistoryModel], GrowthNetworkError>) in
             switch result {
             case .success(let userData):
-                self.leadHistroyData = userData.reversed()
+                self.leadHistroyData = userData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.LeadHistoryDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
