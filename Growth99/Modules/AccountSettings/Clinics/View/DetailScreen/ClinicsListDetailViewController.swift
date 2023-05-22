@@ -280,7 +280,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         
         let tenentID = UserRepository.shared.Xtenantid ?? String.blank
         
-        let clinicURL = "\(EndPoints.baseURL)/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
+        let clinicURL = "https://devemr.growthemr.com/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)"
         onlineLinkWithURLTextView.text = clinicURL
         
         let filteredMondayArray = viewModel?.getClinicsListData?.businessHours?.filter{$0.dayOfWeek == "MONDAY"}

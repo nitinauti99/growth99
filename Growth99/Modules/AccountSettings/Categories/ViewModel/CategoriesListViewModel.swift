@@ -65,7 +65,7 @@ class CategoriesListViewModel {
             guard let self = self else { return }
             switch result {
             case .success(_ ):
-                self.delegate?.categoriesRemovedSuccefully(message: "Category Delete Successfully")
+                self.delegate?.categoriesRemovedSuccefully(message: "Category deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

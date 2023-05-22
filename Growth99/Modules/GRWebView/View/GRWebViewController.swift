@@ -23,8 +23,7 @@ class GRWebViewController: UIViewController, WKNavigationDelegate {
     }
     
     func loadWebviewUrl() {
-        let url = URL(string: "https://support.growth99.com/portal/en/kb/growth99-plus")!
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: webViewUrl)
         webView.load(request)
         webView.allowsBackForwardNavigationGestures = true
         webView.isExclusiveTouch = true

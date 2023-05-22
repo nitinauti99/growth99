@@ -65,8 +65,31 @@ struct ClinicsDetailListModel: Codable {
     let currencySymbol: String?
     let isReviewPublished: Bool?
     let disableVirtualAppointment: Bool?
-    let clinicVacationSchedules: [String]?
+    let clinicVacationSchedules: [ClinicVacationSchedules]?
     let priceVaries: Bool?
+}
+
+
+struct ClinicVacationSchedules : Codable {
+    let id : Int?
+    let fromDate : String?
+    let toDate : String?
+    let allDay : Bool?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case fromDate = "fromDate"
+        case toDate = "toDate"
+        case allDay = "allDay"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        fromDate = try values.decodeIfPresent(String.self, forKey: .fromDate)
+        toDate = try values.decodeIfPresent(String.self, forKey: .toDate)
+        allDay = try values.decodeIfPresent(Bool.self, forKey: .allDay)
+    }
 }
 
 struct ClinicParamModel: Codable {
