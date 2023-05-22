@@ -91,7 +91,7 @@ class EditTasksViewController: UIViewController{
             goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
             leadOrPatientSelected = "Lead"
             self.questionnaireSubmissionId = taskDetail?.leadDTO?.id ?? 0
-
+            self.workflowTaskPatient = taskDetail?.leadId ?? 0
         }else {
             patientButton.isSelected = true
             leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? String.blank) \(taskDetail?.patientDTO?.lastName ?? String.blank)"
@@ -104,6 +104,8 @@ class EditTasksViewController: UIViewController{
             leadOrPatientLbi.text = "Patient Information"
             goToDetailPageButton.setTitle("Go To Patient Detail", for: .normal)
             leadOrPatientSelected = "Patient"
+            self.workflowTaskPatient = taskDetail?.patientId ?? 0
+
         }
     }
     
@@ -275,7 +277,7 @@ extension EditTasksViewController {
     }
     
     @IBAction func openTaskLeadOrPateintsListDropDwon(sender: UIButton) {
-        if leadOrPatientSelected == "Lead" {
+        if self.leadOrPatientSelected == "Lead" {
             let finaleListArray = viewModel?.taskQuestionnaireSubmissionList ?? []
             let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: finaleListArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
                 cell.textLabel?.text = taskUserList.fullName

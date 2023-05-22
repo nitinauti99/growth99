@@ -132,7 +132,7 @@ extension EditLeadViewModel: EditLeadViewModelProtocol {
     }
     
     func isValidFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithoutSpace
+        let regex = Constant.Regex.nameWithSpace
         let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
         return isFirstName.evaluate(with: firstName)
     }

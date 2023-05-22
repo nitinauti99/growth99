@@ -10,6 +10,7 @@ import Foundation
 protocol ForgotPasswordViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
     func sendRequestGetPassword(email: String)
+    func sendRequestCheckEmailExist(email: String)
 }
 
 class ForgotPasswordViewModel {
@@ -24,6 +25,25 @@ class ForgotPasswordViewModel {
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
+   
+    func sendRequestCheckEmailExist(email: String) {
+
+        self.requestManager.request(forPath: ApiUrl.byemail.appending("\(email)"), method: .GET) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response)
+                if response.data.count == 0 {
+                    self.delegate?.userDoesNotExist()
+                }else{
+                    self.delegate?.userDataByemailRecived()
+                }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription )
+            }
+        }
+    }
+    
     func sendRequestGetPassword(email: String) {
 
         self.requestManager.request(forPath: ApiUrl.forgotPassword.appending("?username=\(email)"), method: .GET) { [weak self] result in
@@ -31,7 +51,7 @@ class ForgotPasswordViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.LoaginDataRecived()
+                self.delegate?.emailDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription )
             }

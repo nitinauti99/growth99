@@ -59,8 +59,6 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
         self.fullName.text = leadData?.fullName
         self.title = "Lead Detail"
         self.viewModel = leadDetailViewModel(delegate: self)
-        self.view.ShowSpinner()
-        self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
         self.buttons = [newButton, coldButton, warmButton, hotButton, wonButton, deadButton]
     }
    
@@ -74,6 +72,8 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.ShowSpinner()
+        self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
         newButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)
         coldButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)
         warmButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)

@@ -39,6 +39,10 @@ extension LeadHistoryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let userInfo = [ "selectedIndex" : 0 ]
+        let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
+        detailController.workflowLeadId = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)?.id ?? 0
+       // detailController.leadData = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)
         NotificationCenter.default.post(name: Notification.Name("changeLeadSegment"), object: nil,userInfo: userInfo)
+
     }
 }

@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 protocol ForgotPasswordViewControllerProtocol: AnyObject {
-    func LoaginDataRecived()
+    func userDataByemailRecived()
+    func emailDataRecived()
+    func userDoesNotExist()
     func errorReceived(error: String)
 }
 
@@ -26,7 +28,7 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.green
         self.subView.createBorderForView(redius: 10, width: 1)
-        viewModel = ForgotPasswordViewModel(delegate: self)
+        self.viewModel = ForgotPasswordViewModel(delegate: self)
         self.subView.addBottomShadow(color: .gray)
         self.setUpUI()
     }
@@ -48,11 +50,21 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
         }
     }
     
-    func LoaginDataRecived() {
+    func userDataByemailRecived() {
+        self.view.HideSpinner()
+        self.viewModel?.sendRequestGetPassword(email: emailTextField.text ?? String.blank)
+    }
+    
+    func emailDataRecived() {
         self.view.HideSpinner()
         self.openVerifyPasswordView()
     }
     
+    func userDoesNotExist(){
+        self.view.HideSpinner()
+        self.view.showToast(message: " The user with given email doesn't exist!", color: .red)
+    }
+
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
@@ -69,7 +81,7 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControll
             return
         }
          self.view.ShowSpinner()
-         viewModel?.sendRequestGetPassword(email: emailTextField.text ?? String.blank)
+         self.viewModel?.sendRequestCheckEmailExist(email: emailTextField.text ?? String.blank)
     }
     
     func openVerifyPasswordView(){

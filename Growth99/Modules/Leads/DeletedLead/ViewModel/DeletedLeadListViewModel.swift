@@ -55,7 +55,7 @@ class DeletedLeadListViewModel {
     func filterData(searchText: String) {
         self.deletedFilterLeadList = self.deletedLeadList.filter { task in
             let searchText = searchText.lowercased()
-            let nameMatch = task.email?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let nameMatch = task.fullName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
             return nameMatch || idMatch
         }

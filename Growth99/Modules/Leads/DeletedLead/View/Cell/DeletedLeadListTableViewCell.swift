@@ -45,7 +45,7 @@ class DeletedLeadListTableViewCell: UITableViewCell {
     }
     
     func configureCellWithSearch(leadVM: DeletedLeadListViewModelProtocol?, index: IndexPath) {
-        let leadVM = leadVM?.deletedLeadListDataAtIndex(index: index.row)
+        let leadVM = leadVM?.deletedLeadListFilterDataAtIndex(index: index.row)
         fullName.text = leadVM?.fullName
         email.text = leadVM?.email
         id.text = String(leadVM?.id ?? 0)
