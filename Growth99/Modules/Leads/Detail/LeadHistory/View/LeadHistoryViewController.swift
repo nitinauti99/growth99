@@ -11,6 +11,8 @@ import UIKit
 protocol LeadHistoryViewControllerProtocol: AnyObject {
     func LeadHistoryDataRecived()
     func errorReceived(error: String)
+    func leadRemovedSuccefully(message: String)
+
 }
 
 class LeadHistoryViewController: UIViewController, LeadHistoryViewControllerProtocol {
@@ -62,5 +64,50 @@ class LeadHistoryViewController: UIViewController, LeadHistoryViewControllerProt
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
+    }
+    
+    func leadRemovedSuccefully(message: String){
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        viewModel?.getLeadHistory()
+    }
+}
+extension LeadHistoryViewController: LeadHistoryListTableViewCellDelegate {
+   
+    func removeLead(cell: LeadHistoryListTableViewCell, index: IndexPath) {
+        var fullName = String()
+        var id = Int()
+       
+        if isSearch{
+            fullName = (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.firstName ?? "")  + (viewModel?.leadHistoryDataAtIndex(index: index.row)?.lastName ?? "")
+            id = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id ?? 0
+        }else{
+            fullName = (viewModel?.leadHistoryDataAtIndex(index: index.row)?.firstName ?? "")  + (viewModel?.leadHistoryDataAtIndex(index: index.row)?.lastName ?? "")
+            id = self.viewModel?.leadHistoryDataAtIndex(index: index.row)?.id ?? 0
+        }
+        
+        let alert = UIAlertController(title: "Delete Lead", message: "Are you sure you want to delete \n\(fullName)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                      handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            self?.viewModel?.removeLeadFromHistry(id: id)
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func editLead(cell: LeadHistoryListTableViewCell, index: IndexPath) {
+        let editVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
+        
+        if isSearch{
+            editVC.LeadData = viewModel?.leadHistoryFilterDataAtIndex(index: index.row)
+            editVC.LeadId = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id ?? 0
+        }else{
+            editVC.LeadData = viewModel?.leadHistoryDataAtIndex(index: index.row)
+            editVC.LeadId = self.viewModel?.leadHistoryDataAtIndex(index: index.row)?.id ?? 0
+        }
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
 }

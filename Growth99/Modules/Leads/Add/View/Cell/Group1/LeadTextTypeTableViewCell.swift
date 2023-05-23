@@ -12,6 +12,7 @@ class LeadTextTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var textTypeTextField: UITextView!
     @IBOutlet weak var errorTypeLbi: UILabel!
+    @IBOutlet weak var asteriskSign: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,10 @@ class LeadTextTypeTableViewCell: UITableViewCell {
     func configureCell(questionarieVM: CreateLeadViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.getLeadQuestionnaireListAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.questionName
+        self.asteriskSign.isHidden = true
+        if questionarieVM?.required == true {
+            self.asteriskSign.isHidden = false
+        }
     }
     
 }

@@ -32,7 +32,7 @@ class ConsentsListViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers:self.requestManager.Headers()) {(result: Result<[ConsentsListModel], GrowthNetworkError>) in
             switch result {
             case .success(let consentsList):
-                self.consentsList = consentsList
+                self.consentsList = consentsList.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.LeadDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

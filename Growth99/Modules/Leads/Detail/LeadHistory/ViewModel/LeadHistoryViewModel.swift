@@ -9,18 +9,18 @@ import Foundation
 
 protocol LeadHistoryViewModelProtocol {
     func getLeadHistory()
-    func leadHistoryDataAtIndex(index: Int) -> LeadHistoryModel?
-    func leadHistoryFilterDataAtIndex(index: Int)-> LeadHistoryModel?
+    func leadHistoryDataAtIndex(index: Int) -> leadListModel?
+    func leadHistoryFilterDataAtIndex(index: Int)-> leadListModel?
     func filterData(searchText: String)
-    
-    var  getLeadHistroyData: [LeadHistoryModel] { get }
-    var  getLeadHistroyFilterData: [LeadHistoryModel] { get }
+    func removeLeadFromHistry(id: Int)
+    var  getLeadHistroyData: [leadListModel] { get }
+    var  getLeadHistroyFilterData: [leadListModel] { get }
 }
 
 class LeadHistoryViewModel {
     var delegate: LeadHistoryViewControllerProtocol?
-    var leadHistroyData: [LeadHistoryModel] = []
-    var leadHistroyFilterData: [LeadHistoryModel] = []
+    var leadHistroyData: [leadListModel] = []
+    var leadHistroyFilterData: [leadListModel] = []
     let user = UserRepository.shared
     
     init(delegate: LeadHistoryViewControllerProtocol? = nil) {
@@ -31,7 +31,7 @@ class LeadHistoryViewModel {
     
     func getLeadHistory() {
         let finaleURL = ApiUrl.getLeadHistory.appending("\(self.user.primaryEmailId ?? "")")
-        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[LeadHistoryModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[leadListModel], GrowthNetworkError>) in
             switch result {
             case .success(let userData):
                 self.leadHistroyData = userData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
@@ -53,22 +53,43 @@ class LeadHistoryViewModel {
         }
     }
     
-    func leadHistoryDataAtIndex(index: Int)-> LeadHistoryModel? {
+    func removeLeadFromHistry(id: Int) {
+        let finaleUrl = ApiUrl.deletHistryLead.appending("\(id)")
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.leadRemovedSuccefully(message: "Leads deleted successfully")
+                }else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while deleting lead")
+                }else{
+                    self.delegate?.errorReceived(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
+    func leadHistoryDataAtIndex(index: Int)-> leadListModel? {
         return self.leadHistroyData[index]
     }
     
-    func leadHistoryFilterDataAtIndex(index: Int)-> LeadHistoryModel? {
+    func leadHistoryFilterDataAtIndex(index: Int)-> leadListModel? {
         return self.leadHistroyFilterData[index]
     }
+    
 }
 
 extension LeadHistoryViewModel: LeadHistoryViewModelProtocol {
     
-    var getLeadHistroyFilterData: [LeadHistoryModel] {
+    var getLeadHistroyFilterData: [leadListModel] {
         return self.leadHistroyFilterData
     }
     
-    var getLeadHistroyData: [LeadHistoryModel] {
+    var getLeadHistroyData: [leadListModel] {
         return self.leadHistroyData
     }
 }

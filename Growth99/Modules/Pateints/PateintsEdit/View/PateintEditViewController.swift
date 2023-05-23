@@ -71,7 +71,7 @@ class PateintEditViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func openGenderSelction(sender: UITextField) {
+    @IBAction func openGenderSelction(sender: UIButton) {
         let list =  ["Male","Female"]
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: list, cellType: .subTitle) { (cell, allClinics, indexPath) in
@@ -93,8 +93,17 @@ class PateintEditViewController: UIViewController {
             return
         }
         
+        guard let firstName = firsNameTextField.text, let firstNameValidate = viewModel?.isFirstName(firstName), firstNameValidate else {
+            firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
+            return
+        }
         guard let textField = lastNameTextField.text, !textField.isEmpty else  {
             lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
+            return
+        }
+        
+        guard let lastName = lastNameTextField.text, let lastNameValidate = viewModel?.isLastName(lastName), lastNameValidate else {
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
             return
         }
         

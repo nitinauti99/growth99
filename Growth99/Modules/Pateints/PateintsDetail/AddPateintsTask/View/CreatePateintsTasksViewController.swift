@@ -126,7 +126,7 @@ extension CreatePateintsTasksViewController: CreatePateintsTasksViewControllerPr
 
 extension CreatePateintsTasksViewController {
    
-    @IBAction func openUserListDropDwon(sender: UITextField) {
+    @IBAction func openUserListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.taskUserList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.firstName
@@ -140,7 +140,7 @@ extension CreatePateintsTasksViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openStatusListDropDwon(sender: UITextField) {
+    @IBAction func openStatusListDropDwon(sender: UIButton) {
         let rolesArray = ["Completed", "InComplete"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in

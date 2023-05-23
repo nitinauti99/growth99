@@ -74,6 +74,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="asteriskSign" destination="eQt-gY-3aT" id="4Gl-tY-jaK"/>
                 <outlet property="inputeTypeTextField" destination="dLI-ce-Fkb" id="bMh-K9-9jY"/>
                 <outlet property="questionnaireName" destination="xO2-kl-8gX" id="eUd-ge-Kjw"/>
             </connections>

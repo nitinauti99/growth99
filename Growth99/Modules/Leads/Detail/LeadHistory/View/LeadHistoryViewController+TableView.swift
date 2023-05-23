@@ -25,6 +25,7 @@ extension LeadHistoryViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadHistoryListTableViewCell", for: indexPath) as? LeadHistoryListTableViewCell else { return UITableViewCell() }
         
+        cell.delegate = self
         if isSearch {
             cell.configureCellWithSearch(userVM: viewModel, index: indexPath)
         }else{

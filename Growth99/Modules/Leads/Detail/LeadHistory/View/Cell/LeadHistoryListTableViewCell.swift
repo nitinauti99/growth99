@@ -10,7 +10,6 @@ import UIKit
 protocol LeadHistoryListTableViewCellDelegate: AnyObject {
     func removeLead(cell: LeadHistoryListTableViewCell, index: IndexPath)
     func editLead(cell: LeadHistoryListTableViewCell, index: IndexPath)
-    func detailLead(cell: LeadHistoryListTableViewCell, index: IndexPath)
 }
 
 class LeadHistoryListTableViewCell: UITableViewCell {
@@ -38,8 +37,8 @@ class LeadHistoryListTableViewCell: UITableViewCell {
         let userVM = userVM?.leadHistoryFilterDataAtIndex(index: index.row)
         self.name.text = (userVM?.firstName ?? "") + " " +  (userVM?.lastName ?? "")
         self.id.text = String(userVM?.id ?? 0)
-        self.email.text = userVM?.email
-        self.phoneNumber.text = userVM?.phoneNumber
+        self.email.text = userVM?.Email
+        self.phoneNumber.text = userVM?.PhoneNumber
         self.source.text = userVM?.leadSource
         self.leadStatus.text = userVM?.leadStatus
         self.landingPages.text = userVM?.landingPage
@@ -51,8 +50,8 @@ class LeadHistoryListTableViewCell: UITableViewCell {
         let userVM = userVM?.leadHistoryDataAtIndex(index: index.row)
         self.name.text = (userVM?.firstName ?? "") + " " +  (userVM?.lastName ?? "")
         self.id.text = String(userVM?.id ?? 0)
-        self.email.text = userVM?.email
-        self.phoneNumber.text = userVM?.phoneNumber
+        self.email.text = userVM?.Email
+        self.phoneNumber.text = userVM?.PhoneNumber
         self.source.text = userVM?.leadSource
         self.leadStatus.text = userVM?.leadStatus
         self.landingPages.text = userVM?.landingPage
@@ -75,9 +74,5 @@ class LeadHistoryListTableViewCell: UITableViewCell {
     
     @IBAction func editButtonPressed() {
         self.delegate?.editLead(cell: self, index: indexPath)
-    }
-    
-    @IBAction func detailButtonPressed() {
-        self.delegate?.detailLead(cell: self, index: indexPath)
     }
 }

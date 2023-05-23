@@ -482,7 +482,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             guard let webView = UIViewController.loadStoryboard("GRWebViewController", "GRWebViewController") as? GRWebViewController else {
                 fatalError("Failed to load BaseTabbarViewController from storyboard.")
             }
-            webView.webViewUrl = URL
+            webView.webViewUrlString = URL.absoluteString
             webView.webViewTitle = self.title ?? String.blank
             self.navigationController?.pushViewController(webView, animated: true)
         }

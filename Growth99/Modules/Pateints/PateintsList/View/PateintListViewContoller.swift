@@ -100,23 +100,42 @@ extension PateintListViewContoller: PateintListTableViewCellDelegate {
    
     func editPatieint(cell: PateintListTableViewCell, index: IndexPath) {
         let editVC = UIStoryboard(name: "PateintEditViewController", bundle: nil).instantiateViewController(withIdentifier: "PateintEditViewController") as! PateintEditViewController
+        if isSearch {
+            editVC.pateintId = viewModel?.pateintFilterDataAtIndex(index: index.row)?.id ?? 0
+        }else{
+            editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
+        }
         editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
         self.navigationController?.pushViewController(editVC, animated: true)
     }
     
     func detailPatieint(cell: PateintListTableViewCell, index: IndexPath) {
         let PeteintDetail = PeteintDetailView.viewController()
-        PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
-        PeteintDetail.pateintsEmail = viewModel?.pateintDataAtIndex(index: index.row)?.email ?? ""
+        if isSearch {
+            PeteintDetail.workflowTaskPatientId = viewModel?.pateintFilterDataAtIndex(index: index.row)?.id ?? 0
+            PeteintDetail.pateintsEmail = viewModel?.pateintFilterDataAtIndex(index: index.row)?.email ?? ""
+        }else{
+            PeteintDetail.workflowTaskPatientId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
+            PeteintDetail.pateintsEmail = viewModel?.pateintDataAtIndex(index: index.row)?.email ?? ""
+        }
         self.navigationController?.pushViewController(PeteintDetail, animated: true)
     }
     
     func removePatieint(cell: PateintListTableViewCell, index: IndexPath) {
-        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(viewModel?.pateintDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+        var pateintId = Int()
+        var pateintName = String()
+
+        if isSearch {
+            pateintId = self.viewModel?.pateintFilterDataAtIndex(index: index.row)?.id ?? 0
+            pateintName = viewModel?.pateintFilterDataAtIndex(index: index.row)?.name ?? String.blank
+        }else{
+            pateintId = self.viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
+            pateintName = viewModel?.pateintDataAtIndex(index: index.row)?.name ?? String.blank
+        }
+        let alert = UIAlertController(title: "Delete Patient", message: "Are you sure you want to delete \n\(pateintName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                       handler: { [weak self] _ in
             self?.view.ShowSpinner()
-            let pateintId = self?.viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
             self?.viewModel?.removePateints(pateintId: pateintId)
         })
         cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
