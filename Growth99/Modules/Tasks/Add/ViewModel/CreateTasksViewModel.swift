@@ -116,6 +116,8 @@ class CreateTasksViewModel {
                     self.delegate?.taskUserCreatedSuccessfully(responseMessage: "Task saved successfully.")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "Internal server error")
+                }else{
+                    self.delegate?.errorReceived(error: "Internal server error")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

@@ -12,20 +12,21 @@ class GRWebViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet private weak var webView: WKWebView!
     var webViewUrlString: String = String.blank
-    var webViewUrl: URL!
     var webViewTitle: String = String.blank
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.navigationDelegate = self
+        self.webView.navigationDelegate = self
         self.title = webViewTitle
-        loadWebviewUrl()
+        self.loadWebviewUrl()
     }
     
     func loadWebviewUrl() {
-        let request = URLRequest(url: webViewUrl)
-        webView.load(request)
-        webView.allowsBackForwardNavigationGestures = true
-        webView.isExclusiveTouch = true
+        if let url = URL (string: self.webViewUrlString) {
+            let request = URLRequest(url: url)
+            self.webView.load(request)
+            webView.allowsBackForwardNavigationGestures = true
+            webView.isExclusiveTouch = true
+        }
     }
 }

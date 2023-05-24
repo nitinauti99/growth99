@@ -13,7 +13,8 @@ class LeadMultipleSelectionTextTypeTableViewCell: UITableViewCell {
     @IBOutlet var questionnareTableView: UITableView!
     @IBOutlet weak var questionnareTableViewHight: NSLayoutConstraint!
     @IBOutlet weak var subView: UIView!
-    
+//    @IBOutlet weak var asteriskSign: UILabel!
+
     var patientQuestionChoices = [PatientQuestionChoices]()
     var preSelected:Bool = false
     
@@ -33,6 +34,10 @@ class LeadMultipleSelectionTextTypeTableViewCell: UITableViewCell {
         self.questionnaireName.text = questionarieVM?.questionName
         self.patientQuestionChoices = questionarieVM?.patientQuestionChoices ?? []
         self.preSelected = questionarieVM?.preSelectCheckbox ?? false
+//        self.asteriskSign.isHidden = true
+//        if questionarieVM?.required == true {
+//            self.asteriskSign.isHidden = false
+//        }
     }
     
     func getTableView()-> UITableView {

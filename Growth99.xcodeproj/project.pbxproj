@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0100C6F429E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */; };
 		0100C6F629E04D1500B48138 /* CreateTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */; };
+		0103EABA2A1D34B700BDDB87 /* HelpAndTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */; };
+		0103EABC2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0103EABB2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
 		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
@@ -914,6 +916,8 @@
 /* Begin PBXFileReference section */
 		0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+OepnDropDown.swift"; sourceTree = "<group>"; };
 		0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+TextField.swift"; sourceTree = "<group>"; };
+		0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpAndTrainingViewController.swift; sourceTree = "<group>"; };
+		0103EABB2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpAndTrainingViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
@@ -6709,6 +6713,7 @@
 			isa = PBXGroup;
 			children = (
 				DA45786F29707F8400CE458B /* View */,
+				0103EABB2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard */,
 			);
 			path = GRWebView;
 			sourceTree = "<group>";
@@ -6718,6 +6723,7 @@
 			children = (
 				DA45787029707F9F00CE458B /* GRWebViewController.swift */,
 				DA45787229707FA900CE458B /* GRWebViewController.storyboard */,
+				0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6997,6 +7003,7 @@
 				1896709429BA5E62003224ED /* LeadTriggersTableViewCell.xib in Resources */,
 				189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */,
 				016F662129C97D7000B1D248 /* MediaTagsListViewController.storyboard in Resources */,
+				0103EABC2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard in Resources */,
 				01684C4729BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
@@ -7641,6 +7648,7 @@
 				01DBA99B29C5A2E700CBA51D /* CreateSocialProfileViewModel.swift in Sources */,
 				01468E3029C0D7E8002BDC1F /* PateintCustomEmailTemplateTableViewCell.swift in Sources */,
 				1896708F29BA5E62003224ED /* TriggersViewModel.swift in Sources */,
+				0103EABA2A1D34B700BDDB87 /* HelpAndTrainingViewController.swift in Sources */,
 				013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				84D0622929670677001FE469 /* VacationViewModel.swift in Sources */,
 				016F662D29C9824500B1D248 /* MediaTagsListViewController+TableView.swift in Sources */,

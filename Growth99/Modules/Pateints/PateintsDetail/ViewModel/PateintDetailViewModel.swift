@@ -136,7 +136,11 @@ class PateintDetailViewModel {
             switch result {
             case .success(let response):
                 print(response)
-                self.delegate?.updatedPateintsInfo(responseMessage: "Patient edited successfully")
+                if response.statusCode == 200{
+                    self.delegate?.updatedPateintsInfo(responseMessage: "Patient edited successfully")
+                }else{
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

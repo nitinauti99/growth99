@@ -16,6 +16,8 @@ class LeadMultipleSelectionWithDropDownTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var dropDownTypeTextField: CustomTextField!
     @IBOutlet weak var dropDownButton: UIButton!
+//    @IBOutlet weak var asteriskSign: UILabel!
+
     var patientQuestionChoices = [PatientQuestionChoices]()
     var indexPath = IndexPath()
     weak var delegate: LeadMultipleSelectionWithDropDownTypeTableViewCellDelegate?
@@ -29,6 +31,10 @@ class LeadMultipleSelectionWithDropDownTypeTableViewCell: UITableViewCell {
         self.questionnaireName.text = questionarieVM?.questionName
         self.dropDownTypeTextField.text = questionarieVM?.patientQuestionChoices?[0].choiceName ?? ""
         self.indexPath = index
+//        self.asteriskSign.isHidden = true
+//        if questionarieVM?.required == true {
+//            self.asteriskSign.isHidden = false
+//        }
     }
     
     @IBAction func dropDownButton(sender: UIButton){

@@ -49,7 +49,7 @@ class TasksListViewModel {
         self.requestManager.request(forPath: ApiUrl.workflowPatientTasks.appending("\(pateintId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
             switch result {
             case .success(let taskList):
-                self.taskList = taskList.taskDTOList.reversed()
+                self.taskList = taskList.taskDTOList.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.tasksDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -62,7 +62,7 @@ class TasksListViewModel {
         self.requestManager.request(forPath:ApiUrl.leadTaskList.appending("\(LeadId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TasksListModel, GrowthNetworkError>) in
             switch result {
             case .success(let taskList):
-                self.taskList = taskList.taskDTOList.reversed()
+                self.taskList = taskList.taskDTOList.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.tasksDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

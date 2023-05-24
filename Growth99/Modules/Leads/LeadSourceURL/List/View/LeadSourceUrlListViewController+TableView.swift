@@ -26,7 +26,7 @@ extension LeadSourceUrlListViewController: UITableViewDelegate, UITableViewDataS
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "LeadSourceUrlListTableViewCell", for: indexPath) as? LeadSourceUrlListTableViewCell else { return UITableViewCell() }
         cell.delegate = self
         if isSearch {
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+            cell.configureCellWithSearch(questionarieVM: viewModel, index: indexPath)
         } else {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }

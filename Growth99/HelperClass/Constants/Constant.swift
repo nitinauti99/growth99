@@ -63,6 +63,7 @@ struct Constant {
     struct SideMenu {
         static let logout = "Logout"
         static let helpTraining = "Help and Training"
+        static let contactSupport = "Contact Support"
     }
     
     struct Profile {

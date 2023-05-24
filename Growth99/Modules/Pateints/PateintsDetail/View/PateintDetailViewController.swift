@@ -74,7 +74,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     }
     
     @objc func dateFromButtonPressed() {
-        self.dateOfBirth.text = dateFormater?.dateFormatterString(textField: dateOfBirth)
+        self.dateOfBirth.text = dateFormater?.dateFormatterStringBirthDate(textField: dateOfBirth)
     }
     
     @IBAction func openQuestionarieList (sender: UIButton) {
@@ -386,7 +386,8 @@ extension PateintDetailViewController {
         dateOfBirth.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
-            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "dateOfBirth", ansString: dateOfBirth.text ?? String.blank)
+            let birthDate = dateFormater?.localToServer(date: dateOfBirth.text ?? String.blank) ?? ""
+            viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "dateOfBirth", ansString: birthDate )
         }
         sender.isSelected = true
     }

@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud3-4N-STI" userLabel="userName">
-                        <rect key="frame" x="20" y="15" width="16.5" height="20.5"/>
+                        <rect key="frame" x="16" y="15.000000000000002" width="16.666666666666671" height="20.666666666666671"/>
                         <attributedString key="attributedText">
                             <fragment content="ID">
                                 <attributes>
@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-Vz-ya9">
-                        <rect key="frame" x="20" y="50.5" width="80" height="20"/>
+                        <rect key="frame" x="16" y="50.666666666666664" width="80" height="19.999999999999993"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Ta5-3z-aDs"/>
                             <constraint firstAttribute="width" constant="80" id="YUv-aG-ZrI"/>
@@ -43,7 +43,7 @@
                         <state key="selected" image="tickselected"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-Pd-XmY">
-                        <rect key="frame" x="120" y="50.5" width="80" height="20"/>
+                        <rect key="frame" x="116" y="50.666666666666664" width="80" height="19.999999999999993"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Wl6-TI-96U"/>
                             <constraint firstAttribute="width" constant="80" id="slq-eU-lXv"/>
@@ -55,7 +55,7 @@
                         <state key="selected" image="tickselected"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUM-7d-wZt">
-                        <rect key="frame" x="44" y="15" width="8" height="21"/>
+                        <rect key="frame" x="40.333333333333336" y="15" width="8" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="8" id="yQi-9q-AgB"/>
                         </constraints>
@@ -80,6 +80,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="NoTypeButton" destination="DZa-Pd-XmY" id="sSE-7M-ycb"/>
+                <outlet property="asteriskSign" destination="OUM-7d-wZt" id="VEP-VH-j6h"/>
                 <outlet property="questionnaireName" destination="ud3-4N-STI" id="laz-9D-ekt"/>
                 <outlet property="yesTypeButton" destination="g0r-Vz-ya9" id="kcs-Q2-eO8"/>
             </connections>

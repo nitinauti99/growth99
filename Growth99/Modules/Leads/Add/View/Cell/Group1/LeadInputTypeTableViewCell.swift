@@ -11,7 +11,8 @@ class LeadInputTypeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var inputeTypeTextField: CustomTextField!
-
+    @IBOutlet weak var asteriskSign: UILabel!
+   
     var patientQuestionAnswersList : PatientQuestionAnswersList?
     var viewModel: CreateLeadViewModelProtocol?
 
@@ -26,8 +27,11 @@ class LeadInputTypeTableViewCell: UITableViewCell {
         self.patientQuestionAnswersList = questionarie
         self.questionnaireName.text = questionarie?.questionName
         self.inputeTypeTextField.placeholder = questionarie?.questionName
+        self.asteriskSign.isHidden = true
+        if questionarie?.required == true {
+            self.asteriskSign.isHidden = false
+        }
     }
-    
 }
 
 extension LeadInputTypeTableViewCell: UITextFieldDelegate {

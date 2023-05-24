@@ -11,6 +11,7 @@ class LeadDateTypeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var dateTypeTextField: CustomTextField!
+    @IBOutlet weak var asteriskSign: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,10 @@ class LeadDateTypeTableViewCell: UITableViewCell {
         self.dateTypeTextField.addInputViewDatePicker(target: self,
                                                  selector: #selector(dateFromButtonPressed),
                                                  mode: .date)
+        self.asteriskSign.isHidden = true
+        if questionarieVM?.required == true {
+            self.asteriskSign.isHidden = false
+        }
     }
     
     @objc func dateFromButtonPressed() {

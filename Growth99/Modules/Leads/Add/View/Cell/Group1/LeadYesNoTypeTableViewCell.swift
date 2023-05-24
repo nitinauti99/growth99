@@ -11,6 +11,8 @@ class LeadYesNoTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var questionnaireName: UILabel!
     @IBOutlet weak var yesTypeButton: UIButton!
     @IBOutlet weak var NoTypeButton: UIButton!
+    @IBOutlet weak var asteriskSign: UILabel!
+
     var buttons = [UIButton]()
 
     override func awakeFromNib() {
@@ -24,6 +26,10 @@ class LeadYesNoTypeTableViewCell: UITableViewCell {
     func configureCell(questionarieVM: CreateLeadViewModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.getLeadQuestionnaireListAtIndex(index: index.row)
         self.questionnaireName.text = questionarieVM?.questionName
+        self.asteriskSign.isHidden = true
+        if questionarieVM?.required == true {
+            self.asteriskSign.isHidden = false
+        }
     }
     
     @objc func buttonAction(sender: UIButton!){

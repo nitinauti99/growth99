@@ -70,6 +70,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="asteriskSign" destination="zCs-95-UhW" id="1TQ-4g-itm"/>
                 <outlet property="dateTypeTextField" destination="YSy-Gn-zdm" id="IkA-S6-xC4"/>
                 <outlet property="questionnaireName" destination="ZRY-vi-fJj" id="jio-TS-IWX"/>
             </connections>
