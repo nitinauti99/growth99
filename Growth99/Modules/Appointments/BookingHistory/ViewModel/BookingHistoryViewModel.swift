@@ -122,8 +122,13 @@ extension BookingHistoryViewModel: BookingHistoryViewModelProtocol {
             let searchText = searchText.lowercased()
             let nameMatch = task.patientFirstName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let lastNameMatch = task.patientLastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let clinicNameMatch = task.clinicName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let providerNameeMatch = task.providerName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let appointmentStatusMatch = task.appointmentStatus?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let sourceMatch = task.source?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let paymentStatusMatch = task.paymentStatus?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || lastNameMatch || idMatch
+            return nameMatch || lastNameMatch || clinicNameMatch || providerNameeMatch || appointmentStatusMatch || sourceMatch || paymentStatusMatch || idMatch
         }
     }
     

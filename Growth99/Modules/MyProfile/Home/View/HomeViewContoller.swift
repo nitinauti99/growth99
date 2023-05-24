@@ -259,7 +259,7 @@ class HomeViewContoller: UIViewController {
             }
             
             if let textField = servicesTextField,  textField.text == "" {
-                servicesTextField.showError(message: " Services are required.")
+                servicesTextField.showError(message: "Services are required")
                 return
             }
         }

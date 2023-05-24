@@ -54,7 +54,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     
     var allProviders = [UserDTOList]()
     var selectedProviders = [UserDTOList]()
-    var selectedProvidersIds = [Int]()
+    var selectedProvidersIds = Int()
     
     var allDatesList = [String]()
     var selectedDates = [String]()
@@ -116,6 +116,10 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             virtualBtn.isSelected = true
         }
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
+        self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
+        self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId:  editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
+        self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: 0)
+
     }
     
     func serverToLocalDateFormat(date: String) -> String {
@@ -271,9 +275,9 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             self?.providersTextField.text = "\(selectedItem?.firstName ?? String.blank) \(selectedItem?.lastName ?? String.blank)"
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedProviders  = selectedList
-            self?.selectedProvidersIds = selectedId
+            self?.selectedProvidersIds = selectedId.first ?? 0
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getDatesList(clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [])
+            self?.eventViewModel?.getDatesList(clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds ?? 0, serviceIds: self?.selectedServicesIds ?? [])
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -306,7 +310,17 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             self?.selectedDate = selectedItem ?? ""
             self?.selectedDates = selectedList
             self?.view.ShowSpinner()
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds.first ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            if self?.selectedProvidersIds == 0 {
+                self?.selectedProvidersIds = self?.editBookingHistoryData?.providerId ?? 0
+            }
+            if self?.selectedClincIds == 0 {
+                self?.selectedClincIds = self?.editBookingHistoryData?.clinicId ?? 0
+            }
+            if self?.selectedServicesIds.first == 0 {
+                let serviceSelectedArray = self?.editBookingHistoryData?.serviceList ?? []
+                self?.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
+            }
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -357,15 +371,15 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         }
         
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)
+            clincsTextField.showError(message: Constant.Profile.clinicsRequired)
             return
         }
         guard let services = phoneNumberTextField.text, !services.isEmpty else {
-            servicesTextField.showError(message: Constant.Profile.chooseToDate)
+            servicesTextField.showError(message: "Services are required")
             return
         }
         guard let provider = phoneNumberTextField.text, !provider.isEmpty else {
-            providersTextField.showError(message: Constant.Profile.chooseToDate)
+            providersTextField.showError(message: "Providers are required")
             return
         }
         
@@ -382,8 +396,13 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             selectedClincIds = editBookingHistoryData?.clinicId ?? 0
         }
         
-        if selectedProvidersIds.count == 0 {
-            selectedProvidersIds = [editBookingHistoryData?.providerId ?? 0]
+        if selectedProvidersIds == 0 {
+            self.selectedProvidersIds = self.editBookingHistoryData?.providerId ?? 0
+        }
+        
+        if self.selectedServicesIds.first == 0 {
+            let serviceSelectedArray = self.editBookingHistoryData?.serviceList ?? []
+            self.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         }
         
         if selectedDate == String.blank {
@@ -395,7 +414,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         }
         
         self.view.ShowSpinner()
-        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds.first, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calendar", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calendar", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
