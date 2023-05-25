@@ -14,6 +14,8 @@ protocol PostsListViewModelProtocol {
     var  getPostsListData: [PostsListModel] { get }
     var  getPostsFilterListData: [PostsListModel] { get }
     func filterData(searchText: String)
+    func removePost(postId: Int)
+    func approvePost(postId: Int)
 }
 
 class PostsListViewModel {
@@ -54,23 +56,44 @@ class PostsListViewModel {
         }
     }
     
-    func removePostss(pateintId: Int) {
-//        let urlParameter: Parameters = [
-//            "userId": pateintId
-//        ]
-//        let finaleUrl = ApiUrl.removePatient + "userId=" + "\(pateintId)"
-//        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) {  [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let data):
-//                print(data)
-//                self.delegate?.pateintRemovedSuccefully(mrssage: "Postss deleted successfully")
-//            case .failure(let error):
-//                self.delegate?.errorReceived(error: error.localizedDescription)
-//                print("Error while performing request \(error)")
-//            }
-//          }
+    func removePost(postId: Int) {
+        self.requestManager.request(forPath: ApiUrl.deletePost.appending("\(postId)"), method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.removePost(message: "post deleted successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "error while deleting template")
+                } else{
+                    self.delegate?.errorReceived(error: "responce failed")
+              }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
     }
+    
+    func approvePost(postId: Int){
+        self.requestManager.request(forPath: ApiUrl.deletePost.appending("\(postId)/approve"), method: .PUT, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.removePost(message: "post approve successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "error while approving template")
+                } else{
+                    self.delegate?.errorReceived(error: "responce failed")
+              }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+
     
     func postsListDataAtIndex(index: Int)-> PostsListModel? {
         return self.postPeginationList[index]

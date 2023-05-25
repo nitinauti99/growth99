@@ -21,7 +21,7 @@ protocol FormDetailViewModelProtocol {
   
     var getFormDetailData: [FormDetailModel] { get }
     var getFormFilterListData: [FormDetailModel] { get }
-    var  getFormQuestionnaireData: CreateFormModel? { get }
+    var getFormQuestionnaireData: CreateFormModel? { get }
 }
 
 class FormDetailViewModel {

@@ -44,7 +44,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.mainMenuList = viewModel?.loadJson() ?? []
         self.hiddenSections = Set(0...mainMenuList.count)
         self.roles.text = UserRepository.shared.roles
-        self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
         
         scrollview.delegate = self
         
@@ -56,6 +55,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
     }
     
     // MARK: - FUNCTIONS
@@ -84,6 +84,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         })
         self.view.layoutIfNeeded()
         self.bussinessTitile.text = user.bussinessName
+        self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
+        self.viewWillAppear(true)
     }
     
     // MARK: - BUTTON_ACTIONS

@@ -497,7 +497,7 @@ class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCell
     }
     
     /// Remove row from table view
-    func deletRowFormCell(cell: FormQuestionTableViewCell, index: IndexPath) {
+    func deletRowFormCell(cell: FormQuestionTableViewCell, index: IndexPath, totalCount: Int) {
         self.questionArray.remove(at: index.row)
         questionTableViewHight.constant = CGFloat(questionArray.count * 120)
         self.questionTableView.deleteRows(at: [index], with: .automatic)
