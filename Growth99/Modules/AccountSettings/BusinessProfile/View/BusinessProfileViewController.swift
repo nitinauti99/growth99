@@ -28,6 +28,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         viewModel = BusinessProfileViewModel(delegate: self)
         nameTextField.text = bussinessInfoData?.name
         businessImageView.sd_setImage(with: URL(string: bussinessInfoData?.logoUrl ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
+        user.bussinessLogo = bussinessInfoData?.logoUrl ?? String.blank
         businessNoteImageView.image = UIImage.fontAwesomeIcon(code: "fa-exclamation-triangle", style: .solid, textColor: UIColor.black, size: CGSize(width: 15, height: 15))
     }
     
@@ -44,6 +45,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     func saveBusinessDetailReceived(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        user.bussinessLogo = bussinessInfoData?.logoUrl ?? String.blank
     }
     
     @IBAction func imageIconbtnTapped(_ sender: Any) {

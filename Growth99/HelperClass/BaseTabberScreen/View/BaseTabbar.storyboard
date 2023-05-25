@@ -1138,40 +1138,40 @@
     </scenes>
     <designables>
         <designable name="2bn-9i-Rf8">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="6ap-Gu-wfc">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="71M-Ey-Ckk">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="Cfk-FX-j6V">
-            <size key="intrinsicContentSize" width="110.5" height="30"/>
+            <size key="intrinsicContentSize" width="117.5" height="22"/>
         </designable>
         <designable name="Ncb-Vy-p3O">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="Szr-pV-NLf">
-            <size key="intrinsicContentSize" width="111.5" height="30"/>
+            <size key="intrinsicContentSize" width="118.5" height="22"/>
         </designable>
         <designable name="U5u-aw-l21">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="W62-Z0-RHA">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="Wu1-x8-b6o">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="jzu-kM-8lq">
-            <size key="intrinsicContentSize" width="92.5" height="30"/>
+            <size key="intrinsicContentSize" width="99.5" height="22"/>
         </designable>
         <designable name="xJW-WU-nu4">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="zJe-wg-Ipq">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
     </designables>
     <resources>

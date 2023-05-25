@@ -172,6 +172,7 @@ struct EndPoints {
     static let editSocialMediaLibrary = "/api/socialMedia/libraries"
     static let socialMediaPost = "/api/socialMediaPost"
     static let deletHistryLead = "/api/questionnaire-submissions/"
+    static let deletePost = "/api/socialMediaPost/"
 
 }
 
@@ -340,6 +341,5 @@ struct ApiUrl {
     static let socialMediaPost = EndPoints.baseURL.appending(EndPoints.socialMediaPost)
     static let byemail = EndPoints.baseURL.appending(EndPoints.byemail)
     static let deletHistryLead = EndPoints.baseURL.appending(EndPoints.deletHistryLead)
+    static let deletePost = EndPoints.baseURL.appending(EndPoints.deletePost)
 }
-
-

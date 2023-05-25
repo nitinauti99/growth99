@@ -73,10 +73,18 @@ extension PatientAppointmentViewController: PatientAppointmentViewControllerProt
 extension PatientAppointmentViewController: PatientAppointmentListTableViewCellDelegate{
     
     func editPatientAppointment(cell: PatientAppointmentListTableViewCell, index: IndexPath){
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
-        let patientAppointmentListVM = viewModel?.patientListAtIndex(index: index.row)
-        editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
-        editVC.appointmentId  = patientAppointmentListVM?.id
-        navigationController?.pushViewController(editVC, animated: true)
+        if isSearch {
+            let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+            let patientAppointmentListVM = viewModel?.patientListFilterListAtIndex(index: index.row)
+            editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
+            editVC.appointmentId  = patientAppointmentListVM?.id
+            navigationController?.pushViewController(editVC, animated: true)
+        }else{
+            let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+            let patientAppointmentListVM = viewModel?.patientListAtIndex(index: index.row)
+            editVC.editBookingHistoryData = viewModel?.getPatientsForAppointments
+            editVC.appointmentId  = patientAppointmentListVM?.id
+            navigationController?.pushViewController(editVC, animated: true)
+        }
     }
 }

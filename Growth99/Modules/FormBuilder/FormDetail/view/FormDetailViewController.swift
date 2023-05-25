@@ -147,7 +147,7 @@ extension FormDetailViewController: FormDetailViewControllerProtocol {
     }
 
     func questionRemovedSuccefully(mrssage: String) {
-        self.view.showToast(message: mrssage, color: .red)
+        self.view.showToast(message: mrssage, color: UIColor().successMessageColor())
         viewModel?.getFormQuestionnaireData(questionnaireId: questionId)
     }
 
@@ -186,10 +186,25 @@ extension FormDetailViewController: FormDetailTableViewCellDelegate {
     }
     
     func deleteNotSsavedQuestion(cell: FormDetailTableViewCell, index: IndexPath) {
-        viewModel?.removeFormData(index: index)
-        self.tableView.deleteRows(at: [index], with: .automatic)
-        self.tableView?.performBatchUpdates(nil, completion: nil)
-        self.tableView.reloadData()
+        let name = viewModel?.getFormDetailData[index.row].name ?? ""
+        let id = viewModel?.getFormDetailData[index.row].id ?? 0
+            
+        let alert = UIAlertController(title: "Delete Question", message: "Are you sure you want to delete \n\(name)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                      handler: { [weak self] _ in
+            
+            self?.viewModel?.removeFormData(index: index)
+            self?.tableView.deleteRows(at: [index], with: .automatic)
+            self?.tableView?.performBatchUpdates(nil, completion: nil)
+            self?.tableView.reloadData()
+            self?.view.ShowSpinner()
+            self?.viewModel?.removeQuestions(questionId: self?.questionId ?? 0, childQuestionId: id )
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func saveFormData(item: [String : Any]) {

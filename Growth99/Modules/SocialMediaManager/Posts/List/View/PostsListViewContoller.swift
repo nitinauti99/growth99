@@ -11,6 +11,7 @@ import UIKit
 protocol PostsListViewContollerProtocol: AnyObject {
     func postListDataRecived()
     func errorReceived(error: String)
+    func removePost(message: String)
 }
 
 class PostsListViewContoller: UIViewController {
@@ -53,7 +54,6 @@ class PostsListViewContoller: UIViewController {
     func setBarButton(){
         self.navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(creatPost), imageName: "add")
     }
-
     
     @objc func creatPost() {
         let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
@@ -74,6 +74,12 @@ extension PostsListViewContoller: PostsListViewContollerProtocol {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
     }
+    
+    func removePost(message: String){
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        self.viewModel?.getPostsList()
+    }
+
 }
 
 
@@ -92,11 +98,51 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
     }
     
     func deletePosts(cell: PostsListTableViewCell, index: IndexPath) {
+        var postid = Int()
+        var mediaLibraryName = String()
+        if isSearch {
+            postid = self.viewModel?.postsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            mediaLibraryName = self.viewModel?.postsFilterListDataAtIndex(index: index.row)?.label ?? ""
+        }else{
+            postid = self.viewModel?.postsListDataAtIndex(index: index.row)?.id ?? 0
+            mediaLibraryName = self.viewModel?.postsListDataAtIndex(index: index.row)?.label ?? ""
+        }
         
+        let alert = UIAlertController(title: "Delete Post", message: "Are you sure you want to delete \n\(mediaLibraryName)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                        handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            self?.viewModel?.removePost(postId: postid)
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func approvePosts(cell: PostsListTableViewCell, index: IndexPath) {
+        var postid = Int()
+        var mediaLibraryName = String()
+        if isSearch {
+            postid = self.viewModel?.postsFilterListDataAtIndex(index: index.row)?.id ?? 0
+            mediaLibraryName = self.viewModel?.postsFilterListDataAtIndex(index: index.row)?.label ?? ""
+        }else{
+            postid = self.viewModel?.postsListDataAtIndex(index: index.row)?.id ?? 0
+            mediaLibraryName = self.viewModel?.postsListDataAtIndex(index: index.row)?.label ?? ""
+        }
         
+        let alert = UIAlertController(title: "", message: "once these is posted you can not edit or delete the post through our application \n\(mediaLibraryName)", preferredStyle: UIAlertController.Style.alert)
+        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                        handler: { [weak self] _ in
+            self?.view.ShowSpinner()
+            self?.viewModel?.approvePost(postId: postid)
+        })
+        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(cancelAlert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func postedPosts(cell: PostsListTableViewCell, index: IndexPath) {

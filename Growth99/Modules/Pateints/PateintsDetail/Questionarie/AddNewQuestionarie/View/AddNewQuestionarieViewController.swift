@@ -95,6 +95,10 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
                 }
             }
         }
+        if questionnaireIdArray.count == 0 {
+            return
+        }
+        
         self.view.ShowSpinner()
         viewModel?.sendQuestionarieListToPateint(patient: pateintId, questionnaireIds: questionnaireIdArray)
     }

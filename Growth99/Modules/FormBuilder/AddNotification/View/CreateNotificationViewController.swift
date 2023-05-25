@@ -109,6 +109,11 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
                 return
             }
             
+            if let textField  = selectedNotificationTypeTextField.text, let phoneNumber = viewModel?.isValidPhoneNumber(textField), phoneNumber == false {
+                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+                return
+            }
+            
             params = [
                "notificationType": "SMS",
                "toEmail": "",
