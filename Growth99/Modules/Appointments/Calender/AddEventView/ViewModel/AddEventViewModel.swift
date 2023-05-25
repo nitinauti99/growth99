@@ -27,6 +27,7 @@ protocol AddEventViewModelProtocol {
     func localInputeDateToServer(date: String) -> String
     func getPateintsAppointData()
     var getPatientsAppointmentList: [PatientsModel] { get }
+    func validatePhoneNumber(_ phoneNumber: String) -> Bool
 }
 
 class AddEventViewModel {
@@ -239,5 +240,11 @@ extension AddEventViewModel : AddEventViewModelProtocol {
         let regex = Constant.Regex.nameWithoutSpace
         let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
         return isFirstName.evaluate(with: lastName)
+    }
+    
+    func validatePhoneNumber(_ phoneNumber: String) -> Bool {
+        let phoneNumberRegex = "^\\(\\d{3}\\) \\d{3}-\\d{4}$"
+        let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
+        return phoneNumberPredicate.evaluate(with: phoneNumber)
     }
 }

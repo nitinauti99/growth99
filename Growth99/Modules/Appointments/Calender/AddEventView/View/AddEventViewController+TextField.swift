@@ -40,11 +40,12 @@ extension AddEventViewController: UITextFieldDelegate  {
                 return
             }
         } else if (textField == phoneNumberTextField) {
-            guard let textField = phoneNumberTextField.text, !textField.isEmpty else  {
-                phoneNumberTextField.showError(message: "Phone Number is required.")
+            guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else  {
+                phoneNumberTextField.showError(message: "Phone Number is required")
                 return
             }
-        } else if (textField == emailTextField) {
+        }
+        else if (textField == emailTextField) {
             guard let emailText = emailTextField.text, !emailText.isEmpty else {
                 emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
                 return

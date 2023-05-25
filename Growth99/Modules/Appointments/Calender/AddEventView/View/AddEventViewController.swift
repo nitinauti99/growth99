@@ -327,20 +327,20 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
             return
         }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            phoneNumberTextField.showError(message: "Phone Number is required")
             return
         }
-        
+
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.Profile.chooseToDate)
+            clincsTextField.showError(message: Constant.Profile.clinicsRequired)
             return
         }
-        guard let services = phoneNumberTextField.text, !services.isEmpty else {
-            servicesTextField.showError(message: Constant.Profile.chooseToDate)
+        guard let services = servicesTextField.text, !services.isEmpty else {
+            servicesTextField.showError(message: "Services are required")
             return
         }
-        guard let provider = phoneNumberTextField.text, !provider.isEmpty else {
-            providersTextField.showError(message: Constant.Profile.chooseToDate)
+        guard let provider = providersTextField.text, !provider.isEmpty else {
+            providersTextField.showError(message: "Providers are required")
             return
         }
         

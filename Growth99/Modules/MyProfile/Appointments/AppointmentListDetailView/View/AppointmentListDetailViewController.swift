@@ -381,7 +381,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             servicesTextField.showError(message: "Services are required")
             return
         }
-        guard let provider = phoneNumberTextField.text, !provider.isEmpty else {
+        guard let provider = providersTextField.text, !provider.isEmpty else {
             providersTextField.showError(message: "Providers are required")
             return
         }
