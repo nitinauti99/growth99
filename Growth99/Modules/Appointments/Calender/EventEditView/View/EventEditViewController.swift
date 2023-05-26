@@ -195,13 +195,16 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     
     func appoinmentEdited() {
         self.view.HideSpinner()
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: "Appointment updated successfully", color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
         self.view.showToast(message: "Appointment cancelled successfully", color: UIColor().successMessageColor())
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.navigationController?.popViewController(animated: true)
         }
     }

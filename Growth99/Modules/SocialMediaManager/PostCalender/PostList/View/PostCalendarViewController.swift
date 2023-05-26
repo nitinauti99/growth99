@@ -186,7 +186,6 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                 let date = section.month
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM d, yyyy"
-                
                 let myLabel = UILabel()
                 myLabel.frame = CGRect(x: 5, y: 0, width: postCalendarTableview.frame.size.width, height: 20)
                 myLabel.font = UIFont.boldSystemFont(ofSize: 18)
