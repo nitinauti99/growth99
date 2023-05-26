@@ -108,7 +108,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                                 <connections>
-                                                    <action selector="openLabelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rMK-xX-I8L"/>
+                                                    <action selector="openLabelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RtE-dE-17C"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6e-rO-1CF">
@@ -199,7 +199,6 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                                 <connections>
-                                                    <action selector="openLabelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9qT-EK-XY9"/>
                                                     <action selector="openSocialChanelListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="A8K-id-Idc"/>
                                                 </connections>
                                             </button>
