@@ -28,8 +28,7 @@ struct Constant {
         static let hashTagEmptyError = "Hashtag is required."
         static let hashTagInvalidError = "Hashtag is invalid."
         static let chatQuestionnaireNameEmptyError = "Chat Questionnaire Name is required."
-        static let chatQuestionnaireURLInvalidError = "refrence link is invalid"
-        
+        static let chatQuestionnaireURLInvalidError = "Reference link is invalid (should start with http)"
         static let firstNameInvalidError = "First Name is Invalid."
         static let lastNameInvalidError = "Last Name is Invalid."
         static let invalidURLError = "Please enter the URL in correct format"
@@ -213,7 +212,7 @@ struct Constant {
         static let nameWithNumbers = "^[a-zA-Z]([a-zA-Z0-9 ]*)?$"
         static let number = "[1-9][0-9]*"
         static let hashTag = "#[a-zA-Z0-9]*$"
-        static let urlValidation = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
+        static let urlValidation = "^(https://)(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
         static let specialCharacterWithoutSpace = "^[^\n ]*$"
         static let DateValidationDateMounthYear = "^(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/]((?:19|20|21)[0-9][0-9])$"
         static let DateValidationMounthDateYear = "^(0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])[-/]((?:19|20|21)[0-9][0-9])$"

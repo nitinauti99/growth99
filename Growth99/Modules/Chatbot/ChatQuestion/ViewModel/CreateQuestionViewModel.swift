@@ -69,15 +69,12 @@ class CreateQuestionViewModel {
             }
         }
     }
-
-    
 }
 
 extension CreateQuestionViewModel: CreateQuestionViewModelProtocol {
     func isValidUrl(url: String) -> Bool {
-        let urlRegEx = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
-        let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
-        let result = urlTest.evaluate(with: url)
-        return result
+        let urlRegEx = Constant.Regex.urlValidation
+        let isUrl = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+        return isUrl.evaluate(with: url)
     }
 }

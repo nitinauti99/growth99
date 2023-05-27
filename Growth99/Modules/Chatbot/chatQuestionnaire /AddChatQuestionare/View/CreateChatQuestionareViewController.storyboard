@@ -236,6 +236,7 @@
                         <outlet property="bottomView" destination="16G-rv-yLt" id="C92-rT-Pw8"/>
                         <outlet property="chatQuestionareLBI" destination="bN3-ef-Uit" id="ObD-8Z-zGL"/>
                         <outlet property="chatQuestionnaireName" destination="FRO-Vp-lXS" id="HIz-Cg-snC"/>
+                        <outlet property="createQuestionButton" destination="Pfn-81-mHu" id="tce-H2-12l"/>
                         <outlet property="tableView" destination="uBB-wV-aex" id="b5U-oa-o0K"/>
                         <outlet property="topView" destination="mot-GG-8a4" id="g6R-T5-qUC"/>
                     </connections>
@@ -247,7 +248,7 @@
     </scenes>
     <designables>
         <designable name="FRO-Vp-lXS">
-            <size key="intrinsicContentSize" width="4" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>
