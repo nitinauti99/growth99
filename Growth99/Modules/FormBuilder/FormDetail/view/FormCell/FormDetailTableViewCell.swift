@@ -599,21 +599,27 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBAction func saveFormData(sender: UIButton){
         guard let questionnaireName  = questionNameTextfield.text, !questionnaireName.isEmpty else {
             questionNameTextfield.showError(message: "Question is required")
-                return
+            return
         }
-        self.bottomView.isHidden = true
-        self.bottomViewHight.constant = 0
-        self.bottomDeletButton.isHidden = true
-        self.dissableUserIntraction()
-        var formData: [String: Any] = [:]
         
-        if formList?.id == 0 {
-            formData = self.saveFromData()
-        }else{
-            formData = self.updateFromData()
+        for button in buttons {
+         if button.isSelected == true {
+                self.bottomView.isHidden = true
+                self.bottomViewHight.constant = 0
+                self.bottomDeletButton.isHidden = true
+                self.dissableUserIntraction()
+                var formData: [String: Any] = [:]
+                
+                if formList?.id == 0 {
+                    formData = self.saveFromData()
+                }else{
+                    formData = self.updateFromData()
+                }
+            
+                delegate?.saveFormData(item: formData)
+            }
         }
-    
-        delegate?.saveFormData(item: formData)
+       
     }
     
     func saveFromData() -> [String: Any] {
