@@ -85,6 +85,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var showInPublicBooking: Bool = false
     var priceVaries: Bool = false
     var httpMethodType: HTTPMethod = .POST
+    var hidePriceVaries: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,7 +260,16 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     }
     
     func createServiceSuccessfullyReceived(message: String) {
-        self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: serviceId ?? 0)
+//        self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: serviceId ?? 0)
+        self.view.HideSpinner()
+        if message == Constant.Profile.createService {
+            self.view.showToast(message: "Service created successfully", color: UIColor().successMessageColor())
+        } else {
+            self.view.showToast(message: "Service updated successfully", color: UIColor().successMessageColor())
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func serviceImageUploadReceived(responseMessage: String) {
@@ -293,8 +303,10 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             let selectedId = selectedList.map({$0.id ?? 0})
             self?.selectedClincs  = selectedList
             self?.selectedClincIds = selectedId
-            self?.view.ShowSpinner()
-            self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedId)
+            if selectedId.count > 0 {
+                self?.view.ShowSpinner()
+                self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedId)
+            }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -379,6 +391,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     @IBAction func hideServiceCostButtonAction(sender: UIButton) {
         hideButton.isSelected = !hideButton.isSelected
         if hideButton.isSelected {
+            hidePriceVaries = true
             enableCollectLabelHeightConstant.constant = 0
             enableCollectBtnHeightConstant.constant = 0
             enableCollectLabelTopConstant.constant = 0
@@ -386,10 +399,9 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostLabelHeightConstant.constant = 0
             depositCostTFTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
-            isPreBookingCostAllowed = false
+            depositCostTextField.isHidden = true
         } else {
-            enableButton.isSelected = false
-            isPreBookingCostAllowed = true
+            hidePriceVaries = false
             enableCollectLabelHeightConstant.constant = 36
             enableCollectBtnHeightConstant.constant = 15
             enableCollectLabelTopConstant.constant = 16
@@ -403,21 +415,23 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     @IBAction func disableBookingButtonAction(sender: UIButton) {
         disableButton.isSelected = !disableButton.isSelected
         if disableButton.isSelected {
-            showInPublicBooking = false
-        } else {
             showInPublicBooking = true
+        } else {
+            showInPublicBooking = false
         }
     }
 
     @IBAction func enableDepositsButtonAction(sender: UIButton) {
         enableButton.isSelected = !enableButton.isSelected
         if enableButton.isSelected {
+            isPreBookingCostAllowed = true
             depositCostTextField.isHidden = false
             depositCostLabelTopConstant.constant = 16
             depositCostLabelHeightConstant.constant = 18
             depositCostTFTopConstant.constant = 10
             depositCostTFHeightConstant.constant = 45
         } else {
+            isPreBookingCostAllowed = false
             depositCostTextField.isHidden = true
             depositCostLabelTopConstant.constant = 0
             depositCostLabelHeightConstant.constant = 0
@@ -515,7 +529,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
                                                    imageRemoved: imageRemoved,
                                                    isPreBookingCostAllowed: isPreBookingCostAllowed,
                                                    showInPublicBooking: showInPublicBooking,
-                                                   priceVaries: false, httpMethod: httpMethodType, isScreenFrom: self.title ?? String.blank, serviceId: serviceId ?? 0)
+                                                   priceVaries: hidePriceVaries, httpMethod: httpMethodType, isScreenFrom: self.title ?? String.blank, serviceId: serviceId ?? 0)
 
     }
     

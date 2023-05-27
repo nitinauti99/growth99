@@ -64,10 +64,17 @@ class CategoriesListViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_ ):
-                self.delegate?.categoriesRemovedSuccefully(message: "Category deleted successfully")
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.categoriesRemovedSuccefully(message: "Category deleted successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "This category may be deleted only after removing all services under it")
+                } else {
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }

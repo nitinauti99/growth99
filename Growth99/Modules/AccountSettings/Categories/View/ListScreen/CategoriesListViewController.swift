@@ -144,27 +144,35 @@ extension CategoriesListViewController: CategoriesListCellDelegate {
     func removeSelectedCategorie(cell: CategoriesListTableViewCell, index: IndexPath) {
         var selectedClinicId = Int()
         if isSearch {
-            selectedClinicId = viewModel?.getCategoriesFilterListData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
-                self?.view.ShowSpinner()
-                self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
-            })
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-            alert.addAction(cancelAlert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.createdBy == "System User" {
+                self.view.showToast(message: "Default category cannot be deleted", color: .red)
+            } else {
+                selectedClinicId = viewModel?.getCategoriesFilterListData[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         } else {
             selectedClinicId = viewModel?.getCategoriesListData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
-                self?.view.ShowSpinner()
-                self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
-            })
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-            alert.addAction(cancelAlert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if viewModel?.getCategoriesDataAtIndex(index: index.row)?.createdBy == "System User" {
+                self.view.showToast(message: "Default category cannot be deleted", color: .red)
+            } else {
+                let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedCategorie(categorieId: selectedClinicId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
