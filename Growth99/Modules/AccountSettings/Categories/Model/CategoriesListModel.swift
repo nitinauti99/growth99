@@ -28,6 +28,6 @@ struct CategoriesAddEditModel: Codable {
     let clinics : [ClinicsServices]?
     let name: String?
     let isDefault: Bool?
-    let defaultServiceCategoryId: String?
+    let defaultServiceCategoryId: Int?
     let specialization: String?
 }

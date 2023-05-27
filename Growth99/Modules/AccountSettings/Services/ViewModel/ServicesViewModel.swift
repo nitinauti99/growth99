@@ -51,10 +51,17 @@ class ServiceListViewModel {
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_ ):
-                self.delegate?.serviceRemovedSuccefully(message: "Service deleted successfully")
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.serviceRemovedSuccefully(message: "Service deleted successfully")
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "This service is associated with appointments. Please change those appointments to delete this service")
+                } else{
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }

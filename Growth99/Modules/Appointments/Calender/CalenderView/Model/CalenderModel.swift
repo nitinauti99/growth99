@@ -431,7 +431,7 @@ struct ServiceCategory : Codable {
     let clinics : [Clinics]?
     let name : String?
     let isDefault : Bool?
-    let defaultServiceCategoryId : String?
+    let defaultServiceCategoryId : Int?
     let specialization : String?
 }
 

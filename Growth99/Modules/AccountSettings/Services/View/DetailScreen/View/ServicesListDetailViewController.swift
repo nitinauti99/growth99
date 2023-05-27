@@ -222,6 +222,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             removeImageViewBtn.isHidden = true
         } else {
             self.serviceImageView.sd_setImage(with: URL(string: servicesAddViewModel?.getUserSelectedServiceData?.imageUrl ?? String.blank), placeholderImage: nil)
+            serviceImageViewHeight.constant = 200
+            serviceImageViewTop.constant = 20
+            contentViewHeight.constant = 1550
+            imageRemoved = false
+            removeImageViewBtn.isHidden = false
+            serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         }
     }
     
@@ -459,11 +465,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     @IBAction func saveServiceButtonAction(sender: UIButton) {
         guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
             serviceNameTextField.showError(message: "Service Name is required.")
-            return
-        }
-        
-        guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName}), !serviceNameContain else {
-            serviceNameTextField.showError(message: "Service with this name already present.")
             return
         }
         

@@ -29,15 +29,15 @@ extension UIView {
     }
     
     func showToast(message : String , color: UIColor?) {
-        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-150, width: self.frame.size.width - 60, height: 60))
+        let toastLabel = UILabel(frame: CGRect(x: 30, y: self.frame.size.height-150, width: self.frame.size.width - 60, height: 70))
         toastLabel.backgroundColor = color ?? UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
-        toastLabel.font = UIFont(name: "Avenir Next Medium", size: 15)
+        toastLabel.font = UIFont(name: "Avenir Next Medium", size: 14)
         toastLabel.textAlignment = .center;
         toastLabel.text = message
         toastLabel.numberOfLines = 0
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
+        toastLabel.layer.cornerRadius = 5;
         toastLabel.clipsToBounds  =  true
         self.addSubview(toastLabel)
         UIView.animate(withDuration: 6.0, delay: 0, options: .curveEaseOut, animations: {
