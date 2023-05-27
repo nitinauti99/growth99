@@ -44,6 +44,7 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
     
     func saveBusinessDetailReceived(responseMessage: String) {
         self.view.HideSpinner()
+        user.bussinessLogo = nil
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
         user.bussinessLogo = bussinessInfoData?.logoUrl ?? String.blank
     }

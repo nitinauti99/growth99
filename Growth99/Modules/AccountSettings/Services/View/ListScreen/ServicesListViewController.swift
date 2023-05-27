@@ -96,5 +96,11 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
     }
+    
+    func serviceRemovedSuccefully(message: String) {
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        self.getUserList()
+    }
+    
 }
 

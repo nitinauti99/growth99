@@ -368,13 +368,13 @@
     </scenes>
     <designables>
         <designable name="agL-vv-ITl">
-            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="f8s-V4-NSJ">
-            <size key="intrinsicContentSize" width="19" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="jy3-21-8Zc">
-            <size key="intrinsicContentSize" width="19" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
     </designables>
     <resources>

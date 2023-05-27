@@ -28,6 +28,9 @@ class DisplayQuestionnaireqsubmissionsTableViewCell: UITableViewCell {
                 selectedStringArray.append(item.choiceName ?? String.blank)
             }
             self.questionAns.text = selectedStringArray.joined(separator: ",")
+        }else if questionnaireVM?.questionType == "Yes_No" {
+            self.questionAns.text = ""
+
         }
     }
     

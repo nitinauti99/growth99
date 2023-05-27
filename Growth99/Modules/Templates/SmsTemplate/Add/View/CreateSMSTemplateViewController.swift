@@ -42,6 +42,10 @@ class CreateSMSTemplateViewController: UIViewController {
         self.targetTextField.placeholder = "Select Target"
         self.collectionView.register(UINib(nibName: "CreateSMSTemplateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreateSMSTemplateCollectionViewCell")
         self.setVarableData(selectedSegmentIndex: selectedIndex)
+//        self.bodyTextView.addTarget(self, action:
+//                                            #selector(self.textViewDidChange(_:)),
+//                                            for: UIControl.Event.editingChanged)
+        
     }
     
     func getSMSTemplate(){
@@ -228,6 +232,14 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
   
     func selectVariable(cell: CreateSMSTemplateCollectionViewCell, index: IndexPath) {
         var variable: String = ""
+        let character: String = "Character Remaining:"
+
+        showCharacterLBI.text = character.appending(String(self.bodyTextView.text.count))
+
+        if self.bodyTextView.text.count >= 200 {
+            return
+        }
+        
         if self.moduleTextField.text == "Lead" {
             variable = viewModel?.getLeadTemplateListData(index: index.row).variable ?? ""
         }else if(self.moduleTextField.text == "Appointment"){
@@ -260,16 +272,7 @@ extension String {
 }
 
 extension CreateSMSTemplateViewController: UITextViewDelegate {
-    
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        print(text)
-//        let trimmedString = text.trimmingCharacters(in: .whitespaces)
-//        if(trimmedString.count != 0){
-//            count += 1
-//            print(count)
-//        }
-//        return true
-//    }
+   
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
        
