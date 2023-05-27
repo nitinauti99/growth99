@@ -39,7 +39,7 @@ class ScrapeWebsiteViewController: UIViewController, ScrapeWebsiteViewController
    
     func scrapeWebsiteDataUpdatedSuccessfully(){
         self.view.HideSpinner()
-        self.view.showToast(message: "URL submitted for scrapping you will see in question in qestionare", color: UIColor().successMessageColor())
+        self.view.showToast(message: "URL submitted for scrapping you will see in question in questionnaires", color: UIColor().successMessageColor())
     }
     
     @IBAction func saveButton(sender: UIButton) {
@@ -47,7 +47,6 @@ class ScrapeWebsiteViewController: UIViewController, ScrapeWebsiteViewController
             self.saveUrlTextField.showError(message: "URL is required.")
             return
         }
-        
         self.view.ShowSpinner()
         viewModel?.updateChatConfigData(url: saveUrlTextField.text ?? "")
     }

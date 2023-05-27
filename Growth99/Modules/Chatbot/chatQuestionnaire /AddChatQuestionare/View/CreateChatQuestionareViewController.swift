@@ -21,7 +21,7 @@ class CreateChatQuestionareViewController: UIViewController {
     @IBOutlet weak var chatQuestionnaireName: CustomTextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatQuestionareLBI: UILabel!
-    
+    @IBOutlet weak var createQuestionButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     
@@ -38,9 +38,11 @@ class CreateChatQuestionareViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.register(UINib(nibName: "ChatQuestionnaireQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatQuestionnaireQuestionTableViewCell")
+        self.createQuestionButton.isHidden = true
         if self.screenName == "Edit Screen" {
             self.chatQuestionareLBI.text =  "Edit Chat Questionnaire"
             self.view.ShowSpinner()
+            self.createQuestionButton.isHidden = false
             self.viewModel?.getChatquestionnaire(questionnaireId: chatQuestionareId)
         }else{
             self.chatQuestionareLBI.text = "Add Chat Questionnaire"

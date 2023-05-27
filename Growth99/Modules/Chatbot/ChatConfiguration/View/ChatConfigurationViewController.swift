@@ -178,8 +178,11 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         self.isChatbotStatic.isSelected = item?.isChatbotStatic ?? false
     }
     
-    func chatConfigurationDataUpdatedSuccessfully(){
-        self.viewModel?.getChatConfigurationDataList()
+    func chatConfigurationDataUpdatedSuccessfully() {
+        self.view.showToast(message: "Chat configuration updated successfully.", color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.viewModel?.getChatConfigurationDataList()
+        })
     }
     
     @IBAction func saveButtonAction(sender: UIButton){

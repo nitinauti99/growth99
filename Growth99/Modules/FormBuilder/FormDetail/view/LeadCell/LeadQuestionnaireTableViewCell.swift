@@ -16,7 +16,7 @@ protocol LeadQuestionnaireTableViewCellDelegate: AnyObject {
 }
 
 class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegate {
-    
+   
     @IBOutlet weak var questionNameTextfield: CustomTextField!
     @IBOutlet weak var requiredButton: UIButton!
     @IBOutlet weak var hiddenButton: UIButton!
@@ -497,7 +497,7 @@ class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCell
     }
     
     /// Remove row from table view
-    func deletRowFormCell(cell: FormQuestionTableViewCell, index: IndexPath, totalCount: Int) {
+    func deletRowFormCell(cell: FormQuestionTableViewCell, index: IndexPath) {
         self.questionArray.remove(at: index.row)
         questionTableViewHight.constant = CGFloat(questionArray.count * 120)
         self.questionTableView.deleteRows(at: [index], with: .automatic)

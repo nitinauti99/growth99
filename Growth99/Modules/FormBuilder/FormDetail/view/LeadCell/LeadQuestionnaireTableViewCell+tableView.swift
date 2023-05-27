@@ -19,7 +19,7 @@ extension LeadQuestionnaireTableViewCell: UITableViewDelegate, UITableViewDataSo
         cell = self.questionTableView.dequeueReusableCell(withIdentifier: "FormQuestionTableViewCell", for: indexPath) as! FormQuestionTableViewCell
         let item = questionArray[indexPath.row]
         cell.delegate = self
-        cell.configureCell(tableView: tableView, FormList: item, index: indexPath, totalCount: questionArray.count)
+        cell.configureCell(tableView: tableView, FormList: item, index: indexPath)
         return cell
     }
     

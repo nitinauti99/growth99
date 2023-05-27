@@ -61,7 +61,7 @@
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="fbl-PU-MYw"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdN-Lv-IAr" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdN-Lv-IAr" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="161" width="354" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="X4o-qa-FvN"/>
@@ -84,7 +84,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIK-TG-EzI">
                                                 <rect key="frame" x="35" y="161" width="354" height="45"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="openUserListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PBU-3S-fyL"/>
                                                 </connections>
@@ -129,7 +128,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-f7-VgA" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-f7-VgA" userLabel="userNsme" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="422" width="354" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="hcO-XP-pkx"/>
@@ -153,7 +152,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21y-jG-ylW">
                                                 <rect key="frame" x="35" y="422" width="354" height="45"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="openStatusListDropDwonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="taf-ta-ALn"/>
                                                 </connections>
@@ -427,19 +425,19 @@
     </scenes>
     <designables>
         <designable name="LoW-f7-VgA">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="QDp-hp-wog">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="jdN-Lv-IAr">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="lrc-7C-of5">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
         <designable name="nt7-qn-Y0H">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
     </designables>
     <resources>

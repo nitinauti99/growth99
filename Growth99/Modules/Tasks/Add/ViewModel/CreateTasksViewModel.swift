@@ -92,8 +92,8 @@ class CreateTasksViewModel {
                 "workflowTaskUser": workflowTaskUser,
                 "deadline": deadline,
                 "workflowTaskPatient": NSNull(),
-                "questionnaireSubmissionId": questionnaireSubmissionId,
-                "leadOrPatient": leadOrPatient,
+                "questionnaireSubmissionId": NSNull(),
+                "leadOrPatient": NSNull(),
             ]
         }else{
             urlParameter = [

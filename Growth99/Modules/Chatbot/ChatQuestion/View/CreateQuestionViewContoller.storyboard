@@ -220,10 +220,10 @@
     </scenes>
     <designables>
         <designable name="6hJ-eR-bzk">
-            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
         </designable>
         <designable name="G1l-tA-zDb">
-            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="12" height="26.666666666666668"/>
         </designable>
     </designables>
     <resources>

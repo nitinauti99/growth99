@@ -106,9 +106,9 @@ class PostsListTableViewCell: UITableViewCell {
     
     @IBAction func approveButtonPressed(sender: UIButton) {
         if sender.titleLabel?.text == "Approve" {
-            self.delegate?.approvePosts(cell: self, index: indexPath)
-        }else{
             self.delegate?.postedPosts(cell: self, index: indexPath)
+        }else{
+            self.delegate?.approvePosts(cell: self, index: indexPath)
         }
     }
 }

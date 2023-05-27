@@ -25,9 +25,11 @@ class CreateSMSTemplateViewController: UIViewController {
     @IBOutlet weak var targetTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var bodyTextView: CustomTextView!
-    
+    @IBOutlet weak var showCharacterLBI: UILabel!
+
     @IBOutlet weak var isCustom: UISwitch!
-    
+    var count = 0
+
     var viewModel: CreateSMSTemplateViewModelProtocol?
     var selectedIndex = Int()
     var screenTitle: String = ""
@@ -225,8 +227,15 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateViewControllerProtoc
 extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDelegate {
   
     func selectVariable(cell: CreateSMSTemplateCollectionViewCell, index: IndexPath) {
-        let variable = viewModel?.getMassSMSTemplateListData(index: index.row).variable
-        let str: String = " ${\(variable ?? "")} "
+        var variable: String = ""
+        if self.moduleTextField.text == "Lead" {
+            variable = viewModel?.getLeadTemplateListData(index: index.row).variable ?? ""
+        }else if(self.moduleTextField.text == "Appointment"){
+            variable = viewModel?.getAppointmentTemplateListData(index: index.row).variable ?? ""
+        }else{
+            variable = viewModel?.getMassSMSTemplateListData(index: index.row).variable ?? ""
+        }
+        let str: String = " ${\(variable )} "
         self.bodyTextView.text += str
     }
 }
@@ -248,4 +257,27 @@ extension String {
     func removingWhitespaces() -> String {
             return components(separatedBy: .whitespaces).joined()
         }
+}
+
+extension CreateSMSTemplateViewController: UITextViewDelegate {
+    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        print(text)
+//        let trimmedString = text.trimmingCharacters(in: .whitespaces)
+//        if(trimmedString.count != 0){
+//            count += 1
+//            print(count)
+//        }
+//        return true
+//    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+       
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        if numberOfChars > 120 {
+            return false
+        }
+        return false
+    }
 }
