@@ -10,23 +10,44 @@ import WebKit
 
 class GRWebViewController: UIViewController, WKNavigationDelegate {
 
-    @IBOutlet private weak var webView: WKWebView!
+    let webView = WKWebView()
+    var activityIndicator: UIActivityIndicatorView!
     var webViewUrlString: String = String.blank
     var webViewTitle: String = String.blank
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.webView.navigationDelegate = self
         self.title = webViewTitle
-        self.loadWebviewUrl()
+        webView.frame = view.bounds
+        webView.navigationDelegate = self
+        
+        let url = URL(string: webViewUrlString)!
+        let urlRequest = URLRequest(url: url)
+        
+        webView.load(urlRequest)
+        webView.allowsBackForwardNavigationGestures = true
+        webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        view.addSubview(webView)
+        
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .medium
+        activityIndicator.isHidden = true
+        view.addSubview(activityIndicator)
+        
     }
     
-    func loadWebviewUrl() {
-        if let url = URL (string: self.webViewUrlString) {
-            let request = URLRequest(url: url)
-            self.webView.load(request)
-            webView.allowsBackForwardNavigationGestures = true
-            webView.isExclusiveTouch = true
-        }
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    
+    
 }

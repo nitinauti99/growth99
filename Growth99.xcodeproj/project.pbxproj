@@ -10,7 +10,6 @@
 		0100C6F429E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */; };
 		0100C6F629E04D1500B48138 /* CreateTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */; };
 		0103EABA2A1D34B700BDDB87 /* HelpAndTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */; };
-		0103EABC2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0103EABB2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
 		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
@@ -857,6 +856,7 @@
 		84F6113C292A71AB00B1FB69 /* GrowthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F610B4292A71A900B1FB69 /* GrowthEndpoint.swift */; };
 		84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDC1B129586E3A002821BB /* LocalAuthentication.framework */; };
 		A9829DCF5FA863FF8E06EBBD /* Pods_Growth99_Growth99UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB9E8D8CF56D67F03769EA9 /* Pods_Growth99_Growth99UITests.framework */; };
+		D0D4E7752A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */; };
 		D0D834B82A1FDA9800A60443 /* PostCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */; };
 		D0D834B92A1FDA9800A60443 /* PostCalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */; };
 		D0D834BC2A1FDC4200A60443 /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */; };
@@ -917,7 +917,6 @@
 		0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+OepnDropDown.swift"; sourceTree = "<group>"; };
 		0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpAndTrainingViewController.swift; sourceTree = "<group>"; };
-		0103EABB2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpAndTrainingViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
@@ -1780,6 +1779,7 @@
 		84F610B4292A71A900B1FB69 /* GrowthEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthEndpoint.swift; sourceTree = "<group>"; };
 		84FDC1B129586E3A002821BB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B09670DEAC7D86BE95FED127 /* Pods_Growth99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HelpAndTrainingViewController.storyboard; sourceTree = "<group>"; };
 		D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalendarViewController.swift; sourceTree = "<group>"; };
 		D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCalendarViewController.storyboard; sourceTree = "<group>"; };
 		D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
@@ -6713,7 +6713,6 @@
 			isa = PBXGroup;
 			children = (
 				DA45786F29707F8400CE458B /* View */,
-				0103EABB2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard */,
 			);
 			path = GRWebView;
 			sourceTree = "<group>";
@@ -6724,6 +6723,7 @@
 				DA45787029707F9F00CE458B /* GRWebViewController.swift */,
 				DA45787229707FA900CE458B /* GRWebViewController.storyboard */,
 				0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */,
+				D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7003,7 +7003,7 @@
 				1896709429BA5E62003224ED /* LeadTriggersTableViewCell.xib in Resources */,
 				189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */,
 				016F662129C97D7000B1D248 /* MediaTagsListViewController.storyboard in Resources */,
-				0103EABC2A1D34C400BDDB87 /* HelpAndTrainingViewController.storyboard in Resources */,
+				D0D4E7752A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard in Resources */,
 				01684C4729BDC16B00DE1041 /* ChatSessionUserTableViewCell.xib in Resources */,
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
