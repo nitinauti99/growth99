@@ -61,7 +61,7 @@ struct EndPoints {
     static let questionnaireList = "/api/v1/questionnaire"
     static let taskDetail = "/api/workflowtasks/"
     static let providerList = "/api/v1/users/services/providers?serviceId="
-    static let CalendarInfo = "/api/v1/appointments/calendar/filter?clinicId="
+    static let CalendarInfo = "/api/v1/appointments/filter?clinicId="
     static let bussinessInfo = "/api/businesses/"
     static let getBussinessInfo = "/api/public/v1/businesses/"
     static let newAppointment = "/api/appointments/new"

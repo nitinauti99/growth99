@@ -37,7 +37,7 @@ class BookingHistoryViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
 
     func getCalendarInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int) {
-        let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"
+        let url = "&providerId=\(providerId)&serviceId=\(serviceId)"
         let apiURL = ApiUrl.CalendarInfo.appending("\(url)")
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalendarInfoListModel, GrowthNetworkError>) in
             switch result {
