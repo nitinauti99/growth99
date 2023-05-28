@@ -130,7 +130,13 @@ class EditEventViewModel: EditEventViewModelProtocol {
         self.requestManager.request(forPath: apiURL, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<[String], GrowthNetworkError>) in
             switch result {
             case .success(let datesData):
-                self.allDates = datesData
+                let dateFormatter = ISO8601DateFormatter()
+                let sortedDates = datesData.compactMap { dateFormatter.date(from: $0) }
+                let ascendingOrder = sortedDates.sorted()
+
+                let stringDates = ascendingOrder.map { dateFormatter.string(from: $0) }
+                self.allDates = stringDates
+
                 self.delegate?.datesDataReceived()
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)

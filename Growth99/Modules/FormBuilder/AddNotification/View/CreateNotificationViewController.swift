@@ -104,8 +104,15 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         var params: [String : Any] = [:]
 
         if self.notificationTypeTextField.text == "SMS" {
-            guard let phoneNumber  = selectedNotificationTypeTextField.text, !phoneNumber.isEmpty else {
-                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            guard let phoneNumber = selectedNotificationTypeTextField.text, !phoneNumber.isEmpty else {
+                selectedNotificationTypeTextField.showError(message: "Phone Number is required")
+                return
+            }
+
+            // Remove non-digit characters using regular expression
+            let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+            guard cleanedPhoneNumber.count >= 10 else {
+                selectedNotificationTypeTextField.showError(message: "Phone Number should contain 10 digits")
                 return
             }
             

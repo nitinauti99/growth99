@@ -363,15 +363,18 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             lastNameTextField.showError(message: Constant.Profile.chooseToDate)
             return
         }
+        
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+            phoneNumberTextField.showError(message: "Phone Number is required")
             return
         }
-        
-//        guard let phoneNumber = phoneNumberTextField.text, phoneNumber.isValidMobile() else {
-//            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
-//            return
-//        }
+
+        // Remove non-digit characters using regular expression
+        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        guard cleanedPhoneNumber.count >= 10 else {
+            phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
+            return
+        }
         
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
             clincsTextField.showError(message: Constant.Profile.clinicsRequired)

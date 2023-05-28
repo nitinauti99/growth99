@@ -57,7 +57,6 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         delegate?.delateSectionButtonTapped(view: self)
     }
     
-    
     func addTopBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
         let border = UIView()
         border.backgroundColor = color

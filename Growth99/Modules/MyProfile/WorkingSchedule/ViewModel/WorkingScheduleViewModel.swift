@@ -16,7 +16,7 @@ protocol WorkingScheduleViewModelProtocol {
     
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
-    func serverToLocal(date: String) -> String
+    func serverToLocal(date: String) -> String?
     func serverToLocalTime(timeString: String) -> String
     func serverToLocalInput(date: String) -> String
     func serverToLocalTimeInput(timeString: String) -> String
@@ -113,13 +113,22 @@ extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
         return formatter.string(from: timePicker.date)
     }
     
-    func serverToLocal(date: String) -> String {
+    func serverToLocal(date: String) -> String? {
+        let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: dateFormatter.date(from: date) ?? Date())
+
+        if let serverDate = dateFormatter.date(from: date) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.locale = Locale.current
+            outputFormatter.dateFormat = "MM/dd/yyyy"
+            let formattedDate = outputFormatter.string(from: serverDate)
+            return formattedDate
+        } else {
+            print("Invalid date format: \(date)")
+            return nil
+        }
     }
-    
     
     func serverToLocalInput(date: String) -> String {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")

@@ -401,8 +401,15 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             return
         }
         
-        guard let contactNumber = contactNumberTextField.text, !contactNumber.isEmpty else {
-            contactNumberTextField.showError(message: "Contact Number is required.")
+        guard let phoneNumber = contactNumberTextField.text, !phoneNumber.isEmpty else {
+            contactNumberTextField.showError(message: "Phone Number is required")
+            return
+        }
+
+        // Remove non-digit characters using regular expression
+        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        guard cleanedPhoneNumber.count >= 10 else {
+            contactNumberTextField.showError(message: "Phone Number should contain 10 digits")
             return
         }
         
@@ -464,7 +471,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
         }
         
-        let params = ClinicParamModel(name: clinicName, contactNumber: contactNumber, address: address, notificationEmail: notificationEmail, notificationSMS: notificationSmsTextField.text, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, countryCode: countryCode, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
+        let params = ClinicParamModel(name: clinicName, contactNumber: phoneNumber, address: address, notificationEmail: notificationEmail, notificationSMS: notificationSmsTextField.text, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, countryCode: countryCode, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
         let parameters: [String: Any]  = params.toDict()
         
         if self.title == Constant.Profile.createClinic {

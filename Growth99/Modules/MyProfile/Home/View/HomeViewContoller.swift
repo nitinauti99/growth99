@@ -238,10 +238,18 @@ class HomeViewContoller: UIViewController {
             return
         }
 
-        if let textField = phoneNumberTextField, textField.text == "" {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberEmptyError)
+        guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
+            phoneNumberTextField.showError(message: "Phone Number is required")
             return
         }
+
+        // Remove non-digit characters using regular expression
+        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        guard cleanedPhoneNumber.count >= 10 else {
+            phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
+            return
+        }
+        
         if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {
             phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return

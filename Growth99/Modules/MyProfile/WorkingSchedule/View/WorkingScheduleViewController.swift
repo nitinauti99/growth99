@@ -187,36 +187,12 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                         workingCell.timeToTextField.showError(message: Constant.Profile.chooseToTime)
                         return
                     } else {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "h:mm a"
-                        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                        dateFormatter.timeZone = TimeZone(identifier: "America/Denver")
-                        
-                        guard let startTimeText = workingCell.timeFromTextField.text,
-                              let startTime = dateFormatter.date(from: startTimeText),
-                              let endTimeText = workingCell.timeToTextField.text,
-                              let endTime = dateFormatter.date(from: endTimeText)
-                        else {
-                            // handle invalid input
-                            return
-                        }
-                        if startTime < endTime {
-                            self.view.showToast(message: "Start time is before end time", color: .red)
-                            return
-                        } else if startTime == endTime {
-                            self.view.showToast(message: "Start time and end time cannot be same", color: .red)
-                            return
-                        } else if startTime > endTime {
-                            self.view.showToast(message: "Start time is after end time", color: .red)
-                            return
-                        } else {
-                            isValidateArray.insert(true, at: childIndex)
-                            let daysArray =  workingCell.selectDayTextField.text ?? String.blank
-                            let days = daysArray.components(separatedBy: ",")
-                            let startTime = workingCell.timeFromTextField.text ?? String.blank
-                            let endTime = workingCell.timeToTextField.text ?? String.blank
-                            selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: startTime), timeToDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: endTime), days: days), at: childIndex)
-                        }
+                        isValidateArray.insert(true, at: childIndex)
+                        let daysArray =  workingCell.selectDayTextField.text ?? String.blank
+                        let days = daysArray.components(separatedBy: ",")
+                        let startTime = workingCell.timeFromTextField.text ?? String.blank
+                        let endTime = workingCell.timeToTextField.text ?? String.blank
+                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: startTime), timeToDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: endTime), days: days), at: childIndex)
                     }
                 }
             }
