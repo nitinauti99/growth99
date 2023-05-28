@@ -188,9 +188,12 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     
     func appoinmentCreated(apiResponse: AppoinmentModel) {
         self.view.HideSpinner()
+        self.view.showToast(message: "Appointment created successfully", color: UIColor().successMessageColor())
         let userInfo = ["clinicId": selectedClincIds, "providerId": selectedProvidersIds, "serviceId": selectedServicesIds] as [String : Any]
         NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil, userInfo: userInfo)
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func errorEventReceived(error: String) {
