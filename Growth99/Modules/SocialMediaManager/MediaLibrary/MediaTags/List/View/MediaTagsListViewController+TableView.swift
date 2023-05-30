@@ -42,6 +42,7 @@ extension MediaTagsListViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
         detailController.mediaTagScreenName = "Edit Screen"
+        detailController.mediaTagsList = viewModel?.getMediaTagsData
 
         if self.isSearch {
             detailController.mediaTagId = viewModel?.mediaTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0

@@ -112,6 +112,8 @@ extension MediaTagsListViewController: MediaTagsListTableViewCellDelegate{
     func editMediaTag(cell: MediaTagsListTableViewCell, index: IndexPath) {
         let detailController = UIStoryboard(name: "MediaTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "MediaTagsAddViewController") as! MediaTagsAddViewController
         detailController.mediaTagScreenName = "Edit Screen"
+        detailController.mediaTagsList = viewModel?.getMediaTagsData
+
         if self.isSearch {
             detailController.mediaTagId = viewModel?.mediaTagsFilterListDataAtIndex(index: index.row)?.id ?? 0
         }else{

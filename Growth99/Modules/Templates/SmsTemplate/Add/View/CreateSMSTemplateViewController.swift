@@ -25,7 +25,6 @@ class CreateSMSTemplateViewController: UIViewController {
     @IBOutlet weak var targetTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var bodyTextView: CustomTextView!
-    @IBOutlet weak var showCharacterLBI: UILabel!
 
     @IBOutlet weak var isCustom: UISwitch!
     var count = 0
@@ -166,6 +165,10 @@ class CreateSMSTemplateViewController: UIViewController {
             return
         }
         
+        if self.bodyTextView.text.count < 200 || self.bodyTextView.text.count > 200 {
+            return
+        }
+        
         let param: [String: Any] = [
             "id": self.smsTemplateId,
             "name": self.nameTextField.text ?? "",
@@ -232,14 +235,7 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
   
     func selectVariable(cell: CreateSMSTemplateCollectionViewCell, index: IndexPath) {
         var variable: String = ""
-        let character: String = "Character Remaining:"
 
-        showCharacterLBI.text = character.appending(String(self.bodyTextView.text.count))
-
-        if self.bodyTextView.text.count >= 200 {
-            return
-        }
-        
         if self.moduleTextField.text == "Lead" {
             variable = viewModel?.getLeadTemplateListData(index: index.row).variable ?? ""
         }else if(self.moduleTextField.text == "Appointment"){
@@ -271,16 +267,16 @@ extension String {
         }
 }
 
-extension CreateSMSTemplateViewController: UITextViewDelegate {
-   
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-       
-        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        let numberOfChars = newText.count
-        if numberOfChars > 120 {
-            return false
-        }
-        return false
-    }
-}
+//extension CreateSMSTemplateViewController: UITextViewDelegate {
+//   
+//    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//       
+//        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+//        let numberOfChars = newText.count
+//        if numberOfChars > 120 {
+//            return false
+//        }
+//        return false
+//    }
+//}

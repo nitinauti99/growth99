@@ -44,7 +44,7 @@ class questionAnswersTableViewCell: UITableViewCell {
             self.editButton.tintColor = UIColor.init(hexString: "009EDE")
         }
         
-        if patientQuestionList?.questionName?.replacingOccurrences(of: "\"", with: "", options: NSString.CompareOptions.literal, range:nil) == "y/n?" {
+        if patientQuestionList?.questionType == "Yes_No" {
             if  patientQuestionList?.answerText == "false" {
                 self.ansLbi.text = "No"
             }else{
