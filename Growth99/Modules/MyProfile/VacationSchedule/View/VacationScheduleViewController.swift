@@ -151,11 +151,9 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         isValidateVacationArray = []
-        if vacationsList.count > 0 {
-            if selectedClinicId == 0 {
-                selectedClinicId = allClinicsForVacation?[0].id ?? 0
-            }
-            
+        if vacationsList.count == 0 {
+            postVacationAPIMethod(vacationsList: [])
+        } else {
             for indexValue in 0..<(vacationsList.count) {
                 
                 for childIndex in 0..<(vacationsList[indexValue].userScheduleTimings?.count ?? 0) {
@@ -209,12 +207,19 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             if isValidateVacationArray.contains(false) {
                 return
             }
-            self.view.ShowSpinner()
-            let body = VacationParamModel(providerId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, vacationSchedules: arrayOfVacations)
-            let parameters: [String: Any]  = body.toDict()
-            print("Params::: \(parameters)")
-            vacationViewModel?.sendRequestforVacation(vacationParams: parameters)
+            postVacationAPIMethod(vacationsList: arrayOfVacations)
         }
+    }
+    
+    func postVacationAPIMethod(vacationsList: [VacationSchedules]) {
+        if selectedClinicId == 0 {
+            selectedClinicId = allClinicsForVacation?[0].id ?? 0
+        }
+        self.view.ShowSpinner()
+        let body = VacationParamModel(providerId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, vacationSchedules: vacationsList)
+        let parameters: [String: Any]  = body.toDict()
+        print("Params::: \(parameters)")
+        vacationViewModel?.sendRequestforVacation(vacationParams: parameters)
     }
     
     // MARK: - Add Vacations method

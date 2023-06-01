@@ -22,7 +22,6 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
     @IBOutlet weak var clinicNameLabel: UILabel!
     @IBOutlet weak var providerNameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var appointmentDateLabel: UILabel!
     @IBOutlet weak var paymetStatusLabel: UILabel!
     @IBOutlet weak var appointmentStatusLabel: UILabel!
@@ -45,11 +44,6 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         self.clinicNameLabel.text = profileAppointmentListData?.clinicName
         self.providerNameLabel.text = profileAppointmentListData?.providerName
         self.typeLabel.text = profileAppointmentListData?.appointmentType
-        if let data = profileAppointmentListData?.source {
-            self.sourceLabel.text = data
-        } else {
-            self.sourceLabel.text = "-"
-        }
         self.appointmentDateLabel.text = "\(dateFormater?.serverToLocalCreatedDate(date: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank) \(dateFormater?.utcToLocal(timeString: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank)"
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
@@ -65,11 +59,6 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         self.clinicNameLabel.text = profileAppointmentListData?.clinicName
         self.providerNameLabel.text = profileAppointmentListData?.providerName
         self.typeLabel.text = profileAppointmentListData?.appointmentType
-        if let data = profileAppointmentListData?.source {
-            self.sourceLabel.text = data
-        } else {
-            self.sourceLabel.text = "-"
-        }
         self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: profileAppointmentListData?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
