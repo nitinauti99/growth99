@@ -123,10 +123,10 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     func serverToLocalDateFormat(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let inputDate = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: inputDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -193,12 +193,15 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     
     func appoinmentEdited() {
         self.view.HideSpinner()
-        self.navigationController?.popViewController(animated: true)
+        self.view.showToast(message: "Appointment updated successfully", color: .green)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment cancelled successfully", color: .red)
+        self.view.showToast(message: "Appointment cancelled successfully", color: .green)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }

@@ -63,7 +63,7 @@ class VacationViewModel {
                 self.vacationList = list
                 self.delegate?.vacationsListResponseRecived()
             case .failure(let error):
-                self.delegate?.apiErrorReceived(error: error.localizedDescription)
+                self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }
@@ -76,7 +76,7 @@ class VacationViewModel {
                 print(response)
                 self.delegate?.apiResponseRecived(apiResponse: response)
             case .failure(let error):
-                self.delegate?.apiErrorReceived(error: error.localizedDescription)
+                self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }

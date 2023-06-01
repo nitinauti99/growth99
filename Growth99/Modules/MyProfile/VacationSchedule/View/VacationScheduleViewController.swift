@@ -10,7 +10,6 @@ import UIKit
 protocol VacationScheduleViewControllerCProtocol: AnyObject {
     func apiResponseRecived(apiResponse: ResponseModel)
     func vacationsListResponseRecived()
-    func apiErrorReceived(error: String)
     func errorReceived(error: String)
     func clinicsRecived()
 }
@@ -107,15 +106,14 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Clinic Dropdown API Response method
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.vacationScheduleUpdate, color: UIColor().successMessageColor())
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.navigationController?.popViewController(animated: true)
+        if apiResponse.status == 500 {
+            self.view.showToast(message: apiResponse.message ?? "", color: .red)
+        } else {
+            self.view.showToast(message: apiResponse.message ?? "", color: UIColor().successMessageColor())
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
-    }
-    
-    func apiErrorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
     }
     
     // MARK: - Vacations List API Response method

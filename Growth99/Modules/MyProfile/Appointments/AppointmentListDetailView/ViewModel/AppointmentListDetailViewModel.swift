@@ -246,7 +246,7 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z'"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: date)
     }
     
@@ -263,9 +263,9 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
     func serverToLocalInputWorking(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: date)
     }
     

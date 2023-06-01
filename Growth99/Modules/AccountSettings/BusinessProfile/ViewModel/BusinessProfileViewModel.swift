@@ -9,7 +9,7 @@ import Foundation
 protocol BusinessProfileViewModelProtocol {
     func saveBusinessInfo(name: String, trainingBusiness: Bool)
     func uploadSelectedImage(image: UIImage)
-    func isFirstName(_ firstName: String) -> Bool 
+    func isFirstName(_ firstName: String) -> Bool
 }
 
 class BusinessProfileViewModel {
@@ -27,34 +27,24 @@ class BusinessProfileViewModel {
     func saveBusinessInfo(name: String, trainingBusiness: Bool) {
         let finaleUrl = ApiUrl.bussinessInfo + "\(UserRepository.shared.Xtenantid ?? String.blank)"
         let parameter: [String : Any] = ["name": name, "trainingBusiness": trainingBusiness]
-        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { [weak self] (result: Result<BusinessResponseModel, GrowthNetworkError>) in
+            guard let self = self else { return }
             switch result {
-            case .success(_): break
-                /*if response.statusCode == 200 {
-                    self.user.bussinessName = response.name
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated successfully")
-                } else if response.statusCode == 500 {
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Unable to update busniess information.")
-                } else {
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "response failed")
-                }*/
+            case .success(let response): 
+                self.delegate?.businessInformationReponse(responseMessage: "Business updated successfully!", businessName: response.name ?? String.blank, businessLogoUrl: response.logoUrl ?? String.blank)
             case .failure(let error):
-                self?.delegate?.errorReceived(error: error.localizedDescription)
+                self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
             }
         }
     }
     
     func uploadSelectedImage(image: UIImage) {
-        self.requestManager.request(requestable: BusinessImage.upload(image: image.pngData() ?? Data())) { [weak self] result in
+        self.requestManager.request(requestable: BusinessImage.upload(image: image.pngData() ?? Data())) { [weak self] (result: Result<BusinessResponseModel, GrowthNetworkError>) in
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "Information updated successfully")
-                } else {
-                    self.delegate?.saveBusinessDetailReceived(responseMessage: "response failed")
-                }
+                self.delegate?.businessInformationReponse(responseMessage: "File uploaded successfully", businessName: response.name ?? String.blank, businessLogoUrl: response.logoUrl ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -83,8 +73,8 @@ extension BusinessImage: Requestable {
     
     var headerFields: [HTTPHeader]? {
         [.custom(key: "x-tenantid", value: UserRepository.shared.Xtenantid ?? String.blank),
-             .custom(key: "Content-Type", value: "application/json"),
-             .authorization("Bearer "+(UserRepository.shared.authToken ?? String.blank))]
+         .custom(key: "Content-Type", value: "application/json"),
+         .authorization("Bearer "+(UserRepository.shared.authToken ?? String.blank))]
     }
     
     var requestMode: RequestMode {

@@ -22,6 +22,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingCustomTableViewCell", for: indexPath) as? WorkingCustomTableViewCell else { fatalError("Unexpected Error") }
         if isEmptyResponse == false {
             let item = workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days
+            selectedDays = item ?? []
             cell.updateTextLabel(with: item)
             cell.timeFromTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
             cell.timeToTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)

@@ -106,7 +106,6 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         
         if workingListModel?.count ?? 0 > 0 {
             isEmptyResponse = false
-            let selectedDaysArray = workingScheduleViewModel?.getVacationData[0].userScheduleTimings ?? []
             workingDateFromTextField.text = workingScheduleViewModel?.serverToLocal(date: workingListModel?[0].fromDate ?? String.blank)
             workingDateToTextField.text = workingScheduleViewModel?.serverToLocal(date: workingListModel?[0].toDate ?? String.blank)
         } else {

@@ -9,7 +9,9 @@ import UIKit
 
 protocol BusinessProfileViewControllerProtocol {
     func errorReceived(error: String)
-    func saveBusinessDetailReceived(responseMessage: String)
+    func businessInformationReponse(responseMessage: String,
+                                    businessName: String,
+                                    businessLogoUrl: String)
 }
 
 class BusinessProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, BusinessProfileViewControllerProtocol, UITextFieldDelegate {
@@ -42,11 +44,11 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         self.view.showToast(message: error, color: .red)
     }
     
-    func saveBusinessDetailReceived(responseMessage: String) {
+    func businessInformationReponse(responseMessage: String, businessName: String, businessLogoUrl: String) {
         self.view.HideSpinner()
-        user.bussinessLogo = nil
+        user.bussinessName = businessName
+        user.bussinessLogo = businessLogoUrl
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
-        user.bussinessLogo = bussinessInfoData?.logoUrl ?? String.blank
     }
     
     @IBAction func imageIconbtnTapped(_ sender: Any) {

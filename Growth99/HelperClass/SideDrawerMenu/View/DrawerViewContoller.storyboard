@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,17 +36,14 @@
                                                     <constraint firstAttribute="width" constant="120" id="LCX-MQ-Hqa"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-HZ-mll">
-                                                <rect key="frame" x="20" y="193" width="260" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="gxd-p1-DFh"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-HZ-mll">
+                                                <rect key="frame" x="20" y="198" width="260" height="24.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ao0-ez-PGC">
-                                                <rect key="frame" x="20" y="234" width="260" height="22"/>
+                                                <rect key="frame" x="20" y="242.66666666666666" width="260" height="21.999999999999972"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="zB7-Vw-j3k"/>
                                                 </constraints>
@@ -55,7 +52,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YRd-Ti-J54">
-                                                <rect key="frame" x="0.0" y="286" width="300" height="1514"/>
+                                                <rect key="frame" x="0.0" y="294.66666666666663" width="300" height="1505.3333333333335"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
@@ -64,7 +61,7 @@
                                             <constraint firstItem="sIq-hd-2dF" firstAttribute="top" secondItem="6pL-KB-6Sg" secondAttribute="top" constant="20" id="0zR-Nc-yIk"/>
                                             <constraint firstAttribute="width" constant="300" id="7d5-7M-oKx"/>
                                             <constraint firstAttribute="bottom" secondItem="YRd-Ti-J54" secondAttribute="bottom" id="7xw-7k-HYH"/>
-                                            <constraint firstItem="Ol5-HZ-mll" firstAttribute="top" secondItem="a10-Kh-gwM" secondAttribute="bottom" constant="15" id="AQO-8F-WOe"/>
+                                            <constraint firstItem="Ol5-HZ-mll" firstAttribute="top" secondItem="a10-Kh-gwM" secondAttribute="bottom" constant="20" id="AQO-8F-WOe"/>
                                             <constraint firstItem="Ol5-HZ-mll" firstAttribute="leading" secondItem="6pL-KB-6Sg" secondAttribute="leading" constant="20" id="BOJ-RJ-9dX"/>
                                             <constraint firstItem="ao0-ez-PGC" firstAttribute="leading" secondItem="Ol5-HZ-mll" secondAttribute="leading" id="DDR-z6-7wT"/>
                                             <constraint firstItem="a10-Kh-gwM" firstAttribute="centerX" secondItem="sIq-hd-2dF" secondAttribute="centerX" id="DJX-mg-mbt"/>

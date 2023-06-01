@@ -180,7 +180,7 @@ struct Constant {
         static let unexpectedError = "Unexpected Error"
         static let CalendarDefault = "Default"
         static let CalendarNotDefault = "Notdefault"
-        static let vacationTitle = "Vacantion Schedule"
+        static let vacationTitle = "Vacation Schedule"
         static let workingScheduleTitle = "Working Schedule"
         static let changePasswordTitle = "Change Password"
         static let workingSchedule = "working"
