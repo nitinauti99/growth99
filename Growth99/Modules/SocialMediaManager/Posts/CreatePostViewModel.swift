@@ -109,33 +109,6 @@ class CreatePostViewModel {
             }
         }
     }
-    
-    func createPostWithImage(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String){
-        let urlParameter: Parameters = [
-                "name": name,
-                "description": description,
-                "workflowTaskStatus": workflowTaskStatus,
-                "workflowTaskUser": workflowTaskUser,
-                "deadline": deadline,
-                "workflowTaskPatient": NSNull(),
-                "questionnaireSubmissionId": questionnaireSubmissionId,
-                "leadOrPatient": leadOrPatient,
-            ]
-        
-        
-        self.requestManager.uploadRequest(request: Requestable) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let response):
-                print(response)
-                self.delegate?.taskUserCreatedSuccessfully(responseMessage: "Task saved successfully")
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-            }
-        }
-        
-        request(forPath: ApiUrl.createTaskUser, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding))
-    }
 
 
 }
