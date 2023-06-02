@@ -8,6 +8,7 @@ target 'Growth99' do
   # Pods for Growth99
   pod 'SDWebImage', '~> 5.0'
   pod 'FSCalendar'
+  pod 'Alamofire'
   target 'Growth99Tests' do
     inherit! :search_paths
     # Pods for testing
