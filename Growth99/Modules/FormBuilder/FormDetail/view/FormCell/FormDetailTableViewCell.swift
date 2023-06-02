@@ -66,7 +66,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     @IBOutlet weak var dropDownNOButton: UIButton!
     @IBOutlet weak var selctedCheckBoxYESButton: UIButton!
     @IBOutlet weak var selectedCheckBoxNOButton: UIButton!
-    
     @IBOutlet weak var questionTableView: UITableView!
     @IBOutlet weak var questionTableViewHight: NSLayoutConstraint!
     
@@ -100,7 +99,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     /// setting initail values
     func setUPInitialConstantValue() {
         self.setUPButtonAction()
-        self.hideMultipleSelctionView()
         self.bottomView.isHidden = true
         self.bottomViewHight.constant = 0
         self.questionTableViewHight.constant = 0
@@ -132,15 +130,26 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.hideAddQuestionView()
     }
     
+    func setUpAllbuttonFalse(){
+        self.inputBoxButton.isSelected = false
+        self.textButton.isSelected = false
+        self.yesNoButton.isSelected = false
+        self.dateButton.isSelected = false
+        self.multipleSelectionButton.isSelected = false
+        self.fileButton.isSelected = false
+    }
+    
     /// configure cell
     func configureCell(tableView: UITableView?, FormList: FormDetailViewModelProtocol?, index: IndexPath) {
+        self.setUpAllbuttonFalse()
+        self.hideMutipleSelctionView()
         self.setUPUI(FormList, index)
         self.questionNameTextfield.placeholder = "New Question"
         self.saveButton.roundCorners(corners: [.allCorners], radius: 25)
         self.cancelButton.roundCorners(corners: [.allCorners], radius: 25)
         self.tableView = tableView
         self.questionTableView.reloadData()
-        buttons = [inputBoxButton, textButton,yesNoButton,dateButton,multipleSelectionButton,fileButton]
+        self.buttons = [inputBoxButton, textButton,yesNoButton,dateButton,multipleSelectionButton,fileButton]
         
     }
     
@@ -176,7 +185,6 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
         self.regexTextfield.text = getRegexTypeFromRegex(regex: formList?.regex ?? "")
         self.validationMessageTextfield.text = formList?.validationMessage
         self.selctionType(selctionType:formList?.type ?? String.blank)
-        self.setUPInitialMultiselectionView()
         self.questionArray = formList?.questionChoices ?? []
         self.cancelButton.addTarget(self,
                                     action: #selector(self.cancelButtonAction(sender:)),
@@ -193,6 +201,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             self.bottomView.isHidden = false
             self.bottomViewHight.constant = 76
             self.enableUserIntraction()
+            self.inputBoxButton.isSelected = true
         }else{
             self.deletButton.isHidden = false
             self.editButton.isHidden = false
@@ -559,7 +568,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "answer": "",
             "id": formList?.id ?? 0,
             "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
-            "allowMultipleSelection": formList?.allowMultipleSelection ?? false,
+            "allowMultipleSelection": self.multipleChoiceYESButton.isSelected,
             "questionChoices": questionListArray,
             "showDropDown": self.dropDownYESButton.isSelected,
             "preSelectCheckbox": self.selctedCheckBoxYESButton.isSelected,
@@ -632,6 +641,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     
     func saveMultiSelectionFromData() -> [String: Any]{
         var questionListArray = [Any]()
+        self.hideMutipleSelctionView()
         for indexValue in 0..<(questionArray.count) {
             let cellIndexPath = IndexPath(item: indexValue, section: 0)
             var questionDict: [String: Any] = [:]

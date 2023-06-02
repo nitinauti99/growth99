@@ -10,6 +10,8 @@
 		0100C6F429E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */; };
 		0100C6F629E04D1500B48138 /* CreateTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */; };
 		0103EABA2A1D34B700BDDB87 /* HelpAndTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */; };
+		0103EABF2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */; };
+		0103EAC02A283EC800BDDB87 /* CustomSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
 		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
@@ -917,6 +919,8 @@
 		0100C6F329E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+OepnDropDown.swift"; sourceTree = "<group>"; };
 		0100C6F529E04D1500B48138 /* CreateTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpAndTrainingViewController.swift; sourceTree = "<group>"; };
+		0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
@@ -4348,6 +4352,8 @@
 			children = (
 				84D061AE29670676001FE469 /* HomeViewContoller.swift */,
 				01468E0B29BF7145002BDC1F /* HomeViewContoller+UITextField.swift */,
+				0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */,
+				0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6963,6 +6969,7 @@
 				84E34C4E29703E0000C58B0D /* CreateTasksViewController.storyboard in Resources */,
 				01468E2D29C0D7B5002BDC1F /* PateintEmailTemplateTableViewCell.xib in Resources */,
 				01EBAC7B29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.xib in Resources */,
+				0103EAC02A283EC800BDDB87 /* CustomSelectionTableViewCell.xib in Resources */,
 				01684C5A29BDEF8F00DE1041 /* UnansweredQuestionListTableViewCell.xib in Resources */,
 				842C0CDC298FC12200395061 /* PateintsTagListTableViewCell.xib in Resources */,
 				84BD33FE2994BB460050C0D8 /* EmailTemplatesListTableViewCell.xib in Resources */,
@@ -7865,6 +7872,7 @@
 				01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */,
 				842C0CC1298F713B00395061 /* AddNewQuestionarieModel.swift in Sources */,
 				84D0629E2967070D001FE469 /* UserCreateViewModel.swift in Sources */,
+				0103EABF2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift in Sources */,
 				84D063002967080E001FE469 /* questionAnswersTableViewCell.swift in Sources */,
 				01BBA9ED29AB945D006A5DB8 /* CreateNotificationViewModel.swift in Sources */,
 				189670B229BA6080003224ED /* TriggerDetailViewController.swift in Sources */,
@@ -8119,7 +8127,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8166,7 +8174,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -83,8 +83,7 @@ class CreateTasksViewModel {
     
     func createTaskUser(name: String, description: String, workflowTaskStatus: String, workflowTaskUser: Int, deadline: String, workflowTaskPatient: Int, questionnaireSubmissionId: Int, leadOrPatient: String){
         var urlParameter: Parameters = [String: Any]()
-
-        if workflowTaskPatient == 0 {
+        if leadOrPatient == "Lead" {
             urlParameter = [
                 "name": name,
                 "description": description,
@@ -92,8 +91,8 @@ class CreateTasksViewModel {
                 "workflowTaskUser": workflowTaskUser,
                 "deadline": deadline,
                 "workflowTaskPatient": NSNull(),
-                "questionnaireSubmissionId": NSNull(),
-                "leadOrPatient": NSNull(),
+                "questionnaireSubmissionId": questionnaireSubmissionId,
+                "leadOrPatient": leadOrPatient,
             ]
         }else{
             urlParameter = [
@@ -107,7 +106,8 @@ class CreateTasksViewModel {
                 "leadOrPatient": leadOrPatient,
             ]
         }
-        
+       
+       
         self.requestManager.request(forPath: ApiUrl.createTaskUser, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {

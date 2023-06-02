@@ -29,8 +29,11 @@ class DisplayQuestionnaireqsubmissionsTableViewCell: UITableViewCell {
             }
             self.questionAns.text = selectedStringArray.joined(separator: ",")
         }else if questionnaireVM?.questionType == "Yes_No" {
-            self.questionAns.text = ""
-
+            if let ans = questionnaireVM?.answerText, ans == "false" {
+                self.questionAns.text = "no"
+            }else{
+                self.questionAns.text = "yes"
+            }
         }
     }
     

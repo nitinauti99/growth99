@@ -94,7 +94,7 @@ class LeadQuestionnaireTableViewCell: UITableViewCell, FormQuestionTableViewCell
     /// setting initail values
     func setUPInitialConstantValue() {
         self.setUPButtonAction()
-        self.hideMultipleSelctionView()
+        self.hideMutipleSelctionView()
         self.bottomView.isHidden = true
         self.bottomViewHight.constant = 0
         self.questionTableViewHight.constant = 0
