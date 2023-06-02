@@ -106,6 +106,8 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         providersTextField.text = editBookingHistoryData?.providerName ?? String.blank
         appoinmentStatusField.text = editBookingHistoryData?.appointmentStatus ?? String.blank
         dateTextField.text = eventViewModel?.serverToLocal(date: editBookingHistoryData?.appointmentStartDate ?? String.blank)
+        self.selectedDate = editBookingHistoryData?.appointmentStartDate ?? String.blank
+        self.selectedTime = editBookingHistoryData?.appointmentStartDate ?? String.blank
         timeTextField.text = "\(eventViewModel?.utcToLocal(dateStr: editBookingHistoryData?.appointmentStartDate ?? String.blank) ?? String.blank)"
         if editBookingHistoryData?.appointmentType == "InPerson" {
             inPersonBtn.isSelected = true

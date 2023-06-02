@@ -171,10 +171,10 @@ class CreatePostViewController: UIViewController {
         let session = URLSession(configuration: config)
         var url = String()
         var methodType = String()
-        if  self.screenName == "Edit" {
+        if self.screenName == "Edit" {
             url = ApiUrl.socialMediaPost.appending("/\(postId)")
             methodType = "PUT"
-        }else{
+        } else {
             url = ApiUrl.socialMediaPost
             methodType = "POST"
         }
@@ -232,7 +232,11 @@ class CreatePostViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.view.HideSpinner()
-                    self.view.showToast(message: "Social media post updated successfully.", color: UIColor().successMessageColor())
+                    if self.screenName == "Edit" {
+                        self.view.showToast(message: "Social media post updated successfully.", color: UIColor().successMessageColor())
+                    } else {
+                        self.view.showToast(message: "Social media post created successfully.", color: UIColor().successMessageColor())
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.navigationController?.popViewController(animated: true)
                     }

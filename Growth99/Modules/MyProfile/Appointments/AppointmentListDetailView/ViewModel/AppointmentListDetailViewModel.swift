@@ -235,9 +235,9 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
+        let dateF = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: dateF)
     }
     
     func appointmentDateInput(date: String) -> String {
@@ -245,9 +245,9 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        let date = dateFormatter.date(from: date) ?? Date()
+        let dateF = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: dateF)
     }
     
     func localInputToServerInput(date: String) -> String {
@@ -263,19 +263,19 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
     func serverToLocalInputWorking(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        return dateFormatter.string(from: date)
+        let dateF = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        return dateFormatter.string(from: dateF)
     }
     
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
+        let dateF = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: dateF)
     }
     
     func localInputeDateToServer(date: String) -> String {
