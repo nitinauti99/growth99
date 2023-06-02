@@ -1299,7 +1299,7 @@
 		189E3EDC29C391A400B94190 /* LabelListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListTableViewCell.swift; sourceTree = "<group>"; };
 		189E3EDD29C391A400B94190 /* LabelListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelListTableViewCell.xib; sourceTree = "<group>"; };
 		189E3EE229C391CA00B94190 /* PostsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListModel.swift; sourceTree = "<group>"; };
-		189E3EE429C391D900B94190 /* PostsListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewContoller.swift; sourceTree = "<group>"; };
+		189E3EE429C391D900B94190 /* PostsListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewContoller.swift; sourceTree = "<group>"; tabWidth = 5; };
 		189E3EE629C391E100B94190 /* PostsListViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsListViewContoller.storyboard; sourceTree = "<group>"; };
 		189E3EE829C391FA00B94190 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		189E3EFA29C392C500B94190 /* MediaLibraryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryListModel.swift; sourceTree = "<group>"; };

@@ -97,6 +97,10 @@ class HomeViewContoller: UIViewController {
         if sender.isOn {
             self.userProviderViewHight.constant = 300
             self.userProviderView.isHidden = false
+            if self.clincsTextField.text == "" {
+                self.serviceCategoriesTextField.text = ""
+                self.servicesTextField.text = ""
+            }
             self.view.layoutIfNeeded()
         } else {
             self.userProviderViewHight.constant = 0

@@ -133,14 +133,12 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
         }
         
         let alert = UIAlertController(title: "", message: "once these is posted you can not edit or delete the post through our application \n\(mediaLibraryName)", preferredStyle: UIAlertController.Style.alert)
-        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+        let cancelAlert = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
                                         handler: { [weak self] _ in
             self?.view.ShowSpinner()
             self?.viewModel?.approvePost(postId: postid)
         })
-        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
         alert.addAction(cancelAlert)
-        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -148,6 +146,7 @@ extension PostsListViewContoller: PostsListTableViewCellDelegate {
     func postedPosts(cell: PostsListTableViewCell, index: IndexPath) {
         let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
         createPostVC.isPosted = true
+        createPostVC.screenName = "Edit"
         if self.isSearch {
             createPostVC.postId = viewModel?.postsFilterListDataAtIndex(index: index.row)?.id ?? 0
             self.navigationController?.pushViewController(createPostVC, animated: true)
