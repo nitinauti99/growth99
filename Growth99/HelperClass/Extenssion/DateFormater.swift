@@ -42,11 +42,12 @@ class DateFormater: DateFormaterProtocol {
     func serverToLocalTimeAndDateFormate(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+       
+        let usDateFormatter = DateFormatter()
+        usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
-        return dateFormatter.string(from: date)
+        return usDateFormatter.string(from: date)
     }
     
     func serverToLocal(date: String) -> String {

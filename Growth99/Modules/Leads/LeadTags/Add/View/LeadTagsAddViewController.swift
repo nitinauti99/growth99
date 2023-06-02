@@ -59,14 +59,14 @@ class LeadTagsAddViewController: UIViewController {
             return
         }
         if leadTagScreenName == "Edit Screen" {
-            if let isValuePresent = self.leadTagsList?.filter({ $0.name?.lowercased() == self.LeadTagsTextField.text}), isValuePresent.count > 0 {
+            if let isValuePresent = self.leadTagsList?.filter({ $0.name?.lowercased() == self.LeadTagsTextField.text?.lowercased()}), isValuePresent.count > 0 {
                 self.LeadTagsTextField.showError(message: "Tag with this name already present.")
                 return
             }
             self.view.ShowSpinner()
             self.viewModel?.saveLeadTagsDetails(leadTagId: leadTagId, name: LeadTagsTextField.text ?? String.blank)
         }else{
-            if let isValuePresent = self.leadTagsList?.filter({ $0.name?.lowercased() == self.LeadTagsTextField.text}), isValuePresent.count > 0 {
+            if let isValuePresent = self.leadTagsList?.filter({ $0.name?.lowercased() == self.LeadTagsTextField.text?.lowercased() }), isValuePresent.count > 0 {
                 self.LeadTagsTextField.showError(message: "Tag with this name already present.")
                 return
             }

@@ -42,6 +42,7 @@ extension LeadTagsListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "LeadTagsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadTagsAddViewController") as! LeadTagsAddViewController
         detailController.leadTagScreenName = "Edit Screen"
+        detailController.leadTagsList = viewModel?.getLeadTagsData
 
         if self.isSearch {
             detailController.leadTagId = viewModel?.leadTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
