@@ -154,23 +154,17 @@ class CreatePostViewController: UIViewController {
         
         self.view.ShowSpinner()
         let image = self.postImageView.image ?? UIImage()
-       
-        let filename = "blob"
-        let boundary = UUID().uuidString
+        
         let socialMediaPostLabelId = self.selectedPostLabels.map { String($0) }.joined(separator: ",")
         let socialProfileIds = self.selectedSocialProfiles.map { String($0) }.joined(separator: ",")
-
+        
         let str: String = (self.scheduleDateTextField.text ?? "") + " " + (self.scheduleTimeTextField.text ?? "")
         
         let scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
-                
-        let name = "name"
-        let label = ""
         
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
         var url = String()
         var methodType = String()
+        
         if self.screenName == "Edit" {
             url = ApiUrl.socialMediaPost.appending("/\(postId)")
             methodType = "PUT"
@@ -179,72 +173,36 @@ class CreatePostViewController: UIViewController {
             methodType = "POST"
         }
         
-        var urlRequest = URLRequest(url: URL(string: url)!)
+        let urlParameter: Parameters = [
+            "hashtag": self.hashtagTextField.text ?? "",
+            "socialMediaPostLabelId": socialMediaPostLabelId,
+            "post": self.PostTextView.text ?? "",
+            "scheduledDate": scheduledDate,
+            "socialProfileIds": socialProfileIds
+        ]
         
-        urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
-        urlRequest.addValue("Bearer "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
-        urlRequest.httpMethod = methodType
-        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        var data = Data()
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"name\"\r\n\r\n \(name)".data(using: .utf8)!)
-        
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"hashtag\"\r\n\r\n \(self.hashtagTextField.text ?? "")".data(using: .utf8)!)
-        
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"label\"\r\n\r\n \(label)".data(using: .utf8)!)
-        
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"post\"\r\n\r\n \(self.PostTextView.text ?? "")".data(using: .utf8)!)
-        
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"socialMediaPostLabelId\"\r\n\r\n \(socialMediaPostLabelId)".data(using: .utf8)!)
-        
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"scheduledDate\"\r\n\r\n \(String(describing: scheduledDate))".data(using: .utf8)!)
-
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"socialProfileIds\"\r\n\r\n \(socialProfileIds)".data(using: .utf8)!)
-        
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
-        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-        data.append(image.pngData() ?? data)
-        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-        
-        session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
-            
-            if(error != nil){
-                self.view.HideSpinner()
-                print("\(error!.localizedDescription)")
-            }
-            
-            guard let responseData = responseData else {
-                print("no response data")
-                self.view.HideSpinner()
-                return
-            }
-            
-            if let responseString = String(data: responseData, encoding: .utf8) {
-                print("uploaded to: \(responseString)")
-                
-                DispatchQueue.main.async {
-                    self.view.HideSpinner()
-                    if self.screenName == "Edit" {
-                        self.view.showToast(message: "Social media post updated successfully.", color: UIColor().successMessageColor())
-                    } else {
-                        self.view.showToast(message: "Social media post created successfully.", color: UIColor().successMessageColor())
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+        let request = ImageUploader(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType)
+        request.uploadImage { (result) in
+   
+        DispatchQueue.main.async {
+            self.view.HideSpinner()
+            switch result {
+            case .success(let value):
+                print(value)
+                if self.screenName == "Edit" {
+                    self.view.showToast(message: "Social media post updated successfully.", color: UIColor().successMessageColor())
+                } else {
+                    self.view.showToast(message: "Social media post created successfully.", color: UIColor().successMessageColor())
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-        }).resume()
-    }
-    
+        }
+     }
+   }
 }
 
 extension CreatePostViewController: CreatePostViewControllerProtocol {

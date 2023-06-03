@@ -12,6 +12,7 @@
 		0103EABA2A1D34B700BDDB87 /* HelpAndTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */; };
 		0103EABF2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */; };
 		0103EAC02A283EC800BDDB87 /* CustomSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */; };
+		0103EAC42A2AD2DB00BDDB87 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
 		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
@@ -921,6 +922,7 @@
 		0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpAndTrainingViewController.swift; sourceTree = "<group>"; };
 		0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
@@ -2595,6 +2597,7 @@
 				016F660D29C8555A00B1D248 /* CreatePostViewController.storyboard */,
 				016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */,
 				01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */,
+				0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -7626,6 +7629,7 @@
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
 				01BBA9DA29AB5461006A5DB8 /* NotificationListModel.swift in Sources */,
 				016F661429C8956700B1D248 /* MediaLibraryListViewController+TableView.swift in Sources */,
+				0103EAC42A2AD2DB00BDDB87 /* ImageUploader.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
