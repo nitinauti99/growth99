@@ -61,7 +61,7 @@ struct ServiceDetailModel : Codable {
     let description : String?
     let imageUrl : String?
     let isDefault : Bool?
-    let defaultServiceId : String?
+    let defaultServiceId : Int?
     let position : Int?
     let serviceCategory : ServiceCategory?
     let clinics : [ClinicsServices]?

@@ -50,6 +50,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
 
     @IBOutlet weak var depositCostTFTopConstant: NSLayoutConstraint!
     @IBOutlet weak var depositCostTFHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var submitButton: UIButton!
 
     var screenTitle: String = String.blank
     var serviceId: Int?
@@ -519,7 +520,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
                                                    durationInMinutes: Int(serviceDuration) ?? 0,
                                                    serviceCost: Int(serviceCost) ?? 0,
                                                    description: serviceDescTextView.text ?? String.blank,
-                                                   serviceURL: "",
+                                                   serviceURL: serviceUrlTextField.text ?? String.blank,
                                                    consentIds: selectedConsentIds,
                                                    questionnaireIds: selectedQuestionnairesIds,
                                                    clinicIds: selectedClincIds,

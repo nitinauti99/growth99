@@ -22,9 +22,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBOutlet weak var addressField: CustomTextField!
     @IBOutlet weak var aboutClinicTextView: UITextView!
     
-    @IBOutlet weak var notificationEmailTextField: CustomTextField!
-    @IBOutlet weak var countryCodeTextField: CustomTextField!
-    @IBOutlet weak var notificationSmsTextField: CustomTextField!
     @IBOutlet weak var currencyTextField: CustomTextField!
     @IBOutlet weak var websiteURLTextField: CustomTextField!
     @IBOutlet weak var appointmentURLTextField: CustomTextField!
@@ -66,7 +63,8 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBOutlet weak var onlineLinkWithoutURLView: UIView!
     @IBOutlet weak var onlineLinkWithURLView: UIView!
     @IBOutlet weak var onlineLinkWithURLTextView: UITextView!
-    
+    @IBOutlet weak var submitButton: UIButton!
+
     var clinicId: Int?
     var screenTitle: String = String.blank
     var dateFormater: DateFormaterProtocol?
@@ -216,18 +214,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double((timeZoneList?.count ?? 0) * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func countrySelectionButton(sender: UIButton) {
-        startPicker()
-    }
-    
-    func startPicker() {
-        let countryPicker = CountryPickerViewController()
-        countryPicker.title = "Select Country Code"
-        countryPicker.selectedCountry = "US"
-        countryPicker.delegate = self
-        self.present(countryPicker, animated: true)
-    }
-    
     @IBAction func currencySelectionButton(sender: UIButton) {
         let currencyArray = ["USD", "GBP", "CAD", "EUR", "JPY", "CHF", "ZAR", "AUD", "NZD"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: currencyArray, cellType: .subTitle) { (cell, allCurrency, indexPath) in
@@ -266,9 +252,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         timeZoneTextField.text = viewModel?.getClinicsListData?.timezone ?? String.blank
         addressField.text = viewModel?.getClinicsListData?.address ?? String.blank
         aboutClinicTextView.text = viewModel?.getClinicsListData?.about ?? String.blank
-        notificationEmailTextField.text = viewModel?.getClinicsListData?.notificationEmail ?? String.blank
-        countryCodeTextField.text = viewModel?.getClinicsListData?.countryCode ?? String.blank
-        notificationSmsTextField.text = viewModel?.getClinicsListData?.notificationSMS ?? String.blank
         currencyTextField.text = viewModel?.getClinicsListData?.currency ?? String.blank
         websiteURLTextField.text = viewModel?.getClinicsListData?.website ?? String.blank
         appointmentURLTextField.text = viewModel?.getClinicsListData?.appointmentUrl ?? String.blank
@@ -395,7 +378,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     
     @IBAction func saveButton(sender: UIButton) {
         
-        countryCodeTextField.text = "1"
         guard let clinicName = clinicNameTextField.text, !clinicName.isEmpty else {
             clinicNameTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
@@ -420,21 +402,6 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         
         guard let address = addressField.text, !address.isEmpty else {
             addressField.showError(message: "Addess is required.")
-            return
-        }
-        
-        guard let notificationEmail = notificationEmailTextField.text, !notificationEmail.isEmpty else {
-            notificationEmailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
-            return
-        }
-        
-        guard let notificationEmailValid = viewModel?.isValidEmail(notificationEmail), notificationEmailValid else {
-            notificationEmailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
-            return
-        }
-        
-        guard let countryCode = countryCodeTextField.text, !countryCode.isEmpty else {
-            countryCodeTextField.showError(message: "Country Code is required.")
             return
         }
         
@@ -471,7 +438,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
         }
         
-        let params = ClinicParamModel(name: clinicName, contactNumber: phoneNumber, address: address, notificationEmail: notificationEmail, notificationSMS: notificationSmsTextField.text, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, countryCode: countryCode, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
+        let params = ClinicParamModel(name: clinicName, contactNumber: phoneNumber, address: address, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
         let parameters: [String: Any]  = params.toDict()
         
         if self.title == Constant.Profile.createClinic {
@@ -494,11 +461,5 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             self.navigationController?.pushViewController(webView, animated: true)
         }
         return false
-    }
-}
-
-extension ClinicsListDetailViewController: CountryPickerDelegate {
-    func countryPicker(didSelect country: Country) {
-        countryCodeTextField.text = country.phoneCode
     }
 }

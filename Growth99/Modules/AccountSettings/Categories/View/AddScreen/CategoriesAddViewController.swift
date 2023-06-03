@@ -20,7 +20,8 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     
     @IBOutlet private weak var clincsTextField: CustomTextField!
     @IBOutlet private weak var categoriesNameTextField: CustomTextField!
-    
+    @IBOutlet private weak var submitButton: UIButton!
+
     var allClinics = [Clinics]()
     
     var selectedClincs = [Clinics]()
@@ -32,6 +33,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     var categoryName: String = String.blank
     var categoryId: Int?
     var userClinics = [ClinicsServices]()
+    var isValidationSucess: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,15 +79,12 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     func setupCategoriesEditUI() {
         categoriesNameTextField.text = categoriesAddViewModel?.getAllCategoriesData?.name
         userClinics = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
-        
-        let consentClinicArray = categoriesAddViewModel?.getAllCategoriesData?.clinics ?? []
-        for item in consentClinicArray {
-            let selectedId = item.clinic?.id
-            let selectedName = item.clinic?.name
-            let clinic = Clinics(isDefault: false, name: selectedName, id: selectedId)
-            selectedClincs.append(clinic)
-        }
         clincsTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
+
+        for item in userClinics {
+            selectedClincs.append(Clinics(isDefault: item.clinic?.isDefault, name: item.clinic?.name, id: item.clinic?.id))
+            selectedClincIds.append(item.clinic?.id ?? 0)
+        }
     }
     
     func addCategoriesResponse() {
@@ -141,11 +140,6 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
             return
         }
         
-        guard let categoriesNameContain = categoriesAddViewModel?.getAddCategoriesListData.contains(where: { $0.name == categoriesName }), !categoriesNameContain else {
-            categoriesNameTextField.showError(message: "Category with this name already present.")
-            return
-        }
-        
         if selectedClincIds.count == 0 {
             for clinicId in selectedClincs {
                 selectedClincIds.append(clinicId.id ?? 0)
@@ -166,10 +160,17 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         if textField == categoriesNameTextField {
-            guard let textField = categoriesNameTextField.text, !textField.isEmpty else {
+            guard let categoriesName = categoriesNameTextField.text, !categoriesName.isEmpty else {
                 categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
+                submitButton.isEnabled = false // Disable the submit button
                 return
             }
+            guard let categoriesNameContain = categoriesAddViewModel?.getAddCategoriesListData.contains(where: { $0.name == categoriesName }), !categoriesNameContain else {
+                categoriesNameTextField.showError(message: "Category with this name already present.")
+                submitButton.isEnabled = false // Disable the submit button
+                return
+            }
+            submitButton.isEnabled = true // Disable the submit button
         }
     }
     

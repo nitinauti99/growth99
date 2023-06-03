@@ -216,6 +216,7 @@
                     <connections>
                         <outlet property="categoriesNameTextField" destination="T0e-A0-BIM" id="U18-f1-wTl"/>
                         <outlet property="clincsTextField" destination="bfM-di-qon" id="EIP-2c-zeU"/>
+                        <outlet property="submitButton" destination="Id1-B0-crS" id="aZ2-cm-UEf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,10 +226,10 @@
     </scenes>
     <designables>
         <designable name="T0e-A0-BIM">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
         <designable name="bfM-di-qon">
-            <size key="intrinsicContentSize" width="19" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

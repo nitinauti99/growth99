@@ -322,11 +322,11 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         }
         
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
-            firstNameTextField.showError(message: Constant.Profile.chooseToDate)
+            firstNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
         guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
-            lastNameTextField.showError(message: Constant.Profile.chooseToDate)
+            lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
             return
         }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {

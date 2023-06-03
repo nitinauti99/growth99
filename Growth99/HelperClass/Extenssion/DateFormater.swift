@@ -139,7 +139,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.dateFormat = "h:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "HH:mm:ss'z'"
+        dateFormatter.dateFormat = "HH:mm:ss'Z'"
         return dateWith + dateFormatter.string(from: date)
     }
     

@@ -96,8 +96,6 @@ struct ClinicParamModel: Codable {
     let name : String?
     let contactNumber : String?
     let address : String?
-    let notificationEmail : String?
-    let notificationSMS : String?
     let timezone : String?
     let isDefault : Bool?
     let about : String?
@@ -109,7 +107,6 @@ struct ClinicParamModel: Codable {
     let website : String?
     let paymentLink : String?
     let appointmentUrl : String?
-    let countryCode : String?
     let currency : String?
     let googleMyBusiness : String?
     let googlePlaceId : String?
@@ -127,12 +124,6 @@ struct ClinicParamModel: Codable {
         }
         if address != nil {
             dictionary["address"] = address
-        }
-        if notificationEmail != nil {
-            dictionary["notificationEmail"] = notificationEmail
-        }
-        if notificationSMS != nil {
-            dictionary["notificationSMS"] = notificationSMS
         }
         if timezone != nil {
             dictionary["timezone"] = timezone
@@ -166,9 +157,6 @@ struct ClinicParamModel: Codable {
         }
         if appointmentUrl != nil {
             dictionary["appointmentUrl"] = appointmentUrl
-        }
-        if countryCode != nil {
-            dictionary["countryCode"] = countryCode
         }
         if currency != nil {
             dictionary["currency"] = currency

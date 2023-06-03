@@ -20,6 +20,7 @@ class ClinicsListViewController: UIViewController, ClinicsListViewContollerProto
     
     var viewModel: ClinicsListViewModelProtocol?
     var isSearch : Bool = false
+    var isDafaultClinic : Bool = false
     var filteredTableData = [ClinicsListModel]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,30 +153,39 @@ extension ClinicsListViewController: ClinicsListCellDelegate {
         var selectedClinicId = Int()
         if isSearch {
             selectedClinicId = viewModel?.getClinicsFilterListData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Clinic", message: "Are you sure you want to delete \(viewModel?.getClinicsFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
-                                            handler: { [weak self] _ in
-                self?.view.ShowSpinner()
-                self?.viewModel?.removeSelectedClinic(clinicId: selectedClinicId)
-            })
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-            alert.addAction(cancelAlert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            isDafaultClinic = viewModel?.getClinicsFilterListData[index.row].isDefault ?? false
+            if isDafaultClinic {
+                self.view.showToast(message: "This is the default Clinic. Change the default to another clinic first", color: .red)
+            } else {
+                let alert = UIAlertController(title: "Delete Clinic", message: "Are you sure you want to delete \(viewModel?.getClinicsFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedClinic(clinicId: selectedClinicId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         } else {
             selectedClinicId = viewModel?.getClinicsListData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Clinic", message: "Are you sure you want to delete \(viewModel?.getClinicsDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
-                                            handler: { [weak self] _ in
-                self?.view.ShowSpinner()
-                self?.viewModel?.removeSelectedClinic(clinicId: selectedClinicId)
-            })
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-            alert.addAction(cancelAlert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            isDafaultClinic = viewModel?.getClinicsListData[index.row].isDefault ?? false
+            if isDafaultClinic {
+                self.view.showToast(message: "This is the default Clinic. Change the default to another clinic first", color: .red)
+            } else {
+                let alert = UIAlertController(title: "Delete Clinic", message: "Are you sure you want to delete \(viewModel?.getClinicsDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedClinic(clinicId: selectedClinicId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
