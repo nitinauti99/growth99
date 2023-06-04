@@ -88,21 +88,39 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
         /// api is accepting wrong formate data
         var consentsIdArray = [AddNewConsentsModel]()
         
-        let patientconentsList = viewModel?.getConsentsDataList ?? []
-        
-        for index in 0..<(patientconentsList.count ) {
-            let cellIndexPath = IndexPath(item: index, section: 0)
-            let item = patientconentsList[cellIndexPath.row]
-            if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? ConsentsTableViewCell {
-                if InputTypeCell.questionnaireSelection.isSelected == true {
-                    consentsIdArray.append(item)
+        if isSearch {
+            let patientconentsList = viewModel?.getConsentsFilterData ?? []
+            for index in 0..<(patientconentsList.count ) {
+                let cellIndexPath = IndexPath(item: index, section: 0)
+                let item = patientconentsList[cellIndexPath.row]
+                if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? ConsentsTableViewCell {
+                    if InputTypeCell.questionnaireSelection.isSelected == true {
+                        consentsIdArray.append(item)
+                    }
                 }
             }
+            if consentsIdArray.count > 0{
+               self.view.ShowSpinner()
+               viewModel?.sendConsentsListToPateint(patient: pateintId, consentsIds: consentsIdArray)
+            }
+        }else{
+            let patientconentsList = viewModel?.getConsentsDataList ?? []
+            for index in 0..<(patientconentsList.count ) {
+                let cellIndexPath = IndexPath(item: index, section: 0)
+                let item = patientconentsList[cellIndexPath.row]
+                if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? ConsentsTableViewCell {
+                    if InputTypeCell.questionnaireSelection.isSelected == true {
+                        consentsIdArray.append(item)
+                    }
+                }
+            }
+            if consentsIdArray.count > 0{
+               self.view.ShowSpinner()
+               viewModel?.sendConsentsListToPateint(patient: pateintId, consentsIds: consentsIdArray)
+            }
         }
-        if consentsIdArray.count > 0{
-           self.view.ShowSpinner()
-           viewModel?.sendConsentsListToPateint(patient: pateintId, consentsIds: consentsIdArray)
-        }
+        
+       
     }
     
     func errorReceived(error: String) {

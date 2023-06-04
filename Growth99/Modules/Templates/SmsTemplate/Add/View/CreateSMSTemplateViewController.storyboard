@@ -357,7 +357,7 @@
                         <outlet property="isCustom" destination="tYx-lh-LE5" id="kkL-5S-t0D"/>
                         <outlet property="moduleTextField" destination="f8s-V4-NSJ" id="pqP-cE-yb8"/>
                         <outlet property="nameTextField" destination="agL-vv-ITl" id="30R-Gp-xfU"/>
-                        <outlet property="showCharacterLBI" destination="cPc-Lw-z3T" id="gLm-Wx-fmu"/>
+                        <outlet property="showCharacterLBI" destination="cPc-Lw-z3T" id="Cha-d9-mRp"/>
                         <outlet property="targetTextField" destination="jy3-21-8Zc" id="sQG-Zg-OY7"/>
                     </connections>
                 </viewController>

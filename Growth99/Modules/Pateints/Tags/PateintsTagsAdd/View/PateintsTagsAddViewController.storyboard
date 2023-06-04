@@ -146,6 +146,7 @@
                     <connections>
                         <outlet property="PateintsTagsTextField" destination="FRO-Vp-lXS" id="ezf-q7-pV8"/>
                         <outlet property="pateintsTagsLBI" destination="bN3-ef-Uit" id="Jay-Ex-nA7"/>
+                        <outlet property="saveButton" destination="V9u-mR-rvP" id="79f-Ww-dQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,7 +156,7 @@
     </scenes>
     <designables>
         <designable name="FRO-Vp-lXS">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="12" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

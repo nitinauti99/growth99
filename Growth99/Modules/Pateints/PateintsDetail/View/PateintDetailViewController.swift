@@ -229,11 +229,13 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     func smsSendSuccessfully(responseMessage: String) {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.pateintDetailTableView.reloadData()
     }
     
     func emailSendSuccessfully(responseMessage: String)  {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.pateintDetailTableView.reloadData()
     }
     
 }
@@ -273,7 +275,7 @@ extension PateintDetailViewController: PateintSMSTemplateTableViewCellDelegate,
             return
         }
         self.view.ShowSpinner()
-        viewModel?.sendCustomSMS(leadId: pateintData?.id ?? 0, phoneNumber: "", body: cell.smsTextView.text)
+        viewModel?.sendCustomSMS(leadId: pateintData?.id ?? 0, phoneNumber: pateintData?.phone ?? "", body: cell.smsTextView.text)
     }
     
 }

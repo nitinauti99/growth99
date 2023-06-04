@@ -267,7 +267,7 @@ extension CreatePostViewController {
             cell.textLabel?.text = taskUserList.socialChannel
         }
         selectionMenu.setSelectedItems(items: self.selectedProfile) { [weak self] (text, index, selected, selectedList) in
-            self?.socialChannelTextField.text = selectedList.map({$0.socialChannel ?? String.blank}).joined(separator: ", ")
+            self?.socialChannelTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             self?.selectedSocialProfiles = selectedList.map({$0.id ?? 0})
             self?.selectedProfile = selectedList
             if selectedList.count == 0 {

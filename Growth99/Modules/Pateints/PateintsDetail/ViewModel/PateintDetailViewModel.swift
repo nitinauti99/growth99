@@ -161,6 +161,8 @@ class PateintDetailViewModel {
                     self.delegate?.smsSendSuccessfully(responseMessage: "SMS sent successfully")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "System error occured. Please try again or contact support")
+                }else {
+                    self.delegate?.errorReceived(error: "System error occured. Please try again or contact support")
                 }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

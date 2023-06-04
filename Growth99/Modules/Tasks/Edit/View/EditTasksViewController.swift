@@ -78,7 +78,7 @@ class EditTasksViewController: UIViewController{
     
     func setupLeadOrPatientDetail() {
         let taskDetail = viewModel?.taskDetailData
-        LeadOrPatentsHight.constant = 500
+        self.LeadOrPatentsHight.constant = 500
         if taskDetail?.leadDTO != nil {
             leadButton.isSelected = true
             leadTextField.text = "\(taskDetail?.leadDTO?.firstName ?? String.blank) \(taskDetail?.leadDTO?.lastName ?? String.blank)"
@@ -90,9 +90,8 @@ class EditTasksViewController: UIViewController{
             leadOrPatientLbi.text = "Lead Information"
             goToDetailPageButton.setTitle("Go To Lead Detail", for: .normal)
             leadOrPatientSelected = "Lead"
-            self.questionnaireSubmissionId = taskDetail?.leadDTO?.id ?? 0
-            self.workflowTaskPatient = taskDetail?.leadId ?? 0
-        }else {
+            self.questionnaireSubmissionId = taskDetail?.leadId ?? 0
+        }else if (taskDetail?.patientDTO != nil) {
             patientButton.isSelected = true
             leadTextField.text = "\(taskDetail?.patientDTO?.firstName ?? String.blank) \(taskDetail?.patientDTO?.lastName ?? String.blank)"
             leadOrPatientLabel.text = "Select patients"
@@ -100,12 +99,12 @@ class EditTasksViewController: UIViewController{
             lastNameTextField.text = taskDetail?.patientDTO?.lastName
             phoneNumberTextField.text = taskDetail?.patientDTO?.phoneNumber
             emailTextField.text = taskDetail?.patientDTO?.email
-            self.questionnaireSubmissionId = taskDetail?.patientDTO?.id ?? 0
             leadOrPatientLbi.text = "Patient Information"
             goToDetailPageButton.setTitle("Go To Patient Detail", for: .normal)
             leadOrPatientSelected = "Patient"
             self.workflowTaskPatient = taskDetail?.patientId ?? 0
-
+        }else{
+            LeadOrPatentsHight.constant = 0
         }
     }
     

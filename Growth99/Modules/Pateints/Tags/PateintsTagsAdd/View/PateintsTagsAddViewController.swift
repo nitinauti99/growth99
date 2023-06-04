@@ -18,7 +18,8 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
     
     @IBOutlet weak var PateintsTagsTextField: CustomTextField!
     @IBOutlet weak var pateintsTagsLBI: UILabel!
-    
+    @IBOutlet weak var saveButton: UIButton!
+
     var viewModel: PateintsTagsAddViewModelProtocol?
     var patientTagId = Int()
     var pateintsTagScreenName = String()
@@ -80,10 +81,10 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
             return
         }
         
-        if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
-            PateintsTagsTextField.showError(message: "Tag with this name already present.")
-            return
-        }
+//        if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
+//            PateintsTagsTextField.showError(message: "Tag with this name already present.")
+//            return
+//        }
         
         if pateintsTagScreenName == "Edit Screen" {
             self.view.ShowSpinner()

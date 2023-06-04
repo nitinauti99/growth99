@@ -22,6 +22,7 @@ struct SocialMediaPostLabelsList: Codable, Equatable {
 struct SocialProfilesList: Codable, Equatable {
     let id : Int?
     let socialChannel : String?
+    let name : String?
 }
 
 

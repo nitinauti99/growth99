@@ -67,6 +67,10 @@ class CreatePateintViewContoller: UIViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(list.count * 44))), arrowDirection: .up), from: self)
     }
     
+    @IBAction func cancelAction(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func saveAction(sender: UIButton) {
       
         guard let textField = firsNameTextField.text, !textField.isEmpty else {

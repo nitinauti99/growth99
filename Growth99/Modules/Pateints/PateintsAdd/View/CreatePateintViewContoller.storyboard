@@ -506,6 +506,9 @@
                                                                 <real key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cancelActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="moz-ae-czR"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qo5-RR-7dQ" userLabel="userName">
                                                         <rect key="frame" x="40" y="681" width="320" height="20"/>

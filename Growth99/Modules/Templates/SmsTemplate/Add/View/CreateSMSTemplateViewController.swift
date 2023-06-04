@@ -25,9 +25,12 @@ class CreateSMSTemplateViewController: UIViewController {
     @IBOutlet weak var targetTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var bodyTextView: CustomTextView!
+    @IBOutlet weak var showCharacterLBI: UILabel!
 
     @IBOutlet weak var isCustom: UISwitch!
     var count = 0
+    var selectedTextCount = Int()
+    var remaingingTextCount: Int = 200
 
     var viewModel: CreateSMSTemplateViewModelProtocol?
     var selectedIndex = Int()
@@ -44,7 +47,6 @@ class CreateSMSTemplateViewController: UIViewController {
 //        self.bodyTextView.addTarget(self, action:
 //                                            #selector(self.textViewDidChange(_:)),
 //                                            for: UIControl.Event.editingChanged)
-        
     }
     
     func getSMSTemplate(){
@@ -234,8 +236,8 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateViewControllerProtoc
 extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDelegate {
   
     func selectVariable(cell: CreateSMSTemplateCollectionViewCell, index: IndexPath) {
+      
         var variable: String = ""
-
         if self.moduleTextField.text == "Lead" {
             variable = viewModel?.getLeadTemplateListData(index: index.row).variable ?? ""
         }else if(self.moduleTextField.text == "Appointment"){
@@ -243,8 +245,23 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
         }else{
             variable = viewModel?.getMassSMSTemplateListData(index: index.row).variable ?? ""
         }
-        let str: String = " ${\(variable )} "
-        self.bodyTextView.text += str
+        
+        let str: String = "${\(variable )} "
+
+       if remaingingTextCount > str.count {
+           selectedTextCount += str.count
+       }else{
+           return
+       }
+       
+        print(selectedTextCount)
+        if selectedTextCount <= 200 {
+            remaingingTextCount = 200 - selectedTextCount
+            self.bodyTextView.text += str
+            self.showCharacterLBI.text = String("Character Remaining: \(remaingingTextCount)")
+        }else{
+            return
+        }
     }
 }
 
@@ -267,16 +284,16 @@ extension String {
         }
 }
 
-//extension CreateSMSTemplateViewController: UITextViewDelegate {
-//   
-//    
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//       
-//        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-//        let numberOfChars = newText.count
-//        if numberOfChars > 120 {
-//            return false
-//        }
-//        return false
-//    }
-//}
+extension CreateSMSTemplateViewController: UITextViewDelegate {
+   
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+       
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        if numberOfChars <= 200 {
+            return true
+        }
+        return false
+    }
+}
