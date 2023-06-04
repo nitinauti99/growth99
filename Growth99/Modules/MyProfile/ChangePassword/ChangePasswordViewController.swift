@@ -65,7 +65,7 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
             return
         }
         self.view.ShowSpinner()
-        viewModel?.verifyChangePasswordRequest(email: "yogesh123@growth99.com", oldPassword: oldPassword, newPassword: newPassword, verifyNewPassword: verifyNewPassword)
+        viewModel?.verifyChangePasswordRequest(email: user.primaryEmailId ?? "", oldPassword: oldPassword, newPassword: newPassword, verifyNewPassword: verifyNewPassword)
     }
     
     @IBAction func cancelPasswordButton(sender: UIButton) {

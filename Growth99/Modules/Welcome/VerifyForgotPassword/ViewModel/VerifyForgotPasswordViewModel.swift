@@ -28,12 +28,7 @@ class VerifyForgotPasswordViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func verifyChangePasswordRequest(email: String, oldPassword: String, newPassword: String, verifyNewPassword: String) {
-        let parameter: Parameters = [
-            "userName": email,
-            "oldPassword": oldPassword,
-            "newPassword": newPassword,
-            "confirmPassword": verifyNewPassword
-        ]
+        let parameter: Parameters = ["userName": email,"oldPassword": oldPassword,"newPassword": newPassword, "confirmPassword": verifyNewPassword]
         self.requestManager.request(forPath: ApiUrl.changeUserPassword, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {

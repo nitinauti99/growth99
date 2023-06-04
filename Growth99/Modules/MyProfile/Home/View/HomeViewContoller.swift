@@ -90,6 +90,7 @@ class HomeViewContoller: UIViewController {
         phoneNumberTextField.text = viewModel?.getUserProfileData.phone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
         degignationTextField.text = viewModel?.getUserProfileData.designation
         descriptionTextView.text = viewModel?.getUserProfileData.description
+        UserRepository.shared.primaryEmailId = viewModel?.getUserProfileData.email
     }
 
     
