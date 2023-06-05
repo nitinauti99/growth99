@@ -46,7 +46,11 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
         self.providerNameLabel.text = patientAppointmentListVM?.providerName
         self.typeLabel.text = patientAppointmentListVM?.appointmentType
-        self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
+        if patientAppointmentListVM?.service?.count ?? 0 > 0 {
+            self.servicesLabel.text = patientAppointmentListVM?.service?.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        } else {
+            self.servicesLabel.text = ""
+        }
         self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
         self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
@@ -60,7 +64,11 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
         self.providerNameLabel.text = patientAppointmentListVM?.providerName
         self.typeLabel.text = patientAppointmentListVM?.appointmentType
-        self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
+        if patientAppointmentListVM?.service?.count ?? 0 > 0 {
+            self.servicesLabel.text = patientAppointmentListVM?.service?.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        } else {
+            self.servicesLabel.text = ""
+        }
         self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
         self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
