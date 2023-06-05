@@ -264,7 +264,7 @@ extension CreatePostViewController {
     @IBAction func openSocialChanelListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.getSocialProfilesListData ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
-            cell.textLabel?.text = taskUserList.socialChannel
+            cell.textLabel?.text = taskUserList.name
         }
         selectionMenu.setSelectedItems(items: self.selectedProfile) { [weak self] (text, index, selected, selectedList) in
             self?.socialChannelTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")

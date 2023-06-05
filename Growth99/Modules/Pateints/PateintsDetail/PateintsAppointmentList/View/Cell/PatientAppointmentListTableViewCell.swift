@@ -46,7 +46,10 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
         self.providerNameLabel.text = patientAppointmentListVM?.providerName
         self.typeLabel.text = patientAppointmentListVM?.appointmentType
-        self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
+        let serviceSelectedArray = patientAppointmentListVM?.service ?? []
+
+        self.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        
         self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
         self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)
@@ -60,7 +63,10 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         self.clinicNameLabel.text = patientAppointmentListVM?.ClinicName
         self.providerNameLabel.text = patientAppointmentListVM?.providerName
         self.typeLabel.text = patientAppointmentListVM?.appointmentType
-        self.servicesLabel.text = patientAppointmentListVM?.service?[0].serviceName
+        let serviceSelectedArray = patientAppointmentListVM?.service ?? []
+
+        self.servicesLabel.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
+        
         self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
         self.createdDate.text = dateFormater?.serverToLocal(date: patientAppointmentListVM?.createdAt ?? String.blank)

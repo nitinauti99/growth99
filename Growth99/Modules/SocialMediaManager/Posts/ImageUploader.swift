@@ -18,7 +18,6 @@ final class ImageUploader {
     let fieldName = "upload_image"
     let url: URL
     let method: String
-    
     var headers: HTTPHeaders {
         return [ "Content-Type": "multipart/form-data; boundary=\(boundary)",
                    "Accept": "application/json",
@@ -35,9 +34,9 @@ final class ImageUploader {
     }
     
     func uploadImage(completionHandler:@escaping(ImageUploadResult) -> Void) {
-        let imageData = self.uploadImage.jpegData(compressionQuality: 1)!
-        let mimeType = imageData.mimeType!
-
+        let imageData = self.uploadImage.pngData() ?? Data()
+        let mimeType = imageData.mimeType ?? ""
+      
         var request = URLRequest(url: url, method: method, headers: headers)
         request.httpBody = createHttpBody(binaryData: imageData, mimeType: mimeType)
         
