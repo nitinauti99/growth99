@@ -87,8 +87,13 @@ class CreateLeadTasksViewController: UIViewController {
         if let textField = statusTextField.text,  textField == "" {
             return
         }
+        var dedline =  String()
+        if DeadlineTextField.text != ""  {
+            dedline = serverToLocalInputWorking(date: DeadlineTextField.text ?? "")
+        }
+        
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank), questionnaireSubmissionId: workflowTaskLeadId)
+        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: dedline, questionnaireSubmissionId: workflowTaskLeadId)
       }
     
     func serverToLocalInputWorking(date: String) -> String {
@@ -125,7 +130,7 @@ extension CreateLeadTasksViewController: CreateLeadTasksViewControllerProtocol {
 
 extension CreateLeadTasksViewController {
     
-    @IBAction func openUserListDropDwon(sender: UITextField) {
+    @IBAction func openUserListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.taskUserList ?? []
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList.firstName
@@ -139,7 +144,7 @@ extension CreateLeadTasksViewController {
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func openStatusListDropDwon(sender: UITextField) {
+    @IBAction func openStatusListDropDwon(sender: UIButton) {
         let rolesArray = ["Completed", "InComplete"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in

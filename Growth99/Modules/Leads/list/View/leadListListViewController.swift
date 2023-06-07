@@ -36,6 +36,7 @@ class leadListViewController: UIViewController, leadListTableViewCellDelegate {
         self.navigationItem.title = Constant.Profile.leadListTitle
         self.addSerchBar()
         self.registerTableView()
+        self.searchBar.text = ""
         self.view.ShowSpinner()
         self.getleadList()
     }

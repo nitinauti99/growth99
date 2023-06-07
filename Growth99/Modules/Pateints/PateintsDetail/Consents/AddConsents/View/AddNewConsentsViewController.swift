@@ -11,7 +11,9 @@ import UIKit
 protocol AddNewConsentsViewControllerProtocol: AnyObject {
     func ConsentsListRecived()
     func errorReceived(error: String)
-    func consnetSendToPateintSuccessfully()
+    func consnetSendToPateintSuccessfully(message: String)
+    func consnetNotSendToPateint(message: String)
+
 }
 
 class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControllerProtocol {
@@ -73,13 +75,20 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
         self.tableView.reloadData()
     }
     
-    func consnetSendToPateintSuccessfully(){
+    func consnetSendToPateintSuccessfully(message: String){
         self.view.HideSpinner()
-        self.view.showToast(message: "Consents sent to patient", color: UIColor().successMessageColor())
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func consnetNotSendToPateint(message: String){
+        self.view.HideSpinner()
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+    }
+
+    
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

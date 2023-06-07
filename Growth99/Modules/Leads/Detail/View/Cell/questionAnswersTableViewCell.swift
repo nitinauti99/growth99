@@ -13,7 +13,7 @@ protocol questionAnswersTableViewCellDelegate: AnyObject {
 
 class questionAnswersTableViewCell: UITableViewCell {
     @IBOutlet weak var qutionNameLbi: UILabel!
-    @IBOutlet weak var ansLbi: UILabel!
+    @IBOutlet weak var ansLbi: HyperLinkLabel!
     @IBOutlet weak var editButton: UIButton!
 
     weak var delegate: questionAnswersTableViewCellDelegate?
@@ -51,6 +51,16 @@ class questionAnswersTableViewCell: UITableViewCell {
                 self.ansLbi.text = "Yes"
             }
         }
+      
+        if patientQuestionList?.questionType == "File" {
+            self.ansLbi.hyperLink = patientQuestionList?.answerText ?? ""
+            ansLbi.updateHyperLinkText { _ in
+                if let url = URL(string: patientQuestionList?.answerText ?? ""), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
+        
     }
     
     @IBAction func editButtonPressed(sender: UIButton) {

@@ -109,8 +109,13 @@ class CreateTasksViewController: UIViewController {
         if let textField = statusTextField.text,  textField == "" {
             return
         }
+        var dedline =  String()
+        if DeadlineTextField.text != ""  {
+            dedline = serverToLocalInputWorking(date: DeadlineTextField.text ?? "")
+        }
+        
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank), workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: dedline, workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
       }
     
     func serverToLocalInputWorking(date: String) -> String {
