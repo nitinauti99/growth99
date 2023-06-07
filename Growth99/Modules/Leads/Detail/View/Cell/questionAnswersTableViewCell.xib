@@ -23,8 +23,11 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgu-kH-LeC">
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgu-kH-LeC" customClass="HyperLinkLabel" customModule="Growth99" customModuleProvider="target">
                         <rect key="frame" x="35" y="52" width="244" height="18"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" link="YES" staticText="YES"/>
+                        </accessibility>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -63,6 +66,11 @@
             <point key="canvasLocation" x="144.20289855072465" y="90.401785714285708"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="Sgu-kH-LeC">
+            <size key="intrinsicContentSize" width="32" height="18"/>
+        </designable>
+    </designables>
     <resources>
         <image name="edit" width="25" height="25"/>
     </resources>

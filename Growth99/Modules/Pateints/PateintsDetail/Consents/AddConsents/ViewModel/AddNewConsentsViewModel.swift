@@ -54,7 +54,12 @@ class AddNewConsentsViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.consnetSendToPateintSuccessfully()
+                    if response.data != nil {
+                        self.delegate?.consnetSendToPateintSuccessfully(message: "Consents sent to patient")
+                    }else{
+                        self.delegate?.consnetNotSendToPateint(message: "Consents already sent to patient before.")
+                    }
+                    
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "Unable to assign consents to patient.")
                 } else{

@@ -38,7 +38,7 @@ extension LeadSourceUrlListViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = UIStoryboard(name: "LeadSourceUrlsAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadSourceUrlsAddViewController") as! LeadSourceUrlAddViewController
+        let detailController = UIStoryboard(name: "LeadSourceUrlAddViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadSourceUrlAddViewController") as! LeadSourceUrlAddViewController
         detailController.leadTagScreenName = "Edit Screen"
         if self.isSearch {
             detailController.leadSourceUrlId = viewModel?.leadTagsFilterListDataAtIndex(index: indexPath.row)?.id ?? 0

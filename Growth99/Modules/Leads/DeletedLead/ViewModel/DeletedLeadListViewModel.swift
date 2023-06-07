@@ -57,7 +57,9 @@ class DeletedLeadListViewModel {
             let searchText = searchText.lowercased()
             let nameMatch = task.fullName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            let phoneNumber = task.phoneNumber?.prefix(searchText.count).elementsEqual(searchText) ?? false
+            let email = task.email?.prefix(searchText.count).elementsEqual(searchText) ?? false
+            return nameMatch || idMatch || phoneNumber || email
         }
     }
     
