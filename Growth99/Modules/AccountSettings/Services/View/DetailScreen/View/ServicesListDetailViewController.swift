@@ -74,8 +74,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var selectedQuestionnairesIds = [Int]()
     
     var userClinics = [ClinicsServices]()
-    var userConsents = [Consents]()
-    var userQuestionnaires = [Questionnaires]()
+    var userConsents = [ServiceConsents]()
+    var userQuestionnaires = [ServiceQuestionnaires]()
 
     var servicecategory: ServiceCategory?
     var serviceClinic: Clinic?
@@ -155,14 +155,14 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         userConsents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
         serviceConsentTextField.text = userConsents.map({$0.name ?? String.blank}).joined(separator: ", ")
         for item in userConsents {
-//            selectedConsent.append(ConsentListModel(createdAt: item?.createdAt, updatedBy: item?.updatedBy, createdBy: item?.createdBy, name: item?.name, id: item?.id, updatedAt: item?.updatedAt))
+            selectedConsent.append(ConsentListModel(createdAt: item.createdAt ?? "", updatedBy: "\(item.updatedBy?.firstName ?? "") \(item.updatedBy?.lastName ?? "")", createdBy: "\(item.createdBy?.firstName ?? "") \(item.createdBy?.lastName ?? "")", name: item.name ?? "", id: item.id ?? 0, updatedAt: item.updatedAt ?? ""))
             selectedConsentIds.append(item.id ?? 0)
         }
         
         userQuestionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
         serviceQuestionarieTextField.text = userQuestionnaires.map({$0.name ?? String.blank}).joined(separator: ", ")
         for item in userQuestionnaires {
-//            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item?.createdAt, updatedBy: item?.createdAt, noOfQuestions: item?.createdAt, isContactForm: item?.createdAt, createdBy: item?.createdAt, name: item?.createdAt, id: item?.createdAt, isG99ReviewForm: item?.createdAt, updatedAt: item?.createdAt))
+            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item.createdAt ?? "", updatedBy: "\(item.updatedBy?.firstName ?? "") \(item.updatedBy?.lastName ?? "")", noOfQuestions: 0, isContactForm: false, createdBy: "\(item.createdBy?.firstName ?? "") \(item.createdBy?.lastName ?? "")", name: item.name ?? "", id: item.id ?? 0, isG99ReviewForm: false, updatedAt: item.updatedAt ?? ""))
             selectedQuestionnairesIds.append(item.id ?? 0)
         }
         
@@ -339,8 +339,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         
         selectionMenu.setSelectedItems(items: selectedConsent) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.serviceConsentTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            self?.selectedConsent = selectedList
             let selectedId = selectedList.map({$0.id ?? 0})
+            self?.selectedConsent = selectedList
             self?.selectedConsentIds = selectedId
         }
         selectionMenu.reloadInputViews()
@@ -360,8 +360,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         
         selectionMenu.setSelectedItems(items: selectedQuestionnaires) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.serviceQuestionarieTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            self?.selectedQuestionnaires = selectedList
             let selectedId = selectedList.map({$0.id ?? 0})
+            self?.selectedQuestionnaires = selectedList
             self?.selectedQuestionnairesIds = selectedId
         }
         selectionMenu.reloadInputViews()

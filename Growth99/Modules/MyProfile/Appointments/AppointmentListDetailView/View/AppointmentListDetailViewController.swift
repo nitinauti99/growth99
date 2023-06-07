@@ -119,7 +119,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId:  editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
-        self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: 0)
+        self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: appointmentId ?? 0)
     }
     
     func serverToLocalDateFormat(date: String) -> String {
@@ -323,7 +323,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
                 let serviceSelectedArray = self?.editBookingHistoryData?.serviceList ?? []
                 self?.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
             }
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: 0)
+            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: self?.appointmentId ?? 0)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
