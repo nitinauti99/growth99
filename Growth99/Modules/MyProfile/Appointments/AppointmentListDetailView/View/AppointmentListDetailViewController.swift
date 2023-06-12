@@ -116,6 +116,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             inPersonBtn.isSelected = false
             virtualBtn.isSelected = true
         }
+        appointmentTypeSelected = editBookingHistoryData?.appointmentType ?? String.blank
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId:  editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )

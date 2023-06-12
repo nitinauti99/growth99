@@ -115,6 +115,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             inPersonBtn.isSelected = false
             virtualBtn.isSelected = true
         }
+        appointmentTypeSelected = editBookingHistoryData?.appointmentType ?? String.blank
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId:  editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
@@ -364,8 +365,16 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             firstNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
         }
+        guard let name = firstNameTextField.text, let nameValidate = eventViewModel?.validateName(name), nameValidate else {
+            firstNameTextField.showError(message: "First Name is invalid.")
+            return
+        }
         guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
             lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
+            return
+        }
+        guard let name = lastNameTextField.text, let nameValidate = eventViewModel?.validateName(name), nameValidate else {
+            lastNameTextField.showError(message: "Last Name is invalid.")
             return
         }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {

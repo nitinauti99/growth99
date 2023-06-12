@@ -9,7 +9,7 @@ import Foundation
 protocol BusinessProfileViewModelProtocol {
     func saveBusinessInfo(name: String, trainingBusiness: Bool)
     func uploadSelectedImage(image: UIImage)
-    func isFirstName(_ firstName: String) -> Bool
+    func validateName(_ firstName: String) -> Bool
 }
 
 class BusinessProfileViewModel {
@@ -52,10 +52,11 @@ class BusinessProfileViewModel {
         }
     }
     
-    func isFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: firstName)
+    func validateName(_ firstName: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
+        let range = NSRange(location: 0, length: firstName.utf16.count)
+        let matches = regex.matches(in: firstName, range: range)
+        return !matches.isEmpty
     }
 }
 

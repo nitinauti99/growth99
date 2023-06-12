@@ -10,7 +10,6 @@ import UIKit
 protocol ProfileAppointmentCellDelegate: AnyObject {
     func removeProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath)
     func editProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath)
-    func paymentProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath)
 }
 
 class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifiable {
@@ -73,9 +72,5 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
     
     @IBAction func editButtonPressed() {
         self.delegate?.editProfileAppointment(cell: self, index: indexPath)
-    }
-
-    @IBAction func paymentButtonPressed() {
-        self.delegate?.paymentProfileAppointment(cell: self, index: indexPath)
     }
 }

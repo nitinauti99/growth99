@@ -124,6 +124,8 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     self?.landingForm = ""
                 } else {
                     leadCell.leadSourceEmptyTextLabel.isHidden = true
+                    leadCell.leadLandingEmptyTextLabel.isHidden = true
+                    leadCell.leadFormEmptyTextLabel.isHidden = true
                     leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
                     self?.selectedLeadSources = selectedList
                     if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Form") && selectedList.joined(separator: ",").contains("Facebook") {
@@ -145,34 +147,42 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                         leadCell.leadSourceURLView.isHidden = false
                         leadCell.leadFormView.isHidden = true
                         self?.landingPage = "landingPage"
+                        self?.landingForm = ""
                     }
                     else if selectedList.joined(separator: ",").contains("Form") && selectedList.joined(separator: ",").contains("Facebook") {
                         leadCell.leadLandingView.isHidden = true
                         leadCell.leadSourceURLView.isHidden = false
                         leadCell.leadFormView.isHidden = false
                         self?.landingForm = "landingForm"
+                        self?.landingPage = ""
                     }
                     else if selectedList.joined(separator: ",").contains("Landing Page") {
                         leadCell.leadLandingView.isHidden = false
                         leadCell.leadSourceURLView.isHidden = true
                         leadCell.leadFormView.isHidden = true
                         self?.landingPage = "landingPage"
+                        self?.landingForm = ""
                     }
                     else if selectedList.joined(separator: ",").contains("Form") {
                         leadCell.leadLandingView.isHidden = true
                         leadCell.leadSourceURLView.isHidden = true
                         leadCell.leadFormView.isHidden = false
                         self?.landingForm = "landingForm"
+                        self?.landingPage = ""
                     }
                     else if selectedList.joined(separator: ",").contains("Facebook") {
                         leadCell.leadLandingView.isHidden = true
                         leadCell.leadSourceURLView.isHidden = false
                         leadCell.leadFormView.isHidden = true
+                        self?.landingPage = ""
+                        self?.landingForm = ""
                     }
                     else {
                         leadCell.leadLandingView.isHidden = true
                         leadCell.leadFormView.isHidden = true
                         leadCell.leadSourceURLView.isHidden = true
+                        self?.landingPage = ""
+                        self?.landingForm = ""
                     }
                 }
             }

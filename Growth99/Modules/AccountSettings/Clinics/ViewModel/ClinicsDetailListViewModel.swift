@@ -14,7 +14,7 @@ protocol ClinicsDetailListViewModelProtocol {
     var  getTimeZonesListData: [String]? { get }
     func updateUserSelectedClinic(clinicParms: [String: Any], clinicId: Int , urlMethod: HTTPMethod, screenTitle: String)
     func isValidEmail(_ email: String) -> Bool
-    func isFirstName(_ firstName: String) -> Bool
+    func validateName(_ firstName: String) -> Bool
 }
 
 class ClinicsDetailListViewModel: ClinicsDetailListViewModelProtocol {
@@ -87,9 +87,10 @@ class ClinicsDetailListViewModel: ClinicsDetailListViewModelProtocol {
         return emailPred.evaluate(with: email)
     }
     
-    func isFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: firstName)
+    func validateName(_ firstName: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
+        let range = NSRange(location: 0, length: firstName.utf16.count)
+        let matches = regex.matches(in: firstName, range: range)
+        return !matches.isEmpty
     }
 }

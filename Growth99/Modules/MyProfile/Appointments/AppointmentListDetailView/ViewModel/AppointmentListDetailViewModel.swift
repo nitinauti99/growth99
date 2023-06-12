@@ -37,10 +37,9 @@ protocol AppointmentListDetailVMProtocol {
     func sendProviderListEditEvent(providerParams: Int)
     var  providerDataEditEvent: [UserDTOList] { get }
     
-    func isFirstName(_ firstName: String) -> Bool
-    func isLastName(_ lastName: String) -> Bool
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
+    func validateName(_ firstName: String) -> Bool 
 }
 
 class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
@@ -303,16 +302,11 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         return self.editBookingHistoryData
     }
     
-    func isFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithoutSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: firstName)
-    }
-    
-    func isLastName(_ lastName: String) -> Bool {
-        let regex = Constant.Regex.nameWithoutSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: lastName)
+    func validateName(_ firstName: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
+        let range = NSRange(location: 0, length: firstName.utf16.count)
+        let matches = regex.matches(in: firstName, range: range)
+        return !matches.isEmpty
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {

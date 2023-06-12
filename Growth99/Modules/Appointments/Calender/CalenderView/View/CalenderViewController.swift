@@ -103,6 +103,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         setUpNavigationBar()
         calendarSegmentControl.selectedSegmentIndex = 0
         eventTypeSelected = "upcoming"
+        /*clincsTextField.text = ""
+        providersTextField.text = ""
+        servicesTextField.text = ""
+        self.sections.removeAll()*/
         getClinicsData()
         eventListView.reloadData()
     }

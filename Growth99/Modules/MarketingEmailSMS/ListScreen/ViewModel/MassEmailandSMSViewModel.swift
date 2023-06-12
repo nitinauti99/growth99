@@ -36,7 +36,7 @@ class MassEmailandSMSViewModel {
         self.requestManager.request(forPath: ApiUrl.getAllEmailandSMS, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[MassEmailandSMSModel], GrowthNetworkError>) in
             switch result {
             case .success(let massEMailandSMSData):
-                self.massEmailList = massEMailandSMSData
+                self.massEmailList = massEMailandSMSData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.massEmailandSMSDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -80,8 +80,10 @@ extension MassEmailandSMSViewModel: MassEmailandSMSViewModelProtocol {
         self.massEmailListFilterData = self.getMassEmailandSMSData.filter { task in
             let searchText = searchText.lowercased()
             let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let moduleMatch = task.moduleName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let executionStatusMatch = task.executionStatus?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            return nameMatch || moduleMatch || executionStatusMatch || idMatch
         }
     }
     

@@ -26,7 +26,7 @@ extension AppointmentListDetailViewController: UITextFieldDelegate  {
                 firstNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
                 return
             }
-            guard let firstName = firstNameTextField.text, let firstNameValidate = eventViewModel?.isLastName(firstName), firstNameValidate else {
+            guard let firstName = firstNameTextField.text, let firstNameValidate = eventViewModel?.validateName(firstName), firstNameValidate else {
                 firstNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
                 return
             }
@@ -35,7 +35,7 @@ extension AppointmentListDetailViewController: UITextFieldDelegate  {
                 lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
                 return
             }
-            guard let lastName = lastNameTextField.text, let lastNameValidate = eventViewModel?.isLastName(lastName), lastNameValidate else {
+            guard let lastName = lastNameTextField.text, let lastNameValidate = eventViewModel?.validateName(lastName), lastNameValidate else {
                 lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
                 return
             }

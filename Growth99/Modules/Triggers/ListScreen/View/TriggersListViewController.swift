@@ -50,7 +50,13 @@ class TriggersListViewController: UIViewController, TriggersListViewContollerPro
     
     @IBAction func triggerSegmentSelection(_ sender: Any) {
         self.triggersListTableView.setContentOffset(.zero, animated: true)
-        self.triggersListTableView.reloadData()
+        clearSearchBar()
+    }
+    
+    func clearSearchBar() {
+        isSearch = false
+        searchBar.text = ""
+        triggersListTableView.reloadData()
     }
     
     func addSerchBar() {

@@ -45,20 +45,10 @@ extension ClinicsListDetailViewController: UITextFieldDelegate  {
                 submitButton.isEnabled = false
                 return
             }
-            guard let timeZone = timeZoneTextField.text, let timeZoneValidate = viewModel?.isFirstName(timeZone), timeZoneValidate else {
-                timeZoneTextField.showError(message: "Timezone is invalid.")
-                submitButton.isEnabled = false
-                return
-            }
         }
         else if (textField == currencyTextField) {
             guard let currencyText = currencyTextField.text, !currencyText.isEmpty else {
                 currencyTextField.showError(message: "Currency is required.")
-                submitButton.isEnabled = false
-                return
-            }
-            guard let currency = currencyTextField.text, let currencyValidate = viewModel?.isFirstName(currency), currencyValidate else {
-                currencyTextField.showError(message: "Currency is invalid.")
                 submitButton.isEnabled = false
                 return
             }

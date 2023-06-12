@@ -64,7 +64,8 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     
     var networkTypeSelected: String = String.blank
     var templateId: Int = 0
-    
+    var massAppointmnentId: Int = 0
+
     var selectedTimeSlot: String = String.blank
 
     override func viewDidLoad() {

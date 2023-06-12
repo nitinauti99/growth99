@@ -16,7 +16,6 @@ protocol CategoriesAddEditViewModelProtocol {
     var  getAllCategoriesData: ServiceDetailModel? { get }
     var  getAddCategoriesListData: [CategoriesListModel] { get }
     func getAddCategoriesList()
-    func isFirstName(_ firstName: String) -> Bool
 }
 
 class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
@@ -108,10 +107,5 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     var getAddCategoriesListData: [CategoriesListModel] {
         return self.addCategoriesList
     }
-    
-    func isFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: firstName)
-    }
+
 }

@@ -81,8 +81,10 @@ extension TriggersListViewModel: TriggersListViewModelProtocol {
         self.triggersFilterData = self.getTriggersData.filter { task in
             let searchText = searchText.lowercased()
             let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let moduleNameMatch = task.moduleName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            return nameMatch || moduleNameMatch || idMatch
         }
     }
     

@@ -229,7 +229,7 @@
                                     <action selector="deleteButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="go3-Uf-oGC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu3-zK-yR7">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu3-zK-yR7">
                                 <rect key="frame" x="248" y="240" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="8dp-Tb-obc"/>
@@ -240,9 +240,6 @@
                                 <state key="normal" image="dollarsign" catalog="system">
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="paymentButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4bS-P4-Yz8"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

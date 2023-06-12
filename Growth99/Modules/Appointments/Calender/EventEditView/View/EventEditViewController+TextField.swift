@@ -26,7 +26,7 @@ extension EventEditViewController: UITextFieldDelegate  {
                 firstNameTextField.showError(message: "First Name is required.")
                 return
             }
-            guard let name = firstNameTextField.text, let nameValidate = eventViewModel?.isFirstName(name), nameValidate else {
+            guard let name = firstNameTextField.text, let nameValidate = eventViewModel?.validateName(name), nameValidate else {
                 firstNameTextField.showError(message: "First Name is invalid.")
                 return
             }
@@ -35,7 +35,7 @@ extension EventEditViewController: UITextFieldDelegate  {
                 lastNameTextField.showError(message: "Last Name is required.")
                 return
             }
-            guard let name = lastNameTextField.text, let nameValidate = eventViewModel?.isLastName(name), nameValidate else {
+            guard let name = lastNameTextField.text, let nameValidate = eventViewModel?.validateName(name), nameValidate else {
                 lastNameTextField.showError(message: "Last Name is invalid.")
                 return
             }
@@ -55,7 +55,7 @@ extension EventEditViewController: UITextFieldDelegate  {
             }
         }
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == firstNameTextField {
             guard let textField = firstNameTextField.text, !textField.isEmpty else {

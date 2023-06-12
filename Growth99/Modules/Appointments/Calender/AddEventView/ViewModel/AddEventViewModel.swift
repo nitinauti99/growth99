@@ -9,8 +9,6 @@ import Foundation
 
 protocol AddEventViewModelProtocol {
     func isValidEmail(_ email: String) -> Bool
-    func isLastName(_ lastName: String) -> Bool
-    func isFirstName(_ firstName: String) -> Bool
     var  getAllDatesData: [String] { get }
     var  getAllTimessData: [String] { get }
     func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
@@ -28,6 +26,7 @@ protocol AddEventViewModelProtocol {
     func getPateintsAppointData()
     var getPatientsAppointmentList: [PatientsModel] { get }
     func validatePhoneNumber(_ phoneNumber: String) -> Bool
+    func validateName(_ firstName: String) -> Bool
 }
 
 class AddEventViewModel {
@@ -229,17 +228,12 @@ extension AddEventViewModel : AddEventViewModelProtocol {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-    
-    func isFirstName(_ firstName: String) -> Bool {
-        let regex = Constant.Regex.nameWithSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: firstName)
-    }
 
-    func isLastName(_ lastName: String) -> Bool {
-        let regex = Constant.Regex.nameWithoutSpace
-        let isFirstName = NSPredicate(format:"SELF MATCHES %@", regex)
-        return isFirstName.evaluate(with: lastName)
+    func validateName(_ firstName: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
+        let range = NSRange(location: 0, length: firstName.utf16.count)
+        let matches = regex.matches(in: firstName, range: range)
+        return !matches.isEmpty
     }
     
     func validatePhoneNumber(_ phoneNumber: String) -> Bool {
