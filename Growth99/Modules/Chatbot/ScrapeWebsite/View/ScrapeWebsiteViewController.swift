@@ -30,6 +30,8 @@ class ScrapeWebsiteViewController: UIViewController, ScrapeWebsiteViewController
         super.viewWillAppear(animated)
         self.title = Constant.Profile.users
         self.saveButton.roundCorners(corners: [.allCorners], radius: 10)
+        let scrapWebsiteUrl = UserDefaults.standard.string(forKey: "scrapWebsiteUrl")
+        saveUrlTextField.text = scrapWebsiteUrl
     }
     
     func errorReceived(error: String){

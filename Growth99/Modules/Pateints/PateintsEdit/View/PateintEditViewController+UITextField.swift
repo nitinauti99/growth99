@@ -10,19 +10,6 @@ import UIKit
 
 extension PateintEditViewController: UITextFieldDelegate  {
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var maxLength = Int()
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-        currentString.replacingCharacters(in: range, with: string) as NSString
-        if textField == phoneNumberTextField {
-            maxLength = 10
-            phoneNumberTextField.hideError()
-            return newString.length <= maxLength
-        }
-        return true
-    }
-    
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         if textField == firsNameTextField {
             guard let textField = firsNameTextField.text, !textField.isEmpty else {

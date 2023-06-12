@@ -136,6 +136,7 @@ extension leadDetailViewController: leadDetailViewControllerProtocol {
         self.view.HideSpinner()
         self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
         self.view.ShowSpinner()
+        self.anslistTableView.reloadData()
         self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
     }
     

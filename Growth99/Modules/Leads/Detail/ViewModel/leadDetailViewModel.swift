@@ -156,7 +156,7 @@ class leadDetailViewModel {
     func sendCustomEmail(leadId: Int, email: String, subject:String, body: String) {
         let urlParameter: Parameters = [
             "leadId": leadId,
-            "phoneNumber": email,
+            "email": email,
             "subject": subject,
             "body": body,
         ]

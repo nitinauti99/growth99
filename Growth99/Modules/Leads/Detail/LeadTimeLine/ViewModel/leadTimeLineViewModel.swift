@@ -11,7 +11,8 @@ protocol leadTimeLineViewModelProtocol {
     func leadCreation(leadId: Int)
     func getLeadTimeData(leadId: Int)
     func leadTimeLineDataAtIndex(index: Int)-> auditLeadModel?
-
+    func getTimeLineTemplateData(leadId: Int)
+    
     var getLeadTimeLineData: [auditLeadModel]? { get }
     var getCreationData: leadCreationModel? { get }
 
@@ -57,6 +58,23 @@ class leadTimeLineViewModel {
             }
         }
     }
+    
+    func getTimeLineTemplateData(leadId: Int) {
+        let finaleURL = "https://api.growthemr.com/api/v1/audit/lead/content?id=" +  "\(leadId)"
+        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let list):
+                print(list)
+                //self.pateintsTimeLineData = list
+                self.delegate?.recivedLeadTimeLineTemplateData()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
     
     func leadTimeLineDataAtIndex(index: Int)-> auditLeadModel? {
         return self.leadTimeLineList?[index]

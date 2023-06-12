@@ -22,7 +22,7 @@ extension PateintsTimeLineViewController: UITableViewDelegate, UITableViewDataSo
         var cell = PateintsTimeLineTableViewCell()
         cell = pateintsTimeLineTableView.dequeueReusableCell(withIdentifier: "PateintsTimeLineTableViewCell") as! PateintsTimeLineTableViewCell
         cell.configureCell(timeLineVM: viewModel, index: indexPath)
-       
+        cell.delegate = self
         return cell
     }
 

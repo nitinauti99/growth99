@@ -22,6 +22,7 @@ extension leadTimeLineViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "leadTimeLineTableViewCell", for: indexPath) as? leadTimeLineTableViewCell else { return UITableViewCell() }
         
         cell.configureCell(timeLineVM: viewModel, index: indexPath)
+        cell.delegate = self
         return cell
     }
     

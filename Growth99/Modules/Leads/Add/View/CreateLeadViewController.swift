@@ -64,7 +64,7 @@ class CreateLeadViewController: UIViewController{
                 }
             }
         }
-        self.scrollViewHight.constant = tableViewHight + 100
+        self.scrollViewHight.constant = tableViewHight + 200
     }
     
     private func setUpUI(){
@@ -115,12 +115,14 @@ class CreateLeadViewController: UIViewController{
             if let textTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadTextTypeTableViewCell {
                 print(textTypeCell.questionnaireName.text ?? String.blank)
                
-                guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
-                    textTypeCell.errorTypeLbi.isHidden = false
-                    textTypeCell.errorTypeLbi.text =  item.validationMessage
-                    return
+                if item.required == true {
+                    guard let txtField = textTypeCell.textTypeTextField.text, let isValid = viewModel?.isValidTextFieldData(txtField, regex: item.regex ?? String.blank) , isValid else {
+                        textTypeCell.errorTypeLbi.isHidden = false
+                        textTypeCell.errorTypeLbi.text =  item.validationMessage
+                        return
+                    }
+                    self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? String.blank)
                 }
-                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: textTypeCell.textTypeTextField.text ?? String.blank)
             }
             
             /// 3. questionnaireType  -> DateType

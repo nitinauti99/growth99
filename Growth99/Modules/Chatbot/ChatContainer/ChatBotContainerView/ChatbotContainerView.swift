@@ -66,6 +66,7 @@ class ChatbotContainerView: UIViewController {
             remove(asChildViewController: chatConfigurationVC)
             remove(asChildViewController: chatBotTemplateVC)
             add(asChildViewController: ScrapeWebsiteVC)
+            
             navigationItem.rightBarButtonItem = nil
         case 3:
             remove(asChildViewController: ScrapeWebsiteVC)

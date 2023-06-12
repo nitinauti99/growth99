@@ -49,24 +49,20 @@ class AddNewConsentsViewModel {
         let urlParameter: [String: Any] = [
             "consentIds": consentsIds.map { String($0.id ?? 0) }.joined(separator: ","),
         ]
-        self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) {  (result: Result<[CreateNewConsentsModel], GrowthNetworkError>) in
             switch result {
-            case .success(let response):
-                if response.statusCode == 200 {
-                    if response.data != nil {
-                        self.delegate?.consnetSendToPateintSuccessfully(message: "Consents sent to patient")
-                    }else{
-                        self.delegate?.consnetNotSendToPateint(message: "Consents already sent to patient before.")
-                    }
-                    
-                } else if (response.statusCode == 500) {
+            case .success(let Consents):
+                if Consents.count > 0 {
+                    self.delegate?.consnetSendToPateintSuccessfully(message: "Consents sent to patient")
+                }else {
+                    self.delegate?.consnetNotSendToPateint(message: "Consents already sent to patient before.")
+                }
+            case .failure(let error):
+                if (error.response?.statusCode == 500) {
                     self.delegate?.errorReceived(error: "Unable to assign consents to patient.")
                 } else{
                     self.delegate?.errorReceived(error: "response failed")
                 }
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
             }
         }
     }

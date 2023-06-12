@@ -138,6 +138,8 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
     
     func setUPUI(){
         let item = viewModel?.getChatConfigurationData
+        UserDefaults.standard.set(item?.scrapWebsiteUrl, forKey: "scrapWebsiteUrl")
+
         self.appointmentViewHight.constant = 0
         self.appointmentView.isHidden = true
         if item?.enableAppointment == true {
