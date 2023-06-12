@@ -107,6 +107,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
        
         self.gender.borderColor = .clear
         self.genderButton.isSelected = false
+        self.genderButton.isUserInteractionEnabled = false
         self.gender.isEnabled = false
 
         self.dateOfBirth.borderColor = .clear
@@ -373,6 +374,7 @@ extension PateintDetailViewController {
     @IBAction func editGender(sender: UIButton) {
         gender.borderColor = .gray
         gender.isUserInteractionEnabled = true
+        self.genderButton.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
             viewModel?.updatePateintsInfo(pateintId: self.workflowTaskPatientId,  inputString: "gender", ansString: (gender.text ?? String.blank))

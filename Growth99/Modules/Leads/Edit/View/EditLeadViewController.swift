@@ -103,14 +103,6 @@ class EditLeadViewController: UIViewController {
             return
         }
                 
-        guard let ammount = ammountTextField.text, !ammount.isEmpty else {
-            ammountTextField.showError(message: Constant.ErrorMessage.ammountEmptyError)
-            return
-        }
-        
-        if ammountTextField.text == "0" {
-            return
-        }
         
         view.ShowSpinner()
         let id = Int(idTextField.text ?? String.blank) ?? 0

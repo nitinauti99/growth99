@@ -515,7 +515,7 @@
                         <outlet property="firstNameButton" destination="UEp-BD-x8N" id="hkM-uT-fNC"/>
                         <outlet property="fullName" destination="gpH-2E-lCp" id="1Oe-h6-4pv"/>
                         <outlet property="gender" destination="Ifd-xg-uz2" id="8Ih-6H-5yG"/>
-                        <outlet property="genderButton" destination="KSs-z4-R6M" id="iAw-u7-bOv"/>
+                        <outlet property="genderButton" destination="3Uv-n7-AAA" id="Dai-Bn-sAT"/>
                         <outlet property="lastName" destination="x2F-6c-7E3" id="1Me-Yw-uvL"/>
                         <outlet property="lastNameButton" destination="Pgs-VF-fld" id="z5z-YA-9dE"/>
                         <outlet property="newButton" destination="1Q4-2c-ly5" id="I2Z-Zz-X2a"/>
@@ -535,25 +535,25 @@
     </scenes>
     <designables>
         <designable name="Ifd-xg-uz2">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="NU0-YU-3mq">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="bi8-bH-ZlK">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="brU-kc-PND">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="reG-0H-0xp">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="x2F-6c-7E3">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
         <designable name="xye-QY-gyY">
-            <size key="intrinsicContentSize" width="4" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="4" height="18.666666666666668"/>
         </designable>
     </designables>
     <resources>

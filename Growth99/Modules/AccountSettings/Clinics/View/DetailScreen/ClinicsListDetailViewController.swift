@@ -438,7 +438,10 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             businessHours.append(BusinessHoursAccount(dayOfWeek: "SUNDAY", openHour: dateFormater?.localToServerWithDate(date: sundayStartTimeTF.text ?? String.blank), closeHour: dateFormater?.localToServerWithDate(date: sundayEndTimeTF.text ?? String.blank)))
         }
         
-        let params = ClinicParamModel(name: clinicName, contactNumber: phoneNumber, address: address, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointmentURLTextField.text, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
+        let appointment = (appointmentURLTextField.text)?.replacingOccurrences(of: "\"", with: "")
+
+        
+        let params = ClinicParamModel(name: clinicName, contactNumber: phoneNumber, address: address, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointment, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
         let parameters: [String: Any]  = params.toDict()
         
         if self.title == Constant.Profile.createClinic {

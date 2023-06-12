@@ -106,7 +106,7 @@ class PostsListViewModel {
     func filterData(searchText: String) {
         self.postsFilterListData = self.postPeginationList.filter { task in
             let searchText = searchText.lowercased()
-            let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let nameMatch = task.post?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
             return nameMatch || idMatch
         }

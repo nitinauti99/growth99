@@ -11,7 +11,7 @@ protocol ChatConfigurationViewControllerProtocol: AnyObject {
     func chatConfigurationDataRecived()
     func errorReceived(error: String)
     func chatConfigurationDataUpdatedSuccessfully()
-
+    func chatDefaultClincsDataRecived()
 }
 
 
@@ -82,8 +82,20 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
     }
 
     func chatConfigurationDataRecived() {
+        viewModel?.getDefaultClincsData()
+    }
+    
+    func chatDefaultClincsDataRecived(){
         self.view.HideSpinner()
         self.setUPUI()
+    }
+
+    @IBAction func isChatbotStaticAction(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+        } else {
+            sender.isSelected = true
+        }
     }
     
     @IBAction func enableAppointment(sender: UIButton){
@@ -140,6 +152,8 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         let item = viewModel?.getChatConfigurationData
         UserDefaults.standard.set(item?.scrapWebsiteUrl, forKey: "scrapWebsiteUrl")
 
+        let clinicData = viewModel?.getDefaulrClincData
+        
         self.appointmentViewHight.constant = 0
         self.appointmentView.isHidden = true
         if item?.enableAppointment == true {
@@ -161,7 +175,7 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
         self.formMessage.text = item?.formMessage
         self.welcomeMessage.text = item?.welcomeMessage
         self.faqNotFoundMessage.text = item?.faqNotFoundMessage
-        self.appointmentBookingUrl.text = item?.appointmentBookingUrl
+        self.appointmentBookingUrl.text = clinicData?.appointmentUrl
         self.enableAppointment.isSelected = item?.enableAppointment ?? false
         self.enableInPersonAppointment.isSelected = item?.enableInPersonAppointment ?? false
         self.enableVirtualAppointment.isSelected = item?.enableVirtualAppointment ?? false
@@ -219,6 +233,15 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
             return
         }
         
+        if poweredByText.text != "" {
+            guard let url  = poweredByText.text, let poweredByValidate = viewModel?.isURLValid(url: url), poweredByValidate else {
+                poweredByText.showError(message: "Powered by URL is invalid (should start with http)")
+                return
+            }
+        }
+        
+        let appointment = (appointmentBookingUrl.text)?.replacingOccurrences(of: "\"", with: "")
+
         let param: [String: Any] = [
             "botName": self.botName.text ?? "",
             "privacyLink": self.privacyLink.text ?? "",
@@ -226,8 +249,7 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
             "formMessage": formMessage.text ?? "",
             "welcomeMessage": welcomeMessage.text ?? "",
             "faqNotFoundMessage": faqNotFoundMessage.text ?? "",
-            "appointmentBookingUrl": appointmentBookingUrl.text ?? "",
-            "enableInPersonAppointment": enableInPersonAppointment.isSelected,
+            "appointmentBookingUrl": appointment ?? "",
             "morningStartTime": morningStartTime.text ?? "",
             "morningEndTime": morningEndTime.text ?? "",
             "noonStartTime": noonStartTime.text ?? "",
@@ -239,6 +261,9 @@ class ChatConfigurationViewController: UIViewController, ChatConfigurationViewCo
             "poweredByText": poweredByText.text ?? "",
             "showPoweredBy": showPoweredBy.isSelected,
             "isChatbotStatic": isChatbotStatic.isSelected,
+            "enableAppointment": enableAppointment.isSelected,
+            "enableInPersonAppointment": enableInPersonAppointment.isSelected,
+            "enableVirtualAppointment": enableVirtualAppointment.isSelected,
             "backgroundColor": viewModel?.getChatConfigurationData.backgroundColor ?? "",
             "foregroundColor": viewModel?.getChatConfigurationData.foregroundColor ?? "",
         ]

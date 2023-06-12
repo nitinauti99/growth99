@@ -58,16 +58,6 @@ extension EditLeadViewController: UITextFieldDelegate  {
                 return
             }
             
-        } else if (textField == ammountTextField) {
-            guard let phoneNumber  = ammountTextField.text, !phoneNumber.isEmpty else {
-                ammountTextField.showError(message: Constant.ErrorMessage.ammountEmptyError)
-                return
-            }
-            
-            guard let ammount = ammountTextField.text, let ammountValide = viewModel?.isValidAmmount(ammount), ammountValide else {
-                ammountTextField.showError(message: Constant.ErrorMessage.ammountInvalidError)
-                return
-            }
         }
     }
     

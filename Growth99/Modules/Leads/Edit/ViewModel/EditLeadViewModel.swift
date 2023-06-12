@@ -34,6 +34,14 @@ class EditLeadViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func updateLeadAmmount(questionnaireId: Int, ammount: Int) {
+//        var ammountValue = Int()
+//
+//        if ammount == 0 {
+//            ammountValue = nil
+//        }else{
+//            ammountValue = ammount
+//        }
+        
         let finaleUrl = ApiUrl.updateQuestionnaireSubmissionAmmount + "\(questionnaireId)" + "/amount?amount=" + "\(ammount)"
     
         self.requestManager.request(forPath: finaleUrl, method: .PUT, headers: self.requestManager.Headers()) {  [weak self] result in
