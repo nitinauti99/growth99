@@ -112,7 +112,7 @@ class HomeViewContoller: UIViewController {
     
     @IBAction func openAdminMenuDropDwon(sender: UIButton) {
         self.rolesTextField.text = ""
-        let rolesArray = [viewModel?.getUserProfileData.roles?.name]
+        let rolesArray = ["Admin"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
             self.rolesTextField.text  = allClinics
@@ -303,7 +303,7 @@ extension HomeViewContoller: HomeViewContollerProtocol{
             self.userProviderViewHight.constant = 300
             self.userProviderView.isHidden = false
         }
-        self.rolesTextField.text = viewModel?.getUserProfileData.roles?.name ?? String.blank
+        self.rolesTextField.text = "Admin"
         self.setUpUI()
     }
     

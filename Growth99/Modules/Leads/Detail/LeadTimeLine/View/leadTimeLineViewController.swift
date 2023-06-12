@@ -12,6 +12,7 @@ protocol leadTimeLineViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
     func recivedLeadCreation()
     func recivedAuditLeadList()
+    func recivedLeadTimeLineTemplateData()
 }
 
 class leadTimeLineViewController: UIViewController,
@@ -49,4 +50,16 @@ class leadTimeLineViewController: UIViewController,
         self.view.HideSpinner()
         self.tableView.reloadData()
     }
+}
+
+extension leadTimeLineViewController: leadTimeLineTableViewCellProtocol {
+    func viewTemplate(cell: leadTimeLineTableViewCell, index: IndexPath) {
+        self.view.ShowSpinner()
+        viewModel?.getTimeLineTemplateData(leadId: leadId)
+    }
+    
+    func recivedLeadTimeLineTemplateData(){
+        self.view.HideSpinner()
+    }
+    
 }

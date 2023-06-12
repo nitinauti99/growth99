@@ -132,6 +132,11 @@ class CreatePostViewController: UIViewController {
             return
         }
         
+        if let isHashtagValid =  self.viewModel?.isValidHashTag(self.hashtagTextField.text ?? ""), isHashtagValid == false  {
+            hashtagTextField.showError(message: Constant.ErrorMessage.hashTagInvalidError)
+            return
+        }
+        
         if let labelTextField = self.labelTextField.text,  labelTextField == "" {
             self.labelTextField.showError(message: "Label is required")
             return

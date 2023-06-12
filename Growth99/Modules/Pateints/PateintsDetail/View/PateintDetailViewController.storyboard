@@ -144,6 +144,19 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="uTv-xR-hZV"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDh-Ro-flm" userLabel="firstName">
+                                                        <rect key="frame" x="349" y="220" width="35" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="35" id="Xja-eq-Fyu"/>
+                                                            <constraint firstAttribute="height" constant="35" id="hhp-QG-wjO"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editFirstNameWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IbU-qX-4ra"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wka-6s-l1k">
                                                         <rect key="frame" x="25" y="275" width="299" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -163,6 +176,19 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-Md-bAX" userLabel="LastName">
+                                                        <rect key="frame" x="349" y="305" width="35" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="35" id="1jv-yE-xEN"/>
+                                                            <constraint firstAttribute="height" constant="35" id="jjq-nF-K0h"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editLastNameWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UEv-Ui-JPJ"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuG-Zc-8pH">
                                                         <rect key="frame" x="25" y="360" width="299" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -204,6 +230,19 @@
                                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="B2K-c6-ogx"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-7N-O4G" userLabel="PhoneNumbe">
+                                                        <rect key="frame" x="349" y="475" width="35" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="35" id="qlC-RK-QmX"/>
+                                                            <constraint firstAttribute="height" constant="35" id="twf-f5-TeI"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editPhoneNumberWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SwI-jz-Dci"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5J-wN-kuj">
                                                         <rect key="frame" x="25" y="530" width="299" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -223,6 +262,19 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCt-ph-3Tj" userLabel="gender">
+                                                        <rect key="frame" x="349" y="560" width="35" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="35" id="AoQ-39-QLw"/>
+                                                            <constraint firstAttribute="height" constant="35" id="S4b-NC-sPw"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="edit"/>
+                                                        <state key="selected" image="saveIcon"/>
+                                                        <connections>
+                                                            <action selector="editGenderWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1aA-UN-9vR"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGs-1y-HTs">
                                                         <rect key="frame" x="25" y="615" width="299" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -242,59 +294,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDh-Ro-flm">
-                                                        <rect key="frame" x="349" y="220" width="35" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="Xja-eq-Fyu"/>
-                                                            <constraint firstAttribute="height" constant="35" id="hhp-QG-wjO"/>
-                                                        </constraints>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" image="edit"/>
-                                                        <state key="selected" image="saveIcon"/>
-                                                        <connections>
-                                                            <action selector="editFirstNameWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IbU-qX-4ra"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-Md-bAX">
-                                                        <rect key="frame" x="349" y="305" width="35" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="1jv-yE-xEN"/>
-                                                            <constraint firstAttribute="height" constant="35" id="jjq-nF-K0h"/>
-                                                        </constraints>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" image="edit"/>
-                                                        <state key="selected" image="saveIcon"/>
-                                                        <connections>
-                                                            <action selector="editLastNameWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UEv-Ui-JPJ"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-7N-O4G">
-                                                        <rect key="frame" x="349" y="475" width="35" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="qlC-RK-QmX"/>
-                                                            <constraint firstAttribute="height" constant="35" id="twf-f5-TeI"/>
-                                                        </constraints>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" image="edit"/>
-                                                        <state key="selected" image="saveIcon"/>
-                                                        <connections>
-                                                            <action selector="editPhoneNumberWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SwI-jz-Dci"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCt-ph-3Tj">
-                                                        <rect key="frame" x="349" y="560" width="35" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="AoQ-39-QLw"/>
-                                                            <constraint firstAttribute="height" constant="35" id="S4b-NC-sPw"/>
-                                                        </constraints>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" image="edit"/>
-                                                        <state key="selected" image="saveIcon"/>
-                                                        <connections>
-                                                            <action selector="editGenderWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1aA-UN-9vR"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJG-zb-JHD">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJG-zb-JHD" userLabel="DateOfBirth">
                                                         <rect key="frame" x="349" y="645" width="35" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="Hw1-SG-RyK"/>
@@ -326,7 +326,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTt-7w-IWW">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTt-7w-IWW" userLabel="notes">
                                                         <rect key="frame" x="349" y="730" width="35" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="NmE-3M-p0N"/>

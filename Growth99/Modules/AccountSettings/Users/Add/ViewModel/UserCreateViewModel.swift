@@ -76,8 +76,11 @@ class UserCreateViewModel {
                 self.allserviceCategories = allserviceCategories
                 self.delegate?.serviceCategoriesRecived()
             case .failure(let error):
-                print(error)
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                if error.response?.statusCode == 500 {
+                    self.delegate?.errorReceived(error: "Unable to load service category for selected clinic")
+                }else{
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }
             }
         }
     }

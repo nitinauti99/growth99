@@ -17,6 +17,8 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
         let questionType = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].questionType ?? ""
         let ishowDropDown = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].showDropDown ?? false
 
+        let allowMultipleSelection = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].allowMultipleSelection ?? false
+        
         if questionType == "Input" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadInputTypeTableViewCell", for: indexPath) as? LeadInputTypeTableViewCell else { return LeadInputTypeTableViewCell() }
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
@@ -34,7 +36,7 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadDateTypeTableViewCell", for: indexPath) as? LeadDateTypeTableViewCell else { return UITableViewCell() }
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
-        }else if(questionType == "Multiple_Selection_Text" && ishowDropDown == true) {
+        }else if(questionType == "Multiple_Selection_Text" && ishowDropDown == true && allowMultipleSelection == false) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionWithDropDownTypeTableViewCell", for: indexPath) as? LeadMultipleSelectionWithDropDownTypeTableViewCell else { return UITableViewCell() }
             cell.delegate = self
             cell.configureCell(questionarieVM: viewModel, index: indexPath)

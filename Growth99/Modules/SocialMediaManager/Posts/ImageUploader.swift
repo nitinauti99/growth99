@@ -34,11 +34,11 @@ final class ImageUploader {
     }
     
     func uploadImage(completionHandler:@escaping(ImageUploadResult) -> Void) {
+        
         let imageData = self.uploadImage.pngData() ?? Data()
-        let mimeType = imageData.mimeType ?? ""
       
         var request = URLRequest(url: url, method: method, headers: headers)
-        request.httpBody = createHttpBody(binaryData: imageData, mimeType: mimeType)
+        request.httpBody = createHttpBody(binaryData: imageData, mimeType: "image/jpeg")
         
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { (data, urlResponse, error) in

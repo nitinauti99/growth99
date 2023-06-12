@@ -32,12 +32,12 @@ class CreateQuestionnaireTableViewCell: UITableViewCell{
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView: CustomTextField!
     @IBOutlet weak var ConfigureThank_page_message_contactForm_TextView_Hight: NSLayoutConstraint!
   
-    @IBOutlet weak var backroundImageSelctionView: UIView!
-    @IBOutlet weak var backroundImageSelctionViewHight: NSLayoutConstraint!
-    @IBOutlet weak var backroundImageSelctionLBI: UILabel!
-    @IBOutlet weak var backroundImageSelctionButton: UIButton!
-    @IBOutlet weak var backroundImage: UIImageView!
-    @IBOutlet weak var backroundImageHight: NSLayoutConstraint!
+//    @IBOutlet weak var backroundImageSelctionView: UIView!
+//    @IBOutlet weak var backroundImageSelctionViewHight: NSLayoutConstraint!
+//    @IBOutlet weak var backroundImageSelctionLBI: UILabel!
+//    @IBOutlet weak var backroundImageSelctionButton: UIButton!
+//    @IBOutlet weak var backroundImage: UIImageView!
+//    @IBOutlet weak var backroundImageHight: NSLayoutConstraint!
 
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
@@ -70,9 +70,9 @@ class CreateQuestionnaireTableViewCell: UITableViewCell{
     private func setUpUI(){
         self.Show_Thank_page_URL_ContactForm_TextView.isHidden = true
         self.ConfigureThank_page_message_contactForm_TextView.isHidden = true
-        self.backroundImageSelctionViewHight.constant = 0
-        backroundImageSelctionLBI.isHidden = true
-        backroundImageSelctionButton.isHidden = true
+//        self.backroundImageSelctionViewHight.constant = 0
+//        backroundImageSelctionLBI.isHidden = true
+//        backroundImageSelctionButton.isHidden = true
     }
     
    public func setUPVale() {
@@ -80,7 +80,6 @@ class CreateQuestionnaireTableViewCell: UITableViewCell{
         
        self.questionnaireName.text = item?.name
         self.Make_Public.isSelected = item?.isPublic ?? false
-        self.Enable_ModernUI.isSelected = item?.enableModernUi ?? false
         self.Show_title_Form.isSelected = item?.showTitle ?? false
         self.Show_title_Fields.isSelected = item?.hideFieldTitle ?? false // need to check
         self.is_Custom.isSelected = item?.isCustom ?? false
@@ -102,11 +101,7 @@ class CreateQuestionnaireTableViewCell: UITableViewCell{
             ConfigureThank_page_message_contactForm_TextView.text = item?.thankYouPageMessageContactForm ?? ""
         }
         
-        if item?.enableModernUi ?? false == true {
-            self.backroundImageSelctionViewHight.constant = 220
-            backroundImageSelctionLBI.isHidden = false
-            backroundImageSelctionButton.isHidden = false
-        }
+     
     }
     
     @IBAction func Make_Public(sender: UIButton){
@@ -118,23 +113,23 @@ class CreateQuestionnaireTableViewCell: UITableViewCell{
         }
     }
     
-    @IBAction func Enable_ModernUI(sender: UIButton){
-        print("Enable_ModernUI")
-        if sender.isSelected {
-            sender.isSelected = false
-            backroundImageSelctionView.isHidden = true
-            backroundImageSelctionViewHight.constant = 0
-            backroundImageSelctionLBI.isHidden = true
-            backroundImageSelctionButton.isHidden = true
-        } else {
-            sender.isSelected = true
-            backroundImageSelctionView.isHidden = false
-            backroundImageSelctionViewHight.constant = 220
-            backroundImageSelctionLBI.isHidden = false
-            backroundImageSelctionButton.isHidden = false
-            self.tableView?.performBatchUpdates(nil, completion: nil)
-        }
-    }
+//    @IBAction func Enable_ModernUI(sender: UIButton){
+//        print("Enable_ModernUI")
+//        if sender.isSelected {
+//            sender.isSelected = false
+//            backroundImageSelctionView.isHidden = true
+//            backroundImageSelctionViewHight.constant = 0
+//            backroundImageSelctionLBI.isHidden = true
+//            backroundImageSelctionButton.isHidden = true
+//        } else {
+//            sender.isSelected = true
+//            backroundImageSelctionView.isHidden = false
+//            backroundImageSelctionViewHight.constant = 220
+//            backroundImageSelctionLBI.isHidden = false
+//            backroundImageSelctionButton.isHidden = false
+//            self.tableView?.performBatchUpdates(nil, completion: nil)
+//        }
+//    }
     
     @IBAction func Show_title_Form(sender: UIButton){
         print("Show_title_Form")
@@ -232,7 +227,6 @@ extension CreateQuestionnaireTableViewCell {
             
             "name": self.questionnaireName.text ?? String.blank,
             "isPublic": self.Make_Public.isSelected,
-            "enableModernUi": self.Enable_ModernUI.isSelected,
             "showTitle": self.Show_title_Form.isSelected,
             "hideFieldTitle": self.Show_title_Fields.isSelected,
             "isCustom": self.is_Custom.isSelected,

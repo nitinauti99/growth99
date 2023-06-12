@@ -33,6 +33,15 @@ extension ChatConfigurationViewController: UITextFieldDelegate  {
             }
         }
         
+        if textField == poweredByText {
+            guard let textField = poweredByText.text, !textField.isEmpty else {
+                return
+            }
+            guard let url  = poweredByText.text, let poweredByValidate = viewModel?.isURLValid(url: url), poweredByValidate else {
+                poweredByText.showError(message: "Powered by URL is invalid (should start with http)")
+                return
+            }
+        }
         
     }
     

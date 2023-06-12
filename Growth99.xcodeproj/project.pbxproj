@@ -78,6 +78,8 @@
 		013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */; };
 		013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */; };
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
+		0144D9FF2A3746E800DBD12E /* PeteintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144D9FD2A3746E800DBD12E /* PeteintDetailView.swift */; };
+		0144DA002A3746E800DBD12E /* PeteintDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0144D9FE2A3746E800DBD12E /* PeteintDetailView.storyboard */; };
 		014549BF29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */; };
 		01454A0129FC36C100237E60 /* UserCreateViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */; };
 		01454A0329FCD13100237E60 /* PostsListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */; };
@@ -610,8 +612,6 @@
 		8497A03F28FF11E200CBA26C /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03B28FF11E200CBA26C /* Development.plist */; };
 		8497A04028FF11E200CBA26C /* Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03C28FF11E200CBA26C /* Staging.plist */; };
 		8497A04128FF11E200CBA26C /* QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8497A03D28FF11E200CBA26C /* QA.plist */; };
-		8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499E1AD298AB3F90072ACF4 /* PeteintDetailView.swift */; };
-		8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */; };
 		849D3AEB2997CC72003E856A /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3ADD2997CC72003E856A /* FontAwesomeBarButtonItem.swift */; };
 		849D3AEC2997CC72003E856A /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3ADE2997CC72003E856A /* FontAwesomeSegmentedControl.swift */; };
 		849D3AED2997CC72003E856A /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3ADF2997CC72003E856A /* FontAwesomeView.swift */; };
@@ -988,6 +988,8 @@
 		013A4FD529B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionQuestionChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		013A4FD629B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleSelectionQuestionChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
+		0144D9FD2A3746E800DBD12E /* PeteintDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeteintDetailView.swift; sourceTree = "<group>"; };
+		0144D9FE2A3746E800DBD12E /* PeteintDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PeteintDetailView.storyboard; sourceTree = "<group>"; };
 		014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintsTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCreateViewController+TextField.swift"; sourceTree = "<group>"; };
 		01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
@@ -1534,8 +1536,6 @@
 		8497A03B28FF11E200CBA26C /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		8497A03C28FF11E200CBA26C /* Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Staging.plist; sourceTree = "<group>"; };
 		8497A03D28FF11E200CBA26C /* QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QA.plist; sourceTree = "<group>"; };
-		8499E1AD298AB3F90072ACF4 /* PeteintDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeteintDetailView.swift; sourceTree = "<group>"; };
-		8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PeteintDetailView.storyboard; sourceTree = "<group>"; };
 		849D3ADD2997CC72003E856A /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
 		849D3ADE2997CC72003E856A /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
 		849D3ADF2997CC72003E856A /* FontAwesomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeView.swift; sourceTree = "<group>"; };
@@ -2261,6 +2261,16 @@
 				01EBAC6329B58BD000110DCB /* LeadSourceUrlListModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0144D9FC2A3746E800DBD12E /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				0144D9FD2A3746E800DBD12E /* PeteintDetailView.swift */,
+				0144D9FE2A3746E800DBD12E /* PeteintDetailView.storyboard */,
+			);
+			name = ContainerView;
+			path = View/ContainerView;
 			sourceTree = "<group>";
 		};
 		01468DFC29BE338E002BDC1F /* Cell */ = {
@@ -5639,15 +5649,6 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		8499E1AC298AB3C60072ACF4 /* ContainerView */ = {
-			isa = PBXGroup;
-			children = (
-				8499E1AD298AB3F90072ACF4 /* PeteintDetailView.swift */,
-				8499E1AF298AB4090072ACF4 /* PeteintDetailView.storyboard */,
-			);
-			path = ContainerView;
-			sourceTree = "<group>";
-		};
 		849D3ADC2997CC72003E856A /* FontAwesome */ = {
 			isa = PBXGroup;
 			children = (
@@ -6095,10 +6096,10 @@
 		84D0619A29670676001FE469 /* PateintsDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0144D9FC2A3746E800DBD12E /* ContainerView */,
 				84088BA32977E59C0060855E /* Model */,
 				84088BA42977E5B50060855E /* View */,
 				84088BA22977E5900060855E /* ViewModel */,
-				8499E1AC298AB3C60072ACF4 /* ContainerView */,
 				842C0C8B298F713B00395061 /* Questionarie */,
 				842C0C84298F713B00395061 /* AddPateintsTask */,
 				842C0C68298F713B00395061 /* Consents */,
@@ -7074,7 +7075,6 @@
 				1883F12829C7571E0080997B /* countries.json in Resources */,
 				18491DB529B80CE000FE72EF /* MassEmailandSMSModuleTableViewCell.xib in Resources */,
 				84D062FE2967080E001FE469 /* LeadSMSTemplateTableViewCell.xib in Resources */,
-				8499E1B0298AB4090072ACF4 /* PeteintDetailView.storyboard in Resources */,
 				84B75EC22969011B00962F3E /* ClinicsListTableViewCell.xib in Resources */,
 				849004AA2986D56900A271AA /* PateintsTagsAddViewController.storyboard in Resources */,
 				84D0622A29670677001FE469 /* MockResponse.json in Resources */,
@@ -7098,6 +7098,7 @@
 				189E3EDF29C391A400B94190 /* LabelListTableViewCell.xib in Resources */,
 				01BBA9E129AB571F006A5DB8 /* NotificationListTableViewCell.xib in Resources */,
 				013A4FE229B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
+				0144DA002A3746E800DBD12E /* PeteintDetailView.storyboard in Resources */,
 				D0D834B92A1FDA9800A60443 /* PostCalendarViewController.storyboard in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
@@ -7677,7 +7678,6 @@
 				01D7AAF8299D5A5E00821274 /* FormDetailContainerView.swift in Sources */,
 				84F6111D292A71AB00B1FB69 /* GrowthDownloadTaskOperation.swift in Sources */,
 				016F664029C9EF8600B1D248 /* MediaLibraryAddViewController.swift in Sources */,
-				8499E1AE298AB3FA0072ACF4 /* PeteintDetailView.swift in Sources */,
 				0100C6F429E04CC900B48138 /* CreateTasksViewController+OepnDropDown.swift in Sources */,
 				01684C2229BB7BBF00DE1041 /* UIIMageExtension.swift in Sources */,
 				84F610CE292A71AB00B1FB69 /* DispatchSource.swift in Sources */,
@@ -7793,6 +7793,7 @@
 				847C6C44297A963E000188AE /* PateintsEditDetailModel.swift in Sources */,
 				010EECA329B7128500351358 /* CreateChatQuestionareViewController+Tableview.swift in Sources */,
 				01468E3B29C1EF3E002BDC1F /* leadDetailViewController+UIScrollView.swift in Sources */,
+				0144D9FF2A3746E800DBD12E /* PeteintDetailView.swift in Sources */,
 				84B75E9C2968CC7900962F3E /* ClinicsListModel.swift in Sources */,
 				189E3ED529C3915700B94190 /* LabelListModel.swift in Sources */,
 				842C0CBB298F713B00395061 /* FillQuestionarieViewModel.swift in Sources */,

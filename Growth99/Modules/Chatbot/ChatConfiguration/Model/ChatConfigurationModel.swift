@@ -45,3 +45,12 @@ struct ChatConfigurationModel: Codable {
     let isChatbotStatic : Bool?
     let formMessage : String?
 }
+
+
+
+struct DefaultClinicModel: Codable {
+    let id : Int?
+    let name : String?
+    let timezone : String?
+    let appointmentUrl : String?
+}

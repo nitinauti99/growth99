@@ -42,11 +42,17 @@ class PateintsTagsListViewModel {
     }
     
     func removePateintsTag(pateintsTagid: Int) {
-        self.requestManager.request(forPath: ApiUrl.removePatientsTags.appending("\(pateintsTagid)"), method: .DELETE, headers: self.requestManager.Headers()) { (result: Result< PateintsTagRemove, GrowthNetworkError>) in
-            
+        self.requestManager.request(forPath: ApiUrl.removePatientsTags.appending("\(pateintsTagid)"), method: .DELETE, headers: self.requestManager.Headers())  { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(_ ):
-                self.delegate?.pateintTagRemovedSuccefully(mrssage: "Tag deleted successfully")
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.pateintTagRemovedSuccefully(mrssage: "Tag deleted successfully")
+                }else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "The Tag Associated With A Patient Cannot Be Deleted. To Delete, Remove This Tag From The Patients")
+                }else{
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

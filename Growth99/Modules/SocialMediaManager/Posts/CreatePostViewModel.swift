@@ -128,10 +128,10 @@ extension CreatePostViewModel: CreatePostViewModelProtocol {
     }
     
     func isValidHashTag(_ text: String) -> Bool {
-        let pattern = "^#[a-zA-Z0-9_]+$"
-        let regex = try! NSRegularExpression(pattern: pattern)
-        let range = NSRange(location: 0, length: text.utf16.count)
-        let matches = regex.matches(in: text, range: range)
-        return !matches.isEmpty
+        let hashTagRegEx = "#\\w+"
+        let hashTagPred = NSPredicate(format:"SELF MATCHES %@", hashTagRegEx)
+        let str  = text.components(separatedBy: " ")
+        let lastStr = str.last
+        return hashTagPred.evaluate(with: lastStr)
     }
 }

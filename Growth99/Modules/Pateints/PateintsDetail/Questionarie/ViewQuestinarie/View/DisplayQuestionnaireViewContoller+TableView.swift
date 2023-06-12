@@ -30,7 +30,7 @@ extension DisplayQuestionnaireViewContoller: UITableViewDelegate, UITableViewDat
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.popViewController(animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.navigationController?.popViewController(animated: true)
+//    }
 }

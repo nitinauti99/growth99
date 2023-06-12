@@ -105,7 +105,6 @@ extension PateintListViewContoller: PateintListTableViewCellDelegate {
         }else{
             editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
         }
-        editVC.pateintId = viewModel?.pateintDataAtIndex(index: index.row)?.id ?? 0
         self.navigationController?.pushViewController(editVC, animated: true)
     }
     

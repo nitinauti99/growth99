@@ -42,9 +42,12 @@ class CreateQuestionViewContoller: UIViewController, CreateQuestionViewContoller
     }
     
     @objc func linkValidation() {
-        if viewModel?.isValidUrl(url: self.referenceLinkTextField.text ?? "") == false {
-            referenceLinkTextField.showError(message: Constant.ErrorMessage.chatQuestionnaireURLInvalidError)
+        if self.referenceLinkTextField.text != "" {
+            if viewModel?.isValidUrl(url: self.referenceLinkTextField.text ?? "") == false {
+                referenceLinkTextField.showError(message: Constant.ErrorMessage.chatQuestionnaireURLInvalidError)
+            }
         }
+      
     }
     
     func chatQuestionCreated(message: String) {
@@ -86,6 +89,14 @@ class CreateQuestionViewContoller: UIViewController, CreateQuestionViewContoller
             return
         }
         answerTextFieldLBI.isHidden = true
+      
+        if self.referenceLinkTextField.text != "" {
+            if viewModel?.isValidUrl(url: self.referenceLinkTextField.text ?? "") == false {
+                referenceLinkTextField.showError(message: Constant.ErrorMessage.chatQuestionnaireURLInvalidError)
+                return
+            }
+        }
+       
 
         self.view.ShowSpinner()
         if screenName == "Edit Screen" {

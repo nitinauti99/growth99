@@ -11,6 +11,7 @@ import UIKit
 protocol PateintsTimeLineViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
     func recivedPateintsTimeLineData()
+    func recivedPateintsTimeLineTemplateData()
 }
 
 class PateintsTimeLineViewController: UIViewController,
@@ -43,4 +44,18 @@ class PateintsTimeLineViewController: UIViewController,
         self.view.HideSpinner()
         self.pateintsTimeLineTableView.reloadData()
     }
+}
+
+extension PateintsTimeLineViewController: PateintsTimeLineTableViewCellProtocol {
+   
+    func viewTemplate(cell: PateintsTimeLineTableViewCell, index: IndexPath) {
+        self.view.ShowSpinner()
+        viewModel?.getTimeLineTemplateData(pateintsId: 1233333)
+    }
+    
+    func recivedPateintsTimeLineTemplateData(){
+        self.view.HideSpinner()
+
+    }
+    
 }
