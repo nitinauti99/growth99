@@ -164,37 +164,59 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
             return
         }
         
+        guard validateDates(startDate: dateFrom, endDate: dateTo) else {
+            workingDateFromTextField.showError(message: "From date must be less than or equal to To date")
+            return
+        }
+        
         if selectedClinicId == 0 {
             selectedClinicId = allClinicsForWorkingSchedule?[0].id ?? 0
         }
         if workingListModel?.count ?? 0 > 0 {
             for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
                 let cellIndexPath = IndexPath(item: childIndex, section: 0)
-                if let workingCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell {
-                    if workingCell.selectDayTextField.text == String.blank {
-                        isValidateArray.insert(false, at: childIndex)
-                        workingCell.selectDayTextField.showError(message: "Please select day")
-                        return
-                    }
-                    if workingCell.timeFromTextField.text == String.blank {
-                        isValidateArray.insert(false, at: childIndex)
-                        workingCell.timeFromTextField.showError(message: Constant.Profile.chooseFromTime)
-                        return
-                    }
-                    if (workingCell.timeToTextField.text == String.blank) {
-                        isValidateArray.insert(false, at: childIndex)
-                        workingCell.timeToTextField.showError(message: Constant.Profile.chooseToTime)
-                        return
-                    } else {
-                        isValidateArray.insert(true, at: childIndex)
-                        let daysArray =  workingCell.selectDayTextField.text ?? String.blank
-                        let days = daysArray.components(separatedBy: ",")
-                        let startTime = workingCell.timeFromTextField.text ?? String.blank
-                        let endTime = workingCell.timeToTextField.text ?? String.blank
-                        selectedSlots.insert(SelectedSlots(timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: startTime), timeToDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: endTime), days: days), at: childIndex)
-                    }
+                guard let workingCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell else {
+                    continue
                 }
+                
+                guard workingCell.selectDayTextField.text != String.blank else {
+                    isValidateArray.insert(false, at: childIndex)
+                    workingCell.selectDayTextField.showError(message: "Please select day")
+                    return
+                }
+                
+                guard workingCell.timeFromTextField.text != String.blank else {
+                    isValidateArray.insert(false, at: childIndex)
+                    workingCell.timeFromTextField.showError(message: Constant.Profile.chooseFromTime)
+                    return
+                }
+                
+                guard workingCell.timeToTextField.text != String.blank else {
+                    isValidateArray.insert(false, at: childIndex)
+                    workingCell.timeToTextField.showError(message: Constant.Profile.chooseToTime)
+                    return
+                }
+                
+                guard validateTimes(startTime: workingCell.timeFromTextField.text ?? "", endTime: workingCell.timeToTextField.text ?? "") else {
+                    workingCell.timeFromTextField.showError(message: "From Time must be smaller than to Time for selected date.")
+                    return
+                }
+                
+                isValidateArray.insert(true, at: childIndex)
+                let daysArray = workingCell.selectDayTextField.text ?? String.blank
+                let days = daysArray.components(separatedBy: ",")
+                let startTime = workingCell.timeFromTextField.text ?? String.blank
+                let endTime = workingCell.timeToTextField.text ?? String.blank
+                selectedSlots.insert(
+                    SelectedSlots(
+                        timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: startTime),
+                        timeToDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: endTime),
+                        days: days
+                    ),
+                    at: childIndex
+                )
             }
+            
             
             if isValidateArray.contains(false) {
                 return
@@ -205,6 +227,41 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
             let parameters: [String: Any]  = body.toDict()
             workingScheduleViewModel?.sendRequestforWorkingSchedule(vacationParams: parameters)
         }
+    }
+    
+    func validateDates(startDate: String, endDate: String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        guard let start = dateFormatter.date(from: startDate),
+              let end = dateFormatter.date(from: endDate) else {
+            // Invalid date format
+            return false
+        }
+        
+        if start > end {
+            // Start date is after end date
+            return false
+        }
+        
+        return true
+    }
+    
+    func validateTimes(startTime: String, endTime: String) -> Bool {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+
+        guard let startDate = timeFormatter.date(from: startTime),
+              let endDate = timeFormatter.date(from: endTime) else {
+            return false
+        }
+
+        // Check if start time is before end time
+        if startDate >= endDate {
+            return false
+        }
+
+        return true
     }
     
     @IBAction func addWorkingButtonAction(sender: UIButton) {
@@ -224,7 +281,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     func scrollViewHeight() {
-        workingScrollViewHight.constant = tableViewHeight + 650
+        workingScrollViewHight.constant = tableViewHeight + 750
     }
     
 }

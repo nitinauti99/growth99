@@ -33,7 +33,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-bQ-EBC" userLabel="userNameTF" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                                        <rect key="frame" x="40" y="51" width="330" height="45"/>
+                                                        <rect key="frame" x="40" y="51" width="320" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="sta-pX-Zwr"/>
                                                         </constraints>
@@ -214,7 +214,7 @@
                                                     <constraint firstItem="mFy-hw-P0X" firstAttribute="top" secondItem="mMp-zr-vgw" secondAttribute="bottom" constant="20" id="18g-GP-h02"/>
                                                     <constraint firstItem="mMp-zr-vgw" firstAttribute="trailing" secondItem="JUz-wm-XXo" secondAttribute="trailing" id="6TN-5i-Qdf"/>
                                                     <constraint firstItem="mFy-hw-P0X" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" id="9gK-XA-4jc"/>
-                                                    <constraint firstItem="Nfm-bQ-EBC" firstAttribute="trailing" secondItem="JUz-wm-XXo" secondAttribute="trailing" constant="10" id="BA6-G9-7j0"/>
+                                                    <constraint firstItem="Nfm-bQ-EBC" firstAttribute="trailing" secondItem="JUz-wm-XXo" secondAttribute="trailing" id="BA6-G9-7j0"/>
                                                     <constraint firstItem="JUz-wm-XXo" firstAttribute="top" secondItem="Cxy-50-6tD" secondAttribute="top" constant="20" id="CoM-kH-9rE"/>
                                                     <constraint firstItem="Nfm-bQ-EBC" firstAttribute="leading" secondItem="JUz-wm-XXo" secondAttribute="leading" constant="10" id="D3e-Bl-ZGn"/>
                                                     <constraint firstAttribute="bottom" secondItem="t8f-T6-fCu" secondAttribute="bottom" constant="50" id="E7Q-z6-eOy"/>

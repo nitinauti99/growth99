@@ -70,7 +70,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-G7-7ED" userLabel="password">
-                                <rect key="frame" x="20" y="111" width="280" height="21"/>
+                                <rect key="frame" x="20" y="116" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="j6w-4l-V6Y"/>
                                 </constraints>
@@ -91,7 +91,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72s-jM-X3a" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="30" y="142" width="270" height="45"/>
+                                <rect key="frame" x="30" y="147" width="270" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DIP-Ry-qmr"/>
                                 </constraints>
@@ -184,8 +184,8 @@
                             <constraint firstItem="c96-4m-krF" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="oVJ-kC-fyC"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="trailing" secondItem="Wvb-G7-7ED" secondAttribute="trailing" id="ryH-2o-J5O"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="leading" id="syk-4N-p5p"/>
-                            <constraint firstItem="c96-4m-krF" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="25" id="uQE-iz-TFh"/>
-                            <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="tZZ-Mm-RJd" secondAttribute="bottom" constant="25" id="uj4-tX-xqm"/>
+                            <constraint firstItem="c96-4m-krF" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="20" id="uQE-iz-TFh"/>
+                            <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="tZZ-Mm-RJd" secondAttribute="bottom" constant="30" id="uj4-tX-xqm"/>
                             <constraint firstItem="6ps-co-bsK" firstAttribute="trailing" secondItem="hcN-Pd-MOW" secondAttribute="trailing" id="yy6-m3-aQ3"/>
                         </constraints>
                     </view>

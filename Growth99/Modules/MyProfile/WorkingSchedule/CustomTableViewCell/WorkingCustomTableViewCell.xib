@@ -22,7 +22,7 @@
                         <rect key="frame" x="5" y="10" width="310" height="330"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-vN-wte" userLabel="password">
-                                <rect key="frame" x="16" y="20" width="249" height="21"/>
+                                <rect key="frame" x="16" y="20" width="259" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="z6A-jl-bYt"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-G7-7ED" userLabel="password">
-                                <rect key="frame" x="16" y="116" width="249" height="21"/>
+                                <rect key="frame" x="16" y="116" width="259" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="j6w-4l-V6Y"/>
                                 </constraints>
@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72s-jM-X3a" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="147" width="249" height="45"/>
+                                <rect key="frame" x="26" y="147" width="259" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="DIP-Ry-qmr"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzh-yo-KIA" userLabel="password">
-                                <rect key="frame" x="16" y="212" width="249" height="21"/>
+                                <rect key="frame" x="16" y="222" width="259" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Hv6-6G-oiH"/>
                                 </constraints>
@@ -115,7 +115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n9F-aQ-qaW" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="243" width="249" height="45"/>
+                                <rect key="frame" x="26" y="253" width="259" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FM2-Te-9tY"/>
                                 </constraints>
@@ -153,7 +153,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-As-UkD" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="26" y="51" width="249" height="45"/>
+                                <rect key="frame" x="26" y="51" width="259" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Lx6-WV-TmO"/>
                                 </constraints>
@@ -179,7 +179,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au2-Q9-cPO">
-                                <rect key="frame" x="26" y="51" width="249" height="45"/>
+                                <rect key="frame" x="26" y="51" width="259" height="45"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
                                     <action selector="selectDayBtnActionWithSender:" destination="b4N-gw-dU5" eventType="touchUpInside" id="UiC-RS-Co9"/>
@@ -200,7 +200,7 @@
                             <constraint firstItem="Tzx-vN-wte" firstAttribute="top" secondItem="aQy-Bo-lqL" secondAttribute="top" constant="20" id="Qdr-zm-tc4"/>
                             <constraint firstItem="Wvb-G7-7ED" firstAttribute="top" secondItem="EXr-As-UkD" secondAttribute="bottom" constant="20" id="RHM-6U-Ltx"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="top" secondItem="Wvb-G7-7ED" secondAttribute="bottom" constant="10" id="UNA-zI-QIr"/>
-                            <constraint firstItem="7Xq-8Z-VMn" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="10" id="Yt8-Np-6Tk"/>
+                            <constraint firstItem="7Xq-8Z-VMn" firstAttribute="leading" secondItem="Tzx-vN-wte" secondAttribute="trailing" id="Yt8-Np-6Tk"/>
                             <constraint firstItem="7Xq-8Z-VMn" firstAttribute="top" secondItem="hcN-Pd-MOW" secondAttribute="top" constant="10" id="amm-we-QGL"/>
                             <constraint firstItem="au2-Q9-cPO" firstAttribute="trailing" secondItem="EXr-As-UkD" secondAttribute="trailing" id="c1e-Ww-clV"/>
                             <constraint firstItem="72s-jM-X3a" firstAttribute="trailing" secondItem="EXr-As-UkD" secondAttribute="trailing" id="c62-fW-BEz"/>
@@ -212,7 +212,7 @@
                             <constraint firstAttribute="height" constant="330" id="nB6-YM-20P"/>
                             <constraint firstItem="EXr-As-UkD" firstAttribute="trailing" secondItem="Tzx-vN-wte" secondAttribute="trailing" constant="10" id="rUy-bC-v7S"/>
                             <constraint firstItem="hcN-Pd-MOW" firstAttribute="trailing" secondItem="7Xq-8Z-VMn" secondAttribute="trailing" constant="5" id="rme-NB-jlF"/>
-                            <constraint firstItem="Fzh-yo-KIA" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="20" id="rxG-26-5yA"/>
+                            <constraint firstItem="Fzh-yo-KIA" firstAttribute="top" secondItem="72s-jM-X3a" secondAttribute="bottom" constant="30" id="rxG-26-5yA"/>
                             <constraint firstItem="au2-Q9-cPO" firstAttribute="bottom" secondItem="EXr-As-UkD" secondAttribute="bottom" id="xiD-Hh-1bx"/>
                         </constraints>
                     </view>

@@ -15,7 +15,7 @@ protocol VacationScheduleViewControllerCProtocol: AnyObject {
 }
 
 class VacationScheduleViewController: UIViewController, VacationScheduleViewControllerCProtocol, CellSubclassDelegate {
-   
+    
     @IBOutlet private weak var userNameTextField: CustomTextField!
     @IBOutlet private weak var addTimeButton: UIButton!
     @IBOutlet private weak var removeTimeButton: UIButton!
@@ -29,12 +29,12 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     @IBOutlet weak var vacationsListTableView: UITableView!
     @IBOutlet var vacationScrollViewHight: NSLayoutConstraint!
     @IBOutlet var vacationScrollview: UIScrollView!
-
+    
     var clinicDataArr = [String]()
     var menuSelection: [Int] = []
     var listSelection: Bool = false
     var isValidateVacationArray = [Bool]()
-
+    
     var vacationViewModel: VacationViewModelProtocol?
     var allClinicsForVacation: [Clinics]?
     var vacationsList =  [VacationsListModel]()
@@ -43,7 +43,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     var arrayOfVacations = [VacationSchedules]()
     var arrTime = [Time]()
-
+    
     var isEmptyResponse: Bool = false
     
     var vacationTableViewHeight: CGFloat {
@@ -68,16 +68,16 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         super.viewWillAppear(animated)
         self.listExpandHeightConstraint.constant = 31
     }
-
+    
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.vacationTitle
     }
-
+    
     // MARK: - setupDefaultUI
     func setupUI() {
         userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
-       
+        
         clinicTextView.layer.cornerRadius = 4.5
         clinicTextView.layer.borderWidth = 1
         clinicTextView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
@@ -102,7 +102,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         /// get vacation detail for selected clinics
         vacationViewModel?.getVacationDeatils(selectedClinicId: self.allClinicsForVacation?[0].id ?? 0)
     }
-
+    
     // MARK: - Clinic Dropdown API Response method
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
@@ -145,9 +145,9 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         selectionMenu.dismissAutomatically = true
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-     }
-   
-   
+    }
+    
+    
     // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         isValidateVacationArray = []
@@ -158,21 +158,21 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                 
                 for childIndex in 0..<(vacationsList[indexValue].userScheduleTimings?.count ?? 0) {
                     let cellIndexPath = IndexPath(item: childIndex, section: indexValue)
-                   
-                  if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
+                    
+                    if let vacationCell = self.vacationsListTableView.cellForRow(at: cellIndexPath) as? VacationsCustomTableViewCell {
                         
-                      if vacationCell.timeFromTextField.text == String.blank {
-                          if vacationsList[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                        if vacationCell.timeFromTextField.text == String.blank {
+                            if vacationsList[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
                             }
-                          vacationCell.timeFromTextField.showError(message: Constant.Profile.chooseFromTime)
+                            vacationCell.timeFromTextField.showError(message: Constant.Profile.chooseFromTime)
                             return
                         }
                         
-                      if vacationCell.timeToTextField.text == String.blank {
-                          if vacationsList[indexValue].userScheduleTimings?.count ?? 0 > 1 {
+                        if vacationCell.timeToTextField.text == String.blank {
+                            if vacationsList[indexValue].userScheduleTimings?.count ?? 0 > 1 {
                                 isValidateVacationArray.insert(false, at: childIndex - 1)
                             } else {
                                 isValidateVacationArray.insert(false, at: childIndex)
@@ -180,6 +180,11 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                             vacationCell.timeToTextField.showError(message: Constant.Profile.chooseToTime)
                             return
                         } else {
+                            guard validateVacationTimes(startTime: vacationCell.timeFromTextField.text ?? "", endTime: vacationCell.timeToTextField.text ?? "") else {
+                                isValidateVacationArray.insert(false, at: childIndex)
+                                vacationCell.timeFromTextField.showError(message: "From Time must be smaller than to Time for selected date.")
+                                return
+                            }
                             isValidateVacationArray.insert(true, at: childIndex)
                             arrTime.insert(Time(startTime: vacationViewModel?.serverToLocalTimeInput(timeString: vacationCell.timeFromTextField.text ?? String.blank), endTime: vacationViewModel?.serverToLocalTimeInput(timeString: vacationCell.timeToTextField.text ?? String.blank)), at: childIndex)
                         }
@@ -197,6 +202,11 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
                         headerView.dateToTextField.showError(message: Constant.Profile.chooseToDate)
                         return
                     } else {
+                        guard validateVacationDates(startDate: headerView.dateFromTextField.text ?? "", endDate: headerView.dateToTextField.text ?? "") else {
+                            isValidateVacationArray.insert(false, at: indexValue)
+                            headerView.dateFromTextField.showError(message: "From date must be less than or equal to To date")
+                            return
+                        }
                         isValidateVacationArray.insert(true, at: indexValue)
                         arrayOfVacations.insert(VacationSchedules.init(startDate: vacationViewModel?.serverToLocalInput(date: headerView.dateFromTextField.text ?? String.blank), endDate: vacationViewModel?.serverToLocalInput(date: headerView.dateToTextField.text ?? String.blank), time: arrTime), at: indexValue)
                         arrTime.removeAll()
@@ -210,7 +220,41 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
             postVacationAPIMethod(vacationsList: arrayOfVacations)
         }
     }
+    func validateVacationDates(startDate: String, endDate: String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        guard let start = dateFormatter.date(from: startDate),
+              let end = dateFormatter.date(from: endDate) else {
+            // Invalid date format
+            return false
+        }
+        
+        if start > end {
+            // Start date is after end date
+            return false
+        }
+        
+        return true
+    }
     
+    func validateVacationTimes(startTime: String, endTime: String) -> Bool {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        
+        guard let startDate = timeFormatter.date(from: startTime),
+              let endDate = timeFormatter.date(from: endTime) else {
+            return false
+        }
+        
+        // Check if start time is before end time
+        if startDate >= endDate {
+            return false
+        }
+        
+        return true
+    }
+
     func postVacationAPIMethod(vacationsList: [VacationSchedules]) {
         if selectedClinicId == 0 {
             selectedClinicId = allClinicsForVacation?[0].id ?? 0
@@ -224,7 +268,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     // MARK: - Add Vacations method
     @IBAction func addVacationButtonAction(sender: UIButton) {
-
+        
         let vacationCount = vacationsList.count
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
         
@@ -232,13 +276,13 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true
         let indexSet = IndexSet(integer: (vacationsList.count ) - 1)
-       
+        
         vacationsListTableView.insertSections(indexSet, with: .fade)
-      
+        
         let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days: [])
         
         vacationsList[vacationCount].userScheduleTimings?.append(date1)
-       
+        
         let indexPath = IndexPath(row: 0, section: vacationCount)
         
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
