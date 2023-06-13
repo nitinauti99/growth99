@@ -22,9 +22,16 @@ class FormListViewController: UIViewController {
     var viewModel: FormListViewModelProtocol?
     var isSearch: Bool = false
     
+    let user = UserRepository.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Forms"
+        if user.FormBulderTitle == "Questionnaires" {
+            self.title = "Questionnaires"
+
+        }else{
+            self.title = "Forms"
+        }
         viewModel = FormListViewModel(delegate: self)
         self.addSerchBar()
         self.setBarButton()

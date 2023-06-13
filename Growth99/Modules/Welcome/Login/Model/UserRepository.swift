@@ -166,6 +166,15 @@ public class UserRepository {
         }
     }
     
+    public var FormBulderTitle: String? {
+        get {
+            user.screenTitle
+        }
+        set {
+            user.screenTitle = newValue
+        }
+    }
+    
     public var selectedServiceId: Int? {
         get {
             user.selectedServiceId

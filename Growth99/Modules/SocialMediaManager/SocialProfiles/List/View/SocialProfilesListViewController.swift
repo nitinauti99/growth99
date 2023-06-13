@@ -44,7 +44,7 @@ class SocialProfilesListViewController: UIViewController {
     }
     
     func setBarButton(){
-        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(openSocialPlatform), imageName: "add")
+//        navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(openSocialPlatform), imageName: "add")
     }
     
     @objc func openSocialPlatform(sender: UIButton) {

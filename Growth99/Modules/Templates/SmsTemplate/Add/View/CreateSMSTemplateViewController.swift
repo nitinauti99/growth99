@@ -167,7 +167,9 @@ class CreateSMSTemplateViewController: UIViewController {
             return
         }
         
-        if self.bodyTextView.text.count < 200 || self.bodyTextView.text.count > 200 {
+        if self.bodyTextView.text.count  < 201 {
+            self.showCharacterLBI.text = String("Character Remaining: \(200 - self.bodyTextView.text.count)")
+        }else {
             return
         }
         

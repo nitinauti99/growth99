@@ -268,6 +268,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 2:
                 pushViewControllerFromDrawerMenu(identifier: "ConsentsTemplateListViewController", pusedViewController: "ConsentsTemplateListViewController")
             case 3:
+                user.FormBulderTitle = "Questionnaires"
                 pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
             default:
                 break

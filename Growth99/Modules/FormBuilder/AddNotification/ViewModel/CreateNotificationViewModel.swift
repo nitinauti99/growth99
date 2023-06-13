@@ -83,10 +83,8 @@ extension CreateNotificationViewModel: CreateNotificationViewModelProtocol {
     }
     
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 10 {
-            return true
-        }
-        return false
+        let phone = NSPredicate(format:"SELF MATCHES %@", Constant.Regex.phone)
+        return phone.evaluate(with: phoneNumber)
     }
     
     func isValidEmail(_ email: String) -> Bool {

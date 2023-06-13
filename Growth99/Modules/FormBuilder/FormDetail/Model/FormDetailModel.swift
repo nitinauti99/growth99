@@ -31,8 +31,10 @@ struct FormDetailModel: Codable {
     let subHeading : String?
     let questionChoices : [QuestionChoices]?
     let questionImages : [String]?
+    let isLeadForm: Bool?
+
     
-    init(createdAt: String?, updatedAt: String?, createdBy: CreatedBy?, updatedBy: UpdatedBy?, deleted: Bool?, tenantId: Int?, id: Int?, name: String?, type: String?, answer: String?, required: Bool?, questionOrder: Int?, allowMultipleSelection: Bool?, allowLabelsDisplayWithImages: Bool?, hidden: Bool?, validate: Bool?, regex: String?, validationMessage: String?, showDropDown: Bool?, preSelectCheckbox: Bool?, description: String?, subHeading: String?, questionChoices: [QuestionChoices]?, questionImages: [String]?) {
+    init(createdAt: String?, updatedAt: String?, createdBy: CreatedBy?, updatedBy: UpdatedBy?, deleted: Bool?, tenantId: Int?, id: Int?, name: String?, type: String?, answer: String?, required: Bool?, questionOrder: Int?, allowMultipleSelection: Bool?, allowLabelsDisplayWithImages: Bool?, hidden: Bool?, validate: Bool?, regex: String?, validationMessage: String?, showDropDown: Bool?, preSelectCheckbox: Bool?, description: String?, subHeading: String?, questionChoices: [QuestionChoices]?, questionImages: [String]?,isLeadForm: Bool?) {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.createdBy = createdBy
@@ -57,6 +59,7 @@ struct FormDetailModel: Codable {
         self.subHeading = subHeading
         self.questionChoices = questionChoices
         self.questionImages = questionImages
+        self.isLeadForm = isLeadForm
     }
 }
 

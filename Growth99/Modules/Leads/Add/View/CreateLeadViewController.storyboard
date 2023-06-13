@@ -17,118 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLW-8s-Uw8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DXO-lF-KbT">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O62-Cr-TkI">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1500"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DXO-lF-KbT">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="1390"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="hpY-dC-yZ6"/>
-                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="DkT-Cb-MPC"/>
-                                                </connections>
-                                            </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-d6-ukM">
-                                                <rect key="frame" x="0.0" y="1410" width="390" height="70"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtn-cM-mXu">
-                                                        <rect key="frame" x="30" y="12" width="152.66666666666666" height="46"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="46" id="SkY-bh-oFY"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="Button">
-                                                            <attributedString key="attributedTitle">
-                                                                <fragment content="Submit">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="16" name="AvenirNext-Medium"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="submitButtonClicked" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fb1-kt-sni"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUd-k2-99B">
-                                                        <rect key="frame" x="212.66666666666663" y="12" width="152.33333333333337" height="46"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="46" id="Pdd-8p-xco"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="Button">
-                                                            <attributedString key="attributedTitle">
-                                                                <fragment content="Cancel">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="16" name="AvenirNext-Medium"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="closeButtonClicked" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hk4-2o-nn6"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="6wD-KF-O7d"/>
-                                                    <constraint firstItem="bUd-k2-99B" firstAttribute="centerY" secondItem="rtn-cM-mXu" secondAttribute="centerY" id="HUj-C5-eGq"/>
-                                                    <constraint firstItem="rtn-cM-mXu" firstAttribute="leading" secondItem="MSS-d6-ukM" secondAttribute="leading" constant="30" id="Krn-kj-Bkg"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bUd-k2-99B" secondAttribute="trailing" constant="25" id="Ps6-r8-gnO"/>
-                                                    <constraint firstItem="bUd-k2-99B" firstAttribute="leading" secondItem="rtn-cM-mXu" secondAttribute="trailing" constant="30" id="hC5-Ni-q9M"/>
-                                                    <constraint firstItem="bUd-k2-99B" firstAttribute="width" secondItem="rtn-cM-mXu" secondAttribute="width" id="lMt-e5-mJG"/>
-                                                    <constraint firstItem="rtn-cM-mXu" firstAttribute="centerY" secondItem="MSS-d6-ukM" secondAttribute="centerY" id="z8v-9g-CC2"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1500" id="3eG-YB-5ea"/>
-                                            <constraint firstAttribute="trailing" secondItem="MSS-d6-ukM" secondAttribute="trailing" id="4L0-p1-Vd1"/>
-                                            <constraint firstItem="DXO-lF-KbT" firstAttribute="leading" secondItem="O62-Cr-TkI" secondAttribute="leading" id="7qG-A8-99V"/>
-                                            <constraint firstItem="MSS-d6-ukM" firstAttribute="leading" secondItem="O62-Cr-TkI" secondAttribute="leading" id="Cck-Ze-mbW"/>
-                                            <constraint firstAttribute="bottom" secondItem="MSS-d6-ukM" secondAttribute="bottom" constant="20" id="SPS-if-fHx"/>
-                                            <constraint firstAttribute="trailing" secondItem="DXO-lF-KbT" secondAttribute="trailing" id="s8V-or-26I"/>
-                                            <constraint firstItem="MSS-d6-ukM" firstAttribute="top" secondItem="DXO-lF-KbT" secondAttribute="bottom" constant="20" id="sFC-2r-GXf"/>
-                                            <constraint firstItem="DXO-lF-KbT" firstAttribute="top" secondItem="O62-Cr-TkI" secondAttribute="top" id="wRK-cp-EIy"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="O62-Cr-TkI" secondAttribute="trailing" id="HW4-K8-icD"/>
-                                    <constraint firstItem="O62-Cr-TkI" firstAttribute="top" secondItem="HLW-8s-Uw8" secondAttribute="top" id="KA0-fq-tIr"/>
-                                    <constraint firstItem="O62-Cr-TkI" firstAttribute="leading" secondItem="HLW-8s-Uw8" secondAttribute="leading" id="UJx-rT-3a6"/>
-                                    <constraint firstAttribute="bottom" secondItem="O62-Cr-TkI" secondAttribute="bottom" id="tSq-up-xjP"/>
-                                </constraints>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Sxr-u2-swh"/>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="hpY-dC-yZ6"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="DkT-Cb-MPC"/>
                                 </connections>
-                            </scrollView>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="HLW-8s-Uw8" secondAttribute="trailing" id="1rS-Ke-tKz"/>
-                            <constraint firstItem="O62-Cr-TkI" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="UWI-Cy-y1U"/>
-                            <constraint firstItem="HLW-8s-Uw8" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ZsR-Nl-YuB"/>
-                            <constraint firstAttribute="bottom" secondItem="HLW-8s-Uw8" secondAttribute="bottom" id="jE1-oR-Nsa"/>
-                            <constraint firstItem="HLW-8s-Uw8" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="oEp-9o-pZh"/>
+                            <constraint firstItem="DXO-lF-KbT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CIn-Dm-CsV"/>
+                            <constraint firstItem="DXO-lF-KbT" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vye-CJ-4qd"/>
+                            <constraint firstItem="DXO-lF-KbT" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ecH-46-zkI"/>
+                            <constraint firstAttribute="bottom" secondItem="DXO-lF-KbT" secondAttribute="bottom" id="s5j-nL-KA1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="CancelButton" destination="bUd-k2-99B" id="cTc-zy-sqi"/>
-                        <outlet property="scrollViewHight" destination="3eG-YB-5ea" id="KXU-EY-BPg"/>
-                        <outlet property="submitButton" destination="rtn-cM-mXu" id="gT6-5K-VVw"/>
                         <outlet property="tableView" destination="DXO-lF-KbT" id="WIT-T2-3Pw"/>
                     </connections>
                 </viewController>

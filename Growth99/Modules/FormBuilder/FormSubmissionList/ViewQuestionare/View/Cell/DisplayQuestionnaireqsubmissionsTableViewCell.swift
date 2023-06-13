@@ -22,13 +22,8 @@ class DisplayQuestionnaireqsubmissionsTableViewCell: UITableViewCell {
         let questionnaireVM = questionnaireVM?.getQuestionnaireDataAtIndex(index: index.row)
         self.questionName.text = questionnaireVM?.questionName
         self.questionAns.text = questionnaireVM?.answerText
-        var selectedStringArray = [String]()
-        if questionnaireVM?.questionType == "Multiple_Selection_Text" {
-            for item in questionnaireVM?.questionChoices ?? [] {
-                selectedStringArray.append(item.choiceName ?? String.blank)
-            }
-            self.questionAns.text = selectedStringArray.joined(separator: ",")
-        }else if questionnaireVM?.questionType == "Yes_No" {
+        
+        if questionnaireVM?.questionType == "Yes_No" {
             if let ans = questionnaireVM?.answerText, ans == "false" {
                 self.questionAns.text = "no"
             }else{

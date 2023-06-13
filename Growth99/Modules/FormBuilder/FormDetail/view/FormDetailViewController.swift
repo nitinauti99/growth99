@@ -40,7 +40,7 @@ class FormDetailViewController: UIViewController {
         self.tableView.register(UINib(nibName: "FormDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "FormDetailTableViewCell")
         self.tableView.register(UINib(nibName: "CreateQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "CreateQuestionnaireTableViewCell")
         self.tableView.register(UINib(nibName: "LeadQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadQuestionnaireTableViewCell")
-
+        self.tableView.register(UINib(nibName: "CreateDefaultQuestionnaireTableViewCell", bundle: nil), forCellReuseIdentifier: "CreateDefaultQuestionnaireTableViewCell")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +65,7 @@ class FormDetailViewController: UIViewController {
         let createdBy = CreatedBy(firstName: "", lastName: "", email: "", username: "")
         let updatedBy =  UpdatedBy(firstName: "", lastName: "", email: "", username: "")
 
-        let formItem  = FormDetailModel(createdAt: "", updatedAt: "", createdBy: createdBy, updatedBy: updatedBy, deleted: false, tenantId: 0, id: 0, name: "", type: "", answer: "", required: false, questionOrder:0, allowMultipleSelection: false, allowLabelsDisplayWithImages: false, hidden: false, validate: false, regex: "", validationMessage: "", showDropDown: false, preSelectCheckbox: false, description: "", subHeading: "", questionChoices: [], questionImages: [])
+        let formItem  = FormDetailModel(createdAt: "", updatedAt: "", createdBy: createdBy, updatedBy: updatedBy, deleted: false, tenantId: 0, id: 0, name: "", type: "", answer: "", required: false, questionOrder:0, allowMultipleSelection: false, allowLabelsDisplayWithImages: false, hidden: false, validate: false, regex: "", validationMessage: "", showDropDown: false, preSelectCheckbox: false, description: "", subHeading: "", questionChoices: [], questionImages: [], isLeadForm: false)
         
         self.viewModel?.addFormDetailData(item: formItem)
         
@@ -97,7 +97,7 @@ class FormDetailViewController: UIViewController {
       
 }
 
-extension FormDetailViewController: CreateQuestionnaireTableViewCellDelegate {
+extension FormDetailViewController: CreateQuestionnaireTableViewCellDelegate,CreateDefaultQuestionnaireTableViewCellDelegate {
     
     func presnetImagePickerController(cell: CreateQuestionnaireTableViewCell, imagePicker: UIImagePickerController) {
         self.present(imagePicker, animated: true)
@@ -197,8 +197,10 @@ extension FormDetailViewController: FormDetailTableViewCellDelegate {
             self?.tableView.deleteRows(at: [index], with: .automatic)
             self?.tableView?.performBatchUpdates(nil, completion: nil)
             self?.tableView.reloadData()
-            self?.view.ShowSpinner()
-            self?.viewModel?.removeQuestions(questionId: self?.questionId ?? 0, childQuestionId: id )
+            if id != 0 {
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeQuestions(questionId: self?.questionId ?? 0, childQuestionId: id )
+            }
         })
         cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
         alert.addAction(cancelAlert)

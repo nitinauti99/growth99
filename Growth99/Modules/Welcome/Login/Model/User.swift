@@ -26,6 +26,7 @@ class User {
     private static let bussinessId = "bussinessId"
     private static let subDomainName = "subDomainName"
     private static let screenTitle = "screenTitle"
+    private static let FormBulderTitle = "FormBulderTitle"
     private static let selectedServiceId = "selectedServiceId"
 
     var authToken: String? {
@@ -184,6 +185,16 @@ class User {
         }
     }
     
+    var FormBulderTitle: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.screenTitle)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.screenTitle)
+        }
+    }
+    
+    
     var selectedServiceId: Int? {
          get {
              KeychainWrapper.standard.integer(forKey: User.selectedServiceId)
@@ -208,6 +219,7 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.bussinessName)
         KeychainWrapper.standard.removeObject(forKey: User.bussinessId)
         KeychainWrapper.standard.removeObject(forKey: User.screenTitle)
+        KeychainWrapper.standard.removeObject(forKey: User.FormBulderTitle)
         KeychainWrapper.standard.removeObject(forKey: User.selectedServiceId)
     }
 

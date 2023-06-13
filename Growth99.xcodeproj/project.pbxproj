@@ -80,6 +80,12 @@
 		013A4FE529B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */; };
 		0144D9FF2A3746E800DBD12E /* PeteintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144D9FD2A3746E800DBD12E /* PeteintDetailView.swift */; };
 		0144DA002A3746E800DBD12E /* PeteintDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0144D9FE2A3746E800DBD12E /* PeteintDetailView.storyboard */; };
+		0144DA032A378E0200DBD12E /* CreateDefaultQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144DA012A378E0100DBD12E /* CreateDefaultQuestionnaireTableViewCell.swift */; };
+		0144DA042A378E0200DBD12E /* CreateDefaultQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0144DA022A378E0100DBD12E /* CreateDefaultQuestionnaireTableViewCell.xib */; };
+		0144DA072A38A42300DBD12E /* FileTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144DA052A38A42200DBD12E /* FileTypeTableViewCell.swift */; };
+		0144DA082A38A42300DBD12E /* FileTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0144DA062A38A42200DBD12E /* FileTypeTableViewCell.xib */; };
+		0144DA0C2A38AA1500DBD12E /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144DA0A2A38AA1500DBD12E /* BottomTableViewCell.swift */; };
+		0144DA0D2A38AA1500DBD12E /* BottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0144DA0B2A38AA1500DBD12E /* BottomTableViewCell.xib */; };
 		014549BF29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */; };
 		01454A0129FC36C100237E60 /* UserCreateViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */; };
 		01454A0329FCD13100237E60 /* PostsListViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */; };
@@ -990,6 +996,12 @@
 		013A4FD729B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectionWithDropDownTypeTableViewCell.swift; sourceTree = "<group>"; };
 		0144D9FD2A3746E800DBD12E /* PeteintDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeteintDetailView.swift; sourceTree = "<group>"; };
 		0144D9FE2A3746E800DBD12E /* PeteintDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PeteintDetailView.storyboard; sourceTree = "<group>"; };
+		0144DA012A378E0100DBD12E /* CreateDefaultQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDefaultQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
+		0144DA022A378E0100DBD12E /* CreateDefaultQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDefaultQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
+		0144DA052A38A42200DBD12E /* FileTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeTableViewCell.swift; sourceTree = "<group>"; };
+		0144DA062A38A42200DBD12E /* FileTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTypeTableViewCell.xib; sourceTree = "<group>"; };
+		0144DA0A2A38AA1500DBD12E /* BottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTableViewCell.swift; sourceTree = "<group>"; };
+		0144DA0B2A38AA1500DBD12E /* BottomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomTableViewCell.xib; sourceTree = "<group>"; };
 		014549BE29E9691F00237E60 /* CreatePateintsTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintsTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		01454A0029FC36C100237E60 /* UserCreateViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCreateViewController+TextField.swift"; sourceTree = "<group>"; };
 		01454A0229FCD13100237E60 /* PostsListViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
@@ -2080,6 +2092,7 @@
 		013A4FA829B4E39B00CA24B0 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0144DA092A38A8BA00DBD12E /* Group3 */,
 				013A4FA929B4E39B00CA24B0 /* Group1 */,
 				013A4FB229B4E39B00CA24B0 /* Group2 */,
 			);
@@ -2097,6 +2110,8 @@
 				013A4FAB29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib */,
 				013A4FAA29B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.swift */,
 				013A4FB129B4E39B00CA24B0 /* LeadYesNoTypeTableViewCell.xib */,
+				0144DA052A38A42200DBD12E /* FileTypeTableViewCell.swift */,
+				0144DA062A38A42200DBD12E /* FileTypeTableViewCell.xib */,
 			);
 			path = Group1;
 			sourceTree = "<group>";
@@ -2271,6 +2286,15 @@
 			);
 			name = ContainerView;
 			path = View/ContainerView;
+			sourceTree = "<group>";
+		};
+		0144DA092A38A8BA00DBD12E /* Group3 */ = {
+			isa = PBXGroup;
+			children = (
+				0144DA0A2A38AA1500DBD12E /* BottomTableViewCell.swift */,
+				0144DA0B2A38AA1500DBD12E /* BottomTableViewCell.xib */,
+			);
+			path = Group3;
 			sourceTree = "<group>";
 		};
 		01468DFC29BE338E002BDC1F /* Cell */ = {
@@ -3451,6 +3475,8 @@
 				01FB531129E5B83600C8559F /* CreateQuestionnaireTableViewCell.swift */,
 				01FB531229E5B83600C8559F /* CreateQuestionnaireTableViewCell.xib */,
 				01FB531529E5BED200C8559F /* CreateQuestionnaireTableViewCell+ImageView.swift */,
+				0144DA012A378E0100DBD12E /* CreateDefaultQuestionnaireTableViewCell.swift */,
+				0144DA022A378E0100DBD12E /* CreateDefaultQuestionnaireTableViewCell.xib */,
 			);
 			path = FormDetailCell;
 			sourceTree = "<group>";
@@ -6931,6 +6957,7 @@
 				848F4D8A28F1C164007AC421 /* LaunchScreen.storyboard in Resources */,
 				DA64B91F29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib in Resources */,
 				01468E0029BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.xib in Resources */,
+				0144DA0D2A38AA1500DBD12E /* BottomTableViewCell.xib in Resources */,
 				01C748A929B234490085CED2 /* BussinessSelectionListTableViewCell.xib in Resources */,
 				8497A03E28FF11E200CBA26C /* Production.plist in Resources */,
 				01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */,
@@ -6996,6 +7023,7 @@
 				39FC692F29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard in Resources */,
 				013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */,
 				189E3EE729C391E100B94190 /* PostsListViewContoller.storyboard in Resources */,
+				0144DA082A38A42300DBD12E /* FileTypeTableViewCell.xib in Resources */,
 				01684C3E29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard in Resources */,
 				849D3AF22997CC72003E856A /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				189E3F0529C3930300B94190 /* MediaLibraryListViewController.storyboard in Resources */,
@@ -7124,6 +7152,7 @@
 				84D0622529670676001FE469 /* WorkingCustomTableViewCell.xib in Resources */,
 				3947A902299677EE000CA2EB /* BookingHistoryViewController.storyboard in Resources */,
 				39F2FF142996B2F40089BD4F /* AppointmentsViewController.storyboard in Resources */,
+				0144DA042A378E0200DBD12E /* CreateDefaultQuestionnaireTableViewCell.xib in Resources */,
 				189670B729BA6081003224ED /* TriggerLeadActionTableViewCell.xib in Resources */,
 				01EBAC5829B58B0200110DCB /* DeletedLeadListViewController.storyboard in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
@@ -7720,6 +7749,7 @@
 				01684C6929BE10C800DE1041 /* CreateSMSTemplateViewController.swift in Sources */,
 				01152E3429B3C5FF00B24627 /* LeadHistoryViewModel.swift in Sources */,
 				84F6113B292A71AB00B1FB69 /* OSLogger.swift in Sources */,
+				0144DA032A378E0200DBD12E /* CreateDefaultQuestionnaireTableViewCell.swift in Sources */,
 				84F61102292A71AB00B1FB69 /* String+Additions.swift in Sources */,
 				01C7488E29B22B820085CED2 /* PatientAppointmentViewController+SearchBar.swift in Sources */,
 				84D0630C2967080E001FE469 /* SMStemplatesListDetailModel.swift in Sources */,
@@ -7736,6 +7766,7 @@
 				DAEF74A4299D533B009140AE /* DataStudioViewController.swift in Sources */,
 				84D062A22967070D001FE469 /* UserListViewContoller.swift in Sources */,
 				1896709129BA5E62003224ED /* TriggersListViewController+TableView.swift in Sources */,
+				0144DA072A38A42300DBD12E /* FileTypeTableViewCell.swift in Sources */,
 				DA06999429E9671D002E060A /* AddEventViewController+TextField.swift in Sources */,
 				845C39E5292276B000D934C5 /* GRBarbuttonItem.swift in Sources */,
 				84F610E7292A71AB00B1FB69 /* SequenceManager.swift in Sources */,
@@ -7773,6 +7804,7 @@
 				18491DBE29B80CE000FE72EF /* MassEmailandSMSModel.swift in Sources */,
 				013A4FE329B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.swift in Sources */,
 				01EBAC6C29B593F500110DCB /* DeletedLeadListTableViewCell.swift in Sources */,
+				0144DA0C2A38AA1500DBD12E /* BottomTableViewCell.swift in Sources */,
 				84D062F32967080E001FE469 /* EditLeadViewModel.swift in Sources */,
 				845C39E8292276B000D934C5 /* EndPoints.swift in Sources */,
 				849004992985A1B300A271AA /* PateintsTagsListViewModel.swift in Sources */,

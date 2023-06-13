@@ -17,4 +17,5 @@ struct FormListModel: Codable {
     let updatedAt: String?
     let noOfQuestions: Int?
     let isContactForm: Bool?
+    let isG99ReviewForm: Bool?
 }

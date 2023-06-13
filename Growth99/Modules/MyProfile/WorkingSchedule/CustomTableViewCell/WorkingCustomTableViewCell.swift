@@ -15,8 +15,6 @@ protocol WorkingCellSubclassDelegate: AnyObject {
 }
 
 class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
-    
-    
     @IBOutlet weak var selectDayTextField: CustomTextField!
     @IBOutlet weak var selectDayButton: UIButton!
     @IBOutlet weak var timeFromTextField: CustomTextField!
@@ -40,7 +38,6 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         timeToTextField.tintColor = .clear
         timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .time)
         timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .time)
-        
         subView.layer.borderWidth = 1
         subView.layer.cornerRadius = 5
         subView.layer.borderColor = UIColor.init(hexString: "#009EDE").cgColor

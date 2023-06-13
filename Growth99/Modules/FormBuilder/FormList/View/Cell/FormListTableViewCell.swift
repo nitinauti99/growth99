@@ -38,7 +38,7 @@ class FormListTableViewCell: UITableViewCell {
         self.id.text = String(FormList?.id ?? 0)
         self.NumberOfQustion.text = String(FormList?.noOfQuestions ?? 0)
         deletButtonAction.isHidden =  false
-        if FormList?.isContactForm == true {
+        if FormList?.isContactForm == true || FormList?.isG99ReviewForm == true {
             deletButtonAction.isHidden =  true
         }
         self.createdAt.text = dateFormater?.serverToLocal(date: FormList?.createdAt ?? String.blank)
@@ -51,7 +51,7 @@ class FormListTableViewCell: UITableViewCell {
         self.name.text = FormList?.name
         self.id.text = String(FormList?.id ?? 0)
         deletButtonAction.isHidden =  false
-        if FormList?.isContactForm == true {
+        if FormList?.isContactForm == true || FormList?.isG99ReviewForm == true {
             deletButtonAction.isHidden =  true
         }
         self.NumberOfQustion.text = String((FormList?.noOfQuestions ?? Int("-")) ?? 0)

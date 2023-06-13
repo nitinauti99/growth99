@@ -35,6 +35,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         //2023-04-26T06:26:27.772+0000
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
         return dateFormatter.string(from: date)
     }
@@ -46,6 +47,7 @@ class DateFormater: DateFormaterProtocol {
        
         let usDateFormatter = DateFormatter()
         usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
+        usDateFormatter.timeZone = TimeZone(identifier: "UTC")
         let date = dateFormatter.date(from: date) ?? Date()
         return usDateFormatter.string(from: date)
     }
@@ -58,7 +60,7 @@ class DateFormater: DateFormaterProtocol {
         if let date = dateFormatter.date(from: date) {
             let usDateFormatter = DateFormatter()
             usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-            usDateFormatter.timeZone = TimeZone(identifier: "GMT-6")
+            usDateFormatter.timeZone = TimeZone(identifier: "UTC")
             let usDateString = usDateFormatter.string(from: date)
             return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
         }
@@ -71,6 +73,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "MMM d yyyy"
         return dateFormatter.string(from: date)
     }
@@ -81,6 +84,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date)
     }
@@ -91,6 +95,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "MM-dd-yyyy"
         return dateFormatter.string(from: date)
     }
@@ -100,6 +105,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "MMM dd yyyy"
         return dateFormatter.string(from: date as Date)
     }
@@ -109,6 +115,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: date)
     }
@@ -118,6 +125,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
         let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: date)
     }
@@ -139,6 +147,7 @@ class DateFormater: DateFormaterProtocol {
         dateFormatter.dateFormat = "h:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "HH:mm:ss'Z'"
         return dateWith + dateFormatter.string(from: date)
     }

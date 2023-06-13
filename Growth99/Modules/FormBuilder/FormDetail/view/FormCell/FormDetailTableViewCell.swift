@@ -531,10 +531,13 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
     
     /// Remove row from table view
     func deletRowFormCell(cell: FormQuestionTableViewCell, index: IndexPath) {
+        self.questionTableView.beginUpdates()
         self.questionArray.remove(at: index.row)
-        questionTableViewHight.constant = CGFloat(questionArray.count * 120)
         self.questionTableView.deleteRows(at: [index], with: .automatic)
-        self.tableView?.performBatchUpdates(nil, completion: nil)
+        self.questionTableView.endUpdates()
+        questionTableViewHight.constant = CGFloat(questionArray.count * 120)
+        questionTableView.reloadRows(at: self.questionTableView.indexPathsForVisibleRows ?? [], with: .none)
+
     }
     
     @IBAction func deleteButtonAction(sender: UIButton) {

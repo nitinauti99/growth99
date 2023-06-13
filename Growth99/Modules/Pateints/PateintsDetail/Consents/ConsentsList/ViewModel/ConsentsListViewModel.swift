@@ -45,7 +45,7 @@ class ConsentsListViewModel {
         self.consentsFilterList = self.consentsList.filter { task in
             let searchText = searchText.lowercased()
             let nameMatch = task.name?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
+            let idMatch = String(task.appointmentId ?? 0).prefix(searchText.count).elementsEqual(searchText)
             return nameMatch || idMatch
         }
     }

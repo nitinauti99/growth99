@@ -23,15 +23,25 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         if indexPath.section == 0 {
-            var cell = CreateQuestionnaireTableViewCell()
-            cell = self.tableView.dequeueReusableCell(withIdentifier: "CreateQuestionnaireTableViewCell", for: indexPath) as! CreateQuestionnaireTableViewCell
-            cell.delegate = self
-            cell.configureCell(tableView: tableView, viewModel: viewModel, index: indexPath)
-            return cell
+            let formList = viewModel?.getFormQuestionnaireData
+            if formList?.isLeadForm == true {
+                var cell =  CreateDefaultQuestionnaireTableViewCell()
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "CreateDefaultQuestionnaireTableViewCell", for: indexPath) as! CreateDefaultQuestionnaireTableViewCell
+                cell.delegate = self
+                cell.configureCell(tableView: tableView, viewModel: viewModel, index: indexPath)
+                return cell
+            }else{
+                var cell = CreateQuestionnaireTableViewCell()
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "CreateQuestionnaireTableViewCell", for: indexPath) as! CreateQuestionnaireTableViewCell
+                cell.delegate = self
+                cell.configureCell(tableView: tableView, viewModel: viewModel, index: indexPath)
+                return cell
+            }
         }else{
             let formList = viewModel?.FormDataAtIndex(index: indexPath.row)
-          
+
             if formList?.name == "First Name" || formList?.name == "Last Name" || formList?.name == "Email" || formList?.name == "Phone Number" || formList?.name == "Symptoms" || formList?.name == "Gender"  {
                 var cell = LeadQuestionnaireTableViewCell()
                 cell = self.tableView.dequeueReusableCell(withIdentifier: "LeadQuestionnaireTableViewCell", for: indexPath) as! LeadQuestionnaireTableViewCell

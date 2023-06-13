@@ -37,12 +37,17 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
     @IBOutlet private weak var subView: UIView!
 
     var viewModel: CreateFormViewModelProtocol?
-        
+    let user = UserRepository.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Constant.Profile.createForm
         self.viewModel = CreateFormViewModel(delegate: self)
         self.setUpUI()
+        if user.FormBulderTitle == "Questionnaires" {
+            self.title = "Create Questionnaire"
+        }else{
+            self.title = Constant.Profile.createForm
+        }
     }
     
     private func setUpUI(){
