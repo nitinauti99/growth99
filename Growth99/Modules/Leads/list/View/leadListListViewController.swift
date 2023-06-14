@@ -24,6 +24,7 @@ class leadListViewController: UIViewController, leadListTableViewCellDelegate {
     var currentPage : Int = 0
     var isLoadingList : Bool = true
     var totalCount: Int? = 0
+    let user = UserRepository.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +120,10 @@ class leadListViewController: UIViewController, leadListTableViewCellDelegate {
     func detailLead(cell: leadListTableViewCell, index: IndexPath) {
         let LeadDetail = LeadDetailContainerView.viewController()
         LeadDetail.workflowLeadId = viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
+        let user = UserRepository.shared
+        user.leadId = viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
+        user.leadFullName = (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.lastName ?? "")
+
         self.navigationController?.pushViewController(LeadDetail, animated: true)
     }
     

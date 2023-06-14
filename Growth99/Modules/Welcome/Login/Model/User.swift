@@ -28,6 +28,9 @@ class User {
     private static let screenTitle = "screenTitle"
     private static let FormBulderTitle = "FormBulderTitle"
     private static let selectedServiceId = "selectedServiceId"
+    private static let leadId = "leadId"
+    private static let leadFullName = "leadFullName"
+
 
     var authToken: String? {
         get {
@@ -185,6 +188,15 @@ class User {
         }
     }
     
+    var leadFullName: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.leadFullName)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.leadFullName)
+        }
+    }
+    
     var FormBulderTitle: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.screenTitle)
@@ -204,6 +216,17 @@ class User {
          }
      }
     
+    var leadId: Int? {
+         get {
+             KeychainWrapper.standard.integer(forKey: User.leadId)
+         }
+         set {
+             applyNewValueInKeyChain(value: newValue, key: User.leadId)
+         }
+     }
+    
+    
+    
     func removKeyChainValues() {
         KeychainWrapper.standard.removeObject(forKey: User.authToken)
         KeychainWrapper.standard.removeObject(forKey: User.firstName)
@@ -221,8 +244,11 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.screenTitle)
         KeychainWrapper.standard.removeObject(forKey: User.FormBulderTitle)
         KeychainWrapper.standard.removeObject(forKey: User.selectedServiceId)
+        KeychainWrapper.standard.removeObject(forKey: User.leadId)
+        KeychainWrapper.standard.removeObject(forKey: User.leadFullName)
     }
 
+    
     private func applyNewValueInKeyChain(value: Any?, key: String) {
         guard let newValue = value else {
             KeychainWrapper.standard.removeObject(forKey: key)

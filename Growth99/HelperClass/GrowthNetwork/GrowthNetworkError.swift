@@ -142,7 +142,7 @@ extension GrowthNetworkError: LocalizedError {
         case .missingURL:
             return "Missing URL"
         case .objectMapping:
-            return "Failed to map data to decodable object"
+            return "Internal Server Error"
         case .parameterEncoding:
             return "nil"
         case .parametersNil:

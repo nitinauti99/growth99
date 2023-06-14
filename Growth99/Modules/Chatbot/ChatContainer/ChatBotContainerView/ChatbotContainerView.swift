@@ -12,7 +12,6 @@ class ChatbotContainerView: UIViewController {
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
-    var workflowLeadId = Int()
     var leadData: leadListModel?
 
     var selectedindex = 0

@@ -22,7 +22,8 @@ class LeadHistoryViewController: UIViewController, LeadHistoryViewControllerProt
     
     var viewModel: LeadHistoryViewModelProtocol?
     var isSearch : Bool = false
-    
+    let user = UserRepository.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = LeadHistoryViewModel(delegate: self)
@@ -103,10 +104,12 @@ extension LeadHistoryViewController: LeadHistoryListTableViewCellDelegate {
         
         if isSearch{
             editVC.LeadData = viewModel?.leadHistoryFilterDataAtIndex(index: index.row)
-            editVC.LeadId = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id ?? 0
+            user.leadId = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id
+            user.leadFullName = (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.lastName ?? "")
         }else{
             editVC.LeadData = viewModel?.leadHistoryDataAtIndex(index: index.row)
-            editVC.LeadId = self.viewModel?.leadHistoryDataAtIndex(index: index.row)?.id ?? 0
+            user.leadId = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id
+            user.leadFullName = (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.lastName ?? "")
         }
         self.navigationController?.pushViewController(editVC, animated: true)
     }

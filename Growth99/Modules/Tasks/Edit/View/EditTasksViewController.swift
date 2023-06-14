@@ -173,6 +173,9 @@ class EditTasksViewController: UIViewController{
         }else{
             if (sender.titleLabel?.text == "Go To Lead Detail" ) {
                 let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
+                let user = UserRepository.shared
+                user.leadId = viewModel?.taskDetailData?.leadId ?? 0
+                user.leadFullName = (viewModel?.taskDetailData?.leadDTO?.firstName ?? "") + " " + (viewModel?.taskDetailData?.leadDTO?.lastName ?? "")
                 detailController.workflowLeadId = viewModel?.taskDetailData?.leadId ?? 0
                 navigationController?.pushViewController(detailController, animated: true)
                 

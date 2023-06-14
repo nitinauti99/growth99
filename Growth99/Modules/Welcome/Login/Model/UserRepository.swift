@@ -174,6 +174,15 @@ public class UserRepository {
             user.screenTitle = newValue
         }
     }
+
+    public var leadFullName: String? {
+        get {
+            user.leadFullName
+        }
+        set {
+            user.leadFullName = newValue
+        }
+    }
     
     public var selectedServiceId: Int? {
         get {
@@ -183,4 +192,14 @@ public class UserRepository {
             user.selectedServiceId = newValue
         }
     }
+ 
+    public var leadId: Int? {
+        get {
+            user.leadId
+        }
+        set {
+            user.leadId = newValue
+        }
+    }
+    
 }
