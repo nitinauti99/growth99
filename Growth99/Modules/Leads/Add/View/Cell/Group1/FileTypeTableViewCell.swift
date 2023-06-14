@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Photos
 
 protocol FileTypeTableViewCellProtocol: AnyObject {
     func presentImagePickerController(pickerController: UIImagePickerController)
-    func dissmissImagePickerController()
+    func dissmissImagePickerController(id: Int, questionId: Int, image: UIImage)
+    
 }
 
 class FileTypeTableViewCell: UITableViewCell, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -19,15 +21,21 @@ class FileTypeTableViewCell: UITableViewCell, UIImagePickerControllerDelegate & 
     @IBOutlet weak var asteriskSign: UILabel!
 
     var delegate: FileTypeTableViewCellProtocol?
-    
+    var imageName = String()
+    var imageUrl = String()
+    var id = Int()
+    var questionId = Int()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         selectFile.layer.borderColor = UIColor.gray.cgColor;
         selectFile.layer.borderWidth = 1.0;
     }
 
-    func configureCell(questionarieVM: CreateLeadViewModelProtocol?, index: IndexPath) {
-        
+    func configureCell(questionarieVM: CreateLeadViewModelProtocol?, index: IndexPath, id: Int) {
+        let questionarie = questionarieVM?.getLeadQuestionnaireListAtIndex(index: index.row)
+        self.questionId = questionarie?.questionId ?? 0
+        self.id = id
     }
     
     @IBAction func selectButtonPressed(sender: UIButton) {
@@ -41,15 +49,15 @@ class FileTypeTableViewCell: UITableViewCell, UIImagePickerControllerDelegate & 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        if let asset = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.phAsset.rawValue)] as? PHAsset {
+            let assetResources = PHAssetResource.assetResources(for: asset)
+            print(assetResources.first!.originalFilename)
+            self.imageName = assetResources.first!.originalFilename
+          }
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            if let data = image.pngData() {
-                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
-                print("image url", filename)
-                try? data.write(to: filename)
-            }
+            self.delegate?.dissmissImagePickerController(id: id, questionId: self.questionId, image: image)
+
         }
-//        self.selectedLbi.text  = selectedImage
-        delegate?.dissmissImagePickerController()
     }
     
     func getDocumentsDirectory() -> URL {
