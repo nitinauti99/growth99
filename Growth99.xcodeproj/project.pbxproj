@@ -188,6 +188,10 @@
 		017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */; };
 		017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */; };
 		017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */; };
+		018C65232A397A6A008F20C3 /* LeadCreateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018C65212A397A6A008F20C3 /* LeadCreateDetailTableViewCell.swift */; };
+		018C65242A397A6A008F20C3 /* LeadCreateDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018C65222A397A6A008F20C3 /* LeadCreateDetailTableViewCell.xib */; };
+		018C65272A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018C65252A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.swift */; };
+		018C65282A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018C65262A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.xib */; };
 		01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */; };
 		01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */; };
 		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
@@ -1104,6 +1108,10 @@
 		017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
 		017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayQuestionnaireViewContoller+TableView.swift"; sourceTree = "<group>"; };
+		018C65212A397A6A008F20C3 /* LeadCreateDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadCreateDetailTableViewCell.swift; sourceTree = "<group>"; };
+		018C65222A397A6A008F20C3 /* LeadCreateDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadCreateDetailTableViewCell.xib; sourceTree = "<group>"; };
+		018C65252A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadCreationCombineTimeLineTableViewCell.swift; sourceTree = "<group>"; };
+		018C65262A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadCreationCombineTimeLineTableViewCell.xib; sourceTree = "<group>"; };
 		01A1302F29AE54F80098DBF8 /* PateintEditViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintEditViewController+UITextField.swift"; sourceTree = "<group>"; };
 		01A1303129AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePateintViewContoller+UITextfiled.swift"; sourceTree = "<group>"; };
 		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
@@ -2866,6 +2874,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		018C65292A3984EF008F20C3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01E348F729E90D5E003B2456 /* LeadCombineTimeLineTableViewCell.swift */,
+				01E348FA29E90D5E003B2456 /* LeadCombineTimeLineTableViewCell.xib */,
+				018C65252A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.swift */,
+				018C65262A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01A2007429C746A900A7DD59 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3252,10 +3271,9 @@
 		01E348F629E90D5E003B2456 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				01E348F729E90D5E003B2456 /* LeadCombineTimeLineTableViewCell.swift */,
+				018C65292A3984EF008F20C3 /* Cell */,
 				01E348F829E90D5E003B2456 /* CombineTimeLineViewController.swift */,
 				01E348F929E90D5E003B2456 /* CombineTimeLineViewController.storyboard */,
-				01E348FA29E90D5E003B2456 /* LeadCombineTimeLineTableViewCell.xib */,
 				01E348FB29E90D5E003B2456 /* CombineTimeLineViewController+TableView.swift */,
 			);
 			path = View;
@@ -6343,6 +6361,8 @@
 			children = (
 				84D062BF2967080E001FE469 /* leadTimeLineTableViewCell.swift */,
 				84D062BE2967080E001FE469 /* leadTimeLineTableViewCell.xib */,
+				018C65212A397A6A008F20C3 /* LeadCreateDetailTableViewCell.swift */,
+				018C65222A397A6A008F20C3 /* LeadCreateDetailTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -6992,6 +7012,7 @@
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */,
 				016F662729C97D8E00B1D248 /* MediaTagsListTableViewCell.xib in Resources */,
+				018C65282A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.xib in Resources */,
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
 				01684C1329BAE89F00DE1041 /* ChatSessionListViewController.storyboard in Resources */,
@@ -7158,6 +7179,7 @@
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				01EBAC6029B58BB900110DCB /* LeadSourceUrlListViewController.storyboard in Resources */,
 				842C0CBE298F713B00395061 /* FillQuestionarieViewController.storyboard in Resources */,
+				018C65242A397A6A008F20C3 /* LeadCreateDetailTableViewCell.xib in Resources */,
 				010EECAE29B7339200351358 /* CreateQuestionViewContoller.storyboard in Resources */,
 				1896709329BA5E62003224ED /* TriggersListViewController.storyboard in Resources */,
 				01C7489E29B233980085CED2 /* BussinessSelectionViewController.storyboard in Resources */,
@@ -7715,6 +7737,7 @@
 				18491DC129B80CE000FE72EF /* MassEmailandSMSViewController+TableView.swift in Sources */,
 				84F61119292A71AB00B1FB69 /* GrowthNetworkManager+Stub.swift in Sources */,
 				1896709529BA5E62003224ED /* LeadTriggersTableViewCell.swift in Sources */,
+				018C65272A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.swift in Sources */,
 				84D0623829670677001FE469 /* PateintDetailViewController+Tableview.swift in Sources */,
 				398F90FF298ECB8700DB96E4 /* IQNSArray+Sort.swift in Sources */,
 				845C39D2292276AF00D934C5 /* KYDrawerController.swift in Sources */,
@@ -7777,6 +7800,7 @@
 				84F6113C292A71AB00B1FB69 /* GrowthEndpoint.swift in Sources */,
 				39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */,
 				01684C1629BAE8C000DE1041 /* ChatSessionListViewModel.swift in Sources */,
+				018C65232A397A6A008F20C3 /* LeadCreateDetailTableViewCell.swift in Sources */,
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
@@ -8148,7 +8172,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = G9D3Q6YQFU;
+				DEVELOPMENT_TEAM = K3ZFM4JLVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Growth99/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Growth99;
@@ -8170,7 +8194,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devmr.growth99;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devemr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

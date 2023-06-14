@@ -15,7 +15,7 @@ protocol FormDetailViewControllerProtocol {
     func updatedFormDataSuccessfully()
     func questionRemovedSuccefully(mrssage: String)
     func recevedImageData()
-    
+    func recivedThemeColor()
     func errorReceived(error: String)
 
 }
@@ -120,8 +120,13 @@ extension FormDetailViewController: CreateQuestionnaireTableViewCellDelegate,Cre
 
 extension FormDetailViewController: FormDetailViewControllerProtocol {
     
+    func recivedThemeColor(){
+        self.view.HideSpinner()
+    }
+
     func FormsDataRecived() {
         self.view.HideSpinner()
+        viewModel?.getThemeColor()
         tableView.reloadData()
     }
     

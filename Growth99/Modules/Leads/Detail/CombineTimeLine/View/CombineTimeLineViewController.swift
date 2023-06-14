@@ -26,6 +26,9 @@ class CombineTimeLineViewController: UIViewController,
         super.viewDidLoad()
         viewModel = CombineTimeLineViewModel(delegate: self)
         tableView.register(UINib(nibName: "LeadCombineTimeLineTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadCombineTimeLineTableViewCell")
+       
+        tableView.register(UINib(nibName: "LeadCreationCombineTimeLineTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "LeadCreationCombineTimeLineTableViewCell")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +50,6 @@ class CombineTimeLineViewController: UIViewController,
     
     func recivedAuditLeadList() {
         self.view.HideSpinner()
-        self.tableView.reloadData()
+        self.viewModel?.leadCreation(leadId: leadId)
     }
 }

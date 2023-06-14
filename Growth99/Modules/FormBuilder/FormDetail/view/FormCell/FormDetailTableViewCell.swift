@@ -666,7 +666,7 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             "answer": "",
             "id": NSNull(),
             "allowLabelsDisplayWithImages": formList?.allowLabelsDisplayWithImages ?? false,
-            "allowMultipleSelection": multipleSelectionButton.isSelected,
+            "allowMultipleSelection": multipleChoiceYESButton.isSelected,
             "questionChoices": questionListArray,
             "showDropDown": self.dropDownYESButton.isSelected,
             "preSelectCheckbox": self.selctedCheckBoxYESButton.isSelected,
