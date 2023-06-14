@@ -36,14 +36,10 @@ struct ConsentListModel: Codable, Equatable {
 
 struct QuestionnaireListModel: Codable, Equatable {
     let createdAt: String?
-    let updatedBy: String?
-    let noOfQuestions: Int?
     let isContactForm: Bool?
-    let createdBy: String?
     let name: String?
     let id: Int?
     let isG99ReviewForm: Bool?
-    let updatedAt: String?
 }
 
 struct ServiceDetailModel : Codable {

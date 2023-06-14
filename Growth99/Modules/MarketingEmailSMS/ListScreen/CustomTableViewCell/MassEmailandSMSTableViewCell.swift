@@ -9,7 +9,6 @@ import UIKit
 
 protocol MassEmailandSMSDelegate: AnyObject {
     func didTapSwitchButton(massEmailandSMSId: String, massEmailandSMSStatus: String)
-    func removeEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath)
     func editEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath)
 }
 
@@ -130,10 +129,6 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         } else {
             delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "INACTIVE")
         }
-    }
-    
-    @IBAction func deleteButtonPressed() {
-        self.delegate?.removeEmailandSMS(cell: self, index: indexPath)
     }
     
     @IBAction func editButtonPressed() {

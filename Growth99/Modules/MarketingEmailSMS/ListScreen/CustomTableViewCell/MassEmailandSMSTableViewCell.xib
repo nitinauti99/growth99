@@ -223,26 +223,10 @@
                                     <action selector="editButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b38-x1-dRt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3k-0u-AnY">
-                                <rect key="frame" x="188" y="417" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="6IY-fq-ODY"/>
-                                    <constraint firstAttribute="height" constant="30" id="Efz-rh-GA3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Delete">
-                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="y3u-iG-epF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PEL-eK-3cu" firstAttribute="top" secondItem="ahZ-iO-Bmh" secondAttribute="bottom" constant="15" id="0b5-Ls-bsc"/>
-                            <constraint firstItem="u3k-0u-AnY" firstAttribute="centerY" secondItem="NLf-ay-NvB" secondAttribute="centerY" id="1XR-ag-XeC"/>
                             <constraint firstItem="SRX-mT-mQW" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="20" id="2WG-F9-dj0"/>
                             <constraint firstItem="B45-2r-iN7" firstAttribute="top" secondItem="eCG-o3-aSD" secondAttribute="top" id="2tM-UJ-1lE"/>
                             <constraint firstItem="ahZ-iO-Bmh" firstAttribute="top" secondItem="mee-z5-vsQ" secondAttribute="bottom" constant="15" id="3KX-Ix-BgO"/>
@@ -294,7 +278,6 @@
                             <constraint firstItem="PEL-eK-3cu" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="j4A-zf-xiW"/>
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="top" secondItem="ahZ-iO-Bmh" secondAttribute="top" id="lHn-St-Kjf"/>
                             <constraint firstItem="eCG-o3-aSD" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="oNF-1k-QEK"/>
-                            <constraint firstItem="u3k-0u-AnY" firstAttribute="leading" secondItem="NLf-ay-NvB" secondAttribute="trailing" constant="20" id="obf-gW-sdu"/>
                             <constraint firstItem="7Fz-I2-Mji" firstAttribute="top" secondItem="SRX-mT-mQW" secondAttribute="top" id="pDd-VK-Q70"/>
                             <constraint firstItem="PWA-Xq-3pk" firstAttribute="top" secondItem="gyj-5L-syC" secondAttribute="bottom" constant="15" id="pTG-nd-N90"/>
                             <constraint firstItem="mee-z5-vsQ" firstAttribute="top" secondItem="ta1-AZ-Xzz" secondAttribute="top" id="pqn-Bl-aQF"/>
@@ -339,7 +322,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Delete" width="80" height="73"/>
         <image name="Detail" width="79" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
     </resources>

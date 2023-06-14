@@ -123,7 +123,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostTextField.isHidden = true
         } else {
             servicesAddViewModel?.getUserSelectedService(serviceID: serviceId ?? 0)
-            removeImageViewBtn.isHidden = false
+            removeImageViewBtn.isHidden = true
         }
     }
     
@@ -162,10 +162,10 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         userQuestionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
         serviceQuestionarieTextField.text = userQuestionnaires.map({$0.name ?? String.blank}).joined(separator: ", ")
         for item in userQuestionnaires {
-            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item.createdAt ?? "", updatedBy: "\(item.updatedBy?.firstName ?? "") \(item.updatedBy?.lastName ?? "")", noOfQuestions: 0, isContactForm: nil, createdBy: "\(item.createdBy?.firstName ?? "") \(item.createdBy?.lastName ?? "")", name: item.name ?? "", id: item.id ?? 0, isG99ReviewForm: false, updatedAt: item.updatedAt ?? ""))
+            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item.createdAt ?? "", isContactForm: nil, name: item.name ?? "", id: item.id ?? 0, isG99ReviewForm: false))
             selectedQuestionnairesIds.append(item.id ?? 0)
         }
-        
+            
         if servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking == true {
             disableButton.isSelected = true
         } else {
@@ -228,7 +228,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             serviceImageViewTop.constant = 20
             contentViewHeight.constant = 1550
             imageRemoved = false
-            removeImageViewBtn.isHidden = false
+            removeImageViewBtn.isHidden = true
             serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         }
     }
@@ -458,7 +458,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceImageViewTop.constant = 20
         contentViewHeight.constant = 1550
         imageRemoved = false
-        removeImageViewBtn.isHidden = false
+        removeImageViewBtn.isHidden = true
         serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         self.dismiss(animated: true, completion: nil)
     }

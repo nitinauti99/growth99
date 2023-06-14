@@ -110,9 +110,6 @@ extension MassEmailandSMSViewController: UISearchBarDelegate {
 }
 
 extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
-    func removeEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
-        
-    }
     
     func editEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
         let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController

@@ -71,7 +71,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     var selectedDate: String = String.blank
     var selectedTime: String = String.blank
     var appointmentTypeSelected: String = "InPerson"
-
+    var sourceTypeSelected: String = "Calender"
     override func viewDidLoad() {
         super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
@@ -115,6 +115,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             inPersonBtn.isSelected = false
             virtualBtn.isSelected = true
         }
+        sourceTypeSelected = editBookingHistoryData?.source ?? String.blank
         appointmentTypeSelected = editBookingHistoryData?.appointmentType ?? String.blank
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
@@ -433,7 +434,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         }
         
         self.view.ShowSpinner()
-        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: "Calendar", appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
