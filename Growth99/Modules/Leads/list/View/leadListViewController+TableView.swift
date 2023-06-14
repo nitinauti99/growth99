@@ -38,6 +38,10 @@ extension leadListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
         detailController.workflowLeadId = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.id ?? 0
+        let user = UserRepository.shared
+        user.leadId = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.id ?? 0
+        user.leadFullName = (viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.firstName ?? "") + " " + (viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)?.lastName ?? "")
+
         detailController.leadData = viewModel?.leadPeginationListDataAtIndex(index: indexPath.row)
         navigationController?.pushViewController(detailController, animated: true)
     }

@@ -47,6 +47,7 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
     
     var leadId: Int?
     var selctedSmsTemplateId = Int()
+    let user = UserRepository.shared
 
     var tableViewHeight: CGFloat {
         anslistTableView.layoutIfNeeded()
@@ -56,7 +57,6 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerCell()
-        self.fullName.text = leadData?.fullName
         self.title = "Lead Detail"
         self.viewModel = leadDetailViewModel(delegate: self)
         self.buttons = [newButton, coldButton, warmButton, hotButton, wonButton, deadButton]
@@ -73,6 +73,8 @@ class leadDetailViewController: UIViewController,questionAnswersTableViewCellDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.ShowSpinner()
+        leadId = user.leadId
+        self.fullName.text = user.leadFullName
         self.viewModel?.getQuestionnaireList(questionnaireId: leadId ?? 0)
         newButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)
         coldButton.addTarget(self, action: #selector(self.leadStatusTemplate(_:)), for:.touchUpInside)
