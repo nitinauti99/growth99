@@ -74,8 +74,7 @@ struct EndPoints {
     static let removePatient = "/api/public/users/delete?"
     static let removeProfileAppointment = "/api/appointments/"
     static let workflowPatientTasks = "/api/workflowtasks/patient/"
-    
-    
+    static let themColor = "/api/public/v1/questionnaire"
     static let patientTagList = "/api/ptag/list"
     static let leadTagList = "/api/tag/list"
     static let patientAddTags = "/api/ptag/"
@@ -345,5 +344,5 @@ struct ApiUrl {
     static let deletHistryLead = EndPoints.baseURL.appending(EndPoints.deletHistryLead)
     static let deletePost = EndPoints.baseURL.appending(EndPoints.deletePost)
     static let clinicsDefault = EndPoints.baseURL.appending(EndPoints.clinicsDefault)
+    static let themColor = EndPoints.baseURL.appending(EndPoints.themColor)
 }
-

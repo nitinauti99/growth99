@@ -18,6 +18,7 @@ protocol CreateLeadViewModelProtocol {
     
     var getQuestionnaireListInfo: QuestionnaireList? { get }
     var getLeadUserQuestionnaireList: [PatientQuestionAnswersList]? { get }
+    var id: Int { get }
 }
 
 class CreateLeadViewModel {
@@ -102,6 +103,10 @@ class CreateLeadViewModel {
 }
 
 extension CreateLeadViewModel: CreateLeadViewModelProtocol {
+    
+    var id: Int {
+        return self.questionnaireId ?? 0
+    }
 
     var getLeadUserQuestionnaireList: [PatientQuestionAnswersList]? {
         return self.questionnaireFilterList

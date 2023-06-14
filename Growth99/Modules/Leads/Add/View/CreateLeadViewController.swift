@@ -308,7 +308,27 @@ extension CreateLeadViewController: FileTypeTableViewCellProtocol {
         present(pickerController, animated: true, completion: nil)
     }
     
-    func dissmissImagePickerController() {
+    func dissmissImagePickerController(id: Int, questionId: Int, image: UIImage) {
         self.dismiss(animated: true, completion: nil)
+        self.view.ShowSpinner()
+        var url = String()
+        url = "https://api.growthemr.com/api/public/form-submission/\(id)/question/\(questionId)/uploadfile"
+        
+        let urlParameter: Parameters = [:]
+        let request = ImageUploader(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: "POST")
+            request.uploadImage { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
+                    print(value)
+                    self.view.HideSpinner()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    }
+                case .failure(let error):
+                    self.view.HideSpinner()
+                    print(error.localizedDescription)
+                }
+            }
+         }
     }
 }

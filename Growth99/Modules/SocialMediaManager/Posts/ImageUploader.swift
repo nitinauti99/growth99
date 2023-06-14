@@ -43,7 +43,7 @@ final class ImageUploader {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { (data, urlResponse, error) in
             let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode ?? 0
-            if let data = data, case (200..<300) = statusCode {
+            if let data = data, case (200..<400) = statusCode {
                 do {
                     let value = try Response(from: data, statusCode: statusCode)
                     completionHandler(.success(value))

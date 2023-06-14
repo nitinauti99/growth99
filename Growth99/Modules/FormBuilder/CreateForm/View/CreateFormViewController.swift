@@ -10,6 +10,7 @@ import UIKit
 protocol CreateFormViewControllerProtocol {
     func FormsDataRecived(message: String)
     func errorReceived(error: String)
+    func recivedThemeColor()
 }
 
 class CreateFormViewController: UIViewController, CreateFormViewControllerProtocol {
@@ -43,6 +44,8 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
         super.viewDidLoad()
         self.viewModel = CreateFormViewModel(delegate: self)
         self.setUpUI()
+        self.view.ShowSpinner()
+        viewModel?.getThemeColor()
         if user.FormBulderTitle == "Questionnaires" {
             self.title = "Create Questionnaire"
         }else{
@@ -77,6 +80,11 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func recivedThemeColor(){
+        self.view.HideSpinner()
+    }
+
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
@@ -201,13 +209,13 @@ class CreateFormViewController: UIViewController, CreateFormViewControllerProtoc
             "configureThankYouMessageInContactForm": ConfigureThank_page_message_contactForm.isSelected,
             "thankYouPageMessageContactForm": ConfigureThank_page_message_contactForm_TextView.text ?? String.blank,
             "chatQuestionnaire": false,
-            "buttonBackgroundColor": "#357ffa",
-            "buttonForegroundColor": "#357ffa",
-            "titleColor": "inherit",
-            "popupTitleColor": "inherit",
-            "popupLabelColor": "inherit",
-            "inputBoxShadowColor": "#357ffa",
-            "activeSideColor": "#003b6f",
+            "buttonBackgroundColor": viewModel?.getThemeColorData?.buttonBackgroundColor ?? "",
+            "buttonForegroundColor": viewModel?.getThemeColorData?.buttonForegroundColor ?? "",
+            "titleColor": viewModel?.getThemeColorData?.titleColor ?? "",
+//            "popupTitleColor": viewModel?.getThemeColorData?.popupTitleColor ?? "",
+//            "popupLabelColor": viewModel?.getThemeColorData?.popupLabelColor ?? "",
+//            "inputBoxShadowColor": viewModel?.getThemeColorData?.inputBoxShadowColor ?? "",
+//            "activeSideColor": viewModel?.getThemeColorData?.activeSideColor ?? "",
             "textForComposer": "",
             "emailTemplateId": "",
             "submitButtonText": buttonText.text ?? "",

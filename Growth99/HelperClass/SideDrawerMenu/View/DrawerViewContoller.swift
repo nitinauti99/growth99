@@ -136,9 +136,17 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             appDel.window?.rootViewController = mainVcIntial
         } else if title == Constant.SideMenu.helpTraining {
             pushViewControllerFromDrawerMenu(identifier: "HelpAndTrainingViewController", pusedViewController: "HelpAndTrainingViewController")
-
         }else if title == Constant.SideMenu.contactSupport {
-            
+            let googleUrlString = "googlegmail:///co?to=support@example.com"
+            if let googleUrl = NSURL(string: googleUrlString) {
+                if UIApplication.shared.canOpenURL(googleUrl as URL) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(googleUrl as URL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(googleUrl as URL)
+                    }
+                }
+            }
         } else if title == Constant.Profile.tasks {
             pushViewControllerFromDrawerMenu(identifier: "TasksListViewController", pusedViewController: "TasksListViewController")
         } else if title == Constant.Profile.triggers {

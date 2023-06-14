@@ -27,6 +27,7 @@ class leadTimeLineViewController: UIViewController,
         super.viewDidLoad()
         viewModel = leadTimeLineViewModel(delegate: self)
         tableView.register(UINib(nibName: "leadTimeLineTableViewCell", bundle: nil), forCellReuseIdentifier: "leadTimeLineTableViewCell")
+        tableView.register(UINib(nibName: "LeadCreateDetailTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "LeadCreateDetailTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +49,7 @@ class leadTimeLineViewController: UIViewController,
     
     func recivedAuditLeadList() {
         self.view.HideSpinner()
-        self.tableView.reloadData()
+        self.viewModel?.leadCreation(leadId: leadId)
     }
 }
 

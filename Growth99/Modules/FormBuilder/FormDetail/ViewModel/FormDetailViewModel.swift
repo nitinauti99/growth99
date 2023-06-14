@@ -18,10 +18,12 @@ protocol FormDetailViewModelProtocol {
     func removeQuestions(questionId: Int, childQuestionId: Int)
     func FormDataAtIndex(index: Int) -> FormDetailModel?
     func formFilterDataAtIndex(index: Int)-> FormDetailModel?
-  
+    func getThemeColor()
+
     var getFormDetailData: [FormDetailModel] { get }
     var getFormFilterListData: [FormDetailModel] { get }
     var getFormQuestionnaireData: CreateFormModel? { get }
+    var getThemeColorData: ThemeModel? { get }
 }
 
 class FormDetailViewModel {
@@ -29,7 +31,8 @@ class FormDetailViewModel {
     var formDetailData: [FormDetailModel] = []
     var FormFilterData: [FormDetailModel] = []
     var formQuestionnaireData: CreateFormModel?
-    
+    var themeColorData: ThemeModel?
+
     init(delegate: FormDetailViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -119,6 +122,20 @@ class FormDetailViewModel {
         }
     }
 
+    func getThemeColor(){
+        self.requestManager.request(forPath: ApiUrl.themColor, method: .GET, headers: self.requestManager.Headers()) { (result: Result<ThemeModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let FormData):
+                print(FormData)
+                self.themeColorData = FormData
+                self.delegate?.recivedThemeColor()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
 
     func formFilterDataAtIndex(index: Int) -> FormDetailModel? {
         return self.FormFilterData[index]
@@ -138,6 +155,10 @@ class FormDetailViewModel {
 }
 
 extension FormDetailViewModel: FormDetailViewModelProtocol {
+    
+    var getThemeColorData: ThemeModel? {
+        return self.themeColorData
+    }
     
     var getFormQuestionnaireData: CreateFormModel? {
         return self.formQuestionnaireData

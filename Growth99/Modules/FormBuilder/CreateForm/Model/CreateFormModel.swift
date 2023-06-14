@@ -66,18 +66,14 @@ struct CreateFormModel : Codable {
     
 }
 
-//struct CreatedBy : Codable {
-//    let firstName : String?
-//    let lastName : String?
-//    let email : String?
-//    let username : String?
-//}
-//
-//
-//struct UpdatedBy : Codable {
-//    let firstName : String?
-//    let lastName : String?
-//    let email : String?
-//    let username : String?
-//}
+struct ThemeModel : Codable {
+    let buttonBackgroundColor : String?
+    let buttonForegroundColor : String?
+    let titleColor: String?
+    let popupTitleColor: String?
+    let popupLabelColor: String?
+    let inputBoxShadowColor: String?
+    let activeSideColor: String?
+    let id : Int?
+}
 
