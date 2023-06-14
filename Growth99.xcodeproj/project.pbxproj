@@ -870,6 +870,9 @@
 		D0D834B92A1FDA9800A60443 /* PostCalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */; };
 		D0D834BC2A1FDC4200A60443 /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */; };
 		D0D834BD2A1FDC4200A60443 /* PostCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */; };
+		D0D9B1A32A3979930049D7DF /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9B1A22A3979930049D7DF /* ContactViewController.swift */; };
+		D0D9B1A52A3979A20049D7DF /* ContactViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D9B1A42A3979A20049D7DF /* ContactViewController.storyboard */; };
+		D0D9B1A72A397B0E0049D7DF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9B1A62A397B0E0049D7DF /* MessageUI.framework */; };
 		D302271686E1A04112A5EB59 /* Pods_Growth99Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */; };
 		DA04083329700DBB006B12EE /* ClinicsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */; };
 		DA04083529700DC6006B12EE /* ClinicsListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */; };
@@ -1802,6 +1805,9 @@
 		D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCalendarViewController.storyboard; sourceTree = "<group>"; };
 		D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalendarTableViewCell.swift; sourceTree = "<group>"; };
+		D0D9B1A22A3979930049D7DF /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		D0D9B1A42A3979A20049D7DF /* ContactViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactViewController.storyboard; sourceTree = "<group>"; };
+		D0D9B1A62A397B0E0049D7DF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DA04083229700DBB006B12EE /* ClinicsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListDetailViewController.swift; sourceTree = "<group>"; };
 		DA04083429700DC6006B12EE /* ClinicsListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClinicsListDetailViewController.storyboard; sourceTree = "<group>"; };
 		DA06999329E9671D002E060A /* AddEventViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEventViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -1846,6 +1852,7 @@
 			files = (
 				84FDC1B229586E3A002821BB /* LocalAuthentication.framework in Frameworks */,
 				689AB2164257336B833F7A8A /* Pods_Growth99.framework in Frameworks */,
+				D0D9B1A72A397B0E0049D7DF /* MessageUI.framework in Frameworks */,
 				01454A0B29FD87E300237E60 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5616,6 +5623,7 @@
 		8497A01128F9CB3300CBA26C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0D9B1A62A397B0E0049D7DF /* MessageUI.framework */,
 				01454A0A29FD87E300237E60 /* Photos.framework */,
 				84FDC1B129586E3A002821BB /* LocalAuthentication.framework */,
 				84872B082917D7FF0063DD3B /* SDWebImage.framework */,
@@ -6760,6 +6768,8 @@
 				DA45787229707FA900CE458B /* GRWebViewController.storyboard */,
 				0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */,
 				D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */,
+				D0D9B1A22A3979930049D7DF /* ContactViewController.swift */,
+				D0D9B1A42A3979A20049D7DF /* ContactViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6975,6 +6985,7 @@
 				010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */,
 				189E3F0129C392E200B94190 /* MediaLibraryListTableViewCell.xib in Resources */,
 				842C0CB6298F713B00395061 /* PatientAppointmentListTableViewCell.xib in Resources */,
+				D0D9B1A52A3979A20049D7DF /* ContactViewController.storyboard in Resources */,
 				01152E1A29B3BA7800B24627 /* LeadDetailContainerView.storyboard in Resources */,
 				84D062FD2967080E001FE469 /* leadTimeLineViewController.storyboard in Resources */,
 				01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */,
@@ -7777,6 +7788,7 @@
 				84F6113C292A71AB00B1FB69 /* GrowthEndpoint.swift in Sources */,
 				39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */,
 				01684C1629BAE8C000DE1041 /* ChatSessionListViewModel.swift in Sources */,
+				D0D9B1A32A3979930049D7DF /* ContactViewController.swift in Sources */,
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,

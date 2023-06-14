@@ -37,6 +37,7 @@ struct WorkingParamModel: Codable {
     let dateFrom: String?
     let dateTo: String?
     let providerId: Int?
+    let slots: [Slots]?
     let selectedSlots: [SelectedSlots]?
     
     func toDict() -> [String:Any] {
@@ -65,6 +66,13 @@ struct WorkingParamModel: Codable {
         if providerId != nil {
             dictionary["providerId"] = providerId
         }
+        if slots != nil {
+            var arrOfDict = [[String: Any]]()
+            for item in slots! {
+                arrOfDict.append(item.toDict())
+            }
+            dictionary["slots"] = arrOfDict
+        }
         if selectedSlots != nil {
             var arrOfDict = [[String: Any]]()
             for item in selectedSlots! {
@@ -76,6 +84,31 @@ struct WorkingParamModel: Codable {
     }
     
 }
+
+struct Slots: Codable {
+    let timeFromDate : String?
+    let timeToDate : String?
+    let days : [String]?
+    let fullTime : Bool?
+    
+    func toDict() -> [String: Any] {
+        var dictionary = [String:Any]()
+        if timeFromDate != nil {
+            dictionary["timeFromDate"] = timeFromDate
+        }
+        if timeToDate != nil {
+            dictionary["timeToDate"] = timeToDate
+        }
+        if days != nil {
+            dictionary["days"] = days
+        }
+        if fullTime != nil {
+            dictionary["fullTime"] = fullTime
+        }
+        return dictionary
+    }
+}
+
 
 struct SelectedSlots: Codable {
     let timeFromDate: String?

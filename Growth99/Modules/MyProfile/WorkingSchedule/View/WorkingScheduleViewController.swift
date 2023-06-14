@@ -34,6 +34,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     var workingListModel: [WorkingScheduleListModel]?
     var selectedClinicId: Int = 0
     var selectedSlots = [SelectedSlots]()
+    var slots = [Slots]()
     var isEmptyResponse: Bool = false
     var isValidationSucess: Bool = false
     
@@ -207,6 +208,13 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 let days = daysArray.components(separatedBy: ",")
                 let startTime = workingCell.timeFromTextField.text ?? String.blank
                 let endTime = workingCell.timeToTextField.text ?? String.blank
+                slots.insert(
+                    Slots(
+                        timeFromDate: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank),
+                        timeToDate: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank),
+                        days: days, fullTime: true),
+                    at: childIndex
+                )
                 selectedSlots.insert(
                     SelectedSlots(
                         timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: startTime),
@@ -217,12 +225,11 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 )
             }
             
-            
             if isValidateArray.contains(false) {
                 return
             }
             self.view.ShowSpinner()
-            let body = WorkingParamModel(userId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel?.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userVariableId ?? 0, selectedSlots: selectedSlots)
+            let body = WorkingParamModel(userId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel?.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userVariableId ?? 0, slots: slots,selectedSlots: selectedSlots)
             
             let parameters: [String: Any]  = body.toDict()
             workingScheduleViewModel?.sendRequestforWorkingSchedule(vacationParams: parameters)
