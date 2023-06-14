@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Config</key>
-	<string>Development</string>
+	<string>Production</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlegmail</string>

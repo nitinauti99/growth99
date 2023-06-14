@@ -9,6 +9,8 @@ import UIKit
 
 protocol MassEmailandSMSCreateCellDelegate: AnyObject {
     func nextButtonCreate(cell: MassEmailandSMSCreateTableViewCell, index: IndexPath, networkType: String)
+    func smsButtonClick(cell: MassEmailandSMSCreateTableViewCell)
+    func emailButtonClick(cell: MassEmailandSMSCreateTableViewCell)
 }
 
 class MassEmailandSMSCreateTableViewCell: UITableViewCell {
@@ -16,8 +18,8 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
 
-    @IBOutlet private weak var smsBtn: UIButton!
-    @IBOutlet private weak var emailBtn: UIButton!
+    @IBOutlet weak var smsBtn: UIButton!
+    @IBOutlet weak var emailBtn: UIButton!
     
     @IBOutlet weak var networkSelectonSMSButton: UIButton!
     @IBOutlet weak var networkViewSMS: UIView!
@@ -62,6 +64,7 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = false
         networkTypeSelected = "sms"
         emailBtn.isSelected = false
+        self.delegate?.smsButtonClick(cell: self)
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
@@ -70,5 +73,6 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = true
         networkTypeSelected = "email"
         smsBtn.isSelected = false
+        self.delegate?.emailButtonClick(cell: self)
     }
 }

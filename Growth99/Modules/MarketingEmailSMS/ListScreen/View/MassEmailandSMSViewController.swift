@@ -112,13 +112,13 @@ extension MassEmailandSMSViewController: UISearchBarDelegate {
 extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
     
     func editEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
-        let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
+       /* let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
         if isSearch {
             editVC.massAppointmnentId = viewModel?.getMassEmailandSMSFilterData[index.row].id ?? 0
         } else {
             editVC.massAppointmnentId = viewModel?.getMassEmailandSMSData[index.row].id ?? 0
         }
-        navigationController?.pushViewController(editVC, animated: true)
+        navigationController?.pushViewController(editVC, animated: true)*/
     }
     
     func didTapSwitchButton(massEmailandSMSId: String, massEmailandSMSStatus: String) {

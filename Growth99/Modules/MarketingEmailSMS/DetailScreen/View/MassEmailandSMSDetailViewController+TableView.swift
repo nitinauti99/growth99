@@ -55,8 +55,14 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
             networkTypeSelected = cell.networkTypeSelected
             cell.networkSelectonSMSButton.tag = indexPath.row
             cell.networkSelectonSMSButton.addTarget(self, action: #selector(networkSelectionSMSMethod), for: .touchDown)
+            if cell.smsBtn.isSelected {
+                cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSLeadCountData?.smsCount ?? 0)"
+            } else {
+                cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSLeadCountData?.emailCount ?? 0))"
+            }
             cell.networkSelectonEmailButton.tag = indexPath.row
             cell.networkSelectonEmailButton.addTarget(self, action: #selector(networkSelectionEmailMethod), for: .touchDown)
+            
             return cell
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTimeTableViewCell", for: indexPath) as? MassEmailandSMSTimeTableViewCell else { return UITableViewCell()}
@@ -337,6 +343,14 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
         self.networkTypeSelected = networkTypeSelected
         cell.createNextButton.isEnabled = false
         createNewMassEmailSMSCell(cellNameType: "Time")
+    }
+    
+    func smsButtonClick(cell: MassEmailandSMSCreateTableViewCell) {
+        cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSLeadCountData?.smsCount ?? 0)"
+    }
+    
+    func emailButtonClick(cell: MassEmailandSMSCreateTableViewCell) {
+        cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSLeadCountData?.emailCount ?? 0))"
     }
 }
 

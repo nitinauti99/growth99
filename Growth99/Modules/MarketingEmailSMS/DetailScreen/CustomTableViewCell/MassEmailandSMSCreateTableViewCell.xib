@@ -281,6 +281,7 @@
                 <outlet property="selectNetworkEmptyTextLabel" destination="GBU-iv-KD8" id="R3K-cv-aFq"/>
                 <outlet property="selectNetworkSMSTextLabel" destination="3rC-ER-wyV" id="PFu-vK-6Kz"/>
                 <outlet property="smsBtn" destination="EfR-LS-Lw4" id="AyH-p1-YYB"/>
+                <outlet property="smsEmailCountTextLabel" destination="4GF-ZZ-ry0" id="PCE-es-G7I"/>
                 <outlet property="subView" destination="TPi-qT-Luy" id="Bym-cN-YzL"/>
                 <outlet property="subViewInside" destination="TPi-qT-Luy" id="Xb3-Yd-HNK"/>
             </connections>

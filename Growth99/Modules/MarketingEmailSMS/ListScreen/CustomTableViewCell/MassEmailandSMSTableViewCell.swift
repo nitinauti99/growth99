@@ -73,7 +73,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         }*/
         self.executionStatusLabel.text = massEmailList?.executionStatus
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-      //  self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailList?.scheduledDateTime ?? String.blank)
+        self.scheduledDateLabel.text =  dateFormater?.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
         self.createdDate.text =  dateFormater?.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)

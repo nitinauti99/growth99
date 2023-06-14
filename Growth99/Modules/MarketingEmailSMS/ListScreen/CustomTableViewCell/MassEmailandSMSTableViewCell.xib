@@ -195,9 +195,6 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WM3-Ye-JhI">
                                 <rect key="frame" x="138" y="199" width="51" height="31"/>
-                                <connections>
-                                    <action selector="statusSwitchChanges:" destination="KGk-i7-Jjw" eventType="valueChanged" id="C1P-4r-Hxu"/>
-                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-CY-7yH" userLabel="LeadSaatus">
                                 <rect key="frame" x="18" y="420" width="43.5" height="20"/>
