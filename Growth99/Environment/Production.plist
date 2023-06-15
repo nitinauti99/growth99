@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>envUrl</key>
+	<string>https://app.growth99.com</string>
 	<key>environmentName</key>
 	<string>Production</string>
 	<key>merchantUrlScheme</key>

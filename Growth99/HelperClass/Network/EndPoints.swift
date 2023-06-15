@@ -10,6 +10,10 @@ import Foundation
 struct EndPoints {
     static let baseURL = GrowthRequestManager(configuration: URLSessionConfiguration.default).getBaseUrl()
     
+    static let envUrl = GrowthRequestManager(configuration: URLSessionConfiguration.default).getEnvUrl()
+
+    
+    
     static let auth = "/api/user/auth"
     static let register = "/api/account/register"
     static let forgotPassword = "/api/public/users/forgot-password"

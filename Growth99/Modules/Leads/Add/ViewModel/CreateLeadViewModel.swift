@@ -70,7 +70,7 @@ class CreateLeadViewModel {
     
     /// create lead
     func createLead(patientQuestionAnswers:[String: Any]) {
-        let finaleUrl = ApiUrl.createLead + "\(String(describing: self.questionnaireId))"
+        let finaleUrl = ApiUrl.createLead + "\(String(describing: self.questionnaireId ?? 0))"
 
         self.requestManager.request(forPath: finaleUrl, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: patientQuestionAnswers, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }

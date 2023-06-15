@@ -137,7 +137,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         } else if title == Constant.SideMenu.helpTraining {
             pushViewControllerFromDrawerMenu(identifier: "HelpAndTrainingViewController", pusedViewController: "HelpAndTrainingViewController")
         }else if title == Constant.SideMenu.contactSupport {
-            let googleUrlString = "support@growth99.com"
+            let googleUrlString = "googlegmail:///co?to=support@growth99.com"
             if let googleUrl = NSURL(string: googleUrlString) {
                 if UIApplication.shared.canOpenURL(googleUrl as URL) {
                     if #available(iOS 10.0, *) {
