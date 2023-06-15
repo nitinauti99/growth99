@@ -102,7 +102,7 @@ struct MarketingSMSEmailResModel : Codable {
     let bpmnTasks : String?
     let status : String?
     let executionStatus : String?
-    let isCustom : String?
+    let isCustom : Bool?
     let leadTags : [Int]?
     let patientTags : String?
     let patientStatus : String?

@@ -86,7 +86,7 @@ struct ServiceConsents : Codable, Equatable {
     let id : Int?
     let updatedAt : String?
     let body : String?
-    let isCustom : String?
+    let isCustom : Bool?
     let isDefault : Bool?
     let tenantId : Int?
     let defaultConsentId : Int?
@@ -111,7 +111,7 @@ struct ServiceQuestionnaires : Codable, Equatable {
     let popupLabelColor : String?
     let identifier : String?
     let googleAnalyticsGlobalCode : String?
-    let isCustom : String?
+    let isCustom : Bool?
     let updatedBy : UpdatedBy?
     let isDefault : String?
     let description : String?
@@ -121,7 +121,7 @@ struct ServiceQuestionnaires : Codable, Equatable {
     let appButtonForegroundColor : String?
     let thankYouPageMessageContactForm : String?
     let configureThankYouMessageInLandingPage : Bool?
-    let isContactForm : String?
+    let isContactForm : Bool?
     let showTitle : Bool?
     let css : String?
     let deleted : Bool?
@@ -143,18 +143,19 @@ struct ServiceQuestionnaires : Codable, Equatable {
     let buttonForegroundColor : String?
     let appButtonBackgroundColor : String?
     let appTitleColor : String?
-    let isLeadForm : String?
+    let isLeadForm : Bool?
     let inputBoxShadowColor : String?
     let configureThankYouMessageInVC : Bool?
     let backgroundImages : [String]?
-    let showThankYouPageUrlLinkInLandingPage : String?
+    let showThankYouPageUrlLinkInLandingPage : Bool?
     let questionnaireSource : String?
     let trackCode : String?
     let landingPageName : String?
-    let showThankYouPageUrlLinkInContactForm : String?
+    let showThankYouPageUrlLinkInContactForm : Bool?
     let isPublic : Bool?
     let activeSideColor : String?
     let updatedAt : String?
     let isG99ReviewForm : Bool?
     let thankYouPageUrl : String?
-    let showThankYouPageUrlLinkInVC : String?}
+    let showThankYouPageUrlLinkInVC : Bool?
+}

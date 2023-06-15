@@ -12,7 +12,7 @@ struct ChatBotTemplateModel: Codable {
     let deleted : Bool?
     let name : String?
     let defaultTemplate : Bool?
-    let isCustom : String?
+    let isCustom : Bool?
     let tenantId : Int?
     let appPreviewUrl : String?
     let id : Int?

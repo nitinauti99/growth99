@@ -204,7 +204,7 @@ struct FeedbackQuestionnaire : Codable {
     let isPublic : Bool?
     let chatQuestionnaire : Bool?
     let questionnaireSource : String?
-    let isContactForm : String?
+    let isContactForm : Bool?
     let isG99ReviewForm : Bool?
     let isLeadForm : Bool?
     let showTitle : Bool?
@@ -221,7 +221,7 @@ struct FeedbackQuestionnaire : Codable {
     let css : String?
     let isDefault : String?
     let identifier : String?
-    let isCustom : String?
+    let isCustom : Bool?
     let trackCode : String?
     let googleAnalyticsGlobalCode : String?
     let googleAnalyticsGlobalCodeUrl : String?
