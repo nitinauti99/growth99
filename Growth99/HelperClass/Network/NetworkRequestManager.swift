@@ -78,4 +78,35 @@ class GrowthRequestManager: GrowthNetworkManager {
         
         return ""
     }
+    
+    func getEnvUrl() -> String {
+        guard let path = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+            print("Path not found")
+            return ""
+        }
+        
+        guard let dictionary = NSDictionary(contentsOfFile: path) else {
+            print("Unable to get dictionary from path")
+            return ""
+        }
+        
+        if let config = dictionary.object(forKey: "Config") {
+           
+            guard let path = Bundle.main.path(forResource: config as? String, ofType: "plist") else {
+                print("Path not found")
+                return ""
+            }
+            
+            guard let dictionary = NSDictionary(contentsOfFile: path) else {
+                print("Unable to get dictionary from path")
+                return ""
+            }
+            
+            print(dictionary)
+
+         return  dictionary.object(forKey: "envUrl") as! String
+        }
+        
+        return ""
+    }
 }
