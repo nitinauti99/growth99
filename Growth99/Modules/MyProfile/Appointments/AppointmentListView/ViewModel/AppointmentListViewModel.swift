@@ -18,7 +18,7 @@ protocol AppointmentViewModelProtocol {
     var  getProfileAppoinmentListData: [AppointmentListModel] { get }
     var  getProfileAppoinmentFilterListData: [AppointmentListModel] { get }
 
-    func removeProfileAppoinment(appoinmentId: Int)
+    func removeProfileAppointment(appointmentId: Int)
     
     func serverToLocal(date: String) -> String
     func utcToLocal(timeString: String) -> String?
@@ -51,8 +51,8 @@ class AppointmentListViewModel {
         }
     }
     
-    func removeProfileAppoinment(appoinmentId: Int) {
-        let finaleUrl = ApiUrl.removeProfileAppointment + "\(appoinmentId)"
+    func removeProfileAppointment(appointmentId: Int) {
+        let finaleUrl = ApiUrl.removeProfileAppointment + "\(appointmentId)"
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -151,15 +151,19 @@ class AppointmentListViewModel {
 extension AppointmentListViewModel: AppointmentViewModelProtocol {
 
     func getProfileFilterData(searchText: String) {
-        self.profileAppoinmentListFilterData = self.getProfileAppoinmentListData.filter { task in
+        let filteredData = self.getProfileAppoinmentListData.filter { task in
             let searchText = searchText.lowercased()
-            let nameMatch = task.patientFirstname?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            let statusMatch = task.patientLastName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            let userNameMatch = task.paymentStatus?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            return nameMatch || idMatch || statusMatch || userNameMatch
+            let nameMatch = task.patientFirstname?.lowercased().hasPrefix(searchText) ?? false
+            let idMatch = String(task.id ?? 0).hasPrefix(searchText)
+            let paymentStatusMatch = task.paymentStatus?.lowercased().hasPrefix(searchText) ?? false
+            let appointmentTypeMatch = task.appointmentType?.lowercased().hasPrefix(searchText) ?? false
+            let appointmentConfirmationStatusMatch = task.appointmentConfirmationStatus?.lowercased().hasPrefix(searchText) ?? false
+            let clinicNameMatch = task.clinicName?.lowercased().hasPrefix(searchText) ?? false
+            return nameMatch || idMatch || paymentStatusMatch || appointmentTypeMatch || appointmentConfirmationStatusMatch || clinicNameMatch
         }
+        self.profileAppoinmentListFilterData = filteredData
     }
+
     
     func getProfileDataAtIndex(index: Int)-> AppointmentListModel? {
         return self.getProfileAppoinmentListData[index]

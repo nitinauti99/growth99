@@ -82,7 +82,7 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     }
     
     func profileAppoinmentsRemoved() {
-        self.view.showToast(message: "Appointment Deleted successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Appointment deleted successfully", color: UIColor().successMessageColor())
         viewModel?.getProfileApointmentsList()
     }
     
@@ -95,23 +95,23 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
     }
     
     func removeProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath) {
-        
-        var appoinmentId = Int()
-        appoinmentId = viewModel?.getProfileDataAtIndex(index: index.row)?.id ?? 0
+        var appointmentId = Int()
+        appointmentId = viewModel?.getProfileDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
-            appoinmentId =  viewModel?.getProfileFilterDataAtIndex(index: index.row)?.id ?? 0
+            appointmentId = viewModel?.getProfileFilterDataAtIndex(index: index.row)?.id ?? 0
         }
         
-        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientFirstname ?? String.blank) \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientLastName ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-        let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
-                                        handler: { [weak self] _ in
+        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientFirstname ?? "") \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientLastName ?? "")", preferredStyle: UIAlertController.Style.alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
             self?.view.ShowSpinner()
-            self?.viewModel?.removeProfileAppoinment(appoinmentId: appoinmentId)
-        })
-        cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-        alert.addAction(cancelAlert)
+            self?.viewModel?.removeProfileAppointment(appointmentId: appointmentId)
+        }
+        deleteAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alert.addAction(deleteAction)
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
         self.present(alert, animated: true, completion: nil)
     }
     

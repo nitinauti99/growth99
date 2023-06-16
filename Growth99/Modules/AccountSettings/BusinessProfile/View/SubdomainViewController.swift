@@ -81,7 +81,7 @@ class SubdomainViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validateName(_ firstName: String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9-]+$")
         let range = NSRange(location: 0, length: firstName.utf16.count)
         let matches = regex.matches(in: firstName, range: range)
         return !matches.isEmpty

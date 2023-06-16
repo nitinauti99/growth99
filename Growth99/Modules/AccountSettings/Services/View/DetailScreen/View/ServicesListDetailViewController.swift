@@ -171,7 +171,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         } else {
             disableButton.isSelected = false
         }
-        
+                
         if servicesAddViewModel?.getUserSelectedServiceData?.priceVaries == true {
             hideButton.isSelected = true
             enableButton.isSelected = false
@@ -231,6 +231,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             removeImageViewBtn.isHidden = true
             serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         }
+        isPreBookingCostAllowed = servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed ?? false
+        showInPublicBooking = servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking ?? false
     }
     
     func forTrailingZero(temp: Double) -> String {

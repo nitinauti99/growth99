@@ -136,9 +136,13 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: Constant.Profile.workingScheduleUpdate, color: UIColor().successMessageColor())
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.navigationController?.popViewController(animated: true)
+        if apiResponse.status == 500 {
+            self.view.showToast(message: apiResponse.message ?? "", color: .red)
+        } else {
+            self.view.showToast(message: Constant.Profile.workingScheduleUpdate, color: UIColor().successMessageColor())
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     

@@ -64,7 +64,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     @IBOutlet weak var onlineLinkWithURLView: UIView!
     @IBOutlet weak var onlineLinkWithURLTextView: UITextView!
     @IBOutlet weak var submitButton: UIButton!
-
+    
     var clinicId: Int?
     var screenTitle: String = String.blank
     var dateFormater: DateFormaterProtocol?
@@ -387,7 +387,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             contactNumberTextField.showError(message: "Phone Number is required")
             return
         }
-
+        
         // Remove non-digit characters using regular expression
         let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         guard cleanedPhoneNumber.count >= 10 else {
@@ -439,7 +439,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         }
         
         let appointment = (appointmentURLTextField.text)?.replacingOccurrences(of: "\"", with: "")
-
+        
         
         let params = ClinicParamModel(name: clinicName, contactNumber: phoneNumber, address: address, timezone: timeZone, isDefault: false, about: aboutClinicTextView.text, facebook: "", instagram: instagramURLTextField.text, twitter: twitterURLTextField.text, giftCardDetail: giftCardTextView.text, giftCardUrl: giftcardURLTextField.text, website: websiteURLTextField.text, paymentLink: paymentLinkTextField.text, appointmentUrl: appointment, currency: currency, googleMyBusiness: "", googlePlaceId: "", yelpUrl: "", businessHours: businessHours, clinicUrl: "")
         let parameters: [String: Any]  = params.toDict()

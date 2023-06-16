@@ -200,7 +200,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     
     func appoinmentEdited() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment updated successfully", color: .green)
+        self.view.showToast(message: "Appointment updated successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }
@@ -208,7 +208,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
 
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment cancelled successfully", color: .green)
+        self.view.showToast(message: "Appointment cancelled successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }

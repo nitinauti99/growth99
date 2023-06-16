@@ -21,111 +21,123 @@ extension ClinicsListDetailViewController: UITextFieldDelegate  {
     }
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
-        if textField == clinicNameTextField {
-            guard let textField = clinicNameTextField.text, !textField.isEmpty else {
+        func validateURLTextField(_ textField: CustomTextField, errorMessage: String) {
+            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
+            let isURLValid = regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && (textField.text?.contains(".")) ?? false
+            if isURLValid {
+                textField.hideError()
+                submitButton.isEnabled = true
+            } else {
+                textField.showError(message: errorMessage)
+                submitButton.isEnabled = false
+            }
+        }
+        
+        switch textField {
+        case clinicNameTextField:
+            guard let text = clinicNameTextField.text, !text.isEmpty else {
                 clinicNameTextField.showError(message: "Clinic Name is required.")
                 submitButton.isEnabled = false
                 return
             }
-        } else if (textField == contactNumberTextField) {
-            guard let textField = contactNumberTextField.text, !textField.isEmpty else  {
+        case contactNumberTextField:
+            guard let text = contactNumberTextField.text, !text.isEmpty else  {
                 contactNumberTextField.showError(message: "Contact Number is required.")
                 submitButton.isEnabled = false
                 return
             }
-        } else if (textField == addressField) {
-            guard let textField  = addressField.text, !textField.isEmpty else {
+        case addressField:
+            guard let text = addressField.text, !text.isEmpty else {
                 addressField.showError(message: "Address is required.")
                 submitButton.isEnabled = false
                 return
             }
-        } else if (textField == timeZoneTextField) {
-            guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
+        case timeZoneTextField:
+            guard let text = timeZoneTextField.text, !text.isEmpty else {
                 timeZoneTextField.showError(message: "Timezone is required.")
                 submitButton.isEnabled = false
                 return
             }
-        }
-        else if (textField == currencyTextField) {
-            guard let currencyText = currencyTextField.text, !currencyText.isEmpty else {
+        case currencyTextField:
+            guard let text = currencyTextField.text, !text.isEmpty else {
                 currencyTextField.showError(message: "Currency is required.")
                 submitButton.isEnabled = false
                 return
             }
-        } else if (textField == websiteURLTextField) {
-            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
-            guard regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && ((textField.text?.contains(".")) != nil) else {
-                websiteURLTextField.showError(message: "Website URL is invalid.")
-                submitButton.isEnabled = false
-                return
+        case websiteURLTextField:
+            if let text = websiteURLTextField.text, !text.isEmpty {
+                validateURLTextField(websiteURLTextField, errorMessage: "Website URL is invalid.")
+            } else {
+                websiteURLTextField.hideError()
             }
-        } else if (textField == appointmentURLTextField) {
-            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
-            guard regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && ((textField.text?.contains(".")) != nil) else {
-                appointmentURLTextField.showError(message: "Appointment URL is invalid.")
-                submitButton.isEnabled = false
-                return
+        case appointmentURLTextField:
+            if let text = appointmentURLTextField.text, !text.isEmpty {
+                validateURLTextField(appointmentURLTextField, errorMessage: "Appointment URL is invalid.")
+            } else {
+                appointmentURLTextField.hideError()
             }
-        } else if (textField == giftcardURLTextField) {
-            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
-            guard regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && ((textField.text?.contains(".")) != nil) else {
-                giftcardURLTextField.showError(message: "Gift Card URL is invalid.")
-                submitButton.isEnabled = false
-                return
+        case giftcardURLTextField:
+            if let text = giftcardURLTextField.text, !text.isEmpty {
+                validateURLTextField(giftcardURLTextField, errorMessage: "Gift Card URL is invalid.")
+            } else {
+                giftcardURLTextField.hideError()
             }
-        } else if (textField == instagramURLTextField) {
-            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
-            guard regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && ((textField.text?.contains(".")) != nil) else {
-                instagramURLTextField.showError(message: "Instagram URL is invalid.")
-                submitButton.isEnabled = false
-                return
+        case instagramURLTextField:
+            if let text = instagramURLTextField.text, !text.isEmpty {
+                validateURLTextField(instagramURLTextField, errorMessage: "Instagram URL is invalid.")
+            } else {
+                instagramURLTextField.hideError()
             }
-        } else if (textField == twitterURLTextField) {
-            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
-            guard regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && ((textField.text?.contains(".")) != nil) else {
-                twitterURLTextField.showError(message: "Twitter URL is invalid.")
-                submitButton.isEnabled = false
-                return
+        case twitterURLTextField:
+            if let text = twitterURLTextField.text, !text.isEmpty {
+                validateURLTextField(twitterURLTextField, errorMessage: "Twitter URL is invalid.")
+            } else {
+                twitterURLTextField.hideError()
             }
-        } else if (textField == paymentLinkTextField) {
-            let regex = try! NSRegularExpression(pattern: "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", options: [])
-            guard regex.firstMatch(in: textField.text ?? "", options: [], range: NSRange(location: 0, length: textField.text?.utf16.count ?? 0)) != nil && ((textField.text?.contains(".")) != nil) else {
-                paymentLinkTextField.showError(message: "Payment Link is invalid.")
-                submitButton.isEnabled = false
-                return
+        case paymentLinkTextField:
+            if let text = paymentLinkTextField.text, !text.isEmpty {
+                validateURLTextField(paymentLinkTextField, errorMessage: "Payment Link is invalid.")
+            } else {
+                paymentLinkTextField.hideError()
             }
+        default:
+            break
         }
+        
         submitButton.isEnabled = true
     }
     
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == clinicNameTextField {
-            guard let textField = clinicNameTextField.text, !textField.isEmpty else {
+        switch textField {
+        case clinicNameTextField:
+            guard let text = clinicNameTextField.text, !text.isEmpty else {
                 clinicNameTextField.showError(message: "Clinic Name is required.")
                 return
             }
-        } else if (textField == contactNumberTextField) {
-            guard let textField = contactNumberTextField.text, !textField.isEmpty else  {
+        case contactNumberTextField:
+            guard let text = contactNumberTextField.text, !text.isEmpty else {
                 contactNumberTextField.showError(message: "Contact Number is required.")
                 return
             }
-        } else if (textField == addressField) {
-            guard let textField  = addressField.text, !textField.isEmpty else {
+        case addressField:
+            guard let text = addressField.text, !text.isEmpty else {
                 addressField.showError(message: "Address is required.")
                 return
             }
-        }
-        else if (textField == timeZoneTextField) {
+        case timeZoneTextField:
             guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {
                 timeZoneTextField.showError(message: "Timezone is required.")
                 return
             }
-        }
-        else if (textField == currencyTextField) {
+        case currencyTextField:
             guard let currencyText = currencyTextField.text, !currencyText.isEmpty else {
                 currencyTextField.showError(message: "Currency is required.")
                 return
             }
+        default:
+            break
         }
     }
+
 }

@@ -109,7 +109,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         if apiResponse.status == 500 {
             self.view.showToast(message: apiResponse.message ?? "", color: .red)
         } else {
-            self.view.showToast(message: apiResponse.message ?? "", color: UIColor().successMessageColor())
+            self.view.showToast(message: "Vacation schedule updated successfully", color: UIColor().successMessageColor())
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.navigationController?.popViewController(animated: true)
             }
