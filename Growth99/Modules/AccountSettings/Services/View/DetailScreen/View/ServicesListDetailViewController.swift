@@ -162,7 +162,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         userQuestionnaires = servicesAddViewModel?.getUserSelectedServiceData?.questionnaires ?? []
         serviceQuestionarieTextField.text = userQuestionnaires.map({$0.name ?? String.blank}).joined(separator: ", ")
         for item in userQuestionnaires {
-            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item.createdAt ?? "", isContactForm: item.isContactForm ?? true, name: item.name ?? "", id: item.id ?? 0, isG99ReviewForm: item.isG99ReviewForm ?? true))
+            selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item.createdAt ?? "", isContactForm: item.isContactForm ?? nil, name: item.name ?? "", id: item.id ?? 0, isG99ReviewForm: item.isG99ReviewForm ?? nil))
             selectedQuestionnairesIds.append(item.id ?? 0)
         }
             

@@ -239,6 +239,23 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             onlineLinkWithoutURLView.isHidden = true
             onlineLinkWithURLView.isHidden = false
         } else {
+            mondayBtn.isSelected = true
+            tuesdayBtn.isSelected = true
+            wednesdayBtn.isSelected = true
+            thursdayBtn.isSelected = true
+            fridayBtn.isSelected = true
+            saturdayBtn.isSelected = true
+            sundayBtn.isSelected = true
+            mondayStartTimeTF.text = "09:00 AM"
+            mondayEndTimeTF.text = "05:00 PM"
+            tuesdayStartTimeTF.text = "09:00 AM"
+            tuesdayEndTimeTF.text = "05:00 PM"
+            wednesdayStartTimeTF.text = "09:00 AM"
+            wednesdayEndTimeTF.text = "05:00 PM"
+            thursdayStartTimeTF.text = "09:00 AM"
+            thursdayEndTimeTF.text = "05:00 PM"
+            fridayStartTimeTF.text = "09:00 AM"
+            fridayEndTimeTF.text = "05:00 PM"
             onlineLinkWithoutURLView.isHidden = false
             onlineLinkWithURLView.isHidden = true
         }
