@@ -272,7 +272,7 @@
                                                     <action selector="cancelButtonActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nWW-fT-lKS"/>
                                                 </connections>
                                             </button>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character Remaining: 200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-Lw-z3T">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character Remaining: 200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-Lw-z3T">
                                                 <rect key="frame" x="20" y="789" width="179" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" systemColor="systemBrownColor"/>
@@ -357,7 +357,6 @@
                         <outlet property="isCustom" destination="tYx-lh-LE5" id="kkL-5S-t0D"/>
                         <outlet property="moduleTextField" destination="f8s-V4-NSJ" id="pqP-cE-yb8"/>
                         <outlet property="nameTextField" destination="agL-vv-ITl" id="30R-Gp-xfU"/>
-                        <outlet property="showCharacterLBI" destination="cPc-Lw-z3T" id="Cha-d9-mRp"/>
                         <outlet property="targetTextField" destination="jy3-21-8Zc" id="sQG-Zg-OY7"/>
                     </connections>
                 </viewController>

@@ -168,7 +168,7 @@ class CreateSMSTemplateViewController: UIViewController {
         }
         
         if self.bodyTextView.text.count  < 201 {
-            self.showCharacterLBI.text = String("Character Remaining: \(200 - self.bodyTextView.text.count)")
+          //  self.showCharacterLBI.text = String("Character Remaining: \(200 - self.bodyTextView.text.count)")
         }else {
             return
         }
@@ -258,9 +258,9 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
        
         print(selectedTextCount)
         if selectedTextCount <= 200 {
-            remaingingTextCount = 200 - selectedTextCount
+//            remaingingTextCount = 200 - selectedTextCount
             self.bodyTextView.text += str
-            self.showCharacterLBI.text = String("Character Remaining: \(remaingingTextCount)")
+//            self.showCharacterLBI.text = String("Character Remaining: \(remaingingTextCount)")
         }else{
             return
         }

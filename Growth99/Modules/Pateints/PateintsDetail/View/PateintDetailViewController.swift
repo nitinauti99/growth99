@@ -40,6 +40,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
     @IBOutlet private weak var phoneNumberButton: UIButton!
     @IBOutlet private weak var dateOfBirthButton: UIButton!
     @IBOutlet private weak var genderButton: UIButton!
+    @IBOutlet private weak var genderSelectionButton: UIButton!
     @IBOutlet private weak var notesButton: UIButton!
     @IBOutlet weak var subView: UIView!
     
@@ -107,9 +108,11 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
        
         self.gender.borderColor = .clear
         self.genderButton.isSelected = false
-        self.genderButton.isUserInteractionEnabled = false
+        self.gender.isUserInteractionEnabled = false
         self.gender.isEnabled = false
 
+        self.genderSelectionButton.isUserInteractionEnabled = false
+               
         self.dateOfBirth.borderColor = .clear
         self.dateOfBirthButton.isSelected = false
         self.dateOfBirth.isUserInteractionEnabled = false
@@ -374,6 +377,7 @@ extension PateintDetailViewController {
     @IBAction func editGender(sender: UIButton) {
         gender.borderColor = .gray
         gender.isUserInteractionEnabled = true
+        self.genderSelectionButton.isUserInteractionEnabled = true
         self.genderButton.isUserInteractionEnabled = true
         if sender.isSelected == true {
             self.view.ShowSpinner()
