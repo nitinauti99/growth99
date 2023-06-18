@@ -152,8 +152,6 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         let leadScreen = TriggerEditDetailModel(cellType: "Lead", LastName: "")
         let appointmentScreen = TriggerEditDetailModel(cellType: "Appointment", LastName: "")
         let createScreen = TriggerEditDetailModel(cellType: "Both", LastName: "")
-        let timeScreen = TriggerEditDetailModel(cellType: "Time", LastName: "")
-        
         let modelData = viewModel?.getTriggerEditListData
         
         if modelData?.name != "" && modelData?.moduleName != "" {
@@ -167,9 +165,6 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
             triggerDetailList.append(createScreen)
         }
         selectedLeadSources = modelData?.triggerConditions ?? []
-//        selectedLeadLandingPages = modelData?.landingPages ?? []
-//        selectedleadForms = modelData?.forms ?? []
-//        selectedLeadSourceUrl = modelData?.sourceUrls ?? []
         triggerdDetailTableView.reloadData()
     }
     
