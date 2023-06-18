@@ -37,6 +37,10 @@ class TriggerAppointmentActionTableViewCell: UITableViewCell {
         patientAppointmentView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
     }
     
+    func configureCell(index: IndexPath) {
+        indexPath = index
+    }
+    
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonPatient(cell: self, index: indexPath)

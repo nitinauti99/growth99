@@ -12,13 +12,13 @@ protocol TriggerModuleCellDelegate: AnyObject {
 }
 
 class TriggerModuleTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var subViewInside: UIView!
     @IBOutlet weak var leadBtn: UIButton!
     @IBOutlet weak var patientBtn: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-
+    
     var moduleTypeSelected: String = "lead"
     let radioController: RadioButtonController = RadioButtonController()
     
@@ -32,6 +32,12 @@ class TriggerModuleTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
         radioController.buttonsArray = [leadBtn, patientBtn]
         radioController.defaultButton = leadBtn
+    }
+    
+    func configureCell(index: IndexPath, sender: UIButton, modelType: String) {
+        indexPath = index
+        radioController.buttonArrayUpdated(buttonSelected: sender)
+        moduleTypeSelected = modelType
     }
     
     // MARK: - Add and remove time methods

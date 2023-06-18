@@ -99,8 +99,6 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         registerTableView()
         dateFormater = DateFormater()
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
-        
-        
         appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
         
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")

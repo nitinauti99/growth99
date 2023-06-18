@@ -39,6 +39,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.leadFormSelectonButton.tag = indexPath.row
             cell.leadSourceUrlSelectonButton.addTarget(self, action: #selector(leadSourceUrlMethod), for: .touchDown)
             cell.leadSourceUrlSelectonButton.tag = indexPath.row
+            cell.configureCell(index: indexPath)
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
@@ -46,6 +47,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
             cell.patientAppointmenTextLabel.text = appointmentStatusArray[0]
+            cell.configureCell(index: indexPath)
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
@@ -59,7 +61,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.networkEmailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
             cell.networkEmailNetworkSelectonButton.tag = indexPath.row
             cell.networkEmailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
-            
+            cell.configureCell(index: indexPath)
             if moduleSelectionType == "lead" {
                 cell.taskBtn.isHidden = false
                 cell.taskLabel.isHidden = false

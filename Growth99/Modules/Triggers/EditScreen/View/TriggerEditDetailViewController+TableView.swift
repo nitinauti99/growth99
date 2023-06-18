@@ -19,12 +19,11 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = UITableViewCell()
-       
+        let cell = UITableViewCell()
+        
         if triggerDetailList[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerDefaultTableViewCell", for: indexPath) as? TriggerDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.moduleNextButton.isHidden = true
             moduleName = viewModel?.getTriggerEditListData?.name ?? ""
             cell.massEmailSMSTextField.text = viewModel?.getTriggerEditListData?.name ?? ""
             return cell
@@ -39,7 +38,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 cell.leadBtn.isSelected = false
                 cell.patientBtn.isSelected = true
             }
-            cell.nextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadActionTableViewCell", for: indexPath) as? TriggerLeadActionTableViewCell else { return UITableViewCell()}
@@ -58,7 +56,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             var landingArray = [EditLandingPageNamesModel]()
             var formArray = [EditLandingPageNamesModel]()
             var sourceUrlArray = [LeadSourceUrlListModel]()
-
+            
             for landingItem in viewModel?.getTriggerEditListData?.landingPages ?? [] {
                 let getLandingData = viewModel?.getLandingPageNamesDataEdit.filter({ $0.id == landingItem})
                 for landingChildItem in getLandingData ?? [] {
@@ -78,7 +76,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             }
             cell.leadFormTextLabel.text = formArray.map({$0.name ?? ""}).joined(separator: ",")
             selectedleadForms = formArray
-
+            
             for formsItem in viewModel?.getTriggerEditListData?.forms ?? [] {
                 let getLandingForm = viewModel?.getTriggerLeadSourceUrlDataEdit.filter({ $0.id == formsItem})
                 for landingChildItem in getLandingForm ?? [] {
@@ -137,7 +135,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 cell.leadFormView.isHidden = true
                 cell.leadSourceURLView.isHidden = true
             }
-            cell.leadNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
@@ -145,24 +142,23 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
             cell.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.triggerActionName
-            cell.patientNextButton.isHidden = true
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerParentCreateTableViewCell", for: indexPath) as? TriggerParentCreateTableViewCell else { return UITableViewCell()}
-          
-
+            
+            
             for item in viewModel?.getTriggerEditListData?.triggerData ?? [] {
-               
+                
                 let creatChild = TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.endTime, orderOfCondition: item.orderOfCondition, type: "Create")
                 
                 let createTimechild =  TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.startTime, orderOfCondition: item.orderOfCondition, type: "Time")
-               
+                
                 finalArray.append(creatChild)
                 finalArray.append(createTimechild)
             }
-
+            
             cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
-          
+            
             return cell
         }
         
@@ -170,12 +166,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if triggerDetailList[indexPath.row].cellType  == "Both" {
-            return CGFloat(finalArray.count * 465 + 150)
-
-        }else{
-            return UITableView.automaticDimension
-        }
+        return UITableView.automaticDimension
     }
     
     @objc func leadSouceMethod(sender: UIButton) {
@@ -425,7 +416,11 @@ extension TriggerEditDetailViewController: TriggerDefaultCellDelegate {
             cell.massEmailSMSTextField.showError(message: "Please enter trigger name")
         } else {
             moduleName = cell.massEmailSMSTextField.text ?? String.blank
-            cell.moduleNextButton.isEnabled = false
+            if triggerDetailList.count > 2 {
+                triggerDetailList.removeSubrange(2..<triggerDetailList.count)
+                finalArray.removeAll()
+            }
+            triggerdDetailTableView.reloadData()
         }
     }
 }
@@ -433,12 +428,28 @@ extension TriggerEditDetailViewController: TriggerDefaultCellDelegate {
 extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
     func nextButtonModule(cell: TriggerModuleTableViewCell, index: IndexPath, moduleType: String) {
         if moduleType == "appointment" {
-            moduleSelectionType = moduleType
+            if triggerDetailList.count < 3 {
+                moduleSelectionType = moduleType
+                createNewTriggerCell(cellNameType: "Appointment")
+                scrollToBottom()
+            } else {
+                triggerDetailList.removeSubrange(2..<triggerDetailList.count)
+                triggerdDetailTableView.reloadData()
+                moduleSelectionType = moduleType
+                createNewTriggerCell(cellNameType: "Appointment")
+            }
         } else if moduleType == "lead" {
-            moduleSelectionType = moduleType
+            if triggerDetailList.count < 3 {
+                moduleSelectionType = moduleType
+                createNewTriggerCell(cellNameType: "Lead")
+                scrollToBottom()
+            } else {
+                triggerDetailList.removeSubrange(2..<triggerDetailList.count)
+                triggerdDetailTableView.reloadData()
+                moduleSelectionType = moduleType
+                createNewTriggerCell(cellNameType: "Lead")
+            }
         }
-        cell.nextButton.isEnabled = false
-        scrollToBottom()
     }
 }
 
@@ -454,11 +465,13 @@ extension TriggerEditDetailViewController: TriggerLeadCellDelegate {
             cell.leadFormEmptyTextLabel.isHidden = false
         }
         else {
-            cell.leadNextButton.isEnabled = false
-            cell.leadSourceEmptyTextLabel.isHidden = true
-            cell.leadLandingEmptyTextLabel.isHidden = true
-            cell.leadFormEmptyTextLabel.isHidden = true
-            scrollToBottom()
+            if triggerDetailList.count < 4 {
+                cell.leadSourceEmptyTextLabel.isHidden = true
+                cell.leadLandingEmptyTextLabel.isHidden = true
+                cell.leadFormEmptyTextLabel.isHidden = true
+                scrollToBottom()
+                createNewTriggerCell(cellNameType: "Both")
+            }
         }
     }
 }
@@ -466,27 +479,27 @@ extension TriggerEditDetailViewController: TriggerLeadCellDelegate {
 extension TriggerEditDetailViewController: TriggerPatientCellDelegate {
     func nextButtonPatient(cell: TriggerAppointmentActionTableViewCell, index: IndexPath) {
         scrollToBottom()
-        cell.appointmentNextButton.isEnabled = false
         appointmentSelectedStatus = cell.patientAppointmenTextLabel.text ?? ""
+        createNewTriggerCell(cellNameType: "Both")
     }
 }
 
 extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
         let timeHourlyArray = ["Min", "Hour", "Day"]
-               let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-                   cell.textLabel?.text = allClinics
-               }
-               selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-                       if selectedList.count == 0 {
-                           cell.timeHourlyTextField.showError(message: "Please enter time duration")
-                       } else {
-                           cell.timeHourlyTextField.text = selectedItem
-                       }
-               }
-               selectionMenu.reloadInputViews()
-               selectionMenu.showEmptyDataLabel(text: "No Result Found")
-               selectionMenu.show(style: .popover(sourceView: cell.timeHourlyButton, size: CGSize(width:  cell.timeHourlyButton.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.timeHourlyTextField.showError(message: "Please enter time duration")
+            } else {
+                cell.timeHourlyTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: cell.timeHourlyButton, size: CGSize(width:  cell.timeHourlyButton.frame.width, height: (Double(timeHourlyArray.count * 30))), arrowDirection: .up), from: self)
     }
     
     func scheduledBasedOnButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
@@ -495,8 +508,8 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
             cell.textLabel?.text = allClinics
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-                cell.scheduledBasedOnTextField.text = selectedItem
-            }
+            cell.scheduledBasedOnTextField.text = selectedItem
+        }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: cell.scheduledBasedOnButton, size: CGSize(width: cell.scheduledBasedOnButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
@@ -519,6 +532,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else if cell.timeHourlyTextField.text == "" {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
+                    finalArray.removeAll()
                     scrollToBottom()
                     createNewTriggerCell(cellNameType: "Both")
                 }
@@ -682,7 +696,6 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     }
     
     func smsNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, smsTargetType: String) {
-        
         if moduleSelectionType == "lead" && smsTargetType == "Leads" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Lead"}) ?? []
         } else if moduleSelectionType == "lead" && smsTargetType == "Clinic" {
@@ -716,11 +729,9 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     func emailTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath) {
         if moduleSelectionType == "lead" {
             emailTargetArray = ["Leads", "Clinic"]
-            
         } else {
             emailTargetArray = ["Patient", "Clinic"]
         }
-        
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: emailTargetArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
@@ -777,15 +788,14 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             cell.textLabel?.text = "\(allClinics.firstName ?? "") \(allClinics.lastName ?? "")"
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            
-               if selectedList.count == 0 {
-                    cell.assignTaskNetworkTextLabel.text = "Select network"
-                   cell.assignTaskEmptyTextLabel.isHidden = false
-                } else {
-                    cell.assignTaskEmptyTextLabel.isHidden = true
-                    self?.selectedTaskTemplate = selectedItem?.id ?? 0
-                    cell.assignTaskNetworkTextLabel.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
-                }
+            if selectedList.count == 0 {
+                cell.assignTaskNetworkTextLabel.text = "Select network"
+                cell.assignTaskEmptyTextLabel.isHidden = false
+            } else {
+                cell.assignTaskEmptyTextLabel.isHidden = true
+                self?.selectedTaskTemplate = selectedItem?.id ?? 0
+                cell.assignTaskNetworkTextLabel.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
+            }
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
