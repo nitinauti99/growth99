@@ -555,6 +555,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
             } else if cell.scheduledBasedOnTextField.text == "" {
                 cell.timeHourlyTextField.showError(message: "Please select scheduled")
             } else {
+                finalArray.removeAll()
                 scrollToBottom()
                 createNewTriggerCell(cellNameType: "Both")
             }
