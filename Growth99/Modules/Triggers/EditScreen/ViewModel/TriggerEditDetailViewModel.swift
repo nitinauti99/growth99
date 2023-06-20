@@ -73,6 +73,11 @@ class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
         }
     }
     
+    var getTriggerDetailDataEdit: TriggerEditDetailListModel? {
+        return self.triggerEditDeatilList
+    }
+    
+    
     func getTriggerLeadSourceUrlEdit() {
         let finaleUrl = ApiUrl.getLeadsourceurls
         self.requestManager.request(forPath: finaleUrl, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[LeadSourceUrlListModel], GrowthNetworkError>) in
@@ -149,10 +154,6 @@ class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
                 print("Error while performing request \(error)")
             }
         }
-    }
-    
-    var getTriggerDetailDataEdit: TriggerEditDetailListModel? {
-        return self.triggerEditDeatilList
     }
     
     var  getLandingPageNamesDataEdit: [EditLandingPageNamesModel] {

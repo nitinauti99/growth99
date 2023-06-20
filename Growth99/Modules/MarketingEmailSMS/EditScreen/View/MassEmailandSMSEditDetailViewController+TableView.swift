@@ -15,21 +15,21 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return emailAndSMSDetailListEdit.count
+        return massSMSDetailListEdit.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if emailAndSMSDetailListEdit[indexPath.row].cellType == "Default" {
+        if massSMSDetailListEdit[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditDefaultTableViewCell", for: indexPath) as? MassEmailandSMSEditDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             moduleNameEdit = cell.massEmailSMSTextField.text ?? String.blank
             return cell
-        } else if emailAndSMSDetailListEdit[indexPath.row].cellType == "Module" {
+        } else if massSMSDetailListEdit[indexPath.row].cellType == "Module" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditModuleTableViewCell", for: indexPath) as? MassEmailandSMSEditModuleTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             smsEmailModuleSelectionTypeEdit = cell.moduleTypeSelected
             return cell
-        } else if emailAndSMSDetailListEdit[indexPath.row].cellType == "Lead" {
+        } else if massSMSDetailListEdit[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditLeadActionTableViewCell", for: indexPath) as? MassEmailandSMSEditLeadActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.leadStatusSelectonButton.addTarget(self, action: #selector(leadStatusMethod), for: .touchDown)
@@ -39,7 +39,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.leadTagSelectonButton.addTarget(self, action: #selector(leadTagMethod), for: .touchDown)
             cell.leadTagSelectonButton.tag = indexPath.row
             return cell
-        } else if emailAndSMSDetailListEdit[indexPath.row].cellType == "Patient" {
+        } else if massSMSDetailListEdit[indexPath.row].cellType == "Patient" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditPatientActionTableViewCell", for: indexPath) as? MassEmailandSMSEditPatientActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.patientStatusSelectonButton.addTarget(self, action: #selector(patientStatusMethod), for: .touchDown)
@@ -49,7 +49,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
             return cell
-        } else if emailAndSMSDetailListEdit[indexPath.row].cellType == "Both" {
+        } else if massSMSDetailListEdit[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditCreateTableViewCell", for: indexPath) as? MassEmailandSMSEditCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             networkTypeSelectedEdit = cell.networkTypeSelected
@@ -64,7 +64,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.networkSelectonEmailButton.addTarget(self, action: #selector(networkSelectionEmailMethod), for: .touchDown)
             
             return cell
-        } else if emailAndSMSDetailListEdit[indexPath.row].cellType == "Time" {
+        } else if massSMSDetailListEdit[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditTimeTableViewCell", for: indexPath) as? MassEmailandSMSEditTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.updateMassEmailTimeFromTextField(with: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "")")
@@ -105,8 +105,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
     }
     
     @objc func leadSourceMethod(sender: UIButton) {
-        let leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
         let row = sender.tag % 1000
@@ -124,7 +123,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceArray.count * 30))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceArrayEdit.count * 30))), arrowDirection: .up), from: self)
     }
     
     @objc func leadTagMethod(sender: UIButton) {

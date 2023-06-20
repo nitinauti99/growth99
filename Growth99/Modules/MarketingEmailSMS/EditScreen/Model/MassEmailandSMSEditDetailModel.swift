@@ -223,3 +223,44 @@ struct MarketingTriggerDataEdit : Codable {
         return dictionary
     }
 }
+
+
+struct MassSMSEditModel : Codable {
+    let id : Int?
+    let name : String?
+    let moduleName : String?
+    let triggerActionName : String?
+    let triggerConditions : [String]?
+    let source : [String]?
+    let landingPages : String?
+    let triggerData : [MassSMSTriggerData]?
+    let leadTags : [Int]?
+    let patientTags : String?
+    let patientStatus : [String]?
+    let executionStatus : String?
+    let forms : String?
+    let sourceUrls : String?
+    let isTriggerForLeadStatus : Bool?
+    let fromLeadStatus : String?
+    let toLeadStatus : String?
+}
+
+struct MassSMSTriggerData : Codable {
+    let id : String?
+    let triggerType : String?
+    let triggerTemplate : Int?
+    let userId : String?
+    let triggerTime : Int?
+    let actionIndex : Int?
+    let addNew : Bool?
+    let showBorder : Bool?
+    let taskName : String?
+    let orderOfCondition : Int?
+    let triggerFrequency : String?
+    let triggerTarget : String?
+    let dateType : String?
+    let scheduledDateTime : String?
+    let timerType : String?
+    let startTime : String?
+    let endTime : String?
+}

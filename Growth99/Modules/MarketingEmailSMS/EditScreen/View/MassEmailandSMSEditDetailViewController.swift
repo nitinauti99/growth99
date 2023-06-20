@@ -8,26 +8,20 @@
 import UIKit
 
 protocol MassEmailandSMSEditDetailViewControlProtocol: AnyObject {
-    func massEmailDetailDataRecivedEdit()
-    func massEmailLeadTagsDataRecivedEdit()
-    func massEmailPatientTagsDataRecivedEdit()
-    func massEmailSMSPatientCountDataRecivedEdit()
-    func massEmailSMSLeadCountDataRecivedEdit()
-    func massEmailSMSEQuotaCountDataReceivedEdit()
-    func massEmailSMSAuditQuotaCountDataReceivedEdit()
-    func massEmailSMSLeadStatusAllDataRecivedEdit()
-    func massEmailSMSPatientStatusAllDataRecivedEdit()
+    func massSMStriggerEditSelectedDataRecived()
+    func massSMSEditDetailDataRecived()
+    func massSMSEditLeadTagsDataRecived()
+    func massSMSEditPatientTagsDataRecived()
+    func massSMSEditEmailSmsQuotaDataRecived()
+    func massSMSEditEmailSmsCountDataRecived()
     func errorReceivedEdit(error: String)
-    func marketingMassLeadDataReceivedEdit()
-    func marketingMassPatientDataReceivedEdit()
-    func marketingMassLeadPatientDataReceivedEdit()
 }
 
 class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMSEditDetailViewControlProtocol {
-
+    
     @IBOutlet weak var emailAndSMSTableViewEdit: UITableView!
     
-    var emailAndSMSDetailListEdit = [MassEmailandSMSDetailModelEdit]()
+    var massSMSDetailListEdit = [MassEmailandSMSDetailModelEdit]()
     var viewModelEdit: MassEmailandSMSEditDetailViewModelProtocol?
     var leadTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
     var patientTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
@@ -63,17 +57,22 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     var networkTypeSelectedEdit: String = String.blank
     var templateIdEdit: Int = 0
     var massAppointmnentIdEdit: Int = 0
+    var massSMStriggerId: Int?
 
     var selectedTimeSlotEdit: String = String.blank
+
+    var leadSourceArrayEdit: [String] = []
+    var appointmentStatusArrayEdit: [String] = []
+    var selectedLeadSourcesEdit: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
         dateFormaterEdit = DateFormater()
-        let emailSMS = MassEmailandSMSDetailModelEdit(cellType: "Default", LastName: "")
-        emailAndSMSDetailListEdit.append(emailSMS)
         viewModelEdit = MassEmailandSMSEditDetailViewModel(delegate: self)
+        leadSourceArrayEdit = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
+        appointmentStatusArrayEdit = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,69 +86,51 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     
     @objc func getMassEmailandSMSDetailsEdit() {
         self.view.ShowSpinner()
-        viewModelEdit?.getMassEmailDetailListEdit()
+        viewModelEdit?.getSelectedMassSMSEditList(selectedMassSMSId: massSMStriggerId ?? 0)
     }
     
-    func massEmailDetailDataRecivedEdit() {
-        viewModelEdit?.getMassEmailLeadTagsListEdit()
+    func massSMStriggerEditSelectedDataRecived() {
+        viewModelEdit?.getMassSMSEditDetailList()
     }
     
-    func massEmailLeadTagsDataRecivedEdit() {
-        viewModelEdit?.getMassEmailPateintsTagsListEdit()
+    func massSMSEditDetailDataRecived() {
+        viewModelEdit?.getMassSMSEditLeadTagsListEdit()
     }
     
-    func massEmailPatientTagsDataRecivedEdit() {
-        viewModelEdit?.getMassEmailBusinessSMSQuotaMethodEdit()
+    func massSMSEditLeadTagsDataRecived() {
+        viewModelEdit?.getMassSMSEditPateintsTagsListEdit()
+    }
+    
+    func massSMSEditPatientTagsDataRecived() {
+        viewModelEdit?.getMassSMSEditBusinessSMSQuotaMethod()
     }
 
-    func massEmailSMSPatientCountDataRecivedEdit() {
-        bothInsertDataReceivedEdit()
+    func massSMSEditEmailSmsQuotaDataRecived() {
+        viewModelEdit?.getMassSMSEditAuditEmailQuotaMethod()
     }
     
-    func massEmailSMSLeadCountDataRecivedEdit() {
-        bothInsertDataReceivedEdit()
-    }
-    
-    func massEmailSMSEQuotaCountDataReceivedEdit() {
-        viewModelEdit?.getMassEmailAuditEmailQuotaMethodEdit()
-    }
-    
-    func massEmailSMSAuditQuotaCountDataReceivedEdit() {
+    func massSMSEditEmailSmsCountDataRecived() {
         self.view.HideSpinner()
-    }
-    
-    func massEmailSMSLeadStatusAllDataRecivedEdit() {
-        viewModelEdit?.getMassEmailPatientStatusAllMethodEdit()
-    }
-    
-    func marketingMassLeadDataReceivedEdit() {
-        smsEmailSubmitReponseReceivedEdit()
-    }
-    
-    func marketingMassPatientDataReceivedEdit() {
-        smsEmailSubmitReponseReceivedEdit()
-    }
-    
-    func marketingMassLeadPatientDataReceivedEdit() {
-        smsEmailSubmitReponseReceivedEdit()
-    }
-    
-    func smsEmailSubmitReponseReceivedEdit() {
-        self.view.HideSpinner()
-        self.view.showToast(message: "Trigger created successfully", color: UIColor().successMessageColor())
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.navigationController?.popViewController(animated: true)
+        
+        let defaultScreen = MassEmailandSMSDetailModelEdit(cellType: "Default", LastName: "")
+        let moduleScreen = MassEmailandSMSDetailModelEdit(cellType: "Module", LastName: "")
+        let leadScreen = MassEmailandSMSDetailModelEdit(cellType: "Lead", LastName: "")
+        let appointmentScreen = MassEmailandSMSDetailModelEdit(cellType: "Appointment", LastName: "")
+        let createScreen = MassEmailandSMSDetailModelEdit(cellType: "Both", LastName: "")
+        let modelData = viewModelEdit?.getMassSMSTriggerEditListData
+        
+        if modelData?.name != "" && modelData?.moduleName != "" {
+            massSMSDetailListEdit.append(defaultScreen)
+            massSMSDetailListEdit.append(moduleScreen)
+            if modelData?.moduleName == "leads" {
+                massSMSDetailListEdit.append(leadScreen)
+            } else if modelData?.moduleName == "Appointment" {
+                massSMSDetailListEdit.append(appointmentScreen)
+            }
+            massSMSDetailListEdit.append(createScreen)
         }
-    }
-
-    func massEmailSMSPatientStatusAllDataRecivedEdit() {
-        self.view.HideSpinner()
-        createNewMassEmailSMSCell(cellNameType: "Both")
-    }
-    
-    func bothInsertDataReceivedEdit() {
-        self.view.HideSpinner()
-        createNewMassEmailSMSCell(cellNameType: "Both")
+        selectedLeadSourcesEdit = modelData?.triggerConditions ?? []
+        emailAndSMSTableViewEdit.reloadData()
     }
     
     func errorReceivedEdit(error: String) {
@@ -170,9 +151,9 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     
     func createNewMassEmailSMSCell(cellNameType: String) {
         let emailSMS = MassEmailandSMSDetailModelEdit(cellType: cellNameType, LastName: "")
-        emailAndSMSDetailListEdit.append(emailSMS)
+        massSMSDetailListEdit.append(emailSMS)
         emailAndSMSTableViewEdit.beginUpdates()
-        let indexPath = IndexPath(row: (emailAndSMSDetailListEdit.count) - 1, section: 0)
+        let indexPath = IndexPath(row: (massSMSDetailListEdit.count) - 1, section: 0)
         emailAndSMSTableViewEdit.insertRows(at: [indexPath], with: .fade)
         emailAndSMSTableViewEdit.endUpdates()
     }
