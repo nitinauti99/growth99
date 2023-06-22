@@ -11,46 +11,31 @@ protocol MassEmailandSMSEditCreateCellDelegate: AnyObject {
     func nextButtonCreate(cell: MassEmailandSMSEditCreateTableViewCell, index: IndexPath, networkType: String)
     func smsButtonClick(cell: MassEmailandSMSEditCreateTableViewCell)
     func emailButtonClick(cell: MassEmailandSMSEditCreateTableViewCell)
+    func smsNetworkButtonSelected(cell: MassEmailandSMSEditCreateTableViewCell, index: IndexPath, buttonSender: UIButton, networkType: String)
+    func emailNetworkButtonSelected(cell: MassEmailandSMSEditCreateTableViewCell, index: IndexPath, buttonSender: UIButton, networkType: String)
 }
 
 class MassEmailandSMSEditCreateTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
-    @IBOutlet private weak var subViewInside: UIView!
-
     @IBOutlet weak var smsBtn: UIButton!
     @IBOutlet weak var emailBtn: UIButton!
-    
-    @IBOutlet weak var networkSelectonSMSButton: UIButton!
-    @IBOutlet weak var networkViewSMS: UIView!
-    @IBOutlet weak var selectNetworkSMSTextLabel: UILabel!
-    
-    @IBOutlet weak var networkSelectonEmailButton: UIButton!
-    @IBOutlet weak var networkViewEmail: UIView!
-    @IBOutlet weak var selectNetworkEmailTextLabel: UILabel!
-    
-    @IBOutlet weak var selectNetworkEmptyTextLabel: UILabel!
-
-    @IBOutlet weak var smsEmailCountTextLabel: UILabel!
-    @IBOutlet weak var createNextButton: UIButton!
+    @IBOutlet weak var smsEmailCountLabel: UILabel!
+    @IBOutlet weak var selectNetworkButton: UIButton!
+    @IBOutlet weak var selectNetworkTextField: CustomTextField!
+    @IBOutlet weak var nextButton: UIButton!
 
     weak var delegate: MassEmailandSMSEditCreateCellDelegate?
     var indexPath = IndexPath()
     var networkTypeSelected: String = "sms"
+    let radioController: RadioButtonController = RadioButtonController()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-
-        networkViewEmail.layer.cornerRadius = 4.5
-        networkViewEmail.layer.borderWidth = 1
-        networkViewEmail.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewSMS.layer.cornerRadius = 4.5
-        networkViewSMS.layer.borderWidth = 1
-        networkViewSMS.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        radioController.buttonsArray = [smsBtn, emailBtn]
+        radioController.defaultButton = smsBtn
     }
     
     // MARK: - Add and remove time methods
@@ -59,20 +44,26 @@ class MassEmailandSMSEditCreateTableViewCell: UITableViewCell {
     }
 
     @IBAction func smsButtonAction(sender: UIButton) {
-        smsBtn.isSelected = !smsBtn.isSelected
-        networkViewEmail.isHidden = true
-        networkViewSMS.isHidden = false
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         networkTypeSelected = "sms"
-        emailBtn.isSelected = false
+        selectNetworkTextField.text = ""
         self.delegate?.smsButtonClick(cell: self)
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
-        emailBtn.isSelected = !emailBtn.isSelected
-        networkViewEmail.isHidden = false
-        networkViewSMS.isHidden = true
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         networkTypeSelected = "email"
-        smsBtn.isSelected = false
+        selectNetworkTextField.text = ""
         self.delegate?.emailButtonClick(cell: self)
+    }
+    
+    @IBAction func selectNetworkTypeButton(sender: UIButton) {
+        if networkTypeSelected == "sms" {
+            selectNetworkTextField.text = ""
+            self.delegate?.smsNetworkButtonSelected(cell: self, index: indexPath, buttonSender: sender, networkType: networkTypeSelected)
+        } else {
+            selectNetworkTextField.text = ""
+            self.delegate?.emailNetworkButtonSelected(cell: self, index: indexPath, buttonSender: sender, networkType: networkTypeSelected)
+        }
     }
 }

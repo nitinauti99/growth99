@@ -9,48 +9,86 @@ import UIKit
 
 protocol MassEmailandSMSEditLeadCellDelegate: AnyObject {
     func nextButtonLead(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath)
+    func leadStausButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
+    func leadSourceButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
+    func leadTagButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
+    
 }
 
 class MassEmailandSMSEditLeadActionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
-    @IBOutlet private weak var subViewInside: UIView!
-    @IBOutlet weak var leadStatusSelectonButton: UIButton!
-    @IBOutlet weak var leadSourceSelectonButton: UIButton!
-    @IBOutlet weak var leadTagSelectonButton: UIButton!
-    @IBOutlet weak var leadStatusView: UIView!
-    @IBOutlet weak var leadSourceView: UIView!
-    @IBOutlet weak var leadTagView: UIView!
-    @IBOutlet weak var leadStatusTextLabel: UILabel!
-    @IBOutlet weak var leadSourceTextLabel: UILabel!
-    @IBOutlet weak var leadTagTextLabel: UILabel!
     @IBOutlet weak var leadNextButton: UIButton!
-
-    @IBOutlet weak var leadStatusEmptyTextLabel: UILabel!
-
+    
+    @IBOutlet weak var leadStatusButton: UIButton!
+    @IBOutlet weak var leadStatusTextField: CustomTextField!
+    
+    @IBOutlet weak var leadSourceButton: UIButton!
+    @IBOutlet weak var leadSourceTextField: CustomTextField!
+    @IBOutlet weak var leadSourceTextFieldHight: NSLayoutConstraint!
+    @IBOutlet weak var showleadSourceButton: UIButton!
+    
+    @IBOutlet weak var leadTagButton: UIButton!
+    @IBOutlet weak var leadTagTextField: CustomTextField!
+    @IBOutlet weak var leadTagTextFieldHight: NSLayoutConstraint!
+    @IBOutlet weak var showleadTagButton: UIButton!
+    
     weak var delegate: MassEmailandSMSEditLeadCellDelegate?
     var indexPath = IndexPath()
+    var tableView: UITableView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        
-        leadStatusView.layer.cornerRadius = 4.5
-        leadStatusView.layer.borderWidth = 1
-        leadStatusView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        leadSourceView.layer.cornerRadius = 4.5
-        leadSourceView.layer.borderWidth = 1
-        leadSourceView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        leadTagView.layer.cornerRadius = 4.5
-        leadTagView.layer.borderWidth = 1
-        leadTagView.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
     }
     
-    // MARK: - Add and remove time methods
+    func configureCell(tableView: UITableView?, index: IndexPath) {
+        self.indexPath = index
+        self.tableView = tableView
+    }
+    
+    @IBAction func showleadSourceTextField(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            leadSourceTextFieldHight.constant = 0
+            leadSourceTextField.rightImage = nil
+            leadSourceTextField.text = ""
+        } else {
+            sender.isSelected = true
+            leadSourceTextFieldHight.constant = 45
+            leadSourceTextField.rightImage = UIImage(named: "dropDown")
+        }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
+    }
+    
+    @IBAction func showleadTagTextField(sender: UIButton){
+        if sender.isSelected {
+            sender.isSelected = false
+            leadTagTextFieldHight.constant = 0
+            leadTagTextField.rightImage = nil
+            leadTagTextField.text = ""
+        } else {
+            sender.isSelected = true
+            leadTagTextFieldHight.constant = 45
+            leadTagTextField.rightImage = UIImage(named: "dropDown")
+        }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
+    }
+    
+    @IBAction func leadStatusButtonAction(sender: UIButton) {
+        self.delegate?.leadStausButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadSourceButtonAction(sender: UIButton) {
+        self.delegate?.leadSourceButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadTagButtonAction(sender: UIButton) {
+        self.delegate?.leadTagButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonLead(cell: self, index: indexPath)
     }

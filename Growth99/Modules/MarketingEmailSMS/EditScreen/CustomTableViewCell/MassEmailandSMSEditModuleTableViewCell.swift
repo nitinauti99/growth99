@@ -9,15 +9,19 @@ import UIKit
 
 protocol MassEmailandSMSEditModuleCellDelegate: AnyObject {
     func nextButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
+    func leadButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
+    func patientButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
+    func bothButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
+
 }
 
 class MassEmailandSMSEditModuleTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
-    @IBOutlet private weak var leadBtn: UIButton!
-    @IBOutlet private weak var patientBtn: UIButton!
-    @IBOutlet private weak var bothBtn: UIButton!
+    @IBOutlet weak var leadBtn: UIButton!
+    @IBOutlet weak var patientBtn: UIButton!
+    @IBOutlet weak var bothBtn: UIButton!
     @IBOutlet weak var moduleNextButton: UIButton!
     var moduleTypeSelected: String = "lead"
 
@@ -42,15 +46,18 @@ class MassEmailandSMSEditModuleTableViewCell: UITableViewCell {
     @IBAction func leadButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "lead"
+        self.delegate?.leadButtonModule(cell: self, index: indexPath, moduleType: moduleTypeSelected)
     }
     
     @IBAction func patientButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "patient"
+        self.delegate?.patientButtonModule(cell: self, index: indexPath, moduleType: moduleTypeSelected)
     }
     
     @IBAction func bothButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "both"
+        self.delegate?.bothButtonModule(cell: self, index: indexPath, moduleType: moduleTypeSelected)
     }
 }

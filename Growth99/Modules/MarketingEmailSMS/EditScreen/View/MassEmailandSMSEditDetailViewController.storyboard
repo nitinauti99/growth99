@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,12 +15,44 @@
             <objects>
                 <viewController storyboardIdentifier="MassEmailandSMSEditDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MassEmailandSMSEditDetailViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Aq-EK-3p3">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3w-7i-7Er">
+                                <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Trigger already executed, to look at the statistics please on)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mm9-IS-ztx">
+                                        <rect key="frame" x="10" y="10" width="355" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxS-IU-fgV">
+                                        <rect key="frame" x="10" y="48.5" width="123.5" height="0.0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="RQT-xT-ot0"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="100" maxY="0.0"/>
+                                        <state key="normal" title="View audit" image="barChart">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="plain" image="barChart" imagePlacement="leading" title="View audit" imagePadding="5">
+                                            <color key="baseForegroundColor" red="0.27058823529411763" green="0.61176470588235299" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="LxS-IU-fgV" firstAttribute="leading" secondItem="mm9-IS-ztx" secondAttribute="leading" id="2Bj-mG-9If"/>
+                                    <constraint firstItem="LxS-IU-fgV" firstAttribute="top" secondItem="mm9-IS-ztx" secondAttribute="bottom" constant="5" id="6T8-ST-HwD"/>
+                                    <constraint firstItem="mm9-IS-ztx" firstAttribute="top" secondItem="g3w-7i-7Er" secondAttribute="top" constant="10" id="DfI-4K-waa"/>
+                                    <constraint firstItem="mm9-IS-ztx" firstAttribute="leading" secondItem="g3w-7i-7Er" secondAttribute="leading" constant="10" id="Ktm-Wm-Nq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="mm9-IS-ztx" secondAttribute="trailing" constant="10" id="Vu7-BA-0z1"/>
+                                    <constraint firstAttribute="height" id="z0a-kQ-Rgv"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Aq-EK-3p3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="HIM-SM-2HP"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="gwh-5h-GZ2"/>
@@ -29,24 +62,38 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="g3w-7i-7Er" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="LTj-l1-ahS"/>
                             <constraint firstAttribute="bottom" secondItem="5Aq-EK-3p3" secondAttribute="bottom" id="WcI-qB-zF4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5Aq-EK-3p3" secondAttribute="trailing" id="ZlA-2a-HPG"/>
-                            <constraint firstItem="5Aq-EK-3p3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="iyw-f2-99W"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="g3w-7i-7Er" secondAttribute="trailing" id="cAz-Cm-eLF"/>
+                            <constraint firstItem="g3w-7i-7Er" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="lwU-K6-fAm"/>
+                            <constraint firstItem="5Aq-EK-3p3" firstAttribute="top" secondItem="g3w-7i-7Er" secondAttribute="bottom" id="tyk-ig-q1Y"/>
                             <constraint firstItem="5Aq-EK-3p3" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ydY-1U-b5y"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailAndSMSTableViewEdit" destination="5Aq-EK-3p3" id="0xp-pn-SAX"/>
+                        <outlet property="triggerExicutedView" destination="g3w-7i-7Er" id="D8n-EY-2Mq"/>
+                        <outlet property="triggerExicutedViewHeight" destination="z0a-kQ-Rgv" id="Fzu-O6-TtY"/>
+                        <outlet property="viewAuditButton" destination="LxS-IU-fgV" id="7Nm-Jz-61q"/>
+                        <outlet property="viewAuditButtonHeight" destination="RQT-xT-ot0" id="lj6-6N-OhS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-59" y="4"/>
+            <point key="canvasLocation" x="-61.600000000000001" y="3.1484257871064472"/>
         </scene>
     </scenes>
     <resources>
+        <image name="barChart" width="15" height="15"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

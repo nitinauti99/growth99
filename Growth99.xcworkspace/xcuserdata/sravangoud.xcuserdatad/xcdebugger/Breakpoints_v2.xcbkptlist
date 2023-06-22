@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3CC8141E-00A0-4367-A02B-382A0AB0B06C"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8EAF1502-C819-40CA-82D6-8B568C6AC066"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "nextButtonModule(cell:index:moduleType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09BD5F22-5E25-4D40-85BA-BEEC3CD56878"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "nextButtonDefault(cell:index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "09BD5F22-5E25-4D40-85BA-BEEC3CD56878 - 3f478f8e979bbd82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.MassEmailandSMSEditDetailViewController.nextButtonDefault(cell: Growth99.MassEmailandSMSEditDefaultTableViewCell, index: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "1564">
+               </Location>
+               <Location
+                  uuid = "09BD5F22-5E25-4D40-85BA-BEEC3CD56878 - 3f478f8e979bbd82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.MassEmailandSMSEditDetailViewController.nextButtonDefault(cell: Growth99.MassEmailandSMSEditDefaultTableViewCell, index: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "1908">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08F9C589-CEE8-4575-9C3E-694805696919"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "nextButtonModule(cell:index:moduleType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "08F9C589-CEE8-4575-9C3E-694805696919 - aec42e9789192aeb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.MassEmailandSMSEditDetailViewController.nextButtonModule(cell: Growth99.MassEmailandSMSEditModuleTableViewCell, index: Foundation.IndexPath, moduleType: Swift.String) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "280"
+                  endingLineNumber = "280"
+                  offsetFromSymbolStart = "1332">
+               </Location>
+               <Location
+                  uuid = "08F9C589-CEE8-4575-9C3E-694805696919 - aacc2510e304277d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (Growth99.MassEmailandSMSDetailModelEdit) -&gt; Swift.Bool in Growth99.MassEmailandSMSEditDetailViewController.nextButtonModule(cell: Growth99.MassEmailandSMSEditModuleTableViewCell, index: Foundation.IndexPath, moduleType: Swift.String) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/MarketingEmailSMS/EditScreen/View/MassEmailandSMSEditDetailViewController+TableView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "280"
+                  endingLineNumber = "280"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

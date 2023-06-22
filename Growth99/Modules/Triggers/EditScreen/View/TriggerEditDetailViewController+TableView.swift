@@ -478,9 +478,9 @@ extension TriggerEditDetailViewController: TriggerLeadCellDelegate {
 
 extension TriggerEditDetailViewController: TriggerPatientCellDelegate {
     func nextButtonPatient(cell: TriggerAppointmentActionTableViewCell, index: IndexPath) {
-        scrollToBottom()
         appointmentSelectedStatus = cell.patientAppointmenTextLabel.text ?? ""
         createNewTriggerCell(cellNameType: "Both")
+        scrollToBottom()
     }
 }
 

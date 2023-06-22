@@ -104,7 +104,7 @@ struct MarketingSMSEmailResModelEdit : Codable {
     let executionStatus : String?
     let isCustom : Bool?
     let leadTags : [Int]?
-    let patientTags : String?
+    let patientTags : [Int]?
     let patientStatus : String?
 }
 
@@ -235,7 +235,7 @@ struct MassSMSEditModel : Codable {
     let landingPages : String?
     let triggerData : [MassSMSTriggerData]?
     let leadTags : [Int]?
-    let patientTags : String?
+    let patientTags : [Int]?
     let patientStatus : [String]?
     let executionStatus : String?
     let forms : String?

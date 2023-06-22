@@ -23,52 +23,166 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditDefaultTableViewCell", for: indexPath) as? MassEmailandSMSEditDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             moduleNameEdit = cell.massEmailSMSTextField.text ?? String.blank
+            cell.massEmailSMSTextField.text = viewModelEdit?.getMassSMSTriggerEditListData?.name ?? ""
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Module" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditModuleTableViewCell", for: indexPath) as? MassEmailandSMSEditModuleTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             smsEmailModuleSelectionTypeEdit = cell.moduleTypeSelected
+            if viewModelEdit?.getMassSMSTriggerEditListData?.moduleName == "MassLead" {
+                cell.leadBtn.isSelected = true
+                cell.patientBtn.isSelected = false
+                cell.bothBtn.isSelected = false
+            } else if viewModelEdit?.getMassSMSTriggerEditListData?.moduleName == "MassPatient" {
+                cell.leadBtn.isSelected = false
+                cell.patientBtn.isSelected = true
+                cell.bothBtn.isSelected = false
+            } else {
+                cell.leadBtn.isSelected = false
+                cell.patientBtn.isSelected = false
+                cell.bothBtn.isSelected = true
+            }
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditLeadActionTableViewCell", for: indexPath) as? MassEmailandSMSEditLeadActionTableViewCell else { return UITableViewCell()}
+            cell.configureCell(tableView: emailAndSMSTableViewEdit, index: indexPath)
             cell.delegate = self
-            cell.leadStatusSelectonButton.addTarget(self, action: #selector(leadStatusMethod), for: .touchDown)
-            cell.leadStatusSelectonButton.tag = indexPath.row
-            cell.leadSourceSelectonButton.addTarget(self, action: #selector(leadSourceMethod), for: .touchDown)
-            cell.leadSourceSelectonButton.tag = indexPath.row
-            cell.leadTagSelectonButton.addTarget(self, action: #selector(leadTagMethod), for: .touchDown)
-            cell.leadTagSelectonButton.tag = indexPath.row
+            
+            let leadStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
+            cell.leadStatusTextField.text = leadStatusData.joined(separator: ",")
+            leadStatusSelectedEdit = leadStatusData
+            
+            let leadSourceData = viewModelEdit?.getMassSMSTriggerEditListData?.source ?? []
+            if leadSourceData.count > 0 {
+                cell.showleadSourceButton.isSelected = true
+                cell.leadSourceTextFieldHight.constant = 45
+                cell.leadSourceTextField.rightImage = UIImage(named: "dropDown")
+                cell.leadSourceTextField.text = leadSourceData.joined(separator: ",")
+                leadSourceSelectedEdit = leadSourceData
+            }
+            if viewModelEdit?.getMassSMSTriggerEditListData?.leadTags?.count ?? 0 > 0 {
+                var leadTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+                for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.leadTags ?? [] {
+                    let getLandingData = viewModelEdit?.getMassSMSEditLeadTagsListData?.filter({ $0.id == landingItem})
+                    for landingChildItem in getLandingData ?? [] {
+                        let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                        leadTagsArrayEdit.append(landArr)
+                    }
+                }
+                cell.showleadTagButton.isSelected = true
+                cell.leadTagTextFieldHight.constant = 45
+                cell.leadTagTextField.rightImage = UIImage(named: "dropDown")
+                cell.leadTagTextField.text = leadTagsArrayEdit.map({$0.name ?? ""}).joined(separator: ",")
+                selectedLeadTagsEdit = leadTagsArrayEdit
+            }
+            
             return cell
-        } else if massSMSDetailListEdit[indexPath.row].cellType == "Patient" {
+        } else if massSMSDetailListEdit[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditPatientActionTableViewCell", for: indexPath) as? MassEmailandSMSEditPatientActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.patientStatusSelectonButton.addTarget(self, action: #selector(patientStatusMethod), for: .touchDown)
-            cell.patientStatusSelectonButton.tag = indexPath.row
-            cell.patientTagSelectonButton.addTarget(self, action: #selector(patientTagMethod), for: .touchDown)
-            cell.patientTagSelectonButton.tag = indexPath.row
-            cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
-            cell.patientAppointmentButton.tag = indexPath.row
+            cell.configureCell(tableView: emailAndSMSTableViewEdit, index: indexPath)
+            let patientStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.patientStatus ?? []
+            cell.patientStatusTextField.text = patientStatusData.joined(separator: ",")
+            paymentStatusSelectedEdit = patientStatusData
+            
+            let patientAppointmentStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
+            if patientAppointmentStatusData.count > 0 {
+                cell.showPatientAppointmentStatusButton.isSelected = true
+                cell.patientAppointmentStatusTextFieldHight.constant = 45
+                cell.patientAppointmentStatusTextField.rightImage = UIImage(named: "dropDown")
+                cell.patientAppointmentStatusTextField.text = patientAppointmentStatusData.joined(separator: ",")
+                appointmentStatusSelectedEdit = patientAppointmentStatusData
+            }
+            
+            if viewModelEdit?.getMassSMSTriggerEditListData?.patientTags?.count ?? 0 > 0 {
+                var patientTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+                for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.patientTags ?? [] {
+                    let getLandingData = viewModelEdit?.getMassSMSEditPateintsTagsListData?.filter({ $0.id == landingItem})
+                    for landingChildItem in getLandingData ?? [] {
+                        let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                        patientTagsArrayEdit.append(landArr)
+                    }
+                }
+                cell.showPatientTagButton.isSelected = true
+                cell.patientTagTextFieldHight.constant = 45
+                cell.patientTagTextField.rightImage = UIImage(named: "dropDown")
+                cell.patientTagTextField.text = patientTagsArrayEdit.map({$0.name ?? ""}).joined(separator: ",")
+                selectedPatientTagsEdit = patientTagsArrayEdit
+            }
+            
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditCreateTableViewCell", for: indexPath) as? MassEmailandSMSEditCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             networkTypeSelectedEdit = cell.networkTypeSelected
-            cell.networkSelectonSMSButton.tag = indexPath.row
-            cell.networkSelectonSMSButton.addTarget(self, action: #selector(networkSelectionSMSMethod), for: .touchDown)
-            if cell.smsBtn.isSelected {
-                cell.smsEmailCountTextLabel.text = "SMS count: \(viewModelEdit?.getMassEmailSMSLeadCountDataEdit?.smsCount ?? 0)"
+            if smsEmailModuleSelectionTypeEdit == "both" {
+                if cell.smsBtn.isSelected {
+                    let leadSMSCount = viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0
+                    let patientSMSCount = viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0
+                    let totalSMSCount = leadSMSCount + patientSMSCount
+                    cell.smsEmailCountLabel.text = "SMS count: \(totalSMSCount)"
+                } else {
+                    let leadEmailCount = viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0
+                    let patientEmailCount = viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0
+                    let totalEmailCount = leadEmailCount + patientEmailCount
+                    cell.smsEmailCountLabel.text = "Email count: \(totalEmailCount)"
+                }
+            } else if smsEmailModuleSelectionTypeEdit == "lead"{
+                if cell.smsBtn.isSelected {
+                    let smsLeadCount = viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0
+                    cell.smsEmailCountLabel.text = "SMS count: \(smsLeadCount)"
+                } else {
+                    let emailLeadCount = viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0
+                    cell.smsEmailCountLabel.text = "Email count: \(emailLeadCount)"
+                }
             } else {
-                cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModelEdit?.getMassEmailSMSLeadCountDataEdit?.emailCount ?? 0))"
+                if cell.smsBtn.isSelected {
+                    let smsPatientCount = viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0
+                    cell.smsEmailCountLabel.text = "SMS count: \(smsPatientCount)"
+                } else {
+                    let emailPatientCount = viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0
+                    cell.smsEmailCountLabel.text = "Email count: \(emailPatientCount)"
+                }
             }
-            cell.networkSelectonEmailButton.tag = indexPath.row
-            cell.networkSelectonEmailButton.addTarget(self, action: #selector(networkSelectionEmailMethod), for: .touchDown)
+            
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
+                cell.smsEmailCountLabel.isHidden = true
+            } else {
+                cell.smsEmailCountLabel.isHidden = false
+            }
+            
+            if viewModelEdit?.getMassSMSTriggerEditListData?.triggerData?[0].triggerType == "SMS" {
+                cell.smsBtn.isSelected = true
+                cell.emailBtn.isSelected = false
+                let selectedSMSTemplate = viewModelEdit?.getMassEmailEditDetailData?.smsTemplateDTOList ?? []
+                let selectEmailNetworkName = selectedSMSTemplate.filter({ $0.id == viewModelEdit?.getMassSMSTriggerEditListData?.triggerData?[0].triggerTemplate ?? 0})
+                if selectEmailNetworkName.count > 0 {
+                    cell.selectNetworkTextField.text = selectEmailNetworkName[0].name ?? String.blank
+                } else {
+                    cell.selectNetworkTextField.text = ""
+                }
+            } else {
+                cell.smsBtn.isSelected = false
+                cell.emailBtn.isSelected = true
+                let selectedEmailTemplate = viewModelEdit?.getMassEmailEditDetailData?.emailTemplateDTOList ?? []
+                let selectEmailNetworkName = selectedEmailTemplate.filter({ $0.id == viewModelEdit?.getMassSMSTriggerEditListData?.triggerData?[0].triggerTemplate ?? 0})
+                if selectEmailNetworkName.count > 0 {
+                    cell.selectNetworkTextField.text = selectEmailNetworkName[0].name ?? String.blank
+                } else {
+                    cell.selectNetworkTextField.text = ""
+                }
+            }
             
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditTimeTableViewCell", for: indexPath) as? MassEmailandSMSEditTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.updateMassEmailTimeFromTextField(with: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "")")
-            selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
+            let dateTrigger = "\(viewModelEdit?.convertDateFormat(dateString: viewModelEdit?.getMassSMSTriggerEditListData?.triggerData?[0].scheduledDateTime ?? "") ?? "")"
+            let timeTrigger = "\(viewModelEdit?.convertTimeFormat(dateString: viewModelEdit?.getMassSMSTriggerEditListData?.triggerData?[0].scheduledDateTime ?? "") ?? "")"
+            
+            cell.updateMassEmailDateTextField(with: dateTrigger)
+            cell.updateMassEmailTimeTextField(with: timeTrigger)
+            selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: dateTrigger + timeTrigger) ?? ""
             return cell
         }
         return UITableViewCell()
@@ -78,214 +192,11 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
         return UITableView.automaticDimension
     }
     
-    @objc func leadStatusMethod(sender: UIButton) {
-        let leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
+    func scrollToBottom() {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: self.massSMSDetailListEdit.count-1, section: 0)
+            self.emailAndSMSTableViewEdit.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: leadStatusSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    leadCell.leadStatusTextLabel.text = "Select lead status"
-                    leadCell.leadStatusEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadStatusEmptyTextLabel.isHidden = true
-                    self?.leadStatusSelectedEdit = selectedList
-                    leadCell.leadStatusTextLabel.text = selectedList.joined(separator: ",")
-                }
-            }
-        }
-        
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadSourceMethod(sender: UIButton) {
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: leadSourceSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    leadCell.leadSourceTextLabel.text = "Select lead source"
-                } else {
-                    self?.leadSourceSelectedEdit = selectedList
-                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceArrayEdit.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadTagMethod(sender: UIButton) {
-        leadTagsArrayEdit = viewModelEdit?.getMassEmailLeadTagsDataEdit ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadTagsEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    leadCell.leadTagTextLabel.text = "Select lead tag"
-                } else {
-                    leadCell.leadTagTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-                    self?.selectedLeadTagsEdit  = selectedList
-                    let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
-                    self?.selectedLeadTagIdsEdit = formattedArray
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadTagsArrayEdit.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func patientStatusMethod(sender: UIButton) {
-        let leadStatusArray = ["NEW", "EXISTING"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: paymentStatusSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let patientCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditPatientActionTableViewCell {
-                if selectedList.count == 0 {
-                    patientCell.patientStatusTextLabel.text = "Select patient status"
-                    patientCell.patientStatusEmptyTextLabel.isHidden = false
-                } else {
-                    patientCell.patientStatusEmptyTextLabel.isHidden = true
-                    self?.paymentStatusSelectedEdit = selectedList
-                    patientCell.patientStatusTextLabel.text = selectedList.joined(separator: ",")
-                }
-            }
-        }
-        
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func patientAppointmentMethod(sender: UIButton) {
-        let statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: statusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: appointmentStatusSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let patientCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditPatientActionTableViewCell {
-                if selectedList.count == 0 {
-                    patientCell.patientAppointmenTextLabel.text = "Select patient appointment"
-                } else {
-                    self?.appointmentStatusSelectedEdit = selectedList
-                    patientCell.patientAppointmenTextLabel.text = selectedList.joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(statusArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func patientTagMethod(sender: UIButton) {
-        patientTagsArrayEdit = viewModelEdit?.getMassEmailPateintsTagsDataEdit ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: patientTagsArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedPatientTagsEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let patientCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditPatientActionTableViewCell {
-                if selectedList.count == 0 {
-                    patientCell.patientTagTextLabel.text = "Select patient tag"
-                } else {
-                    patientCell.patientTagTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-                    self?.selectedPatientTagsEdit = selectedList
-                    let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
-                    self?.selectedPatientTagIdsEdit = formattedArray
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(patientTagsArrayEdit.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func networkSelectionSMSMethod(sender: UIButton) {
-        if smsEmailModuleSelectionTypeEdit == "lead" {
-            smsTemplatesArrayEdit = viewModelEdit?.getMassEmailDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "MassSMS" && $0.smsTarget == "Lead"}) ?? []
-        } else if smsEmailModuleSelectionTypeEdit == "patient" {
-            smsTemplatesArrayEdit = viewModelEdit?.getMassEmailDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "MassSMS" && $0.smsTarget == "Patient"}) ?? []
-        }  else {
-            smsTemplatesArrayEdit = viewModelEdit?.getMassEmailDetailDataEdit?.smsTemplateDTOList?.filter({$0.templateFor == "MassSMS"}) ?? []
-        }
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: smsTemplatesArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedSmsTemplatesEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.selectNetworkSMSTextLabel.text = "Please select network"
-                    createCell.selectNetworkEmptyTextLabel.isHidden = false
-                } else {
-                    createCell.selectNetworkEmptyTextLabel.isHidden = true
-                    createCell.selectNetworkSMSTextLabel.text = selectedItem?.name
-                    self?.selectedSmsTemplatesEdit = selectedList
-                    self?.selectedSmsTemplateIdEdit = String(selectedItem?.id ?? 0)
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(smsTemplatesArrayEdit.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func networkSelectionEmailMethod(sender: UIButton) {
-        if smsEmailModuleSelectionTypeEdit == "lead" {
-            emailTemplatesArrayEdit = viewModelEdit?.getMassEmailDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "MassEmail" && $0.emailTarget == "Lead"}) ?? []
-        } else if smsEmailModuleSelectionTypeEdit == "patient" {
-            emailTemplatesArrayEdit = viewModelEdit?.getMassEmailDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "MassEmail" && $0.emailTarget == "Patient"}) ?? []
-        } else {
-            emailTemplatesArrayEdit = viewModelEdit?.getMassEmailDetailDataEdit?.emailTemplateDTOList?.filter({$0.templateFor == "MassEmail"}) ?? []
-        }
-        
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: emailTemplatesArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedEmailTemplatesEdit) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let createCell = self?.emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditCreateTableViewCell {
-                if selectedList.count == 0 {
-                    createCell.selectNetworkEmailTextLabel.text = "Please select network"
-                    createCell.selectNetworkEmptyTextLabel.isHidden = false
-                } else {
-                    createCell.selectNetworkEmptyTextLabel.isHidden = true
-                    createCell.selectNetworkEmailTextLabel.text = selectedItem?.name
-                    self?.selectedEmailTemplatesEdit = selectedList
-                    self?.selectedemailTemplateIdEdit = String(selectedItem?.id ?? 0)
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(emailTemplatesArrayEdit.count * 30))), arrowDirection: .up), from: self)
     }
 }
 
@@ -295,44 +206,287 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditDefaultCel
             cell.massEmailSMSTextField.showError(message: "Please enter Mass Email or SMS name")
         } else {
             moduleNameEdit = cell.massEmailSMSTextField.text ?? String.blank
-            cell.defaultNextButton.isEnabled = false
-            createNewMassEmailSMSCell(cellNameType: "Module")
+            if massSMSDetailListEdit.count > 2 {
+                massSMSDetailListEdit.removeSubrange(2..<massSMSDetailListEdit.count)
+            }
+            emailAndSMSTableViewEdit.reloadData()
         }
     }
 }
 
 extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditModuleCellDelegate {
+    func leadButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
+        
+    }
+
+    func patientButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
+
+    }
+
+
+    
+    func bothButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
+
+    }
+    
     func nextButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
         if moduleType == "patient" {
-            smsEmailModuleSelectionTypeEdit = moduleType
-            cell.moduleNextButton.isEnabled = false
-            createNewMassEmailSMSCell(cellNameType: "Patient")
+            let hasPatient = massSMSDetailListEdit.contains(where: { $0.cellType == "Appointment" })
+            if !hasPatient {
+                DispatchQueue.main.async {
+                    self.emailAndSMSTableViewEdit.beginUpdates()
+                    
+                    if self.massSMSDetailListEdit.count > 2 {
+                        let indexPathsToDelete = (2..<self.massSMSDetailListEdit.count).map { IndexPath(row: $0, section: 0) }
+                        self.massSMSDetailListEdit.removeSubrange(2..<self.massSMSDetailListEdit.count)
+                        self.emailAndSMSTableViewEdit.deleteRows(at: indexPathsToDelete, with: .fade)
+                    }
+                    
+                    self.smsEmailModuleSelectionTypeEdit = moduleType
+                    let emailSMS = MassEmailandSMSDetailModelEdit(cellType: "Appointment", LastName: "")
+                    self.massSMSDetailListEdit.append(emailSMS)
+                    
+                    let indexPathToInsert = IndexPath(row: self.massSMSDetailListEdit.count - 1, section: 0)
+                    self.emailAndSMSTableViewEdit.insertRows(at: [indexPathToInsert], with: .fade)
+                    
+                    self.emailAndSMSTableViewEdit.endUpdates()
+                    self.scrollToBottom()
+                }
+            }
         } else if moduleType == "lead" {
-            smsEmailModuleSelectionTypeEdit = moduleType
-            cell.moduleNextButton.isEnabled = false
-            createNewMassEmailSMSCell(cellNameType: "Lead")
+            let hasLead = massSMSDetailListEdit.contains(where: { $0.cellType == "Lead" })
+            if !hasLead {
+                DispatchQueue.main.async {
+                    self.emailAndSMSTableViewEdit.beginUpdates()
+                    
+                    if self.massSMSDetailListEdit.count > 2 {
+                        let indexPathsToDelete = (2..<self.massSMSDetailListEdit.count).map { IndexPath(row: $0, section: 0) }
+                        self.massSMSDetailListEdit.removeSubrange(2..<self.massSMSDetailListEdit.count)
+                        self.emailAndSMSTableViewEdit.deleteRows(at: indexPathsToDelete, with: .fade)
+                    }
+                    
+                    self.smsEmailModuleSelectionTypeEdit = moduleType
+                    let emailSMS = MassEmailandSMSDetailModelEdit(cellType: "Lead", LastName: "")
+                    self.massSMSDetailListEdit.append(emailSMS)
+                    
+                    let indexPathToInsert = IndexPath(row: self.massSMSDetailListEdit.count - 1, section: 0)
+                    self.emailAndSMSTableViewEdit.insertRows(at: [indexPathToInsert], with: .fade)
+                    
+                    self.emailAndSMSTableViewEdit.endUpdates()
+                    self.scrollToBottom()
+                }
+            }
         } else {
-            smsEmailModuleSelectionTypeEdit = moduleType
-            self.view.ShowSpinner()
-            viewModelEdit?.getMassEmailLeadStatusAllMethodEdit()
+            let hasBoth = massSMSDetailListEdit.contains(where: { $0.cellType == "Both" })
+            if !hasBoth {
+                DispatchQueue.main.async {
+                    self.emailAndSMSTableViewEdit.beginUpdates()
+                    
+                    if self.massSMSDetailListEdit.count > 2 {
+                        let indexPathsToDelete = (2..<self.massSMSDetailListEdit.count).map { IndexPath(row: $0, section: 0) }
+                        self.massSMSDetailListEdit.removeSubrange(2..<self.massSMSDetailListEdit.count)
+                        self.emailAndSMSTableViewEdit.deleteRows(at: indexPathsToDelete, with: .fade)
+                    }
+                    
+                    self.smsEmailModuleSelectionTypeEdit = moduleType
+                    self.view.ShowSpinner()
+                    self.viewModelEdit?.getMassSMSEditAllLeadMethod()
+                    let emailSMS = MassEmailandSMSDetailModelEdit(cellType: "Both", LastName: "")
+                    self.massSMSDetailListEdit.append(emailSMS)
+                    let indexPathToInsert = IndexPath(row: self.massSMSDetailListEdit.count - 1, section: 0)
+                    self.emailAndSMSTableViewEdit.insertRows(at: [indexPathToInsert], with: .fade)
+                    
+                    self.emailAndSMSTableViewEdit.endUpdates()
+                    
+                    self.scrollToBottom()
+                }
+            }
+        }
+    }
+}
+
+extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditLeadCellDelegate {
+    func leadStausButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let leadStatusArray = ["NEW", "COLD", "WARM", "HOT", "WON","DEAD"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: leadStatusSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.leadStatusSelectedEdit = selectedList
+            cell.leadStatusTextField.text = selectedList.joined(separator: ",")
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadSourceButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: leadSourceSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.leadSourceSelectedEdit = selectedList
+            cell.leadSourceTextField.text = selectedList.joined(separator: ",")
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadSourceArrayEdit.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadTagButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadTagsArrayEdit = viewModelEdit?.getMassSMSEditLeadTagsListData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadTagsEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.leadTagTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+            self?.selectedLeadTagsEdit  = selectedList
+            let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
+            self?.selectedLeadTagIdsEdit = formattedArray
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadTagsArrayEdit.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func nextButtonLead(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath) {
+        if cell.leadStatusTextField.text == "" {
+            cell.leadStatusTextField.showError(message: "Please select lead status")
+        } else {
+            if massSMSDetailListEdit.count < 4 {
+                self.view.ShowSpinner()
+                viewModelEdit?.getMassSMSEditLeadCountsMethod(leadStatus: cell.leadStatusTextField.text ?? String.blank, moduleName: "MassLead", leadTagIds: selectedLeadTagIdsEdit, source: cell.leadSourceTextField.text ?? String.blank)
+            }
+        }
+    }
+    
+}
+
+extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditPatientCellDelegate {
+    func patientStausButtonSelection(cell: MassEmailandSMSEditPatientActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let leadStatusArray = ["NEW", "EXISTING"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: paymentStatusSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.paymentStatusSelectedEdit = selectedList
+            cell.patientStatusTextField.text = selectedList.joined(separator: ",")
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func patientTagButtonSelection(cell: MassEmailandSMSEditPatientActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        patientTagsArrayEdit = viewModelEdit?.getMassSMSEditPateintsTagsListData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: patientTagsArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedPatientTagsEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.patientTagTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+            self?.selectedPatientTagsEdit = selectedList
+            let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
+            self?.selectedPatientTagIdsEdit = formattedArray
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(patientTagsArrayEdit.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func patientAppointmentStatusTagBtnSelection(cell: MassEmailandSMSEditPatientActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: appointmentStatusArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: appointmentStatusSelectedEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.appointmentStatusSelectedEdit = selectedList
+            cell.patientAppointmentStatusTextField.text = selectedList.joined(separator: ",")
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(appointmentStatusArrayEdit.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func nextButtonPatient(cell: MassEmailandSMSEditPatientActionTableViewCell, index: IndexPath) {
+        if cell.patientStatusTextField.text == "" {
+            cell.patientStatusTextField.showError(message: "Select patient status")
+        } else {
+            if massSMSDetailListEdit.count < 4 {
+                viewModelEdit?.getMassSMSEditPatientCountMethod(appointmentStatus: patientAppointmentStatusEdit, moduleName: "MassPatient", patientTagIds: selectedPatientTagIdsEdit, patientStatus: cell.patientStatusTextField.text ?? String.blank)
+            }
         }
     }
 }
 
 extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCellDelegate {
+    func smsNetworkButtonSelected(cell: MassEmailandSMSEditCreateTableViewCell, index: IndexPath, buttonSender: UIButton, networkType: String) {
+        if smsEmailModuleSelectionTypeEdit == "lead" {
+            let filteredArray = viewModelEdit?.getMassEmailEditDetailData?.smsTemplateDTOList?.filter({ $0.templateFor == "MassSMS" && $0.smsTarget == "Lead"})
+            smsTemplatesArrayEdit = filteredArray ?? []
+        } else if smsEmailModuleSelectionTypeEdit == "patient" {
+            let filteredArray = viewModelEdit?.getMassEmailEditDetailData?.smsTemplateDTOList?.filter({ $0.templateFor == "MassSMS" && $0.smsTarget == "Patient"})
+            smsTemplatesArrayEdit = filteredArray ?? []
+        } else {
+            let filteredArray = viewModelEdit?.getMassEmailEditDetailData?.smsTemplateDTOList?.filter({$0.templateFor == "MassSMS"})
+            smsTemplatesArrayEdit = filteredArray ?? []
+        }
+        
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: smsTemplatesArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedSmsTemplatesEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.selectNetworkTextField.text = selectedItem?.name
+            self?.selectedSmsTemplatesEdit = selectedList
+            self?.selectedSmsTemplateIdEdit = String(selectedItem?.id ?? 0)
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(smsTemplatesArrayEdit.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func emailNetworkButtonSelected(cell: MassEmailandSMSEditCreateTableViewCell, index: IndexPath, buttonSender: UIButton, networkType: String) {
+        if smsEmailModuleSelectionTypeEdit == "lead" {
+            var filteredArray = viewModelEdit?.getMassEmailEditDetailData?.emailTemplateDTOList ?? []
+            filteredArray = filteredArray.filter({ $0.templateFor == "MassEmail" && $0.emailTarget == "Lead" })
+            emailTemplatesArrayEdit = filteredArray
+        } else if smsEmailModuleSelectionTypeEdit == "patient" {
+            var filteredArray = viewModelEdit?.getMassEmailEditDetailData?.emailTemplateDTOList ?? []
+            filteredArray = filteredArray.filter({ $0.templateFor == "MassEmail" && $0.emailTarget == "Patient" })
+            emailTemplatesArrayEdit = filteredArray
+        } else {
+            var filteredArray = viewModelEdit?.getMassEmailEditDetailData?.emailTemplateDTOList ?? []
+            filteredArray = filteredArray.filter({ $0.templateFor == "MassEmail" })
+            emailTemplatesArrayEdit = filteredArray
+        }
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: emailTemplatesArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedEmailTemplatesEdit) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.selectNetworkTextField.text = selectedItem?.name
+            self?.selectedEmailTemplatesEdit = selectedList
+            self?.selectedemailTemplateIdEdit = String(selectedItem?.id ?? 0)
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(emailTemplatesArrayEdit.count * 30))), arrowDirection: .up), from: self)
+    }
+    
     func nextButtonCreate(cell: MassEmailandSMSEditCreateTableViewCell, index: IndexPath, networkType: String) {
         if cell.networkTypeSelected == "sms" {
-            if cell.selectNetworkSMSTextLabel.text == "Please select network" {
-                cell.selectNetworkEmptyTextLabel.isHidden = false
+            if cell.selectNetworkTextField.text == "" {
+                cell.selectNetworkTextField.showError(message: "Please select network")
             } else {
-                cell.selectNetworkEmptyTextLabel.isHidden = true
                 setupNetworkNextButton(networkTypeSelected: networkType, cell: cell)
             }
         } else {
-            if cell.selectNetworkEmailTextLabel.text == "Please select network" {
-                cell.selectNetworkEmptyTextLabel.isHidden = false
+            if cell.selectNetworkTextField.text == "" {
+                cell.selectNetworkTextField.showError(message: "Please select network")
             } else {
-                cell.selectNetworkEmptyTextLabel.isHidden = true
                 setupNetworkNextButton(networkTypeSelected: networkType, cell: cell)
             }
         }
@@ -340,60 +494,38 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCell
     
     func setupNetworkNextButton(networkTypeSelected: String, cell: MassEmailandSMSEditCreateTableViewCell) {
         self.networkTypeSelectedEdit = networkTypeSelected
-        cell.createNextButton.isEnabled = false
         createNewMassEmailSMSCell(cellNameType: "Time")
+        scrollToBottom()
     }
     
     func smsButtonClick(cell: MassEmailandSMSEditCreateTableViewCell) {
-        cell.smsEmailCountTextLabel.text = "SMS count: \(viewModelEdit?.getMassEmailSMSLeadCountDataEdit?.smsCount ?? 0)"
+        if smsEmailModuleSelectionTypeEdit == "both" {
+            let leadSMSCount = viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0
+            let patientSMSCount = viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0
+            let totalSMSCount = leadSMSCount + patientSMSCount
+            cell.smsEmailCountLabel.text = "SMS count: \(totalSMSCount)"
+        } else if smsEmailModuleSelectionTypeEdit == "lead"{
+            let smsLeadCount = viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0
+            cell.smsEmailCountLabel.text = "SMS count: \(smsLeadCount)"
+        } else {
+            let smsPatientCount = viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0
+            cell.smsEmailCountLabel.text = "SMS count: \(smsPatientCount)"
+        }
     }
     
     func emailButtonClick(cell: MassEmailandSMSEditCreateTableViewCell) {
-        cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModelEdit?.getMassEmailSMSLeadCountDataEdit?.emailCount ?? 0))"
-    }
-}
-
-extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditLeadCellDelegate {
-    func nextButtonLead(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath) {
-        if cell.leadStatusTextLabel.text == "Select lead status" {
-            cell.leadStatusEmptyTextLabel.isHidden = false
+        if smsEmailModuleSelectionTypeEdit == "both" {
+            let leadEmailCount = viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0
+            let patientEmailCount = viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0
+            let totalEmailCount = leadEmailCount + patientEmailCount
+            cell.smsEmailCountLabel.text = "Email count: \(totalEmailCount)"
+        } else if smsEmailModuleSelectionTypeEdit == "lead"{
+            let emailLeadCount = viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0
+            cell.smsEmailCountLabel.text = "Email count: \(emailLeadCount)"
         } else {
-            cell.leadStatusEmptyTextLabel.isHidden = true
-            cell.leadNextButton.isEnabled = false
-            leadActionApiCallMethod(selectedCell: cell)
+            let emailPatientCount = viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0
+            cell.smsEmailCountLabel.text = "Email count: \(emailPatientCount)"
         }
-    }
-    
-    func leadActionApiCallMethod(selectedCell: MassEmailandSMSEditLeadActionTableViewCell) {
-        self.view.ShowSpinner()
-        if selectedCell.leadSourceTextLabel.text ?? String.blank == "Select lead source" {
-            leadSourceEdit = String.blank
-        } else {
-            leadSourceEdit = selectedCell.leadSourceTextLabel.text ?? String.blank
-        }
-        viewModelEdit?.getMassEmailLeadStatusMethodEdit(leadStatus: selectedCell.leadStatusTextLabel.text ?? String.blank, moduleName: "MassLead", leadTagIds: selectedLeadTagIdsEdit, source: leadSourceEdit)
-    }
-}
-
-extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditPatientCellDelegate {
-    func nextButtonPatient(cell: MassEmailandSMSEditPatientActionTableViewCell, index: IndexPath) {
-        if cell.patientStatusTextLabel.text == "Select patient status" {
-            cell.patientStatusEmptyTextLabel.isHidden = false
-        } else {
-            cell.patientStatusEmptyTextLabel.isHidden = true
-            cell.patientNextButton.isEnabled = false
-            patientActionApiCallMethod(selectedCell: cell)
-        }
-    }
-    
-    func patientActionApiCallMethod(selectedCell: MassEmailandSMSEditPatientActionTableViewCell) {
-        self.view.ShowSpinner()
-        if selectedCell.patientAppointmenTextLabel.text ?? String.blank == "Select appointment status" {
-            patientAppointmentStatusEdit = String.blank
-        } else {
-            patientAppointmentStatusEdit = selectedCell.patientAppointmenTextLabel.text ?? String.blank
-        }
-        viewModelEdit?.getMassEmailPatientStatusMethodEdit(appointmentStatus: patientAppointmentStatusEdit, moduleName: "MassPatient", patientTagIds: selectedPatientTagIdsEdit, patientStatus: selectedCell.patientStatusTextLabel.text ?? String.blank)
     }
 }
 
@@ -412,24 +544,24 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditTimeCellDe
             
             let params = MarketingLeadModelEdit(name: moduleNameEdit, moduleName: "MassLead", triggerConditions: leadStatusSelectedEdit, leadTags: selectedLeadTagsEdit, patientTags: [], patientStatus: [], triggerData: marketingTriggersDataEdit, source: leadSourceSelectedEdit)
             
-            let parameters: [String: Any]  = params.toDict()
-            viewModelEdit?.postMassLeadDataMethodEdit(leadDataParms: parameters)
+            //            let parameters: [String: Any]  = params.toDict()
+            //            viewModelEdit?.postMassLeadDataMethodEdit(leadDataParms: parameters)
             
         } else if smsEmailModuleSelectionTypeEdit == "patient" {
-   
+            
             marketingTriggersDataEdit.append(MarketingTriggerDataEdit(actionIndex: 3, addNew: true, triggerTemplate: templateIdEdit, triggerType: networkTypeSelectedEdit.uppercased(), triggerTarget: "AppointmentPatient", scheduledDateTime: selectedTimeSlotEdit, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModelEdit(name: moduleNameEdit, moduleName: "MassPatient", triggerConditions: appointmentStatusSelectedEdit, leadTags: [], patientTags: selectedPatientTagsEdit, patientStatus: paymentStatusSelectedEdit, triggerData: marketingTriggersDataEdit, source: [])
             let parameters: [String: Any]  = params.toDict()
-            viewModelEdit?.postMassPatientDataMethodEdit(patientDataParms: parameters)
+            //            viewModelEdit?.postMassPatientDataMethodEdit(patientDataParms: parameters)
             
         } else {
             marketingTriggersDataEdit.append(MarketingTriggerDataEdit(actionIndex: 3, addNew: true, triggerTemplate: templateIdEdit, triggerType: networkTypeSelectedEdit.uppercased(), triggerTarget: "All", scheduledDateTime: selectedTimeSlotEdit, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModelEdit(name: moduleNameEdit, moduleName: "All", triggerConditions: ["All"], leadTags: [], patientTags: [], patientStatus: [], triggerData: marketingTriggersDataEdit, source: [])
             let parameters: [String: Any]  = params.toDict()
-
-            viewModelEdit?.postMassLeadPatientDataMethodEdit(leadPatientDataParms: parameters)
+            
+            //            viewModelEdit?.postMassLeadPatientDataMethodEdit(leadPatientDataParms: parameters)
         }
     }
     
@@ -437,14 +569,15 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditTimeCellDe
         self.navigationController?.popViewController(animated: true)
     }
     
-    func massEmailTimeFromTapped(cell: MassEmailandSMSEditTimeTableViewCell) {
-        guard let indexPath = emailAndSMSTableViewEdit.indexPath(for: cell) else {
-            return
-        }
-        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let vacationCell = emailAndSMSTableViewEdit.cellForRow(at: cellIndexPath) as? MassEmailandSMSEditTimeTableViewCell {
-            vacationCell.updateMassEmailTimeFromTextField(with: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "")")
-            selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
-        }
+    func massSMSDateSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell) {
+        cell.updateMassEmailDateTextField(with: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massSMSTriggerDateTextField) ?? "")")
+        selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
+        scrollToBottom()
+    }
+    
+    func massSMSTimeSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell) {
+        cell.updateMassEmailTimeTextField(with: "\(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massSMSTriggerTimeTextField) ?? "")")
+        selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
+        scrollToBottom()
     }
 }

@@ -91,12 +91,28 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
-        if isSearch {
-            editVC.massAppointmnentId = viewModel?.getMassEmailandSMSFilterData[indexPath.row].id ?? 0
-        } else {
-            editVC.massAppointmnentId = viewModel?.getMassEmailandSMSData[indexPath.row].id ?? 0
+        let massSMSEditvc = UIStoryboard(name: "MassEmailandSMSEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSEditDetailViewController") as! MassEmailandSMSEditDetailViewController
+        let selectedIndex = self.massEmailSMSSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.emailFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.emailFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+            }
+        case 1:
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.smsFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.smsFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+            }
+        default:
+            break
         }
-        navigationController?.pushViewController(editVC, animated: true)
+        self.navigationController?.pushViewController(massSMSEditvc, animated: true)
     }
 }
