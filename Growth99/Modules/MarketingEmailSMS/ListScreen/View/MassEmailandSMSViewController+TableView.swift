@@ -98,17 +98,41 @@ extension MassEmailandSMSViewController: UITableViewDelegate, UITableViewDataSou
             if isSearch {
                 let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.emailFlag == true})
                 massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+                let triggerType = viewModel?.getMassEmailandSMSFilterData[indexPath.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
             } else {
                 let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.emailFlag == true})
                 massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+                let triggerType = viewModel?.getMassEmailandSMSData[indexPath.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
             }
         case 1:
             if isSearch {
                 let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.smsFlag == true})
                 massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+                let triggerType = viewModel?.getMassEmailandSMSFilterData[indexPath.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
             } else {
                 let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.smsFlag == true})
                 massSMSEditvc.massSMStriggerId = filteredArray?[indexPath.row].id
+                let triggerType = viewModel?.getMassEmailandSMSData[indexPath.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
             }
         default:
             break

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -195,6 +195,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WM3-Ye-JhI">
                                 <rect key="frame" x="138" y="199" width="51" height="31"/>
+                                <connections>
+                                    <action selector="statusSwitchChanges:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kzM-1C-3Ul"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-CY-7yH" userLabel="LeadSaatus">
                                 <rect key="frame" x="18" y="420" width="43.5" height="20"/>
@@ -220,9 +223,40 @@
                                     <action selector="editButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b38-x1-dRt"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYa-KW-zkv">
+                                <rect key="frame" x="178" y="417" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="6To-NL-guW"/>
+                                    <constraint firstAttribute="height" constant="30" id="fXC-B5-4cB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="barChartIcon">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="auditButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YCf-RL-pXT"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDK-a1-KOu">
+                                <rect key="frame" x="178" y="417" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="NE6-dl-tIl"/>
+                                    <constraint firstAttribute="height" constant="30" id="OjM-hS-6Gk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Delete">
+                                    <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WJ5-hn-c3d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="BDK-a1-KOu" firstAttribute="leading" secondItem="NLf-ay-NvB" secondAttribute="trailing" constant="10" id="0TA-7A-sox"/>
                             <constraint firstItem="PEL-eK-3cu" firstAttribute="top" secondItem="ahZ-iO-Bmh" secondAttribute="bottom" constant="15" id="0b5-Ls-bsc"/>
                             <constraint firstItem="SRX-mT-mQW" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="20" id="2WG-F9-dj0"/>
                             <constraint firstItem="B45-2r-iN7" firstAttribute="top" secondItem="eCG-o3-aSD" secondAttribute="top" id="2tM-UJ-1lE"/>
@@ -248,6 +282,7 @@
                             <constraint firstItem="KGg-73-PTo" firstAttribute="leading" secondItem="PWA-Xq-3pk" secondAttribute="leading" id="Ija-WY-1cj"/>
                             <constraint firstItem="B45-2r-iN7" firstAttribute="leading" secondItem="ZbR-hV-4a3" secondAttribute="leading" id="Kx8-oM-doC"/>
                             <constraint firstItem="PWA-Xq-3pk" firstAttribute="leading" secondItem="gyj-5L-syC" secondAttribute="leading" id="LIq-FT-e2c"/>
+                            <constraint firstItem="oYa-KW-zkv" firstAttribute="top" secondItem="NLf-ay-NvB" secondAttribute="top" id="Mp7-ZY-gLA"/>
                             <constraint firstItem="WM3-Ye-JhI" firstAttribute="top" secondItem="PEL-eK-3cu" secondAttribute="bottom" constant="15" id="Noi-Zp-lfN"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="trailing" secondItem="SRX-mT-mQW" secondAttribute="trailing" id="Nvb-jg-Sz8"/>
                             <constraint firstItem="LHu-sh-94o" firstAttribute="top" secondItem="KGg-73-PTo" secondAttribute="top" id="O5T-cc-PbP"/>
@@ -258,6 +293,7 @@
                             <constraint firstItem="N55-FT-AT9" firstAttribute="trailing" secondItem="eCG-o3-aSD" secondAttribute="trailing" id="SbT-0g-YDI"/>
                             <constraint firstItem="bgn-vb-EJj" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="TTo-nx-VY5"/>
                             <constraint firstItem="6WX-fO-mQ9" firstAttribute="leading" secondItem="Poj-7B-tuM" secondAttribute="leading" id="UMO-3D-YGY"/>
+                            <constraint firstItem="BDK-a1-KOu" firstAttribute="top" secondItem="NLf-ay-NvB" secondAttribute="top" id="Vmw-Vq-Dh2"/>
                             <constraint firstItem="B45-2r-iN7" firstAttribute="top" secondItem="Ep0-me-c3G" secondAttribute="bottom" constant="15" id="W3q-lS-fEl"/>
                             <constraint firstItem="mee-z5-vsQ" firstAttribute="top" secondItem="7Fz-I2-Mji" secondAttribute="bottom" constant="15" id="Xky-Bg-Fas"/>
                             <constraint firstItem="ZbR-hV-4a3" firstAttribute="trailing" secondItem="6WX-fO-mQ9" secondAttribute="trailing" id="Y7p-MO-afX"/>
@@ -276,6 +312,7 @@
                             <constraint firstItem="Poj-7B-tuM" firstAttribute="top" secondItem="ahZ-iO-Bmh" secondAttribute="top" id="lHn-St-Kjf"/>
                             <constraint firstItem="eCG-o3-aSD" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="oNF-1k-QEK"/>
                             <constraint firstItem="7Fz-I2-Mji" firstAttribute="top" secondItem="SRX-mT-mQW" secondAttribute="top" id="pDd-VK-Q70"/>
+                            <constraint firstItem="oYa-KW-zkv" firstAttribute="leading" secondItem="NLf-ay-NvB" secondAttribute="trailing" constant="10" id="pT2-a1-YUk"/>
                             <constraint firstItem="PWA-Xq-3pk" firstAttribute="top" secondItem="gyj-5L-syC" secondAttribute="bottom" constant="15" id="pTG-nd-N90"/>
                             <constraint firstItem="mee-z5-vsQ" firstAttribute="top" secondItem="ta1-AZ-Xzz" secondAttribute="top" id="pqn-Bl-aQF"/>
                             <constraint firstItem="N55-FT-AT9" firstAttribute="leading" secondItem="eCG-o3-aSD" secondAttribute="leading" id="put-VI-M95"/>
@@ -303,8 +340,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="auditButton" destination="oYa-KW-zkv" id="izo-p6-iGO"/>
                 <outlet property="createdBy" destination="bgn-vb-EJj" id="Giw-Qy-IS3"/>
                 <outlet property="createdDate" destination="eCG-o3-aSD" id="5Sg-QF-HSr"/>
+                <outlet property="deleteButton" destination="BDK-a1-KOu" id="9AQ-bH-2bO"/>
                 <outlet property="executionStatusLabel" destination="PEL-eK-3cu" id="aia-V2-b78"/>
                 <outlet property="id" destination="7Fz-I2-Mji" id="0uP-vZ-wBM"/>
                 <outlet property="moduleLabel" destination="ahZ-iO-Bmh" id="eVK-aP-Hnx"/>
@@ -319,7 +358,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Delete" width="80" height="73"/>
         <image name="Detail" width="79" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
+        <image name="barChartIcon" width="66" height="66"/>
     </resources>
 </document>

@@ -61,16 +61,16 @@ class MassEmailandSMSViewModel {
     }
     
     func removeSelectedMassEmail(massEmailId: Int) {
-        /*let finaleUrl = ApiUrl.editTrigger.appending("\(massEmailId)")
+        let finaleUrl = ApiUrl.editTrigger.appending("\(massEmailId)")
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(_ ):
-                self.delegate?.triggerRemovedSuccefully(message: "Trigger deleted successfully")
+                self.delegate?.mailSMSDeletedSuccefully(message: "Trigger deleted successfully")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }
-        }*/
+        }
     }
 }
 

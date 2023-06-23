@@ -10,6 +10,7 @@ import UIKit
 protocol MassEmailandSMSViewContollerProtocol: AnyObject {
     func massEmailandSMSDataRecived()
     func errorReceived(error: String)
+    func mailSMSDeletedSuccefully(message: String)
 }
 
 class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContollerProtocol {
@@ -81,7 +82,7 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
     func massEmailandSMSDataRecived() {
         self.view.HideSpinner()
         self.massEmailandSMSTableView.setContentOffset(.zero, animated: true)
-        self.massEmailandSMSTableView.reloadData()
+        clearSearchBar()
     }
     
     func errorReceived(error: String) {
@@ -110,15 +111,181 @@ extension MassEmailandSMSViewController: UISearchBarDelegate {
 }
 
 extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
+    func auditButtonClicked(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
+        let selectedIndex = self.massEmailSMSSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            let auditVC = UIStoryboard(name: "AuditListViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListViewController") as! AuditListViewController
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.emailFlag == true})
+                auditVC.auditIdInfo  = filteredArray?[index.row].id ?? 0
+                let triggerType = filteredArray?[index.row].emailFlag ?? false
+                if triggerType {
+                    auditVC.communicationTypeStr = "MASS_EMAIL"
+                } else {
+                    auditVC.communicationTypeStr = "MASS_SMS"
+                }
+                auditVC.triggerModuleStr = filteredArray?[index.row].moduleName ?? ""
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.emailFlag == true})
+                auditVC.auditIdInfo  = filteredArray?[index.row].id ?? 0
+                let triggerType = filteredArray?[index.row].emailFlag ?? false
+                if triggerType {
+                    auditVC.communicationTypeStr = "MASS_EMAIL"
+                } else {
+                    auditVC.communicationTypeStr = "MASS_SMS"
+                }
+                auditVC.triggerModuleStr = filteredArray?[index.row].moduleName ?? ""
+                navigationController?.pushViewController(auditVC, animated: true)
+            }
+        case 1:
+            let auditVC = UIStoryboard(name: "AuditListViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListViewController") as! AuditListViewController
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.smsFlag == true})
+                auditVC.auditIdInfo  = filteredArray?[index.row].id ?? 0
+                let triggerType = filteredArray?[index.row].emailFlag ?? false
+                if triggerType {
+                    auditVC.communicationTypeStr = "MASS_EMAIL"
+                } else {
+                    auditVC.communicationTypeStr = "MASS_SMS"
+                }
+                auditVC.triggerModuleStr = filteredArray?[index.row].moduleName ?? ""
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.smsFlag == true})
+                auditVC.auditIdInfo  = filteredArray?[index.row].id ?? 0
+                let triggerType = filteredArray?[index.row].emailFlag ?? false
+                if triggerType {
+                    auditVC.communicationTypeStr = "MASS_EMAIL"
+                } else {
+                    auditVC.communicationTypeStr = "MASS_SMS"
+                }
+                auditVC.triggerModuleStr = filteredArray?[index.row].moduleName ?? ""
+                navigationController?.pushViewController(auditVC, animated: true)
+            }
+        default:
+            break
+        }
+    }
+    
+    func deleteButtonClicked(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
+        let selectedIndex = self.massEmailSMSSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            var selectedTriggerId = Int()
+            if isSearch {
+                selectedTriggerId = viewModel?.getMassEmailandSMSFilterData[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedMassEmail(massEmailId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                selectedTriggerId = viewModel?.getMassEmailandSMSData[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedMassEmail(massEmailId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        case 1:
+            var selectedTriggerId = Int()
+            if isSearch {
+                selectedTriggerId = viewModel?.getMassEmailandSMSFilterData[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedMassEmail(massEmailId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                selectedTriggerId = viewModel?.getMassEmailandSMSData[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedMassEmail(massEmailId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        default:
+            break
+        }
+    }
+    
+    func mailSMSDeletedSuccefully(message: String) {
+        self.view.showToast(message: message, color: UIColor().successMessageColor())
+        self.getMassEmailandSMS()
+    }
     
     func editEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath) {
-       /* let editVC = UIStoryboard(name: "MassEmailandSMSDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSDetailViewController") as! MassEmailandSMSDetailViewController
-        if isSearch {
-            editVC.massAppointmnentId = viewModel?.getMassEmailandSMSFilterData[index.row].id ?? 0
-        } else {
-            editVC.massAppointmnentId = viewModel?.getMassEmailandSMSData[index.row].id ?? 0
+        let massSMSEditvc = UIStoryboard(name: "MassEmailandSMSEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "MassEmailandSMSEditDetailViewController") as! MassEmailandSMSEditDetailViewController
+        let selectedIndex = self.massEmailSMSSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.emailFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[index.row].id
+                let triggerType = viewModel?.getMassEmailandSMSFilterData[index.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.emailFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[index.row].id
+                let triggerType = viewModel?.getMassEmailandSMSData[index.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
+            }
+        case 1:
+            if isSearch {
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.smsFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[index.row].id
+                let triggerType = viewModel?.getMassEmailandSMSFilterData[index.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
+            } else {
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.smsFlag == true})
+                massSMSEditvc.massSMStriggerId = filteredArray?[index.row].id
+                let triggerType = viewModel?.getMassEmailandSMSData[index.row].emailFlag ?? false
+                if triggerType {
+                    massSMSEditvc.triggerCommunicationType = "MASS_EMAIL"
+                } else {
+                    massSMSEditvc.triggerCommunicationType = "MASS_SMS"
+                }
+            }
+        default:
+            break
         }
-        navigationController?.pushViewController(editVC, animated: true)*/
+        self.navigationController?.pushViewController(massSMSEditvc, animated: true)
     }
     
     func didTapSwitchButton(massEmailandSMSId: String, massEmailandSMSStatus: String) {

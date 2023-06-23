@@ -10,6 +10,8 @@ import UIKit
 protocol MassEmailandSMSDelegate: AnyObject {
     func didTapSwitchButton(massEmailandSMSId: String, massEmailandSMSStatus: String)
     func editEmailandSMS(cell: MassEmailandSMSTableViewCell, index: IndexPath)
+    func auditButtonClicked(cell: MassEmailandSMSTableViewCell, index: IndexPath)
+    func deleteButtonClicked(cell: MassEmailandSMSTableViewCell, index: IndexPath)
 }
 
 class MassEmailandSMSTableViewCell: UITableViewCell {
@@ -26,6 +28,9 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var subView: UIView!
     
+    @IBOutlet weak var auditButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+
     weak var delegate: MassEmailandSMSDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
@@ -39,6 +44,16 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     }
     
     func configureCell(massEmailFilterList: MassEmailandSMSModel?, index: IndexPath, isSearch: Bool) {
+        if massEmailFilterList?.executionStatus == "COMPLETED" {
+            auditButton.isHidden = false
+            deleteButton.isHidden = true
+        } else if massEmailFilterList?.executionStatus == "FAILED" {
+            auditButton.isHidden = true
+            deleteButton.isHidden = true
+        } else {
+            auditButton.isHidden = true
+            deleteButton.isHidden = false
+        }
         self.id.text = String(massEmailFilterList?.id ?? 0)
         self.triggerNameLabel.text = massEmailFilterList?.name
         /*if massEmailFilterList?.triggerActionName == String.blank {
@@ -63,6 +78,16 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     }
     
     func configureCell(massEmailList: MassEmailandSMSModel?, index: IndexPath, isSearch: Bool) {
+        if massEmailList?.executionStatus == "COMPLETED" {
+            auditButton.isHidden = false
+            deleteButton.isHidden = true
+        } else if massEmailList?.executionStatus == "FAILED" {
+            auditButton.isHidden = true
+            deleteButton.isHidden = true
+        } else {
+            auditButton.isHidden = true
+            deleteButton.isHidden = false
+        }
         self.id.text = String(massEmailList?.id ?? 0)
         self.triggerNameLabel.text = massEmailList?.name
         /*if massEmailList?.triggerActionName == String.blank {
@@ -133,5 +158,13 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     
     @IBAction func editButtonPressed() {
         self.delegate?.editEmailandSMS(cell: self, index: indexPath)
+    }
+    
+    @IBAction func auditButtonPressed() {
+        self.delegate?.auditButtonClicked(cell: self, index: indexPath)
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        self.delegate?.deleteButtonClicked(cell: self, index: indexPath)
     }
 }

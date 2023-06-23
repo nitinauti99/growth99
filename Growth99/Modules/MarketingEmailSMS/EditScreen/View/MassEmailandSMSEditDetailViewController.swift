@@ -28,7 +28,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     @IBOutlet weak var triggerExicutedViewHeight: NSLayoutConstraint!
     @IBOutlet weak var viewAuditButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var viewAuditButton: UIButton!
-
+    
     var massSMSDetailListEdit = [MassEmailandSMSDetailModelEdit]()
     var viewModelEdit: MassEmailandSMSEditDetailViewModelProtocol?
     var leadTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
@@ -36,7 +36,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     
     var selectedLeadTagsEdit = [MassEmailSMSTagListModelEdit]()
     var selectedLeadTagIdsEdit: String = String.blank
-
+    
     var selectedPatientTagsEdit = [MassEmailSMSTagListModelEdit]()
     var selectedPatientTagIdsEdit: String = String.blank
     
@@ -58,7 +58,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     var appointmentStatusSelectedEdit: [String] = []
     var smsEmailModuleSelectionTypeEdit: String = String.blank
     var smsEmailTargetSelectionTypeEdit: String = String.blank
-
+    
     var moduleNameEdit: String = String.blank
     var marketingTriggersDataEdit = [MarketingTriggerDataEdit]()
     
@@ -66,12 +66,14 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     var templateIdEdit: Int = 0
     var massAppointmnentIdEdit: Int = 0
     var massSMStriggerId: Int?
-
+    var triggerCommunicationType: String = ""
+    
     var selectedTimeSlotEdit: String = String.blank
-
+    
     var leadSourceArrayEdit: [String] = []
     var appointmentStatusArrayEdit: [String] = []
     var selectedLeadSourcesEdit: [String] = []
+    var modelData: MassSMSEditModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,14 +114,22 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     func massSMSEditPatientTagsDataRecived() {
         viewModelEdit?.getMassSMSEditBusinessSMSQuotaMethod()
     }
-
+    
     func massSMSEditEmailSmsQuotaDataRecived() {
         viewModelEdit?.getMassSMSEditAuditEmailQuotaMethod()
     }
     
+    @IBAction func navigateToAuditScreen(sFender: UIButton) {
+        let auditVC = UIStoryboard(name: "AuditListViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListViewController") as! AuditListViewController
+        auditVC.auditIdInfo = modelData?.id ?? 0
+        auditVC.communicationTypeStr = triggerCommunicationType
+        auditVC.triggerModuleStr = modelData?.moduleName ?? ""
+        navigationController?.pushViewController(auditVC, animated: true)
+    }
+    
     func massSMSEditEmailSmsCountDataRecived() {
         self.view.HideSpinner()
-        let modelData = viewModelEdit?.getMassSMSTriggerEditListData
+        modelData = viewModelEdit?.getMassSMSTriggerEditListData
         let defaultScreen = MassEmailandSMSDetailModelEdit(cellType: "Default", LastName: "")
         let moduleScreen = MassEmailandSMSDetailModelEdit(cellType: "Module", LastName: "")
         let leadScreen = MassEmailandSMSDetailModelEdit(cellType: "Lead", LastName: "")
