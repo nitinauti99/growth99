@@ -27,7 +27,6 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     @IBOutlet private weak var updatedDate: UILabel!
     @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var subView: UIView!
-    
     @IBOutlet weak var auditButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
 
@@ -64,7 +63,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         }*/
         self.executionStatusLabel.text = massEmailFilterList?.executionStatus
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-        //self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.scheduledDateTime ?? String.blank)
+        self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)

@@ -37,7 +37,7 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     }
-
+    
     @objc func getMassEmailandSMS() {
         self.view.ShowSpinner()
         viewModel?.getMassEmailandSMS()
@@ -173,8 +173,10 @@ extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
         case 0:
             var selectedTriggerId = Int()
             if isSearch {
-                selectedTriggerId = viewModel?.getMassEmailandSMSFilterData[index.row].id ?? 0
-                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.emailFlag == true})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
                 let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                                 handler: { [weak self] _ in
                     self?.view.ShowSpinner()
@@ -186,8 +188,9 @@ extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
                 alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                selectedTriggerId = viewModel?.getMassEmailandSMSData[index.row].id ?? 0
-                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.emailFlag == true})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
                 let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                                 handler: { [weak self] _ in
                     self?.view.ShowSpinner()
@@ -202,8 +205,9 @@ extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
         case 1:
             var selectedTriggerId = Int()
             if isSearch {
-                selectedTriggerId = viewModel?.getMassEmailandSMSFilterData[index.row].id ?? 0
-                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let filteredArray = viewModel?.getMassEmailandSMSFilterData.filter({$0.smsFlag == true})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
                 let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                                 handler: { [weak self] _ in
                     self?.view.ShowSpinner()
@@ -215,8 +219,9 @@ extension MassEmailandSMSViewController: MassEmailandSMSDelegate {
                 alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                selectedTriggerId = viewModel?.getMassEmailandSMSData[index.row].id ?? 0
-                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(viewModel?.getMassEmailandSMSDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let filteredArray = viewModel?.getMassEmailandSMSData.filter({$0.smsFlag == true})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Mass Email and SMS", message: "Are you sure you want to delete \(filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
                 let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
                                                 handler: { [weak self] _ in
                     self?.view.ShowSpinner()

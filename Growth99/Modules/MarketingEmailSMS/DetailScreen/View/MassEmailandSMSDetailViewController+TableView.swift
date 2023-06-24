@@ -288,6 +288,13 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(emailTemplatesArray.count * 30))), arrowDirection: .up), from: self)
     }
+    
+    func scrollToBottom() {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: self.emailAndSMSDetailList.count-1, section: 0)
+            self.emailAndSMSTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
 }
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSDefaultCellDelegate {
@@ -308,15 +315,19 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSModuleCellDelegate
             smsEmailModuleSelectionType = moduleType
             cell.moduleNextButton.isEnabled = false
             createNewMassEmailSMSCell(cellNameType: "Patient")
+            self.scrollToBottom()
         } else if moduleType == "lead" {
             smsEmailModuleSelectionType = moduleType
             cell.moduleNextButton.isEnabled = false
             createNewMassEmailSMSCell(cellNameType: "Lead")
+            self.scrollToBottom()
         } else {
             smsEmailModuleSelectionType = moduleType
             self.view.ShowSpinner()
             viewModel?.getMassEmailLeadStatusAllMethod()
+            self.scrollToBottom()
         }
+        
     }
 }
 
@@ -343,6 +354,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
         self.networkTypeSelected = networkTypeSelected
         cell.createNextButton.isEnabled = false
         createNewMassEmailSMSCell(cellNameType: "Time")
+        self.scrollToBottom()
     }
     
     func smsButtonClick(cell: MassEmailandSMSCreateTableViewCell) {

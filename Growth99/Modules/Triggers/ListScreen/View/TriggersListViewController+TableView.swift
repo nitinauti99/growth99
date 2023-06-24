@@ -120,7 +120,7 @@ extension TriggersListViewController: TriggerSourceDelegate {
         self.view.ShowSpinner()
         viewModel?.getSwitchOnButton(triggerId: triggerId, triggerStatus: triggerStatus)
     }
-
+    
     func editSelectedTrigger(cell: LeadTriggersTableViewCell, index: IndexPath) {
         let createTriggersVC = UIStoryboard(name: "TriggerEditDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "TriggerEditDetailViewController") as! TriggerEditDetailViewController
         let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
@@ -148,33 +148,72 @@ extension TriggersListViewController: TriggerSourceDelegate {
     }
     
     func removeSelectedTrigger(cell: LeadTriggersTableViewCell, index: IndexPath) {
+        
         var selectedTriggerId = Int()
-        if isSearch {
-            selectedTriggerId = viewModel?.getTriggersFilterData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Trigger", message: "Are you sure you want to delete \(viewModel?.getTriggersFilterDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
-                                            handler: { [weak self] _ in
-                self?.view.ShowSpinner()
-                self?.viewModel?.removeSelectedTrigger(selectedId: selectedTriggerId)
-            })
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-            alert.addAction(cancelAlert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            selectedTriggerId = viewModel?.getTriggersData[index.row].id ?? 0
-            let alert = UIAlertController(title: "Delete Trigger", message: "Are you sure you want to delete \(viewModel?.getTriggersDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
-            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
-                                            handler: { [weak self] _ in
-                self?.view.ShowSpinner()
-                self?.viewModel?.removeSelectedTrigger(selectedId: selectedTriggerId)
-            })
-            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
-            alert.addAction(cancelAlert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            if isSearch {
+                let filteredArray = viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.leads})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Trigger", message: "Are you sure you want to delete \(filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedTrigger(selectedId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let filteredArray = viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.leads})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Trigger", message: "Are you sure you want to delete \(filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedTrigger(selectedId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        case 1:
+            if isSearch {
+                let filteredArray = viewModel?.getTriggersFilterData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Trigger", message: "Are you sure you want to delete \( filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedTrigger(selectedId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let filteredArray = viewModel?.getTriggersData.filter({$0.moduleName == Constant.Profile.appointmentTrigger})
+                selectedTriggerId = filteredArray?[index.row].id ?? 0
+                let alert = UIAlertController(title: "Delete Trigger", message: "Are you sure you want to delete \( filteredArray?[index.row].name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
+                let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                                handler: { [weak self] _ in
+                    self?.view.ShowSpinner()
+                    self?.viewModel?.removeSelectedTrigger(selectedId: selectedTriggerId)
+                })
+                cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+                alert.addAction(cancelAlert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        default:
+            break
         }
     }
     

@@ -147,11 +147,13 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     func massEmailSMSPatientStatusAllDataRecived() {
         self.view.HideSpinner()
         createNewMassEmailSMSCell(cellNameType: "Both")
+        self.scrollToBottom()
     }
     
     func bothInsertDataReceived() {
         self.view.HideSpinner()
         createNewMassEmailSMSCell(cellNameType: "Both")
+        self.scrollToBottom()
     }
     
     func errorReceived(error: String) {

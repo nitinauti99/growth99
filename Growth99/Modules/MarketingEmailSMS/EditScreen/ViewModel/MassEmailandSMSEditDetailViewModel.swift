@@ -31,6 +31,9 @@ protocol MassEmailandSMSEditDetailViewModelProtocol {
     var  getMassSMSEditAllLeadCountData: MassEmailSMSCountModelEdit? { get }
     var  getMassSMSEditAllPatientCountData: MassEmailSMSCountModelEdit? { get }
     var  getMassEmailEditDetailData: MassEmailSMSDetailListModelEdit? { get }
+    func editMassSMSLeadDataMethod(selectedMassSMSId: Int, leadDataParms: [String: Any])
+    func editMassSMSPatientDataMethod(selectedMassSMSId: Int, patientDataParms: [String: Any])
+    func editMassSMSLeadPatientDataMethod(selectedMassSMSId: Int, leadPatientDataParms: [String: Any])
     func convertDateFormat(dateString: String) -> String?
     func convertTimeFormat(dateString: String) -> String?
 }
@@ -188,6 +191,63 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
                 self.delegate?.massSMSEditPatientCountDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceivedEdit(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func editMassSMSLeadDataMethod(selectedMassSMSId: Int, leadDataParms: [String: Any]) {
+        self.requestManager.request(forPath: ApiUrl.marketingMassLead + "\(selectedMassSMSId)", method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: leadDataParms, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.massSMSEditLeadDataReceived()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceivedEdit(error: "We are facing issue while creating Mass Lead")
+                } else {
+                    self.delegate?.errorReceivedEdit(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceivedEdit(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func editMassSMSPatientDataMethod(selectedMassSMSId: Int, patientDataParms: [String: Any]) {
+        self.requestManager.request(forPath: ApiUrl.marketingMassPatient + "\(selectedMassSMSId)", method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: patientDataParms, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.massSMSEditPatientDataReceived()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceivedEdit(error: "We are facing issue while creating Mass Patient")
+                } else {
+                    self.delegate?.errorReceivedEdit(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceivedEdit(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func editMassSMSLeadPatientDataMethod(selectedMassSMSId: Int, leadPatientDataParms: [String: Any]) {
+        self.requestManager.request(forPath: ApiUrl.marketingMassLeadPatient + "\(selectedMassSMSId)", method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: leadPatientDataParms, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.massSMSEditLeadPatientDataReceived()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceivedEdit(error: "We are facing issue while creating Mass Lead and Patient")
+                } else {
+                    self.delegate?.errorReceivedEdit(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceivedEdit(error: error.localizedDescription)
+                print("Error while performing request \(error)")
             }
         }
     }

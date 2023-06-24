@@ -539,29 +539,25 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditTimeCellDe
         }
         
         if smsEmailModuleSelectionTypeEdit == "lead" {
-            
             marketingTriggersDataEdit.append(MarketingTriggerDataEdit(actionIndex: 3, addNew: true, triggerTemplate: templateIdEdit, triggerType: networkTypeSelectedEdit.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlotEdit, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModelEdit(name: moduleNameEdit, moduleName: "MassLead", triggerConditions: leadStatusSelectedEdit, leadTags: selectedLeadTagsEdit, patientTags: [], patientStatus: [], triggerData: marketingTriggersDataEdit, source: leadSourceSelectedEdit)
-            
-            //            let parameters: [String: Any]  = params.toDict()
-            //            viewModelEdit?.postMassLeadDataMethodEdit(leadDataParms: parameters)
+            let parameters: [String: Any]  = params.toDict()
+            viewModelEdit?.editMassSMSLeadDataMethod(selectedMassSMSId: massSMStriggerId ?? 0, leadDataParms: parameters)
             
         } else if smsEmailModuleSelectionTypeEdit == "patient" {
-            
             marketingTriggersDataEdit.append(MarketingTriggerDataEdit(actionIndex: 3, addNew: true, triggerTemplate: templateIdEdit, triggerType: networkTypeSelectedEdit.uppercased(), triggerTarget: "AppointmentPatient", scheduledDateTime: selectedTimeSlotEdit, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModelEdit(name: moduleNameEdit, moduleName: "MassPatient", triggerConditions: appointmentStatusSelectedEdit, leadTags: [], patientTags: selectedPatientTagsEdit, patientStatus: paymentStatusSelectedEdit, triggerData: marketingTriggersDataEdit, source: [])
             let parameters: [String: Any]  = params.toDict()
-            //            viewModelEdit?.postMassPatientDataMethodEdit(patientDataParms: parameters)
+            viewModelEdit?.editMassSMSPatientDataMethod(selectedMassSMSId: massSMStriggerId ?? 0, patientDataParms: parameters)
             
         } else {
             marketingTriggersDataEdit.append(MarketingTriggerDataEdit(actionIndex: 3, addNew: true, triggerTemplate: templateIdEdit, triggerType: networkTypeSelectedEdit.uppercased(), triggerTarget: "All", scheduledDateTime: selectedTimeSlotEdit, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModelEdit(name: moduleNameEdit, moduleName: "All", triggerConditions: ["All"], leadTags: [], patientTags: [], patientStatus: [], triggerData: marketingTriggersDataEdit, source: [])
             let parameters: [String: Any]  = params.toDict()
-            
-            //            viewModelEdit?.postMassLeadPatientDataMethodEdit(leadPatientDataParms: parameters)
+            viewModelEdit?.editMassSMSLeadPatientDataMethod(selectedMassSMSId: massSMStriggerId ?? 0, leadPatientDataParms: parameters)
         }
     }
     

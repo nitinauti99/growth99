@@ -18,11 +18,14 @@ protocol MassEmailandSMSEditDetailViewControlProtocol: AnyObject {
     func massSMSEditAllPatientCountDataRecived()
     func massSMSEditLeadCountDataRecived()
     func massSMSEditPatientCountDataRecived()
+    func massSMSEditLeadDataReceived()
+    func massSMSEditPatientDataReceived()
+    func massSMSEditLeadPatientDataReceived()
     func errorReceivedEdit(error: String)
 }
 
 class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMSEditDetailViewControlProtocol {
-    
+
     @IBOutlet weak var emailAndSMSTableViewEdit: UITableView!
     @IBOutlet weak var triggerExicutedView: UIView!
     @IBOutlet weak var triggerExicutedViewHeight: NSLayoutConstraint!
@@ -185,6 +188,26 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         self.view.HideSpinner()
         createNewMassEmailSMSCell(cellNameType: "Both")
         scrollToBottom()
+    }
+    
+    func massSMSEditLeadDataReceived() {
+        massSMSAppointmentUpdatedSucessfull()
+    }
+    
+    func massSMSEditPatientDataReceived() {
+        massSMSAppointmentUpdatedSucessfull()
+    }
+    
+    func massSMSEditLeadPatientDataReceived() {
+        massSMSAppointmentUpdatedSucessfull()
+    }
+    
+    func massSMSAppointmentUpdatedSucessfull() {
+        self.view.HideSpinner()
+        self.view.showToast(message: "Trigger updated successfully", color: UIColor().successMessageColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func registerTableView() {

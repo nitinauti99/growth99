@@ -189,16 +189,16 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     }
     
     func createEditTriggerDataReceived() {
-        triggerAppointmentCreateSucessfull()
+        triggerAppointmentUpdatedSucessfull()
     }
     
     func createEditAppointmentDataReceived() {
-        triggerAppointmentCreateSucessfull()
+        triggerAppointmentUpdatedSucessfull()
     }
     
-    func triggerAppointmentCreateSucessfull() {
+    func triggerAppointmentUpdatedSucessfull() {
         self.view.HideSpinner()
-        self.view.showToast(message: "Trigger created successfully", color: UIColor().successMessageColor())
+        self.view.showToast(message: "Trigger updated successfully", color: UIColor().successMessageColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.navigationController?.popViewController(animated: true)
         }
