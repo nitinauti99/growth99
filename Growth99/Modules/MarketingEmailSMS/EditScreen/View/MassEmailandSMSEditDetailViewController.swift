@@ -25,7 +25,7 @@ protocol MassEmailandSMSEditDetailViewControlProtocol: AnyObject {
 }
 
 class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMSEditDetailViewControlProtocol {
-
+    
     @IBOutlet weak var emailAndSMSTableViewEdit: UITableView!
     @IBOutlet weak var triggerExicutedView: UIView!
     @IBOutlet weak var triggerExicutedViewHeight: NSLayoutConstraint!
@@ -45,11 +45,11 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     
     var emailTemplatesArrayEdit = [EmailTemplateDTOListEdit]()
     var selectedEmailTemplatesEdit = [EmailTemplateDTOListEdit]()
-    var selectedemailTemplateIdEdit: String = String.blank
+    var selectedemailTemplateIdEdit: Int = 0
     
     var smsTemplatesArrayEdit = [SmsTemplateDTOListEdit]()
     var selectedSmsTemplatesEdit = [SmsTemplateDTOListEdit]()
-    var selectedSmsTemplateIdEdit: String = String.blank
+    var selectedSmsTemplateIdEdit: Int = 0
     
     var dateFormaterEdit: DateFormaterProtocol?
     var patientAppointmentStatusEdit: String = String.blank
@@ -77,7 +77,12 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     var appointmentStatusArrayEdit: [String] = []
     var selectedLeadSourcesEdit: [String] = []
     var modelData: MassSMSEditModel?
-
+    
+    var patientTypeSelected: Bool = false
+    var leadTypeSelected: Bool = false
+    var leadPatientBothSelected: Bool = false
+    var defaultNextSelected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -137,14 +142,6 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         let moduleScreen = MassEmailandSMSDetailModelEdit(cellType: "Module", LastName: "")
         let leadScreen = MassEmailandSMSDetailModelEdit(cellType: "Lead", LastName: "")
         let appointmentScreen = MassEmailandSMSDetailModelEdit(cellType: "Appointment", LastName: "")
-        if modelData?.executionStatus == "COMPLETED" {
-            viewAuditButtonHeight.constant = 35
-            triggerExicutedViewHeight.constant = 90
-        } else {
-            viewAuditButtonHeight.constant = 0
-            triggerExicutedViewHeight.constant = 0
-        }
-        
         if modelData?.name != "" && modelData?.moduleName != "" {
             massSMSDetailListEdit.append(defaultScreen)
             massSMSDetailListEdit.append(moduleScreen)
@@ -159,7 +156,13 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
             massSMSDetailListEdit.append(timeScreen)
         }
         selectedLeadSourcesEdit = modelData?.triggerConditions ?? []
-        
+        if modelData?.executionStatus == "COMPLETED" {
+            viewAuditButtonHeight.constant = 35
+            triggerExicutedViewHeight.constant = 90
+        } else {
+            viewAuditButtonHeight.constant = 0
+            triggerExicutedViewHeight.constant = 0
+        }
         emailAndSMSTableViewEdit.reloadData()
     }
     

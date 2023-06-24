@@ -68,10 +68,12 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailFilterList?.updatedBy
-        if massEmailFilterList?.status == Constant.Profile.triggerActive {
-            self.statusLabelSwitch.setOn(true, animated: true)
-        } else {
+        if massEmailFilterList?.executionStatus == "COMPLETED" || massEmailFilterList?.executionStatus == "FAILED" {
             self.statusLabelSwitch.setOn(false, animated: true)
+            self.statusLabelSwitch.isEnabled = false
+        } else {
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.isEnabled = true
         }
         indexPath = index
     }
@@ -102,10 +104,12 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailList?.updatedBy
-        if massEmailList?.status == Constant.Profile.triggerActive {
-            self.statusLabelSwitch.setOn(true, animated: true)
-        } else {
+        if massEmailList?.executionStatus == "COMPLETED" || massEmailList?.executionStatus == "FAILED" {
             self.statusLabelSwitch.setOn(false, animated: true)
+            self.statusLabelSwitch.isEnabled = false
+        } else {
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.isEnabled = true
         }
         indexPath = index
     }
