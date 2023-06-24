@@ -75,7 +75,7 @@ class MassEmailandSMSViewModel {
 }
 
 extension MassEmailandSMSViewModel: MassEmailandSMSViewModelProtocol {
-   
+    
     func getMassEmailandSMSFilterData(searchText: String) {
         self.massEmailListFilterData = self.getMassEmailandSMSData.filter { task in
             let searchText = searchText.lowercased()

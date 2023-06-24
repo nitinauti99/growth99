@@ -12,7 +12,7 @@ protocol MassEmailandSMSPatientCellDelegate: AnyObject {
 }
 
 class MassEmailandSMSPatientActionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var patientStatusSelectonButton: UIButton!
@@ -24,10 +24,10 @@ class MassEmailandSMSPatientActionTableViewCell: UITableViewCell {
     @IBOutlet weak var patientStatusTextLabel: UILabel!
     @IBOutlet weak var patientTagTextLabel: UILabel!
     @IBOutlet weak var patientAppointmenTextLabel: UILabel!
-
+    
     @IBOutlet weak var patientStatusEmptyTextLabel: UILabel!
     @IBOutlet weak var patientNextButton: UIButton!
-
+    
     weak var delegate: MassEmailandSMSPatientCellDelegate?
     var indexPath = IndexPath()
     

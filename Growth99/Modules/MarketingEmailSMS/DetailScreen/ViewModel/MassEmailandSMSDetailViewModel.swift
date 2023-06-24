@@ -200,7 +200,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func postMassLeadDataMethod(leadDataParms: [String: Any]) {
-                
+        
         self.requestManager.request(forPath: ApiUrl.marketingMassLead, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: leadDataParms, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {

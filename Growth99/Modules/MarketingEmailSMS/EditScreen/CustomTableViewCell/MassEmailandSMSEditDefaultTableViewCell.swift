@@ -12,12 +12,12 @@ protocol MassEmailandSMSEditDefaultCellDelegate: AnyObject {
 }
 
 class MassEmailandSMSEditDefaultTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var massEmailSMSTextField: CustomTextField!
     @IBOutlet weak var defaultNextButton: UIButton!
-
+    
     weak var delegate: MassEmailandSMSEditDefaultCellDelegate?
     var indexPath = IndexPath()
     

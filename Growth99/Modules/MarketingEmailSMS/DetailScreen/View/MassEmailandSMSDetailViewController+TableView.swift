@@ -420,7 +420,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
         }
         
         if smsEmailModuleSelectionType == "lead" {
-        
+            
             marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModel(name: moduleName, moduleName: "MassLead", triggerConditions: leadStatusSelected, leadTags: selectedLeadTags, patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: leadSourceSelected)
@@ -429,7 +429,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
             viewModel?.postMassLeadDataMethod(leadDataParms: parameters)
             
         } else if smsEmailModuleSelectionType == "patient" {
-   
+            
             marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "AppointmentPatient", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
             
             let params = MarketingLeadModel(name: moduleName, moduleName: "MassPatient", triggerConditions: appointmentStatusSelected, leadTags: [], patientTags: selectedPatientTags, patientStatus: paymentStatusSelected, triggerData: marketingTriggersData, source: [])
@@ -441,7 +441,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
             
             let params = MarketingLeadModel(name: moduleName, moduleName: "All", triggerConditions: ["All"], leadTags: [], patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: [])
             let parameters: [String: Any]  = params.toDict()
-
+            
             viewModel?.postMassLeadPatientDataMethod(leadPatientDataParms: parameters)
         }
     }
@@ -458,7 +458,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
         if let vacationCell = emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSTimeTableViewCell {
             vacationCell.updateMassEmailTimeFromTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")")
             selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
-
+            
         }
     }
 }

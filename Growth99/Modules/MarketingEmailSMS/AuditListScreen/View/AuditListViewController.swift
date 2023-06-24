@@ -23,7 +23,7 @@ class AuditListViewController: UIViewController, AuditListViewControllerProtocol
     var auditIdInfo: Int = 0
     var communicationTypeStr: String = ""
     var triggerModuleStr: String = ""
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSerchBar()
@@ -38,7 +38,7 @@ class AuditListViewController: UIViewController, AuditListViewControllerProtocol
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     }
-
+    
     @objc func getAuditListInfo() {
         self.view.ShowSpinner()
         viewModel?.getAuditInformation(auditId: auditIdInfo, communicationType: communicationTypeStr, triggerModule: triggerModuleStr)

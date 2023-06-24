@@ -51,7 +51,7 @@ class AuditListTableViewCell: UITableViewCell {
         } else {
             self.patientId.text = "-"
         }
-
+        
         self.emailLabel.text = auditFilterList?.email ?? "-"
         self.templateName.text = auditFilterList?.templateName ?? "-"
         self.dateAuditLabel.text = convertTimestamp(timestamp: auditFilterList?.date ?? "-")
@@ -78,7 +78,7 @@ class AuditListTableViewCell: UITableViewCell {
         } else {
             self.patientId.text = "-"
         }
-
+        
         self.emailLabel.text = auditList?.email ?? "-"
         self.templateName.text = auditList?.templateName ?? "-"
         self.dateAuditLabel.text = convertTimestamp(timestamp: auditList?.date ?? "-")

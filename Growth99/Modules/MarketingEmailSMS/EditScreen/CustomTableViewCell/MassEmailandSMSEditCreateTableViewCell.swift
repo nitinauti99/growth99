@@ -16,7 +16,7 @@ protocol MassEmailandSMSEditCreateCellDelegate: AnyObject {
 }
 
 class MassEmailandSMSEditCreateTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var smsBtn: UIButton!
     @IBOutlet weak var emailBtn: UIButton!
@@ -24,12 +24,12 @@ class MassEmailandSMSEditCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var selectNetworkButton: UIButton!
     @IBOutlet weak var selectNetworkTextField: CustomTextField!
     @IBOutlet weak var nextButton: UIButton!
-
+    
     weak var delegate: MassEmailandSMSEditCreateCellDelegate?
     var indexPath = IndexPath()
     var networkTypeSelected: String = "sms"
     let radioController: RadioButtonController = RadioButtonController()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
@@ -42,7 +42,7 @@ class MassEmailandSMSEditCreateTableViewCell: UITableViewCell {
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonCreate(cell: self, index: indexPath, networkType: networkTypeSelected)
     }
-
+    
     @IBAction func smsButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         networkTypeSelected = "sms"

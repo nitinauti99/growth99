@@ -12,15 +12,15 @@ protocol MassEmailandSMSEditTimeCellDelegate: AnyObject {
     func cancelButtonTime(cell: MassEmailandSMSEditTimeTableViewCell, index: IndexPath)
     func massSMSDateSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell)
     func massSMSTimeSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell)
-
+    
 }
 
 class MassEmailandSMSEditTimeTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var massSMSTriggerDateTextField: CustomTextField!
     @IBOutlet weak var massSMSTriggerTimeTextField: CustomTextField!
-
+    
     weak var delegate: MassEmailandSMSEditTimeCellDelegate?
     var indexPath = IndexPath()
     

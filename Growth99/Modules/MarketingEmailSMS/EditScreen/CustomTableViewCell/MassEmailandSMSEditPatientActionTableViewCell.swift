@@ -15,7 +15,7 @@ protocol MassEmailandSMSEditPatientCellDelegate: AnyObject {
 }
 
 class MassEmailandSMSEditPatientActionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var patientNextButton: UIButton!
     
@@ -80,7 +80,7 @@ class MassEmailandSMSEditPatientActionTableViewCell: UITableViewCell {
     @IBAction func patientStatusButtonAction(sender: UIButton) {
         self.delegate?.patientStausButtonSelection(cell: self, index: indexPath, buttonSender: sender)
     }
-        
+    
     @IBAction func patientTagButtonAction(sender: UIButton) {
         self.delegate?.patientTagButtonSelection(cell: self, index: indexPath, buttonSender: sender)
     }

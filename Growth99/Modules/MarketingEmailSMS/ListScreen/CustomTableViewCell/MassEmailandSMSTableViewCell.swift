@@ -29,11 +29,11 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var auditButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
-
+    
     weak var delegate: MassEmailandSMSDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -55,12 +55,6 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         }
         self.id.text = String(massEmailFilterList?.id ?? 0)
         self.triggerNameLabel.text = massEmailFilterList?.name
-        /*if massEmailFilterList?.triggerActionName == String.blank {
-            let sourceFrom = massEmailFilterList?.triggerConditions?.joined(separator: ", ")
-            self.sourceLabel.text = sourceFrom
-        } else {
-            self.sourceLabel.text = massEmailFilterList?.triggerActionName
-        }*/
         self.executionStatusLabel.text = massEmailFilterList?.executionStatus
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
         self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
@@ -91,12 +85,6 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         }
         self.id.text = String(massEmailList?.id ?? 0)
         self.triggerNameLabel.text = massEmailList?.name
-        /*if massEmailList?.triggerActionName == String.blank {
-            let sourceFrom = massEmailList?.triggerConditions?.joined(separator: ", ")
-            self.sourceLabel.text = sourceFrom
-        } else {
-            self.sourceLabel.text = massEmailList?.triggerActionName
-        }*/
         self.executionStatusLabel.text = massEmailList?.executionStatus
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
         self.scheduledDateLabel.text =  dateFormater?.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
@@ -122,7 +110,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "MMM d yyyy"
         return dateFormatter.string(from: date)
     }
-
+    
     func serverToLocalCreatedDate(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")

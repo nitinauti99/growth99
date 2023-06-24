@@ -12,11 +12,11 @@ protocol MassEmailandSMSEditModuleCellDelegate: AnyObject {
     func leadButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
     func patientButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
     func bothButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String)
-
+    
 }
 
 class MassEmailandSMSEditModuleTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var leadBtn: UIButton!
@@ -24,11 +24,11 @@ class MassEmailandSMSEditModuleTableViewCell: UITableViewCell {
     @IBOutlet weak var bothBtn: UIButton!
     @IBOutlet weak var moduleNextButton: UIButton!
     var moduleTypeSelected: String = "lead"
-
+    
     weak var delegate: MassEmailandSMSEditModuleCellDelegate?
     var indexPath = IndexPath()
     let radioController: RadioButtonController = RadioButtonController()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

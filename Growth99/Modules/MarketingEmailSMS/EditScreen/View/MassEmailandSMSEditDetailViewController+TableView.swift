@@ -244,7 +244,7 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditModuleCell
             }
         }
     }
-
+    
     func patientButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
         let hasPatient = massSMSDetailListEdit.contains(where: { $0.cellType == "Appointment" })
         if !hasPatient {
@@ -261,8 +261,8 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditModuleCell
             }
         }
     }
-
-
+    
+    
     
     func bothButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
         let hasBoth = massSMSDetailListEdit.contains(where: { $0.cellType == "Both" })
@@ -563,7 +563,7 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCell
                         self.emailAndSMSTableViewEdit.deleteRows(at: indexPathsToDelete, with: .fade)
                     }
                 }
-               
+                
                 if self.smsEmailModuleSelectionTypeEdit == "both" {
                     let leadSMSCount = self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0
                     let patientSMSCount = self.viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0

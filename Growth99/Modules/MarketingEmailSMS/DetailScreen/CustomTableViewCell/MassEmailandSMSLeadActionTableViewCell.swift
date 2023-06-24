@@ -12,7 +12,7 @@ protocol MassEmailandSMSLeadCellDelegate: AnyObject {
 }
 
 class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var leadStatusSelectonButton: UIButton!
@@ -25,9 +25,9 @@ class MassEmailandSMSLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadSourceTextLabel: UILabel!
     @IBOutlet weak var leadTagTextLabel: UILabel!
     @IBOutlet weak var leadNextButton: UIButton!
-
+    
     @IBOutlet weak var leadStatusEmptyTextLabel: UILabel!
-
+    
     weak var delegate: MassEmailandSMSLeadCellDelegate?
     var indexPath = IndexPath()
     

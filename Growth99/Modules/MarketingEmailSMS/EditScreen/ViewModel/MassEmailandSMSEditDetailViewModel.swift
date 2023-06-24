@@ -152,7 +152,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
             }
         }
     }
-
+    
     func getMassSMSEditAllPatientMethod() {
         let appendParam = "appointmentStatus=All&moduleName=All&patientTagIds=&patientStatus="
         let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
