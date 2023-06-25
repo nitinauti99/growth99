@@ -29,7 +29,7 @@ class LeadTriggersTableViewCell: UITableViewCell {
     weak var delegate: TriggerSourceDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -55,11 +55,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
         self.updatedDate.text =  dateFormater?.serverToLocal(date: triggerFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = triggerFilterList?.updatedBy
         if triggerFilterList?.status == Constant.Profile.triggerActive {
-            self.statusLabelSwitch.setOn(false, animated: true)
-            self.statusLabelSwitch.isEnabled = false
-        } else {
             self.statusLabelSwitch.setOn(true, animated: true)
-            self.statusLabelSwitch.isEnabled = true
+        } else {
+            self.statusLabelSwitch.setOn(false, animated: true)
         }
         indexPath = index
     }
@@ -79,11 +77,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
         self.updatedDate.text =  dateFormater?.serverToLocal(date: triggerList?.updatedAt ?? String.blank)
         self.updatedBy.text = triggerList?.updatedBy
         if triggerList?.status == Constant.Profile.triggerActive {
-            self.statusLabelSwitch.setOn(false, animated: true)
-            self.statusLabelSwitch.isEnabled = false
-        } else {
             self.statusLabelSwitch.setOn(true, animated: true)
-            self.statusLabelSwitch.isEnabled = true
+        } else {
+            self.statusLabelSwitch.setOn(false, animated: true)
         }
         indexPath = index
     }

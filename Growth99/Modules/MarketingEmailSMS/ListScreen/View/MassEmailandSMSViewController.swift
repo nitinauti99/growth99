@@ -10,6 +10,7 @@ import UIKit
 protocol MassEmailandSMSViewContollerProtocol: AnyObject {
     func massEmailandSMSDataRecived()
     func errorReceived(error: String)
+    func massEmailSwitchActiveDataRecived(responseMessage: String)
     func mailSMSDeletedSuccefully(message: String)
 }
 
@@ -81,8 +82,15 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
     
     func massEmailandSMSDataRecived() {
         self.view.HideSpinner()
-        self.massEmailandSMSTableView.setContentOffset(.zero, animated: true)
         clearSearchBar()
+        self.massEmailandSMSTableView.setContentOffset(.zero, animated: true)
+        self.massEmailandSMSTableView.reloadData()
+    }
+    
+    func massEmailSwitchActiveDataRecived(responseMessage: String) {
+        self.view.HideSpinner()
+        viewModel?.getMassEmailandSMS()
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
     }
     
     func errorReceived(error: String) {

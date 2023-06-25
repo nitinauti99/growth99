@@ -8,7 +8,8 @@
 import UIKit
 
 protocol TriggersListViewContollerProtocol: AnyObject {
-    func TriggersDataRecived()
+    func triggersDataRecived()
+    func triggersSwitchActiveDataRecived(responseMessage: String)
     func errorReceived(error: String)
     func triggerRemovedSuccefully(message: String)
 }
@@ -79,9 +80,17 @@ class TriggersListViewController: UIViewController, TriggersListViewContollerPro
         viewModel?.getTriggersList()
     }
     
-    func TriggersDataRecived() {
+    func triggersDataRecived() {
         self.view.HideSpinner()
+        clearSearchBar()
+        self.triggersListTableView.setContentOffset(.zero, animated: true)
         self.triggersListTableView.reloadData()
+    }
+    
+    func triggersSwitchActiveDataRecived(responseMessage: String) {
+        self.view.HideSpinner()
+        viewModel?.getTriggersList()
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
     }
     
     func errorReceived(error: String) {

@@ -46,18 +46,38 @@ class MassEmailandSMSViewModel {
     }
     
     func getSwitchOnButton(massEmailandSMSId: String, massEmailandSMStatus: String) {
-        let parameter: [String: Any] = [massEmailandSMStatus: ""]
-        let url = "\(ApiUrl.getAllEmailandSMS)/status\(massEmailandSMSId)"
-        self.requestManager.request(forPath: url, method: .PUT,task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<[MassEmailandSMSModel], GrowthNetworkError>) in
-            switch result {
-            case .success(let massEmailandSMSData):
-                self.massEmailList = massEmailandSMSData
-                self.delegate?.massEmailandSMSDataRecived()
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
+        let url = "\(ApiUrl.getAllTriggers)/status/\(massEmailandSMSId)"
+        guard let requestUrl = URL(string: url) else {
+            self.delegate?.errorReceived(error: "Invalid URL")
+            return
+        }
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "PUT"
+        request.httpBody = massEmailandSMStatus.data(using: .utf8)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(UserRepository.shared.Xtenantid ?? "", forHTTPHeaderField: "x-tenantid")
+        request.addValue("Bearer \(UserRepository.shared.authToken ?? "")", forHTTPHeaderField: "Authorization")
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForResource = 15 // Adjust timeout interval as needed
+        let session = URLSession(configuration: configuration)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async { // Switch to the main thread
+                if let error = error {
+                    self.delegate?.errorReceived(error: error.localizedDescription)
+                    print("Error while performing request: \(error)")
+                    return
+                }
+                
+                if let data = data {
+                    // Process the response data if needed
+                    print("Response: \(String(data: data, encoding: .utf8) ?? "")")
+                }
+                // Handle successful response
+                let responseMessage = (massEmailandSMStatus == "INACTIVE") ? "Trigger disabled successfully" : "Trigger enabled successfully"
+                self.delegate?.massEmailSwitchActiveDataRecived(responseMessage: responseMessage)
             }
         }
+        task.resume()
     }
     
     func removeSelectedMassEmail(massEmailId: Int) {

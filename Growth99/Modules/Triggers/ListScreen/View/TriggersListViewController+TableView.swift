@@ -148,7 +148,6 @@ extension TriggersListViewController: TriggerSourceDelegate {
     }
     
     func removeSelectedTrigger(cell: LeadTriggersTableViewCell, index: IndexPath) {
-        
         var selectedTriggerId = Int()
         let selectedIndex = self.triggerSegmentControl.selectedSegmentIndex
         switch selectedIndex {

@@ -34,7 +34,8 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     weak var delegate: MassEmailandSMSDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
-    
+    var triggerStatusClick: Bool = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -63,16 +64,24 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailFilterList?.updatedBy
-        if massEmailFilterList?.executionStatus == "COMPLETED" || massEmailFilterList?.executionStatus == "FAILED" ||  massEmailFilterList?.executionStatus == "INPROGRESS" {
-            deleteButton.isHidden = true
-            self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.setOn(false, animated: true)
-            self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
-        } else {
+        if massEmailFilterList?.executionStatus == "SCHEDULED" && massEmailFilterList?.status == "ACTIVE" {
             deleteButton.isHidden = false
+            triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
             self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+        } else if massEmailFilterList?.executionStatus == "SCHEDULED" && massEmailFilterList?.status == "INACTIVE" {
+            deleteButton.isHidden = false
+            triggerStatusClick = true
+            self.statusLabelSwitch.isEnabled = true
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+        } else {
+            deleteButton.isHidden = true
+            triggerStatusClick = false
+            self.statusLabelSwitch.isEnabled = false
+            self.statusLabelSwitch.setOn(false, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         }
         indexPath = index
     }
@@ -97,16 +106,24 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailList?.updatedBy
-        if massEmailList?.executionStatus == "COMPLETED" || massEmailList?.executionStatus == "FAILED" ||  massEmailList?.executionStatus == "INPROGRESS" {
-            deleteButton.isHidden = true
-            self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.setOn(false, animated: true)
-            self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
-        } else {
+        if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "ACTIVE" {
             deleteButton.isHidden = false
+            triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
             self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+        } else if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "INACTIVE" {
+            deleteButton.isHidden = false
+            triggerStatusClick = true
+            self.statusLabelSwitch.isEnabled = true
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+        } else {
+            deleteButton.isHidden = true
+            triggerStatusClick = false
+            self.statusLabelSwitch.isEnabled = false
+            self.statusLabelSwitch.setOn(false, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         }
         indexPath = index
     }
@@ -149,10 +166,12 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     }
     
     @IBAction func statusSwitchChanges(_ sender: UIButton) {
-        if statusLabelSwitch.isOn {
-            delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "ACTIVE")
-        } else {
-            delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "INACTIVE")
+        if triggerStatusClick == true {
+            if statusLabelSwitch.isOn {
+                delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "ACTIVE")
+            } else {
+                delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "INACTIVE")
+            }
         }
     }
     
