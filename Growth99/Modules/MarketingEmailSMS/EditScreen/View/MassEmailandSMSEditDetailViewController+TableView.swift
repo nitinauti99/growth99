@@ -263,8 +263,6 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditModuleCell
         }
     }
     
-    
-    
     func bothButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
         let hasBoth = massSMSDetailListEdit.contains(where: { $0.cellType == "Both" })
         if  hasBoth {

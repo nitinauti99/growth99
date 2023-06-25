@@ -90,6 +90,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         dateFormaterEdit = DateFormater()
         viewModelEdit = MassEmailandSMSEditDetailViewModel(delegate: self)
         leadSourceArrayEdit = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
+        
         appointmentStatusArrayEdit = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
     }
     

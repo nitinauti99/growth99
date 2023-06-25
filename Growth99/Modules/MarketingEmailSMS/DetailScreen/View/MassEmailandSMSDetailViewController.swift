@@ -67,11 +67,18 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     var massAppointmnentId: Int = 0
     
     var selectedTimeSlot: String = String.blank
-    
+    var leadSourceArray: [String] = []
+    var appointmentStatusArray: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
+        
+        leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
+
+        appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+
         dateFormater = DateFormater()
         let emailSMS = MassEmailandSMSDetailModel(cellType: "Default", LastName: "")
         emailAndSMSDetailList.append(emailSMS)
