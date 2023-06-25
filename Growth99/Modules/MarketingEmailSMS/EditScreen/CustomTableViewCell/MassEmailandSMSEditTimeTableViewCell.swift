@@ -12,7 +12,6 @@ protocol MassEmailandSMSEditTimeCellDelegate: AnyObject {
     func cancelButtonTime(cell: MassEmailandSMSEditTimeTableViewCell, index: IndexPath)
     func massSMSDateSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell)
     func massSMSTimeSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell)
-    
 }
 
 class MassEmailandSMSEditTimeTableViewCell: UITableViewCell {
@@ -20,8 +19,11 @@ class MassEmailandSMSEditTimeTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var massSMSTriggerDateTextField: CustomTextField!
     @IBOutlet weak var massSMSTriggerTimeTextField: CustomTextField!
+    @IBOutlet weak var massSMSSubmitButton: UIButton!
     
     weak var delegate: MassEmailandSMSEditTimeCellDelegate?
+    var getMassSMSTriggerEditListData: MassSMSEditModel?
+    var tableView: UITableView?
     var indexPath = IndexPath()
     
     override func awakeFromNib() {
@@ -33,6 +35,19 @@ class MassEmailandSMSEditTimeTableViewCell: UITableViewCell {
         massSMSTriggerDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateButtonPressed), mode: .date)
         massSMSTriggerTimeTextField.tintColor = .clear
         massSMSTriggerTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeButtonPressed), mode: .time)
+    }
+    
+    func configureCell(massSMSTriggerEditListData: MassSMSEditModel?, tableView: UITableView?, index: IndexPath) {
+        self.indexPath = index
+        self.tableView = tableView
+        if massSMSTriggerEditListData?.executionStatus == "COMPLETED" || massSMSTriggerEditListData?.executionStatus == "FAILED" ||  massSMSTriggerEditListData?.executionStatus == "INPROGRESS" {
+            massSMSSubmitButton.isEnabled = false
+            massSMSSubmitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+        } else {
+            massSMSSubmitButton.isSelected = true
+            massSMSSubmitButton.isEnabled = true
+            massSMSSubmitButton.backgroundColor = UIColor.init(hexString: "009EDE")
+        }
     }
     
     @objc func dateButtonPressed() {

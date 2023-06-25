@@ -195,6 +195,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.updateMassEmailDateTextField(with: dateTrigger)
             cell.updateMassEmailTimeTextField(with: timeTrigger)
             selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: dateTrigger + timeTrigger) ?? ""
+            cell.configureCell(massSMSTriggerEditListData: viewModelEdit?.getMassSMSTriggerEditListData, tableView: emailAndSMSTableViewEdit, index: indexPath)
             return cell
         }
         return UITableViewCell()

@@ -344,6 +344,7 @@
                 <outlet property="createdBy" destination="bgn-vb-EJj" id="Giw-Qy-IS3"/>
                 <outlet property="createdDate" destination="eCG-o3-aSD" id="5Sg-QF-HSr"/>
                 <outlet property="deleteButton" destination="BDK-a1-KOu" id="9AQ-bH-2bO"/>
+                <outlet property="editOrShowButton" destination="NLf-ay-NvB" id="V35-fT-84i"/>
                 <outlet property="executionStatusLabel" destination="PEL-eK-3cu" id="aia-V2-b78"/>
                 <outlet property="id" destination="7Fz-I2-Mji" id="0uP-vZ-wBM"/>
                 <outlet property="moduleLabel" destination="ahZ-iO-Bmh" id="eVK-aP-Hnx"/>

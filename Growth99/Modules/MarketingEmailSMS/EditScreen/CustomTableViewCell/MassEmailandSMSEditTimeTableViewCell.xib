@@ -183,6 +183,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="massSMSSubmitButton" destination="aYX-5X-c0A" id="qay-Ut-gqj"/>
                 <outlet property="massSMSTriggerDateTextField" destination="ZIc-Jk-mU4" id="fSM-3u-hzQ"/>
                 <outlet property="massSMSTriggerTimeTextField" destination="cwR-TA-ejG" id="KQm-R5-X45"/>
                 <outlet property="subView" destination="ayj-oY-pAe" id="8pN-nW-mKy"/>
@@ -192,10 +193,10 @@
     </objects>
     <designables>
         <designable name="ZIc-Jk-mU4">
-            <size key="intrinsicContentSize" width="201" height="34"/>
+            <size key="intrinsicContentSize" width="188" height="22.333333333333332"/>
         </designable>
         <designable name="cwR-TA-ejG">
-            <size key="intrinsicContentSize" width="200.66666666666666" height="34"/>
+            <size key="intrinsicContentSize" width="187.66666666666666" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

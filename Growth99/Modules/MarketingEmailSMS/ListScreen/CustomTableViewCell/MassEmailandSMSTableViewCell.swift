@@ -27,6 +27,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     @IBOutlet private weak var updatedDate: UILabel!
     @IBOutlet private weak var updatedBy: UILabel!
     @IBOutlet private weak var subView: UIView!
+    @IBOutlet weak var editOrShowButton: UIButton!
     @IBOutlet weak var auditButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
@@ -46,7 +47,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         if massEmailFilterList?.executionStatus == "COMPLETED" {
             auditButton.isHidden = false
             deleteButton.isHidden = true
-        } else if massEmailFilterList?.executionStatus == "FAILED" {
+        } else if massEmailFilterList?.executionStatus == "FAILED" || massEmailFilterList?.executionStatus == "INPROGRESS" {
             auditButton.isHidden = true
             deleteButton.isHidden = true
         } else {
@@ -62,12 +63,16 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailFilterList?.updatedBy
-        if massEmailFilterList?.executionStatus == "COMPLETED" || massEmailFilterList?.executionStatus == "FAILED" {
-            self.statusLabelSwitch.setOn(false, animated: true)
+        if massEmailFilterList?.executionStatus == "COMPLETED" || massEmailFilterList?.executionStatus == "FAILED" ||  massEmailFilterList?.executionStatus == "INPROGRESS" {
+            deleteButton.isHidden = true
             self.statusLabelSwitch.isEnabled = false
+            self.statusLabelSwitch.setOn(false, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         } else {
-            self.statusLabelSwitch.setOn(true, animated: true)
+            deleteButton.isHidden = false
             self.statusLabelSwitch.isEnabled = true
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         }
         indexPath = index
     }
@@ -76,7 +81,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         if massEmailList?.executionStatus == "COMPLETED" {
             auditButton.isHidden = false
             deleteButton.isHidden = true
-        } else if massEmailList?.executionStatus == "FAILED" {
+        } else if massEmailList?.executionStatus == "FAILED" || massEmailList?.executionStatus == "INPROGRESS" {
             auditButton.isHidden = true
             deleteButton.isHidden = true
         } else {
@@ -92,12 +97,16 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailList?.updatedBy
-        if massEmailList?.executionStatus == "COMPLETED" || massEmailList?.executionStatus == "FAILED" {
-            self.statusLabelSwitch.setOn(false, animated: true)
+        if massEmailList?.executionStatus == "COMPLETED" || massEmailList?.executionStatus == "FAILED" ||  massEmailList?.executionStatus == "INPROGRESS" {
+            deleteButton.isHidden = true
             self.statusLabelSwitch.isEnabled = false
+            self.statusLabelSwitch.setOn(false, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         } else {
-            self.statusLabelSwitch.setOn(true, animated: true)
+            deleteButton.isHidden = false
             self.statusLabelSwitch.isEnabled = true
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         }
         indexPath = index
     }
