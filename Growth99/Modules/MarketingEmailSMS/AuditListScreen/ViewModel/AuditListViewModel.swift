@@ -10,6 +10,7 @@ import Foundation
 protocol AuditListViewModelProtocol {
     func getAuditInformation(auditId: Int, communicationType: String, triggerModule: String)
     func getAuditListFilterData(searchText: String)
+    func getAuditDetailInformation(auditContentId: Int) 
     func getAuditListDataAtIndex(index: Int)-> AuditListModel?
     func getAuditListFilterDataAtIndex(index: Int)-> AuditListModel?
     var  getAuditListData: [AuditListModel] { get }
@@ -39,7 +40,21 @@ class AuditListViewModel {
             }
         }
     }
+    
+    func getAuditDetailInformation(auditContentId: Int) {
+        let url = "\(ApiUrl.auditDetailInformation)\(auditContentId)"
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<String, GrowthNetworkError>) in
+            switch result {
+            case .success(let auditListData):
+                self.delegate?.auditListDetailInfoDataRecived(htmlContent: auditListData)
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
 }
+
 extension AuditListViewModel: AuditListViewModelProtocol {
     func getAuditListFilterData(searchText: String) {
         self.auditListFilterData = self.getAuditListData.filter { task in
@@ -53,7 +68,7 @@ extension AuditListViewModel: AuditListViewModelProtocol {
     }
     
     func getAuditListDataAtIndex(index: Int)-> AuditListModel? {
-        return self.getAuditListFilterData[index]
+        return self.getAuditListData[index]
     }
     
     func getAuditListFilterDataAtIndex(index: Int)-> AuditListModel? {

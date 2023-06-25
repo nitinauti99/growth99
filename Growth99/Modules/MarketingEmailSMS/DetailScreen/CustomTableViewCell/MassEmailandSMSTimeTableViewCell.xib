@@ -96,7 +96,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-5X-c0A" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="104" y="252" width="110" height="40"/>
+                                <rect key="frame" x="114" y="252" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="3da-gw-nZ6"/>
@@ -156,7 +156,7 @@
                         <constraints>
                             <constraint firstItem="wnT-wg-dcT" firstAttribute="top" secondItem="aYX-5X-c0A" secondAttribute="top" id="11s-sc-VEg"/>
                             <constraint firstItem="cwR-TA-ejG" firstAttribute="top" secondItem="ZIc-Jk-mU4" secondAttribute="bottom" constant="30" id="8j4-Jg-vTn"/>
-                            <constraint firstItem="wnT-wg-dcT" firstAttribute="leading" secondItem="aYX-5X-c0A" secondAttribute="trailing" constant="30" id="EFv-8Q-IiW"/>
+                            <constraint firstItem="wnT-wg-dcT" firstAttribute="leading" secondItem="aYX-5X-c0A" secondAttribute="trailing" constant="20" id="EFv-8Q-IiW"/>
                             <constraint firstItem="DKR-sf-KbE" firstAttribute="top" secondItem="ggq-XR-EdB" secondAttribute="bottom" constant="15" id="FQa-pF-hoi"/>
                             <constraint firstItem="ZIc-Jk-mU4" firstAttribute="trailing" secondItem="DKR-sf-KbE" secondAttribute="trailing" id="Hoq-gm-HiW"/>
                             <constraint firstItem="ZIc-Jk-mU4" firstAttribute="leading" secondItem="DKR-sf-KbE" secondAttribute="leading" constant="10" id="IF6-ub-BXq"/>

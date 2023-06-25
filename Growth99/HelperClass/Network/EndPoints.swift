@@ -43,6 +43,7 @@ struct EndPoints {
     static let leadCreation = "/api/questionnaire-submissions/"
     static let auditleadCreation = "/api/v1/audit/lead?"
     static let auditInformation = "/api/v1/audit/mass-email-sms/trigger/"
+    static let auditDetailInformation = "/api/v1/audit/lead/content?id="
     static let patientsList = "/api/v1/patients/all?tag=&status="
     static let crearePatients = "/api/patients"
     static let patientsStatus = "/api/patient/"
@@ -351,4 +352,5 @@ struct ApiUrl {
     static let clinicsDefault = EndPoints.baseURL.appending(EndPoints.clinicsDefault)
     static let themColor = EndPoints.baseURL.appending(EndPoints.themColor)
     static let auditInformation = EndPoints.baseURL.appending(EndPoints.auditInformation)
+    static let auditDetailInformation = EndPoints.baseURL.appending(EndPoints.auditDetailInformation)
 }

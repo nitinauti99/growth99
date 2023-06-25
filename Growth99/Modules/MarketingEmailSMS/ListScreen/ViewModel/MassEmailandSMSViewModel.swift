@@ -62,7 +62,7 @@ class MassEmailandSMSViewModel {
     
     func removeSelectedMassEmail(massEmailId: Int) {
         let finaleUrl = ApiUrl.editTrigger.appending("\(massEmailId)")
-        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
+        self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(_ ):

@@ -424,6 +424,8 @@
 		25C46A8A2A460FAF004129E7 /* AuditListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A822A460FAE004129E7 /* AuditListViewController.storyboard */; };
 		25C46A8C2A460FAF004129E7 /* AuditListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A852A460FAE004129E7 /* AuditListTableViewCell.swift */; };
 		25C46A8E2A462C4B004129E7 /* AuditListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A8D2A462C4B004129E7 /* AuditListTableViewCell.xib */; };
+		25C46A932A48C694004129E7 /* AuditListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */; };
+		25C46A952A48C69F004129E7 /* AuditListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -1373,6 +1375,8 @@
 		25C46A822A460FAE004129E7 /* AuditListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuditListViewController.storyboard; sourceTree = "<group>"; };
 		25C46A852A460FAE004129E7 /* AuditListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListTableViewCell.swift; sourceTree = "<group>"; };
 		25C46A8D2A462C4B004129E7 /* AuditListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditListTableViewCell.xib; sourceTree = "<group>"; };
+		25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditListDetailViewController.swift; sourceTree = "<group>"; };
+		25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuditListDetailViewController.storyboard; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
 		39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListModel.swift; sourceTree = "<group>"; };
@@ -4095,6 +4099,8 @@
 				25C46A802A460FAE004129E7 /* AuditListViewController.swift */,
 				25C46A812A460FAE004129E7 /* AuditListViewController+TableView.swift */,
 				25C46A822A460FAE004129E7 /* AuditListViewController.storyboard */,
+				25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */,
+				25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6904,14 +6910,14 @@
 			children = (
 				D0CE695D2A3F7A6200D7C188 /* MassEmailandSMSEditDefaultTableViewCell.swift */,
 				D0CE695B2A3F7A6200D7C188 /* MassEmailandSMSEditDefaultTableViewCell.xib */,
-				D0CE695F2A3F7A6200D7C188 /* MassEmailandSMSEditCreateTableViewCell.swift */,
-				258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */,
 				D0CE69562A3F7A6200D7C188 /* MassEmailandSMSEditModuleTableViewCell.swift */,
 				D0CE695C2A3F7A6200D7C188 /* MassEmailandSMSEditModuleTableViewCell.xib */,
-				D0CE69572A3F7A6200D7C188 /* MassEmailandSMSEditPatientActionTableViewCell.swift */,
-				258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */,
 				D0CE695E2A3F7A6200D7C188 /* MassEmailandSMSEditLeadActionTableViewCell.swift */,
 				258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */,
+				D0CE69572A3F7A6200D7C188 /* MassEmailandSMSEditPatientActionTableViewCell.swift */,
+				258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */,
+				D0CE695F2A3F7A6200D7C188 /* MassEmailandSMSEditCreateTableViewCell.swift */,
+				258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */,
 				D0CE69602A3F7A6200D7C188 /* MassEmailandSMSEditTimeTableViewCell.swift */,
 				D0CE69552A3F7A6200D7C188 /* MassEmailandSMSEditTimeTableViewCell.xib */,
 			);
@@ -7224,6 +7230,7 @@
 				016F665929CF4B9A00B1D248 /* PostImageListTableViewCell.xib in Resources */,
 				01684C2A29BCE3B500DE1041 /* ChatBotTemplateViewController.storyboard in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
+				25C46A952A48C69F004129E7 /* AuditListDetailViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
 				01A2007729C746A900A7DD59 /* PostsListTableViewCell.xib in Resources */,
 				18491DBB29B80CE000FE72EF /* MassEmailandSMSDefaultTableViewCell.xib in Resources */,
@@ -7948,6 +7955,7 @@
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
 				01C7488229B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift in Sources */,
 				398F90F2298ECB8700DB96E4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
+				25C46A932A48C694004129E7 /* AuditListDetailViewController.swift in Sources */,
 				84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* GrowthNetworkManager.swift in Sources */,
 				D0CE69612A3F7A6300D7C188 /* MassEmailandSMSEditDetailViewModel.swift in Sources */,

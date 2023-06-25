@@ -9,6 +9,7 @@ import UIKit
 
 protocol AuditListViewControllerProtocol: AnyObject {
     func auditListDataRecived()
+    func auditListDetailInfoDataRecived(htmlContent: String)
     func errorReceived(error: String)
 }
 
@@ -75,6 +76,13 @@ class AuditListViewController: UIViewController, AuditListViewControllerProtocol
         self.auditListTableView.reloadData()
     }
     
+    func auditListDetailInfoDataRecived(htmlContent: String) {
+        self.view.HideSpinner()
+        let showAuditDetailList = UIStoryboard(name: "AuditListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListDetailViewController") as! AuditListDetailViewController
+        showAuditDetailList.urlContentInfo = htmlContent
+        self.navigationController?.pushViewController(showAuditDetailList, animated: true)
+    }
+    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
@@ -102,6 +110,11 @@ extension AuditListViewController: UISearchBarDelegate {
 
 extension AuditListViewController: AuditListTableViewCellDelegate {
     func auditBodyButtonPressed(cell: AuditListTableViewCell, index: IndexPath) {
-        
+        self.view.ShowSpinner()
+        if isSearch {
+            viewModel?.getAuditDetailInformation(auditContentId: viewModel?.getAuditListFilterDataAtIndex(index: index.row)?.contentId ?? 0)
+        } else {
+            viewModel?.getAuditDetailInformation(auditContentId: viewModel?.getAuditListDataAtIndex(index: index.row)?.contentId ?? 0)
+        }
     }
 }
