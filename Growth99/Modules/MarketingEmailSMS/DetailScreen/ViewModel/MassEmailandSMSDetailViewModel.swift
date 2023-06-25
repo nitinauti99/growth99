@@ -310,13 +310,19 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func dateFormatterString(textField: CustomTextField) -> String {
-        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        datePicker.minimumDate = todaysDate
+        var datePickerEdit = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        let dateFormatterEdit = DateFormatter()
+        dateFormatterEdit.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateFormat = "MM/dd/yyyy"
+        datePickerEdit.minimumDate = Date()
         textField.resignFirstResponder()
-        datePicker.reloadInputViews()
-        return dateFormatter.string(from: datePicker.date)
+        datePickerEdit.reloadInputViews()
+        if let date = dateFormatterEdit.date(from: dateFormatterEdit.string(from: datePickerEdit.date)) {
+            return outputDateFormatter.string(from: date)
+        } else {
+            return ""
+        }
     }
     
     func timeFormatterString(textField: CustomTextField) -> String {

@@ -1,5 +1,5 @@
 //
-//  MassEmailandSMSDefaultTableViewCell.swift
+//  MassEmailandSMSTimeTableViewCell.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -9,17 +9,20 @@ import UIKit
 
 protocol MassEmailandSMSTimeCellDelegate: AnyObject {
     func submitButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath)
-    func massEmailTimeFromTapped(cell: MassEmailandSMSTimeTableViewCell)
     func cancelButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath)
+    func massSMSDateSelectionTapped(cell: MassEmailandSMSTimeTableViewCell)
+    func massSMSTimeSelectionTapped(cell: MassEmailandSMSTimeTableViewCell)
 }
 
 class MassEmailandSMSTimeTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var subView: UIView!
-    @IBOutlet private weak var subViewInside: UIView!
-    @IBOutlet weak var massEmailTimeFromTextField: CustomTextField!
+    @IBOutlet weak var massSMSTriggerDateTextField: CustomTextField!
+    @IBOutlet weak var massSMSTriggerTimeTextField: CustomTextField!
+    @IBOutlet weak var massSMSSubmitButton: UIButton!
     
     weak var delegate: MassEmailandSMSTimeCellDelegate?
+    var tableView: UITableView?
     var indexPath = IndexPath()
     
     override func awakeFromNib() {
@@ -27,16 +30,31 @@ class MassEmailandSMSTimeTableViewCell: UITableViewCell {
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
-        massEmailTimeFromTextField.tintColor = .clear
-        massEmailTimeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .date)
+        massSMSTriggerDateTextField.tintColor = .clear
+        massSMSTriggerDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateButtonPressed), mode: .date)
+        massSMSTriggerTimeTextField.tintColor = .clear
+        massSMSTriggerTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeButtonPressed), mode: .time)
     }
     
-    @objc func doneButtonPressed() {
-        self.delegate?.massEmailTimeFromTapped(cell: self)
+    func configureCell( tableView: UITableView?, index: IndexPath) {
+        self.indexPath = index
+        self.tableView = tableView
     }
     
-    func updateMassEmailTimeFromTextField(with content: String) {
-        massEmailTimeFromTextField.text = content
+    @objc func dateButtonPressed() {
+        self.delegate?.massSMSDateSelectionTapped(cell: self)
+    }
+    
+    @objc func timeButtonPressed() {
+        self.delegate?.massSMSTimeSelectionTapped(cell: self)
+    }
+    
+    func updateMassEmailDateTextField(with content: String) {
+        massSMSTriggerDateTextField.text = content
+    }
+    
+    func updateMassEmailTimeTextField(with content: String) {
+        massSMSTriggerTimeTextField.text = content
     }
     
     // MARK: - Add and remove time methods

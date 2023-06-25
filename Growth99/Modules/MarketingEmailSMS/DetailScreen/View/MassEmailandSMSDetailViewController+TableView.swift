@@ -67,8 +67,25 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTimeTableViewCell", for: indexPath) as? MassEmailandSMSTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.updateMassEmailTimeFromTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")")
-            selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
+            
+            let currentDate = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .medium
+            dateFormatter.dateFormat = "MM/dd/yy"
+            let dateString = dateFormatter.string(from: currentDate)
+
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "h:mm a"
+
+            let timeString = timeFormatter.string(from: currentDate)
+            let dateTrigger = dateString
+            let timeTrigger = timeString
+            
+            cell.updateMassEmailDateTextField(with: dateTrigger)
+            cell.updateMassEmailTimeTextField(with: timeTrigger)
+            selectedTimeSlot = viewModel?.localInputToServerInput(date: dateTrigger + timeTrigger) ?? ""
+            cell.configureCell(tableView: emailAndSMSTableView, index: indexPath)
             return cell
         }
         return UITableViewCell()
@@ -248,7 +265,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     createCell.selectNetworkEmptyTextLabel.isHidden = true
                     createCell.selectNetworkSMSTextLabel.text = selectedItem?.name
                     self?.selectedSmsTemplates = selectedList
-                    self?.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
+                    self?.selectedSmsTemplateId = selectedItem?.id ?? 0
                 }
             }
         }
@@ -280,7 +297,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     createCell.selectNetworkEmptyTextLabel.isHidden = true
                     createCell.selectNetworkEmailTextLabel.text = selectedItem?.name
                     self?.selectedEmailTemplates = selectedList
-                    self?.selectedemailTemplateId = String(selectedItem?.id ?? 0)
+                    self?.selectedemailTemplateId = selectedItem?.id ?? 0
                 }
             }
         }
@@ -410,39 +427,45 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegat
     }
 }
 
+
 extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
     func submitButtonTime(cell: MassEmailandSMSTimeTableViewCell, index: IndexPath) {
-        self.view.ShowSpinner()
-        if networkTypeSelected == "sms" {
-            templateId = Int(selectedSmsTemplateId) ?? 0
+        if cell.massSMSTriggerDateTextField.text == "" {
+            cell.massSMSTriggerDateTextField.showError(message: "Please select trigger date")
+        } else if cell.massSMSTriggerTimeTextField.text == "" {
+            cell.massSMSTriggerTimeTextField.showError(message: "Please select trigger time")
         } else {
-            templateId = Int(selectedemailTemplateId) ?? 0
-        }
-        
-        if smsEmailModuleSelectionType == "lead" {
-            
-            marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
-            
-            let params = MarketingLeadModel(name: moduleName, moduleName: "MassLead", triggerConditions: leadStatusSelected, leadTags: selectedLeadTags, patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: leadSourceSelected)
-            
-            let parameters: [String: Any]  = params.toDict()
-            viewModel?.postMassLeadDataMethod(leadDataParms: parameters)
-            
-        } else if smsEmailModuleSelectionType == "patient" {
-            
-            marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "AppointmentPatient", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
-            
-            let params = MarketingLeadModel(name: moduleName, moduleName: "MassPatient", triggerConditions: appointmentStatusSelected, leadTags: [], patientTags: selectedPatientTags, patientStatus: paymentStatusSelected, triggerData: marketingTriggersData, source: [])
-            let parameters: [String: Any]  = params.toDict()
-            viewModel?.postMassPatientDataMethod(patientDataParms: parameters)
-            
-        } else {
-            marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "All", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
-            
-            let params = MarketingLeadModel(name: moduleName, moduleName: "All", triggerConditions: ["All"], leadTags: [], patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: [])
-            let parameters: [String: Any]  = params.toDict()
-            
-            viewModel?.postMassLeadPatientDataMethod(leadPatientDataParms: parameters)
+            self.view.ShowSpinner()
+            if networkTypeSelected == "sms" {
+                templateId = selectedSmsTemplateId
+            } else {
+                templateId = selectedemailTemplateId
+            }
+            let cellIndexPath = IndexPath(item: 0, section: 0)
+            if let defaultCell = self.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSDefaultTableViewCell {
+                moduleName = defaultCell.massEmailSMSTextField.text ?? ""
+            }
+            if smsEmailModuleSelectionType == "lead" {
+                marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlot , triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
+                
+                let params = MarketingLeadModel(name: moduleName, moduleName: "MassLead", triggerConditions: leadStatusSelected, leadTags: selectedLeadTags, patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: leadSourceSelected)
+                let parameters: [String: Any]  = params.toDict()
+                viewModel?.postMassLeadDataMethod(leadDataParms: parameters)
+                
+            } else if smsEmailModuleSelectionType == "patient" {
+                marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "AppointmentPatient", scheduledDateTime: selectedTimeSlot , triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
+                
+                let params = MarketingLeadModel(name: moduleName, moduleName: "MassPatient", triggerConditions: appointmentStatusSelected, leadTags: [], patientTags: selectedPatientTags, patientStatus: paymentStatusSelected, triggerData: marketingTriggersData, source: [])
+                let parameters: [String: Any]  = params.toDict()
+                viewModel?.postMassPatientDataMethod(patientDataParms: parameters)
+                
+            } else {
+                marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "All", scheduledDateTime: selectedTimeSlot , triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
+                
+                let params = MarketingLeadModel(name: moduleName, moduleName: "All", triggerConditions: ["All"], leadTags: [], patientTags: [], patientStatus: [], triggerData: marketingTriggersData, source: [])
+                let parameters: [String: Any]  = params.toDict()
+                viewModel?.postMassLeadPatientDataMethod(leadPatientDataParms: parameters)
+            }
         }
     }
     
@@ -450,15 +473,15 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func massEmailTimeFromTapped(cell: MassEmailandSMSTimeTableViewCell) {
-        guard let indexPath = emailAndSMSTableView.indexPath(for: cell) else {
-            return
-        }
-        let cellIndexPath = IndexPath(item: indexPath.row, section: indexPath.section)
-        if let vacationCell = emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSTimeTableViewCell {
-            vacationCell.updateMassEmailTimeFromTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")")
-            selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massEmailTimeFromTextField) ?? "")") ?? String.blank
-            
-        }
+    func massSMSDateSelectionTapped(cell: MassEmailandSMSTimeTableViewCell) {
+        cell.updateMassEmailDateTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massSMSTriggerDateTextField) ?? "")")
+        selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
+        scrollToBottom()
+    }
+    
+    func massSMSTimeSelectionTapped(cell: MassEmailandSMSTimeTableViewCell) {
+        cell.updateMassEmailTimeTextField(with: "\(viewModel?.timeFormatterString(textField:  cell.massSMSTriggerTimeTextField) ?? "")")
+        selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
+        scrollToBottom()
     }
 }

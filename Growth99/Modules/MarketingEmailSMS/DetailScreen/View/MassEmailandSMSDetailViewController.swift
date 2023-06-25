@@ -42,11 +42,11 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     
     var emailTemplatesArray = [EmailTemplateDTOList]()
     var selectedEmailTemplates = [EmailTemplateDTOList]()
-    var selectedemailTemplateId: String = String.blank
+    var selectedemailTemplateId: Int = 0
     
     var smsTemplatesArray = [SmsTemplateDTOList]()
     var selectedSmsTemplates = [SmsTemplateDTOList]()
-    var selectedSmsTemplateId: String = String.blank
+    var selectedSmsTemplateId: Int = 0
     
     var dateFormater: DateFormaterProtocol?
     var patientAppointmentStatus: String = String.blank
