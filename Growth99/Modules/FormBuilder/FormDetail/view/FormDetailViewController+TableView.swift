@@ -26,7 +26,7 @@ extension FormDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.section == 0 {
             let formList = viewModel?.getFormQuestionnaireData
-            if formList?.isLeadForm == true {
+            if formList?.isContactForm == true {
                 var cell =  CreateDefaultQuestionnaireTableViewCell()
                 cell = self.tableView.dequeueReusableCell(withIdentifier: "CreateDefaultQuestionnaireTableViewCell", for: indexPath) as! CreateDefaultQuestionnaireTableViewCell
                 cell.delegate = self

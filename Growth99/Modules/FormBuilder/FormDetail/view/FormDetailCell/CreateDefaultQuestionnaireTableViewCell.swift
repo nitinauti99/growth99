@@ -113,7 +113,7 @@ class CreateDefaultQuestionnaireTableViewCell: UITableViewCell{
             Show_Thank_page_URL_Virtual_Consultation_TextField.text = item?.thankYouPageUrlVC ?? String.blank
         }
         
-        self.Show_Thank_page_URL_Landing_Page.isSelected = item?.showThankYouPageUrlLinkInContactForm ?? false
+        self.Show_Thank_page_URL_Landing_Page.isSelected = item?.showThankYouPageUrlLinkInLandingPage ?? false
         
         if item?.showThankYouPageUrlLinkInLandingPage  == true {
             Show_Thank_page_URL_Landing_Page_TextField_Hight.constant = 45

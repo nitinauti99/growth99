@@ -19,7 +19,6 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         BaseTabbarViewController.currentInstance = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateBadge), name: Notification.Name("updateBadge"), object: nil)
-
     }
     
     @objc func updateBadge(notification: Notification) {

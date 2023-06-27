@@ -9,7 +9,7 @@ import UIKit
 
 class DisplayQuestionnaireqsubmissionsTableViewCell: UITableViewCell {
     @IBOutlet private weak var questionName: UILabel!
-    @IBOutlet private weak var questionAns: UILabel!
+    @IBOutlet private weak var questionAns: UITextView!
     @IBOutlet private weak var subView: UIView!
     
     override func awakeFromNib() {

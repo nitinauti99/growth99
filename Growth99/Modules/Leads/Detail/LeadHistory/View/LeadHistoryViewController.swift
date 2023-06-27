@@ -100,17 +100,22 @@ extension LeadHistoryViewController: LeadHistoryListTableViewCellDelegate {
     }
     
     func editLead(cell: LeadHistoryListTableViewCell, index: IndexPath) {
-        let editVC = UIStoryboard(name: "EditLeadViewController", bundle: nil).instantiateViewController(withIdentifier: "EditLeadViewController") as! EditLeadViewController
+        let userInfo = [ "selectedIndex" : 0 ]
+        let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
         
         if isSearch{
-            editVC.LeadData = viewModel?.leadHistoryFilterDataAtIndex(index: index.row)
-            user.leadId = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id
+            detailController.workflowLeadId = viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id ?? 0
+            let user = UserRepository.shared
+            user.leadId = viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id ?? 0
             user.leadFullName = (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.lastName ?? "")
+            detailController.leadData = viewModel?.leadHistoryFilterDataAtIndex(index: index.row)
         }else{
-            editVC.LeadData = viewModel?.leadHistoryDataAtIndex(index: index.row)
-            user.leadId = self.viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.id
-            user.leadFullName = (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryFilterDataAtIndex(index: index.row)?.lastName ?? "")
+            detailController.workflowLeadId = viewModel?.leadHistoryDataAtIndex(index: index.row)?.id ?? 0
+            let user = UserRepository.shared
+            user.leadId = viewModel?.leadHistoryDataAtIndex(index: index.row)?.id ?? 0
+            user.leadFullName = (viewModel?.leadHistoryDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryDataAtIndex(index: index.row)?.lastName ?? "")
+            detailController.leadData = viewModel?.leadHistoryDataAtIndex(index: index.row)
         }
-        self.navigationController?.pushViewController(editVC, animated: true)
+        NotificationCenter.default.post(name: Notification.Name("changeLeadSegment"), object: nil,userInfo: userInfo)
     }
 }

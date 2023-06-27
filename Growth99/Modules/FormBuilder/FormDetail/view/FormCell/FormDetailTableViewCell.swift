@@ -196,13 +196,14 @@ class FormDetailTableViewCell: UITableViewCell, FormQuestionTableViewCellDelegat
             self.bottomDeletButton.isHidden = false
             self.bottomDeletButtonSepraterWidth.constant = 30
             self.editButton.isHidden = true
+            self.deletButton.isHidden = true
             self.cancelButton.isHidden = true
             self.hideValidationView()
             self.bottomView.isHidden = false
             self.bottomViewHight.constant = 76
             self.enableUserIntraction()
             self.inputBoxButton.isSelected = true
-        }else{
+        }else {
             self.deletButton.isHidden = false
             self.editButton.isHidden = false
             self.setBottomView()
