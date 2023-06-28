@@ -350,7 +350,7 @@ struct TriggerEditModel : Codable {
     let executionStatus : String?
     let patientStatus : String?
     let fromLeadStatus : String?
-    let leadTags : String?
+    let leadTags : [Int]?
     let triggerActionName : String?
     let name : String?
 }

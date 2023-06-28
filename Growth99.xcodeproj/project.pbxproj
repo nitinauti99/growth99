@@ -381,7 +381,6 @@
 		189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189670A229BA6080003224ED /* TriggerDetailViewController.storyboard */; };
 		189670B529BA6081003224ED /* TriggerTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */; };
 		189670B629BA6081003224ED /* TriggerAppointmentActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */; };
-		189670B729BA6081003224ED /* TriggerLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A629BA6080003224ED /* TriggerLeadActionTableViewCell.xib */; };
 		189670B829BA6081003224ED /* TriggerModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A729BA6080003224ED /* TriggerModuleTableViewCell.swift */; };
 		189670B929BA6081003224ED /* TriggerModuleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */; };
 		189670BA29BA6081003224ED /* TriggerDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670A929BA6080003224ED /* TriggerDefaultTableViewCell.swift */; };
@@ -390,7 +389,6 @@
 		189670BD29BA6081003224ED /* TriggerSMSCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */; };
 		189670BE29BA6081003224ED /* TriggerSMSCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */; };
 		189670BF29BA6081003224ED /* TriggerDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */; };
-		189670C029BA6081003224ED /* TriggerLeadActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */; };
 		189E3EC929C390F400B94190 /* SocialProfilesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3EC829C390F400B94190 /* SocialProfilesListViewController.swift */; };
 		189E3ECB29C3910600B94190 /* SocialProfilesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189E3ECA29C3910600B94190 /* SocialProfilesListViewController.storyboard */; };
 		189E3ECD29C3911E00B94190 /* SocialProfilesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3ECC29C3911E00B94190 /* SocialProfilesListModel.swift */; };
@@ -426,6 +424,9 @@
 		25C46A8E2A462C4B004129E7 /* AuditListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A8D2A462C4B004129E7 /* AuditListTableViewCell.xib */; };
 		25C46A932A48C694004129E7 /* AuditListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */; };
 		25C46A952A48C69F004129E7 /* AuditListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */; };
+		25C46A972A4CBA91004129E7 /* TriggerLeadEditActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A962A4CBA91004129E7 /* TriggerLeadEditActionTableViewCell.swift */; };
+		25C46A9A2A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A982A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift */; };
+		25C46A9B2A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A992A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib */; };
 		39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */; };
 		39026F92299BDAEC00DA512F /* ClinicsDetailListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */; };
 		3947A8ED2996776E000CA2EB /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947A8D32996776D000CA2EB /* CalenderModel.swift */; };
@@ -895,7 +896,7 @@
 		D0CE696F2A3F7A6300D7C188 /* MassEmailandSMSEditLeadActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE695E2A3F7A6200D7C188 /* MassEmailandSMSEditLeadActionTableViewCell.swift */; };
 		D0CE69702A3F7A6300D7C188 /* MassEmailandSMSEditCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE695F2A3F7A6200D7C188 /* MassEmailandSMSEditCreateTableViewCell.swift */; };
 		D0CE69712A3F7A6300D7C188 /* MassEmailandSMSEditTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE69602A3F7A6200D7C188 /* MassEmailandSMSEditTimeTableViewCell.swift */; };
-		D0D00F4E2A3E23C300F0E786 /* TriggerLeadActionTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D00F4D2A3E23C300F0E786 /* TriggerLeadActionTableViewCell2.xib */; };
+		D0D00F4E2A3E23C300F0E786 /* TriggerLeadEditActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D00F4D2A3E23C300F0E786 /* TriggerLeadEditActionTableViewCell.xib */; };
 		D0D4E7752A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */; };
 		D0D834B82A1FDA9800A60443 /* PostCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */; };
 		D0D834B92A1FDA9800A60443 /* PostCalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */; };
@@ -1332,7 +1333,6 @@
 		189670A229BA6080003224ED /* TriggerDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TriggerDetailViewController.storyboard; sourceTree = "<group>"; };
 		189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerTimeTableViewCell.swift; sourceTree = "<group>"; };
 		189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerAppointmentActionTableViewCell.xib; sourceTree = "<group>"; };
-		189670A629BA6080003224ED /* TriggerLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		189670A729BA6080003224ED /* TriggerModuleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerModuleTableViewCell.swift; sourceTree = "<group>"; };
 		189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerModuleTableViewCell.xib; sourceTree = "<group>"; };
 		189670A929BA6080003224ED /* TriggerDefaultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerDefaultTableViewCell.swift; sourceTree = "<group>"; };
@@ -1341,7 +1341,6 @@
 		189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerSMSCreateTableViewCell.swift; sourceTree = "<group>"; };
 		189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerSMSCreateTableViewCell.xib; sourceTree = "<group>"; };
 		189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerDefaultTableViewCell.xib; sourceTree = "<group>"; };
-		189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerLeadActionTableViewCell.swift; sourceTree = "<group>"; };
 		189E3EC829C390F400B94190 /* SocialProfilesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesListViewController.swift; sourceTree = "<group>"; };
 		189E3ECA29C3910600B94190 /* SocialProfilesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialProfilesListViewController.storyboard; sourceTree = "<group>"; };
 		189E3ECC29C3911E00B94190 /* SocialProfilesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfilesListModel.swift; sourceTree = "<group>"; };
@@ -1377,6 +1376,9 @@
 		25C46A8D2A462C4B004129E7 /* AuditListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditListTableViewCell.xib; sourceTree = "<group>"; };
 		25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditListDetailViewController.swift; sourceTree = "<group>"; };
 		25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuditListDetailViewController.storyboard; sourceTree = "<group>"; };
+		25C46A962A4CBA91004129E7 /* TriggerLeadEditActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerLeadEditActionTableViewCell.swift; sourceTree = "<group>"; };
+		25C46A982A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerLeadActionTableViewCell.swift; sourceTree = "<group>"; };
+		25C46A992A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		29C1CFE4A7847699E49EFF35 /* Pods_Growth99Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Growth99Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39026F8F299BD9CF00DA512F /* ClinicsDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListViewModel.swift; sourceTree = "<group>"; };
 		39026F91299BDAEC00DA512F /* ClinicsDetailListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsDetailListModel.swift; sourceTree = "<group>"; };
@@ -1861,7 +1863,7 @@
 		D0CE695E2A3F7A6200D7C188 /* MassEmailandSMSEditLeadActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSEditLeadActionTableViewCell.swift; sourceTree = "<group>"; };
 		D0CE695F2A3F7A6200D7C188 /* MassEmailandSMSEditCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSEditCreateTableViewCell.swift; sourceTree = "<group>"; };
 		D0CE69602A3F7A6200D7C188 /* MassEmailandSMSEditTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassEmailandSMSEditTimeTableViewCell.swift; sourceTree = "<group>"; };
-		D0D00F4D2A3E23C300F0E786 /* TriggerLeadActionTableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerLeadActionTableViewCell2.xib; sourceTree = "<group>"; };
+		D0D00F4D2A3E23C300F0E786 /* TriggerLeadEditActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerLeadEditActionTableViewCell.xib; sourceTree = "<group>"; };
 		D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HelpAndTrainingViewController.storyboard; sourceTree = "<group>"; };
 		D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalendarViewController.swift; sourceTree = "<group>"; };
 		D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCalendarViewController.storyboard; sourceTree = "<group>"; };
@@ -3817,13 +3819,14 @@
 		189670A329BA6080003224ED /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				25C46A982A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift */,
+				25C46A992A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib */,
 				189670A929BA6080003224ED /* TriggerDefaultTableViewCell.swift */,
 				189670AE29BA6080003224ED /* TriggerDefaultTableViewCell.xib */,
 				189670A729BA6080003224ED /* TriggerModuleTableViewCell.swift */,
 				189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */,
-				189670AF29BA6080003224ED /* TriggerLeadActionTableViewCell.swift */,
-				189670A629BA6080003224ED /* TriggerLeadActionTableViewCell.xib */,
-				D0D00F4D2A3E23C300F0E786 /* TriggerLeadActionTableViewCell2.xib */,
+				25C46A962A4CBA91004129E7 /* TriggerLeadEditActionTableViewCell.swift */,
+				D0D00F4D2A3E23C300F0E786 /* TriggerLeadEditActionTableViewCell.xib */,
 				189670AA29BA6080003224ED /* TriggerAppointmentActionTableViewCell.swift */,
 				189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */,
 				DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */,
@@ -7218,6 +7221,7 @@
 				18491DB329B80CE000FE72EF /* MassEmailandSMSLeadActionTableViewCell.xib in Resources */,
 				39FC692F29B3D73D00FCB7C6 /* ChatConfigurationViewController.storyboard in Resources */,
 				013A4FDF29B4E3FA00CA24B0 /* DateTypeTableViewCell.xib in Resources */,
+				25C46A9B2A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib in Resources */,
 				189E3EE729C391E100B94190 /* PostsListViewContoller.storyboard in Resources */,
 				0144DA082A38A42300DBD12E /* FileTypeTableViewCell.xib in Resources */,
 				01684C3E29BDC10F00DE1041 /* ChatSessionDetailViewController.storyboard in Resources */,
@@ -7280,7 +7284,7 @@
 				18491DBA29B80CE000FE72EF /* MassEmailandSMSCreateTableViewCell.xib in Resources */,
 				01EBAC3A29B583C300110DCB /* LeadTagsListViewController.storyboard in Resources */,
 				842C0CC5298F713B00395061 /* AddNewQuestionarieViewController.storyboard in Resources */,
-				D0D00F4E2A3E23C300F0E786 /* TriggerLeadActionTableViewCell2.xib in Resources */,
+				D0D00F4E2A3E23C300F0E786 /* TriggerLeadEditActionTableViewCell.xib in Resources */,
 				01684C1C29BAE8E200DE1041 /* ChatSessionListTableViewCell.xib in Resources */,
 				013A4FE429B4E3FA00CA24B0 /* MultipleSelectionQuestionChoiceTableViewCell.xib in Resources */,
 				01EBAC5029B586A600110DCB /* LeadTagsAddViewController.storyboard in Resources */,
@@ -7356,7 +7360,6 @@
 				3947A902299677EE000CA2EB /* BookingHistoryViewController.storyboard in Resources */,
 				39F2FF142996B2F40089BD4F /* AppointmentsViewController.storyboard in Resources */,
 				0144DA042A378E0200DBD12E /* CreateDefaultQuestionnaireTableViewCell.xib in Resources */,
-				189670B729BA6081003224ED /* TriggerLeadActionTableViewCell.xib in Resources */,
 				01EBAC5829B58B0200110DCB /* DeletedLeadListViewController.storyboard in Resources */,
 				84D063252967080E001FE469 /* CreateLeadViewController.storyboard in Resources */,
 				01EBAC6029B58BB900110DCB /* LeadSourceUrlListViewController.storyboard in Resources */,
@@ -7646,6 +7649,7 @@
 				84F610EB292A71AB00B1FB69 /* Signal.swift in Sources */,
 				84F61130292A71AB00B1FB69 /* MultipartFormData.swift in Sources */,
 				398F90FD298ECB8700DB96E4 /* IQUITextFieldView+Additions.swift in Sources */,
+				25C46A972A4CBA91004129E7 /* TriggerLeadEditActionTableViewCell.swift in Sources */,
 				DAE1409A298ACCD600794F6A /* BookingHistoryModel.swift in Sources */,
 				39EBABC2299157FA001B789D /* ExtensionDate.swift in Sources */,
 				8466F4B62944C4D800B49893 /* UIButtonExtenssion.swift in Sources */,
@@ -7746,6 +7750,7 @@
 				848F4D7E28F1C160007AC421 /* AppDelegate.swift in Sources */,
 				845C39E1292276B000D934C5 /* UITextFieldExtension.swift in Sources */,
 				84D062F82967080E001FE469 /* leadTimeLineViewModel.swift in Sources */,
+				25C46A9A2A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift in Sources */,
 				84F610E8292A71AB00B1FB69 /* Device.swift in Sources */,
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
@@ -8160,7 +8165,6 @@
 				84D0628529670677001FE469 /* VerifyForgotPasswordViewModel.swift in Sources */,
 				84F610E6292A71AB00B1FB69 /* ApproximatelyEquatable.swift in Sources */,
 				845C39E2292276B000D934C5 /* UILabelExtension.swift in Sources */,
-				189670C029BA6081003224ED /* TriggerLeadActionTableViewCell.swift in Sources */,
 				848EEA8E299A5F6300F6E3D5 /* CreateFormViewController.swift in Sources */,
 				189E3EE529C391D900B94190 /* PostsListViewContoller.swift in Sources */,
 				01454A0729FD42FD00237E60 /* PostImageListViewController+SearchBar.swift in Sources */,

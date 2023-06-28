@@ -40,101 +40,75 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             }
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Lead" {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadActionTableViewCell", for: indexPath) as? TriggerLeadActionTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadEditActionTableViewCell", for: indexPath) as? TriggerLeadEditActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.leadStatusSelectonButton.addTarget(self, action: #selector(leadSouceMethod), for: .touchDown)
-            cell.leadStatusSelectonButton.tag = indexPath.row
-            cell.leadLandingSelectonButton.addTarget(self, action: #selector(leadLandingMethod), for: .touchDown)
-            cell.leadLandingSelectonButton.tag = indexPath.row
-            cell.leadFormSelectonButton.addTarget(self, action: #selector(leadFormMethod), for: .touchDown)
-            cell.leadFormSelectonButton.tag = indexPath.row
-            cell.leadSourceUrlSelectonButton.addTarget(self, action: #selector(leadSourceUrlMethod), for: .touchDown)
-            cell.leadSourceUrlSelectonButton.tag = indexPath.row
-            
-            cell.leadSourceTextLabel.text = viewModel?.getTriggerEditListData?.triggerConditions?.joined(separator: ",")
-            
+            cell.configureCell(tableView: triggerdDetailTableView, index: indexPath)
+            cell.leadFromTextField.text = viewModel?.getTriggerEditListData?.triggerConditions?.joined(separator: ",")
             var landingArray = [EditLandingPageNamesModel]()
             var formArray = [EditLandingPageNamesModel]()
             var sourceUrlArray = [LeadSourceUrlListModel]()
+            var ledTagArray = [MassEmailSMSTagListModelEdit]()
             
-            for landingItem in viewModel?.getTriggerEditListData?.landingPages ?? [] {
-                let getLandingData = viewModel?.getLandingPageNamesDataEdit.filter({ $0.id == landingItem})
-                for landingChildItem in getLandingData ?? [] {
-                    let landArr = EditLandingPageNamesModel(name: landingChildItem.name ?? "", id: landingChildItem.id ?? 0)
-                    landingArray.append(landArr)
+            if viewModel?.getTriggerEditListData?.landingPages?.count ?? 0 > 0 {
+                for landingItem in viewModel?.getTriggerEditListData?.landingPages ?? [] {
+                    let getLandingData = viewModel?.getLandingPageNamesDataEdit.filter({ $0.id == landingItem})
+                    for landingChildItem in getLandingData ?? [] {
+                        let landArr = EditLandingPageNamesModel(name: landingChildItem.name ?? "", id: landingChildItem.id ?? 0)
+                        landingArray.append(landArr)
+                    }
                 }
+                cell.leadSelectLandingTextField.text = landingArray.map({$0.name ?? ""}).joined(separator: ",")
+                selectedLeadLandingPages = landingArray
+                cell.showLeadSelectLanding(isShown: true)
             }
-            cell.leadLandingTextLabel.text = landingArray.map({$0.name ?? ""}).joined(separator: ",")
-            selectedLeadLandingPages = landingArray
             
-            for formsItem in viewModel?.getTriggerEditListData?.forms ?? [] {
-                let getLandingForm = viewModel?.getTriggerQuestionnairesDataEdit.filter({ $0.id == formsItem})
-                for landingChildItem in getLandingForm ?? [] {
-                    let formArr = EditLandingPageNamesModel(name: landingChildItem.name ?? "", id: landingChildItem.id ?? 0)
-                    formArray.append(formArr)
+            if viewModel?.getTriggerEditListData?.forms?.count ?? 0 > 0 {
+                for formsItem in viewModel?.getTriggerEditListData?.forms ?? [] {
+                    let getLandingForm = viewModel?.getTriggerQuestionnairesDataEdit.filter({ $0.id == formsItem})
+                    for landingChildItem in getLandingForm ?? [] {
+                        let formArr = EditLandingPageNamesModel(name: landingChildItem.name ?? "", id: landingChildItem.id ?? 0)
+                        formArray.append(formArr)
+                    }
                 }
+                cell.leadLandingSelectFromTextField.text = formArray.map({$0.name ?? ""}).joined(separator: ",")
+                selectedleadForms = formArray
+                cell.showleadLandingSelectFrom(isShown: true)
             }
-            cell.leadFormTextLabel.text = formArray.map({$0.name ?? ""}).joined(separator: ",")
-            selectedleadForms = formArray
             
-            for formsItem in viewModel?.getTriggerEditListData?.forms ?? [] {
-                let getLandingForm = viewModel?.getTriggerLeadSourceUrlDataEdit.filter({ $0.id == formsItem})
-                for landingChildItem in getLandingForm ?? [] {
-                    let soureUrlArr = LeadSourceUrlListModel(sourceUrl: landingChildItem.sourceUrl ?? "", id: landingChildItem.id ?? 0)
-                    sourceUrlArray.append(soureUrlArr)
+            if viewModel?.getTriggerEditListData?.sourceUrls?.count ?? 0 > 0 {
+                for formsItem in viewModel?.getTriggerEditListData?.sourceUrls ?? [] {
+                    let getLandingForm = viewModel?.getTriggerLeadSourceUrlDataEdit.filter({ $0.id == formsItem})
+                    for landingChildItem in getLandingForm ?? [] {
+                        let soureUrlArr = LeadSourceUrlListModel(sourceUrl: landingChildItem.sourceUrl ?? "", id: landingChildItem.id ?? 0)
+                        sourceUrlArray.append(soureUrlArr)
+                    }
                 }
+                cell.leadSelectSourceTextField.text = sourceUrlArray.map({$0.sourceUrl ?? ""}).joined(separator: ",")
+                selectedLeadSourceUrl = sourceUrlArray
+                cell.showleadSelectSource(isShown: true)
             }
-            cell.leadSourceUrlTextLabel.text = sourceUrlArray.map({$0.sourceUrl ?? ""}).joined(separator: ",")
-            selectedLeadSourceUrl = sourceUrlArray
             
-            if selectedLeadSources.joined(separator: ",").contains("Landing Page") && selectedLeadSources.joined(separator: ",").contains("Form") && selectedLeadSources.joined(separator: ",").contains("Facebook") {
-                cell.leadLandingView.isHidden = false
-                cell.leadFormView.isHidden = false
-                cell.leadSourceURLView.isHidden = false
-                self.landingPage = "landingPage"
-                self.landingForm = "landingForm"
+            if viewModel?.getTriggerEditListData?.isTriggerForLeadStatus == true {
+                cell.leadStatusChangeButton.isSelected = true
+                cell.showLeadStatusChange(isShown: true)
+                cell.leadInitialStatusTextField.text = viewModel?.getTriggerEditListData?.fromLeadStatus ?? ""
+                cell.leadFinalStatusTextField.text = viewModel?.getTriggerEditListData?.toLeadStatus ?? ""
             }
-            else if selectedLeadSources.joined(separator: ",").contains("Landing Page") && selectedLeadSources.joined(separator: ",").contains("Form") {
-                cell.leadLandingView.isHidden = false
-                cell.leadFormView.isHidden = false
-                cell.leadSourceURLView.isHidden = true
-                self.landingPage = "landingPage"
-                self.landingForm = "landingForm"
+            
+            if viewModel?.getTriggerEditListData?.leadTags?.count ?? 0 > 0 {
+                for formsItem in viewModel?.getTriggerEditListData?.leadTags ?? [] {
+                    let getLandingForm = viewModel?.getTriggerLeadTagListDataEdit.filter({ $0.id == formsItem})
+                    for landingChildItem in getLandingForm ?? [] {
+                        let formArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault: landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                        ledTagArray.append(formArr)
+                    }
+                }
+                cell.leadTagTextField.text = ledTagArray.map({$0.name ?? ""}).joined(separator: ",")
+                selectedLeadTags = ledTagArray
+                cell.showleadTagButton.isSelected = true
+                cell.showleadTagTectField(isShown: true)
             }
-            else if selectedLeadSources.joined(separator: ",").contains("Landing Page") && selectedLeadSources.joined(separator: ",").contains("Facebook") {
-                cell.leadLandingView.isHidden = false
-                cell.leadSourceURLView.isHidden = false
-                cell.leadFormView.isHidden = true
-                self.landingPage = "landingPage"
-            }
-            else if selectedLeadSources.joined(separator: ",").contains("Form") && selectedLeadSources.joined(separator: ",").contains("Facebook") {
-                cell.leadLandingView.isHidden = true
-                cell.leadSourceURLView.isHidden = false
-                cell.leadFormView.isHidden = false
-                self.landingForm = "landingForm"
-            }
-            else if selectedLeadSources.joined(separator: ",").contains("Landing Page") {
-                cell.leadLandingView.isHidden = false
-                cell.leadSourceURLView.isHidden = true
-                cell.leadFormView.isHidden = true
-                self.landingPage = "landingPage"
-            }
-            else if selectedLeadSources.joined(separator: ",").contains("Form") {
-                cell.leadLandingView.isHidden = true
-                cell.leadSourceURLView.isHidden = true
-                cell.leadFormView.isHidden = false
-                self.landingForm = "landingForm"
-            }
-            else if selectedLeadSources.joined(separator: ",").contains("Facebook") {
-                cell.leadLandingView.isHidden = true
-                cell.leadSourceURLView.isHidden = false
-                cell.leadFormView.isHidden = true
-            }
-            else {
-                cell.leadLandingView.isHidden = true
-                cell.leadFormView.isHidden = true
-                cell.leadSourceURLView.isHidden = true
-            }
+            
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
@@ -169,172 +143,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         return UITableView.automaticDimension
     }
     
-    @objc func leadSouceMethod(sender: UIButton) {
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadSources) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    leadCell.leadSourceTextLabel.text = "Select source"
-                    leadCell.leadSourceEmptyTextLabel.isHidden = false
-                    leadCell.leadLandingView.isHidden = true
-                    leadCell.leadFormView.isHidden = true
-                    leadCell.leadSourceURLView.isHidden = true
-                    self?.selectedLeadSources.removeAll()
-                    self?.landingPage = ""
-                    self?.landingForm = ""
-                } else {
-                    leadCell.leadSourceEmptyTextLabel.isHidden = true
-                    leadCell.leadLandingEmptyTextLabel.isHidden = true
-                    leadCell.leadFormEmptyTextLabel.isHidden = true
-                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
-                    self?.selectedLeadSources = selectedList
-                    if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Form") && selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadFormView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = false
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = "landingForm"
-                    }
-                    else if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Form") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadFormView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = true
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = "landingForm"
-                    }
-                    else if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = false
-                        leadCell.leadFormView.isHidden = true
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Form") && selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = false
-                        leadCell.leadFormView.isHidden = false
-                        self?.landingForm = "landingForm"
-                        self?.landingPage = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Landing Page") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = true
-                        leadCell.leadFormView.isHidden = true
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Form") {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = true
-                        leadCell.leadFormView.isHidden = false
-                        self?.landingForm = "landingForm"
-                        self?.landingPage = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = false
-                        leadCell.leadFormView.isHidden = true
-                        self?.landingPage = ""
-                        self?.landingForm = ""
-                    }
-                    else {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadFormView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = true
-                        self?.landingPage = ""
-                        self?.landingForm = ""
-                    }
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadLandingMethod(sender: UIButton) {
-        leadLandingPagesArray = viewModel?.getLandingPageNamesDataEdit ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadLandingPagesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadLandingPages) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    self?.selectedLeadLandingPages.removeAll()
-                    leadCell.leadLandingTextLabel.text = "Please select landing page"
-                    leadCell.leadLandingEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadLandingEmptyTextLabel.isHidden = true
-                    self?.selectedLeadLandingPages = selectedList
-                    leadCell.leadLandingTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadLandingPagesArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadFormMethod(sender: UIButton) {
-        leadFormsArray = viewModel?.getTriggerQuestionnairesDataEdit ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadFormsArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedleadForms) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    self?.selectedleadForms.removeAll()
-                    leadCell.leadFormTextLabel.text = "Please select form"
-                    leadCell.leadFormEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadFormEmptyTextLabel.isHidden = true
-                    self?.selectedleadForms = selectedList
-                    leadCell.leadFormTextLabel.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadFormsArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadSourceUrlMethod(sender: UIButton) {
-        leadSourceUrlArray = viewModel?.getTriggerLeadSourceUrlDataEdit ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceUrlArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.sourceUrl
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    self?.selectedLeadSourceUrl.removeAll()
-                    leadCell.leadSourceUrlTextLabel.text = "Please select source url"
-                    leadCell.leadSourceUrlEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadSourceUrlEmptyTextLabel.isHidden = true
-                    self?.selectedLeadSourceUrl = selectedList
-                    leadCell.leadSourceUrlTextLabel.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceUrlArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
     @objc func patientAppointmentMethod(sender: UIButton) {
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: appointmentStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
@@ -359,6 +167,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(appointmentStatusArray.count * 30))), arrowDirection: .up), from: self)
     }
+    
     
     @IBAction func submitButtonAction(sender: UIButton) {
         self.view.ShowSpinner()
@@ -453,26 +262,170 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
     }
 }
 
-extension TriggerEditDetailViewController: TriggerLeadCellDelegate {
-    func nextButtonLead(cell: TriggerLeadActionTableViewCell, index: IndexPath) {
-        if cell.leadSourceTextLabel.text == "Select source" {
-            cell.leadSourceEmptyTextLabel.isHidden = false
+extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
+    func nextButtonLead(cell: TriggerLeadEditActionTableViewCell, index: IndexPath) {
+        if cell.leadFromTextField.text == "" {
+            cell.leadFromTextField.showError(message: "Please select source")
         }
-        else if landingPage == "landingPage" && cell.leadLandingTextLabel.text == "Select landing page" {
-            cell.leadLandingEmptyTextLabel.isHidden = false
+        else if isSelectLandingSelected == true {
+            cell.leadSelectLandingTextField.showError(message: "Please select landing page")
         }
-        else if landingForm == "landingForm" && cell.leadFormTextLabel.text == "Select form" {
-            cell.leadFormEmptyTextLabel.isHidden = false
+        else if isSelectFormsSelected == true {
+            cell.leadLandingSelectFromTextField.showError(message: "Please select form")
+        }
+        
+        else if isLeadStatusChangeSelected == true && isInitialStatusSelected == true {
+            cell.leadLandingSelectFromTextField.showError(message: "Please select initial status")
+        }
+        else if isLeadStatusChangeSelected == true && isFinalStatusSelected == true {
+            cell.leadLandingSelectFromTextField.showError(message: "Please select final status")
         }
         else {
             if triggerDetailList.count < 4 {
-                cell.leadSourceEmptyTextLabel.isHidden = true
-                cell.leadLandingEmptyTextLabel.isHidden = true
-                cell.leadFormEmptyTextLabel.isHidden = true
                 scrollToBottom()
                 createNewTriggerCell(cellNameType: "Both")
             }
         }
+    }
+    
+    func leadFormButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadSources) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.leadFromTextField.showError(message: "Please select source")
+                cell.leadNextButton.isEnabled = false
+                cell.leadFromTextField.text = ""
+            } else {
+                cell.leadNextButton.isEnabled = true
+                cell.leadFromTextField.text = selectedList.joined(separator: ",")
+                self?.selectedLeadSources = selectedList
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadSourceArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadLandingButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadLandingPagesArray = viewModel?.getLandingPageNamesDataEdit ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadLandingPagesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadLandingPages) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                self?.selectedLeadLandingPages.removeAll()
+                cell.leadSelectLandingTextField.text = ""
+                cell.leadSelectLandingTextField.showError(message: "Please select landing page")
+                cell.leadNextButton.isEnabled = false
+            } else {
+                cell.leadNextButton.isEnabled = true
+                self?.selectedLeadLandingPages = selectedList
+                cell.leadSelectLandingTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
+                if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") &&
+                    selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form") &&
+                    selectedList.map({ $0.name ?? ""}).joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = true
+                }
+                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") &&
+                            selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form"){
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = true
+                }
+                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") &&
+                            selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                }
+                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form") &&
+                            selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                }
+                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                }
+                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                }
+                else if  selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = false
+                }
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadLandingPagesArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadSelectFormsButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadFormsArray = viewModel?.getTriggerQuestionnairesDataEdit ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadFormsArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedleadForms) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                self?.selectedleadForms.removeAll()
+                cell.leadLandingSelectFromTextField.text = ""
+                cell.leadLandingSelectFromTextField.showError(message: "Please select form")
+                cell.leadNextButton.isEnabled = false
+            } else {
+                cell.leadNextButton.isEnabled = true
+                self?.selectedleadForms = selectedList
+                cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadFormsArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadSourceButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadSourceUrlArray = viewModel?.getTriggerLeadSourceUrlDataEdit ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceUrlArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.sourceUrl
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.selectedLeadSourceUrl = selectedList
+            cell.leadSelectSourceTextField.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadSourceUrlArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadInitialStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        
+    }
+    
+    func leadFinalStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        
+    }
+    
+    func leadTagButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadTagsTriggerArrayEdit = viewModel?.getTriggerLeadTagListDataEdit ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsTriggerArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadTags) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.leadTagTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+            self?.selectedLeadTags = selectedList
+            let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
+            self?.selectedLeadTagIds = formattedArray
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadTagsTriggerArrayEdit.count * 30))), arrowDirection: .up), from: self)
     }
 }
 

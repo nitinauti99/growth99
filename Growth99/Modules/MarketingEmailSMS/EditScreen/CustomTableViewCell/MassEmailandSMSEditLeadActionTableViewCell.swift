@@ -12,7 +12,6 @@ protocol MassEmailandSMSEditLeadCellDelegate: AnyObject {
     func leadStausButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadSourceButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadTagButtonSelection(cell: MassEmailandSMSEditLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
-    
 }
 
 class MassEmailandSMSEditLeadActionTableViewCell: UITableViewCell {

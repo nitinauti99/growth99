@@ -12,6 +12,7 @@ protocol TriggerEditDetailViewControlProtocol: AnyObject {
     func triggerEditLandingPageNamesDataRecived()
     func triggerEditQuestionnairesDataRecived()
     func triggerEditLeadSourceUrlDataRecived()
+    func triggerEditLeadTagsDataRecived()
     func errorReceived(error: String)
     func triggerEditSelectedDataRecived()
     func createEditTriggerDataReceived()
@@ -32,7 +33,8 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var leadTagsArray = [TriggerEditTagListModel]()
     var patientTagsArray = [TriggerEditTagListModel]()
     
-    var selectedLeadTags = [TriggerEditTagListModel]()
+    var leadTagsTriggerArrayEdit = [MassEmailSMSTagListModelEdit]()
+    var selectedLeadTags = [MassEmailSMSTagListModelEdit]()
     var selectedLeadTagIds: String = String.blank
     
     var selectedPatientTags = [TriggerEditTagListModel]()
@@ -92,9 +94,12 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var orderOfConditionTrigger: Int = 0
     var addAnotherClicked: String = String.blank
     
-    var landingPage: String = String.blank
-    var landingForm: String = String.blank
-    
+    var isSelectLandingSelected: Bool = false
+    var isSelectFormsSelected: Bool = false
+    var isLeadStatusChangeSelected: Bool = false
+    var isInitialStatusSelected: Bool = false
+    var isFinalStatusSelected: Bool = false
+
     var triggerId: Int?
     var finalArray = [TriggerEditData]()
 
@@ -144,7 +149,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         viewModel?.getTriggerLeadSourceUrlEdit()
     }
     
-    func triggerEditLeadSourceUrlDataRecived() {
+    func triggerEditLeadTagsDataRecived() {
         self.view.HideSpinner()
         
         let defaultScreen = TriggerEditDetailModel(cellType: "Default", LastName: "")
@@ -166,6 +171,10 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         }
         selectedLeadSources = modelData?.triggerConditions ?? []
         triggerdDetailTableView.reloadData()
+    }
+    
+    func triggerEditLeadSourceUrlDataRecived() {
+        viewModel?.getTriggerLeadTagsList()
     }
     
     func triggerSMSPatientStatusAllDataRecived() {
@@ -213,7 +222,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         self.triggerdDetailTableView.delegate = self
         self.triggerdDetailTableView.dataSource = self
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerDefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerDefaultTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "TriggerLeadActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerLeadActionTableViewCell")
+        self.triggerdDetailTableView.register(UINib(nibName: "TriggerLeadEditActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerLeadEditActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerModuleTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerModuleTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerAppointmentActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerParentCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerParentCreateTableViewCell")
