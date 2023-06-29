@@ -12,27 +12,27 @@ protocol TriggerEditTimeCellDelegate: AnyObject {
     func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     func buttontimeRangeStartTapped(cell: TriggerEditTimeTableViewCell)
     func buttontimeRangeEndTapped(cell: TriggerEditTimeTableViewCell)
-   
+    
     func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     func scheduledBasedOnButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     
 }
 
 class TriggerEditTimeTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var triggerTimeFromTextField: CustomTextField!
-
+    
     @IBOutlet weak var timeFrequencyView: UIView!
     @IBOutlet weak var timeFrequencyButton: UIButton!
     
     @IBOutlet weak var timeDurationTextField: CustomTextField!
     @IBOutlet weak var timeHourlyTextField: CustomTextField!
     @IBOutlet weak var scheduledBasedOnTextField: CustomTextField!
-
+    
     @IBOutlet weak var scheduleBasedonLbl: UILabel!
-
+    
     @IBOutlet weak var timeRangeView: UIView!
     @IBOutlet weak var timeRangeButton: UIButton!
     @IBOutlet weak var timeRangeStartTimeTF: CustomTextField!
@@ -40,18 +40,19 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeFrequencyLbl: UILabel!
     @IBOutlet weak var timeRangeLbl: UILabel!
-
+    
     @IBOutlet weak var addAnotherConditionButton: UIButton!
     @IBOutlet weak var orLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-
+    
     @IBOutlet weak var timeHourlyButton: UIButton!
     @IBOutlet weak var scheduledBasedOnButton: UIButton!
-
+    
     weak var delegate: TriggerEditTimeCellDelegate?
     var indexPath = IndexPath()
     var timerTypeSelected: String = "Frequency"
     var trigerTimeData: [TriggerEditData] = []
+    let radioController: RadioButtonController = RadioButtonController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,25 +64,27 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         timeRangeEndTimeTF.tintColor = .clear
         timeRangeStartTimeTF.addInputViewDatePicker(target: self, selector: #selector(timeRangeStartBtnPressed), mode: .time)
         timeRangeEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(timeRangeEndBtnPressed), mode: .time)
+        radioController.buttonsArray = [timeFrequencyButton, timeRangeButton]
+        radioController.defaultButton = timeFrequencyButton
     }
     
     func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?){
         self.indexPath = index
         self.trigerTimeData = triggerEditData ?? []
-
+        
         
         /*if let lastItem = trigerTimeData?[indexPath.row]-1 {
-            // Do something with lastItem
-            print(lastItem)
-            addAnotherConditionButton.isHidden = false
-            nextButton.isHidden = false
-            orLabel.isHidden = false
-        } else {
-            addAnotherConditionButton.isHidden = true
-            nextButton.isHidden = true
-            orLabel.isHidden = true
-            print("triggerEditData is nil or empty")
-        }*/
+         // Do something with lastItem
+         print(lastItem)
+         addAnotherConditionButton.isHidden = false
+         nextButton.isHidden = false
+         orLabel.isHidden = false
+         } else {
+         addAnotherConditionButton.isHidden = true
+         nextButton.isHidden = true
+         orLabel.isHidden = true
+         print("triggerEditData is nil or empty")
+         }*/
         
         if triggerEditData?[indexPath.row].triggerTarget == "lead" {
             self.timeRangeView.isHidden = false
@@ -163,21 +166,19 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     func updateTimeRangeEndTextField(with content: String) {
         timeRangeEndTimeTF.text = content
     }
-        
+    
     @IBAction func timeFrequencyBtnAction(sender: UIButton) {
-        timeFrequencyButton.isSelected = !timeFrequencyButton.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         timeFrequencyView.isHidden = false
         timeRangeView.isHidden = true
         timerTypeSelected = "Frequency"
-        timeRangeButton.isSelected = false
     }
     
     @IBAction func timeRangeBtnAction(sender: UIButton) {
-        timeRangeButton.isSelected = !timeRangeButton.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         timeFrequencyView.isHidden = true
         timeRangeView.isHidden = false
         timerTypeSelected = "Range"
-        timeFrequencyButton.isSelected = false
     }
     
     @IBAction func addAnotherConditionBtnAction(sender: UIButton) {

@@ -36,7 +36,7 @@ class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
     var triggerEditLeadSourceUrl: [LeadSourceUrlListModel] = []
     var timePicker = UIDatePicker()
     var triggerLeadTagsList: [MassEmailSMSTagListModelEdit] = []
-
+    
     init(delegate: TriggerEditDetailViewControlProtocol? = nil) {
         self.delegate = delegate
     }

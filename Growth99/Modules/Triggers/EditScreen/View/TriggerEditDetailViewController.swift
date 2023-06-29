@@ -62,13 +62,13 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var selectedAppointmentStatus: [String] = []
     var selectedSMSNetwork = [SmsTemplateEditDTOListTrigger]()
     var selectedEmailNetwork = [EmailEditTemplateDTOListTrigger]()
-
+    
     var leadSourceUrlArray = [LeadSourceUrlListModel]()
     var selectedLeadSourceUrl = [LeadSourceUrlListModel]()
     
     var triggersCreateData = [TriggerEditCreateData]()
     var triggersAppointmentCreateData = [TriggerEditAppointmentCreateData]()
-
+    
     var moduleSelectionType: String = String.blank
     var smsTargetArray: [String] = []
     var emailTargetArray: [String] = []
@@ -99,21 +99,18 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var isLeadStatusChangeSelected: Bool = false
     var isInitialStatusSelected: Bool = false
     var isFinalStatusSelected: Bool = false
-
+    
     var triggerId: Int?
     var finalArray = [TriggerEditData]()
-
-    var triggerEditChildData : [TriggerEditData] = []
-
+    var triggerEditChildData: [TriggerEditData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         registerTableView()
         dateFormater = DateFormater()
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
-
         appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
-        
         viewModel = TriggerEditDetailViewModel(delegate: self)
         submitBtn.isEnabled = false
         submitBtn.backgroundColor = UIColor(hexString: "#6AC1E7")
@@ -231,10 +228,9 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     func createNewTriggerCell(cellNameType: String) {
         let emailSMS = TriggerEditDetailModel(cellType: cellNameType, LastName: String.blank)
         triggerDetailList.append(emailSMS)
-        triggerdDetailTableView.beginUpdates()
-        let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)
-        triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
-        triggerdDetailTableView.endUpdates()
+        self.triggerdDetailTableView.beginUpdates()
+        let indexPath = IndexPath(row: (self.triggerDetailList.count) - 1, section: 0)
+        self.triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
+        self.triggerdDetailTableView.endUpdates()
     }
-    
 }

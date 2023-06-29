@@ -9,7 +9,7 @@ import UIKit
 
 class TriggerParentCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var parentTableView: UITableView!
-
+    
     var trigerData: [TriggerEditData] = []
     var moduleSelectionTypeTrigger: String = ""
     var indexPath = IndexPath()
@@ -18,7 +18,7 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
     var viewModel: TriggerEditDetailViewModelProtocol?
     var selctionType: String = ""
     var view: TriggerEditDetailViewController?
-   
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -54,13 +54,13 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = trigerData[indexPath.row]
-       
+        
         if item.type == "Create" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditSMSCreateTableViewCell", for: indexPath) as? TriggerEditSMSCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = view
             cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             return cell
-
+            
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditTimeTableViewCell", for: indexPath) as? TriggerEditTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = view

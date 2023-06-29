@@ -29,16 +29,14 @@ class LeadTriggersTableViewCell: UITableViewCell {
     weak var delegate: TriggerSourceDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
         dateFormater = DateFormater()
-        
     }
-    
     
     func configureCell(triggerFilterList: TriggersListModel?, index: IndexPath, isSearch: Bool) {
         self.id.text = String(triggerFilterList?.id ?? 0)

@@ -9,11 +9,11 @@ import UIKit
 
 protocol TriggerEditCreateCellDelegate: AnyObject {
     func nextButtonCreate(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String)
-   
+    
     // sms selection
     func smsTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, sender: UIButton)
     func smsNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, smsTargetType: String)
-   
+    
     // email selection
     func emailTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath)
     func emailNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, emailTargetType: String)
@@ -23,37 +23,37 @@ protocol TriggerEditCreateCellDelegate: AnyObject {
 }
 
 class TriggerEditSMSCreateTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
-
+    
     @IBOutlet weak var smsBtn: UIButton!
     @IBOutlet weak var emailBtn: UIButton!
     @IBOutlet weak var taskBtn: UIButton!
     @IBOutlet weak var taskLabel: UILabel!
-
+    
     @IBOutlet weak var networkViewSMS: UIView!
     @IBOutlet weak var networkViewSMSTarget: UIView!
     @IBOutlet weak var networkViewSMSNetwork: UIView!
-
+    
     @IBOutlet weak var selectSMSTagetEmptyTextLabel: UILabel!
     @IBOutlet weak var selectSMSNetworkEmptyTextLabel: UILabel!
     @IBOutlet weak var networkSMSTagetSelectonButton: UIButton!
     @IBOutlet weak var networkSMSNetworkSelectonButton: UIButton!
     @IBOutlet weak var selectSMSTargetTextLabel: UILabel!
     @IBOutlet weak var selectSMSNetworkTextLabel: UILabel!
-
+    
     @IBOutlet weak var networkViewEmail: UIView!
     @IBOutlet weak var networkViewEmailTarget: UIView!
     @IBOutlet weak var networkViewEmailNetwork: UIView!
-
+    
     @IBOutlet weak var selectEmailTagetEmptyTextLabel: UILabel!
     @IBOutlet weak var selectEmailNetworkEmptyTextLabel: UILabel!
     @IBOutlet weak var networkEmailTagetSelectonButton: UIButton!
     @IBOutlet weak var networkEmailNetworkSelectonButton: UIButton!
     @IBOutlet weak var selectEmailTargetTextLabel: UILabel!
     @IBOutlet weak var selectEmailNetworkTextLabel: UILabel!
-        
+    
     @IBOutlet weak var networkViewTask: UIView!
     @IBOutlet weak var networkViewTaskNetwork: UIView!
     @IBOutlet weak var taskNameTextField: CustomTextField!
@@ -61,23 +61,26 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var assignTaskNetworkSelectonButton: UIButton!
     @IBOutlet weak var assignTaskNetworkTextLabel: UILabel!
     @IBOutlet weak var createNextButton: UIButton!
-
+    
     weak var delegate: TriggerEditCreateCellDelegate?
     var networkTypeSelected: String = "sms"
     var indexPath = IndexPath()
     var trigerCreateData: [TriggerEditData] = []
     var triggerTargetName: String = ""
+    let radioController: RadioButtonController = RadioButtonController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
+        radioController.buttonsArray = [smsBtn, emailBtn, taskBtn]
+        radioController.defaultButton = smsBtn
         self.setupUI()
     }
     
     func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?){
-      
+        
         self.indexPath = index
         self.trigerCreateData = triggerEditData ?? []
         self.networkSMSTagetSelectonButton.addTarget(self, action: #selector(smsTargetSelectionMethod), for: .touchDown)
@@ -196,34 +199,28 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonCreate(cell: self, index: indexPath, triggerNetworkType: networkTypeSelected)
     }
-
+    
     @IBAction func smsButtonAction(sender: UIButton) {
-        smsBtn.isSelected = !smsBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         networkViewSMS.isHidden = false
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = true
         networkTypeSelected = "sms"
-        emailBtn.isSelected = false
-        taskBtn.isSelected = false
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
-        emailBtn.isSelected = !emailBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = false
         networkViewTask.isHidden = true
         networkTypeSelected = "email"
-        smsBtn.isSelected = false
-        taskBtn.isSelected = false
     }
     
     @IBAction func taskButtonAction(sender: UIButton) {
-        taskBtn.isSelected = !taskBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = false
         networkTypeSelected = "task"
-        smsBtn.isSelected = false
-        emailBtn.isSelected = false
     }
 }

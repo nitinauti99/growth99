@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TriggerDefaultTableViewCell" id="b4N-gw-dU5" customClass="TriggerDefaultTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TriggerDefaultTableViewCell" rowHeight="285" id="b4N-gw-dU5" customClass="TriggerDefaultTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="285"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b4N-gw-dU5" id="1HD-BI-YrH">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="285"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLT-h4-k28">
-                        <rect key="frame" x="10" y="10" width="300" height="255"/>
+                        <rect key="frame" x="10" y="10" width="300" height="265"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3M-Ov-A9V">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                <rect key="frame" x="10" y="10" width="280" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pga-Kq-0z1" userLabel="password">
-                                        <rect key="frame" x="20" y="13" width="260" height="24"/>
+                                        <rect key="frame" x="20" y="13" width="240" height="24"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -39,13 +39,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Give name to your trigger" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce2-Eq-7f4" userLabel="password">
-                                <rect key="frame" x="20" y="65" width="260" height="40"/>
+                                <rect key="frame" x="20" y="75" width="260" height="40"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="trigger name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-1k-1ar" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="30" y="120" width="260" height="45"/>
+                                <rect key="frame" x="30" y="130" width="260" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ca4-QD-LPO"/>
                                 </constraints>
@@ -68,7 +68,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCE-lG-0mD">
-                                <rect key="frame" x="20" y="195" width="110" height="40"/>
+                                <rect key="frame" x="20" y="205" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="W4J-eg-EaP"/>
@@ -91,10 +91,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ce2-Eq-7f4" firstAttribute="top" secondItem="O3M-Ov-A9V" secondAttribute="bottom" constant="15" id="5bu-ko-Gxb"/>
-                            <constraint firstAttribute="trailing" secondItem="O3M-Ov-A9V" secondAttribute="trailing" id="Iic-lB-m19"/>
+                            <constraint firstAttribute="trailing" secondItem="O3M-Ov-A9V" secondAttribute="trailing" constant="10" id="Iic-lB-m19"/>
                             <constraint firstItem="Ce2-Eq-7f4" firstAttribute="leading" secondItem="vLT-h4-k28" secondAttribute="leading" constant="20" id="IyG-VQ-e1i"/>
-                            <constraint firstItem="O3M-Ov-A9V" firstAttribute="top" secondItem="vLT-h4-k28" secondAttribute="top" id="MDU-ne-Xmu"/>
-                            <constraint firstItem="O3M-Ov-A9V" firstAttribute="leading" secondItem="vLT-h4-k28" secondAttribute="leading" id="Sd3-BM-rbo"/>
+                            <constraint firstItem="O3M-Ov-A9V" firstAttribute="top" secondItem="vLT-h4-k28" secondAttribute="top" constant="10" id="MDU-ne-Xmu"/>
+                            <constraint firstItem="O3M-Ov-A9V" firstAttribute="leading" secondItem="vLT-h4-k28" secondAttribute="leading" constant="10" id="Sd3-BM-rbo"/>
                             <constraint firstItem="DeW-1k-1ar" firstAttribute="trailing" secondItem="Ce2-Eq-7f4" secondAttribute="trailing" constant="10" id="TP0-Qh-xgO"/>
                             <constraint firstAttribute="bottom" secondItem="zCE-lG-0mD" secondAttribute="bottom" constant="20" id="ZoN-8F-lLV"/>
                             <constraint firstItem="DeW-1k-1ar" firstAttribute="top" secondItem="Ce2-Eq-7f4" secondAttribute="bottom" constant="15" id="eJ1-Ed-hOa"/>
@@ -130,7 +130,7 @@
     </objects>
     <designables>
         <designable name="DeW-1k-1ar">
-            <size key="intrinsicContentSize" width="90" height="25.333333333333332"/>
+            <size key="intrinsicContentSize" width="90" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

@@ -36,7 +36,6 @@ class TriggerModuleTableViewCell: UITableViewCell {
     
     func configureCell(index: IndexPath, sender: UIButton, modelType: String) {
         indexPath = index
-        radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = modelType
     }
     

@@ -63,7 +63,6 @@ class EditLeadViewController: UIViewController {
     
     @IBAction func textFieldDidChange(sender: UIButton) {
         let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
-        
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }

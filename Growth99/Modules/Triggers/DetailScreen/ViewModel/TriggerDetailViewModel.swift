@@ -11,7 +11,7 @@ protocol TriggerDetailViewModelProtocol {
     func getLandingPageNames()
     func getTriggerQuestionnaires()
     func getTriggerLeadSourceUrl()
-    
+    func getTriggerLeadTagsList()
     var  getTriggerDetailData: TriggerDetailListModel? { get }
     var  getLandingPageNamesData: [LandingPageNamesModel] { get }
     var  getTriggerQuestionnairesData: [LandingPageNamesModel] { get }
@@ -19,6 +19,7 @@ protocol TriggerDetailViewModelProtocol {
     
     func localToServerWithDate(date: String) -> String
     func timeFormatterString(textField: CustomTextField) -> String
+    var  getTriggerLeadTagListData: [MassEmailSMSTagListModelEdit] { get }
     
     func createTriggerDataMethod(triggerDataParms: [String: Any])
     func createAppointmentDataMethod(appointmentDataParms: [String: Any])
@@ -31,12 +32,30 @@ class TriggerDetailViewModel: TriggerDetailViewModelProtocol {
     var triggerQuestionnaires: [LandingPageNamesModel] = []
     var triggerLeadSourceUrl: [LeadSourceUrlListModel] = []
     var timePicker = UIDatePicker()
-
+    var triggerLeadTagsList: [MassEmailSMSTagListModelEdit] = []
+    
     init(delegate: TriggerDetailViewControlProtocol? = nil) {
         self.delegate = delegate
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
+    
+    func getTriggerLeadTagsList() {
+        self.requestManager.request(forPath: ApiUrl.leadTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSTagListModelEdit], GrowthNetworkError>) in
+            switch result {
+            case .success(let editLeadTagsList):
+                self.triggerLeadTagsList = editLeadTagsList
+                self.delegate?.triggerLeadTagsDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    var getTriggerLeadTagListData: [MassEmailSMSTagListModelEdit] {
+        return triggerLeadTagsList
+    }
     
     func getTriggerDetailList() {
         self.requestManager.request(forPath: ApiUrl.massEmailTrigerList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<TriggerDetailListModel, GrowthNetworkError>) in

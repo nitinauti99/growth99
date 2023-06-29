@@ -130,9 +130,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 finalArray.append(creatChild)
                 finalArray.append(createTimechild)
             }
-            
             cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
-            
             return cell
         }
         
@@ -167,7 +165,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(appointmentStatusArray.count * 30))), arrowDirection: .up), from: self)
     }
-    
     
     @IBAction func submitButtonAction(sender: UIButton) {
         self.view.ShowSpinner()
@@ -267,18 +264,17 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         if cell.leadFromTextField.text == "" {
             cell.leadFromTextField.showError(message: "Please select source")
         }
-        else if isSelectLandingSelected == true {
+        else if isSelectLandingSelected == true && cell.leadSelectLandingTextField.text == "" {
             cell.leadSelectLandingTextField.showError(message: "Please select landing page")
         }
-        else if isSelectFormsSelected == true {
+        else if isSelectFormsSelected == true && cell.leadLandingSelectFromTextField.text == "" {
             cell.leadLandingSelectFromTextField.showError(message: "Please select form")
         }
-        
-        else if isLeadStatusChangeSelected == true && isInitialStatusSelected == true {
-            cell.leadLandingSelectFromTextField.showError(message: "Please select initial status")
+        else if isLeadStatusChangeSelected == true && isInitialStatusSelected == true && cell.leadInitialStatusTextField.text == "" {
+            cell.leadInitialStatusTextField.showError(message: "Please select initial status")
         }
-        else if isLeadStatusChangeSelected == true && isFinalStatusSelected == true {
-            cell.leadLandingSelectFromTextField.showError(message: "Please select final status")
+        else if isLeadStatusChangeSelected == true && isFinalStatusSelected == true && cell.leadFinalStatusTextField.text == "" {
+            cell.leadFinalStatusTextField.showError(message: "Please select final status")
         }
         else {
             if triggerDetailList.count < 4 {
@@ -295,12 +291,92 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         selectionMenu.setSelectedItems(items: selectedLeadSources) { [weak self] (selectedItem, index, selected, selectedList) in
             if selectedList.count == 0 {
                 cell.leadFromTextField.showError(message: "Please select source")
-                cell.leadNextButton.isEnabled = false
                 cell.leadFromTextField.text = ""
+                self?.isSelectLandingSelected = false
+                self?.isSelectFormsSelected = false
+                self?.selectedLeadLandingPages.removeAll()
+                self?.selectedleadForms.removeAll()
+                self?.selectedLeadSourceUrl.removeAll()
+                self?.selectedLeadSources.removeAll()
+                cell.showLeadSelectLanding(isShown: false)
+                cell.showleadLandingSelectFrom(isShown: false)
+                cell.showleadSelectSource(isShown: false)
+                
             } else {
-                cell.leadNextButton.isEnabled = true
                 cell.leadFromTextField.text = selectedList.joined(separator: ",")
                 self?.selectedLeadSources = selectedList
+                if selectedList.joined(separator: ",").contains("Landing Page") &&
+                    selectedList.joined(separator: ",").contains("Form") &&
+                    selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = true
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                    cell.showleadSelectSource(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Landing Page") &&
+                            selectedList.joined(separator: ",").contains("Form"){
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = true
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                    cell.showleadSelectSource(isShown: false)
+                }
+                else if selectedList.joined(separator: ",").contains("Landing Page") &&
+                            selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                    self?.selectedleadForms.removeAll()
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                    cell.showleadSelectSource(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Form") &&
+                            selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = true
+                    self?.selectedLeadLandingPages.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Landing Page") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                    self?.selectedleadForms.removeAll()
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadSelectSource(isShown: false)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                }
+                else if selectedList.joined(separator: ",").contains("Form") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = true
+                    self?.selectedLeadLandingPages.removeAll()
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: false)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = false
+                    self?.selectedLeadLandingPages.removeAll()
+                    self?.selectedleadForms.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                } else {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = false
+                    self?.selectedLeadLandingPages.removeAll()
+                    self?.selectedleadForms.removeAll()
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: false)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                }
             }
         }
         selectionMenu.reloadInputViews()
@@ -319,44 +395,9 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 self?.selectedLeadLandingPages.removeAll()
                 cell.leadSelectLandingTextField.text = ""
                 cell.leadSelectLandingTextField.showError(message: "Please select landing page")
-                cell.leadNextButton.isEnabled = false
             } else {
-                cell.leadNextButton.isEnabled = true
                 self?.selectedLeadLandingPages = selectedList
                 cell.leadSelectLandingTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") &&
-                    selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form") &&
-                    selectedList.map({ $0.name ?? ""}).joined(separator: ",").contains("Facebook") {
-                    self?.isSelectLandingSelected = true
-                    self?.isSelectFormsSelected = true
-                }
-                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") &&
-                            selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form"){
-                    self?.isSelectLandingSelected = true
-                    self?.isSelectFormsSelected = true
-                }
-                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") &&
-                            selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Facebook") {
-                    self?.isSelectLandingSelected = true
-                    self?.isSelectFormsSelected = false
-                }
-                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form") &&
-                            selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Facebook") {
-                    self?.isSelectLandingSelected = true
-                    self?.isSelectFormsSelected = false
-                }
-                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Landing Page") {
-                    self?.isSelectLandingSelected = true
-                    self?.isSelectFormsSelected = false
-                }
-                else if selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Form") {
-                    self?.isSelectLandingSelected = true
-                    self?.isSelectFormsSelected = false
-                }
-                else if  selectedList.map({ $0.name ?? "" }).joined(separator: ",").contains("Facebook") {
-                    self?.isSelectLandingSelected = false
-                    self?.isSelectFormsSelected = false
-                }
             }
         }
         selectionMenu.reloadInputViews()
@@ -375,9 +416,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 self?.selectedleadForms.removeAll()
                 cell.leadLandingSelectFromTextField.text = ""
                 cell.leadLandingSelectFromTextField.showError(message: "Please select form")
-                cell.leadNextButton.isEnabled = false
             } else {
-                cell.leadNextButton.isEnabled = true
                 self?.selectedleadForms = selectedList
                 cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
             }
@@ -404,11 +443,42 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
     }
     
     func leadInitialStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
         
+        selectionMenu.setSelectedItems(items: []) { (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.leadInitialStatusTextField.text = ""
+                cell.leadInitialStatusTextField.showError(message: "Please select initial status")
+            } else {
+                cell.leadInitialStatusTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
     
     func leadFinalStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
-        
+        let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: []) { (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.leadFinalStatusTextField.text = ""
+                cell.leadFinalStatusTextField.showError(message: "Please select final status")
+            } else {
+                cell.leadFinalStatusTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
     
     func leadTagButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
@@ -427,6 +497,21 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadTagsTriggerArrayEdit.count * 30))), arrowDirection: .up), from: self)
     }
+    
+    func showLeadTagButtonClicked(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        if buttonSender.isSelected {
+            buttonSender.isSelected = false
+            cell.leadTagTextFieldHight.constant = 0
+            cell.leadTagTextField.rightImage = nil
+            cell.leadTagTextField.text = ""
+            self.selectedLeadTags.removeAll()
+        } else {
+            buttonSender.isSelected = true
+            cell.leadTagTextFieldHight.constant = 45
+            cell.leadTagTextField.rightImage = UIImage(named: "dropDown")
+        }
+        self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
+    }
 }
 
 extension TriggerEditDetailViewController: TriggerPatientCellDelegate {
@@ -443,7 +528,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+        selectionMenu.setSelectedItems(items: []) { (selectedItem, index, selected, selectedList) in
             if selectedList.count == 0 {
                 cell.timeHourlyTextField.showError(message: "Please enter time duration")
             } else {
@@ -460,15 +545,13 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: scheduledBasedOnArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
         }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+        selectionMenu.setSelectedItems(items: []) { (selectedItem, index, selected, selectedList) in
             cell.scheduledBasedOnTextField.text = selectedItem
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: cell.scheduledBasedOnButton, size: CGSize(width: cell.scheduledBasedOnButton.frame.width, height: (Double(scheduledBasedOnArray.count * 30))), arrowDirection: .up), from: self)
     }
-    
-    
     
     func addAnotherConditionButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
         
@@ -576,7 +659,6 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
 }
 
 extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
-    
     func nextButtonCreate(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
         if cell.networkTypeSelected == "sms" {
             if cell.selectSMSTargetTextLabel.text == "Select trigger target" {

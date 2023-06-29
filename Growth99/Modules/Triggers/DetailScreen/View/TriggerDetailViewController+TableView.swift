@@ -31,15 +31,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
         } else if triggerDetailList[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadActionTableViewCell", for: indexPath) as? TriggerLeadActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.leadStatusSelectonButton.addTarget(self, action: #selector(leadSouceMethod), for: .touchDown)
-            cell.leadStatusSelectonButton.tag = indexPath.row
-            cell.leadLandingSelectonButton.addTarget(self, action: #selector(leadLandingMethod), for: .touchDown)
-            cell.leadLandingSelectonButton.tag = indexPath.row
-            cell.leadFormSelectonButton.addTarget(self, action: #selector(leadFormMethod), for: .touchDown)
-            cell.leadFormSelectonButton.tag = indexPath.row
-            cell.leadSourceUrlSelectonButton.addTarget(self, action: #selector(leadSourceUrlMethod), for: .touchDown)
-            cell.leadSourceUrlSelectonButton.tag = indexPath.row
-            cell.configureCell(index: indexPath)
+            cell.configureCell(tableView: triggerdDetailTableView, index: indexPath)
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
@@ -105,172 +97,6 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    @objc func leadSouceMethod(sender: UIButton) {
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadSources) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    leadCell.leadSourceTextLabel.text = "Select source"
-                    leadCell.leadSourceEmptyTextLabel.isHidden = false
-                    leadCell.leadLandingView.isHidden = true
-                    leadCell.leadFormView.isHidden = true
-                    leadCell.leadSourceURLView.isHidden = true
-                    self?.selectedLeadSources.removeAll()
-                    self?.landingPage = ""
-                    self?.landingForm = ""
-                } else {
-                    leadCell.leadSourceEmptyTextLabel.isHidden = true
-                    leadCell.leadLandingEmptyTextLabel.isHidden = true
-                    leadCell.leadFormEmptyTextLabel.isHidden = true
-                    leadCell.leadSourceTextLabel.text = selectedList.joined(separator: ",")
-                    self?.selectedLeadSources = selectedList
-                    if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Form") && selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadFormView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = false
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = "landingForm"
-                    }
-                    else if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Form") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadFormView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = true
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = "landingForm"
-                    }
-                    else if selectedList.joined(separator: ",").contains("Landing Page") && selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = false
-                        leadCell.leadFormView.isHidden = true
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Form") && selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = false
-                        leadCell.leadFormView.isHidden = false
-                        self?.landingForm = "landingForm"
-                        self?.landingPage = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Landing Page") {
-                        leadCell.leadLandingView.isHidden = false
-                        leadCell.leadSourceURLView.isHidden = true
-                        leadCell.leadFormView.isHidden = true
-                        self?.landingPage = "landingPage"
-                        self?.landingForm = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Form") {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = true
-                        leadCell.leadFormView.isHidden = false
-                        self?.landingForm = "landingForm"
-                        self?.landingPage = ""
-                    }
-                    else if selectedList.joined(separator: ",").contains("Facebook") {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = false
-                        leadCell.leadFormView.isHidden = true
-                        self?.landingPage = ""
-                        self?.landingForm = ""
-                    }
-                    else {
-                        leadCell.leadLandingView.isHidden = true
-                        leadCell.leadFormView.isHidden = true
-                        leadCell.leadSourceURLView.isHidden = true
-                        self?.landingPage = ""
-                        self?.landingForm = ""
-                    }
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadLandingMethod(sender: UIButton) {
-        leadLandingPagesArray = viewModel?.getLandingPageNamesData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadLandingPagesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadLandingPages) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    self?.selectedLeadLandingPages.removeAll()
-                    leadCell.leadLandingTextLabel.text = "Please select landing page"
-                    leadCell.leadLandingEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadLandingEmptyTextLabel.isHidden = true
-                    self?.selectedLeadLandingPages = selectedList
-                    leadCell.leadLandingTextLabel.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadLandingPagesArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadFormMethod(sender: UIButton) {
-        leadFormsArray = viewModel?.getTriggerQuestionnairesData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadFormsArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedleadForms) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    self?.selectedleadForms.removeAll()
-                    leadCell.leadFormTextLabel.text = "Please select form"
-                    leadCell.leadFormEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadFormEmptyTextLabel.isHidden = true
-                    self?.selectedleadForms = selectedList
-                    leadCell.leadFormTextLabel.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadFormsArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    @objc func leadSourceUrlMethod(sender: UIButton) {
-        leadSourceUrlArray = viewModel?.getTriggerLeadSourceUrlData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceUrlArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.sourceUrl
-        }
-        let row = sender.tag % 1000
-        selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
-            let cellIndexPath = IndexPath(item: row, section: 0)
-            if let leadCell = self?.triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell {
-                if selectedList.count == 0 {
-                    self?.selectedLeadSourceUrl.removeAll()
-                    leadCell.leadSourceUrlTextLabel.text = "Please select source url"
-                    leadCell.leadSourceUrlEmptyTextLabel.isHidden = false
-                } else {
-                    leadCell.leadSourceUrlEmptyTextLabel.isHidden = true
-                    self?.selectedLeadSourceUrl = selectedList
-                    leadCell.leadSourceUrlTextLabel.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
-                }
-            }
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadSourceUrlArray.count * 30))), arrowDirection: .up), from: self)
     }
     
     @objc func patientAppointmentMethod(sender: UIButton) {
@@ -567,25 +393,259 @@ extension TriggerDetailViewController: TriggerModuleCellDelegate {
     }
 }
 
-extension TriggerDetailViewController: TriggerLeadCellDelegate {
+
+extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
     func nextButtonLead(cell: TriggerLeadActionTableViewCell, index: IndexPath) {
-        if cell.leadSourceTextLabel.text == "Select source" {
-            cell.leadSourceEmptyTextLabel.isHidden = false
+        if cell.leadFromTextField.text == "" {
+            cell.leadFromTextField.showError(message: "Please select source")
         }
-        else if landingPage == "landingPage" && cell.leadLandingTextLabel.text == "Select landing page" {
-            cell.leadLandingEmptyTextLabel.isHidden = false
+        else if isSelectLandingSelected == true && cell.leadSelectLandingTextField.text == "" {
+            cell.leadSelectLandingTextField.showError(message: "Please select landing page")
         }
-        else if landingForm == "landingForm" && cell.leadFormTextLabel.text == "Select form" {
-            cell.leadFormEmptyTextLabel.isHidden = false
+        else if isSelectFormsSelected == true && cell.leadLandingSelectFromTextField.text == "" {
+            cell.leadLandingSelectFromTextField.showError(message: "Please select form")
+        }
+        else if isLeadStatusChangeSelected == true && isInitialStatusSelected == true && cell.leadInitialStatusTextField.text == "" {
+            cell.leadInitialStatusTextField.showError(message: "Please select initial status")
+        }
+        else if isLeadStatusChangeSelected == true && isFinalStatusSelected == true && cell.leadFinalStatusTextField.text == "" {
+            cell.leadFinalStatusTextField.showError(message: "Please select final status")
         }
         else {
-            cell.leadNextButton.isEnabled = false
-            cell.leadSourceEmptyTextLabel.isHidden = true
-            cell.leadLandingEmptyTextLabel.isHidden = true
-            cell.leadFormEmptyTextLabel.isHidden = true
-            scrollToBottom()
-            createNewTriggerCell(cellNameType: "Both")
+            if triggerDetailList.count < 4 {
+                scrollToBottom()
+                createNewTriggerCell(cellNameType: "Both")
+            }
         }
+    }
+    
+    func leadFormButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadSources) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.leadFromTextField.showError(message: "Please select source")
+                cell.leadFromTextField.text = ""
+                self?.isSelectLandingSelected = false
+                self?.isSelectFormsSelected = false
+                self?.selectedLeadLandingPages.removeAll()
+                self?.selectedleadForms.removeAll()
+                self?.selectedLeadSourceUrl.removeAll()
+                self?.selectedLeadSources.removeAll()
+                cell.showLeadSelectLanding(isShown: false)
+                cell.showleadLandingSelectFrom(isShown: false)
+                cell.showleadSelectSource(isShown: false)
+                
+            } else {
+                cell.leadFromTextField.text = selectedList.joined(separator: ",")
+                self?.selectedLeadSources = selectedList
+                if selectedList.joined(separator: ",").contains("Landing Page") &&
+                    selectedList.joined(separator: ",").contains("Form") &&
+                    selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = true
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                    cell.showleadSelectSource(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Landing Page") &&
+                            selectedList.joined(separator: ",").contains("Form"){
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = true
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                    cell.showleadSelectSource(isShown: false)
+                }
+                else if selectedList.joined(separator: ",").contains("Landing Page") &&
+                            selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                    self?.selectedleadForms.removeAll()
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                    cell.showleadSelectSource(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Form") &&
+                            selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = true
+                    self?.selectedLeadLandingPages.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Landing Page") {
+                    self?.isSelectLandingSelected = true
+                    self?.isSelectFormsSelected = false
+                    self?.selectedleadForms.removeAll()
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: true)
+                    cell.showleadSelectSource(isShown: false)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                }
+                else if selectedList.joined(separator: ",").contains("Form") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = true
+                    self?.selectedLeadLandingPages.removeAll()
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: false)
+                    cell.showleadLandingSelectFrom(isShown: true)
+                }
+                else if selectedList.joined(separator: ",").contains("Facebook") {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = false
+                    self?.selectedLeadLandingPages.removeAll()
+                    self?.selectedleadForms.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: true)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                } else {
+                    self?.isSelectLandingSelected = false
+                    self?.isSelectFormsSelected = false
+                    self?.selectedLeadLandingPages.removeAll()
+                    self?.selectedleadForms.removeAll()
+                    self?.selectedLeadSourceUrl.removeAll()
+                    cell.showLeadSelectLanding(isShown: false)
+                    cell.showleadSelectSource(isShown: false)
+                    cell.showleadLandingSelectFrom(isShown: false)
+                }
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadSourceArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadLandingButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadLandingPagesArray = viewModel?.getLandingPageNamesData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadLandingPagesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadLandingPages) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                self?.selectedLeadLandingPages.removeAll()
+                cell.leadSelectLandingTextField.text = ""
+                cell.leadSelectLandingTextField.showError(message: "Please select landing page")
+            } else {
+                self?.selectedLeadLandingPages = selectedList
+                cell.leadSelectLandingTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadLandingPagesArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadSelectFormsButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadFormsArray = viewModel?.getTriggerQuestionnairesData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadFormsArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedleadForms) { [weak self] (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                self?.selectedleadForms.removeAll()
+                cell.leadLandingSelectFromTextField.text = ""
+                cell.leadLandingSelectFromTextField.showError(message: "Please select form")
+            } else {
+                self?.selectedleadForms = selectedList
+                cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadFormsArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadSourceButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadSourceUrlArray = viewModel?.getTriggerLeadSourceUrlData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadSourceUrlArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.sourceUrl
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.selectedLeadSourceUrl = selectedList
+            cell.leadSelectSourceTextField.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadSourceUrlArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func leadInitialStatusButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        
+        selectionMenu.setSelectedItems(items: []) { (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.leadInitialStatusTextField.text = ""
+                cell.leadInitialStatusTextField.showError(message: "Please select initial status")
+            } else {
+                cell.leadInitialStatusTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+    func leadFinalStatusButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        let leadStatusArray = ["NEW","COLD","WARM","HOT","WON","DEAD"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: []) { (selectedItem, index, selected, selectedList) in
+            if selectedList.count == 0 {
+                cell.leadFinalStatusTextField.text = ""
+                cell.leadFinalStatusTextField.showError(message: "Please select final status")
+            } else {
+                cell.leadFinalStatusTextField.text = selectedItem
+            }
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.tableView?.selectionStyle = .single
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
+    }
+    
+    func leadTagButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        leadTagsTriggerArray = viewModel?.getTriggerLeadTagListData ?? []
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsTriggerArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics.name
+        }
+        selectionMenu.setSelectedItems(items: selectedLeadTags) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.leadTagTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
+            self?.selectedLeadTags = selectedList
+            let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
+            self?.selectedLeadTagIds = formattedArray
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.cellSelectionStyle = .checkbox
+        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadTagsTriggerArray.count * 30))), arrowDirection: .up), from: self)
+    }
+    
+    func showLeadTagButtonClicked(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
+        if buttonSender.isSelected {
+            buttonSender.isSelected = false
+            cell.leadTagTextFieldHight.constant = 0
+            cell.leadTagTextField.rightImage = nil
+            cell.leadTagTextField.text = ""
+            self.selectedLeadTags.removeAll()
+        } else {
+            buttonSender.isSelected = true
+            cell.leadTagTextFieldHight.constant = 45
+            cell.leadTagTextField.rightImage = UIImage(named: "dropDown")
+        }
+        self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
     }
 }
 
@@ -645,8 +705,8 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
 }
 
 extension TriggerDetailViewController: TriggerTimeCellDelegate {
-  
-   
+    
+    
     func hourlyNetworkButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         
     }

@@ -16,6 +16,7 @@ protocol TriggerLeadEdiTableViewCellDelegate: AnyObject {
     func leadInitialStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadFinalStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadTagButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
+    func showLeadTagButtonClicked(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
 }
 
 class TriggerLeadEditActionTableViewCell: UITableViewCell {
@@ -49,7 +50,7 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadTagButton: UIButton!
     @IBOutlet weak var leadTagTextField: CustomTextField!
     @IBOutlet weak var leadTagTextFieldHight: NSLayoutConstraint!
-        
+    
     @IBOutlet weak var leadSTriggerWhenStatusTopeight: NSLayoutConstraint!
     @IBOutlet weak var leadSTriggerWhenStatusLblHeight: NSLayoutConstraint!
     
@@ -69,13 +70,13 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     @IBOutlet weak var addleadTagButtonTopHeight: NSLayoutConstraint!
     @IBOutlet weak var leadStatusChangeButton: UIButton!
     @IBOutlet weak var leadStatusChangeButtonTopHeight: NSLayoutConstraint!
-
+    
     @IBOutlet weak var leadNextButton: UIButton!
     
     weak var delegate: TriggerLeadEdiTableViewCellDelegate?
     var indexPath = IndexPath()
     var tableView: UITableView?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -87,7 +88,7 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         self.indexPath = index
         self.tableView = tableView
     }
-
+    
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonLead(cell: self, index: indexPath)
@@ -149,7 +150,7 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             leadInitialStatusFromLblTopHeight.constant = 0
             leadInitialStatusFromLblHeight.constant = 0
             leadInitialStatusTextFieldHight.constant = 0
-
+            
             leadFinalStatusTextField.text = ""
             leadFinalStatusTextField.rightImage = nil
             leadFinalStatusToLblHeight.constant = 0
@@ -159,14 +160,14 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             sender.isSelected = true
             
             addleadTagButtonTopHeight.constant = 16
-
+            
             leadSTriggerWhenStatusTopeight.constant = 16
             leadSTriggerWhenStatusLblHeight.constant = 20
             
             leadInitialStatusFromLblTopHeight.constant = 16
             leadInitialStatusFromLblHeight.constant = 20
             leadInitialStatusTextFieldHight.constant = 45
-
+            
             leadFinalStatusToLblHeight.constant = 16
             leadFinalStatusToLblTopHeight.constant = 20
             leadFinalStatusTextFieldHight.constant = 45
@@ -178,17 +179,7 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     }
     
     @IBAction func showLeadTagsButtonAction(sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-            leadTagTextFieldHight.constant = 0
-            leadTagTextField.rightImage = nil
-            leadTagTextField.text = ""
-        } else {
-            sender.isSelected = true
-            leadTagTextFieldHight.constant = 45
-            leadTagTextField.rightImage = UIImage(named: "dropDown")
-        }
-        self.tableView?.performBatchUpdates(nil, completion: nil)
+        self.delegate?.showLeadTagButtonClicked(cell: self, index: indexPath, buttonSender: sender)
     }
     
     func showLeadSelectLanding(isShown: Bool) {
@@ -197,7 +188,14 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             self.leadSelectLandingLblHeight.constant = 20
             self.leadSelectLandingTextFieldHight.constant = 45
             self.leadSelectLandingTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            self.leadSelectLandingLblTopHeight.constant = 0
+            self.leadSelectLandingLblHeight.constant = 0
+            self.leadSelectLandingTextFieldHight.constant = 0
+            self.leadSelectLandingTextField.rightImage = nil
+            self.leadSelectLandingTextField.text = ""
         }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     func showleadLandingSelectFrom(isShown: Bool) {
@@ -206,7 +204,14 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             self.leadLandingSelectFromLblHeight.constant = 20
             self.leadLandingSelectFromTextFieldHight.constant = 45
             self.leadLandingSelectFromTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            self.leadLandingSelectFromLblTopHeight.constant = 0
+            self.leadLandingSelectFromLblHeight.constant = 0
+            self.leadLandingSelectFromTextFieldHight.constant = 0
+            self.leadLandingSelectFromTextField.rightImage = nil
+            self.leadLandingSelectFromTextField.text = ""
         }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     func showleadSelectSource(isShown: Bool) {
@@ -217,29 +222,64 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             self.leadSelectSourceLblHeight.constant = 20
             self.leadSelectSourceTextFieldHight.constant = 45
             self.leadSelectSourceTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            
+            self.showleadSourceTagButton.isSelected = false
+            self.showleadSourceTagButtonHeight.constant = 0
+            self.leadSelectSourceLblTopHeight.constant = 0
+            self.leadSelectSourceLblHeight.constant = 0
+            self.leadSelectSourceTextFieldHight.constant = 0
+            self.leadSelectSourceTextField.rightImage = nil
+            self.leadSelectSourceTextField.text = ""
         }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     func showLeadStatusChange(isShown: Bool) {
-        self.addleadTagButtonTopHeight.constant = 16
-
-        self.leadSTriggerWhenStatusTopeight.constant = 16
-        self.leadSTriggerWhenStatusLblHeight.constant = 20
-        
-        self.leadInitialStatusFromLblTopHeight.constant = 16
-        self.leadInitialStatusFromLblHeight.constant = 20
-        self.leadInitialStatusTextFieldHight.constant = 45
-
-        self.leadFinalStatusToLblHeight.constant = 16
-        self.leadFinalStatusToLblTopHeight.constant = 20
-        self.leadFinalStatusTextFieldHight.constant = 45
-        
-        self.leadInitialStatusTextField.rightImage = UIImage(named: "dropDown")
-        self.leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
+        if isShown {
+            self.addleadTagButtonTopHeight.constant = 16
+            
+            self.leadSTriggerWhenStatusTopeight.constant = 16
+            self.leadSTriggerWhenStatusLblHeight.constant = 20
+            
+            self.leadInitialStatusFromLblTopHeight.constant = 16
+            self.leadInitialStatusFromLblHeight.constant = 20
+            self.leadInitialStatusTextFieldHight.constant = 45
+            
+            self.leadFinalStatusToLblHeight.constant = 16
+            self.leadFinalStatusToLblTopHeight.constant = 20
+            self.leadFinalStatusTextFieldHight.constant = 45
+            
+            self.leadInitialStatusTextField.rightImage = UIImage(named: "dropDown")
+            self.leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            self.addleadTagButtonTopHeight.constant = 0
+            
+            self.leadSTriggerWhenStatusTopeight.constant = 0
+            self.leadSTriggerWhenStatusLblHeight.constant = 0
+            
+            self.leadInitialStatusFromLblTopHeight.constant = 0
+            self.leadInitialStatusFromLblHeight.constant = 0
+            self.leadInitialStatusTextFieldHight.constant = 0
+            
+            self.leadFinalStatusToLblHeight.constant = 0
+            self.leadFinalStatusToLblTopHeight.constant = 0
+            self.leadFinalStatusTextFieldHight.constant = 0
+            
+            self.leadInitialStatusTextField.rightImage = nil
+            self.leadFinalStatusTextField.rightImage = nil
+        }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     func showleadTagTectField(isShown: Bool) {
-        self.leadTagTextFieldHight.constant = 45
-        self.leadTagTextField.rightImage = UIImage(named: "dropDown")
+        if isShown {
+            self.leadTagTextFieldHight.constant = 45
+            self.leadTagTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            self.leadTagTextFieldHight.constant = 0
+            self.leadTagTextField.rightImage = nil
+        }
+        self.tableView?.performBatchUpdates(nil, completion: nil)
     }
 }

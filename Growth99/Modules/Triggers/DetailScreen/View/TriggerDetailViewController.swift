@@ -13,7 +13,7 @@ protocol TriggerDetailViewControlProtocol: AnyObject {
     func triggerQuestionnairesDataRecived()
     func triggerLeadSourceUrlDataRecived()
     func errorReceived(error: String)
-    
+    func triggerLeadTagsDataRecived()
     func createTriggerDataReceived()
     func createAppointmentDataReceived()
 }
@@ -32,7 +32,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var leadTagsArray = [TriggerTagListModel]()
     var patientTagsArray = [TriggerTagListModel]()
     
-    var selectedLeadTags = [TriggerTagListModel]()
+    var selectedLeadTags = [MassEmailSMSTagListModelEdit]()
     var selectedLeadTagIds: String = String.blank
     
     var selectedPatientTags = [TriggerTagListModel]()
@@ -64,7 +64,8 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var triggersCreateData = [TriggerCreateData]()
     var triggersAppointmentCreateData = [TriggerAppointmentCreateData]()
-
+    var leadTagsTriggerArray = [MassEmailSMSTagListModelEdit]()
+    
     var moduleSelectionType: String = String.blank
     var smsTargetArray: [String] = []
     var emailTargetArray: [String] = []
@@ -92,7 +93,13 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var landingPage: String = String.blank
     var landingForm: String = String.blank
-
+    
+    var isSelectLandingSelected: Bool = false
+    var isSelectFormsSelected: Bool = false
+    var isLeadStatusChangeSelected: Bool = false
+    var isInitialStatusSelected: Bool = false
+    var isFinalStatusSelected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -136,6 +143,10 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     }
     
     func triggerLeadSourceUrlDataRecived() {
+        viewModel?.getTriggerLeadTagsList()
+    }
+    
+    func triggerLeadTagsDataRecived() {
         self.view.HideSpinner()
     }
     

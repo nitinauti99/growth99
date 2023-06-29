@@ -12,12 +12,12 @@ protocol TriggerDefaultCellDelegate: AnyObject {
 }
 
 class TriggerDefaultTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     @IBOutlet weak var massEmailSMSTextField: CustomTextField!
     @IBOutlet weak var moduleNextButton: UIButton!
-
+    
     weak var delegate: TriggerDefaultCellDelegate?
     var indexPath = IndexPath()
     

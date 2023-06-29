@@ -12,7 +12,7 @@ protocol TriggerPatientCellDelegate: AnyObject {
 }
 
 class TriggerAppointmentActionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var subViewInside: UIView!
     
@@ -22,7 +22,7 @@ class TriggerAppointmentActionTableViewCell: UITableViewCell {
     @IBOutlet weak var patientAppointmentEmptyTextLbl: UILabel!
     @IBOutlet weak var appointmentNextButton: UIButton!
     @IBOutlet weak var patientNextButton: UIButton!
-
+    
     weak var delegate: TriggerPatientCellDelegate?
     var indexPath = IndexPath()
     
