@@ -76,7 +76,8 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
     weak var delegate: TriggerLeadTableViewCellDelegate?
     var indexPath = IndexPath()
     var tableView: UITableView?
-    
+    var triggerListInfoDetail = [TriggerDetailModel]()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -84,9 +85,10 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
     }
     
-    func configureCell(tableView: UITableView?, index: IndexPath) {
+    func configureCell(tableView: UITableView?, index: IndexPath, triggerListDetail: [TriggerDetailModel] ) {
         self.indexPath = index
         self.tableView = tableView
+        self.triggerListInfoDetail = triggerListDetail
     }
     
     // MARK: - Add and remove time methods
@@ -176,6 +178,7 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
             leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
         }
         self.tableView?.performBatchUpdates(nil, completion: nil)
+        self.scrollToBottomView() 
     }
     
     @IBAction func showLeadTagsButtonAction(sender: UIButton) {
@@ -270,6 +273,13 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
             self.leadFinalStatusTextField.rightImage = nil
         }
         self.tableView?.performBatchUpdates(nil, completion: nil)
+    }
+    
+    func scrollToBottomView() {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: self.triggerListInfoDetail.count-1, section: 0)
+            self.tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     func showleadTagTectField(isShown: Bool) {

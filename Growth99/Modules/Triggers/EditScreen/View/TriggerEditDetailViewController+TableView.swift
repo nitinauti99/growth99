@@ -42,7 +42,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         } else if triggerDetailList[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadEditActionTableViewCell", for: indexPath) as? TriggerLeadEditActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.configureCell(tableView: triggerdDetailTableView, index: indexPath)
+            cell.configureCell(tableView: triggerdDetailTableView, index: indexPath, triggerListEdit: triggerDetailList)
             cell.leadFromTextField.text = viewModel?.getTriggerEditListData?.triggerConditions?.joined(separator: ",")
             var landingArray = [EditLandingPageNamesModel]()
             var formArray = [EditLandingPageNamesModel]()
@@ -322,6 +322,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: true)
                     cell.showleadLandingSelectFrom(isShown: true)
                     cell.showleadSelectSource(isShown: false)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Landing Page") &&
                             selectedList.joined(separator: ",").contains("Facebook") {
@@ -331,6 +332,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: true)
                     cell.showleadLandingSelectFrom(isShown: false)
                     cell.showleadSelectSource(isShown: true)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Form") &&
                             selectedList.joined(separator: ",").contains("Facebook") {
@@ -340,6 +342,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: false)
                     cell.showleadSelectSource(isShown: true)
                     cell.showleadLandingSelectFrom(isShown: true)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Landing Page") {
                     self?.isSelectLandingSelected = true
@@ -349,6 +352,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: true)
                     cell.showleadSelectSource(isShown: false)
                     cell.showleadLandingSelectFrom(isShown: false)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Form") {
                     self?.isSelectLandingSelected = false
@@ -358,6 +362,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: false)
                     cell.showleadSelectSource(isShown: false)
                     cell.showleadLandingSelectFrom(isShown: true)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Facebook") {
                     self?.isSelectLandingSelected = false
@@ -367,6 +372,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: false)
                     cell.showleadSelectSource(isShown: true)
                     cell.showleadLandingSelectFrom(isShown: false)
+                    self?.scrollToBottom()
                 } else {
                     self?.isSelectLandingSelected = false
                     self?.isSelectFormsSelected = false
@@ -376,6 +382,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: false)
                     cell.showleadSelectSource(isShown: false)
                     cell.showleadLandingSelectFrom(isShown: false)
+                    self?.scrollToBottom()
                 }
             }
         }
@@ -398,6 +405,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             } else {
                 self?.selectedLeadLandingPages = selectedList
                 cell.leadSelectLandingTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
+                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -419,6 +427,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             } else {
                 self?.selectedleadForms = selectedList
                 cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
+                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -435,6 +444,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectedLeadSourceUrl = selectedList
             cell.leadSelectSourceTextField.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
+            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -454,6 +464,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 cell.leadInitialStatusTextField.showError(message: "Please select initial status")
             } else {
                 cell.leadInitialStatusTextField.text = selectedItem
+                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -473,6 +484,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 cell.leadFinalStatusTextField.showError(message: "Please select final status")
             } else {
                 cell.leadFinalStatusTextField.text = selectedItem
+                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -491,6 +503,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             self?.selectedLeadTags = selectedList
             let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
             self?.selectedLeadTagIds = formattedArray
+            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -511,6 +524,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             cell.leadTagTextField.rightImage = UIImage(named: "dropDown")
         }
         self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
+        self.scrollToBottom()
     }
 }
 
