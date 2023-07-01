@@ -23,7 +23,6 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         if isEmptyResponse == false {
             let item = workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].days
             selectedDays = item ?? []
-            
             cell.updateTextLabel(with: item)
             cell.timeFromTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
             cell.timeToTextField.text = workingScheduleViewModel?.serverToLocalTime(timeString: workingListModel?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
@@ -31,6 +30,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
             cell.timeFromTextField.text = String.blank
             cell.timeToTextField.text = String.blank
         }
+        cell.configureCell(index: indexPath)
         cell.buttoneRemoveDaysTapCallback = {
             self.deleteDaysRow(selectedSection: indexPath, selectedIndex: indexPath.row)
         }
@@ -65,7 +65,8 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
         return tableView.estimatedRowHeight
     }
     
-    func selectDayButtonTapped(cell: WorkingCustomTableViewCell) {
+    func selectDayButtonTapped(cell: WorkingCustomTableViewCell, index: IndexPath) {
+        selectedDays = workingListModel?[index.section].userScheduleTimings?[index.row].days ?? []
         let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
@@ -81,6 +82,7 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
                 let sentence = selectedList.joined(separator: ", ")
                 cell.selectDayTextField.text = sentence
             }
+            self.workingAddNewClicked = true
             self.selectedDays = selectedList
         }
         selectionMenu.reloadInputViews()

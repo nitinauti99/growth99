@@ -63,6 +63,7 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     var appointmentTypeSelected: String = "InPerson"
     var screenTitile = String()
     var pateintsEmail = String()
+    let radioController: RadioButtonController = RadioButtonController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,8 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         eventViewModel = AddEventViewModel(delegate: self)
         //emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
         // phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
+        radioController.buttonsArray = [inPersonBtn, virtualBtn]
+        radioController.defaultButton = inPersonBtn
     }
     
     
@@ -334,11 +337,9 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
             return
         }
 
-        // Remove non-digit characters using regular expression
-        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        guard cleanedPhoneNumber.count >= 10 else {
+        let characterCount = phoneNumber.count
+        if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
-            return
         }
 
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
@@ -372,13 +373,13 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     }
     
     @IBAction func inPersonButtonAction(sender: UIButton) {
-        inPersonBtn.isSelected = !inPersonBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         appointmentTypeSelected = "InPerson"
         virtualBtn.isSelected = false
     }
     
     @IBAction func virtualButtonAction(sender: UIButton) {
-        virtualBtn.isSelected = !virtualBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         inPersonBtn.isSelected = false
         appointmentTypeSelected = "Virtual"
     }

@@ -37,10 +37,13 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     var slots = [Slots]()
     var isEmptyResponse: Bool = false
     var isValidationSucess: Bool = false
+    var workingAddNewClicked: Bool = false
+    var newDaysButtonClick: String = ""
     
     var isValidateArray = [Bool]()
     var selectedDays = [String]()
-    
+    var daysSelectedItems: Bool = false
+    var days: [String]?
     var tableViewHeight: CGFloat {
         workingListTableView.layoutIfNeeded()
         return workingListTableView.contentSize.height
@@ -208,8 +211,11 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 }
                 
                 isValidateArray.insert(true, at: childIndex)
-                let daysArray = workingCell.selectDayTextField.text ?? String.blank
-                let days = daysArray.components(separatedBy: ",")
+                if workingAddNewClicked == false {
+                    days = workingCell.workingDaysSelected
+                } else {
+                    days = selectedDays
+                }
                 let startTime = workingCell.timeFromTextField.text ?? String.blank
                 let endTime = workingCell.timeToTextField.text ?? String.blank
                 slots.insert(
@@ -233,7 +239,15 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 return
             }
             self.view.ShowSpinner()
-            let body = WorkingParamModel(userId: UserRepository.shared.userVariableId ?? 0, clinicId: selectedClinicId, scheduleType: Constant.Profile.workingSchedule, dateFromDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateFromTextField.text ?? String.blank), dateToDate: workingScheduleViewModel?.serverToLocalInputWorking(date: workingDateToTextField.text ?? String.blank), dateFrom: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank), dateTo: workingScheduleViewModel?.serverToLocalInput(date: workingDateToTextField.text ?? String.blank), providerId: UserRepository.shared.userVariableId ?? 0, slots: slots,selectedSlots: selectedSlots)
+            let body = WorkingParamModel(userId: UserRepository.shared.userVariableId ?? 0,
+                                         clinicId: selectedClinicId,
+                                         scheduleType: Constant.Profile.workingSchedule,
+                                         dateFromDate: workingScheduleViewModel?.convertDateFromDateTo(dateString: workingDateFromTextField.text ?? String.blank),
+                                         dateToDate: workingScheduleViewModel?.convertDateFromDateTo(dateString: workingDateToTextField.text ?? String.blank),
+                                         dateFrom: workingScheduleViewModel?.convertDateWorking(dateString: workingDateFromTextField.text ?? String.blank),
+                                         dateTo: workingScheduleViewModel?.convertDateWorking(dateString: workingDateToTextField.text ?? String.blank),
+                                         providerId: UserRepository.shared.userVariableId ?? 0,
+                                         slots: slots,selectedSlots: selectedSlots)
             
             let parameters: [String: Any]  = body.toDict()
             workingScheduleViewModel?.sendRequestforWorkingSchedule(vacationParams: parameters)
@@ -261,17 +275,17 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     func validateTimes(startTime: String, endTime: String) -> Bool {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-
+        
         guard let startDate = timeFormatter.date(from: startTime),
               let endDate = timeFormatter.date(from: endTime) else {
             return false
         }
-
+        
         // Check if start time is before end time
         if startDate >= endDate {
             return false
         }
-
+        
         return true
     }
     
@@ -284,6 +298,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         let date1 = WorkingUserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate: String.blank, days: [])
         workingListModel?[0].userScheduleTimings?.append(date1)
         workingListTableView.beginUpdates()
+        workingAddNewClicked = true
         isEmptyResponse = true
         let indexPath = IndexPath(row: (workingListModel?[0].userScheduleTimings?.count ?? 0) - 1, section: 0)
         workingListTableView.insertRows(at: [indexPath], with: .fade)

@@ -71,6 +71,8 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     var selectedTime: String = String.blank
     var appointmentTypeSelected: String = "InPerson"
     var sourceTypeSelected: String = "Calender"
+    
+    let radioController: RadioButtonController = RadioButtonController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +82,8 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         setUpNavigationBar()
         self.view.ShowSpinner()
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
+        radioController.buttonsArray = [inPersonBtn, virtualBtn]
+        radioController.defaultButton = inPersonBtn
     }
     
     // MARK: - setUpNavigationBar
@@ -97,7 +101,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
         
-        phoneNumberTextField.text = editBookingHistoryData?.patientPhone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+        phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? ""
 
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
         let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
@@ -379,11 +383,9 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             return
         }
 
-        // Remove non-digit characters using regular expression
-        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        guard cleanedPhoneNumber.count >= 10 else {
+        let characterCount = phoneNumber.count
+        if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
-            return
         }
         
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
@@ -420,7 +422,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         }
         self.view.ShowSpinner()
-        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: selectedTime, appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
@@ -433,13 +435,13 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     }
 
     @IBAction func inPersonButtonAction(sender: UIButton) {
-        inPersonBtn.isSelected = !inPersonBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         appointmentTypeSelected = "InPerson"
         virtualBtn.isSelected = false
     }
     
     @IBAction func virtualButtonAction(sender: UIButton) {
-        virtualBtn.isSelected = !virtualBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         inPersonBtn.isSelected = false
         appointmentTypeSelected = "Virtual"
     }

@@ -216,7 +216,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 return headerView
             }
         } else if eventTypeSelected == "past" {
-
             if section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() }).count > 0 {
                 let date = section.month
                 let dateFormatter = DateFormatter()

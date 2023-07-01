@@ -43,10 +43,9 @@ class RegistrationViewModel {
             case .success(let response):
                 if response.statusCode == 400 {
                     self.delegate?.errorReceived(error: "There is some error creating account")
-                }else{
+                } else {
                     self.delegate?.LoaginDataRecived()
                 }
-                print("Successful Response", response)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

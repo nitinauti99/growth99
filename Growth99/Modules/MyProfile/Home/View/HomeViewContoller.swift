@@ -87,7 +87,7 @@ class HomeViewContoller: UIViewController {
         firsNameTextField.text = viewModel?.getUserProfileData.firstName
         lastNameTextField.text = viewModel?.getUserProfileData.lastName
         emailTextField.text = viewModel?.getUserProfileData.email
-        phoneNumberTextField.text = viewModel?.getUserProfileData.phone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+        phoneNumberTextField.text = viewModel?.getUserProfileData.phone ?? ""
         degignationTextField.text = viewModel?.getUserProfileData.designation
         descriptionTextView.text = viewModel?.getUserProfileData.description
         UserRepository.shared.primaryEmailId = viewModel?.getUserProfileData.email
@@ -142,7 +142,6 @@ class HomeViewContoller: UIViewController {
             self?.viewModel?.getallServiceCategories(SelectedClinics: selectedId)
         }
         selectionMenu.reloadInputViews()
-        
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
@@ -248,11 +247,9 @@ class HomeViewContoller: UIViewController {
             return
         }
 
-        // Remove non-digit characters using regular expression
-        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        guard cleanedPhoneNumber.count >= 10 else {
+        let characterCount = phoneNumber.count
+        if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
-            return
         }
         
         if let textField = phoneNumberTextField, textField.text == "", let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumberTextField.text ?? String.blank), phoneNumberValidate == false {

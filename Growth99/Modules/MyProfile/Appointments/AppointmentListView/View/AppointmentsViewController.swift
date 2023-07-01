@@ -90,29 +90,43 @@ class AppointmentsViewController: UIViewController, AppointmentsViewContollerPro
         guard let editVC = UIViewController.loadStoryboard("AppointmentListDetailViewController", "AppointmentListDetailViewController") as? AppointmentListDetailViewController else {
             fatalError("Failed to load AppointmentListDetailViewController from storyboard.")
         }
-        editVC.appointmentId = viewModel?.getProfileAppoinmentListData[index.row].id
+        if isSearch {
+            editVC.appointmentId = viewModel?.getProfileAppoinmentFilterListData[index.row].id
+        } else {
+            editVC.appointmentId = viewModel?.getProfileAppoinmentListData[index.row].id
+        }
         navigationController?.pushViewController(editVC, animated: true)
     }
     
     func removeProfileAppointment(cell: AppointmentTableViewCell, index: IndexPath) {
         var appointmentId = Int()
-        appointmentId = viewModel?.getProfileDataAtIndex(index: index.row)?.id ?? 0
         if isSearch {
             appointmentId = viewModel?.getProfileFilterDataAtIndex(index: index.row)?.id ?? 0
+            let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileFilterDataAtIndex(index: index.row)?.patientFirstname ?? "") \(viewModel?.getProfileFilterDataAtIndex(index: index.row)?.patientLastName ?? "")", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeProfileAppointment(appointmentId: appointmentId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            appointmentId = viewModel?.getProfileDataAtIndex(index: index.row)?.id ?? 0
+            let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientFirstname ?? "") \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientLastName ?? "")", preferredStyle: UIAlertController.Style.alert)
+            let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
+                                            handler: { [weak self] _ in
+                self?.view.ShowSpinner()
+                self?.viewModel?.removeProfileAppointment(appointmentId: appointmentId)
+            })
+            cancelAlert.setValue(UIColor.red, forKey: "titleTextColor")
+            alert.addAction(cancelAlert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        
-        let alert = UIAlertController(title: "Delete Appointment", message: "Are you sure you want to delete \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientFirstname ?? "") \(viewModel?.getProfileDataAtIndex(index: index.row)?.patientLastName ?? "")", preferredStyle: UIAlertController.Style.alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
-            self?.view.ShowSpinner()
-            self?.viewModel?.removeProfileAppointment(appointmentId: appointmentId)
-        }
-        deleteAction.setValue(UIColor.red, forKey: "titleTextColor")
-        alert.addAction(deleteAction)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     func appointmentRemovedSuccefully(message: String) {
