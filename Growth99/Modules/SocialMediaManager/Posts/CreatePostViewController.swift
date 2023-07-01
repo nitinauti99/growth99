@@ -82,6 +82,11 @@ class CreatePostViewController: UIViewController {
     
     func setUpUI() {
         let item = viewModel?.getSocailPostData
+        if item?.approved == true {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
         self.hashtagTextField.text = item?.hashtag
         let list: [String] = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.name ?? ""})
         self.labelTextField.text = list.joined(separator: ",")

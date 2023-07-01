@@ -112,7 +112,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
         self.view.HideSpinner()
         postCalnderInfoListData = postCalendarViewModel?.postCalendarListData ?? []
         self.sections = PostCalendarMonthSection.group(headlines: self.postCalnderInfoListData)
-        self.sections.sort { lhs, rhs in lhs.month < rhs.month }
+        self.sections.sort { lhs, rhs in lhs.month > rhs.month }
         self.postCalendarTableview.setContentOffset(.zero, animated: true)
         postCalendarTableview.reloadData()
     }
@@ -199,7 +199,8 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sections.count == 0  {
+        
+        if sections.count == 0 {
             return 1
         } else {
             let section = self.sections[section]
@@ -231,7 +232,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.setTitle("Approved", for: .normal)
                         cell.statusButton.titleLabel?.textColor = UIColor(hexString: "52afff")
                         cell.statusButton.layer.borderColor = UIColor(hexString: "52afff").cgColor
-
+                        
                     } else {
                         cell.statusButton.setTitle("Pending", for: .normal)
                         cell.statusButton.titleLabel?.textColor = UIColor.red
@@ -253,7 +254,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.setTitle("Approved", for: .normal)
                         cell.statusButton.titleLabel?.textColor = UIColor(hexString: "52afff")
                         cell.statusButton.layer.borderColor = UIColor(hexString: "52afff").cgColor
-
+                        
                     } else {
                         cell.statusButton.setTitle("Pending", for: .normal)
                         cell.statusButton.titleLabel?.textColor = UIColor.red
@@ -275,7 +276,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.setTitle("Approved", for: .normal)
                         cell.statusButton.titleLabel?.textColor = UIColor(hexString: "52afff")
                         cell.statusButton.layer.borderColor = UIColor(hexString: "52afff").cgColor
-
+                        
                     } else {
                         cell.statusButton.setTitle("Pending", for: .normal)
                         cell.statusButton.titleLabel?.textColor = UIColor.red
@@ -288,7 +289,6 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -301,7 +301,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return UITableView.automaticDimension
     }
     
     @IBAction func addAppointmentButtonAction(sender: UIButton) {

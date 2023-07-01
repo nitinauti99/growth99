@@ -161,7 +161,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.HideSpinner()
         appoinmentListData = calendarViewModel?.appointmentInfoListData ?? []
         self.sections = MonthSection.group(headlines: self.appoinmentListData)
-        self.sections.sort { lhs, rhs in lhs.month < rhs.month }
+        self.sections.sort { lhs, rhs in lhs.month > rhs.month }
         self.eventListView.setContentOffset(.zero, animated: true)
         eventListView.reloadData()
     }
