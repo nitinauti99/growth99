@@ -100,6 +100,10 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var isInitialStatusSelected: Bool = false
     var isFinalStatusSelected: Bool = false
     
+    var isTriggerForLeadContain: Bool = false
+    var isInitialStatusContain: String = ""
+    var isFinalStatusContain: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()

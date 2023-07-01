@@ -76,6 +76,10 @@ struct TriggerEditCreateModel : Codable {
     let landingPageNames : [EditLandingPageNamesModel]?
     let forms : [EditLandingPageNamesModel]?
     let sourceUrls : [TriggerEditCreateSourceUrls]?
+    let leadTags : [MassEmailSMSTagListModelEdit]?
+    let isTriggerForLeadStatus : Bool?
+    let fromLeadStatus : String?
+    let toLeadStatus : String?
     
     func toDict() -> [String: Any] {
         var dictionary = [String:Any]()
@@ -120,6 +124,22 @@ struct TriggerEditCreateModel : Codable {
                 arrOfDict.append(item.toDict())
             }
             dictionary["sourceUrls"] = arrOfDict
+        }
+        if leadTags != nil {
+            var arrOfDict = [[String: Any]]()
+            for item in leadTags! {
+                arrOfDict.append(item.toDict())
+            }
+            dictionary["leadTags"] = arrOfDict
+        }
+        if isTriggerForLeadStatus != nil {
+            dictionary["isTriggerForLeadStatus"] = isTriggerForLeadStatus
+        }
+        if fromLeadStatus != nil {
+            dictionary["fromLeadStatus"] = fromLeadStatus
+        }
+        if toLeadStatus != nil {
+            dictionary["toLeadStatus"] = toLeadStatus
         }
         return dictionary
     }
@@ -134,7 +154,11 @@ struct TriggerEditAppointmentCreateModel : Codable {
     let landingPageNames : [LandingPageNamesModel]?
     let forms : [LandingPageNamesModel]?
     let sourceUrls : [TriggerCreateSourceUrls]?
-    
+    let leadTags : [MassEmailSMSTagListModelEdit]?
+    let isTriggerForLeadStatus : Bool?
+    let fromLeadStatus : String?
+    let toLeadStatus : String?
+
     func toDict() -> [String: Any] {
         var dictionary = [String:Any]()
         if name != nil {
@@ -178,6 +202,22 @@ struct TriggerEditAppointmentCreateModel : Codable {
                 arrOfDict.append(item.toDict())
             }
             dictionary["sourceUrls"] = arrOfDict
+        }
+        if leadTags != nil {
+            var arrOfDict = [[String: Any]]()
+            for item in leadTags! {
+                arrOfDict.append(item.toDict())
+            }
+            dictionary["leadTags"] = arrOfDict
+        }
+        if isTriggerForLeadStatus != nil {
+            dictionary["isTriggerForLeadStatus"] = isTriggerForLeadStatus
+        }
+        if fromLeadStatus != nil {
+            dictionary["fromLeadStatus"] = fromLeadStatus
+        }
+        if toLeadStatus != nil {
+            dictionary["toLeadStatus"] = toLeadStatus
         }
         return dictionary
     }

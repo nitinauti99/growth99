@@ -332,11 +332,10 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             } else {
                 triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: false, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
             }
-            let params = TriggerCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [])
+            let params = TriggerCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
             let parameters: [String: Any]  = params.toDict()
             viewModel?.createTriggerDataMethod(triggerDataParms: parameters)
         } else {
-            
             if selectedTriggerTarget == "Patient" {
                 selectedTriggerTarget = "AppointmentPatient"
             } else {
@@ -349,7 +348,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 templateId = Int(selectedemailTemplateId) ?? 0
                 triggersAppointmentCreateData.append(TriggerAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
             }
-            let params = TriggerAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [])
+            let params = TriggerAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
             let parameters: [String: Any]  = params.toDict()
             viewModel?.createAppointmentDataMethod(appointmentDataParms: parameters)
         }
@@ -413,6 +412,9 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
         }
         else {
             if triggerDetailList.count < 4 {
+                isInitialStatusContain = cell.leadInitialStatusTextField.text ?? ""
+                isFinalStatusContain = cell.leadFinalStatusTextField.text ?? ""
+                isTriggerForLeadContain = cell.leadStatusChangeButton.isSelected
                 scrollToBottom()
                 createNewTriggerCell(cellNameType: "Both")
             }

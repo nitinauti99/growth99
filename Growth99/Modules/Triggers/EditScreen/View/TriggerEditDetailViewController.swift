@@ -104,6 +104,15 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var finalArray = [TriggerEditData]()
     var triggerEditChildData: [TriggerEditData] = []
     
+    var isTriggerForLeadContain: Bool = false
+    var isInitialStatusContain: String = ""
+    var isFinalStatusContain: String = ""
+    
+    var isEndTime: String = ""
+    var isTaskName: String = ""
+    var isStartTime: String = ""
+    var isAssignedToTask: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
