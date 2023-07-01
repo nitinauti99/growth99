@@ -21,6 +21,7 @@ struct UpdateUserProfile: Codable {
     let designation: String?
     let description: String?
     let id: Int?
+    let status: Int?
 }
 
 struct CreatedBy: Codable, Equatable {

@@ -121,7 +121,11 @@ class HomeViewModel {
           
             switch result {
             case .success(let userData):
-                self.delegate?.profileDataUpdated()
+                if userData.status == 500 {
+                    self.delegate?.errorReceived(error: "Internal server error")
+                }else{
+                    self.delegate?.profileDataUpdated()
+                }
                 print("Successful Response", userData)
             case .failure(_ ):
                 self.delegate?.errorReceived(error: GrowthNetworkError.invalidResponse.localizedDescription)
