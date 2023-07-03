@@ -229,7 +229,7 @@ struct TriggerEditAppointmentCreateData : Codable {
     let triggerTemplate : Int?
     let triggerType : String?
     let triggerTarget : String?
-    let triggerTime : String?
+    let triggerTime : Int?
     let triggerFrequency : String?
     let taskName : String?
     let showBorder : Bool?
@@ -281,7 +281,7 @@ struct TriggerEditCreateData : Codable {
     let triggerTemplate : Int?
     let triggerType : String?
     let triggerTarget : String?
-    let triggerTime : String?
+    let triggerTime : Int?
     let triggerFrequency : String?
     let taskName : String?
     let showBorder : Bool?
@@ -290,7 +290,6 @@ struct TriggerEditCreateData : Codable {
     let timerType : String?
     let startTime : String?
     let endTime : String?
-    let deadline: String?
     
     func toDict() -> [String: Any] {
         var dictionary = [String:Any]()
@@ -335,9 +334,6 @@ struct TriggerEditCreateData : Codable {
         }
         if endTime != nil {
             dictionary["endTime"] = endTime
-        }
-        if deadline != nil {
-            dictionary["deadline"] = deadline
         }
         return dictionary
     }

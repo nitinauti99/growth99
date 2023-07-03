@@ -325,12 +325,12 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
             if selectedNetworkType == "sms" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else if selectedNetworkType == "email" {
                 templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else {
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: false, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: "MIN", taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: selectedStartTime, endTime: selectedEndTime))
             }
             let params = TriggerCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
             let parameters: [String: Any]  = params.toDict()
@@ -785,7 +785,7 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 } else if cell.timeHourlyTextField.text == "" {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
-                    selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                    selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -797,7 +797,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 } else if cell.timeRangeEndTimeTF.text == "" {
                     cell.timeRangeEndTimeTF.showError(message: "Please select end time")
                 } else {
-                    selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                    selectedStartTime = cell.timeRangeStartTimeTF.text ?? ""
+                    selectedEndTime = cell.timeRangeEndTimeTF.text ?? ""
+                    selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -819,7 +821,7 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 } else {
                     scheduledBasedOnSelected = "APPOINTMENT_AFTER"
                 }
-                selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                 selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                 timerTypeSelected = cell.timerTypeSelected
                 submitBtn.backgroundColor = UIColor(hexString: "#009EDE")

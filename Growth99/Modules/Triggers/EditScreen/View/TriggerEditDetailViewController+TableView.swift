@@ -177,12 +177,24 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             }
             if selectedNetworkType == "SMS" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else if selectedNetworkType == "EMAIL" {
                 templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else {
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: false, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3,
+                                                                addNew: false,
+                                                                triggerTemplate: selectedTaskTemplate,
+                                                                triggerType: selectedNetworkType.uppercased(),
+                                                                triggerTarget: "lead" ,
+                                                                triggerTime: selectedTriggerTime,
+                                                                triggerFrequency: "MIN",
+                                                                taskName: taskName,
+                                                                showBorder: false,
+                                                                orderOfCondition: orderOfConditionTrigger,
+                                                                dateType: "NA",
+                                                                timerType: timerTypeSelected,
+                                                                startTime: selectedStartTime, endTime: selectedEndTime))
             }
             let params = TriggerEditCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
             let parameters: [String: Any]  = params.toDict()
@@ -246,6 +258,7 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
                 triggerdDetailTableView.reloadData()
                 moduleSelectionType = moduleType
                 createNewTriggerCell(cellNameType: "Appointment")
+                scrollToBottom()
             }
         } else if moduleType == "lead" {
             if triggerDetailList.count < 3 {
@@ -257,6 +270,7 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
                 triggerdDetailTableView.reloadData()
                 moduleSelectionType = moduleType
                 createNewTriggerCell(cellNameType: "Lead")
+                scrollToBottom()
             }
         }
     }
@@ -284,8 +298,8 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 isInitialStatusContain = cell.leadInitialStatusTextField.text ?? ""
                 isFinalStatusContain = cell.leadFinalStatusTextField.text ?? ""
                 isTriggerForLeadContain = cell.leadStatusChangeButton.isSelected
-                scrollToBottom()
                 createNewTriggerCell(cellNameType: "Both")
+                scrollToBottom()
             }
         }
     }
@@ -319,6 +333,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: true)
                     cell.showleadLandingSelectFrom(isShown: true)
                     cell.showleadSelectSource(isShown: true)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Landing Page") &&
                             selectedList.joined(separator: ",").contains("Form"){
@@ -625,7 +640,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else if cell.timeHourlyTextField.text == "" {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
-                    selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                    selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -637,7 +652,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else if cell.timeRangeEndTimeTF.text == "" {
                     cell.timeRangeEndTimeTF.showError(message: "Please select end time")
                 } else {
-                    selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                    selectedStartTime = cell.timeRangeStartTimeTF.text ?? ""
+                    selectedEndTime = cell.timeRangeEndTimeTF.text ?? ""
+                    selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -659,7 +676,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else {
                     scheduledBasedOnSelected = "APPOINTMENT_AFTER"
                 }
-                selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                 selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                 timerTypeSelected = cell.timerTypeSelected
                 submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
