@@ -14,8 +14,13 @@ extension AddEventViewController: UITextFieldDelegate  {
         if textField == phoneNumberTextField {
             guard let text = textField.text else { return false }
             let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
-            return false
+            // Check if the backspace key was pressed
+            if string.isEmpty && range.length == 1 {
+                textField.text = "" // Clear the text field's content
+                return false // Prevent further processing
+            }
+            let characterCount = newString.count
+            return characterCount <= 10
         }
         return true
     }
@@ -43,6 +48,10 @@ extension AddEventViewController: UITextFieldDelegate  {
             guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else  {
                 phoneNumberTextField.showError(message: "Phone Number is required")
                 return
+            }
+            let characterCount = phoneNumber.count
+            if characterCount < 10 {
+                phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
             }
         }
         else if (textField == emailTextField) {

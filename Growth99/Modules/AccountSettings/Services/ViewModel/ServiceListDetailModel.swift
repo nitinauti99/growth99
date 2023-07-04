@@ -211,9 +211,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    print("Api sucess")
                 } else if (response.statusCode == 500) {
-                    print("Api failre")
                 } else {
                     self.delegate?.errorReceived(error: "response failed")
                 }

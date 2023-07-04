@@ -109,11 +109,9 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
                 return
             }
 
-            // Remove non-digit characters using regular expression
-            let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-            guard cleanedPhoneNumber.count >= 10 else {
+            let characterCount = phoneNumber.count
+            if characterCount < 10 {
                 selectedNotificationTypeTextField.showError(message: "Phone Number should contain 10 digits")
-                return
             }
                 
             params = [
@@ -158,8 +156,13 @@ extension CreateNotificationViewController: UITextFieldDelegate {
         if self.notificationTypeTextField.text == "SMS" {
             guard let text = textField.text else { return false }
             let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
-            return false
+            // Check if the backspace key was pressed
+            if string.isEmpty && range.length == 1 {
+                textField.text = "" // Clear the text field's content
+                return false // Prevent further processing
+            }
+            let characterCount = newString.count
+            return characterCount <= 10
         }
         return true
     }

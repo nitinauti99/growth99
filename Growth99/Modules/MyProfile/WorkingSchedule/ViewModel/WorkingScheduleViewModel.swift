@@ -21,6 +21,8 @@ protocol WorkingScheduleViewModelProtocol {
     func serverToLocalInput(date: String) -> String
     func serverToLocalTimeInput(timeString: String) -> String
     func serverToLocalInputWorking(date: String) -> String
+    func convertDateWorking(dateString: String) -> String
+    func convertDateFromDateTo(dateString: String) -> String
 }
 
 class WorkingScheduleViewModel {
@@ -143,6 +145,34 @@ extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: dateFormatter.date(from: date) ?? Date())
+    }
+    
+    func convertDateWorking(dateString: String) -> String {
+        let dateFormatterInput = DateFormatter()
+        dateFormatterInput.dateFormat = "MM/dd/yyyy"
+        
+        let dateFormatterOutput = DateFormatter()
+        dateFormatterOutput.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        
+        if let date = dateFormatterInput.date(from: dateString) {
+            return dateFormatterOutput.string(from: date)
+        }
+        
+        return ""
+    }
+    
+    func convertDateFromDateTo(dateString: String) -> String {
+        let dateFormatterInput = DateFormatter()
+        dateFormatterInput.dateFormat = "MM/dd/yyyy"
+        let dateFormatterOutput = DateFormatter()
+        dateFormatterOutput.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatterOutput.timeZone = TimeZone(abbreviation: "UTC")
+        
+        if let date = dateFormatterInput.date(from: dateString) {
+            return dateFormatterOutput.string(from: date)
+        }
+        
+        return ""
     }
     
     func serverToLocalTime(timeString: String) -> String {

@@ -115,10 +115,10 @@ class RegistrationViewController: UIViewController, RegistrationViewControllerPr
         }
         
         guard let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberValidate else {
-            phoneNumberTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
+            phoneNumberTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
             return
         }
-        
+    
         guard let password = passwordTextField.text, !password.isEmpty else {
             passwordTextField.showError(message: Constant.ErrorMessage.passwordEmptyError)
             return

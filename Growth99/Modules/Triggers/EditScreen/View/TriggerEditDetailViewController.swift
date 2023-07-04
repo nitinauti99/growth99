@@ -81,7 +81,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var selectedNetworkType: String = String.blank
     var templateId: Int = 0
     
-    var selectedTriggerTime: String = String.blank
+    var selectedTriggerTime: Int = 0
     var selectedTriggerFrequency: String = String.blank
     var taskName: String = String.blank
     var selectedTriggerTarget: String = String.blank
@@ -99,10 +99,20 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var isLeadStatusChangeSelected: Bool = false
     var isInitialStatusSelected: Bool = false
     var isFinalStatusSelected: Bool = false
-    
+    var selectedStartTime: String = String.blank
+    var selectedEndTime: String = String.blank
     var triggerId: Int?
     var finalArray = [TriggerEditData]()
     var triggerEditChildData: [TriggerEditData] = []
+    
+    var isTriggerForLeadContain: Bool = false
+    var isInitialStatusContain: String = ""
+    var isFinalStatusContain: String = ""
+    
+    var isEndTime: String = ""
+    var isTaskName: String = ""
+    var isStartTime: String = ""
+    var isAssignedToTask: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

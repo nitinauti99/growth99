@@ -14,8 +14,13 @@ extension ClinicsListDetailViewController: UITextFieldDelegate  {
         if textField == contactNumberTextField {
             guard let text = textField.text else { return false }
             let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = newString.format(with: "(XXX) XXX-XXXX", phone: newString)
-            return false
+            // Check if the backspace key was pressed
+            if string.isEmpty && range.length == 1 {
+                textField.text = "" // Clear the text field's content
+                return false // Prevent further processing
+            }
+            let characterCount = newString.count
+            return characterCount <= 10
         }
         return true
     }
@@ -45,6 +50,10 @@ extension ClinicsListDetailViewController: UITextFieldDelegate  {
                 contactNumberTextField.showError(message: "Contact Number is required.")
                 submitButton.isEnabled = false
                 return
+            }
+            let characterCount = text.count
+            if characterCount < 10 {
+                contactNumberTextField.showError(message: "Phone Number should contain 10 digits")
             }
         case addressField:
             guard let text = addressField.text, !text.isEmpty else {

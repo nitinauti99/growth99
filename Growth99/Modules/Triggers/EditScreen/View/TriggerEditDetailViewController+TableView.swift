@@ -42,6 +42,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         } else if triggerDetailList[indexPath.row].cellType == "Lead" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadEditActionTableViewCell", for: indexPath) as? TriggerLeadEditActionTableViewCell else { return UITableViewCell()}
             cell.delegate = self
+            
             cell.configureCell(tableView: triggerdDetailTableView, index: indexPath, triggerListEdit: triggerDetailList)
             cell.leadFromTextField.text = viewModel?.getTriggerEditListData?.triggerConditions?.joined(separator: ",")
             var landingArray = [EditLandingPageNamesModel]()
@@ -90,6 +91,9 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             
             if viewModel?.getTriggerEditListData?.isTriggerForLeadStatus == true {
                 cell.leadStatusChangeButton.isSelected = true
+                isInitialStatusContain = viewModel?.getTriggerEditListData?.fromLeadStatus ?? ""
+                isFinalStatusContain = viewModel?.getTriggerEditListData?.toLeadStatus ?? ""
+                isTriggerForLeadContain = viewModel?.getTriggerEditListData?.isTriggerForLeadStatus ?? false
                 cell.showLeadStatusChange(isShown: true)
                 cell.leadInitialStatusTextField.text = viewModel?.getTriggerEditListData?.fromLeadStatus ?? ""
                 cell.leadFinalStatusTextField.text = viewModel?.getTriggerEditListData?.toLeadStatus ?? ""
@@ -122,13 +126,12 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             
             
             for item in viewModel?.getTriggerEditListData?.triggerData ?? [] {
-                
                 let creatChild = TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.endTime, orderOfCondition: item.orderOfCondition, type: "Create")
                 
                 let createTimechild =  TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.startTime, orderOfCondition: item.orderOfCondition, type: "Time")
-                
                 finalArray.append(creatChild)
                 finalArray.append(createTimechild)
+                isTaskName = item.taskName ?? ""
             }
             cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
             return cell
@@ -174,14 +177,26 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             }
             if selectedNetworkType == "SMS" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else if selectedNetworkType == "EMAIL" {
                 templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else {
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: false, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: "", deadline: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3,
+                                                                addNew: false,
+                                                                triggerTemplate: selectedTaskTemplate,
+                                                                triggerType: selectedNetworkType.uppercased(),
+                                                                triggerTarget: "lead" ,
+                                                                triggerTime: selectedTriggerTime,
+                                                                triggerFrequency: "MIN",
+                                                                taskName: taskName,
+                                                                showBorder: false,
+                                                                orderOfCondition: orderOfConditionTrigger,
+                                                                dateType: "NA",
+                                                                timerType: timerTypeSelected,
+                                                                startTime: selectedStartTime, endTime: selectedEndTime))
             }
-            let params = TriggerEditCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [])
+            let params = TriggerEditCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
             let parameters: [String: Any]  = params.toDict()
             viewModel?.createTriggerDataMethodEdit(triggerDataParms: parameters, selectedTriggerid: triggerId ?? 0)
         } else {
@@ -198,7 +213,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 templateId = Int(selectedemailTemplateId) ?? 0
                 triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
             }
-            let params = TriggerEditAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [])
+            let params = TriggerEditAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: [], isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
             let parameters: [String: Any]  = params.toDict()
             viewModel?.createAppointmentDataMethodEdit(appointmentDataParms: parameters, selectedTriggerid: triggerId ?? 0)
         }
@@ -243,6 +258,7 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
                 triggerdDetailTableView.reloadData()
                 moduleSelectionType = moduleType
                 createNewTriggerCell(cellNameType: "Appointment")
+                scrollToBottom()
             }
         } else if moduleType == "lead" {
             if triggerDetailList.count < 3 {
@@ -254,6 +270,7 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
                 triggerdDetailTableView.reloadData()
                 moduleSelectionType = moduleType
                 createNewTriggerCell(cellNameType: "Lead")
+                scrollToBottom()
             }
         }
     }
@@ -278,8 +295,11 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         }
         else {
             if triggerDetailList.count < 4 {
-                scrollToBottom()
+                isInitialStatusContain = cell.leadInitialStatusTextField.text ?? ""
+                isFinalStatusContain = cell.leadFinalStatusTextField.text ?? ""
+                isTriggerForLeadContain = cell.leadStatusChangeButton.isSelected
                 createNewTriggerCell(cellNameType: "Both")
+                scrollToBottom()
             }
         }
     }
@@ -313,6 +333,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                     cell.showLeadSelectLanding(isShown: true)
                     cell.showleadLandingSelectFrom(isShown: true)
                     cell.showleadSelectSource(isShown: true)
+                    self?.scrollToBottom()
                 }
                 else if selectedList.joined(separator: ",").contains("Landing Page") &&
                             selectedList.joined(separator: ",").contains("Form"){
@@ -568,7 +589,6 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     }
     
     func addAnotherConditionButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
-        
         if triggerDetailList.count == 4 {
             orderOfConditionTrigger = orderOfConditionTrigger + 2
         } else {
@@ -620,7 +640,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else if cell.timeHourlyTextField.text == "" {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
-                    selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                    selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -632,7 +652,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else if cell.timeRangeEndTimeTF.text == "" {
                     cell.timeRangeEndTimeTF.showError(message: "Please select end time")
                 } else {
-                    selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                    selectedStartTime = cell.timeRangeStartTimeTF.text ?? ""
+                    selectedEndTime = cell.timeRangeEndTimeTF.text ?? ""
+                    selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -654,7 +676,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else {
                     scheduledBasedOnSelected = "APPOINTMENT_AFTER"
                 }
-                selectedTriggerTime = cell.timeDurationTextField.text ?? ""
+                selectedTriggerTime = Int(cell.timeDurationTextField.text ?? "0") ?? 0
                 selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                 timerTypeSelected = cell.timerTypeSelected
                 submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
@@ -702,6 +724,8 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             } else if cell.assignTaskNetworkTextLabel.text == "Select network" {
                 cell.assignTaskEmptyTextLabel.isHidden = false
             } else {
+                isTaskName = cell.taskNameTextField.text ?? ""
+                isAssignedToTask = cell.assignTaskNetworkTextLabel.text ?? ""
                 cell.createNextButton.isEnabled = false
                 cell.assignTaskEmptyTextLabel.isHidden = true
                 taskName = cell.taskNameTextField.text ?? ""
@@ -844,6 +868,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             } else {
                 cell.assignTaskEmptyTextLabel.isHidden = true
                 self?.selectedTaskTemplate = selectedItem?.id ?? 0
+                self?.isAssignedToTask = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
                 cell.assignTaskNetworkTextLabel.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
             }
         }

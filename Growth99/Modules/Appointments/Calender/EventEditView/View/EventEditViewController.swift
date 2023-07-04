@@ -72,6 +72,9 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     var selectedTime: String = String.blank
     var appointmentTypeSelected: String = "InPerson"
     var sourceTypeSelected: String = "Calender"
+    
+    let radioController: RadioButtonController = RadioButtonController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
@@ -82,6 +85,9 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         //emailTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
        // phoneNumberTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
+        radioController.buttonsArray = [inPersonBtn, virtualBtn]
+        radioController.defaultButton = inPersonBtn
+
     }
     
     // MARK: - setUpNavigationBar
@@ -98,7 +104,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         firstNameTextField.text = editBookingHistoryData?.patientFirstName ?? String.blank
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
-        phoneNumberTextField.text = editBookingHistoryData?.patientPhone?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+        phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? ""
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
         let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
@@ -384,11 +390,9 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             return
         }
 
-        // Remove non-digit characters using regular expression
-        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        guard cleanedPhoneNumber.count >= 10 else {
+        let characterCount = phoneNumber.count
+        if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
-            return
         }
         
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
@@ -448,13 +452,13 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     }
 
     @IBAction func inPersonButtonAction(sender: UIButton) {
-        inPersonBtn.isSelected = !inPersonBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         appointmentTypeSelected = "InPerson"
         virtualBtn.isSelected = false
     }
     
     @IBAction func virtualButtonAction(sender: UIButton) {
-        virtualBtn.isSelected = !virtualBtn.isSelected
+        radioController.buttonArrayUpdated(buttonSelected: sender)
         inPersonBtn.isSelected = false
         appointmentTypeSelected = "Virtual"
     }

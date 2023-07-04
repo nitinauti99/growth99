@@ -264,7 +264,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
     func setupClinicDetailUI() {
         clinicNameTextField.text = viewModel?.getClinicsListData?.name ?? String.blank
         
-        contactNumberTextField.text = viewModel?.getClinicsListData?.contactNumber?.applyPatternOnNumbers(pattern: "(###) ###-####", replacementCharacter: "#")
+        contactNumberTextField.text = viewModel?.getClinicsListData?.contactNumber ?? ""
         
         timeZoneTextField.text = viewModel?.getClinicsListData?.timezone ?? String.blank
         addressField.text = viewModel?.getClinicsListData?.address ?? String.blank
@@ -404,12 +404,10 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
             contactNumberTextField.showError(message: "Phone Number is required")
             return
         }
-        
-        // Remove non-digit characters using regular expression
-        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        guard cleanedPhoneNumber.count >= 10 else {
+
+        let characterCount = phoneNumber.count
+        if characterCount < 10 {
             contactNumberTextField.showError(message: "Phone Number should contain 10 digits")
-            return
         }
         
         guard let timeZone = timeZoneTextField.text, !timeZone.isEmpty else {

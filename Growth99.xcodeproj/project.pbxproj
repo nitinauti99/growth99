@@ -412,6 +412,7 @@
 		189E3F1429C3980900B94190 /* PostCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */; };
 		189E3F1529C3980900B94190 /* PostCalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0D29C3980900B94190 /* PostCalenderModel.swift */; };
 		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
+		254D77912A50135E007941CB /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
@@ -901,7 +902,6 @@
 		D0D4E7752A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */; };
 		D0D834B82A1FDA9800A60443 /* PostCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */; };
 		D0D834B92A1FDA9800A60443 /* PostCalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */; };
-		D0D834BC2A1FDC4200A60443 /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */; };
 		D0D834BD2A1FDC4200A60443 /* PostCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */; };
 		D0D9B1A32A3979930049D7DF /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9B1A22A3979930049D7DF /* ContactViewController.swift */; };
 		D0D9B1A52A3979A20049D7DF /* ContactViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D9B1A42A3979A20049D7DF /* ContactViewController.storyboard */; };
@@ -1364,6 +1364,7 @@
 		189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderViewModel.swift; sourceTree = "<group>"; };
 		189E3F0D29C3980900B94190 /* PostCalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderModel.swift; sourceTree = "<group>"; };
 		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -1868,7 +1869,6 @@
 		D0D4E7742A235B0200BB7A59 /* HelpAndTrainingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HelpAndTrainingViewController.storyboard; sourceTree = "<group>"; };
 		D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalendarViewController.swift; sourceTree = "<group>"; };
 		D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCalendarViewController.storyboard; sourceTree = "<group>"; };
-		D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		D0D9B1A22A3979930049D7DF /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		D0D9B1A42A3979A20049D7DF /* ContactViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactViewController.storyboard; sourceTree = "<group>"; };
@@ -4061,8 +4061,8 @@
 		189E3F1129C3980900B94190 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */,
 				D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */,
-				D0D834BA2A1FDC4100A60443 /* PostCalendarTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -7185,7 +7185,6 @@
 				01468E3529C0D80B002BDC1F /* PateintCustomSMSTemplateTableViewCell.xib in Resources */,
 				84D063592967EA8C001FE469 /* TasksListViewController.storyboard in Resources */,
 				847E1F1F2916B39200C221C0 /* test.json in Resources */,
-				D0D834BC2A1FDC4200A60443 /* PostCalendarTableViewCell.xib in Resources */,
 				84D062A12967070D001FE469 /* UserListViewContoller.storyboard in Resources */,
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */,
@@ -7305,6 +7304,7 @@
 				01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */,
 				017D571929AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
+				254D77912A50135E007941CB /* PostCalendarTableViewCell.xib in Resources */,
 				01684C6B29BE10D000DE1041 /* CreateSMSTemplateViewController.storyboard in Resources */,
 				1883F12829C7571E0080997B /* countries.json in Resources */,
 				18491DB529B80CE000FE72EF /* MassEmailandSMSModuleTableViewCell.xib in Resources */,

@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol WorkingCellSubclassDelegate: AnyObject {
-    func selectDayButtonTapped(cell: WorkingCustomTableViewCell)
+    func selectDayButtonTapped(cell: WorkingCustomTableViewCell, index: IndexPath)
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell)
     func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell)
 }
@@ -30,7 +30,9 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     var userScheduleTimings: [UserScheduleTimings]?
     var buttoneRemoveDaysTapCallback: () -> ()  = { }
     weak var delegate: WorkingCellSubclassDelegate?
-
+    var indexPath = IndexPath()
+    var workingDaysSelected = [String]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,6 +43,10 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         subView.layer.borderWidth = 1
         subView.layer.cornerRadius = 5
         subView.layer.borderColor = UIColor.init(hexString: "#009EDE").cgColor
+    }
+    
+    func configureCell(index: IndexPath) {
+        indexPath = index
     }
     
     override func prepareForReuse() {
@@ -71,6 +77,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
             let sentence = content?.joined(separator: ",")
             selectDayTextField.text = sentence
         }
+        workingDaysSelected = content ?? []
     }
     
     @IBAction func deleteWorkingButtonAction(sender: UIButton) {
@@ -78,6 +85,6 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     @IBAction func selectDayBtnAction(sender: UIButton) {
-        self.delegate?.selectDayButtonTapped(cell: self)
+        self.delegate?.selectDayButtonTapped(cell: self, index: indexPath)
     }
 }

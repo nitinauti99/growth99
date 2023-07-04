@@ -78,7 +78,10 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var selectedNetworkType: String = String.blank
     var templateId: Int = 0
     
-    var selectedTriggerTime: String = String.blank
+    var selectedTriggerTime: Int = 0
+    var selectedStartTime: String = String.blank
+    var selectedEndTime: String = String.blank
+
     var selectedTriggerFrequency: String = String.blank
     var taskName: String = String.blank
     var selectedTriggerTarget: String = String.blank
@@ -99,6 +102,10 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var isLeadStatusChangeSelected: Bool = false
     var isInitialStatusSelected: Bool = false
     var isFinalStatusSelected: Bool = false
+    
+    var isTriggerForLeadContain: Bool = false
+    var isInitialStatusContain: String = ""
+    var isFinalStatusContain: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
