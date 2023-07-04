@@ -44,6 +44,8 @@
 		01152E3629B3C60C00B24627 /* LeadHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3529B3C60C00B24627 /* LeadHistoryModel.swift */; };
 		01152E3C29B3C65000B24627 /* CombineTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */; };
 		01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */; };
+		01301E5E2A54908E00A59B52 /* PateintsViewTemplateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01301E5C2A54908E00A59B52 /* PateintsViewTemplateController.swift */; };
+		01301E5F2A54908E00A59B52 /* PateintsViewTemplateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01301E5D2A54908E00A59B52 /* PateintsViewTemplateController.xib */; };
 		0131D32929E46DB7009D11C1 /* EditLeadViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131D32829E46DB7009D11C1 /* EditLeadViewController+UITextField.swift */; };
 		013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */; };
 		013A4F9729B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */; };
@@ -995,6 +997,8 @@
 		01152E3529B3C60C00B24627 /* LeadHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadHistoryModel.swift; sourceTree = "<group>"; };
 		01152E3B29B3C65000B24627 /* CombineTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineViewModel.swift; sourceTree = "<group>"; };
 		01152E3D29B3C65D00B24627 /* CombineTimeLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTimeLineModel.swift; sourceTree = "<group>"; };
+		01301E5C2A54908E00A59B52 /* PateintsViewTemplateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsViewTemplateController.swift; sourceTree = "<group>"; };
+		01301E5D2A54908E00A59B52 /* PateintsViewTemplateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PateintsViewTemplateController.xib; sourceTree = "<group>"; };
 		0131D32829E46DB7009D11C1 /* EditLeadViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditLeadViewController+UITextField.swift"; sourceTree = "<group>"; };
 		013A4F9329B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "leadTimeLineViewController+TableView.swift"; sourceTree = "<group>"; };
 		013A4F9629B49A7400CA24B0 /* LeadHistoryViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadHistoryViewController+TableView.swift"; sourceTree = "<group>"; };
@@ -2040,6 +2044,8 @@
 				01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */,
 				01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */,
 				01152E0629B3221D00B24627 /* PateintsTimeLineViewController+TableView.swift */,
+				01301E5C2A54908E00A59B52 /* PateintsViewTemplateController.swift */,
+				01301E5D2A54908E00A59B52 /* PateintsViewTemplateController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7249,6 +7255,7 @@
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
+				01301E5F2A54908E00A59B52 /* PateintsViewTemplateController.xib in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
 				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
@@ -7767,6 +7774,7 @@
 				845C39D1292276AF00D934C5 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				84F610E1292A71AB00B1FB69 /* String+Extension.swift in Sources */,
 				84C8F16C298BDCAC0049CEAC /* ScrollableSegmentedControl.swift in Sources */,
+				01301E5E2A54908E00A59B52 /* PateintsViewTemplateController.swift in Sources */,
 				84D063112967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift in Sources */,
 				01468E3429C0D80B002BDC1F /* PateintCustomSMSTemplateTableViewCell.swift in Sources */,
 				39F2FF132996B2F40089BD4F /* AppointmentsViewController+TableView.swift in Sources */,

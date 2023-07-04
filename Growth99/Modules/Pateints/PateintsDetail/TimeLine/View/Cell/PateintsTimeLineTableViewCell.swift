@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PateintsTimeLineTableViewCellProtocol:AnyObject {
-    func viewTemplate(cell: PateintsTimeLineTableViewCell, index: IndexPath)
+    func viewTemplate(cell: PateintsTimeLineTableViewCell, index: IndexPath, templateId: Int)
 }
 
 class PateintsTimeLineTableViewCell: UITableViewCell {
@@ -22,7 +22,8 @@ class PateintsTimeLineTableViewCell: UITableViewCell {
     weak var delegate: PateintsTimeLineTableViewCellProtocol?
     var dateFormater : DateFormaterProtocol?
     var indexPath = IndexPath()
-
+    var templateId = Int()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
@@ -40,9 +41,11 @@ class PateintsTimeLineTableViewCell: UITableViewCell {
         self.type.text =  timeLineVM?.type ?? String.blank
         self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
         self.indexPath = index
+        self.templateId = timeLineVM?.id ?? 0
+        
     }
     
     @IBAction func viewTemplateButtonPressed() {
-        self.delegate?.viewTemplate(cell: self, index: indexPath)
+        self.delegate?.viewTemplate(cell: self, index: indexPath, templateId: self.templateId)
     }
 }
