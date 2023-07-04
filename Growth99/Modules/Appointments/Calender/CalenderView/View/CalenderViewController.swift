@@ -277,7 +277,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                     cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].patientLastName ?? String.blank)"
 
-                    cell.eventsDuration.text = calendarViewModel?.convertUTCtoLocalTime(dateString: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate ?? String.blank)
+                    let startTime = calendarViewModel?.convertUTCtoLocalTime(dateString: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate ?? String.blank)
+                    
+                    let endTime = calendarViewModel?.convertUTCtoLocalTime(dateString: section.headlines.filter({ $0.appointmentEndDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentEndDate ?? String.blank)
+                    
+                    cell.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
                     cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -289,7 +293,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                     cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientLastName ?? String.blank)"
-                    cell.eventsDuration.text = calendarViewModel?.convertUTCtoLocalTime(dateString: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate ?? String.blank)
+                    let startTime = calendarViewModel?.convertUTCtoLocalTime(dateString: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate ?? String.blank)
+                    let endTime = calendarViewModel?.convertUTCtoLocalTime(dateString: section.headlines.filter({ $0.appointmentEndDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentEndDate ?? String.blank)
+                    cell.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
                     cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -301,7 +307,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
                     cell.eventsTitle.text = "\(headline.patientFirstName ?? String.blank) \(headline.patientLastName ?? String.blank)"
-                    cell.eventsDuration.text = calendarViewModel?.convertUTCtoLocalTime(dateString: headline.appointmentStartDate ?? String.blank)
+                    let startTime = calendarViewModel?.convertUTCtoLocalTime(dateString: headline.appointmentStartDate ?? String.blank)
+                    let endTime = calendarViewModel?.convertUTCtoLocalTime(dateString: headline.appointmentEndDate ?? String.blank)
+                    cell.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
                     cell.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
