@@ -283,7 +283,6 @@ class HomeViewContoller: UIViewController {
     }
     
     func openUserListView(){
-       
         let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
         self.navigationController?.pushViewController(userListVC, animated: true)
     }

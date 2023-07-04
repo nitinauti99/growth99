@@ -16,3 +16,7 @@ struct PateintsTimeLineModel: Codable {
     let id: Int?
     let type: String?
 }
+
+struct PateintsTimeLineViewTemplateModel: Codable {
+    let appointmentAuditContent: String?
+}

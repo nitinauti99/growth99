@@ -39,6 +39,8 @@ class LeadTagsListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addSerchBar()
+        self.searchBar.text = ""
+        self.isSearch = false
         self.registerTableView()
         self.view.ShowSpinner()
         self.viewModel?.getLeadTagsList()

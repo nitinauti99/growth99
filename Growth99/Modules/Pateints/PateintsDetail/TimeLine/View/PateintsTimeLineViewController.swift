@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
 protocol PateintsTimeLineViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
@@ -48,14 +49,17 @@ class PateintsTimeLineViewController: UIViewController,
 
 extension PateintsTimeLineViewController: PateintsTimeLineTableViewCellProtocol {
    
-    func viewTemplate(cell: PateintsTimeLineTableViewCell, index: IndexPath) {
+    func viewTemplate(cell: PateintsTimeLineTableViewCell, index: IndexPath, templateId: Int) {
         self.view.ShowSpinner()
-        viewModel?.getTimeLineTemplateData(pateintsId: 1233333)
+        viewModel?.getTimeLineTemplateData(pateintsId: templateId)
     }
     
     func recivedPateintsTimeLineTemplateData(){
         self.view.HideSpinner()
-
+        let PateintsViewTemplateVC = PateintsViewTemplateController()
+        PateintsViewTemplateVC.htmlString  = viewModel?.getPateintsTimeLineViewTemplateData?.appointmentAuditContent
+        PateintsViewTemplateVC.modalPresentationStyle = .overFullScreen
+        self.present(PateintsViewTemplateVC, animated: true)
     }
     
 }

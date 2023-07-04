@@ -12,11 +12,13 @@ protocol PateintsTimeLineViewModelProtocol {
     func getTimeLineTemplateData(pateintsId: Int)
     func pateintsTimeLineDataAtIndex(index: Int)-> PateintsTimeLineModel?
     var getPateintsTimeLineData: [PateintsTimeLineModel]? { get }
+    var getPateintsTimeLineViewTemplateData: PateintsTimeLineViewTemplateModel? { get }
 }
 
 class PateintsTimeLineViewModel {
     var pateintsTimeLineData: [PateintsTimeLineModel]?
-
+    var pateintsTimeLineViewTemplateData: PateintsTimeLineViewTemplateModel?
+    
     var delegate: PateintsTimeLineViewControllerProtocol?
 
     
@@ -42,14 +44,11 @@ class PateintsTimeLineViewModel {
     }
     
     func getTimeLineTemplateData(pateintsId: Int) {
-        let finaleURL = "https://api.growthemr.com/api/v1/audit/appointment/json/content?id=" +  "\(pateintsId)"
-        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: ApiUrl.pateintsViewTemplate.appending("\(pateintsId)"), method: .GET, headers: self.requestManager.Headers()) { (result: Result< PateintsTimeLineViewTemplateModel, GrowthNetworkError>) in
             switch result {
             case .success(let list):
-                print(list)
-                //self.pateintsTimeLineData = list
-                self.delegate?.recivedPateintsTimeLineData()
+                self.pateintsTimeLineViewTemplateData = list
+                self.delegate?.recivedPateintsTimeLineTemplateData()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -63,6 +62,10 @@ class PateintsTimeLineViewModel {
 }
 
 extension PateintsTimeLineViewModel: PateintsTimeLineViewModelProtocol {
+    var getPateintsTimeLineViewTemplateData: PateintsTimeLineViewTemplateModel? {
+        return pateintsTimeLineViewTemplateData
+    }
+    
  
     var getPateintsTimeLineData: [PateintsTimeLineModel]? {
         return self.pateintsTimeLineData

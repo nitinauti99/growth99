@@ -23,6 +23,7 @@ struct EndPoints {
     static let allClinics = "/api/v1/clinics/allClinics"
     static let selectedClinic = "/api/clinics/"
     static let creatClinic = "/api/clinics"
+    static let updateUser = "/api/users"
     static let changePassword = "/api/users/change-password"
     static let serviceCategories = "/api/v1/clinics/serviceCategories?clinicId="
     static let service = "/api/v1/services/serviceCategories?categoryId="
@@ -110,6 +111,7 @@ struct EndPoints {
     static let getBussinessSelection = "/api/public/v1/users/"
     static let getAllEmailandSMS = "/api/trigger?query=%27BroadCast%27"
     static let patentsTimeLine = "/api/v1/audit/patient?patientId="
+    static let pateintsViewTemplate = "/api/v1/audit/appointment/json/content?id="
     static let patientsByTenantId = "/api/v1/patientsByTenantId"
     static let leadTaskList = "/api/workflowtasks/lead/"
     static let getAnnouncementsList = "/api/productionRelease/all"
@@ -189,6 +191,7 @@ struct ApiUrl {
     static let forgotPassword = EndPoints.baseURL.appending(EndPoints.forgotPassword)
     static let VerifyforgotPassword = EndPoints.baseURL.appending(EndPoints.VerifyforgotPassword)
     static let userProfile = EndPoints.baseURL.appending(EndPoints.userProfile)
+    static let updateUser = EndPoints.baseURL.appending(EndPoints.updateUser)
     static let allClinics = EndPoints.baseURL.appending(EndPoints.allClinics)
     static let changeUserPassword = EndPoints.baseURL.appending(EndPoints.changePassword)
     static let serviceCategories = EndPoints.baseURL.appending(EndPoints.serviceCategories)
@@ -278,6 +281,7 @@ struct ApiUrl {
     static let getBussinessSelection = EndPoints.baseURL.appending(EndPoints.getBussinessSelection)
     static let getAllEmailandSMS = EndPoints.baseURL.appending(EndPoints.getAllEmailandSMS)
     static let patentsTimeLine = EndPoints.baseURL.appending(EndPoints.patentsTimeLine)
+    static let pateintsViewTemplate = EndPoints.baseURL.appending(EndPoints.pateintsViewTemplate)
     static let patientsByTenantId = EndPoints.baseURL.appending(EndPoints.patientsByTenantId)
     static let leadTaskList = EndPoints.baseURL.appending(EndPoints.leadTaskList)
     static let getAnnouncementsList = EndPoints.baseURL.appending(EndPoints.getAnnouncementsList)
