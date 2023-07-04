@@ -23,6 +23,7 @@ struct EndPoints {
     static let allClinics = "/api/v1/clinics/allClinics"
     static let selectedClinic = "/api/clinics/"
     static let creatClinic = "/api/clinics"
+    static let updateUser = "/api/users"
     static let changePassword = "/api/users/change-password"
     static let serviceCategories = "/api/v1/clinics/serviceCategories?clinicId="
     static let service = "/api/v1/services/serviceCategories?categoryId="
@@ -189,6 +190,7 @@ struct ApiUrl {
     static let forgotPassword = EndPoints.baseURL.appending(EndPoints.forgotPassword)
     static let VerifyforgotPassword = EndPoints.baseURL.appending(EndPoints.VerifyforgotPassword)
     static let userProfile = EndPoints.baseURL.appending(EndPoints.userProfile)
+    static let updateUser = EndPoints.baseURL.appending(EndPoints.updateUser)
     static let allClinics = EndPoints.baseURL.appending(EndPoints.allClinics)
     static let changeUserPassword = EndPoints.baseURL.appending(EndPoints.changePassword)
     static let serviceCategories = EndPoints.baseURL.appending(EndPoints.serviceCategories)

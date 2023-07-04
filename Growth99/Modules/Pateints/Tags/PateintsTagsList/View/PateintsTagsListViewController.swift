@@ -59,6 +59,8 @@ class PateintsTagsListViewController: UIViewController {
         searchBar.searchBarStyle = UISearchBar.Style.default
         searchBar.placeholder = "Search..."
         searchBar.sizeToFit()
+        self.searchBar.text = ""
+        self.isSearch = false
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self

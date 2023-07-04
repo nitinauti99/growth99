@@ -113,10 +113,10 @@ class UserCreateViewModel {
                                          "serviceIds": serviceIds,
                                          "isProvider": isProvider,
                                          "description": description,
-                                         "designation": designation
+                                         "designation": designation,
+                                         "serviceCategoryId" : Int()
         ]
-        let url = "https://api.growthemr.com/api/users"
-        self.requestManager.request(forPath: url, method: .POST,headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.updateUser, method: .POST,headers: requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<UpdateUserProfile, GrowthNetworkError>) in
             switch result {
             case .success(let userData):
                 if userData.email == nil {
