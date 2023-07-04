@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,25 +41,19 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thusday -May 9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-0c-Rep">
-                                <rect key="frame" x="20" y="15" width="251" height="24"/>
+                                <rect key="frame" x="20" y="22" width="251" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM — 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3l-5w-4WZ">
-                                <rect key="frame" x="20" y="78.5" width="251" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM — 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJn-t1-zKk">
-                                <rect key="frame" x="20" y="49" width="251" height="19.5"/>
+                                <rect key="frame" x="20" y="66" width="251" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="ujZ-yR-yUP">
-                                <rect key="frame" x="300" y="73" width="25" height="25"/>
+                                <rect key="frame" x="300" y="60.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="XNm-zM-Yyq"/>
                                     <constraint firstAttribute="width" constant="25" id="gc5-V9-Jld"/>
@@ -69,8 +63,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="T3l-5w-4WZ" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="leading" id="08r-FF-U0f"/>
-                            <constraint firstItem="2Xh-0c-Rep" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" constant="15" id="5uY-EO-zym"/>
-                            <constraint firstItem="dJn-t1-zKk" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="leading" id="82h-5L-Uhc"/>
+                            <constraint firstItem="2Xh-0c-Rep" firstAttribute="top" secondItem="0fx-IC-AXD" secondAttribute="top" id="4eu-mU-EAj"/>
                             <constraint firstItem="T3l-5w-4WZ" firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" id="9K6-AB-QT2"/>
                             <constraint firstAttribute="bottom" secondItem="8qJ-dq-Zyu" secondAttribute="bottom" id="Cj7-Tb-UFd"/>
                             <constraint firstAttribute="trailing" secondItem="0fx-IC-AXD" secondAttribute="trailing" constant="22" id="DlC-GB-SQT"/>
@@ -78,10 +71,8 @@
                             <constraint firstItem="0fx-IC-AXD" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="trailing" constant="22" id="Jgl-CF-dDe"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" id="V66-ZM-MXS"/>
                             <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="8qJ-dq-Zyu" secondAttribute="trailing" constant="15" id="Z3X-Xp-pA8"/>
+                            <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="2Xh-0c-Rep" secondAttribute="bottom" constant="20" id="bmM-CR-H7i"/>
                             <constraint firstItem="8qJ-dq-Zyu" firstAttribute="leading" secondItem="jLf-tQ-Xcs" secondAttribute="leading" id="kOA-Pt-hsd"/>
-                            <constraint firstItem="dJn-t1-zKk" firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" id="m3n-aA-EiN"/>
-                            <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="dJn-t1-zKk" secondAttribute="bottom" constant="10" id="nDI-0W-kGC"/>
-                            <constraint firstItem="dJn-t1-zKk" firstAttribute="top" secondItem="2Xh-0c-Rep" secondAttribute="bottom" constant="10" id="tOn-69-Oza"/>
                             <constraint firstItem="ujZ-yR-yUP" firstAttribute="trailing" secondItem="0fx-IC-AXD" secondAttribute="trailing" id="wPe-Ey-M0l"/>
                             <constraint firstItem="ujZ-yR-yUP" firstAttribute="bottom" secondItem="T3l-5w-4WZ" secondAttribute="bottom" id="xFt-U9-Q6X"/>
                         </constraints>
@@ -108,7 +99,6 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="eventsDate" destination="0fx-IC-AXD" id="ihD-cY-o8z"/>
-                <outlet property="eventsDateCreated" destination="dJn-t1-zKk" id="uu1-ox-P0h"/>
                 <outlet property="eventsDuration" destination="T3l-5w-4WZ" id="wtb-Ps-Ncq"/>
                 <outlet property="eventsLineView" destination="8qJ-dq-Zyu" id="ehw-1M-RBf"/>
                 <outlet property="eventsTitle" destination="2Xh-0c-Rep" id="0t4-E7-z6h"/>

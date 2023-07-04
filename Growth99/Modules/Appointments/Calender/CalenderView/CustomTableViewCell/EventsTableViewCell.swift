@@ -11,10 +11,8 @@ class EventsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventsLineView: UIView!
     @IBOutlet weak var eventsTitle: UILabel!
-    @IBOutlet weak var eventsDateCreated: UILabel!
     @IBOutlet weak var eventsDuration: UILabel!
     @IBOutlet weak var eventsDate: UIButton!
-    @IBOutlet weak var eventsDetailButton: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
