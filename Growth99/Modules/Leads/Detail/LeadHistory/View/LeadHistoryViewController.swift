@@ -19,7 +19,8 @@ class LeadHistoryViewController: UIViewController, LeadHistoryViewControllerProt
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    var leadDetailVC: leadDetailViewController!
+
     var viewModel: LeadHistoryViewModelProtocol?
     var isSearch : Bool = false
     let user = UserRepository.shared

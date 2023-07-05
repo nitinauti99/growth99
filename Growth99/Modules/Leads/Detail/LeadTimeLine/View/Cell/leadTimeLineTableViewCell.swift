@@ -8,7 +8,7 @@
 import UIKit
 
 protocol leadTimeLineTableViewCellProtocol:AnyObject {
-    func viewTemplate(cell: leadTimeLineTableViewCell, index: IndexPath)
+    func viewTemplate(cell: leadTimeLineTableViewCell, index: IndexPath,templateId: Int)
 }
 class leadTimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
@@ -18,7 +18,8 @@ class leadTimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var createdDateTime: UILabel!
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var subView: UIView!
-    
+    var templateId = Int()
+
     weak var delegate: leadTimeLineTableViewCellProtocol?
     var dateFormater : DateFormaterProtocol?
     var indexPath = IndexPath()
@@ -40,10 +41,11 @@ class leadTimeLineTableViewCell: UITableViewCell {
         self.type.text =  timeLineVM?.type ?? String.blank
         self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
         self.indexPath = index
+        self.templateId = timeLineVM?.id ?? 0
     }
     
     
     @IBAction func viewTemplateButtonPressed() {
-        self.delegate?.viewTemplate(cell: self, index: indexPath)
+        self.delegate?.viewTemplate(cell: self, index: indexPath,templateId: self.templateId)
     }
 }

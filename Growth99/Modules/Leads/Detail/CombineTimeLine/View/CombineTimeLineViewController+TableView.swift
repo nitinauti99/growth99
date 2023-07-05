@@ -22,6 +22,7 @@ extension CombineTimeLineViewController: UITableViewDelegate, UITableViewDataSou
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadCombineTimeLineTableViewCell", for: indexPath) as? LeadCombineTimeLineTableViewCell else { return UITableViewCell() }
         
         cell.configureCell(timeLineVM: viewModel, index: indexPath)
+        cell.delegate = self
         return cell
     }
     

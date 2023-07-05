@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LeadCombineTimeLineTableViewCellProtocol:AnyObject {
+    func viewTemplate(cell: LeadCombineTimeLineTableViewCell, index: IndexPath,templateId: Int)
+}
+
 class LeadCombineTimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var email: UILabel!
@@ -17,6 +21,9 @@ class LeadCombineTimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var subView: UIView!
     
     var dateFormater : DateFormaterProtocol?
+    var templateId = Int()
+    var indexPath = IndexPath()
+    weak var delegate: LeadCombineTimeLineTableViewCellProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,5 +41,11 @@ class LeadCombineTimeLineTableViewCell: UITableViewCell {
         self.email.text = timeLineVM?.email
         self.type.text =  timeLineVM?.type ?? String.blank
         self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
+        self.templateId = timeLineVM?.id ?? 0
+        self.indexPath = index
+    }
+    
+    @IBAction func viewTemplateButtonPressed() {
+        self.delegate?.viewTemplate(cell: self, index: indexPath,templateId: self.templateId)
     }
 }

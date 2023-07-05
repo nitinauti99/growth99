@@ -12,6 +12,7 @@ protocol CombineTimeLineViewControllerProtocol: AnyObject {
     func errorReceived(error: String)
     func recivedLeadCreation()
     func recivedAuditLeadList()
+    func recivedLeadTimeLineTemplateData()
 }
 
 class CombineTimeLineViewController: UIViewController,
@@ -52,4 +53,20 @@ class CombineTimeLineViewController: UIViewController,
         self.view.HideSpinner()
         self.viewModel?.leadCreation(leadId: leadId)
     }
+}
+
+extension CombineTimeLineViewController: LeadCombineTimeLineTableViewCellProtocol {
+    func viewTemplate(cell: LeadCombineTimeLineTableViewCell, index: IndexPath, templateId: Int) {
+        self.view.ShowSpinner()
+        viewModel?.getTimeLineTemplateData(leadId: leadId)
+    }
+   
+    func recivedLeadTimeLineTemplateData(){
+        self.view.HideSpinner()
+        let PateintsViewTemplateVC = PateintsViewTemplateController()
+        PateintsViewTemplateVC.htmlString  = viewModel?.getLeadTimeLineViewTemplateData?.leadAuditContent
+        PateintsViewTemplateVC.modalPresentationStyle = .overFullScreen
+        self.present(PateintsViewTemplateVC, animated: true)
+    }
+    
 }

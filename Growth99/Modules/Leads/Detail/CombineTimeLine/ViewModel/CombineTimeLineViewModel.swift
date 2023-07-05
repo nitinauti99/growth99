@@ -11,9 +11,11 @@ protocol CombineTimeLineViewModelProtocol {
     func leadCreation(leadId: Int)
     func getLeadTimeData(leadId: Int)
     func leadTimeLineDataAtIndex(index: Int)-> CombineTimeLineModel?
+    func getTimeLineTemplateData(leadId: Int)
 
     var getLeadTimeLineData: [CombineTimeLineModel]? { get }
     var getCreationData: leadCreationModel? { get }
+    var getLeadTimeLineViewTemplateData: LeadTimeLineViewTemplateModel? { get }
 
 }
 
@@ -22,6 +24,8 @@ class CombineTimeLineViewModel {
     
     var leadCreation: leadCreationModel?
     var leadTimeLineList: [CombineTimeLineModel]?
+    var leadTimeLineViewTemplateData: LeadTimeLineViewTemplateModel?
+
     let user = UserRepository.shared
 
     init(delegate: CombineTimeLineViewControllerProtocol? = nil) {
@@ -59,6 +63,20 @@ class CombineTimeLineViewModel {
         }
     }
     
+    func getTimeLineTemplateData(leadId: Int) {
+        self.requestManager.request(forPath: ApiUrl.leadViewTemplate.appending("\(leadId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let list):
+                print(list)
+                self.leadTimeLineViewTemplateData = list
+                self.delegate?.recivedLeadTimeLineTemplateData()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
     func leadTimeLineDataAtIndex(index: Int)-> CombineTimeLineModel? {
         return self.leadTimeLineList?[index]
     }
@@ -66,7 +84,11 @@ class CombineTimeLineViewModel {
 }
 
 extension CombineTimeLineViewModel: CombineTimeLineViewModelProtocol {
- 
+    
+    var getLeadTimeLineViewTemplateData: LeadTimeLineViewTemplateModel? {
+        return self.leadTimeLineViewTemplateData
+     }
+    
     var getCreationData: leadCreationModel? {
         return self.leadCreation
     }

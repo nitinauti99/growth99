@@ -22,3 +22,7 @@ struct auditLeadModel: Codable {
     let id: Int?
     let type: String?
 }
+
+struct LeadTimeLineViewTemplateModel: Codable {
+    let leadAuditContent: String?
+}

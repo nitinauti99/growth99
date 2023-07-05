@@ -22,6 +22,8 @@ class leadTimeLineViewController: UIViewController,
     
     var viewModel: leadTimeLineViewModelProtocol?
     var leadId = Int()
+    var leadDetailVC: leadDetailViewController!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +56,18 @@ class leadTimeLineViewController: UIViewController,
 }
 
 extension leadTimeLineViewController: leadTimeLineTableViewCellProtocol {
-    func viewTemplate(cell: leadTimeLineTableViewCell, index: IndexPath) {
+    
+    func viewTemplate(cell: leadTimeLineTableViewCell, index: IndexPath,templateId: Int) {
         self.view.ShowSpinner()
         viewModel?.getTimeLineTemplateData(leadId: leadId)
     }
     
     func recivedLeadTimeLineTemplateData(){
         self.view.HideSpinner()
+        let PateintsViewTemplateVC = PateintsViewTemplateController()
+        PateintsViewTemplateVC.htmlString  = viewModel?.getLeadTimeLineViewTemplateData?.leadAuditContent
+        PateintsViewTemplateVC.modalPresentationStyle = .overFullScreen
+        self.present(PateintsViewTemplateVC, animated: true)
     }
     
 }

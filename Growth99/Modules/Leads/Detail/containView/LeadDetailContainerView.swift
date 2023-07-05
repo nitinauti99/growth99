@@ -18,13 +18,13 @@ class LeadDetailContainerView: UIViewController {
     var selectedindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpSegemtControl()
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeLeadSegment") , object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.leadDetail
+        self.setUpSegemtControl()
     }
     
     func setUpSegemtControl(){
@@ -45,6 +45,7 @@ class LeadDetailContainerView: UIViewController {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
         self.selectedindex = segment
         self.segmentedControl.selectedSegmentIndex = self.selectedindex
+        leadDetailVC.leadData = leadData
         self.selectionDidChange(sender: segmentedControl)
     }
   
@@ -97,7 +98,6 @@ class LeadDetailContainerView: UIViewController {
     private lazy var leadDetailVC: leadDetailViewController = {
         let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
         detailController.leadId = workflowLeadId
-        detailController.leadData = leadData
         return detailController
     }()
     

@@ -15,6 +15,7 @@ protocol leadTimeLineViewModelProtocol {
     
     var getLeadTimeLineData: [auditLeadModel]? { get }
     var getCreationData: leadCreationModel? { get }
+    var getLeadTimeLineViewTemplateData: LeadTimeLineViewTemplateModel? { get }
 
 }
 
@@ -23,6 +24,7 @@ class leadTimeLineViewModel {
     
     var leadCreation: leadCreationModel?
     var leadTimeLineList: [auditLeadModel]?
+    var leadTimeLineViewTemplateData: LeadTimeLineViewTemplateModel?
 
     init(delegate: leadTimeLineViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -60,13 +62,11 @@ class leadTimeLineViewModel {
     }
     
     func getTimeLineTemplateData(leadId: Int) {
-        let finaleURL = "https://api.growthemr.com/api/v1/audit/lead/content?id=" +  "\(leadId)"
-        self.requestManager.request(forPath: finaleURL, method: .GET, headers: self.requestManager.Headers()) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: ApiUrl.leadViewTemplate.appending("\(leadId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
             switch result {
             case .success(let list):
                 print(list)
-                //self.pateintsTimeLineData = list
+                self.leadTimeLineViewTemplateData = list
                 self.delegate?.recivedLeadTimeLineTemplateData()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -83,7 +83,11 @@ class leadTimeLineViewModel {
 }
 
 extension leadTimeLineViewModel: leadTimeLineViewModelProtocol {
- 
+   
+    var getLeadTimeLineViewTemplateData: LeadTimeLineViewTemplateModel? {
+        return self.leadTimeLineViewTemplateData
+     }
+    
     var getCreationData: leadCreationModel? {
         return self.leadCreation
     }
