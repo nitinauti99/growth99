@@ -138,13 +138,11 @@ class CalendarViewModel: CalendarViewModelProtocol {
     func convertUTCtoLocalTime(dateString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        
         if let date = dateFormatter.date(from: dateString) {
             dateFormatter.dateFormat = "hh:mm a"
             let formattedTime = dateFormatter.string(from: date)
             return formattedTime
         }
-        
         return ""
     }
 

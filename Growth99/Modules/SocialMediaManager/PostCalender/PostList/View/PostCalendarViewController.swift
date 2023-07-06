@@ -81,7 +81,13 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
         setUpNavigationBar()
         calendarSegmentControl.selectedSegmentIndex = 0
         eventTypeSelected = "upcoming"
+        scrollToTop(of: calendarscrollview, animated: true)
         postCalendarTableview.reloadData()
+    }
+    
+    func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
+        let topOffset = CGPoint(x: 0, y: -scrollView.contentInset.top)
+        scrollView.setContentOffset(topOffset, animated: animated)
     }
     
     @objc func notificationReceived(_ notification: Notification) {
@@ -238,7 +244,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.titleLabel?.textColor = UIColor.red
                         cell.statusButton.layer.borderColor = UIColor.red.cgColor
                     }
-                    cell.timeLabel.text = postCalendarViewModel?.serverToLocalCalendar(date: headline.scheduledDate ?? "")
+                    cell.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
                     cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -261,7 +267,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.layer.borderColor = UIColor.red.cgColor
                     }
                     cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
-                    cell.timeLabel.text = postCalendarViewModel?.serverToLocalCalendar(date: headline.scheduledDate ?? "")
+                    cell.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
                     cell.selectionStyle = .none
                     return cell
                 }
@@ -282,7 +288,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
                         cell.statusButton.titleLabel?.textColor = UIColor.red
                         cell.statusButton.layer.borderColor = UIColor.red.cgColor
                     }
-                    cell.timeLabel.text = postCalendarViewModel?.serverToLocalCalendar(date: headline.scheduledDate ?? "")
+                    cell.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
                     cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
                     cell.selectionStyle = .none
                     return cell
@@ -301,7 +307,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 172
     }
     
     @IBAction func addAppointmentButtonAction(sender: UIButton) {

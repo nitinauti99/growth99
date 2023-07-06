@@ -108,7 +108,13 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         servicesTextField.text = ""
         self.sections.removeAll()*/
         getClinicsData()
+        scrollToTop(of: calendarscrollview, animated: true)
         eventListView.reloadData()
+    }
+    
+    func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
+        let topOffset = CGPoint(x: 0, y: -scrollView.contentInset.top)
+        scrollView.setContentOffset(topOffset, animated: animated)
     }
 
     @objc func notificationReceived(_ notification: Notification) {

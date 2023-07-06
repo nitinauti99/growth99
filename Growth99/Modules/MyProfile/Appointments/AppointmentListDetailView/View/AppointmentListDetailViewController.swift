@@ -10,7 +10,7 @@ import UIKit
 protocol AppointmentListDetailVCProtocol: AnyObject {
     func eventDataReceived()
     func datesDataReceived()
-    func timesDataReceived()
+    func timesDataReceived(datesClick: Bool)
     func appoinmentEdited()
     func errorEventReceived(error: String)
     func getPhoneNumberDataRecived()
@@ -27,7 +27,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     @IBOutlet weak var firstNameTextField: CustomTextField!
     @IBOutlet weak var lastNameTextField: CustomTextField!
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
-
+    
     @IBOutlet weak var clincsTextField: CustomTextField!
     @IBOutlet weak var servicesTextField: CustomTextField!
     @IBOutlet weak var providersTextField: CustomTextField!
@@ -38,7 +38,9 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     @IBOutlet weak var inPersonBtn: UIButton!
     @IBOutlet weak var virtualBtn: UIButton!
     @IBOutlet weak var dateSelectionButton: UIButton!
-
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var scrollViewAppointment: UIScrollView!
+    
     var eventViewModel: AppointmentListDetailVMProtocol?
     
     var allClinics = [Clinics]()
@@ -48,7 +50,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     var allServices = [ServiceList]()
     var selectedServices = [ServiceList]()
     var createSelectedServicesarray = [ServiceList]()
-
+    
     var selectedServicesIds = [Int]()
     
     var allProviders = [UserDTOList]()
@@ -65,15 +67,20 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     
     var editBookingHistoryData: AppointmentDTOList?
     var appointmentId: Int?
-
+    
     var userSelectedDate: String = String.blank
     var selectedDate: String = String.blank
     var selectedTime: String = String.blank
     var appointmentTypeSelected: String = "InPerson"
     var sourceTypeSelected: String = "Calender"
-    
+    var datePicker = UIDatePicker()
+    var timePicker = UIDatePicker()
+    let formatter = DateFormatter()
+    let todaysDate = Date()
+    let dateFormatter = DateFormatter()
     let radioController: RadioButtonController = RadioButtonController()
-
+    let datesButtonClicked: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
@@ -84,6 +91,34 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         radioController.buttonsArray = [inPersonBtn, virtualBtn]
         radioController.defaultButton = inPersonBtn
+        dateTextField.tintColor = .clear
+        dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
+    }
+    
+    @objc func dateFromButtonPressed() {
+        dateTextField.text = dateFormatterString(textField: dateTextField)
+        self.view.ShowSpinner()
+        if self.selectedProvidersIds == 0 {
+            self.selectedProvidersIds = self.editBookingHistoryData?.providerId ?? 0
+        }
+        if self.selectedClincIds == 0 {
+            self.selectedClincIds = self.editBookingHistoryData?.clinicId ?? 0
+        }
+        if self.selectedServicesIds.first == 0 {
+            let serviceSelectedArray = self.editBookingHistoryData?.serviceList ?? []
+            self.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
+        }
+        self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendarButton(date: dateTextField.text ?? "") ?? String.blank, clinicIds: self.selectedClincIds, providerId: self.selectedProvidersIds, serviceIds: self.selectedServicesIds, appointmentId: self.appointmentId ?? 0, datesButtonClick: true)
+    }
+    
+    func dateFormatterString(textField: CustomTextField) -> String {
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        datePicker.minimumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        return dateFormatter.string(from: datePicker.date)
     }
     
     // MARK: - setUpNavigationBar
@@ -95,14 +130,14 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         editBookingHistoryData = eventViewModel?.getAppointmentsForPateintData
         setupBookingHistoryData()
     }
-
+    
     func setupBookingHistoryData() {
         firstNameTextField.text = editBookingHistoryData?.patientFirstName ?? String.blank
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
         
         phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? ""
-
+        
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank
         let serviceSelectedArray = editBookingHistoryData?.serviceList ?? []
         selectedServices = serviceSelectedArray
@@ -127,7 +162,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         if editBookingHistoryData?.providerId ?? 0 != 0 {
             self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
-            self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: appointmentId ?? 0)
+            self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDate) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: appointmentId ?? 0, datesButtonClick: false)
         }
     }
     
@@ -176,15 +211,36 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         self.view.HideSpinner()
     }
     
-    func timesDataReceived() {
+    func timesDataReceived(datesClick: Bool) {
         allTimesList = eventViewModel?.getAllTimessData ?? []
+        if allTimesList.isEmpty {
+            if datesClick {
+                timeTextField.text = ""
+                timeTextField.showError(message: "Appointment Time is required.")
+                self.view.showToast(message: "There are no time slots available for the selected date", color: .red)
+                scrollToBottom(of: scrollViewAppointment, animated: true)
+                submitButton.isEnabled = false
+                submitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+            }
+        } else {
+            if datesClick {
+                submitButton.isSelected = true
+                submitButton.isEnabled = true
+                submitButton.backgroundColor = UIColor.init(hexString: "009EDE")
+            }
+        }
         self.view.HideSpinner()
+    }
+    
+    func scrollToBottom(of scrollView: UIScrollView, animated: Bool) {
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
+        scrollView.setContentOffset(bottomOffset, animated: animated)
     }
     
     func getPhoneNumberDataRecived() {
         
     }
-
+    
     func getEmailAddressDataRecived() {
         
     }
@@ -209,7 +265,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self.navigationController?.popViewController(animated: true)
         }
     }
-
+    
     func appoinmentDeletedSucess() {
         self.view.HideSpinner()
         self.view.showToast(message: "Appointment cancelled successfully", color: UIColor().successMessageColor())
@@ -217,7 +273,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self.navigationController?.popViewController(animated: true)
         }
     }
-
+    
     func errorEventReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
@@ -256,7 +312,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
                 }
             }
         }
-                
+        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServices, cellType: .subTitle) { (cell, allServices, indexPath) in
             cell.textLabel?.text = allServices.serviceName
         }
@@ -303,47 +359,13 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.appoinmentStatusField.text = selectedItem
-         }
+        }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(statusArray.count * 30))), arrowDirection: .up), from: self)
     }
-    @IBAction func selectDatesButtonAction(sender: UIButton) {
-        if selectedDates.count == 0 {
-            self.dateTextField.text = String.blank
-        }
-        
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates)
-        }
-        
-        selectionMenu.setSelectedItems(items: selectedDates) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.dateTextField.text = self?.serverToLocalDateFormat(date: selectedList[0])
-            self?.selectedDate = selectedList[0]
-            self?.selectedDates = selectedList
-            self?.view.ShowSpinner()
-            if self?.selectedProvidersIds == 0 {
-                self?.selectedProvidersIds = self?.editBookingHistoryData?.providerId ?? 0
-            }
-            if self?.selectedClincIds == 0 {
-                self?.selectedClincIds = self?.editBookingHistoryData?.clinicId ?? 0
-            }
-            if self?.selectedServicesIds.first == 0 {
-                let serviceSelectedArray = self?.editBookingHistoryData?.serviceList ?? []
-                self?.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
-            }
-            self?.eventViewModel?.getTimeList(dateStr: self?.eventViewModel?.timeInputCalendar(date: self?.selectedDates.first ?? String.blank) ?? String.blank, clinicIds: self?.selectedClincIds ?? 0, providerId: self?.selectedProvidersIds ?? 0, serviceIds: self?.selectedServicesIds ?? [], appointmentId: self?.appointmentId ?? 0)
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allDatesList.count * 44))), arrowDirection: .up), from: self)
-    }
     
     @IBAction func selectTimesButtonAction(sender: UIButton) {
-        if selectedTimes.count == 0 {
-            self.timeTextField.text = String.blank
-        }
-        
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
             cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes)
         }
@@ -382,7 +404,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             phoneNumberTextField.showError(message: "Phone Number is required")
             return
         }
-
+        
         let characterCount = phoneNumber.count
         if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
@@ -410,7 +432,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             timeTextField.showError(message: Constant.Profile.chooseToTime)
             return
         }
-
+        
         if self.selectedProvidersIds == 0 {
             self.selectedProvidersIds = self.editBookingHistoryData?.providerId ?? 0
         }
@@ -433,7 +455,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         self.view.ShowSpinner()
         eventViewModel?.deleteSelectedAppointment(deleteAppoinmentId: self.editBookingHistoryData?.id ?? 0)
     }
-
+    
     @IBAction func inPersonButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         appointmentTypeSelected = "InPerson"

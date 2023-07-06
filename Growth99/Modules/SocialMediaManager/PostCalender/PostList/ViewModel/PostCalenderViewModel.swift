@@ -17,7 +17,7 @@ protocol PostCalendarViewModelProtocol {
     
     func appointmentListCountGreaterthan() -> Int
     func appointmentListCountLessthan() -> Int
-    
+    func convertUTCtoLocalTime(dateString: String) -> String
     func serverToLocal(date: String) -> String
     func serverToLocalCalendar(date: String) -> String
 }
@@ -70,6 +70,17 @@ class PostCalendarViewModel: PostCalendarViewModelProtocol {
         textField.resignFirstResponder()
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)
+    }
+    
+    func convertUTCtoLocalTime(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "hh:mm a"
+            let formattedTime = dateFormatter.string(from: date)
+            return formattedTime
+        }
+        return ""
     }
     
     func timeFormatterString(textField: CustomTextField) -> String {

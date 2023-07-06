@@ -24,7 +24,7 @@ protocol EditEventViewModelProtocol {
     func serverToLocalInputWorking(date: String) -> String
     func appointmentDateInput(date: String) -> String
     func timeInputCalendar(date: String) -> String
-
+    func timeInputCalendarButton(date: String) -> String
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
     func getEditAppointmentsForPateint(appointmentsId: Int)
     var  getAppointmentsForPateintData: AppointmentDTOList? { get }
@@ -208,7 +208,7 @@ class EditEventViewModel: EditEventViewModelProtocol {
             case .success(let response):
                 if response.statusCode == 400 {
                     self.delegate?.errorEventReceived(error: "Unable to update appointment")
-                } else if response.statusCode == 450 {
+                } else if response.statusCode == 500 {
                     self.delegate?.errorEventReceived(error: "Internal server error")
                 } else {
                     self.delegate?.appoinmentEdited()
@@ -247,6 +247,15 @@ class EditEventViewModel: EditEventViewModelProtocol {
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: date)
+    }
+    
+    func timeInputCalendarButton(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateF = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: dateF)
     }
     
     func appointmentDateInput(date: String) -> String {

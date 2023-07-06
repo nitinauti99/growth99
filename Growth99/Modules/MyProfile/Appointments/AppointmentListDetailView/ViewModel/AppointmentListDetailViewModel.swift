@@ -10,7 +10,7 @@ import Foundation
 protocol AppointmentListDetailVMProtocol {
     var  getAllDatesData: [String] { get }
     var  getAllTimessData: [String] { get }
-    func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int)
+    func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int, datesButtonClick: Bool)
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>)
     func editAppoinemnetMethod(editAppoinmentId: Int, editAppoinmentModel: EditAppoinmentModel)
     func checkUserEmailAddress(emailAddress: String)
@@ -23,7 +23,7 @@ protocol AppointmentListDetailVMProtocol {
     func serverToLocalInputWorking(date: String) -> String
     func appointmentDateInput(date: String) -> String
     func timeInputCalendar(date: String) -> String
-    
+    func timeInputCalendarButton(date: String) -> String
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
     func getEditAppointmentsForPateint(appointmentsId: Int)
     var  getAppointmentsForPateintData: AppointmentDTOList? { get }
@@ -139,7 +139,7 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
         }
     }
     
-    func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int) {
+    func getTimeList(dateStr: String, clinicIds: Int, providerId: Int, serviceIds: Array<Int>, appointmentId: Int, datesButtonClick: Bool) {
         let apiURL = ApiUrl.vacationSubmit.appending("\(providerId)/schedules/times")
         let parameter: Parameters = ["date": dateStr,
                                      "clinicId": clinicIds,
@@ -151,7 +151,7 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
             switch result {
             case .success(let timesData):
                 self.allTimes = timesData
-                self.delegate?.timesDataReceived()
+                self.delegate?.timesDataReceived(datesClick: datesButtonClick)
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)
             }
@@ -204,7 +204,7 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
             case .success(let response):
                 if response.statusCode == 400 {
                     self.delegate?.errorEventReceived(error: "Unable to update appointment")
-                } else if response.statusCode == 450 {
+                } else if response.statusCode == 500 {
                     self.delegate?.errorEventReceived(error: "Internal server error")
                 } else {
                     self.delegate?.appoinmentEdited()
@@ -235,11 +235,20 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
     var getAllTimessData: [String] {
         return allTimes
     }
-    
+
     func timeInputCalendar(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let dateF = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: dateF)
+    }
+    
+    func timeInputCalendarButton(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         let dateF = dateFormatter.date(from: date) ?? Date()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: dateF)
