@@ -376,6 +376,9 @@ extension PateintDetailViewController {
     
     @IBAction func editGender(sender: UIButton) {
         gender.borderColor = .gray
+        if self.gender.text ?? String.blank == "-" {
+            self.gender.text = "Male"
+        }
         gender.isUserInteractionEnabled = true
         self.genderSelectionButton.isUserInteractionEnabled = true
         self.genderButton.isUserInteractionEnabled = true

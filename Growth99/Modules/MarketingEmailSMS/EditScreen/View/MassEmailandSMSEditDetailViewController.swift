@@ -91,7 +91,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         viewModelEdit = MassEmailandSMSEditDetailViewModel(delegate: self)
         leadSourceArrayEdit = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
         
-        appointmentStatusArrayEdit = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        appointmentStatusArrayEdit = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
     }
     
     override func viewWillAppear(_ animated: Bool) {

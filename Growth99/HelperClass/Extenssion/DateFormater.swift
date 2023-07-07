@@ -55,12 +55,11 @@ class DateFormater: DateFormaterProtocol {
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-
+        dateFormatter.timeZone = TimeZone(identifier: "US/Mountain")
         if let date = dateFormatter.date(from: date) {
             let usDateFormatter = DateFormatter()
             usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-            usDateFormatter.timeZone = TimeZone(identifier: "UTC")
+            usDateFormatter.timeZone = TimeZone.current
             let usDateString = usDateFormatter.string(from: date)
             return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
         }

@@ -348,7 +348,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     }
     
     @IBAction func selectAppoinmentStatusButtonAction(sender: UIButton) {
-        let statusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        let statusArray = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: statusArray, cellType: .subTitle) { (cell, allStatus, indexPath) in
             cell.textLabel?.text = allStatus
         }

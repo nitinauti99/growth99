@@ -77,7 +77,7 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
         
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
 
-        appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
 
         dateFormater = DateFormater()
         let emailSMS = MassEmailandSMSDetailModel(cellType: "Default", LastName: "")

@@ -120,7 +120,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         registerTableView()
         dateFormater = DateFormater()
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
-        appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Cancelled", "Updated"]
+        appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
         viewModel = TriggerEditDetailViewModel(delegate: self)
         submitBtn.isEnabled = false
         submitBtn.backgroundColor = UIColor(hexString: "#6AC1E7")
