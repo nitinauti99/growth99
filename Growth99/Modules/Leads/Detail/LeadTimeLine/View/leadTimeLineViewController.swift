@@ -59,7 +59,7 @@ extension leadTimeLineViewController: leadTimeLineTableViewCellProtocol {
     
     func viewTemplate(cell: leadTimeLineTableViewCell, index: IndexPath,templateId: Int) {
         self.view.ShowSpinner()
-        viewModel?.getTimeLineTemplateData(leadId: leadId)
+        viewModel?.getTimeLineTemplateData(leadId: templateId)
     }
     
     func recivedLeadTimeLineTemplateData(){

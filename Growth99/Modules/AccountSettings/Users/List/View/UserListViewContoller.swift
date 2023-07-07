@@ -93,9 +93,13 @@ extension UserListViewContoller: UserListTableViewCellDelegate {
        
         if  UserRepository.shared.screenTitle == "Profile" {
             if isSearch {
-                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+                UserRepository.shared.userVariableId = viewModel?.userFilterDataDataAtIndex(index: index.row)?.id ?? 0
+                UserRepository.shared.firstName = viewModel?.userFilterDataDataAtIndex(index: index.row)?.firstName ?? ""
+                UserRepository.shared.lastName = viewModel?.userFilterDataDataAtIndex(index: index.row)?.lastName ?? ""
             } else {
                 UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+                UserRepository.shared.firstName = viewModel?.userDataAtIndex(index: index.row)?.firstName ?? ""
+                UserRepository.shared.lastName = viewModel?.userDataAtIndex(index: index.row)?.lastName ?? ""
             }
             self.navigationController?.popViewController(animated: true)
             
@@ -104,9 +108,13 @@ extension UserListViewContoller: UserListTableViewCellDelegate {
                 return
             }
             if isSearch {
-                UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+                UserRepository.shared.userVariableId = viewModel?.userFilterDataDataAtIndex(index: index.row)?.id ?? 0
+                UserRepository.shared.firstName = viewModel?.userFilterDataDataAtIndex(index: index.row)?.firstName ?? ""
+                UserRepository.shared.lastName = viewModel?.userFilterDataDataAtIndex(index: index.row)?.lastName ?? ""
             } else {
                 UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
+                UserRepository.shared.firstName = viewModel?.userDataAtIndex(index: index.row)?.firstName ?? ""
+                UserRepository.shared.lastName = viewModel?.userDataAtIndex(index: index.row)?.lastName ?? ""
             }
             self.navigationController?.pushViewController(homeVC, animated: true)
         }

@@ -58,7 +58,7 @@ class CombineTimeLineViewController: UIViewController,
 extension CombineTimeLineViewController: LeadCombineTimeLineTableViewCellProtocol {
     func viewTemplate(cell: LeadCombineTimeLineTableViewCell, index: IndexPath, templateId: Int) {
         self.view.ShowSpinner()
-        viewModel?.getTimeLineTemplateData(leadId: leadId)
+        viewModel?.getTimeLineTemplateData(leadId: templateId)
     }
    
     func recivedLeadTimeLineTemplateData(){

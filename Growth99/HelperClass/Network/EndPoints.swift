@@ -74,7 +74,7 @@ struct EndPoints {
     static let newAppointment = "/api/appointments/new"
     static let editAppointment = "/api/appointments/"
     static let patientsEditDetail = "/api/v1/patients/"
-    static let patientsQuestionnaire = "/api/v1/patient/"
+    static let patientsQuestionnaire = "/api/v1/ios/patient/"
     static let getPatientsQuestionnaire = "/api/patient/"
     static let submitPatientQuestionnnaire = "/api/patient/questionnaire"
     static let patientsQuestionnaireList =  "/api/v1/questionnaire"

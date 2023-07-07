@@ -248,22 +248,15 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
             variable = viewModel?.getMassSMSTemplateListData(index: index.row).variable ?? ""
         }
         
-        let str: String = "${\(variable )} "
-
-       if remaingingTextCount > str.count {
-           selectedTextCount += str.count
-       }else{
-           return
-       }
-       
-        print(selectedTextCount)
-        if selectedTextCount <= 200 {
-//            remaingingTextCount = 200 - selectedTextCount
-            self.bodyTextView.text += str
-//            self.showCharacterLBI.text = String("Character Remaining: \(remaingingTextCount)")
-        }else{
+        let str: String = "${\(variable )}"
+        
+        guard let textData = self.bodyTextView.text, textData.count <= remaingingTextCount else {
             return
-        }
+       }
+        print(self.bodyTextView.text.count)
+
+        self.bodyTextView.text += str
+
     }
 }
 
@@ -286,16 +279,3 @@ extension String {
         }
 }
 
-extension CreateSMSTemplateViewController: UITextViewDelegate {
-   
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-       
-        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        let numberOfChars = newText.count
-        if numberOfChars <= 200 {
-            return true
-        }
-        return false
-    }
-}
