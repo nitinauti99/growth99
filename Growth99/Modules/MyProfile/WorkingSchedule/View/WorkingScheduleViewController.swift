@@ -16,7 +16,7 @@ protocol WorkingScheduleViewControllerCProtocol: AnyObject {
 }
 
 class WorkingScheduleViewController: UIViewController, WorkingScheduleViewControllerCProtocol, WorkingCellSubclassDelegate {
-    
+   
     @IBOutlet private weak var userNameTextField: CustomTextField!
     @IBOutlet weak var workingDateFromTextField: CustomTextField!
     @IBOutlet weak var workingDateToTextField: CustomTextField!
@@ -182,6 +182,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         }
         if workingListModel?.count ?? 0 > 0 {
             for childIndex in 0..<(workingListModel?[0].userScheduleTimings?.count ?? 0) {
+              
                 let cellIndexPath = IndexPath(item: childIndex, section: 0)
                 guard let workingCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell else {
                     continue
@@ -211,11 +212,14 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                 }
                 
                 isValidateArray.insert(true, at: childIndex)
-                if workingAddNewClicked == false {
-                    days = workingCell.workingDaysSelected
-                } else {
-                    days = selectedDays
+                guard let selectedDayCount = workingCell.selectDayTempTextField.text else {
+                    return
                 }
+                
+                days = selectedDayCount.removingWhitespaces().components(separatedBy: ",")
+            
+                print(days ?? [])
+                
                 let startTime = workingCell.timeFromTextField.text ?? String.blank
                 let endTime = workingCell.timeToTextField.text ?? String.blank
                 slots.insert(
@@ -225,6 +229,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
                         days: days, fullTime: true),
                     at: childIndex
                 )
+               
                 selectedSlots.insert(
                     SelectedSlots(
                         timeFromDate: workingScheduleViewModel?.serverToLocalTimeInput(timeString: startTime),

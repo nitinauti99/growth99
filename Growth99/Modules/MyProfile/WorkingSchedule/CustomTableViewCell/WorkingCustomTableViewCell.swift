@@ -16,6 +16,8 @@ protocol WorkingCellSubclassDelegate: AnyObject {
 
 class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var selectDayTextField: CustomTextField!
+    @IBOutlet weak var selectDayTempTextField: CustomTextField!
+
     @IBOutlet weak var selectDayButton: UIButton!
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
@@ -77,7 +79,8 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
             let sentence = content?.joined(separator: ",")
             selectDayTextField.text = sentence
         }
-        workingDaysSelected = content ?? []
+        let sentence = content?.joined(separator: ", ")
+        selectDayTempTextField.text = sentence
     }
     
     @IBAction func deleteWorkingButtonAction(sender: UIButton) {

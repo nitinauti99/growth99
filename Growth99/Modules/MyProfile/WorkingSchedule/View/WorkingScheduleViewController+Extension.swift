@@ -66,7 +66,12 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func selectDayButtonTapped(cell: WorkingCustomTableViewCell, index: IndexPath) {
+        
         selectedDays = workingListModel?[index.section].userScheduleTimings?[index.row].days ?? []
+        
+        if selectedDays.count == 0 {
+            selectedDays = days ?? []
+        }
         let daysArray = ["MONDAY","TUESDAY","WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: daysArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
             cell.textLabel?.text = allClinics
@@ -76,14 +81,16 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
                 cell.selectDayTextField.text = String.blank
                 cell.selectDayTextField.showError(message: "Please select day")
             }
-            else if selectedList.count > 3 {
+            let sentence = selectedList.joined(separator: ", ")
+            cell.selectDayTempTextField.text = sentence
+            
+            if selectedList.count > 3 {
                 cell.selectDayTextField.text = "\(selectedList.count) \(Constant.Profile.days)"
             } else {
                 let sentence = selectedList.joined(separator: ", ")
                 cell.selectDayTextField.text = sentence
             }
-            self.workingAddNewClicked = true
-            self.selectedDays = selectedList
+            self.days = selectedList
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
