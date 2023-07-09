@@ -60,9 +60,9 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.executionStatusLabel.text = massEmailFilterList?.executionStatus
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
         self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
-        self.createdDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailFilterList?.createdBy
-        self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailFilterList?.updatedAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailFilterList?.updatedBy
         if massEmailFilterList?.executionStatus == "SCHEDULED" && massEmailFilterList?.status == "ACTIVE" {
             deleteButton.isHidden = false
@@ -101,10 +101,10 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.triggerNameLabel.text = massEmailList?.name
         self.executionStatusLabel.text = massEmailList?.executionStatus
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-        self.scheduledDateLabel.text =  dateFormater?.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
-        self.createdDate.text =  dateFormater?.serverToLocal(date: massEmailList?.createdAt ?? String.blank)
+        self.scheduledDateLabel.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailList?.createdBy
-        self.updatedDate.text =  dateFormater?.serverToLocal(date: massEmailList?.updatedAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.updatedAt ?? String.blank)
         self.updatedBy.text = massEmailList?.updatedBy
         if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "ACTIVE" {
             deleteButton.isHidden = false

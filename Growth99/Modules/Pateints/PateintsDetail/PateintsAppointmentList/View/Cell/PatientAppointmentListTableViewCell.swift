@@ -55,7 +55,7 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         }
         self.appointmentDateLabel.text = dateFormater?.serverToLocalPateintsAppointment(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
-        self.createdDate.text = dateFormater?.serverToLocalforPateints(date: patientAppointmentListVM?.createdAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: patientAppointmentListVM?.createdAt ?? String.blank)
         indexPath = index
     }
     
@@ -75,7 +75,7 @@ class PatientAppointmentListTableViewCell: UITableViewCell {
         }
         self.appointmentDateLabel.text = dateFormater?.serverToLocalPateintsAppointment(date: patientAppointmentListVM?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = patientAppointmentListVM?.paymentStatus
-        self.createdDate.text = dateFormater?.serverToLocalforPateints(date: patientAppointmentListVM?.createdAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: patientAppointmentListVM?.createdAt ?? String.blank)
         indexPath = index
     }
     

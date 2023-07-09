@@ -26,14 +26,14 @@ class UnansweredQuestionListTableViewCell: UITableViewCell {
         let chatSessionList = unansweredQuestionList?.getUnansweredQuestionListFilterDataAtIndex(index: index.row)
         self.id.text = String(chatSessionList?.id ?? 0)
         self.question.text = chatSessionList?.question
-        self.createdDate.text =  dateFormater?.serverToLocal(date: chatSessionList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: chatSessionList?.createdAt ?? String.blank)
     }
     
     func configureCell(unansweredQuestionList: UnansweredQuestionListViewModelProtocol?, index: IndexPath) {
         let chatSessionList = unansweredQuestionList?.getUnansweredQuestionListDataAtIndex(index: index.row)
         self.id.text = String(chatSessionList?.id ?? 0)
         self.question.text = chatSessionList?.question
-        self.createdDate.text =  dateFormater?.serverToLocal(date: chatSessionList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: chatSessionList?.createdAt ?? String.blank)
     }
     
 }

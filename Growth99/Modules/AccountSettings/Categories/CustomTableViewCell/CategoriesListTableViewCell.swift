@@ -39,8 +39,8 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesFilterList?.getCategoriesFilterDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: categoriesList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index
@@ -50,8 +50,8 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesListData?.getCategoriesDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: categoriesList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index

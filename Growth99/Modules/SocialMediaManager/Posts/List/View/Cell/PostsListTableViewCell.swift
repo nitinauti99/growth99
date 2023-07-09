@@ -48,8 +48,8 @@ class PostsListTableViewCell: UITableViewCell {
         self.hashtag.text = userVM?.hashtag ?? "-"
         let list: [String] = (userVM?.postLabels ?? []).map({$0.name ?? String.blank})
         self.postLabel.text = list.joined(separator: ", ")
-        self.CreatedDate.text =  dateFormater?.serverToLocalforPost(date: userVM?.createdAt ?? String.blank) ?? "-"
-        self.sheduledDate.text =  dateFormater?.serverToLocalforPost(date: userVM?.scheduledDate ?? String.blank) ?? "-"
+        self.CreatedDate.text =  dateFormater?.serverToLocalDateConverter(date: userVM?.createdAt ?? String.blank) ?? "-"
+        self.sheduledDate.text =  dateFormater?.serverToLocalDateConverter(date: userVM?.scheduledDate ?? String.blank) ?? "-"
         if userVM?.approved == true {
             self.approve.text = "YES"
             self.deleteButton.isHidden = true
@@ -80,8 +80,8 @@ class PostsListTableViewCell: UITableViewCell {
         self.hashtag.text = userVM?.hashtag ?? "-"
         let list: [String] = (userVM?.postLabels ?? []).map({$0.name ?? String.blank})
         self.postLabel.text = list.joined(separator: ", ")
-        self.CreatedDate.text =  dateFormater?.serverToLocalforPost(date: userVM?.createdAt ?? String.blank) ?? "-"
-        self.sheduledDate.text =  dateFormater?.serverToLocalforPost(date: userVM?.scheduledDate ?? String.blank) ?? "-"
+        self.CreatedDate.text =  dateFormater?.serverToLocalDateConverter(date: userVM?.createdAt ?? String.blank) ?? "-"
+        self.sheduledDate.text =  dateFormater?.serverToLocalDateConverter(date: userVM?.scheduledDate ?? String.blank) ?? "-"
         if userVM?.approved == true {
             self.approve.text = "YES"
             self.deleteButton.isHidden = true

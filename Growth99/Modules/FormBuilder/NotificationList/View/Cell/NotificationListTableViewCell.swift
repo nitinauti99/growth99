@@ -36,8 +36,8 @@ class NotificationListTableViewCell: UITableViewCell {
         self.notificationType.text = NotificationList?.notificationType
         self.phoneNumber.text = String(NotificationList?.phoneNumber ?? "")
         self.toEmail.text = NotificationList?.toEmail
-        self.createdDate.text = dateFormater?.serverToLocal(date: NotificationList?.createdAt ?? String.blank)
-        self.updatedDate.text =  dateFormater?.serverToLocal(date: NotificationList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: NotificationList?.createdAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: NotificationList?.updatedAt ?? String.blank)
         indexPath = index
     }
     
@@ -46,8 +46,8 @@ class NotificationListTableViewCell: UITableViewCell {
         self.notificationType.text = NotificationList?.notificationType
         self.phoneNumber.text = String(NotificationList?.phoneNumber ?? "")
         self.toEmail.text = NotificationList?.toEmail
-        self.createdDate.text = dateFormater?.serverToLocal(date: NotificationList?.createdAt ?? String.blank)
-        self.updatedDate.text =  dateFormater?.serverToLocal(date: NotificationList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: NotificationList?.createdAt ?? String.blank)
+        self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: NotificationList?.updatedAt ?? String.blank)
         indexPath = index
     }
     

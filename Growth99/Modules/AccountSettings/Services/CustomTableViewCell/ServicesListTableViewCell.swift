@@ -38,8 +38,8 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceFilterList?.getServiceFilterDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index
@@ -49,8 +49,8 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceListData?.getServiceDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index
