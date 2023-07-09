@@ -170,7 +170,7 @@ class CreatePostViewController: UIViewController {
         
         let str: String = (self.scheduleDateTextField.text ?? "") + " " + (self.scheduleTimeTextField.text ?? "")
         
-        let scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
+        let scheduledDate = (dateFormater?.localToServerSocialForPost(date: str)) ?? ""
         
         var url = String()
         var methodType = String()

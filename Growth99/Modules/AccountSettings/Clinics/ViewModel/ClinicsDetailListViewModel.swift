@@ -64,8 +64,9 @@ class ClinicsDetailListViewModel: ClinicsDetailListViewModelProtocol {
         }
         self.requestManager.request(forPath: finaleUrl, method: urlMethod, headers: self.requestManager.Headers(), task: .requestParameters(parameters: clinicParms, encoding: .jsonEncoding)) {  (result: Result<ClinicsDetailListModel, GrowthNetworkError>) in
             switch result {
-            case .success(_):
+            case .success(let detailData):
                 self.delegate?.clinicUpdateReceived(responeMessage: screenTitle)
+                UserRepository.shared.timeZone = detailData.timezone
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

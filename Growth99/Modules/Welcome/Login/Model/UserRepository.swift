@@ -184,6 +184,15 @@ public class UserRepository {
         }
     }
     
+    public var timeZone: String? {
+        get {
+            user.timeZone
+        }
+        set {
+            user.timeZone = newValue
+        }
+    }
+    
     public var selectedServiceId: Int? {
         get {
             user.selectedServiceId

@@ -30,8 +30,9 @@ class User {
     private static let selectedServiceId = "selectedServiceId"
     private static let leadId = "leadId"
     private static let leadFullName = "leadFullName"
+    private static let timeZone = "timeZone"
 
-
+    
     var authToken: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.authToken)
@@ -197,6 +198,15 @@ class User {
         }
     }
     
+    var timeZone: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.timeZone)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.timeZone)
+        }
+    }
+        
     var FormBulderTitle: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.screenTitle)
@@ -246,8 +256,8 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.selectedServiceId)
         KeychainWrapper.standard.removeObject(forKey: User.leadId)
         KeychainWrapper.standard.removeObject(forKey: User.leadFullName)
+        KeychainWrapper.standard.removeObject(forKey: User.timeZone)
     }
-
     
     private func applyNewValueInKeyChain(value: Any?, key: String) {
         guard let newValue = value else {

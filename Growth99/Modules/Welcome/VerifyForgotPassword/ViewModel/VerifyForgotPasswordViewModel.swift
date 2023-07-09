@@ -59,8 +59,13 @@ class VerifyForgotPasswordViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                print(response)
-                self.delegate?.LoaginDataRecived(responseMessage: "Password changed successfully")
+                if response.statusCode == 200 {
+                    self.delegate?.LoaginDataRecived(responseMessage: "Password changed successfully")
+                }else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "Old Password is incorrect, Please enter correct Old Password.")
+                }else{
+                    self.delegate?.errorReceived(error: "")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription )
             }

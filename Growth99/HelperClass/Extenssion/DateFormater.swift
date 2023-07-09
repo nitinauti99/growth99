@@ -23,10 +23,14 @@ protocol DateFormaterProtocol: AnyObject {
     func dateFormatterStringBirthDate(textField: CustomTextField) -> String
     func serverToLocalDateFormate(date: String) -> String
     func serverToLocalTimeAndDateFormate(date: String) -> String
-    
+    func serverToLocalforPost(date: String) -> String
+    func localToServerSocialForPost(date: String) -> String 
+
 }
 
 class DateFormater: DateFormaterProtocol {
+    
+    let timeZone =  UserRepository.shared.timeZone
     
     func serverToLocalPateintTimeLineDate(date: String) -> String {
         let dateFormatter = DateFormatter()
@@ -64,6 +68,39 @@ class DateFormater: DateFormaterProtocol {
             return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
         }
         return ""
+    }
+    
+    func serverToLocalforPost(date: String) -> String {
+        print("sheduled Date",date)
+       
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        if let date = dateFormatter.date(from: date) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
+        }
+        return ""
+    }
+    
+    func localToServerSocialForPost(date: String) -> String {
+        print("sheduled Date",date)
+
+        let dateFormatter = DateFormatter()
+       // dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
+        let dateFormated = dateFormatter.date(from: date)
+        print("sheduled dateFormated",dateFormated)
+
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+       
+        print("sheduled Date final",dateFormatter.string(from: dateFormated!))
+
+        return dateFormatter.string(from: dateFormated!)
     }
     
     func serverToLocalCreatedDate(date: String) -> String {
