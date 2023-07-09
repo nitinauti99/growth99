@@ -86,7 +86,7 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
-        let topOffset = CGPoint(x: 0, y: -scrollView.contentInset.top)
+        let topOffset = CGPoint(x: 0, y: -100)
         scrollView.setContentOffset(topOffset, animated: animated)
     }
     
