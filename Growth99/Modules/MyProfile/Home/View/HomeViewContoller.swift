@@ -311,6 +311,11 @@ extension HomeViewContoller: HomeViewContollerProtocol{
         /// get From allclinincsapi
         self.allClinics = viewModel?.getAllClinicsData ?? []
         
+        let userTimeZones = self.allClinics.filter({$0.isDefault == true})
+        if let firstTimeZone = userTimeZones.first?.timeZone {
+            UserRepository.shared.timeZone = firstTimeZone
+        }
+        
         self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
         let selectedClincId = selectedClincs.map({$0.id ?? 0})
         self.selectedClincIds = selectedClincId

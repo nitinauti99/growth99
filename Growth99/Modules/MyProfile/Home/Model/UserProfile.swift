@@ -27,6 +27,7 @@ struct Clinics: Codable, Equatable {
     let isDefault: Bool?
     let name: String?
     let id: Int?
+    let timeZone: String?
 }
 
 struct Roles: Codable, Equatable {
