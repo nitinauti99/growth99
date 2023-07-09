@@ -415,6 +415,10 @@
 		189E3F1529C3980900B94190 /* PostCalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0D29C3980900B94190 /* PostCalenderModel.swift */; };
 		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
 		254D77912A50135E007941CB /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */; };
+		254D77A62A5AD996007941CB /* CalenderEditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */; };
+		254D77A72A5AD996007941CB /* CalenderEventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */; };
+		254D77A82A5AD996007941CB /* CalenderEventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */; };
+		254D77A92A5AD996007941CB /* CalenderEventEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254D77A52A5AD996007941CB /* CalenderEventEditViewController.storyboard */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
@@ -1369,6 +1373,10 @@
 		189E3F0D29C3980900B94190 /* PostCalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderModel.swift; sourceTree = "<group>"; };
 		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
+		254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEditEventViewModel.swift; sourceTree = "<group>"; };
+		254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEventEditViewController.swift; sourceTree = "<group>"; };
+		254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalenderEventEditViewController+TextField.swift"; sourceTree = "<group>"; };
+		254D77A52A5AD996007941CB /* CalenderEventEditViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CalenderEventEditViewController.storyboard; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -4073,6 +4081,33 @@
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
+		254D779F2A5AD996007941CB /* CalenderEventEditView */ = {
+			isa = PBXGroup;
+			children = (
+				254D77A02A5AD996007941CB /* ViewModel */,
+				254D77A22A5AD996007941CB /* View */,
+			);
+			path = CalenderEventEditView;
+			sourceTree = "<group>";
+		};
+		254D77A02A5AD996007941CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		254D77A22A5AD996007941CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */,
+				254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */,
+				254D77A52A5AD996007941CB /* CalenderEventEditViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		25C46A7A2A460FAE004129E7 /* AuditListScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -6121,8 +6156,9 @@
 		84D0616729670676001FE469 /* Calender */ = {
 			isa = PBXGroup;
 			children = (
-				3947A8DB2996776E000CA2EB /* AddEventView */,
 				3947A8CF2996776D000CA2EB /* CalenderView */,
+				3947A8DB2996776E000CA2EB /* AddEventView */,
+				254D779F2A5AD996007941CB /* CalenderEventEditView */,
 				3947A8E42996776E000CA2EB /* EventEditView */,
 			);
 			path = Calender;
@@ -7340,6 +7376,7 @@
 				013A4FE229B4E3FA00CA24B0 /* MultipleSelectionWithDropDownTypeTableViewCell.xib in Resources */,
 				0144DA002A3746E800DBD12E /* PeteintDetailView.storyboard in Resources */,
 				D0D834B92A1FDA9800A60443 /* PostCalendarViewController.storyboard in Resources */,
+				254D77A92A5AD996007941CB /* CalenderEventEditViewController.storyboard in Resources */,
 				25C46A8A2A460FAF004129E7 /* AuditListViewController.storyboard in Resources */,
 				DA4578792971326100CE458B /* ServicesListDetailViewController.storyboard in Resources */,
 				84B75ECD2969035D00962F3E /* ServicesListTableViewCell.xib in Resources */,
@@ -7761,6 +7798,7 @@
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
 				DA06999A29E9B482002E060A /* ServicesListDetailViewController+TextField.swift in Sources */,
+				254D77A62A5AD996007941CB /* CalenderEditEventViewModel.swift in Sources */,
 				01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,
 				84AE6D67295D683A002836ED /* CheckBox.swift in Sources */,
@@ -7833,6 +7871,7 @@
 				1883F13029C7571E0080997B /* CountryPickerViewController.swift in Sources */,
 				84D0622E29670677001FE469 /* VacationScheduleViewController.swift in Sources */,
 				01C7488429B20F080085CED2 /* AddNewQuestionarieViewController+SearchBar.swift in Sources */,
+				254D77A82A5AD996007941CB /* CalenderEventEditViewController+TextField.swift in Sources */,
 				01EBAC3E29B583DC00110DCB /* LeadTagsModel.swift in Sources */,
 				01454A0529FCD66800237E60 /* CreatePostViewController+TextField.swift in Sources */,
 				013A4FD829B4E3FA00CA24B0 /* InputTypeTableViewCell.swift in Sources */,
@@ -8129,6 +8168,7 @@
 				84D0624029670677001FE469 /* CreatePateintViewContoller.swift in Sources */,
 				1883F12629C7571E0080997B /* CountryPickerCell.swift in Sources */,
 				D0CE696E2A3F7A6300D7C188 /* MassEmailandSMSEditDefaultTableViewCell.swift in Sources */,
+				254D77A72A5AD996007941CB /* CalenderEventEditViewController.swift in Sources */,
 				01A1303229AE55D00098DBF8 /* CreatePateintViewContoller+UITextfiled.swift in Sources */,
 				DAEF74A0299D5322009140AE /* RefundPolicyViewController.swift in Sources */,
 				84F61132292A71AB00B1FB69 /* GrowthNetworkQueueManager.swift in Sources */,

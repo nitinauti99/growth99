@@ -328,7 +328,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = self.sections[indexPath.section]
         let headline = section.headlines[indexPath.row]
-        let editVC = UIStoryboard(name: "EventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "EventEditViewController") as! EventEditViewController
+        let editVC = UIStoryboard(name: "CalenderEventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "CalenderEventEditViewController") as! CalenderEventEditViewController
         editVC.appointmentId = headline.id
         editVC.editBookingHistoryData = headline
         navigationController?.pushViewController(editVC, animated: true)

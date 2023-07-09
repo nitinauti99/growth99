@@ -83,6 +83,22 @@ struct EditAppoinmentModel: Codable {
     let appointmentConfirmationStatus: String?
 }
 
+struct CalenderEditAppoinmentModel: Codable {
+    let firstName: String?
+    let lastName: String?
+    let email: String?
+    let phone: String?
+    let notes: String?
+    let clinicId: Int?
+    let serviceIds: [Int]?
+    let providerId: Int?
+    let date: String?
+    let time: String?
+    let appointmentType: String?
+    let source: String?
+    let appointmentDate: String?
+}
+
 struct AppoinmentModel: Codable {
     let data: AppoinmentData?
     let statusCode: Int?

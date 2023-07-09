@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol EditEventViewControllerProtocol: AnyObject {
+protocol CalenderEditEventViewControllerProtocol: AnyObject {
     func eventDataReceived()
     func datesDataReceived()
     func timesDataReceived()
@@ -22,7 +22,7 @@ protocol EditEventViewControllerProtocol: AnyObject {
     func providerListDataRecivedEventEdit()
 }
 
-class EventEditViewController: UIViewController, EditEventViewControllerProtocol {
+class CalenderEventEditViewController: UIViewController, CalenderEditEventViewControllerProtocol {
     
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var firstNameTextField: CustomTextField!
@@ -32,7 +32,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     @IBOutlet weak var clincsTextField: CustomTextField!
     @IBOutlet weak var servicesTextField: CustomTextField!
     @IBOutlet weak var providersTextField: CustomTextField!
-    @IBOutlet weak var appoinmentStatusField: CustomTextField!
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var timeTextField: CustomTextField!
     @IBOutlet weak var notesTextView: UITextView!
@@ -42,7 +41,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var scrollViewBooking: UIScrollView!
     
-    var eventViewModel: EditEventViewModelProtocol?
+    var eventViewModel: CalenderEditEventViewModelProtocol?
     
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
@@ -85,7 +84,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         super.viewDidLoad()
         notesTextView.layer.borderColor = UIColor.gray.cgColor
         notesTextView.layer.borderWidth = 1.0
-        eventViewModel = EditEventViewModel(delegate: self)
+        eventViewModel = CalenderEditEventViewModel(delegate: self)
         setUpNavigationBar()
         self.view.ShowSpinner()
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
@@ -145,7 +144,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         servicesTextField.text = serviceSelectedArray.map({$0.serviceName ?? String.blank}).joined(separator: ", ")
         providersTextField.text = editBookingHistoryData?.providerName ?? String.blank
-        appoinmentStatusField.text = editBookingHistoryData?.appointmentStatus ?? String.blank
         dateTextField.text = eventViewModel?.serverToLocal(date: editBookingHistoryData?.appointmentStartDate ?? String.blank)
         timeTextField.text = "\(eventViewModel?.utcToLocal(dateStr: editBookingHistoryData?.appointmentStartDate ?? String.blank) ?? String.blank)"
         if editBookingHistoryData?.appointmentType == "InPerson" {
@@ -347,18 +345,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allProviders.count * 44))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func selectAppoinmentStatusButtonAction(sender: UIButton) {
-        let statusArray = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: statusArray, cellType: .subTitle) { (cell, allStatus, indexPath) in
-            cell.textLabel?.text = allStatus
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.appoinmentStatusField.text = selectedItem
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(statusArray.count * 30))), arrowDirection: .up), from: self)
-    }
     @IBAction func selectDatesButtonAction(sender: UIButton) {
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allDatesList, cellType: .subTitle) { (cell, allDates, indexPath) in
             cell.textLabel?.text = self.eventViewModel?.serverToLocal(date: allDates)
@@ -471,7 +457,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         }
         
         self.view.ShowSpinner()
-        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+        eventViewModel?.calenderEditAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: CalenderEditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
