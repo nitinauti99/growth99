@@ -277,7 +277,9 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
         instagramURLTextField.text = viewModel?.getClinicsListData?.instagram ?? String.blank
         twitterURLTextField.text = viewModel?.getClinicsListData?.twitter ?? String.blank
         paymentLinkTextField.text = viewModel?.getClinicsListData?.paymentLink ?? String.blank
-        
+
+        UserRepository.shared.timeZone = viewModel?.getClinicsListData?.timezone ?? String.blank
+
         let tenentID = UserRepository.shared.Xtenantid ?? String.blank
         
         let urlSting = EndPoints.envUrl.appending("/ap-booking?b=\(tenentID)&c=\(clinicId ?? 0)")

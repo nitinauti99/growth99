@@ -79,14 +79,14 @@ class MediaTagsAddViewController: UIViewController, MediaTagsAddViewControllerPr
             return
         }
         if mediaTagScreenName == "Edit Screen" {
-            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text}), isValuePresent.count > 0 {
+            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text?.lowercased()}), isValuePresent.count > 0 {
                 self.MediaTagsTextField.showError(message: "Tag with this name already present.")
                 return
             }
             self.view.ShowSpinner()
             viewModel?.saveMediaTagsDetails(mediaTagId: mediaTagId, name: MediaTagsTextField.text ?? String.blank)
         }else{
-            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text}), isValuePresent.count > 0 {
+            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text?.lowercased()}), isValuePresent.count > 0 {
                 self.MediaTagsTextField.showError(message: "Tag with this name already present.")
                 return
             }

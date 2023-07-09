@@ -81,10 +81,10 @@ class PateintsTagsAddViewController: UIViewController, PateintsTagsAddViewContro
             return
         }
         
-//        if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text}), isValuePresent.count > 0 {
-//            PateintsTagsTextField.showError(message: "Tag with this name already present.")
-//            return
-//        }
+        if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == self.PateintsTagsTextField.text?.lowercased()}), isValuePresent.count > 0 {
+            PateintsTagsTextField.showError(message: "Tag with this name already present.")
+            return
+        }
         
         if pateintsTagScreenName == "Edit Screen" {
             self.view.ShowSpinner()

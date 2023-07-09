@@ -23,6 +23,7 @@ class CreateLabelViewController: UIViewController {
     var labelId = Int()
     var screenName = String()
     var isScreenFrom = String()
+    var labelList: [LabelListModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,12 @@ class CreateLabelViewController: UIViewController {
             createSocialTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             return
         }
+      
+        if let isValuePresent = self.labelList?.filter({ $0.name?.lowercased() == self.createSocialTextField.text?.lowercased()}), isValuePresent.count > 0 {
+            self.createSocialTextField.showError(message: "Label with this name already present.")
+            return
+        }
+        
         self.view.ShowSpinner()
         if self.screenName == "Edit Screen" {
             viewModel?.upadteCreateLabelDetails(labelId: self.labelId, name: createSocialTextField.text ?? String.blank)
@@ -92,6 +99,12 @@ extension CreateLabelViewController: UITextFieldDelegate {
             if let textField = createSocialTextField, textField.text == "" {
                 createSocialTextField.showError(message: Constant.ErrorMessage.nameEmptyError)
             }
+            
+            if let isValuePresent = self.labelList?.filter({ $0.name?.lowercased() == self.createSocialTextField.text?.lowercased()}), isValuePresent.count > 0 {
+                self.createSocialTextField.showError(message: "Label with this name already present.")
+                return
+            }
+            
          }
     }
 }

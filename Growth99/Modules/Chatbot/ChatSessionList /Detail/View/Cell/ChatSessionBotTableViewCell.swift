@@ -21,8 +21,12 @@ class ChatSessionBotTableViewCell: UITableViewCell {
         let chatSessionList = chatSessionList?.getChatSessionDetailDataAtIndex(index: index.row)
         let param = self.convertStringToDictionary(text: chatSessionList?.message ?? "")
         print(param?["message"] ?? "")
-        guard let str = param?["message"] else {return}
-        self.message.text = (str as! String).htmlToString
+        if param == nil {
+            self.message.text = chatSessionList?.message ?? ""
+        }else{
+            guard let str = param?["message"] else {return}
+            self.message.text = (str as! String).htmlToString
+        }
     }
     
     func convertStringToDictionary(text: String) -> [String:AnyObject]? {

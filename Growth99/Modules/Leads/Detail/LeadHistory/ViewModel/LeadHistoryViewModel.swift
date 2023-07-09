@@ -60,7 +60,7 @@ class LeadHistoryViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.leadRemovedSuccefully(message: "Leads deleted successfully")
+                    self.delegate?.leadRemovedSuccefully(message: "Lead deleted Successfully")
                 }else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "We are facing issue while deleting lead")
                 }else{
