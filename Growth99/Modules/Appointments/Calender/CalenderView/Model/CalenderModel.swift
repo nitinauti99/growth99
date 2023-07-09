@@ -102,6 +102,7 @@ struct CalenderEditAppoinmentModel: Codable {
 struct AppoinmentModel: Codable {
     let data: AppoinmentData?
     let statusCode: Int?
+    let message: String?
 }
 
 struct AppoinmentData : Codable {

@@ -33,7 +33,8 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     @IBOutlet weak var inPersonBtn: UIButton!
     @IBOutlet weak var virtualBtn: UIButton!
     @IBOutlet weak var dateSelectionButton: UIButton!
-    
+    @IBOutlet weak var addeventScrollView: UIScrollView!
+
     var addEventViewModel: CalendarViewModelProtocol?
     var eventViewModel: AddEventViewModelProtocol?
     
@@ -200,12 +201,25 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     
     func appoinmentCreated(apiResponse: AppoinmentModel) {
         self.view.HideSpinner()
-        self.view.showToast(message: "Appointment created successfully", color: UIColor().successMessageColor())
-        let userInfo = ["clinicId": selectedClincIds, "providerId": selectedProvidersIds, "serviceId": selectedServicesIds] as [String : Any]
-        NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil, userInfo: userInfo)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.navigationController?.popViewController(animated: true)
+        if apiResponse.statusCode == 200 {
+            self.view.showToast(message: "Appointment created successfully", color: UIColor().successMessageColor())
+            let userInfo = ["clinicId": selectedClincIds, "providerId": selectedProvidersIds, "serviceId": selectedServicesIds] as [String : Any]
+            NotificationCenter.default.post(name: Notification.Name("EventCreated"), object: nil, userInfo: userInfo)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else if apiResponse.statusCode == 500 {
+            self.view.showToast(message: "Provided email address is currently registered with another business. To resolve contact product@growth99.com", color: .red)
+            scrollToTop(of: addeventScrollView, animated: true)
+            emailTextField.showError(message: "Please eneter another email address")
+        } else {
+            self.view.showToast(message: "Internal server error", color: .red)
         }
+    }
+    
+    func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
+        let topOffset = CGPoint(x: 0, y: -100)
+        scrollView.setContentOffset(topOffset, animated: animated)
     }
     
     func errorEventReceived(error: String) {
