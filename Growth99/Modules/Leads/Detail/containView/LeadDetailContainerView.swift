@@ -19,12 +19,17 @@ class LeadDetailContainerView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "changeLeadSegment") , object: nil)
+        self.setUpSegemtControl()
     }
+    
+//    func setleadData(leadData: leadListModel?) {
+//        self.leadData = leadData
+//        self.leadDetailVC.leadData = leadData
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constant.Profile.leadDetail
-        self.setUpSegemtControl()
     }
     
     func setUpSegemtControl(){
@@ -44,8 +49,9 @@ class LeadDetailContainerView: UIViewController {
     @objc func notificationReceived(_ notification: Notification) {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
         self.selectedindex = segment
+        self.leadDetailVC.view = nil
+        self.leadDetailVC.leadData = leadData
         self.segmentedControl.selectedSegmentIndex = self.selectedindex
-        leadDetailVC.leadData = leadData
         self.selectionDidChange(sender: segmentedControl)
     }
   
@@ -98,6 +104,7 @@ class LeadDetailContainerView: UIViewController {
     private lazy var leadDetailVC: leadDetailViewController = {
         let detailController = UIStoryboard(name: "leadDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "leadDetailViewController") as! leadDetailViewController
         detailController.leadId = workflowLeadId
+        detailController.leadData = leadData
         return detailController
     }()
     
@@ -125,6 +132,7 @@ class LeadDetailContainerView: UIViewController {
     /// Lead History
     private lazy var leadHistoryVC: LeadHistoryViewController = {
         let leadHistoryList = UIStoryboard(name: "LeadHistoryViewController", bundle: nil).instantiateViewController(withIdentifier: "LeadHistoryViewController") as! LeadHistoryViewController
+        leadHistoryList.vc = self
         return leadHistoryList
     }()
       

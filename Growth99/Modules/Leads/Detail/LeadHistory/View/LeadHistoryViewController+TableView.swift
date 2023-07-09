@@ -40,22 +40,21 @@ extension LeadHistoryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let userInfo = [ "selectedIndex" : 0 ]
-        let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
-        
+       // let detailController = UIStoryboard(name: "LeadDetailContainerView", bundle: nil).instantiateViewController(withIdentifier: "LeadDetailContainerView") as! LeadDetailContainerView
+
         if isSearch{
-            detailController.workflowLeadId = viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)?.id ?? 0
+            self.vc?.workflowLeadId = viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)?.id ?? 0
             let user = UserRepository.shared
             user.leadId = viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)?.id ?? 0
             user.leadFullName = (viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)?.lastName ?? "")
 
-            detailController.leadData = viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)
+            self.vc?.leadData = viewModel?.leadHistoryFilterDataAtIndex(index: indexPath.row)
         }else{
-            detailController.workflowLeadId = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)?.id ?? 0
+            self.vc?.workflowLeadId = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)?.id ?? 0
             let user = UserRepository.shared
             user.leadId = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)?.id ?? 0
             user.leadFullName = (viewModel?.leadHistoryDataAtIndex(index: indexPath.row)?.firstName ?? "") + " " + (viewModel?.leadHistoryDataAtIndex(index: indexPath.row)?.lastName ?? "")
-
-            detailController.leadData = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)
+            self.vc?.leadData = viewModel?.leadHistoryDataAtIndex(index: indexPath.row)
         }
         NotificationCenter.default.post(name: Notification.Name("changeLeadSegment"), object: nil,userInfo: userInfo)
 

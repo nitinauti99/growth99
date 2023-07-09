@@ -25,6 +25,8 @@ class LeadHistoryViewController: UIViewController, LeadHistoryViewControllerProt
     var isSearch : Bool = false
     let user = UserRepository.shared
 
+    var vc : LeadDetailContainerView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = LeadHistoryViewModel(delegate: self)
