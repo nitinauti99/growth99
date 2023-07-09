@@ -140,6 +140,11 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
             return
         }
         
+        guard let categoriesNameContain = categoriesAddViewModel?.getAddCategoriesListData.contains(where: { $0.name == categoriesName }), !categoriesNameContain else {
+            categoriesNameTextField.showError(message: "Category with this name already present.")
+            return
+        }
+        
         if selectedClincIds.count == 0 {
             for clinicId in selectedClincs {
                 selectedClincIds.append(clinicId.id ?? 0)
@@ -162,11 +167,6 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         if textField == categoriesNameTextField {
             guard let categoriesName = categoriesNameTextField.text, !categoriesName.isEmpty else {
                 categoriesNameTextField.showError(message: Constant.Profile.categoryNameRequired)
-                submitButton.isEnabled = false // Disable the submit button
-                return
-            }
-            guard let categoriesNameContain = categoriesAddViewModel?.getAddCategoriesListData.contains(where: { $0.name == categoriesName }), !categoriesNameContain else {
-                categoriesNameTextField.showError(message: "Category with this name already present.")
                 submitButton.isEnabled = false // Disable the submit button
                 return
             }

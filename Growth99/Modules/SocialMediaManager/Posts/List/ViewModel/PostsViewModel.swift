@@ -81,7 +81,7 @@ class PostsListViewModel {
             switch result {
             case .success(let response):
                 if response.statusCode == 200 {
-                    self.delegate?.removePost(message: "post approve successfully")
+                    self.delegate?.removePost(message: "Post approved successfully")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "error while approving template")
                 } else{

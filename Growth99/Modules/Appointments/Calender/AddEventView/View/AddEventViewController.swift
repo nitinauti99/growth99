@@ -64,6 +64,12 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     var screenTitile = String()
     var pateintsEmail = String()
     let radioController: RadioButtonController = RadioButtonController()
+    var datePicker = UIDatePicker()
+    var timePicker = UIDatePicker()
+    let formatter = DateFormatter()
+    let todaysDate = Date()
+    let dateFormatter = DateFormatter()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,29 +81,32 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         eventViewModel = AddEventViewModel(delegate: self)
         //emailTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
         // phoneNumberTextField.addTarget(self, action: #selector(AddEventViewController.textFieldDidChange(_:)), for: .editingChanged)
+        dateTextField.tintColor = .clear
+        dateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         radioController.buttonsArray = [inPersonBtn, virtualBtn]
         radioController.defaultButton = inPersonBtn
+    }
+    
+    @objc func dateFromButtonPressed() {
+        dateTextField.text = dateFormatterString(textField: dateTextField)
+        self.view.ShowSpinner()
+        self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendarButton(date: dateTextField.text ?? "") ?? String.blank, clinicIds: self.selectedClincIds, providerId: self.selectedProvidersIds.first ?? 0, serviceIds: self.selectedServicesIds, appointmentId: 0)
+    }
+    
+    func dateFormatterString(textField: CustomTextField) -> String {
+        datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        datePicker.minimumDate = todaysDate
+        textField.resignFirstResponder()
+        datePicker.reloadInputViews()
+        return dateFormatter.string(from: datePicker.date)
     }
     
     
     // MARK: - setUpNavigationBar
     func setUpNavigationBar() {
         self.navigationItem.title = Constant.Profile.appointment
-        setupEventUI()
-    }
-    
-    func setupEventUI() {
-        if userSelectedDate == "Manual" {
-            dateTextField.isUserInteractionEnabled = true
-            dateTextField.leftPadding = 25
-            dateSelectionButton.isUserInteractionEnabled = true
-        } else {
-            dateTextField.rightImage = nil
-            dateTextField.leftPadding = 0
-            dateTextField.text = serverToLocalDateFormat(date: userSelectedDate)
-            dateTextField.isUserInteractionEnabled = false
-            dateSelectionButton.isUserInteractionEnabled = false
-        }
     }
     
     func serverToLocalDateFormat(date: String) -> String {

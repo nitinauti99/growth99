@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension ServicesListDetailViewController: UITextFieldDelegate  {
-
+    
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         
         func validateURLTextField(_ textField: CustomTextField, errorMessage: String) {
@@ -32,13 +32,6 @@ extension ServicesListDetailViewController: UITextFieldDelegate  {
                 return
             }
             
-            guard let serviceList = servicesAddViewModel?.getAddServiceListData,
-                  serviceList.contains(where: { $0.name == serviceName }) else {
-                serviceNameTextField.showError(message: "Service with this name already present.")
-                submitButton.isEnabled = false
-                return
-            }
-            
         case selectClinicTextField:
             guard let clinicName = selectClinicTextField.text, !clinicName.isEmpty else {
                 selectClinicTextField.showError(message: "Clinic Name is required.")
@@ -46,23 +39,9 @@ extension ServicesListDetailViewController: UITextFieldDelegate  {
                 return
             }
             
-        case serviceDurationTextField:
-            guard let duration = serviceDurationTextField.text, !duration.isEmpty else {
-                serviceDurationTextField.showError(message: "Service duration is required.")
-                submitButton.isEnabled = false
-                return
-            }
-            
         case serviceCategoryTextField:
             guard let category = serviceCategoryTextField.text, !category.isEmpty else {
                 serviceCategoryTextField.showError(message: "Service Category is required.")
-                submitButton.isEnabled = false
-                return
-            }
-            
-        case serviceCostTextField:
-            guard let cost = serviceCostTextField.text, !cost.isEmpty else {
-                serviceCostTextField.showError(message: "Service Cost is required.")
                 submitButton.isEnabled = false
                 return
             }
@@ -80,40 +59,26 @@ extension ServicesListDetailViewController: UITextFieldDelegate  {
         
         submitButton.isEnabled = true
     }
-
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         func showError(for textField: CustomTextField, message: String) {
             textField.showError(message: message)
         }
-
+        
         if textField == serviceNameTextField {
             guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
                 showError(for: serviceNameTextField, message: "Service Name is required.")
                 return
             }
-            guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName}), !serviceNameContain else {
-                showError(for: serviceNameTextField, message: "Service with this name already present.")
-                return
-            }
+
         } else if textField == selectClinicTextField {
             guard let clinicName = selectClinicTextField.text, !clinicName.isEmpty else  {
                 showError(for: selectClinicTextField, message: "Clinic Name is required.")
                 return
             }
-        } else if textField == serviceDurationTextField {
-            guard let duration = serviceDurationTextField.text, !duration.isEmpty else {
-                showError(for: serviceDurationTextField, message: "Service duration is required.")
-                return
-            }
         } else if textField == serviceCategoryTextField {
             guard let category = serviceCategoryTextField.text, !category.isEmpty else {
                 showError(for: serviceCategoryTextField, message: "Service Category is required.")
-                return
-            }
-        } else if textField == serviceCostTextField {
-            guard let cost = serviceCostTextField.text, !cost.isEmpty else {
-                showError(for: serviceCostTextField, message: "Service Cost is required.")
                 return
             }
         }

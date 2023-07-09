@@ -51,6 +51,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     @IBOutlet weak var depositCostTFTopConstant: NSLayoutConstraint!
     @IBOutlet weak var depositCostTFHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var serviceScorllView: UIScrollView!
 
     var screenTitle: String = String.blank
     var serviceId: Int?
@@ -479,9 +480,20 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         dismiss(animated: true, completion: nil)
     }
     
+    func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
+        let topOffset = CGPoint(x: 0, y: -scrollView.contentInset.top)
+        scrollView.setContentOffset(topOffset, animated: animated)
+    }
+    
     @IBAction func saveServiceButtonAction(sender: UIButton) {
         guard let serviceName = serviceNameTextField.text, !serviceName.isEmpty else {
             serviceNameTextField.showError(message: "Service Name is required.")
+            return
+        }
+        
+        guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName}), !serviceNameContain else {
+            serviceNameTextField.showError(message: "Service with this name already present.")
+            scrollToTop(of: serviceScorllView, animated: true)
             return
         }
         
@@ -490,18 +502,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             return
         }
         
-        guard let serviceDuration = serviceDurationTextField.text, !serviceDuration.isEmpty else {
-            serviceDurationTextField.showError(message: "Service duration is required.")
-            return
-        }
-        
         guard let serviceCategory = serviceCategoryTextField.text, !serviceCategory.isEmpty else {
             serviceCategoryTextField.showError(message: "Service Category is required.")
-            return
-        }
-        
-        guard let serviceCost = serviceCostTextField.text, !serviceCost.isEmpty else {
-            serviceCostTextField.showError(message: "Service Cost is required.")
             return
         }
         
@@ -511,6 +513,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             return
         }
         
+        
         self.view.ShowSpinner()
         if self.title == Constant.Profile.createService {
             httpMethodType = .POST
@@ -519,8 +522,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         servicesAddViewModel?.createServiceAPICall(name: serviceName,
                                                    serviceCategoryId: selectedServiceCategoriesId,
-                                                   durationInMinutes: Int(serviceDuration) ?? 0,
-                                                   serviceCost: Int(serviceCost) ?? 0,
+                                                   durationInMinutes: Int(serviceDurationTextField.text ?? "") ?? 0,
+                                                   serviceCost: Int(serviceCostTextField.text ?? "") ?? 0,
                                                    description: serviceDescTextView.text ?? String.blank,
                                                    serviceURL: serviceUrlTextField.text ?? String.blank,
                                                    consentIds: selectedConsentIds,
