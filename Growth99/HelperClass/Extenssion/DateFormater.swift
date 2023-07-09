@@ -23,19 +23,13 @@ protocol DateFormaterProtocol: AnyObject {
     func dateFormatterStringBirthDate(textField: CustomTextField) -> String
     func serverToLocalDateFormate(date: String) -> String
     func serverToLocalTimeAndDateFormate(date: String) -> String
-    func serverToLocalforPost(date: String) -> String
-    func localToServerSocialForPost(date: String) -> String 
-    func serverToLocalforPostWithCurrentTimeZone(date: String) -> String
-    func serverToLocalforPateints(date: String) -> String
     func serverToLocalforCalender(date: String) -> String
-        func serverToLocalDateConverter(date: String) -> String
+    func serverToLocalDateConverter(date: String) -> String
     func serverToLocalPateintsAppointment(date: String) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
-    
     let timeZone =  UserRepository.shared.timeZone
-    
     func serverToLocalPateintTimeLineDate(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -300,9 +294,9 @@ class DateFormater: DateFormaterProtocol {
     func utcToLocal(timeString: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZone ?? "")
         if let date = dateFormatter.date(from: timeString) {
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            dateFormatter.timeZone = TimeZone(abbreviation: timeZone ?? "")
             dateFormatter.dateFormat = "h:mm a"
             return dateFormatter.string(from: date)
         }
