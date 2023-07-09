@@ -27,7 +27,9 @@ protocol DateFormaterProtocol: AnyObject {
     func localToServerSocialForPost(date: String) -> String 
     func serverToLocalforPostWithCurrentTimeZone(date: String) -> String
     func serverToLocalforPateints(date: String) -> String
-
+    func serverToLocalPateintsAppointment(date: String) -> String
+    func serverToLocalforUserProfile(date: String) -> String
+    func serverToLocalforClinics(date: String) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
@@ -66,6 +68,50 @@ class DateFormater: DateFormaterProtocol {
             let usDateFormatter = DateFormatter()
             usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
             usDateFormatter.timeZone = TimeZone.current
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
+        }
+        return ""
+    }
+    
+    func serverToLocalforClinics(date: String) -> String {
+        print("sheduled Date",date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        if let date = dateFormatter.date(from: date) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
+        }
+        return ""
+    }
+
+    func serverToLocalforUserProfile(date: String) -> String {
+        print("sheduled Date",date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        if let date = dateFormatter.date(from: date) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
+        }
+        return ""
+    }
+    
+    func serverToLocalPateintsAppointment(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        if let date = dateFormatter.date(from: date) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: "UTC")
             let usDateString = usDateFormatter.string(from: date)
             return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
         }

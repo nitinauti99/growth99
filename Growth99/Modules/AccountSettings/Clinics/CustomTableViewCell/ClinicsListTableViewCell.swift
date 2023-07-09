@@ -39,8 +39,8 @@ class ClinicsListTableViewCell: UITableViewCell {
         let clinicsFilterListData = clinicsFilterList?.getClinicsFilterDataAtIndex(index: index.row)
         self.nameLabel.text = clinicsFilterListData?.name
         self.id.text = String(clinicsFilterListData?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocal(date: clinicsFilterListData?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: clinicsFilterListData?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: clinicsFilterListData?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: clinicsFilterListData?.updatedAt ?? String.blank)
         self.createdBy.text = clinicsFilterListData?.createdBy
         self.updatedBy.text = clinicsFilterListData?.updatedBy
         indexPath = index
@@ -50,8 +50,8 @@ class ClinicsListTableViewCell: UITableViewCell {
         let clinicsList = clinicsListData?.getClinicsDataAtIndex(index: index.row)
         self.nameLabel.text = clinicsList?.name
         self.id.text = String(clinicsList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocal(date: clinicsList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: clinicsList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: clinicsList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: clinicsList?.updatedAt ?? String.blank)
         self.createdBy.text = clinicsList?.createdBy
         self.updatedBy.text = clinicsList?.updatedBy
         indexPath = index

@@ -449,6 +449,7 @@ struct ServiceCategory : Codable {
     let isDefault : Bool?
     let defaultServiceCategoryId : Int?
     let specialization : String?
+    let timezone : String?
 }
 
 

@@ -38,8 +38,8 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceFilterList?.getServiceFilterDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocal(date: serviceList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index
@@ -49,38 +49,11 @@ class ServicesListTableViewCell: UITableViewCell {
         let serviceList = serviceListData?.getServiceDataAtIndex(index: index.row)
         self.nameLabel.text = serviceList?.name
         self.id.text = String(serviceList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocal(date: serviceList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: serviceList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalforClinics(date: serviceList?.updatedAt ?? String.blank)
         self.createdBy.text = serviceList?.createdBy
         self.updatedBy.text = serviceList?.updatedBy
         indexPath = index
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
-    }
-
-    func utcToLocal(timeString: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        if let date = dateFormatter.date(from: timeString) {
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: date)
-        }
-        return nil
     }
     
     @IBAction func deleteButtonPressed() {
