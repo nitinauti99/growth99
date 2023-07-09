@@ -54,9 +54,13 @@ class PostsListTableViewCell: UITableViewCell {
             self.approve.text = "YES"
             self.deleteButton.isHidden = true
             self.editButton.isHidden = true
-            self.approveButton.setTitle("  Posted", for: .normal)
             self.approveButton.setTitleColor(UIColor.systemBlue, for: .normal)
             self.approveButton.setImage(UIImage(named: "postedImage"), for: .normal)
+            if  userVM?.sent == false {
+                self.approveButton.setTitle("  Approved", for: .normal)
+            }else{
+                self.approveButton.setTitle("  Posted", for: .normal)
+            }
         }else{
             self.approve.text = "NO"
             self.deleteButton.isHidden = false
@@ -82,9 +86,13 @@ class PostsListTableViewCell: UITableViewCell {
             self.approve.text = "YES"
             self.deleteButton.isHidden = true
             self.editButton.isHidden = true
-            self.approveButton.setTitle("  Posted", for: .normal)
             self.approveButton.setTitleColor(UIColor.systemBlue, for: .normal)
             self.approveButton.setImage(UIImage(named: "postedImage"), for: .normal)
+            if  userVM?.sent == false {
+                self.approveButton.setTitle("  Approved", for: .normal)
+            }else{
+                self.approveButton.setTitle("  Posted", for: .normal)
+            }
         }else{
             self.approve.text = "NO"
             self.deleteButton.isHidden = false
