@@ -58,10 +58,10 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         self.clinicNameLabel.text = profileAppointmentListData?.clinicName
         self.providerNameLabel.text = profileAppointmentListData?.providerName
         self.typeLabel.text = profileAppointmentListData?.appointmentType
-        self.appointmentDateLabel.text = dateFormater?.serverToLocal(date: profileAppointmentListData?.appointmentDate ?? String.blank)
+        self.appointmentDateLabel.text = dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
-        self.createdDate.text = dateFormater?.serverToLocal(date: profileAppointmentListData?.createdAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.createdAt ?? String.blank)
 
         indexPath = index
     }

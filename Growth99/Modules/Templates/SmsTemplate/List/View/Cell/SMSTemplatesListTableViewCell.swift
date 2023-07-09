@@ -35,8 +35,8 @@ class SMSTemplatesListTableViewCell: UITableViewCell {
         self.id.text = String(smsTemplateList?.id ?? 0)
         self.createdBy.text = smsTemplateList?.createdBy
         self.templateFor.text = smsTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: smsTemplateList?.createdAt ?? String.blank)
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: smsTemplateList?.updatedAt ?? String.blank)
+        self.createdAt.text = dateFormater?.serverToLocalDateConverter(date: smsTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocalDateConverter(date: smsTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
     
@@ -46,8 +46,8 @@ class SMSTemplatesListTableViewCell: UITableViewCell {
         self.id.text = String(smsTemplateList?.id ?? 0)
         self.createdBy.text = smsTemplateList?.createdBy
         self.templateFor.text = smsTemplateList?.templateFor
-        self.createdAt.text = dateFormater?.serverToLocal(date: smsTemplateList?.createdAt ?? String.blank)
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: smsTemplateList?.updatedAt ?? String.blank)
+        self.createdAt.text = dateFormater?.serverToLocalDateConverter(date: smsTemplateList?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocalDateConverter(date: smsTemplateList?.updatedAt ?? String.blank)
         indexPath = index
     }
 }

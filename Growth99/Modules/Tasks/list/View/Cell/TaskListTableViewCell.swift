@@ -38,7 +38,7 @@ class TaskListTableViewCell: UITableViewCell {
         self.assignedTo.text = userVM?.userName
         self.id.text = String(userVM?.id ?? 0)
         self.status.text = userVM?.status
-        self.createdDate.text =  dateFormater?.serverToLocalforPateints(date: userVM?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: userVM?.createdAt ?? String.blank)
         if userVM?.deadLine != nil {
             self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
         }else {
@@ -53,7 +53,7 @@ class TaskListTableViewCell: UITableViewCell {
         self.assignedTo.text = userVM?.userName
         self.id.text = String(userVM?.id ?? 0)
         self.status.text = userVM?.status
-        self.createdDate.text =  dateFormater?.serverToLocalforPateints(date: userVM?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: userVM?.createdAt ?? String.blank)
         if userVM?.deadLine != nil {
             self.deadLine.text =  dateFormater?.serverToLocalWithoutTime(date: userVM?.deadLine ?? String.blank)
         }else {

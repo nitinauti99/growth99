@@ -32,8 +32,8 @@ class QuestionarieTableViewCell: UITableViewCell {
         self.questionnaireName.text = questionarieVM?.questionnaireName
         self.appointmentID.text = String(questionarieVM?.AppointmentId ?? 0)
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
-        self.submittedDate.text = dateFormater?.serverToLocalforPateints(date: questionarieVM?.submittedDate ?? String.blank)
-        self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)
+        self.submittedDate.text = dateFormater?.serverToLocalDateConverter(date: questionarieVM?.submittedDate ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: questionarieVM?.createdAt ?? String.blank)
        
         if questionarieVM?.questionnaireStatus == "Submitted" {
             statusButton.setImage(UIImage(named: "submited"), for: .normal)
@@ -47,8 +47,8 @@ class QuestionarieTableViewCell: UITableViewCell {
         self.questionnaireName.text = questionarieVM?.questionnaireName
         self.appointmentID.text = String(questionarieVM?.AppointmentId ?? 0)
         self.questionnaireStatus.text = questionarieVM?.questionnaireStatus
-        self.submittedDate.text = dateFormater?.serverToLocalforPateints(date: questionarieVM?.submittedDate ?? String.blank)
-        self.createdDate.text = dateFormater?.serverToLocalforPateints(date: questionarieVM?.createdAt ?? String.blank)
+        self.submittedDate.text = dateFormater?.serverToLocalDateConverter(date: questionarieVM?.submittedDate ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: questionarieVM?.createdAt ?? String.blank)
         if questionarieVM?.questionnaireStatus == "Submitted" {
             statusButton.setImage(UIImage(named: "submited"), for: .normal)
         }else{

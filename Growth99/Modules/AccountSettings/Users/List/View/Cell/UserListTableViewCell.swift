@@ -41,8 +41,8 @@ class UserListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text = dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
         indexPath = index
@@ -54,20 +54,11 @@ class UserListTableViewCell: UITableViewCell {
         self.lastName.text = userVM?.lastName
         self.id.text = String(userVM?.id ?? 0)
         self.email.text = userVM?.email
-        self.createdDate.text = dateFormater?.serverToLocal(date: userVM?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: userVM?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: userVM?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: userVM?.updatedAt ?? String.blank)
         self.createdBy.text = userVM?.createdBy
         self.updatedBy.text = userVM?.updatedBy
         indexPath = index
-    }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-        return dateFormatter.string(from: date as Date)
     }
     
     @IBAction func deleteButtonPressed() {

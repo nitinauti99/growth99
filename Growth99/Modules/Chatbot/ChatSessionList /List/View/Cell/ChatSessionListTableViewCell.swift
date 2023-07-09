@@ -30,7 +30,7 @@ class ChatSessionListTableViewCell: UITableViewCell {
         self.name.text = chatSessionList?.firstName?.appending(" \(chatSessionList?.firstName ?? "")")
         self.email.text = chatSessionList?.email
         self.phoneNumber.text = chatSessionList?.phone
-        self.createdDate.text =  dateFormater?.serverToLocal(date: chatSessionList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: chatSessionList?.createdAt ?? String.blank)
     }
     
     func configureCell(chatSessionList: ChatSessionListViewModelProtocol?, index: IndexPath) {
@@ -39,6 +39,6 @@ class ChatSessionListTableViewCell: UITableViewCell {
         self.name.text = chatSessionList?.firstName?.appending(" \(chatSessionList?.firstName ?? "")")
         self.email.text = chatSessionList?.email
         self.phoneNumber.text = chatSessionList?.phone
-        self.createdDate.text =  dateFormater?.serverToLocal(date: chatSessionList?.createdAt ?? String.blank)
+        self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: chatSessionList?.createdAt ?? String.blank)
     }
 }

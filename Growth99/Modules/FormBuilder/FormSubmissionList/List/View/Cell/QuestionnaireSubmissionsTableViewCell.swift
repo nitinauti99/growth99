@@ -27,8 +27,8 @@ class QuestionnaireSubmissionsTableViewCell: UITableViewCell {
     func configureCell(questionarieVM: QuestionnaireSubmissionsViewModelModelProtocol?, index: IndexPath) {
         let questionarieVM = questionarieVM?.getQuestionarieDataAtIndex(index: index.row)
         self.id.text = String(questionarieVM?.id ?? 0)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: questionarieVM?.updatedAt ?? String.blank)
-        self.createdDate.text = dateFormater?.serverToLocal(date: questionarieVM?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: questionarieVM?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: questionarieVM?.createdAt ?? String.blank)
     }
     
 }

@@ -36,8 +36,8 @@ class chatQuestionnaireTableViewCell: UITableViewCell {
         let chatQuestionnaire = chatQuestionnaire?.chatQuestionnaireFilterDataAtIndex(index: index.row)
         self.name.text = chatQuestionnaire?.name
         self.createdBy.text = chatQuestionnaire?.createdBy?.firstName
-        self.createdAt.text = dateFormater?.serverToLocal(date: chatQuestionnaire?.createdAt ?? String.blank)
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: chatQuestionnaire?.updatedAt ?? String.blank)
+        self.createdAt.text = dateFormater?.serverToLocalDateConverter(date: chatQuestionnaire?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocalDateConverter(date: chatQuestionnaire?.updatedAt ?? String.blank)
         self.updatedBy.text =  chatQuestionnaire?.updatedBy?.firstName
         indexPath = index
     }
@@ -46,8 +46,8 @@ class chatQuestionnaireTableViewCell: UITableViewCell {
         let chatQuestionnaire = chatQuestionnaire?.chatQuestionnaireDataAtIndex(index: index.row)
         self.name.text = chatQuestionnaire?.name
         self.createdBy.text = chatQuestionnaire?.createdBy?.firstName
-        self.createdAt.text = dateFormater?.serverToLocal(date: chatQuestionnaire?.createdAt ?? String.blank)
-        self.updatedAt.text =  dateFormater?.serverToLocal(date: chatQuestionnaire?.updatedAt ?? String.blank)
+        self.createdAt.text = dateFormater?.serverToLocalDateConverter(date: chatQuestionnaire?.createdAt ?? String.blank)
+        self.updatedAt.text =  dateFormater?.serverToLocalDateConverter(date: chatQuestionnaire?.updatedAt ?? String.blank)
         self.updatedBy.text =  chatQuestionnaire?.updatedBy?.firstName
         indexPath = index
     }

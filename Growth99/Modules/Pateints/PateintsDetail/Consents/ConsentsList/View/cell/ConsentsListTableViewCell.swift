@@ -35,9 +35,9 @@ class ConsentsListTableViewCell: UITableViewCell {
             self.appointmentID.text = String(id)
         }
         self.consentStatus.text = consentsVM?.appointmentConsentStatus
-        self.appointmentDate.text = dateFormater?.serverToLocal(date: consentsVM?.appointmentDate ?? String.blank)
-        self.createdDate.text = dateFormater?.serverToLocal(date: consentsVM?.createdAt ?? String.blank)
-        self.signedDate.text = dateFormater?.serverToLocal(date: consentsVM?.signedDate ?? String.blank)
+        self.appointmentDate.text = dateFormater?.serverToLocalPateintsAppointment(date: consentsVM?.appointmentDate ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: consentsVM?.createdAt ?? String.blank)
+        self.signedDate.text = dateFormater?.serverToLocalDateConverter(date: consentsVM?.signedDate ?? String.blank)
     }
     
     func configureCell(consentsVM: ConsentsListViewModelProtocol?, index: IndexPath) {
@@ -50,8 +50,8 @@ class ConsentsListTableViewCell: UITableViewCell {
             self.appointmentID.text = String(id)
         }
         self.consentStatus.text = consentsVM?.appointmentConsentStatus
-        self.appointmentDate.text = dateFormater?.serverToLocal(date: consentsVM?.appointmentDate ?? String.blank)
-        self.createdDate.text = dateFormater?.serverToLocal(date: consentsVM?.createdAt ?? String.blank)
-        self.signedDate.text = dateFormater?.serverToLocal(date: consentsVM?.signedDate ?? String.blank)
+        self.appointmentDate.text = dateFormater?.serverToLocalPateintsAppointment(date: consentsVM?.appointmentDate ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: consentsVM?.createdAt ?? String.blank)
+        self.signedDate.text = dateFormater?.serverToLocalDateConverter(date: consentsVM?.signedDate ?? String.blank)
     }
 }

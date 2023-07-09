@@ -41,7 +41,7 @@ class LabelListTableViewCell: UITableViewCell {
     func configureCell(socialProfileVM: LabelListViewModelProtocol?, index: IndexPath) {
         let socialProfileVM = socialProfileVM?.labelListDataAtIndex(index: index.row)
         self.name.text = socialProfileVM?.name
-        self.createDate.text = dateFormater?.serverToLocal(date: socialProfileVM?.createdAt ?? String.blank)
+        self.createDate.text = dateFormater?.serverToLocalDateConverter(date: socialProfileVM?.createdAt ?? String.blank)
         self.id.text = String(socialProfileVM?.id ?? 0)
         indexPath = index
     }

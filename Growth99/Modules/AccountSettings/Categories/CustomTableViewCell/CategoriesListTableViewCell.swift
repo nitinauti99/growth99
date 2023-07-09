@@ -39,8 +39,8 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesFilterList?.getCategoriesFilterDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index
@@ -50,8 +50,8 @@ class CategoriesListTableViewCell: UITableViewCell {
         let categoriesList = categoriesListData?.getCategoriesDataAtIndex(index: index.row)
         self.nameLabel.text = categoriesList?.name
         self.id.text = String(categoriesList?.id ?? 0)
-        self.createdDate.text = dateFormater?.serverToLocal(date: categoriesList?.createdAt ?? String.blank)
-        self.updatedDate.text = dateFormater?.serverToLocal(date: categoriesList?.updatedAt ?? String.blank)
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.createdAt ?? String.blank)
+        self.updatedDate.text = dateFormater?.serverToLocalDateConverter(date: categoriesList?.updatedAt ?? String.blank)
         self.createdBy.text = categoriesList?.createdBy
         self.updatedBy.text = categoriesList?.updatedBy
         indexPath = index
@@ -62,17 +62,7 @@ class CategoriesListTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date! as Date)
-    }
-    
-    
+
     @IBAction func deleteButtonPressed() {
         self.delegate?.removeSelectedCategorie(cell: self, index: indexPath)
     }
