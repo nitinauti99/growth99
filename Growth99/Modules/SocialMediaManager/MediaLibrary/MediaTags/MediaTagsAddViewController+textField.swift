@@ -17,7 +17,7 @@ extension MediaTagsAddViewController: UITextFieldDelegate  {
                 return
             }
             
-            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text}), isValuePresent.count > 0 {
+            if let isValuePresent = self.mediaTagsList?.filter({ $0.name?.lowercased() == self.MediaTagsTextField.text?.lowercased()}), isValuePresent.count > 0 {
                 MediaTagsTextField.showError(message: "Tag with this name already present.")
                 return
             }

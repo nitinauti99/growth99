@@ -34,7 +34,7 @@ extension PateintsTagsAddViewController: UITextFieldDelegate  {
                 return
             }
             
-            if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == (self.PateintsTagsTextField.text)?.lowercased()}), isValuePresent.count > 0 {
+            if let isValuePresent = self.pateintsTagsList?.filter({ $0.name?.lowercased() == (self.PateintsTagsTextField.text?.lowercased())?.lowercased()}), isValuePresent.count > 0 {
                 PateintsTagsTextField.showError(message: "Tag with this name already present.")
                 saveButton.isEnabled = false
                 return

@@ -26,6 +26,7 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalforPost(date: String) -> String
     func localToServerSocialForPost(date: String) -> String 
     func serverToLocalforPostWithCurrentTimeZone(date: String) -> String
+    func serverToLocalforPateints(date: String) -> String
 
 }
 
@@ -67,6 +68,21 @@ class DateFormater: DateFormaterProtocol {
             usDateFormatter.timeZone = TimeZone.current
             let usDateString = usDateFormatter.string(from: date)
             return usDateString  // Prints: "Mar 26, 2023 08:30 AM"
+        }
+        return ""
+    }
+    
+    func serverToLocalforPateints(date: String) -> String {
+        print("sheduled Date",date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        if let date = dateFormatter.date(from: date) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
         }
         return ""
     }

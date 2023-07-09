@@ -62,6 +62,7 @@ class CreatePostViewController: UIViewController {
         scheduleTimeTextField.tintColor = .clear
         scheduleDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         scheduleTimeTextField.addInputViewDatePicker(target: self, selector: #selector(timeFromButtonPressed), mode: .time)
+        saveButton.isUserInteractionEnabled = true
         if isPosted == true {
             saveButton.isUserInteractionEnabled = false
         }
@@ -82,7 +83,7 @@ class CreatePostViewController: UIViewController {
     
     func setUpUI() {
         let item = viewModel?.getSocailPostData
-        if item?.approved == true {
+        if item?.sent == true {
             saveButton.isEnabled = false
         } else {
             saveButton.isEnabled = true
@@ -98,7 +99,7 @@ class CreatePostViewController: UIViewController {
         self.selectedPostLabel = (item?.postLabels ?? []).map({$0.socialMediaPostLabel!})
 
         self.selectedSocialProfiles = (item?.socialProfiles ?? []).map({$0.id ?? 0})
-        self.selectedPostLabels = (item?.postLabels ?? []).map({$0.id ?? 0})
+        self.selectedPostLabels = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.id ?? 0})
 
         let dateString = self.dateFormater?.serverToLocalforPostWithCurrentTimeZone(date: (item?.scheduledDate) ?? "").components(separatedBy: " ")
 

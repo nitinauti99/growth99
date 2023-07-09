@@ -45,11 +45,13 @@ class LabelListViewController: UIViewController {
     
     func setBarButton(){
         navigationItem.rightBarButtonItem = UIButton.barButtonTarget(target: self, action: #selector(creatUser), imageName: "add")
+
     }
     
     @objc func creatUser() {
         let PateintsTagsAddVC = UIStoryboard(name: "CreateLabelViewController", bundle: nil).instantiateViewController(withIdentifier: "CreateLabelViewController") as! CreateLabelViewController
         PateintsTagsAddVC.screenName = "Create Screen"
+        PateintsTagsAddVC.labelList = viewModel?.getLabelData
         self.navigationController?.pushViewController(PateintsTagsAddVC, animated: true)
     }
     
@@ -71,8 +73,10 @@ extension LabelListViewController: LabelListTableViewCellDelegate{
         detailController.screenName = "Edit Screen"
         if self.isSearch {
             detailController.labelId = viewModel?.labelFilterListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.labelList = viewModel?.getLabelFilterData
         }else{
             detailController.labelId = viewModel?.labelListDataAtIndex(index: index.row)?.id ?? 0
+            detailController.labelList = viewModel?.getLabelData
         }
         navigationController?.pushViewController(detailController, animated: true)
     }

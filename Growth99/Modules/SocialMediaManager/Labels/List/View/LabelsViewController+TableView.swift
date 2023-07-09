@@ -46,8 +46,10 @@ extension LabelListViewController: UITableViewDelegate, UITableViewDataSource {
 
         if self.isSearch {
             detailController.labelId = viewModel?.labelFilterListDataAtIndex(index: indexPath.row)?.id ?? 0
+            detailController.labelList = viewModel?.getLabelFilterData
         }else{
             detailController.labelId = viewModel?.labelListDataAtIndex(index: indexPath.row)?.id ?? 0
+            detailController.labelList = viewModel?.getLabelData
         }
         navigationController?.pushViewController(detailController, animated: true)
     }
