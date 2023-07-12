@@ -419,6 +419,8 @@
 		254D77A72A5AD996007941CB /* CalenderEventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */; };
 		254D77A82A5AD996007941CB /* CalenderEventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */; };
 		254D77A92A5AD996007941CB /* CalenderEventEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254D77A52A5AD996007941CB /* CalenderEventEditViewController.storyboard */; };
+		254D77AC2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77AA2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.xib */; };
+		254D77AD2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77AB2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.swift */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
@@ -1377,6 +1379,8 @@
 		254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEventEditViewController.swift; sourceTree = "<group>"; };
 		254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalenderEventEditViewController+TextField.swift"; sourceTree = "<group>"; };
 		254D77A52A5AD996007941CB /* CalenderEventEditViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CalenderEventEditViewController.storyboard; sourceTree = "<group>"; };
+		254D77AA2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerEditModuleTableViewCell.xib; sourceTree = "<group>"; };
+		254D77AB2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerEditModuleTableViewCell.swift; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -7019,6 +7023,8 @@
 		DA54A8A529D9795B00DB333F /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				254D77AB2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.swift */,
+				254D77AA2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.xib */,
 				25C46AA12A4DFA90004129E7 /* TriggerLeadEditActionTableViewCell.swift */,
 				25C46AA02A4DFA90004129E7 /* TriggerLeadEditActionTableViewCell.xib */,
 				DA64B91E29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift */,
@@ -7231,6 +7237,7 @@
 				848F4D8728F1C164007AC421 /* Assets.xcassets in Resources */,
 				013A4FBC29B4E39B00CA24B0 /* LeadTextTypeTableViewCell.xib in Resources */,
 				016F662729C97D8E00B1D248 /* MediaTagsListTableViewCell.xib in Resources */,
+				254D77AC2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.xib in Resources */,
 				018C65282A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.xib in Resources */,
 				84B75EAC2968D7F100962F3E /* CategoriesListViewController.storyboard in Resources */,
 				84D062F22967080E001FE469 /* EditLeadViewController.storyboard in Resources */,
@@ -7699,6 +7706,7 @@
 				01D9EBF829B8D2C80099761C /* DisplayQuestionnaireqsubmissionsViewContoller.swift in Sources */,
 				842C0CCD298F749100395061 /* AddNewConsentsViewController.swift in Sources */,
 				84F610EA292A71AB00B1FB69 /* Optional+Result.swift in Sources */,
+				254D77AD2A5DD1EF007941CB /* TriggerEditModuleTableViewCell.swift in Sources */,
 				18491DC029B80CE000FE72EF /* MassEmailandSMSViewController.swift in Sources */,
 				D0CE69712A3F7A6300D7C188 /* MassEmailandSMSEditTimeTableViewCell.swift in Sources */,
 				849D3AF72997CC72003E856A /* FontAwesomeStateRequirement.swift in Sources */,

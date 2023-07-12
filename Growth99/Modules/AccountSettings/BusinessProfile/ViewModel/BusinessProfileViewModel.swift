@@ -31,7 +31,7 @@ class BusinessProfileViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response): 
-                self.delegate?.businessInformationReponse(responseMessage: "Business updated successfully!", businessName: response.name ?? String.blank, businessLogoUrl: response.logoUrl ?? String.blank)
+                self.delegate?.businessInformationReponse(isImageUpload: false, responseMessage: "Business updated successfully!", businessName: response.name ?? String.blank, businessLogoUrl: response.logoUrl ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -44,7 +44,7 @@ class BusinessProfileViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                self.delegate?.businessInformationReponse(responseMessage: "File uploaded successfully", businessName: response.name ?? String.blank, businessLogoUrl: response.logoUrl ?? String.blank)
+                self.delegate?.businessInformationReponse(isImageUpload: true, responseMessage: "", businessName: response.name ?? String.blank, businessLogoUrl: response.logoUrl ?? String.blank)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
