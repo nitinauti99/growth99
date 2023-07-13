@@ -522,7 +522,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
                     cell.showleadLandingSelectFrom(isShown: false)
                     self?.scrollToBottom()
                 }
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -544,7 +543,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
             } else {
                 self?.selectedLeadLandingPages = selectedList
                 cell.leadSelectLandingTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -566,7 +564,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
             } else {
                 self?.selectedleadForms = selectedList
                 cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -583,7 +580,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
         selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectedLeadSourceUrl = selectedList
             cell.leadSelectSourceTextField.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
-            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -603,7 +599,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
                 cell.leadInitialStatusTextField.showError(message: "Please select initial status")
             } else {
                 cell.leadInitialStatusTextField.text = selectedItem
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -623,7 +618,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
                 cell.leadFinalStatusTextField.showError(message: "Please select final status")
             } else {
                 cell.leadFinalStatusTextField.text = selectedItem
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -642,7 +636,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
             self?.selectedLeadTags = selectedList
             let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
             self?.selectedLeadTagIds = formattedArray
-            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

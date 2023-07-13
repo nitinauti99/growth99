@@ -9,7 +9,8 @@ import UIKit
 
 protocol BusinessProfileViewControllerProtocol {
     func errorReceived(error: String)
-    func businessInformationReponse(responseMessage: String,
+    func businessInformationReponse(isImageUpload: Bool,
+                                    responseMessage: String,
                                     businessName: String,
                                     businessLogoUrl: String)
 }
@@ -44,11 +45,13 @@ class BusinessProfileViewController: UIViewController, UINavigationControllerDel
         self.view.showToast(message: error, color: .red)
     }
     
-    func businessInformationReponse(responseMessage: String, businessName: String, businessLogoUrl: String) {
+    func businessInformationReponse(isImageUpload: Bool, responseMessage: String, businessName: String, businessLogoUrl: String) {
         self.view.HideSpinner()
         user.bussinessName = businessName
         user.bussinessLogo = businessLogoUrl
-        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        if isImageUpload == false {
+            self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        }
     }
     
     @IBAction func imageIconbtnTapped(_ sender: Any) {

@@ -28,9 +28,9 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.massEmailSMSTextField.text = viewModel?.getTriggerEditListData?.name ?? ""
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Module" {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerModuleTableViewCell", for: indexPath) as? TriggerModuleTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditModuleTableViewCell", for: indexPath) as? TriggerEditModuleTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            moduleSelectionType = cell.moduleTypeSelected
+            moduleSelectionType = viewModel?.getTriggerEditListData?.moduleName ?? ""
             if viewModel?.getTriggerEditListData?.moduleName == "leads" {
                 cell.leadBtn.isSelected = true
                 cell.patientBtn.isSelected = false
@@ -165,7 +165,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(appointmentStatusArray.count * 30))), arrowDirection: .up), from: self)
     }
     
@@ -246,9 +245,9 @@ extension TriggerEditDetailViewController: TriggerDefaultCellDelegate {
     }
 }
 
-extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
-    func nextButtonModule(cell: TriggerModuleTableViewCell, index: IndexPath, moduleType: String) {
-        if moduleType == "appointment" {
+extension TriggerEditDetailViewController: TriggerEditModuleCellDelegate {
+    func nextButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String) {
+        if moduleType == "Appointment" {
             if triggerDetailList.count < 3 {
                 moduleSelectionType = moduleType
                 createNewTriggerCell(cellNameType: "Appointment")
@@ -260,7 +259,7 @@ extension TriggerEditDetailViewController: TriggerModuleCellDelegate {
                 createNewTriggerCell(cellNameType: "Appointment")
                 scrollToBottom()
             }
-        } else if moduleType == "lead" {
+        } else if moduleType == "leads" {
             if triggerDetailList.count < 3 {
                 moduleSelectionType = moduleType
                 createNewTriggerCell(cellNameType: "Lead")
@@ -426,7 +425,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             } else {
                 self?.selectedLeadLandingPages = selectedList
                 cell.leadSelectLandingTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -448,7 +446,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             } else {
                 self?.selectedleadForms = selectedList
                 cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -465,7 +462,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         selectionMenu.setSelectedItems(items: selectedLeadSourceUrl) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectedLeadSourceUrl = selectedList
             cell.leadSelectSourceTextField.text = selectedList.map({$0.sourceUrl ?? String.blank}).joined(separator: ",")
-            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -485,7 +481,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 cell.leadInitialStatusTextField.showError(message: "Please select initial status")
             } else {
                 cell.leadInitialStatusTextField.text = selectedItem
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -505,7 +500,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
                 cell.leadFinalStatusTextField.showError(message: "Please select final status")
             } else {
                 cell.leadFinalStatusTextField.text = selectedItem
-                selectionMenu.dismiss()
             }
         }
         selectionMenu.reloadInputViews()
@@ -524,7 +518,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             self?.selectedLeadTags = selectedList
             let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
             self?.selectedLeadTagIds = formattedArray
-            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
@@ -595,7 +588,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
             orderOfConditionTrigger = orderOfConditionTrigger + 1
         }
         
-        if moduleSelectionType == "lead" {
+        if moduleSelectionType == "leads" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
                     cell.timeDurationTextField.showError(message: "Please enter time duration")
@@ -633,7 +626,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     }
     
     func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
-        if moduleSelectionType == "lead" {
+        if moduleSelectionType == "leads" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
                     cell.timeDurationTextField.showError(message: "Please enter time duration")
@@ -729,7 +722,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
                 cell.createNextButton.isEnabled = false
                 cell.assignTaskEmptyTextLabel.isHidden = true
                 taskName = cell.taskNameTextField.text ?? ""
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "lead")
+                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "leads")
             }
         }
     }
@@ -742,7 +735,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     
     /// set cell drop dwon action
     func smsTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, sender: UIButton) {
-        if moduleSelectionType == "lead" {
+        if moduleSelectionType == "leads" {
             smsTargetArray = ["Leads", "Clinic"]
             
         } else {
@@ -770,13 +763,13 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     }
     
     func smsNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, smsTargetType: String) {
-        if moduleSelectionType == "lead" && smsTargetType == "Leads" {
+        if moduleSelectionType == "leads" && smsTargetType == "Leads" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Lead"}) ?? []
-        } else if moduleSelectionType == "lead" && smsTargetType == "Clinic" {
+        } else if moduleSelectionType == "leads" && smsTargetType == "Clinic" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.smsTarget == "Clinic"}) ?? []
-        } else if moduleSelectionType == "appointment" && smsTargetType == "Patient" {
+        } else if moduleSelectionType == "Appointment" && smsTargetType == "Patient" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.smsTarget == "Patient"}) ?? []
-        } else if moduleSelectionType == "appointment" && smsTargetType == "Clinic" {
+        } else if moduleSelectionType == "Appointment" && smsTargetType == "Clinic" {
             smsTemplatesArray = viewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.smsTarget == "Clinic"}) ?? []
         }
         
@@ -801,7 +794,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     }
     
     func emailTargetButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath) {
-        if moduleSelectionType == "lead" {
+        if moduleSelectionType == "leads" {
             emailTargetArray = ["Leads", "Clinic"]
         } else {
             emailTargetArray = ["Patient", "Clinic"]
@@ -827,13 +820,13 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     }
     
     func emailNetworkButton(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, emailTargetType: String) {
-        if moduleSelectionType == "lead" && emailTargetType == "Leads" {
+        if moduleSelectionType == "leads" && emailTargetType == "Leads" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.emailTarget == "Lead"}) ?? []
-        } else if moduleSelectionType == "lead" && emailTargetType == "Clinic" {
+        } else if moduleSelectionType == "leads" && emailTargetType == "Clinic" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Lead" && $0.emailTarget == "Clinic"}) ?? []
-        } else if moduleSelectionType == "appointment" && emailTargetType == "Patient" {
+        } else if moduleSelectionType == "Appointment" && emailTargetType == "Patient" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.emailTarget == "Patient"}) ?? []
-        } else if moduleSelectionType == "appointment" && emailTargetType == "Clinic" {
+        } else if moduleSelectionType == "Appointment" && emailTargetType == "Clinic" {
             emailTemplatesArray = viewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.templateFor == "Appointment" && $0.emailTarget == "Clinic"}) ?? []
         }
         
