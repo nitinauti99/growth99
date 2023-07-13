@@ -33,7 +33,7 @@ class LabelListTableViewCell: UITableViewCell {
     func configureCellWithSearch(socialProfileVM: LabelListViewModelProtocol?, index: IndexPath) {
         let socialProfileVM = socialProfileVM?.labelFilterListDataAtIndex(index: index.row)
         self.name.text = socialProfileVM?.name
-        self.createDate.text = dateFormater?.serverToLocalPateintTimeLineDate(date: socialProfileVM?.createdAt ?? String.blank)
+        self.createDate.text = dateFormater?.serverToLocalDateConverter(date: socialProfileVM?.createdAt ?? String.blank)
         self.id.text = String(socialProfileVM?.id ?? 0)
         indexPath = index
     }

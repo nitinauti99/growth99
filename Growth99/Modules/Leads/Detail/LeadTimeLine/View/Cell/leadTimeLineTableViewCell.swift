@@ -39,7 +39,7 @@ class leadTimeLineTableViewCell: UITableViewCell {
         self.name.text = timeLineVM?.name
         self.email.text = timeLineVM?.email
         self.type.text =  timeLineVM?.type ?? String.blank
-        self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
+        self.createdDateTime.text = dateFormater?.serverToLocalDateConverter(date: timeLineVM?.createdDateTime ?? String.blank)
         self.indexPath = index
         self.templateId = timeLineVM?.id ?? 0
     }

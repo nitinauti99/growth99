@@ -43,10 +43,10 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         self.clinicNameLabel.text = profileAppointmentListData?.clinicName
         self.providerNameLabel.text = profileAppointmentListData?.providerName
         self.typeLabel.text = profileAppointmentListData?.appointmentType
-        self.appointmentDateLabel.text = "\(dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank) \(dateFormater?.utcToLocal(timeString: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank)"
+        self.appointmentDateLabel.text = dateFormater?.serverToLocalPateintsAppointment(date: profileAppointmentListData?.appointmentDate ?? String.blank)
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
-        self.createdDate.text = "\(dateFormater?.serverToLocalCreatedDate(date: profileAppointmentListData?.createdAt ?? String.blank) ?? String.blank) \(dateFormater?.utcToLocal(timeString: profileAppointmentListData?.createdAt ?? String.blank) ?? String.blank)"
+        self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.createdAt ?? String.blank)
         indexPath = index
     }
     
@@ -58,7 +58,8 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         self.clinicNameLabel.text = profileAppointmentListData?.clinicName
         self.providerNameLabel.text = profileAppointmentListData?.providerName
         self.typeLabel.text = profileAppointmentListData?.appointmentType
-        self.appointmentDateLabel.text = "\(dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank) \(dateFormater?.utcToLocal(timeString: profileAppointmentListData?.appointmentDate ?? String.blank) ?? String.blank)"
+        self.appointmentDateLabel.text = dateFormater?.serverToLocalPateintsAppointment(date: profileAppointmentListData?.appointmentDate ?? String.blank)
+            
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
         self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.createdAt ?? String.blank)

@@ -56,4 +56,7 @@ class QuestionarieTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func sendToEdit(sender: UIButton){
+        
+    }
 }

@@ -86,6 +86,7 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
         self.bussinessTitile.text = user.bussinessName
         self.profileImage.sd_setImage(with: URL(string: user.bussinessLogo ?? String.blank), placeholderImage: UIImage(named: "Logo.png"))
         self.viewWillAppear(true)
+        self.tableView.reloadData()
     }
     
     // MARK: - BUTTON_ACTIONS

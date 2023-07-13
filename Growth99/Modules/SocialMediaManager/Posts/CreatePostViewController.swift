@@ -25,10 +25,10 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var hashtagTextField: CustomTextField!
     @IBOutlet weak var labelTextField: CustomTextField!
-    @IBOutlet private weak var scheduleDateTextField: CustomTextField!
+    @IBOutlet weak var scheduleDateTextField: CustomTextField!
     @IBOutlet weak var scheduleTimeTextField: CustomTextField!
     @IBOutlet weak var socialChannelTextField: CustomTextField!
-    @IBOutlet private weak var PostTextView: CustomTextView!
+    @IBOutlet weak var PostTextView: CustomTextView!
     @IBOutlet weak var upLoadImageButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var selectFromLibButton: UIButton!
@@ -171,7 +171,7 @@ class CreatePostViewController: UIViewController {
         
         let str: String = (self.scheduleDateTextField.text ?? "") + " " + (self.scheduleTimeTextField.text ?? "")
         
-        let scheduledDate = (dateFormater?.serverToLocalDateConverter(date: str)) ?? ""
+        let scheduledDate = (dateFormater?.localToServerSocial(date: str)) ?? ""
         
         var url = String()
         var methodType = String()

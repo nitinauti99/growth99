@@ -59,7 +59,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.triggerNameLabel.text = massEmailFilterList?.name
         self.executionStatusLabel.text = massEmailFilterList?.executionStatus
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-        self.scheduledDateLabel.text =  self.serverToLocal(date: massEmailFilterList?.createdAt ?? String.blank)
+        self.scheduledDateLabel.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.updatedAt ?? String.blank)
@@ -101,7 +101,7 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.triggerNameLabel.text = massEmailList?.name
         self.executionStatusLabel.text = massEmailList?.executionStatus
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-        self.scheduledDateLabel.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
+        self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
         self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.updatedAt ?? String.blank)
@@ -126,37 +126,6 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
             self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         }
         indexPath = index
-    }
-    
-    func serverToLocal(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MMM d yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    func serverToLocalCreatedDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.dateFormat = "MMM d yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    func utcToLocal(timeString: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        if let date = dateFormatter.date(from: timeString) {
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            dateFormatter.dateFormat = "h:mm a"
-            return dateFormatter.string(from: date)
-        }
-        return nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

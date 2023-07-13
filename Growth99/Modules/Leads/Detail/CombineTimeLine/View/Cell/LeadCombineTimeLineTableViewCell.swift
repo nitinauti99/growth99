@@ -40,7 +40,7 @@ class LeadCombineTimeLineTableViewCell: UITableViewCell {
         self.name.text = timeLineVM?.name
         self.email.text = timeLineVM?.email
         self.type.text =  timeLineVM?.type ?? String.blank
-        self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
+        self.createdDateTime.text = dateFormater?.serverToLocalDateConverter(date: timeLineVM?.createdDateTime ?? String.blank)
         self.templateId = timeLineVM?.id ?? 0
         self.indexPath = index
     }

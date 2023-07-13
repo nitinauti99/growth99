@@ -8,8 +8,6 @@
 import Foundation
 
 protocol DateFormaterProtocol: AnyObject {
-//    func serverToLocal(date: String) -> String
-    func serverToLocalCreatedDate(date: String) -> String
     func serverToLocalWithoutTime(date: String) -> String
     func localToServer(date: String) -> String
     func utcToLocal(timeString: String) -> String?
@@ -17,42 +15,25 @@ protocol DateFormaterProtocol: AnyObject {
     func timeFormatterString(textField: CustomTextField) -> String
     func utcToLocalAccounts(timeString: String) -> String?
     func localToServerWithDate(date: String) -> String
-    func serverToLocalDate(date: String) -> String
-    func serverToLocalPateintTimeLineDate(date: String) -> String
     func localToServerSocial(date: String) -> String
     func dateFormatterStringBirthDate(textField: CustomTextField) -> String
-    func serverToLocalDateFormate(date: String) -> String
-    func serverToLocalTimeAndDateFormate(date: String) -> String
     func serverToLocalforCalender(date: String) -> String
     func serverToLocalDateConverter(date: String) -> String
     func serverToLocalPateintsAppointment(date: String) -> String
+    func serverToLocalBirthDateFormate(date: String) -> String
+    func serverToLocalPateintTimeLineDate(date: String) -> String
+
+    //    func serverToLocal(date: String) -> String
+     //   func serverToLocalCreatedDate(date: String) -> String
+   //    func serverToLocalTimeAndDateFormate(date: String) -> String
+    //   func serverToLocalDate(date: String) -> String
+   //    func serverToLocalPateintTimeLineDate(date: String) -> String
+
 }
 
 class DateFormater: DateFormaterProtocol {
-    let timeZone =  UserRepository.shared.timeZone
-    func serverToLocalPateintTimeLineDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        //2023-04-26T06:26:27.772+0000
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
-        return dateFormatter.string(from: date)
-    }
     
-    func serverToLocalTimeAndDateFormate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-       
-        let usDateFormatter = DateFormatter()
-        usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
-        usDateFormatter.timeZone = TimeZone(identifier: "UTC")
-        let date = dateFormatter.date(from: date) ?? Date()
-        return usDateFormatter.string(from: date)
-    }
+    let timeZone =  UserRepository.shared.timeZone
     
     func serverToLocalDateConverter(date: String) -> String {
         let dateFormatter = DateFormatter()
@@ -68,36 +49,17 @@ class DateFormater: DateFormaterProtocol {
         return ""
     }
     
-//    func serverToLocalforClinics(date: String) -> String {
-//        print("sheduled Date",date)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//        if let date = dateFormatter.date(from: date) {
-//            let usDateFormatter = DateFormatter()
-//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//            let usDateString = usDateFormatter.string(from: date)
-//            return usDateString
-//        }
-//        return ""
-//    }
+        func serverToLocalPateintTimeLineDate(date: String) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            let date = dateFormatter.date(from: date) ?? Date()
+            dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
+            return dateFormatter.string(from: date)
+        }
 
-//    func serverToLocal(date: String) -> String {
-//        print("sheduled Date",date)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//        if let date = dateFormatter.date(from: date) {
-//            let usDateFormatter = DateFormatter()
-//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//            let usDateString = usDateFormatter.string(from: date)
-//            return usDateString
-//        }
-//        return ""
-//    }
-    
     func serverToLocalPateintsAppointment(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -112,96 +74,6 @@ class DateFormater: DateFormaterProtocol {
         return ""
     }
     
-//    func serverToLocalforPateints(date: String) -> String {
-//        print("sheduled Date",date)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//        if let date = dateFormatter.date(from: date) {
-//            let usDateFormatter = DateFormatter()
-//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//            let usDateString = usDateFormatter.string(from: date)
-//            return usDateString
-//        }
-//        return ""
-//    }
-    
-//    func serverToLocalforPost(date: String) -> String {
-//        print("sheduled Date",date)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//        if let date = dateFormatter.date(from: date) {
-//            let usDateFormatter = DateFormatter()
-//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//            let usDateString = usDateFormatter.string(from: date)
-//            return usDateString
-//        }
-//        return ""
-//    }
-    
-//    func localToServerSocialForPost(date: String) -> String {
-//        print("sheduled Date",date)
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
-//        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
-//        let dateFormated = dateFormatter.date(from: date)
-//        dateFormatter.timeZone = TimeZone.current
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-//        return dateFormatter.string(from: dateFormated!)
-//    }
-    
-//    func serverToLocalforPostWithCurrentTimeZone(date: String) -> String {
-//        print("sheduled Date",date)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-//        if let date = dateFormatter.date(from: date) {
-//            let usDateFormatter = DateFormatter()
-//            usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
-//            usDateFormatter.timeZone = TimeZone.current
-//            let usDateString = usDateFormatter.string(from: date)
-//            return usDateString
-//        }
-//        return ""
-//    }
-    
-    func serverToLocalCreatedDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "MMM d yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    func serverToLocalDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    func serverToLocalDateFormate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
     func serverToLocalWithoutTime(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -212,6 +84,19 @@ class DateFormater: DateFormaterProtocol {
         return dateFormatter.string(from: date as Date)
     }
     
+    func serverToLocalBirthDateFormate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    /// conver date local to sever formate
+ 
     func localToServer(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -225,9 +110,9 @@ class DateFormater: DateFormaterProtocol {
     func localToServerSocial(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
+        dateFormatter.dateFormat = "mm/dd/yyyy hh:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: date)
     }
@@ -235,12 +120,10 @@ class DateFormater: DateFormaterProtocol {
     func localToServerWithDate(date: String) -> String {
         let currentDate = Date()
         let currentTime = date
-        
         let dateFormatter22 = DateFormatter()
         dateFormatter22.string(from: currentDate)
         dateFormatter22.dateFormat = "yyyy-MM-dd'T'"
         dateFormatter22.locale = Locale(identifier: "en_US_POSIX")
-    
         
         let dateWith = dateFormatter22.string(from: currentDate)
         
@@ -329,3 +212,130 @@ class DateFormater: DateFormaterProtocol {
         return ""
     }
 }
+
+
+
+//    func serverToLocalTimeAndDateFormate(date: String) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//
+//        let usDateFormatter = DateFormatter()
+//        usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
+//        usDateFormatter.timeZone = TimeZone(identifier: "UTC")
+//        let date = dateFormatter.date(from: date) ?? Date()
+//        return usDateFormatter.string(from: date)
+//    }
+
+
+
+//    func serverToLocalforClinics(date: String) -> String {
+//        print("sheduled Date",date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//        if let date = dateFormatter.date(from: date) {
+//            let usDateFormatter = DateFormatter()
+//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//            let usDateString = usDateFormatter.string(from: date)
+//            return usDateString
+//        }
+//        return ""
+//    }
+
+//    func serverToLocal(date: String) -> String {
+//        print("sheduled Date",date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//        if let date = dateFormatter.date(from: date) {
+//            let usDateFormatter = DateFormatter()
+//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//            let usDateString = usDateFormatter.string(from: date)
+//            return usDateString
+//        }
+//        return ""
+//    }
+
+
+
+//    func serverToLocalforPateints(date: String) -> String {
+//        print("sheduled Date",date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//        if let date = dateFormatter.date(from: date) {
+//            let usDateFormatter = DateFormatter()
+//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//            let usDateString = usDateFormatter.string(from: date)
+//            return usDateString
+//        }
+//        return ""
+//    }
+
+//    func serverToLocalforPost(date: String) -> String {
+//        print("sheduled Date",date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//        if let date = dateFormatter.date(from: date) {
+//            let usDateFormatter = DateFormatter()
+//            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+//            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//            let usDateString = usDateFormatter.string(from: date)
+//            return usDateString
+//        }
+//        return ""
+//    }
+
+//    func localToServerSocialForPost(date: String) -> String {
+//        print("sheduled Date",date)
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+//        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+//        let dateFormated = dateFormatter.date(from: date)
+//        dateFormatter.timeZone = TimeZone.current
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//        return dateFormatter.string(from: dateFormated!)
+//    }
+
+//    func serverToLocalforPostWithCurrentTimeZone(date: String) -> String {
+//        print("sheduled Date",date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+//        if let date = dateFormatter.date(from: date) {
+//            let usDateFormatter = DateFormatter()
+//            usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
+//            usDateFormatter.timeZone = TimeZone.current
+//            let usDateString = usDateFormatter.string(from: date)
+//            return usDateString
+//        }
+//        return ""
+//    }
+
+//    func serverToLocalCreatedDate(date: String) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        let date = dateFormatter.date(from: date) ?? Date()
+//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+//        dateFormatter.dateFormat = "MMM d yyyy"
+//        return dateFormatter.string(from: date)
+//    }
+
+//    func serverToLocalDate(date: String) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        let date = dateFormatter.date(from: date) ?? Date()
+//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+//        dateFormatter.dateFormat = "MM/dd/yyyy"
+//        return dateFormatter.string(from: date)
+//    }

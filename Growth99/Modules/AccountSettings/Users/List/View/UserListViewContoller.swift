@@ -69,10 +69,10 @@ extension UserListViewContoller: UserListTableViewCellDelegate {
         var userId: Int = 0
         
         if isSearch {
-            fullName = (viewModel?.userFilterDataDataAtIndex(index: index.row)?.firstName ?? "")  + (viewModel?.userDataAtIndex(index: index.row)?.lastName ?? "")
+            fullName = (viewModel?.userFilterDataDataAtIndex(index: index.row)?.firstName ?? "")  + " " + (viewModel?.userFilterDataDataAtIndex(index: index.row)?.lastName ?? "")
             userId = self.viewModel?.userFilterDataDataAtIndex(index: index.row)?.id ?? 0
         }else{
-            fullName = (viewModel?.userDataAtIndex(index: index.row)?.firstName ?? "")  + (viewModel?.userDataAtIndex(index: index.row)?.lastName ?? "")
+            fullName = (viewModel?.userDataAtIndex(index: index.row)?.firstName ?? "") + " "  + (viewModel?.userDataAtIndex(index: index.row)?.lastName ?? "")
             userId = self.viewModel?.userDataAtIndex(index: index.row)?.id ?? 0
         }
        

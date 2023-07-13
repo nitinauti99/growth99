@@ -45,6 +45,9 @@ class SMSTemplateViewModel {
         self.requestManager.request(forPath: ApiUrl.smsTemplatesList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[SMSTemplateModel], GrowthNetworkError>) in
             switch result {
             case .success(let smsTemplateData):
+                self.leadTemplateListData = []
+                self.apppointmentTemplateListData = []
+                self.massSMSTemplateListData = []
                 self.smsTemplateListData = smsTemplateData
                 self.setTemplate()
                 self.delegate?.SmsTemplatesDataRecived()

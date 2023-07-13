@@ -57,7 +57,7 @@ class PateintEditViewController: UIViewController {
         self.emailTextField.text = item?.email
         self.phoneNumberTextField.text = item?.phone
         self.genderTextField.text = item?.gender
-        self.dateTextField.text = dateFormater?.serverToLocalDate(date:item?.dateOfBirth ?? "")
+        self.dateTextField.text = dateFormater?.serverToLocalBirthDateFormate(date:item?.dateOfBirth ?? "")
         self.addressLine1TextField.text = item?.addressLine1
         self.addressLine2TextField.text = item?.addressLine2
         self.cityTextField.text = item?.city

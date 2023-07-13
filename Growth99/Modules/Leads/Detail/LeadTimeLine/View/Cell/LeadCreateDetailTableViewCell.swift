@@ -31,6 +31,6 @@ class LeadCreateDetailTableViewCell: UITableViewHeaderFooterView {
         let timeLineVM = timeLineVM?.getCreationData
         self.firstName.text = (timeLineVM?.firstName ?? "") + " " + (timeLineVM?.lastName ?? "")
         self.type.text =  "Lead Created"
-        self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdAt ?? String.blank)
+        self.createdDateTime.text = dateFormater?.serverToLocalDateConverter(date: timeLineVM?.createdAt ?? String.blank)
     }
 }

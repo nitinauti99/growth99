@@ -189,7 +189,7 @@ class PateintDetailViewController: UIViewController, PateintDetailViewController
         gender.text = pateintData?.gender ?? "-"
         notes.text = pateintData?.notes ?? "-"
         self.dateOfBirth.text = pateintData?.dateOfBirth ?? "-"
-        let dateOfBirth = dateFormater?.serverToLocalDateFormate(date: pateintData?.dateOfBirth ?? "")
+        let dateOfBirth = dateFormater?.serverToLocalBirthDateFormate(date: pateintData?.dateOfBirth ?? "")
         self.dateOfBirth.text = dateOfBirth ?? "-"
         self.fullName.text = (pateintData?.firstName ?? String.blank) + " " + (pateintData?.lastName ?? String.blank)
     }

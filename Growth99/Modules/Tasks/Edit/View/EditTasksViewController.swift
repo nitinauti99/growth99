@@ -71,7 +71,7 @@ class EditTasksViewController: UIViewController{
         usersTextField.text = taskDetail?.userName
         statusTextField.text = taskDetail?.status
         if taskDetail?.deadLine != nil {
-            DeadlineTextField.text = dateFormater?.serverToLocalDate(date: taskDetail?.deadLine ?? "")
+            DeadlineTextField.text = dateFormater?.serverToLocalDateConverter(date: taskDetail?.deadLine ?? "")
         }
         descriptionTextView.text = taskDetail?.description
         workflowTaskUser = taskDetail?.userId ?? 0
