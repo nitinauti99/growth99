@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddLeadViewController" customModule="Growth99" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMb-48-HxB">
+                    <rect key="frame" x="0.0" y="79" width="393" height="739"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zm9-7e-kpc">
+                    <rect key="frame" x="313" y="29" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="KVn-Rl-qaK"/>
+                        <constraint firstAttribute="width" constant="40" id="Kgi-6q-FSy"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="CloseIcon"/>
+                    <connections>
+                        <action selector="closeViewWithSender:" destination="-1" eventType="touchUpInside" id="CUO-Sk-HEf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="tMb-48-HxB" firstAttribute="top" secondItem="Zm9-7e-kpc" secondAttribute="bottom" constant="10" id="5bG-5h-5Ir"/>
+                <constraint firstItem="tMb-48-HxB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="E8u-q8-e1R"/>
+                <constraint firstItem="tMb-48-HxB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="e57-rE-RwN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tMb-48-HxB" secondAttribute="bottom" id="ivQ-Vy-Cya"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tMb-48-HxB" secondAttribute="trailing" id="sNC-gh-lDY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zm9-7e-kpc" secondAttribute="trailing" constant="40" id="tOp-UX-x4t"/>
+            </constraints>
+            <point key="canvasLocation" x="68" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CloseIcon" width="24.666666030883789" height="24.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

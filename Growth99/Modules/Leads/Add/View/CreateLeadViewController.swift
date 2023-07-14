@@ -21,7 +21,8 @@ class CreateLeadViewController: UIViewController{
     @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
     @IBOutlet weak var tableView : UITableView!
-    
+    @IBOutlet weak var tableViewHight : NSLayoutConstraint!
+
     var viewModel: CreateLeadViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
     
@@ -38,24 +39,25 @@ class CreateLeadViewController: UIViewController{
         self.viewModel?.getQuestionnaireId()
     }
     
-//    func scrollViewHeight() {
-//        var tableViewHight = CGFloat()
-//        let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
-//
-//        for item in patientQuestionList {
-//            if item.questionType  == "Input" || item.questionType == "Yes_No" || item.questionType == "Date" {
-//                tableViewHight += 100
-//            }else if (item.questionType  == "Text") {
-//                tableViewHight += 200
-//            }else if (item.questionType  == "Multiple_Selection_Text") {
-//                if item.showDropDown == true {
-//                    tableViewHight += 100
-//                }else {
-//                    tableViewHight += CGFloat((item.patientQuestionChoices?.count ?? 0) * 100)
-//                }
-//            }
-//        }
-//    }
+    func scrollViewHeight() -> CGFloat  {
+        var tableViewHight = CGFloat()
+        let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
+
+        for item in patientQuestionList {
+            if item.questionType  == "Input" || item.questionType == "Yes_No" || item.questionType == "Date" {
+                tableViewHight += 100
+            }else if (item.questionType  == "Text") {
+                tableViewHight += 200
+            }else if (item.questionType  == "Multiple_Selection_Text") {
+                if item.showDropDown == true {
+                    tableViewHight += 100
+                }else {
+                    tableViewHight += CGFloat((item.patientQuestionChoices?.count ?? 0) * 100)
+                }
+            }
+        }
+        return tableViewHight
+    }
     
     func registerTableViewCell(){
         tableView.register(UINib(nibName: "LeadInputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadInputTypeTableViewCell")
@@ -90,11 +92,8 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
         let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
         
         for index in 0..<(patientQuestionList.count) {
-//            let cellIndexPath = IndexPath(item: index + 1, section: 0)
-//            let arrayIndexPath = IndexPath(item: index, section: 0)
             let cellIndexPath  = IndexPath(row: index, section: 0)
             let item = patientQuestionList[cellIndexPath.row]
-
            
             ///  /// 1. questionnaireType ->  InputType
             if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadInputTypeTableViewCell {
@@ -270,6 +269,7 @@ extension CreateLeadViewController: CreateLeadViewControllerProtocol {
     func QuestionnaireListRecived() {
         view.HideSpinner()
         self.tableView.reloadData()
+        self.tableViewHight.constant = self.scrollViewHeight()
     }
 
     ///  created Lead on existing datanaviagte to lead list

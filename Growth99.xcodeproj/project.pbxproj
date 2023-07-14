@@ -2181,9 +2181,9 @@
 		013A4FA829B4E39B00CA24B0 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0144DA092A38A8BA00DBD12E /* Group3 */,
 				013A4FA929B4E39B00CA24B0 /* Group1 */,
 				013A4FB229B4E39B00CA24B0 /* Group2 */,
+				0144DA092A38A8BA00DBD12E /* Group3 */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

@@ -47,6 +47,7 @@ extension LeadInputTypeTableViewCell: UITextFieldDelegate {
                 }
                 return
             }
+            print("finale textfiled value",  textField)
         }else{
             if textField == inputeTypeTextField {
                 guard let textField = inputeTypeTextField.text, !textField.isEmpty else {
