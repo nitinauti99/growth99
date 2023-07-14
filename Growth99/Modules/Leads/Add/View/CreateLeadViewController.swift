@@ -90,9 +90,12 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
         let patientQuestionList = viewModel?.getLeadUserQuestionnaireList ?? []
         
         for index in 0..<(patientQuestionList.count) {
-            let cellIndexPath = IndexPath(item: index, section: 0)
+//            let cellIndexPath = IndexPath(item: index + 1, section: 0)
+//            let arrayIndexPath = IndexPath(item: index, section: 0)
+            let cellIndexPath  = IndexPath(row: index, section: 0)
             let item = patientQuestionList[cellIndexPath.row]
-            
+
+           
             ///  /// 1. questionnaireType ->  InputType
             if let InputTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadInputTypeTableViewCell {
                 print(InputTypeCell.questionnaireName.text ?? String.blank)

@@ -37,7 +37,11 @@ class PateintsTimeLineTableViewCell: UITableViewCell {
     func configureCell(timeLineVM: PateintsTimeLineViewModelProtocol?, index: IndexPath) {
         let timeLineVM = timeLineVM?.pateintsTimeLineDataAtIndex(index: index.row)
         self.name.text = timeLineVM?.name
-        self.email.text = timeLineVM?.email
+        if timeLineVM?.type == "SMS" || timeLineVM?.type == "CUSTOM_SMS" || timeLineVM?.type == "MANUAL_SMS" ||  timeLineVM?.type == "MASS_SMS"{
+            self.email.text = timeLineVM?.phoneNumber
+        }else{
+            self.email.text = timeLineVM?.email
+        }
         self.type.text =  timeLineVM?.type ?? String.blank
         self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
         self.indexPath = index
