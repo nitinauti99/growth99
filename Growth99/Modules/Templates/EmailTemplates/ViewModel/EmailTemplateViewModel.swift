@@ -59,10 +59,13 @@ class EmailTemplateViewModel {
         for template in self.emailTemplateListData {
             if template.templateFor == "Lead" {
                 leadTemplateListData.append(template)
+                leadTemplateListData.sort(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
             }else if (template.templateFor == "Appointment"){
                 apppointmentTemplateListData.append(template)
+                apppointmentTemplateListData.sort(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
             }else if (template.templateFor == "MassEmail"){
                 massEmailTemplateListData.append(template)
+                massEmailTemplateListData.sort(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
             }
         }
     }

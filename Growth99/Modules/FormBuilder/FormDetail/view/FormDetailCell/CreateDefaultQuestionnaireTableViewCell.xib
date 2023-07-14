@@ -526,22 +526,22 @@
     </objects>
     <designables>
         <designable name="64s-2D-gZK">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="R8c-uE-CZM">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="ZIc-Jk-mU4">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="et8-zh-pn1">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="jCv-t0-Xur">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="pCb-4n-Cxi">
-            <size key="intrinsicContentSize" width="4" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
     </designables>
     <resources>
