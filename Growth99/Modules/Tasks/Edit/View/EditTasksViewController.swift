@@ -71,7 +71,7 @@ class EditTasksViewController: UIViewController{
         usersTextField.text = taskDetail?.userName
         statusTextField.text = taskDetail?.status
         if taskDetail?.deadLine != nil {
-            DeadlineTextField.text = dateFormater?.serverToLocalDateConverter(date: taskDetail?.deadLine ?? "")
+            DeadlineTextField.text = dateFormater?.serverToLocalDateConverterOnlyDate(date: taskDetail?.deadLine ?? "")
         }
         descriptionTextView.text = taskDetail?.description
         workflowTaskUser = taskDetail?.userId ?? 0
@@ -201,8 +201,17 @@ class EditTasksViewController: UIViewController{
         if let textField = statusTextField.text,  textField == "" {
             return
         }
+        
+        var deadLine = String()
+        
+        if self.DeadlineTextField?.text != nil {
+            deadLine =  dateFormater?.localToServer(date: DeadlineTextField.text ?? String.blank) ?? ""
+        }else {
+            deadLine = ""
+        }
+        
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(patientId: taskId, name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: serverToLocalInputWorking(date: DeadlineTextField.text ?? String.blank) , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
+        viewModel?.createTaskUser(patientId: taskId, name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: deadLine , workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId, leadOrPatient: leadOrPatientSelected)
     }
     
     func serverToLocalInputWorking(date: String) -> String {

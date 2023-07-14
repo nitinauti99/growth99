@@ -139,6 +139,7 @@ class LeadDetailContainerView: UIViewController {
     /// LeadCombine TimeLine
     private lazy var combineTimeLineVC: CombineTimeLineViewController = {
         let combineTimeLineVC = UIStoryboard(name: "CombineTimeLineViewController", bundle: nil).instantiateViewController(withIdentifier: "CombineTimeLineViewController") as! CombineTimeLineViewController
+        combineTimeLineVC.leadId = self.leadData?.id ?? 0
         return combineTimeLineVC
     }()
     

@@ -149,11 +149,11 @@ class PateintDetailViewModel {
     
     func sendCustomSMS(leadId: Int, phoneNumber: String, body: String) {
         let urlParameter: Parameters = [
-            "leadId": leadId,
+            "patientId": leadId,
             "phoneNumber": phoneNumber,
             "body": body,
         ]
-        self.requestManager.request(forPath: ApiUrl.sendCustomsms, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.sendCustomsmsPatient, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
@@ -172,12 +172,12 @@ class PateintDetailViewModel {
     
     func sendCustomEmail(leadId: Int, email: String, subject:String, body: String) {
         let urlParameter: Parameters = [
-            "leadId": leadId,
+            "patientId": leadId,
             "email": email,
             "subject": subject,
             "body": body,
         ]
-        self.requestManager.request(forPath: ApiUrl.sendCustomEmail, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
+        self.requestManager.request(forPath: ApiUrl.sendCustomEmailPatient, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: urlParameter, encoding: .jsonEncoding)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):

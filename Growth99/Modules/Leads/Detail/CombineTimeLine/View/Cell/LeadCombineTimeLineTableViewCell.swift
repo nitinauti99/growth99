@@ -38,9 +38,13 @@ class LeadCombineTimeLineTableViewCell: UITableViewCell {
     func configureCell(timeLineVM: CombineTimeLineViewModelProtocol?, index: IndexPath) {
         let timeLineVM = timeLineVM?.leadTimeLineDataAtIndex(index: index.row)
         self.name.text = timeLineVM?.name
-        self.email.text = timeLineVM?.email
+        if timeLineVM?.type == "SMS" || timeLineVM?.type == "CUSTOM_SMS" || timeLineVM?.type == "MANUAL_SMS" ||  timeLineVM?.type == "MASS_SMS"{
+            self.email.text = timeLineVM?.phoneNumber
+        }else{
+            self.email.text = timeLineVM?.email
+        }
         self.type.text =  timeLineVM?.type ?? String.blank
-        self.createdDateTime.text = dateFormater?.serverToLocalDateConverter(date: timeLineVM?.createdDateTime ?? String.blank)
+        self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)
         self.templateId = timeLineVM?.id ?? 0
         self.indexPath = index
     }

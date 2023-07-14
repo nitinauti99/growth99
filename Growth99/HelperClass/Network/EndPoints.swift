@@ -41,6 +41,9 @@ struct EndPoints {
     static let getEmailTemplatesListDetail = "/api/emailTemplates/templateFor/Lead"
     static let sendCustomsms = "/api/v1/lead/send-custom-sms"
     static let sendCustomEmail = "/api/v1/lead/send-custom-email"
+    static let sendCustomsmsPatient = "/api/v1/patient/send-custom-sms"
+    static let sendCustomEmailPatient = "/api/v1/patient/send-custom-email"
+
     static let leadCreation = "/api/questionnaire-submissions/"
     static let auditleadCreation = "/api/v1/audit/lead?"
     static let auditInformation = "/api/v1/audit/mass-email-sms/trigger/"
@@ -209,6 +212,9 @@ struct ApiUrl {
     static let getEmailTemplatesListDetail = EndPoints.baseURL.appending(EndPoints.getEmailTemplatesListDetail)
     static let sendCustomsms = EndPoints.baseURL.appending(EndPoints.sendCustomsms)
     static let sendCustomEmail = EndPoints.baseURL.appending(EndPoints.sendCustomEmail)
+    static let sendCustomsmsPatient = EndPoints.baseURL.appending(EndPoints.sendCustomsmsPatient)
+    static let sendCustomEmailPatient = EndPoints.baseURL.appending(EndPoints.sendCustomEmailPatient)
+
     static let leadCreation = EndPoints.baseURL.appending(EndPoints.leadCreation)
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
     static let leadViewTemplate = EndPoints.baseURL.appending(EndPoints.leadViewTemplate)
@@ -360,3 +366,4 @@ struct ApiUrl {
     static let auditInformation = EndPoints.baseURL.appending(EndPoints.auditInformation)
     static let auditDetailInformation = EndPoints.baseURL.appending(EndPoints.auditDetailInformation)
 }
+
