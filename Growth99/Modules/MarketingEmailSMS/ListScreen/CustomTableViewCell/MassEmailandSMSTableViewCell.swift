@@ -59,7 +59,11 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.triggerNameLabel.text = massEmailFilterList?.name
         self.executionStatusLabel.text = massEmailFilterList?.executionStatus
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-        self.scheduledDateLabel.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.createdAt ?? String.blank)
+        if massEmailFilterList?.bpmnEmails?.count ?? 0 > 0 {
+            self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.bpmnEmails?[0].scheduledDateTime ?? String.blank)
+        } else {
+            self.scheduledDateLabel.text = "-"
+        }
         self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailFilterList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.updatedAt ?? String.blank)
@@ -101,7 +105,11 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.triggerNameLabel.text = massEmailList?.name
         self.executionStatusLabel.text = massEmailList?.executionStatus
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
-        self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
+        if massEmailList?.bpmnEmails?.count ?? 0 > 0 {
+            self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailList?.bpmnEmails?[0].scheduledDateTime ?? String.blank)
+        } else {
+            self.scheduledDateLabel.text = "-"
+        }
         self.createdDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.createdAt ?? String.blank)
         self.createdBy.text = massEmailList?.createdBy
         self.updatedDate.text =  dateFormater?.serverToLocalDateConverter(date: massEmailList?.updatedAt ?? String.blank)

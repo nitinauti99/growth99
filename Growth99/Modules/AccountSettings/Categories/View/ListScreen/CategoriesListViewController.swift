@@ -144,7 +144,7 @@ extension CategoriesListViewController: CategoriesListCellDelegate {
     func removeSelectedCategorie(cell: CategoriesListTableViewCell, index: IndexPath) {
         var selectedClinicId = Int()
         if isSearch {
-            if viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.createdBy == "System User" {
+            if viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.createdBy == "System User" ||  viewModel?.getCategoriesFilterDataAtIndex(index: index.row)?.name == "General" {
                 self.view.showToast(message: "Default category cannot be deleted", color: .red)
             } else {
                 selectedClinicId = viewModel?.getCategoriesFilterListData[index.row].id ?? 0
@@ -160,7 +160,7 @@ extension CategoriesListViewController: CategoriesListCellDelegate {
             }
         } else {
             selectedClinicId = viewModel?.getCategoriesListData[index.row].id ?? 0
-            if viewModel?.getCategoriesDataAtIndex(index: index.row)?.createdBy == "System User" {
+            if viewModel?.getCategoriesDataAtIndex(index: index.row)?.createdBy == "System User" || viewModel?.getCategoriesDataAtIndex(index: index.row)?.name == "General" {
                 self.view.showToast(message: "Default category cannot be deleted", color: .red)
             } else {
                 let alert = UIAlertController(title: "Delete Category", message: "Are you sure you want to delete \(viewModel?.getCategoriesDataAtIndex(index: index.row)?.name ?? String.blank)", preferredStyle: UIAlertController.Style.alert)
