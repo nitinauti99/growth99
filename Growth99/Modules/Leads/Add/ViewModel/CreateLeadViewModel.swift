@@ -23,16 +23,14 @@ protocol CreateLeadViewModelProtocol {
 
 class CreateLeadViewModel {
     var delegate: CreateLeadViewControllerProtocol?
-    var delegate1 : AddLeadViewControllerProtocol?
     var questionnaireId: Int?
     var questionnaireListInfo:  QuestionnaireList?
     var questionnaireList = [PatientQuestionAnswersList]()
     var questionnaireFilterList = [PatientQuestionAnswersList]()
     
 
-    init(delegate: CreateLeadViewControllerProtocol? = nil, delegate1: AddLeadViewControllerProtocol? = nil) {
+    init(delegate: CreateLeadViewControllerProtocol? = nil) {
         self.delegate = delegate
-        self.delegate1 = delegate1
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)

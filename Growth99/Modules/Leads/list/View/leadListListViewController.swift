@@ -123,7 +123,7 @@ class leadListViewController: UIViewController, leadListTableViewCellDelegate {
         let user = UserRepository.shared
         user.leadId = viewModel?.leadPeginationListDataAtIndex(index: index.row)?.id ?? 0
         user.leadFullName = (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.lastName ?? "")
-
+        LeadDetail.leadData = viewModel?.leadPeginationListDataAtIndex(index: index.row)
         self.navigationController?.pushViewController(LeadDetail, animated: true)
     }
     
