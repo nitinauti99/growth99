@@ -32,6 +32,12 @@ extension ServicesListDetailViewController: UITextFieldDelegate  {
                 return
             }
             
+            guard let serviceNameContain = servicesAddViewModel?.getAddServiceListData.contains(where: { $0.name == serviceName}), !serviceNameContain else {
+                serviceNameTextField.showError(message: "Service with this name already present.")
+                submitButton.isEnabled = false
+                return
+            }
+            
         case selectClinicTextField:
             guard let clinicName = selectClinicTextField.text, !clinicName.isEmpty else {
                 selectClinicTextField.showError(message: "Clinic Name is required.")

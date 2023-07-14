@@ -104,7 +104,6 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         vacationsList[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
         vacationsListTableView.deleteRows(at: [selectedSection], with: .fade)
         vacationsListTableView.endUpdates()
-        vacationsListTableView.reloadRows(at: [selectedSection], with: .fade)
         vacationScrollViewHight.constant = vacationTableViewHeight + 450
        
         let indexPath = IndexPath(row: selectedIndex - 1, section: selectedSection.section)
@@ -116,6 +115,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
                 vacationCell.removeTimeButton.isHidden =  true
             }
         }
+        vacationsListTableView.reloadRows(at: self.vacationsListTableView.indexPathsForVisibleRows ?? [], with: .none)
     }
     
     // MARK: - Add vacations row method

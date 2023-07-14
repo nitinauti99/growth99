@@ -41,12 +41,13 @@ extension WorkingScheduleViewController: UITableViewDelegate, UITableViewDataSou
     @objc func deleteDaysRow(selectedSection: IndexPath, selectedIndex: Int) {
         workingListTableView.beginUpdates()
         workingListModel?[selectedSection.section].userScheduleTimings?.remove(at: selectedIndex)
-        workingListTableView.deleteRows(at: [selectedSection], with: .fade)
+        workingListTableView.deleteRows(at: [selectedSection], with: .automatic)
         workingListTableView.endUpdates()
         if workingListModel?[selectedSection.section].userScheduleTimings?.count ?? 0 == 0 {
             workingListModel?.removeAll()
         }
         workingScrollViewHight.constant = tableViewHeight + 750
+        workingListTableView.reloadRows(at: self.workingListTableView.indexPathsForVisibleRows ?? [], with: .none)
     }
     
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell) {

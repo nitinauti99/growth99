@@ -23,12 +23,14 @@ class AuditListTableViewCell: UITableViewCell {
     
     weak var delegate: AuditListTableViewCellDelegate?
     var indexPath = IndexPath()
+    var dateFormater : DateFormaterProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
+        dateFormater = DateFormater()
     }
     
     func configureCell(auditFilterList: AuditListModel?, index: IndexPath, isSearch: Bool) {
@@ -54,7 +56,7 @@ class AuditListTableViewCell: UITableViewCell {
         
         self.emailLabel.text = auditFilterList?.email ?? "-"
         self.templateName.text = auditFilterList?.templateName ?? "-"
-        self.dateAuditLabel.text = convertTimestamp(timestamp: auditFilterList?.date ?? "-")
+        self.dateAuditLabel.text = dateFormater?.serverToLocalPateintTimeLineDate(date: auditFilterList?.date ?? "-")
         indexPath = index
     }
     
@@ -81,42 +83,9 @@ class AuditListTableViewCell: UITableViewCell {
         
         self.emailLabel.text = auditList?.email ?? "-"
         self.templateName.text = auditList?.templateName ?? "-"
-        self.dateAuditLabel.text = convertTimestamp(timestamp: auditList?.date ?? "-")
+        self.dateAuditLabel.text = dateFormater?.serverToLocalPateintTimeLineDate(date: auditList?.date ?? "-")
         indexPath = index
     }
-    
-   /* func convertTimestamp(timestamp: String) -> String {
-        let timeZone =  UserRepository.shared.timeZone
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
-        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-        if let date = dateFormatter.date(from: timestamp) {
-            let usDateFormatter = DateFormatter()
-            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
-            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
-            let usDateString = usDateFormatter.string(from: date)
-            return usDateString
-        }
-        
-        return ""
-    }*/
-    
-    func convertTimestamp(timestamp: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
-        dateFormatter.timeZone = TimeZone(identifier: "US/Alaska")
-
-        if let date = dateFormatter.date(from: timestamp) {
-            dateFormatter.dateFormat = "MMM d yyyy h:mm a"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Set the locale explicitly
-            let formattedDate = dateFormatter.string(from: date)
-            return formattedDate
-        } else {
-            return "Invalid date format"
-        }
-    }
-
-
     
     @IBAction func auditBodyButtonPressed() {
         self.delegate?.auditBodyButtonPressed(cell: self, index: indexPath)
