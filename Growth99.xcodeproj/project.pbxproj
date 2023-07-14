@@ -431,8 +431,6 @@
 		25C46A8A2A460FAF004129E7 /* AuditListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A822A460FAE004129E7 /* AuditListViewController.storyboard */; };
 		25C46A8C2A460FAF004129E7 /* AuditListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A852A460FAE004129E7 /* AuditListTableViewCell.swift */; };
 		25C46A8E2A462C4B004129E7 /* AuditListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A8D2A462C4B004129E7 /* AuditListTableViewCell.xib */; };
-		25C46A932A48C694004129E7 /* AuditListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */; };
-		25C46A952A48C69F004129E7 /* AuditListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */; };
 		25C46A9A2A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A982A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift */; };
 		25C46A9B2A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A992A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib */; };
 		25C46A9F2A4DECE6004129E7 /* TriggerEditTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C46A9D2A4DECE6004129E7 /* TriggerEditTimeTableViewCell.xib */; };
@@ -1391,8 +1389,6 @@
 		25C46A822A460FAE004129E7 /* AuditListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuditListViewController.storyboard; sourceTree = "<group>"; };
 		25C46A852A460FAE004129E7 /* AuditListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListTableViewCell.swift; sourceTree = "<group>"; };
 		25C46A8D2A462C4B004129E7 /* AuditListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditListTableViewCell.xib; sourceTree = "<group>"; };
-		25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditListDetailViewController.swift; sourceTree = "<group>"; };
-		25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuditListDetailViewController.storyboard; sourceTree = "<group>"; };
 		25C46A982A4CC985004129E7 /* TriggerLeadActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerLeadActionTableViewCell.swift; sourceTree = "<group>"; };
 		25C46A992A4CC985004129E7 /* TriggerLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		25C46A9D2A4DECE6004129E7 /* TriggerEditTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerEditTimeTableViewCell.xib; sourceTree = "<group>"; };
@@ -4145,8 +4141,6 @@
 				25C46A802A460FAE004129E7 /* AuditListViewController.swift */,
 				25C46A812A460FAE004129E7 /* AuditListViewController+TableView.swift */,
 				25C46A822A460FAE004129E7 /* AuditListViewController.storyboard */,
-				25C46A922A48C694004129E7 /* AuditListDetailViewController.swift */,
-				25C46A942A48C69F004129E7 /* AuditListDetailViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7283,7 +7277,6 @@
 				016F665929CF4B9A00B1D248 /* PostImageListTableViewCell.xib in Resources */,
 				01684C2A29BCE3B500DE1041 /* ChatBotTemplateViewController.storyboard in Resources */,
 				84D0628729670677001FE469 /* VerifyForgotPasswordViewController.storyboard in Resources */,
-				25C46A952A48C69F004129E7 /* AuditListDetailViewController.storyboard in Resources */,
 				845C39DD292276B000D934C5 /* SubMenuTableViewCell.xib in Resources */,
 				01A2007729C746A900A7DD59 /* PostsListTableViewCell.xib in Resources */,
 				18491DBB29B80CE000FE72EF /* MassEmailandSMSDefaultTableViewCell.xib in Resources */,
@@ -8014,7 +8007,6 @@
 				84F610E9292A71AB00B1FB69 /* Suspendable.swift in Sources */,
 				01C7488229B20EB90085CED2 /* AddNewQuestionarieViewController+tableView.swift in Sources */,
 				398F90F2298ECB8700DB96E4 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
-				25C46A932A48C694004129E7 /* AuditListDetailViewController.swift in Sources */,
 				84B75EA22968CDBF00962F3E /* CategoriesListViewModel.swift in Sources */,
 				84F61116292A71AB00B1FB69 /* GrowthNetworkManager.swift in Sources */,
 				D0CE69612A3F7A6300D7C188 /* MassEmailandSMSEditDetailViewModel.swift in Sources */,

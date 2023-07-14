@@ -42,11 +42,10 @@ class AuditListViewModel {
     }
     
     func getAuditDetailInformation(auditContentId: Int) {
-        let url = "\(ApiUrl.auditDetailInformation)\(auditContentId)"
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<String, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.leadViewTemplate.appending("\(auditContentId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
             switch result {
-            case .success(let auditListData):
-                self.delegate?.auditListDetailInfoDataRecived(htmlContent: auditListData)
+            case .success(let list):
+                self.delegate?.auditListDetailInfoDataRecived(htmlContent: list.leadAuditContent ?? "")
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
