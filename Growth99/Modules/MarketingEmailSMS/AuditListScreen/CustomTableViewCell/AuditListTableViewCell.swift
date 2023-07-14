@@ -23,7 +23,7 @@ class AuditListTableViewCell: UITableViewCell {
     
     weak var delegate: AuditListTableViewCellDelegate?
     var indexPath = IndexPath()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -84,17 +84,39 @@ class AuditListTableViewCell: UITableViewCell {
         self.dateAuditLabel.text = convertTimestamp(timestamp: auditList?.date ?? "-")
         indexPath = index
     }
+    
+   /* func convertTimestamp(timestamp: String) -> String {
+        let timeZone =  UserRepository.shared.timeZone
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        if let date = dateFormatter.date(from: timestamp) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
+        }
+        
+        return ""
+    }*/
+    
     func convertTimestamp(timestamp: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        dateFormatter.timeZone = TimeZone(identifier: "US/Alaska")
+
         if let date = dateFormatter.date(from: timestamp) {
             dateFormatter.dateFormat = "MMM d yyyy h:mm a"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Set the locale explicitly
             let formattedDate = dateFormatter.string(from: date)
             return formattedDate
         } else {
-            return "Invalid timestamp format"
+            return "Invalid date format"
         }
     }
+
+
     
     @IBAction func auditBodyButtonPressed() {
         self.delegate?.auditBodyButtonPressed(cell: self, index: indexPath)

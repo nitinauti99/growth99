@@ -78,9 +78,10 @@ class AuditListViewController: UIViewController, AuditListViewControllerProtocol
     
     func auditListDetailInfoDataRecived(htmlContent: String) {
         self.view.HideSpinner()
-        let showAuditDetailList = UIStoryboard(name: "AuditListDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListDetailViewController") as! AuditListDetailViewController
-        showAuditDetailList.urlContentInfo = htmlContent
-        self.navigationController?.pushViewController(showAuditDetailList, animated: true)
+        let pateintsViewTemplateVC = PateintsViewTemplateController()
+        pateintsViewTemplateVC.htmlString = htmlContent
+        pateintsViewTemplateVC.modalPresentationStyle = .overFullScreen
+        self.present(pateintsViewTemplateVC, animated: true)
     }
     
     func errorReceived(error: String) {

@@ -44,7 +44,6 @@ class MassEmailandSMSEditTimeTableViewCell: UITableViewCell {
             massSMSSubmitButton.isEnabled = false
             massSMSSubmitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
         } else {
-            massSMSSubmitButton.isSelected = true
             massSMSSubmitButton.isEnabled = true
             massSMSSubmitButton.backgroundColor = UIColor.init(hexString: "009EDE")
         }

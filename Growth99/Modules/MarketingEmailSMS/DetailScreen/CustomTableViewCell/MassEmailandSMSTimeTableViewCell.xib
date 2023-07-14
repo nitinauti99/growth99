@@ -49,7 +49,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="(Asia/Kolkata)">
+                                    <fragment content="(UTC)">
                                         <attributes>
                                             <color key="NSColor" red="0.28627000000000002" green="0.31373000000000001" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13" name="Avenir-Medium"/>
@@ -193,10 +193,10 @@
     </objects>
     <designables>
         <designable name="ZIc-Jk-mU4">
-            <size key="intrinsicContentSize" width="201" height="34"/>
+            <size key="intrinsicContentSize" width="188" height="22.333333333333332"/>
         </designable>
         <designable name="cwR-TA-ejG">
-            <size key="intrinsicContentSize" width="200.66666666666666" height="34"/>
+            <size key="intrinsicContentSize" width="187.66666666666666" height="22.333333333333332"/>
         </designable>
     </designables>
     <resources>

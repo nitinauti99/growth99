@@ -24,6 +24,15 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.delegate = self
             moduleNameEdit = viewModelEdit?.getMassSMSTriggerEditListData?.name ?? ""
             cell.massEmailSMSTextField.text = viewModelEdit?.getMassSMSTriggerEditListData?.name ?? ""
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+                cell.massEmailSMSTextField.isEnabled = false
+                cell.defaultNextButton.isEnabled = false
+                cell.defaultNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+            } else {
+                cell.massEmailSMSTextField.isEnabled = true
+                cell.defaultNextButton.isEnabled = true
+                cell.defaultNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
+            }
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Module" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditModuleTableViewCell", for: indexPath) as? MassEmailandSMSEditModuleTableViewCell else { return UITableViewCell()}
@@ -49,6 +58,19 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 cell.leadBtn.isSelected = true
                 cell.patientBtn.isSelected = false
                 cell.bothBtn.isSelected = false
+            }
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+                cell.leadBtn.isUserInteractionEnabled = false
+                cell.patientBtn.isUserInteractionEnabled = false
+                cell.bothBtn.isUserInteractionEnabled = false
+                cell.moduleNextButton.isEnabled = false
+                cell.moduleNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+            } else {
+                cell.leadBtn.isUserInteractionEnabled = true
+                cell.patientBtn.isUserInteractionEnabled = true
+                cell.bothBtn.isUserInteractionEnabled = true
+                cell.moduleNextButton.isEnabled = true
+                cell.moduleNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
             }
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Lead" {
@@ -83,7 +105,29 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 cell.leadTagTextField.text = leadTagsArrayEdit.map({$0.name ?? ""}).joined(separator: ",")
                 selectedLeadTagsEdit = leadTagsArrayEdit
             }
-            
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+                cell.leadStatusButton.isUserInteractionEnabled = false
+                cell.leadSourceButton.isUserInteractionEnabled = false
+                cell.leadTagButton.isUserInteractionEnabled = false
+                cell.showleadSourceButton.isUserInteractionEnabled = false
+                cell.showleadTagButton.isUserInteractionEnabled = false
+                cell.leadStatusTextField.isEnabled = false
+                cell.leadSourceTextField.isEnabled = false
+                cell.leadTagTextField.isEnabled = false
+                cell.leadNextButton.isEnabled = false
+                cell.leadNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+            } else {
+                cell.leadStatusButton.isUserInteractionEnabled = true
+                cell.leadSourceButton.isUserInteractionEnabled = true
+                cell.leadTagButton.isUserInteractionEnabled = true
+                cell.showleadSourceButton.isUserInteractionEnabled = true
+                cell.showleadTagButton.isUserInteractionEnabled = true
+                cell.leadStatusTextField.isEnabled = true
+                cell.leadSourceTextField.isEnabled = true
+                cell.leadTagTextField.isEnabled = true
+                cell.leadNextButton.isEnabled = true
+                cell.leadNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
+            }
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Appointment" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditPatientActionTableViewCell", for: indexPath) as? MassEmailandSMSEditPatientActionTableViewCell else { return UITableViewCell()}
@@ -119,7 +163,29 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 cell.patientTagTextField.text = patientTagsArrayEdit.map({$0.name ?? ""}).joined(separator: ",")
                 selectedPatientTagsEdit = patientTagsArrayEdit
             }
-            
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+                cell.patientStatusButton.isUserInteractionEnabled = false
+                cell.patientTagButton.isUserInteractionEnabled = false
+                cell.patientAppointmentStatusButton.isUserInteractionEnabled = false
+                cell.showPatientTagButton.isUserInteractionEnabled = false
+                cell.showPatientAppointmentStatusButton.isUserInteractionEnabled = false
+                cell.patientStatusTextField.isEnabled = false
+                cell.patientTagTextField.isEnabled = false
+                cell.patientAppointmentStatusTextField.isEnabled = false
+                cell.patientNextButton.isEnabled = false
+                cell.patientNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+            } else {
+                cell.patientStatusButton.isUserInteractionEnabled = true
+                cell.patientTagButton.isUserInteractionEnabled = true
+                cell.patientAppointmentStatusButton.isUserInteractionEnabled = true
+                cell.showPatientTagButton.isUserInteractionEnabled = true
+                cell.showPatientAppointmentStatusButton.isUserInteractionEnabled = true
+                cell.patientStatusTextField.isEnabled = true
+                cell.patientTagTextField.isEnabled = true
+                cell.patientAppointmentStatusTextField.isEnabled = true
+                cell.patientNextButton.isEnabled = true
+                cell.patientNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
+            }
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditCreateTableViewCell", for: indexPath) as? MassEmailandSMSEditCreateTableViewCell else { return UITableViewCell()}
@@ -185,6 +251,22 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                     cell.selectNetworkTextField.text = ""
                 }
             }
+            
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+                cell.smsBtn.isUserInteractionEnabled = false
+                cell.emailBtn.isUserInteractionEnabled = false
+                cell.selectNetworkButton.isUserInteractionEnabled = false
+                cell.selectNetworkTextField.isEnabled = false
+                cell.nextButton.isEnabled = false
+                cell.nextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+            } else {
+                cell.smsBtn.isUserInteractionEnabled = true
+                cell.emailBtn.isUserInteractionEnabled = true
+                cell.selectNetworkButton.isUserInteractionEnabled = true
+                cell.selectNetworkTextField.isEnabled = true
+                cell.nextButton.isEnabled = true
+                cell.nextButton.backgroundColor = UIColor.init(hexString: "009EDE")
+            }
             return cell
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditTimeTableViewCell", for: indexPath) as? MassEmailandSMSEditTimeTableViewCell else { return UITableViewCell()}
@@ -196,6 +278,13 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.updateMassEmailTimeTextField(with: timeTrigger)
             selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: dateTrigger + timeTrigger) ?? ""
             cell.configureCell(massSMSTriggerEditListData: viewModelEdit?.getMassSMSTriggerEditListData, tableView: emailAndSMSTableViewEdit, index: indexPath)
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+                cell.massSMSTriggerDateTextField.isEnabled = false
+                cell.massSMSTriggerDateTextField.isEnabled = false
+            } else {
+                cell.massSMSTriggerDateTextField.isEnabled = true
+                cell.massSMSTriggerDateTextField.isEnabled = true
+            }
             return cell
         }
         return UITableViewCell()
