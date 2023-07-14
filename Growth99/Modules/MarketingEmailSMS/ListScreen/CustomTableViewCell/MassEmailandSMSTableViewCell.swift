@@ -123,8 +123,8 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         } else if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "INACTIVE" {
             deleteButton.isHidden = false
             triggerStatusClick = true
-            self.statusLabelSwitch.isEnabled = true
-            self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.isEnabled = false
+            self.statusLabelSwitch.setOn(false, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         } else {
             deleteButton.isHidden = true
