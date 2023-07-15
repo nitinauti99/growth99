@@ -158,7 +158,6 @@ class CalenderEventEditViewController: UIViewController, CalenderEditEventViewCo
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         if editBookingHistoryData?.providerId ?? 0 != 0 {
-            self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
             self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDate) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: appointmentId ?? 0)
         }
     }
@@ -218,6 +217,7 @@ class CalenderEventEditViewController: UIViewController, CalenderEditEventViewCo
             submitButton.isEnabled = false
             submitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
         } else {
+            timeTextField.showError(message: "")
             submitButton.isSelected = true
             submitButton.isEnabled = true
             submitButton.backgroundColor = UIColor.init(hexString: "009EDE")

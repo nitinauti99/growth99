@@ -97,6 +97,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     
     @objc func dateFromButtonPressed() {
         dateTextField.text = dateFormatterString(textField: dateTextField)
+        self.selectedDate = convertDateString2(dateString: dateTextField.text ?? "")
         self.view.ShowSpinner()
         if self.selectedProvidersIds == 0 {
             self.selectedProvidersIds = self.editBookingHistoryData?.providerId ?? 0
@@ -109,6 +110,21 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         }
         self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendarButton(date: dateTextField.text ?? "") ?? String.blank, clinicIds: self.selectedClincIds, providerId: self.selectedProvidersIds, serviceIds: self.selectedServicesIds, appointmentId: self.appointmentId ?? 0, datesButtonClick: true)
+    }
+    
+    func convertDateString2(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        if let date = dateFormatter.date(from: dateString) {
+            let outputDateFormatter = DateFormatter()
+            outputDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            outputDateFormatter.timeZone = TimeZone(identifier: UserRepository.shared.timeZone ?? "")
+            outputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            let formattedDate = outputDateFormatter.string(from: date)
+            return formattedDate
+        } else {
+            return "Invalid date format"
+        }
     }
     
     func dateFormatterString(textField: CustomTextField) -> String {
@@ -161,7 +177,6 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         if editBookingHistoryData?.providerId ?? 0 != 0 {
-            self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
             self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDate) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: appointmentId ?? 0, datesButtonClick: false)
         }
     }
@@ -224,6 +239,8 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             }
         } else {
             if datesClick {
+                timeTextField.text = ""
+                timeTextField.showError(message: "Please select appointment time.")
                 submitButton.isSelected = true
                 submitButton.isEnabled = true
                 submitButton.backgroundColor = UIColor.init(hexString: "009EDE")
@@ -444,7 +461,19 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
             self.selectedServicesIds = serviceSelectedArray.map({$0.serviceId ?? 0})
         }
         self.view.ShowSpinner()
-        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: selectedTime, appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+        eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0,
+                                              editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: selectedDate, time: convertDateString(dateString: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+    }
+    
+    func convertDateString(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            let convertedDateString = dateFormatter.string(from: date)
+            return convertedDateString
+        }
+        return "Invalid date string"
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
