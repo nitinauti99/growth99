@@ -16,6 +16,8 @@ protocol MassEmailandSMSEditDetailViewControlProtocol: AnyObject {
     func massSMSEditEmailSmsCountDataRecived()
     func massSMSEditAllLeadCountDataRecived()
     func massSMSEditAllPatientCountDataRecived()
+    func massSMSEditInitialLeadCountDataRecived()
+    func massSMSEditInitialPatientCountDataRecived()
     func massSMSEditLeadCountDataRecived()
     func massSMSEditPatientCountDataRecived()
     func massSMSEditLeadDataReceived()
@@ -82,6 +84,8 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     var leadTypeSelected: Bool = false
     var leadPatientBothSelected: Bool = false
     var defaultNextSelected: Bool = false
+    var dateFormater: DateFormaterProtocol?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +94,8 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         dateFormaterEdit = DateFormater()
         viewModelEdit = MassEmailandSMSEditDetailViewModel(delegate: self)
         leadSourceArrayEdit = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
-        
         appointmentStatusArrayEdit = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
+        self.dateFormater = DateFormater()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,7 +140,44 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         navigationController?.pushViewController(auditVC, animated: true)
     }
     
-    func massSMSEditEmailSmsCountDataRecived() {
+    func massSMSEditAllLeadCountDataRecived() {
+        viewModelEdit?.getMassSMSEditAllPatientMethod()
+    }
+    
+    func massSMSEditAllPatientCountDataRecived() {
+        let leadStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
+        let leadSourceData = viewModelEdit?.getMassSMSTriggerEditListData?.source ?? []
+        var leadTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+        for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.leadTags ?? [] {
+            let getLandingData = viewModelEdit?.getMassSMSEditLeadTagsListData?.filter({ $0.id == landingItem})
+            for landingChildItem in getLandingData ?? [] {
+                let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                leadTagsArrayEdit.append(landArr)
+            }
+        }
+        let formattedArray = leadTagsArrayEdit.map{String($0.id ?? 0)}.joined(separator: ",")
+        viewModelEdit?.getMassSMSEditInitialLeadCountsMethod(leadStatus: leadStatusData.joined(separator: ","),
+                                                             moduleName: "MassLead", leadTagIds: formattedArray,
+                                                             source: leadSourceData.joined(separator: ","))
+    }
+    
+    func massSMSEditInitialLeadCountDataRecived() {
+        let patienttatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
+        var patientTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+        let patientStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.patientStatus ?? []
+        for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.patientTags ?? [] {
+            let getLandingData = viewModelEdit?.getMassSMSEditPateintsTagsListData?.filter({ $0.id == landingItem})
+            for landingChildItem in getLandingData ?? [] {
+                let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                patientTagsArrayEdit.append(landArr)
+            }
+        }
+        let formattedArray = patientTagsArrayEdit.map{String($0.id ?? 0)}.joined(separator: ",")
+        viewModelEdit?.getMassSMSEditInitialPatientCountMethod(appointmentStatus: patienttatusData.joined(separator: ","),
+                                                               moduleName: "MassPatient", patientTagIds: formattedArray, patientStatus: patientStatusData.joined(separator: ","))
+    }
+    
+    func massSMSEditInitialPatientCountDataRecived() {
         self.view.HideSpinner()
         modelData = viewModelEdit?.getMassSMSTriggerEditListData
         let defaultScreen = MassEmailandSMSDetailModelEdit(cellType: "Default", LastName: "")
@@ -167,17 +208,14 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         emailAndSMSTableViewEdit.reloadData()
     }
     
+    
+    func massSMSEditEmailSmsCountDataRecived() {
+        self.viewModelEdit?.getMassSMSEditAllLeadMethod()
+    }
+    
     func errorReceivedEdit(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
-    }
-    
-    func massSMSEditAllLeadCountDataRecived() {
-        viewModelEdit?.getMassSMSEditAllPatientMethod()
-    }
-    
-    func massSMSEditAllPatientCountDataRecived() {
-        self.view.HideSpinner()
     }
     
     func massSMSEditLeadCountDataRecived() {

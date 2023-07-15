@@ -17,6 +17,8 @@ protocol MassEmailandSMSEditDetailViewModelProtocol {
     func getMassSMSEditAllPatientMethod()
     func getMassSMSEditLeadCountsMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String)
     func getMassSMSEditPatientCountMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String)
+    func getMassSMSEditInitialLeadCountsMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String)
+    func getMassSMSEditInitialPatientCountMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String)
     var  getMassSMSTriggerEditListData: MassSMSEditModel? { get }
     var  getMassSMSEditEmailSmsQuotaData: MassEmailSMSEQuotaCountModelEdit? { get }
     var  getMassSMSEditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit? { get }
@@ -189,6 +191,34 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
             case .success(let response):
                 self.massSMSEditPatientCount = response
                 self.delegate?.massSMSEditPatientCountDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceivedEdit(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMassSMSEditInitialLeadCountsMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String) {
+        let appendParam = "leadStatus=\(leadStatus)&moduleName=\(moduleName)&leadTagIds=\(leadTagIds)&source=\(source)"
+        let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSCountModelEdit, GrowthNetworkError>) in
+            switch result {
+            case .success(let response):
+                self.massSMSEditLeadCount = response
+                self.delegate?.massSMSEditInitialLeadCountDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceivedEdit(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMassSMSEditInitialPatientCountMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String) {
+        let appendParam = "appointmentStatus=\(appointmentStatus)&moduleName=\(moduleName)&patientTagIds=\(patientTagIds)&patientStatus=\(patientStatus)"
+        let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers())  {(result: Result<MassEmailSMSCountModelEdit, GrowthNetworkError>) in
+            switch result {
+            case .success(let response):
+                self.massSMSEditPatientCount = response
+                self.delegate?.massSMSEditInitialPatientCountDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceivedEdit(error: error.localizedDescription)
             }

@@ -38,7 +38,13 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditModuleTableViewCell", for: indexPath) as? MassEmailandSMSEditModuleTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             if defaultNextSelected != true {
-                smsEmailModuleSelectionTypeEdit = cell.moduleTypeSelected
+                if viewModelEdit?.getMassSMSTriggerEditListData?.moduleName  == "MassLead" {
+                    smsEmailModuleSelectionTypeEdit = "lead"
+                } else if viewModelEdit?.getMassSMSTriggerEditListData?.moduleName  == "MassPatient" {
+                    smsEmailModuleSelectionTypeEdit = "patient"
+                } else {
+                    smsEmailModuleSelectionTypeEdit = viewModelEdit?.getMassSMSTriggerEditListData?.moduleName ?? ""
+                }
                 if viewModelEdit?.getMassSMSTriggerEditListData?.moduleName == "MassLead" {
                     cell.leadBtn.isSelected = true
                     cell.patientBtn.isSelected = false
@@ -190,27 +196,6 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditCreateTableViewCell", for: indexPath) as? MassEmailandSMSEditCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            
-            if cell.smsBtn.isSelected {
-                if smsEmailModuleSelectionTypeEdit == "patient" {
-                    cell.smsEmailCountLabel.text = "SMS count: \(viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0)"
-                } else if smsEmailModuleSelectionTypeEdit == "lead" {
-                    cell.smsEmailCountLabel.text = "SMS count: \(viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
-                } else {
-                    let smsCount = (viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0)
-                    cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
-                }
-            } else {
-                if smsEmailModuleSelectionTypeEdit == "patient" {
-                    cell.smsEmailCountLabel.text = "Email count: \(viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0)"
-                } else if smsEmailModuleSelectionTypeEdit == "lead" {
-                    cell.smsEmailCountLabel.text = "Email count: \(viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0)"
-                } else {
-                    let emailCount = (viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0) + (viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0)
-                    cell.smsEmailCountLabel.text = "Email count: \(emailCount)"
-                }
-            }
-            
             if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.smsEmailCountLabel.isHidden = true
             } else {
@@ -229,6 +214,14 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 } else {
                     cell.selectNetworkTextField.text = ""
                 }
+                if smsEmailModuleSelectionTypeEdit == "patient" {
+                    cell.smsEmailCountLabel.text = "SMS count: \(viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0)"
+                } else if smsEmailModuleSelectionTypeEdit == "lead" {
+                    cell.smsEmailCountLabel.text = "SMS count: \(viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
+                } else {
+                    let smsCount = (viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0)
+                    cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
+                }
             } else {
                 networkTypeSelectedEdit = "email"
                 cell.smsBtn.isSelected = false
@@ -240,6 +233,14 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                     cell.selectNetworkTextField.text = selectEmailNetworkName[0].name ?? String.blank
                 } else {
                     cell.selectNetworkTextField.text = ""
+                }
+                if smsEmailModuleSelectionTypeEdit == "patient" {
+                    cell.smsEmailCountLabel.text = "Email count: \(viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0)"
+                } else if smsEmailModuleSelectionTypeEdit == "lead" {
+                    cell.smsEmailCountLabel.text = "Email count: \(viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0)"
+                } else {
+                    let emailCount = (viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0) + (viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0)
+                    cell.smsEmailCountLabel.text = "Email count: \(emailCount)"
                 }
             }
             
@@ -267,7 +268,8 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             
             cell.updateMassEmailDateTextField(with: dateTrigger)
             cell.updateMassEmailTimeTextField(with: timeTrigger)
-            selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: dateTrigger + timeTrigger) ?? ""
+            let str: String = (dateTrigger) + " " + (timeTrigger)
+            selectedTimeSlotEdit = convertDateString(inputDateString: str)
             cell.configureCell(massSMSTriggerEditListData: viewModelEdit?.getMassSMSTriggerEditListData, tableView: emailAndSMSTableViewEdit, index: indexPath)
             if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
                 cell.massSMSTriggerDateTextField.isEnabled = false
@@ -279,6 +281,23 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func convertDateString(inputDateString: String) -> String {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        inputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        outputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        outputDateFormatter.timeZone = TimeZone.current
+        if let date = inputDateFormatter.date(from: inputDateString) {
+            let outputDateString = outputDateFormatter.string(from: date)
+            return outputDateString
+        } else {
+            return "Invalid date format"
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -645,7 +664,7 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCell
                 } else if self.smsEmailModuleSelectionTypeEdit == "lead" {
                     cell.smsEmailCountLabel.text = "SMS count: \(self.viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
                 } else {
-                    let smsCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0)
+                    let smsCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0)
                     cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
                 }
                 self.emailAndSMSTableViewEdit.endUpdates()
@@ -656,7 +675,7 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCell
             } else if self.smsEmailModuleSelectionTypeEdit == "lead" {
                 cell.smsEmailCountLabel.text = "SMS count: \(self.viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
             } else {
-                let smsCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0)
+                let smsCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0)
                 cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
             }
         }
@@ -745,13 +764,15 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditTimeCellDe
     
     func massSMSDateSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell) {
         cell.updateMassEmailDateTextField(with: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massSMSTriggerDateTextField) ?? "")")
-        selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
         scrollToBottom()
     }
     
     func massSMSTimeSelectionTapped(cell: MassEmailandSMSEditTimeTableViewCell) {
         cell.updateMassEmailTimeTextField(with: "\(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massSMSTriggerTimeTextField) ?? "")")
-        selectedTimeSlotEdit = viewModelEdit?.localInputToServerInputEdit(date: "\(viewModelEdit?.dateFormatterStringEdit(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModelEdit?.timeFormatterStringEdit(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
+        let dateTrigger = cell.massSMSTriggerDateTextField.text ?? ""
+        let timeTrigger = cell.massSMSTriggerTimeTextField.text ?? ""
+        let str: String = (dateTrigger) + " " + (timeTrigger)
+        selectedTimeSlotEdit = convertDateString(inputDateString: str)
         scrollToBottom()
     }
 }
