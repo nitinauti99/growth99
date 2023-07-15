@@ -16,49 +16,53 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let questionType = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].questionType ?? ""
         let ishowDropDown = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].showDropDown ?? false
-        
         let allowMultipleSelection = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].allowMultipleSelection ?? false
         
-        if questionType == "Input" {
+        switch (questionType, ishowDropDown){
+       
+        case ("Input", false):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadInputTypeTableViewCell", for: indexPath) as? LeadInputTypeTableViewCell else { return LeadInputTypeTableViewCell() }
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
-        }else if(questionType == "Text") {
+
+        case ("Text", false):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadTextTypeTableViewCell", for: indexPath) as? LeadTextTypeTableViewCell else { return LeadTextTypeTableViewCell() }
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
-        }else if(questionType == "Yes_No") {
+
+        case ("Yes_No", false):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadYesNoTypeTableViewCell", for: indexPath) as? LeadYesNoTypeTableViewCell else { return LeadYesNoTypeTableViewCell() }
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
             
-        }else if(questionType == "Date") {
+        case ("Date", false):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadDateTypeTableViewCell", for: indexPath) as? LeadDateTypeTableViewCell else { return UITableViewCell() }
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
-       // }
-        //else if(questionType == "File") {
+
+//        case ("File", false):
 //            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FileTypeTableViewCell", for: indexPath) as? FileTypeTableViewCell else { return UITableViewCell() }
-//
 //            cell.configureCell(questionarieVM: viewModel, index: indexPath, id: viewModel?.id ?? 0)
 //            cell.delegate = self
 //            return cell
-        }else if(questionType == "Multiple_Selection_Text" && ishowDropDown == true && allowMultipleSelection == false) {
+       
+        case ("Multiple_Selection_Text", false):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionTextTypeTableViewCell", for: indexPath) as? LeadMultipleSelectionTextTypeTableViewCell else { return UITableViewCell() }
+            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+            return cell
+       
+        case ("Multiple_Selection_Text", true):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionWithDropDownTypeTableViewCell", for: indexPath) as? LeadMultipleSelectionWithDropDownTypeTableViewCell else { return UITableViewCell() }
             cell.delegate = self
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
-        }else if (questionType == "Multiple_Selection_Text") {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionTextTypeTableViewCell", for: indexPath) as? LeadMultipleSelectionTextTypeTableViewCell else { return UITableViewCell() }
-            cell.configureCell(questionarieVM: viewModel, index: indexPath)
-            return cell
-        }else{
+
+        default:
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-       
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BottomTableViewCell") as? BottomTableViewCell else {
             return UIView()
         }
