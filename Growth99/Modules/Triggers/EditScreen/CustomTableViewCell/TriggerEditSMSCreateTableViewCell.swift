@@ -205,7 +205,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = false
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = true
-        networkTypeSelected = "sms"
+        networkTypeSelected = "SMS"
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
@@ -213,7 +213,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = false
         networkViewTask.isHidden = true
-        networkTypeSelected = "email"
+        networkTypeSelected = "EMAIL"
     }
     
     @IBAction func taskButtonAction(sender: UIButton) {
@@ -221,6 +221,6 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = false
-        networkTypeSelected = "task"
+        networkTypeSelected = "TASK"
     }
 }

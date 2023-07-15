@@ -70,6 +70,16 @@ struct MassEmailSMSCountModelEdit : Codable {
     let emailCount : Int?
 }
 
+struct MassEmailSMSLeadAllCountModelEdit : Codable {
+    let smsCount : Int?
+    let emailCount : Int?
+}
+
+struct MassEmailSMSPatientAllCountModelEdit : Codable {
+    let smsCount : Int?
+    let emailCount : Int?
+}
+
 struct MassEmailSMSEQuotaCountModelEdit : Codable {
     let smsCount : Int?
     let emailCount : Int?

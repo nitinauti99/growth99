@@ -46,9 +46,23 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
             cell.networkSelectonSMSButton.tag = indexPath.row
             cell.networkSelectonSMSButton.addTarget(self, action: #selector(networkSelectionSMSMethod), for: .touchDown)
             if cell.smsBtn.isSelected {
-                cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSLeadCountData?.smsCount ?? 0)"
+                if smsEmailModuleSelectionType == "patient" {
+                    cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSPatientCountData?.smsCount ?? 0)"
+                } else if smsEmailModuleSelectionType == "lead" {
+                    cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSLeadCountData?.smsCount ?? 0)"
+                } else {
+                    let smsCount = (viewModel?.getmassEmailSMSLeadAllCountData?.smsCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.smsCount ?? 0)
+                    cell.smsEmailCountTextLabel.text = "SMS count: \(smsCount)"
+                }
             } else {
-                cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSLeadCountData?.emailCount ?? 0))"
+                if smsEmailModuleSelectionType == "patient" {
+                    cell.smsEmailCountTextLabel.text = "Email count: \(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0)"
+                } else if smsEmailModuleSelectionType == "lead" {
+                    cell.smsEmailCountTextLabel.text = "Email count: \(viewModel?.getMassEmailSMSLeadCountData?.emailCount ?? 0)"
+                } else {
+                    let emailCount = (viewModel?.getmassEmailSMSLeadAllCountData?.emailCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.emailCount ?? 0)
+                    cell.smsEmailCountTextLabel.text = "Email count: \(emailCount)"
+                }
             }
             cell.networkSelectonEmailButton.tag = indexPath.row
             cell.networkSelectonEmailButton.addTarget(self, action: #selector(networkSelectionEmailMethod), for: .touchDown)
@@ -163,6 +177,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSDefaultCellDelegat
         } else {
             moduleName = cell.massEmailSMSTextField.text ?? String.blank
             cell.defaultNextButton.isEnabled = false
+            cell.massEmailSMSTextField.isUserInteractionEnabled = false
             createNewMassEmailSMSCell(cellNameType: "Module")
         }
     }
@@ -173,20 +188,29 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSModuleCellDelegate
         if moduleType == "patient" {
             smsEmailModuleSelectionType = moduleType
             cell.moduleNextButton.isEnabled = false
+            cell.leadBtn.isUserInteractionEnabled = false
+            cell.patientBtn.isUserInteractionEnabled = false
+            cell.bothBtn.isUserInteractionEnabled = false
             createNewMassEmailSMSCell(cellNameType: "Patient")
             self.scrollToBottom()
         } else if moduleType == "lead" {
             smsEmailModuleSelectionType = moduleType
             cell.moduleNextButton.isEnabled = false
+            cell.leadBtn.isUserInteractionEnabled = false
+            cell.patientBtn.isUserInteractionEnabled = false
+            cell.bothBtn.isUserInteractionEnabled = false
             createNewMassEmailSMSCell(cellNameType: "Lead")
             self.scrollToBottom()
         } else {
             smsEmailModuleSelectionType = moduleType
+            cell.moduleNextButton.isEnabled = false
+            cell.leadBtn.isUserInteractionEnabled = false
+            cell.patientBtn.isUserInteractionEnabled = false
+            cell.bothBtn.isUserInteractionEnabled = false
             self.view.ShowSpinner()
             viewModel?.getMassEmailLeadStatusAllMethod()
             self.scrollToBottom()
         }
-        
     }
 }
 
@@ -243,9 +267,15 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSLeadCellDelegate {
         } else {
             self.view.ShowSpinner()
             viewModel?.getMassEmailLeadStatusMethod(leadStatus: cell.leadStatusTextField.text ?? String.blank, moduleName: "MassLead", leadTagIds: selectedLeadTagIds, source: leadSource)
+            cell.leadNextButton.isEnabled = false
+            cell.leadStatusTextField.isUserInteractionEnabled = false
+            cell.leadSourceTextField.isUserInteractionEnabled = false
+            cell.leadTagTextField.isUserInteractionEnabled = false
+            cell.leadStatusButton.isUserInteractionEnabled = false
+            cell.showleadSourceButton.isUserInteractionEnabled = false
+            cell.showleadTagButton.isUserInteractionEnabled = false
         }
     }
-    
 }
 
 extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegate {
@@ -301,6 +331,13 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSPatientCellDelegat
         } else {
             self.view.ShowSpinner()
             viewModel?.getMassEmailPatientStatusMethod(appointmentStatus: patientAppointmentStatus, moduleName: "MassPatient", patientTagIds: selectedPatientTagIds, patientStatus: cell.patientStatusTextField.text ?? String.blank)
+            cell.patientNextButton.isEnabled = false
+            cell.patientStatusTextField.isUserInteractionEnabled = false
+            cell.patientTagTextField.isUserInteractionEnabled = false
+            cell.patientAppointmentStatusTextField.isUserInteractionEnabled = false
+            cell.patientStatusButton.isUserInteractionEnabled = false
+            cell.patientTagButton.isUserInteractionEnabled = false
+            cell.patientAppointmentStatusButton.isUserInteractionEnabled = false
         }
     }
 }
@@ -314,6 +351,10 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
             } else {
                 cell.selectNetworkEmptyTextLabel.isHidden = true
                 setupNetworkNextButton(networkTypeSelected: networkType, cell: cell)
+                cell.createNextButton.isEnabled = false
+                cell.networkSelectonSMSButton.isUserInteractionEnabled = false
+                cell.smsBtn.isUserInteractionEnabled = false
+                cell.emailBtn.isUserInteractionEnabled = false
             }
         } else {
             if cell.selectNetworkEmailTextLabel.text == "Please select network" {
@@ -321,6 +362,10 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
             } else {
                 cell.selectNetworkEmptyTextLabel.isHidden = true
                 setupNetworkNextButton(networkTypeSelected: networkType, cell: cell)
+                cell.createNextButton.isEnabled = false
+                cell.networkSelectonEmailButton.isUserInteractionEnabled = false
+                cell.smsBtn.isUserInteractionEnabled = false
+                cell.emailBtn.isUserInteractionEnabled = false
             }
         }
     }
@@ -333,11 +378,25 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
     }
     
     func smsButtonClick(cell: MassEmailandSMSCreateTableViewCell) {
-        cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSLeadCountData?.smsCount ?? 0)"
+        if smsEmailModuleSelectionType == "patient" {
+            cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSPatientCountData?.smsCount ?? 0)"
+        } else if smsEmailModuleSelectionType == "lead" {
+            cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSLeadCountData?.smsCount ?? 0)"
+        } else {
+            let smsCount = (viewModel?.getmassEmailSMSLeadAllCountData?.smsCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.smsCount ?? 0)
+            cell.smsEmailCountTextLabel.text = "SMS count: \(smsCount)"
+        }
     }
     
     func emailButtonClick(cell: MassEmailandSMSCreateTableViewCell) {
-        cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSLeadCountData?.emailCount ?? 0))"
+        if smsEmailModuleSelectionType == "patient" {
+            cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0))"
+        } else if smsEmailModuleSelectionType == "lead" {
+            cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0))"
+        } else {
+            let emailCount = (viewModel?.getmassEmailSMSLeadAllCountData?.emailCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.emailCount ?? 0)
+            cell.smsEmailCountTextLabel.text = "Email count: \(emailCount)"
+        }
     }
 }
 

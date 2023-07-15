@@ -23,6 +23,10 @@ protocol MassEmailandSMSDetailViewModelProtocol {
     var  getMassEmailSMSLeadCountData: MassEmailSMSCountModel? { get }
     var  getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
     var  getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
+    
+    var  getmassEmailSMSLeadAllCountData: MassEmailSMSLeadAllCountModel? { get }
+    var  getmassEmailSMSPatientsAllCountData: MassEmailSMSPatientsAllCountModel? { get }
+    
     func localToServerWithDate(date: String) -> String
     func localInputToServerInput(date: String) -> String
     func dateFormatterString(textField: CustomTextField) -> String
@@ -50,6 +54,9 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     var massEmailSMSPatientCount: MassEmailSMSCountModel?
     var massEmailSMSQuotaCount: MassEmailSMSEQuotaCountModel?
     var massEmailSMSAuditQuotaCount: MassEmailSMSEQuotaCountModel?
+    
+    var massEmailSMSLeadAllCount: MassEmailSMSLeadAllCountModel?
+    var massEmailSMSPatientsAllCount: MassEmailSMSPatientsAllCountModel?
     
     init(delegate: MassEmailandSMSDetailViewControlProtocol? = nil) {
         self.delegate = delegate
@@ -113,17 +120,11 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailPatientStatusMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String) {
         let appendParam = "appointmentStatus=\(appointmentStatus)&moduleName=\(moduleName)&patientTagIds=\(patientTagIds)&patientStatus=\(patientStatus)"
         let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
-                    self.delegate?.massEmailSMSPatientCountDataRecived()
-                } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while creating Mass Patient")
-                } else {
-                    self.delegate?.errorReceived(error: "response failed")
-                }
+                self.massEmailSMSPatientCount = response
+                self.delegate?.massEmailSMSPatientCountDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -134,17 +135,11 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailLeadStatusAllMethod() {
         let appendParam = "leadStatus=All&moduleName=All"
         let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSLeadAllCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
-                    self.delegate?.massEmailSMSLeadStatusAllDataRecived()
-                } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while creating Mass Patient")
-                } else {
-                    self.delegate?.errorReceived(error: "response failed")
-                }
+                self.massEmailSMSLeadAllCount = response
+                self.delegate?.massEmailSMSLeadStatusAllDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -152,20 +147,21 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
         }
     }
     
+    var  getmassEmailSMSLeadAllCountData: MassEmailSMSLeadAllCountModel? {
+        return massEmailSMSLeadAllCount
+    }
+    var  getmassEmailSMSPatientsAllCountData: MassEmailSMSPatientsAllCountModel? {
+        return massEmailSMSPatientsAllCount
+    }
+    
     func getMassEmailPatientStatusAllMethod() {
         let appendParam = "appointmentStatus=All&moduleName=All&patientTagIds=&patientStatus="
         let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSPatientsAllCountModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
-                    self.delegate?.massEmailSMSPatientStatusAllDataRecived()
-                } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while creating Mass Patient")
-                } else {
-                    self.delegate?.errorReceived(error: "response failed")
-                }
+                self.massEmailSMSPatientsAllCount = response
+                self.delegate?.massEmailSMSPatientStatusAllDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -200,7 +196,6 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func postMassLeadDataMethod(leadDataParms: [String: Any]) {
-        
         self.requestManager.request(forPath: ApiUrl.marketingMassLead, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: leadDataParms, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {

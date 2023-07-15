@@ -85,7 +85,6 @@ class VacationViewModel {
             }
         }
     }
-    
 }
 
 extension VacationViewModel: VacationViewModelProtocol {

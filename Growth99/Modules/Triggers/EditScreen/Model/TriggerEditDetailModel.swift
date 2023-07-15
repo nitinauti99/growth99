@@ -290,6 +290,7 @@ struct TriggerEditCreateData : Codable {
     let timerType : String?
     let startTime : String?
     let endTime : String?
+    let deadline : String?
     
     func toDict() -> [String: Any] {
         var dictionary = [String:Any]()
@@ -334,6 +335,9 @@ struct TriggerEditCreateData : Codable {
         }
         if endTime != nil {
             dictionary["endTime"] = endTime
+        }
+        if deadline != nil {
+            dictionary["deadline"] = deadline
         }
         return dictionary
     }

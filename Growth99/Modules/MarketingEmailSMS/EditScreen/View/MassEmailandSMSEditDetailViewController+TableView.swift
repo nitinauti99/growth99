@@ -190,33 +190,24 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
         } else if massSMSDetailListEdit[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSEditCreateTableViewCell", for: indexPath) as? MassEmailandSMSEditCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            if smsEmailModuleSelectionTypeEdit == "both" {
-                if cell.smsBtn.isSelected {
-                    let leadSMSCount = viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0
-                    let patientSMSCount = viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0
-                    let totalSMSCount = leadSMSCount + patientSMSCount
-                    cell.smsEmailCountLabel.text = "SMS count: \(totalSMSCount)"
+            
+            if cell.smsBtn.isSelected {
+                if smsEmailModuleSelectionTypeEdit == "patient" {
+                    cell.smsEmailCountLabel.text = "SMS count: \(viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0)"
+                } else if smsEmailModuleSelectionTypeEdit == "lead" {
+                    cell.smsEmailCountLabel.text = "SMS count: \(viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
                 } else {
-                    let leadEmailCount = viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0
-                    let patientEmailCount = viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0
-                    let totalEmailCount = leadEmailCount + patientEmailCount
-                    cell.smsEmailCountLabel.text = "Email count: \(totalEmailCount)"
-                }
-            } else if smsEmailModuleSelectionTypeEdit == "lead"{
-                if cell.smsBtn.isSelected {
-                    let smsLeadCount = viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0
-                    cell.smsEmailCountLabel.text = "SMS count: \(smsLeadCount)"
-                } else {
-                    let emailLeadCount = viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0
-                    cell.smsEmailCountLabel.text = "Email count: \(emailLeadCount)"
+                    let smsCount = (viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0)
+                    cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
                 }
             } else {
-                if cell.smsBtn.isSelected {
-                    let smsPatientCount = viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0
-                    cell.smsEmailCountLabel.text = "SMS count: \(smsPatientCount)"
+                if smsEmailModuleSelectionTypeEdit == "patient" {
+                    cell.smsEmailCountLabel.text = "Email count: \(viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0)"
+                } else if smsEmailModuleSelectionTypeEdit == "lead" {
+                    cell.smsEmailCountLabel.text = "Email count: \(viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0)"
                 } else {
-                    let emailPatientCount = viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0
-                    cell.smsEmailCountLabel.text = "Email count: \(emailPatientCount)"
+                    let emailCount = (viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0) + (viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0)
+                    cell.smsEmailCountLabel.text = "Email count: \(emailCount)"
                 }
             }
             
@@ -353,8 +344,8 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditModuleCell
     }
     
     func bothButtonModule(cell: MassEmailandSMSEditModuleTableViewCell, index: IndexPath, moduleType: String) {
-        let hasBoth = massSMSDetailListEdit.contains(where: { $0.cellType == "Both" })
-        if  hasBoth {
+        let hasBoth = massSMSDetailListEdit.contains(where: { $0.cellType == "Lead" || $0.cellType == "Appointment"})
+        if hasBoth {
             DispatchQueue.main.async {
                 self.emailAndSMSTableViewEdit.beginUpdates()
                 if self.massSMSDetailListEdit.count > 2 {
@@ -432,9 +423,7 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditModuleCell
                     self.massSMSDetailListEdit.append(emailSMS)
                     let indexPathToInsert = IndexPath(row: self.massSMSDetailListEdit.count - 1, section: 0)
                     self.emailAndSMSTableViewEdit.insertRows(at: [indexPathToInsert], with: .fade)
-                    
                     self.emailAndSMSTableViewEdit.endUpdates()
-                    
                     self.scrollToBottom()
                 }
             }
@@ -651,20 +640,24 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCell
                         self.emailAndSMSTableViewEdit.deleteRows(at: indexPathsToDelete, with: .fade)
                     }
                 }
-                
-                if self.smsEmailModuleSelectionTypeEdit == "both" {
-                    let leadSMSCount = self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0
-                    let patientSMSCount = self.viewModelEdit?.getMassSMSEditAllPatientCountData?.smsCount ?? 0
-                    let totalSMSCount = leadSMSCount + patientSMSCount
-                    cell.smsEmailCountLabel.text = "SMS count: \(totalSMSCount)"
-                } else if self.smsEmailModuleSelectionTypeEdit == "lead"{
-                    let smsLeadCount = self.viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0
-                    cell.smsEmailCountLabel.text = "SMS count: \(smsLeadCount)"
+                if self.smsEmailModuleSelectionTypeEdit == "patient" {
+                    cell.smsEmailCountLabel.text = "SMS count: \(self.viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0)"
+                } else if self.smsEmailModuleSelectionTypeEdit == "lead" {
+                    cell.smsEmailCountLabel.text = "SMS count: \(self.viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
                 } else {
-                    let smsPatientCount = self.viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0
-                    cell.smsEmailCountLabel.text = "SMS count: \(smsPatientCount)"
+                    let smsCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0)
+                    cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
                 }
                 self.emailAndSMSTableViewEdit.endUpdates()
+            }
+        } else {
+            if self.smsEmailModuleSelectionTypeEdit == "patient" {
+                cell.smsEmailCountLabel.text = "SMS count: \(self.viewModelEdit?.getMassSMSEditPatientCountData?.smsCount ?? 0)"
+            } else if self.smsEmailModuleSelectionTypeEdit == "lead" {
+                cell.smsEmailCountLabel.text = "SMS count: \(self.viewModelEdit?.getMassSMSEditLeadCountData?.smsCount ?? 0)"
+            } else {
+                let smsCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.smsCount ?? 0)
+                cell.smsEmailCountLabel.text = "SMS count: \(smsCount)"
             }
         }
     }
@@ -688,19 +681,24 @@ extension MassEmailandSMSEditDetailViewController: MassEmailandSMSEditCreateCell
                         self.emailAndSMSTableViewEdit.deleteRows(at: indexPathsToDelete, with: .fade)
                     }
                 }
-                if self.smsEmailModuleSelectionTypeEdit == "both" {
-                    let leadEmailCount = self.viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0
-                    let patientEmailCount = self.viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0
-                    let totalEmailCount = leadEmailCount + patientEmailCount
-                    cell.smsEmailCountLabel.text = "Email count: \(totalEmailCount)"
-                } else if self.smsEmailModuleSelectionTypeEdit == "lead"{
-                    let emailLeadCount = self.viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0
-                    cell.smsEmailCountLabel.text = "Email count: \(emailLeadCount)"
+                if self.smsEmailModuleSelectionTypeEdit == "patient" {
+                    cell.smsEmailCountLabel.text = "Email count: \(self.viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0)"
+                } else if self.smsEmailModuleSelectionTypeEdit == "lead" {
+                    cell.smsEmailCountLabel.text = "Email count: \(self.viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0)"
                 } else {
-                    let emailPatientCount = self.viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0
-                    cell.smsEmailCountLabel.text = "Email count: \(emailPatientCount)"
+                    let emailCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0)
+                    cell.smsEmailCountLabel.text = "Email count: \(emailCount)"
                 }
                 self.emailAndSMSTableViewEdit.endUpdates()
+            }
+        } else {
+            if self.smsEmailModuleSelectionTypeEdit == "patient" {
+                cell.smsEmailCountLabel.text = "Email count: \(self.viewModelEdit?.getMassSMSEditPatientCountData?.emailCount ?? 0)"
+            } else if self.smsEmailModuleSelectionTypeEdit == "lead" {
+                cell.smsEmailCountLabel.text = "Email count: \(self.viewModelEdit?.getMassSMSEditLeadCountData?.emailCount ?? 0)"
+            } else {
+                let emailCount = (self.viewModelEdit?.getMassSMSEditAllLeadCountData?.emailCount ?? 0) + (self.viewModelEdit?.getMassSMSEditAllPatientCountData?.emailCount ?? 0)
+                cell.smsEmailCountLabel.text = "Email count: \(emailCount)"
             }
         }
     }

@@ -49,6 +49,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             var formArray = [EditLandingPageNamesModel]()
             var sourceUrlArray = [LeadSourceUrlListModel]()
             var ledTagArray = [MassEmailSMSTagListModelEdit]()
+            selectedLeadSources = viewModel?.getTriggerEditListData?.triggerConditions ?? []
             
             if viewModel?.getTriggerEditListData?.landingPages?.count ?? 0 > 0 {
                 for landingItem in viewModel?.getTriggerEditListData?.landingPages ?? [] {
@@ -119,12 +120,10 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.delegate = self
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
-            cell.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.triggerActionName
+            cell.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.executionStatus
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerParentCreateTableViewCell", for: indexPath) as? TriggerParentCreateTableViewCell else { return UITableViewCell()}
-            
-            
             for item in viewModel?.getTriggerEditListData?.triggerData ?? [] {
                 let creatChild = TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.endTime, orderOfCondition: item.orderOfCondition, type: "Create")
                 
@@ -132,6 +131,10 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 finalArray.append(creatChild)
                 finalArray.append(createTimechild)
                 isTaskName = item.taskName ?? ""
+                selectedNetworkType = item.triggerType ?? ""
+                selectedSmsTemplateId = String(item.triggerTemplate ?? 0)
+                selectedemailTemplateId = String(item.triggerTemplate ?? 0)
+                selectedTriggerTarget = item.triggerTarget ?? ""
             }
             cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
             return cell
@@ -170,21 +173,21 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
     
     @IBAction func submitButtonAction(sender: UIButton) {
         self.view.ShowSpinner()
-        if moduleSelectionType == "lead" {
+        if moduleSelectionType == "leads" {
             if selectedTriggerTarget == "Leads" {
-                selectedTriggerTarget = "lead"
+                selectedTriggerTarget = "leads"
             }
             if selectedNetworkType == "SMS" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "SMS", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: nil, endTime: nil, deadline: nil))
             } else if selectedNetworkType == "EMAIL" {
                 templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
+                triggersCreateData.append(TriggerEditCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "EMAIL", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: nil, endTime: nil, deadline: nil))
             } else {
                 triggersCreateData.append(TriggerEditCreateData(actionIndex: 3,
                                                                 addNew: false,
                                                                 triggerTemplate: selectedTaskTemplate,
-                                                                triggerType: selectedNetworkType.uppercased(),
+                                                                triggerType: selectedNetworkType,
                                                                 triggerTarget: "lead" ,
                                                                 triggerTime: selectedTriggerTime,
                                                                 triggerFrequency: "MIN",
@@ -193,7 +196,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                                                                 orderOfCondition: orderOfConditionTrigger,
                                                                 dateType: "NA",
                                                                 timerType: timerTypeSelected,
-                                                                startTime: selectedStartTime, endTime: selectedEndTime))
+                                                                startTime: selectedStartTime, endTime: selectedEndTime, deadline: nil))
             }
             let params = TriggerEditCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
             let parameters: [String: Any]  = params.toDict()
@@ -207,12 +210,12 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             }
             if selectedNetworkType == "SMS" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
+                triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType, triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
             } else {
                 templateId = Int(selectedemailTemplateId) ?? 0
-                triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
+                triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType, triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
             }
-            let params = TriggerEditAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: [], isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
+            let params = TriggerEditAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
             let parameters: [String: Any]  = params.toDict()
             viewModel?.createAppointmentDataMethodEdit(appointmentDataParms: parameters, selectedTriggerid: triggerId ?? 0)
         }
@@ -689,7 +692,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
 
 extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     func nextButtonCreate(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
-        if cell.networkTypeSelected == "sms" {
+        if cell.networkTypeSelected == "SMS" {
             if cell.selectSMSTargetTextLabel.text == "Select trigger target" {
                 cell.selectSMSTagetEmptyTextLabel.isHidden = false
             } else if cell.selectSMSNetworkTextLabel.text == "Select network" {
@@ -700,7 +703,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
                 cell.selectSMSNetworkEmptyTextLabel.isHidden = true
                 setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
             }
-        } else if cell.networkTypeSelected == "email" {
+        } else if cell.networkTypeSelected == "EMAIL" {
             if cell.selectEmailTargetTextLabel.text == "Select trigger target" {
                 cell.selectEmailTagetEmptyTextLabel.isHidden = false
             } else if cell.selectEmailNetworkTextLabel.text == "Select network" {

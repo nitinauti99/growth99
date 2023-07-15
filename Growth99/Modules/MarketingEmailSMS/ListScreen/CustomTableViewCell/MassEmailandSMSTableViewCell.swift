@@ -61,6 +61,8 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.moduleLabel.text = massEmailFilterList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
         if massEmailFilterList?.bpmnEmails?.count ?? 0 > 0 {
             self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.bpmnEmails?[0].scheduledDateTime ?? String.blank)
+        } else if massEmailFilterList?.bpmnSMS?.count ?? 0 > 0 {
+            self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailFilterList?.bpmnSMS?[0].scheduledDateTime ?? String.blank)
         } else {
             self.scheduledDateLabel.text = "-"
         }
@@ -107,6 +109,8 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.moduleLabel.text = massEmailList?.moduleName?.replacingOccurrences(of: "Mass", with: "")
         if massEmailList?.bpmnEmails?.count ?? 0 > 0 {
             self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailList?.bpmnEmails?[0].scheduledDateTime ?? String.blank)
+        } else if massEmailList?.bpmnSMS?.count ?? 0 > 0 {
+            self.scheduledDateLabel.text = dateFormater?.serverToLocalDateConverter(date: massEmailList?.bpmnSMS?[0].scheduledDateTime ?? String.blank)
         } else {
             self.scheduledDateLabel.text = "-"
         }

@@ -323,12 +323,12 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             if selectedTriggerTarget == "Leads" {
                 selectedTriggerTarget = "lead"
             }
-            if selectedNetworkType == "sms" {
+            if selectedNetworkType == "SMS" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
-            } else if selectedNetworkType == "email" {
+                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "SMS", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
+            } else if selectedNetworkType == "EMAIL" {
                 templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
+                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "EMAIL", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
             } else {
                 triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: "MIN", taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: selectedStartTime, endTime: selectedEndTime))
             }
@@ -341,7 +341,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             } else {
                 selectedTriggerTarget = "AppointmentClinic"
             }
-            if selectedNetworkType == "sms" {
+            if selectedNetworkType == "SMS" {
                 templateId = Int(selectedSmsTemplateId) ?? 0
                 triggersAppointmentCreateData.append(TriggerAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
             } else {
@@ -671,7 +671,7 @@ extension TriggerDetailViewController: TriggerPatientCellDelegate {
 
 extension TriggerDetailViewController: TriggerCreateCellDelegate {
     func nextButtonCreate(cell: TriggerSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
-        if cell.networkTypeSelected == "sms" {
+        if cell.networkTypeSelected == "SMS" {
             if cell.selectSMSTargetTextLabel.text == "Select trigger target" {
                 cell.selectSMSTagetEmptyTextLabel.isHidden = false
             } else if cell.selectSMSNetworkTextLabel.text == "Select network" {
@@ -682,7 +682,7 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
                 cell.selectSMSNetworkEmptyTextLabel.isHidden = true
                 setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
             }
-        } else if cell.networkTypeSelected == "email" {
+        } else if cell.networkTypeSelected == "EMAIL" {
             if cell.selectEmailTargetTextLabel.text == "Select trigger target" {
                 cell.selectEmailTagetEmptyTextLabel.isHidden = false
             } else if cell.selectEmailNetworkTextLabel.text == "Select network" {

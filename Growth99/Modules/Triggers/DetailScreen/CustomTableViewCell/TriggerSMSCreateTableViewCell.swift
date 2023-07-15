@@ -52,7 +52,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var createNextButton: UIButton!
     
     weak var delegate: TriggerCreateCellDelegate?
-    var networkTypeSelected: String = "sms"
+    var networkTypeSelected: String = "SMS"
     var indexPath = IndexPath()
     
     let radioController: RadioButtonController = RadioButtonController()
@@ -103,7 +103,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = false
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = true
-        networkTypeSelected = "sms"
+        networkTypeSelected = "SMS"
     }
     
     @IBAction func emailButtonAction(sender: UIButton) {
@@ -111,7 +111,7 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
         networkViewSMS.isHidden = true
         networkViewEmail.isHidden = false
         networkViewTask.isHidden = true
-        networkTypeSelected = "email"
+        networkTypeSelected = "EMAIL"
     }
     
     @IBAction func taskButtonAction(sender: UIButton) {

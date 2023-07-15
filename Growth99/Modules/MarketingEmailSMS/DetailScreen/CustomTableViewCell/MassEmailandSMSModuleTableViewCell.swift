@@ -13,11 +13,11 @@ protocol MassEmailandSMSModuleCellDelegate: AnyObject {
 
 class MassEmailandSMSModuleTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var subView: UIView!
-    @IBOutlet private weak var subViewInside: UIView!
-    @IBOutlet private weak var leadBtn: UIButton!
-    @IBOutlet private weak var patientBtn: UIButton!
-    @IBOutlet private weak var bothBtn: UIButton!
+    @IBOutlet weak var subView: UIView!
+    @IBOutlet weak var subViewInside: UIView!
+    @IBOutlet weak var leadBtn: UIButton!
+    @IBOutlet weak var patientBtn: UIButton!
+    @IBOutlet weak var bothBtn: UIButton!
     @IBOutlet weak var moduleNextButton: UIButton!
     var moduleTypeSelected: String = "lead"
     

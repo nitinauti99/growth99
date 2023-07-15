@@ -123,8 +123,9 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         
         if triggerEditData?.count ?? 0 > 0 {
             self.timeHourlyTextField.text = triggerEditData?[0].triggerFrequency ?? ""
+            
             let triggerTime = triggerEditData?[0].triggerTime
-            self.timeDurationTextField.text = String(triggerTime ?? 0)
+            self.timeDurationTextField.text = String(triggerTime ?? 0).replacingOccurrences(of: "-", with: "")
             
             if triggerEditData?[0].dateType == "APPOINTMENT_CREATED" {
                 self.scheduledBasedOnTextField.text = "Appointment Created Date"

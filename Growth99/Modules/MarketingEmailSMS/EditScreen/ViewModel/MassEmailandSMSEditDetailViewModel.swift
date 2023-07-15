@@ -28,8 +28,8 @@ protocol MassEmailandSMSEditDetailViewModelProtocol {
     func timeFormatterStringEdit(textField: CustomTextField) -> String
     var  getMassSMSEditLeadCountData: MassEmailSMSCountModelEdit? { get }
     var  getMassSMSEditPatientCountData: MassEmailSMSCountModelEdit? { get }
-    var  getMassSMSEditAllLeadCountData: MassEmailSMSCountModelEdit? { get }
-    var  getMassSMSEditAllPatientCountData: MassEmailSMSCountModelEdit? { get }
+    var  getMassSMSEditAllLeadCountData: MassEmailSMSLeadAllCountModelEdit? { get }
+    var  getMassSMSEditAllPatientCountData: MassEmailSMSPatientAllCountModelEdit? { get }
     var  getMassEmailEditDetailData: MassEmailSMSDetailListModelEdit? { get }
     func editMassSMSLeadDataMethod(selectedMassSMSId: Int, leadDataParms: [String: Any])
     func editMassSMSPatientDataMethod(selectedMassSMSId: Int, patientDataParms: [String: Any])
@@ -52,8 +52,8 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     var massSMSEditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit?
     var massSMSEditLeadCount: MassEmailSMSCountModelEdit?
     var massSMSEditPatientCount: MassEmailSMSCountModelEdit?
-    var massSMSEditAllLeadCount: MassEmailSMSCountModelEdit?
-    var massSMSEditAllPatientCount: MassEmailSMSCountModelEdit?
+    var massSMSEditAllLeadCount: MassEmailSMSLeadAllCountModelEdit?
+    var massSMSEditAllPatientCount: MassEmailSMSPatientAllCountModelEdit?
     
     init(delegate: MassEmailandSMSEditDetailViewControlProtocol? = nil) {
         self.delegate = delegate
@@ -142,7 +142,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     func getMassSMSEditAllLeadMethod() {
         let appendParam = "leadStatus=All&moduleName=All"
         let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSCountModelEdit, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSLeadAllCountModelEdit, GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 self.massSMSEditAllLeadCount = response
@@ -156,7 +156,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     func getMassSMSEditAllPatientMethod() {
         let appendParam = "appointmentStatus=All&moduleName=All&patientTagIds=&patientStatus="
         let url = ApiUrl.massEmailAppointmentStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSCountModelEdit, GrowthNetworkError>) in
+        self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {(result: Result<MassEmailSMSPatientAllCountModelEdit, GrowthNetworkError>) in
             switch result {
             case .success(let response):
                 self.massSMSEditAllPatientCount = response
@@ -276,11 +276,11 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
         return massSMSEditEmailSmsCount
     }
     
-    var getMassSMSEditAllLeadCountData: MassEmailSMSCountModelEdit? {
+    var getMassSMSEditAllLeadCountData: MassEmailSMSLeadAllCountModelEdit? {
         return self.massSMSEditAllLeadCount
     }
     
-    var getMassSMSEditAllPatientCountData: MassEmailSMSCountModelEdit? {
+    var getMassSMSEditAllPatientCountData: MassEmailSMSPatientAllCountModelEdit? {
         return self.massSMSEditAllPatientCount
     }
     
