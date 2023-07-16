@@ -381,8 +381,27 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 
             }
             
-            let finalParameters: [String: Any]  = ["name": moduleName, "moduleName": "Appointment", "triggeractionName": appointmentSelectedStatus, "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPages, "forms": selectedleadForms, "sourceUrls": selectedLeadSourceUrl, "leadTags": selectedLeadTags, "isTriggerForLeadStatus": false, "fromLeadStatus": "", "toLeadStatus": ""
+            var selectedLeadLandingPagesdict: [String: Any] = [:]
+            for item  in selectedLeadLandingPages {
+                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
+                selectedLeadLandingPagesdict.merge(withDictionary: param)
+            }
+            
+            var selectedLeadSourceUrldict: [String: Any] = [:]
+            for item  in selectedLeadSourceUrl {
+                let param: [String: Any] = ["sourceUrl": item.sourceUrl ?? "", "id": item.id ?? 0]
+                selectedLeadSourceUrldict.merge(withDictionary: param)
+            }
+            
+            var selectedLeadTagsUrldict: [String: Any] = [:]
+            for item  in selectedLeadTags {
+                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0, "isDefault": item.isDefault ?? false]
+                selectedLeadTagsUrldict.merge(withDictionary: param)
+            }
+            
+            let finalParameters: [String: Any]  = ["name": moduleName, "moduleName": "Appointment", "triggeractionName": appointmentSelectedStatus, "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadForms, "sourceUrls": selectedLeadSourceUrldict, "leadTags": selectedLeadTagsUrldict, "isTriggerForLeadStatus": false, "fromLeadStatus": "", "toLeadStatus": ""
             ]
+            
             self.view.ShowSpinner()
             viewModel?.createAppointmentDataMethod(appointmentDataParms: finalParameters)
 
