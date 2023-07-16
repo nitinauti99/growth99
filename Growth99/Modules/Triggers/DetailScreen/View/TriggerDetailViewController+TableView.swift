@@ -19,6 +19,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if triggerDetailList[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerDefaultTableViewCell", for: indexPath) as? TriggerDefaultTableViewCell else { return UITableViewCell()}
             cell.delegate = self
@@ -318,40 +319,169 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func submitButtonAction(sender: UIButton) {
-        self.view.ShowSpinner()
+        self.smsandTimeArray = []
         if moduleSelectionType == "lead" {
             if selectedTriggerTarget == "Leads" {
-                selectedTriggerTarget = "lead"
+                selectedTriggerTarget = "leads"
             }
-            if selectedNetworkType == "SMS" {
-                templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "SMS", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
-            } else if selectedNetworkType == "EMAIL" {
-                templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "EMAIL", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
+            var triggerDataDict = [String: Any]()
+            var isfromLeadStatus: String = ""
+            var istoLeadStatus: String = ""
+            var isTriggerForLeadContain: Bool = false
+            var isModuleSelectionType: String = ""
+            
+            for index in 0..<(self.triggerDetailList.count) {
+                let cellIndexPath = IndexPath(row: index, section: 0)
+                var templateId: Int = 0
+                let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
+                if selectedNetworkType == "SMS" {
+                    templateId = Int(selectedSmsTemplateId) ?? 0
+                } else if selectedNetworkType == "EMAIL" {
+                    templateId = Int(selectedemailTemplateId) ?? 0
+                } else {
+                    templateId = selectedTaskTemplate
+                }
+                if triggerDetailList.cellType == "Default" {
+                    guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerDefaultTableViewCell else { return  }
+                    
+                } else if triggerDetailList.cellType == "Module" {
+                    guard let moduleCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerModuleTableViewCell else { return  }
+                    isModuleSelectionType = moduleCreateCell.moduleTypeSelected
+                } else if triggerDetailList.cellType == "Lead" {
+                    guard let leadCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell else { return  }
+                    isfromLeadStatus = leadCreateCell.leadInitialStatusTextField.text ?? ""
+                    istoLeadStatus = leadCreateCell.leadFinalStatusTextField.text ?? ""
+                    isTriggerForLeadContain = leadCreateCell.leadStatusChangeButton.isSelected
+                } else if triggerDetailList.cellType == "Both" {
+                    guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
+                    triggerDataDict = ["actionIndex": 3,
+                                       "addNew": true,
+                                       "triggerTemplate": templateId,
+                                       "triggerType": bothCreateCell.networkTypeSelected,
+                                       "triggerTarget": isModuleSelectionType,
+                                       "taskName": bothCreateCell.taskNameTextField.text ?? ""
+                    ]
+                    
+                }else if triggerDetailList.cellType == "Time" {
+                    guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell else { return  }
+                    let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    let timeDict: [String : Any] = [
+                        "showBorder": false,
+                        "orderOfCondition": orderOfConditionTrigger,
+                        "dateType": "NA",
+                        "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
+                        "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
+                        "triggerFrequency": isTriggerFrequency.uppercased(),
+                        "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
+                        "timerType": timeCell.timerTypeSelected
+                    ]
+                    triggerDataDict.merge(withDictionary: timeDict)
+                    self.createTriggerInfo(triggerCreateData: triggerDataDict)
+                }
+            }
+            
+            var selectedLeadLandingPagesdict = Array<Any>()
+            for item in selectedLeadLandingPages {
+                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
+                selectedLeadLandingPagesdict.append(param)
+            }
+            
+            var selectedLeadSourceUrldict = Array<Any>()
+            for item in selectedLeadSourceUrl {
+                let param: [String: Any] = ["sourceUrl": item.sourceUrl ?? "", "id": item.id ?? 0]
+                selectedLeadSourceUrldict.append(param)
+            }
+            
+            var selectedLeadTagsUrldict = Array<Any>()
+            for item in selectedLeadTags {
+                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0, "isDefault": item.isDefault ?? false]
+                selectedLeadTagsUrldict.append(param)
+            }
+            
+            var selectedleadFormsdict = Array<Any>()
+            for item in selectedleadForms {
+                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
+                selectedleadFormsdict.append(param)
+            }
+            
+            var urlParameter: Parameters = [String: Any]()
+            if isfromLeadStatus == "" && istoLeadStatus == "" {
+                urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": selectedLeadTagsUrldict, "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
+                ]
             } else {
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: "MIN", taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: selectedStartTime, endTime: selectedEndTime))
+                urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": selectedLeadTagsUrldict, "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": isfromLeadStatus, "toLeadStatus": istoLeadStatus
+                ]
             }
-            let params = TriggerCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
-            let parameters: [String: Any]  = params.toDict()
-            viewModel?.createTriggerDataMethod(triggerDataParms: parameters)
+            print(urlParameter)
+            self.view.ShowSpinner()
+            viewModel?.createTriggerDataMethod(triggerDataParms: urlParameter)
         } else {
             if selectedTriggerTarget == "Patient" {
                 selectedTriggerTarget = "AppointmentPatient"
             } else {
                 selectedTriggerTarget = "AppointmentClinic"
             }
-            if selectedNetworkType == "SMS" {
-                templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersAppointmentCreateData.append(TriggerAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
-            } else {
-                templateId = Int(selectedemailTemplateId) ?? 0
-                triggersAppointmentCreateData.append(TriggerAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType.uppercased(), triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected))
+            
+            var triggerDataDictAppointment = [String: Any]()
+            var isModuleSelectionTypeAppointment: String = ""
+            
+            for index in 0..<(self.triggerDetailList.count) {
+                let cellIndexPath = IndexPath(row: index, section: 0)
+                var templateId: Int = 0
+                let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
+                if selectedNetworkType == "SMS" {
+                    templateId = Int(selectedSmsTemplateId) ?? 0
+                } else {
+                    templateId = Int(selectedemailTemplateId) ?? 0
+                }
+                
+                if triggerDetailList.cellType == "Default" {
+                    guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerDefaultTableViewCell else { return  }
+                    
+                } else if triggerDetailList.cellType == "Module" {
+                    guard let moduleCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerModuleTableViewCell else { return  }
+                    isModuleSelectionTypeAppointment = moduleCreateCell.moduleTypeSelected
+                } else if triggerDetailList.cellType == "Appointment" {
+                    guard let leadCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerAppointmentActionTableViewCell else { return  }
+                } else if triggerDetailList.cellType == "Both" {
+                    guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
+                    triggerDataDictAppointment = ["actionIndex": 3,
+                                                  "addNew": true,
+                                                  "triggerTemplate": templateId,
+                                                  "triggerType": bothCreateCell.networkTypeSelected,
+                                                  "triggerTarget": selectedTriggerTarget,
+                                                  "taskName": bothCreateCell.taskNameTextField.text ?? ""
+                    ]
+                    
+                } else if triggerDetailList.cellType == "Time" {
+                    guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell else { return  }
+                    let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    let timeDict: [String : Any] = [
+                        "showBorder": false,
+                        "orderOfCondition": orderOfConditionTrigger,
+                        "dateType": scheduledBasedOnSelected,
+                        "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
+                        "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
+                        "triggerFrequency": isTriggerFrequency.uppercased(),
+                        "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
+                        "timerType": timeCell.timerTypeSelected
+                    ]
+                    triggerDataDictAppointment.merge(withDictionary: timeDict)
+                    self.createTriggerInfo(triggerCreateData: triggerDataDictAppointment)
+                }
             }
-            let params = TriggerAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
-            let parameters: [String: Any]  = params.toDict()
-            viewModel?.createAppointmentDataMethod(appointmentDataParms: parameters)
+            
+            var urlParameter: Parameters = [String: Any]()
+            urlParameter = ["name": moduleName, "moduleName": "Appointment", "triggeractionName": appointmentSelectedStatus, "triggerConditions": [], "triggerData": smsandTimeArray, "landingPageNames": [], "forms": [], "sourceUrls": [], "leadTags": selectedLeadTags, "isTriggerForLeadStatus": false, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
+            ]
+            print(urlParameter)
+            self.view.ShowSpinner()
+            viewModel?.createAppointmentDataMethod(appointmentDataParms: urlParameter)
         }
+    }
+    
+    func createTriggerInfo(triggerCreateData: [String: Any]) {
+        smsandTimeArray.append(triggerCreateData)
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {
