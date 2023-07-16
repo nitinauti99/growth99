@@ -136,4 +136,16 @@ struct TriggerCreateSourceUrls : Codable {
 struct LandingPageNamesModel : Codable, Equatable {
     let name : String?
     let id : Int?
+    
+    func toDict() -> [String: Any] {
+        var dictionary = [String:Any]()
+        if name != nil {
+            dictionary["name"] = name
+        }
+        if id != nil {
+            dictionary["id"] = id
+        }
+        return dictionary
+    }
+    
 }
