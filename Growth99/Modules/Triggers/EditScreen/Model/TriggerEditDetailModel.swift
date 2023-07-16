@@ -158,69 +158,6 @@ struct TriggerEditAppointmentCreateModel : Codable {
     let isTriggerForLeadStatus : Bool?
     let fromLeadStatus : String?
     let toLeadStatus : String?
-
-    func toDict() -> [String: Any] {
-        var dictionary = [String:Any]()
-        if name != nil {
-            dictionary["name"] = name
-        }
-        if moduleName != nil {
-            dictionary["moduleName"] = moduleName
-        }
-        if triggeractionName != nil {
-            dictionary["triggeractionName"] = triggeractionName
-        }
-        if triggerConditions != nil {
-            dictionary["triggerConditions"] = triggerConditions
-        }
-        
-        if triggerData != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in triggerData! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["triggerData"] = arrOfDict
-        }
-        
-        if landingPageNames != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in landingPageNames! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["landingPageNames"] = arrOfDict
-        }
-        if forms != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in forms! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["forms"] = arrOfDict
-        }
-        if sourceUrls != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in sourceUrls! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["sourceUrls"] = arrOfDict
-        }
-        if leadTags != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in leadTags! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["leadTags"] = arrOfDict
-        }
-        if isTriggerForLeadStatus != nil {
-            dictionary["isTriggerForLeadStatus"] = isTriggerForLeadStatus
-        }
-        if fromLeadStatus != nil {
-            dictionary["fromLeadStatus"] = fromLeadStatus
-        }
-        if toLeadStatus != nil {
-            dictionary["toLeadStatus"] = toLeadStatus
-        }
-        return dictionary
-    }
 }
 
 struct TriggerEditAppointmentCreateData : Codable {
@@ -235,6 +172,9 @@ struct TriggerEditAppointmentCreateData : Codable {
     let showBorder : Bool?
     let orderOfCondition : Int?
     let dateType : String?
+    let startTime : String?
+    let endTime : String?
+    let deadline : String?
     
     func toDict() -> [String: Any] {
         var dictionary = [String:Any]()

@@ -318,24 +318,114 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func submitButtonAction(sender: UIButton) {
-        self.view.ShowSpinner()
+      //  self.view.ShowSpinner()
         if moduleSelectionType == "lead" {
             if selectedTriggerTarget == "Leads" {
-                selectedTriggerTarget = "lead"
+                selectedTriggerTarget = "leads"
             }
-            if selectedNetworkType == "SMS" {
-                templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "SMS", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
-            } else if selectedNetworkType == "EMAIL" {
-                templateId = Int(selectedemailTemplateId) ?? 0
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: "EMAIL", triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: "", endTime: ""))
-            } else {
-                triggersCreateData.append(TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: selectedTaskTemplate, triggerType: selectedNetworkType.uppercased(), triggerTarget: "lead" , triggerTime: selectedTriggerTime, triggerFrequency: "MIN", taskName: taskName, showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timerTypeSelected, startTime: selectedStartTime, endTime: selectedEndTime))
+            
+            for index in 0..<(self.triggerDetailList.count) {
+                let cellIndexPath = IndexPath(row: index, section: 0)
+                let templateId: Int
+                let triggerType: String
+                
+                /// retrived data for child cell
+                ///
+                if triggerDetailList[index.row].cellType == "Default" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerDefaultTableViewCell", for: indexPath) as? TriggerDefaultTableViewCell else { return UITableViewCell()}
+                    cell.delegate = self
+                    return cell
+                } else if triggerDetailList[index.row].cellType == "Module" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerModuleTableViewCell", for: indexPath) as? TriggerModuleTableViewCell else { return UITableViewCell()}
+                    cell.delegate = self
+                    moduleSelectionType = cell.moduleTypeSelected
+                    return cell
+                } else if triggerDetailList[index.row].cellType == "Lead" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerLeadActionTableViewCell", for: indexPath) as? TriggerLeadActionTableViewCell else { return UITableViewCell()}
+                    cell.delegate = self
+                    cell.configureCell(tableView: triggerdDetailTableView, index: indexPath, triggerListDetail: triggerDetailList)
+                    return cell
+                } else if triggerDetailList[index.row].cellType == "Appointment" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerAppointmentActionTableViewCell", for: indexPath) as? TriggerAppointmentActionTableViewCell else { return UITableViewCell()}
+                    cell.delegate = self
+                    cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
+                    cell.patientAppointmentButton.tag = indexPath.row
+                    cell.patientAppointmenTextLabel.text = appointmentStatusArray[0]
+                    cell.configureCell(index: indexPath)
+                    return cell
+                } else if triggerDetailList[index.row].cellType == "Both" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerSMSCreateTableViewCell", for: indexPath) as? TriggerSMSCreateTableViewCell else { return UITableViewCell()}
+                    cell.delegate = self
+                    cell.networkSMSTagetSelectonButton.tag = indexPath.row
+                    cell.networkSMSTagetSelectonButton.addTarget(self, action: #selector(smsTargetSelectionMethod), for: .touchDown)
+                    cell.networkSMSNetworkSelectonButton.tag = indexPath.row
+                    cell.networkSMSNetworkSelectonButton.addTarget(self, action: #selector(smsNetworkSelectionMethod), for: .touchDown)
+                    
+                    cell.networkEmailTagetSelectonButton.tag = indexPath.row
+                    cell.networkEmailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
+                    cell.networkEmailNetworkSelectonButton.tag = indexPath.row
+                    cell.networkEmailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
+                    cell.configureCell(index: indexPath)
+                    if moduleSelectionType == "lead" {
+                        cell.taskBtn.isHidden = false
+                        cell.taskLabel.isHidden = false
+                        cell.assignTaskNetworkSelectonButton.tag = indexPath.row
+                        cell.assignTaskNetworkSelectonButton.addTarget(self, action: #selector(taskNetworkSelectionMethod), for: .touchDown)
+                    } else {
+                        cell.taskBtn.isHidden = true
+                        cell.taskLabel.isHidden = true
+                    }
+                    return cell
+                } else if triggerDetailList[indexPath.row].cellType == "Time" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerTimeTableViewCell", for: indexPath) as? TriggerTimeTableViewCell else { return UITableViewCell()}
+                    cell.delegate = self
+                    if moduleSelectionType == "lead" {
+                        cell.timeRangeView.isHidden = false
+                        cell.timeFrequencyLbl.isHidden = false
+                        cell.timeRangeLbl.isHidden = false
+                        cell.scheduledBasedOnTextField.isHidden = true
+                        cell.scheduleBasedonLbl.isHidden = true
+                        cell.timeFrequencyButton.isHidden = false
+                        cell.timeRangeButton.isHidden = false
+                        cell.scheduledBasedOnButton.isEnabled = false
+                    } else {
+                        cell.timeRangeView.isHidden = true
+                        cell.timeFrequencyLbl.isHidden = true
+                        cell.timeRangeLbl.isHidden = true
+                        cell.scheduledBasedOnTextField.isHidden = false
+                        cell.scheduleBasedonLbl.isHidden = false
+                        cell.timeFrequencyButton.isHidden = true
+                        cell.timeRangeButton.isHidden = true
+                        cell.scheduledBasedOnButton.isEnabled = true
+                    }
+                    cell.timeHourlyButton.tag = indexPath.row
+                    cell.timeHourlyButton.addTarget(self, action: #selector(timeHourlyButtonMethod), for: .touchDown)
+                    cell.scheduledBasedOnButton.tag = indexPath.row
+                    cell.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnButtonMethod), for: .touchDown)
+                    return cell
+                }
+                guard let smsCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
+                guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell else { return  }
+
+                if selectedNetworkType == "SMS" {
+                       templateId = Int(selectedSmsTemplateId) ?? 0
+                       triggerType = "SMS"
+                   } else if selectedNetworkType == "EMAIL" {
+                       templateId = Int(selectedemailTemplateId) ?? 0
+                       triggerType = "EMAIL"
+                   } else {
+                       templateId = selectedTaskTemplate
+                       triggerType = selectedNetworkType
+                   }
+                        
+                let params = TriggerCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: triggerType, triggerTarget: smsCreateCell.networkTypeSelected, triggerTime: Int(timeCell.timeDurationTextField.text ?? "") ?? 0, triggerFrequency: timeCell.timeHourlyTextField.text ?? "", taskName: smsCreateCell.taskNameTextField.text ?? "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: "NA", timerType: timeCell.timerTypeSelected, startTime: timeCell.timeRangeStartTimeTF.text ?? "", endTime: timeCell.timeRangeEndTimeTF.text ?? "")
+                self.createTriggerInfo(triggerCreateData: params)
+
             }
-            let params = TriggerCreateModel(name: moduleName, moduleName: "leads", triggeractionName: "Pending", triggerConditions: selectedLeadSources, triggerData: triggersCreateData, landingPageNames: selectedLeadLandingPages, forms: selectedleadForms, sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: isTriggerForLeadContain, fromLeadStatus: isInitialStatusContain, toLeadStatus: isFinalStatusContain)
-            let parameters: [String: Any]  = params.toDict()
-            viewModel?.createTriggerDataMethod(triggerDataParms: parameters)
+            
         } else {
+            
+            /*
             if selectedTriggerTarget == "Patient" {
                 selectedTriggerTarget = "AppointmentPatient"
             } else {
@@ -350,8 +440,13 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
             let params = TriggerAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
             let parameters: [String: Any]  = params.toDict()
-            viewModel?.createAppointmentDataMethod(appointmentDataParms: parameters)
+            viewModel?.createAppointmentDataMethod(appointmentDataParms: parameters)*/
         }
+    }
+    
+    func createTriggerInfo(triggerCreateData: TriggerCreateData) {
+        smsandTimeArray.append(triggerCreateData)
+        print(smsandTimeArray)
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {

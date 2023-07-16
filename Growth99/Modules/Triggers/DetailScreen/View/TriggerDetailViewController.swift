@@ -106,7 +106,8 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var isTriggerForLeadContain: Bool = false
     var isInitialStatusContain: String = ""
     var isFinalStatusContain: String = ""
-    
+    var smsandTimeArray = Array<Any>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
