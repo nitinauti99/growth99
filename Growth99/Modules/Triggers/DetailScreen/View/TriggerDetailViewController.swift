@@ -21,12 +21,14 @@ protocol TriggerDetailViewControlProtocol: AnyObject {
 class TriggerDetailViewController: UIViewController, TriggerDetailViewControlProtocol {
     
     @IBOutlet weak var triggerdDetailTableView: UITableView!
-    
+
     @IBOutlet weak var submitBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var submitViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
-    
+    @IBOutlet var triggerCreateScrollview: UIScrollView!
+    @IBOutlet var triggerCreateScrollviewHeight: NSLayoutConstraint!
+
     var triggerDetailList = [TriggerDetailModel]()
     var viewModel: TriggerDetailViewModelProtocol?
     var leadTagsArray = [TriggerTagListModel]()
@@ -115,7 +117,8 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         dateFormater = DateFormater()
         leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
         appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
-        
+        triggerCreateScrollview.delegate = self
+
         let emailSMS = TriggerDetailModel(cellType: "Default", LastName: "")
         triggerDetailList.append(emailSMS)
         
@@ -199,6 +202,11 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         self.view.showToast(message: error, color: .red)
     }
     
+    var triggerCreateTableViewHeight: CGFloat {
+        triggerdDetailTableView.layoutIfNeeded()
+        return triggerdDetailTableView.contentSize.height
+    }
+    
     func registerTableView() {
         self.triggerdDetailTableView.delegate = self
         self.triggerdDetailTableView.dataSource = self
@@ -217,6 +225,18 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         let indexPath = IndexPath(row: (triggerDetailList.count) - 1, section: 0)
         triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
         triggerdDetailTableView.endUpdates()
+        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight + 300
     }
     
+}
+
+extension TriggerDetailViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight + 300
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight + 300
+    }
 }
