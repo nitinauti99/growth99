@@ -147,6 +147,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         providersTextField.text = editBookingHistoryData?.providerName ?? String.blank
         appoinmentStatusField.text = editBookingHistoryData?.appointmentStatus ?? String.blank
         dateTextField.text = eventViewModel?.serverToLocal(date: editBookingHistoryData?.appointmentStartDate ?? String.blank)
+        selectedDate = editBookingHistoryData?.appointmentStartDate ?? ""
         timeTextField.text = "\(eventViewModel?.utcToLocal(dateStr: editBookingHistoryData?.appointmentStartDate ?? String.blank) ?? String.blank)"
         if editBookingHistoryData?.appointmentType == "InPerson" {
             inPersonBtn.isSelected = true
@@ -160,7 +161,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         notesTextView.text = editBookingHistoryData?.notes ?? String.blank
         self.eventViewModel?.sendProviderListEditEvent(providerParams: self.selectedServicesIds.first ?? 0)
         if editBookingHistoryData?.providerId ?? 0 != 0 {
-            self.eventViewModel?.getDatesList(clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds )
             self.eventViewModel?.getTimeList(dateStr: self.eventViewModel?.timeInputCalendar(date: self.selectedDate) ?? String.blank, clinicIds: editBookingHistoryData?.clinicId ?? 0, providerId: editBookingHistoryData?.providerId ?? 0, serviceIds: self.selectedServicesIds, appointmentId: appointmentId ?? 0)
         }
     }
@@ -220,6 +220,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
             submitButton.isEnabled = false
             submitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
         } else {
+            timeTextField.showError(message: "")
             submitButton.isSelected = true
             submitButton.isEnabled = true
             submitButton.backgroundColor = UIColor.init(hexString: "009EDE")

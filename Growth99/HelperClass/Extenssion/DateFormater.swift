@@ -24,7 +24,7 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalPateintTimeLineDate(date: String) -> String
     func serverToLocalDateConverterOnlyDate(date: String) -> String
     func serverToLocalTimeAndDateFormate(date: String) -> String
-
+    func localToServerCalender(date: String) -> String
     //    func serverToLocal(date: String) -> String
      //   func serverToLocalCreatedDate(date: String) -> String
     //   func serverToLocalDate(date: String) -> String
@@ -125,16 +125,24 @@ class DateFormater: DateFormaterProtocol {
     func localToServerSocial(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "mm/dd/yyyy hh:mm a"
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: date)
     }
     
+    func localToServerCalender(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        let date = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return dateFormatter.string(from: date)
+    }
+    
     func localToServerWithDate(date: String) -> String {
         let currentDate = Date()
-        let currentTime = date
         let dateFormatter22 = DateFormatter()
         dateFormatter22.string(from: currentDate)
         dateFormatter22.dateFormat = "yyyy-MM-dd'T'"
@@ -216,7 +224,8 @@ class DateFormater: DateFormaterProtocol {
     func serverToLocalforCalender(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         if let date = dateFormatter.date(from: date) {
             let usDateFormatter = DateFormatter()
             usDateFormatter.dateFormat = "h:mm a"

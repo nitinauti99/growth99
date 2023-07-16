@@ -76,7 +76,7 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .medium
-            dateFormatter.dateFormat = "MM/dd/yy"
+            dateFormatter.dateFormat = "MM/dd/yyyy"
             let dateString = dateFormatter.string(from: currentDate)
             
             let timeFormatter = DateFormatter()
@@ -88,7 +88,6 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
             
             cell.updateMassEmailDateTextField(with: dateTrigger)
             cell.updateMassEmailTimeTextField(with: timeTrigger)
-            selectedTimeSlot = viewModel?.localInputToServerInput(date: dateTrigger + timeTrigger) ?? ""
             cell.configureCell(tableView: emailAndSMSTableView, index: indexPath)
             return cell
         }
@@ -447,13 +446,32 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
     
     func massSMSDateSelectionTapped(cell: MassEmailandSMSTimeTableViewCell) {
         cell.updateMassEmailDateTextField(with: "\(viewModel?.dateFormatterString(textField:  cell.massSMSTriggerDateTextField) ?? "")")
-        selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
         scrollToBottom()
     }
     
     func massSMSTimeSelectionTapped(cell: MassEmailandSMSTimeTableViewCell) {
         cell.updateMassEmailTimeTextField(with: "\(viewModel?.timeFormatterString(textField:  cell.massSMSTriggerTimeTextField) ?? "")")
-        selectedTimeSlot = viewModel?.localInputToServerInput(date: "\(viewModel?.dateFormatterString(textField:  cell.massSMSTriggerDateTextField) ?? "") \(viewModel?.timeFormatterString(textField:  cell.massSMSTriggerTimeTextField) ?? "")") ?? String.blank
+        let dateTrigger = cell.massSMSTriggerDateTextField.text ?? ""
+        let timeTrigger = cell.massSMSTriggerTimeTextField.text ?? ""
+        let str: String = (dateTrigger) + " " + (timeTrigger)
+        selectedTimeSlot = convertDateString(inputDateString: str)
         scrollToBottom()
+    }
+    
+    func convertDateString(inputDateString: String) -> String {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        inputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        outputDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        outputDateFormatter.timeZone = TimeZone.current
+        if let date = inputDateFormatter.date(from: inputDateString) {
+            let outputDateString = outputDateFormatter.string(from: date)
+            return outputDateString
+        } else {
+            return "Invalid date format"
+        }
     }
 }
