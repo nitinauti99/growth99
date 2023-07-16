@@ -88,8 +88,8 @@ extension MediaLibraryListViewController: MediaLibraryListViewControllerProtocol
     }
     
     func socialMediaLibrariesRemovedSuccefully(message: String) {
-        self.view.HideSpinner()
         self.view.showToast(message: message, color: UIColor().successMessageColor())
+        self.viewModel?.getSocialMediaLibrariesList(page: page ?? 0, size: size ?? 10, search: search ?? "", tags: 0)
     }
     
     func errorReceived(error: String) {

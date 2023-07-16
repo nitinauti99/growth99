@@ -101,7 +101,7 @@ class CreatePostViewController: UIViewController {
         self.selectedSocialProfiles = (item?.socialProfiles ?? []).map({$0.id ?? 0})
         self.selectedPostLabels = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.id ?? 0})
 
-        let dateString = self.dateFormater?.serverToLocalDateConverter(date: (item?.scheduledDate) ?? "").components(separatedBy: " ")
+        let dateString = self.dateFormater?.serverToLocalTimeAndDateFormate(date: (item?.scheduledDate) ?? "").components(separatedBy: " ")
 
         if dateString != nil {
             self.scheduleDateTextField.text = dateString?[0]

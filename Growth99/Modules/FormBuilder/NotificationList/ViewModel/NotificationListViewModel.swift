@@ -47,8 +47,9 @@ class NotificationListViewModel {
         self.notificationFilteListrData = self.notificationListData.filter { task in
             let searchText = searchText.lowercased()
             let nameMatch = task.toEmail?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
-            let idMatch = String(task.id ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            let phoneNumber = String(task.phoneNumber ?? "").prefix(searchText.count).elementsEqual(searchText)
+            let notificationType = String(task.notificationType ?? "").prefix(searchText.count).elementsEqual(searchText)
+            return nameMatch  || notificationType
         }
     }
     

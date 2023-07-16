@@ -23,10 +23,10 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalBirthDateFormate(date: String) -> String
     func serverToLocalPateintTimeLineDate(date: String) -> String
     func serverToLocalDateConverterOnlyDate(date: String) -> String
+    func serverToLocalTimeAndDateFormate(date: String) -> String
 
     //    func serverToLocal(date: String) -> String
      //   func serverToLocalCreatedDate(date: String) -> String
-   //    func serverToLocalTimeAndDateFormate(date: String) -> String
     //   func serverToLocalDate(date: String) -> String
    //    func serverToLocalPateintTimeLineDate(date: String) -> String
 
@@ -226,21 +226,22 @@ class DateFormater: DateFormaterProtocol {
         }
         return ""
     }
+    
+    func serverToLocalTimeAndDateFormate(date: String) -> String {
+         let dateFormatter = DateFormatter()
+         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+
+         let usDateFormatter = DateFormatter()
+         usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
+         dateFormatter.timeZone = TimeZone.current
+         let date = dateFormatter.date(from: date) ?? Date()
+         return usDateFormatter.string(from: date)
+     }
 }
 
 
-
-//    func serverToLocalTimeAndDateFormate(date: String) -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//
-//        let usDateFormatter = DateFormatter()
-//        usDateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
-//        usDateFormatter.timeZone = TimeZone(identifier: "UTC")
-//        let date = dateFormatter.date(from: date) ?? Date()
-//        return usDateFormatter.string(from: date)
-//    }
+  
 
 
 

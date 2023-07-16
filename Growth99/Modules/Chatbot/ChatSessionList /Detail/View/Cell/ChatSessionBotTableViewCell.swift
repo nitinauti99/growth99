@@ -22,7 +22,7 @@ class ChatSessionBotTableViewCell: UITableViewCell {
         let param = self.convertStringToDictionary(text: chatSessionList?.message ?? "")
         print(param?["message"] ?? "")
         if param == nil {
-            self.message.text = chatSessionList?.message ?? ""
+            self.message.attributedText = (chatSessionList?.message ?? "").htmlToAttributedString
         }else{
             guard let str = param?["message"] else {return}
             self.message.text = (str as! String).htmlToString
@@ -55,3 +55,4 @@ extension String {
         return htmlToAttributedString?.string ?? ""
     }
 }
+

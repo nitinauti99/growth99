@@ -204,10 +204,10 @@ class EditTasksViewController: UIViewController{
         
         var deadLine = String()
         
-        if self.DeadlineTextField?.text != nil {
-            deadLine =  dateFormater?.localToServer(date: DeadlineTextField.text ?? String.blank) ?? ""
-        }else {
+        if self.DeadlineTextField?.text == "" {
             deadLine = ""
+        }else {
+            deadLine =  dateFormater?.localToServer(date: DeadlineTextField.text ?? String.blank) ?? ""
         }
         
         self.view.ShowSpinner()
