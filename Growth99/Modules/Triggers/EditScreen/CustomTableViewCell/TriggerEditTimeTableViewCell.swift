@@ -54,7 +54,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     var trigerTimeData: [TriggerEditData] = []
     let radioController: RadioButtonController = RadioButtonController()
     var tableView: UITableView?
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

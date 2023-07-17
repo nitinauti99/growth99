@@ -80,69 +80,6 @@ struct TriggerEditCreateModel : Codable {
     let isTriggerForLeadStatus : Bool?
     let fromLeadStatus : String?
     let toLeadStatus : String?
-    
-    func toDict() -> [String: Any] {
-        var dictionary = [String:Any]()
-        if name != nil {
-            dictionary["name"] = name
-        }
-        if moduleName != nil {
-            dictionary["moduleName"] = moduleName
-        }
-        if triggeractionName != nil {
-            dictionary["triggeractionName"] = triggeractionName
-        }
-        if triggerConditions != nil {
-            dictionary["triggerConditions"] = triggerConditions
-        }
-        
-        if triggerData != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in triggerData! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["triggerData"] = arrOfDict
-        }
-        
-        if landingPageNames != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in landingPageNames! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["landingPageNames"] = arrOfDict
-        }
-        if forms != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in forms! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["forms"] = arrOfDict
-        }
-        if sourceUrls != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in sourceUrls! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["sourceUrls"] = arrOfDict
-        }
-        if leadTags != nil {
-            var arrOfDict = [[String: Any]]()
-            for item in leadTags! {
-                arrOfDict.append(item.toDict())
-            }
-            dictionary["leadTags"] = arrOfDict
-        }
-        if isTriggerForLeadStatus != nil {
-            dictionary["isTriggerForLeadStatus"] = isTriggerForLeadStatus
-        }
-        if fromLeadStatus != nil {
-            dictionary["fromLeadStatus"] = fromLeadStatus
-        }
-        if toLeadStatus != nil {
-            dictionary["toLeadStatus"] = toLeadStatus
-        }
-        return dictionary
-    }
 }
 
 struct TriggerEditAppointmentCreateModel : Codable {
@@ -175,44 +112,6 @@ struct TriggerEditAppointmentCreateData : Codable {
     let startTime : String?
     let endTime : String?
     let deadline : String?
-    
-    func toDict() -> [String: Any] {
-        var dictionary = [String:Any]()
-        if actionIndex != nil {
-            dictionary["actionIndex"] = actionIndex
-        }
-        if addNew != nil {
-            dictionary["addNew"] = addNew
-        }
-        if triggerTemplate != nil {
-            dictionary["triggerTemplate"] = triggerTemplate
-        }
-        if triggerType != nil {
-            dictionary["triggerType"] = triggerType
-        }
-        if triggerTarget != nil {
-            dictionary["triggerTarget"] = triggerTarget
-        }
-        if triggerTime != nil {
-            dictionary["triggerTime"] = triggerTime
-        }
-        if triggerFrequency != nil {
-            dictionary["triggerFrequency"] = triggerFrequency
-        }
-        if taskName != nil {
-            dictionary["taskName"] = taskName
-        }
-        if showBorder != nil {
-            dictionary["showBorder"] = showBorder
-        }
-        if orderOfCondition != nil {
-            dictionary["orderOfCondition"] = orderOfCondition
-        }
-        if dateType != nil {
-            dictionary["dateType"] = dateType
-        }
-        return dictionary
-    }
 }
 
 struct TriggerEditCreateData : Codable {
@@ -231,88 +130,16 @@ struct TriggerEditCreateData : Codable {
     let startTime : String?
     let endTime : String?
     let deadline : String?
-    
-    func toDict() -> [String: Any] {
-        var dictionary = [String:Any]()
-        if actionIndex != nil {
-            dictionary["actionIndex"] = actionIndex
-        }
-        if addNew != nil {
-            dictionary["addNew"] = addNew
-        }
-        if triggerTemplate != nil {
-            dictionary["triggerTemplate"] = triggerTemplate
-        }
-        if triggerType != nil {
-            dictionary["triggerType"] = triggerType
-        }
-        if triggerTarget != nil {
-            dictionary["triggerTarget"] = triggerTarget
-        }
-        if triggerTime != nil {
-            dictionary["triggerTime"] = triggerTime
-        }
-        if triggerFrequency != nil {
-            dictionary["triggerFrequency"] = triggerFrequency
-        }
-        if taskName != nil {
-            dictionary["taskName"] = taskName
-        }
-        if showBorder != nil {
-            dictionary["showBorder"] = showBorder
-        }
-        if orderOfCondition != nil {
-            dictionary["orderOfCondition"] = orderOfCondition
-        }
-        if dateType != nil {
-            dictionary["dateType"] = dateType
-        }
-        if timerType != nil {
-            dictionary["timerType"] = timerType
-        }
-        if startTime != nil {
-            dictionary["startTime"] = startTime
-        }
-        if endTime != nil {
-            dictionary["endTime"] = endTime
-        }
-        if deadline != nil {
-            dictionary["deadline"] = deadline
-        }
-        return dictionary
-    }
 }
 
 struct TriggerEditCreateSourceUrls : Codable {
     let sourceUrl : String?
     let id : Int?
-    
-    func toDict() -> [String: Any] {
-        var dictionary = [String:Any]()
-        if sourceUrl != nil {
-            dictionary["sourceUrl"] = sourceUrl
-        }
-        if id != nil {
-            dictionary["id"] = id
-        }
-        return dictionary
-    }
 }
 
 struct EditLandingPageNamesModel : Codable, Equatable {
     let name : String?
     let id : Int?
-    
-    func toDict() -> [String: Any] {
-        var dictionary = [String:Any]()
-        if name != nil {
-            dictionary["name"] = name
-        }
-        if id != nil {
-            dictionary["id"] = id
-        }
-        return dictionary
-    }
 }
 
 struct TriggerEditModel : Codable {

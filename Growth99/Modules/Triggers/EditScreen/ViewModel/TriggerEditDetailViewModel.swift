@@ -23,7 +23,7 @@ protocol TriggerEditDetailViewModelProtocol {
     
     func createTriggerDataMethodEdit(triggerDataParms: [String: Any], selectedTriggerid: Int)
     func createAppointmentDataMethodEdit(appointmentDataParms: [String: Any], selectedTriggerid: Int)
-    func getSelectedTriggerList(selectedTriggerId: Int) 
+    func getSelectedTriggerList(selectedTriggerId: Int)
 }
 
 class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
