@@ -65,11 +65,11 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         parentCell = parentSelectedCell
         self.trigerTimeData = triggerEditData ?? []
         
-        /*if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
-         addAnotherConditionButton.isHidden = false
-         } else {
-         addAnotherConditionButton.isHidden = true
-         }*/
+        if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
+            addAnotherConditionButton.isHidden = false
+        } else {
+            addAnotherConditionButton.isHidden = true
+        }
         
         if triggerEditData?[indexPath.row].triggerTarget == "lead"  {
             self.timeRangeView.isHidden = false
