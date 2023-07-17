@@ -76,7 +76,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     // MARK: - setupDefaultUI
     func setupUI() {
-        userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
+        userNameTextField?.text = "\(UserRepository.shared.firstNameUser ?? String.blank) \(UserRepository.shared.lastNameUser ?? String.blank)"
         
         clinicTextView.layer.cornerRadius = 4.5
         clinicTextView.layer.borderWidth = 1

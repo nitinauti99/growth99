@@ -220,6 +220,8 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             switch indexPath.row {
             case 0:
                 UserRepository.shared.userVariableId = UserRepository.shared.userId ?? 0
+                UserRepository.shared.firstNameUser = UserRepository.shared.firstName ?? ""
+                UserRepository.shared.lastNameUser = UserRepository.shared.lastName ?? ""
                 pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "HomeViewContoller")
                 break
             case 1:

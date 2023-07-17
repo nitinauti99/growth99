@@ -20,6 +20,24 @@ public class UserRepository {
         }
     }
     
+    public var firstNameUser: String? {
+        get {
+            user.firstNameUser
+        }
+        set {
+            user.firstNameUser = newValue
+        }
+    }
+    
+    public var lastNameUser: String? {
+        get {
+            user.lastNameUser
+        }
+        set {
+            user.lastNameUser = newValue
+        }
+    }
+    
     public var lastName: String? {
         get {
             user.lastName

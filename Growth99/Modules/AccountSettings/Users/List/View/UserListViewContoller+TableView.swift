@@ -43,12 +43,12 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
         if  UserRepository.shared.screenTitle == "Profile" {
             if isSearch {
                 UserRepository.shared.userVariableId = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.id ?? 0
-                UserRepository.shared.firstName = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.firstName ?? ""
-                UserRepository.shared.lastName = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.lastName ?? ""
+                UserRepository.shared.firstNameUser = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.firstName ?? ""
+                UserRepository.shared.lastNameUser = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.lastName ?? ""
             } else {
                 UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
-                UserRepository.shared.firstName = viewModel?.userDataAtIndex(index: indexPath.row)?.firstName ?? ""
-                UserRepository.shared.lastName = viewModel?.userDataAtIndex(index: indexPath.row)?.lastName ?? ""
+                UserRepository.shared.firstNameUser = viewModel?.userDataAtIndex(index: indexPath.row)?.firstName ?? ""
+                UserRepository.shared.lastNameUser = viewModel?.userDataAtIndex(index: indexPath.row)?.lastName ?? ""
             }
             self.navigationController?.popViewController(animated: true)
             
@@ -58,12 +58,12 @@ extension UserListViewContoller: UITableViewDelegate, UITableViewDataSource {
             }
             if isSearch {
                 UserRepository.shared.userVariableId = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.id ?? 0
-                UserRepository.shared.firstName = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.firstName ?? ""
-                UserRepository.shared.lastName = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.lastName ?? ""
+                UserRepository.shared.firstNameUser = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.firstName ?? ""
+                UserRepository.shared.lastNameUser = viewModel?.userFilterDataDataAtIndex(index: indexPath.row)?.lastName ?? ""
             } else {
                 UserRepository.shared.userVariableId = viewModel?.userDataAtIndex(index: indexPath.row)?.id ?? 0
-                UserRepository.shared.firstName = viewModel?.userDataAtIndex(index: indexPath.row)?.firstName ?? ""
-                UserRepository.shared.lastName = viewModel?.userDataAtIndex(index: indexPath.row)?.lastName ?? ""
+                UserRepository.shared.firstNameUser = viewModel?.userDataAtIndex(index: indexPath.row)?.firstName ?? ""
+                UserRepository.shared.lastNameUser = viewModel?.userDataAtIndex(index: indexPath.row)?.lastName ?? ""
             }
             self.navigationController?.pushViewController(homeVC, animated: true)
         }
