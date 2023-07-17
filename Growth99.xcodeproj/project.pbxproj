@@ -3841,8 +3841,6 @@
 				189670A829BA6080003224ED /* TriggerModuleTableViewCell.xib */,
 				189670AA29BA6080003224ED /* TriggerAppointmentActionTableViewCell.swift */,
 				189670A529BA6080003224ED /* TriggerAppointmentActionTableViewCell.xib */,
-				DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */,
-				DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */,
 				189670AC29BA6080003224ED /* TriggerSMSCreateTableViewCell.swift */,
 				189670AD29BA6080003224ED /* TriggerSMSCreateTableViewCell.xib */,
 				189670A429BA6080003224ED /* TriggerTimeTableViewCell.swift */,
@@ -7025,6 +7023,8 @@
 				DA64B91D29DB346100289E32 /* TriggerEditSMSCreateTableViewCell.xib */,
 				DA54A8A629D9798300DB333F /* TriggerEditTimeTableViewCell.swift */,
 				25C46A9D2A4DECE6004129E7 /* TriggerEditTimeTableViewCell.xib */,
+				DA54A8A129D8761B00DB333F /* TriggerParentCreateTableViewCell.swift */,
+				DA54A8A229D8761B00DB333F /* TriggerParentCreateTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";

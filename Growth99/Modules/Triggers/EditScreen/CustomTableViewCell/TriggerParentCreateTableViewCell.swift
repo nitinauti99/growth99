@@ -18,7 +18,8 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
     var viewModel: TriggerEditDetailViewModelProtocol?
     var selctionType: String = ""
     var view: TriggerEditDetailViewController?
-    
+    @IBOutlet weak var parentTableViewHight: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,6 +33,8 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
         trigerData = triggerEditData
         viewModel = parentViewModel
         view = viewController
+        parentTableViewHight.constant = CGFloat(trigerData.count * 600)
+        parentTableView.layoutIfNeeded()
     }
     
     func getTableView()-> UITableView {

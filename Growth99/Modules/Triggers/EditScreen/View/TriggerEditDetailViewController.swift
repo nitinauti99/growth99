@@ -187,7 +187,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         }
         selectedLeadSources = modelData?.triggerConditions ?? []
         triggerdDetailTableView.reloadData()
-        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight + 600
+        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight
         self.view.layoutIfNeeded()
     }
     
@@ -258,20 +258,19 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     
     var triggerCreateTableViewHeight: CGFloat {
         triggerdDetailTableView.layoutIfNeeded()
-        return triggerdDetailTableView.contentSize.height
+        return triggerdDetailTableView.contentSize.height + 500
     }
-    
     
 }
 
 extension TriggerEditDetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight + 600
+        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight + 600
+        triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight
     }
 }
 
