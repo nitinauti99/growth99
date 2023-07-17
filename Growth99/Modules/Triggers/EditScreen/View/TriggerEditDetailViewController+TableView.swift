@@ -566,9 +566,13 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 } else if cell.timeHourlyTextField.text == "" {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
-                    finalArray.removeAll()
                     scrollToBottom()
-                    createNewTriggerCell(cellNameType: "Both")
+                    let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
+                    let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
+                    finalArray.append(creatChild)
+                    finalArray.append(createTimechild)
+                    cell.tableView?.reloadData()
+                    triggerdDetailTableView.reloadData()
                 }
             } else {
                 if cell.timeRangeStartTimeTF.text == "" {
@@ -577,7 +581,11 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     cell.timeRangeEndTimeTF.showError(message: "Please select end time")
                 } else {
                     scrollToBottom()
-                    createNewTriggerCell(cellNameType: "Both")
+                    let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
+                    let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
+                    finalArray.append(creatChild)
+                    finalArray.append(createTimechild)
+                    cell.tableView?.reloadData()
                 }
             }
             
@@ -589,10 +597,11 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
             } else if cell.scheduledBasedOnTextField.text == "" {
                 cell.timeHourlyTextField.showError(message: "Please select scheduled")
             } else {
-                finalArray.removeAll()
                 scrollToBottom()
-                createNewTriggerCell(cellNameType: "Both")
-            }
+                let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
+                let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
+                finalArray.append(creatChild)
+                finalArray.append(createTimechild)            }
         }
     }
     

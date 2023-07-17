@@ -381,7 +381,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addAnotherConditionButton" destination="aYX-5X-c0A" id="wBK-uU-k8S"/>
-                <outlet property="nextButton" destination="aYX-5X-c0A" id="R8l-MJ-eoQ"/>
+                <outlet property="nextButton" destination="hvf-La-hxq" id="HkV-NY-ycR"/>
                 <outlet property="orLabel" destination="dmn-gD-FYp" id="Vui-Vd-91Y"/>
                 <outlet property="scheduleBasedonLbl" destination="OPB-Xh-v4k" id="QaZ-44-CM1"/>
                 <outlet property="scheduledBasedOnButton" destination="i7r-EY-79G" id="v1H-ub-7ap"/>

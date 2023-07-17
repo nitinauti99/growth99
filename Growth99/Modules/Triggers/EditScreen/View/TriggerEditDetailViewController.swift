@@ -121,7 +121,8 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var addNewcheck: Bool = false
     var triggerTargetCheck: String = ""
     var triggerTypeCheck: String = ""
-
+    
+    var isAddanotherClicked: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()

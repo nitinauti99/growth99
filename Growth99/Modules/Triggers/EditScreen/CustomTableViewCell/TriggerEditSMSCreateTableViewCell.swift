@@ -92,9 +92,11 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             self.taskBtn.isHidden = false
             self.taskLabel.isHidden = false
             self.assignTaskNetworkSelectonButton.addTarget(self, action: #selector(taskNetworkSelectionMethod), for: .touchDown)
+            
         } else {
             self.taskBtn.isHidden = true
             self.taskLabel.isHidden = true
+           
         }
         
         if triggerEditData?[index.row].triggerType == "SMS" {
@@ -104,8 +106,12 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             networkViewSMS.isHidden = false
             networkViewEmail.isHidden = true
             networkViewTask.isHidden = true
-            
-            triggerTargetName = triggerEditData?[index.row].triggerTarget ?? ""
+            if triggerEditData?[index.row].triggerTarget == "lead" {
+                triggerTargetName = "Leads"
+            } else {
+                triggerTargetName = "AppointmentPatient"
+            }
+                            
             self.selectSMSTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectSMSNetworkName = parentViewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectSMSNetworkName.count > 0 {
@@ -117,7 +123,11 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             self.smsBtn.isSelected = false
             self.emailBtn.isSelected = true
             self.taskBtn.isSelected = false
-            triggerTargetName = triggerEditData?[index.row].triggerTarget ?? ""
+            if triggerEditData?[index.row].triggerTarget == "lead" {
+                triggerTargetName = "Patient"
+            } else {
+                triggerTargetName = "Clinic"
+            }
             self.selectEmailTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectEmailNetworkName = parentViewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectEmailNetworkName.count > 0 {

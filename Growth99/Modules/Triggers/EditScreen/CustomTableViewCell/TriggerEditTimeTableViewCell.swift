@@ -53,6 +53,8 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     var timerTypeSelected: String = "Frequency"
     var trigerTimeData: [TriggerEditData] = []
     let radioController: RadioButtonController = RadioButtonController()
+    var tableView: UITableView?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,10 +70,10 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         radioController.defaultButton = timeFrequencyButton
     }
     
-    func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?){
+    func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?, parenttableView: UITableView) {
         self.indexPath = index
         self.trigerTimeData = triggerEditData ?? []
-        
+        tableView = parenttableView
         if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
             addAnotherConditionButton.isHidden = false
             orLabel.isHidden = false
@@ -82,7 +84,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
             nextButton.isHidden = true
         }
         
-        if triggerEditData?[indexPath.row].triggerTarget == "lead" {
+        if triggerEditData?[indexPath.row].triggerTarget == "lead"  {
             self.timeRangeView.isHidden = false
             self.timeFrequencyLbl.isHidden = false
             self.timeRangeLbl.isHidden = false
@@ -91,6 +93,9 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
             self.timeFrequencyButton.isHidden = false
             self.timeRangeButton.isHidden = false
             self.scheduledBasedOnButton.isEnabled = false
+        } else if triggerEditData?[indexPath.row].triggerTarget == "Clinic" {
+            self.scheduledBasedOnTextField.isHidden = true
+            self.scheduleBasedonLbl.isHidden = true
         } else {
             self.timeRangeView.isHidden = true
             self.timeFrequencyLbl.isHidden = true
