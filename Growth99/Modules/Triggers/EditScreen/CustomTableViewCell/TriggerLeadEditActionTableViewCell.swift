@@ -70,24 +70,22 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     @IBOutlet weak var addleadTagButtonTopHeight: NSLayoutConstraint!
     @IBOutlet weak var leadStatusChangeButton: UIButton!
     @IBOutlet weak var leadStatusChangeButtonTopHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var leadNextButton: UIButton!
     
+    var isTriggerForLeadContain: Bool = false
+    var isInitialStatusContain: String = ""
+    var isFinalStatusContain: String = ""
+    
+    var indexPath = IndexPath()
+    var tableView: UITableView?
+    var selectedVC: UIViewController?
     var selectedLeadSources: [String] = []
     var selectedLeadLandingPages: [EditLandingPageNamesModel] = []
     var selectedleadForms: [EditLandingPageNamesModel] = []
     var selectedLeadSourceUrl = [LeadSourceUrlListModel]()
     var selectedLeadTags = [MassEmailSMSTagListModelEdit]()
-    var isTriggerForLeadContain: Bool = false
-    var isInitialStatusContain: String = ""
-    var isFinalStatusContain: String = ""
-    
-    weak var delegate: TriggerLeadEdiTableViewCellDelegate?
-    var indexPath = IndexPath()
-    var tableView: UITableView?
-    var selectedVC: UIViewController?
     var triggerListInfoEdit = [TriggerEditDetailModel]()
-    
+    weak var delegate: TriggerLeadEdiTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -172,45 +170,12 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         }
     }
     
-    // MARK: - Add and remove time methods
-    @IBAction func nextButtonAction(sender: UIButton) {
-        self.delegate?.nextButtonLead(cell: self, index: indexPath)
-    }
-    
-    @IBAction func leadFromButtonAction(sender: UIButton) {
-        self.delegate?.leadFormButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func leadSelectLandingButtonAction(sender: UIButton) {
-        self.delegate?.leadLandingButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func leadSelectFormsButtonAction(sender: UIButton) {
-        self.delegate?.leadSelectFormsButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func leadSelectSourceAction(sender: UIButton) {
-        self.delegate?.leadSourceButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
     @IBAction func showSelectSourceButtonAction(sender: UIButton) {
         sender.isSelected.toggle()
         leadSelectSourceTextFieldHight.constant = sender.isSelected ? 45 : 0
         leadSelectSourceTextField.rightImage = sender.isSelected ? UIImage(named: "dropDown") : nil
         leadSelectSourceTextField.text = sender.isSelected ? "" : ""
         self.tableView?.performBatchUpdates(nil, completion: nil)
-    }
-    
-    @IBAction func leadInitialStatusButtonAction(sender: UIButton) {
-        self.delegate?.leadInitialStatusButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func leadFinalStatusButtonAction(sender: UIButton) {
-        self.delegate?.leadFinalStatusButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func leadTagButtonAction(sender: UIButton) {
-        self.delegate?.leadTagButtonSelection(cell: self, index: indexPath, buttonSender: sender)
     }
     
     @IBAction func leadStatusChangeButtonAction(sender: UIButton) {
@@ -237,12 +202,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         leadFinalStatusTextField.rightImage = isSelected ? UIImage(named: "dropDown") : nil
         
         self.tableView?.performBatchUpdates(nil, completion: nil)
-        self.scrollToBottomView()
-    }
-    
-    
-    @IBAction func showLeadTagsButtonAction(sender: UIButton) {
-        self.delegate?.showLeadTagButtonClicked(cell: self, index: indexPath, buttonSender: sender)
     }
     
     func showLeadSelectLanding(isShown: Bool) {
@@ -286,54 +245,72 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     func showLeadStatusChange(isShown: Bool) {
         if isShown {
             self.addleadTagButtonTopHeight.constant = 16
-            
             self.leadSTriggerWhenStatusTopeight.constant = 16
             self.leadSTriggerWhenStatusLblHeight.constant = 20
-            
             self.leadInitialStatusFromLblTopHeight.constant = 16
             self.leadInitialStatusFromLblHeight.constant = 20
             self.leadInitialStatusTextFieldHight.constant = 45
-            
             self.leadFinalStatusToLblHeight.constant = 16
             self.leadFinalStatusToLblTopHeight.constant = 20
             self.leadFinalStatusTextFieldHight.constant = 45
-            
             self.leadInitialStatusTextField.rightImage = UIImage(named: "dropDown")
             self.leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
         } else {
             self.addleadTagButtonTopHeight.constant = 0
-            
             self.leadSTriggerWhenStatusTopeight.constant = 0
             self.leadSTriggerWhenStatusLblHeight.constant = 0
-            
             self.leadInitialStatusFromLblTopHeight.constant = 0
             self.leadInitialStatusFromLblHeight.constant = 0
             self.leadInitialStatusTextFieldHight.constant = 0
-            
             self.leadFinalStatusToLblHeight.constant = 0
             self.leadFinalStatusToLblTopHeight.constant = 0
             self.leadFinalStatusTextFieldHight.constant = 0
-            
             self.leadInitialStatusTextField.rightImage = nil
             self.leadFinalStatusTextField.rightImage = nil
         }
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
-    func scrollToBottomView() {
-        let lastRowIndex = self.triggerListInfoEdit.count - 1
-        DispatchQueue.main.async {
-            guard lastRowIndex >= 0 else {
-                return // Return early if the last row index is invalid
-            }
-            let indexPath = IndexPath(row: lastRowIndex, section: 0)
-            self.tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
-    }
-    
     func showLeadTagTextField(isShown: Bool) {
         self.leadTagTextFieldHight.constant = isShown ? 45 : 0
         self.leadTagTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
         tableView?.performBatchUpdates(nil, completion: nil)
+    }
+    
+    // MARK: - Add and remove time methods
+    @IBAction func nextButtonAction(sender: UIButton) {
+        self.delegate?.nextButtonLead(cell: self, index: indexPath)
+    }
+    
+    @IBAction func leadFromButtonAction(sender: UIButton) {
+        self.delegate?.leadFormButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadSelectLandingButtonAction(sender: UIButton) {
+        self.delegate?.leadLandingButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadSelectFormsButtonAction(sender: UIButton) {
+        self.delegate?.leadSelectFormsButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadSelectSourceAction(sender: UIButton) {
+        self.delegate?.leadSourceButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadInitialStatusButtonAction(sender: UIButton) {
+        self.delegate?.leadInitialStatusButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadFinalStatusButtonAction(sender: UIButton) {
+        self.delegate?.leadFinalStatusButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func leadTagButtonAction(sender: UIButton) {
+        self.delegate?.leadTagButtonSelection(cell: self, index: indexPath, buttonSender: sender)
+    }
+    
+    @IBAction func showLeadTagsButtonAction(sender: UIButton) {
+        self.delegate?.showLeadTagButtonClicked(cell: self, index: indexPath, buttonSender: sender)
     }
 }

@@ -12,20 +12,15 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
     func nextButtonLead(cell: TriggerLeadEditActionTableViewCell, index: IndexPath) {
         if cell.leadFromTextField.text == "" {
             cell.leadFromTextField.showError(message: "Please select source")
-        }
-        else if isSelectLandingSelected == true && cell.leadSelectLandingTextField.text == "" {
+        } else if isSelectLandingSelected == true && cell.leadSelectLandingTextField.text == "" {
             cell.leadSelectLandingTextField.showError(message: "Please select landing page")
-        }
-        else if isSelectFormsSelected == true && cell.leadLandingSelectFromTextField.text == "" {
+        } else if isSelectFormsSelected == true && cell.leadLandingSelectFromTextField.text == "" {
             cell.leadLandingSelectFromTextField.showError(message: "Please select form")
-        }
-        else if isLeadStatusChangeSelected == true && isInitialStatusSelected == true && cell.leadInitialStatusTextField.text == "" {
+        } else if isLeadStatusChangeSelected == true && isInitialStatusSelected == true && cell.leadInitialStatusTextField.text == "" {
             cell.leadInitialStatusTextField.showError(message: "Please select initial status")
-        }
-        else if isLeadStatusChangeSelected == true && isFinalStatusSelected == true && cell.leadFinalStatusTextField.text == "" {
+        } else if isLeadStatusChangeSelected == true && isFinalStatusSelected == true && cell.leadFinalStatusTextField.text == "" {
             cell.leadFinalStatusTextField.showError(message: "Please select final status")
-        }
-        else {
+        } else {
             if triggerDetailList.count < 4 {
                 createNewTriggerCell(cellNameType: "Both")
                 scrollToBottom()

@@ -63,7 +63,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.configureCell(triggerEditData: viewModel?.getTriggerEditListData?.triggerData ?? [], index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
             return cell
         }
-        
         return cell
     }
     

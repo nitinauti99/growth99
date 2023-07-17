@@ -32,35 +32,26 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var taskBtn: UIButton!
     @IBOutlet weak var taskLabel: UILabel!
     
-    @IBOutlet weak var networkViewSMS: UIView!
-    @IBOutlet weak var networkViewSMSTarget: UIView!
-    @IBOutlet weak var networkViewSMSNetwork: UIView!
     
-    @IBOutlet weak var selectSMSTagetEmptyTextLabel: UILabel!
-    @IBOutlet weak var selectSMSNetworkEmptyTextLabel: UILabel!
+    @IBOutlet weak var networkViewSMS: UIView!
     @IBOutlet weak var networkSMSTagetSelectonButton: UIButton!
     @IBOutlet weak var networkSMSNetworkSelectonButton: UIButton!
-    @IBOutlet weak var selectSMSTargetTextLabel: UILabel!
-    @IBOutlet weak var selectSMSNetworkTextLabel: UILabel!
+    @IBOutlet weak var smsTargetTF: CustomTextField!
+    @IBOutlet weak var smsNetworTF: CustomTextField!
     
     @IBOutlet weak var networkViewEmail: UIView!
-    @IBOutlet weak var networkViewEmailTarget: UIView!
-    @IBOutlet weak var networkViewEmailNetwork: UIView!
-    
-    @IBOutlet weak var selectEmailTagetEmptyTextLabel: UILabel!
-    @IBOutlet weak var selectEmailNetworkEmptyTextLabel: UILabel!
-    @IBOutlet weak var networkEmailTagetSelectonButton: UIButton!
-    @IBOutlet weak var networkEmailNetworkSelectonButton: UIButton!
-    @IBOutlet weak var selectEmailTargetTextLabel: UILabel!
-    @IBOutlet weak var selectEmailNetworkTextLabel: UILabel!
+    @IBOutlet weak var emailTagetSelectonButton: UIButton!
+    @IBOutlet weak var emailNetworkSelectonButton: UIButton!
+    @IBOutlet weak var emailTargetTF: CustomTextField!
+    @IBOutlet weak var emailNetworTF: CustomTextField!
     
     @IBOutlet weak var networkViewTask: UIView!
-    @IBOutlet weak var networkViewTaskNetwork: UIView!
     @IBOutlet weak var taskNameTextField: CustomTextField!
-    @IBOutlet weak var assignTaskEmptyTextLabel: UILabel!
+    @IBOutlet weak var assignTaskNetworkTF: CustomTextField!
     @IBOutlet weak var assignTaskNetworkSelectonButton: UIButton!
-    @IBOutlet weak var assignTaskNetworkTextLabel: UILabel!
+    
     @IBOutlet weak var createNextButton: UIButton!
+    @IBOutlet weak var createNextButtonHeight: NSLayoutConstraint!
     
     weak var delegate: TriggerEditCreateCellDelegate?
     var networkTypeSelected: String = "SMS"
@@ -71,46 +62,23 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subView.createBorderForView(redius: 8, width: 1)
         self.subView.addBottomShadow(color: .gray)
         radioController.buttonsArray = [smsBtn, emailBtn, taskBtn]
         radioController.defaultButton = smsBtn
-        self.setupUI()
-    }
-    
-    func setupUI() {
-        networkViewEmailTarget.layer.cornerRadius = 4.5
-        networkViewEmailTarget.layer.borderWidth = 1
-        networkViewEmailTarget.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewEmailNetwork.layer.cornerRadius = 4.5
-        networkViewEmailNetwork.layer.borderWidth = 1
-        networkViewEmailNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewSMSTarget.layer.cornerRadius = 4.5
-        networkViewSMSTarget.layer.borderWidth = 1
-        networkViewSMSTarget.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewSMSNetwork.layer.cornerRadius = 4.5
-        networkViewSMSNetwork.layer.borderWidth = 1
-        networkViewSMSNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewTaskNetwork.layer.cornerRadius = 4.5
-        networkViewTaskNetwork.layer.borderWidth = 1
-        networkViewTaskNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
     }
     
     func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?){
-        
         self.indexPath = index
         self.trigerCreateData = triggerEditData ?? []
+        
         self.networkSMSTagetSelectonButton.addTarget(self, action: #selector(smsTargetSelectionMethod), for: .touchDown)
         self.networkSMSNetworkSelectonButton.addTarget(self, action: #selector(smsNetworkSelectionMethod), for: .touchDown)
-        self.networkEmailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
-        self.networkEmailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
+        self.emailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
+        self.emailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
         
-        if moduleSelectionTypeTrigger == "lead" {
+        //Task will show only on leads
+        if moduleSelectionTypeTrigger == "leads" {
             self.taskBtn.isHidden = false
             self.taskLabel.isHidden = false
             self.assignTaskNetworkSelectonButton.addTarget(self, action: #selector(taskNetworkSelectionMethod), for: .touchDown)
@@ -119,6 +87,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             self.taskLabel.isHidden = true
         }
         
+        //SMS button click, here hiding email and task view
         if triggerEditData?[index.row].triggerType == "SMS" {
             self.smsBtn.isSelected = true
             self.emailBtn.isSelected = false
@@ -126,39 +95,46 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             networkViewSMS.isHidden = false
             networkViewEmail.isHidden = true
             networkViewTask.isHidden = true
+            
             if triggerEditData?[index.row].triggerTarget == "lead" {
                 triggerTargetName = "Leads"
             } else {
                 triggerTargetName = "AppointmentPatient"
             }
             
-            self.selectSMSTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
+            self.smsTargetTF.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectSMSNetworkName = parentViewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectSMSNetworkName.count > 0 {
-                self.selectSMSNetworkTextLabel.text = selectSMSNetworkName[0].name ?? String.blank
+                self.smsNetworTF.text = selectSMSNetworkName[0].name ?? String.blank
             } else {
-                self.selectSMSNetworkTextLabel.text = ""
+                self.smsNetworTF.text = ""
             }
-        } else if triggerEditData?[index.row].triggerType == "EMAIL" {
+        }
+        //EMAIL button click, here hiding sms and task view
+        else if triggerEditData?[index.row].triggerType == "EMAIL" {
             self.smsBtn.isSelected = false
             self.emailBtn.isSelected = true
             self.taskBtn.isSelected = false
+            
             if triggerEditData?[index.row].triggerTarget == "lead" {
                 triggerTargetName = "Patient"
             } else {
                 triggerTargetName = "Clinic"
             }
-            self.selectEmailTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
+            
+            self.emailTargetTF.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectEmailNetworkName = parentViewModel?.getTriggerDetailDataEdit?.emailTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectEmailNetworkName.count > 0 {
-                self.selectEmailNetworkTextLabel.text = selectEmailNetworkName[0].name ?? String.blank
+                self.emailNetworTF.text = selectEmailNetworkName[0].name ?? String.blank
             } else {
-                self.selectEmailNetworkTextLabel.text = ""
+                self.emailNetworTF.text = ""
             }
             networkViewSMS.isHidden = true
             networkViewEmail.isHidden = false
             networkViewTask.isHidden = true
-        } else {
+        }
+        //Task button click, here hiding sms and email view
+        else {
             self.smsBtn.isSelected = false
             self.emailBtn.isSelected = false
             self.taskBtn.isSelected = true
@@ -168,40 +144,14 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             networkViewTask.isHidden = false
             
             self.taskNameTextField.text = triggerEditData?[index.row].taskName
-            
             let assignTaskName = parentViewModel?.getTriggerDetailDataEdit?.userDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if assignTaskName.count > 0 {
-                self.assignTaskNetworkTextLabel.text = "\(assignTaskName[0].firstName ?? "") \(assignTaskName[0].lastName ?? "")"
+                self.assignTaskNetworkTF.text = "\(assignTaskName[0].firstName ?? "") \(assignTaskName[0].lastName ?? "")"
             } else {
-                self.assignTaskNetworkTextLabel.text = ""
+                self.assignTaskNetworkTF.text = ""
             }
         }
         self.createNextButton.isHidden = true
-    }
-    
-    @objc func smsTargetSelectionMethod(sender: UIButton) {
-        self.delegate?.smsTargetButton(cell: self, index: indexPath, sender: sender)
-    }
-    
-    @objc func smsNetworkSelectionMethod(sender: UIButton) {
-        self.delegate?.smsNetworkButton(cell: self, index: indexPath, smsTargetType: self.selectSMSTargetTextLabel.text ?? "")
-    }
-    
-    @objc func emailTargetSelectionMethod(sender: UIButton) {
-        self.delegate?.emailTargetButton(cell: self, index: indexPath)
-    }
-    
-    @objc func emailNetworkSelectionMethod(sender: UIButton) {
-        self.delegate?.emailNetworkButton(cell: self, index: indexPath, emailTargetType: self.selectEmailTargetTextLabel.text ?? "")
-    }
-    
-    @objc func taskNetworkSelectionMethod(sender: UIButton) {
-        self.delegate?.taskNetworkNetworkButton(cell: self, index: indexPath)
-    }
-    
-    // MARK: - Add and remove time methods
-    @IBAction func nextButtonAction(sender: UIButton) {
-        self.delegate?.nextButtonCreate(cell: self, index: indexPath, triggerNetworkType: networkTypeSelected)
     }
     
     @IBAction func smsButtonAction(sender: UIButton) {
@@ -226,5 +176,30 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         networkViewEmail.isHidden = true
         networkViewTask.isHidden = false
         networkTypeSelected = "TASK"
+    }
+    
+    @objc func smsTargetSelectionMethod(sender: UIButton) {
+        self.delegate?.smsTargetButton(cell: self, index: indexPath, sender: sender)
+    }
+    
+    @objc func smsNetworkSelectionMethod(sender: UIButton) {
+        self.delegate?.smsNetworkButton(cell: self, index: indexPath, smsTargetType: self.smsTargetTF.text ?? "")
+    }
+    
+    @objc func emailTargetSelectionMethod(sender: UIButton) {
+        self.delegate?.emailTargetButton(cell: self, index: indexPath)
+    }
+    
+    @objc func emailNetworkSelectionMethod(sender: UIButton) {
+        self.delegate?.emailNetworkButton(cell: self, index: indexPath, emailTargetType: self.emailNetworTF.text ?? "")
+    }
+    
+    @objc func taskNetworkSelectionMethod(sender: UIButton) {
+        self.delegate?.taskNetworkNetworkButton(cell: self, index: indexPath)
+    }
+    
+    // MARK: - Add and remove time methods
+    @IBAction func nextButtonAction(sender: UIButton) {
+        self.delegate?.nextButtonCreate(cell: self, index: indexPath, triggerNetworkType: networkTypeSelected)
     }
 }
