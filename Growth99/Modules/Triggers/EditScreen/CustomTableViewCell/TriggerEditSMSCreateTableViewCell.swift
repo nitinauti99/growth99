@@ -79,6 +79,28 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         self.setupUI()
     }
     
+    func setupUI() {
+        networkViewEmailTarget.layer.cornerRadius = 4.5
+        networkViewEmailTarget.layer.borderWidth = 1
+        networkViewEmailTarget.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        
+        networkViewEmailNetwork.layer.cornerRadius = 4.5
+        networkViewEmailNetwork.layer.borderWidth = 1
+        networkViewEmailNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        
+        networkViewSMSTarget.layer.cornerRadius = 4.5
+        networkViewSMSTarget.layer.borderWidth = 1
+        networkViewSMSTarget.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        
+        networkViewSMSNetwork.layer.cornerRadius = 4.5
+        networkViewSMSNetwork.layer.borderWidth = 1
+        networkViewSMSNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+        
+        networkViewTaskNetwork.layer.cornerRadius = 4.5
+        networkViewTaskNetwork.layer.borderWidth = 1
+        networkViewTaskNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
+    }
+    
     func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?){
         
         self.indexPath = index
@@ -92,11 +114,9 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             self.taskBtn.isHidden = false
             self.taskLabel.isHidden = false
             self.assignTaskNetworkSelectonButton.addTarget(self, action: #selector(taskNetworkSelectionMethod), for: .touchDown)
-            
         } else {
             self.taskBtn.isHidden = true
             self.taskLabel.isHidden = true
-           
         }
         
         if triggerEditData?[index.row].triggerType == "SMS" {
@@ -111,7 +131,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             } else {
                 triggerTargetName = "AppointmentPatient"
             }
-                            
+            
             self.selectSMSTargetTextLabel.text = triggerTargetName.replacingOccurrences(of: "Appointment", with: "")
             let selectSMSNetworkName = parentViewModel?.getTriggerDetailDataEdit?.smsTemplateDTOList?.filter({ $0.id == triggerEditData?[index.row].triggerTemplate ?? 0} ) ?? []
             if selectSMSNetworkName.count > 0 {
@@ -179,27 +199,6 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         self.delegate?.taskNetworkNetworkButton(cell: self, index: indexPath)
     }
     
-    func setupUI() {
-        networkViewEmailTarget.layer.cornerRadius = 4.5
-        networkViewEmailTarget.layer.borderWidth = 1
-        networkViewEmailTarget.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewEmailNetwork.layer.cornerRadius = 4.5
-        networkViewEmailNetwork.layer.borderWidth = 1
-        networkViewEmailNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewSMSTarget.layer.cornerRadius = 4.5
-        networkViewSMSTarget.layer.borderWidth = 1
-        networkViewSMSTarget.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewSMSNetwork.layer.cornerRadius = 4.5
-        networkViewSMSNetwork.layer.borderWidth = 1
-        networkViewSMSNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-        
-        networkViewTaskNetwork.layer.cornerRadius = 4.5
-        networkViewTaskNetwork.layer.borderWidth = 1
-        networkViewTaskNetwork.layer.borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
-    }
     // MARK: - Add and remove time methods
     @IBAction func nextButtonAction(sender: UIButton) {
         self.delegate?.nextButtonCreate(cell: self, index: indexPath, triggerNetworkType: networkTypeSelected)

@@ -19,10 +19,9 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
     var selctionType: String = ""
     var view: TriggerEditDetailViewController?
     @IBOutlet weak var parentTableViewHight: NSLayoutConstraint!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.registerTableView()
     }
     
@@ -47,7 +46,6 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
         self.parentTableView.register(UINib(nibName: "TriggerEditSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditSMSCreateTableViewCell")
         self.parentTableView.register(UINib(nibName: "TriggerEditTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditTimeTableViewCell")
     }
-    
 }
 
 extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewDataSource {

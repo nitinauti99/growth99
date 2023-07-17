@@ -34,9 +34,16 @@ class TriggerEditModuleTableViewCell: UITableViewCell {
         radioController.defaultButton = leadBtn
     }
     
-    func configureCell(index: IndexPath, sender: UIButton, modelType: String) {
+    func configureCell(triggerListEdit: TriggerEditModel?, index: IndexPath) {
         indexPath = index
-        moduleTypeSelected = modelType
+        moduleTypeSelected = triggerListEdit?.moduleName ?? ""
+        if triggerListEdit?.moduleName == "leads" {
+            self.leadBtn.isSelected = true
+            self.patientBtn.isSelected = false
+        } else {
+            self.leadBtn.isSelected = false
+            self.patientBtn.isSelected = true
+        }
     }
     
     // MARK: - Add and remove time methods

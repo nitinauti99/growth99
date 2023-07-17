@@ -1,5 +1,5 @@
 //
-//  TriggerDefaultTableViewCell.swift
+//  TriggerEditDefaultTableViewCell.swift
 //  Growth99
 //
 //  Created by Sravan Goud on 06/03/23.
@@ -73,10 +73,22 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var leadNextButton: UIButton!
     
+    var selectedLeadSources: [String] = []
+    var selectedLeadLandingPages: [EditLandingPageNamesModel] = []
+    var selectedleadForms: [EditLandingPageNamesModel] = []
+    var selectedLeadSourceUrl = [LeadSourceUrlListModel]()
+    var selectedLeadTags = [MassEmailSMSTagListModelEdit]()
+    var isTriggerForLeadContain: Bool = false
+    var isInitialStatusContain: String = ""
+    var isFinalStatusContain: String = ""
+    
     weak var delegate: TriggerLeadEdiTableViewCellDelegate?
     var indexPath = IndexPath()
     var tableView: UITableView?
+    var selectedVC: UIViewController?
     var triggerListInfoEdit = [TriggerEditDetailModel]()
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -84,10 +96,80 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         self.subView.addBottomShadow(color: .gray)
     }
     
-    func configureCell(tableView: UITableView?, index: IndexPath, triggerListEdit: [TriggerEditDetailModel]) {
+    func configureCell(tableView: UITableView?, index: IndexPath, triggerListEdit: TriggerEditModel?, viewModel: TriggerEditDetailViewModelProtocol?, viewController: UIViewController) {
         self.indexPath = index
         self.tableView = tableView
-        triggerListInfoEdit = triggerListEdit
+        selectedVC = viewController
+        var landingArray = [EditLandingPageNamesModel]()
+        var formArray = [EditLandingPageNamesModel]()
+        var sourceUrlArray = [LeadSourceUrlListModel]()
+        var ledTagArray = [MassEmailSMSTagListModelEdit]()
+        
+        self.leadFromTextField.text = triggerListEdit?.triggerConditions?.joined(separator: ",")
+        self.selectedLeadSources = triggerListEdit?.triggerConditions ?? []
+        
+        if triggerListEdit?.landingPages?.count ?? 0 > 0 {
+            for landingItem in triggerListEdit?.landingPages ?? [] {
+                let getLandingData = viewModel?.getLandingPageNamesDataEdit.filter({ $0.id == landingItem})
+                for landingChildItem in getLandingData ?? [] {
+                    let landArr = EditLandingPageNamesModel(name: landingChildItem.name ?? "", id: landingChildItem.id ?? 0)
+                    landingArray.append(landArr)
+                }
+            }
+            self.leadSelectLandingTextField.text = landingArray.map({$0.name ?? ""}).joined(separator: ",")
+            self.selectedLeadLandingPages = landingArray
+            self.showLeadSelectLanding(isShown: true)
+        }
+        
+        if triggerListEdit?.forms?.count ?? 0 > 0 {
+            for formsItem in triggerListEdit?.forms ?? [] {
+                let getLandingForm = viewModel?.getTriggerQuestionnairesDataEdit.filter({ $0.id == formsItem})
+                for landingChildItem in getLandingForm ?? [] {
+                    let formArr = EditLandingPageNamesModel(name: landingChildItem.name ?? "", id: landingChildItem.id ?? 0)
+                    formArray.append(formArr)
+                }
+            }
+            self.leadLandingSelectFromTextField.text = formArray.map({$0.name ?? ""}).joined(separator: ",")
+            self.selectedleadForms = formArray
+            self.showleadLandingSelectFrom(isShown: true)
+        }
+        
+        if triggerListEdit?.sourceUrls?.count ?? 0 > 0 {
+            for formsItem in triggerListEdit?.sourceUrls ?? [] {
+                let getLandingForm = viewModel?.getTriggerLeadSourceUrlDataEdit.filter({ $0.id == formsItem})
+                for landingChildItem in getLandingForm ?? [] {
+                    let soureUrlArr = LeadSourceUrlListModel(sourceUrl: landingChildItem.sourceUrl ?? "", id: landingChildItem.id ?? 0)
+                    sourceUrlArray.append(soureUrlArr)
+                }
+            }
+            self.leadSelectSourceTextField.text = sourceUrlArray.map({$0.sourceUrl ?? ""}).joined(separator: ",")
+            self.selectedLeadSourceUrl = sourceUrlArray
+            self.showleadSelectSource(isShown: true)
+        }
+        
+        if triggerListEdit?.isTriggerForLeadStatus == true {
+            self.leadStatusChangeButton.isSelected = true
+            self.isInitialStatusContain = triggerListEdit?.fromLeadStatus ?? ""
+            self.isFinalStatusContain = triggerListEdit?.toLeadStatus ?? ""
+            self.isTriggerForLeadContain = triggerListEdit?.isTriggerForLeadStatus ?? false
+            self.showLeadStatusChange(isShown: true)
+            self.leadInitialStatusTextField.text = triggerListEdit?.fromLeadStatus ?? ""
+            self.leadFinalStatusTextField.text = triggerListEdit?.toLeadStatus ?? ""
+        }
+        
+        if triggerListEdit?.leadTags?.count ?? 0 > 0 {
+            for formsItem in triggerListEdit?.leadTags ?? [] {
+                let getLandingForm = viewModel?.getTriggerLeadTagListDataEdit.filter({ $0.id == formsItem})
+                for landingChildItem in getLandingForm ?? [] {
+                    let formArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault: landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                    ledTagArray.append(formArr)
+                }
+            }
+            self.leadTagTextField.text = ledTagArray.map({$0.name ?? ""}).joined(separator: ",")
+            self.selectedLeadTags = ledTagArray
+            self.showleadTagButton.isSelected = true
+            self.showLeadTagTextField(isShown: true)
+        }
     }
     
     // MARK: - Add and remove time methods
@@ -112,16 +194,10 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     }
     
     @IBAction func showSelectSourceButtonAction(sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-            leadSelectSourceTextFieldHight.constant = 0
-            leadSelectSourceTextField.rightImage = nil
-            leadSelectSourceTextField.text = ""
-        } else {
-            sender.isSelected = true
-            leadSelectSourceTextFieldHight.constant = 45
-            leadSelectSourceTextField.rightImage = UIImage(named: "dropDown")
-        }
+        sender.isSelected.toggle()
+        leadSelectSourceTextFieldHight.constant = sender.isSelected ? 45 : 0
+        leadSelectSourceTextField.rightImage = sender.isSelected ? UIImage(named: "dropDown") : nil
+        leadSelectSourceTextField.text = sender.isSelected ? "" : ""
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
@@ -138,102 +214,72 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     }
     
     @IBAction func leadStatusChangeButtonAction(sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-            
-            addleadTagButtonTopHeight.constant = 0
-            
-            leadSTriggerWhenStatusTopeight.constant = 0
-            leadSTriggerWhenStatusLblHeight.constant = 0
-            
-            leadInitialStatusTextField.text = ""
-            leadInitialStatusTextField.rightImage = nil
-            leadInitialStatusFromLblTopHeight.constant = 0
-            leadInitialStatusFromLblHeight.constant = 0
-            leadInitialStatusTextFieldHight.constant = 0
-            
-            leadFinalStatusTextField.text = ""
-            leadFinalStatusTextField.rightImage = nil
-            leadFinalStatusToLblHeight.constant = 0
-            leadFinalStatusToLblTopHeight.constant = 0
-            leadFinalStatusTextFieldHight.constant = 0
-        } else {
-            sender.isSelected = true
-            
-            addleadTagButtonTopHeight.constant = 16
-            
-            leadSTriggerWhenStatusTopeight.constant = 16
-            leadSTriggerWhenStatusLblHeight.constant = 20
-            
-            leadInitialStatusFromLblTopHeight.constant = 16
-            leadInitialStatusFromLblHeight.constant = 20
-            leadInitialStatusTextFieldHight.constant = 45
-            
-            leadFinalStatusToLblHeight.constant = 16
-            leadFinalStatusToLblTopHeight.constant = 20
-            leadFinalStatusTextFieldHight.constant = 45
-            
-            leadInitialStatusTextField.rightImage = UIImage(named: "dropDown")
-            leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
-        }
+        sender.isSelected = !sender.isSelected
+        
+        let isSelected = sender.isSelected
+        let constantHeight: CGFloat = isSelected ? 16 : 0
+        let zeroConstant: CGFloat = 0
+        let textFieldHeight: CGFloat = 45
+        
+        addleadTagButtonTopHeight.constant = constantHeight
+        leadSTriggerWhenStatusTopeight.constant = constantHeight
+        leadSTriggerWhenStatusLblHeight.constant = isSelected ? 20 : zeroConstant
+        leadInitialStatusFromLblTopHeight.constant = constantHeight
+        leadInitialStatusFromLblHeight.constant = isSelected ? 20 : zeroConstant
+        leadInitialStatusTextFieldHight.constant = isSelected ? textFieldHeight : zeroConstant
+        leadFinalStatusToLblHeight.constant = constantHeight
+        leadFinalStatusToLblTopHeight.constant = isSelected ? 20 : zeroConstant
+        leadFinalStatusTextFieldHight.constant = isSelected ? textFieldHeight : zeroConstant
+        
+        leadInitialStatusTextField.text = isSelected ? "" : nil
+        leadInitialStatusTextField.rightImage = isSelected ? UIImage(named: "dropDown") : nil
+        leadFinalStatusTextField.text = isSelected ? "" : nil
+        leadFinalStatusTextField.rightImage = isSelected ? UIImage(named: "dropDown") : nil
+        
         self.tableView?.performBatchUpdates(nil, completion: nil)
         self.scrollToBottomView()
     }
+    
     
     @IBAction func showLeadTagsButtonAction(sender: UIButton) {
         self.delegate?.showLeadTagButtonClicked(cell: self, index: indexPath, buttonSender: sender)
     }
     
     func showLeadSelectLanding(isShown: Bool) {
+        let constantValue: CGFloat = isShown ? 20 : 0
+        self.leadSelectLandingLblTopHeight.constant = constantValue
+        self.leadSelectLandingLblHeight.constant = constantValue
+        self.leadSelectLandingTextFieldHight.constant = isShown ? 45 : 0
+        
         if isShown {
-            self.leadSelectLandingLblTopHeight.constant = 20
-            self.leadSelectLandingLblHeight.constant = 20
-            self.leadSelectLandingTextFieldHight.constant = 45
             self.leadSelectLandingTextField.rightImage = UIImage(named: "dropDown")
         } else {
-            self.leadSelectLandingLblTopHeight.constant = 0
-            self.leadSelectLandingLblHeight.constant = 0
-            self.leadSelectLandingTextFieldHight.constant = 0
             self.leadSelectLandingTextField.rightImage = nil
             self.leadSelectLandingTextField.text = ""
         }
+        
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     func showleadLandingSelectFrom(isShown: Bool) {
-        if isShown {
-            self.leadLandingSelectFromLblTopHeight.constant = 20
-            self.leadLandingSelectFromLblHeight.constant = 20
-            self.leadLandingSelectFromTextFieldHight.constant = 45
-            self.leadLandingSelectFromTextField.rightImage = UIImage(named: "dropDown")
-        } else {
-            self.leadLandingSelectFromLblTopHeight.constant = 0
-            self.leadLandingSelectFromLblHeight.constant = 0
-            self.leadLandingSelectFromTextFieldHight.constant = 0
-            self.leadLandingSelectFromTextField.rightImage = nil
-            self.leadLandingSelectFromTextField.text = ""
-        }
+        self.leadLandingSelectFromLblTopHeight.constant = isShown ? 20 : 0
+        self.leadLandingSelectFromLblHeight.constant = isShown ? 20 : 0
+        self.leadLandingSelectFromTextFieldHight.constant = isShown ? 45 : 0
+        self.leadLandingSelectFromTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
+        self.leadLandingSelectFromTextField.text = isShown ? "" : nil
+        
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     func showleadSelectSource(isShown: Bool) {
-        if isShown {
-            self.showleadSourceTagButton.isSelected = true
-            self.showleadSourceTagButtonHeight.constant = 25
-            self.leadSelectSourceLblTopHeight.constant = 20
-            self.leadSelectSourceLblHeight.constant = 20
-            self.leadSelectSourceTextFieldHight.constant = 45
-            self.leadSelectSourceTextField.rightImage = UIImage(named: "dropDown")
-        } else {
-            
-            self.showleadSourceTagButton.isSelected = false
-            self.showleadSourceTagButtonHeight.constant = 0
-            self.leadSelectSourceLblTopHeight.constant = 0
-            self.leadSelectSourceLblHeight.constant = 0
-            self.leadSelectSourceTextFieldHight.constant = 0
-            self.leadSelectSourceTextField.rightImage = nil
-            self.leadSelectSourceTextField.text = ""
-        }
+        self.showleadSourceTagButton.isSelected = isShown
+        self.showleadSourceTagButtonHeight.constant = isShown ? 25 : 0
+        self.leadSelectSourceLblTopHeight.constant = isShown ? 20 : 0
+        self.leadSelectSourceLblHeight.constant = isShown ? 20 : 0
+        self.leadSelectSourceTextFieldHight.constant = isShown ? 45 : 0
+        self.leadSelectSourceTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
+        self.leadSelectSourceTextField.text = isShown ? "" : nil
+        
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
@@ -275,20 +321,19 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     }
     
     func scrollToBottomView() {
+        let lastRowIndex = self.triggerListInfoEdit.count - 1
         DispatchQueue.main.async {
-            let indexPath = IndexPath(row: self.triggerListInfoEdit.count-1, section: 0)
+            guard lastRowIndex >= 0 else {
+                return // Return early if the last row index is invalid
+            }
+            let indexPath = IndexPath(row: lastRowIndex, section: 0)
             self.tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
     
-    func showleadTagTectField(isShown: Bool) {
-        if isShown {
-            self.leadTagTextFieldHight.constant = 45
-            self.leadTagTextField.rightImage = UIImage(named: "dropDown")
-        } else {
-            self.leadTagTextFieldHight.constant = 0
-            self.leadTagTextField.rightImage = nil
-        }
-        self.tableView?.performBatchUpdates(nil, completion: nil)
+    func showLeadTagTextField(isShown: Bool) {
+        self.leadTagTextFieldHight.constant = isShown ? 45 : 0
+        self.leadTagTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
+        tableView?.performBatchUpdates(nil, completion: nil)
     }
 }
