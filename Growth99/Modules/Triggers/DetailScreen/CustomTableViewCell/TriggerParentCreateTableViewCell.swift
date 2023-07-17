@@ -34,6 +34,10 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
         view = viewController
     }
     
+    func getTableView()-> UITableView {
+        return self.parentTableView
+    }
+    
     func registerTableView() {
         self.parentTableView.delegate = self
         self.parentTableView.dataSource = self
@@ -54,7 +58,6 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = trigerData[indexPath.row]
-        
         if item.type == "Create" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditSMSCreateTableViewCell", for: indexPath) as? TriggerEditSMSCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = view
@@ -71,5 +74,5 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }   
+    }
 }

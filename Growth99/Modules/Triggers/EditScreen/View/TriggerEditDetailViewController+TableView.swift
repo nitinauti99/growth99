@@ -18,6 +18,18 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         return triggerDetailList.count
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BottomTableViewCell") as? BottomTableViewCell else {
+            return UIView()
+        }
+        cell.delegate = self
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
@@ -120,7 +132,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.delegate = self
             cell.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
             cell.patientAppointmentButton.tag = indexPath.row
-            cell.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.executionStatus
+            cell.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.triggerActionName
             appointmentSelectedStatus = cell.patientAppointmenTextLabel.text ?? ""
             return cell
         } else if triggerDetailList[indexPath.row].cellType == "Both" {
@@ -173,84 +185,8 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(appointmentStatusArray.count * 30))), arrowDirection: .up), from: self)
     }
     
-    @IBAction func submitButtonAction(sender: UIButton) {
-        self.view.ShowSpinner()
-        if moduleSelectionType == "leads" {
-            let templateId: Int
-            let triggerType: String
-            
-            if selectedTriggerTarget == "Leads" {
-                selectedTriggerTarget = "leads"
-            }
-            
-            if selectedNetworkType == "SMS" {
-                templateId = Int(selectedSmsTemplateId) ?? 0
-                triggerType = "SMS"
-            } else if selectedNetworkType == "EMAIL" {
-                templateId = Int(selectedemailTemplateId) ?? 0
-                triggerType = "EMAIL"
-            } else {
-                templateId = selectedTaskTemplate
-                triggerType = selectedNetworkType
-            }
-
-            
-            triggersCreateData.append(
-                TriggerEditCreateData(
-                    actionIndex: 3,
-                    addNew: selectedNetworkType != "EMAIL" && selectedNetworkType != "SMS",
-                    triggerTemplate: templateId,
-                    triggerType: triggerType,
-                    triggerTarget: selectedTriggerTarget,
-                    triggerTime: selectedTriggerTime,
-                    triggerFrequency: selectedTriggerFrequency.uppercased(),
-                    taskName: selectedNetworkType != "EMAIL" && selectedNetworkType != "SMS" ? taskName : "",
-                    showBorder: false,
-                    orderOfCondition: orderOfConditionTrigger,
-                    dateType: "NA",
-                    timerType: timerTypeSelected,
-                    startTime: selectedNetworkType != "EMAIL" && selectedNetworkType != "SMS" ? selectedStartTime : "",
-                    endTime: selectedNetworkType != "EMAIL" && selectedNetworkType != "SMS" ? selectedEndTime : "",
-                    deadline: ""
-                )
-            )
-            
-            let params = TriggerEditCreateModel(
-                name: moduleName,
-                moduleName: "leads",
-                triggeractionName: "Pending",
-                triggerConditions: selectedLeadSources,
-                triggerData: triggersCreateData,
-                landingPageNames: selectedLeadLandingPages,
-                forms: selectedleadForms,
-                sourceUrls: [],
-                leadTags: selectedLeadTags,
-                isTriggerForLeadStatus: isTriggerForLeadContain,
-                fromLeadStatus: isInitialStatusContain,
-                toLeadStatus: isFinalStatusContain
-            )
-            
-            let parameters: [String: Any] = params.toDict()
-            
-            viewModel?.createTriggerDataMethodEdit(triggerDataParms: parameters, selectedTriggerid: triggerId ?? 0)
-        } else {
-            
-            if selectedTriggerTarget == "Patient" {
-                selectedTriggerTarget = "AppointmentPatient"
-            } else {
-                selectedTriggerTarget = "AppointmentClinic"
-            }
-            if selectedNetworkType == "SMS" {
-                templateId = Int(selectedSmsTemplateId) ?? 0
-                triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType, triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected, startTime: "", endTime: "", deadline: ""))
-            } else {
-                templateId = Int(selectedemailTemplateId) ?? 0
-                triggersAppointmentCreateData.append(TriggerEditAppointmentCreateData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: selectedNetworkType, triggerTarget: selectedTriggerTarget , triggerTime: selectedTriggerTime, triggerFrequency: selectedTriggerFrequency.uppercased(), taskName: "", showBorder: false, orderOfCondition: orderOfConditionTrigger, dateType: scheduledBasedOnSelected, startTime: "", endTime: "", deadline: ""))
-            }
-            let params = TriggerEditAppointmentCreateModel(name: moduleName, moduleName: "Appointment", triggeractionName: appointmentSelectedStatus, triggerConditions: [], triggerData: triggersAppointmentCreateData, landingPageNames: [], forms: [], sourceUrls: [], leadTags: selectedLeadTags, isTriggerForLeadStatus: false, fromLeadStatus: nil, toLeadStatus: nil)
-           // let parameters: [String: Any]  = params.toDict()
-            //viewModel?.createAppointmentDataMethodEdit(appointmentDataParms: parameters, selectedTriggerid: triggerId ?? 0)
-        }
+    func createTriggerInfo(triggerCreateData: [String: Any]) {
+        smsandTimeArray.append(triggerCreateData)
     }
     
     @IBAction func cancelButtonAction(sender: UIButton) {

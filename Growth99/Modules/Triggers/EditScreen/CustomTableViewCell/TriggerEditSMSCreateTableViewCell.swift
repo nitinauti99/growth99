@@ -63,7 +63,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var createNextButton: UIButton!
     
     weak var delegate: TriggerEditCreateCellDelegate?
-    var networkTypeSelected: String = "sms"
+    var networkTypeSelected: String = "SMS"
     var indexPath = IndexPath()
     var trigerCreateData: [TriggerEditData] = []
     var triggerTargetName: String = ""
@@ -84,11 +84,8 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         self.indexPath = index
         self.trigerCreateData = triggerEditData ?? []
         self.networkSMSTagetSelectonButton.addTarget(self, action: #selector(smsTargetSelectionMethod), for: .touchDown)
-        
         self.networkSMSNetworkSelectonButton.addTarget(self, action: #selector(smsNetworkSelectionMethod), for: .touchDown)
-        
         self.networkEmailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
-        
         self.networkEmailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
         
         if moduleSelectionTypeTrigger == "lead" {
@@ -116,8 +113,6 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             } else {
                 self.selectSMSNetworkTextLabel.text = ""
             }
-            
-            
         } else if triggerEditData?[index.row].triggerType == "EMAIL" {
             self.smsBtn.isSelected = false
             self.emailBtn.isSelected = true

@@ -72,20 +72,6 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.indexPath = index
         self.trigerTimeData = triggerEditData ?? []
         
-        
-        /*if let lastItem = trigerTimeData?[indexPath.row]-1 {
-         // Do something with lastItem
-         print(lastItem)
-         addAnotherConditionButton.isHidden = false
-         nextButton.isHidden = false
-         orLabel.isHidden = false
-         } else {
-         addAnotherConditionButton.isHidden = true
-         nextButton.isHidden = true
-         orLabel.isHidden = true
-         print("triggerEditData is nil or empty")
-         }*/
-        
         if triggerEditData?[indexPath.row].triggerTarget == "lead" {
             self.timeRangeView.isHidden = false
             self.timeFrequencyLbl.isHidden = false
@@ -121,15 +107,30 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.scheduledBasedOnButton.tag = indexPath.row
         self.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnMethod), for: .touchDown)
         
+        
+        if let arrayLast = triggerEditData {
+            if ((arrayLast.endIndex - 1) != 0) {
+                addAnotherConditionButton.isHidden = false
+                orLabel.isHidden = false
+                nextButton.isHidden = false
+            } else {
+                addAnotherConditionButton.isHidden = true
+                orLabel.isHidden = true
+                nextButton.isHidden = true
+            }
+        }
+        
+        
+        
         if triggerEditData?.count ?? 0 > 0 {
             self.timeHourlyTextField.text = triggerEditData?[0].triggerFrequency ?? ""
             
-            let triggerTime = triggerEditData?[0].triggerTime
+            let triggerTime = triggerEditData?[index.row].triggerTime
             self.timeDurationTextField.text = String(triggerTime ?? 0).replacingOccurrences(of: "-", with: "")
             
-            if triggerEditData?[0].dateType == "APPOINTMENT_CREATED" {
+            if triggerEditData?[index.row].dateType == "APPOINTMENT_CREATED" {
                 self.scheduledBasedOnTextField.text = "Appointment Created Date"
-            } else if triggerEditData?[0].dateType == "APPOINTMENT_BEFORE" {
+            } else if triggerEditData?[index.row].dateType == "APPOINTMENT_BEFORE" {
                 self.scheduledBasedOnTextField.text = "Before Appointment Date"
             } else {
                 self.scheduledBasedOnTextField.text = "After Appointment Date"
