@@ -72,6 +72,16 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.indexPath = index
         self.trigerTimeData = triggerEditData ?? []
         
+        if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
+            addAnotherConditionButton.isHidden = false
+            orLabel.isHidden = false
+            nextButton.isHidden = false
+        } else {
+            addAnotherConditionButton.isHidden = true
+            orLabel.isHidden = true
+            nextButton.isHidden = true
+        }
+        
         if triggerEditData?[indexPath.row].triggerTarget == "lead" {
             self.timeRangeView.isHidden = false
             self.timeFrequencyLbl.isHidden = false
@@ -106,21 +116,6 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.timeHourlyButton.addTarget(self, action: #selector(timeHourlySelectionMethod), for: .touchDown)
         self.scheduledBasedOnButton.tag = indexPath.row
         self.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnMethod), for: .touchDown)
-        
-        
-        if let arrayLast = triggerEditData {
-            if ((arrayLast.endIndex - 1) != 0) {
-                addAnotherConditionButton.isHidden = false
-                orLabel.isHidden = false
-                nextButton.isHidden = false
-            } else {
-                addAnotherConditionButton.isHidden = true
-                orLabel.isHidden = true
-                nextButton.isHidden = true
-            }
-        }
-        
-        
         
         if triggerEditData?.count ?? 0 > 0 {
             self.timeHourlyTextField.text = triggerEditData?[0].triggerFrequency ?? ""
