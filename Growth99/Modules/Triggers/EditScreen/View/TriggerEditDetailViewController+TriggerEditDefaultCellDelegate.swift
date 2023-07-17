@@ -16,7 +16,7 @@ extension TriggerEditDetailViewController: TriggerEditDefaultCellDelegate {
             moduleName = cell.massEmailSMSTextField.text ?? String.blank
             if triggerDetailList.count > 2 {
                 triggerDetailList.removeSubrange(2..<triggerDetailList.count)
-                finalArray.removeAll()
+                //cell.parentCell?.finalArray.removeAll()
             }
             triggerdDetailTableView.reloadData()
         }

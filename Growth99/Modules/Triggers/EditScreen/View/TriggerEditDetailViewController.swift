@@ -97,7 +97,6 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var selectedStartTime: String = String.blank
     var selectedEndTime: String = String.blank
     var triggerId: Int?
-    var finalArray = [TriggerEditData]()
     var triggerEditChildData: [TriggerEditData] = []
     
     
@@ -144,12 +143,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerParentCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerParentCreateTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "BottomTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "BottomTableViewCell")
     }
-    
-    var triggerCreateTableViewHeight: CGFloat {
-        triggerdDetailTableView.layoutIfNeeded()
-        return triggerdDetailTableView.contentSize.height + 500
-    }
-    
+
     @objc func getTriggerDetails() {
         self.view.ShowSpinner()
         viewModel?.getSelectedTriggerList(selectedTriggerId: triggerId ?? 0)
@@ -229,6 +223,11 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         triggerdDetailTableView.reloadData()
         triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight
         self.view.layoutIfNeeded()
+    }
+    
+    var triggerCreateTableViewHeight: CGFloat {
+        triggerdDetailTableView.layoutIfNeeded()
+        return triggerdDetailTableView.contentSize.height + 500
     }
     
     func triggerAppointmentUpdatedSucessfull() {

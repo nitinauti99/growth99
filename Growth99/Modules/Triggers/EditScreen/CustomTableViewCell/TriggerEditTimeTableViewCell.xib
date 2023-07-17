@@ -279,7 +279,7 @@
                                     <constraint firstItem="dro-aE-ctC" firstAttribute="leading" secondItem="6dU-bt-nuF" secondAttribute="leading" id="xAW-Jm-el1"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-5X-c0A" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-5X-c0A" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                 <rect key="frame" x="20" y="439" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -303,17 +303,14 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="addAnotherConditionBtnActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Fc6-DQ-SjS"/>
-                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmn-gD-FYp">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmn-gD-FYp">
                                 <rect key="frame" x="112" y="489" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvf-La-hxq" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvf-La-hxq" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                 <rect key="frame" x="20" y="520" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -336,9 +333,6 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="nextBtnActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ifl-bU-5cr"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -18,6 +18,8 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
     var viewModel: TriggerEditDetailViewModelProtocol?
     var selctionType: String = ""
     var view: TriggerEditDetailViewController?
+    var finalArray = [TriggerEditData]()
+
     @IBOutlet weak var parentTableViewHight: NSLayoutConstraint!
     
     override func awakeFromNib() {
@@ -32,7 +34,15 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
         trigerData = triggerEditData
         viewModel = parentViewModel
         view = viewController
-        parentTableViewHight.constant = CGFloat(trigerData.count * 600)
+        
+        for item in trigerData {
+            let creatChild = TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.endTime, orderOfCondition: item.orderOfCondition, type: "Create")
+            
+            let createTimechild = TriggerEditData(id: item.id, timerType: item.timerType, triggerTarget: item.triggerTarget, triggerFrequency: item.triggerFrequency, actionIndex: item.actionIndex, dateType: item.dateType, triggerTime: item.triggerTime, showBorder: item.showBorder, userId: item.userId, scheduledDateTime: item.scheduledDateTime, triggerTemplate: item.triggerTemplate, addNew: item.addNew, endTime: item.endTime, triggerType: item.triggerType, taskName: item.taskName, startTime: item.startTime, orderOfCondition: item.orderOfCondition, type: "Time")
+            finalArray.append(creatChild)
+            finalArray.append(createTimechild)
+        }
+        parentTableViewHight.constant = CGFloat(finalArray.count * 600)
         parentTableView.layoutIfNeeded()
     }
     
@@ -50,7 +60,7 @@ class TriggerParentCreateTableViewCell: UITableViewCell {
 
 extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trigerData.count
+        return finalArray.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,17 +68,16 @@ extension TriggerParentCreateTableViewCell: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = trigerData[indexPath.row]
+        let item = finalArray[indexPath.row]
         if item.type == "Create" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditSMSCreateTableViewCell", for: indexPath) as? TriggerEditSMSCreateTableViewCell else { return UITableViewCell()}
             cell.delegate = view
-            cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
+            cell.configureCell(triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel)
             return cell
-            
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditTimeTableViewCell", for: indexPath) as? TriggerEditTimeTableViewCell else { return UITableViewCell()}
             cell.delegate = view
-            cell.configureCell(triggerEditData: trigerData, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel, parenttableView: parentTableView)
+            cell.configureCell(parentSelectedCell: self, triggerEditData: finalArray, index: indexPath, moduleSelectionTypeTrigger: moduleSelectionEditTrigger, selectedNetworkType: selectedNetworkEditTrigger, parentViewModel: viewModel, parenttableView: parentTableView)
             return cell
         }
     }

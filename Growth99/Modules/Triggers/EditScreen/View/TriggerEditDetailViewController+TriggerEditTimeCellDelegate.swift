@@ -45,7 +45,6 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
         } else {
             orderOfConditionTrigger = orderOfConditionTrigger + 1
         }
-        
         if moduleSelectionType == "leads" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
@@ -56,10 +55,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     scrollToBottom()
                     let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
                     let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
-                    finalArray.append(creatChild)
-                    finalArray.append(createTimechild)
-                    cell.tableView?.reloadData()
-                    triggerdDetailTableView.reloadData()
+                    cell.parentCell?.finalArray.append(creatChild)
+                    cell.parentCell?.finalArray.append(createTimechild)
+                    cell.parentCell?.parentTableView.reloadData()
                 }
             } else {
                 if cell.timeRangeStartTimeTF.text == "" {
@@ -70,9 +68,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     scrollToBottom()
                     let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
                     let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
-                    finalArray.append(creatChild)
-                    finalArray.append(createTimechild)
-                    cell.tableView?.reloadData()
+                    cell.parentCell?.finalArray.append(creatChild)
+                    cell.parentCell?.finalArray.append(createTimechild)
+                    cell.parentCell?.parentTableView.reloadData()
                 }
             }
             
@@ -87,8 +85,11 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 scrollToBottom()
                 let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
                 let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
-                finalArray.append(creatChild)
-                finalArray.append(createTimechild)            }
+                cell.parentCell?.finalArray.append(creatChild)
+                cell.parentCell?.finalArray.append(createTimechild)
+                cell.parentCell?.parentTableView.reloadData()
+                cell.parentCell?.parentTableViewHight.constant =  CGFloat((cell.parentCell?.finalArray.count ?? 0) * 500)
+            }
         }
     }
     

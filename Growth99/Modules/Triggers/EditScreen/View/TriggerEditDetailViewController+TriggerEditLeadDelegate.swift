@@ -148,7 +148,6 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             cell.textLabel?.text = allClinics.name
         }
         selectionMenu.setSelectedItems(items: cell.selectedLeadLandingPages) { [weak self] (selectedItem, index, selected, selectedList) in
-            guard let self = self else { return }
             if selectedList.count == 0 {
                 cell.selectedLeadLandingPages.removeAll()
                 cell.leadSelectLandingTextField.text = ""
@@ -170,15 +169,8 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             cell.textLabel?.text = allClinics.name
         }
         selectionMenu.setSelectedItems(items: cell.selectedleadForms) { [weak self] (selectedItem, index, selected, selectedList) in
-            guard let self = self else { return }
-            if selectedList.count == 0 {
-                cell.selectedleadForms.removeAll()
-                cell.leadLandingSelectFromTextField.text = ""
-                cell.leadLandingSelectFromTextField.showError(message: "Please select form")
-            } else {
-                cell.selectedleadForms = selectedList
-                cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
-            }
+            cell.selectedleadForms = selectedList
+            cell.leadLandingSelectFromTextField.text =  selectedList.map({$0.name ?? String.blank}).joined(separator: ",")
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

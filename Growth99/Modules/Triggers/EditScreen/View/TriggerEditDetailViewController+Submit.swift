@@ -56,9 +56,9 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                     guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerParentCreateTableViewCell else { return  }
                     let parentTableView = bothCreateCell.getTableView()
                     
-                    for childIndex in 0..<(finalArray.count)  {
+                    for childIndex in 0..<(bothCreateCell.finalArray.count)  {
                         let cellChildIndexPath = IndexPath(row: childIndex, section: 0)
-                        let item = finalArray[cellChildIndexPath.row]
+                        let item = bothCreateCell.finalArray[cellChildIndexPath.row]
                         if item.type == "Create" {
                             guard let childCreateCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
                             addNewcheck = item.addNew ?? false
@@ -75,7 +75,7 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                             guard let timeCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditTimeTableViewCell else { return  }
                             let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
                             showBordercheck = item.showBorder ?? false
-                            orderOfConditionTrigger = item.orderOfCondition ?? 0
+                            orderOfConditionTrigger = item.orderOfCondition ?? orderOfConditionTrigger
                             dateTypeCheck = item.dateType ?? "NA"
                             let timeDict: [String : Any] = [
                                 "showBorder": showBordercheck,
@@ -171,9 +171,9 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                 } else if triggerDetailList.cellType == "Both" {
                     guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerParentCreateTableViewCell else { return  }
                     let parentTableView = bothCreateCell.getTableView()
-                    for childIndex in 0..<(finalArray.count)  {
+                    for childIndex in 0..<(bothCreateCell.finalArray.count)  {
                         let cellChildIndexPath = IndexPath(row: childIndex, section: 0)
-                        let item = finalArray[cellChildIndexPath.row]
+                        let item = bothCreateCell.finalArray[cellChildIndexPath.row]
                         if item.type == "Create" {
                             guard let childCreateCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
                             addNewcheck = item.addNew ?? false

@@ -57,16 +57,9 @@ class TriggerEditAppointmentActionTableViewCell: UITableViewCell {
         }
         selectionMenu.setSelectedItems(items: selectedAppointmentStatus) { [weak self] (selectedItem, index, selected, selectedList) in
             guard let self = self else { return }
-            if selectedList.count == 0 {
-                self.selectedAppointmentStatus.removeAll()
-                self.patientAppointmenTextLabel.text = "Select appointment status"
-                self.patientAppointmentEmptyTextLbl.isHidden = false
-            } else {
-                self.patientAppointmentEmptyTextLbl.isHidden = true
-                self.selectedAppointmentStatus = selectedList
-                self.appointmentSelectedStatus = selectedList.joined(separator: ",")
-                self.patientAppointmenTextLabel.text = selectedList.joined(separator: ",")
-            }
+            self.selectedAppointmentStatus = selectedList
+            self.patientAppointmenTextLabel.text = selectedItem
+            selectionMenu.dismiss()
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")

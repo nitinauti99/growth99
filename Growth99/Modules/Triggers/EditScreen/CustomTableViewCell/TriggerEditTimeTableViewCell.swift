@@ -12,10 +12,8 @@ protocol TriggerEditTimeCellDelegate: AnyObject {
     func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     func buttontimeRangeStartTapped(cell: TriggerEditTimeTableViewCell)
     func buttontimeRangeEndTapped(cell: TriggerEditTimeTableViewCell)
-    
     func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     func scheduledBasedOnButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
-    
 }
 
 class TriggerEditTimeTableViewCell: UITableViewCell {
@@ -54,7 +52,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     var trigerTimeData: [TriggerEditData] = []
     let radioController: RadioButtonController = RadioButtonController()
     var tableView: UITableView?
-    
+    var parentCell: TriggerParentCreateTableViewCell?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -70,11 +68,12 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         radioController.defaultButton = timeFrequencyButton
     }
     
-    func configureCell(triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?, parenttableView: UITableView) {
+    func configureCell(parentSelectedCell: TriggerParentCreateTableViewCell?, triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?, parenttableView: UITableView) {
         self.indexPath = index
+        parentCell = parentSelectedCell
         self.trigerTimeData = triggerEditData ?? []
         tableView = parenttableView
-        if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
+        /*if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
             addAnotherConditionButton.isHidden = false
             orLabel.isHidden = false
             nextButton.isHidden = false
@@ -82,7 +81,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
             addAnotherConditionButton.isHidden = true
             orLabel.isHidden = true
             nextButton.isHidden = true
-        }
+        }*/
         
         if triggerEditData?[indexPath.row].triggerTarget == "lead"  {
             self.timeRangeView.isHidden = false
