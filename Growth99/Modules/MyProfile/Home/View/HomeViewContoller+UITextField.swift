@@ -26,7 +26,7 @@ extension HomeViewContoller: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-
+        
         if (textField ==  firsNameTextField) {
             if let textField = firsNameTextField, textField.text == "" {
                 firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
@@ -35,7 +35,7 @@ extension HomeViewContoller: UITextFieldDelegate {
             if let isFirstName =  self.viewModel?.isValidFirstName(self.firsNameTextField.text ?? ""), isFirstName == false  {
                 firsNameTextField.showError(message: Constant.ErrorMessage.firstNameInvalidError)
             }
-     
+            
         } else if (textField ==  lastNameTextField) {
             if textField == lastNameTextField, textField.text == "" {
                 lastNameTextField.showError(message: Constant.ErrorMessage.lastNameEmptyError)
@@ -44,7 +44,7 @@ extension HomeViewContoller: UITextFieldDelegate {
             if let isLastName =  self.viewModel?.isValidLastName(self.lastNameTextField.text ?? ""), isLastName == false {
                 self.lastNameTextField.showError(message: Constant.ErrorMessage.lastNameInvalidError)
             }
-     
+            
         } else if (textField == emailTextField) {
             guard let emailText = emailTextField.text, !emailText.isEmpty else {
                 emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
@@ -54,7 +54,7 @@ extension HomeViewContoller: UITextFieldDelegate {
                 emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
                 return
             }
-       
+            
         } else if (textField == phoneNumberTextField) {
             
             if textField == phoneNumberTextField, textField.text == "" {

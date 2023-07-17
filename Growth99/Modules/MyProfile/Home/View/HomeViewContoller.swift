@@ -83,7 +83,7 @@ class HomeViewContoller: UIViewController {
         menuVC.revealSideMenu()
     }
     
-    fileprivate func setUpUI() {
+    func setUpUI() {
         firsNameTextField.text = viewModel?.getUserProfileData.firstName
         lastNameTextField.text = viewModel?.getUserProfileData.lastName
         emailTextField.text = viewModel?.getUserProfileData.email
@@ -92,7 +92,7 @@ class HomeViewContoller: UIViewController {
         descriptionTextView.text = viewModel?.getUserProfileData.description
         UserRepository.shared.primaryEmailId = viewModel?.getUserProfileData.email
     }
-
+    
     
     @IBAction func switchIsChanged(sender: UISwitch) {
         if sender.isOn {
@@ -110,95 +110,6 @@ class HomeViewContoller: UIViewController {
         }
     }
     
-    @IBAction func openAdminMenuDropDwon(sender: UIButton) {
-        self.rolesTextField.text = ""
-        let rolesArray = ["Admin"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-            self.rolesTextField.text  = allClinics
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
-            selectionMenu.dismissAutomatically = true
-        }
-        selectionMenu.tableView?.selectionStyle = .single
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    @IBAction func textFieldOpenDropDownClinincs(sender: UIButton) {
-        if selectedClincs.count == 0 {
-            self.clincsTextField.text = ""
-        }
-        
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        
-        selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.clincsTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            let selectedId = selectedList.map({$0.id ?? 0})
-            self?.selectedClincIds = selectedId
-            self?.selectedClincs  = selectedList
-            self?.view.ShowSpinner()
-            self?.viewModel?.getallServiceCategories(SelectedClinics: selectedId)
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    
-    @IBAction func textFieldOpenDropDownServiceCategories(sender: UIButton) {
-        
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allServiceCategories, cellType: .subTitle) { (cell, serviceCategories, indexPath) in
-            cell.textLabel?.text = serviceCategories.name
-        }
-        
-        selectionMenu.setSelectedItems(items: selectedServiceCategories) { [weak self] (selectedItem, index, selected, selectedList) in
-            
-            self?.serviceCategoriesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            let selectedId = selectedList.map({$0.id ?? 0})
-            self?.selectedServiceCategoriesIds = selectedId
-            self?.selectedServiceCategories = selectedList
-            
-            self?.view.ShowSpinner()
-            self?.viewModel?.getallService(SelectedCategories: selectedId)
-        }
-        
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        if self.allServiceCategories.count >= 6 {
-            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServiceCategories.count) * 44)), arrowDirection: .down), from: self)
-        } else {
-            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allServiceCategories.count) * 44)), arrowDirection: .up), from: self)
-        }
-    }
-    
-    @IBAction func textFieldOpenDropDownServices(sender: UIButton) {
-        if allService.count == 0 {
-            self.servicesTextField.text = ""
-        }
-        
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allService, cellType: .subTitle) { (cell, allServices, indexPath) in
-            cell.textLabel?.text = allServices.name
-        }
-        
-        selectionMenu.setSelectedItems(items: selectedService) { [weak self] (text, index, selected, selectedList) in
-            let selectedId = selectedList.map({$0.id ?? 0})
-            self?.selectedServiceIds = selectedId
-            self?.selectedService = selectedList
-            self?.servicesTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-        }
-        selectionMenu.showEmptyDataLabel(text: "No Services Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        
-        if self.allService.count >= 2 {
-            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allService.count) * 44)), arrowDirection: .down), from: self)
-        }else{
-            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allService.count) * 44)), arrowDirection: .up), from: self)
-        }
-    }
-    
     private func setupTexFieldValidstion() {
         self.phoneNumberTextField.addTarget(self, action:
                                                 #selector(HomeViewContoller.textFieldDidChange(_:)),
@@ -211,8 +122,17 @@ class HomeViewContoller: UIViewController {
                                          for: UIControl.Event.editingChanged)
     }
     
+    @IBAction func cancelUserProfile(){
+        self.openUserListView()
+    }
+    
+    func openUserListView(){
+        let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
+        self.navigationController?.pushViewController(userListVC, animated: true)
+    }
+    
     @IBAction func saveUserProfile() {
-       
+        
         if let textField = firsNameTextField,  textField.text == "" {
             firsNameTextField.showError(message: Constant.ErrorMessage.firstNameEmptyError)
             return
@@ -236,17 +156,17 @@ class HomeViewContoller: UIViewController {
             emailTextField.showError(message: Constant.ErrorMessage.emailEmptyError)
             return
         }
-
+        
         guard let emailValidate = viewModel?.isValidEmail(email), emailValidate else {
             emailTextField.showError(message: Constant.ErrorMessage.emailInvalidError)
             return
         }
-
+        
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
             phoneNumberTextField.showError(message: "Phone Number is required")
             return
         }
-
+        
         let characterCount = phoneNumber.count
         if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
@@ -276,105 +196,6 @@ class HomeViewContoller: UIViewController {
         
         self.view.ShowSpinner()
         self.viewModel?.updateProfileInfo(firstName: firsNameTextField.text ?? String.blank, lastName: lastNameTextField.text ?? String.blank, email: emailTextField.text ?? String.blank, phone: phoneNumberTextField.text ?? "", roleId: (viewModel?.getUserProfileData.roles?.id ?? 0), designation: self.degignationTextField.text ?? String.blank, clinicIds: selectedClincIds, serviceCategoryIds: selectedServiceCategoriesIds, serviceIds: selectedServiceIds, isProvider: userProvider.isOn, description: descriptionTextView.text ?? String.blank)
-    }
-    
-    @IBAction func cancelUserProfile(){
-        self.openUserListView()
-    }
-    
-    func openUserListView(){
-        let userListVC = UIStoryboard(name: "UserListViewContoller", bundle: nil).instantiateViewController(withIdentifier: "UserListViewContoller")
-        self.navigationController?.pushViewController(userListVC, animated: true)
-    }
-    
-}
-
-extension HomeViewContoller: HomeViewContollerProtocol{
- 
-    func userDataRecived() {
-        self.viewModel?.getallClinics()
-        userProvider.setOn(false, animated: false)
-        if viewModel?.getUserProfileData.isProvider ?? false {
-            userProvider.setOn(true, animated: false)
-            self.userProviderViewHight.constant = 300
-            self.userProviderView.isHidden = false
-        }
-        self.rolesTextField.text = "Admin"
-        self.setUpUI()
-    }
-    
-    func clinicsRecived() {
-        self.view.HideSpinner()
-        // get from user api
-        selectedClincs = viewModel?.getUserProfileData.clinics ?? []
-        
-        /// get From allclinincsapi
-        self.allClinics = viewModel?.getAllClinicsData ?? []
-        
-        let userTimeZones = self.allClinics.filter({$0.isDefault == true})
-        if let firstTimeZone = userTimeZones.first?.timeZone {
-            UserRepository.shared.timeZone = firstTimeZone
-        }
-        
-        self.clincsTextField.text = selectedClincs.map({$0.name ?? String.blank}).joined(separator: ", ")
-        let selectedClincId = selectedClincs.map({$0.id ?? 0})
-        self.selectedClincIds = selectedClincId
-        if self.selectedClincIds.count > 0 {
-            self.view.ShowSpinner()
-            self.viewModel?.getallServiceCategories(SelectedClinics: selectedClincId)
-        }
-    }
-    
-    func serviceCategoriesRecived() {
-        // get from user api
-        self.serviceCategoriesTextField.text = ""
-        self.servicesTextField.text = ""
-        selectedServiceCategories = viewModel?.getUserProfileData.userServiceCategories ?? []
-        allServiceCategories = viewModel?.getAllServiceCategories ?? []
-        
-        var itemNotPresent:Bool = false
-        for item in selectedServiceCategories {
-            if allServiceCategories.contains(item) {
-                itemNotPresent =  true
-            }
-        }
-        self.serviceCategoriesTextField.text = selectedServiceCategories.map({$0.name ?? String.blank}).joined(separator: ", ")
-        let selectedList = selectedServiceCategories.map({$0.id ?? 0})
-        self.selectedServiceCategoriesIds = selectedList
-        
-        if selectedServiceCategories.count == 0 || itemNotPresent == false {
-            self.serviceCategoriesTextField.text = ""
-        }
-        self.view.HideSpinner()
-
-        if self.selectedServiceCategories.count > 0 {
-            self.view.ShowSpinner()
-            self.viewModel?.getallService(SelectedCategories: selectedList)
-        }
-    }
-    
-    func serviceRecived() {
-        self.view.HideSpinner()
-        // get from user api
-        self.servicesTextField.text = ""
-        selectedService =  viewModel?.getUserProfileData.services ?? []
-        allService = viewModel?.getAllService ?? []
-        let selectedList = selectedService.map({$0.id ?? 0})
-        self.selectedServiceIds = selectedList
-        self.servicesTextField.text = selectedService.map({$0.name ?? String.blank}).joined(separator: ", ")
-    }
-    
-    func profileDataUpdated(){
-        self.view.HideSpinner()
-        self.view.showToast(message: "User updated successfully", color: UIColor().successMessageColor())
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.openUserListView()
-        })
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
     }
     
 }

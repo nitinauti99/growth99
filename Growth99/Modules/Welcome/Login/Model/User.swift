@@ -10,6 +10,8 @@ import UIKit
 
 class User {
     private static let firstName = "firstName"
+    private static let firstNameUser = "firstNameUser"
+    private static let lastNameUser = "lastNameUser"
     private static let lastName = "lastName"
     private static let profilePictureUrl = "profilePictureUrl"
     private static let authToken = "authToken"
@@ -51,12 +53,30 @@ class User {
         }
     }
     
+    var firstNameUser: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.firstNameUser)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.firstNameUser)
+        }
+    }
+  
     var lastName: String? {
         get {
             KeychainWrapper.standard.string(forKey: User.lastName)
         }
         set {
             applyNewValueInKeyChain(value: newValue, key: User.lastName)
+        }
+    }
+    
+    var lastNameUser: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.lastNameUser)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.lastNameUser)
         }
     }
     
@@ -241,6 +261,8 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.authToken)
         KeychainWrapper.standard.removeObject(forKey: User.firstName)
         KeychainWrapper.standard.removeObject(forKey: User.lastName)
+        KeychainWrapper.standard.removeObject(forKey: User.firstNameUser)
+        KeychainWrapper.standard.removeObject(forKey: User.lastNameUser)
         KeychainWrapper.standard.removeObject(forKey: User.profilePictureUrl)
         KeychainWrapper.standard.removeObject(forKey: User.primaryMobileNumber)
         KeychainWrapper.standard.removeObject(forKey: User.refreshToken)
