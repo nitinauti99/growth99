@@ -8,12 +8,15 @@
 import Foundation
 
 protocol WorkingScheduleViewModelProtocol {
-    func getallClinics()
     var getAllClinicsData: [Clinics] { get }
-    var getVacationData: [WorkingScheduleListModel] { get }
+    var getWorkingSheduleData: [WorkingScheduleListModel] { get }
+
+    func getallClinics()
     func getWorkingScheduleDeatils(selectedClinicId: Int)
     func sendRequestforWorkingSchedule(vacationParams: [String: Any])
-    
+    func removeElementFromArray(index: IndexPath)
+    func addElementInArray(tableView: UITableView)
+
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
     func serverToLocal(date: String) -> String?
@@ -84,6 +87,24 @@ class WorkingScheduleViewModel {
         }
     }
     
+    func removeElementFromArray(index: IndexPath){
+        self.workingSheduleList?[index.section].userScheduleTimings?.remove(at: index.row)
+    }
+    
+    func addElementInArray(tableView: UITableView){
+        let workingUserScheduleTimingsTemp = WorkingUserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate: String.blank, days: [])
+       
+        if self.workingSheduleList?.count == 0 {
+            let parm = WorkingScheduleListModel(id: 1, clinicId: 1, providerId: 1, fromDate: String.blank, toDate: String.blank, scheduleType: String.blank, userScheduleTimings: [])
+            self.workingSheduleList?.append(parm)
+            tableView.reloadData()
+        }
+        self.workingSheduleList?[0].userScheduleTimings?.append(workingUserScheduleTimingsTemp)
+        tableView.beginUpdates()
+        let indexPath = IndexPath(row: (self.workingSheduleList?[0].userScheduleTimings?.count ?? 0) - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
+    }
 }
 
 extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
@@ -92,7 +113,7 @@ extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
         return self.allClinicsforWorkingSchedule ?? []
     }
     
-    var getVacationData: [WorkingScheduleListModel] {
+    var getWorkingSheduleData: [WorkingScheduleListModel] {
         return self.workingSheduleList ?? []
     }
     

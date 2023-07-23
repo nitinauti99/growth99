@@ -24,6 +24,9 @@ protocol TriggerEditDetailViewModelProtocol {
     func createTriggerDataMethodEdit(triggerDataParms: [String: Any], selectedTriggerid: Int)
     func createAppointmentDataMethodEdit(appointmentDataParms: [String: Any], selectedTriggerid: Int)
     func getSelectedTriggerList(selectedTriggerId: Int)
+    
+    var getTriggerEditData: [TriggerEditData] { get }
+
 }
 
 class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
@@ -76,6 +79,11 @@ class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {
     
     var getTriggerEditListData: TriggerEditModel? {
         return triggerEditList
+    }
+    
+    var getTriggerEditData: [TriggerEditData] {
+        
+        return self.triggerEditList?.triggerData ?? []
     }
     
     func getTriggerDetailListEdit() {

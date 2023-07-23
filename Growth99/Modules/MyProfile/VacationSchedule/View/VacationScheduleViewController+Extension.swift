@@ -184,13 +184,14 @@ extension VacationScheduleViewController: VacationsHeadeViewDelegate {
     // MARK: - delete section from headerview
     func delateSectionButtonTapped(view: VacationsHeadeView) {
         let section = view.tag
-        vacationsListTableView.beginUpdates()
-        vacationsList.remove(at: section)
-        vacationsListTableView.deleteSections([section], with: .fade)
-        vacationsListTableView.endUpdates()
-        vacationScrollViewHight.constant = vacationTableViewHeight + 450
-        if vacationsList.count > 0 {
-            vacationsListTableView.reloadSections(IndexSet(integer: section), with: .none)
+        if vacationsList.count == 1 {
+            vacationsList.removeAll()
+        }else{
+            vacationsList.remove(at: section)
         }
+        vacationsListTableView.deleteSections([section], with: .fade)
+        vacationScrollViewHight.constant = vacationTableViewHeight + 450
+        vacationsListTableView?.performBatchUpdates(nil, completion: nil)
+        vacationsListTableView.reloadData()
     }
 }

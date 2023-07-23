@@ -60,7 +60,8 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         }
         else if triggerDetailList[indexPath.row].cellType == "Both" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerParentCreateTableViewCell", for: indexPath) as? TriggerParentCreateTableViewCell else { return UITableViewCell()}
-            cell.configureCell(triggerEditData: viewModel?.getTriggerEditListData?.triggerData ?? [], index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
+           
+            cell.configureCell(triggerEditData: viewModel?.getTriggerEditData ?? [], index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType, selectedNetworkType: selectedNetworkType, parentViewModel: viewModel, viewController: self)
             return cell
         }
         return cell

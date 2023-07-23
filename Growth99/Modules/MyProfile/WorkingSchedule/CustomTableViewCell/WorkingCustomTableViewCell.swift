@@ -12,6 +12,7 @@ protocol WorkingCellSubclassDelegate: AnyObject {
     func selectDayButtonTapped(cell: WorkingCustomTableViewCell, index: IndexPath)
     func buttonWorkingtimeFromTapped(cell: WorkingCustomTableViewCell)
     func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell)
+    func deleteSelectedWorkingShedule(cell: WorkingCustomTableViewCell, indexPath: IndexPath)
 }
 
 class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
@@ -38,17 +39,33 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        timeFromTextField.tintColor = .clear
-        timeToTextField.tintColor = .clear
-        timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .time)
-        timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .time)
-        subView.layer.borderWidth = 1
-        subView.layer.cornerRadius = 5
-        subView.layer.borderColor = UIColor.init(hexString: "#009EDE").cgColor
+        self.timeFromTextField.tintColor = .clear
+        self.timeToTextField.tintColor = .clear
+        self.subView.layer.borderWidth = 1
+        self.subView.layer.cornerRadius = 5
+        self.subView.layer.borderColor = UIColor.init(hexString: "#009EDE").cgColor
+        self.timeFromTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed), mode: .time)
+        self.timeToTextField.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed1), mode: .time)
     }
     
-    func configureCell(index: IndexPath) {
-        indexPath = index
+    func configureCell(index: IndexPath, viewModel: WorkingScheduleViewModelProtocol?) {
+        self.indexPath = index
+        let item =  viewModel?.getWorkingSheduleData
+        let workingScheduleDays = item?[indexPath.section].userScheduleTimings?[indexPath.row].days
+        self.updateTextLabel(with: workingScheduleDays)
+        
+        if item?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate == "" {
+            self.timeFromTextField.text = String.blank
+        }else{
+            self.timeFromTextField.text = viewModel?.serverToLocalTime(timeString: item?[indexPath.section].userScheduleTimings?[indexPath.row].timeFromDate ?? String.blank)
+        }
+        
+        if item?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate == "" {
+            self.timeFromTextField.text = String.blank
+        }else{
+            self.timeToTextField.text = viewModel?.serverToLocalTime(timeString: item?[indexPath.section].userScheduleTimings?[indexPath.row].timeToDate ?? String.blank)
+        }
+        
     }
     
     override func prepareForReuse() {
@@ -84,7 +101,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     @IBAction func deleteWorkingButtonAction(sender: UIButton) {
-        buttoneRemoveDaysTapCallback()
+        self.delegate?.deleteSelectedWorkingShedule(cell: self, indexPath: indexPath)
     }
     
     @IBAction func selectDayBtnAction(sender: UIButton) {

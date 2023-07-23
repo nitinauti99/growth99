@@ -53,10 +53,14 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
                     scrollToBottom()
+                    triggerdDetailTableView.beginUpdates()
                     let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
                     let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
                     cell.parentCell?.finalArray.append(creatChild)
                     cell.parentCell?.finalArray.append(createTimechild)
+            
+                    triggerCreateScrollviewHeight.constant = CGFloat((cell.parentCell?.finalArray.count ?? 0) * 600)
+                    self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
                     cell.parentCell?.parentTableView.reloadData()
                 }
             } else {
