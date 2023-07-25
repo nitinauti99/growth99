@@ -196,10 +196,11 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
             "questionType": patientQuestionAnswersList.questionType ?? String.blank,
             "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
             "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
-            "answer": patientQuestionAnswersList.answer ?? String.blank,
+            "answer": NSNull(),
             "answerText": answerText,
-            "answerComments": "",
+            "answerComments": NSNull(),
             "patientQuestionChoices": [],
+            "fileSource": NSNull(),
             "required": patientQuestionAnswersList.required ?? String.blank,
             "hidden": patientQuestionAnswersList.hidden ?? false,
             "showDropDown": patientQuestionAnswersList.showDropDown ?? false

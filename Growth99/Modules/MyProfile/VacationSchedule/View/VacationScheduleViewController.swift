@@ -151,6 +151,9 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     // MARK: - Save Vacations List method
     @IBAction func saveVacationButtonAction(sender: UIButton) {
         isValidateVacationArray = []
+        arrTime = []
+        arrayOfVacations = []
+        
         if vacationsList.count == 0 {
             postVacationAPIMethod(vacationsList: [])
         } else {
