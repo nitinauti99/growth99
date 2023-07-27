@@ -19,6 +19,7 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
         self.view.ShowSpinner()
         if moduleSelectionType == "leads" {
             var triggerDataDict = [String: Any]()
+            var timeDict = [String : Any]()
             var isfromLeadStatus: String = ""
             var istoLeadStatus: String = ""
             var isTriggerForLeadContain: Bool = false
@@ -54,10 +55,10 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                     guard let childCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
                     
                     var selectedTrigger: String = ""
-                    if childCreateCell.triggerTargetName == "Patient" {
-                        selectedTrigger = "AppointmentPatient"
+                    if childCreateCell.triggerTargetName == "Clinic" {
+                        selectedTrigger = "Clinic"
                     } else {
-                        selectedTrigger = "AppointmentClinic"
+                        selectedTrigger = "lead"
                     }
                     if isAddanotherClicked == true {
                         addNewcheckCreate = true
@@ -73,6 +74,7 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                         showBordercheckCreate = childCreateCell.showBordercheck
                         orderOfConditionTriggerCheckCreate = childCreateCell.orderOfConditionTriggerCheck
                     }
+                    
                     triggerDataDict = ["actionIndex": 3,
                                        "addNew": addNewcheckCreate,
                                        "triggerTemplate": childCreateCell.templateId,
@@ -94,17 +96,32 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                     } else {
                         scheduledBasedOnSelected = "APPOINTMENT_AFTER"
                     }
-                    let timeDict: [String : Any] = [
-                        "dateType": "NA",
-                        "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
-                        "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
-                        "triggerFrequency": isTriggerFrequency.uppercased(),
-                        "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
-                        "timerType": timeCell.timerTypeSelected,
-                    ]
+                    let startTime = timeCell.timeRangeStartTimeTF.text ?? ""
+                    let endTime = timeCell.timeRangeEndTimeTF.text ?? ""
+                    if startTime == "" && endTime == "" {
+                        timeDict = [
+                            "dateType": "NA",
+                            "startTime": NSNull(),
+                            "endTime": NSNull(),
+                            "triggerFrequency": isTriggerFrequency.uppercased(),
+                            "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
+                            "timerType": timeCell.timerTypeSelected,
+                        ]
+                    } else {
+                        timeDict = [
+                            "dateType": "NA",
+                            "startTime": timeCell.timeRangeStartTimeTF.text ?? NSNull(),
+                            "endTime": timeCell.timeRangeEndTimeTF.text ?? NSNull(),
+                            "triggerFrequency": isTriggerFrequency.uppercased(),
+                            "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
+                            "timerType": timeCell.timerTypeSelected,
+                        ]
+                    }
+                    
                     triggerDataDict.merge(withDictionary: timeDict)
                     self.createTriggerInfo(triggerCreateData: triggerDataDict)
-                }            }
+                }
+            }
             
             var selectedLeadLandingPagesdict = Array<Any>()
             if let leadCreateCell = leadCreateCell {
@@ -212,8 +229,8 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                     }
                     let timeDict: [String : Any] = [
                         "dateType": scheduledBasedOnSelected,
-                        "startTime": NSNull(),
-                        "endTime": NSNull(),
+                        "startTime": timeCell.timeRangeStartTimeTF.text ?? NSNull(),
+                        "endTime": timeCell.timeRangeEndTimeTF.text ?? NSNull(),
                         "triggerFrequency": isTriggerFrequency.uppercased(),
                         "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
                         "timerType": timeCell.timerTypeSelected,
@@ -224,12 +241,11 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
             }
             
             var urlParameter: Parameters = [String: Any]()
-            let triggerConditions: [String] = []
             let landingPageNames: [String] = []
             let forms: [String] = []
             let sourceUrls: [String] = []
             let leadTags: [String] = []
-            urlParameter = ["name": patientModuleName, "moduleName": "Appointment", "triggeractionName": selectedAppointmentStatus, "triggerConditions": triggerConditions, "triggerData": smsandTimeArray, "landingPageNames": landingPageNames, "forms": forms, "sourceUrls": sourceUrls, "leadTags": leadTags, "isTriggerForLeadStatus": false, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
+            urlParameter = ["name": patientModuleName, "moduleName": "Appointment", "triggeractionName": selectedAppointmentStatus, "triggerConditions": NSNull(), "triggerData": smsandTimeArray, "landingPageNames": landingPageNames, "forms": forms, "sourceUrls": sourceUrls, "leadTags": leadTags, "isTriggerForLeadStatus": false, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
             ]
             print(urlParameter)
             self.view.ShowSpinner()

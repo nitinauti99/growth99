@@ -43,6 +43,9 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     weak var delegate: TriggerEditTimeCellDelegate?
     let radioController: RadioButtonController = RadioButtonController()
     
+    var triggerStartTime: String = ""
+    var triggerEndTime: String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -55,7 +58,6 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         timeRangeEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(timeRangeEndBtnPressed), mode: .time)
         radioController.buttonsArray = [timeFrequencyButton, timeRangeButton]
         radioController.defaultButton = timeFrequencyButton
-        
         
     }
     
@@ -158,7 +160,8 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         } else {
             self.scheduledBasedOnTextField.text = "After Appointment Date"
         }
-        
+        timeRangeStartTimeTF.text = triggerEditData?.startTime ?? ""
+        timeRangeEndTimeTF.text = triggerEditData?.endTime ?? ""
     }
     
     @IBAction func timeFrequencyBtnAction(sender: UIButton) {
