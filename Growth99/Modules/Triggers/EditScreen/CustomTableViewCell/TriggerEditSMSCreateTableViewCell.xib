@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPi-qT-Luy">
-                        <rect key="frame" x="10" y="10" width="300" height="401"/>
+                        <rect key="frame" x="10" y="10" width="300" height="441"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxq-Xf-JcD">
                                 <rect key="frame" x="10" y="10" width="280" height="50"/>
@@ -101,7 +101,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kH7-GO-GqO">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kH7-GO-GqO">
                                 <rect key="frame" x="20" y="156" width="260" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Please select trigger target" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xq8-zg-pwS" userLabel="passWord" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
@@ -174,7 +174,7 @@
                                     <constraint firstItem="Ymv-lp-gkO" firstAttribute="top" secondItem="qrE-k3-oxC" secondAttribute="top" id="wBf-gv-0Eh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vc-AM-hdH">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vc-AM-hdH">
                                 <rect key="frame" x="20" y="156" width="260" height="215"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNS-84-h3h" userLabel="password">
@@ -358,10 +358,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIS-ga-GBU">
-                                <rect key="frame" x="20" y="381" width="110" height="0.0"/>
+                                <rect key="frame" x="20" y="381" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="N1t-64-NX7"/>
+                                    <constraint firstAttribute="height" constant="40" id="N1t-64-NX7"/>
                                     <constraint firstAttribute="width" constant="110" id="Reg-sX-mfW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>

@@ -99,18 +99,19 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var triggerId: Int?
     var triggerEditChildData: [TriggerEditData] = []
     
-    
     var isEndTime: String = ""
     var isTaskName: String = ""
     var isStartTime: String = ""
     var isAssignedToTask: String = ""
     var smsandTimeArray = Array<Any>()
-    var showBordercheck: Bool = false
+    var addNewcheckCreate: Bool = false
+    var showBordercheckCreate: Bool = false
+    var orderOfConditionTriggerCheckCreate: Int = 0
     var dateTypeCheck: String = ""
-    var addNewcheck: Bool = false
     var triggerTargetCheck: String = ""
     var triggerTypeCheck: String = ""
     var isAddanotherClicked: Bool = false
+    var isAddanotherTimeClicked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,10 +141,11 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerLeadEditActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerLeadEditActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditModuleTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditModuleTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditAppointmentActionTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "TriggerParentCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerParentCreateTableViewCell")
+        self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditSMSCreateTableViewCell")
+        self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditTimeTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "BottomTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "BottomTableViewCell")
     }
-
+    
     @objc func getTriggerDetails() {
         self.view.ShowSpinner()
         viewModel?.getSelectedTriggerList(selectedTriggerId: triggerId ?? 0)
@@ -183,17 +185,37 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     
     func triggerSMSPatientStatusAllDataRecived() {
         self.view.HideSpinner()
-        addTriggerEditDetailModel(cellType: "Both")
+        addTriggerEditDetailModel(cellType: "Create")
     }
     
     func bothInsertDataReceived() {
         self.view.HideSpinner()
-        addTriggerEditDetailModel(cellType: "Both")
+        addTriggerEditDetailModel(cellType: "Create")
     }
     
     private func addTriggerEditDetailModel(cellType: String) {
         let emailSMS = TriggerEditDetailModel(cellType: cellType, LastName: "")
         triggerDetailList.append(emailSMS)
+        triggerdDetailTableView.beginUpdates()
+        let indexPath = IndexPath(row: triggerDetailList.count - 1, section: 0)
+        triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
+        triggerdDetailTableView.endUpdates()
+    }
+    
+    func addTriggerEditDetailModelCreate() {
+        let emailSMS = TriggerEditDetailModel(cellType: "Create", LastName: "")
+        triggerDetailList.append(emailSMS)
+        isAddanotherClicked = true
+        triggerdDetailTableView.beginUpdates()
+        let indexPath = IndexPath(row: triggerDetailList.count - 1, section: 0)
+        triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
+        triggerdDetailTableView.endUpdates()
+    }
+    
+    func addTriggerEditDetailModelTime() {
+        let emailSMS = TriggerEditDetailModel(cellType: "Time", LastName: "")
+        triggerDetailList.append(emailSMS)
+        isAddanotherTimeClicked = true
         triggerdDetailTableView.beginUpdates()
         let indexPath = IndexPath(row: triggerDetailList.count - 1, section: 0)
         triggerdDetailTableView.insertRows(at: [indexPath], with: .fade)
@@ -207,9 +229,9 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         let moduleScreen = TriggerEditDetailModel(cellType: "Module", LastName: "")
         let leadScreen = TriggerEditDetailModel(cellType: "Lead", LastName: "")
         let appointmentScreen = TriggerEditDetailModel(cellType: "Appointment", LastName: "")
-        let createScreen = TriggerEditDetailModel(cellType: "Both", LastName: "")
+        let createScreen = TriggerEditDetailModel(cellType: "Create", LastName: "")
+        let timeScreen = TriggerEditDetailModel(cellType: "Time", LastName: "")
         let modelData = viewModel?.getTriggerEditListData
-        
         if modelData?.name != "" && modelData?.moduleName != "" {
             triggerDetailList.append(defaultScreen)
             triggerDetailList.append(moduleScreen)
@@ -218,7 +240,10 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
             } else if modelData?.moduleName == "Appointment" {
                 triggerDetailList.append(appointmentScreen)
             }
-            triggerDetailList.append(createScreen)
+            for _ in (0..<(modelData?.triggerData?.count ?? 0)) {
+                triggerDetailList.append(createScreen)
+                triggerDetailList.append(timeScreen)
+            }
         }
         triggerdDetailTableView.reloadData()
         triggerCreateScrollviewHeight.constant = triggerCreateTableViewHeight
@@ -227,7 +252,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     
     var triggerCreateTableViewHeight: CGFloat {
         triggerdDetailTableView.layoutIfNeeded()
-        return triggerdDetailTableView.contentSize.height + 500
+        return triggerdDetailTableView.contentSize.height + 200
     }
     
     func triggerAppointmentUpdatedSucessfull() {

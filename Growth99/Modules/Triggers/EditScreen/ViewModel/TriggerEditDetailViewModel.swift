@@ -26,7 +26,7 @@ protocol TriggerEditDetailViewModelProtocol {
     func getSelectedTriggerList(selectedTriggerId: Int)
     
     var getTriggerEditData: [TriggerEditData] { get }
-
+    
 }
 
 class TriggerEditDetailViewModel: TriggerEditDetailViewModelProtocol {

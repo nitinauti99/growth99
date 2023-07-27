@@ -22,7 +22,7 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
             cell.leadFinalStatusTextField.showError(message: "Please select final status")
         } else {
             if triggerDetailList.count < 4 {
-                createNewTriggerCell(cellNameType: "Both")
+                addTriggerEditDetailModelCreate()
                 scrollToBottom()
             }
         }
@@ -226,38 +226,5 @@ extension TriggerEditDetailViewController: TriggerLeadEdiTableViewCellDelegate {
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    func leadTagButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
-        leadTagsTriggerArrayEdit = viewModel?.getTriggerLeadTagListDataEdit ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsTriggerArrayEdit, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        selectionMenu.setSelectedItems(items: cell.selectedLeadTags) { [weak self] (selectedItem, index, selected, selectedList) in
-            cell.leadTagTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            cell.selectedLeadTags = selectedList
-            let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
-            self?.selectedLeadTagIds = formattedArray
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadTagsTriggerArrayEdit.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    func showLeadTagButtonClicked(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
-        if buttonSender.isSelected {
-            buttonSender.isSelected = false
-            cell.leadTagTextFieldHight.constant = 0
-            cell.leadTagTextField.rightImage = nil
-            cell.leadTagTextField.text = ""
-            cell.selectedLeadTags.removeAll()
-        } else {
-            buttonSender.isSelected = true
-            cell.leadTagTextFieldHight.constant = 45
-            cell.leadTagTextField.rightImage = UIImage(named: "dropDown")
-        }
-        self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
-        self.scrollToBottom()
     }
 }

@@ -45,6 +45,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
         selectedNetworkType = networkType
         selectedTriggerTarget = triggerTarget
         scrollToBottom()
+        addTriggerEditDetailModelTime()
     }
     
     /// set cell drop dwon action
@@ -84,6 +85,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
         
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             cell.smsNetworTF.text = selectedItem?.name
+            cell.templateId = selectedItem?.id ?? 0
             self?.selectedSmsTemplates = selectedList
             self?.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
         }
@@ -125,6 +127,8 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             cell.textLabel?.text = allClinics.name
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            cell.emailNetworTF.text = selectedItem?.name
+            cell.templateId = selectedItem?.id ?? 0
             self?.selectedEmailTemplates = selectedList
             self?.selectedemailTemplateId = String(selectedItem?.id ?? 0)
         }

@@ -40,11 +40,6 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     }
     
     func addAnotherConditionButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
-        if triggerDetailList.count == 4 {
-            orderOfConditionTrigger = orderOfConditionTrigger + 2
-        } else {
-            orderOfConditionTrigger = orderOfConditionTrigger + 1
-        }
         if moduleSelectionType == "leads" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
@@ -53,15 +48,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     cell.timeHourlyTextField.showError(message: "Please select duration")
                 } else {
                     scrollToBottom()
-                    triggerdDetailTableView.beginUpdates()
-                    let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
-                    let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
-                    cell.parentCell?.finalArray.append(creatChild)
-                    cell.parentCell?.finalArray.append(createTimechild)
-            
-                    triggerCreateScrollviewHeight.constant = CGFloat((cell.parentCell?.finalArray.count ?? 0) * 600)
-                    self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
-                    cell.parentCell?.parentTableView.reloadData()
+                    addTriggerEditDetailModelCreate()
                 }
             } else {
                 if cell.timeRangeStartTimeTF.text == "" {
@@ -70,11 +57,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     cell.timeRangeEndTimeTF.showError(message: "Please select end time")
                 } else {
                     scrollToBottom()
-                    let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
-                    let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
-                    cell.parentCell?.finalArray.append(creatChild)
-                    cell.parentCell?.finalArray.append(createTimechild)
-                    cell.parentCell?.parentTableView.reloadData()
+                    addTriggerEditDetailModelCreate()
                 }
             }
             
@@ -87,12 +70,8 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 cell.timeHourlyTextField.showError(message: "Please select scheduled")
             } else {
                 scrollToBottom()
-                let creatChild = TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Create")
-                let createTimechild =  TriggerEditData(id: "", timerType: "", triggerTarget: "", triggerFrequency: "", actionIndex: 0, dateType: "", triggerTime: 0, showBorder: false, userId: "", scheduledDateTime: "", triggerTemplate: 0, addNew: false, endTime: "", triggerType: "", taskName: "", startTime: "", orderOfCondition: 0, type: "Time")
-                cell.parentCell?.finalArray.append(creatChild)
-                cell.parentCell?.finalArray.append(createTimechild)
-                cell.parentCell?.parentTableView.reloadData()
-                cell.parentCell?.parentTableViewHight.constant =  CGFloat((cell.parentCell?.finalArray.count ?? 0) * 500)
+                addTriggerEditDetailModelCreate()
+                cell.addAnotherConditionButton.isHidden = true
             }
         }
     }

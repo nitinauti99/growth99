@@ -15,8 +15,6 @@ protocol TriggerLeadEdiTableViewCellDelegate: AnyObject {
     func leadSourceButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadInitialStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadFinalStatusButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
-    func leadTagButtonSelection(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
-    func showLeadTagButtonClicked(cell: TriggerLeadEditActionTableViewCell, index: IndexPath, buttonSender: UIButton)
 }
 
 class TriggerLeadEditActionTableViewCell: UITableViewCell {
@@ -47,10 +45,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     @IBOutlet weak var showleadSourceTagButton: UIButton!
     @IBOutlet weak var showleadSourceTagButtonHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var leadTagButton: UIButton!
-    @IBOutlet weak var leadTagTextField: CustomTextField!
-    @IBOutlet weak var leadTagTextFieldHight: NSLayoutConstraint!
-    
     @IBOutlet weak var leadSTriggerWhenStatusTopeight: NSLayoutConstraint!
     @IBOutlet weak var leadSTriggerWhenStatusLblHeight: NSLayoutConstraint!
     
@@ -66,8 +60,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadFinalStatusTextField: CustomTextField!
     @IBOutlet weak var leadFinalStatusTextFieldHight: NSLayoutConstraint!
     
-    @IBOutlet weak var showleadTagButton: UIButton!
-    @IBOutlet weak var addleadTagButtonTopHeight: NSLayoutConstraint!
     @IBOutlet weak var leadStatusChangeButton: UIButton!
     @IBOutlet weak var leadStatusChangeButtonTopHeight: NSLayoutConstraint!
     @IBOutlet weak var leadNextButton: UIButton!
@@ -154,20 +146,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             self.leadInitialStatusTextField.text = triggerListEdit?.fromLeadStatus ?? ""
             self.leadFinalStatusTextField.text = triggerListEdit?.toLeadStatus ?? ""
         }
-        
-        if triggerListEdit?.leadTags?.count ?? 0 > 0 {
-            for formsItem in triggerListEdit?.leadTags ?? [] {
-                let getLandingForm = viewModel?.getTriggerLeadTagListDataEdit.filter({ $0.id == formsItem})
-                for landingChildItem in getLandingForm ?? [] {
-                    let formArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault: landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
-                    ledTagArray.append(formArr)
-                }
-            }
-            self.leadTagTextField.text = ledTagArray.map({$0.name ?? ""}).joined(separator: ",")
-            self.selectedLeadTags = ledTagArray
-            self.showleadTagButton.isSelected = true
-            self.showLeadTagTextField(isShown: true)
-        }
     }
     
     @IBAction func showSelectSourceButtonAction(sender: UIButton) {
@@ -186,7 +164,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         let zeroConstant: CGFloat = 0
         let textFieldHeight: CGFloat = 45
         
-        addleadTagButtonTopHeight.constant = constantHeight
         leadSTriggerWhenStatusTopeight.constant = constantHeight
         leadSTriggerWhenStatusLblHeight.constant = isSelected ? 20 : zeroConstant
         leadInitialStatusFromLblTopHeight.constant = constantHeight
@@ -244,7 +221,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     
     func showLeadStatusChange(isShown: Bool) {
         if isShown {
-            self.addleadTagButtonTopHeight.constant = 16
             self.leadSTriggerWhenStatusTopeight.constant = 16
             self.leadSTriggerWhenStatusLblHeight.constant = 20
             self.leadInitialStatusFromLblTopHeight.constant = 16
@@ -256,7 +232,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             self.leadInitialStatusTextField.rightImage = UIImage(named: "dropDown")
             self.leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
         } else {
-            self.addleadTagButtonTopHeight.constant = 0
             self.leadSTriggerWhenStatusTopeight.constant = 0
             self.leadSTriggerWhenStatusLblHeight.constant = 0
             self.leadInitialStatusFromLblTopHeight.constant = 0
@@ -269,12 +244,6 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
             self.leadFinalStatusTextField.rightImage = nil
         }
         self.tableView?.performBatchUpdates(nil, completion: nil)
-    }
-    
-    func showLeadTagTextField(isShown: Bool) {
-        self.leadTagTextFieldHight.constant = isShown ? 45 : 0
-        self.leadTagTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
-        tableView?.performBatchUpdates(nil, completion: nil)
     }
     
     // MARK: - Add and remove time methods
@@ -304,13 +273,5 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
     
     @IBAction func leadFinalStatusButtonAction(sender: UIButton) {
         self.delegate?.leadFinalStatusButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func leadTagButtonAction(sender: UIButton) {
-        self.delegate?.leadTagButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
-    @IBAction func showLeadTagsButtonAction(sender: UIButton) {
-        self.delegate?.showLeadTagButtonClicked(cell: self, index: indexPath, buttonSender: sender)
     }
 }

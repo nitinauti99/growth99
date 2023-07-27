@@ -55,7 +55,7 @@ extension TriggerEditDetailViewController: TriggerEditModuleCellDelegate {
 
 extension TriggerEditDetailViewController: TriggerEditPatientCellDelegate {
     func nextButtonPatient(cell: TriggerEditAppointmentActionTableViewCell, index: IndexPath) {
-        createNewTriggerCell(cellNameType: "Both")
+        addTriggerEditDetailModelCreate()
         scrollToBottom()
     }
 }

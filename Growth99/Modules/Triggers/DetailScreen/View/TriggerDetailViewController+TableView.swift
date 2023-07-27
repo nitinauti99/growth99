@@ -821,7 +821,7 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
                 cell.createNextButton.isEnabled = false
                 cell.selectEmailTagetEmptyTextLabel.isHidden = true
                 cell.selectEmailNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType,  triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
+                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
             }
         } else {
             if cell.taskNameTextField.text == String.blank {

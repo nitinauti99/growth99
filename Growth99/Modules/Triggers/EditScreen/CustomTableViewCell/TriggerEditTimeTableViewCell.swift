@@ -38,10 +38,8 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var scheduledBasedOnButton: UIButton!
     
     var indexPath = IndexPath()
-    var tableView: UITableView?
     var timerTypeSelected: String = "Frequency"
     var trigerTimeData: [TriggerEditData] = []
-    var parentCell: TriggerParentCreateTableViewCell?
     weak var delegate: TriggerEditTimeCellDelegate?
     let radioController: RadioButtonController = RadioButtonController()
     
@@ -57,21 +55,26 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         timeRangeEndTimeTF.addInputViewDatePicker(target: self, selector: #selector(timeRangeEndBtnPressed), mode: .time)
         radioController.buttonsArray = [timeFrequencyButton, timeRangeButton]
         radioController.defaultButton = timeFrequencyButton
+        
+        
     }
     
-    func configureCell(parentSelectedCell: TriggerParentCreateTableViewCell?, triggerEditData: [TriggerEditData]?, index: IndexPath, moduleSelectionTypeTrigger: String, selectedNetworkType: String, parentViewModel: TriggerEditDetailViewModelProtocol?, parenttableView: UITableView) {
+    func configureCellTime(index: IndexPath, moduleSelectionTypeTrigger: String, arrayCount: Int) {
         self.indexPath = index
-        tableView = parenttableView
-        parentCell = parentSelectedCell
-        self.trigerTimeData = triggerEditData ?? []
-        
-        if indexPath.row == (triggerEditData?.count ?? 0) - 1 {
+        let yourLastRowIndex = arrayCount - 1
+        if index.row == yourLastRowIndex {
+            // If it's the last row, show the 'addAnotherConditionButton'
             addAnotherConditionButton.isHidden = false
         } else {
+            // If it's not the last row, hide the 'addAnotherConditionButton'
             addAnotherConditionButton.isHidden = true
         }
+        self.timeHourlyButton.tag = indexPath.row
+        self.timeHourlyButton.addTarget(self, action: #selector(timeHourlySelectionMethod), for: .touchDown)
+        self.scheduledBasedOnButton.tag = indexPath.row
+        self.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnMethod), for: .touchDown)
         
-        if triggerEditData?[indexPath.row].triggerTarget == "lead"  {
+        if moduleSelectionTypeTrigger == "leads" {
             self.timeRangeView.isHidden = false
             self.timeFrequencyLbl.isHidden = false
             self.timeRangeLbl.isHidden = false
@@ -80,12 +83,43 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
             self.timeFrequencyButton.isHidden = false
             self.timeRangeButton.isHidden = false
             self.scheduledBasedOnButton.isEnabled = false
+        } else {
+            self.timeRangeView.isHidden = true
+            self.timeFrequencyLbl.isHidden = true
+            self.timeRangeLbl.isHidden = true
+            self.scheduledBasedOnTextField.isHidden = false
+            self.scheduleBasedonLbl.isHidden = false
+            self.timeFrequencyButton.isHidden = true
+            self.timeRangeButton.isHidden = true
+            self.scheduledBasedOnButton.isEnabled = true
         }
-        else if triggerEditData?[indexPath.row].triggerTarget == "Clinic" {
+    }
+    
+    func configureCell(tableView: UITableView?, index: IndexPath, triggerEditData: TriggerEditData?, parentViewModel: TriggerEditDetailViewModelProtocol?, viewController: UIViewController, moduleSelectionTypeTrigger: String, arrayCount: Int) {
+        
+        self.indexPath = index
+        let yourLastRowIndex = arrayCount - 1
+        if index.row == yourLastRowIndex {
+            // If it's the last row, show the 'addAnotherConditionButton'
+            addAnotherConditionButton.isHidden = false
+        } else {
+            // If it's not the last row, hide the 'addAnotherConditionButton'
+            addAnotherConditionButton.isHidden = true
+        }
+        
+        if triggerEditData?.triggerTarget == "lead"  {
+            self.timeRangeView.isHidden = false
+            self.timeFrequencyLbl.isHidden = false
+            self.timeRangeLbl.isHidden = false
             self.scheduledBasedOnTextField.isHidden = true
             self.scheduleBasedonLbl.isHidden = true
-        }
-        else {
+            self.timeFrequencyButton.isHidden = false
+            self.timeRangeButton.isHidden = false
+            self.scheduledBasedOnButton.isEnabled = false
+        } else if triggerEditData?.triggerTarget == "Clinic" {
+            self.scheduledBasedOnTextField.isHidden = true
+            self.scheduleBasedonLbl.isHidden = true
+        } else {
             self.timeRangeView.isHidden = true
             self.timeFrequencyLbl.isHidden = true
             self.timeRangeLbl.isHidden = true
@@ -96,8 +130,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
             self.scheduledBasedOnButton.isEnabled = true
         }
         
-        
-        if triggerEditData?[indexPath.row].timerType == "Frequency" {
+        if triggerEditData?.timerType == "Frequency" {
             self.timeFrequencyButton.isSelected = true
             self.timeRangeButton.isSelected = false
             timeFrequencyView.isHidden = false
@@ -115,22 +148,17 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.scheduledBasedOnButton.tag = indexPath.row
         self.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnMethod), for: .touchDown)
         
-        if triggerEditData?.count ?? 0 > 0 {
-            self.timeHourlyTextField.text = triggerEditData?[0].triggerFrequency ?? ""
-            let triggerTime = triggerEditData?[index.row].triggerTime
-            self.timeDurationTextField.text = String(triggerTime ?? 0).replacingOccurrences(of: "-", with: "")
-            if triggerEditData?[index.row].dateType == "APPOINTMENT_CREATED" {
-                self.scheduledBasedOnTextField.text = "Appointment Created Date"
-            } else if triggerEditData?[index.row].dateType == "APPOINTMENT_BEFORE" {
-                self.scheduledBasedOnTextField.text = "Before Appointment Date"
-            } else {
-                self.scheduledBasedOnTextField.text = "After Appointment Date"
-            }
+        self.timeHourlyTextField.text = triggerEditData?.triggerFrequency ?? ""
+        let triggerTime = triggerEditData?.triggerTime
+        self.timeDurationTextField.text = String(triggerTime ?? 0).replacingOccurrences(of: "-", with: "")
+        if triggerEditData?.dateType == "APPOINTMENT_CREATED" {
+            self.scheduledBasedOnTextField.text = "Appointment Created Date"
+        } else if triggerEditData?.dateType == "APPOINTMENT_BEFORE" {
+            self.scheduledBasedOnTextField.text = "Before Appointment Date"
         } else {
-            self.timeHourlyTextField.text = ""
-            self.timeDurationTextField.text = ""
-            self.scheduledBasedOnTextField.text = ""
+            self.scheduledBasedOnTextField.text = "After Appointment Date"
         }
+        
     }
     
     @IBAction func timeFrequencyBtnAction(sender: UIButton) {

@@ -18,9 +18,6 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
         self.smsandTimeArray = []
         self.view.ShowSpinner()
         if moduleSelectionType == "leads" {
-            if selectedTriggerTarget == "Leads" {
-                selectedTriggerTarget = "leads"
-            }
             var triggerDataDict = [String: Any]()
             var isfromLeadStatus: String = ""
             var istoLeadStatus: String = ""
@@ -52,48 +49,62 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                         istoLeadStatus = cell.leadFinalStatusTextField.text ?? ""
                         isTriggerForLeadContain = cell.leadStatusChangeButton.isSelected
                     }
-                } else if triggerDetailList.cellType == "Both" {
-                    guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerParentCreateTableViewCell else { return  }
-                    let parentTableView = bothCreateCell.getTableView()
-                    
-                    for childIndex in 0..<(bothCreateCell.finalArray.count)  {
-                        let cellChildIndexPath = IndexPath(row: childIndex, section: 0)
-                        let item = bothCreateCell.finalArray[cellChildIndexPath.row]
-                        if item.type == "Create" {
-                            guard let childCreateCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
-                            addNewcheck = item.addNew ?? false
-                            triggerTypeCheck = item.triggerType ?? ""
-                            triggerTargetCheck = item.triggerTarget ?? ""
-                            triggerDataDict = ["actionIndex": 3,
-                                               "addNew": addNewcheck,
-                                               "triggerTemplate": templateId,
-                                               "triggerType": triggerTypeCheck,
-                                               "triggerTarget": triggerTargetCheck,
-                                               "taskName": childCreateCell.taskNameTextField.text ?? ""
-                            ]
-                        } else {
-                            guard let timeCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditTimeTableViewCell else { return  }
-                            let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
-                            showBordercheck = item.showBorder ?? false
-                            orderOfConditionTrigger = item.orderOfCondition ?? orderOfConditionTrigger
-                            dateTypeCheck = item.dateType ?? "NA"
-                            let timeDict: [String : Any] = [
-                                "showBorder": showBordercheck,
-                                "orderOfCondition": orderOfConditionTrigger,
-                                "dateType": dateTypeCheck,
-                                "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
-                                "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
-                                "triggerFrequency": isTriggerFrequency.uppercased(),
-                                "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
-                                "timerType": timeCell.timerTypeSelected,
-                                "deadline": NSNull()
-                            ]
-                            triggerDataDict.merge(withDictionary: timeDict)
-                            self.createTriggerInfo(triggerCreateData: triggerDataDict)
-                        }
-                    }
                 }
-            }
+                else if triggerDetailList.cellType == "Create" {
+                    guard let childCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
+                    
+                    var selectedTrigger: String = ""
+                    if childCreateCell.triggerTargetName == "Patient" {
+                        selectedTrigger = "AppointmentPatient"
+                    } else {
+                        selectedTrigger = "AppointmentClinic"
+                    }
+                    if isAddanotherClicked == true {
+                        addNewcheckCreate = true
+                        showBordercheckCreate = false
+                        let orderCount = childCreateCell.orderOfConditionTriggerCheck
+                        if orderCount == 0 {
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 2
+                        } else {
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 1
+                        }
+                    } else {
+                        addNewcheckCreate = childCreateCell.addNewcheck
+                        showBordercheckCreate = childCreateCell.showBordercheck
+                        orderOfConditionTriggerCheckCreate = childCreateCell.orderOfConditionTriggerCheck
+                    }
+                    triggerDataDict = ["actionIndex": 3,
+                                       "addNew": addNewcheckCreate,
+                                       "triggerTemplate": childCreateCell.templateId,
+                                       "triggerType": childCreateCell.networkTypeSelected,
+                                       "triggerTarget": selectedTrigger,
+                                       "taskName": childCreateCell.taskNameTextField.text ?? "",
+                                       "showBorder": showBordercheckCreate,
+                                       "orderOfCondition": orderOfConditionTriggerCheckCreate,
+                                       "deadline": NSNull()
+                    ]
+                }
+                else if triggerDetailList.cellType == "Time" {
+                    guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditTimeTableViewCell else { return  }
+                    let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    if timeCell.scheduledBasedOnTextField.text == "Appointment Created Date" {
+                        scheduledBasedOnSelected = "APPOINTMENT_CREATED"
+                    } else if timeCell.scheduledBasedOnTextField.text == "Before Appointment Date" {
+                        scheduledBasedOnSelected = "APPOINTMENT_BEFORE"
+                    } else {
+                        scheduledBasedOnSelected = "APPOINTMENT_AFTER"
+                    }
+                    let timeDict: [String : Any] = [
+                        "dateType": "NA",
+                        "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
+                        "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
+                        "triggerFrequency": isTriggerFrequency.uppercased(),
+                        "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
+                        "timerType": timeCell.timerTypeSelected,
+                    ]
+                    triggerDataDict.merge(withDictionary: timeDict)
+                    self.createTriggerInfo(triggerCreateData: triggerDataDict)
+                }            }
             
             var selectedLeadLandingPagesdict = Array<Any>()
             if let leadCreateCell = leadCreateCell {
@@ -139,26 +150,12 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
             self.view.ShowSpinner()
             viewModel?.createTriggerDataMethodEdit(triggerDataParms: urlParameter, selectedTriggerid: triggerId ?? 0)
         } else {
-            
-            if selectedTriggerTarget == "Patient" {
-                selectedTriggerTarget = "AppointmentPatient"
-            } else {
-                selectedTriggerTarget = "AppointmentClinic"
-            }
-            
             var triggerDataDictAppointment = [String: Any]()
             var isModuleSelectionTypeAppointment: String = ""
-            var triggerDataDict: Parameters = [String: Any]()
             var selectedAppointmentStatus: String = ""
             for index in 0..<(self.triggerDetailList.count) {
                 let cellIndexPath = IndexPath(row: index, section: 0)
-                var templateId: Int = 0
                 let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
-                if selectedNetworkType == "SMS" {
-                    templateId = Int(selectedSmsTemplateId) ?? 0
-                } else {
-                    templateId = Int(selectedemailTemplateId) ?? 0
-                }
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditDefaultTableViewCell else { return  }
                     patientModuleName = defaultCreateCell.userModuleName
@@ -168,45 +165,61 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                 } else if triggerDetailList.cellType == "Appointment" {
                     guard let appointmentCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditAppointmentActionTableViewCell else { return  }
                     selectedAppointmentStatus = appointmentCreateCell.appointmentSelectedStatus
-                } else if triggerDetailList.cellType == "Both" {
-                    guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerParentCreateTableViewCell else { return  }
-                    let parentTableView = bothCreateCell.getTableView()
-                    for childIndex in 0..<(bothCreateCell.finalArray.count)  {
-                        let cellChildIndexPath = IndexPath(row: childIndex, section: 0)
-                        let item = bothCreateCell.finalArray[cellChildIndexPath.row]
-                        if item.type == "Create" {
-                            guard let childCreateCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
-                            addNewcheck = item.addNew ?? false
-                            triggerTargetCheck = item.triggerTarget ?? ""
-                            triggerTypeCheck = item.triggerType ?? ""
-                            triggerDataDict = ["actionIndex": 3,
-                                               "addNew": addNewcheck,
-                                               "triggerTemplate": templateId,
-                                               "triggerType": triggerTypeCheck,
-                                               "triggerTarget": triggerTargetCheck,
-                                               "taskName": childCreateCell.taskNameTextField.text ?? ""
-                            ]
-                        } else {
-                            guard let timeCell = parentTableView.cellForRow(at: cellChildIndexPath) as? TriggerEditTimeTableViewCell else { return  }
-                            let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
-                            orderOfConditionTrigger = item.orderOfCondition ?? 0
-                            showBordercheck = item.showBorder ?? false
-                            dateTypeCheck = item.dateType ?? "NA"
-                            let timeDict: [String : Any] = [
-                                "showBorder": showBordercheck,
-                                "orderOfCondition": orderOfConditionTrigger,
-                                "dateType": dateTypeCheck,
-                                "startTime": NSNull(),
-                                "endTime": NSNull(),
-                                "triggerFrequency": isTriggerFrequency.uppercased(),
-                                "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
-                                "timerType": timeCell.timerTypeSelected,
-                                "deadline": NSNull()
-                            ]
-                            triggerDataDict.merge(withDictionary: timeDict)
-                            self.createTriggerInfo(triggerCreateData: triggerDataDict)
-                        }
+                }
+                else if triggerDetailList.cellType == "Create" {
+                    guard let childCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }
+                    
+                    var selectedTrigger: String = ""
+                    if childCreateCell.triggerTargetName == "Patient" {
+                        selectedTrigger = "AppointmentPatient"
+                    } else {
+                        selectedTrigger = "AppointmentClinic"
                     }
+                    if isAddanotherClicked == true {
+                        addNewcheckCreate = true
+                        showBordercheckCreate = false
+                        let orderCount = childCreateCell.orderOfConditionTriggerCheck
+                        if orderCount == 0 {
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 2
+                        } else {
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 1
+                        }
+                    } else {
+                        addNewcheckCreate = childCreateCell.addNewcheck
+                        showBordercheckCreate = childCreateCell.showBordercheck
+                        orderOfConditionTriggerCheckCreate = childCreateCell.orderOfConditionTriggerCheck
+                    }
+                    triggerDataDictAppointment = ["actionIndex": 3,
+                                                  "addNew": addNewcheckCreate,
+                                                  "triggerTemplate": childCreateCell.templateId,
+                                                  "triggerType": childCreateCell.networkTypeSelected,
+                                                  "triggerTarget": selectedTrigger,
+                                                  "taskName": childCreateCell.taskNameTextField.text ?? "",
+                                                  "showBorder": showBordercheckCreate,
+                                                  "orderOfCondition": orderOfConditionTriggerCheckCreate,
+                                                  "deadline": NSNull()
+                    ]
+                }
+                else if triggerDetailList.cellType == "Time" {
+                    guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditTimeTableViewCell else { return  }
+                    let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    if timeCell.scheduledBasedOnTextField.text == "Appointment Created Date" {
+                        scheduledBasedOnSelected = "APPOINTMENT_CREATED"
+                    } else if timeCell.scheduledBasedOnTextField.text == "Before Appointment Date" {
+                        scheduledBasedOnSelected = "APPOINTMENT_BEFORE"
+                    } else {
+                        scheduledBasedOnSelected = "APPOINTMENT_AFTER"
+                    }
+                    let timeDict: [String : Any] = [
+                        "dateType": scheduledBasedOnSelected,
+                        "startTime": NSNull(),
+                        "endTime": NSNull(),
+                        "triggerFrequency": isTriggerFrequency.uppercased(),
+                        "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
+                        "timerType": timeCell.timerTypeSelected,
+                    ]
+                    triggerDataDictAppointment.merge(withDictionary: timeDict)
+                    self.createTriggerInfo(triggerCreateData: triggerDataDictAppointment)
                 }
             }
             
