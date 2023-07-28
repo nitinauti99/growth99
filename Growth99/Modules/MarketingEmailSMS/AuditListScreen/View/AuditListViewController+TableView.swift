@@ -37,9 +37,9 @@ extension AuditListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AuditListTableViewCell", for: indexPath) as? AuditListTableViewCell else { return UITableViewCell() }
         cell.delegate = self
         if isSearch {
-            cell.configureCell(auditFilterList: viewModel?.getAuditListFilterData[indexPath.row], index: indexPath, isSearch: isSearch)
+            cell.configureCell(triggerModuleType: triggerModuleStr, auditFilterList: viewModel?.getAuditListFilterData[indexPath.row], index: indexPath, isSearch: isSearch)
         } else {
-            cell.configureCell(auditList:  viewModel?.getAuditListData[indexPath.row], index: indexPath, isSearch: isSearch)
+            cell.configureCell(triggerModuleType: triggerModuleStr, auditList:  viewModel?.getAuditListData[indexPath.row], index: indexPath, isSearch: isSearch)
         }
         return cell
     }

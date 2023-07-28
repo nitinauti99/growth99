@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xif-xw-TwZ">
-                        <rect key="frame" x="10" y="10" width="374" height="208.33333333333334"/>
+                        <rect key="frame" x="10" y="15" width="374" height="209"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appointment ID" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6M-L0-Ggw" userLabel="NameLbi">
                                 <rect key="frame" x="18" y="10" width="100" height="20"/>
@@ -49,19 +49,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="99784" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ar0-rz-NbI">
-                                <rect key="frame" x="138" y="45" width="196" height="14.333333333333336"/>
+                                <rect key="frame" x="138" y="45" width="196" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="r1V-1j-Pwt"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="krunal.p@yopmail.com " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuf-LL-5ur">
-                                <rect key="frame" x="138" y="74.333333333333329" width="196" height="14.333333333333329"/>
+                                <rect key="frame" x="138" y="75" width="196" height="14.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Miv-l2-unh" userLabel="CreatedDateLbi">
-                                <rect key="frame" x="18" y="74.333333333333329" width="100" height="21"/>
+                                <rect key="frame" x="18" y="75" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="c4D-cP-pes"/>
                                 </constraints>
@@ -70,7 +73,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Template Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTh-HY-M6Q" userLabel="IdLbi">
-                                <rect key="frame" x="18" y="103.66666666666667" width="100" height="20"/>
+                                <rect key="frame" x="18" y="104.33333333333333" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2c7-2f-E4O"/>
                                 </constraints>
@@ -79,13 +82,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Do you have a moment to review us?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzK-R0-bxs">
-                                <rect key="frame" x="138" y="103.66666666666667" width="196" height="28.666666666666671"/>
+                                <rect key="frame" x="138" y="104.33333333333333" width="196" height="28.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgm-qc-TxH" userLabel="LeadSaatus">
-                                <rect key="frame" x="18" y="142.33333333333334" width="100" height="20"/>
+                                <rect key="frame" x="18" y="143" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="wPC-DJ-FiW"/>
                                 </constraints>
@@ -94,14 +97,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForWordArrowLead" translatesAutoresizingMaskIntoConstraints="NO" id="j4J-Xz-epU">
-                                <rect key="frame" x="341" y="91.666666666666671" width="25" height="25"/>
+                                <rect key="frame" x="341" y="92" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="HAV-XL-Mu6"/>
                                     <constraint firstAttribute="height" constant="25" id="oha-Js-hK1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-7u-Ryp" userLabel="LeadSaatus">
-                                <rect key="frame" x="18" y="178.33333333333334" width="27.666666666666671" height="20"/>
+                                <rect key="frame" x="18" y="179" width="27.666666666666671" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="bun-hX-KCd"/>
                                 </constraints>
@@ -110,7 +113,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Jun 22 2023 1:00 PM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww2-zQ-ceA">
-                                <rect key="frame" x="138" y="178.33333333333334" width="196" height="20"/>
+                                <rect key="frame" x="138" y="179" width="196" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ARd-eO-zGe"/>
                                 </constraints>
@@ -119,7 +122,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o4l-m8-R9c">
-                                <rect key="frame" x="138" y="142.33333333333334" width="36" height="30"/>
+                                <rect key="frame" x="138" y="143" width="36" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WDc-7n-hCz"/>
                                 </constraints>
@@ -190,18 +193,23 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Xif-xw-TwZ" secondAttribute="trailing" constant="10" id="3Sf-kF-x4N"/>
-                    <constraint firstItem="Xif-xw-TwZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5yb-h9-I0v"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xif-xw-TwZ" secondAttribute="bottom" constant="10" id="712-ae-Zo7"/>
+                    <constraint firstItem="Xif-xw-TwZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="5yb-h9-I0v"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xif-xw-TwZ" secondAttribute="bottom" constant="15" id="712-ae-Zo7"/>
                     <constraint firstItem="Xif-xw-TwZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="bLn-99-Mrv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="appointmentId" destination="xLU-bE-tyf" id="kNg-AP-TuO"/>
+                <outlet property="appointmentLabel" destination="k6M-L0-Ggw" id="s7m-Kf-wNP"/>
                 <outlet property="bodyButton" destination="o4l-m8-R9c" id="eE6-Ov-8kz"/>
                 <outlet property="dateAuditLabel" destination="Ww2-zQ-ceA" id="nZs-0M-1Dr"/>
                 <outlet property="emailLabel" destination="Cuf-LL-5ur" id="6WU-y8-gll"/>
                 <outlet property="patientId" destination="ar0-rz-NbI" id="5C0-s5-4s9"/>
+                <outlet property="patientIdBottom" destination="DbE-OR-YT4" id="JMW-JV-pj8"/>
+                <outlet property="patientIdHeight" destination="r1V-1j-Pwt" id="VR6-i7-kvc"/>
+                <outlet property="patientLabel" destination="63d-TL-Htj" id="jpM-rW-wc8"/>
+                <outlet property="patientLabelHeight" destination="oUQ-Nb-8wn" id="7EQ-3m-xTK"/>
                 <outlet property="subView" destination="Xif-xw-TwZ" id="7Ic-Vy-5x0"/>
                 <outlet property="templateName" destination="YzK-R0-bxs" id="kfw-1E-XsQ"/>
             </connections>

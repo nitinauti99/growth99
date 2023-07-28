@@ -193,8 +193,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WM3-Ye-JhI">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WM3-Ye-JhI">
                                 <rect key="frame" x="138" y="199" width="51" height="31"/>
+                                <color key="onTintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="statusSwitchChanges:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kzM-1C-3Ul"/>
                                 </connections>

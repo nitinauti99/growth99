@@ -75,18 +75,21 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
             triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
             self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "009EDE")
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         } else if massEmailFilterList?.executionStatus == "SCHEDULED" && massEmailFilterList?.status == "INACTIVE" {
             deleteButton.isHidden = false
             triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
             self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         } else {
             deleteButton.isHidden = true
             triggerStatusClick = false
             self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.setOn(false, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
+            self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         }
         indexPath = index
@@ -122,19 +125,22 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
             deleteButton.isHidden = false
             triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "009EDE")
             self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         } else if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "INACTIVE" {
             deleteButton.isHidden = false
             triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.setOn(false, animated: true)
+            self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
         } else {
             deleteButton.isHidden = true
             triggerStatusClick = false
             self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.setOn(false, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
+            self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
         }
         indexPath = index

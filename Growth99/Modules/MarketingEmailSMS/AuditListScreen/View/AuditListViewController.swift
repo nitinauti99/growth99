@@ -113,9 +113,11 @@ extension AuditListViewController: AuditListTableViewCellDelegate {
     func auditBodyButtonPressed(cell: AuditListTableViewCell, index: IndexPath) {
         self.view.ShowSpinner()
         if isSearch {
-            viewModel?.getAuditDetailInformation(auditContentId: viewModel?.getAuditListFilterDataAtIndex(index: index.row)?.contentId ?? 0)
+            let typeStr = viewModel?.getAuditListFilterDataAtIndex(index: index.row)?.label ?? ""
+            viewModel?.getAuditDetailInformation(triggerType: typeStr, auditContentId: viewModel?.getAuditListFilterDataAtIndex(index: index.row)?.contentId ?? 0)
         } else {
-            viewModel?.getAuditDetailInformation(auditContentId: viewModel?.getAuditListDataAtIndex(index: index.row)?.contentId ?? 0)
+            let typeStr = viewModel?.getAuditListDataAtIndex(index: index.row)?.label ?? ""
+            viewModel?.getAuditDetailInformation(triggerType: typeStr.lowercased(), auditContentId: viewModel?.getAuditListDataAtIndex(index: index.row)?.contentId ?? 0)
         }
     }
 }

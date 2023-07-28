@@ -185,7 +185,7 @@ struct EndPoints {
     static let deletePost = "/api/socialMediaPost/"
     static let clinicsDefault = "/api/v1/clinics/default"
     static let leadViewTemplate = "/api/v1/audit/lead/json/content?id="
-
+    static let triggerAudit = "/api/v1/audit/"
 }
 
 struct ApiUrl {
@@ -218,7 +218,7 @@ struct ApiUrl {
     static let leadCreation = EndPoints.baseURL.appending(EndPoints.leadCreation)
     static let auditleadCreation = EndPoints.baseURL.appending(EndPoints.auditleadCreation)
     static let leadViewTemplate = EndPoints.baseURL.appending(EndPoints.leadViewTemplate)
-
+    static let triggerAudit = EndPoints.baseURL.appending(EndPoints.triggerAudit)
 
     //patients api end Point
     static let patientsList = EndPoints.baseURL.appending(EndPoints.patientsList)

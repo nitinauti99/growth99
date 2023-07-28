@@ -24,7 +24,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             cell.delegate = self
             moduleNameEdit = viewModelEdit?.getMassSMSTriggerEditListData?.name ?? ""
             cell.massEmailSMSTextField.text = viewModelEdit?.getMassSMSTriggerEditListData?.name ?? ""
-            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.massEmailSMSTextField.isEnabled = false
                 cell.defaultNextButton.isEnabled = false
                 cell.defaultNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
@@ -65,7 +65,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 cell.patientBtn.isSelected = false
                 cell.bothBtn.isSelected = false
             }
-            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.leadBtn.isUserInteractionEnabled = false
                 cell.patientBtn.isUserInteractionEnabled = false
                 cell.bothBtn.isUserInteractionEnabled = false
@@ -111,7 +111,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 cell.leadTagTextField.text = leadTagsArrayEdit.map({$0.name ?? ""}).joined(separator: ",")
                 selectedLeadTagsEdit = leadTagsArrayEdit
             }
-            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.leadStatusButton.isUserInteractionEnabled = false
                 cell.leadSourceButton.isUserInteractionEnabled = false
                 cell.leadTagButton.isUserInteractionEnabled = false
@@ -169,7 +169,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 cell.patientTagTextField.text = patientTagsArrayEdit.map({$0.name ?? ""}).joined(separator: ",")
                 selectedPatientTagsEdit = patientTagsArrayEdit
             }
-            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.patientStatusButton.isUserInteractionEnabled = false
                 cell.patientTagButton.isUserInteractionEnabled = false
                 cell.patientAppointmentStatusButton.isUserInteractionEnabled = false
@@ -244,7 +244,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 }
             }
             
-            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.smsBtn.isUserInteractionEnabled = false
                 cell.emailBtn.isUserInteractionEnabled = false
                 cell.selectNetworkButton.isUserInteractionEnabled = false
@@ -271,12 +271,16 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             let str: String = (dateTrigger) + " " + (timeTrigger)
             selectedTimeSlotEdit = convertDateString(inputDateString: str)
             cell.configureCell(massSMSTriggerEditListData: viewModelEdit?.getMassSMSTriggerEditListData, tableView: emailAndSMSTableViewEdit, index: indexPath)
-            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" {
+            if viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "COMPLETED" || viewModelEdit?.getMassSMSTriggerEditListData?.executionStatus == "FAILED" {
                 cell.massSMSTriggerDateTextField.isEnabled = false
                 cell.massSMSTriggerDateTextField.isEnabled = false
+                cell.massSMSTriggerTimeTextField.isEnabled = false
+                cell.massSMSTriggerTimeTextField.isEnabled = false
             } else {
                 cell.massSMSTriggerDateTextField.isEnabled = true
                 cell.massSMSTriggerDateTextField.isEnabled = true
+                cell.massSMSTriggerTimeTextField.isEnabled = true
+                cell.massSMSTriggerTimeTextField.isEnabled = true
             }
             return cell
         }

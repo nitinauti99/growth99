@@ -391,7 +391,7 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
         if smsEmailModuleSelectionType == "patient" {
             cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0))"
         } else if smsEmailModuleSelectionType == "lead" {
-            cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0))"
+            cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSLeadCountData?.emailCount ?? 0))"
         } else {
             let emailCount = (viewModel?.getmassEmailSMSLeadAllCountData?.emailCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.emailCount ?? 0)
             cell.smsEmailCountTextLabel.text = "Email count: \(emailCount)"

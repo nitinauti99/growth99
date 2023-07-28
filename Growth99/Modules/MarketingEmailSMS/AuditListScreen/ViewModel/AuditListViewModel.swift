@@ -10,7 +10,7 @@ import Foundation
 protocol AuditListViewModelProtocol {
     func getAuditInformation(auditId: Int, communicationType: String, triggerModule: String)
     func getAuditListFilterData(searchText: String)
-    func getAuditDetailInformation(auditContentId: Int) 
+    func getAuditDetailInformation(triggerType: String, auditContentId: Int)
     func getAuditListDataAtIndex(index: Int)-> AuditListModel?
     func getAuditListFilterDataAtIndex(index: Int)-> AuditListModel?
     var  getAuditListData: [AuditListModel] { get }
@@ -41,8 +41,9 @@ class AuditListViewModel {
         }
     }
     
-    func getAuditDetailInformation(auditContentId: Int) {
-        self.requestManager.request(forPath: ApiUrl.leadViewTemplate.appending("\(auditContentId)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
+    func getAuditDetailInformation(triggerType: String, auditContentId: Int) {
+        let urlString = "\(triggerType)/json/content?id=\(auditContentId)"
+        self.requestManager.request(forPath: ApiUrl.triggerAudit.appending("\(urlString)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
             switch result {
             case .success(let list):
                 self.delegate?.auditListDetailInfoDataRecived(htmlContent: list.leadAuditContent ?? "")
