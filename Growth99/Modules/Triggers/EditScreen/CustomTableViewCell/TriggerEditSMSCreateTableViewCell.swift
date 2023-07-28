@@ -63,7 +63,8 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     var addNewcheck: Bool = false
     var showBordercheck: Bool = false
     var orderOfConditionTriggerCheck: Int = 0
-    
+    var isNewCellCreated: Bool = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.subView.createBorderForView(redius: 8, width: 1)
@@ -88,7 +89,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             self.taskBtn.isHidden = true
             self.taskLabel.isHidden = true
         }
-        
+        isNewCellCreated = true
         self.createNextButton.isHidden = false
     }
     
@@ -183,6 +184,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
                 self.assignTaskNetworkTF.text = ""
             }
         }
+        isNewCellCreated = false
         addNewcheck = triggerEditData?.addNew ?? false
         showBordercheck = triggerEditData?.showBorder ?? false
         orderOfConditionTriggerCheck = triggerEditData?.orderOfCondition ?? 0

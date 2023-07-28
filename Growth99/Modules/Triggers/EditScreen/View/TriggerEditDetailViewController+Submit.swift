@@ -60,18 +60,22 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                     } else {
                         selectedTrigger = "lead"
                     }
-                    if isAddanotherClicked == true {
+                    if childCreateCell.isNewCellCreated == true {
                         addNewcheckCreate = true
                         showBordercheckCreate = false
-                        let orderCount = childCreateCell.orderOfConditionTriggerCheck
+                        let orderCount = orderOfConditionTriggerCheckCreate
                         if orderCount == 0 {
-                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 2
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTriggerCheckCreate + 2
                         } else {
-                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 1
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTriggerCheckCreate + 1
                         }
                     } else {
                         addNewcheckCreate = childCreateCell.addNewcheck
-                        showBordercheckCreate = childCreateCell.showBordercheck
+                        if manageBorder == true {
+                            showBordercheckCreate = true
+                        } else {
+                            showBordercheckCreate = childCreateCell.showBordercheck
+                        }
                         orderOfConditionTriggerCheckCreate = childCreateCell.orderOfConditionTriggerCheck
                     }
                     
@@ -192,18 +196,22 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                     } else {
                         selectedTrigger = "AppointmentClinic"
                     }
-                    if isAddanotherClicked == true {
+                    if childCreateCell.isNewCellCreated == true {
                         addNewcheckCreate = true
                         showBordercheckCreate = false
-                        let orderCount = childCreateCell.orderOfConditionTriggerCheck
+                        let orderCount = orderOfConditionTriggerCheckCreate
                         if orderCount == 0 {
-                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 2
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTriggerCheckCreate + 2
                         } else {
-                            orderOfConditionTriggerCheckCreate = orderOfConditionTrigger + 1
+                            orderOfConditionTriggerCheckCreate = orderOfConditionTriggerCheckCreate + 1
                         }
                     } else {
                         addNewcheckCreate = childCreateCell.addNewcheck
-                        showBordercheckCreate = childCreateCell.showBordercheck
+                        if manageBorder == true {
+                            showBordercheckCreate = true
+                        } else {
+                            showBordercheckCreate = childCreateCell.showBordercheck
+                        }
                         orderOfConditionTriggerCheckCreate = childCreateCell.orderOfConditionTriggerCheck
                     }
                     triggerDataDictAppointment = ["actionIndex": 3,

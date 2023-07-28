@@ -74,9 +74,11 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
                 // Check if createDataIndex is within valid range
                 if createDataIndex >= 0, let triggerData = viewModel?.getTriggerEditListData?.triggerData?[createDataIndex] {
                     cell.configureCell(index: indexPath, triggerEditData: triggerData, parentViewModel: viewModel, viewController: self, moduleSelectionTypeTrigger: moduleSelectionType)
+                    manageBorder = false
                 }
             } else {
                 cell.configureCellCreate(index: indexPath, moduleSelectionTypeTrigger: moduleSelectionType)
+                manageBorder = true
             }
             return cell
         }
