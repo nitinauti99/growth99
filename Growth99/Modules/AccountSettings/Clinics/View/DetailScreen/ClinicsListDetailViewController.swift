@@ -477,7 +477,7 @@ class ClinicsListDetailViewController: UIViewController, ClinicsDetailListVCProt
                 fatalError("Failed to load BaseTabbarViewController from storyboard.")
             }
             webView.webViewUrlString = URL.absoluteString
-            webView.webViewTitle = self.title ?? String.blank
+            webView.webViewTitle = "BOOK APPOINTMENT"
             self.navigationController?.pushViewController(webView, animated: true)
         }
         return false
