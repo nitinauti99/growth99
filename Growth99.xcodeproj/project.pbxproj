@@ -417,7 +417,6 @@
 		189E3F1429C3980900B94190 /* PostCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */; };
 		189E3F1529C3980900B94190 /* PostCalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0D29C3980900B94190 /* PostCalenderModel.swift */; };
 		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
-		254D77912A50135E007941CB /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */; };
 		254D77A62A5AD996007941CB /* CalenderEditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */; };
 		254D77A72A5AD996007941CB /* CalenderEventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */; };
 		254D77A82A5AD996007941CB /* CalenderEventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */; };
@@ -435,6 +434,7 @@
 		254D77BF2A658F27007941CB /* TriggerEditDetailViewController+Submit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77BE2A658F27007941CB /* TriggerEditDetailViewController+Submit.swift */; };
 		254D77C12A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */; };
 		254D77C32A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */; };
+		254D77C72A752C43007941CB /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
@@ -1387,7 +1387,6 @@
 		189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderViewModel.swift; sourceTree = "<group>"; };
 		189E3F0D29C3980900B94190 /* PostCalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderModel.swift; sourceTree = "<group>"; };
 		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEditEventViewModel.swift; sourceTree = "<group>"; };
 		254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEventEditViewController.swift; sourceTree = "<group>"; };
 		254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalenderEventEditViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -1405,6 +1404,7 @@
 		254D77BE2A658F27007941CB /* TriggerEditDetailViewController+Submit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggerEditDetailViewController+Submit.swift"; sourceTree = "<group>"; };
 		254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+TableViewExtention.swift"; sourceTree = "<group>"; };
 		254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostCalendarViewController+TableViewExtension.swift"; sourceTree = "<group>"; };
+		254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -4104,7 +4104,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */,
-				254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */,
+				254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -7328,6 +7328,7 @@
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
+				254D77C72A752C43007941CB /* PostCalendarTableViewCell.xib in Resources */,
 				01301E5F2A54908E00A59B52 /* PateintsViewTemplateController.xib in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
 				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
@@ -7384,7 +7385,6 @@
 				01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */,
 				017D571929AF5F1900D6A5A4 /* DisplayQuestionnaireViewContoller.storyboard in Resources */,
 				84D062A42967070D001FE469 /* UserListTableViewCell.xib in Resources */,
-				254D77912A50135E007941CB /* PostCalendarTableViewCell.xib in Resources */,
 				01684C6B29BE10D000DE1041 /* CreateSMSTemplateViewController.storyboard in Resources */,
 				1883F12829C7571E0080997B /* countries.json in Resources */,
 				18491DB529B80CE000FE72EF /* MassEmailandSMSModuleTableViewCell.xib in Resources */,

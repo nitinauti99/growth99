@@ -66,12 +66,12 @@ class PostCalendarViewController: UIViewController, PostCalendarViewContollerPro
         addAppointmnetView.layer.cornerRadius = 10
         postCalendarViewModel = PostCalendarViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name("EventCreated"), object: nil)
-        getPostCalendarList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpNavigationBar()
+        getPostCalendarList()
         calendarSegmentControl.selectedSegmentIndex = 0
         eventTypeSelected = Constant.EventTypeSelected.upcoming.rawValue
         scrollToTop(of: calendarscrollview, animated: true)
@@ -113,6 +113,12 @@ class PostCalendarViewController: UIViewController, PostCalendarViewContollerPro
         return dateformat.string(from: date)
     }
     
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
+        return formatter
+    }()
+    
     func scrollViewHeight() {
         calendarScrollViewHight.constant = tableViewHeight + 800
     }
@@ -151,18 +157,12 @@ class PostCalendarViewController: UIViewController, PostCalendarViewContollerPro
             break;
         }
     }
-    
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
-        return formatter
-    }()
 }
 
 extension PostCalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        _ = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }

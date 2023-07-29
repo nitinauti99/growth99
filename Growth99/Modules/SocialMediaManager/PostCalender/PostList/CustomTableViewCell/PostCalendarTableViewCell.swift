@@ -13,7 +13,7 @@ class PostCalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var shortDateBtn: UIButton!
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editButton: UIImageView!
     @IBOutlet weak var postLineView: UIView!
     var postCalendarViewModel: PostCalendarViewModelProtocol?
     

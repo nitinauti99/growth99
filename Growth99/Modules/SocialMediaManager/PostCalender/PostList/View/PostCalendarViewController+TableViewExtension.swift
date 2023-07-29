@@ -54,43 +54,49 @@ extension PostCalendarViewController:  UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let firstSection = sections.first, !firstSection.headlines.isEmpty else {
+        if sections.count == 0  {
             return 1
+        } else {
+            let section = self.sections[section]
+            let selectedEventType = Constant.EventTypeSelected(rawValue: eventTypeSelected)
+            switch selectedEventType {
+            case .upcoming:
+                return section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() > Date() }).count
+            case .past:
+                return section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).count
+            case .all:
+                return section.headlines.count
+            case .none:
+                return 0
+            }
         }
-        let currentDate = Date()
-        let filteredHeadlines: [PostCalendarListModel]
-        switch eventTypeSelected {
-        case Constant.EventTypeSelected.upcoming.rawValue:
-            filteredHeadlines = firstSection.headlines.filter { $0.scheduledDate?.toDate() ?? currentDate > currentDate }
-        case Constant.EventTypeSelected.past.rawValue:
-            filteredHeadlines = firstSection.headlines.filter { $0.scheduledDate?.toDate() ?? currentDate < currentDate }
-        default:
-            filteredHeadlines = firstSection.headlines
-        }
-        return filteredHeadlines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         if sections.isEmpty {
             return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
         } else {
             let section = self.sections[indexPath.section]
             let headline = section.headlines[indexPath.row]
-            let isUpcoming = eventTypeSelected == Constant.EventTypeSelected.upcoming.rawValue
-            let isPast = eventTypeSelected == Constant.EventTypeSelected.past.rawValue
-            let filteredHeadlines: [PostCalendarListModel]
-            if isUpcoming {
-                filteredHeadlines = section.headlines.filter { ($0.scheduledDate?.toDate() ?? Date()) > Date() }
-            } else if isPast {
-                filteredHeadlines = section.headlines.filter { ($0.scheduledDate?.toDate() ?? Date()) < Date() }
+            if eventTypeSelected == Constant.EventTypeSelected.upcoming.rawValue {
+                if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() > Date() }).isEmpty {
+                    return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
+                } else {
+                    return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
+                }
+            } else if eventTypeSelected == Constant.EventTypeSelected.past.rawValue {
+                if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).isEmpty {
+                    return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
+                } else {
+                    return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
+                }
             } else {
-                filteredHeadlines = section.headlines
-            }
-            
-            if filteredHeadlines.isEmpty {
-                return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
-            } else {
-                return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
+                if section.headlines.isEmpty {
+                    return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
+                } else {
+                    return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
+                }
             }
         }
     }
@@ -129,6 +135,6 @@ extension PostCalendarViewController:  UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 172
+        return 200
     }
 }
