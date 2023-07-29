@@ -32,8 +32,23 @@ class PostCalendarTableViewCell: UITableViewCell {
         self.statusButton.setTitle(headline.approved ?? false ? "Approved" : "Pending", for: .normal)
         self.statusButton.titleLabel?.textColor = headline.approved ?? false ? UIColor(hexString: "52afff") : UIColor.red
         self.statusButton.layer.borderColor = headline.approved ?? false ? UIColor(hexString: "52afff").cgColor : UIColor.red.cgColor
-        self.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
+        self.timeLabel.text = convertTo12HourFormat(headline.scheduledDate ?? "")
         self.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
         self.selectionStyle = .none
+    }
+    
+    func convertTo12HourFormat(_ dateString: String) -> String {
+        let timeZone =  UserRepository.shared.timeZone
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "hh:mm a"
+            outputFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            return outputFormatter.string(from: date)
+        } else {
+            return "Invalid date format."
+        }
     }
 }

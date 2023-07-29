@@ -23,7 +23,7 @@ protocol ServiceListViewModelProtocol {
 
 class ServiceListViewModel {
     var delegate: ServicesListViewContollerProtocol?
-   
+    
     var serviceList: [ServiceList] = []
     var serviceFilterData: [ServiceList] = []
     
@@ -45,7 +45,7 @@ class ServiceListViewModel {
             }
         }
     }
-
+    
     func removeSelectedCService(serviceId: Int) {
         let finaleUrl = ApiUrl.editService.appending("\(serviceId)")
         self.requestManager.request(forPath: finaleUrl, method: .DELETE, headers: self.requestManager.Headers()) {  [weak self] result in
@@ -56,7 +56,7 @@ class ServiceListViewModel {
                     self.delegate?.serviceRemovedSuccefully(message: "Service deleted successfully")
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "This service is associated with appointments. Please change those appointments to delete this service")
-                } else{
+                } else {
                     self.delegate?.errorReceived(error: "response failed")
                 }
             case .failure(let error):
@@ -68,7 +68,7 @@ class ServiceListViewModel {
 }
 
 extension ServiceListViewModel: ServiceListViewModelProtocol {
-
+    
     func getServiceFilterData(searchText: String) {
         self.serviceFilterData = self.getServiceListData.filter { task in
             let searchText = searchText.lowercased()
@@ -89,8 +89,8 @@ extension ServiceListViewModel: ServiceListViewModelProtocol {
     var getServiceListData: [ServiceList] {
         return self.serviceList
     }
-   
+    
     var getServiceFilterListData: [ServiceList] {
-         return self.serviceFilterData
+        return self.serviceFilterData
     }
 }

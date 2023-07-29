@@ -10,11 +10,12 @@ import UIKit
 protocol CategoriesListViewContollerProtocol: AnyObject {
     func CategoriesDataRecived()
     func errorReceived(error: String)
-    func categoriesRemovedSuccefully(message: String)
+    func categoriesRemovedSuccefully(categorySelectedId: Int)
+    func selecetedCategoriesRemovedSuccefully(message: String)
 }
 
 class CategoriesListViewController: UIViewController, CategoriesListViewContollerProtocol {
-    
+   
     @IBOutlet private weak var categoriesListTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
@@ -176,7 +177,11 @@ extension CategoriesListViewController: CategoriesListCellDelegate {
         }
     }
     
-    func categoriesRemovedSuccefully(message: String){
+    func categoriesRemovedSuccefully(categorySelectedId: Int) {
+        viewModel?.deleteSelectedCategorie(categorieId: categorySelectedId)
+    }
+    
+    func selecetedCategoriesRemovedSuccefully(message: String) {
         self.view.showToast(message: message, color: UIColor().successMessageColor())
         self.getCategoriesList()
     }

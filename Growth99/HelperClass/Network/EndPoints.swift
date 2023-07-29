@@ -58,6 +58,7 @@ struct EndPoints {
     static let categoriesList = "/api/v1/serviceCategories/all"
     static let createCategories = "/api/servicecategories"
     static let deleteCategories = "/api/servicecategories/"
+    static let deleteCheckCategories = "/api/services/category/"
     static let createService = "/api/services"
     static let editService = "/api/services/"
     static let getAllServices = "/api/v1/services/all"
@@ -365,5 +366,6 @@ struct ApiUrl {
     static let themColor = EndPoints.baseURL.appending(EndPoints.themColor)
     static let auditInformation = EndPoints.baseURL.appending(EndPoints.auditInformation)
     static let auditDetailInformation = EndPoints.baseURL.appending(EndPoints.auditDetailInformation)
+    static let deleteCheckCategories = EndPoints.baseURL.appending(EndPoints.deleteCheckCategories)
 }
 

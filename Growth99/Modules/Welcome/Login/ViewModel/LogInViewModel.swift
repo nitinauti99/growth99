@@ -83,7 +83,7 @@ class LogInViewModel {
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
                 if error.response?.statusCode == 401 {
-                    self.delegate?.errorReceived(error: "The email or password is incorrect. Please check and try again.")
+                    self.delegate?.errorReceived(error: "Entered email or password is incorrect please enter your valid credentials.")
                 } else {
                     self.delegate?.errorReceived(error: error.localizedDescription)
                 }
