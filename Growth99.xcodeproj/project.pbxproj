@@ -433,6 +433,8 @@
 		254D77BB2A658E5F007941CB /* TriggerEditDetailViewController+TriggerEditCreateCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77BA2A658E5F007941CB /* TriggerEditDetailViewController+TriggerEditCreateCellDelegate.swift */; };
 		254D77BD2A658E9F007941CB /* TriggerEditDetailViewController+TriggerEditDefaultCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77BC2A658E9F007941CB /* TriggerEditDetailViewController+TriggerEditDefaultCellDelegate.swift */; };
 		254D77BF2A658F27007941CB /* TriggerEditDetailViewController+Submit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77BE2A658F27007941CB /* TriggerEditDetailViewController+Submit.swift */; };
+		254D77C12A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */; };
+		254D77C32A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
@@ -1401,6 +1403,8 @@
 		254D77BA2A658E5F007941CB /* TriggerEditDetailViewController+TriggerEditCreateCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggerEditDetailViewController+TriggerEditCreateCellDelegate.swift"; sourceTree = "<group>"; };
 		254D77BC2A658E9F007941CB /* TriggerEditDetailViewController+TriggerEditDefaultCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggerEditDetailViewController+TriggerEditDefaultCellDelegate.swift"; sourceTree = "<group>"; };
 		254D77BE2A658F27007941CB /* TriggerEditDetailViewController+Submit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TriggerEditDetailViewController+Submit.swift"; sourceTree = "<group>"; };
+		254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+TableViewExtention.swift"; sourceTree = "<group>"; };
+		254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostCalendarViewController+TableViewExtension.swift"; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -4090,6 +4094,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D834B62A1FDA9700A60443 /* PostCalendarViewController.swift */,
+				254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */,
 				D0D834B72A1FDA9700A60443 /* PostCalendarViewController.storyboard */,
 			);
 			path = View;
@@ -4098,8 +4103,8 @@
 		189E3F1129C3980900B94190 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */,
 				D0D834BB2A1FDC4200A60443 /* PostCalendarTableViewCell.swift */,
+				254D77902A50135E007941CB /* PostCalendarTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -4208,6 +4213,7 @@
 			isa = PBXGroup;
 			children = (
 				3947A8D52996776D000CA2EB /* CalenderViewController.swift */,
+				254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4215,10 +4221,10 @@
 		3947A8D62996776D000CA2EB /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				3947A8D72996776D000CA2EB /* EmptyEventsTableViewCell.swift */,
 				3947A8D82996776D000CA2EB /* EventsTableViewCell.swift */,
-				3947A8D92996776D000CA2EB /* EmptyEventsTableViewCell.xib */,
 				3947A8DA2996776E000CA2EB /* EventsTableViewCell.xib */,
+				3947A8D72996776D000CA2EB /* EmptyEventsTableViewCell.swift */,
+				3947A8D92996776D000CA2EB /* EmptyEventsTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -7944,6 +7950,7 @@
 				39F904DF299A895300666C85 /* ClassIdentifiable.swift in Sources */,
 				849004A02986934C00A271AA /* PateintsTagListModel.swift in Sources */,
 				842C0CB7298F713B00395061 /* PatientAppointmentListTableViewCell.swift in Sources */,
+				254D77C32A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift in Sources */,
 				01B2F63029E1DB700071384E /* EditTasksViewController+TextField.swift in Sources */,
 				01152E0E29B38C7100B24627 /* PateintsTagsListViewController+SearchBar.swift in Sources */,
 				84F61125292A71AB00B1FB69 /* Data+Extension.swift in Sources */,
@@ -8020,6 +8027,7 @@
 				1896709529BA5E62003224ED /* LeadTriggersTableViewCell.swift in Sources */,
 				018C65272A3984DF008F20C3 /* LeadCreationCombineTimeLineTableViewCell.swift in Sources */,
 				84D0623829670677001FE469 /* PateintDetailViewController+Tableview.swift in Sources */,
+				254D77C12A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift in Sources */,
 				398F90FF298ECB8700DB96E4 /* IQNSArray+Sort.swift in Sources */,
 				845C39D2292276AF00D934C5 /* KYDrawerController.swift in Sources */,
 				84D0628129670677001FE469 /* RegistrationViewController.swift in Sources */,

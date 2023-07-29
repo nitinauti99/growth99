@@ -232,4 +232,10 @@ struct Constant {
         static let CalendarViewController = "CalendarViewController"
         static let massEmailandSMSDetailVC = "MassEmailandSMSDetailViewController"
     }
+    
+    enum EventTypeSelected: String {
+        case upcoming
+        case past
+        case all
+    }
 }

@@ -36,12 +36,12 @@ struct MonthSection {
     }
 }
 
-class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CalendarViewContollerProtocol, FSCalendarDataSource, FSCalendarDelegate {
+class CalendarViewController: UIViewController, CalendarViewContollerProtocol  {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var eventListView: UITableView!
+    @IBOutlet weak var eventListView: UITableView!
     @IBOutlet var calendarscrollview: UIScrollView!
     @IBOutlet var calendarScrollViewHight: NSLayoutConstraint!
     
@@ -49,15 +49,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private weak var servicesTextField: CustomTextField!
     @IBOutlet private weak var providersTextField: CustomTextField!
     @IBOutlet private weak var addAppointmnetView: UIView!
-    
     @IBOutlet private weak var calendarSegmentControl: UISegmentedControl!
-    
-    var time = Date()
-    var titles: [String] = []
-    var startDates: [Date] = []
-    var endDates: [Date] = []
-    var defaultCalendar: String = Constant.Profile.CalendarDefault
-    
+        
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
@@ -73,28 +66,17 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     var appoinmentListData = [AppointmentDTOList]()
     var calendarViewModel: CalendarViewModelProtocol?
     
-    var eventTypeSelected: String = "upcoming"
-    var dateFormater : DateFormaterProtocol?
+    var eventTypeSelected: String = Constant.EventTypeSelected.upcoming.rawValue
     var sections = [MonthSection]()
-    
-    var tableViewHeight: CGFloat {
-        eventListView.layoutIfNeeded()
-        return eventListView.contentSize.height
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.calendar.select(Date())
-        dateFormater = DateFormater()
         calendarViewModel = CalendarViewModel(delegate: self)
         self.calendar.scope = .month
-        eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
-        eventListView.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
+        tableViewCellRegister()
+        segementControlUI()
         addAppointmnetView.layer.cornerRadius = 10
-        
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name("EventCreated"), object: nil)
     }
     
@@ -102,7 +84,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
         setUpNavigationBar()
         calendarSegmentControl.selectedSegmentIndex = 0
-        eventTypeSelected = "upcoming"
+        eventTypeSelected = Constant.EventTypeSelected.upcoming.rawValue
         clincsTextField.text = ""
         providersTextField.text = ""
         servicesTextField.text = ""
@@ -112,9 +94,23 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         eventListView.reloadData()
     }
     
+    func setUpNavigationBar() {
+        self.title = Constant.Profile.Calendar
+    }
+    
     func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
         let topOffset = CGPoint(x: 0, y: -100)
         scrollView.setContentOffset(topOffset, animated: animated)
+    }
+    
+    func getClinicsData() {
+        self.view.ShowSpinner()
+        calendarViewModel?.getallClinics()
+    }
+    
+    var tableViewHeight: CGFloat {
+        eventListView.layoutIfNeeded()
+        return eventListView.contentSize.height
     }
     
     @objc func notificationReceived(_ notification: Notification) {
@@ -126,12 +122,14 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         eventListView.reloadData()
     }
     
-    func setUpNavigationBar() {
-        self.title = Constant.Profile.Calendar
+    func tableViewCellRegister() {
+        eventListView.register(UINib(nibName: Constant.ViewIdentifier.eventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.eventsTableViewCell)
+        eventListView.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
     }
-    func getClinicsData() {
-        self.view.ShowSpinner()
-        calendarViewModel?.getallClinics()
+    
+    func segementControlUI() {
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     }
     
     func getFormattedDate(date: Date, format: String) -> String {
@@ -139,6 +137,12 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         dateformat.dateFormat = format
         return dateformat.string(from: date)
     }
+    
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
+        return formatter
+    }()
     
     func scrollViewHeight() {
         calendarScrollViewHight.constant = tableViewHeight + 800
@@ -181,167 +185,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.showToast(message: error, color: .red)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if sections.count == 0 {
-            return 1
-        } else {
-            return self.sections.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if sections.count != 0 {
-            let section = self.sections[section]
-            if eventTypeSelected == "upcoming" {
-                if section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date()}).count > 0 {
-                    return 21
-                }
-            } else if eventTypeSelected == "past" {
-                if section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date()}).count > 0 {
-                    return 21
-                }
-            } else if eventTypeSelected == "all" {
-                if section.headlines.count > 0 {
-                    return 21
-                }
-            }
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let section = self.sections[section]
-        if eventTypeSelected == "upcoming" {
-            if section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() }).count > 0 {
-                let date = section.month
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy"
-                
-                let myLabel = UILabel()
-                myLabel.frame = CGRect(x: 5, y: 0, width: eventListView.frame.size.width, height: 20)
-                myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                myLabel.text = dateFormatter.string(from: date)
-                let headerView = UIView()
-                headerView.addSubview(myLabel)
-                return headerView
-            }
-        } else if eventTypeSelected == "past" {
-            if section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() }).count > 0 {
-                let date = section.month
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy"
-                
-                let myLabel = UILabel()
-                myLabel.frame = CGRect(x: 5, y: 0, width: eventListView.frame.size.width, height: 20)
-                myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                myLabel.text = dateFormatter.string(from: date)
-                let headerView = UIView()
-                headerView.addSubview(myLabel)
-                return headerView
-            }
-        } else if eventTypeSelected == "all" {
-            if section.headlines.count > 0 {
-                let date = section.month
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy"
-                
-                let myLabel = UILabel()
-                myLabel.frame = CGRect(x: 5, y: 0, width: eventListView.frame.size.width, height: 20)
-                myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                myLabel.text = dateFormatter.string(from: date)
-                let headerView = UIView()
-                headerView.addSubview(myLabel)
-                return headerView
-            }
-        }
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sections.count == 0  {
-            return 1
-        } else {
-            let section = self.sections[section]
-            if eventTypeSelected == "upcoming" {
-                return section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() }).count
-            } else if sections.count > 0 && eventTypeSelected == "past" {
-                return section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() }).count
-            } else {
-                return section.headlines.count
-            }
-        }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if sections.count == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-            return cell
-        } else {
-            let section = self.sections[indexPath.section]
-            let headline = section.headlines[indexPath.row]
-            if eventTypeSelected == "upcoming" {
-                if (section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() }).count) == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                    cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].patientLastName ?? String.blank)"
-                    
-                    let startTime = dateFormater?.serverToLocalforCalender(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate ?? String.blank)
-                    
-                    let endTime = dateFormater?.serverToLocalforCalender(date: section.headlines.filter({ $0.appointmentEndDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentEndDate ?? String.blank)
-                    
-                    cell.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
-                    cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() > Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            } else if eventTypeSelected == "past" {
-                if (section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() }).count) == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                    cell.eventsTitle.text = "\(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientFirstName ?? String.blank) \(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].patientLastName ?? String.blank)"
-                    let startTime = dateFormater?.serverToLocalforCalender(date: section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate ?? String.blank)
-                    let endTime = dateFormater?.serverToLocalforCalender(date: section.headlines.filter({ $0.appointmentEndDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentEndDate ?? String.blank)
-                    cell.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
-                    cell.eventsDate.setTitle(section.headlines.filter({ $0.appointmentStartDate?.toDate() ?? Date() < Date() })[indexPath.row].appointmentStartDate?.toDate()?.toString(), for: .normal)
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            } else {
-                if section.headlines.count == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.eventsTableViewCell, for: indexPath) as? EventsTableViewCell else { return UITableViewCell() }
-                    cell.eventsTitle.text = "\(headline.patientFirstName ?? String.blank) \(headline.patientLastName ?? String.blank)"
-                    let startTime = dateFormater?.serverToLocalforCalender(date: headline.appointmentStartDate ?? String.blank)
-                    let endTime = dateFormater?.serverToLocalforCalender(date: headline.appointmentEndDate ?? String.blank)
-                    cell.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
-                    cell.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            }
-        }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = self.sections[indexPath.section]
-        let headline = section.headlines[indexPath.row]
-        let editVC = UIStoryboard(name: "CalenderEventEditViewController", bundle: nil).instantiateViewController(withIdentifier: "CalenderEventEditViewController") as! CalenderEventEditViewController
-        editVC.appointmentId = headline.id
-        editVC.editBookingHistoryData = headline
-        navigationController?.pushViewController(editVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-    
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
         let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
         addEventVC.userSelectedDate = "Manual"
@@ -351,34 +194,21 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func CalendarSegmentSelection(_ sender: Any) {
         switch calendarSegmentControl.selectedSegmentIndex {
         case 0:
-            eventTypeSelected = "upcoming"
+            eventTypeSelected = Constant.EventTypeSelected.upcoming.rawValue
             eventListView.reloadData()
         case 1:
-            eventTypeSelected = "past"
+            eventTypeSelected = Constant.EventTypeSelected.past.rawValue
             eventListView.reloadData()
         case 2:
-            eventTypeSelected = "all"
+            eventTypeSelected = Constant.EventTypeSelected.all.rawValue
             eventListView.reloadData()
         default:
             break;
         }
     }
-    
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
-        return formatter
-    }()
-    
-    internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        if monthPosition == .next || monthPosition == .previous {
-            calendar.setCurrentPage(date, animated: true)
-        }
-        let addEventVC = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil).instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as! AddEventViewController
-        addEventVC.userSelectedDate = selectedDates.first ?? String.blank
-        self.navigationController?.pushViewController(addEventVC, animated: true)
-    }
+}
+
+extension CalendarViewController {
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {
         if selectedClincs.count == 0 {
@@ -446,6 +276,21 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
+extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
+    
+    internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        if monthPosition == .next || monthPosition == .previous {
+            calendar.setCurrentPage(date, animated: true)
+        }
+        let storyboard = UIStoryboard(name: Constant.ViewIdentifier.addEventViewController, bundle: nil)
+        guard let addEventVC = storyboard.instantiateViewController(withIdentifier: Constant.ViewIdentifier.addEventViewController) as? AddEventViewController else {
+            return
+        }
+        addEventVC.userSelectedDate = selectedDates.first ?? String.blank
+        self.navigationController?.pushViewController(addEventVC, animated: true)
+    }
+}
 
 extension CalendarViewController: UIScrollViewDelegate {
     

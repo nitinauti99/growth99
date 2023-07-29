@@ -10,25 +10,19 @@ import Foundation
 protocol CalendarViewModelProtocol {
     func getallClinics()
     var  getAllClinicsData: [Clinics] { get }
-    
     func getServiceList()
     var  serviceData: [ServiceList] { get }
-    
     func sendProviderList(providerParams: Int)
     var  providerData: [UserDTOList] { get }
-    
     func getCalendarInfoList(clinicId: Int, providerId: Int, serviceId: Int)
     var  appointmentInfoListData: [AppointmentDTOList] { get }
-    
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
-    
     func appointmentListCountGreaterthan() -> Int
     func appointmentListCountLessthan() -> Int
     func convertUTCtoLocalTime(dateString: String) -> String
     func serverToLocal(date: String) -> String
 }
-
 
 class CalendarViewModel: CalendarViewModelProtocol {
     
@@ -145,7 +139,7 @@ class CalendarViewModel: CalendarViewModelProtocol {
         }
         return ""
     }
-
+    
     func timeFormatterString(textField: CustomTextField) -> String {
         timePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
         timePicker.datePickerMode = .time
@@ -187,13 +181,13 @@ class CalendarViewModel: CalendarViewModelProtocol {
         let inFormatter = DateFormatter()
         inFormatter.locale = Locale(identifier: "en_US_POSIX")
         inFormatter.dateFormat = "HH:mm:ss"
-
+        
         let outFormatter = DateFormatter()
         outFormatter.locale = Locale(identifier: "en_US_POSIX")
         outFormatter.dateFormat = "hh:mm a"
         outFormatter.amSymbol = "AM"
         outFormatter.pmSymbol = "PM"
-
+        
         let date = inFormatter.date(from: timeString) ?? Date()
         return outFormatter.string(from: date)
     }

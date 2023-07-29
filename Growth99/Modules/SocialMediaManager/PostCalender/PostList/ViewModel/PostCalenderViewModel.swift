@@ -8,13 +8,11 @@
 import Foundation
 
 protocol PostCalendarViewModelProtocol {
-   
+    
     func getPostCalendarList()
     var  postCalendarListData: [PostCalendarListModel] { get }
-    
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
-    
     func appointmentListCountGreaterthan() -> Int
     func appointmentListCountLessthan() -> Int
     func convertUTCtoLocalTime(dateString: String) -> String
@@ -22,9 +20,8 @@ protocol PostCalendarViewModelProtocol {
     func serverToLocalCalendar(date: String) -> String
 }
 
-
 class PostCalendarViewModel: PostCalendarViewModelProtocol {
-
+    
     var delegate: PostCalendarViewContollerProtocol?
     var postCalendarList: [PostCalendarListModel] = []
     
@@ -36,7 +33,7 @@ class PostCalendarViewModel: PostCalendarViewModelProtocol {
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
-   
+    
     func getPostCalendarList() {
         self.requestManager.request(forPath: ApiUrl.socialMediaPostsList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[PostCalendarListModel], GrowthNetworkError>) in
             switch result {
@@ -124,13 +121,13 @@ class PostCalendarViewModel: PostCalendarViewModelProtocol {
         let inFormatter = DateFormatter()
         inFormatter.locale = Locale(identifier: "en_US_POSIX")
         inFormatter.dateFormat = "HH:mm:ss"
-
+        
         let outFormatter = DateFormatter()
         outFormatter.locale = Locale(identifier: "en_US_POSIX")
         outFormatter.dateFormat = "hh:mm a"
         outFormatter.amSymbol = "AM"
         outFormatter.pmSymbol = "PM"
-
+        
         let date = inFormatter.date(from: timeString) ?? Date()
         return outFormatter.string(from: date)
     }

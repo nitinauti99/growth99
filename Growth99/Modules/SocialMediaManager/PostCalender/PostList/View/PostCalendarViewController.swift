@@ -33,26 +33,23 @@ struct PostCalendarMonthSection {
     }
 }
 
-
-class PostCalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PostCalendarViewContollerProtocol, FSCalendarDataSource, FSCalendarDelegate {
+class PostCalendarViewController: UIViewController, PostCalendarViewContollerProtocol {
     
+    @IBOutlet var calendarscrollview: UIScrollView!
+    @IBOutlet var calendarScrollViewHight: NSLayoutConstraint!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var postCalendarTableview: UITableView!
-    @IBOutlet var calendarscrollview: UIScrollView!
-    @IBOutlet var calendarScrollViewHight: NSLayoutConstraint!
-    @IBOutlet private weak var addAppointmnetView: UIView!
-    @IBOutlet private weak var calendarSegmentControl: UISegmentedControl!
+    @IBOutlet weak var postCalendarTableview: UITableView!
+    @IBOutlet weak var addAppointmnetView: UIView!
+    @IBOutlet weak var calendarSegmentControl: UISegmentedControl!
     
-    var time = Date()
-    var titles: [String] = []
     var startDates: [Date] = []
     var endDates: [Date] = []
     var defaultCalendar: String = Constant.Profile.CalendarDefault
     var postCalnderInfoListData = [PostCalendarListModel]()
     var postCalendarViewModel: PostCalendarViewModelProtocol?
-    var eventTypeSelected: String = "upcoming"
+    var eventTypeSelected: String = Constant.EventTypeSelected.upcoming.rawValue
     var sections = [PostCalendarMonthSection]()
     
     var tableViewHeight: CGFloat {
@@ -62,16 +59,12 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableViewCellRegister()
+        segmentControlUI()
         self.calendar.select(Date())
-        postCalendarViewModel = PostCalendarViewModel(delegate: self)
         self.calendar.scope = .month
-        postCalendarTableview.register(UINib(nibName:"PostCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "PostCalendarTableViewCell")
-        postCalendarTableview.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
         addAppointmnetView.layer.cornerRadius = 10
-        
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        postCalendarViewModel = PostCalendarViewModel(delegate: self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name("EventCreated"), object: nil)
         getPostCalendarList()
     }
@@ -80,9 +73,23 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
         super.viewWillAppear(animated)
         setUpNavigationBar()
         calendarSegmentControl.selectedSegmentIndex = 0
-        eventTypeSelected = "upcoming"
+        eventTypeSelected = Constant.EventTypeSelected.upcoming.rawValue
         scrollToTop(of: calendarscrollview, animated: true)
         postCalendarTableview.reloadData()
+    }
+    
+    func setUpNavigationBar() {
+        self.title = Constant.Profile.postCalendar
+    }
+    
+    func tableViewCellRegister() {
+        postCalendarTableview.register(UINib(nibName:"PostCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "PostCalendarTableViewCell")
+        postCalendarTableview.register(UINib(nibName: Constant.ViewIdentifier.emptyEventsTableViewCell, bundle: nil), forCellReuseIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell)
+    }
+    
+    func segmentControlUI() {
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     }
     
     func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
@@ -93,10 +100,6 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     @objc func notificationReceived(_ notification: Notification) {
         self.view.showToast(message: "Post created successfully", color: UIColor().successMessageColor())
         postCalendarTableview.reloadData()
-    }
-    
-    func setUpNavigationBar() {
-        self.title = Constant.Profile.postCalendar
     }
     
     func getPostCalendarList() {
@@ -128,188 +131,6 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
         self.view.showToast(message: error, color: .red)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if sections.count == 0 {
-            return 1
-        } else {
-            return self.sections.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if sections.count != 0 {
-            let section = self.sections[section]
-            if eventTypeSelected == "upcoming" {
-                if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() > Date()}).count > 0 {
-                    return 21
-                }
-            } else if eventTypeSelected == "past" {
-                if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date()}).count > 0 {
-                    return 21
-                }
-            } else if eventTypeSelected == "all" {
-                if section.headlines.count > 0 {
-                    return 21
-                }
-            }
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let section = self.sections[section]
-        if eventTypeSelected == "upcoming" {
-            if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() > Date() }).count > 0 {
-                let date = section.month
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy"
-                
-                let myLabel = UILabel()
-                myLabel.frame = CGRect(x: 5, y: 0, width: postCalendarTableview.frame.size.width, height: 20)
-                myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                myLabel.text = dateFormatter.string(from: date)
-                let headerView = UIView()
-                headerView.addSubview(myLabel)
-                return headerView
-            }
-        } else if eventTypeSelected == "past" {
-            
-            if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).count > 0 {
-                let date = section.month
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy"
-                
-                let myLabel = UILabel()
-                myLabel.frame = CGRect(x: 5, y: 0, width: postCalendarTableview.frame.size.width, height: 20)
-                myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                myLabel.text = dateFormatter.string(from: date)
-                let headerView = UIView()
-                headerView.addSubview(myLabel)
-                return headerView
-            }
-        } else if eventTypeSelected == "all" {
-            if section.headlines.count > 0 {
-                let date = section.month
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy"
-                let myLabel = UILabel()
-                myLabel.frame = CGRect(x: 5, y: 0, width: postCalendarTableview.frame.size.width, height: 20)
-                myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-                myLabel.text = dateFormatter.string(from: date)
-                let headerView = UIView()
-                headerView.addSubview(myLabel)
-                return headerView
-            }
-        }
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if sections.count == 0 {
-            return 1
-        } else {
-            let section = self.sections[section]
-            if eventTypeSelected == "upcoming" {
-                return section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() > Date() }).count
-            } else if sections.count > 0 && eventTypeSelected == "past" {
-                return section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).count
-            } else {
-                return section.headlines.count
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if sections.count == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-            return cell
-        } else {
-            let section = self.sections[indexPath.section]
-            let headline = section.headlines[indexPath.row]
-            if eventTypeSelected == "upcoming" {
-                if (section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() > Date() }).count) == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCalendarTableViewCell", for: indexPath) as? PostCalendarTableViewCell else { return UITableViewCell() }
-                    cell.postLabel.text = "\(headline.post ?? String.blank)"
-                    if headline.approved == true {
-                        cell.statusButton.setTitle("Approved", for: .normal)
-                        cell.statusButton.titleLabel?.textColor = UIColor(hexString: "52afff")
-                        cell.statusButton.layer.borderColor = UIColor(hexString: "52afff").cgColor
-                        
-                    } else {
-                        cell.statusButton.setTitle("Pending", for: .normal)
-                        cell.statusButton.titleLabel?.textColor = UIColor.red
-                        cell.statusButton.layer.borderColor = UIColor.red.cgColor
-                    }
-                    cell.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
-                    cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            } else if eventTypeSelected == "past" {
-                if (section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).count) == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCalendarTableViewCell", for: indexPath) as? PostCalendarTableViewCell else { return UITableViewCell() }
-                    cell.postLabel.text = "\(headline.post ?? String.blank)"
-                    if headline.approved == true {
-                        cell.statusButton.setTitle("Approved", for: .normal)
-                        cell.statusButton.titleLabel?.textColor = UIColor(hexString: "52afff")
-                        cell.statusButton.layer.borderColor = UIColor(hexString: "52afff").cgColor
-                        
-                    } else {
-                        cell.statusButton.setTitle("Pending", for: .normal)
-                        cell.statusButton.titleLabel?.textColor = UIColor.red
-                        cell.statusButton.layer.borderColor = UIColor.red.cgColor
-                    }
-                    cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
-                    cell.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            } else {
-                if section.headlines.count == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ViewIdentifier.emptyEventsTableViewCell, for: indexPath) as? EmptyEventsTableViewCell else { return UITableViewCell() }
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCalendarTableViewCell", for: indexPath) as? PostCalendarTableViewCell else { return UITableViewCell() }
-                    cell.postLabel.text = "\(headline.post ?? String.blank)"
-                    if headline.approved == true {
-                        cell.statusButton.setTitle("Approved", for: .normal)
-                        cell.statusButton.titleLabel?.textColor = UIColor(hexString: "52afff")
-                        cell.statusButton.layer.borderColor = UIColor(hexString: "52afff").cgColor
-                        
-                    } else {
-                        cell.statusButton.setTitle("Pending", for: .normal)
-                        cell.statusButton.titleLabel?.textColor = UIColor.red
-                        cell.statusButton.layer.borderColor = UIColor.red.cgColor
-                    }
-                    cell.timeLabel.text = postCalendarViewModel?.convertUTCtoLocalTime(dateString: headline.scheduledDate ?? "")
-                    cell.shortDateBtn.setTitle(headline.scheduledDate?.toDate()?.toString(), for: .normal)
-                    cell.selectionStyle = .none
-                    return cell
-                }
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = self.sections[indexPath.section]
-        let headline = section.headlines[indexPath.row]
-        let editPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
-        editPostVC.screenName = "Edit"
-        editPostVC.postId = headline.id ?? 0
-        self.navigationController?.pushViewController(editPostVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 172
-    }
-    
     @IBAction func addAppointmentButtonAction(sender: UIButton) {
         let createPostVC = UIStoryboard(name: "CreatePostViewController", bundle: nil).instantiateViewController(withIdentifier: "CreatePostViewController") as! CreatePostViewController
         self.navigationController?.pushViewController(createPostVC, animated: true)
@@ -318,13 +139,13 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func CalendarSegmentSelection(_ sender: Any) {
         switch calendarSegmentControl.selectedSegmentIndex {
         case 0:
-            eventTypeSelected = "upcoming"
+            eventTypeSelected = Constant.EventTypeSelected.upcoming.rawValue
             postCalendarTableview.reloadData()
         case 1:
-            eventTypeSelected = "past"
+            eventTypeSelected = Constant.EventTypeSelected.past.rawValue
             postCalendarTableview.reloadData()
         case 2:
-            eventTypeSelected = "all"
+            eventTypeSelected = Constant.EventTypeSelected.all.rawValue
             postCalendarTableview.reloadData()
         default:
             break;
@@ -336,6 +157,9 @@ class PostCalendarViewController: UIViewController, UITableViewDelegate, UITable
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss Z"
         return formatter
     }()
+}
+
+extension PostCalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     internal func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
