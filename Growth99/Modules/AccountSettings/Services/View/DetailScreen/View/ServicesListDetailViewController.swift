@@ -82,7 +82,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var serviceClinic: Clinic?
     var servicesAddViewModel: ServiceListDetailViewModelProtocol?
     
-    var imageRemoved: Bool = true
+    var imageRemoved: Bool = false
     var isPreBookingCostAllowed: Bool = false
     var showInPublicBooking: Bool = false
     var priceVaries: Bool = false
@@ -152,7 +152,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceUrlTextField.text = servicesAddViewModel?.getUserSelectedServiceData?.serviceURL ?? String.blank
         depositCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.preBookingCost ?? 0.0)
         serviceDescTextView.text = servicesAddViewModel?.getUserSelectedServiceData?.description
-        
+        hidePriceVaries =  servicesAddViewModel?.getUserSelectedServiceData?.priceVaries ?? false
         userConsents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
         serviceConsentTextField.text = userConsents.map({$0.name ?? String.blank}).joined(separator: ", ")
         for item in userConsents {
@@ -498,6 +498,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         
         guard let serviceCategory = serviceCategoryTextField.text, !serviceCategory.isEmpty else {
             serviceCategoryTextField.showError(message: "Service Category is required.")
+            return
+        }
+        
+        guard let depostCostTF = depositCostTextField.text, !depostCostTF.isEmpty else {
+            depositCostTextField.showError(message: "Please enter deposit cost.")
             return
         }
         
