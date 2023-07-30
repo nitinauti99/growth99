@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSource {
-        
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "VacationsHeadeView") as! VacationsHeadeView
@@ -23,9 +23,9 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
             headerView.dateFromTextField.text = String.blank
             headerView.dateToTextField.text = String.blank
         }
-       
+        
         headerView.buttondateFromTextFieldCallback = { [weak self] (textFiled) in
-           
+            
             if let headerView = self?.vacationsListTableView.headerView(forSection: section) as? VacationsHeadeView {
                 headerView.updateDateFromTextField(with: self?.vacationViewModel?.dateFormatterString(textField: textFiled) ?? String.blank)
             }
@@ -71,7 +71,7 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         let totalcount = (vacationsList[indexPath.section].userScheduleTimings?.count ?? 0) - 1
         cell.borderView.isHidden = true
         cell.removeTimeButton.isHidden = true
-
+        
         if (totalcount == 0) {
             cell.borderView.isHidden = false
         }else if (totalcount > 0 && indexPath.row == totalcount) {
@@ -93,11 +93,11 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-        
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
-        
+    
     // MARK: - Delete vacations row method
     @objc func deleteRow(selectedSection: IndexPath, selectedIndex: Int) {
         vacationsListTableView.beginUpdates()
@@ -105,9 +105,9 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         vacationsListTableView.deleteRows(at: [selectedSection], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 450
-       
+        
         let indexPath = IndexPath(row: selectedIndex - 1, section: selectedSection.section)
-
+        
         if let vacationCell = self.vacationsListTableView.cellForRow(at: indexPath) as? VacationsCustomTableViewCell {
             vacationCell.borderView.isHidden = false
             vacationCell.removeTimeButton.isHidden =  false
@@ -130,9 +130,9 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 450
-      
+        
         let indexPathRemoveButton = IndexPath(row: selectedIndex, section: selectedSection.section)
-
+        
         if let vacationCell = self.vacationsListTableView.cellForRow(at: indexPathRemoveButton) as? VacationsCustomTableViewCell {
             vacationCell.removeTimeButton.isHidden =  true
         }

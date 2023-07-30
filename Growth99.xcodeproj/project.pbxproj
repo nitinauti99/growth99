@@ -435,6 +435,8 @@
 		254D77C12A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */; };
 		254D77C32A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */; };
 		254D77C72A752C43007941CB /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */; };
+		254D77CD2A766164007941CB /* AppointmentListDetailViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77CC2A766164007941CB /* AppointmentListDetailViewController+extension.swift */; };
+		254D77CF2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77CE2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
@@ -1405,6 +1407,8 @@
 		254D77C02A74DD8A007941CB /* CalendarViewController+TableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+TableViewExtention.swift"; sourceTree = "<group>"; };
 		254D77C22A74EBD2007941CB /* PostCalendarViewController+TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostCalendarViewController+TableViewExtension.swift"; sourceTree = "<group>"; };
 		254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
+		254D77CC2A766164007941CB /* AppointmentListDetailViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentListDetailViewController+extension.swift"; sourceTree = "<group>"; };
+		254D77CE2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentsViewController+Searchbar.swift"; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -4415,6 +4419,7 @@
 			isa = PBXGroup;
 			children = (
 				39F2FF022996B2F40089BD4F /* AppointmentsViewController.swift */,
+				254D77CE2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift */,
 				39F2FF032996B2F40089BD4F /* AppointmentsViewController+TableView.swift */,
 				39F2FF042996B2F40089BD4F /* AppointmentsViewController.storyboard */,
 			);
@@ -4451,6 +4456,7 @@
 			isa = PBXGroup;
 			children = (
 				39F2FF1E2996B8020089BD4F /* AppointmentListDetailViewController.swift */,
+				254D77CC2A766164007941CB /* AppointmentListDetailViewController+extension.swift */,
 				DA0C735929E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift */,
 				39F2FF202996B8110089BD4F /* AppointmentListDetailViewController.storyboard */,
 			);
@@ -8055,6 +8061,7 @@
 				84F61116292A71AB00B1FB69 /* GrowthNetworkManager.swift in Sources */,
 				D0CE69612A3F7A6300D7C188 /* MassEmailandSMSEditDetailViewModel.swift in Sources */,
 				016F661229C8557400B1D248 /* CreatePostModel.swift in Sources */,
+				254D77CF2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift in Sources */,
 				84D0630E2967080E001FE469 /* leadListViewModel.swift in Sources */,
 				01684C6229BDEFFF00DE1041 /* UnansweredQuestionListViewController+SearchBar.swift in Sources */,
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
@@ -8096,6 +8103,7 @@
 				39F2FF102996B2F40089BD4F /* AppointmentListViewModel.swift in Sources */,
 				848C92AF291F6AA000502956 /* Constants.swift in Sources */,
 				84F610C8292A71AA00B1FB69 /* BlockThrottler.swift in Sources */,
+				254D77CD2A766164007941CB /* AppointmentListDetailViewController+extension.swift in Sources */,
 				18491DC229B80CE000FE72EF /* MassEmailandSMSTableViewCell.swift in Sources */,
 				84903512299571CB00556D47 /* ConsentsTemplateListViewController+TableView.swift in Sources */,
 				01E348F229E90C88003B2456 /* CreateLeadTasksViewController.swift in Sources */,

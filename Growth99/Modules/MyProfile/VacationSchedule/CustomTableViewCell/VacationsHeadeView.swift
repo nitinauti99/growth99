@@ -15,8 +15,8 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
     @IBOutlet weak var dateFromTextField: CustomTextField!
     @IBOutlet weak var dateToTextField: CustomTextField!
     @IBOutlet weak var subView: UIView!
-
-    weak var delegate: VacationsHeadeViewDelegate?    
+    
+    weak var delegate: VacationsHeadeViewDelegate?
     var buttondateFromTextFieldCallback: (CustomTextField) -> ()  = { _ in }
     var buttondateToTextFieldCallback: (CustomTextField) -> ()  = { _ in }
     
@@ -31,7 +31,7 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         addLeftBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
         addRightBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
     }
-       
+    
     
     // MARK: - Date from picker done method
     @objc func dateFromButtonPressed() {
@@ -40,7 +40,7 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
     
     // MARK: - Date from picker done method
     @objc func dateToButtonPressed1() {
-       buttondateToTextFieldCallback(dateToTextField)
+        buttondateToTextFieldCallback(dateToTextField)
     }
     
     // MARK: - Update textfield methos
@@ -64,7 +64,7 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: borderWidth)
         subView.addSubview(border)
     }
-
+    
     func addLeftBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
         let border = UIView()
         border.backgroundColor = color
@@ -72,7 +72,7 @@ class VacationsHeadeView: UITableViewHeaderFooterView {
         border.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
         subView.addSubview(border)
     }
-
+    
     func addRightBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
         let border = UIView()
         border.backgroundColor = color

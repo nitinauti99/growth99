@@ -10,13 +10,11 @@ import Foundation
 protocol WorkingScheduleViewModelProtocol {
     var getAllClinicsData: [Clinics] { get }
     var getWorkingSheduleData: [WorkingScheduleListModel] { get }
-
     func getallClinics()
     func getWorkingScheduleDeatils(selectedClinicId: Int)
     func sendRequestforWorkingSchedule(vacationParams: [String: Any])
     func removeElementFromArray(index: IndexPath)
     func addElementInArray(tableView: UITableView)
-
     func dateFormatterString(textField: CustomTextField) -> String
     func timeFormatterString(textField: CustomTextField) -> String
     func serverToLocal(date: String) -> String?
@@ -37,18 +35,18 @@ class WorkingScheduleViewModel {
     let dateFormatter = DateFormatter()
     let inFormatter = DateFormatter()
     let outFormatter = DateFormatter()
-
+    
     var allClinicsforWorkingSchedule: [Clinics]?
     var workingSheduleList: [WorkingScheduleListModel]?
-
+    
     var delegate: WorkingScheduleViewControllerCProtocol?
-
+    
     init(delegate: WorkingScheduleViewControllerCProtocol? = nil) {
         self.delegate = delegate
     }
-
+    
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
-
+    
     func getallClinics() {
         self.requestManager.request(forPath: ApiUrl.allClinics, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[Clinics], GrowthNetworkError>) in
             switch result {
@@ -61,7 +59,7 @@ class WorkingScheduleViewModel {
             }
         }
     }
-        
+    
     func getWorkingScheduleDeatils(selectedClinicId: Int) {
         let apiURL = ApiUrl.userProfile.appending("\(UserRepository.shared.userVariableId ?? 0)/clinic/\(selectedClinicId)/schedules/working")
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[WorkingScheduleListModel], GrowthNetworkError>) in
@@ -93,7 +91,7 @@ class WorkingScheduleViewModel {
     
     func addElementInArray(tableView: UITableView){
         let workingUserScheduleTimingsTemp = WorkingUserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate: String.blank, days: [])
-       
+        
         if self.workingSheduleList?.count == 0 {
             let parm = WorkingScheduleListModel(id: 1, clinicId: 1, providerId: 1, fromDate: String.blank, toDate: String.blank, scheduleType: String.blank, userScheduleTimings: [])
             self.workingSheduleList?.append(parm)
@@ -108,7 +106,7 @@ class WorkingScheduleViewModel {
 }
 
 extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
-
+    
     var getAllClinicsData: [Clinics] {
         return self.allClinicsforWorkingSchedule ?? []
     }
@@ -140,7 +138,7 @@ extension WorkingScheduleViewModel: WorkingScheduleViewModelProtocol {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-
+        
         if let serverDate = dateFormatter.date(from: date) {
             let outputFormatter = DateFormatter()
             outputFormatter.locale = Locale.current
@@ -232,7 +230,7 @@ class ViewModelItem {
 class WorkingDaysViewModel: NSObject {
     
     let daysArray = [WorkingDaysModel(title: "MONDAY"), WorkingDaysModel(title: "TUESDAY"), WorkingDaysModel(title: "WEDNASDAY"), WorkingDaysModel(title: "THURSDAY"), WorkingDaysModel(title: "FRIDAY"), WorkingDaysModel(title: "SATURDAY"), WorkingDaysModel(title: "SUNDAY")]
-
+    
     var items = [ViewModelItem]()
     
     var selectedItems: [ViewModelItem] {

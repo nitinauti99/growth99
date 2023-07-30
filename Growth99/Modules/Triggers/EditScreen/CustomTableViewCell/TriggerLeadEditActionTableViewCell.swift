@@ -201,9 +201,12 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         self.leadLandingSelectFromLblTopHeight.constant = isShown ? 20 : 0
         self.leadLandingSelectFromLblHeight.constant = isShown ? 20 : 0
         self.leadLandingSelectFromTextFieldHight.constant = isShown ? 45 : 0
-        self.leadLandingSelectFromTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
-        self.leadLandingSelectFromTextField.text = isShown ? "" : nil
-        
+        if isShown {
+            self.leadLandingSelectFromTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            self.leadLandingSelectFromTextField.rightImage = nil
+            self.leadLandingSelectFromTextField.text = ""
+        }
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     
@@ -213,9 +216,13 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         self.leadSelectSourceLblTopHeight.constant = isShown ? 20 : 0
         self.leadSelectSourceLblHeight.constant = isShown ? 20 : 0
         self.leadSelectSourceTextFieldHight.constant = isShown ? 45 : 0
-        self.leadSelectSourceTextField.rightImage = isShown ? UIImage(named: "dropDown") : nil
-        self.leadSelectSourceTextField.text = isShown ? "" : nil
         
+        if isShown {
+            self.leadSelectSourceTextField.rightImage = UIImage(named: "dropDown")
+        } else {
+            self.leadSelectSourceTextField.rightImage = nil
+            self.leadSelectSourceTextField.text = ""
+        }        
         self.tableView?.performBatchUpdates(nil, completion: nil)
     }
     

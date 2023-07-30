@@ -13,7 +13,7 @@ extension BookingHistoryViewContoller: UITableViewDelegate, UITableViewDataSourc
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             if viewModel?.getBookingHistoryFilterListData.count ?? 0 == 0 {

@@ -10,7 +10,6 @@ import UIKit
 protocol CellSubclassDelegate: AnyObject {
     func buttontimeFromTapped(cell: VacationsCustomTableViewCell)
     func buttontimeToTapped(cell: VacationsCustomTableViewCell)
-
 }
 
 class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
@@ -21,13 +20,13 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var timeToTextField: CustomTextField!
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var borderView: UIView!
-
+    
     // MARK: - Button closures
     var buttonRemoveTapCallback: () -> ()  = { }
     var buttonAddTimeTapCallback: () -> ()  = { }
     var userScheduleTimings: [UserScheduleTimings]?
     weak var delegate: CellSubclassDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -39,7 +38,7 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         addLeftBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
         addRightBorder(with: UIColor.init(hexString: "#009EDE"), andWidth: 1)
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.delegate = nil
@@ -73,7 +72,7 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBAction func removeTimeButtonAction(sender: UIButton) {
         buttonRemoveTapCallback()
     }
-
+    
     func addLeftBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
         let border = UIView()
         border.backgroundColor = color
@@ -81,7 +80,7 @@ class VacationsCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
         border.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
         subView.addSubview(border)
     }
-
+    
     func addRightBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
         let border = UIView()
         border.backgroundColor = color

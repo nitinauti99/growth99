@@ -13,7 +13,7 @@ protocol ProfileAppointmentCellDelegate: AnyObject {
 }
 
 class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifiable {
-
+    
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var createdDate: UILabel!
@@ -24,7 +24,7 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
     @IBOutlet weak var appointmentDateLabel: UILabel!
     @IBOutlet weak var paymetStatusLabel: UILabel!
     @IBOutlet weak var appointmentStatusLabel: UILabel!
-
+    
     var dateFormater: DateFormaterProtocol?
     weak var delegate: ProfileAppointmentCellDelegate?
     var indexPath = IndexPath()
@@ -59,11 +59,11 @@ class AppointmentTableViewCell: UITableViewCell, ClassIdentifiable, NibIdentifia
         self.providerNameLabel.text = profileAppointmentListData?.providerName
         self.typeLabel.text = profileAppointmentListData?.appointmentType
         self.appointmentDateLabel.text = dateFormater?.serverToLocalPateintsAppointment(date: profileAppointmentListData?.appointmentDate ?? String.blank)
-            
+        
         self.paymetStatusLabel.text = profileAppointmentListData?.paymentStatus
         self.appointmentStatusLabel.text = profileAppointmentListData?.appointmentConfirmationStatus
         self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: profileAppointmentListData?.createdAt ?? String.blank)
-
+        
         indexPath = index
     }
     

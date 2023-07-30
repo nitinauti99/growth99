@@ -42,7 +42,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var scrollViewBooking: UIScrollView!
     var dateFormater: DateFormaterProtocol?
-
+    
     var eventViewModel: EditEventViewModelProtocol?
     
     var allClinics = [Clinics]()

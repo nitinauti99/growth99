@@ -47,12 +47,12 @@ extension WorkingScheduleViewController: WorkingCellSubclassDelegate {
     func buttonWorkingtimeToTapped(cell: WorkingCustomTableViewCell) {
         cell.updateTimeToTextField(with: workingScheduleViewModel?.timeFormatterString(textField: cell.timeToTextField) ?? String.blank)
     }
-   
+    
     func deleteSelectedWorkingShedule(cell: WorkingCustomTableViewCell, indexPath: IndexPath) {
-         self.workingScheduleViewModel?.removeElementFromArray(index: indexPath)
-         self.workingListTableView.beginUpdates()
-         self.workingListTableView.deleteRows(at: [indexPath], with: .automatic)
-         self.workingScrollViewHight.constant = tableViewHeight + 750
-         self.workingListTableView.endUpdates()
+        self.workingScheduleViewModel?.removeElementFromArray(index: indexPath)
+        self.workingListTableView.beginUpdates()
+        self.workingListTableView.deleteRows(at: [indexPath], with: .automatic)
+        self.workingScrollViewHight.constant = tableViewHeight + 750
+        self.workingListTableView.endUpdates()
     }
 }

@@ -76,7 +76,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     // MARK: - setupDefaultUI
     func setupUI() {
-        userNameTextField?.text = "\(UserRepository.shared.firstNameUser ?? String.blank) \(UserRepository.shared.lastNameUser ?? String.blank)"
+        userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
         
         clinicTextView.layer.cornerRadius = 4.5
         clinicTextView.layer.borderWidth = 1
@@ -226,38 +226,32 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     func validateVacationDates(startDate: String, endDate: String) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
         guard let start = dateFormatter.date(from: startDate),
               let end = dateFormatter.date(from: endDate) else {
             // Invalid date format
             return false
         }
-        
         if start > end {
             // Start date is after end date
             return false
         }
-        
         return true
     }
     
     func validateVacationTimes(startTime: String, endTime: String) -> Bool {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-        
         guard let startDate = timeFormatter.date(from: startTime),
               let endDate = timeFormatter.date(from: endTime) else {
             return false
         }
-        
         // Check if start time is before end time
         if startDate >= endDate {
             return false
         }
-        
         return true
     }
-
+    
     func postVacationAPIMethod(vacationsList: [VacationSchedules]) {
         if selectedClinicId == 0 {
             selectedClinicId = allClinicsForVacation?[0].id ?? 0
@@ -274,20 +268,14 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         
         let vacationCount = vacationsList.count
         let date2 = VacationsListModel(id: 1, clinicId: 123, providerId: 1234, fromDate: "2022-12-16T00:00:00.000+0000", toDate: "2022-12-16T00:00:00.000+0000", scheduleType: "vacation", userScheduleTimings: [])
-        
         vacationsList.append(date2)
         vacationsListTableView.beginUpdates()
         isEmptyResponse = true
         let indexSet = IndexSet(integer: (vacationsList.count ) - 1)
-        
         vacationsListTableView.insertSections(indexSet, with: .fade)
-        
         let date1 = UserScheduleTimings(id: 1, timeFromDate: String.blank, timeToDate:  String.blank, days: [])
-        
         vacationsList[vacationCount].userScheduleTimings?.append(date1)
-        
         let indexPath = IndexPath(row: 0, section: vacationCount)
-        
         vacationsListTableView.insertRows(at: [indexPath], with: .fade)
         vacationsListTableView.endUpdates()
         vacationScrollViewHight.constant = vacationTableViewHeight + 600

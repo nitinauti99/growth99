@@ -16,7 +16,7 @@ protocol WorkingScheduleViewControllerCProtocol: AnyObject {
 }
 
 class WorkingScheduleViewController: UIViewController, WorkingScheduleViewControllerCProtocol {
-   
+    
     @IBOutlet private weak var userNameTextField: CustomTextField!
     @IBOutlet weak var workingDateFromTextField: CustomTextField!
     @IBOutlet weak var workingDateToTextField: CustomTextField!
@@ -36,7 +36,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     var isValidateArray = [Bool]()
     var selectedDays = [String]()
     var days: [String]?
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = Constant.Profile.workingScheduleTitle
@@ -62,7 +62,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     func setupUI() {
-        self.userNameTextField?.text = "\(UserRepository.shared.firstNameUser ?? String.blank) \(UserRepository.shared.lastNameUser ?? String.blank)"
+        self.userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
         self.userNameTextField.isUserInteractionEnabled = false
         self.clinicTextView.layer.cornerRadius = 4.5
         self.clinicTextView.layer.borderWidth = 1
@@ -100,7 +100,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         self.workingListTableView.reloadData()
         self.scrollViewHeight()
     }
-  
+    
     func apiResponseRecived(apiResponse: ResponseModel) {
         self.view.HideSpinner()
         if apiResponse.status == 500 {
@@ -164,8 +164,8 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     func addDaysInArray(childIndex: Int) {
         slots.insert(
             Slots(timeFromDate: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank),
-                timeToDate: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank),
-                days: days, fullTime: true),
+                  timeToDate: workingScheduleViewModel?.serverToLocalInput(date: workingDateFromTextField.text ?? String.blank),
+                  days: days, fullTime: true),
             at: childIndex
         )
     }
@@ -181,15 +181,15 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         )
     }
     
-// MARK: - Save Shedule Data API call
+    // MARK: - Save Shedule Data API call
     @IBAction func saveWorkingButtonAction(sender: UIButton) {
         isValidateArray = []
         slots = []
         selectedSlots = []
         let allClinicsForWorkingSchedule = workingScheduleViewModel?.getAllClinicsData ?? []
-
+        
         let workingSheduleData = workingScheduleViewModel?.getWorkingSheduleData ?? []
-
+        
         
         guard let dateFrom = workingDateFromTextField.text, !dateFrom.isEmpty else {
             workingDateFromTextField.showError(message: Constant.Profile.chooseFromDate)
@@ -210,9 +210,9 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
             selectedClinicId = allClinicsForWorkingSchedule[0].id ?? 0
         }
         if workingSheduleData.count > 0 {
-          
+            
             for childIndex in 0..<(workingSheduleData[0].userScheduleTimings?.count ?? 0) {
-              
+                
                 let cellIndexPath = IndexPath(item: childIndex, section: 0)
                 guard let workingCell = workingListTableView.cellForRow(at: cellIndexPath) as? WorkingCustomTableViewCell else {
                     continue
@@ -291,7 +291,7 @@ extension WorkingScheduleViewController: UIScrollViewDelegate {
 
 // MARK: - Clinic dropdown selection mrthod
 extension WorkingScheduleViewController {
-   
+    
     @IBAction func clinicSelectionButton(sender: UIButton) {
         let rolesArray = workingScheduleViewModel?.getAllClinicsData ?? []
         

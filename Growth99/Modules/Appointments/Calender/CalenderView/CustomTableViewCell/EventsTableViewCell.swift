@@ -15,7 +15,7 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventsDate: UIButton!
     
     var dateFormater : DateFormaterProtocol?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

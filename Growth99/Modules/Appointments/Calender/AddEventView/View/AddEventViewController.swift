@@ -34,11 +34,11 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
     @IBOutlet weak var virtualBtn: UIButton!
     @IBOutlet weak var dateSelectionButton: UIButton!
     @IBOutlet weak var addeventScrollView: UIScrollView!
-
+    
     var addEventViewModel: CalendarViewModelProtocol?
     var eventViewModel: AddEventViewModelProtocol?
     var dateFormater: DateFormaterProtocol?
-
+    
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = Int()
@@ -361,12 +361,12 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
             phoneNumberTextField.showError(message: "Phone Number is required")
             return
         }
-
+        
         let characterCount = phoneNumber.count
         if characterCount < 10 {
             phoneNumberTextField.showError(message: "Phone Number should contain 10 digits")
         }
-
+        
         guard let clinic = clincsTextField.text, !clinic.isEmpty else {
             clincsTextField.showError(message: Constant.Profile.clinicsRequired)
             return

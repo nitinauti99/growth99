@@ -88,7 +88,7 @@ class VacationViewModel {
 }
 
 extension VacationViewModel: VacationViewModelProtocol {
-   
+    
     var getAllClinicsData: [Clinics] {
         return self.allClinicsforVacation ?? []
     }
@@ -96,7 +96,7 @@ extension VacationViewModel: VacationViewModelProtocol {
     var getVacationData: [VacationsListModel] {
         return self.vacationList ?? []
     }
-   
+    
     func dateFormatterString(textField: CustomTextField) -> String {
         datePicker = textField.inputView as? UIDatePicker ?? UIDatePicker()
         dateFormatter.dateStyle = .medium
@@ -128,7 +128,7 @@ extension VacationViewModel: VacationViewModelProtocol {
     func serverToLocalTime(timeString: String) -> String {
         inFormatter.locale = Locale(identifier: "en_US_POSIX")
         inFormatter.dateFormat = "HH:mm:ss"
-
+        
         outFormatter.locale = Locale(identifier: "en_US_POSIX")
         outFormatter.dateFormat = "hh:mm a"
         outFormatter.amSymbol = "AM"

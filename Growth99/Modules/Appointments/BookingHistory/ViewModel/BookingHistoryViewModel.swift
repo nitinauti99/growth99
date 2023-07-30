@@ -20,7 +20,7 @@ protocol BookingHistoryViewModelProtocol {
     var  getBookingHistoryFilterListData: [AppointmentDTOList] { get }
     
     func removeSelectedBookingHistory(bookingHistoryId: Int)
-
+    
     func serverToLocalTime(timeString: String) -> String
 }
 
@@ -35,7 +35,7 @@ class BookingHistoryViewModel {
     }
     
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
-
+    
     func getCalendarInfoListBookingHistory(clinicId: Int, providerId: Int, serviceId: Int) {
         let url = "&providerId=\(providerId)&serviceId=\(serviceId)"
         let apiURL = ApiUrl.CalendarInfo.appending("\(url)")
@@ -91,13 +91,13 @@ class BookingHistoryViewModel {
         let inFormatter = DateFormatter()
         inFormatter.locale = Locale(identifier: "en_US_POSIX")
         inFormatter.dateFormat = "HH:mm:ss"
-
+        
         let outFormatter = DateFormatter()
         outFormatter.locale = Locale(identifier: "en_US_POSIX")
         outFormatter.dateFormat = "hh:mm a"
         outFormatter.amSymbol = "AM"
         outFormatter.pmSymbol = "PM"
-
+        
         let date = inFormatter.date(from: timeString) ?? Date()
         return outFormatter.string(from: date)
     }
@@ -116,7 +116,7 @@ class BookingHistoryViewModel {
 }
 
 extension BookingHistoryViewModel: BookingHistoryViewModelProtocol {
-
+    
     func getBookingHistoryFilterData(searchText: String) {
         self.bookingHistoryListFilterData = self.getBookingHistoryListData.filter { task in
             let searchText = searchText.lowercased()
@@ -143,8 +143,8 @@ extension BookingHistoryViewModel: BookingHistoryViewModelProtocol {
     var getBookingHistoryListData: [AppointmentDTOList] {
         return self.bookingHistoryList
     }
-   
+    
     var getBookingHistoryFilterListData: [AppointmentDTOList] {
-         return self.bookingHistoryListFilterData
+        return self.bookingHistoryListFilterData
     }
 }

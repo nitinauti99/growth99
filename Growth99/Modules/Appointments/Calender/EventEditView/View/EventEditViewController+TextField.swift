@@ -60,7 +60,7 @@ extension EventEditViewController: UITextFieldDelegate  {
             }
         }
     }
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == firstNameTextField {
             guard let textField = firstNameTextField.text, !textField.isEmpty else {

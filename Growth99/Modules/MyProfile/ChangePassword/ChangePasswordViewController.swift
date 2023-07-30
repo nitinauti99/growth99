@@ -49,7 +49,7 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
             oldPasswordTextField.showError(message: Constant.ErrorMessage.oldPasswordEmptyError)
             return
         }
-
+        
         guard let newPassword = newPasswordTextField.text, !newPassword.isEmpty else {
             newPasswordTextField.showError(message: "New password required")
             return

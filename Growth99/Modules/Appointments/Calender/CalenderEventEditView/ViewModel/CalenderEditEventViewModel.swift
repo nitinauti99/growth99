@@ -16,7 +16,7 @@ protocol CalenderEditEventViewModelProtocol {
     func calenderEditAppoinemnetMethod(editAppoinmentId: Int, editAppoinmentModel: CalenderEditAppoinmentModel)
     func checkUserEmailAddress(emailAddress: String)
     func checkUserPhoneNumber(phoneNumber: String)
-
+    
     func localInputToServerInput(date: String) -> String
     func localInputeDateToServer(date: String) -> String
     func serverToLocal(date: String) -> String
@@ -132,10 +132,10 @@ class CalenderEditEventViewModel: CalenderEditEventViewModelProtocol {
                 let dateFormatter = ISO8601DateFormatter()
                 let sortedDates = datesData.compactMap { dateFormatter.date(from: $0) }
                 let ascendingOrder = sortedDates.sorted()
-
+                
                 let stringDates = ascendingOrder.map { dateFormatter.string(from: $0) }
                 self.allDates = stringDates
-
+                
                 self.delegate?.datesDataReceived()
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)

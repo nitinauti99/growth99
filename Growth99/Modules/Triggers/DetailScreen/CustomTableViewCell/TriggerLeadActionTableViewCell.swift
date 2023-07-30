@@ -15,8 +15,6 @@ protocol TriggerLeadTableViewCellDelegate: AnyObject {
     func leadSourceButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadInitialStatusButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
     func leadFinalStatusButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
-    func leadTagButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
-    func showLeadTagButtonClicked(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton)
 }
 
 class TriggerLeadActionTableViewCell: UITableViewCell {
@@ -47,10 +45,6 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var showleadSourceTagButton: UIButton!
     @IBOutlet weak var showleadSourceTagButtonHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var leadTagButton: UIButton!
-    @IBOutlet weak var leadTagTextField: CustomTextField!
-    @IBOutlet weak var leadTagTextFieldHight: NSLayoutConstraint!
-    
     @IBOutlet weak var leadSTriggerWhenStatusTopeight: NSLayoutConstraint!
     @IBOutlet weak var leadSTriggerWhenStatusLblHeight: NSLayoutConstraint!
     
@@ -66,8 +60,6 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
     @IBOutlet weak var leadFinalStatusTextField: CustomTextField!
     @IBOutlet weak var leadFinalStatusTextFieldHight: NSLayoutConstraint!
     
-    @IBOutlet weak var showleadTagButton: UIButton!
-    @IBOutlet weak var addleadTagButtonTopHeight: NSLayoutConstraint!
     @IBOutlet weak var leadStatusChangeButton: UIButton!
     @IBOutlet weak var leadStatusChangeButtonTopHeight: NSLayoutConstraint!
     
@@ -134,16 +126,10 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
         self.delegate?.leadFinalStatusButtonSelection(cell: self, index: indexPath, buttonSender: sender)
     }
     
-    @IBAction func leadTagButtonAction(sender: UIButton) {
-        self.delegate?.leadTagButtonSelection(cell: self, index: indexPath, buttonSender: sender)
-    }
-    
     @IBAction func leadStatusChangeButtonAction(sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
-            
-            addleadTagButtonTopHeight.constant = 0
-            
+                        
             leadSTriggerWhenStatusTopeight.constant = 0
             leadSTriggerWhenStatusLblHeight.constant = 0
             
@@ -160,9 +146,7 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
             leadFinalStatusTextFieldHight.constant = 0
         } else {
             sender.isSelected = true
-            
-            addleadTagButtonTopHeight.constant = 16
-            
+                    
             leadSTriggerWhenStatusTopeight.constant = 16
             leadSTriggerWhenStatusLblHeight.constant = 20
             
@@ -179,10 +163,6 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
         }
         self.tableView?.performBatchUpdates(nil, completion: nil)
         self.scrollToBottomView() 
-    }
-    
-    @IBAction func showLeadTagsButtonAction(sender: UIButton) {
-        self.delegate?.showLeadTagButtonClicked(cell: self, index: indexPath, buttonSender: sender)
     }
     
     func showLeadSelectLanding(isShown: Bool) {
@@ -240,7 +220,6 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
     
     func showLeadStatusChange(isShown: Bool) {
         if isShown {
-            self.addleadTagButtonTopHeight.constant = 16
             
             self.leadSTriggerWhenStatusTopeight.constant = 16
             self.leadSTriggerWhenStatusLblHeight.constant = 20
@@ -256,7 +235,6 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
             self.leadInitialStatusTextField.rightImage = UIImage(named: "dropDown")
             self.leadFinalStatusTextField.rightImage = UIImage(named: "dropDown")
         } else {
-            self.addleadTagButtonTopHeight.constant = 0
             
             self.leadSTriggerWhenStatusTopeight.constant = 0
             self.leadSTriggerWhenStatusLblHeight.constant = 0
@@ -280,16 +258,5 @@ class TriggerLeadActionTableViewCell: UITableViewCell {
             let indexPath = IndexPath(row: self.triggerListInfoDetail.count-1, section: 0)
             self.tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
-    }
-    
-    func showleadTagTectField(isShown: Bool) {
-        if isShown {
-            self.leadTagTextFieldHight.constant = 45
-            self.leadTagTextField.rightImage = UIImage(named: "dropDown")
-        } else {
-            self.leadTagTextFieldHight.constant = 0
-            self.leadTagTextField.rightImage = nil
-        }
-        self.tableView?.performBatchUpdates(nil, completion: nil)
     }
 }

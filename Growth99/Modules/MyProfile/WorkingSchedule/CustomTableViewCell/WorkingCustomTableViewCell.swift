@@ -18,7 +18,7 @@ protocol WorkingCellSubclassDelegate: AnyObject {
 class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var selectDayTextField: CustomTextField!
     @IBOutlet weak var selectDayTempTextField: CustomTextField!
-
+    
     @IBOutlet weak var selectDayButton: UIButton!
     @IBOutlet weak var timeFromTextField: CustomTextField!
     @IBOutlet weak var timeToTextField: CustomTextField!
@@ -29,7 +29,7 @@ class WorkingCustomTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var workingTextView: UIView!
     @IBOutlet weak var workingCellRowDelete: UIButton!
     @IBOutlet weak var subView: UIView!
-
+    
     var userScheduleTimings: [UserScheduleTimings]?
     var buttoneRemoveDaysTapCallback: () -> ()  = { }
     weak var delegate: WorkingCellSubclassDelegate?

@@ -15,7 +15,7 @@ protocol BookingHistoryViewContollerProtocol: AnyObject {
 }
 
 class BookingHistoryViewContoller: UIViewController, BookingHistoryViewContollerProtocol {
-
+    
     @IBOutlet weak var bookingHistoryTableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     

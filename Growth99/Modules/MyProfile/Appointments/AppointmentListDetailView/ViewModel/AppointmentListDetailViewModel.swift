@@ -27,19 +27,15 @@ protocol AppointmentListDetailVMProtocol {
     func deleteSelectedAppointment(deleteAppoinmentId: Int)
     func getEditAppointmentsForPateint(appointmentsId: Int)
     var  getAppointmentsForPateintData: AppointmentDTOList? { get }
-    
     func getallClinicsEditEvent()
     var  getAllClinicsDataEditEvent: [Clinics] { get }
-    
     func getServiceListEditEvent()
     var  serviceDataEditEvent: [ServiceList] { get }
-    
     func sendProviderListEditEvent(providerParams: Int)
     var  providerDataEditEvent: [UserDTOList] { get }
-    
     func isValidEmail(_ email: String) -> Bool
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool
-    func validateName(_ firstName: String) -> Bool 
+    func validateName(_ firstName: String) -> Bool
 }
 
 class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
@@ -235,7 +231,7 @@ class AppointmentListDetailViewModel: AppointmentListDetailVMProtocol {
     var getAllTimessData: [String] {
         return allTimes
     }
-
+    
     func timeInputCalendar(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")

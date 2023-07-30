@@ -343,7 +343,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 }
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerDefaultTableViewCell else { return  }
-                    
+                    moduleName = defaultCreateCell.massEmailSMSTextField.text ?? String.blank
                 } else if triggerDetailList.cellType == "Module" {
                     guard let moduleCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerModuleTableViewCell else { return  }
                     isModuleSelectionType = moduleCreateCell.moduleTypeSelected
@@ -392,12 +392,6 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 selectedLeadSourceUrldict.append(param)
             }
             
-            var selectedLeadTagsUrldict = Array<Any>()
-            for item in selectedLeadTags {
-                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0, "isDefault": item.isDefault ?? false]
-                selectedLeadTagsUrldict.append(param)
-            }
-            
             var selectedleadFormsdict = Array<Any>()
             for item in selectedleadForms {
                 let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
@@ -406,10 +400,10 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
             var urlParameter: Parameters = [String: Any]()
             if isfromLeadStatus == "" && istoLeadStatus == "" {
-                urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": selectedLeadTagsUrldict, "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
+                urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": [], "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
                 ]
             } else {
-                urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": selectedLeadTagsUrldict, "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": isfromLeadStatus, "toLeadStatus": istoLeadStatus
+                urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": [], "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": isfromLeadStatus, "toLeadStatus": istoLeadStatus
                 ]
             }
             print(urlParameter)
@@ -437,7 +431,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerDefaultTableViewCell else { return  }
-                    
+                    moduleName = defaultCreateCell.massEmailSMSTextField.text ?? String.blank
                 } else if triggerDetailList.cellType == "Module" {
                     guard let moduleCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerModuleTableViewCell else { return  }
                     isModuleSelectionTypeAppointment = moduleCreateCell.moduleTypeSelected
@@ -472,7 +466,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
             
             var urlParameter: Parameters = [String: Any]()
-            urlParameter = ["name": moduleName, "moduleName": "Appointment", "triggeractionName": appointmentSelectedStatus, "triggerConditions": [], "triggerData": smsandTimeArray, "landingPageNames": [], "forms": [], "sourceUrls": [], "leadTags": selectedLeadTags, "isTriggerForLeadStatus": false, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
+            urlParameter = ["name": moduleName, "moduleName": "Appointment", "triggeractionName": appointmentSelectedStatus, "triggerConditions": [], "triggerData": smsandTimeArray, "landingPageNames": [], "forms": [], "sourceUrls": [], "leadTags": NSNull(), "isTriggerForLeadStatus": false, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
             ]
             print(urlParameter)
             self.view.ShowSpinner()
@@ -501,7 +495,6 @@ extension TriggerDetailViewController: TriggerDefaultCellDelegate {
         if cell.massEmailSMSTextField.text == "" {
             cell.massEmailSMSTextField.showError(message: "Please enter trigger name")
         } else {
-            moduleName = cell.massEmailSMSTextField.text ?? String.blank
             cell.moduleNextButton.isEnabled = false
             createNewTriggerCell(cellNameType: "Module")
         }
@@ -512,12 +505,17 @@ extension TriggerDetailViewController: TriggerModuleCellDelegate {
     func nextButtonModule(cell: TriggerModuleTableViewCell, index: IndexPath, moduleType: String) {
         if moduleType == "appointment" {
             moduleSelectionType = moduleType
+            cell.leadBtn.isUserInteractionEnabled = false
+            cell.patientBtn.isUserInteractionEnabled = false
+            cell.nextButton.isEnabled = false
             createNewTriggerCell(cellNameType: "Appointment")
         } else if moduleType == "lead" {
             moduleSelectionType = moduleType
+            cell.leadBtn.isUserInteractionEnabled = false
+            cell.patientBtn.isUserInteractionEnabled = false
+            cell.nextButton.isEnabled = false
             createNewTriggerCell(cellNameType: "Lead")
         }
-        cell.nextButton.isEnabled = false
         scrollToBottom()
     }
 }
@@ -754,39 +752,6 @@ extension TriggerDetailViewController: TriggerLeadTableViewCellDelegate {
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
-    }
-    
-    func leadTagButtonSelection(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
-        leadTagsTriggerArray = viewModel?.getTriggerLeadTagListData ?? []
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: leadTagsTriggerArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
-        }
-        selectionMenu.setSelectedItems(items: selectedLeadTags) { [weak self] (selectedItem, index, selected, selectedList) in
-            cell.leadTagTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            self?.selectedLeadTags = selectedList
-            let formattedArray = selectedList.map{String($0.id ?? 0)}.joined(separator: ",")
-            self?.selectedLeadTagIds = formattedArray
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: buttonSender, size: CGSize(width: buttonSender.frame.width, height: (Double(leadTagsTriggerArray.count * 30))), arrowDirection: .up), from: self)
-    }
-    
-    func showLeadTagButtonClicked(cell: TriggerLeadActionTableViewCell, index: IndexPath, buttonSender: UIButton) {
-        if buttonSender.isSelected {
-            buttonSender.isSelected = false
-            cell.leadTagTextFieldHight.constant = 0
-            cell.leadTagTextField.rightImage = nil
-            cell.leadTagTextField.text = ""
-            self.selectedLeadTags.removeAll()
-        } else {
-            buttonSender.isSelected = true
-            cell.leadTagTextFieldHight.constant = 45
-            cell.leadTagTextField.rightImage = UIImage(named: "dropDown")
-        }
-        self.triggerdDetailTableView?.performBatchUpdates(nil, completion: nil)
-        self.scrollToBottom()
     }
 }
 

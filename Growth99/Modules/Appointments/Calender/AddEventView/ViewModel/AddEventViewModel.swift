@@ -36,7 +36,7 @@ class AddEventViewModel {
     var allDates: [String] = []
     var allTimes: [String] = []
     var patientsAppointmentList = [PatientsModel]()
-
+    
     init(delegate: AddEventViewControllerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -54,7 +54,7 @@ class AddEventViewModel {
             }
         }
     }
-
+    
     func getDatesList(clinicIds: Int, providerId: Int, serviceIds: Array<Int>) {
         let apiURL = ApiUrl.vacationSubmit.appending("\(providerId)/schedules/dates")
         let parameter: Parameters = ["clinicId": clinicIds,
@@ -194,7 +194,7 @@ class AddEventViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return dateFormatter.string(from: date)
     }
-
+    
     func serverToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -203,7 +203,7 @@ class AddEventViewModel {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter.string(from: date)
     }
-
+    
     func localInputeDateToServer(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -228,7 +228,7 @@ class AddEventViewModel {
 }
 
 extension AddEventViewModel : AddEventViewModelProtocol {
-   
+    
     var getPatientsAppointmentList: [PatientsModel] {
         return self.patientsAppointmentList
     }
@@ -238,7 +238,7 @@ extension AddEventViewModel : AddEventViewModelProtocol {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-
+    
     func validateName(_ firstName: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z]+$")
         let range = NSRange(location: 0, length: firstName.utf16.count)

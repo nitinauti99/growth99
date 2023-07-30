@@ -50,7 +50,7 @@ class CalendarViewController: UIViewController, CalendarViewContollerProtocol  {
     @IBOutlet private weak var providersTextField: CustomTextField!
     @IBOutlet private weak var addAppointmnetView: UIView!
     @IBOutlet private weak var calendarSegmentControl: UISegmentedControl!
-        
+    
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = [Int]()
