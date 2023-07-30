@@ -40,13 +40,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Would you like to send/create an " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKR-sf-KbE" userLabel="userName">
-                                <rect key="frame" x="20" y="65" width="334" height="15"/>
+                                <rect key="frame" x="10" y="65" width="354" height="15"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.28627000000000002" green="0.31373000000000001" blue="0.34117999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eja-ej-H8I">
-                                <rect key="frame" x="20" y="100" width="15" height="15"/>
+                                <rect key="frame" x="10" y="100" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="L6c-PH-Ydm"/>
                                     <constraint firstAttribute="width" constant="15" id="zPd-nX-J3R"/>
@@ -59,13 +59,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko3-Kq-LGS">
-                                <rect key="frame" x="45" y="97.333333333333329" width="35.333333333333343" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="35" y="99" width="29.666666666666671" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGl-Tj-Gpd">
-                                <rect key="frame" x="100.33333333333333" y="100" width="15" height="15"/>
+                                <rect key="frame" x="79.666666666666671" y="100" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="akz-iZ-F6Z"/>
                                     <constraint firstAttribute="height" constant="15" id="mvN-Jc-p84"/>
@@ -78,13 +78,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MD3-cs-6Re">
-                                <rect key="frame" x="125.33333333333336" y="97" width="40.666666666666671" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="104.66666666666667" y="99" width="34.666666666666671" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please select network" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIc-Jk-mU4" userLabel="Questionnaire Name" customClass="CustomTextField" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="30" y="135" width="324" height="45"/>
+                                <rect key="frame" x="20" y="135" width="344" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="eIR-V8-h3n"/>
                                 </constraints>
@@ -102,14 +102,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cu-97-6Rj">
-                                <rect key="frame" x="30" y="135" width="324" height="45"/>
+                                <rect key="frame" x="20" y="135" width="344" height="45"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
                                     <action selector="selectNetworkTypeButtonWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vgd-y5-DIX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-5X-c0A" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="20" y="210" width="110" height="40"/>
+                                <rect key="frame" x="10" y="210" width="110" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="3da-gw-nZ6"/>
@@ -137,8 +137,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS Count : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtV-G7-I6E">
-                                <rect key="frame" x="196" y="97" width="110" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="154.33333333333334" y="99" width="92.666666666666657" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -155,9 +155,9 @@
                             <constraint firstItem="ggq-XR-EdB" firstAttribute="top" secondItem="ayj-oY-pAe" secondAttribute="top" id="PIN-mu-EwQ"/>
                             <constraint firstItem="qtV-G7-I6E" firstAttribute="centerY" secondItem="MD3-cs-6Re" secondAttribute="centerY" id="PoV-z8-KLD"/>
                             <constraint firstItem="MD3-cs-6Re" firstAttribute="centerY" secondItem="BGl-Tj-Gpd" secondAttribute="centerY" id="T8V-Aw-GrE"/>
-                            <constraint firstItem="qtV-G7-I6E" firstAttribute="leading" secondItem="MD3-cs-6Re" secondAttribute="trailing" constant="30" id="WgM-wK-QPE"/>
+                            <constraint firstItem="qtV-G7-I6E" firstAttribute="leading" secondItem="MD3-cs-6Re" secondAttribute="trailing" constant="15" id="WgM-wK-QPE"/>
                             <constraint firstItem="BGl-Tj-Gpd" firstAttribute="top" secondItem="eja-ej-H8I" secondAttribute="top" id="XRZ-yv-MeM"/>
-                            <constraint firstItem="BGl-Tj-Gpd" firstAttribute="leading" secondItem="ko3-Kq-LGS" secondAttribute="trailing" constant="20" id="ZbM-uB-OKG"/>
+                            <constraint firstItem="BGl-Tj-Gpd" firstAttribute="leading" secondItem="ko3-Kq-LGS" secondAttribute="trailing" constant="15" id="ZbM-uB-OKG"/>
                             <constraint firstItem="5cu-97-6Rj" firstAttribute="leading" secondItem="ZIc-Jk-mU4" secondAttribute="leading" id="Zhs-A6-JRP"/>
                             <constraint firstItem="MD3-cs-6Re" firstAttribute="leading" secondItem="BGl-Tj-Gpd" secondAttribute="trailing" constant="10" id="aOr-dv-l3Y"/>
                             <constraint firstItem="ko3-Kq-LGS" firstAttribute="centerY" secondItem="eja-ej-H8I" secondAttribute="centerY" id="cG0-tB-BgT"/>
@@ -166,10 +166,10 @@
                             <constraint firstItem="ggq-XR-EdB" firstAttribute="leading" secondItem="ayj-oY-pAe" secondAttribute="leading" id="h2Z-Ps-PG0"/>
                             <constraint firstItem="5cu-97-6Rj" firstAttribute="bottom" secondItem="ZIc-Jk-mU4" secondAttribute="bottom" id="hy3-0I-H7h"/>
                             <constraint firstItem="5cu-97-6Rj" firstAttribute="top" secondItem="ZIc-Jk-mU4" secondAttribute="top" id="j3j-sk-hjz"/>
-                            <constraint firstItem="DKR-sf-KbE" firstAttribute="leading" secondItem="ggq-XR-EdB" secondAttribute="leading" constant="20" id="kEv-mN-TCj"/>
+                            <constraint firstItem="DKR-sf-KbE" firstAttribute="leading" secondItem="ggq-XR-EdB" secondAttribute="leading" constant="10" id="kEv-mN-TCj"/>
                             <constraint firstAttribute="trailing" secondItem="ggq-XR-EdB" secondAttribute="trailing" id="meu-Aa-JsX"/>
                             <constraint firstAttribute="bottom" secondItem="aYX-5X-c0A" secondAttribute="bottom" constant="30" id="nZA-M7-kYt"/>
-                            <constraint firstAttribute="trailing" secondItem="DKR-sf-KbE" secondAttribute="trailing" constant="20" id="rBi-Uj-tug"/>
+                            <constraint firstAttribute="trailing" secondItem="DKR-sf-KbE" secondAttribute="trailing" constant="10" id="rBi-Uj-tug"/>
                             <constraint firstItem="eja-ej-H8I" firstAttribute="top" secondItem="DKR-sf-KbE" secondAttribute="bottom" constant="20" id="sJC-F9-aqn"/>
                         </constraints>
                     </view>
@@ -196,7 +196,7 @@
     </objects>
     <designables>
         <designable name="ZIc-Jk-mU4">
-            <size key="intrinsicContentSize" width="162.33333333333334" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="175.33333333333334" height="34"/>
         </designable>
     </designables>
     <resources>

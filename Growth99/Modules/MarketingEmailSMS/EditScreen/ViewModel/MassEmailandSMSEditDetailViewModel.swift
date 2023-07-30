@@ -20,8 +20,8 @@ protocol MassEmailandSMSEditDetailViewModelProtocol {
     func getMassSMSEditInitialLeadCountsMethod(leadStatus: String, moduleName: String, leadTagIds: String, source: String)
     func getMassSMSEditInitialPatientCountMethod(appointmentStatus: String, moduleName: String, patientTagIds: String, patientStatus: String)
     var  getMassSMSTriggerEditListData: MassSMSEditModel? { get }
-    var  getMassSMSEditEmailSmsQuotaData: MassEmailSMSEQuotaCountModelEdit? { get }
-    var  getMassSMSEditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit? { get }
+    var  getMassSMSEditBusniessEmailSmsQuotaData: MassEmailSMSEQuotaCountModelEdit? { get }
+    var  getMassSMSEditAuditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit? { get }
     var  getMassSMSEditLeadTagsListData: [MassEmailSMSTagListModelEdit]? { get }
     var  getMassSMSEditPateintsTagsListData: [MassEmailSMSTagListModelEdit]? { get }
     func localToServerWithDateEdit(date: String) -> String
@@ -41,6 +41,7 @@ protocol MassEmailandSMSEditDetailViewModelProtocol {
 }
 
 class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProtocol {
+    
     var timePickerEdit = UIDatePicker()
     let formatterEdit = DateFormatter()
     let inFormatterEdit = DateFormatter()
@@ -50,8 +51,8 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     var massSMStriggerEditDetailList: MassEmailSMSDetailListModelEdit?
     var massSMSEditLeadTagsList: [MassEmailSMSTagListModelEdit] = []
     var massSMSEditPateintsTagsList: [MassEmailSMSTagListModelEdit] = []
-    var massSMSEditEmailSmsQuota: MassEmailSMSEQuotaCountModelEdit?
-    var massSMSEditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit?
+    var massSMSEditBusinessEmailSmsQuota: MassEmailSMSEQuotaCountModelEdit?
+    var massSMSEditAuditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit?
     var massSMSEditLeadCount: MassEmailSMSCountModelEdit?
     var massSMSEditPatientCount: MassEmailSMSCountModelEdit?
     var massSMSEditAllLeadCount: MassEmailSMSLeadAllCountModelEdit?
@@ -118,9 +119,9 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     func getMassSMSEditBusinessSMSQuotaMethod() {
         self.requestManager.request(forPath: ApiUrl.massEmailBusinessSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSEQuotaCountModelEdit, GrowthNetworkError>) in
             switch result {
-            case .success(let emailSmsQuota):
-                self.massSMSEditEmailSmsQuota = emailSmsQuota
-                self.delegate?.massSMSEditEmailSmsQuotaDataRecived()
+            case .success(let businessEmailSMSQuota):
+                self.massSMSEditBusinessEmailSmsQuota = businessEmailSMSQuota
+                self.delegate?.massSMSEditBusinessEmailSMSQuotaDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceivedEdit(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -131,9 +132,9 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     func getMassSMSEditAuditEmailQuotaMethod() {
         self.requestManager.request(forPath: ApiUrl.massEmailAuditEmailSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSEQuotaCountModelEdit, GrowthNetworkError>) in
             switch result {
-            case .success(let emailSmsCount):
-                self.massSMSEditEmailSmsCount = emailSmsCount
-                self.delegate?.massSMSEditEmailSmsCountDataRecived()
+            case .success(let auditEmailSMSQuota):
+                self.massSMSEditAuditEmailSmsCount = auditEmailSMSQuota
+                self.delegate?.massSMSEditAuditEmailSmsCountDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceivedEdit(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -298,12 +299,12 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
         return self.massSMSEditPateintsTagsList
     }
     
-    var getMassSMSEditEmailSmsQuotaData: MassEmailSMSEQuotaCountModelEdit? {
-        return massSMSEditEmailSmsQuota
+    var getMassSMSEditBusniessEmailSmsQuotaData: MassEmailSMSEQuotaCountModelEdit? {
+        return massSMSEditBusinessEmailSmsQuota
     }
     
-    var getMassSMSEditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit? {
-        return massSMSEditEmailSmsCount
+    var getMassSMSEditAuditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit? {
+        return massSMSEditAuditEmailSmsCount
     }
     
     var getMassSMSEditAllLeadCountData: MassEmailSMSLeadAllCountModelEdit? {

@@ -12,8 +12,8 @@ protocol MassEmailandSMSEditDetailViewControlProtocol: AnyObject {
     func massSMSEditDetailDataRecived()
     func massSMSEditLeadTagsDataRecived()
     func massSMSEditPatientTagsDataRecived()
-    func massSMSEditEmailSmsQuotaDataRecived()
-    func massSMSEditEmailSmsCountDataRecived()
+    func massSMSEditBusinessEmailSMSQuotaDataRecived()
+    func massSMSEditAuditEmailSmsCountDataRecived()
     func massSMSEditAllLeadCountDataRecived()
     func massSMSEditAllPatientCountDataRecived()
     func massSMSEditInitialLeadCountDataRecived()
@@ -33,6 +33,11 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     @IBOutlet weak var triggerExicutedViewHeight: NSLayoutConstraint!
     @IBOutlet weak var viewAuditButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var viewAuditButton: UIButton!
+    
+    @IBOutlet weak var triggerEmailReachedView: UIView!
+    @IBOutlet weak var triggerEmailReachedViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var triggerEmailReachedViewTop: NSLayoutConstraint!
+    @IBOutlet weak var triggerEmailReachedViewBottom: NSLayoutConstraint!
     
     var massSMSDetailListEdit = [MassEmailandSMSDetailModelEdit]()
     var viewModelEdit: MassEmailandSMSEditDetailViewModelProtocol?
@@ -128,8 +133,21 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         viewModelEdit?.getMassSMSEditBusinessSMSQuotaMethod()
     }
     
-    func massSMSEditEmailSmsQuotaDataRecived() {
+    func massSMSEditBusinessEmailSMSQuotaDataRecived() {
         viewModelEdit?.getMassSMSEditAuditEmailQuotaMethod()
+    }
+    
+    func massSMSEditAuditEmailSmsCountDataRecived() {
+        self.viewModelEdit?.getMassSMSEditAllLeadMethod()
+    }
+    
+    func isResultPositive() -> Bool {
+        guard let businessEmailCount = viewModelEdit?.getMassSMSEditBusniessEmailSmsQuotaData?.emailCount,
+              let auditEmailCount = viewModelEdit?.getMassSMSEditAuditEmailSmsCount?.emailCount else {
+            return false
+        }
+        let emailCount = businessEmailCount - auditEmailCount
+        return emailCount > 0
     }
     
     @IBAction func navigateToAuditScreen(sFender: UIButton) {
@@ -205,12 +223,17 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
             viewAuditButtonHeight.constant = 0
             triggerExicutedViewHeight.constant = 0
         }
+        let isPositive = isResultPositive()
+        if isPositive {
+            triggerEmailReachedViewHeight.constant = 0
+            triggerEmailReachedViewTop.constant = 0
+            triggerEmailReachedViewBottom.constant = 0
+        } else {
+            triggerEmailReachedViewHeight.constant = 60
+            triggerEmailReachedViewTop.constant = 10
+            triggerEmailReachedViewBottom.constant = 10
+        }
         emailAndSMSTableViewEdit.reloadData()
-    }
-    
-    
-    func massSMSEditEmailSmsCountDataRecived() {
-        self.viewModelEdit?.getMassSMSEditAllLeadMethod()
     }
     
     func errorReceivedEdit(error: String) {

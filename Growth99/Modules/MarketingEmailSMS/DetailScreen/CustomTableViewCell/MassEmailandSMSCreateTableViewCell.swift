@@ -28,7 +28,7 @@ class MassEmailandSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var networkSelectonEmailButton: UIButton!
     @IBOutlet weak var networkViewEmail: UIView!
     @IBOutlet weak var selectNetworkEmailTextLabel: UILabel!
-    
+    @IBOutlet weak var noEmailQuotaLabel: UILabel!
     @IBOutlet weak var selectNetworkEmptyTextLabel: UILabel!
     
     @IBOutlet weak var smsEmailCountTextLabel: UILabel!

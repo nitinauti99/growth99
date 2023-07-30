@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -14,11 +14,34 @@
             <objects>
                 <viewController storyboardIdentifier="MassEmailandSMSDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MassEmailandSMSDetailViewController" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3w-7i-7Er">
+                                <rect key="frame" x="10" y="30" width="355" height="0.0"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Email limit for current month has been reached. To send Email please contact support@growth99.com " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mm9-IS-ztx">
+                                        <rect key="frame" x="10" y="10" width="335" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.80392156862745101" green="0.2196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mm9-IS-ztx" firstAttribute="top" secondItem="g3w-7i-7Er" secondAttribute="top" constant="10" id="DfI-4K-waa"/>
+                                    <constraint firstItem="mm9-IS-ztx" firstAttribute="leading" secondItem="g3w-7i-7Er" secondAttribute="leading" constant="10" id="Ktm-Wm-Nq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="mm9-IS-ztx" secondAttribute="trailing" constant="10" id="Vu7-BA-0z1"/>
+                                    <constraint firstAttribute="height" id="z0a-kQ-Rgv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Aq-EK-3p3">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="632"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="HIM-SM-2HP"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="gwh-5h-GZ2"/>
@@ -28,19 +51,24 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="g3w-7i-7Er" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="LTj-l1-ahS"/>
                             <constraint firstAttribute="bottom" secondItem="5Aq-EK-3p3" secondAttribute="bottom" id="WcI-qB-zF4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5Aq-EK-3p3" secondAttribute="trailing" id="ZlA-2a-HPG"/>
-                            <constraint firstItem="5Aq-EK-3p3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="iyw-f2-99W"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="g3w-7i-7Er" secondAttribute="trailing" constant="10" id="cAz-Cm-eLF"/>
+                            <constraint firstItem="g3w-7i-7Er" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="lwU-K6-fAm"/>
+                            <constraint firstItem="5Aq-EK-3p3" firstAttribute="top" secondItem="g3w-7i-7Er" secondAttribute="bottom" constant="5" id="tyk-ig-q1Y"/>
                             <constraint firstItem="5Aq-EK-3p3" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ydY-1U-b5y"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailAndSMSTableView" destination="5Aq-EK-3p3" id="5oO-4A-DTR"/>
+                        <outlet property="emailAndSMSTableView" destination="5Aq-EK-3p3" id="5yf-b3-IWK"/>
+                        <outlet property="triggerEmailReachedView" destination="g3w-7i-7Er" id="WqM-Zh-Qau"/>
+                        <outlet property="triggerEmailReachedViewHeight" destination="z0a-kQ-Rgv" id="Lcd-mp-0n6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-59" y="4"/>
+            <point key="canvasLocation" x="-61.600000000000001" y="3.1484257871064472"/>
         </scene>
     </scenes>
     <resources>

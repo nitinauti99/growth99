@@ -54,7 +54,10 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     let smsCount = (viewModel?.getmassEmailSMSLeadAllCountData?.smsCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.smsCount ?? 0)
                     cell.smsEmailCountTextLabel.text = "SMS count: \(smsCount)"
                 }
+                cell.noEmailQuotaLabel.isHidden = true
+                cell.createNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
             } else {
+                
                 if smsEmailModuleSelectionType == "patient" {
                     cell.smsEmailCountTextLabel.text = "Email count: \(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0)"
                 } else if smsEmailModuleSelectionType == "lead" {
@@ -63,10 +66,18 @@ extension MassEmailandSMSDetailViewController: UITableViewDelegate, UITableViewD
                     let emailCount = (viewModel?.getmassEmailSMSLeadAllCountData?.emailCount ?? 0) + (viewModel?.getmassEmailSMSPatientsAllCountData?.emailCount ?? 0)
                     cell.smsEmailCountTextLabel.text = "Email count: \(emailCount)"
                 }
+                if isResultPositive() {
+                    cell.noEmailQuotaLabel.isHidden = true
+                    cell.createNextButton.isEnabled = true
+                    cell.createNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
+                } else {
+                    cell.noEmailQuotaLabel.isHidden = false
+                    cell.createNextButton.isEnabled = false
+                    cell.createNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+                }
             }
             cell.networkSelectonEmailButton.tag = indexPath.row
             cell.networkSelectonEmailButton.addTarget(self, action: #selector(networkSelectionEmailMethod), for: .touchDown)
-            
             return cell
         } else if emailAndSMSDetailList[indexPath.row].cellType == "Time" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MassEmailandSMSTimeTableViewCell", for: indexPath) as? MassEmailandSMSTimeTableViewCell else { return UITableViewCell()}
@@ -377,6 +388,9 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
     }
     
     func smsButtonClick(cell: MassEmailandSMSCreateTableViewCell) {
+        cell.noEmailQuotaLabel.isHidden = true
+        cell.createNextButton.isEnabled = true
+        cell.createNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
         if smsEmailModuleSelectionType == "patient" {
             cell.smsEmailCountTextLabel.text = "SMS count: \(viewModel?.getMassEmailSMSPatientCountData?.smsCount ?? 0)"
         } else if smsEmailModuleSelectionType == "lead" {
@@ -388,6 +402,17 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSCreateCellDelegate
     }
     
     func emailButtonClick(cell: MassEmailandSMSCreateTableViewCell) {
+        
+        if isResultPositive() {
+            cell.noEmailQuotaLabel.isHidden = true
+            cell.createNextButton.isEnabled = true
+            cell.createNextButton.backgroundColor = UIColor.init(hexString: "009EDE")
+        } else {
+            cell.noEmailQuotaLabel.isHidden = false
+            cell.createNextButton.isEnabled = false
+            cell.createNextButton.backgroundColor = UIColor.init(hexString: "86BFE5")
+        }
+
         if smsEmailModuleSelectionType == "patient" {
             cell.smsEmailCountTextLabel.text = "Email count: \(String(viewModel?.getMassEmailSMSPatientCountData?.emailCount ?? 0))"
         } else if smsEmailModuleSelectionType == "lead" {

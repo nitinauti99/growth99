@@ -13,7 +13,7 @@ protocol MassEmailandSMSDetailViewControlProtocol: AnyObject {
     func massEmailPatientTagsDataRecived()
     func massEmailSMSPatientCountDataRecived()
     func massEmailSMSLeadCountDataRecived()
-    func massEmailSMSEQuotaCountDataReceived()
+    func massEmailSMSBusinessQuotaCountDataReceived()
     func massEmailSMSAuditQuotaCountDataReceived()
     func massEmailSMSLeadStatusAllDataRecived()
     func massEmailSMSPatientStatusAllDataRecived()
@@ -28,7 +28,9 @@ protocol MassEmailandSMSDetailViewControlProtocol: AnyObject {
 class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDetailViewControlProtocol {
     
     @IBOutlet weak var emailAndSMSTableView: UITableView!
-    
+    @IBOutlet weak var triggerEmailReachedView: UIView!
+    @IBOutlet weak var triggerEmailReachedViewHeight: NSLayoutConstraint!
+
     var emailAndSMSDetailList = [MassEmailandSMSDetailModel]()
     var viewModel: MassEmailandSMSDetailViewModelProtocol?
     var leadTagsArray = [MassEmailSMSTagListModel]()
@@ -119,12 +121,27 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
         bothInsertDataReceived()
     }
     
-    func massEmailSMSEQuotaCountDataReceived() {
+    func massEmailSMSBusinessQuotaCountDataReceived() {
         viewModel?.getMassEmailAuditEmailQuotaMethod()
     }
     
     func massEmailSMSAuditQuotaCountDataReceived() {
+        let isPositive = isResultPositive()
+        if isPositive {
+            triggerEmailReachedViewHeight.constant = 0
+        } else {
+            triggerEmailReachedViewHeight.constant = 60
+        }
         self.view.HideSpinner()
+    }
+    
+    func isResultPositive() -> Bool {
+        guard let businessEmailCount = viewModel?.getmassEmailSMSBusinessQuotaCountData?.emailCount,
+              let auditEmailCount = viewModel?.getmassEmailSMSAuditQuotaCountData?.emailCount else {
+            return false
+        }
+        let emailCount = businessEmailCount - auditEmailCount
+        return emailCount > 0
     }
     
     func massEmailSMSLeadStatusAllDataRecived() {

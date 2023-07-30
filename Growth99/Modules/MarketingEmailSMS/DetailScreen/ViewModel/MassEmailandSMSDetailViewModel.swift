@@ -21,7 +21,7 @@ protocol MassEmailandSMSDetailViewModelProtocol {
     var  getMassEmailPateintsTagsData: [MassEmailSMSTagListModel] { get }
     var  getMassEmailSMSPatientCountData: MassEmailSMSCountModel? { get }
     var  getMassEmailSMSLeadCountData: MassEmailSMSCountModel? { get }
-    var  getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
+    var  getmassEmailSMSBusinessQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
     var  getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
     
     var  getmassEmailSMSLeadAllCountData: MassEmailSMSLeadAllCountModel? { get }
@@ -52,7 +52,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     var massEmailPateintsTagsList: [MassEmailSMSTagListModel] = []
     var massEmailSMSLeadCount: MassEmailSMSCountModel?
     var massEmailSMSPatientCount: MassEmailSMSCountModel?
-    var massEmailSMSQuotaCount: MassEmailSMSEQuotaCountModel?
+    var massEmailSMSBusinessQuotaCount: MassEmailSMSEQuotaCountModel?
     var massEmailSMSAuditQuotaCount: MassEmailSMSEQuotaCountModel?
     
     var massEmailSMSLeadAllCount: MassEmailSMSLeadAllCountModel?
@@ -172,9 +172,9 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailBusinessSMSQuotaMethod() {
         self.requestManager.request(forPath: ApiUrl.massEmailBusinessSMSQuota, method: .GET, headers: self.requestManager.Headers()) { (result: Result<MassEmailSMSEQuotaCountModel, GrowthNetworkError>) in
             switch result {
-            case .success(let massEmailSMSQuotaCount):
-                self.massEmailSMSQuotaCount = massEmailSMSQuotaCount
-                self.delegate?.massEmailSMSEQuotaCountDataReceived()
+            case .success(let massEmailSMSBusinessQuotaCount):
+                self.massEmailSMSBusinessQuotaCount = massEmailSMSBusinessQuotaCount
+                self.delegate?.massEmailSMSBusinessQuotaCountDataReceived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -272,8 +272,8 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
         return self.massEmailSMSLeadCount
     }
     
-    var getmassEmailSMSQuotaCountData: MassEmailSMSEQuotaCountModel? {
-        return self.massEmailSMSQuotaCount
+    var getmassEmailSMSBusinessQuotaCountData: MassEmailSMSEQuotaCountModel? {
+        return self.massEmailSMSBusinessQuotaCount
     }
     
     var getmassEmailSMSAuditQuotaCountData: MassEmailSMSEQuotaCountModel? {
