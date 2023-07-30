@@ -140,6 +140,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     func setupBookingHistoryData() {
         firstNameTextField.text = editBookingHistoryData?.patientFirstName ?? String.blank
         lastNameTextField.text = editBookingHistoryData?.patientLastName ?? String.blank
+        emailTextField.isUserInteractionEnabled = false
         emailTextField.text = editBookingHistoryData?.patientEmail ?? String.blank
         phoneNumberTextField.text = editBookingHistoryData?.patientPhone ?? ""
         clincsTextField.text = editBookingHistoryData?.clinicName ?? String.blank

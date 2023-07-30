@@ -206,12 +206,12 @@ class EditEventViewModel: EditEventViewModelProtocol {
         self.requestManager.request(forPath: ApiUrl.editAppointment.appending("\(editAppoinmentId)"), method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) { (result: Result<AppoinmentModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                if response.statusCode == 400 {
-                    self.delegate?.errorEventReceived(error: "Unable to update appointment")
+                if response.statusCode == 200 {
+                    self.delegate?.appoinmentEdited()
                 } else if response.statusCode == 500 {
                     self.delegate?.errorEventReceived(error: "Internal server error")
                 } else {
-                    self.delegate?.appoinmentEdited()
+                    self.delegate?.errorEventReceived(error: "Unable to update appointment")
                 }
             case .failure(let error):
                 self.delegate?.errorEventReceived(error: error.localizedDescription)
