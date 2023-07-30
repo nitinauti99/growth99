@@ -109,6 +109,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var isInitialStatusContain: String = ""
     var isFinalStatusContain: String = ""
     var smsandTimeArray = Array<Any>()
+    var isTriggerFrequency: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

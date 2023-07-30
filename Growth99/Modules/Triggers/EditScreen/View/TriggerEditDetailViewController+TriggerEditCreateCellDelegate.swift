@@ -10,7 +10,6 @@ import UIKit
 
 extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
     
-    
     func nextButtonCreate(cell: TriggerEditSMSCreateTableViewCell, index: IndexPath, triggerNetworkType: String) {
         if cell.networkTypeSelected == "SMS" {
             if cell.smsTargetTF.text == "" {
@@ -18,8 +17,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             } else if cell.smsNetworTF.text == "" {
                 cell.smsNetworTF.showError(message: "Select network")
             } else {
-                cell.createNextButton.isEnabled = false
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.smsTargetTF.text ?? "")
+                setupNetworkNextButton(selectedCell: cell, networkType: triggerNetworkType, triggerTarget: cell.smsTargetTF.text ?? "")
             }
         } else if cell.networkTypeSelected == "EMAIL" {
             if cell.emailTargetTF.text == "" {
@@ -27,8 +25,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             } else if cell.emailNetworTF.text == "" {
                 cell.emailNetworTF.showError(message: "Select network")
             } else {
-                cell.createNextButton.isEnabled = false
-                setupNetworkNextButton(networkType: triggerNetworkType,  triggerTarget: cell.emailTargetTF.text ?? "")
+                setupNetworkNextButton(selectedCell: cell, networkType: triggerNetworkType,  triggerTarget: cell.emailTargetTF.text ?? "")
             }
         } else {
             if cell.taskNameTextField.text == "" {
@@ -36,15 +33,19 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
             } else if cell.assignTaskNetworkTF.text == "" {
                 cell.assignTaskNetworkTF.showError(message: "Select network")
             } else {
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "leads")
+                setupNetworkNextButton(selectedCell: cell, networkType: triggerNetworkType, triggerTarget: "leads")
             }
         }
     }
     
-    func setupNetworkNextButton(networkType: String, triggerTarget: String) {
+    func setupNetworkNextButton(selectedCell: TriggerEditSMSCreateTableViewCell, networkType: String, triggerTarget: String) {
         selectedNetworkType = networkType
         selectedTriggerTarget = triggerTarget
         scrollToBottom()
+        selectedCell.smsBtn.isUserInteractionEnabled = false
+        selectedCell.emailBtn.isUserInteractionEnabled = false
+        selectedCell.taskBtn.isUserInteractionEnabled = false
+        selectedCell.createNextButton.isEnabled = false
         addTriggerEditDetailModelTime()
     }
     

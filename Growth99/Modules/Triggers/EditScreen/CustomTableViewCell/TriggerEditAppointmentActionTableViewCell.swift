@@ -45,7 +45,11 @@ class TriggerEditAppointmentActionTableViewCell: UITableViewCell {
         selectedVC = viewController
         self.patientAppointmentButton.addTarget(self, action: #selector(patientAppointmentMethod), for: .touchDown)
         self.patientAppointmentButton.tag = indexPath.row
-        self.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.triggerActionName
+        if viewModel?.getTriggerEditListData?.triggerActionName?.count ?? 0 > 0 {
+            self.patientAppointmenTextLabel.text = viewModel?.getTriggerEditListData?.triggerActionName
+        } else {
+            self.patientAppointmenTextLabel.text = "Pending"
+        }
         self.appointmentSelectedStatus = self.patientAppointmenTextLabel.text ?? ""
         self.selectedAppointmentStatus = triggerListEdit?.triggerConditions ?? []
     }

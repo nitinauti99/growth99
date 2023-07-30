@@ -74,6 +74,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 cell.addAnotherConditionButton.isHidden = true
             }
         }
+        cell.timeRangeButton.isUserInteractionEnabled = false
+        cell.timeFrequencyButton.isUserInteractionEnabled = false
+        cell.addAnotherConditionButton.isEnabled = false
     }
     
     func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
@@ -111,7 +114,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
             } else if cell.timeHourlyTextField.text == "" {
                 cell.timeHourlyTextField.showError(message: "Please select duration")
             } else if cell.scheduledBasedOnTextField.text == "" {
-                cell.timeHourlyTextField.showError(message: "Please select scheduled")
+                cell.scheduledBasedOnTextField.showError(message: "Please select scheduled")
             } else {
                 if cell.scheduledBasedOnTextField.text == "Appointment Created Date" {
                     scheduledBasedOnSelected = "APPOINTMENT_CREATED"

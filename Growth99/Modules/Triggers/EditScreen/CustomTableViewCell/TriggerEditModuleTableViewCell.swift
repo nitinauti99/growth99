@@ -9,6 +9,8 @@ import UIKit
 
 protocol TriggerEditModuleCellDelegate: AnyObject {
     func nextButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String)
+    func leadButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String)
+    func patientButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String)
 }
 
 class TriggerEditModuleTableViewCell: UITableViewCell {
@@ -54,10 +56,12 @@ class TriggerEditModuleTableViewCell: UITableViewCell {
     @IBAction func leadButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "leads"
+        self.delegate?.leadButtonModule(cell: self, index: indexPath, moduleType: moduleTypeSelected)
     }
     
     @IBAction func patientButtonAction(sender: UIButton) {
         radioController.buttonArrayUpdated(buttonSelected: sender)
         moduleTypeSelected = "Appointment"
+        self.delegate?.patientButtonModule(cell: self, index: indexPath, moduleType: moduleTypeSelected)
     }
 }

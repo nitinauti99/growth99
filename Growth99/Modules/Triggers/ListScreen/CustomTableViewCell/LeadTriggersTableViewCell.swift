@@ -54,7 +54,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
         self.updatedBy.text = triggerFilterList?.updatedBy
         if triggerFilterList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "009EDE")
         } else {
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
             self.statusLabelSwitch.setOn(false, animated: true)
         }
         indexPath = index
@@ -76,7 +78,9 @@ class LeadTriggersTableViewCell: UITableViewCell {
         self.updatedBy.text = triggerList?.updatedBy
         if triggerList?.status == Constant.Profile.triggerActive {
             self.statusLabelSwitch.setOn(true, animated: true)
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "009EDE")
         } else {
+            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
             self.statusLabelSwitch.setOn(false, animated: true)
         }
         indexPath = index

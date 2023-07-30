@@ -113,7 +113,10 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     var isAddanotherClicked: Bool = false
     var isAddanotherTimeClicked: Bool = false
     var manageBorder: Bool = false
-
+    var defaultNextSelected: Bool = false
+    var patientTypeSelected: Bool = false
+    var leadTypeSelected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()

@@ -32,7 +32,6 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var taskBtn: UIButton!
     @IBOutlet weak var taskLabel: UILabel!
     
-    
     @IBOutlet weak var networkViewSMS: UIView!
     @IBOutlet weak var networkSMSTagetSelectonButton: UIButton!
     @IBOutlet weak var networkSMSNetworkSelectonButton: UIButton!
@@ -79,7 +78,10 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         self.networkSMSNetworkSelectonButton.addTarget(self, action: #selector(smsNetworkSelectionMethod), for: .touchDown)
         self.emailTagetSelectonButton.addTarget(self, action: #selector(emailTargetSelectionMethod), for: .touchDown)
         self.emailNetworkSelectonButton.addTarget(self, action: #selector(emailNetworkSelectionMethod), for: .touchDown)
-        
+        self.smsTargetTF.text = ""
+        self.smsNetworTF.text = ""
+        self.emailTargetTF.text = ""
+        self.emailNetworTF.text = ""
         //Task will show only on leads
         if moduleSelectionTypeTrigger == "leads" {
             self.taskBtn.isHidden = false

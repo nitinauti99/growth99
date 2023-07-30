@@ -320,6 +320,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     @IBAction func submitButtonAction(sender: UIButton) {
         self.smsandTimeArray = []
+        
         if moduleSelectionType == "lead" {
             if selectedTriggerTarget == "Leads" {
                 selectedTriggerTarget = "leads"
@@ -331,6 +332,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             var isModuleSelectionType: String = ""
             
             for index in 0..<(self.triggerDetailList.count) {
+
                 let cellIndexPath = IndexPath(row: index, section: 0)
                 var templateId: Int = 0
                 let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
@@ -357,14 +359,18 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     triggerDataDict = ["actionIndex": 3,
                                        "addNew": true,
                                        "triggerTemplate": templateId,
-                                       "triggerType": bothCreateCell.networkTypeSelected,
+                                       "triggerType": bothCreateCell.networkTypeSelected.uppercased(),
                                        "triggerTarget": isModuleSelectionType,
                                        "taskName": bothCreateCell.taskNameTextField.text ?? ""
                     ]
                     
                 }else if triggerDetailList.cellType == "Time" {
                     guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell else { return  }
-                    let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    if timeCell.timeHourlyTextField.text == "" {
+                        isTriggerFrequency = "Min"
+                    } else {
+                        isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    }
                     let timeDict: [String : Any] = [
                         "showBorder": false,
                         "orderOfCondition": orderOfConditionTrigger,
@@ -442,7 +448,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     triggerDataDictAppointment = ["actionIndex": 3,
                                                   "addNew": true,
                                                   "triggerTemplate": templateId,
-                                                  "triggerType": bothCreateCell.networkTypeSelected,
+                                                  "triggerType": bothCreateCell.networkTypeSelected.uppercased(),
                                                   "triggerTarget": selectedTriggerTarget,
                                                   "taskName": bothCreateCell.taskNameTextField.text ?? ""
                     ]
@@ -772,10 +778,9 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
             } else if cell.selectSMSNetworkTextLabel.text == "Select network" {
                 cell.selectSMSNetworkEmptyTextLabel.isHidden = false
             } else {
-                cell.createNextButton.isEnabled = false
                 cell.selectSMSTagetEmptyTextLabel.isHidden = true
                 cell.selectSMSNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
+                setupNetworkNextButton(selectedCell: cell, networkType: triggerNetworkType, triggerTarget: cell.selectSMSTargetTextLabel.text ?? "")
             }
         } else if cell.networkTypeSelected == "EMAIL" {
             if cell.selectEmailTargetTextLabel.text == "Select trigger target" {
@@ -783,10 +788,9 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
             } else if cell.selectEmailNetworkTextLabel.text == "Select network" {
                 cell.selectEmailNetworkEmptyTextLabel.isHidden = false
             } else {
-                cell.createNextButton.isEnabled = false
                 cell.selectEmailTagetEmptyTextLabel.isHidden = true
                 cell.selectEmailNetworkEmptyTextLabel.isHidden = true
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
+                setupNetworkNextButton(selectedCell: cell, networkType: triggerNetworkType, triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
             }
         } else {
             if cell.taskNameTextField.text == String.blank {
@@ -794,18 +798,21 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
             } else if cell.assignTaskNetworkTextLabel.text == "Select network" {
                 cell.assignTaskEmptyTextLabel.isHidden = false
             } else {
-                cell.createNextButton.isEnabled = false
                 cell.assignTaskEmptyTextLabel.isHidden = true
                 taskName = cell.taskNameTextField.text ?? ""
-                setupNetworkNextButton(networkType: triggerNetworkType, triggerTarget: "lead")
+                setupNetworkNextButton(selectedCell: cell, networkType: triggerNetworkType, triggerTarget: cell.selectEmailTargetTextLabel.text ?? "")
             }
         }
     }
     
-    func setupNetworkNextButton(networkType: String, triggerTarget: String) {
+    func setupNetworkNextButton(selectedCell: TriggerSMSCreateTableViewCell, networkType: String, triggerTarget: String) {
         selectedNetworkType = networkType
         selectedTriggerTarget = triggerTarget
         scrollToBottom()
+        selectedCell.smsBtn.isUserInteractionEnabled = false
+        selectedCell.emailBtn.isUserInteractionEnabled = false
+        selectedCell.taskBtn.isUserInteractionEnabled = false
+        selectedCell.createNextButton.isEnabled = false
         createNewTriggerCell(cellNameType: "Time")
     }
 }
@@ -825,9 +832,11 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         
         if triggerDetailList.count == 4 {
-            orderOfConditionTrigger = orderOfConditionTrigger + 2
-        } else {
+            orderOfConditionTrigger = 0
+        } else if triggerDetailList.count == 6 {
             orderOfConditionTrigger = orderOfConditionTrigger + 1
+        } else {
+            orderOfConditionTrigger = orderOfConditionTrigger + 2
         }
         
         if moduleSelectionType == "lead" {
@@ -863,6 +872,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 createNewTriggerCell(cellNameType: "Both")
             }
         }
+        cell.timeRangeButton.isUserInteractionEnabled = false
+        cell.timeFrequencyButton.isUserInteractionEnabled = false
+        cell.addAnotherConditionButton.isEnabled = false
     }
     
     func nextBtnAction(cell: TriggerTimeTableViewCell, index: IndexPath) {

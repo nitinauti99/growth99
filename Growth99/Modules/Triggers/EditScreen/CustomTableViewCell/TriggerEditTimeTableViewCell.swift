@@ -95,6 +95,9 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
             self.timeRangeButton.isHidden = true
             self.scheduledBasedOnButton.isEnabled = true
         }
+        self.timeDurationTextField.text = "0"
+        self.timeHourlyTextField.text = "Min"
+        self.scheduledBasedOnTextField.text = "Appointment Created Date"
     }
     
     func configureCell(tableView: UITableView?, index: IndexPath, triggerEditData: TriggerEditData?, parentViewModel: TriggerEditDetailViewModelProtocol?, viewController: UIViewController, moduleSelectionTypeTrigger: String, arrayCount: Int) {
@@ -149,7 +152,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.timeHourlyButton.addTarget(self, action: #selector(timeHourlySelectionMethod), for: .touchDown)
         self.scheduledBasedOnButton.tag = indexPath.row
         self.scheduledBasedOnButton.addTarget(self, action: #selector(scheduledBasedOnMethod), for: .touchDown)
-        
+        self.timerTypeSelected = triggerEditData?.timerType ?? ""
         self.timeHourlyTextField.text = triggerEditData?.triggerFrequency ?? ""
         let triggerTime = triggerEditData?.triggerTime
         self.timeDurationTextField.text = String(triggerTime ?? 0).replacingOccurrences(of: "-", with: "")

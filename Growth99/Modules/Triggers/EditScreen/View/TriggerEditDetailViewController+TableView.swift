@@ -41,8 +41,15 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         else if triggerDetailList[indexPath.row].cellType == "Module" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditModuleTableViewCell", for: indexPath) as? TriggerEditModuleTableViewCell else { return UITableViewCell() }
             cell.delegate = self
-            cell.configureCell(triggerListEdit: viewModel?.getTriggerEditListData, index: indexPath)
-            moduleSelectionType = cell.moduleTypeSelected
+            if defaultNextSelected != true {
+                cell.configureCell(triggerListEdit: viewModel?.getTriggerEditListData, index: indexPath)
+                moduleSelectionType = cell.moduleTypeSelected
+            } else {
+                moduleSelectionType = "leads"
+                cell.moduleTypeSelected = "leads"
+                cell.leadBtn.isSelected = true
+                cell.patientBtn.isSelected = false
+            }
             return cell
         }
         else if triggerDetailList[indexPath.row].cellType == "Lead" {

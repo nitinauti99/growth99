@@ -16,38 +16,92 @@ extension TriggerEditDetailViewController: TriggerEditDefaultCellDelegate {
             moduleName = cell.massEmailSMSTextField.text ?? String.blank
             if triggerDetailList.count > 2 {
                 triggerDetailList.removeSubrange(2..<triggerDetailList.count)
-                //cell.parentCell?.finalArray.removeAll()
             }
+            defaultNextSelected = true
             triggerdDetailTableView.reloadData()
         }
     }
 }
 
 extension TriggerEditDetailViewController: TriggerEditModuleCellDelegate {
+    
+    func leadButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String) {
+        let hasLead = triggerDetailList.contains(where: { $0.cellType == "Lead" })
+        if !hasLead {
+            DispatchQueue.main.async {
+                self.triggerdDetailTableView.beginUpdates()
+                if self.triggerDetailList.count > 2 {
+                    let indexPathsToDelete = (2..<self.triggerDetailList.count).map { IndexPath(row: $0, section: 0) }
+                    self.triggerDetailList.removeSubrange(2..<self.triggerDetailList.count)
+                    self.triggerdDetailTableView.deleteRows(at: indexPathsToDelete, with: .fade)
+                }
+                self.leadTypeSelected = true
+                self.moduleSelectionType = moduleType
+                self.triggerdDetailTableView.endUpdates()
+            }
+        }
+    }
+    
+    func patientButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String) {
+        let hasPatient = triggerDetailList.contains(where: { $0.cellType == "Appointment" })
+        if !hasPatient {
+            DispatchQueue.main.async {
+                self.triggerdDetailTableView.beginUpdates()
+                if self.triggerDetailList.count > 2 {
+                    let indexPathsToDelete = (2..<self.triggerDetailList.count).map { IndexPath(row: $0, section: 0) }
+                    self.triggerDetailList.removeSubrange(2..<self.triggerDetailList.count)
+                    self.triggerdDetailTableView.deleteRows(at: indexPathsToDelete, with: .fade)
+                }
+                self.patientTypeSelected = true
+                self.moduleSelectionType = moduleType
+                self.triggerdDetailTableView.endUpdates()
+            }
+        }
+    }
+    
     func nextButtonModule(cell: TriggerEditModuleTableViewCell, index: IndexPath, moduleType: String) {
         if moduleType == "Appointment" {
-            if triggerDetailList.count < 3 {
-                moduleSelectionType = moduleType
-                createNewTriggerCell(cellNameType: "Appointment")
-                scrollToBottom()
-            } else {
-                triggerDetailList.removeSubrange(2..<triggerDetailList.count)
-                triggerdDetailTableView.reloadData()
-                moduleSelectionType = moduleType
-                createNewTriggerCell(cellNameType: "Appointment")
-                scrollToBottom()
+            let hasPatient = triggerDetailList.contains(where: { $0.cellType == "Appointment" })
+            if !hasPatient {
+                DispatchQueue.main.async {
+                    self.triggerdDetailTableView.beginUpdates()
+                    
+                    if self.triggerDetailList.count > 2 {
+                        let indexPathsToDelete = (2..<self.triggerDetailList.count).map { IndexPath(row: $0, section: 0) }
+                        self.triggerDetailList.removeSubrange(2..<self.triggerDetailList.count)
+                        self.triggerdDetailTableView.deleteRows(at: indexPathsToDelete, with: .fade)
+                    }
+                    self.moduleSelectionType = moduleType
+                    let emailSMS = TriggerEditDetailModel(cellType: "Appointment", LastName: "")
+                    self.triggerDetailList.append(emailSMS)
+                    let indexPathToInsert = IndexPath(row: self.triggerDetailList.count - 1, section: 0)
+                    self.triggerdDetailTableView.insertRows(at: [indexPathToInsert], with: .fade)
+                    self.triggerdDetailTableView.endUpdates()
+                    self.scrollToBottom()
+                }
             }
         } else if moduleType == "leads" {
-            if triggerDetailList.count < 3 {
-                moduleSelectionType = moduleType
-                createNewTriggerCell(cellNameType: "Lead")
-                scrollToBottom()
-            } else {
-                triggerDetailList.removeSubrange(2..<triggerDetailList.count)
-                triggerdDetailTableView.reloadData()
-                moduleSelectionType = moduleType
-                createNewTriggerCell(cellNameType: "Lead")
-                scrollToBottom()
+            let hasLead = triggerDetailList.contains(where: { $0.cellType == "Lead" })
+            if !hasLead {
+                DispatchQueue.main.async {
+                    self.triggerdDetailTableView.beginUpdates()
+                    
+                    if self.triggerDetailList.count > 2 {
+                        let indexPathsToDelete = (2..<self.triggerDetailList.count).map { IndexPath(row: $0, section: 0) }
+                        self.triggerDetailList.removeSubrange(2..<self.triggerDetailList.count)
+                        self.triggerdDetailTableView.deleteRows(at: indexPathsToDelete, with: .fade)
+                    }
+                    
+                    self.moduleSelectionType = moduleType
+                    let emailSMS = TriggerEditDetailModel(cellType: "Lead", LastName: "")
+                    self.triggerDetailList.append(emailSMS)
+                    
+                    let indexPathToInsert = IndexPath(row: self.triggerDetailList.count - 1, section: 0)
+                    self.triggerdDetailTableView.insertRows(at: [indexPathToInsert], with: .fade)
+                    
+                    self.triggerdDetailTableView.endUpdates()
+                    self.scrollToBottom()
+                }
             }
         }
     }

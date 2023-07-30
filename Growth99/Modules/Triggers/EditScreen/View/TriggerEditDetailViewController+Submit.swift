@@ -39,7 +39,7 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                 }
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditDefaultTableViewCell else { return  }
-                    moduleName = defaultCreateCell.userModuleName
+                    moduleName = defaultCreateCell.massEmailSMSTextField.text ?? ""
                 } else if triggerDetailList.cellType == "Module" {
                     guard let moduleCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditModuleTableViewCell else { return  }
                     isModuleSelectionType = moduleCreateCell.moduleTypeSelected
@@ -179,7 +179,7 @@ extension TriggerEditDetailViewController: BottomTableViewCellProtocol {
                 let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditDefaultTableViewCell else { return  }
-                    patientModuleName = defaultCreateCell.userModuleName
+                    patientModuleName = defaultCreateCell.massEmailSMSTextField.text ?? ""
                 } else if triggerDetailList.cellType == "Module" {
                     guard let moduleCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditModuleTableViewCell else { return  }
                     isModuleSelectionTypeAppointment = moduleCreateCell.moduleTypeSelected
