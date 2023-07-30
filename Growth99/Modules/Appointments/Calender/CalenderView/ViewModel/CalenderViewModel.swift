@@ -98,7 +98,7 @@ class CalendarViewModel: CalendarViewModelProtocol {
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalendarInfoListModel, GrowthNetworkError>) in
             switch result {
             case .success(let appointmentDTOListData):
-                self.appoinmentListData = appointmentDTOListData.appointmentDTOList ?? []
+                self.appoinmentListData = appointmentDTOListData.appointmentDTOList?.filter({ $0.appointmentStatus != "Canceled" }) ?? []
                 self.delegate?.appointmentListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
