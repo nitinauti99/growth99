@@ -31,10 +31,24 @@ class EventsTableViewCell: UITableViewCell {
     
     func configureCell(headline: AppointmentDTOList, index: IndexPath) {
         self.eventsTitle.text = "\(headline.patientFirstName ?? String.blank) \(headline.patientLastName ?? String.blank)"
-        let startTime = dateFormater?.serverToLocalforCalender(date: headline.appointmentStartDate ?? String.blank)
-        let endTime = dateFormater?.serverToLocalforCalender(date: headline.appointmentEndDate ?? String.blank)
-        self.eventsDuration.text = "\(startTime ?? "") - \(endTime ?? "")"
+        let startTime = convertToUTCString(from: headline.appointmentStartDate ?? "")
+        let endTime = convertToUTCString(from: headline.appointmentEndDate ?? "")
+        self.eventsDuration.text = "\(startTime) - \(endTime)"
         self.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
         self.selectionStyle = .none
+    }
+    
+    func convertToUTCString(from timestampString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+
+        guard let date = dateFormatter.date(from: timestampString) else {
+            print("Error: Invalid timestamp format")
+            return ""
+        }
+
+        dateFormatter.dateFormat = "hh:mm a"
+        return dateFormatter.string(from: date)
     }
 }

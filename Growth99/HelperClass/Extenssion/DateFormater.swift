@@ -17,7 +17,7 @@ protocol DateFormaterProtocol: AnyObject {
     func localToServerWithDate(date: String) -> String
     func localToServerSocial(date: String) -> String
     func dateFormatterStringBirthDate(textField: CustomTextField) -> String
-    func serverToLocalforCalender(date: String) -> String
+    func serverToLocalforCalender(date: String, calenderTimeZone: String) -> String
     func serverToLocalDateConverter(date: String) -> String
     func serverToLocalPateintsAppointment(date: String) -> String
     func serverToLocalBirthDateFormate(date: String) -> String
@@ -25,6 +25,7 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalDateConverterOnlyDate(date: String) -> String
     func serverToLocalTimeAndDateFormate(date: String) -> String
     func localToServerCalender(date: String) -> String
+    func convertDateStringToStringCalender(dateString: String) -> String
     //    func serverToLocal(date: String) -> String
      //   func serverToLocalCreatedDate(date: String) -> String
     //   func serverToLocalDate(date: String) -> String
@@ -135,11 +136,26 @@ class DateFormater: DateFormaterProtocol {
     
     func localToServerCalender(date: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm a"
         let date = dateFormatter.date(from: date) ?? Date()
-        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        dateFormatter.timeZone = TimeZone(abbreviation: "EDT")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         return dateFormatter.string(from: date)
+    }
+    
+    func convertDateStringToStringCalender(dateString: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
+        let date = dateFormatter.date(from: dateString) ?? Date()
+        
+        // Convert to the desired timezone (e.g., -0400)
+        let desiredDateFormatter = DateFormatter()
+        let desiredTimeZone = TimeZone(identifier: "EDT")
+        desiredDateFormatter.timeZone = desiredTimeZone
+        desiredDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        
+        return desiredDateFormatter.string(from: date)
     }
     
     func localToServerWithDate(date: String) -> String {
@@ -222,15 +238,14 @@ class DateFormater: DateFormaterProtocol {
         return nil
     }
     
-    func serverToLocalforCalender(date: String) -> String {
+    func serverToLocalforCalender(date: String, calenderTimeZone: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         if let date = dateFormatter.date(from: date) {
             let usDateFormatter = DateFormatter()
             usDateFormatter.dateFormat = "h:mm a"
-            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             let usDateString = usDateFormatter.string(from: date)
             return usDateString
         }

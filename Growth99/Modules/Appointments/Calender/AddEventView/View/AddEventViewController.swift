@@ -391,7 +391,7 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         }
         
         let str: String = (date) + " " + (time)
-        let scheduledDate = (dateFormater?.localToServerCalender(date: str)) ?? ""
+        let scheduledDate = (dateFormater?.convertDateStringToStringCalender(dateString: str)) ?? ""
         
         self.view.ShowSpinner()
         if self.userSelectedDate == "Manual" {
