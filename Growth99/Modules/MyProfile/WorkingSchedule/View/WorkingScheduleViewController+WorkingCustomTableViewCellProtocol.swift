@@ -50,9 +50,9 @@ extension WorkingScheduleViewController: WorkingCellSubclassDelegate {
     
     func deleteSelectedWorkingShedule(cell: WorkingCustomTableViewCell, indexPath: IndexPath) {
         self.workingScheduleViewModel?.removeElementFromArray(index: indexPath)
-        self.workingListTableView.beginUpdates()
         self.workingListTableView.deleteRows(at: [indexPath], with: .automatic)
         self.workingScrollViewHight.constant = tableViewHeight + 750
-        self.workingListTableView.endUpdates()
+        self.workingListTableView.performBatchUpdates(nil, completion: nil)
+        self.workingListTableView.reloadData()
     }
 }
