@@ -45,7 +45,7 @@ class CreateLeadViewController: UIViewController{
 
         for item in patientQuestionList {
             if item.questionType  == "Input" || item.questionType == "Yes_No" || item.questionType == "Date" {
-                tableViewHight += 100
+                tableViewHight += 110
             }else if (item.questionType  == "Text") {
                 tableViewHight += 200
             }else if (item.questionType  == "Multiple_Selection_Text") {
@@ -266,7 +266,7 @@ extension CreateLeadViewController: CreateLeadViewControllerProtocol {
     func QuestionnaireListRecived() {
         view.HideSpinner()
         self.tableView.reloadData()
-        self.tableViewHight.constant = self.scrollViewHeight()
+        self.tableViewHight.constant = self.scrollViewHeight() + 100
     }
 
     ///  created Lead on existing datanaviagte to lead list
