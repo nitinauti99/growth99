@@ -17,8 +17,8 @@ extension VacationScheduleViewController: UITableViewDelegate, UITableViewDataSo
         headerView.tag = section
         
         if isEmptyResponse == false {
-            headerView.dateFromTextField.text = vacationViewModel?.serverToLocal(date: vacationsList[section].fromDate ?? String.blank)
-            headerView.dateToTextField.text = vacationViewModel?.serverToLocal(date: vacationsList[section].toDate ?? String.blank)
+            headerView.dateFromTextField.text = dateFormater?.serverToLocalDateConverterOnlyDateWorkinngShedule(date: vacationsList[section].fromDate ?? String.blank)
+            headerView.dateToTextField.text = dateFormater?.serverToLocalDateConverterOnlyDateWorkinngShedule(date: vacationsList[section].toDate ?? String.blank)
         } else {
             headerView.dateFromTextField.text = String.blank
             headerView.dateToTextField.text = String.blank

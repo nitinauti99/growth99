@@ -37,6 +37,8 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     var selectedDays = [String]()
     var days: [String]?
     
+    var dateFormater : DateFormaterProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = Constant.Profile.workingScheduleTitle
@@ -46,6 +48,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         self.workingScheduleViewModel?.getallClinics()
         self.setupUI()
         self.workingscrollview.delegate = self
+        dateFormater = DateFormater()
     }
     
     var tableViewHeight: CGFloat {
@@ -91,8 +94,8 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
         self.view.HideSpinner()
         let workingSheduleData = workingScheduleViewModel?.getWorkingSheduleData ?? []
         if workingSheduleData.count > 0 {
-            self.workingDateFromTextField.text = workingScheduleViewModel?.serverToLocal(date: workingSheduleData[0].fromDate ?? String.blank)
-            self.workingDateToTextField.text = workingScheduleViewModel?.serverToLocal(date: workingSheduleData[0].toDate ?? String.blank)
+            self.workingDateFromTextField.text = dateFormater?.serverToLocalDateConverterOnlyDateWorkinngShedule(date: workingSheduleData[0].fromDate ?? String.blank)
+            self.workingDateToTextField.text = dateFormater?.serverToLocalDateConverterOnlyDateWorkinngShedule(date: workingSheduleData[0].toDate ?? String.blank)
         }else {
             self.workingDateFromTextField.text = String.blank
             self.workingDateToTextField.text = String.blank

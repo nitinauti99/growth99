@@ -43,7 +43,8 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
     
     var arrayOfVacations = [VacationSchedules]()
     var arrTime = [Time]()
-    
+    var dateFormater : DateFormaterProtocol?
+
     var isEmptyResponse: Bool = false
     
     var vacationTableViewHeight: CGFloat {
@@ -61,6 +62,7 @@ class VacationScheduleViewController: UIViewController, VacationScheduleViewCont
         vacationViewModel = VacationViewModel(delegate: self)
         vacationScrollview.delegate = self
         vacationViewModel?.getallClinics()
+        dateFormater = DateFormater()
     }
     
     // MARK: - viewWillAppear

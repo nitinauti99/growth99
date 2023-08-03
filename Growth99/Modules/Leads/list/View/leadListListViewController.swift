@@ -94,7 +94,7 @@ class leadListViewController: UIViewController, leadListTableViewCellDelegate {
     }
     
     func removeLead(cell: leadListTableViewCell, index: IndexPath) {
-        let fullName = (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.firstName ?? "")  + (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.lastName ?? "")
+        let fullName = (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.firstName ?? "") + " " + (viewModel?.leadPeginationListDataAtIndex(index: index.row)?.lastName ?? "")
         
         let alert = UIAlertController(title: "Delete Lead", message: "Are you sure you want to delete \n\(fullName)", preferredStyle: UIAlertController.Style.alert)
         let cancelAlert = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default,
