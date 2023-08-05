@@ -18,6 +18,7 @@ class AuditListTableViewCell: UITableViewCell {
     @IBOutlet private weak var patientLabel: UILabel!
     @IBOutlet private weak var patientLabelHeight: NSLayoutConstraint!
     @IBOutlet private weak var patientId: UILabel!
+    @IBOutlet private weak var emailPhoneLbl: UILabel!
     @IBOutlet private weak var patientIdHeight: NSLayoutConstraint!
     @IBOutlet private weak var patientIdBottom: NSLayoutConstraint!
     @IBOutlet private weak var emailLabel: UILabel!
@@ -38,7 +39,7 @@ class AuditListTableViewCell: UITableViewCell {
         dateFormater = DateFormater()
     }
     
-    func configureCell(triggerModuleType: String, auditFilterList: AuditListModel?, index: IndexPath, isSearch: Bool) {
+    func configureCell(communicationType: String, triggerModuleType: String, auditFilterList: AuditListModel?, index: IndexPath, isSearch: Bool) {
         
         if triggerModuleType == "MassPatient" {
             appointmentLabel.text = "Appointment ID"
@@ -77,20 +78,26 @@ class AuditListTableViewCell: UITableViewCell {
             self.patientId.text = "-"
         }
         
-        self.emailLabel.text = auditFilterList?.email ?? "-"
+        if communicationType == "MASS_EMAIL" {
+            self.emailLabel.text = auditFilterList?.email ?? "-"
+            self.emailPhoneLbl.text = "Email"
+        } else {
+            self.emailLabel.text = auditFilterList?.phoneNumber ?? "-"
+            self.emailPhoneLbl.text = "Phone"
+        }
         self.templateName.text = auditFilterList?.templateName ?? "-"
         self.dateAuditLabel.text = dateFormater?.serverToLocalPateintTimeLineDate(date: auditFilterList?.date ?? "-")
         indexPath = index
     }
     
-    func configureCell(triggerModuleType: String, auditList: AuditListModel?, index: IndexPath, isSearch: Bool) {
+    func configureCell(communicationType: String, triggerModuleType: String, auditList: AuditListModel?, index: IndexPath, isSearch: Bool) {
         
         if triggerModuleType == "MassPatient" {
             appointmentLabel.text = "Appointment ID"
             patientIdHeight.constant = 15
             patientLabelHeight.constant = 20
             patientIdBottom.constant = 15
-        } else if triggerModuleType == "MassLead"{
+        } else if triggerModuleType == "MassLead" {
             appointmentLabel.text = "Lead ID"
             patientIdHeight.constant = 0
             patientLabelHeight.constant = 0
@@ -122,7 +129,13 @@ class AuditListTableViewCell: UITableViewCell {
             self.patientId.text = "-"
         }
         
-        self.emailLabel.text = auditList?.email ?? "-"
+        if communicationType == "MASS_EMAIL" {
+            self.emailLabel.text = auditList?.email ?? "-"
+            self.emailPhoneLbl.text = "Email"
+        } else {
+            self.emailLabel.text = auditList?.phoneNumber ?? "-"
+            self.emailPhoneLbl.text = "Phone"
+        }
         self.templateName.text = auditList?.templateName ?? "-"
         self.dateAuditLabel.text = dateFormater?.serverToLocalPateintTimeLineDate(date: auditList?.date ?? "-")
         indexPath = index

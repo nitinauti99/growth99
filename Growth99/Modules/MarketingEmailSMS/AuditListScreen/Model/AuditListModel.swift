@@ -15,4 +15,5 @@ struct AuditListModel : Codable {
     let label : String?
     let email : String?
     let leadId : Int?
+    let phoneNumber : String?
 }

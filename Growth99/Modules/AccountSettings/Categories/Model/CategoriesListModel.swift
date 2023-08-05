@@ -161,10 +161,10 @@ struct CategeroryConsents : Codable {
     let deleted : Bool?
     let tenantId : Int?
     let id : Int?
-    let defaultConsentId : String?
+    let defaultConsentId : Int?
     let name : String?
     let body : String?
-    let isDefault : String?
+    let isDefault : Bool?
     let tag : String?
     let isCustom : String?
     let specialization : String?
@@ -194,7 +194,7 @@ struct CategeroryQuestionnaires : Codable {
     let isPublic : Bool?
     let chatQuestionnaire : Bool?
     let questionnaireSource : String?
-    let isContactForm : String?
+    let isContactForm : Bool?
     let isG99ReviewForm : Bool?
     let isLeadForm : Bool?
     let showTitle : Bool?
@@ -209,7 +209,7 @@ struct CategeroryQuestionnaires : Codable {
     let textForComposer : String?
     let hideFieldTitle : Bool?
     let css : String?
-    let isDefault : String?
+    let isDefault : Bool?
     let identifier : String?
     let isCustom : Bool?
     let trackCode : String?
