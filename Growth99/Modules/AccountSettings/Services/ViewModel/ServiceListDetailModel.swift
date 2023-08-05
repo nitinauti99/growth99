@@ -28,7 +28,7 @@ protocol ServiceListDetailViewModelProtocol {
                               consentIds: Array<Int>, questionnaireIds: Array<Int>,
                               clinicIds: Array<Int>, file: String, files: String,
                               preBookingCost: Int, imageRemoved: Bool, isPreBookingCostAllowed: Bool,
-                              showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int)
+                              showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int, showDepositOnPublicBooking: Bool)
     func getUserSelectedService(serviceID: Int)
     var  getUserSelectedServiceData: ServiceDetailModel? { get }
     func uploadSelectedServiceImage(image: UIImage, selectedServiceId:Int)
@@ -144,7 +144,7 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
                               consentIds: Array<Int>, questionnaireIds: Array<Int>,
                               clinicIds: Array<Int>, file: String, files: String,
                               preBookingCost: Int, imageRemoved: Bool, isPreBookingCostAllowed: Bool,
-                              showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int) {
+                              showInPublicBooking: Bool, priceVaries: Bool, httpMethod: HTTPMethod, isScreenFrom: String, serviceId: Int, showDepositOnPublicBooking: Bool) {
         
         let parameter: [String : Any] = ["name": name,
                                          "serviceCategoryId": serviceCategoryId,
@@ -161,7 +161,8 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
                                          "imageRemoved": imageRemoved,
                                          "isPreBookingCostAllowed": isPreBookingCostAllowed,
                                          "showInPublicBooking": showInPublicBooking,
-                                         "priceVaries": priceVaries
+                                         "priceVaries": priceVaries,
+                                         "showDepositOnPublicBooking": showDepositOnPublicBooking
         ]
         
         if isScreenFrom == Constant.Profile.createService {

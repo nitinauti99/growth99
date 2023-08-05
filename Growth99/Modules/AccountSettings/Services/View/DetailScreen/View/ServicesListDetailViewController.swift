@@ -50,8 +50,16 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
 
     @IBOutlet weak var depositCostTFTopConstant: NSLayoutConstraint!
     @IBOutlet weak var depositCostTFHeightConstant: NSLayoutConstraint!
+    
+    @IBOutlet weak var showDepositCostButton: UIButton!
+    @IBOutlet weak var showDepositCostBtnTopConstant: NSLayoutConstraint!
+    @IBOutlet weak var showDepositCostBtnHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var showDepositCostLblHeightConstant: NSLayoutConstraint!
+
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var serviceScorllView: UIScrollView!
+    
+    
 
     var screenTitle: String = String.blank
     var serviceId: Int?
@@ -85,6 +93,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     var imageRemoved: Bool = false
     var isPreBookingCostAllowed: Bool = false
     var showInPublicBooking: Bool = false
+    var showDepositOnPublicBooking: Bool = false
+
     var priceVaries: Bool = false
     var httpMethodType: HTTPMethod = .POST
     var hidePriceVaries: Bool = false
@@ -111,7 +121,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceDescTextView.layer.borderWidth = 1.0
         if self.title == Constant.Profile.createService {
             removeImageViewBtn.isHidden = true
-            contentViewHeight.constant = 1400
+            contentViewHeight.constant = 1500
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
             enableButton.isSelected = false
@@ -122,6 +132,10 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostTFTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
             depositCostTextField.isHidden = true
+            showDepositCostButton.isSelected = false
+            showDepositCostBtnTopConstant.constant = 0
+            showDepositCostBtnHeightConstant.constant = 0
+            showDepositCostLblHeightConstant.constant = 0
         } else {
             servicesAddViewModel?.getUserSelectedService(serviceID: serviceId ?? 0)
             removeImageViewBtn.isHidden = true
@@ -150,7 +164,13 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         
         serviceCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.serviceCost ?? 0.0)
         serviceUrlTextField.text = servicesAddViewModel?.getUserSelectedServiceData?.serviceURL ?? String.blank
-        depositCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.preBookingCost ?? 0.0)
+        
+        let bookingCost = servicesAddViewModel?.getUserSelectedServiceData?.preBookingCost ?? 0.0
+        if bookingCost == 0.0 {
+            depositCostTextField.text = ""
+        } else {
+            depositCostTextField.text = forTrailingZero(temp: bookingCost)
+        }
         serviceDescTextView.text = servicesAddViewModel?.getUserSelectedServiceData?.description
         hidePriceVaries =  servicesAddViewModel?.getUserSelectedServiceData?.priceVaries ?? false
         userConsents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
@@ -166,16 +186,18 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             selectedQuestionnaires.append(QuestionnaireListModel(createdAt: item.createdAt ?? "", isContactForm: item.isContactForm ?? nil, name: item.name ?? "", id: item.id ?? 0, isG99ReviewForm: item.isG99ReviewForm ?? nil))
             selectedQuestionnairesIds.append(item.id ?? 0)
         }
-            
+        
         if servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking == true {
             disableButton.isSelected = true
         } else {
             disableButton.isSelected = false
         }
-                
+        
         if servicesAddViewModel?.getUserSelectedServiceData?.priceVaries == true {
             hideButton.isSelected = true
             enableButton.isSelected = false
+            
+            showDepositCostButton.isSelected = false
             depositCostTextField.isHidden = true
             depositCostTextField.text = String.blank
             enableCollectLabelHeightConstant.constant = 0
@@ -186,34 +208,37 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostLabelHeightConstant.constant = 0
             depositCostTFTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
+            
+            showDepositCostBtnTopConstant.constant = 0
+            showDepositCostBtnHeightConstant.constant = 0
+            showDepositCostLblHeightConstant.constant = 0
         } else {
             hideButton.isSelected = false
-            enableButton.isSelected = true
-            depositCostTextField.isHidden = false
-            enableCollectLabelHeightConstant.constant = 36
-            enableCollectBtnHeightConstant.constant = 15
-            enableCollectLabelTopConstant.constant = 16
             
-            depositCostLabelTopConstant.constant = 16
-            depositCostLabelHeightConstant.constant = 18
-            depositCostTFTopConstant.constant = 10
-            depositCostTFHeightConstant.constant = 45
-        }
-        
-        if servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed == true {
-            enableButton.isSelected = true
-            depositCostTextField.isHidden = false
-            depositCostLabelTopConstant.constant = 16
-            depositCostTFHeightConstant.constant = 45
-            depositCostTFTopConstant.constant = 10
-            depositCostLabelHeightConstant.constant = 18
-        } else {
-            enableButton.isSelected = false
-            depositCostTextField.isHidden = true
-            depositCostLabelTopConstant.constant = 0
-            depositCostTFHeightConstant.constant = 0
-            depositCostTFTopConstant.constant = 0
-            depositCostLabelHeightConstant.constant = 0
+            if servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed == true {
+                enableButton.isSelected = true
+            } else {
+                enableButton.isSelected = false
+                
+                showDepositCostButton.isSelected = false
+                depositCostTextField.isHidden = true
+                depositCostTextField.text = String.blank
+                
+                depositCostLabelTopConstant.constant = 0
+                depositCostLabelHeightConstant.constant = 0
+                depositCostTFTopConstant.constant = 0
+                depositCostTFHeightConstant.constant = 0
+                
+                showDepositCostBtnTopConstant.constant = 0
+                showDepositCostBtnHeightConstant.constant = 0
+                showDepositCostLblHeightConstant.constant = 0
+            }
+            
+            if servicesAddViewModel?.getUserSelectedServiceData?.showDepositOnPublicBooking == true {
+                showDepositCostButton.isSelected = true
+            } else {
+                showDepositCostButton.isSelected = false
+            }
         }
         
         let imageUrl = servicesAddViewModel?.getUserSelectedServiceData?.imageUrl
@@ -221,19 +246,20 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             serviceImageView.image = nil
             serviceImageViewHeight.constant = 0
             serviceImageViewTop.constant = 0
-            contentViewHeight.constant = 1400
+            contentViewHeight.constant = 1500
             removeImageViewBtn.isHidden = true
         } else {
             self.serviceImageView.sd_setImage(with: URL(string: servicesAddViewModel?.getUserSelectedServiceData?.imageUrl ?? String.blank), placeholderImage: nil)
             serviceImageViewHeight.constant = 200
             serviceImageViewTop.constant = 20
-            contentViewHeight.constant = 1550
+            contentViewHeight.constant = 1650
             imageRemoved = false
             removeImageViewBtn.isHidden = true
             serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         }
         isPreBookingCostAllowed = servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed ?? false
         showInPublicBooking = servicesAddViewModel?.getUserSelectedServiceData?.showInPublicBooking ?? false
+        showDepositOnPublicBooking = servicesAddViewModel?.getUserSelectedServiceData?.showDepositOnPublicBooking ?? false
     }
     
     func forTrailingZero(temp: Double) -> String {
@@ -404,6 +430,13 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostTFTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
             depositCostTextField.isHidden = true
+            enableButton.isSelected = false
+            showDepositCostButton.isSelected = false
+            showDepositCostBtnTopConstant.constant = 0
+            showDepositCostBtnHeightConstant.constant = 0
+            showDepositCostLblHeightConstant.constant = 0
+            isPreBookingCostAllowed = false
+            showDepositOnPublicBooking = false
         } else {
             hidePriceVaries = false
             enableCollectLabelHeightConstant.constant = 36
@@ -424,6 +457,15 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             showInPublicBooking = false
         }
     }
+    
+    @IBAction func showDepositOnPublicBookingBtnAction(sender: UIButton) {
+        showDepositCostButton.isSelected = !showDepositCostButton.isSelected
+        if showDepositCostButton.isSelected {
+            showDepositOnPublicBooking = true
+        } else {
+            showDepositOnPublicBooking = false
+        }
+    }
 
     @IBAction func enableDepositsButtonAction(sender: UIButton) {
         enableButton.isSelected = !enableButton.isSelected
@@ -434,6 +476,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostLabelHeightConstant.constant = 18
             depositCostTFTopConstant.constant = 10
             depositCostTFHeightConstant.constant = 45
+            
+            showDepositCostButton.isSelected = false
+            showDepositCostBtnTopConstant.constant = 25
+            showDepositCostBtnHeightConstant.constant = 15
+            showDepositCostLblHeightConstant.constant = 18
         } else {
             isPreBookingCostAllowed = false
             depositCostTextField.isHidden = true
@@ -441,6 +488,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             depositCostLabelHeightConstant.constant = 0
             depositCostTFTopConstant.constant = 0
             depositCostTFHeightConstant.constant = 0
+            
+            showDepositCostButton.isSelected = false
+            showDepositCostBtnTopConstant.constant = 0
+            showDepositCostBtnHeightConstant.constant = 0
+            showDepositCostLblHeightConstant.constant = 0
         }
     }
     
@@ -459,7 +511,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         selectedPickerImage = selectedImage
         serviceImageViewHeight.constant = 200
         serviceImageViewTop.constant = 20
-        contentViewHeight.constant = 1550
+        contentViewHeight.constant = 1650
         imageRemoved = false
         removeImageViewBtn.isHidden = true
         serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
@@ -470,7 +522,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceImageView.image = nil
         serviceImageViewHeight.constant = 0
         serviceImageViewTop.constant = 0
-        contentViewHeight.constant = 1400
+        contentViewHeight.constant = 1500
         removeImageViewBtn.isHidden = true
         imageRemoved = true
         serviceImageViewBtn.setTitle("Choose Service Image", for: .normal)
@@ -496,14 +548,27 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             return
         }
         
+        guard let serviceDuration = serviceDurationTextField.text, !serviceDuration.isEmpty else {
+            serviceDurationTextField.showError(message: "Service Duration is required.")
+            return
+        }
+        
         guard let serviceCategory = serviceCategoryTextField.text, !serviceCategory.isEmpty else {
             serviceCategoryTextField.showError(message: "Service Category is required.")
             return
         }
         
-        guard let depostCostTF = depositCostTextField.text, !depostCostTF.isEmpty else {
-            depositCostTextField.showError(message: "Please enter deposit cost.")
+        guard let serviceCost = serviceCostTextField.text, !serviceCost.isEmpty else {
+            serviceCostTextField.showError(message: "Service Cost is required.")
             return
+        }
+        
+        
+        if enableButton.isSelected {
+            guard let depostCostTF = depositCostTextField.text, !depostCostTF.isEmpty else {
+                depositCostTextField.showError(message: "Please enter deposit cost.")
+                return
+            }
         }
         
         if let serviceCost = Double(serviceCostTextField.text ?? ""), let depositCost = Double(depositCostTextField.text ?? ""),
@@ -534,7 +599,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
                                                    imageRemoved: imageRemoved,
                                                    isPreBookingCostAllowed: isPreBookingCostAllowed,
                                                    showInPublicBooking: showInPublicBooking,
-                                                   priceVaries: hidePriceVaries, httpMethod: httpMethodType, isScreenFrom: self.title ?? String.blank, serviceId: serviceId ?? 0)
+                                                   priceVaries: hidePriceVaries, httpMethod: httpMethodType, isScreenFrom: self.title ?? String.blank, serviceId: serviceId ?? 0, showDepositOnPublicBooking: showDepositOnPublicBooking)
 
     }
     

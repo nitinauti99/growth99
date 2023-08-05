@@ -66,6 +66,7 @@ struct ServiceDetailModel : Codable {
     let preBookingCost : Double?
     let isPreBookingCostAllowed : Bool?
     let showInPublicBooking : Bool?
+    let showDepositOnPublicBooking : Bool?
     let priceVaries : Bool?
     let serviceName : String?
     let serviceId : String?
