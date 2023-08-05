@@ -142,7 +142,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     }
     
     func isResultPositive() -> Bool {
-        guard let businessEmailCount = viewModelEdit?.getMassSMSEditBusniessEmailSmsQuotaData?.emailCount,
+        guard let businessEmailCount = viewModelEdit?.getMassSMSEditBusniessEmailSmsQuotaData?.emailLimit,
               let auditEmailCount = viewModelEdit?.getMassSMSEditAuditEmailSmsCount?.emailCount else {
             return false
         }

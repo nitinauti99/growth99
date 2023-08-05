@@ -82,7 +82,6 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
         self.smsNetworTF.text = ""
         self.emailTargetTF.text = ""
         self.emailNetworTF.text = ""
-        //Task will show only on leads
         if moduleSelectionTypeTrigger == "leads" {
             self.taskBtn.isHidden = false
             self.taskLabel.isHidden = false

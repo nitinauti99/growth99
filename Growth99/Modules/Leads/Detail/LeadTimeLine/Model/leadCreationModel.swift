@@ -26,3 +26,8 @@ struct auditLeadModel: Codable {
 struct LeadTimeLineViewTemplateModel: Codable {
     let leadAuditContent: String?
 }
+
+struct AppointmentTimeLineViewTemplateModel: Codable {
+    let appointmentAuditContent: String?
+}
+

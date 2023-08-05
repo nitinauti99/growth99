@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-oY-pAe" userLabel="subView">
-                        <rect key="frame" x="10" y="20" width="374" height="486"/>
+                        <rect key="frame" x="10" y="20" width="374" height="546"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggq-XR-EdB">
                                 <rect key="frame" x="10" y="10" width="354" height="50"/>
@@ -280,11 +280,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvf-La-hxq" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="20" y="416" width="200" height="40"/>
+                                <rect key="frame" x="20" y="416" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3NT-C2-eb1"/>
                                     <constraint firstAttribute="width" constant="200" id="SOT-2t-fS8"/>
-                                    <constraint firstAttribute="height" constant="40" id="VDr-tf-Ryr"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -307,11 +307,63 @@
                                     <action selector="addAnotherConditionBtnActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="60b-gC-FSh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ety-Rx-CwV">
+                                <rect key="frame" x="20" y="466" width="344" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaU-49-yxI">
+                                        <rect key="frame" x="94" y="10" width="110" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Glj-bX-0fS"/>
+                                            <constraint firstAttribute="width" constant="110" id="ao5-c0-dyq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Submit"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitBtnActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vpZ-7w-i1V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D29-cP-SNA">
+                                        <rect key="frame" x="224" y="10" width="110" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="KtQ-Kg-Ida"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelBtnActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Uux-DO-hTe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8dj-2Z-sWS"/>
+                                    <constraint firstItem="D29-cP-SNA" firstAttribute="height" secondItem="QaU-49-yxI" secondAttribute="height" id="U7G-VC-dei"/>
+                                    <constraint firstItem="D29-cP-SNA" firstAttribute="leading" secondItem="QaU-49-yxI" secondAttribute="trailing" constant="20" id="cXq-oH-ear"/>
+                                    <constraint firstAttribute="trailing" secondItem="D29-cP-SNA" secondAttribute="trailing" constant="10" id="kha-00-lxH"/>
+                                    <constraint firstItem="D29-cP-SNA" firstAttribute="top" secondItem="QaU-49-yxI" secondAttribute="top" id="wIs-jT-g7P"/>
+                                    <constraint firstItem="QaU-49-yxI" firstAttribute="centerY" secondItem="Ety-Rx-CwV" secondAttribute="centerY" id="xm1-1e-4tb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XJP-aD-MNB" firstAttribute="leading" secondItem="ayj-oY-pAe" secondAttribute="leading" constant="20" id="1TO-DL-5Rf"/>
-                            <constraint firstAttribute="bottom" secondItem="hvf-La-hxq" secondAttribute="bottom" constant="30" id="3gT-3A-CIr"/>
                             <constraint firstItem="0J4-cz-fBO" firstAttribute="centerY" secondItem="pI6-9D-TB9" secondAttribute="centerY" id="4sf-42-5hs"/>
                             <constraint firstAttribute="trailing" secondItem="v4A-cE-nKz" secondAttribute="trailing" constant="10" id="5MR-27-d6s"/>
                             <constraint firstItem="5uO-Bt-zuM" firstAttribute="leading" secondItem="XJP-aD-MNB" secondAttribute="trailing" constant="10" id="AOF-jW-HQE"/>
@@ -319,12 +371,16 @@
                             <constraint firstItem="XJP-aD-MNB" firstAttribute="top" secondItem="ggq-XR-EdB" secondAttribute="bottom" constant="16" id="Ew9-nN-2sK"/>
                             <constraint firstItem="ggq-XR-EdB" firstAttribute="top" secondItem="ayj-oY-pAe" secondAttribute="top" constant="10" id="PIN-mu-EwQ"/>
                             <constraint firstItem="0J4-cz-fBO" firstAttribute="leading" secondItem="pI6-9D-TB9" secondAttribute="trailing" constant="10" id="RZk-vy-XKp"/>
+                            <constraint firstItem="Ety-Rx-CwV" firstAttribute="trailing" secondItem="ggq-XR-EdB" secondAttribute="trailing" id="XZK-oF-Qve"/>
+                            <constraint firstItem="Ety-Rx-CwV" firstAttribute="leading" secondItem="hvf-La-hxq" secondAttribute="leading" id="ZzH-SS-2gF"/>
                             <constraint firstItem="v4A-cE-nKz" firstAttribute="leading" secondItem="XJP-aD-MNB" secondAttribute="leading" id="auS-Oq-1zo"/>
                             <constraint firstItem="5uO-Bt-zuM" firstAttribute="centerY" secondItem="XJP-aD-MNB" secondAttribute="centerY" id="cjP-ot-WZC"/>
+                            <constraint firstAttribute="bottom" secondItem="Ety-Rx-CwV" secondAttribute="bottom" constant="20" id="fCw-NA-PpQ"/>
                             <constraint firstItem="ggq-XR-EdB" firstAttribute="leading" secondItem="ayj-oY-pAe" secondAttribute="leading" constant="10" id="h2Z-Ps-PG0"/>
                             <constraint firstItem="pI6-9D-TB9" firstAttribute="top" secondItem="XJP-aD-MNB" secondAttribute="top" id="l5Q-ap-dNs"/>
                             <constraint firstAttribute="trailing" secondItem="ggq-XR-EdB" secondAttribute="trailing" constant="10" id="meu-Aa-JsX"/>
                             <constraint firstItem="pI6-9D-TB9" firstAttribute="leading" secondItem="5uO-Bt-zuM" secondAttribute="trailing" constant="10" id="ptN-rz-Rc1"/>
+                            <constraint firstItem="Ety-Rx-CwV" firstAttribute="top" secondItem="hvf-La-hxq" secondAttribute="bottom" constant="20" id="t9t-Gh-Uyv"/>
                             <constraint firstItem="hvf-La-hxq" firstAttribute="leading" secondItem="XJP-aD-MNB" secondAttribute="leading" id="tWR-I6-8Z4"/>
                             <constraint firstItem="fhU-1x-4FU" firstAttribute="top" secondItem="v4A-cE-nKz" secondAttribute="top" id="uAr-qU-gd3"/>
                             <constraint firstItem="fhU-1x-4FU" firstAttribute="trailing" secondItem="v4A-cE-nKz" secondAttribute="trailing" id="wY3-72-Oy8"/>
@@ -343,11 +399,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addAnotherConditionButton" destination="hvf-La-hxq" id="36B-Au-9EM"/>
+                <outlet property="cancelutton" destination="D29-cP-SNA" id="Dh0-F8-XhY"/>
                 <outlet property="scheduleBasedonLbl" destination="OPB-Xh-v4k" id="QaZ-44-CM1"/>
                 <outlet property="scheduledBasedOnButton" destination="i7r-EY-79G" id="v1H-ub-7ap"/>
                 <outlet property="scheduledBasedOnTextField" destination="8FN-jS-EKK" id="Ud3-MT-B2e"/>
                 <outlet property="subView" destination="ayj-oY-pAe" id="8pN-nW-mKy"/>
                 <outlet property="subViewInside" destination="ggq-XR-EdB" id="rfD-0o-B32"/>
+                <outlet property="submitButton" destination="QaU-49-yxI" id="hvR-9t-fhb"/>
                 <outlet property="timeDurationTextField" destination="6dU-bt-nuF" id="Bf6-FL-kFX"/>
                 <outlet property="timeFrequencyButton" destination="XJP-aD-MNB" id="aUg-YL-r5i"/>
                 <outlet property="timeFrequencyLbl" destination="5uO-Bt-zuM" id="Oyj-EP-ehN"/>
@@ -366,19 +424,19 @@
     </objects>
     <designables>
         <designable name="2iz-yx-knI">
-            <size key="intrinsicContentSize" width="133.33333333333334" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="141.33333333333334" height="30.333333333333332"/>
         </designable>
         <designable name="6dU-bt-nuF">
-            <size key="intrinsicContentSize" width="133.33333333333334" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="141.33333333333334" height="30.333333333333332"/>
         </designable>
         <designable name="8FN-jS-EKK">
-            <size key="intrinsicContentSize" width="147" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="140" height="30.333333333333332"/>
         </designable>
         <designable name="aLa-RD-zzM">
-            <size key="intrinsicContentSize" width="104" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="112" height="30.333333333333332"/>
         </designable>
         <designable name="dro-aE-ctC">
-            <size key="intrinsicContentSize" width="119" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="112" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

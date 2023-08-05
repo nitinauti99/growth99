@@ -42,14 +42,27 @@ class AuditListViewModel {
     }
     
     func getAuditDetailInformation(triggerType: String, auditContentId: Int) {
-        let urlString = "\(triggerType)/json/content?id=\(auditContentId)"
-        self.requestManager.request(forPath: ApiUrl.triggerAudit.appending("\(urlString)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
-            switch result {
-            case .success(let list):
-                self.delegate?.auditListDetailInfoDataRecived(htmlContent: list.leadAuditContent ?? "")
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
+        if triggerType == "appointment" {
+            let urlString = "\(triggerType)/json/content?id=\(auditContentId)"
+            self.requestManager.request(forPath: ApiUrl.triggerAudit.appending("\(urlString)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<AppointmentTimeLineViewTemplateModel, GrowthNetworkError>) in
+                switch result {
+                case .success(let list):
+                    self.delegate?.auditListDetailInfoDataRecived(htmlContent: list.appointmentAuditContent ?? "")
+                case .failure(let error):
+                    self.delegate?.errorReceived(error: error.localizedDescription)
+                    print("Error while performing request \(error)")
+                }
+            }
+        } else {
+            let urlString = "\(triggerType)/json/content?id=\(auditContentId)"
+            self.requestManager.request(forPath: ApiUrl.triggerAudit.appending("\(urlString)"), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<LeadTimeLineViewTemplateModel, GrowthNetworkError>) in
+                switch result {
+                case .success(let list):
+                    self.delegate?.auditListDetailInfoDataRecived(htmlContent: list.leadAuditContent ?? "")
+                case .failure(let error):
+                    self.delegate?.errorReceived(error: error.localizedDescription)
+                    print("Error while performing request \(error)")
+                }
             }
         }
     }

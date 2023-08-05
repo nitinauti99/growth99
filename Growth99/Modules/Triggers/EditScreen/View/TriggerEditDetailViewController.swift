@@ -147,7 +147,6 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditAppointmentActionTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditAppointmentActionTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditSMSCreateTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditSMSCreateTableViewCell")
         self.triggerdDetailTableView.register(UINib(nibName: "TriggerEditTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TriggerEditTimeTableViewCell")
-        self.triggerdDetailTableView.register(UINib(nibName: "BottomTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "BottomTableViewCell")
     }
     
     @objc func getTriggerDetails() {
@@ -256,7 +255,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
     
     var triggerCreateTableViewHeight: CGFloat {
         triggerdDetailTableView.layoutIfNeeded()
-        return triggerdDetailTableView.contentSize.height + 200
+        return triggerdDetailTableView.contentSize.height + 300
     }
     
     func triggerAppointmentUpdatedSucessfull() {

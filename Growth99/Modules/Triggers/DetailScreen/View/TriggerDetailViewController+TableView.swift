@@ -831,6 +831,7 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
     
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         
+        
         if triggerDetailList.count == 4 {
             orderOfConditionTrigger = 0
         } else if triggerDetailList.count == 6 {
@@ -848,6 +849,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 } else {
                     scrollToBottom()
                     createNewTriggerCell(cellNameType: "Both")
+                    cell.nextButton.isHidden = true
+                    cell.addAnotherConditionButton.isHidden = true
+                    cell.orLbl.isHidden = true
                 }
             } else {
                 if cell.timeRangeStartTimeTF.text == "" {
@@ -857,6 +861,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 } else {
                     scrollToBottom()
                     createNewTriggerCell(cellNameType: "Both")
+                    cell.nextButton.isHidden = true
+                    cell.addAnotherConditionButton.isHidden = true
+                    cell.orLbl.isHidden = true
                 }
             }
             
@@ -870,6 +877,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
             } else {
                 scrollToBottom()
                 createNewTriggerCell(cellNameType: "Both")
+                cell.nextButton.isHidden = true
+                cell.addAnotherConditionButton.isHidden = true
+                cell.orLbl.isHidden = true
             }
         }
         cell.timeRangeButton.isUserInteractionEnabled = false

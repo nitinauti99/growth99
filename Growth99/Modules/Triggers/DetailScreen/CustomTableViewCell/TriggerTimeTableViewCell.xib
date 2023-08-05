@@ -374,6 +374,7 @@
             <connections>
                 <outlet property="addAnotherConditionButton" destination="HIS-ga-GBU" id="Rd2-nC-WdG"/>
                 <outlet property="nextButton" destination="PJl-MB-LML" id="bA2-aa-ZPr"/>
+                <outlet property="orLbl" destination="jCb-95-qCx" id="Dmz-oP-AZ2"/>
                 <outlet property="scheduleBasedonLbl" destination="LSe-NS-IdX" id="Iqd-xC-Wda"/>
                 <outlet property="scheduledBasedOnButton" destination="AAp-9q-fGi" id="bto-xD-eMl"/>
                 <outlet property="scheduledBasedOnTextField" destination="2BQ-OR-yuq" id="qCK-4g-ihT"/>
@@ -397,19 +398,19 @@
     </objects>
     <designables>
         <designable name="2BQ-OR-yuq">
-            <size key="intrinsicContentSize" width="147" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="140" height="30.333333333333332"/>
         </designable>
         <designable name="6RI-13-Dbt">
-            <size key="intrinsicContentSize" width="119" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="112" height="30.333333333333332"/>
         </designable>
         <designable name="HJb-W9-R1m">
-            <size key="intrinsicContentSize" width="133.33333333333334" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="141.33333333333334" height="30.333333333333332"/>
         </designable>
         <designable name="QIe-kL-rFh">
-            <size key="intrinsicContentSize" width="133.33333333333334" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="141.33333333333334" height="30.333333333333332"/>
         </designable>
         <designable name="cQc-6s-T8f">
-            <size key="intrinsicContentSize" width="104" height="22.333333333333332"/>
+            <size key="intrinsicContentSize" width="112" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>

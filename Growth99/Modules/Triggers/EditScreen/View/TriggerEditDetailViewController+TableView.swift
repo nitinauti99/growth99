@@ -22,14 +22,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BottomTableViewCell") as? BottomTableViewCell else {
-            return UIView()
-        }
-        cell.delegate = self
-        return cell
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if triggerDetailList[indexPath.row].cellType == "Default" {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TriggerEditDefaultTableViewCell", for: indexPath) as? TriggerEditDefaultTableViewCell else { return UITableViewCell() }

@@ -83,6 +83,8 @@ struct MassEmailSMSPatientAllCountModelEdit : Codable {
 struct MassEmailSMSEQuotaCountModelEdit : Codable {
     let smsCount : Int?
     let emailCount : Int?
+    let smsLimit : Int?
+    let emailLimit : Int?
     let tenantId : Int?
 }
 

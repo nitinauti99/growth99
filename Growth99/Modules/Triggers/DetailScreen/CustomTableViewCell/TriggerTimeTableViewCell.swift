@@ -43,7 +43,8 @@ class TriggerTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addAnotherConditionButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    @IBOutlet weak var orLbl: UILabel!
+
     @IBOutlet weak var timeHourlyButton: UIButton!
     @IBOutlet weak var scheduledBasedOnButton: UIButton!
     
