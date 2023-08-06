@@ -65,7 +65,7 @@ class WorkingScheduleViewController: UIViewController, WorkingScheduleViewContro
     }
     
     func setupUI() {
-        self.userNameTextField?.text = "\(UserRepository.shared.firstName ?? String.blank) \(UserRepository.shared.lastName ?? String.blank)"
+        self.userNameTextField?.text = "\(UserRepository.shared.firstNameUser ?? String.blank) \(UserRepository.shared.lastNameUser ?? String.blank)"
         self.userNameTextField.isUserInteractionEnabled = false
         self.clinicTextView.layer.cornerRadius = 4.5
         self.clinicTextView.layer.borderWidth = 1
