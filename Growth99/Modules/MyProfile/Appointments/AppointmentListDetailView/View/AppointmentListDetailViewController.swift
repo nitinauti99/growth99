@@ -41,7 +41,8 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
     @IBOutlet weak var scrollViewAppointment: UIScrollView!
     
     var eventViewModel: AppointmentListDetailVMProtocol?
-    
+    var dateFormater: DateFormaterProtocol?
+
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = Int()
@@ -86,6 +87,7 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         notesTextView.layer.borderWidth = 1.0
         eventViewModel = AppointmentListDetailViewModel(delegate: self)
         setUpNavigationBar()
+        self.dateFormater = DateFormater()
         self.view.ShowSpinner()
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         radioController.buttonsArray = [inPersonBtn, virtualBtn]

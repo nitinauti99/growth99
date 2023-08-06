@@ -166,7 +166,7 @@ struct CategeroryConsents : Codable {
     let body : String?
     let isDefault : Bool?
     let tag : String?
-    let isCustom : String?
+    let isCustom : Bool?
     let specialization : String?
     let generic : Bool?
     let specializationId : String?

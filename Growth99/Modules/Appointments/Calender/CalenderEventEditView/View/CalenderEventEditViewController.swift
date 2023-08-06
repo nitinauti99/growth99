@@ -456,6 +456,7 @@ class CalenderEventEditViewController: UIViewController, CalenderEditEventViewCo
             selectedTime = editBookingHistoryData?.appointmentStartDate ?? ""
         }
         
+        
         self.view.ShowSpinner()
         eventViewModel?.calenderEditAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: CalenderEditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
     }

@@ -11,7 +11,7 @@ protocol AddEventViewControllerProtocol: AnyObject {
     func eventDataReceived()
     func datesDataReceived()
     func timesDataReceived()
-    func appoinmentCreated(apiResponse: AppoinmentModel)
+    func appoinmentCreated(apiResponse: AppoinmentCreateModel)
     func errorEventReceived(error: String)
     func getPhoneNumberDataRecived()
     func getEmailAddressDataRecived()
@@ -201,7 +201,7 @@ class AddEventViewController: UIViewController, CalendarViewContollerProtocol, A
         self.navigationController?.popViewController(animated: true)
     }
     
-    func appoinmentCreated(apiResponse: AppoinmentModel) {
+    func appoinmentCreated(apiResponse: AppoinmentCreateModel) {
         self.view.HideSpinner()
         if apiResponse.statusCode == 200 {
             self.view.showToast(message: "Appointment created successfully", color: UIColor().successMessageColor())

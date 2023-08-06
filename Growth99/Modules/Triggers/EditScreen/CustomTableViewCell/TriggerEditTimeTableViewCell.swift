@@ -13,8 +13,7 @@ protocol TriggerEditTimeCellDelegate: AnyObject {
     func buttontimeRangeEndTapped(cell: TriggerEditTimeTableViewCell)
     func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
     func scheduledBasedOnButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
-    func canelBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath)
-    func submitBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath)
+    func nextSubmitButton(cell: TriggerEditTimeTableViewCell, index: IndexPath)
 }
 
 class TriggerEditTimeTableViewCell: UITableViewCell {
@@ -37,9 +36,8 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var addAnotherConditionButton: UIButton!
     @IBOutlet weak var timeHourlyButton: UIButton!
     @IBOutlet weak var scheduledBasedOnButton: UIButton!
-    
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var cancelutton: UIButton!
+    @IBOutlet weak var orLbl: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
 
     var indexPath = IndexPath()
     var timerTypeSelected: String = "Frequency"
@@ -70,13 +68,13 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         if index.row == yourLastRowIndex {
             // If it's the last row, show the 'addAnotherConditionButton'
             addAnotherConditionButton.isHidden = false
-            submitButton.isHidden = false
-            cancelutton.isHidden = false
+            orLbl.isHidden = false
+            nextButton.isHidden = false
         } else {
             // If it's not the last row, hide the 'addAnotherConditionButton'
             addAnotherConditionButton.isHidden = true
-            submitButton.isHidden = true
-            cancelutton.isHidden = true
+            orLbl.isHidden = true
+            nextButton.isHidden = true
         }
         self.timeHourlyButton.tag = indexPath.row
         self.timeHourlyButton.addTarget(self, action: #selector(timeHourlySelectionMethod), for: .touchDown)
@@ -114,13 +112,13 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         if index.row == yourLastRowIndex {
             // If it's the last row, show the 'addAnotherConditionButton'
             addAnotherConditionButton.isHidden = false
-            submitButton.isHidden = false
-            cancelutton.isHidden = false
+            orLbl.isHidden = false
+            nextButton.isHidden = false
         } else {
             // If it's not the last row, hide the 'addAnotherConditionButton'
             addAnotherConditionButton.isHidden = true
-            submitButton.isHidden = true
-            cancelutton.isHidden = true
+            orLbl.isHidden = true
+            nextButton.isHidden = true
         }
         
         if triggerEditData?.triggerTarget == "lead"  {
@@ -222,11 +220,7 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         self.delegate?.addAnotherConditionButton(cell: self, index: indexPath)
     }
     
-    @IBAction func cancelBtnAction(sender: UIButton) {
-        self.delegate?.canelBtnAction(cell: self, index: indexPath)
-    }
-    
-    @IBAction func submitBtnAction(sender: UIButton) {
-        self.delegate?.submitBtnAction(cell: self, index: indexPath)
+    @IBAction func nextSubmitBtnAction(sender: UIButton) {
+        self.delegate?.nextSubmitButton(cell: self, index: indexPath)
     }
 }

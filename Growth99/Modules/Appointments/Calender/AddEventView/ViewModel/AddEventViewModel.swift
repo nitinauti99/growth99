@@ -131,7 +131,7 @@ class AddEventViewModel {
             "source": addEventModel.source ?? String.blank,
             "appointmentDate": addEventModel.appointmentDate ?? String.blank
         ]
-        self.requestManager.request(forPath: ApiUrl.newAppointment, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) { (result: Result<AppoinmentModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.newAppointment, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) { (result: Result<AppoinmentCreateModel, GrowthNetworkError>) in
             switch result {
             case .success(let appoinmentData):
                 self.delegate?.appoinmentCreated(apiResponse: appoinmentData)

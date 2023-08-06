@@ -99,10 +99,350 @@ struct CalenderEditAppoinmentModel: Codable {
     let appointmentDate: String?
 }
 
-struct AppoinmentModel: Codable {
-    let data: AppoinmentData?
+struct AppoinmentCreateModel: Codable {
+    let data: AppoinmentModel?
     let statusCode: Int?
-    let message: String?
+}
+
+struct AppoinmentModel : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let appointmentConfirmationStatus : String?
+    let appointmentConfirmationDate : String?
+    let clinic : AppoinmentClinic?
+    let provider : AppoinmentProvider?
+    let patient : AppoinmentPatient?
+    let notes : String?
+    let appointmentDate : String?
+    let appointmentEndDate : String?
+    let services : [AppoinmentServices]?
+    let appointmentType : String?
+    let paymentStatus : String?
+    let totalCost : Double?
+    let source : String?
+    let walkInAppointment : Bool?
+    let preBookingCost : Double?
+    let preBookingOnly : Bool?
+    let preBookingConfirmed : Bool?
+    let amountPaid : Int?
+    let amountToPaid : Int?
+    let paymentSource : String?
+    let timeOffset : String?
+    let appointmentRead : Bool?
+}
+
+struct AppoinmentAgency : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : String?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let id : Int?
+    let name : String?
+    let logoUrl : String?
+    let poweredByText : String?
+    let defaultAgency : Bool?
+    let disableAgency : Bool?
+}
+
+struct AppoinmentBusinessHours : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let dayOfWeek : String?
+    let openHour : String?
+    let closeHour : String?
+}
+
+struct AppoinmentClinic : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let name : String?
+    let contactNumber : String?
+    let address : String?
+    let city : String?
+    let state : String?
+    let country : String?
+    let notificationEmail : String?
+    let notificationSMS : String?
+    let timezone : String?
+    let about : String?
+    let clinicUrl : String?
+    let facebook : String?
+    let instagram : String?
+    let twitter : String?
+    let yelpUrl : String?
+    let giftCardDetail : String?
+    let giftCardUrl : String?
+    let website : String?
+    let googleMyBusiness : String?
+    let googlePlaceId : String?
+    let isDefault : Bool?
+    let businessHours : [AppoinmentBusinessHours]?
+    let appointmentNotificationReminderHours : Int?
+    let appointmentNotificationReminderDays : Int?
+    let appointmentNotificationFeedbackHours : Int?
+    let sendRemainderEmail : Bool?
+    let feedbackQuestionnaire : String?
+    let ccPatientEmail : Bool?
+    let showPayButton : Bool?
+    let showBookAppointmentButton : Bool?
+    let appointmentBlockWithinHours : Int?
+    let appReviewCode : String?
+    let g99AppReviewCode : String?
+    let g99OverrideButtonCode : String?
+    let reviewPerPage : Int?
+    let reviewButtonCode : String?
+    let paymentLink : String?
+    let appointmentUrl : String?
+    let countryCode : String?
+    let currency : String?
+    let preBookingOnly : Bool?
+    let defaultPreBookingCost : String?
+    let isProviderBasedAppointment : Bool?
+    let seamlessPatientExperience : Bool?
+    let numberOfSlotsAvailable : Int?
+    let cacheUpdateDate : String?
+    let css : String?
+    let currencySymbol : String?
+    let isReviewPublished : Bool?
+    let disableVirtualAppointment : Bool?
+    let clinicVacationSchedules : [String]?
+    let priceVaries : Bool?
+    let sendPatientWelcomeEmail : Bool?
+    let notesLabel : String?
+    let notesRequiredOptional : Bool?
+    let showCategoriesOnAppointmentBookingPage : Bool?
+}
+
+struct AppoinmentClinics : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let clinic :  AppoinmentClinic?
+}
+
+struct AppoinmentConsents : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let defaultConsentId : Int?
+    let name : String?
+    let body : String?
+    let isDefault : Bool?
+    let tag : String?
+    let isCustom : Bool?
+    let specialization : String?
+    let generic : Bool?
+    let specializationId : String?
+    let serviceId : String?
+    let serviceIds : String?
+}
+
+struct AppoinmentCreatedBy : Codable {
+    let firstName : String?
+    let lastName : String?
+    let email : String?
+    let username : String?
+}
+
+struct AppoinmentPatient : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let username : String?
+    let email : String?
+    let emailVerified : Bool?
+    let emailVerificationToken : String?
+    let firstName : String?
+    let lastName : String?
+    let phone : String?
+    let profileImageUrl : String?
+    let roles : [String]?
+    let userType : String?
+    let gender : String?
+    let dateOfBirth : String?
+    let addressLine1 : String?
+    let addressLine2 : String?
+    let city : String?
+    let state : String?
+    let country : String?
+    let zipcode : String?
+    let notes : String?
+    let description : String?
+    let designation : String?
+    let timezone : String?
+    let serviceCategory : String?
+    let isProvider : String?
+    let clinics : [String]?
+    let services : [String]?
+    let userServiceCategories : [String]?
+    let allowCreateBusiness : String?
+    let patientTags : [String]?
+    let patientStatus : String?
+    let agency : AppoinmentAgency?
+    let isPassWordSent : Bool?
+    let smsChatStatus : String?
+}
+
+struct AppoinmentProvider : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let username : String?
+    let email : String?
+    let emailVerified : Bool?
+    let emailVerificationToken : String?
+    let firstName : String?
+    let lastName : String?
+    let phone : String?
+    let profileImageUrl : String?
+    let roles : [AppoinmentRoles]?
+    let userType : String?
+    let gender : String?
+    let dateOfBirth : String?
+    let addressLine1 : String?
+    let addressLine2 : String?
+    let city : String?
+    let state : String?
+    let country : String?
+    let zipcode : String?
+    let notes : String?
+    let description : String?
+    let designation : String?
+    let timezone : String?
+    let serviceCategory : String?
+    let isProvider : Bool?
+    let clinics : [AppoinmentClinics]?
+    let services : [AppoinmentServices]?
+    let userServiceCategories : [AppoinmentUserServiceCategories]?
+    let allowCreateBusiness : String?
+    let patientTags : [String]?
+    let patientStatus : String?
+    let agency : AppoinmentAgency?
+    let isPassWordSent : Bool?
+    let smsChatStatus : String?
+}
+
+struct AppoinmentRoles : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : String?
+    let updatedBy : String?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let name : String?
+    let permissions : [String]?
+    let defaultRole : String?
+}
+
+struct AppoinmentService : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let name : String?
+    let durationInMinutes : Int?
+    let serviceCost : Double?
+    let serviceURL : String?
+    let description : String?
+    let alDescription : String?
+    let imageUrl : String?
+    let isDefault : Bool?
+    let defaultServiceId : String?
+    let position : Int?
+    let serviceCategory : AppoinmentServiceCategory?
+    let clinics : [AppoinmentClinics]?
+    let consents : [AppoinmentConsents]?
+    let questionnaires : [Questionnaires]?
+    let preBookingCost : Double?
+    let isPreBookingCostAllowed : Bool?
+    let showInPublicBooking : Bool?
+    let priceVaries : Bool?
+    let showDepositOnPublicBooking : Bool?
+    let serviceName : String?
+    let serviceId : String?
+}
+
+struct AppoinmentServiceCategory : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let clinics : [AppoinmentClinics]?
+    let name : String?
+    let isDefault : Bool?
+    let defaultServiceCategoryId : String?
+    let specialization : String?
+}
+
+struct AppoinmentServices : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let service : AppoinmentService?
+    let name : String?
+    let durationInMinutes : Int?
+    let serviceCost : Double?
+}
+
+struct AppoinmentUpdatedBy : Codable {
+    let firstName : String?
+    let lastName : String?
+    let email : String?
+    let username : String?
+}
+
+struct AppoinmentUserServiceCategories : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : AppoinmentCreatedBy?
+    let updatedBy : AppoinmentUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let serviceCategory : AppoinmentServiceCategory?
 }
 
 struct AppoinmentData : Codable {
@@ -121,19 +461,20 @@ struct AppoinmentData : Codable {
     let notes : String?
     let appointmentDate : String?
     let appointmentEndDate : String?
-    let services : String?
+    let services : [Service]?
     let appointmentType : String?
     let paymentStatus : String?
     let totalCost : Int?
     let source : String?
     let walkInAppointment : Bool?
-    let preBookingCost : Int?
+    let preBookingCost : Double?
     let preBookingOnly : Bool?
     let preBookingConfirmed : Bool?
     let amountPaid : Int?
     let amountToPaid : Int?
     let paymentSource : String?
-    
+    let timeOffset : String?
+    let appointmentRead : Bool?
 }
 
 struct BusinessHours : Codable {

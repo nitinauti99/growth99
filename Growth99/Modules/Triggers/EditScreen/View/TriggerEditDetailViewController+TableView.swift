@@ -120,10 +120,6 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
         smsandTimeArray.append(triggerCreateData)
     }
     
-    @IBAction func cancelButtonAction(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     func scrollToBottom() {
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: self.triggerDetailList.count-1, section: 0)

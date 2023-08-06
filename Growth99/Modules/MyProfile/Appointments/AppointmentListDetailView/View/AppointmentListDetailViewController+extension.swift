@@ -163,6 +163,9 @@ extension AppointmentListDetailViewController {
             return
         }
         
+        let str: String = (date) + " " + (time)
+        let scheduledDate = (dateFormater?.convertDateStringToStringCalender(dateString: str)) ?? ""
+        
         if self.selectedProvidersIds == 0 {
             self.selectedProvidersIds = self.editBookingHistoryData?.providerId ?? 0
         }
@@ -175,6 +178,6 @@ extension AppointmentListDetailViewController {
         }
         self.view.ShowSpinner()
         eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0,
-                                              editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: selectedDate, time: convertDateString(dateString: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate), appointmentConfirmationStatus: appoinmentStatusField.text))
+                                              editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: selectedDate, time: convertDateString(dateString: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: scheduledDate, appointmentConfirmationStatus: appoinmentStatusField.text))
     }
 }

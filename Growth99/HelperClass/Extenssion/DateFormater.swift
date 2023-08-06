@@ -160,18 +160,17 @@ class DateFormater: DateFormaterProtocol {
     }
     
     func convertDateStringToStringCalender(dateString: String) -> String {
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
-        let date = dateFormatter.date(from: dateString) ?? Date()
-        
-        // Convert to the desired timezone (e.g., -0400)
-        let desiredDateFormatter = DateFormatter()
-        let desiredTimeZone = TimeZone(identifier: "EDT")
-        desiredDateFormatter.timeZone = desiredTimeZone
-        desiredDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        
-        return desiredDateFormatter.string(from: date)
+        dateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+        if let date = dateFormatter.date(from: dateString) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            usDateFormatter.timeZone = TimeZone(identifier: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
+        }
+        return ""
     }
     
     func localToServerWithDate(date: String) -> String {
