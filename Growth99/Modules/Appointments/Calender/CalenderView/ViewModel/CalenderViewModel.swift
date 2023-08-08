@@ -22,6 +22,7 @@ protocol CalendarViewModelProtocol {
     func appointmentListCountLessthan() -> Int
     func convertUTCtoLocalTime(dateString: String) -> String
     func serverToLocal(date: String) -> String
+    func getCalendarInfoListCount(clinicId: Int, providerId: Int, serviceId: Int)
 }
 
 class CalendarViewModel: CalendarViewModelProtocol {
@@ -31,7 +32,6 @@ class CalendarViewModel: CalendarViewModelProtocol {
     var serviceListData: [ServiceList] = []
     var providerListData: [UserDTOList] = []
     var appoinmentListData: [AppointmentDTOList] = []
-    
     var datePicker = UIDatePicker()
     var timePicker = UIDatePicker()
     
@@ -98,8 +98,25 @@ class CalendarViewModel: CalendarViewModelProtocol {
         self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalendarInfoListModel, GrowthNetworkError>) in
             switch result {
             case .success(let appointmentDTOListData):
-                self.appoinmentListData = appointmentDTOListData.appointmentDTOList?.filter({ $0.appointmentStatus != "Canceled" }) ?? []
+                self.appoinmentListData = appointmentDTOListData.appointments?.filter({ $0.appointmentStatus != "Canceled" }) ?? []
+                let user = UserRepository.shared
+                user.appointMentUnreedCount = String(appointmentDTOListData.unreadCount ?? 0)
                 self.delegate?.appointmentListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getCalendarInfoListCount(clinicId: Int, providerId: Int, serviceId: Int) {
+        let url = "\(clinicId)&providerId=\(providerId)&serviceId=\(serviceId)"
+        let apiURL = ApiUrl.CalendarInfo.appending("\(url)")
+        self.requestManager.request(forPath: apiURL, method: .GET, headers: self.requestManager.Headers()) { (result: Result<CalendarInfoListModel, GrowthNetworkError>) in
+            switch result {
+            case .success(let appointmentDTOListData):
+                self.appoinmentListData = appointmentDTOListData.appointments?.filter({ $0.appointmentStatus != "Canceled" }) ?? []
+                let user = UserRepository.shared
+                user.appointMentUnreedCount = String(appointmentDTOListData.unreadCount ?? 0)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

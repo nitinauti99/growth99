@@ -19,7 +19,8 @@ struct UserDTOList: Codable, Equatable {
 }
 
 struct CalendarInfoListModel: Codable {
-    let appointmentDTOList: [AppointmentDTOList]?
+    let appointments: [AppointmentDTOList]?
+    let unreadCount: Int?
 }
 
 struct AppointmentDTOList: Codable, Equatable {
