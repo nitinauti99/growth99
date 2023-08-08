@@ -476,7 +476,7 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
         }
         
         let str: String = (date) + " " + (time)
-        let scheduledDate = (dateFormater?.convertDateStringToStringCalender(dateString: str)) ?? ""
+        let scheduledDate = (dateFormater?.convertDateStringlocalToServer(dateString: str)) ?? ""
         
         self.view.ShowSpinner()
         eventViewModel?.editAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: EditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: scheduledDate, appointmentConfirmationStatus: appoinmentStatusField.text))

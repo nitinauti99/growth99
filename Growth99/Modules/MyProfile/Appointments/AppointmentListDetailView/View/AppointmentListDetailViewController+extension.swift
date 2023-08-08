@@ -164,7 +164,7 @@ extension AppointmentListDetailViewController {
         }
         
         let str: String = (date) + " " + (time)
-        let scheduledDate = (dateFormater?.convertDateStringToStringCalender(dateString: str)) ?? ""
+        let scheduledDate = (dateFormater?.convertDateStringlocalToServer(dateString: str)) ?? ""
         
         if self.selectedProvidersIds == 0 {
             self.selectedProvidersIds = self.editBookingHistoryData?.providerId ?? 0

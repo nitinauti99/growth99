@@ -42,7 +42,8 @@ class CalenderEventEditViewController: UIViewController, CalenderEditEventViewCo
     @IBOutlet weak var scrollViewBooking: UIScrollView!
     
     var eventViewModel: CalenderEditEventViewModelProtocol?
-    
+    var dateFormater: DateFormaterProtocol?
+
     var allClinics = [Clinics]()
     var selectedClincs = [Clinics]()
     var selectedClincIds = Int()
@@ -87,6 +88,8 @@ class CalenderEventEditViewController: UIViewController, CalenderEditEventViewCo
         eventViewModel = CalenderEditEventViewModel(delegate: self)
         setUpNavigationBar()
         self.view.ShowSpinner()
+        self.dateFormater = DateFormater()
+
         eventViewModel?.getEditAppointmentsForPateint(appointmentsId: appointmentId ?? 0)
         //emailTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
         // phoneNumberTextField.EditTarget(self, action: #selector(EditEventViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -456,9 +459,11 @@ class CalenderEventEditViewController: UIViewController, CalenderEditEventViewCo
             selectedTime = editBookingHistoryData?.appointmentStartDate ?? ""
         }
         
+        let str: String = (date) + " " + (time)
+        let scheduledDate = (dateFormater?.convertDateStringlocalToServer(dateString: str)) ?? ""
         
         self.view.ShowSpinner()
-        eventViewModel?.calenderEditAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: CalenderEditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: eventViewModel?.appointmentDateInput(date: selectedDate)))
+        eventViewModel?.calenderEditAppoinemnetMethod(editAppoinmentId: editBookingHistoryData?.id ?? 0, editAppoinmentModel: CalenderEditAppoinmentModel(firstName: firstName, lastName: lastName, email: email, phone: phoneNumber, notes: notesTextView.text, clinicId: selectedClincIds, serviceIds: selectedServicesIds, providerId: selectedProvidersIds, date: eventViewModel?.serverToLocalInputWorking(date: selectedDate), time: eventViewModel?.timeInputCalendar(date: selectedTime), appointmentType: appointmentTypeSelected, source: sourceTypeSelected, appointmentDate: scheduledDate))
     }
     
     @IBAction func canecelButtonAction(sender: UIButton) {
