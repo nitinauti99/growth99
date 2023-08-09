@@ -432,23 +432,29 @@ extension MassEmailandSMSDetailViewController: MassEmailandSMSTimeCellDelegate {
             cell.massSMSTriggerTimeTextField.showError(message: "Please select trigger time")
         } else {
             self.view.ShowSpinner()
-            if networkTypeSelected == "sms" {
-                templateId = selectedSmsTemplateId
-            } else {
-                templateId = selectedemailTemplateId
-            }
-            let cellIndexPath = IndexPath(item: 0, section: 0)
-            if let defaultCell = self.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSDefaultTableViewCell {
-                moduleName = defaultCell.massEmailSMSTextField.text ?? ""
-            }
             
-            let timeCellIndexPath = IndexPath(item: emailAndSMSDetailList.count - 1, section: 0)
-            if let timeCell = self.emailAndSMSTableView.cellForRow(at: timeCellIndexPath) as? MassEmailandSMSTimeTableViewCell {
-                let dateTrigger = timeCell.massSMSTriggerDateTextField.text ?? ""
-                let timeTrigger = timeCell.massSMSTriggerTimeTextField.text ?? ""
-                let str: String = (dateTrigger) + " " + (timeTrigger)
-                selectedTimeSlot = convertDateString(inputDateString: str)
+            for index in 0..<(self.emailAndSMSDetailList.count) {
+                let cellIndexPath = IndexPath(row: index, section: 0)
+                if let defaultCell = self.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSDefaultTableViewCell {
+                    moduleName = defaultCell.massEmailSMSTextField.text ?? ""
+                }
+                
+                if let timeCell = self.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSTimeTableViewCell {
+                    let dateTrigger = timeCell.massSMSTriggerDateTextField.text ?? ""
+                    let timeTrigger = timeCell.massSMSTriggerTimeTextField.text ?? ""
+                    let str: String = (dateTrigger) + " " + (timeTrigger)
+                    selectedTimeSlot = convertDateString(inputDateString: str)
+                }
+                
+                if let createCell = self.emailAndSMSTableView.cellForRow(at: cellIndexPath) as? MassEmailandSMSCreateTableViewCell {
+                    if createCell.networkTypeSelected == "sms" {
+                        templateId = selectedSmsTemplateId
+                    } else {
+                        templateId = selectedemailTemplateId
+                    }
+                }
             }
+          
             if smsEmailModuleSelectionType == "lead" {
                 marketingTriggersData.append(MarketingTriggerData(actionIndex: 3, addNew: true, triggerTemplate: templateId, triggerType: networkTypeSelected.uppercased(), triggerTarget: "lead", scheduledDateTime: selectedTimeSlot, triggerFrequency: "MIN", showBorder: false, orderOfCondition: 0, dateType: "NA"))
                 

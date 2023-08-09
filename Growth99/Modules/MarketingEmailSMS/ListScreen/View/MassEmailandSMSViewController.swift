@@ -90,7 +90,7 @@ class MassEmailandSMSViewController: UIViewController, MassEmailandSMSViewContol
     func massEmailSwitchActiveDataRecived(responseMessage: String) {
         self.view.HideSpinner()
         viewModel?.getMassEmailandSMS()
-        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())
+        self.view.showToast(message: responseMessage, color: UIColor().successMessageColor())        
     }
     
     func errorReceived(error: String) {

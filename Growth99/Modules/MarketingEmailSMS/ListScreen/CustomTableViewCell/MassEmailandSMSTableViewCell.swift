@@ -34,7 +34,6 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     weak var delegate: MassEmailandSMSDelegate?
     var indexPath = IndexPath()
     var dateFormater : DateFormaterProtocol?
-    var triggerStatusClick: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,26 +71,26 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.updatedBy.text = massEmailFilterList?.updatedBy
         if massEmailFilterList?.executionStatus == "SCHEDULED" && massEmailFilterList?.status == "ACTIVE" {
             deleteButton.isHidden = false
-            triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
             self.statusLabelSwitch.setOn(true, animated: true)
-            self.statusLabelSwitch.onTintColor = UIColor(hexString: "009EDE")
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+            self.executionStatusLabel.textColor = UIColor(hexString: "ff7d01")
         } else if massEmailFilterList?.executionStatus == "SCHEDULED" && massEmailFilterList?.status == "INACTIVE" {
             deleteButton.isHidden = false
-            triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
-            self.statusLabelSwitch.setOn(true, animated: true)
-            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
+            self.statusLabelSwitch.setOn(false, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+            self.executionStatusLabel.textColor = UIColor(hexString: "ff7d01")
         } else {
             deleteButton.isHidden = true
-            triggerStatusClick = false
             self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
             self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
-        }
+            if massEmailFilterList?.executionStatus == "SCHEDULED" {
+                self.executionStatusLabel.textColor = UIColor(hexString: "2656c9")
+            } else {
+                self.executionStatusLabel.textColor = UIColor(hexString: "fe2000")
+            }        }
         indexPath = index
     }
     
@@ -123,25 +122,26 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
         self.updatedBy.text = massEmailList?.updatedBy
         if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "ACTIVE" {
             deleteButton.isHidden = false
-            triggerStatusClick = true
             self.statusLabelSwitch.isEnabled = true
-            self.statusLabelSwitch.onTintColor = UIColor(hexString: "009EDE")
             self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+            self.executionStatusLabel.textColor = UIColor(hexString: "ff7d01")
         } else if massEmailList?.executionStatus == "SCHEDULED" && massEmailList?.status == "INACTIVE" {
             deleteButton.isHidden = false
-            triggerStatusClick = true
-            self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.setOn(true, animated: true)
-            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
+            self.statusLabelSwitch.isEnabled = true
+            self.statusLabelSwitch.setOn(false, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "pending"), for: .normal)
+            self.executionStatusLabel.textColor = UIColor(hexString: "ff7d01")
         } else {
             deleteButton.isHidden = true
-            triggerStatusClick = false
             self.statusLabelSwitch.isEnabled = false
-            self.statusLabelSwitch.onTintColor = UIColor(hexString: "ced4da")
             self.statusLabelSwitch.setOn(true, animated: true)
             self.editOrShowButton.setImage(UIImage(named: "submited"), for: .normal)
+            if massEmailList?.executionStatus == "SCHEDULED" {
+                self.executionStatusLabel.textColor = UIColor(hexString: "2656c9")
+            } else {
+                self.executionStatusLabel.textColor = UIColor(hexString: "fe2000")
+            }
         }
         indexPath = index
     }
@@ -153,12 +153,10 @@ class MassEmailandSMSTableViewCell: UITableViewCell {
     }
     
     @IBAction func statusSwitchChanges(_ sender: UIButton) {
-        if triggerStatusClick == true {
-            if statusLabelSwitch.isOn {
-                delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "ACTIVE")
-            } else {
-                delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "INACTIVE")
-            }
+        if statusLabelSwitch.isOn {
+            delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "ACTIVE")
+        } else {
+            delegate?.didTapSwitchButton(massEmailandSMSId: self.id.text ?? String.blank, massEmailandSMSStatus: "INACTIVE")
         }
     }
     
