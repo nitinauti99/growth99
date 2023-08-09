@@ -10,11 +10,6 @@ import UIKit
 
 extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     
-    func nextSubmitButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
-        submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
-        submitBtn.isEnabled = true
-    }
-    
     func hourlyNetworkButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
         let timeHourlyArray = ["Min", "Hour", "Day"]
         let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: timeHourlyArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
@@ -93,7 +88,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
         cell.addAnotherConditionButton.isEnabled = false
     }
     
-    func nextBtnAction(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
+    func nextSubmitButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
         if moduleSelectionType == "leads" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
@@ -105,6 +100,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
+                    cell.nextButton.isHidden = true
+                    cell.addAnotherConditionButton.isHidden = true
+                    cell.orLbl.isHidden = true
                     submitBtn.isEnabled = true
                 }
             } else {
@@ -119,6 +117,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
+                    cell.nextButton.isHidden = true
+                    cell.addAnotherConditionButton.isHidden = true
+                    cell.orLbl.isHidden = true
                     submitBtn.isEnabled = true
                 }
             }
@@ -141,6 +142,9 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
                 selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                 timerTypeSelected = cell.timerTypeSelected
                 submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
+                cell.nextButton.isHidden = true
+                cell.addAnotherConditionButton.isHidden = true
+                cell.orLbl.isHidden = true
                 submitBtn.isEnabled = true
             }
         }
