@@ -48,6 +48,7 @@ struct AppointmentDTOList: Codable, Equatable {
     let source: String?
     let paymentSource: String?
     let defaultClinic: Bool?
+    let appointmentRead : Bool?
 }
 
 

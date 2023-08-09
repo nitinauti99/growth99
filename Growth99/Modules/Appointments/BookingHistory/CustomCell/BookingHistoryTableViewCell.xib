@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -277,6 +277,13 @@
                                     <color key="titleColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cornerTagNotif" translatesAutoresizingMaskIntoConstraints="NO" id="wwp-DO-47e">
+                                <rect key="frame" x="344" y="0.0" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="QYJ-73-dXn"/>
+                                    <constraint firstAttribute="height" constant="25" id="VS5-Ts-FY4"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -303,6 +310,7 @@
                             <constraint firstItem="Rjj-Ye-ODO" firstAttribute="leading" secondItem="63r-9K-2iL" secondAttribute="leading" id="D9m-Q7-Vsf"/>
                             <constraint firstItem="Y3A-wd-ew2" firstAttribute="top" secondItem="H9m-C9-tHz" secondAttribute="bottom" constant="5" id="EQl-BR-DCu"/>
                             <constraint firstItem="btQ-11-0ng" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="10" id="EWd-7Y-eGx"/>
+                            <constraint firstItem="wwp-DO-47e" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" id="GMZ-Ap-TiB"/>
                             <constraint firstItem="A81-3B-jUp" firstAttribute="top" secondItem="7X9-C0-OZZ" secondAttribute="bottom" constant="5" id="GeL-bd-EfR"/>
                             <constraint firstItem="VRX-9B-jh8" firstAttribute="leading" secondItem="eCG-o3-aSD" secondAttribute="leading" id="H3j-NK-yIk"/>
                             <constraint firstItem="fLK-cs-vf8" firstAttribute="leading" secondItem="7Fz-I2-Mji" secondAttribute="leading" id="IYk-8w-xBM"/>
@@ -321,6 +329,7 @@
                             <constraint firstItem="Bu3-zK-yR7" firstAttribute="centerY" secondItem="HM8-H5-Kz0" secondAttribute="centerY" id="WdU-wb-zNB"/>
                             <constraint firstItem="B45-2r-iN7" firstAttribute="top" secondItem="ZbR-hV-4a3" secondAttribute="bottom" constant="5" id="Wtc-L7-ekd"/>
                             <constraint firstItem="63r-9K-2iL" firstAttribute="top" secondItem="8jK-1b-hJH" secondAttribute="top" constant="10" id="XJx-Sq-mIs"/>
+                            <constraint firstAttribute="trailing" secondItem="wwp-DO-47e" secondAttribute="trailing" id="XX2-hH-3us"/>
                             <constraint firstItem="ZbR-hV-4a3" firstAttribute="trailing" secondItem="6WX-fO-mQ9" secondAttribute="trailing" id="Y7p-MO-afX"/>
                             <constraint firstItem="ta1-AZ-Xzz" firstAttribute="leading" secondItem="SRX-mT-mQW" secondAttribute="leading" id="Yei-Ep-0ny"/>
                             <constraint firstAttribute="trailing" secondItem="jhF-wB-5M7" secondAttribute="trailing" constant="8" id="ZgN-3q-qkn"/>
@@ -384,6 +393,7 @@
                 <outlet property="sourceLabel" destination="PEL-eK-3cu" id="iCv-wh-Sox"/>
                 <outlet property="subView" destination="8jK-1b-hJH" id="Raj-5C-Y8U"/>
                 <outlet property="typeLabel" destination="ahZ-iO-Bmh" id="a4d-EK-1vp"/>
+                <outlet property="unReadImage" destination="wwp-DO-47e" id="xBG-uG-Gls"/>
             </connections>
             <point key="canvasLocation" x="192.0289855072464" y="158.70535714285714"/>
         </tableViewCell>
@@ -392,6 +402,7 @@
         <image name="Delete" width="80" height="73"/>
         <image name="Detail" width="79" height="67"/>
         <image name="ForWordArrowLead" width="26" height="26"/>
+        <image name="cornerTagNotif" width="13.5" height="13.5"/>
         <image name="dollarsign" catalog="system" width="89" height="128"/>
     </resources>
 </document>
