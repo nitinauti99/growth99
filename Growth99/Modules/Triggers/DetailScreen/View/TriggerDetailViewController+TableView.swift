@@ -371,12 +371,23 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     } else {
                         isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
                     }
+                    
+                    let startTimeTrigegr = timeCell.timeRangeStartTimeTF.text ?? ""
+                    let endTimeTrigegr = timeCell.timeRangeEndTimeTF.text ?? ""
+                    let currentDate = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy"
+                    let formattedDate = dateFormatter.string(from: currentDate)
+                    let dateStartStr: String = (formattedDate) + " " + (startTimeTrigegr)
+                    let dateEndStr: String = (formattedDate) + " " + (endTimeTrigegr)
+                    let scheduleStartDate = (dateFormater?.convertDateStringToStringCalender(dateString: dateStartStr)) ?? ""
+                    let scheduleEndDate = (dateFormater?.convertDateStringToStringCalender(dateString: dateEndStr)) ?? ""
                     let timeDict: [String : Any] = [
                         "showBorder": false,
                         "orderOfCondition": orderOfConditionTrigger,
                         "dateType": "NA",
-                        "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
-                        "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
+                        "startTime": scheduleStartDate,
+                        "endTime": scheduleEndDate,
                         "triggerFrequency": isTriggerFrequency.uppercased(),
                         "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
                         "timerType": timeCell.timerTypeSelected
@@ -831,7 +842,6 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
     
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
         
-        
         if triggerDetailList.count == 4 {
             orderOfConditionTrigger = 0
         } else if triggerDetailList.count == 6 {
@@ -899,6 +909,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
+                    cell.nextButton.isHidden = true
+                    cell.addAnotherConditionButton.isHidden = true
+                    cell.orLbl.isHidden = true
                     submitBtn.isEnabled = true
                 }
             } else {
@@ -913,6 +926,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                     selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                     timerTypeSelected = cell.timerTypeSelected
                     submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
+                    cell.nextButton.isHidden = true
+                    cell.addAnotherConditionButton.isHidden = true
+                    cell.orLbl.isHidden = true
                     submitBtn.isEnabled = true
                 }
             }
@@ -935,6 +951,9 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
                 selectedTriggerFrequency = cell.timeHourlyTextField.text ?? ""
                 timerTypeSelected = cell.timerTypeSelected
                 submitBtn.backgroundColor = UIColor(hexString: "#009EDE")
+                cell.nextButton.isHidden = true
+                cell.addAnotherConditionButton.isHidden = true
+                cell.orLbl.isHidden = true
                 submitBtn.isEnabled = true
             }
         }

@@ -171,8 +171,20 @@ class TriggerEditTimeTableViewCell: UITableViewCell {
         } else {
             self.scheduledBasedOnTextField.text = "After Appointment Date"
         }
-        timeRangeStartTimeTF.text = triggerEditData?.startTime ?? ""
-        timeRangeEndTimeTF.text = triggerEditData?.endTime ?? ""
+        timeRangeStartTimeTF.text = extractTime(from: triggerEditData?.startTime ?? "")
+        timeRangeEndTimeTF.text = extractTime(from: triggerEditData?.endTime ?? "")
+    }
+    
+    func extractTime(from dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+                if let date = dateFormatter.date(from: dateString) {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "hh:mm a"
+            return timeFormatter.string(from: date)
+        } else {
+            return ""
+        }
     }
     
     @IBAction func timeFrequencyBtnAction(sender: UIButton) {

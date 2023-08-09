@@ -28,11 +28,7 @@ protocol DateFormaterProtocol: AnyObject {
     func convertDateStringToStringCalender(dateString: String) -> String
     func serverToLocalDateConverterOnlyDateWorkinngShedule(date: String) -> String
     func convertDateStringlocalToServer(dateString: String) -> String
-    //    func serverToLocal(date: String) -> String
-     //   func serverToLocalCreatedDate(date: String) -> String
-    //   func serverToLocalDate(date: String) -> String
-   //    func serverToLocalPateintTimeLineDate(date: String) -> String
-
+    func convertDateStringlocalToServerTrigger(dateString: String) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
@@ -176,6 +172,20 @@ class DateFormater: DateFormaterProtocol {
     func convertDateStringlocalToServer(dateString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        if let date = dateFormatter.date(from: dateString) {
+            let usDateFormatter = DateFormatter()
+            usDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            usDateFormatter.timeZone = TimeZone(abbreviation: timeZone ?? "")
+            let usDateString = usDateFormatter.string(from: date)
+            return usDateString
+        }
+        return ""
+    }
+    
+    func convertDateStringlocalToServerTrigger(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         if let date = dateFormatter.date(from: dateString) {
             let usDateFormatter = DateFormatter()

@@ -376,9 +376,17 @@ extension TriggerEditDetailViewController {
                     } else {
                         scheduledBasedOnSelected = "APPOINTMENT_AFTER"
                     }
-                    let startTime = timeCell.timeRangeStartTimeTF.text ?? ""
-                    let endTime = timeCell.timeRangeEndTimeTF.text ?? ""
-                    if startTime == "" && endTime == "" {
+                    let startTimeTrigegr = timeCell.timeRangeStartTimeTF.text ?? ""
+                    let endTimeTrigegr = timeCell.timeRangeEndTimeTF.text ?? ""
+                    let currentDate = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy"
+                    let formattedDate = dateFormatter.string(from: currentDate)
+                    let dateStartStr: String = (formattedDate) + " " + (startTimeTrigegr)
+                    let dateEndStr: String = (formattedDate) + " " + (endTimeTrigegr)
+                    let scheduleStartDate = (dateFormater?.convertDateStringToStringCalender(dateString: dateStartStr)) ?? ""
+                    let scheduleEndDate = (dateFormater?.convertDateStringToStringCalender(dateString: dateEndStr)) ?? ""
+                    if startTimeTrigegr == "" && endTimeTrigegr == "" {
                         timeDict = [
                             "dateType": "NA",
                             "startTime": NSNull(),
@@ -390,8 +398,8 @@ extension TriggerEditDetailViewController {
                     } else {
                         timeDict = [
                             "dateType": "NA",
-                            "startTime": timeCell.timeRangeStartTimeTF.text ?? NSNull(),
-                            "endTime": timeCell.timeRangeEndTimeTF.text ?? NSNull(),
+                            "startTime": scheduleStartDate,
+                            "endTime": scheduleEndDate,
                             "triggerFrequency": isTriggerFrequency.uppercased(),
                             "triggerTime": Int(timeCell.timeDurationTextField.text ?? "0") ?? 0,
                             "timerType": timeCell.timerTypeSelected,
