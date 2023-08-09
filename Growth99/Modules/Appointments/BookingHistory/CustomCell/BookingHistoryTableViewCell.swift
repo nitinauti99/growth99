@@ -26,7 +26,8 @@ class BookingHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var appointmentDateLabel: UILabel!
     @IBOutlet weak var paymetStatusLabel: UILabel!
     @IBOutlet weak var appointmentStatusLabel: UILabel!
-    
+    @IBOutlet private weak var unReadImage: UIImageView!
+
     var dateFormater: DateFormaterProtocol?
     weak var delegate: BookingHistoryListTableViewCellDelegate?
     var indexPath = IndexPath()
@@ -57,6 +58,11 @@ class BookingHistoryTableViewCell: UITableViewCell {
         self.appointmentStatusLabel.text = bookingHistoryFilterList?.appointmentStatus
         self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: bookingHistoryFilterList?.appointmentCreatedDate ?? String.blank)
         indexPath = index
+        if bookingHistoryFilterList?.appointmentRead == true {
+            self.unReadImage.isHidden = true
+        }else{
+            self.unReadImage.isHidden = false
+        }
     }
     
     func configureCell(bookingHistoryList: BookingHistoryViewModelProtocol?, index: IndexPath, isSearch: Bool) {
@@ -78,6 +84,11 @@ class BookingHistoryTableViewCell: UITableViewCell {
         self.appointmentStatusLabel.text = bookingHistoryList?.appointmentStatus
         self.createdDate.text = dateFormater?.serverToLocalDateConverter(date: bookingHistoryList?.appointmentCreatedDate ?? String.blank)
         indexPath = index
+        if bookingHistoryList?.appointmentRead == true {
+            self.unReadImage.isHidden = true
+        }else{
+            self.unReadImage.isHidden = false
+        }
     }
     
     @IBAction func deleteButtonPressed() {

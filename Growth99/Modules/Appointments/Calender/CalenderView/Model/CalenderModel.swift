@@ -19,7 +19,8 @@ struct UserDTOList: Codable, Equatable {
 }
 
 struct CalendarInfoListModel: Codable {
-    let appointmentDTOList: [AppointmentDTOList]?
+    let appointments: [AppointmentDTOList]?
+    let unreadCount: Int?
 }
 
 struct AppointmentDTOList: Codable, Equatable {
@@ -47,6 +48,7 @@ struct AppointmentDTOList: Codable, Equatable {
     let source: String?
     let paymentSource: String?
     let defaultClinic: Bool?
+    let appointmentRead : Bool?
 }
 
 

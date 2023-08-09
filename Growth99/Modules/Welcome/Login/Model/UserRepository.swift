@@ -148,6 +148,15 @@ public class UserRepository {
         }
     }
     
+    public var appointMentUnreedCount: String? {
+        get {
+            user.appointMentUnreedCount
+        }
+        set {
+            user.appointMentUnreedCount = newValue
+        }
+    }
+    
     public var bussinessLogo: String? {
         get {
             user.bussinessLogo

@@ -28,6 +28,12 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
                 let tabItem = tabItems[1]
                 tabItem.badgeValue = String(segment ?? 0)
             }
+        }else{
+            let user = UserRepository.shared
+            if let tabItems = BaseTabbarViewController.currentInstance?.tabBar.items {
+                let tabItem = tabItems[2]
+                tabItem.badgeValue = user.appointMentUnreedCount
+            }
         }
     }
     
@@ -40,12 +46,11 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         UserRepository.shared.userVariableId = UserRepository.shared.userId ?? 0
 
-        if tabBarController.tabBar.selectedItem?.title == "Lead" {
+        if tabBarController.tabBar.selectedItem?.title == "Calendar" {
             if let tabItems = tabBarController.tabBar.items {
-                let tabItem = tabItems[1]
-                tabItem.badgeValue = totalUnreadLead
-//                let tabItem2 = tabItems[2]
-//                tabItem2.badgeValue = totalUnreadLead
+                let tabItem2 = tabItems[2]
+                let user = UserRepository.shared
+                tabItem2.badgeValue = user.appointMentUnreedCount
             }
         }
      }

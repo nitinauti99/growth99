@@ -160,6 +160,7 @@ class CalendarViewController: UIViewController, CalendarViewContollerProtocol  {
         let defaultService = ServiceList(createdAt: nil, updatedBy: nil, createdBy: nil, name: "All Services", id: nil, position: nil, serviceId: nil, serviceName: nil, categoryName: nil, categoryId: nil, updatedAt: nil)
         allServices.insert(defaultService, at: 0)
         self.view.HideSpinner()
+        self.calendarViewModel?.getCalendarInfoListCount(clinicId: self.selectedClincIds.first ?? 0, providerId: self.selectedProvidersIds.first ?? 0, serviceId: self.selectedServicesIds.first ?? 0)
     }
     
     func providerListDataRecived() {

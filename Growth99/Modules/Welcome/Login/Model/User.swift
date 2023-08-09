@@ -33,7 +33,7 @@ class User {
     private static let leadId = "leadId"
     private static let leadFullName = "leadFullName"
     private static let timeZone = "timeZone"
-
+    private static let appointMentUnreedCount = "appointMentUnreedCount"
     
     var authToken: String? {
         get {
@@ -160,6 +160,15 @@ class User {
         }
         set {
             applyNewValueInKeyChain(value: newValue, key: User.bussinessName)
+        }
+    }
+    
+    var appointMentUnreedCount: String? {
+        get {
+            KeychainWrapper.standard.string(forKey: User.appointMentUnreedCount)
+        }
+        set {
+            applyNewValueInKeyChain(value: newValue, key: User.appointMentUnreedCount)
         }
     }
     
