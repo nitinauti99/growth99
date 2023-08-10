@@ -99,8 +99,8 @@ class CalendarViewModel: CalendarViewModelProtocol {
             switch result {
             case .success(let appointmentDTOListData):
                 self.appoinmentListData = appointmentDTOListData.appointments?.filter({ $0.appointmentStatus != "Canceled" }) ?? []
-                let user = UserRepository.shared
-                user.appointMentUnreedCount = String(appointmentDTOListData.unreadCount ?? 0)
+                let userInfo = ["totalUnreadCount" : appointmentDTOListData.unreadCount ?? 0]
+                NotificationCenter.default.post(name: Notification.Name("updateBadgeForAppointment"), object: nil,userInfo: userInfo)
                 self.delegate?.appointmentListDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -115,8 +115,8 @@ class CalendarViewModel: CalendarViewModelProtocol {
             switch result {
             case .success(let appointmentDTOListData):
                 self.appoinmentListData = appointmentDTOListData.appointments?.filter({ $0.appointmentStatus != "Canceled" }) ?? []
-                let user = UserRepository.shared
-                user.appointMentUnreedCount = String(appointmentDTOListData.unreadCount ?? 0)
+                let userInfo = ["totalUnreadCount" : appointmentDTOListData.unreadCount ?? 0]
+                NotificationCenter.default.post(name: Notification.Name("updateBadgeForAppointment"), object: nil,userInfo: userInfo)
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
             }

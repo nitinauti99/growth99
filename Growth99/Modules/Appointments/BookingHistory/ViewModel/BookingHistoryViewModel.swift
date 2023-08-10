@@ -43,8 +43,9 @@ class BookingHistoryViewModel {
             switch result {
             case .success(let appointmentDTOListData):
                 self.bookingHistoryList = appointmentDTOListData.appointments?.sorted(by: { ($0.appointmentCreatedDate ?? String.blank) > ($1.appointmentCreatedDate ?? String.blank)}) ?? []
-                let user = UserRepository.shared
-                user.appointMentUnreedCount = String(appointmentDTOListData.unreadCount ?? 0)
+               
+                let userInfo = ["totalUnreadCount" : appointmentDTOListData.unreadCount ?? 0]
+                NotificationCenter.default.post(name: Notification.Name("updateBadgeForAppointment"), object: nil,userInfo: userInfo)
                 self.delegate?.appointmentListDataRecivedBookingHistory()
             case .failure(let error):
                 self.delegate?.errorReceivedBookingHistory(error: error.localizedDescription)

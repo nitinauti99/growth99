@@ -88,6 +88,8 @@ class leadListViewModel {
             }else{
                 self.totalCount = item.totalCount ?? 0
                 self.totalUnreadLead = item.totalUnreadLead ?? 0
+                let userInfo = [ "totalUnreadCount" : self.totalUnreadLead]
+                NotificationCenter.default.post(name: Notification.Name("updateBadgeForLead"), object: nil,userInfo: userInfo)
             }
         }
     }

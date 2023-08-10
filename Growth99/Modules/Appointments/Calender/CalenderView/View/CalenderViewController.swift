@@ -109,7 +109,6 @@ class CalendarViewController: UIViewController, CalendarViewContollerProtocol  {
     }
     
     var tableViewHeight: CGFloat {
-        eventListView.layoutIfNeeded()
         return eventListView.contentSize.height
     }
     

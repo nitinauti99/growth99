@@ -13,7 +13,8 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var eventsTitle: UILabel!
     @IBOutlet weak var eventsDuration: UILabel!
     @IBOutlet weak var eventsDate: UIButton!
-    
+    @IBOutlet private weak var unReadImage: UIImageView!
+
     var dateFormater : DateFormaterProtocol?
     
     override func awakeFromNib() {
@@ -36,6 +37,11 @@ class EventsTableViewCell: UITableViewCell {
         self.eventsDuration.text = "\(startTime) - \(endTime)"
         self.eventsDate.setTitle(headline.appointmentStartDate?.toDate()?.toString(), for: .normal)
         self.selectionStyle = .none
+        if headline.appointmentRead == true {
+            self.unReadImage.isHidden = true
+        }else{
+            self.unReadImage.isHidden = false
+        }
     }
     
     func convertToUTCString(from timestampString: String) -> String {
