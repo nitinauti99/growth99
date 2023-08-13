@@ -382,6 +382,15 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     let dateEndStr: String = (formattedDate) + " " + (endTimeTrigegr)
                     let scheduleStartDate = (dateFormater?.convertDateStringToStringTrigger(dateString: dateStartStr)) ?? ""
                     let scheduleEndDate = (dateFormater?.convertDateStringToStringTrigger(dateString: dateEndStr)) ?? ""
+                    
+                    if self.triggerDetailList.count == 4 {
+                        orderOfConditionTrigger = 0
+                    } else if self.triggerDetailList.count == 6 {
+                        orderOfConditionTrigger = orderOfConditionTrigger + 1
+                    } else {
+                        orderOfConditionTrigger = orderOfConditionTrigger + 2
+                    }
+                    
                     let timeDict: [String : Any] = [
                         "showBorder": false,
                         "orderOfCondition": orderOfConditionTrigger,
@@ -444,6 +453,14 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     templateId = Int(selectedSmsTemplateId) ?? 0
                 } else {
                     templateId = Int(selectedemailTemplateId) ?? 0
+                }
+                
+                if self.triggerDetailList.count == 4 {
+                    orderOfConditionTrigger = 0
+                } else if self.triggerDetailList.count == 6 {
+                    orderOfConditionTrigger = orderOfConditionTrigger + 1
+                } else {
+                    orderOfConditionTrigger = orderOfConditionTrigger + 2
                 }
                 
                 if triggerDetailList.cellType == "Default" {
@@ -841,14 +858,6 @@ extension TriggerDetailViewController: TriggerTimeCellDelegate {
     
     
     func addAnotherConditionButton(cell: TriggerTimeTableViewCell, index: IndexPath) {
-        
-        if triggerDetailList.count == 4 {
-            orderOfConditionTrigger = 0
-        } else if triggerDetailList.count == 6 {
-            orderOfConditionTrigger = orderOfConditionTrigger + 1
-        } else {
-            orderOfConditionTrigger = orderOfConditionTrigger + 2
-        }
         
         if moduleSelectionType == "lead" {
             if cell.timerTypeSelected == "Frequency" {

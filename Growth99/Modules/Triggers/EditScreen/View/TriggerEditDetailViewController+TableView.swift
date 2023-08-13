@@ -28,6 +28,7 @@ extension TriggerEditDetailViewController: UITableViewDelegate, UITableViewDataS
             cell.delegate = self
             let modelData = viewModel?.getTriggerEditListData
             cell.configureCell(triggerListEdit: modelData, index: indexPath)
+            cell.moduleNextButton.isHidden = true
             return cell
         }
         else if triggerDetailList[indexPath.row].cellType == "Module" {

@@ -62,6 +62,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             cell.smsTargetTF.text = selectedItem
+            cell.triggerTargetName = selectedItem ?? ""
             self?.smsTargetSelectionType = selectedItem ?? String.blank
         }
         selectionMenu.reloadInputViews()
@@ -106,6 +107,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             cell.emailTargetTF.text = selectedItem
+            cell.triggerTargetName = selectedItem ?? ""
             self?.emailTargetSelectionType = selectedItem ?? String.blank
         }
         selectionMenu.reloadInputViews()
@@ -145,6 +147,7 @@ extension TriggerEditDetailViewController: TriggerEditCreateCellDelegate {
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectedTaskTemplate = selectedItem?.id ?? 0
+            cell.templateId = selectedItem?.id ?? 0
             self?.isAssignedToTask = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
             cell.assignTaskNetworkTF.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
         }

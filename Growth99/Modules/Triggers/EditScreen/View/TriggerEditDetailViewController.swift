@@ -469,7 +469,7 @@ extension TriggerEditDetailViewController {
                     isModuleSelectionTypeAppointment = moduleCreateCell.moduleTypeSelected
                 } else if triggerDetailList.cellType == "Appointment" {
                     guard let appointmentCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditAppointmentActionTableViewCell else { return  }
-                    selectedAppointmentStatus = appointmentCreateCell.appointmentSelectedStatus
+                    selectedAppointmentStatus = appointmentCreateCell.patientAppointmenTextLabel.text ?? ""
                 }
                 else if triggerDetailList.cellType == "Create" {
                     guard let childCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerEditSMSCreateTableViewCell else { return  }

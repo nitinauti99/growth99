@@ -172,7 +172,7 @@ class TriggerEditSMSCreateTableViewCell: UITableViewCell {
             networkViewSMS.isHidden = true
             networkViewEmail.isHidden = true
             networkViewTask.isHidden = false
-            
+            templateId = triggerEditData?.triggerTemplate ?? 0
             self.taskNameTextField.text = triggerEditData?.taskName
             let assignTaskName = parentViewModel?.getTriggerDetailDataEdit?.userDTOList?.filter({ $0.id == triggerEditData?.triggerTemplate ?? 0} ) ?? []
             if assignTaskName.count > 0 {

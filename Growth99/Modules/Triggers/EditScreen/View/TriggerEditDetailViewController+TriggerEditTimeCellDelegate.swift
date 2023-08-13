@@ -89,6 +89,7 @@ extension TriggerEditDetailViewController: TriggerEditTimeCellDelegate {
     }
     
     func nextSubmitButton(cell: TriggerEditTimeTableViewCell, index: IndexPath) {
+        
         if moduleSelectionType == "leads" {
             if cell.timerTypeSelected == "Frequency" {
                 if cell.timeDurationTextField.text == "" {
