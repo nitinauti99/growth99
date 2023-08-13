@@ -384,8 +384,8 @@ extension TriggerEditDetailViewController {
                     let formattedDate = dateFormatter.string(from: currentDate)
                     let dateStartStr: String = (formattedDate) + " " + (startTimeTrigegr)
                     let dateEndStr: String = (formattedDate) + " " + (endTimeTrigegr)
-                    let scheduleStartDate = (dateFormater?.convertDateStringToStringCalender(dateString: dateStartStr)) ?? ""
-                    let scheduleEndDate = (dateFormater?.convertDateStringToStringCalender(dateString: dateEndStr)) ?? ""
+                    let scheduleStartDate = (dateFormater?.convertDateStringToStringTrigger(dateString: dateStartStr)) ?? ""
+                    let scheduleEndDate = (dateFormater?.convertDateStringToStringTrigger(dateString: dateEndStr)) ?? ""
                     if startTimeTrigegr == "" && endTimeTrigegr == "" {
                         timeDict = [
                             "dateType": "NA",

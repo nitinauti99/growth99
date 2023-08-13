@@ -29,6 +29,7 @@ protocol DateFormaterProtocol: AnyObject {
     func serverToLocalDateConverterOnlyDateWorkinngShedule(date: String) -> String
     func convertDateStringlocalToServer(dateString: String) -> String
     func convertDateStringlocalToServerTrigger(dateString: String) -> String
+    func convertDateStringToStringTrigger(dateString: String) -> String
 }
 
 class DateFormater: DateFormaterProtocol {
@@ -167,6 +168,18 @@ class DateFormater: DateFormaterProtocol {
             return usDateString
         }
         return ""
+    }
+    
+    func convertDateStringToStringTrigger(dateString: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        guard let date = inputFormatter.date(from: dateString) else {
+            return "Invalid Date"
+        }
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
+        outputFormatter.timeZone = TimeZone(secondsFromGMT: 19800)
+        return outputFormatter.string(from: date)
     }
     
     func convertDateStringlocalToServer(dateString: String) -> String {
