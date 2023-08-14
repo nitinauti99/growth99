@@ -26,12 +26,15 @@ class CreatePateintViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func cratePateint(parameters: [String:Any]) {
-        self.requestManager.request(forPath: ApiUrl.crearePatients, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: ApiUrl.crearePatients, method: .POST, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  (result: Result<PateintsCreateModel, GrowthNetworkError>) in
             switch result {
-            case .success(let data):
-                print(data)
-                self.delegate?.pateintCreatedSuccessfully(responseMessage: "Patient created successfully")
+            case .success(let response):
+                print(response)
+                if response.statusCode == 500 {
+                    self.delegate?.errorReceived(error: response.message ?? "")
+                }else{
+                    self.delegate?.pateintCreatedSuccessfully(responseMessage: "Patient created successfully")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
