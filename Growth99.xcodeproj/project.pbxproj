@@ -13,6 +13,7 @@
 		0103EABF2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */; };
 		0103EAC02A283EC800BDDB87 /* CustomSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */; };
 		0103EAC42A2AD2DB00BDDB87 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */; };
+		010788942A8A8BA800103F0E /* PateintsCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010788932A8A8BA800103F0E /* PateintsCreateModel.swift */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
 		010EEC9F29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */; };
@@ -983,6 +984,7 @@
 		0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		010788932A8A8BA800103F0E /* PateintsCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsCreateModel.swift; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
 		010EEC9E29B6BE4E00351358 /* CreateChatQuestionareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewModel.swift; sourceTree = "<group>"; };
@@ -1978,6 +1980,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010788952A8A8BAE00103F0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				010788932A8A8BA800103F0E /* PateintsCreateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		010EEC9529B6BDBE00351358 /* ChatQuestionareList */ = {
 			isa = PBXGroup;
 			children = (
@@ -6355,6 +6365,7 @@
 		84D061A629670676001FE469 /* PateintsAdd */ = {
 			isa = PBXGroup;
 			children = (
+				010788952A8A8BAE00103F0E /* Model */,
 				84088BA92977E6150060855E /* View */,
 				84088BA82977E6030060855E /* ViewModel */,
 			);
@@ -7900,6 +7911,7 @@
 				845C39DF292276B000D934C5 /* UIColorExtension.swift in Sources */,
 				842C0CBD298F713B00395061 /* FillQuestionarieViewController+TableView.swift in Sources */,
 				84F610D9292A71AB00B1FB69 /* Result.swift in Sources */,
+				010788942A8A8BA800103F0E /* PateintsCreateModel.swift in Sources */,
 				398F90F7298ECB8700DB96E4 /* IQKeyboardManager.swift in Sources */,
 				01D7AB02299D5B2100821274 /* FormDetailModel.swift in Sources */,
 				845C39DB292276B000D934C5 /* MenuTableViewCell.swift in Sources */,
