@@ -42,11 +42,9 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var emailTemplatesArray = [EmailTemplateDTOListTrigger]()
     var selectedEmailTemplates = [EmailTemplateDTOListTrigger]()
-    var selectedemailTemplateId: String = String.blank
-    
+
     var smsTemplatesArray = [SmsTemplateDTOListTrigger]()
     var selectedSmsTemplates = [SmsTemplateDTOListTrigger]()
-    var selectedSmsTemplateId: String = String.blank
     
     var dateFormater: DateFormaterProtocol?
     var patientAppointmentStatus: String = String.blank

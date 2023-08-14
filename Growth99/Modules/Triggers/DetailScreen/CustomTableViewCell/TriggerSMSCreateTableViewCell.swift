@@ -51,6 +51,9 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     @IBOutlet weak var assignTaskNetworkTextLabel: UILabel!
     @IBOutlet weak var createNextButton: UIButton!
     
+    var selectedemailTemplateId: String = String.blank
+    var selectedSmsTemplateId: String = String.blank
+    
     weak var delegate: TriggerCreateCellDelegate?
     var networkTypeSelected: String = "SMS"
     var indexPath = IndexPath()

@@ -181,7 +181,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     createCell.selectSMSNetworkEmptyTextLabel.isHidden = true
                     createCell.selectSMSNetworkTextLabel.text = selectedItem?.name
                     self?.selectedSmsTemplates = selectedList
-                    self?.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
+                    createCell.selectedSmsTemplateId = String(selectedItem?.id ?? 0)
                 }
             }
         }
@@ -247,7 +247,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     createCell.selectEmailNetworkEmptyTextLabel.isHidden = true
                     createCell.selectEmailNetworkTextLabel.text = selectedItem?.name
                     self?.selectedEmailTemplates = selectedList
-                    self?.selectedemailTemplateId = String(selectedItem?.id ?? 0)
+                    createCell.selectedemailTemplateId = String(selectedItem?.id ?? 0)
                 }
             }
         }
@@ -336,13 +336,6 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 let cellIndexPath = IndexPath(row: index, section: 0)
                 var templateId: Int = 0
                 let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
-                if selectedNetworkType == "SMS" {
-                    templateId = Int(selectedSmsTemplateId) ?? 0
-                } else if selectedNetworkType == "EMAIL" {
-                    templateId = Int(selectedemailTemplateId) ?? 0
-                } else {
-                    templateId = selectedTaskTemplate
-                }
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerDefaultTableViewCell else { return  }
                     moduleName = defaultCreateCell.massEmailSMSTextField.text ?? String.blank
@@ -356,11 +349,18 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     isTriggerForLeadContain = leadCreateCell.leadStatusChangeButton.isSelected
                 } else if triggerDetailList.cellType == "Both" {
                     guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
+                    if selectedNetworkType == "SMS" {
+                        templateId = Int(bothCreateCell.selectedSmsTemplateId) ?? 0
+                    } else if selectedNetworkType == "EMAIL" {
+                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
+                    } else {
+                        templateId = selectedTaskTemplate
+                    }
                     triggerDataDict = ["actionIndex": 3,
                                        "addNew": true,
                                        "triggerTemplate": templateId,
                                        "triggerType": bothCreateCell.networkTypeSelected.uppercased(),
-                                       "triggerTarget": isModuleSelectionType,
+                                       "triggerTarget": selectedTriggerTarget,
                                        "taskName": bothCreateCell.taskNameTextField.text ?? ""
                     ]
                     
@@ -449,12 +449,6 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 let cellIndexPath = IndexPath(row: index, section: 0)
                 var templateId: Int = 0
                 let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
-                if selectedNetworkType == "SMS" {
-                    templateId = Int(selectedSmsTemplateId) ?? 0
-                } else {
-                    templateId = Int(selectedemailTemplateId) ?? 0
-                }
-                
                 if self.triggerDetailList.count == 4 {
                     orderOfConditionTrigger = 0
                 } else if self.triggerDetailList.count == 6 {
@@ -473,6 +467,11 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     guard let leadCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerAppointmentActionTableViewCell else { return  }
                 } else if triggerDetailList.cellType == "Both" {
                     guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
+                    if selectedNetworkType == "SMS" {
+                        templateId = Int(bothCreateCell.selectedSmsTemplateId) ?? 0
+                    } else {
+                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
+                    }
                     triggerDataDictAppointment = ["actionIndex": 3,
                                                   "addNew": true,
                                                   "triggerTemplate": templateId,
