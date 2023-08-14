@@ -148,6 +148,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     createCell.selectSMSNetworkTextLabel.text = "Select network"
                     createCell.selectSMSTargetTextLabel.text = selectedItem
                     self?.smsTargetSelectionType = selectedItem ?? String.blank
+                    createCell.selectedTriggerTarget = selectedItem ?? String.blank
                 }
             }
         }
@@ -214,6 +215,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     createCell.selectEmailNetworkTextLabel.text = "Select network"
                     createCell.selectEmailTargetTextLabel.text = selectedItem
                     self?.emailTargetSelectionType = selectedItem ?? String.blank
+                    createCell.selectedTriggerTarget = selectedItem ?? String.blank
                 }
             }
         }
@@ -645,7 +647,6 @@ extension TriggerDetailViewController: TriggerCreateCellDelegate {
     
     func setupNetworkNextButton(selectedCell: TriggerSMSCreateTableViewCell, networkType: String, triggerTarget: String) {
         selectedNetworkType = networkType
-        selectedTriggerTarget = triggerTarget
         scrollToBottom()
         selectedCell.smsBtn.isUserInteractionEnabled = false
         selectedCell.emailBtn.isUserInteractionEnabled = false

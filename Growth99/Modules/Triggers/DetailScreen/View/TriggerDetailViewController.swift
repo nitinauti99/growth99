@@ -84,16 +84,14 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     
     var selectedTriggerFrequency: String = String.blank
     var taskName: String = String.blank
-    var selectedTriggerTarget: String = String.blank
     var leadTriggerTarget: String = String.blank
     var cinicTriggerTarget: String = String.blank
     var timerTypeSelected: String = String.blank
     
     var appointmentSelectedStatus: String = String.blank
     var scheduledBasedOnSelected: String = String.blank
-    var orderOfConditionTrigger: Int = 0
     var addAnotherClicked: String = String.blank
-    
+
     var landingPage: String = String.blank
     var landingForm: String = String.blank
     
@@ -109,6 +107,12 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var smsandTimeArray = Array<Any>()
     var isTriggerFrequency: String = ""
     
+    var iterationCounter = 0
+    var orderCount = 0
+    
+    var addNewCheckCreate: Bool = true
+    var showBorderLineCreate: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -231,8 +235,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         self.smsandTimeArray = []
         
         if moduleSelectionType == "lead" {
-            selectedTriggerTarget = (selectedTriggerTarget == "Leads") ? "leads" : selectedTriggerTarget
-            
+        
             var triggerDataDict = [String: Any]()
             var isfromLeadStatus: String = ""
             var istoLeadStatus: String = ""
@@ -257,19 +260,23 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                     isTriggerForLeadContain = leadCreateCell.leadStatusChangeButton.isSelected
                 } else if triggerDetailList.cellType == "Both" {
                     guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
-                    switch selectedNetworkType {
-                    case "SMS":
-                        templateId = Int(bothCreateCell.selectedSmsTemplateId) ?? 0
-                    case "EMAIL":
-                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
-                    default:
-                        templateId = selectedTaskTemplate
+                    
+                    if bothCreateCell.selectedTriggerTarget == "Leads" {
+                        bothCreateCell.selectedTriggerTarget = "lead"
                     }
+                    
+                    if bothCreateCell.networkTypeSelected == "SMS" {
+                        templateId = Int(bothCreateCell.selectedSmsTemplateId) ?? 0
+                    } else if bothCreateCell.networkTypeSelected == "EMAIL" {
+                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
+                    } else {
+                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
+                    }
+                    
                     triggerDataDict = ["actionIndex": 3,
-                                       "addNew": true,
                                        "triggerTemplate": templateId,
                                        "triggerType": bothCreateCell.networkTypeSelected.uppercased(),
-                                       "triggerTarget": selectedTriggerTarget,
+                                       "triggerTarget":  bothCreateCell.selectedTriggerTarget,
                                        "taskName": bothCreateCell.taskNameTextField.text ?? ""
                     ]
                     
@@ -291,17 +298,38 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                     let scheduleStartDate = (dateFormater?.convertDateStringToStringTrigger(dateString: dateStartStr)) ?? ""
                     let scheduleEndDate = (dateFormater?.convertDateStringToStringTrigger(dateString: dateEndStr)) ?? ""
                     
-                    if self.triggerDetailList.count == 4 {
-                        orderOfConditionTrigger = 0
-                    } else if self.triggerDetailList.count == 6 {
-                        orderOfConditionTrigger = orderOfConditionTrigger + 1
-                    } else {
-                        orderOfConditionTrigger = orderOfConditionTrigger + 2
+                    if iterationCounter == 0 {
+                        orderCount = 0
+                    } else if iterationCounter == 1 {
+                        orderCount = orderCount + 2
+                    } else  {
+                        orderCount = orderCount + 1
                     }
                     
+                    if iterationCounter == 0 {
+                        if self.triggerDetailList.count == 5 {
+                            addNewCheckCreate = true
+                            showBorderLineCreate = false
+                        } else {
+                            addNewCheckCreate = false
+                            showBorderLineCreate = true
+                        }
+                    } else {
+                        if index == self.triggerDetailList.count - 1 {
+                            addNewCheckCreate = true
+                            showBorderLineCreate = false
+                        } else {
+                            addNewCheckCreate = false
+                            showBorderLineCreate = true
+                        }
+                    }
+                    
+                    iterationCounter += 1
+
                     let timeDict: [String : Any] = [
-                        "showBorder": false,
-                        "orderOfCondition": orderOfConditionTrigger,
+                        "addNew": addNewCheckCreate,
+                        "showBorder": showBorderLineCreate,
+                        "orderOfCondition": orderCount,
                         "dateType": "NA",
                         "startTime": scheduleStartDate,
                         "endTime": scheduleEndDate,
@@ -344,7 +372,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
             self.view.ShowSpinner()
             viewModel?.createTriggerDataMethod(triggerDataParms: urlParameter)
         } else {
-            selectedTriggerTarget = (selectedTriggerTarget == "Patient") ? "AppointmentPatient" : "AppointmentClinic"
+            
             var triggerDataDictAppointment = [String: Any]()
             var isModuleSelectionTypeAppointment: String = ""
             
@@ -352,14 +380,6 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                 let cellIndexPath = IndexPath(row: index, section: 0)
                 var templateId: Int = 0
                 let triggerDetailList = self.triggerDetailList[cellIndexPath.row]
-                if self.triggerDetailList.count == 4 {
-                    orderOfConditionTrigger = 0
-                } else if self.triggerDetailList.count == 6 {
-                    orderOfConditionTrigger = orderOfConditionTrigger + 1
-                } else {
-                    orderOfConditionTrigger = orderOfConditionTrigger + 2
-                }
-                
                 if triggerDetailList.cellType == "Default" {
                     guard let defaultCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerDefaultTableViewCell else { return  }
                     moduleName = defaultCreateCell.massEmailSMSTextField.text ?? String.blank
@@ -370,21 +390,59 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                     guard let leadCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerAppointmentActionTableViewCell else { return  }
                 } else if triggerDetailList.cellType == "Both" {
                     guard let bothCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerSMSCreateTableViewCell else { return  }
-                    templateId = (selectedNetworkType == "SMS") ? (Int(bothCreateCell.selectedSmsTemplateId) ?? 0) : (Int(bothCreateCell.selectedemailTemplateId) ?? 0)
+                    
+                    if bothCreateCell.networkTypeSelected == "SMS" {
+                        templateId = Int(bothCreateCell.selectedSmsTemplateId) ?? 0
+                    } else {
+                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
+                    }
+                
+                    if bothCreateCell.selectedTriggerTarget == "Patient" {
+                        bothCreateCell.selectedTriggerTarget = "AppointmentPatient"
+                    } else {
+                        bothCreateCell.selectedTriggerTarget = "AppointmentClinic"
+                    }
                     triggerDataDictAppointment = ["actionIndex": 3,
-                                                  "addNew": true,
                                                   "triggerTemplate": templateId,
                                                   "triggerType": bothCreateCell.networkTypeSelected.uppercased(),
-                                                  "triggerTarget": selectedTriggerTarget,
+                                                  "triggerTarget": bothCreateCell.selectedTriggerTarget,
                                                   "taskName": bothCreateCell.taskNameTextField.text ?? ""
                     ]
                     
                 } else if triggerDetailList.cellType == "Time" {
                     guard let timeCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerTimeTableViewCell else { return  }
                     let isTriggerFrequency = timeCell.timeHourlyTextField.text ?? ""
+                    if iterationCounter == 0 {
+                        orderCount = 0
+                    } else if iterationCounter == 1 {
+                        orderCount = orderCount + 2
+                    } else  {
+                        orderCount = orderCount + 1
+                    }
+                    
+                    if iterationCounter == 0 {
+                        if self.triggerDetailList.count == 5 {
+                            addNewCheckCreate = true
+                            showBorderLineCreate = false
+                        } else {
+                            addNewCheckCreate = false
+                            showBorderLineCreate = true
+                        }
+                    } else {
+                        if index == self.triggerDetailList.count - 1 {
+                            addNewCheckCreate = true
+                            showBorderLineCreate = false
+                        } else {
+                            addNewCheckCreate = false
+                            showBorderLineCreate = true
+                        }
+                    }
+                    
+                    iterationCounter += 1
                     let timeDict: [String : Any] = [
-                        "showBorder": false,
-                        "orderOfCondition": orderOfConditionTrigger,
+                        "addNew": addNewCheckCreate,
+                        "showBorder": showBorderLineCreate,
+                        "orderOfCondition": orderCount,
                         "dateType": scheduledBasedOnSelected,
                         "startTime": timeCell.timeRangeStartTimeTF.text ?? "",
                         "endTime": timeCell.timeRangeEndTimeTF.text ?? "",
