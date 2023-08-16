@@ -53,7 +53,8 @@ class TriggerSMSCreateTableViewCell: UITableViewCell {
     
     var selectedemailTemplateId: String = String.blank
     var selectedSmsTemplateId: String = String.blank
-    var selectedTriggerTarget: String = String.blank
+    var selectedTaskTemplate: Int = 0
+    var selectedTriggerTarget: String = "lead"
     weak var delegate: TriggerCreateCellDelegate?
     var networkTypeSelected: String = "SMS"
     var indexPath = IndexPath()

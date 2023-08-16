@@ -272,7 +272,7 @@ extension TriggerDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     createCell.assignTaskEmptyTextLabel.isHidden = false
                 } else {
                     createCell.assignTaskEmptyTextLabel.isHidden = true
-                    self?.selectedTaskTemplate = selectedItem?.id ?? 0
+                    createCell.selectedTaskTemplate = selectedItem?.id ?? 0
                     createCell.assignTaskNetworkTextLabel.text = "\(selectedItem?.firstName ?? "") \(selectedItem?.lastName ?? "")"
                 }
             }

@@ -72,7 +72,6 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
     var smsTargetSelectionType: String = String.blank
     var emailTargetSelectionType: String = String.blank
     var taskUserListArray: [UserDTOListTrigger] = []
-    var selectedTaskTemplate: Int = 0
     
     var moduleName: String = String.blank
     var selectedNetworkType: String = String.blank
@@ -270,7 +269,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                     } else if bothCreateCell.networkTypeSelected == "EMAIL" {
                         templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
                     } else {
-                        templateId = Int(bothCreateCell.selectedemailTemplateId) ?? 0
+                        templateId = Int(bothCreateCell.selectedTaskTemplate)
                     }
                     
                     triggerDataDict = ["actionIndex": 3,
