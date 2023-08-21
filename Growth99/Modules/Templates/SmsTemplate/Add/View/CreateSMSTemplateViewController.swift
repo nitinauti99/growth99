@@ -238,7 +238,7 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateViewControllerProtoc
 extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDelegate {
   
     func selectVariable(cell: CreateSMSTemplateCollectionViewCell, index: IndexPath) {
-      
+        
         var variable: String = ""
         if self.moduleTextField.text == "Lead" {
             variable = viewModel?.getLeadTemplateListData(index: index.row).variable ?? ""
@@ -255,10 +255,16 @@ extension CreateSMSTemplateViewController: CreateSMSTemplateCollectionViewCellDe
        }
         print(self.bodyTextView.text.count)
 
-        self.bodyTextView.text += str
-
+        if let selectedRange = bodyTextView.selectedTextRange {
+            let cursorPosition = bodyTextView.offset(from: bodyTextView.beginningOfDocument, to: selectedRange.start)
+            bodyTextView.text.insert(contentsOf: str, at: bodyTextView.text.index(bodyTextView.text.startIndex, offsetBy: cursorPosition))
+            if let newPosition = bodyTextView.position(from: bodyTextView.beginningOfDocument, offset: cursorPosition + str.count) {
+                bodyTextView.selectedTextRange = bodyTextView.textRange(from: newPosition, to: newPosition)
+            }
+          }
+        }
     }
-}
+
 
 extension CreateSMSTemplateViewController: UITextFieldDelegate {
    

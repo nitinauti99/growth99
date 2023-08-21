@@ -55,6 +55,11 @@ class ChangePasswordViewController: UIViewController, VerifyForgotPasswordViewPr
             return
         }
         
+        guard let passwordValid = viewModel?.isValidPassword(newPassword), passwordValid else {
+            newPasswordTextField.showError(message: "Password must contain one small character, one upper case character, one number and one of (!, @, $). It must be minimum 8 characters long.")
+            return
+        }
+        
         guard let verifyNewPassword = verifyPasswordTextField.text, !verifyNewPassword.isEmpty else {
             newPasswordTextField.showError(message: "Password must contain one small character, one upper case character, one number and one of (!, @, $). It must be minimum 8 characters long.")
             return
