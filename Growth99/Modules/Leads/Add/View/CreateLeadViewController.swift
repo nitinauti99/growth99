@@ -175,7 +175,6 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
             }
         }
 
-        
         let patientQuestionAnswers: [String: Any] = [
             "id": viewModel?.getQuestionnaireListInfo?.id ?? 0,
             "questionnaireId": viewModel?.getQuestionnaireListInfo?.questionnaireId ?? 0,
@@ -312,7 +311,7 @@ extension CreateLeadViewController: FileTypeTableViewCellProtocol {
         self.dismiss(animated: true, completion: nil)
         self.view.ShowSpinner()
         var url = String()
-        url = "https://api.growthemr.com/api/public/form-submission/\(id)/question/\(questionId)/uploadfile"
+        url = "https://api.growth99.com/api/public/form-submission/\(id)/question/\(questionId)/uploadfile"
         
         let urlParameter: Parameters = [:]
         let request = ImageUploader(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: "POST")

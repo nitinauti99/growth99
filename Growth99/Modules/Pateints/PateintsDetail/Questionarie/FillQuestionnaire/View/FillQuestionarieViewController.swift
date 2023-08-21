@@ -123,6 +123,7 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
     
     /// submit button which validate all  condition
     @IBAction func submitButtonClicked() {
+        patientQuestionAnswers = []
         let patientQuestionList = viewModel?.getQuestionnaireData ?? []
         
         for index in 0..<(patientQuestionList.count ) {
