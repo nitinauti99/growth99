@@ -96,13 +96,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForWordArrowLead" translatesAutoresizingMaskIntoConstraints="NO" id="j4J-Xz-epU">
-                                <rect key="frame" x="341" y="92" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="HAV-XL-Mu6"/>
-                                    <constraint firstAttribute="height" constant="25" id="oha-Js-hK1"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-7u-Ryp" userLabel="LeadSaatus">
                                 <rect key="frame" x="23" y="173.66666666666666" width="27.666666666666671" height="20"/>
                                 <constraints>
@@ -163,7 +156,6 @@
                             <constraint firstItem="63d-TL-Htj" firstAttribute="trailing" secondItem="k6M-L0-Ggw" secondAttribute="trailing" id="Mj8-ZV-7km"/>
                             <constraint firstItem="tTh-HY-M6Q" firstAttribute="top" secondItem="YzK-R0-bxs" secondAttribute="top" id="OUQ-zB-Nyr"/>
                             <constraint firstItem="Cuf-LL-5ur" firstAttribute="leading" secondItem="xLU-bE-tyf" secondAttribute="leading" id="QdD-ik-IRQ"/>
-                            <constraint firstItem="j4J-Xz-epU" firstAttribute="centerY" secondItem="Xif-xw-TwZ" secondAttribute="centerY" id="REx-Bb-Fm6"/>
                             <constraint firstAttribute="bottom" secondItem="eJJ-7u-Ryp" secondAttribute="bottom" constant="15" id="T3r-nI-3JX"/>
                             <constraint firstItem="Ww2-zQ-ceA" firstAttribute="trailing" secondItem="xLU-bE-tyf" secondAttribute="trailing" id="T5x-ra-Xtr"/>
                             <constraint firstAttribute="trailing" secondItem="xLU-bE-tyf" secondAttribute="trailing" constant="30" id="b8O-5I-RGP"/>
@@ -174,10 +166,8 @@
                             <constraint firstItem="tTh-HY-M6Q" firstAttribute="trailing" secondItem="Miv-l2-unh" secondAttribute="trailing" id="eYJ-CJ-4pF"/>
                             <constraint firstItem="tTh-HY-M6Q" firstAttribute="leading" secondItem="Miv-l2-unh" secondAttribute="leading" id="fJy-th-4tm"/>
                             <constraint firstItem="Qgm-qc-TxH" firstAttribute="leading" secondItem="tTh-HY-M6Q" secondAttribute="leading" id="gZl-eu-HfZ"/>
-                            <constraint firstItem="j4J-Xz-epU" firstAttribute="centerY" secondItem="Xif-xw-TwZ" secondAttribute="centerY" id="h0z-RH-rRd"/>
                             <constraint firstItem="YzK-R0-bxs" firstAttribute="top" secondItem="Cuf-LL-5ur" secondAttribute="bottom" constant="15" id="l1P-kH-2bb"/>
                             <constraint firstItem="YzK-R0-bxs" firstAttribute="leading" secondItem="xLU-bE-tyf" secondAttribute="leading" id="pLf-JJ-f64"/>
-                            <constraint firstAttribute="trailing" secondItem="j4J-Xz-epU" secondAttribute="trailing" constant="8" id="ps5-mw-C9p"/>
                             <constraint firstItem="Miv-l2-unh" firstAttribute="trailing" secondItem="k6M-L0-Ggw" secondAttribute="trailing" id="qIR-zY-sdV"/>
                             <constraint firstItem="Miv-l2-unh" firstAttribute="top" secondItem="Cuf-LL-5ur" secondAttribute="top" id="qef-dg-L9u"/>
                             <constraint firstItem="o4l-m8-R9c" firstAttribute="top" secondItem="Qgm-qc-TxH" secondAttribute="top" id="tGH-J5-vfG"/>
@@ -217,7 +207,4 @@
             <point key="canvasLocation" x="24.427480916030532" y="190.14084507042256"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ForWordArrowLead" width="26" height="26"/>
-    </resources>
 </document>

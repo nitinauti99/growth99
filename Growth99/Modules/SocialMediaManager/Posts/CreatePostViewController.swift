@@ -83,11 +83,14 @@ class CreatePostViewController: UIViewController {
     
     func setUpUI() {
         let item = viewModel?.getSocailPostData
-        if item?.sent == true {
+        if item?.approved == true {
+            saveButton.backgroundColor = UIColor.init(hexString: "86BFE5")
             saveButton.isEnabled = false
         } else {
             saveButton.isEnabled = true
+            saveButton.backgroundColor = UIColor.init(hexString: "009EDE")
         }
+        
         self.hashtagTextField.text = item?.hashtag
         let list: [String] = (item?.postLabels ?? []).map({$0.socialMediaPostLabel?.name ?? ""})
         self.labelTextField.text = list.joined(separator: ",")

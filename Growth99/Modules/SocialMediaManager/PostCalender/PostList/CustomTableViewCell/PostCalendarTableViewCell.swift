@@ -29,7 +29,14 @@ class PostCalendarTableViewCell: UITableViewCell {
     
     func configureCell(headline: PostCalendarListModel, index: IndexPath) {
         self.postLabel.text = "\(headline.post ?? String.blank)"
-        self.statusButton.setTitle(headline.approved ?? false ? "Approved" : "Pending", for: .normal)
+        
+        if headline.approved == true && headline.sent == true {
+            self.statusButton.setTitle("Posted", for: .normal)
+        } else if headline.approved == true && headline.sent == false {
+            self.statusButton.setTitle("Approved", for: .normal)
+        } else {
+            self.statusButton.setTitle("Pending", for: .normal)
+        }
         self.statusButton.titleLabel?.textColor = headline.approved ?? false ? UIColor(hexString: "52afff") : UIColor.red
         self.statusButton.layer.borderColor = headline.approved ?? false ? UIColor(hexString: "52afff").cgColor : UIColor.red.cgColor
         self.timeLabel.text = convertTo12HourFormat(headline.scheduledDate ?? "")
