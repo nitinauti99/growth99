@@ -178,7 +178,6 @@ class CreatePostViewController: UIViewController {
         
         var url = String()
         var methodType = String()
-        
         if self.screenName == "Edit" {
             url = ApiUrl.socialMediaPost.appending("/\(postId)")
             methodType = "PUT"
@@ -195,9 +194,9 @@ class CreatePostViewController: UIViewController {
             "socialProfileIds": socialProfileIds
         ]
         
-        let request = ImageUploader(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType)
+        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType,fileName: "files")
+        
         request.uploadImage { (result) in
-   
         DispatchQueue.main.async {
             self.view.HideSpinner()
             switch result {

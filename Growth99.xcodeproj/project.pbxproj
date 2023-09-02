@@ -12,7 +12,6 @@
 		0103EABA2A1D34B700BDDB87 /* HelpAndTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */; };
 		0103EABF2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */; };
 		0103EAC02A283EC800BDDB87 /* CustomSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */; };
-		0103EAC42A2AD2DB00BDDB87 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */; };
 		010788942A8A8BA800103F0E /* PateintsCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010788932A8A8BA800103F0E /* PateintsCreateModel.swift */; };
 		010EEC9B29B6BE3800351358 /* CreateChatQuestionareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */; };
 		010EEC9D29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */; };
@@ -173,7 +172,6 @@
 		016F664429C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664329C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift */; };
 		016F664629C9EFA600B1D248 /* MediaLibraryAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */; };
 		016F664829CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */; };
-		016F664A29CA13E000B1D248 /* UIImageView+Extenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */; };
 		016F664D29CF03E800B1D248 /* MediaImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664C29CF03E800B1D248 /* MediaImage.swift */; };
 		016F664F29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */; };
 		016F665229CF49ED00B1D248 /* PostImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016F665129CF49ED00B1D248 /* PostImageListViewController.swift */; };
@@ -191,6 +189,7 @@
 		017D572529AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */; };
 		017D572629AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */; };
 		017D572829AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */; };
+		017EE7F92A98CB490032FAB4 /* ImageUplodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017EE7F82A98CB490032FAB4 /* ImageUplodManager.swift */; };
 		0181FC842A6569AF009024BF /* HomeViewContoller+OpenDeopDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181FC832A6569AF009024BF /* HomeViewContoller+OpenDeopDown.swift */; };
 		0181FC862A656A48009024BF /* HomeViewContoller+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181FC852A656A48009024BF /* HomeViewContoller+Delegate.swift */; };
 		0181FC8E2A6C45C3009024BF /* WorkingScheduleViewController+WorkingCustomTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181FC8D2A6C45C3009024BF /* WorkingScheduleViewController+WorkingCustomTableViewCellProtocol.swift */; };
@@ -983,7 +982,6 @@
 		0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpAndTrainingViewController.swift; sourceTree = "<group>"; };
 		0103EABD2A283EC800BDDB87 /* CustomSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		0103EABE2A283EC800BDDB87 /* CustomSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSelectionTableViewCell.xib; sourceTree = "<group>"; };
-		0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		010788932A8A8BA800103F0E /* PateintsCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsCreateModel.swift; sourceTree = "<group>"; };
 		010EEC9A29B6BE3800351358 /* CreateChatQuestionareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatQuestionareViewController.swift; sourceTree = "<group>"; };
 		010EEC9C29B6BE4200351358 /* CreateChatQuestionareViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChatQuestionareViewController.storyboard; sourceTree = "<group>"; };
@@ -1144,7 +1142,6 @@
 		016F664329C9EF9B00B1D248 /* MediaLibraryAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryAddViewModel.swift; sourceTree = "<group>"; };
 		016F664529C9EFA600B1D248 /* MediaLibraryAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryAddModel.swift; sourceTree = "<group>"; };
 		016F664729CA082600B1D248 /* MediaLibraryAddViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaLibraryAddViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
-		016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extenssion.swift"; sourceTree = "<group>"; };
 		016F664C29CF03E800B1D248 /* MediaImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaImage.swift; sourceTree = "<group>"; };
 		016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePostViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
 		016F665129CF49ED00B1D248 /* PostImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageListViewController.swift; sourceTree = "<group>"; };
@@ -1162,6 +1159,7 @@
 		017D572329AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
 		017D572729AF6B5400D6A5A4 /* DisplayQuestionnaireViewContoller+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayQuestionnaireViewContoller+TableView.swift"; sourceTree = "<group>"; };
+		017EE7F82A98CB490032FAB4 /* ImageUplodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUplodManager.swift; sourceTree = "<group>"; };
 		0181FC832A6569AF009024BF /* HomeViewContoller+OpenDeopDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewContoller+OpenDeopDown.swift"; sourceTree = "<group>"; };
 		0181FC852A656A48009024BF /* HomeViewContoller+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewContoller+Delegate.swift"; sourceTree = "<group>"; };
 		0181FC8D2A6C45C3009024BF /* WorkingScheduleViewController+WorkingCustomTableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkingScheduleViewController+WorkingCustomTableViewCellProtocol.swift"; sourceTree = "<group>"; };
@@ -2752,7 +2750,6 @@
 				016F660D29C8555A00B1D248 /* CreatePostViewController.storyboard */,
 				016F664E29CF42F900B1D248 /* CreatePostViewController+UIImagePickerController.swift */,
 				01454A0429FCD66800237E60 /* CreatePostViewController+TextField.swift */,
-				0103EAC32A2AD2DB00BDDB87 /* ImageUploader.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2985,6 +2982,14 @@
 				017D572429AF608400D6A5A4 /* DisplayQuestionnaireTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		017EE7F72A98C3520032FAB4 /* ImageUploader */ = {
+			isa = PBXGroup;
+			children = (
+				017EE7F82A98CB490032FAB4 /* ImageUplodManager.swift */,
+			);
+			path = ImageUploader;
 			sourceTree = "<group>";
 		};
 		018C65292A3984EF008F20C3 /* Cell */ = {
@@ -5435,7 +5440,6 @@
 				01EBAC8B29B5E62800110DCB /* UITextViewExtenssion.swift */,
 				01684C2129BB7BBF00DE1041 /* UIIMageExtension.swift */,
 				18BDB69429BFA46700AE1582 /* RadioButton.swift */,
-				016F664929CA13E000B1D248 /* UIImageView+Extenssion.swift */,
 			);
 			path = Extenssion;
 			sourceTree = "<group>";
@@ -5857,6 +5861,7 @@
 		8497A04228FF121A00CBA26C /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				017EE7F72A98C3520032FAB4 /* ImageUploader */,
 				1883F11829C7571E0080997B /* CountryPicker */,
 				84EFC27A292552FF003B3C06 /* BaseTabberScreen */,
 				845C39AA292276AF00D934C5 /* Constants */,
@@ -7882,6 +7887,7 @@
 				DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
 				39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */,
+				017EE7F92A98CB490032FAB4 /* ImageUplodManager.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
 				01EBAC8829B5C6E700110DCB /* ChatbotContainerView.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* GrowthParameterEncoder.swift in Sources */,
@@ -7981,7 +7987,6 @@
 				84F6113A292A71AB00B1FB69 /* LogSettings.swift in Sources */,
 				01BBA9DA29AB5461006A5DB8 /* NotificationListModel.swift in Sources */,
 				016F661429C8956700B1D248 /* MediaLibraryListViewController+TableView.swift in Sources */,
-				0103EAC42A2AD2DB00BDDB87 /* ImageUploader.swift in Sources */,
 				84F610F2292A71AB00B1FB69 /* Future+Possible.swift in Sources */,
 				398F90F3298ECB8700DB96E4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				84D062F02967080E001FE469 /* leadListModel.swift in Sources */,
@@ -8001,7 +8006,6 @@
 				01C7488629B219F60085CED2 /* AddNewConsentsViewController+TableView.swift in Sources */,
 				84B75EB32968E70F00962F3E /* CategoriesAddEditViewModel.swift in Sources */,
 				3947A8EE2996776E000CA2EB /* CalenderViewController.swift in Sources */,
-				016F664A29CA13E000B1D248 /* UIImageView+Extenssion.swift in Sources */,
 				01468DFF29BE33A8002BDC1F /* CreateSMSTemplateCollectionViewCell.swift in Sources */,
 				01468E3D29C1F297002BDC1F /* leadDetailViewController+SMSTemplate.swift in Sources */,
 				01DBA99729C5A2D200CBA51D /* CreateSocialProfileViewController.swift in Sources */,

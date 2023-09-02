@@ -106,15 +106,11 @@ class MediaLibraryAddViewController: UIViewController {
             return
         }
         
-        guard let image = mediaImage.image, image != nil else {
+        guard let image = mediaImage.image else {
             return
         }
         self.view.ShowSpinner()
-        guard let image = self.mediaImage.image else { return  }
-        let boundary = UUID().uuidString
         let tagIds = selectedPostLabels.map { String($0) }.joined(separator: ",")
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
         var url = String()
         var methodType = String()
         var message = String()
@@ -129,44 +125,28 @@ class MediaLibraryAddViewController: UIViewController {
             message = "Social media library created successfully"
         }
         
-        var urlRequest = URLRequest(url: URL(string: url)!)
-        urlRequest.addValue(UserRepository.shared.Xtenantid ?? String.blank, forHTTPHeaderField: "x-tenantid")
-        urlRequest.addValue("Bearer " + (UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Authorization")
-        urlRequest.httpMethod = methodType
-        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
-        var data = Data()
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"tags\"\r\n\r\n \(tagIds)".data(using: .utf8)!)
+        let urlParameter: Parameters = [
+            "tags": tagIds,
+        ]
         
-        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(self.imageName)\"\r\n".data(using: .utf8)!)
-        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-        data.append(image.pngData()!)
-        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType, fileName: "file")
         
-        session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
-            
-            if(error != nil){
-                print("\(error!.localizedDescription)")
-            }
-            
-            guard let responseData = responseData else {
-                print("no response data")
-                return
-            }
-            
-            if let responseString = String(data: responseData, encoding: .utf8) {
-                print("uploaded to: \(responseString)")
-                DispatchQueue.main.async {
-                    self.view.HideSpinner()
+        request.uploadImage { (result) in
+            DispatchQueue.main.async {
+                self.view.HideSpinner()
+                switch result {
+                case .success(let value):
+                    print(value)
                     self.view.showToast(message: message, color: UIColor().successMessageColor())
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.navigationController?.popViewController(animated: true)
                     }
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
             }
-        }).resume()
+        }
     }
 }
 

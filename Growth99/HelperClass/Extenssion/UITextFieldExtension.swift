@@ -338,6 +338,14 @@ public extension String {
     var isEmptyStr:Bool{
         return self.trimmingCharacters(in: NSCharacterSet.whitespaces).isEmpty
     }
+    
+    func replace(string:String, replacement:String) -> String {
+        return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+    }
+
+    func removeWhitespace() -> String {
+        return self.replace(string: " ", replacement: "%20")
+    }
 }
 
 public enum DTBorderStyle{

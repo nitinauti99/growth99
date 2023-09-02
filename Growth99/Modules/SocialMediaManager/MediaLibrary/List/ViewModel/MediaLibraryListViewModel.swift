@@ -29,8 +29,9 @@ class MediaLibraryListViewModel {
     
     func getSocialMediaLibrariesList(page: Int,size: Int, search: String, tags: Int) {
         let url = "page=\(page)&size=\(size)&search=\(search)&tags="
+        let urlString = url.removeWhitespace()
       
-        self.requestManager.request(forPath: ApiUrl.socialMediaLibraries.appending(url), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MediaLibraryListModel, GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.socialMediaLibraries.appending(urlString), method: .GET, headers: self.requestManager.Headers()) {  (result: Result<MediaLibraryListModel, GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
                 self.socialMediaLibrariesList = pateintsTagList.content ?? []

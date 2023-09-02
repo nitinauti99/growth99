@@ -277,7 +277,7 @@
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="PdX-8e-nCo"/>
                                                 </connections>
                                             </textView>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="711-uj-wVh" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="711-uj-wVh" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="23" y="678" width="110" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -304,7 +304,7 @@
                                                     <action selector="uploadImageButtonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gs0-A2-tSf"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tei-52-VD3" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tei-52-VD3" customClass="GrowthCutomButton" customModule="Growth99" customModuleProvider="target">
                                                 <rect key="frame" x="153" y="678" width="150" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -327,7 +327,7 @@
                                                     <action selector="uploadImageFromLibButtonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Glw-hH-u6F"/>
                                                 </connections>
                                             </button>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Image size must be less than 1MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmH-s7-7sN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Image size must be less than 1MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmH-s7-7sN">
                                                 <rect key="frame" x="23" y="745" width="371" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="XlP-Be-qCj"/>
@@ -336,7 +336,7 @@
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocw-2x-GZb">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocw-2x-GZb">
                                                 <rect key="frame" x="23" y="663" width="150" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="oL2-6H-vZH"/>
@@ -488,19 +488,19 @@
     </scenes>
     <designables>
         <designable name="4wi-zj-pub">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="LoW-f7-VgA">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="QDp-hp-wog">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="jdN-Lv-IAr">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="19" height="18.5"/>
         </designable>
         <designable name="lrc-7C-of5">
-            <size key="intrinsicContentSize" width="12" height="26.5"/>
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
         </designable>
     </designables>
     <resources>
