@@ -12,33 +12,45 @@ import WebKit
 
 class SocialWebViewController: UIViewController {
     
-    let webView = WKWebView()
+    var webView = WKWebView()
     var activityIndicator: UIActivityIndicatorView!
     var userSocialType: String = ""
     var userSocialUrl: String = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = userSocialType
-        webView.frame = view.bounds
+        webView = WKWebView() // Assuming you're using WKWebView
         webView.navigationDelegate = self
-        
-        let url = URL(string: userSocialUrl)!
-        let urlRequest = URLRequest(url: url)
-        
-        webView.load(urlRequest)
-        webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        webView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)
+        // Create Auto Layout constraints
+        NSLayoutConstraint.activate([
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
+        // Load the URL
+        if let url = URL(string: userSocialUrl) {
+            let urlRequest = URLRequest(url: url)
+            webView.load(urlRequest)
+        }
+        
+        // Create and configure the activity indicator
         activityIndicator = UIActivityIndicatorView()
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .medium
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.isHidden = true
         view.addSubview(activityIndicator)
         
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
-    
+
 }
 
 
@@ -62,7 +74,6 @@ extension SocialWebViewController: WKNavigationDelegate {
                     let components = urlStr.components(separatedBy: "=")
                     let components1 = components[1].components(separatedBy: "&")
                     let accessToken = components1[0]
-                    print("Access Token: \(accessToken)")
                     let userInfo = [ "accessToken" : accessToken, "SocialType": userSocialType ]
                     NotificationCenter.default.post(name: Notification.Name("AccessTokenReceived"), object: nil, userInfo: userInfo)
                     self.navigationController?.popViewController(animated: true)
@@ -72,9 +83,10 @@ extension SocialWebViewController: WKNavigationDelegate {
                     let components = urlStr.components(separatedBy: "=")
                     let components1 = components[1].components(separatedBy: "&")
                     let accessToken = components1[0]
-                    print("Access Token: \(accessToken)")
                     let userInfo = [ "accessToken" : accessToken, "SocialType": userSocialType ]
                     NotificationCenter.default.post(name: Notification.Name("AccessTokenReceived"), object: nil, userInfo: userInfo)
+                    self.navigationController?.popViewController(animated: true)
+                } else if urlStr.contains("error=") {
                     self.navigationController?.popViewController(animated: true)
                 }
             }
