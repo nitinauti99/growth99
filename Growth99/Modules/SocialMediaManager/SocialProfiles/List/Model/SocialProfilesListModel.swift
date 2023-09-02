@@ -16,3 +16,31 @@ struct SocialProfilesListModel: Codable, Equatable {
 struct SocialProfilesListRemove: Codable {
     let success: String?
 }
+
+struct SocialProfileLinkModel : Codable {
+    let createdAt : String?
+    let updatedAt : String?
+    let createdBy : SocialCreatedBy?
+    let updatedBy : SocialUpdatedBy?
+    let deleted : Bool?
+    let tenantId : Int?
+    let id : Int?
+    let socialChannel : String?
+    let name : String?
+    let socialIdentity : String?
+    let socialPagesId : [String]?
+}
+
+struct SocialUpdatedBy : Codable {
+    let firstName : String?
+    let lastName : String?
+    let email : String?
+    let username : String?
+}
+
+struct SocialCreatedBy : Codable {
+    let firstName : String?
+    let lastName : String?
+    let email : String?
+    let username : String?
+}

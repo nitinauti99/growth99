@@ -14,6 +14,7 @@ protocol SocialProfilesListViewModelProtocol {
     func removeSocialProfiles(socialProfilesId: Int)
     func filterData(searchText: String)
     
+    func linkSocialProfiles(accessToken: String, socialChannel: String)
     var getSocialProfilesData: [SocialProfilesListModel] { get }
     var getSocialProfilesFilterData: [SocialProfilesListModel] { get }
 }
@@ -23,6 +24,7 @@ class SocialProfilesListViewModel {
     
     var socialProfilesList: [SocialProfilesListModel] = []
     var socialProfilesFilterList: [SocialProfilesListModel] = []
+    
     
     init(delegate: SocialProfilesListViewControllerProtocol? = nil) {
         self.delegate = delegate
@@ -36,6 +38,23 @@ class SocialProfilesListViewModel {
             case .success(let pateintsTagList):
                 self.socialProfilesList = pateintsTagList
                 self.delegate?.socialProfilesListRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func linkSocialProfiles(accessToken: String, socialChannel: String) {
+        
+        let parameters: [String: Any] = [
+            "accessToken": accessToken,
+            "socialChannel": socialChannel
+        ]
+        self.requestManager.request(forPath: ApiUrl.socialProfileList, method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameters, encoding: .jsonEncoding)) {  (result: Result<SocialProfileLinkModel, GrowthNetworkError>) in
+            switch result {
+            case .success(_):
+                self.delegate?.linkedSocialProfilesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")

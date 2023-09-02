@@ -436,9 +436,12 @@
 		254D77C72A752C43007941CB /* PostCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */; };
 		254D77CD2A766164007941CB /* AppointmentListDetailViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77CC2A766164007941CB /* AppointmentListDetailViewController+extension.swift */; };
 		254D77CF2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77CE2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift */; };
+		2564C6112A953D230045F711 /* SocialLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2564C6102A953D230045F711 /* SocialLoginManager.swift */; };
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
+		25B7D2742AA3B04600216A7C /* SocialWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */; };
+		25B7D2752AA3B04600216A7C /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */; };
 		25C46A862A460FAF004129E7 /* AuditListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A7C2A460FAE004129E7 /* AuditListViewModel.swift */; };
 		25C46A872A460FAF004129E7 /* AuditListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A7E2A460FAE004129E7 /* AuditListModel.swift */; };
 		25C46A882A460FAF004129E7 /* AuditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A802A460FAE004129E7 /* AuditListViewController.swift */; };
@@ -1407,9 +1410,12 @@
 		254D77C62A752C43007941CB /* PostCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		254D77CC2A766164007941CB /* AppointmentListDetailViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentListDetailViewController+extension.swift"; sourceTree = "<group>"; };
 		254D77CE2A7661FA007941CB /* AppointmentsViewController+Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppointmentsViewController+Searchbar.swift"; sourceTree = "<group>"; };
+		2564C6102A953D230045F711 /* SocialLoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialLoginManager.swift; sourceTree = "<group>"; };
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
+		25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialWebViewController.storyboard; sourceTree = "<group>"; };
+		25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 		25C46A7C2A460FAE004129E7 /* AuditListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListViewModel.swift; sourceTree = "<group>"; };
 		25C46A7E2A460FAE004129E7 /* AuditListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListModel.swift; sourceTree = "<group>"; };
 		25C46A802A460FAE004129E7 /* AuditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListViewController.swift; sourceTree = "<group>"; };
@@ -4064,6 +4070,7 @@
 				189E3EC729C38E6000B94190 /* Cell */,
 				189E3ECA29C3910600B94190 /* SocialProfilesListViewController.storyboard */,
 				189E3EC829C390F400B94190 /* SocialProfilesListViewController.swift */,
+				2564C6102A953D230045F711 /* SocialLoginManager.swift */,
 				01DBA98429C5654300CBA51D /* SocialProfilesListViewController+TableView.swift */,
 				01DBA98629C5656300CBA51D /* SocialProfilesListViewController+SearchBar.swift */,
 			);
@@ -7037,6 +7044,8 @@
 		DA45786F29707F8400CE458B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */,
+				25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */,
 				DA45787029707F9F00CE458B /* GRWebViewController.swift */,
 				DA45787229707FA900CE458B /* GRWebViewController.storyboard */,
 				0103EAB92A1D34B700BDDB87 /* HelpAndTrainingViewController.swift */,
@@ -7353,6 +7362,7 @@
 				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
 				84D0623229670677001FE469 /* VacationsHeadeView.xib in Resources */,
 				01DBA99929C5A2DA00CBA51D /* CreateSocialProfileViewController.storyboard in Resources */,
+				25B7D2742AA3B04600216A7C /* SocialWebViewController.storyboard in Resources */,
 				01E348F429E90C88003B2456 /* CreateLeadTasksViewController.storyboard in Resources */,
 				8490350429954F7300556D47 /* SMSTemplatesListTableViewCell.xib in Resources */,
 				01EBAC9529B6392E00110DCB /* ScrapeWebsiteViewController.storyboard in Resources */,
@@ -7696,6 +7706,7 @@
 				01C7489629B22F3D0085CED2 /* UserListViewContoller+SearchBar.swift in Sources */,
 				01EBAC4229B5843C00110DCB /* LeadTagsListTableViewCell.swift in Sources */,
 				18491DBD29B80CE000FE72EF /* MassEmailandSMSViewModel.swift in Sources */,
+				2564C6112A953D230045F711 /* SocialLoginManager.swift in Sources */,
 				84A5AB1D2973EE1C00AE5355 /* EditTasksModel.swift in Sources */,
 				84D0623129670677001FE469 /* VacationsCustomTableViewCell.swift in Sources */,
 				39F2FF122996B2F40089BD4F /* AppointmentsViewController.swift in Sources */,
@@ -7898,6 +7909,7 @@
 				01E348F329E90C88003B2456 /* CreateLeadTasksViewController+TextView.swift in Sources */,
 				01684C1E29BAECF200DE1041 /* ChatSessionListViewController+TableView.swift in Sources */,
 				84D0628329670677001FE469 /* ForgotPasswordViewController.swift in Sources */,
+				25B7D2752AA3B04600216A7C /* SocialWebViewController.swift in Sources */,
 				01DBA9A129C5C4E700CBA51D /* LabelsViewController+SearchBar.swift in Sources */,
 				01152E3E29B3C65D00B24627 /* CombineTimeLineModel.swift in Sources */,
 				0131D32929E46DB7009D11C1 /* EditLeadViewController+UITextField.swift in Sources */,

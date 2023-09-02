@@ -84,5 +84,211 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "440490CA-15F8-4400-878A-6405429E5F81"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/SocialMediaManager/Posts/CreatePostViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "setUpUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "100F0176-511B-4BFA-B787-78B8E60A434B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/SocialMediaManager/PostCalender/PostList/CustomTableViewCell/PostCalendarTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "configureCell(headline:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4F8FC7AE-A2B8-4AEA-A73E-F904EBF00458"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/Leads/list/View/Cell/leadListTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "configureCell(leadVM:index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4F8FC7AE-A2B8-4AEA-A73E-F904EBF00458 - a9eec60586503b52"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.leadListTableViewCell.configureCell(leadVM: Swift.Optional&lt;Growth99.leadListViewModelProtocol&gt;, index: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/Leads/list/View/Cell/leadListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "9428">
+               </Location>
+               <Location
+                  uuid = "4F8FC7AE-A2B8-4AEA-A73E-F904EBF00458 - a9eec60586503b52"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Growth99.leadListTableViewCell.configureCell(leadVM: Swift.Optional&lt;Growth99.leadListViewModelProtocol&gt;, index: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/Leads/list/View/Cell/leadListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "9540">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F97A67D2-20EF-44F1-8701-4DE07100FAF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/SocialMediaManager/SocialProfiles/List/View/SocialProfilesListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "openSocialPlatform(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F97A67D2-20EF-44F1-8701-4DE07100FAF7 - f1936a80b9e7cdb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Int, Swift.Bool, Swift.Array&lt;Swift.String&gt;) -&gt; () in Growth99.SocialProfilesListViewController.openSocialPlatform(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/SocialMediaManager/SocialProfiles/List/View/SocialProfilesListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "724">
+               </Location>
+               <Location
+                  uuid = "F97A67D2-20EF-44F1-8701-4DE07100FAF7 - 4270e3f30989ce32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Int, Swift.Bool, Swift.Array&lt;Swift.String&gt;) -&gt; () in Growth99.SocialProfilesListViewController.openSocialPlatform(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/SocialMediaManager/SocialProfiles/List/View/SocialProfilesListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "F97A67D2-20EF-44F1-8701-4DE07100FAF7 - f1936a80b9e7ca2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Int, Swift.Bool, Swift.Array&lt;Swift.String&gt;) -&gt; () in Growth99.SocialProfilesListViewController.openSocialPlatform(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/SocialMediaManager/SocialProfiles/List/View/SocialProfilesListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1576">
+               </Location>
+               <Location
+                  uuid = "F97A67D2-20EF-44F1-8701-4DE07100FAF7 - f1936a80b9e7ca2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Int, Swift.Bool, Swift.Array&lt;Swift.String&gt;) -&gt; () in Growth99.SocialProfilesListViewController.openSocialPlatform(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "Growth99"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sravangoud/Documents/Sravan/GitHub/growth99/Growth99/Modules/SocialMediaManager/SocialProfiles/List/View/SocialProfilesListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1056">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D687FFD-0AAC-4F63-9A1D-5F81CF039692"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/SocialMediaManager/SocialProfiles/List/View/SocialLoginManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "loginWithFacebook(vc:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "956156B0-7E2B-4AC2-8429-0620BD7B95D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/GRWebView/View/SocialWebViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84021B08-C4FE-473F-B2FA-95E8E1EF52B8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Growth99/Modules/GRWebView/View/SocialWebViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

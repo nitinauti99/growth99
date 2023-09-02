@@ -7,6 +7,7 @@
 
 import UIKit
 import LocalAuthentication
+import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,7 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         segmentedControlAppearance.tintColor = UIColor(hexString: "#009EDE")
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
 
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions:
+            launchOptions
+        )
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            options: options
+        )
     }
 
     func setUpHomeVC() {

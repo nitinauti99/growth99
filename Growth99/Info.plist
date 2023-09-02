@@ -4,9 +4,26 @@
 <dict>
 	<key>Config</key>
 	<string>Production</string>
+	<key>FacebookAppID</key>
+	<string>823144572631731</string>
+	<key>FacebookClientToken</key>
+	<string>8fef7d0f26c9fdac0a341f8629435a45</string>
+	<key>FacebookDisplayName</key>
+	<string>G99</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb823144572631731</string>
+			</array>
+		</dict>
+	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlegmail</string>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

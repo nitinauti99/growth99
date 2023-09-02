@@ -5,7 +5,7 @@ import Foundation
 public typealias MIMEType = String
 
 /// A `String` alias to represent Access token
-public typealias AccessToken = String
+public typealias GrowthAccessToken = String
 
 /**
     The header sections of a HTTP request are represented in the `HTTPHeader` enum
@@ -35,7 +35,7 @@ public enum HTTPHeader {
     
        - AccessToken: The credentials to authenticate a user agent in `String` format.
     */
-    case authorization(AccessToken)
+    case authorization(GrowthAccessToken)
 
     /**
     Custom request header can hold the key and the corresponding value of any custom HTTP header

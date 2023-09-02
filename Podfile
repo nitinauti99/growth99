@@ -9,6 +9,8 @@ target 'Growth99' do
   pod 'SDWebImage', '~> 5.0'
   pod 'FSCalendar'
   pod 'Alamofire'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
   target 'Growth99Tests' do
     inherit! :search_paths
     # Pods for testing
