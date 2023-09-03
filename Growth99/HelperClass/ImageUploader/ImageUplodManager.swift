@@ -48,8 +48,10 @@ class ImageUplodManager {
         }
         
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"\(fileName))\"; filename=\"\(self.uploadImage)\"\r\n".data(using: .utf8)!)
+       
+        data.append("Content-Disposition: form-data; name=\"\(fileName)\"; filename=\"\(self.uploadImage)\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+       
         data.append(self.uploadImage.pngData()!)
         data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
         print("data .....", data)
