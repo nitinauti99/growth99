@@ -22,7 +22,8 @@ class CreateLeadViewController: UIViewController{
     @IBOutlet weak var customView : UIView!
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var tableViewHight : NSLayoutConstraint!
-
+    var imageUrl: String = ""
+    
     var viewModel: CreateLeadViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
     
@@ -127,12 +128,9 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
                 self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: dateTypeCell.dateTypeTextField.text ?? String.blank)
                 
             case ("File", false):
-                break
-                // guard let cell = tableView.dequeueReusableCell(withIdentifier: "FileTypeTableViewCell", for: indexPath) as? FileTypeTableViewCell else { return UITableViewCell() }
-                // cell.configureCell(questionarieVM: viewModel, index: indexPath, id: viewModel?.id ?? 0)
-                //  cell.delegate = self
-                //  return cell
-                
+                 guard let fileCell = tableView.dequeueReusableCell(withIdentifier: "FileTypeTableViewCell", for: cellIndexPath) as? FileTypeTableViewCell else { return }
+                self.setPatientQuestionList(patientQuestionAnswersList: item, answerText: imageUrl)
+
             case ("Multiple_Selection_Text", false):
                 guard let multipleSelectionCell = tableView.cellForRow(at: cellIndexPath) as? LeadMultipleSelectionTextTypeTableViewCell else { return  }
                 let leadQuestionChoicesList = item.patientQuestionChoices ?? []
@@ -301,32 +299,35 @@ extension CreateLeadViewController: LeadMultipleSelectionWithDropDownTypeTableVi
 }
 
 extension CreateLeadViewController: FileTypeTableViewCellProtocol {
-   
+    
     func presentImagePickerController(pickerController: UIImagePickerController) {
         present(pickerController, animated: true, completion: nil)
     }
     
-   func dissmissImagePickerController(id: Int, questionId: Int, image: UIImage) {
-//        self.dismiss(animated: true, completion: nil)
-//        self.view.ShowSpinner()
-//        var url = String()
-//        url = "https://api.growth99.com/api/public/form-submission/\(id)/question/\(questionId)/uploadfile"
-//
-//        let urlParameter: Parameters = [:]
-//        let request = ImageUploader(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: "POST")
-//            request.uploadImage { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let value):
-//                    print(value)
-//                    self.view.HideSpinner()
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                    }
-//                case .failure(let error):
-//                    self.view.HideSpinner()
-//                    print(error.localizedDescription)
-//                }
-//            }
-//         }
+    func dissmissImagePickerController(id: Int, questionId: Int, image: UIImage) {
+        self.dismiss(animated: true, completion: nil)
+        self.view.ShowSpinner()
+        var url = String()
+        url = ApiUrl.formSubmission.appending("\(id)/question/\(questionId)/uploadfile")
+        
+        let urlParameter: Parameters = [:]
+        
+        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: "POST", fileName: "file")
+        
+        request.uploadImage { (result) in
+            DispatchQueue.main.async { [weak self] in
+                self?.view.HideSpinner()
+                switch result {
+                case .success(let response):
+                    print(response.body ?? [:])
+                    self?.imageUrl = (response.body ?? [:])["location"] as! String
+                    self?.view.HideSpinner()
+                       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }

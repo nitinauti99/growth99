@@ -40,11 +40,11 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
 
-//        case ("File", false):
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FileTypeTableViewCell", for: indexPath) as? FileTypeTableViewCell else { return UITableViewCell() }
-//            cell.configureCell(questionarieVM: viewModel, index: indexPath, id: viewModel?.id ?? 0)
-//            cell.delegate = self
-//            return cell
+        case ("File", false):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FileTypeTableViewCell", for: indexPath) as? FileTypeTableViewCell else { return UITableViewCell() }
+            cell.configureCell(questionarieVM: viewModel, index: indexPath, id: viewModel?.id ?? 0)
+            cell.delegate = self
+            return cell
        
         case ("Multiple_Selection_Text", false):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionTextTypeTableViewCell", for: indexPath) as? LeadMultipleSelectionTextTypeTableViewCell else { return UITableViewCell() }

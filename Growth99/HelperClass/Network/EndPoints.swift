@@ -13,7 +13,6 @@ struct EndPoints {
     static let envUrl = GrowthRequestManager(configuration: URLSessionConfiguration.default).getEnvUrl()
 
     
-    
     static let auth = "/api/user/auth"
     static let register = "/api/account/register"
     static let forgotPassword = "/api/public/users/forgot-password"
@@ -187,6 +186,7 @@ struct EndPoints {
     static let clinicsDefault = "/api/v1/clinics/default"
     static let leadViewTemplate = "/api/v1/audit/lead/json/content?id="
     static let triggerAudit = "/api/v1/audit/"
+    static let formSubmission = "/api/public/form-submission/"
 }
 
 struct ApiUrl {
@@ -367,5 +367,7 @@ struct ApiUrl {
     static let auditInformation = EndPoints.baseURL.appending(EndPoints.auditInformation)
     static let auditDetailInformation = EndPoints.baseURL.appending(EndPoints.auditDetailInformation)
     static let deleteCheckCategories = EndPoints.baseURL.appending(EndPoints.deleteCheckCategories)
+    static let formSubmission = EndPoints.baseURL.appending(EndPoints.formSubmission)
 }
+
 
