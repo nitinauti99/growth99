@@ -14,7 +14,7 @@ protocol ServicesListDetailViewContollerProtocol {
     func consentReceived()
     func questionnairesReceived()
     func serviceCategoriesReceived()
-    func createServiceSuccessfullyReceived(message: String)
+    func createServiceSuccessfullyReceived(message: String, userServiceId: Int)
     func selectedServiceDataReceived()
     func serviceImageUploadReceived(responseMessage: String)
     func serviceAddListDataRecived()
@@ -138,7 +138,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             showDepositCostLblHeightConstant.constant = 0
         } else {
             servicesAddViewModel?.getUserSelectedService(serviceID: serviceId ?? 0)
-            removeImageViewBtn.isHidden = true
         }
     }
     
@@ -242,6 +241,8 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         }
         
         let imageUrl = servicesAddViewModel?.getUserSelectedServiceData?.imageUrl
+        let cleanedString = imageUrl?.removingWhitespaces().replacingOccurrences(of: "\\\\", with: "/") ?? ""
+        print("Cleeannn \(cleanedString)")
         if imageUrl?.isEmpty ?? true {
             serviceImageView.image = nil
             serviceImageViewHeight.constant = 0
@@ -249,12 +250,12 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             contentViewHeight.constant = 1500
             removeImageViewBtn.isHidden = true
         } else {
-            self.serviceImageView.sd_setImage(with: URL(string: servicesAddViewModel?.getUserSelectedServiceData?.imageUrl ?? String.blank), placeholderImage: nil)
+            self.serviceImageView.sd_setImage(with: URL(string: cleanedString), placeholderImage: UIImage(named: "Logo"), context: nil)
             serviceImageViewHeight.constant = 200
             serviceImageViewTop.constant = 20
             contentViewHeight.constant = 1650
             imageRemoved = false
-            removeImageViewBtn.isHidden = true
+            removeImageViewBtn.isHidden = false
             serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         }
         isPreBookingCostAllowed = servicesAddViewModel?.getUserSelectedServiceData?.isPreBookingCostAllowed ?? false
@@ -266,7 +267,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         let tempVar = String(format: "%g", temp)
         return tempVar
     }
-    
     
     func clinicsReceived() {
         allClinics = servicesAddViewModel?.getAllClinicsData ?? []
@@ -289,16 +289,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         self.view.HideSpinner()
     }
     
-    func createServiceSuccessfullyReceived(message: String) {
-//        self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: serviceId ?? 0)
-        self.view.HideSpinner()
-        if message == Constant.Profile.createService {
-            self.view.showToast(message: "Service created successfully", color: UIColor().successMessageColor())
+    func createServiceSuccessfullyReceived(message: String, userServiceId: Int) {
+        if title == Constant.Profile.createService {
+            self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: userServiceId)
         } else {
-            self.view.showToast(message: "Service updated successfully", color: UIColor().successMessageColor())
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.navigationController?.popViewController(animated: true)
+            self.servicesAddViewModel?.uploadSelectedServiceImage(image: selectedPickerImage ?? UIImage(), selectedServiceId: serviceId ?? 0)
         }
     }
     
@@ -513,7 +508,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         serviceImageViewTop.constant = 20
         contentViewHeight.constant = 1650
         imageRemoved = false
-        removeImageViewBtn.isHidden = true
+        removeImageViewBtn.isHidden = false
         serviceImageViewBtn.setTitle("Change Service Image", for: .normal)
         self.dismiss(animated: true, completion: nil)
     }
@@ -530,11 +525,6 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    func scrollToTop(of scrollView: UIScrollView, animated: Bool) {
-        let topOffset = CGPoint(x: 0, y: -scrollView.contentInset.top)
-        scrollView.setContentOffset(topOffset, animated: animated)
     }
     
     @IBAction func saveServiceButtonAction(sender: UIButton) {

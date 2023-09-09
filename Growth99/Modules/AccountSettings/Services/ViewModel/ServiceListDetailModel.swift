@@ -170,20 +170,16 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
         } else {
             apiURL = ApiUrl.editService + "\(serviceId)"
         }
-        self.requestManager.request(forPath: apiURL, method: httpMethod, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  [weak self] result in
-            guard let self = self else { return }
+        self.requestManager.request(forPath: apiURL, method: httpMethod, headers: self.requestManager.Headers(), task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) { (result: Result<ServiceDetailModel, GrowthNetworkError>) in
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
-                    self.delegate?.createServiceSuccessfullyReceived(message: isScreenFrom)
-                } else if (response.statusCode == 500) {
+                self.delegate?.createServiceSuccessfullyReceived(message: isScreenFrom, userServiceId: response.id ?? 0)
+            case .failure(let error):
+                if error.response?.statusCode == 500 {
                     self.delegate?.errorReceived(error: "We are facing issue while creating service")
                 } else {
                     self.delegate?.errorReceived(error: "response failed")
                 }
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
             }
         }
     }
@@ -206,19 +202,15 @@ class ServiceListDetailModel: ServiceListDetailViewModelProtocol {
     }
     
     func uploadSelectedServiceImage(image: UIImage, selectedServiceId: Int) {
-        UserRepository.shared.selectedServiceId = selectedServiceId
-        self.requestManager.request(requestable: ServicesImage.upload(image: image.pngData() ?? Data())) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let response):
-                if response.statusCode == 200 {
-                } else if (response.statusCode == 500) {
-                } else {
-                    self.delegate?.errorReceived(error: "response failed")
+        let request = ImageUplodManager(uploadImage: image, parameters: [:], url: URL(string: ApiUrl.editService.appending("\(selectedServiceId)/image"))!, method: "POST", name: "file", fileName: "file")
+        request.uploadImage { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.delegate?.serviceImageUploadReceived(responseMessage: "")
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
             }
         }
     }

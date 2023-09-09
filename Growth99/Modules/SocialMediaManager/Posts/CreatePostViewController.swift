@@ -194,7 +194,7 @@ class CreatePostViewController: UIViewController {
             "socialProfileIds": socialProfileIds
         ]
         
-        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType,fileName: "files")
+        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType, name: "file", fileName: "file")
         
         request.uploadImage { (result) in
         DispatchQueue.main.async {
@@ -296,7 +296,7 @@ extension CreatePostViewController {
 extension CreatePostViewController: PostImageListViewControllerDelegateProtocol {
    
     func getSocialPostImageListDataAtIndex(content: Content) {
-        self.postImageView.sd_setImage(with: URL(string:content.location ?? ""), placeholderImage: UIImage(named: "logo"), context: nil)
+        self.postImageView.sd_setImage(with: URL(string:content.location ?? ""), placeholderImage: UIImage(named: "Logo"), context: nil)
         self.postImageView.isHidden = false
         self.postImageViewButtonHight.constant = 150
     }

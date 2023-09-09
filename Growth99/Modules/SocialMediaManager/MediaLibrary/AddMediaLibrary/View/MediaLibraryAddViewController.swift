@@ -130,7 +130,7 @@ class MediaLibraryAddViewController: UIViewController {
             "tags": tagIds,
         ]
         
-        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType, fileName: "file")
+        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: methodType, name: "file", fileName: imageName)
         
         request.uploadImage { (result) in
             DispatchQueue.main.async {

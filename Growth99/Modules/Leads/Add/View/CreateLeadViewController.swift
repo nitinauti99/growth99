@@ -312,7 +312,7 @@ extension CreateLeadViewController: FileTypeTableViewCellProtocol {
         
         let urlParameter: Parameters = [:]
         
-        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: "POST", fileName: "file")
+        let request = ImageUplodManager(uploadImage: image, parameters: urlParameter, url: URL(string: url)!, method: "POST", name: "file", fileName: "file")
         
         request.uploadImage { (result) in
             DispatchQueue.main.async { [weak self] in

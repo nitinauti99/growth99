@@ -13,6 +13,7 @@ class ImageUplodManager {
     let uploadImage: UIImage
     let parameters: Parameters?
     let boundary = UUID().uuidString
+    let name: String
     let fileName: String
     let url: URL
     let method: String
@@ -24,12 +25,13 @@ class ImageUplodManager {
         ]
     }
     
-    init(uploadImage: UIImage, parameters: [String: Any], url: URL, method: String, fileName: String) {
+    init(uploadImage: UIImage, parameters: [String: Any], url: URL, method: String, name: String, fileName: String) {
         self.uploadImage = uploadImage
         self.parameters = parameters
         self.url = url
         self.method = method
         self.fileName = fileName
+        self.name = name
     }
     
     func uploadImage(completionHandler:@escaping(ImageUploadResult) -> Void) {
@@ -49,7 +51,7 @@ class ImageUplodManager {
         
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
        
-        data.append("Content-Disposition: form-data; name=\"\(fileName)\"; filename=\"\(self.uploadImage)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(self.fileName)\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
        
         data.append(self.uploadImage.pngData()!)
