@@ -13,7 +13,18 @@ class SubMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var forwordArrow: UIImageView!
     
     func configure(titleData: menuList, row: Int){
-        self.menuTitle.text = titleData.subMenuList?[row].title
-        menuIcon.image = UIImage.fontAwesomeIcon(code: titleData.subMenuList?[row].imageName ?? String.blank, style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
+        if titleData.subMenuList?[row].title == "Change Password" {
+            if UserRepository.shared.userId == UserRepository.shared.userVariableId {
+                self.menuTitle.text = titleData.subMenuList?[row].title
+                menuIcon.image = UIImage.fontAwesomeIcon(code: titleData.subMenuList?[row].imageName ?? String.blank, style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
+            }else{
+                menuIcon.image = nil
+                self.menuTitle.text = ""
+            }
+        }else{
+            self.menuTitle.text = titleData.subMenuList?[row].title
+            menuIcon.image = UIImage.fontAwesomeIcon(code: titleData.subMenuList?[row].imageName ?? String.blank, style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
+
+        }
     }
 }

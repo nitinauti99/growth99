@@ -231,7 +231,9 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             case 3:
                 pushViewControllerFromDrawerMenu(identifier: "VacationScheduleViewController", pusedViewController: "VacationScheduleViewController")
             case 4:
-                pushViewControllerFromDrawerMenu(identifier: "ChangePasswordViewController", pusedViewController: "ChangePasswordViewController")
+                if UserRepository.shared.userId == UserRepository.shared.userVariableId {
+                    pushViewControllerFromDrawerMenu(identifier: "ChangePasswordViewController", pusedViewController: "ChangePasswordViewController")
+                }
                 break
             default:
                 break
