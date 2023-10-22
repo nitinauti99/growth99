@@ -1,32 +1,28 @@
 //
-//  MultipleSelectionQuestionChoiceTableViewCell.swift
+//  LeadAllowSingleSelectionTableViewCell.swift
 //  Growth99
 //
-//  Created by Nitin Auti on 02/03/23.
+//  Created by Nitin Auti on 15/10/23.
 //
 
 import UIKit
 
-class LeadMultipleSelectionQuestionChoiceTableViewCell: UITableViewCell {
-
+class LeadAllowSingleSelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var questionnaireChoiceName: UILabel!
     @IBOutlet weak var questionnaireChoiceButton: UIButton!
 
-    var buttons = [UIButton]()
+    let allButtonTags = [Int]()
 
+    var tagId: Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     func configureCell(patientQuestionChoices: PatientQuestionChoices, index: IndexPath, preSelected: Bool, singleselection: Bool) {
-        
         self.questionnaireChoiceName.text = patientQuestionChoices.choiceName
-        self.questionnaireChoiceButton.isSelected = patientQuestionChoices.selected ?? false
-    
-        if preSelected == true {
-            self.questionnaireChoiceButton.isSelected =  true
-        }
+      //  tagId += 
     }
     
     @IBAction func buttonAction(sender: UIButton){
@@ -34,7 +30,6 @@ class LeadMultipleSelectionQuestionChoiceTableViewCell: UITableViewCell {
             sender.isSelected = false
         }else{
             sender.isSelected = true
-
         }
     }
 }

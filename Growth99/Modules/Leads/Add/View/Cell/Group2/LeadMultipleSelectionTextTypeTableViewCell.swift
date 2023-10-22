@@ -13,14 +13,16 @@ class LeadMultipleSelectionTextTypeTableViewCell: UITableViewCell {
     @IBOutlet var questionnareTableView: UITableView!
     @IBOutlet weak var questionnareTableViewHight: NSLayoutConstraint!
     @IBOutlet weak var subView: UIView!
-//    @IBOutlet weak var asteriskSign: UILabel!
 
     var patientQuestionChoices = [PatientQuestionChoices]()
     var preSelected:Bool = false
+    var singleSelection: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         questionnareTableView.register(UINib(nibName: "LeadMultipleSelectionQuestionChoiceTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadMultipleSelectionQuestionChoiceTableViewCell")
+        questionnareTableView.register(UINib(nibName: "LeadAllowSingleSelectionTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadAllowSingleSelectionTableViewCell")
+
         self.questionnareTableViewHight.constant = 0
     }
     
@@ -34,10 +36,7 @@ class LeadMultipleSelectionTextTypeTableViewCell: UITableViewCell {
         self.questionnaireName.text = questionarieVM?.questionName
         self.patientQuestionChoices = questionarieVM?.patientQuestionChoices ?? []
         self.preSelected = questionarieVM?.preSelectCheckbox ?? false
-//        self.asteriskSign.isHidden = true
-//        if questionarieVM?.required == true {
-//            self.asteriskSign.isHidden = false
-//        }
+        self.singleSelection = questionarieVM?.allowMultipleSelection ?? false
     }
     
     func getTableView()-> UITableView {
@@ -53,11 +52,21 @@ extension LeadMultipleSelectionTextTypeTableViewCell: UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionQuestionChoiceTableViewCell") as? LeadMultipleSelectionQuestionChoiceTableViewCell else { return LeadMultipleSelectionQuestionChoiceTableViewCell() }
-
         let patientQuestionChoices = self.patientQuestionChoices[indexPath.row]
-        cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected)
-        return cell
+
+        if self.singleSelection == true {
+            guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionQuestionChoiceTableViewCell") as? LeadMultipleSelectionQuestionChoiceTableViewCell else { return LeadMultipleSelectionQuestionChoiceTableViewCell() }
+
+            let patientQuestionChoices = self.patientQuestionChoices[indexPath.row]
+            cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, singleselection: self.singleSelection)
+            return cell
+        }else{
+            guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadAllowSingleSelectionTableViewCell") as? LeadAllowSingleSelectionTableViewCell else { return LeadAllowSingleSelectionTableViewCell() }
+
+            cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, singleselection: self.singleSelection)
+            return cell
+        }
+      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

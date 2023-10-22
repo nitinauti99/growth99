@@ -25,11 +25,15 @@ extension AddNewQuestionarieViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = AddNewQuestionarieTableViewCell()
         cell = tableView.dequeueReusableCell(withIdentifier: "AddNewQuestionarieTableViewCell", for: indexPath) as! AddNewQuestionarieTableViewCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+
         if isSearch {
             cell.configureCellWithSearch(questionarieVM: viewModel, index: indexPath)
         }else{
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
         }
+      
+
         return cell
     }
     

@@ -18,7 +18,8 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    @IBOutlet weak var tableViewHight: NSLayoutConstraint!
+
     var viewModel: AddNewQuestionarieViewModelProtocol?
     var filteredTableData = [AddNewQuestionarieModel]()
     var isSearch : Bool = false
@@ -63,6 +64,7 @@ class AddNewQuestionarieViewController: UIViewController,AddNewQuestionarieViewC
     
     func questionarieListRecived() {
         self.view.HideSpinner()
+        tableViewHight.constant = CGFloat(((viewModel?.getQuestionarieDataList.count ?? 0) * 100))
         self.tableView.reloadData()
     }
     

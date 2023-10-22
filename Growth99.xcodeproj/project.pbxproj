@@ -329,6 +329,8 @@
 		01EBACA829B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */; };
 		01EBACAB29B6519100110DCB /* chatQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */; };
 		01EBACAC29B6519100110DCB /* chatQuestionnaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */; };
+		01F332252ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F332232ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.swift */; };
+		01F332262ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F332242ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.xib */; };
 		01FB530D29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB530C29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift */; };
 		01FB530F29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB530E29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift */; };
 		01FB531329E5B83600C8559F /* CreateQuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB531129E5B83600C8559F /* CreateQuestionnaireTableViewCell.swift */; };
@@ -1302,6 +1304,8 @@
 		01EBACA729B6516500110DCB /* chatQuestionnaireViewContoller+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "chatQuestionnaireViewContoller+SearchBar.swift"; sourceTree = "<group>"; };
 		01EBACA929B6519100110DCB /* chatQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		01EBACAA29B6519100110DCB /* chatQuestionnaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = chatQuestionnaireTableViewCell.xib; sourceTree = "<group>"; };
+		01F332232ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadAllowSingleSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		01F332242ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadAllowSingleSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		01FB530C29E5271C00C8559F /* PateintsTagsAddViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PateintsTagsAddViewController+TextField.swift"; sourceTree = "<group>"; };
 		01FB530E29E5275400C8559F /* LeadTagsAddViewController+textFiedld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeadTagsAddViewController+textFiedld.swift"; sourceTree = "<group>"; };
 		01FB531129E5B83600C8559F /* CreateQuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
@@ -2250,6 +2254,8 @@
 				013A4FB829B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib */,
 				013A4FB529B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift */,
 				013A4FB329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.xib */,
+				01F332232ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.swift */,
+				01F332242ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.xib */,
 			);
 			path = Group2;
 			sourceTree = "<group>";
@@ -7347,6 +7353,7 @@
 				18491DBB29B80CE000FE72EF /* MassEmailandSMSDefaultTableViewCell.xib in Resources */,
 				013A4FDD29B4E3FA00CA24B0 /* YesNoTypeTableViewCell.xib in Resources */,
 				84D063052967080E001FE469 /* LeadCustomEmailTemplateTableViewCell.xib in Resources */,
+				01F332262ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.xib in Resources */,
 				013A4FE129B4E3FA00CA24B0 /* MultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				1896709429BA5E62003224ED /* LeadTriggersTableViewCell.xib in Resources */,
 				189670B429BA6080003224ED /* TriggerDetailViewController.storyboard in Resources */,
@@ -8089,6 +8096,7 @@
 				84D0630E2967080E001FE469 /* leadListViewModel.swift in Sources */,
 				01684C6229BDEFFF00DE1041 /* UnansweredQuestionListViewController+SearchBar.swift in Sources */,
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
+				01F332252ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.swift in Sources */,
 				010EECAC29B7335000351358 /* CreateQuestionViewContoller.swift in Sources */,
 				01684C6929BE10C800DE1041 /* CreateSMSTemplateViewController.swift in Sources */,
 				01152E3429B3C5FF00B24627 /* LeadHistoryViewModel.swift in Sources */,
@@ -8525,7 +8533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8572,7 +8580,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

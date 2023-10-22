@@ -16,7 +16,6 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let questionType = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].questionType ?? ""
         let ishowDropDown = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].showDropDown ?? false
-        let allowMultipleSelection = viewModel?.getLeadUserQuestionnaireList?[indexPath.row].allowMultipleSelection ?? false
         
         switch (questionType, ishowDropDown){
        
@@ -56,6 +55,11 @@ extension CreateLeadViewController: UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
             cell.configureCell(questionarieVM: viewModel, index: indexPath)
             return cell
+      
+//        case ("Multiple_Selection_Text", false, true):
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LeadAllowSingleSelectionTableViewCell", for: indexPath) as? LeadAllowSingleSelectionTableViewCell else { return UITableViewCell() }
+//            cell.configureCell(questionarieVM: viewModel, index: indexPath)
+//            return cell
 
         default:
             return UITableViewCell()

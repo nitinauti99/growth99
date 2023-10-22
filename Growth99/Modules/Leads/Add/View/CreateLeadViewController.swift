@@ -78,6 +78,9 @@ class CreateLeadViewController: UIViewController{
         tableView.register(UINib(nibName: "LeadMultipleSelectionWithDropDownTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadMultipleSelectionWithDropDownTypeTableViewCell")
         
         tableView.register(UINib(nibName: "LeadMultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
+        
+        tableView.register(UINib(nibName: "LeadAllowSingleSelectionTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadAllowSingleSelectionTableViewCell")
+
     }
     
 }

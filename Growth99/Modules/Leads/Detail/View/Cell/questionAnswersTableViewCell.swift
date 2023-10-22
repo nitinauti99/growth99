@@ -51,6 +51,10 @@ class questionAnswersTableViewCell: UITableViewCell {
                 self.ansLbi.text = "Yes"
             }
         }
+        
+        if patientQuestionList?.questionType == "Symptoms" {
+            self.ansLbi.text = patientQuestionList?.answerText
+        }
       
         if patientQuestionList?.questionType == "File" {
             self.ansLbi.hyperLink = patientQuestionList?.answerText ?? ""

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct DisplayQuestionnaireModel: Codable{
     let id : Int?
     let showLogo : Bool?

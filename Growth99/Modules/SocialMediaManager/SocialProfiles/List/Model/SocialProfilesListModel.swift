@@ -28,17 +28,23 @@ struct SocialProfileLinkModel : Codable {
     let socialChannel : String?
     let name : String?
     let socialIdentity : String?
-    let socialPagesId : [String]?
+    let socialPagesId : SocialPagesId?
 }
 
-struct SocialUpdatedBy : Codable {
+struct SocialPagesId: Codable {
+      let pageId : String?
+      let deleted : Bool?
+      let id : Int
+}
+
+struct SocialUpdatedBy: Codable {
     let firstName : String?
     let lastName : String?
     let email : String?
     let username : String?
 }
 
-struct SocialCreatedBy : Codable {
+struct SocialCreatedBy: Codable {
     let firstName : String?
     let lastName : String?
     let email : String?

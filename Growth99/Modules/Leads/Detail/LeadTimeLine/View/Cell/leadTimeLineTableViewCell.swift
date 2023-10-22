@@ -19,6 +19,9 @@ class leadTimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var subView: UIView!
     var templateId = Int()
+    @IBOutlet weak var viewTemplateButton: UIButton!
+
+    
 
     weak var delegate: leadTimeLineTableViewCellProtocol?
     var dateFormater : DateFormaterProtocol?
@@ -41,6 +44,11 @@ class leadTimeLineTableViewCell: UITableViewCell {
             self.email.text = timeLineVM?.phoneNumber
         }else{
             self.email.text = timeLineVM?.email
+        }
+        if timeLineVM?.type == "TASK" {
+            viewTemplateButton.isHidden = true
+        }else{
+            viewTemplateButton.isHidden = false
         }
         self.type.text =  timeLineVM?.type ?? String.blank
         self.createdDateTime.text = dateFormater?.serverToLocalPateintTimeLineDate(date: timeLineVM?.createdDateTime ?? String.blank)

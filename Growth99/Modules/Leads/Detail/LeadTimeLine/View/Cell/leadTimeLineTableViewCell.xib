@@ -122,6 +122,7 @@
                 <outlet property="name" destination="T3l-5w-4WZ" id="rFs-up-PqJ"/>
                 <outlet property="subView" destination="jLf-tQ-Xcs" id="1oU-Cg-ixX"/>
                 <outlet property="type" destination="Yzu-q3-1QP" id="y0c-z9-wJf"/>
+                <outlet property="viewTemplateButton" destination="ToU-rr-ivc" id="ocT-qs-Ayg"/>
             </connections>
             <point key="canvasLocation" x="-1399.2753623188407" y="47.879464285714285"/>
         </tableViewCell>

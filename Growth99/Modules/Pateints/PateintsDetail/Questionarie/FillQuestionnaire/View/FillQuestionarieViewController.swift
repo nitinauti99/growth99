@@ -16,16 +16,13 @@ protocol FillQuestionarieViewControllerProtocol: AnyObject {
 
 class FillQuestionarieViewController: UIViewController, FillQuestionarieViewControllerProtocol,MultipleSelectionWithDropDownTypeTableViewCellDelegate {
     
-    @IBOutlet weak var submitButton : UIButton!
-    @IBOutlet weak var CancelButton : UIButton!
     @IBOutlet weak var customView : UIView!
     @IBOutlet weak var questionarieTableView : UITableView!
-    @IBOutlet weak var customViewHight : NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeight : NSLayoutConstraint!
 
     var viewModel: FillQuestionarieViewModelProtocol?
     private var patientQuestionAnswers = Array<Any>()
     var tableview : UITableView?
-
     var questionnaireId = Int()
     var pateintId = Int()
   
@@ -33,19 +30,14 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         let textField = CustomTextField()
         return textField
     }()
-
-    private var tableViewHeight: CGFloat {
-        questionarieTableView.layoutIfNeeded()
-        return questionarieTableView.contentSize.height
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = FillQuestionarieViewModel(delegate: self)
         self.view.ShowSpinner()
         viewModel?.getQuestionnaireData(pateintId: pateintId , questionnaireId: questionnaireId)
-        setUpUI()
         self.registerTableViewCell()
+        self.title = "Fill Questionnaire"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,10 +48,27 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         }
     }
     
-    private func setUpUI(){
-        submitButton.roundCorners(corners: [.allCorners], radius: 10)
-        CancelButton.roundCorners(corners: [.allCorners], radius: 10)
+   
+    func scrollViewHeight() -> CGFloat  {
+        var tableViewHight = CGFloat()
+        let patientQuestionList = viewModel?.getQuestionnaireData ?? []
+
+        for item in patientQuestionList {
+            if item.questionType  == "Input" || item.questionType == "Yes_No" || item.questionType == "Date" {
+                tableViewHight += 110
+            }else if (item.questionType  == "Text") {
+                tableViewHight += 200
+            }else if (item.questionType  == "Multiple_Selection_Text") {
+                if item.showDropDown == true {
+                    tableViewHight += 100
+                }else {
+                    tableViewHight += CGFloat((item.patientQuestionChoices?.count ?? 0) * 100)
+                }
+            }
+        }
+        return tableViewHight
     }
+    
     
     func registerTableViewCell(){
         questionarieTableView.register(UINib(nibName: "InputTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "InputTypeTableViewCell")
@@ -77,14 +86,18 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         questionarieTableView.register(UINib(nibName: "MultipleSelectionTextWithFalseTableViewCell", bundle: nil), forCellReuseIdentifier: "MultipleSelectionTextWithFalseTableViewCell")
         
         questionarieTableView.register(UINib(nibName: "PreSelectCheckboxTableViewCell", bundle: nil), forCellReuseIdentifier: "PreSelectCheckboxTableViewCell")
+        
+        questionarieTableView.register(UINib(nibName: "BottomTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "BottomTableViewCell")
+
     }
     
     /// recvied QuestionnaireList
     func questionnaireListRecived() {
         view.HideSpinner()
         self.questionarieTableView.reloadData()
-        customViewHight.constant = tableViewHeight + 300
+        self.tableViewHeight.constant = self.scrollViewHeight() + 100
     }
+    
   
     ///  selection for drp down
     func showDropDownQuestionchoice(cell: MultipleSelectionWithDropDownTypeTableViewCell, index: IndexPath){
@@ -116,13 +129,83 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         view.HideSpinner()
         self.view.showToast(message: error, color: .red)
     }
+
     
-    @IBAction func cancelButtonClicked(sender: UIButton) {
+    /// setDataFor InputType Question
+    func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String) {
+        let patientQuestion: [String : Any] = [
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+            "answer": patientQuestionAnswersList.answer ?? String.blank,
+            "answerText": answerText,
+            "answerComments": "",
+            "patientQuestionChoices": [],
+            "required": patientQuestionAnswersList.required ?? String.blank,
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+        ]
+        patientQuestionAnswers.append(patientQuestion)
+    }
+    
+    /// Set Dat For InputTaype answerText as Bool
+    func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
+        let patientQuestion: [String : Any] = [
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+            "answer": answerText,
+            "answerText": answerText,
+            "answerComments": "",
+            "patientQuestionChoices": [],
+            "required": patientQuestionAnswersList.required ?? String.blank,
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+        ]
+        patientQuestionAnswers.append(patientQuestion)
+    }
+    
+    //// add patientQuestionChoices inside array
+    func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
+        let patientQuestionChoices: [String : Any] = [
+            "choiceName": patientQuestionChoices.choiceName ?? 0,
+            "choiceId": patientQuestionChoices.choiceId ?? 0,
+            "selected": selected
+        ]
+        return patientQuestionChoices
+    }
+
+    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any], selectedString: String){
+        let patientQuestion: [String : Any] = [
+            "questionId": patientQuestionAnswersList.questionId ?? 0,
+            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+            "answer": false,
+            "answerText": patientQuestionAnswersList.answerText ?? String.blank,
+            "answerComments": "",
+            "patientQuestionChoices": patientQuestionList,
+            "required": patientQuestionAnswersList.required ?? String.blank,
+            "hidden": patientQuestionAnswersList.hidden ?? false,
+            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+        ]
+        patientQuestionAnswers.append(patientQuestion)
+    }
+}
+
+
+extension  FillQuestionarieViewController: BottomTableViewCellProtocol {
+   
+    func cancelButtonPressed() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    /// submit button which validate all  condition
-    @IBAction func submitButtonClicked() {
+    func submitButtonPressed() {
         patientQuestionAnswers = []
         let patientQuestionList = viewModel?.getQuestionnaireData ?? []
         
@@ -226,81 +309,5 @@ class FillQuestionarieViewController: UIViewController, FillQuestionarieViewCont
         print("all condtion meet")
     }
     
-  
-    /// setDataFor InputType Question
-    func setPatientQuestionList(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: String) {
-        let patientQuestion: [String : Any] = [
-            "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
-            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
-            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
-            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
-            "answer": patientQuestionAnswersList.answer ?? String.blank,
-            "answerText": answerText,
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": patientQuestionAnswersList.required ?? String.blank,
-            "hidden": patientQuestionAnswersList.hidden ?? false,
-            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
-        ]
-        patientQuestionAnswers.append(patientQuestion)
-    }
     
-    /// Set Dat For InputTaype answerText as Bool
-    func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
-        let patientQuestion: [String : Any] = [
-            "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
-            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
-            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
-            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
-            "answer": answerText,
-            "answerText": answerText,
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": patientQuestionAnswersList.required ?? String.blank,
-            "hidden": patientQuestionAnswersList.hidden ?? false,
-            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
-        ]
-        patientQuestionAnswers.append(patientQuestion)
-    }
-    
-    //// add patientQuestionChoices inside array
-    func patientQuestionChoicesList(patientQuestionChoices : PatientQuestionChoices, selected : Bool) -> [String : Any] {
-        let patientQuestionChoices: [String : Any] = [
-            "choiceName": patientQuestionChoices.choiceName ?? 0,
-            "choiceId": patientQuestionChoices.choiceId ?? 0,
-            "selected": selected
-        ]
-        return patientQuestionChoices
-    }
-
-    func setPatientQuestionChoicesList(patientQuestionAnswersList : PatientQuestionAnswersList, patientQuestionList: [Any], selectedString: String){
-        let patientQuestion: [String : Any] = [
-            "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
-            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
-            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
-            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
-            "answer": false,
-            "answerText": patientQuestionAnswersList.answerText ?? String.blank,
-            "answerComments": "",
-            "patientQuestionChoices": patientQuestionList,
-            "required": patientQuestionAnswersList.required ?? String.blank,
-            "hidden": patientQuestionAnswersList.hidden ?? false,
-            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
-        ]
-        patientQuestionAnswers.append(patientQuestion)
-    }
-}
-
-extension FillQuestionarieViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 300
-    }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        customViewHight.constant = tableViewHeight + 300
-    }
 }

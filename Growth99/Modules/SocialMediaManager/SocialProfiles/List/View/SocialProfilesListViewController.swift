@@ -147,13 +147,17 @@ extension SocialProfilesListViewController: SocialProfilesListViewControllerProt
     func socialProfilesListRecived() {
         self.view.HideSpinner()
         self.tableView.setEmptyMessage(arrayCount: viewModel?.getSocialProfilesData.count ?? 0)
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func socialProfilesRemovedSuccefully(message: String){
         self.view.showToast(message: message, color: .systemGreen)
         SocialLoginManager.shared.loginManager.logOut()
-        viewModel?.getSocialProfilesList()
+        self.searchBar.text = ""
+        self.isSearch = false
+        self.viewModel?.getSocialProfilesList()
     }
     
     func errorReceived(error: String) {

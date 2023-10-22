@@ -25,7 +25,6 @@ class AddNewQuestionarieTableViewCell: UITableViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.questionnaireSelection.setBackgroundImage(#imageLiteral(resourceName: "tickdefault"), for: .normal)
     }
     
     func configureCell(questionarieVM: AddNewQuestionarieViewModelProtocol?, index: IndexPath) {

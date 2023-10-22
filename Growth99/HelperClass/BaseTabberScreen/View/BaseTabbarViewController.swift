@@ -50,6 +50,12 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.items?[1].title = "Lead"
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
+        rootView.popToRootViewController(animated: false)
+        rootView.dismiss(animated: true)
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
            UserRepository.shared.userVariableId = UserRepository.shared.userId ?? 0
       }

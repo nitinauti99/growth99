@@ -23,13 +23,13 @@ class DisplayQuestionnaireTableViewCell: UITableViewCell {
         let questionnaireVM = questionnaireVM?.getQuestionnaireDataAtIndex(index: index.row)
         self.questionName.text = questionnaireVM?.questionName
         self.questionAns.text = questionnaireVM?.answerText
-        var selectedStringArray = [String]()
-        if questionnaireVM?.questionType == "Multiple_Selection_Text" {
-            for item in questionnaireVM?.patientQuestionChoices ?? [] {
-                selectedStringArray.append(item.choiceName ?? String.blank)
-            }
-            self.questionAns.text = selectedStringArray.joined(separator: ",")
-        }
+    //   var selectedStringArray = [String]()
+    //        if questionnaireVM?.questionType == "Multiple_Selection_Text" {
+    //            for item in questionnaireVM?.patientQuestionChoices ?? [] {
+    //                selectedStringArray.append(item.choiceName ?? String.blank)
+    //            }
+    //            self.questionAns.text = selectedStringArray.joined(separator: ",")
+    //        }
     }
     
 }

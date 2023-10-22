@@ -20,6 +20,7 @@ class FileTypeTableViewCell: UITableViewCell, UIImagePickerControllerDelegate & 
     @IBOutlet weak var selectedLbi: UILabel!
     @IBOutlet weak var asteriskSign: UILabel!
 
+    
     var delegate: FileTypeTableViewCellProtocol?
     var imageName = String()
     var imageUrl = String()
@@ -49,11 +50,13 @@ class FileTypeTableViewCell: UITableViewCell, UIImagePickerControllerDelegate & 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let asset = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.phAsset.rawValue)] as? PHAsset {
-            let assetResources = PHAssetResource.assetResources(for: asset)
-            print(assetResources.first!.originalFilename)
-            self.imageName = assetResources.first!.originalFilename
-          }
+        if let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            let imageName = imageURL.lastPathComponent
+            self.imageName = imageName
+            self.selectedLbi.text = imageName
+        } else {
+            print("Image URL not available.")
+        }
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.delegate?.dissmissImagePickerController(id: id, questionId: self.questionId, image: image)
 
