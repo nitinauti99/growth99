@@ -78,7 +78,7 @@ struct TriggerCreateModel : Codable {
     let sourceUrls : [TriggerCreateSourceUrls]?
     let leadTags : [MassEmailSMSTagListModelEdit]?
     let isTriggerForLeadStatus : Bool?
-    let fromLeadStatus : String?
+    let fromLeadStatus : [String]?
     let toLeadStatus : String?
 }
 
@@ -93,7 +93,7 @@ struct TriggerAppointmentCreateModel : Codable {
     let sourceUrls : [TriggerCreateSourceUrls]?
     let leadTags : [MassEmailSMSTagListModelEdit]?
     let isTriggerForLeadStatus : Bool?
-    let fromLeadStatus : String?
+    let fromLeadStatus : [String]?
     let toLeadStatus : String?
 }
 

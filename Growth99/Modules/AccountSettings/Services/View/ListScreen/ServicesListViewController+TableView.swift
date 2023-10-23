@@ -59,6 +59,7 @@ extension ServicesListViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             createServiceVC.serviceId = viewModel?.getServiceListData[indexPath.row].id
         }
+        createServiceVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
 }
@@ -75,6 +76,7 @@ extension ServicesListViewController: ServiceListCellDelegate {
         } else {
             createServiceVC.serviceId = viewModel?.getServiceListData[index.row].id
         }
+        createServiceVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
     
