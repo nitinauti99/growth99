@@ -139,11 +139,11 @@ class TriggerLeadEditActionTableViewCell: UITableViewCell {
         
         if triggerListEdit?.isTriggerForLeadStatus == true {
             self.leadStatusChangeButton.isSelected = true
-            self.isInitialStatusContain = triggerListEdit?.fromLeadStatus ?? ""
+            self.isInitialStatusContain = triggerListEdit?.fromLeadStatus?.first ?? ""
             self.isFinalStatusContain = triggerListEdit?.toLeadStatus ?? ""
             self.isTriggerForLeadContain = triggerListEdit?.isTriggerForLeadStatus ?? false
             self.showLeadStatusChange(isShown: true)
-            self.leadInitialStatusTextField.text = triggerListEdit?.fromLeadStatus ?? ""
+            self.leadInitialStatusTextField.text = triggerListEdit?.fromLeadStatus?.first ?? ""
             self.leadFinalStatusTextField.text = triggerListEdit?.toLeadStatus ?? ""
         }
     }

@@ -54,7 +54,9 @@ class ImageUplodManager {
         data.append("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(self.fileName)\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
        
-        data.append(self.uploadImage.pngData()!)
+        if let pngData = self.uploadImage.pngData() {
+            data.append(pngData)
+        }
         data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
         print("data .....", data)
         request.httpBody = data

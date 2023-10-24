@@ -46,6 +46,7 @@ class ServicesListViewController: UIViewController, ServicesListViewContollerPro
             fatalError("Failed to load ServicesListDetailViewController from storyboard.")
         }
         createServiceVC.screenTitle = Constant.Profile.createService
+        createServiceVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(createServiceVC, animated: true)
     }
     

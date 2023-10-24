@@ -296,7 +296,7 @@ extension TriggerEditDetailViewController {
         if moduleSelectionType == "leads" {
             var triggerDataDict = [String: Any]()
             var timeDict = [String : Any]()
-            var isfromLeadStatus: String = ""
+            var isfromLeadStatus: [String] = [""]
             var istoLeadStatus: String = ""
             var isTriggerForLeadContain: Bool = false
             var isModuleSelectionType: String = ""
@@ -322,7 +322,7 @@ extension TriggerEditDetailViewController {
                 } else if triggerDetailList.cellType == "Lead" {
                     if let cell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadEditActionTableViewCell {
                         leadCreateCell = cell
-                        isfromLeadStatus = cell.leadInitialStatusTextField.text ?? ""
+                        isfromLeadStatus[0] = cell.leadInitialStatusTextField.text ?? ""
                         istoLeadStatus = cell.leadFinalStatusTextField.text ?? ""
                         isTriggerForLeadContain = cell.leadStatusChangeButton.isSelected
                     }
@@ -444,7 +444,7 @@ extension TriggerEditDetailViewController {
             }
             
             var urlParameter: Parameters = [String: Any]()
-            if isfromLeadStatus == "" && istoLeadStatus == "" {
+            if isfromLeadStatus.first == "" && istoLeadStatus == "" {
                 urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": leadCreateCell?.selectedLeadSources ?? [], "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict , "sourceUrls": selectedLeadSourceUrldict , "leadTags": selectedLeadTagsUrldict , "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
                 ]
             } else {

@@ -236,7 +236,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         if moduleSelectionType == "lead" {
         
             var triggerDataDict = [String: Any]()
-            var isfromLeadStatus: String = ""
+            var isfromLeadStatus: [String] = [""]
             var istoLeadStatus: String = ""
             var isTriggerForLeadContain: Bool = false
             var isModuleSelectionType: String = ""
@@ -254,7 +254,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                     isModuleSelectionType = moduleCreateCell.moduleTypeSelected
                 } else if triggerDetailList.cellType == "Lead" {
                     guard let leadCreateCell = triggerdDetailTableView.cellForRow(at: cellIndexPath) as? TriggerLeadActionTableViewCell else { return  }
-                    isfromLeadStatus = leadCreateCell.leadInitialStatusTextField.text ?? ""
+                    isfromLeadStatus[0] = leadCreateCell.leadInitialStatusTextField.text ?? ""
                     istoLeadStatus = leadCreateCell.leadFinalStatusTextField.text ?? ""
                     isTriggerForLeadContain = leadCreateCell.leadStatusChangeButton.isSelected
                 } else if triggerDetailList.cellType == "Both" {
@@ -361,7 +361,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
             
             var urlParameter: Parameters = [String: Any]()
             let leadTags: [String] = []
-            if isfromLeadStatus == "" && istoLeadStatus == "" {
+            if isfromLeadStatus.first == "" && istoLeadStatus == "" {
                 urlParameter = ["name": moduleName, "moduleName": "leads", "triggeractionName": "Pending", "triggerConditions": selectedLeadSources, "triggerData": smsandTimeArray, "landingPageNames": selectedLeadLandingPagesdict, "forms": selectedleadFormsdict, "sourceUrls": selectedLeadSourceUrldict, "leadTags": leadTags, "isTriggerForLeadStatus": isTriggerForLeadContain, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
                 ]
             } else {
