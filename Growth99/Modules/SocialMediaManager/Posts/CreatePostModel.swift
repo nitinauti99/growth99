@@ -19,10 +19,10 @@ struct SocialMediaPostLabelsList: Codable, Equatable {
     let isDefault : Bool?
 }
 
+
 struct SocialProfilesList: Codable, Equatable {
     let id : Int?
     let socialChannel : String?
-    let name : String?
 }
 
 

@@ -117,7 +117,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
         setUpNavigationBar()
         registerTableView()
         dateFormater = DateFormater()
-        leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
+        leadSourceArray = ["ChatBot", "Landing Page", "Self Assessment", "Form", "Manual","Facebook", "Integrately"]
         appointmentStatusArray = ["Pending", "Confirmed", "Completed", "Canceled", "Updated"]
         triggerCreateScrollview.delegate = self
         

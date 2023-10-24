@@ -323,10 +323,15 @@ extension CreateLeadViewController: FileTypeTableViewCellProtocol {
                 switch result {
                 case .success(let response):
                     print(response.body ?? [:])
-                    self?.imageUrl = (response.body ?? [:])["location"] as! String
                     self?.view.HideSpinner()
-                       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if response.statusCode == 200 {
+                        self?.imageUrl = (response.body ?? [:])["location"] as! String
+                           DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        }
+                    }else{
+                        self?.view.showToast(message: "Invalid format only supports images, pdf and excel", color: .red)
                     }
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

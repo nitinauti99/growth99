@@ -40,7 +40,8 @@ class PostImageListViewModel {
                 self.socialPostImageList = pateintsTagList.content ?? []
                 self.delegate?.socialPostImageFromLbrariesListRecived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                self.socialPostImageList = []
+                self.delegate?.errorReceived(error: "")
                 print("Error while performing request \(error)")
             }
         }

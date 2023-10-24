@@ -52,6 +52,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="questionnaireChoiceButton" destination="amV-dB-P9x" id="X9M-Bq-2P8"/>
                 <outlet property="questionnaireChoiceName" destination="MIA-qV-9wI" id="3sK-fN-fOV"/>
             </connections>
             <point key="canvasLocation" x="-2.2900763358778624" y="22.183098591549296"/>

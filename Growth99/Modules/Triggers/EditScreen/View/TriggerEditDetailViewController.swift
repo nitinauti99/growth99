@@ -123,7 +123,7 @@ class TriggerEditDetailViewController: UIViewController, TriggerEditDetailViewCo
         registerTableView()
         dateFormater = DateFormater()
         triggerCreateScrollview.delegate = self
-        leadSourceArray = ["ChatBot", "Landing Page", "Virtual-Consultation", "Form", "Manual","Facebook", "Integrately"]
+        leadSourceArray = ["ChatBot", "Landing Page", "Self Assessment", "Form", "Manual","Facebook", "Integrately"]
         viewModel = TriggerEditDetailViewModel(delegate: self)
         submitBtn.isEnabled = false
         submitBtn.backgroundColor = UIColor(hexString: "#6AC1E7")

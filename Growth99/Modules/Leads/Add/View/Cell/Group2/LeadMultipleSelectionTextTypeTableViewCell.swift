@@ -17,7 +17,9 @@ class LeadMultipleSelectionTextTypeTableViewCell: UITableViewCell {
     var patientQuestionChoices = [PatientQuestionChoices]()
     var preSelected:Bool = false
     var singleSelection: Bool = false
-    
+    var tagid = [UIButton]()
+    var buttons = [UIButton]()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         questionnareTableView.register(UINib(nibName: "LeadMultipleSelectionQuestionChoiceTableViewCell", bundle: nil), forCellReuseIdentifier: "LeadMultipleSelectionQuestionChoiceTableViewCell")
@@ -52,6 +54,7 @@ extension LeadMultipleSelectionTextTypeTableViewCell: UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let patientQuestionChoices = self.patientQuestionChoices[indexPath.row]
 
         if self.singleSelection == true {
@@ -60,13 +63,16 @@ extension LeadMultipleSelectionTextTypeTableViewCell: UITableViewDelegate, UITab
             let patientQuestionChoices = self.patientQuestionChoices[indexPath.row]
             cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, singleselection: self.singleSelection)
             return cell
-        }else{
+        }else {
+            //tagid.append(patientQuestionChoices.choiceId ?? 0)
             guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadAllowSingleSelectionTableViewCell") as? LeadAllowSingleSelectionTableViewCell else { return LeadAllowSingleSelectionTableViewCell() }
 
-            cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, singleselection: self.singleSelection)
+            if let button = cell.contentView.subviews.first?.viewWithTag(patientQuestionChoices.choiceId ?? 0) as? UIButton {
+                self.buttons.append(button)
+            }
+            cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, tagid: buttons)
             return cell
         }
-      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

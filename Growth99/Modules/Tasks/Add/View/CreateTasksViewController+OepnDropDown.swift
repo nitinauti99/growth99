@@ -11,7 +11,7 @@ import UIKit
 extension CreateTasksViewController {
   
     @IBAction func openStatusListDropDwon(sender: UIButton) {
-       let rolesArray = ["Completed", "InComplete"]
+       let rolesArray = ["Completed", "In Progress", "To-do"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList
@@ -23,6 +23,20 @@ extension CreateTasksViewController {
         selectionMenu.tableView?.selectionStyle = .single
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
     }
+    
+//    @IBAction func openPrioprityListDropDwon(sender: UIButton) {
+//       let rolesArray = ["High", "Medium", "Low"]
+//
+//        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
+//            cell.textLabel?.text = taskUserList
+//        }
+//        selectionMenu.setSelectedItems(items: []) { [weak self] (text, index, selected, selectedList) in
+//            self?.statusTextField.text  = text
+//         }
+//        selectionMenu.dismissAutomatically = true
+//        selectionMenu.tableView?.selectionStyle = .single
+//        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(rolesArray.count * 44))), arrowDirection: .up), from: self)
+//    }
     
     @IBAction func openUserListDropDwon(sender: UIButton) {
         let rolesArray = viewModel?.taskUserList ?? []

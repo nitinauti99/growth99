@@ -68,6 +68,7 @@ extension PostImageListViewController: PostImageListViewControllerProtocol {
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
+//        self.view.showToast(message: error, color: .red)
+        self.tableView.reloadData()
     }
 }

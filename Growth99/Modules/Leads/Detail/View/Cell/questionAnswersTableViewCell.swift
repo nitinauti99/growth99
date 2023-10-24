@@ -52,10 +52,25 @@ class questionAnswersTableViewCell: UITableViewCell {
             }
         }
         
-        if patientQuestionList?.questionType == "Symptoms" {
-            self.ansLbi.text = patientQuestionList?.answerText
+        if patientQuestionList?.questionName == "Symptoms" {
+            var answertext = String()
+            guard let symptomsDict = self.convertStringToDictionary(text: patientQuestionList?.answerText ?? "") else {
+                return
+            }
+            for item in symptomsDict {
+                let key = item.key
+                let values  = item.value
+                print(item)
+                var valueString = String()
+                for value in values {
+                    valueString += value
+                }
+                answertext += "\(key) : \(valueString) ,"
+            }
+            self.ansLbi.text = answertext
         }
       
+        
         if patientQuestionList?.questionType == "File" {
             self.ansLbi.hyperLink = patientQuestionList?.answerText ?? ""
             ansLbi.updateHyperLinkText { _ in
@@ -70,5 +85,17 @@ class questionAnswersTableViewCell: UITableViewCell {
     @IBAction func editButtonPressed(sender: UIButton) {
         self.delegate?.editButtonPressed(cell: self)
     }
+    
+    func convertStringToDictionary(text: String) -> [String: [String]]? {
+       if let data = text.data(using: .utf8) {
+           do {
+               let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: [String]]
+               return json
+           } catch {
+               print("Something went wrong")
+           }
+       }
+       return nil
+   }
     
 }
