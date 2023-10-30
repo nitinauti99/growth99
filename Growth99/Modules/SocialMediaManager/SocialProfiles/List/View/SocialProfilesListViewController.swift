@@ -72,6 +72,7 @@ class SocialProfilesListViewController: UIViewController {
             for (platform, url) in socialPlatforms {
                 if text == platform {
                     let detailController = self?.createSocialWebViewController(type: platform, url: url)
+                    detailController?.hidesBottomBarWhenPushed = true
                     self?.navigationController?.pushViewController(detailController ?? UIViewController(), animated: true)
                     selectionMenu.dismiss()
                     break
