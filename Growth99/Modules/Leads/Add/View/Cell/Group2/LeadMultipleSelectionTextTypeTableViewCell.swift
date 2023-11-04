@@ -55,24 +55,22 @@ extension LeadMultipleSelectionTextTypeTableViewCell: UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let patientQuestionChoices = self.patientQuestionChoices[indexPath.row]
-
-        if self.singleSelection == true {
+//        if self.singleSelection == true {
             guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadMultipleSelectionQuestionChoiceTableViewCell") as? LeadMultipleSelectionQuestionChoiceTableViewCell else { return LeadMultipleSelectionQuestionChoiceTableViewCell() }
 
             let patientQuestionChoices = self.patientQuestionChoices[indexPath.row]
             cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, singleselection: self.singleSelection)
             return cell
-        }else {
-            //tagid.append(patientQuestionChoices.choiceId ?? 0)
-            guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadAllowSingleSelectionTableViewCell") as? LeadAllowSingleSelectionTableViewCell else { return LeadAllowSingleSelectionTableViewCell() }
-
-            if let button = cell.contentView.subviews.first?.viewWithTag(patientQuestionChoices.choiceId ?? 0) as? UIButton {
-                self.buttons.append(button)
-            }
-            cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, tagid: buttons)
-            return cell
-        }
+//        }else {
+//            //tagid.append(patientQuestionChoices.choiceId ?? 0)
+//            guard let cell = questionnareTableView.dequeueReusableCell(withIdentifier: "LeadAllowSingleSelectionTableViewCell") as? LeadAllowSingleSelectionTableViewCell else { return LeadAllowSingleSelectionTableViewCell() }
+//
+//            if let button = cell.contentView.subviews.first?.viewWithTag(patientQuestionChoices.choiceId ?? 0) as? UIButton {
+//                self.buttons.append(button)
+//            }
+//            cell.configureCell(patientQuestionChoices: patientQuestionChoices, index: indexPath, preSelected: self.preSelected, tagid: buttons)
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

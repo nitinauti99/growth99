@@ -96,8 +96,15 @@ class CreatePateintsTasksViewController: UIViewController {
             dedline = serverToLocalInputWorking(date: DeadlineTextField.text ?? "")
         }
         
+        var statusText = String()
+        if self.statusTextField.text == "In Progress" {
+            statusText  = "Inprogress"
+        }else{
+            statusText  = statusTextField.text ?? String.blank
+        }
+        
         self.view.ShowSpinner()
-        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusTextField.text ?? String.blank, workflowTaskUser: workflowTaskUser, deadline: dedline, workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId)
+        viewModel?.createTaskUser(name: nameTextField.text ?? String.blank, description: descriptionTextView.text ?? String.blank, workflowTaskStatus: statusText, workflowTaskUser: workflowTaskUser, deadline: dedline, workflowTaskPatient: workflowTaskPatient, questionnaireSubmissionId: questionnaireSubmissionId)
       }
     
     func serverToLocalInputWorking(date: String) -> String {
@@ -147,8 +154,8 @@ extension CreatePateintsTasksViewController {
     }
     
     @IBAction func openStatusListDropDwon(sender: UIButton) {
-        let rolesArray = ["Completed", "InComplete"]
-       
+        let rolesArray = ["Completed", "In Progress"]
+
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList
         }

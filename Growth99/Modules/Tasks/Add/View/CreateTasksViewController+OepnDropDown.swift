@@ -11,7 +11,7 @@ import UIKit
 extension CreateTasksViewController {
   
     @IBAction func openStatusListDropDwon(sender: UIButton) {
-       let rolesArray = ["Completed", "In Progress", "To-do"]
+       let rolesArray = ["Completed", "In Progress"]
        
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: rolesArray, cellType: .subTitle) { (cell, taskUserList, indexPath) in
             cell.textLabel?.text = taskUserList
