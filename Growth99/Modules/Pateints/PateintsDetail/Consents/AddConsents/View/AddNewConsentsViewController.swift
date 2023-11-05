@@ -20,6 +20,7 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    var selectedRows:[IndexPath] = []
     
     var viewModel: AddNewConsentsViewModelProtocol?
     var filteredTableData = [AddNewConsentsModel]()
@@ -29,6 +30,7 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = false
         self.viewModel = AddNewConsentsViewModel(delegate: self)
     }
     
@@ -96,7 +98,6 @@ class AddNewConsentsViewController: UIViewController, AddNewConsentsViewControll
     @IBAction func SendtoPatientButtonTapped(_ sender: UIButton) {
         /// api is accepting wrong formate data
         var consentsIdArray = [AddNewConsentsModel]()
-        
         if isSearch {
             let patientconentsList = viewModel?.getConsentsFilterData ?? []
             for index in 0..<(patientconentsList.count ) {
