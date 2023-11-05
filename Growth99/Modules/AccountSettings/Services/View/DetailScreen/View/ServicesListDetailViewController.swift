@@ -250,7 +250,15 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             contentViewHeight.constant = 1500
             removeImageViewBtn.isHidden = true
         } else {
-            self.serviceImageView.sd_setImage(with: URL(string: cleanedString), placeholderImage: UIImage(named: "Logo"), context: nil)
+//          self.serviceImageView.sd_setImage(with: URL(string: cleanedString), placeholderImage: UIImage(named: "Logo"), options: [.refreshCached])
+            
+            let url = URL(string: cleanedString)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    self.serviceImageView.image = UIImage(data: data!)
+                }
+            }
             serviceImageViewHeight.constant = 200
             serviceImageViewTop.constant = 20
             contentViewHeight.constant = 1650

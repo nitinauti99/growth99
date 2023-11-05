@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,22 +29,22 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3n8-X7-VMh">
-                                <rect key="frame" x="0.0" y="127" width="390" height="717"/>
+                                <rect key="frame" x="0.0" y="127" width="390" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="weA-xc-R0d"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="9Rr-gZ-Fdd"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLb-N3-NgP">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngf-W0-a8y">
                                 <rect key="frame" x="0.0" y="730" width="390" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YJ-C6-1WK">
-                                        <rect key="frame" x="38" y="23" width="130" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIt-rn-C0k">
+                                        <rect key="frame" x="80" y="23" width="130" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="5f4-m5-rNS"/>
-                                            <constraint firstAttribute="width" constant="130" id="ulJ-q6-rjs"/>
+                                            <constraint firstAttribute="height" constant="40" id="drz-ra-IjZ"/>
+                                            <constraint firstAttribute="width" constant="130" id="qOO-It-7UV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -57,15 +57,15 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="SendtoPatientButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bnD-EI-sFV"/>
+                                            <action selector="SendtoPatientButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="u7g-6F-YWb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXx-tf-2d9">
-                                        <rect key="frame" x="188" y="23" width="130" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTR-zO-1o9">
+                                        <rect key="frame" x="230" y="23" width="130" height="40"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="GQx-jq-AsI"/>
-                                            <constraint firstAttribute="height" constant="40" id="blp-b0-j15"/>
+                                            <constraint firstAttribute="width" constant="130" id="6Vb-B9-Oha"/>
+                                            <constraint firstAttribute="height" constant="40" id="ThO-f5-s46"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,31 +78,31 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer. clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fcY-gi-j1y"/>
+                                            <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8qi-sZ-q4u"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="oXx-tf-2d9" firstAttribute="top" secondItem="7YJ-C6-1WK" secondAttribute="top" id="2J1-TF-zEQ"/>
-                                    <constraint firstItem="oXx-tf-2d9" firstAttribute="leading" secondItem="7YJ-C6-1WK" secondAttribute="trailing" constant="20" id="7lM-Eh-qaM"/>
-                                    <constraint firstItem="7YJ-C6-1WK" firstAttribute="top" secondItem="DLb-N3-NgP" secondAttribute="topMargin" constant="15" id="Msd-us-PxO"/>
-                                    <constraint firstItem="7YJ-C6-1WK" firstAttribute="leading" secondItem="DLb-N3-NgP" secondAttribute="leadingMargin" constant="30" id="fNj-wP-QpA"/>
-                                    <constraint firstAttribute="height" constant="80" id="pf5-Ix-y8O"/>
+                                    <constraint firstAttribute="height" constant="80" id="QKP-As-YtF"/>
+                                    <constraint firstAttribute="trailing" secondItem="jTR-zO-1o9" secondAttribute="trailing" constant="30" id="QbQ-um-CaQ"/>
+                                    <constraint firstItem="cIt-rn-C0k" firstAttribute="top" secondItem="Ngf-W0-a8y" secondAttribute="topMargin" constant="15" id="QnH-my-aKh"/>
+                                    <constraint firstItem="jTR-zO-1o9" firstAttribute="leading" secondItem="cIt-rn-C0k" secondAttribute="trailing" constant="20" id="hio-Sj-uZl"/>
+                                    <constraint firstItem="jTR-zO-1o9" firstAttribute="top" secondItem="cIt-rn-C0k" secondAttribute="top" id="vTi-Iz-acj"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DLb-N3-NgP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="529-oh-3fX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3n8-X7-VMh" secondAttribute="trailing" id="5zn-BP-24h"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ngf-W0-a8y" secondAttribute="bottom" id="7hT-ft-lIc"/>
+                            <constraint firstItem="Ngf-W0-a8y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="9Ot-Tn-37b"/>
+                            <constraint firstItem="Ngf-W0-a8y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9qc-gw-wXM"/>
                             <constraint firstItem="3n8-X7-VMh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ECp-9N-FjR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QaQ-aS-Z47" secondAttribute="trailing" constant="20" id="PNt-c8-ibC"/>
                             <constraint firstItem="QaQ-aS-Z47" firstAttribute="leadingMargin" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="Pvt-AZ-1lQ"/>
-                            <constraint firstAttribute="trailing" secondItem="DLb-N3-NgP" secondAttribute="trailing" id="UBw-P5-Jva"/>
-                            <constraint firstAttribute="bottom" secondItem="3n8-X7-VMh" secondAttribute="bottom" id="aPx-bg-R3T"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="DLb-N3-NgP" secondAttribute="bottom" id="eNI-wD-1Z9"/>
+                            <constraint firstItem="Ngf-W0-a8y" firstAttribute="top" secondItem="3n8-X7-VMh" secondAttribute="bottom" id="fkP-29-fbh"/>
                             <constraint firstItem="QaQ-aS-Z47" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="gsN-vQ-I1r"/>
                             <constraint firstItem="3n8-X7-VMh" firstAttribute="top" secondItem="QaQ-aS-Z47" secondAttribute="bottom" constant="10" id="n0C-vw-tPu"/>
                         </constraints>
