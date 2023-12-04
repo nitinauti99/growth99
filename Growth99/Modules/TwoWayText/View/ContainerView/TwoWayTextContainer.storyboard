@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Two Way Text Container-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="TwoWayTextContainer" id="Y6W-OH-hqX" customClass="TwoWayTextContainer" customModule="Growth99" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-YF-kEM">
+                                <rect key="frame" x="0.0" y="99" width="393" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="xCZ-lr-Bsq"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="5EZ-qb-Rvc" id="xTJ-EB-gzo"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-59-Ib8">
+                                <rect key="frame" x="0.0" y="59" width="393" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dBP-Z9-Q2K"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Open"/>
+                                    <segment title="Closed"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cB5-Ye-2nM" customClass="ScrollableSegmentedControl" customModule="Growth99" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="159" width="393" height="40"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BMU-RW-DKU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="underlineSelected" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-0v-rBH">
+                                <rect key="frame" x="0.0" y="199" width="393" height="619"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="cxe-pA-6zW"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="kXe-h4-d4L"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p9H-0v-rBH" firstAttribute="top" secondItem="cB5-Ye-2nM" secondAttribute="bottom" id="2C1-IZ-iA2"/>
+                            <constraint firstItem="cB5-Ye-2nM" firstAttribute="top" secondItem="xrH-YF-kEM" secondAttribute="bottom" id="5iV-Ta-UjE"/>
+                            <constraint firstItem="cB5-Ye-2nM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6vs-N2-cCm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="p9H-0v-rBH" secondAttribute="bottom" id="E0D-g0-Do7"/>
+                            <constraint firstItem="xrH-YF-kEM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIx-Lu-oTq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cB5-Ye-2nM" secondAttribute="trailing" id="LBu-5s-SB5"/>
+                            <constraint firstAttribute="trailing" secondItem="xrH-YF-kEM" secondAttribute="trailing" id="QRd-Ma-r8J"/>
+                            <constraint firstItem="p9H-0v-rBH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RRe-yz-j7d"/>
+                            <constraint firstItem="Ng1-59-Ib8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WHY-Zi-6Gd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p9H-0v-rBH" secondAttribute="trailing" id="csZ-vq-8pM"/>
+                            <constraint firstItem="Ng1-59-Ib8" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oi2-UY-AtE"/>
+                            <constraint firstItem="xrH-YF-kEM" firstAttribute="top" secondItem="Ng1-59-Ib8" secondAttribute="bottom" id="uLZ-Dp-Krl"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ng1-59-Ib8" secondAttribute="trailing" id="x0A-uG-GVz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="xrH-YF-kEM" id="heC-IM-S2r"/>
+                        <outlet property="segmentedControl" destination="cB5-Ye-2nM" id="Zra-zM-gYz"/>
+                        <outlet property="twoWayListTableView" destination="p9H-0v-rBH" id="sZA-AS-h0x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9.9236641221374047" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -156,6 +156,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
         } else if(title == Constant.Profile.announcements) {
             pushViewControllerFromDrawerMenu(identifier: "AnnouncementsViewController", pusedViewController: "AnnouncementsViewController")
+        } else if(title == Constant.Profile.twoWayText) {
+            pushViewControllerFromDrawerMenu(identifier: "TwoWayTextContainer", pusedViewController: "TwoWayTextContainer")
         }
     }
 }

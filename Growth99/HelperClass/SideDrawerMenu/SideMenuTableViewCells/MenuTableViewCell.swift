@@ -40,6 +40,7 @@ class MenuTableViewCell: UITableViewHeaderFooterView {
         self.delegate = delegate
         self.title = mainMenuList.title
         self.menuTitle.text = mainMenuList.title
+        print(mainMenuList.imageName ?? String.blank)
         menuIcon.image = UIImage.fontAwesomeIcon(code: mainMenuList.imageName ?? String.blank, style: .solid, textColor: UIColor.black, size: CGSize(width: 25, height: 25))
         if mainMenuList.subMenuList?.count == nil {
             self.forwordArrow.isHidden = true

@@ -93,6 +93,10 @@
       "imageName": "fa-diagnoses"
     },
     {
+      "title": "Two Way Text",
+      "imageName": "fa-weixin"
+    },
+    {
       "title": "Templates",
       "imageName": "fa-envelope",
       "subMenuList": [

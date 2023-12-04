@@ -170,6 +170,7 @@ struct Constant {
         static let triggerActive = "ACTIVE"
         static let createUser = "Create User"
         static let triggers = "Triggers"
+        static let twoWayText = "Two Way Text"
         static let formBuilder = "Form Builder"
         static let leadTriggers = "Lead Triggers"
         static let triggersList = "Triggers List"
@@ -201,6 +202,8 @@ struct Constant {
         static let deletedLeadListTitle = "Deleted Leads"
         static let editMediaLibrary = "Edit Image"
         static let createMediaLibrary = "Add Image"
+        static let all = "All"
+        static let unread = "Unread"
     }
     
     struct Regex {

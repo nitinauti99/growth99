@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class BusinessDetailView: UIViewController {
-//    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
@@ -164,7 +163,6 @@ class BusinessDetailView: UIViewController {
       }
     
     private lazy var businessProfileVC: BusinessProfileViewController = {
-        // Load Storyboard
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "BusinessProfileViewController") as? BusinessProfileViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }

@@ -419,6 +419,9 @@
 		189E3F1429C3980900B94190 /* PostCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */; };
 		189E3F1529C3980900B94190 /* PostCalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0D29C3980900B94190 /* PostCalenderModel.swift */; };
 		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
+		251C0C382B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */; };
+		251C0C3B2B1E4A7300CF4768 /* TwoWayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */; };
+		251C0C3C2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */; };
 		254D77A62A5AD996007941CB /* CalenderEditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */; };
 		254D77A72A5AD996007941CB /* CalenderEventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */; };
 		254D77A82A5AD996007941CB /* CalenderEventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */; };
@@ -444,6 +447,9 @@
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
 		25B7D2742AA3B04600216A7C /* SocialWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */; };
 		25B7D2752AA3B04600216A7C /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */; };
+		25C0D5012B1E19A5007F2024 /* TwoWayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */; };
+		25C0D5032B1E19DB007F2024 /* TwoWayTextContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C0D5022B1E19DB007F2024 /* TwoWayTextContainer.storyboard */; };
+		25C0D5062B1E1E6B007F2024 /* TwoWayTextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0D5052B1E1E6B007F2024 /* TwoWayTextContainer.swift */; };
 		25C46A862A460FAF004129E7 /* AuditListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A7C2A460FAE004129E7 /* AuditListViewModel.swift */; };
 		25C46A872A460FAF004129E7 /* AuditListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A7E2A460FAE004129E7 /* AuditListModel.swift */; };
 		25C46A882A460FAF004129E7 /* AuditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C46A802A460FAE004129E7 /* AuditListViewController.swift */; };
@@ -1395,6 +1401,9 @@
 		189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderViewModel.swift; sourceTree = "<group>"; };
 		189E3F0D29C3980900B94190 /* PostCalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderModel.swift; sourceTree = "<group>"; };
 		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwoWayTextContainer+TableView.swift"; sourceTree = "<group>"; };
+		251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayListTableViewCell.swift; sourceTree = "<group>"; };
+		251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayListTableViewCell.xib; sourceTree = "<group>"; };
 		254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEditEventViewModel.swift; sourceTree = "<group>"; };
 		254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEventEditViewController.swift; sourceTree = "<group>"; };
 		254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalenderEventEditViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -1420,6 +1429,9 @@
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
 		25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialWebViewController.storyboard; sourceTree = "<group>"; };
 		25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
+		25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextViewController.swift; sourceTree = "<group>"; };
+		25C0D5022B1E19DB007F2024 /* TwoWayTextContainer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TwoWayTextContainer.storyboard; sourceTree = "<group>"; };
+		25C0D5052B1E1E6B007F2024 /* TwoWayTextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextContainer.swift; sourceTree = "<group>"; };
 		25C46A7C2A460FAE004129E7 /* AuditListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListViewModel.swift; sourceTree = "<group>"; };
 		25C46A7E2A460FAE004129E7 /* AuditListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListModel.swift; sourceTree = "<group>"; };
 		25C46A802A460FAE004129E7 /* AuditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditListViewController.swift; sourceTree = "<group>"; };
@@ -4165,6 +4177,67 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		25C0D4FA2B1E1982007F2024 /* TwoWayText */ = {
+			isa = PBXGroup;
+			children = (
+				25C0D4FC2B1E1982007F2024 /* Model */,
+				25C0D4FD2B1E1982007F2024 /* View */,
+				25C0D4FB2B1E1982007F2024 /* ViewModel */,
+				25C0D4FF2B1E1982007F2024 /* CustomTableViewCell */,
+			);
+			path = TwoWayText;
+			sourceTree = "<group>";
+		};
+		25C0D4FB2B1E1982007F2024 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		25C0D4FC2B1E1982007F2024 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		25C0D4FD2B1E1982007F2024 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25C0D5042B1E1E56007F2024 /* ContainerView */,
+				25C0D4FE2B1E1982007F2024 /* ListScreen */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		25C0D4FE2B1E1982007F2024 /* ListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */,
+			);
+			path = ListScreen;
+			sourceTree = "<group>";
+		};
+		25C0D4FF2B1E1982007F2024 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */,
+				251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		25C0D5042B1E1E56007F2024 /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				25C0D5052B1E1E6B007F2024 /* TwoWayTextContainer.swift */,
+				251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */,
+				25C0D5022B1E19DB007F2024 /* TwoWayTextContainer.storyboard */,
+			);
+			path = ContainerView;
+			sourceTree = "<group>";
+		};
 		25C46A7A2A460FAE004129E7 /* AuditListScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -6008,6 +6081,7 @@
 		84D0614729670676001FE469 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				25C0D4FA2B1E1982007F2024 /* TwoWayText */,
 				84D061F129670676001FE469 /* Welcome */,
 				84D0617529670676001FE469 /* MyProfile */,
 				84D0614829670676001FE469 /* AccountSettings */,
@@ -7380,6 +7454,7 @@
 				01468E3129C0D7E8002BDC1F /* PateintCustomEmailTemplateTableViewCell.xib in Resources */,
 				189670B929BA6081003224ED /* TriggerModuleTableViewCell.xib in Resources */,
 				01EBAC9F29B64DFB00110DCB /* chatQuestionnaireViewContoller.storyboard in Resources */,
+				25C0D5032B1E19DB007F2024 /* TwoWayTextContainer.storyboard in Resources */,
 				3947A8F12996776E000CA2EB /* EmptyEventsTableViewCell.xib in Resources */,
 				01DBA9AA29C5E13900CBA51D /* CreateLabelViewController.storyboard in Resources */,
 				01468E2929C0D78C002BDC1F /* PateintSMSTemplateTableViewCell.xib in Resources */,
@@ -7410,6 +7485,7 @@
 				84EFC27D2925532E003B3C06 /* BaseTabbar.storyboard in Resources */,
 				01EBAC4329B5843C00110DCB /* LeadTagsListTableViewCell.xib in Resources */,
 				01EBAC6D29B593F500110DCB /* DeletedLeadListTableViewCell.xib in Resources */,
+				251C0C3C2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib in Resources */,
 				84B75EBE2969002100962F3E /* ClinicsListViewController.storyboard in Resources */,
 				842C0CC3298F713B00395061 /* AddNewQuestionarieTableViewCell.xib in Resources */,
 				DAEF7499299D4ADB009140AE /* BusinessDetailView.storyboard in Resources */,
@@ -7748,6 +7824,7 @@
 				84D063122967080E001FE469 /* CreateLeadViewController.swift in Sources */,
 				398F90F1298ECB8700DB96E4 /* IQInvocation.swift in Sources */,
 				016F665B29CF500300B1D248 /* PostImageListViewController+TableView.swift in Sources */,
+				251C0C382B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift in Sources */,
 				01C7489229B22E960085CED2 /* ServicesListViewController+SearchBar.swift in Sources */,
 				013A4FDA29B4E3FA00CA24B0 /* DateTypeTableViewCell.swift in Sources */,
 				84B75EBD2969002100962F3E /* ClinicsListViewController.swift in Sources */,
@@ -7805,6 +7882,7 @@
 				848C92A8291F6AA000502956 /* RSSelectionMenuController.swift in Sources */,
 				D0CE696F2A3F7A6300D7C188 /* MassEmailandSMSEditLeadActionTableViewCell.swift in Sources */,
 				DA0C735E29E5E77E007D0076 /* ClinicsListDetailViewController+TextField.swift in Sources */,
+				25C0D5012B1E19A5007F2024 /* TwoWayTextViewController.swift in Sources */,
 				848CBABA2971AD5A00681049 /* TaskQuestionnaireSubmissionModel.swift in Sources */,
 				848C92B0291F6AA000502956 /* Enums.swift in Sources */,
 				1883F12C29C7571E0080997B /* UIStackView+Extension.swift in Sources */,
@@ -7883,6 +7961,7 @@
 				845C39E6292276B000D934C5 /* HyperLinkLabel.swift in Sources */,
 				01EBACAB29B6519100110DCB /* chatQuestionnaireTableViewCell.swift in Sources */,
 				84F610F0292A71AB00B1FB69 /* Possible.swift in Sources */,
+				251C0C3B2B1E4A7300CF4768 /* TwoWayListTableViewCell.swift in Sources */,
 				84D0624529670677001FE469 /* UserProfile.swift in Sources */,
 				84D0628429670677001FE469 /* ForgotPasswordViewModel.swift in Sources */,
 				84D063262967080E001FE469 /* QuestionnaireId.swift in Sources */,
@@ -7906,6 +7985,7 @@
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
 				39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */,
 				017EE7F92A98CB490032FAB4 /* ImageUplodManager.swift in Sources */,
+				25C0D5062B1E1E6B007F2024 /* TwoWayTextContainer.swift in Sources */,
 				848C92A9291F6AA000502956 /* NavigationBarTheme.swift in Sources */,
 				01EBAC8829B5C6E700110DCB /* ChatbotContainerView.swift in Sources */,
 				84F61114292A71AB00B1FB69 /* GrowthParameterEncoder.swift in Sources */,
