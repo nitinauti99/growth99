@@ -7,7 +7,14 @@
 
 import UIKit
 
-class TwoWayTextContainer: UIViewController {
+
+protocol TwoWayListViewContollerProtocol: AnyObject {
+    func twoWayListDataRecived()
+    func errorReceived(error: String)
+}
+
+class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
+    
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -18,10 +25,14 @@ class TwoWayTextContainer: UIViewController {
     var workflowTaskPatientId = Int()
     var selectedindex = 0
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
+    var viewModel: TwoWayListViewModelProtocol?
+    var isSearch : Bool = false
+    var filteredTableData = [AuditLogsList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Message Center"
+        self.viewModel = TwoWayListViewModel(delegate: self)
         segmentedControl.segmentStyle = .textOnly
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
         segmentedControl.underlineHeight = 4
@@ -29,7 +40,32 @@ class TwoWayTextContainer: UIViewController {
         segmentedControl.fixedSegmentWidth = true
         setupSegment()
         tableViewCellRegister()
+        getTwoWayList()
     }
+    
+    @objc func getTwoWayList() {
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15)
+    }
+    
+    func twoWayListDataRecived() {
+        self.view.HideSpinner()
+        clearSearchBar()
+        self.twoWayListTableView.setContentOffset(.zero, animated: true)
+        self.twoWayListTableView.reloadData()
+    }
+    
+    func errorReceived(error: String) {
+        self.view.HideSpinner()
+        self.view.showToast(message: error, color: .red)
+    }
+    
+    func clearSearchBar() {
+        isSearch = false
+        searchBar.text = ""
+        twoWayListTableView.reloadData()
+    }
+    
 
     func setupSegment() {
         segmentedControl.insertSegment(withTitle: Constant.Profile.all, at: 0)

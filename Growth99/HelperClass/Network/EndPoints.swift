@@ -187,6 +187,7 @@ struct EndPoints {
     static let leadViewTemplate = "/api/v1/audit/lead/json/content?id="
     static let triggerAudit = "/api/v1/audit/"
     static let formSubmission = "/api/public/form-submission/"
+    static let twoWayText = "/api/v1/notifications/sms-audit-logs?pageNum="
 }
 
 struct ApiUrl {
@@ -368,6 +369,5 @@ struct ApiUrl {
     static let auditDetailInformation = EndPoints.baseURL.appending(EndPoints.auditDetailInformation)
     static let deleteCheckCategories = EndPoints.baseURL.appending(EndPoints.deleteCheckCategories)
     static let formSubmission = EndPoints.baseURL.appending(EndPoints.formSubmission)
+    static let twoWayText = EndPoints.baseURL.appending(EndPoints.twoWayText)
 }
-
-

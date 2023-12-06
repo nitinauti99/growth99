@@ -422,6 +422,8 @@
 		251C0C382B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */; };
 		251C0C3B2B1E4A7300CF4768 /* TwoWayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */; };
 		251C0C3C2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */; };
+		251C0C3E2B20E41D00CF4768 /* TwoWayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C3D2B20E41D00CF4768 /* TwoWayViewModel.swift */; };
+		251C0C402B20E51000CF4768 /* TwoWayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C3F2B20E51000CF4768 /* TwoWayModel.swift */; };
 		254D77A62A5AD996007941CB /* CalenderEditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */; };
 		254D77A72A5AD996007941CB /* CalenderEventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */; };
 		254D77A82A5AD996007941CB /* CalenderEventEditViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */; };
@@ -1404,6 +1406,8 @@
 		251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwoWayTextContainer+TableView.swift"; sourceTree = "<group>"; };
 		251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayListTableViewCell.swift; sourceTree = "<group>"; };
 		251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayListTableViewCell.xib; sourceTree = "<group>"; };
+		251C0C3D2B20E41D00CF4768 /* TwoWayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayViewModel.swift; sourceTree = "<group>"; };
+		251C0C3F2B20E51000CF4768 /* TwoWayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayModel.swift; sourceTree = "<group>"; };
 		254D77A12A5AD996007941CB /* CalenderEditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEditEventViewModel.swift; sourceTree = "<group>"; };
 		254D77A32A5AD996007941CB /* CalenderEventEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderEventEditViewController.swift; sourceTree = "<group>"; };
 		254D77A42A5AD996007941CB /* CalenderEventEditViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalenderEventEditViewController+TextField.swift"; sourceTree = "<group>"; };
@@ -4191,6 +4195,7 @@
 		25C0D4FB2B1E1982007F2024 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				251C0C3D2B20E41D00CF4768 /* TwoWayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -4198,6 +4203,7 @@
 		25C0D4FC2B1E1982007F2024 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				251C0C3F2B20E51000CF4768 /* TwoWayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8148,6 +8154,7 @@
 				398F90FF298ECB8700DB96E4 /* IQNSArray+Sort.swift in Sources */,
 				845C39D2292276AF00D934C5 /* KYDrawerController.swift in Sources */,
 				84D0628129670677001FE469 /* RegistrationViewController.swift in Sources */,
+				251C0C3E2B20E41D00CF4768 /* TwoWayViewModel.swift in Sources */,
 				01EBAC7A29B5A8C000110DCB /* LeadSourceUrlListTableViewCell.swift in Sources */,
 				01E348E429E6C998003B2456 /* LeadQuestionnaireTableViewCell.swift in Sources */,
 				8490350A299566DE00556D47 /* ConsentsTemplateListViewController.swift in Sources */,
@@ -8318,6 +8325,7 @@
 				84D063032967080E001FE469 /* LeadSMSTemplateTableViewCell.swift in Sources */,
 				845C39D3292276AF00D934C5 /* KYEmbedMainControllerSegue.swift in Sources */,
 				84F610CC292A71AA00B1FB69 /* DispatchData.swift in Sources */,
+				251C0C402B20E51000CF4768 /* TwoWayModel.swift in Sources */,
 				013A4F9429B43D0500CA24B0 /* leadTimeLineViewController+TableView.swift in Sources */,
 				189E3F0029C392E200B94190 /* MediaLibraryListTableViewCell.swift in Sources */,
 				841BE6E72976E5DF00E86EE9 /* bussinessDetailInfoModel.swift in Sources */,
