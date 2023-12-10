@@ -58,7 +58,9 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let twoWayTextDetailVC = UIStoryboard(name: "TwoWayTextContainer", bundle: nil).instantiateViewController(withIdentifier: "TwoWayTextViewController") as! TwoWayTextViewController
+        twoWayTextDetailVC.twoWayListData = viewModel?.getTwoWayData[indexPath.row].auditLogs ?? []
+        self.navigationController?.pushViewController(twoWayTextDetailVC, animated: true)
     }
     
     func formattedDate(from dateString: String) -> String {

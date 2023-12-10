@@ -419,6 +419,8 @@
 		189E3F1429C3980900B94190 /* PostCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */; };
 		189E3F1529C3980900B94190 /* PostCalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3F0D29C3980900B94190 /* PostCalenderModel.swift */; };
 		18BDB69529BFA46700AE1582 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDB69429BFA46700AE1582 /* RadioButton.swift */; };
+		2501F9C42B26204E002E4859 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2501F9C22B26204E002E4859 /* MessageCell.swift */; };
+		2501F9C52B26204E002E4859 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2501F9C32B26204E002E4859 /* MessageCell.xib */; };
 		251C0C382B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */; };
 		251C0C3B2B1E4A7300CF4768 /* TwoWayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */; };
 		251C0C3C2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */; };
@@ -1403,6 +1405,8 @@
 		189E3F0B29C3980900B94190 /* PostCalenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderViewModel.swift; sourceTree = "<group>"; };
 		189E3F0D29C3980900B94190 /* PostCalenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCalenderModel.swift; sourceTree = "<group>"; };
 		18BDB69429BFA46700AE1582 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		2501F9C22B26204E002E4859 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		2501F9C32B26204E002E4859 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		251C0C372B1E43F400CF4768 /* TwoWayTextContainer+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TwoWayTextContainer+TableView.swift"; sourceTree = "<group>"; };
 		251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayListTableViewCell.swift; sourceTree = "<group>"; };
 		251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayListTableViewCell.xib; sourceTree = "<group>"; };
@@ -4228,6 +4232,8 @@
 		25C0D4FF2B1E1982007F2024 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				2501F9C22B26204E002E4859 /* MessageCell.swift */,
+				2501F9C32B26204E002E4859 /* MessageCell.xib */,
 				251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */,
 				251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */,
 			);
@@ -7550,6 +7556,7 @@
 				18491DB829B80CE000FE72EF /* MassEmailandSMSTimeTableViewCell.xib in Resources */,
 				01152E0529B31E7F00B24627 /* PateintsTimeLineTableViewCell.xib in Resources */,
 				84D0624129670677001FE469 /* CreatePateintViewContoller.storyboard in Resources */,
+				2501F9C52B26204E002E4859 /* MessageCell.xib in Resources */,
 				013A4FBA29B4E39B00CA24B0 /* LeadDateTypeTableViewCell.xib in Resources */,
 				849034F7299536F300556D47 /* SMSTemplateViewController.storyboard in Resources */,
 				84D063092967080E001FE469 /* leadDetailViewController.storyboard in Resources */,
@@ -8184,6 +8191,7 @@
 				01684C6229BDEFFF00DE1041 /* UnansweredQuestionListViewController+SearchBar.swift in Sources */,
 				84F61134292A71AB00B1FB69 /* Requestable.swift in Sources */,
 				01F332252ADBD4F6006C8221 /* LeadAllowSingleSelectionTableViewCell.swift in Sources */,
+				2501F9C42B26204E002E4859 /* MessageCell.swift in Sources */,
 				010EECAC29B7335000351358 /* CreateQuestionViewContoller.swift in Sources */,
 				01684C6929BE10C800DE1041 /* CreateSMSTemplateViewController.swift in Sources */,
 				01152E3429B3C5FF00B24627 /* LeadHistoryViewModel.swift in Sources */,
