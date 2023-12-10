@@ -10,31 +10,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TwoWayListTableViewCell" rowHeight="120" id="aqG-XN-1ii" customClass="TwoWayListTableViewCell" customModule="Growth99" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="357" height="120"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TwoWayListTableViewCell" rowHeight="100" id="aqG-XN-1ii" customClass="TwoWayListTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="357" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aqG-XN-1ii" id="fZf-bc-kaf">
-                <rect key="frame" x="0.0" y="0.0" width="357" height="120"/>
+                <rect key="frame" x="0.0" y="0.0" width="357" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLf-tQ-Xcs">
-                        <rect key="frame" x="5" y="5" width="347" height="110"/>
+                        <rect key="frame" x="5" y="5" width="347" height="90"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thusday -May 9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-0c-Rep">
-                                <rect key="frame" x="10" y="34.5" width="327" height="24"/>
+                                <rect key="frame" x="10" y="32" width="327" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM — 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3l-5w-4WZ">
-                                <rect key="frame" x="10" y="73.5" width="327" height="19.5"/>
+                                <rect key="frame" x="10" y="64" width="327" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM — 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-gx-Jb7">
-                                <rect key="frame" x="217.5" y="15" width="119.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="190.5" y="10" width="136.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,11 +43,11 @@
                         <constraints>
                             <constraint firstItem="T3l-5w-4WZ" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="leading" id="08r-FF-U0f"/>
                             <constraint firstItem="T3l-5w-4WZ" firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" id="9K6-AB-QT2"/>
-                            <constraint firstItem="hMJ-gx-Jb7" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" constant="15" id="Bbl-um-Bux"/>
+                            <constraint firstItem="hMJ-gx-Jb7" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" constant="10" id="Bbl-um-Bux"/>
                             <constraint firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" constant="10" id="TaN-nS-pmc"/>
-                            <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="2Xh-0c-Rep" secondAttribute="bottom" constant="15" id="bmM-CR-H7i"/>
+                            <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="2Xh-0c-Rep" secondAttribute="bottom" constant="8" id="bmM-CR-H7i"/>
                             <constraint firstItem="2Xh-0c-Rep" firstAttribute="top" secondItem="hMJ-gx-Jb7" secondAttribute="bottom" constant="5" id="hjD-h8-iPB"/>
-                            <constraint firstAttribute="trailing" secondItem="hMJ-gx-Jb7" secondAttribute="trailing" constant="10" id="u2u-pk-pIB"/>
+                            <constraint firstAttribute="trailing" secondItem="hMJ-gx-Jb7" secondAttribute="trailing" constant="20" id="u2u-pk-pIB"/>
                             <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="jLf-tQ-Xcs" secondAttribute="leading" constant="10" id="xpO-ZH-c3c"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
