@@ -14,12 +14,21 @@ protocol TwoWayListViewModelProtocol {
     func getTwoWayFilterDataAtIndex(index: Int)-> AuditLogsList?
     var  getTwoWayData: [AuditLogsList] { get }
     var  getTwoWayFilterData: [AuditLogsList] { get }
+    var  getTwoWayFilterOpenData: [AuditLogsList] { get }
+    var  getTwoWayFilterClosedData: [AuditLogsList] { get }
+    var  getTwoWayFilterReadData: [AuditLogsList] { get }
+    var  getTwoWayFilterUnReadData: [AuditLogsList] { get }
+    var selectedSegmentIndexValue: Int { get set }
 }
 
 class TwoWayListViewModel {
     var delegate: TwoWayListViewContollerProtocol?
     var twoWayListData: [AuditLogsList] = []
     var twoWayFilterData: [AuditLogsList] = []
+    var twoWayFilterReadData: [AuditLogsList] = []
+    var twoWayFilterUnReadData: [AuditLogsList] = []
+    var selectedSegmentIndexValue: Int = 0
+    
     var headers: HTTPHeaders {
         return ["x-tenantid": UserRepository.shared.Xtenantid ?? String.blank,
                 "Authorization": "Bearer "+(UserRepository.shared.authToken ?? String.blank)
@@ -48,7 +57,7 @@ class TwoWayListViewModel {
 }
 
 extension TwoWayListViewModel: TwoWayListViewModelProtocol {
-
+    
     func getTwoWayFilterData(searchText: String) {
         self.twoWayFilterData = self.getTwoWayData.filter { (task: AuditLogsList) -> Bool in
             let searchText = searchText.lowercased()
@@ -56,7 +65,7 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
             let idMatch = String(task.sourceId ?? 0).prefix(searchText.count).elementsEqual(searchText)
             return nameMatch || idMatch
         }
-
+        
     }
     
     func getTwoWayDataAtIndex(index: Int)-> AuditLogsList? {
@@ -66,12 +75,35 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
     func getTwoWayFilterDataAtIndex(index: Int)-> AuditLogsList? {
         return self.twoWayFilterData[index]
     }
-    
-    var getTwoWayData: [AuditLogsList] {
-        return self.twoWayListData
-    }
-    
     var getTwoWayFilterData: [AuditLogsList] {
         return self.twoWayFilterData
     }
+    
+    var getTwoWayData: [AuditLogsList] {
+        switch selectedSegmentIndexValue {
+        case 0:
+            return getTwoWayFilterOpenData
+        case 1:
+            return getTwoWayFilterClosedData
+        default:
+            return twoWayListData
+        }
+    }
+    
+    var getTwoWayFilterOpenData: [AuditLogsList] {
+        return twoWayListData.filter { $0.leadChatStatus == "OPEN" }
+    }
+
+    var getTwoWayFilterClosedData: [AuditLogsList] {
+        return twoWayListData.filter { $0.leadChatStatus == "CLOSED" }
+    }
+    
+    var getTwoWayFilterReadData: [AuditLogsList] {
+        return twoWayListData.filter { $0.lastMessageRead == true }
+    }
+    
+    var getTwoWayFilterUnReadData: [AuditLogsList] {
+        return twoWayListData.filter { $0.lastMessageRead == false }
+    }
+    
 }

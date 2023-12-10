@@ -301,14 +301,14 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        } else if indexPath.section == 9 {
+        } else if indexPath.section == 10 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "MassEmailandSMSViewController", pusedViewController: "MassEmailandSMSViewController")
             default:
                 break
             }
-        } else if indexPath.section == 10 {
+        } else if indexPath.section == 11 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "SocialProfilesListViewController", pusedViewController: "SocialProfilesListViewController")

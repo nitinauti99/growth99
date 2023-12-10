@@ -241,4 +241,11 @@ struct Constant {
         case past
         case all
     }
+    
+    struct TwoWayText {
+        static let open = "Open"
+        static let closed = "Closed"
+        static let all = "All"
+        static let unread = "Unread"
+    }
 }

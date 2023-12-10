@@ -16,9 +16,9 @@ protocol TwoWayListViewContollerProtocol: AnyObject {
 class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var twoWayListTableView: UITableView!
+    @IBOutlet weak var twoWaySegmentControl: UISegmentedControl!
 
     var bussinessInfoData: BusinessSubDomainModel?
     
@@ -38,9 +38,18 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
         segmentedControl.fixedSegmentWidth = true
-        setupSegment()
         tableViewCellRegister()
         getTwoWayList()
+        addSerchBar()
+    }
+    
+    func addSerchBar() {
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = Constant.Profile.searchList
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
     }
     
     @objc func getTwoWayList() {
@@ -50,8 +59,9 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     func twoWayListDataRecived() {
         self.view.HideSpinner()
-        clearSearchBar()
         self.twoWayListTableView.setContentOffset(.zero, animated: true)
+        clearSearchBar()
+        setupSegment()
         self.twoWayListTableView.reloadData()
     }
     
@@ -66,11 +76,9 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         twoWayListTableView.reloadData()
     }
     
-
     func setupSegment() {
-        segmentedControl.insertSegment(withTitle: Constant.Profile.all, at: 0)
-        segmentedControl.insertSegment(withTitle: Constant.Profile.unread, at: 1)
-       // add(asChildViewController: twoWayTextVC)
+        segmentedControl.insertSegment(withTitle: "\(Constant.Profile.all) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == true}).count ?? 0))", at: 0)
+        segmentedControl.insertSegment(withTitle: "\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", at: 1)
     }
     
     func tableViewCellRegister() {
@@ -87,37 +95,14 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         segmentedControl.selectedSegmentIndex = segment
     }
     
+
     @objc private func selectionDidChange(sender: ScrollableSegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            break
-        case 1:
-            break
-        default:
-            break
-        }
+        viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
+        clearSearchBar()
     }
     
-    lazy var twoWayTextVC: TwoWayTextViewController = {
-        guard let detailController = storyboard?.instantiateViewController(withIdentifier: "TwoWayTextViewController") as? TwoWayTextViewController else {
-            fatalError("Unable to Instantiate Summary View Controller")
-        }
-        return twoWayTextVC
-    }()
-    
-    
-    private func add(asChildViewController viewController: UIViewController) {
-        addChild(viewController)
-        containerView.addSubview(viewController.view)
-        viewController.view.frame = containerView.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        viewController.didMove(toParent: self)
+    @IBAction func twoWaySegmentSelection(_ sender: UISegmentedControl) {
+        viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
+        clearSearchBar()
     }
-    
-    private func remove(asChildViewController viewController: UIViewController) {
-        viewController.willMove(toParent: nil)
-        viewController.view.removeFromSuperview()
-        viewController.removeFromParent()
-    }
-    
 }

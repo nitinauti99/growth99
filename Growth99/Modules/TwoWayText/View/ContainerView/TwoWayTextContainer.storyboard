@@ -41,6 +41,9 @@
                                     <segment title="Closed"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="twoWaySegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="KOz-XA-FHt"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cB5-Ye-2nM" customClass="ScrollableSegmentedControl" customModule="Growth99" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="159" width="393" height="40"/>

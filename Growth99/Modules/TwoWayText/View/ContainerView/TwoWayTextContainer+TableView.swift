@@ -9,26 +9,47 @@ import Foundation
 import UIKit
 
 extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
-   
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return viewModel?.getTwoWayData.count ?? 0
+        if isSearch {
+            if viewModel?.getTwoWayFilterData.count ?? 0 == 0 {
+                self.twoWayListTableView.setEmptyMessage()
+            } else {
+                self.twoWayListTableView.restore()
+            }
+            return viewModel?.getTwoWayFilterData.count ?? 0
+        } else {
+            if viewModel?.getTwoWayData.count ?? 0 == 0 {
+                self.twoWayListTableView.setEmptyMessage()
+            } else {
+                self.twoWayListTableView.restore()
+            }
+            return viewModel?.getTwoWayData.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TwoWayListTableViewCell", for: indexPath) as? TwoWayListTableViewCell else {
-            return UITableViewCell()
+        var cell = TwoWayListTableViewCell()
+        cell = twoWayListTableView.dequeueReusableCell(withIdentifier: "TwoWayListTableViewCell") as! TwoWayListTableViewCell
+        print("count isssss \(viewModel?.getTwoWayData.count ?? 0)")
+        if(isSearch) {
+            cell.headerLbl.text = viewModel?.getTwoWayFilterData[indexPath.row].leadFullName ?? ""
+            cell.statusLbl.text = viewModel?.getTwoWayFilterData[indexPath.row].leadStatus ?? ""
+            let inputDateString = viewModel?.getTwoWayFilterData[indexPath.row].lastMessageDate ?? ""
+            cell.dateLbl.text = formattedDate(from: inputDateString)
+            cell.selectionStyle = .none
+        } else {
+            cell.headerLbl.text = viewModel?.getTwoWayData[indexPath.row].leadFullName ?? ""
+            cell.statusLbl.text = viewModel?.getTwoWayData[indexPath.row].leadStatus ?? ""
+            let inputDateString = viewModel?.getTwoWayData[indexPath.row].lastMessageDate ?? ""
+            cell.dateLbl.text = formattedDate(from: inputDateString)
+            cell.selectionStyle = .none
         }
-        cell.headerLbl.text = viewModel?.getTwoWayData[indexPath.row].leadFullName ?? ""
-        cell.statusLbl.text = viewModel?.getTwoWayData[indexPath.row].leadStatus ?? ""
-        
-        let inputDateString = viewModel?.getTwoWayData[indexPath.row].lastMessageDate ?? ""
-        cell.dateLbl.text = formattedDate(from: inputDateString)
-        cell.selectionStyle = .none
         return cell
     }
     
@@ -37,7 +58,7 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
     }
     
     func formattedDate(from dateString: String) -> String {
@@ -61,5 +82,25 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             return dateFormatter.string(from: date)
         }
+    }
+}
+
+
+extension TwoWayTextContainer: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.getTwoWayFilterData(searchText: searchText)
+        isSearch = true
+        twoWayListTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearch = false
+        searchBar.text = ""
+        twoWayListTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
