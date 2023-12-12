@@ -539,7 +539,6 @@ extension TriggerEditDetailViewController {
             let leadTags: [String] = []
             urlParameter = ["name": patientModuleName, "moduleName": "Appointment", "triggeractionName": selectedAppointmentStatus, "triggerConditions": NSNull(), "triggerData": smsandTimeArray, "landingPageNames": landingPageNames, "forms": forms, "sourceUrls": sourceUrls, "leadTags": leadTags, "isTriggerForLeadStatus": false, "fromLeadStatus": NSNull(), "toLeadStatus": NSNull()
             ]
-            print(urlParameter)
             self.view.ShowSpinner()
             viewModel?.createAppointmentDataMethodEdit(appointmentDataParms: urlParameter, selectedTriggerid: triggerId ?? 0)
         }

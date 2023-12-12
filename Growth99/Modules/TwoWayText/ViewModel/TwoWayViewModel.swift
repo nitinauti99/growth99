@@ -18,7 +18,8 @@ protocol TwoWayListViewModelProtocol {
     var  getTwoWayFilterClosedData: [AuditLogsList] { get }
     var  getTwoWayFilterReadData: [AuditLogsList] { get }
     var  getTwoWayFilterUnReadData: [AuditLogsList] { get }
-    var selectedSegmentIndexValue: Int { get set }
+    var  selectedSegmentIndexValue: Int { get set }
+    func sendMessage(msgData: [String: Any], sourceType: String)
 }
 
 class TwoWayListViewModel {
@@ -48,6 +49,25 @@ class TwoWayListViewModel {
                 self.twoWayListData = twoWayListData.auditLogsList ?? []
                 print( self.twoWayListData)
                 self.delegate?.twoWayListDataRecived()
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func sendMessage(msgData: [String: Any], sourceType: String) {
+        self.requestManager.request(forPath: ApiUrl.smsTwoWay.appending("/\(sourceType)/send-custom-sms"), method: .POST, headers: self.requestManager.Headers(), task: .requestParameters(parameters: msgData, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                    self.delegate?.twoWayDetailDataRecived()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while creating Appointment")
+                } else {
+                    self.delegate?.errorReceived(error: "response failed")
+                }
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
                 print("Error while performing request \(error)")
@@ -93,7 +113,7 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
     var getTwoWayFilterOpenData: [AuditLogsList] {
         return twoWayListData.filter { $0.leadChatStatus == "OPEN" }
     }
-
+    
     var getTwoWayFilterClosedData: [AuditLogsList] {
         return twoWayListData.filter { $0.leadChatStatus == "CLOSED" }
     }
@@ -105,5 +125,4 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
     var getTwoWayFilterUnReadData: [AuditLogsList] {
         return twoWayListData.filter { $0.lastMessageRead == false }
     }
-    
 }

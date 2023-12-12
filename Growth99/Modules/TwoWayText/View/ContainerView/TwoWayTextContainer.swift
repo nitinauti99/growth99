@@ -11,15 +11,19 @@ import UIKit
 protocol TwoWayListViewContollerProtocol: AnyObject {
     func twoWayListDataRecived()
     func errorReceived(error: String)
+    func twoWayDetailDataRecived()
 }
 
 class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
+    func twoWayDetailDataRecived() {
+        
+    }
+    
     
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var twoWayListTableView: UITableView!
-    @IBOutlet weak var twoWaySegmentControl: UISegmentedControl!
-
+    
     var bussinessInfoData: BusinessSubDomainModel?
     
     var workflowTaskPatientId = Int()
@@ -39,8 +43,13 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         segmentedControl.underlineSelected = true
         segmentedControl.fixedSegmentWidth = true
         tableViewCellRegister()
-        getTwoWayList()
         addSerchBar()
+        getTwoWayList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "selectedIndex") , object: nil)
     }
     
     func addSerchBar() {
@@ -85,17 +94,12 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         twoWayListTableView.register(UINib(nibName: "TwoWayListTableViewCell", bundle: nil), forCellReuseIdentifier: "TwoWayListTableViewCell")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "selectedIndex") , object: nil)
-    }
-    
     @objc func notificationReceived(_ notification: Notification) {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
         segmentedControl.selectedSegmentIndex = segment
     }
     
-
+    
     @objc private func selectionDidChange(sender: ScrollableSegmentedControl) {
         viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
         clearSearchBar()
