@@ -59,10 +59,10 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let twoWayTextDetailVC = UIStoryboard(name: "TwoWayTextContainer", bundle: nil).instantiateViewController(withIdentifier: "TwoWayTextViewController") as! TwoWayTextViewController
-        twoWayTextDetailVC.twoWayListData = viewModel?.getTwoWayData[indexPath.row].auditLogs ?? []
         twoWayTextDetailVC.sourceType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
         twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayData[indexPath.row].sourceId ?? 0
         twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayData[indexPath.row].sourcePhoneNumber ?? ""
+        twoWayTextDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(twoWayTextDetailVC, animated: true)
     }
     
@@ -79,7 +79,7 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
             return "Today"
         } else if calendar.isDateInYesterday(date) {
             dateFormatter.dateFormat = "HH:mm"
-            return "Yesterday)"
+            return "Yesterday"
         } else {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             return dateFormatter.string(from: date)

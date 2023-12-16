@@ -247,6 +247,7 @@ struct Constant {
         static let closed = "Closed"
         static let all = "All"
         static let unread = "Unread"
+        static let searchList = "Search List"
     }
     
     struct K {

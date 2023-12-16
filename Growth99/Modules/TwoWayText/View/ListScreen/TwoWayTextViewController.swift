@@ -22,6 +22,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     }
     
     var twoWayListData : [AuditLogs]?
+    var filteredArray: [AuditLogsList]?
+    
     var sourceType : String = ""
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
@@ -37,42 +39,63 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         self.sendButton.clipsToBounds = true
         messageTextfield.placeholder = "Type here..."
         sendButton.isEnabled = false
+        sendButton.alpha = 0.5
         messageTextfield.textColor = .black
         tableView.register(UINib(nibName: Constant.K.cellNibName, bundle: nil), forCellReuseIdentifier: Constant.K.cellIdentifier)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        scrollToBottom()
     }
     
-    @IBAction func sendPressed(_ sender: UIButton) {
-        messageTextfield.resignFirstResponder();
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.view.ShowSpinner()
-        var urlParameter: Parameters = [String: Any]()
-        if sourceType == "Lead" {
-            urlParameter = ["body": messageTextfield.text ?? "", "phoneNumber": phoneNumber, "leadId": sourceTypeId]
-        } else {
-            urlParameter = ["body": messageTextfield.text ?? "", "phoneNumber": phoneNumber, "patientId": sourceTypeId]
-        }
-        viewModel?.sendMessage(msgData: urlParameter, sourceType: sourceType.lowercased())
+        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = (textField.text ?? "") as NSString
-        let newText = currentText.replacingCharacters(in: range, with: string) as NSString
-        sendButton.isEnabled = newText.length > 1
-        return true
+    func twoWayDetailListDataRecived() {
+        self.view.HideSpinner()
+        twoWayListData = viewModel?.getTwoWayData
+            .filter { $0.sourceId == sourceTypeId }
+            .flatMap { $0.auditLogs ?? [] }
+        self.tableView.setContentOffset(.zero, animated: true)
+        scrollToBottom()
+        self.tableView.reloadData()
     }
     
     func twoWayDetailDataRecived() {
         self.view.HideSpinner()
         messageTextfield.text = ""
-        self.tableView.setContentOffset(.zero, animated: true)
-        self.tableView.reloadData()
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
     }
     
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
+    }
+    
+    @IBAction func sendPressed(_ sender: UIButton) {
+        messageTextfield.resignFirstResponder()
+        guard let message = messageTextfield.text?.trimmingCharacters(in: .whitespacesAndNewlines), !message.isEmpty else {
+            sendButton.isEnabled = false
+            sendButton.alpha = 0.5
+            messageTextfield.text = ""
+            return
+        }
+        
+        self.view.ShowSpinner()
+        var urlParameter: Parameters = [String: Any]()
+        if sourceType == "Lead" {
+            urlParameter = ["body": message, "phoneNumber": phoneNumber, "leadId": sourceTypeId]
+        } else {
+            urlParameter = ["body": message, "phoneNumber": phoneNumber, "patientId": sourceTypeId]
+        }
+        viewModel?.sendMessage(msgData: urlParameter, sourceType: sourceType.lowercased())
+    }
+    
+    @IBAction func templatesPressed(_ sender: UIButton) {
+        
+        
     }
 }
 
@@ -93,12 +116,19 @@ extension TwoWayTextViewController: UITextFieldDelegate {
         textField.resignFirstResponder();
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        sendButton.isEnabled = !newText.isEmpty
+        sendButton.alpha = newText.isEmpty ? 0.5 : 1.0
+        return true
+    }
 }
 
 extension TwoWayTextViewController {
-    func scrollToBottom(){
+    func scrollToBottom() {
         DispatchQueue.main.async {
-            let indexPath = IndexPath(row: (self.twoWayListData?.count ?? 0)-1, section: 0)
+            let indexPath = IndexPath(row: (self.twoWayListData?.count ?? 0) - 1, section: 0)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }

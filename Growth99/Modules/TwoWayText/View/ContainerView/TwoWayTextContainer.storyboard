@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -102,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5dR-Eo-Pv2">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="758"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="728"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="88N-oB-OjH" id="WjV-Wi-b35"/>
@@ -151,12 +151,37 @@
                                     <constraint firstItem="WJJ-z7-f5o" firstAttribute="leading" secondItem="ac8-CA-c1i" secondAttribute="leading" constant="20" id="kvQ-70-xNW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-QI-Y2t">
+                                <rect key="frame" x="0.0" y="728" width="393" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vv3-o4-sxb">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Select Template"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Templates"/>
+                                        <connections>
+                                            <action selector="templatesPressed:" destination="88N-oB-OjH" eventType="touchUpInside" id="cXt-Tp-sTa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Vv3-o4-sxb" firstAttribute="leading" secondItem="mxx-QI-Y2t" secondAttribute="leading" id="6sn-bT-oGn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vv3-o4-sxb" secondAttribute="trailing" id="RDs-os-yYZ"/>
+                                    <constraint firstItem="Vv3-o4-sxb" firstAttribute="top" secondItem="mxx-QI-Y2t" secondAttribute="top" id="rBY-7g-ZGU"/>
+                                    <constraint firstAttribute="height" constant="30" id="sMp-Hm-GVX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vv3-o4-sxb" secondAttribute="bottom" id="w51-GC-kr0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GGY-4R-XBC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ac8-CA-c1i" firstAttribute="top" secondItem="5dR-Eo-Pv2" secondAttribute="bottom" id="Gdb-Xb-Nl8"/>
+                            <constraint firstItem="GGY-4R-XBC" firstAttribute="trailing" secondItem="mxx-QI-Y2t" secondAttribute="trailing" id="44S-92-00C"/>
                             <constraint firstItem="ac8-CA-c1i" firstAttribute="leading" secondItem="GGY-4R-XBC" secondAttribute="leading" id="Pcb-w6-L9w"/>
+                            <constraint firstItem="ac8-CA-c1i" firstAttribute="top" secondItem="mxx-QI-Y2t" secondAttribute="bottom" id="Tv5-9G-mYo"/>
+                            <constraint firstItem="mxx-QI-Y2t" firstAttribute="leading" secondItem="GGY-4R-XBC" secondAttribute="leading" id="Zn1-CA-2CM"/>
+                            <constraint firstItem="mxx-QI-Y2t" firstAttribute="top" secondItem="5dR-Eo-Pv2" secondAttribute="bottom" id="dbn-at-VT3"/>
                             <constraint firstItem="5dR-Eo-Pv2" firstAttribute="top" secondItem="CI3-Wh-bdn" secondAttribute="top" id="kao-tG-wCK"/>
                             <constraint firstItem="5dR-Eo-Pv2" firstAttribute="leading" secondItem="GGY-4R-XBC" secondAttribute="leading" id="qBI-KY-oVC"/>
                             <constraint firstItem="ac8-CA-c1i" firstAttribute="bottom" secondItem="GGY-4R-XBC" secondAttribute="bottom" id="qmS-je-iRU"/>
@@ -172,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBs-21-19H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="4"/>
+            <point key="canvasLocation" x="748.85496183206101" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

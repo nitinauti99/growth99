@@ -449,6 +449,7 @@
 		258AA3812A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */; };
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
+		2596B6E22B2E2A8D006466AE /* TwoWayTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596B6E12B2E2A8C006466AE /* TwoWayTemplatesViewController.swift */; };
 		25B7D2742AA3B04600216A7C /* SocialWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */; };
 		25B7D2752AA3B04600216A7C /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */; };
 		25C0D5012B1E19A5007F2024 /* TwoWayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */; };
@@ -1435,6 +1436,7 @@
 		258AA3802A443C9000D295D6 /* MassEmailandSMSEditLeadActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditLeadActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
+		2596B6E12B2E2A8C006466AE /* TwoWayTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTemplatesViewController.swift; sourceTree = "<group>"; };
 		25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialWebViewController.storyboard; sourceTree = "<group>"; };
 		25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 		25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextViewController.swift; sourceTree = "<group>"; };
@@ -4225,6 +4227,7 @@
 			isa = PBXGroup;
 			children = (
 				25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */,
+				2596B6E12B2E2A8C006466AE /* TwoWayTemplatesViewController.swift */,
 			);
 			path = ListScreen;
 			sourceTree = "<group>";
@@ -7966,6 +7969,7 @@
 				8440B39E299A323B00A42097 /* FormListViewController+SearchBar.swift in Sources */,
 				84D063242967080E001FE469 /* QuestionnaireList.swift in Sources */,
 				DA06999A29E9B482002E060A /* ServicesListDetailViewController+TextField.swift in Sources */,
+				2596B6E22B2E2A8D006466AE /* TwoWayTemplatesViewController.swift in Sources */,
 				254D77A62A5AD996007941CB /* CalenderEditEventViewModel.swift in Sources */,
 				01C748A829B234490085CED2 /* BussinessSelectionListTableViewCell.swift in Sources */,
 				84D0628629670677001FE469 /* VerifyForgotPasswordViewController.swift in Sources */,

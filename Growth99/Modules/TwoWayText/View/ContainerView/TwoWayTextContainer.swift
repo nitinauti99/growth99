@@ -10,6 +10,7 @@ import UIKit
 
 protocol TwoWayListViewContollerProtocol: AnyObject {
     func twoWayListDataRecived()
+    func twoWayDetailListDataRecived()
     func errorReceived(error: String)
     func twoWayDetailDataRecived()
 }
@@ -43,8 +44,9 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         segmentedControl.underlineSelected = true
         segmentedControl.fixedSegmentWidth = true
         tableViewCellRegister()
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "List")
         addSerchBar()
-        getTwoWayList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,17 +63,15 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         searchBar.delegate = self
     }
     
-    @objc func getTwoWayList() {
-        self.view.ShowSpinner()
-        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15)
+    func twoWayDetailListDataRecived() {
+        
     }
     
     func twoWayListDataRecived() {
         self.view.HideSpinner()
         self.twoWayListTableView.setContentOffset(.zero, animated: true)
-        clearSearchBar()
         setupSegment()
-        self.twoWayListTableView.reloadData()
+        clearSearchBar()
     }
     
     func errorReceived(error: String) {
