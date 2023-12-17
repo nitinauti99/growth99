@@ -189,6 +189,7 @@ struct EndPoints {
     static let formSubmission = "/api/public/form-submission/"
     static let twoWayText = "/api/v1/notifications/sms-audit-logs?pageNum="
     static let smsTwoWay = "/api/v1"
+    static let smsTemplate = "/api/smstemplates/by-templateFor/"
 }
 
 struct ApiUrl {
@@ -372,5 +373,5 @@ struct ApiUrl {
     static let formSubmission = EndPoints.baseURL.appending(EndPoints.formSubmission)
     static let twoWayText = EndPoints.baseURL.appending(EndPoints.twoWayText)
     static let smsTwoWay = EndPoints.baseURL.appending(EndPoints.smsTwoWay)
-
+    static let smsTemplate = EndPoints.baseURL.appending(EndPoints.smsTemplate)
 }

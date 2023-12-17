@@ -44,3 +44,9 @@ struct AuditLogsList : Codable {
     let communication : String?
     let leadFullName : String?
 }
+
+struct TwoWayTemplateListModel : Codable {
+    let name : String?
+    let id : Int?
+    let body : String?
+}

@@ -94,8 +94,12 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     }
     
     @IBAction func templatesPressed(_ sender: UIButton) {
-        
-        
+        let twoWayTemplateVC = TwoWayTemplatesViewController()
+        twoWayTemplateVC.modalPresentationStyle = .overFullScreen
+        twoWayTemplateVC.sourceTypeTemplate = "Appointment"
+        twoWayTemplateVC.soureFromTemplate = "lead"
+        twoWayTemplateVC.sourceIdTemplate = 138281
+        self.present(twoWayTemplateVC, animated: true)
     }
 }
 

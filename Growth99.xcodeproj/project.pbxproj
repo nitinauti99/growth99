@@ -450,6 +450,10 @@
 		258AA3832A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */; };
 		258AA3852A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */; };
 		2596B6E22B2E2A8D006466AE /* TwoWayTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596B6E12B2E2A8C006466AE /* TwoWayTemplatesViewController.swift */; };
+		2596B6E62B2F497E006466AE /* TwoWayTemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2596B6E52B2F497E006466AE /* TwoWayTemplatesViewController.xib */; };
+		2596B6E92B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596B6E72B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift */; };
+		2596B6EA2B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2596B6E82B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib */; };
+		2596B6EC2B2F61D9006466AE /* TwoWayTemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596B6EB2B2F61D9006466AE /* TwoWayTemplateViewModel.swift */; };
 		25B7D2742AA3B04600216A7C /* SocialWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */; };
 		25B7D2752AA3B04600216A7C /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */; };
 		25C0D5012B1E19A5007F2024 /* TwoWayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */; };
@@ -1437,6 +1441,10 @@
 		258AA3822A44550B00D295D6 /* MassEmailandSMSEditPatientActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditPatientActionTableViewCell.xib; sourceTree = "<group>"; };
 		258AA3842A44838800D295D6 /* MassEmailandSMSEditCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassEmailandSMSEditCreateTableViewCell.xib; sourceTree = "<group>"; };
 		2596B6E12B2E2A8C006466AE /* TwoWayTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTemplatesViewController.swift; sourceTree = "<group>"; };
+		2596B6E52B2F497E006466AE /* TwoWayTemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoWayTemplatesViewController.xib; sourceTree = "<group>"; };
+		2596B6E72B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTemplatesTableViewCell.swift; sourceTree = "<group>"; };
+		2596B6E82B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayTemplatesTableViewCell.xib; sourceTree = "<group>"; };
+		2596B6EB2B2F61D9006466AE /* TwoWayTemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTemplateViewModel.swift; sourceTree = "<group>"; };
 		25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialWebViewController.storyboard; sourceTree = "<group>"; };
 		25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 		25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextViewController.swift; sourceTree = "<group>"; };
@@ -4202,6 +4210,7 @@
 			isa = PBXGroup;
 			children = (
 				251C0C3D2B20E41D00CF4768 /* TwoWayViewModel.swift */,
+				2596B6EB2B2F61D9006466AE /* TwoWayTemplateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -4228,6 +4237,7 @@
 			children = (
 				25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */,
 				2596B6E12B2E2A8C006466AE /* TwoWayTemplatesViewController.swift */,
+				2596B6E52B2F497E006466AE /* TwoWayTemplatesViewController.xib */,
 			);
 			path = ListScreen;
 			sourceTree = "<group>";
@@ -4239,6 +4249,8 @@
 				2501F9C32B26204E002E4859 /* MessageCell.xib */,
 				251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */,
 				251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */,
+				2596B6E72B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift */,
+				2596B6E82B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -7452,6 +7464,7 @@
 				84B75EC9296902E600962F3E /* ServicesListViewController.storyboard in Resources */,
 				01684C3529BCF2EF00DE1041 /* ChatBotTemplateTableViewCell.xib in Resources */,
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
+				2596B6EA2B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib in Resources */,
 				254D77C72A752C43007941CB /* PostCalendarTableViewCell.xib in Resources */,
 				01301E5F2A54908E00A59B52 /* PateintsViewTemplateController.xib in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
@@ -7507,6 +7520,7 @@
 				842C0CCB298F713B00395061 /* QuestionarieTableViewCell.xib in Resources */,
 				84D063022967080E001FE469 /* LeadCustomSMSTemplateTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
+				2596B6E62B2F497E006466AE /* TwoWayTemplatesViewController.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
 				254D77B42A657EF0007941CB /* TriggerEditAppointmentActionTableViewCell.xib in Resources */,
 				01DD578C29A224B400C03A69 /* FormQuestionTableViewCell.xib in Resources */,
@@ -8055,6 +8069,7 @@
 				013A4FD829B4E3FA00CA24B0 /* InputTypeTableViewCell.swift in Sources */,
 				01684C1829BAE8CB00DE1041 /* ChatSessionListModel.swift in Sources */,
 				849034F92995370600556D47 /* SMSTemplateViewModel.swift in Sources */,
+				2596B6EC2B2F61D9006466AE /* TwoWayTemplateViewModel.swift in Sources */,
 				84BD33F62994BB020050C0D8 /* EmailTemplateViewController+SearchBar.swift in Sources */,
 				01BBA9D829AB5452006A5DB8 /* NotificationListViewModel.swift in Sources */,
 				016F663629C9ADE300B1D248 /* MediaTagsAddViewController.swift in Sources */,
@@ -8427,6 +8442,7 @@
 				84D062F72967080E001FE469 /* leadTimeLineViewController.swift in Sources */,
 				84D0630B2967080E001FE469 /* leadDetailViewController+TableView.swift in Sources */,
 				189E3EDE29C391A400B94190 /* LabelListTableViewCell.swift in Sources */,
+				2596B6E92B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift in Sources */,
 				013A4F9929B49A9F00CA24B0 /* LeadHistoryViewController+SearchBar.swift in Sources */,
 				013A4FC329B4E39B00CA24B0 /* LeadMultipleSelectionWithDropDownTypeTableViewCell.swift in Sources */,
 				016F661029C8556900B1D248 /* CreatePostViewModel.swift in Sources */,

@@ -20,7 +20,6 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         
     }
     
-    
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var twoWayListTableView: UITableView!
