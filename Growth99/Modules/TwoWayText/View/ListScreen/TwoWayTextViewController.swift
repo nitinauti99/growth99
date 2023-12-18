@@ -17,10 +17,6 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     @IBOutlet weak var messageTextfield: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
-    @objc func dismissKeyboard() {
-        messageTextfield.endEditing(true)
-    }
-    
     var twoWayListData : [AuditLogs]?
     var filteredArray: [AuditLogsList]?
     
@@ -28,6 +24,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
     var viewModel: TwoWayListViewModelProtocol?
+    let user = UserRepository.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +54,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         twoWayListData = viewModel?.getTwoWayData
             .filter { $0.sourceId == sourceTypeId }
             .flatMap { $0.auditLogs ?? [] }
-        self.tableView.setContentOffset(.zero, animated: true)
+        filteredArray = viewModel?.getTwoWayData
+            .filter { $0.sourceId == sourceTypeId }
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -82,7 +80,6 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
             messageTextfield.text = ""
             return
         }
-        
         self.view.ShowSpinner()
         var urlParameter: Parameters = [String: Any]()
         if sourceType == "Lead" {
@@ -95,23 +92,69 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     
     @IBAction func templatesPressed(_ sender: UIButton) {
         let twoWayTemplateVC = TwoWayTemplatesViewController()
+        twoWayTemplateVC.dismissCallback = { [weak self] data in
+            self?.messageTextfield.text = data
+            self?.sendButton.isEnabled = true
+            self?.sendButton.alpha = 1.0
+        }
         twoWayTemplateVC.modalPresentationStyle = .overFullScreen
-        twoWayTemplateVC.sourceTypeTemplate = "Appointment"
+        twoWayTemplateVC.sourceTypeTemplate = "Lead"
         twoWayTemplateVC.soureFromTemplate = "lead"
-        twoWayTemplateVC.sourceIdTemplate = 138281
+        twoWayTemplateVC.sourceIdTemplate = 379895
+        //        twoWayTemplateVC.sourceTypeTemplate = filteredArray?.first?.source ?? ""
+        //        twoWayTemplateVC.soureFromTemplate = twoWayListData?.first?.sourceType ?? ""
+        //        twoWayTemplateVC.sourceIdTemplate = filteredArray?.first?.sourceId ?? 0
         self.present(twoWayTemplateVC, animated: true)
+    }
+    
+    @objc func dismissKeyboard() {
+        messageTextfield.endEditing(true)
     }
 }
 
 extension TwoWayTextViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let filteredArray = filteredArray else {
+            return 0
+        }
+
+        let groupedSections = Dictionary(grouping: filteredArray) { (element) -> String in
+            if let logs = element.auditLogs, let firstLog = logs.first, let createdDateTime = firstLog.createdDateTime {
+                return createdDateTime
+            } else {
+                return ""
+            }
+        }
+        let sortedKeys = groupedSections.keys.sorted()
+        return sortedKeys.count
+    }
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return twoWayListData?.count ?? 0
+        return filteredArray?[section].auditLogs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
-        cell.label.text = twoWayListData?[indexPath.row].message ?? ""
+        cell.label.text = filteredArray?[indexPath.section].auditLogs?[indexPath.row].message ?? ""
+        cell.labelTitle.text = user.bussinessName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let firstLog = filteredArray?[section].auditLogs?.first else {
+            return nil
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date = formatter.date(from: firstLog.createdDateTime ?? "") {
+            let headerFormatter = DateFormatter()
+            headerFormatter.dateFormat = "dd MMM yyyy"
+            return headerFormatter.string(from: date)
+        }
+        return nil
     }
 }
 

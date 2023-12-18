@@ -68,7 +68,7 @@ class TwoWayListViewModel {
                 if response.statusCode == 200 {
                     self.delegate?.twoWayDetailDataRecived()
                 } else if (response.statusCode == 500) {
-                    self.delegate?.errorReceived(error: "We are facing issue while creating Appointment")
+                    self.delegate?.errorReceived(error: "We are facing issue while sending message")
                 } else {
                     self.delegate?.errorReceived(error: "response failed")
                 }

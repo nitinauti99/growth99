@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,19 +31,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFT-4Q-8Rx">
                                 <rect key="frame" x="30" y="0.0" width="287" height="123"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ich-JT-5FU">
-                                        <rect key="frame" x="15" y="15" width="257" height="93"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="HE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HEHE HE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ich-JT-5FU">
+                                        <rect key="frame" x="15" y="50.5" width="257" height="57.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDV-b7-QgE">
+                                        <rect key="frame" x="15" y="10" width="257" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiI-4m-mYV">
+                                        <rect key="frame" x="0.0" y="39.5" width="287" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="XvD-Vr-Qaa"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14901960784313725" green="0.33725490196078434" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GDV-b7-QgE" secondAttribute="trailing" constant="15" id="6D6-IN-agY"/>
                                     <constraint firstItem="Ich-JT-5FU" firstAttribute="leading" secondItem="GFT-4Q-8Rx" secondAttribute="leading" constant="15" id="GXv-tT-Eeq"/>
+                                    <constraint firstItem="GDV-b7-QgE" firstAttribute="leading" secondItem="GFT-4Q-8Rx" secondAttribute="leading" constant="15" id="ONz-cX-LRH"/>
                                     <constraint firstAttribute="bottom" secondItem="Ich-JT-5FU" secondAttribute="bottom" constant="15" id="R7c-TR-1uQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Ich-JT-5FU" secondAttribute="trailing" constant="15" id="T2i-RC-VS0"/>
-                                    <constraint firstItem="Ich-JT-5FU" firstAttribute="top" secondItem="GFT-4Q-8Rx" secondAttribute="top" constant="15" id="ofj-4M-dNI"/>
+                                    <constraint firstItem="GDV-b7-QgE" firstAttribute="top" secondItem="GFT-4Q-8Rx" secondAttribute="top" constant="10" id="bOO-Fq-l0t"/>
+                                    <constraint firstItem="qiI-4m-mYV" firstAttribute="leading" secondItem="GFT-4Q-8Rx" secondAttribute="leading" id="bzN-Vg-dvD"/>
+                                    <constraint firstItem="Ich-JT-5FU" firstAttribute="top" secondItem="qiI-4m-mYV" secondAttribute="bottom" constant="10" id="ceK-Js-kby"/>
+                                    <constraint firstItem="qiI-4m-mYV" firstAttribute="top" secondItem="GDV-b7-QgE" secondAttribute="bottom" constant="10" id="q56-Ar-cRx"/>
+                                    <constraint firstAttribute="trailing" secondItem="qiI-4m-mYV" secondAttribute="trailing" id="v2l-RO-gA5"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:7IC-aV-bre:image" translatesAutoresizingMaskIntoConstraints="NO" id="7IC-aV-bre">
@@ -65,6 +85,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="label" destination="Ich-JT-5FU" id="bUp-FF-ErK"/>
+                <outlet property="labelTitle" destination="GDV-b7-QgE" id="RuJ-CX-agi"/>
                 <outlet property="leftImageView" destination="yai-hd-l2Q" id="ggi-Jj-HtJ"/>
                 <outlet property="messageBubble" destination="GFT-4Q-8Rx" id="CYf-il-nZG"/>
                 <outlet property="rightImageView" destination="7IC-aV-bre" id="lNc-ZD-OeV"/>
@@ -3029,5 +3050,8 @@ AAFXTwABV1wAAVdhAAFXaQABV2wAAVdxAAFXeQAAAAAAAAQBAAAAAAAAAGgAAAAAAAAAAAAAAAAAAVd8
 A
 </mutableData>
         </image>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -37,11 +37,6 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         super.viewDidLoad()
         self.title = "Message Center"
         self.viewModel = TwoWayListViewModel(delegate: self)
-        segmentedControl.segmentStyle = .textOnly
-        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
-        segmentedControl.underlineHeight = 4
-        segmentedControl.underlineSelected = true
-        segmentedControl.fixedSegmentWidth = true
         tableViewCellRegister()
         self.view.ShowSpinner()
         viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "List")
@@ -85,8 +80,14 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     }
     
     func setupSegment() {
+        segmentedControl.segmentStyle = .textOnly
         segmentedControl.insertSegment(withTitle: "\(Constant.Profile.all) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == true}).count ?? 0))", at: 0)
         segmentedControl.insertSegment(withTitle: "\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", at: 1)
+        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
+        segmentedControl.underlineHeight = 4
+        segmentedControl.underlineSelected = true
+        segmentedControl.fixedSegmentWidth = false
+        segmentedControl.selectedSegmentIndex = selectedindex
     }
     
     func tableViewCellRegister() {
@@ -97,7 +98,6 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         guard let segment = notification.userInfo?["selectedIndex"] as? Int else { return }
         segmentedControl.selectedSegmentIndex = segment
     }
-    
     
     @objc private func selectionDidChange(sender: ScrollableSegmentedControl) {
         viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex

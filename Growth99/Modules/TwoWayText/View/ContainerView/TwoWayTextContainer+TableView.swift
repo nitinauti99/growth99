@@ -10,7 +10,6 @@ import UIKit
 
 extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -36,7 +35,6 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = TwoWayListTableViewCell()
         cell = twoWayListTableView.dequeueReusableCell(withIdentifier: "TwoWayListTableViewCell") as! TwoWayListTableViewCell
-        print("count isssss \(viewModel?.getTwoWayData.count ?? 0)")
         if(isSearch) {
             cell.headerLbl.text = viewModel?.getTwoWayFilterData[indexPath.row].leadFullName ?? ""
             cell.statusLbl.text = viewModel?.getTwoWayFilterData[indexPath.row].leadStatus ?? ""
@@ -59,9 +57,15 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let twoWayTextDetailVC = UIStoryboard(name: "TwoWayTextContainer", bundle: nil).instantiateViewController(withIdentifier: "TwoWayTextViewController") as! TwoWayTextViewController
-        twoWayTextDetailVC.sourceType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
-        twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayData[indexPath.row].sourceId ?? 0
-        twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayData[indexPath.row].sourcePhoneNumber ?? ""
+        if(isSearch) {
+            twoWayTextDetailVC.sourceType = viewModel?.getTwoWayFilterData[indexPath.row].source ?? ""
+            twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayFilterData[indexPath.row].sourceId ?? 0
+            twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayFilterData[indexPath.row].sourcePhoneNumber ?? ""
+        } else {
+            twoWayTextDetailVC.sourceType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
+            twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayData[indexPath.row].sourceId ?? 0
+            twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayData[indexPath.row].sourcePhoneNumber ?? ""
+        }
         twoWayTextDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(twoWayTextDetailVC, animated: true)
     }
@@ -69,7 +73,6 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
     func formattedDate(from dateString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-        
         guard let date = dateFormatter.date(from: dateString) else {
             return "Invalid Date"
         }
