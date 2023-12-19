@@ -94,7 +94,17 @@
     },
     {
       "title": "Two Way Text",
-      "imageName": "fa-weixin"
+      "imageName": "fa-weixin",
+      "subMenuList": [
+        {
+          "title": "Configuration",
+          "imageName": "fa-weixin"
+        },
+        {
+          "title": "Message Center",
+          "imageName": "fa-weixin"
+        }
+      ]
     },
     {
       "title": "Templates",

@@ -24,6 +24,11 @@
 		010EECAC29B7335000351358 /* CreateQuestionViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECAB29B7335000351358 /* CreateQuestionViewContoller.swift */; };
 		010EECAE29B7339200351358 /* CreateQuestionViewContoller.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010EECAD29B7339200351358 /* CreateQuestionViewContoller.storyboard */; };
 		010EECB029B733B000351358 /* CreateQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EECAF29B733B000351358 /* CreateQuestionViewModel.swift */; };
+		011255012B3181360014BF29 /* TwoWayTextConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011254FF2B3181360014BF29 /* TwoWayTextConfigurationViewController.storyboard */; };
+		011255022B3181360014BF29 /* TwoWayTextConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255002B3181360014BF29 /* TwoWayTextConfigurationViewController.swift */; };
+		011255042B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255032B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift */; };
+		011255062B3195720014BF29 /* ConfigurationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255052B3195720014BF29 /* ConfigurationDataModel.swift */; };
+		011255082B31B5FC0014BF29 /* TwoWaySMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255072B31B5FC0014BF29 /* TwoWaySMSModel.swift */; };
 		01152DFA29B31C0300B24627 /* PateintsTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */; };
 		01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */; };
 		01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */; };
@@ -1014,6 +1019,11 @@
 		010EECAB29B7335000351358 /* CreateQuestionViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewContoller.swift; sourceTree = "<group>"; };
 		010EECAD29B7339200351358 /* CreateQuestionViewContoller.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateQuestionViewContoller.storyboard; sourceTree = "<group>"; };
 		010EECAF29B733B000351358 /* CreateQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewModel.swift; sourceTree = "<group>"; };
+		011254FF2B3181360014BF29 /* TwoWayTextConfigurationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TwoWayTextConfigurationViewController.storyboard; sourceTree = "<group>"; };
+		011255002B3181360014BF29 /* TwoWayTextConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayTextConfigurationViewController.swift; sourceTree = "<group>"; };
+		011255032B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextConfigurationViewModel.swift; sourceTree = "<group>"; };
+		011255052B3195720014BF29 /* ConfigurationDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationDataModel.swift; sourceTree = "<group>"; };
+		011255072B31B5FC0014BF29 /* TwoWaySMSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWaySMSModel.swift; sourceTree = "<group>"; };
 		01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewController.swift; sourceTree = "<group>"; };
 		01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTimeLineViewController.storyboard; sourceTree = "<group>"; };
 		01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewModel.swift; sourceTree = "<group>"; };
@@ -2107,6 +2117,15 @@
 				010EECAF29B733B000351358 /* CreateQuestionViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		011254FE2B31810D0014BF29 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				011255002B3181360014BF29 /* TwoWayTextConfigurationViewController.swift */,
+				011254FF2B3181360014BF29 /* TwoWayTextConfigurationViewController.storyboard */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		01152DF529B31BB700B24627 /* TimeLine */ = {
@@ -4209,6 +4228,7 @@
 		25C0D4FB2B1E1982007F2024 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				011255032B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift */,
 				251C0C3D2B20E41D00CF4768 /* TwoWayViewModel.swift */,
 				2596B6EB2B2F61D9006466AE /* TwoWayTemplateViewModel.swift */,
 			);
@@ -4219,6 +4239,8 @@
 			isa = PBXGroup;
 			children = (
 				251C0C3F2B20E51000CF4768 /* TwoWayModel.swift */,
+				011255052B3195720014BF29 /* ConfigurationDataModel.swift */,
+				011255072B31B5FC0014BF29 /* TwoWaySMSModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4226,6 +4248,7 @@
 		25C0D4FD2B1E1982007F2024 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				011254FE2B31810D0014BF29 /* Configuration */,
 				25C0D5042B1E1E56007F2024 /* ContainerView */,
 				25C0D4FE2B1E1982007F2024 /* ListScreen */,
 			);
@@ -7595,6 +7618,7 @@
 				013A4FC629B4E39B00CA24B0 /* LeadMultipleSelectionQuestionChoiceTableViewCell.xib in Resources */,
 				013A4FC429B4E39B00CA24B0 /* LeadMultipleSelectionTextTypeTableViewCell.xib in Resources */,
 				D0CE69652A3F7A6300D7C188 /* MassEmailandSMSEditDetailViewController.storyboard in Resources */,
+				011255012B3181360014BF29 /* TwoWayTextConfigurationViewController.storyboard in Resources */,
 				39F2FF162996B2F40089BD4F /* AppointmentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7733,6 +7757,7 @@
 				84F61136292A71AB00B1FB69 /* HTTPHeader.swift in Sources */,
 				84F610C5292A71AA00B1FB69 /* Mutexes.swift in Sources */,
 				84D063072967080E001FE469 /* LeadCustomSMSTemplateTableViewCell.swift in Sources */,
+				011255062B3195720014BF29 /* ConfigurationDataModel.swift in Sources */,
 				84D062F12967080E001FE469 /* EditLeadViewController.swift in Sources */,
 				84F610F3292A71AB00B1FB69 /* Invalidation.swift in Sources */,
 				84D0624329670677001FE469 /* HomeViewModel.swift in Sources */,
@@ -7836,6 +7861,7 @@
 				845C39E7292276B000D934C5 /* CustomNavaigationContoller.swift in Sources */,
 				18491DB629B80CE000FE72EF /* MassEmailandSMSDefaultTableViewCell.swift in Sources */,
 				01EBAC5A29B58B0D00110DCB /* DeletedLeadListViewModel.swift in Sources */,
+				011255022B3181360014BF29 /* TwoWayTextConfigurationViewController.swift in Sources */,
 				01C7488A29B21EA90085CED2 /* ConsentsListViewController+TableView.swift in Sources */,
 				01152E3629B3C60C00B24627 /* LeadHistoryModel.swift in Sources */,
 				25C46A892A460FAF004129E7 /* AuditListViewController+TableView.swift in Sources */,
@@ -7890,6 +7916,7 @@
 				842C0CB2298F713B00395061 /* PatientsAppointmentListModel.swift in Sources */,
 				398F90FA298ECB8700DB96E4 /* IQKeyboardManager+Toolbar.swift in Sources */,
 				398F90EF298ECB8700DB96E4 /* IQToolbar.swift in Sources */,
+				011255082B31B5FC0014BF29 /* TwoWaySMSModel.swift in Sources */,
 				01A1303029AE54F80098DBF8 /* PateintEditViewController+UITextField.swift in Sources */,
 				189E3ECF29C3912900B94190 /* SocialProfilesViewModel.swift in Sources */,
 				DA64B92029DB346100289E32 /* TriggerEditSMSCreateTableViewCell.swift in Sources */,
@@ -8012,6 +8039,7 @@
 				84EFC27F292553E3003B3C06 /* BaseTabbarViewController.swift in Sources */,
 				84F610E0292A71AB00B1FB69 /* Optional.swift in Sources */,
 				39F2FF232996B8630089BD4F /* AppointmentListDetailViewModel.swift in Sources */,
+				011255042B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift in Sources */,
 				DA0C735A29E5CB46007D0076 /* AppointmentListDetailViewController+TextField.swift in Sources */,
 				84F610DB292A71AB00B1FB69 /* CollectionExtension.swift in Sources */,
 				39026F90299BD9CF00DA512F /* ClinicsDetailListViewModel.swift in Sources */,

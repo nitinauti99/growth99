@@ -156,8 +156,6 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
         } else if(title == Constant.Profile.announcements) {
             pushViewControllerFromDrawerMenu(identifier: "AnnouncementsViewController", pusedViewController: "AnnouncementsViewController")
-        } else if(title == Constant.Profile.twoWayText) {
-            pushViewControllerFromDrawerMenu(identifier: "TwoWayTextContainer", pusedViewController: "TwoWayTextContainer")
         }
     }
 }
@@ -277,6 +275,16 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 7 {
             switch indexPath.row {
             case 0:
+                pushViewControllerFromDrawerMenu(identifier: "TwoWayTextConfigurationViewController", pusedViewController: "TwoWayTextConfigurationViewController")
+            case 1:
+                pushViewControllerFromDrawerMenu(identifier: "TwoWayTextContainer", pusedViewController: "TwoWayTextContainer")
+            default:
+                break
+            }
+            
+        } else if indexPath.section == 8 {
+            switch indexPath.row {
+            case 0:
                 pushViewControllerFromDrawerMenu(identifier: "EmailTemplateViewController", pusedViewController: "EmailTemplateViewController")
             case 1:
                 pushViewControllerFromDrawerMenu(identifier: "SMSTemplateViewController", pusedViewController: "SMSTemplateViewController")
@@ -288,7 +296,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        }else if(indexPath.section == 8) {
+        }else if(indexPath.section == 9) {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "BaseTabbar", pusedViewController: "leadListViewController")
@@ -323,7 +331,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        } else if indexPath.section == 11 {
+        } else if indexPath.section == 12 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "ChatbotContainerView", pusedViewController: "ChatbotContainerView")

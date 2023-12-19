@@ -171,6 +171,7 @@ struct Constant {
         static let createUser = "Create User"
         static let triggers = "Triggers"
         static let twoWayText = "Two Way Text"
+        static let configuration = "Configuration"
         static let formBuilder = "Form Builder"
         static let leadTriggers = "Lead Triggers"
         static let triggersList = "Triggers List"
