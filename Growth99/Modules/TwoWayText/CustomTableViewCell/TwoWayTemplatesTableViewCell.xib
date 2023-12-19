@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TwoWayTemplatesTableViewCell" rowHeight="178" id="aqG-XN-1ii" customClass="TwoWayTemplatesTableViewCell" customModule="Growth99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="178"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aqG-XN-1ii" id="fZf-bc-kaf">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="178"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLf-tQ-Xcs">
+                        <rect key="frame" x="5" y="5" width="345" height="168"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSc-Rw-p8X">
+                                <rect key="frame" x="10" y="10" width="325" height="148"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have a moment to review us? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xh-0c-Rep">
+                                        <rect key="frame" x="5" y="5" width="315" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3l-5w-4WZ">
+                                        <rect key="frame" x="5" y="33" width="315" height="57.5"/>
+                                        <string key="text">Hi test, Thanks for choosing kulDeeps Healthcare...! Share your experience at https://reviews.growth99.com/clinicReviews/?id=MjE5Nw==. Your support means a lot. Your support means a lot.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="T3l-5w-4WZ" firstAttribute="leading" secondItem="2Xh-0c-Rep" secondAttribute="leading" id="4XR-2R-Cju"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T3l-5w-4WZ" secondAttribute="bottom" constant="10" id="4tc-06-6OD"/>
+                                    <constraint firstItem="T3l-5w-4WZ" firstAttribute="top" secondItem="2Xh-0c-Rep" secondAttribute="bottom" constant="10" id="LgV-5h-11q"/>
+                                    <constraint firstItem="2Xh-0c-Rep" firstAttribute="top" secondItem="fSc-Rw-p8X" secondAttribute="top" constant="5" id="SyM-In-h8o"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" constant="5" id="WSm-gF-QHU"/>
+                                    <constraint firstItem="2Xh-0c-Rep" firstAttribute="leading" secondItem="fSc-Rw-p8X" secondAttribute="leading" constant="5" id="gg3-O9-iFb"/>
+                                    <constraint firstItem="T3l-5w-4WZ" firstAttribute="trailing" secondItem="2Xh-0c-Rep" secondAttribute="trailing" id="lzL-FW-taW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fSc-Rw-p8X" secondAttribute="bottom" constant="10" id="HlB-Pj-vGv"/>
+                            <constraint firstItem="fSc-Rw-p8X" firstAttribute="top" secondItem="jLf-tQ-Xcs" secondAttribute="top" constant="10" id="fFN-ai-26l"/>
+                            <constraint firstAttribute="trailing" secondItem="fSc-Rw-p8X" secondAttribute="trailing" constant="10" id="oJG-KP-hpT"/>
+                            <constraint firstItem="fSc-Rw-p8X" firstAttribute="leading" secondItem="jLf-tQ-Xcs" secondAttribute="leading" constant="10" id="quH-Nc-11p"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jLf-tQ-Xcs" secondAttribute="bottom" constant="5" id="Cgv-Id-4ve"/>
+                    <constraint firstItem="jLf-tQ-Xcs" firstAttribute="leading" secondItem="fZf-bc-kaf" secondAttribute="leading" constant="5" id="QWe-qP-lvh"/>
+                    <constraint firstItem="jLf-tQ-Xcs" firstAttribute="top" secondItem="fZf-bc-kaf" secondAttribute="top" constant="5" id="Uky-EG-uTk"/>
+                    <constraint firstAttribute="trailing" secondItem="jLf-tQ-Xcs" secondAttribute="trailing" constant="5" id="j5H-S6-rOH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="bodyLbl" destination="T3l-5w-4WZ" id="Pgq-sy-1su"/>
+                <outlet property="nameLbl" destination="2Xh-0c-Rep" id="3cS-Rd-6Ob"/>
+            </connections>
+            <point key="canvasLocation" x="-1400.7246376811595" y="57.589285714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

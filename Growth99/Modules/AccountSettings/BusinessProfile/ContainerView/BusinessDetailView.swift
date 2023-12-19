@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class BusinessDetailView: UIViewController {
-//    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
@@ -67,8 +66,6 @@ class BusinessDetailView: UIViewController {
         segmentedControl.insertSegment(withTitle: Constant.Profile.trackingCode, at: 3)
         segmentedControl.insertSegment(withTitle: Constant.Profile.dataStudio, at: 4)
         segmentedControl.insertSegment(withTitle: Constant.Profile.paidMedia, at: 5)
-//        segmentedControl.insertSegment(withTitle: Constant.Profile.syndicationReport, at: 7)
-//        segmentedControl.insertSegment(withTitle: Constant.Profile.emailSMSAudit, at: 8)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -164,7 +161,6 @@ class BusinessDetailView: UIViewController {
       }
     
     private lazy var businessProfileVC: BusinessProfileViewController = {
-        // Load Storyboard
         guard let detailController = storyboard?.instantiateViewController(withIdentifier: "BusinessProfileViewController") as? BusinessProfileViewController else {
                fatalError("Unable to Instantiate Summary View Controller")
            }

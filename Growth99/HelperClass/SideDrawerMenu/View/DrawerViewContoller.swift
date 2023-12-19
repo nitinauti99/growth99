@@ -156,6 +156,8 @@ class DrawerViewContoller: UIViewController, SubMenuTableViewCellDelegate, Drawe
             pushViewControllerFromDrawerMenu(identifier: "FormListViewController", pusedViewController: "FormListViewController")
         } else if(title == Constant.Profile.announcements) {
             pushViewControllerFromDrawerMenu(identifier: "AnnouncementsViewController", pusedViewController: "AnnouncementsViewController")
+        } else if(title == Constant.Profile.twoWayText) {
+            pushViewControllerFromDrawerMenu(identifier: "TwoWayTextContainer", pusedViewController: "TwoWayTextContainer")
         }
     }
 }
@@ -299,14 +301,14 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
             default:
                 break
             }
-        } else if indexPath.section == 9 {
+        } else if indexPath.section == 10 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "MassEmailandSMSViewController", pusedViewController: "MassEmailandSMSViewController")
             default:
                 break
             }
-        } else if indexPath.section == 10 {
+        } else if indexPath.section == 11 {
             switch indexPath.row {
             case 0:
                 pushViewControllerFromDrawerMenu(identifier: "SocialProfilesListViewController", pusedViewController: "SocialProfilesListViewController")
