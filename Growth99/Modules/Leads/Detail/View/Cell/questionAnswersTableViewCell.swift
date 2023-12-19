@@ -45,10 +45,12 @@ class questionAnswersTableViewCell: UITableViewCell {
         }
         
         if patientQuestionList?.questionType == "Yes_No" {
-            if  patientQuestionList?.answerText == "false" {
+            if patientQuestionList?.answerText == "false" {
                 self.ansLbi.text = "No"
-            }else{
+            }else if (patientQuestionList?.answerText == "true") {
                 self.ansLbi.text = "Yes"
+            }else{
+                self.ansLbi.text = "-"
             }
         }
         

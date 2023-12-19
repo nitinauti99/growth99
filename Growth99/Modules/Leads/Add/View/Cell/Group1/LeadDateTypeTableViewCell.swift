@@ -40,8 +40,8 @@ class LeadDateTypeTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        let todaysDate = Date()
-        datePicker.minimumDate = todaysDate
+//        let todaysDate = Date()
+//        datePicker.minimumDate = todaysDate
         textField.resignFirstResponder()
         datePicker.reloadInputViews()
         return dateFormatter.string(from: datePicker.date)

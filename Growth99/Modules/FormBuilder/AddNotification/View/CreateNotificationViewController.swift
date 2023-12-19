@@ -26,6 +26,8 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
     var questionId = Int()
     var notificationId = Int()
     var screenName: String = ""
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CreateNotificationViewModel(delegate: self)
@@ -35,15 +37,15 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
             self.title = "Edit Notification"
             self.view.ShowSpinner()
             self.viewModel?.getCreateCreateNotification(questionId: questionId, notificationId: notificationId)
+        }else{
+            notificationTypeLBI.isHidden = true
+            selectedNotificationTypeTextField.isHidden = true
         }
         self.selectedNotificationTypeTextField.addTarget(self, action:
                                                 #selector(self.textFieldDidChange(_:)),
                                                          for: .editingChanged)
-        setUpNavigationBar()
     }
     
-    func setUpNavigationBar() {
-    }
     
     @IBAction func notificationTypeDropDown(sender: UIButton) {
         let notificationArray = ["EMAIL", "SMS"]
@@ -52,6 +54,8 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
         }
         selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectedNotificationTypeTextField.text = ""
+            self?.notificationTypeLBI.isHidden = false
+            self?.selectedNotificationTypeTextField.isHidden = false
             if selectedItem == "EMAIL" {
                 self?.notificationTypeLBI.text = "To"
             }else{
@@ -109,6 +113,11 @@ class CreateNotificationViewController: UIViewController, CreateNotificationView
                 return
             }
 
+            guard let phoneNumber  = selectedNotificationTypeTextField.text, let phoneNumberValidate = viewModel?.isValidPhoneNumber(phoneNumber), phoneNumberValidate else {
+                selectedNotificationTypeTextField.showError(message: Constant.ErrorMessage.phoneNumberInvalidError)
+                return
+            }
+            
             let characterCount = phoneNumber.count
             if characterCount < 10 {
                 selectedNotificationTypeTextField.showError(message: "Phone Number should contain 10 digits")

@@ -120,7 +120,7 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
             case ("Yes_No", false):
                 guard let yesNoTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadYesNoTypeTableViewCell else { return }
                 
-                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, answerText: yesNoTypeCell.yesTypeButton.isSelected )
+                self.setPatientQuestionListForBool(patientQuestionAnswersList: item, yesNoTypeCell: yesNoTypeCell )
                 
             case ("Date", false):
                 guard let dateTypeCell = tableView.cellForRow(at: cellIndexPath) as? LeadDateTypeTableViewCell else { return }
@@ -208,21 +208,55 @@ extension CreateLeadViewController: BottomTableViewCellProtocol {
     }
     
     /// Set Dat For InputTaype answerText as Bool
-    func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, answerText: Bool){
-        let patientQuestion: [String : Any] = [
-            "questionId": patientQuestionAnswersList.questionId ?? 0,
-            "questionName": patientQuestionAnswersList.questionName ?? String.blank,
-            "questionType": patientQuestionAnswersList.questionType ?? String.blank,
-            "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
-            "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
-            "answer": answerText,
-            "answerText": answerText,
-            "answerComments": "",
-            "patientQuestionChoices": [],
-            "required": patientQuestionAnswersList.required ?? String.blank,
-            "hidden": patientQuestionAnswersList.hidden ?? false,
-            "showDropDown": patientQuestionAnswersList.showDropDown ?? false
-        ]
+    func setPatientQuestionListForBool(patientQuestionAnswersList : PatientQuestionAnswersList, yesNoTypeCell: LeadYesNoTypeTableViewCell){
+        var patientQuestion: [String : Any] = [:]
+      
+        if yesNoTypeCell.yesTypeButton.isSelected {
+             patientQuestion = [
+                "questionId": patientQuestionAnswersList.questionId ?? 0,
+                "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+                "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+                "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+                "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+                "answer": yesNoTypeCell.yesTypeButton.isSelected,
+                "answerText": yesNoTypeCell.yesTypeButton.isSelected,
+                "answerComments": "",
+                "patientQuestionChoices": [],
+                "required": patientQuestionAnswersList.required ?? String.blank,
+                "hidden": patientQuestionAnswersList.hidden ?? false,
+                "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+            ]
+        }else if (yesNoTypeCell.NoTypeButton.isSelected) {
+             patientQuestion = [
+                "questionId": patientQuestionAnswersList.questionId ?? 0,
+                "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+                "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+                "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+                "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+                "answer": yesNoTypeCell.NoTypeButton.isSelected,
+                "answerText": yesNoTypeCell.NoTypeButton.isSelected,
+                "answerComments": "",
+                "patientQuestionChoices": [],
+                "required": patientQuestionAnswersList.required ?? String.blank,
+                "hidden": patientQuestionAnswersList.hidden ?? false,
+                "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+            ]
+        }else{
+             patientQuestion = [
+                "questionId": patientQuestionAnswersList.questionId ?? 0,
+                "questionName": patientQuestionAnswersList.questionName ?? String.blank,
+                "questionType": patientQuestionAnswersList.questionType ?? String.blank,
+                "allowMultipleSelection": patientQuestionAnswersList.allowMultipleSelection ?? String.blank,
+                "preSelectCheckbox": patientQuestionAnswersList.preSelectCheckbox ?? String.blank,
+                "answer": "-",
+                "answerText": "-",
+                "answerComments": "",
+                "patientQuestionChoices": [],
+                "required": patientQuestionAnswersList.required ?? String.blank,
+                "hidden": patientQuestionAnswersList.hidden ?? false,
+                "showDropDown": patientQuestionAnswersList.showDropDown ?? false
+            ]
+        }
         patientQuestionAnswers.append(patientQuestion)
     }
     
