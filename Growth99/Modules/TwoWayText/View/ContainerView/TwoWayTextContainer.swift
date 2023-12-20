@@ -16,10 +16,6 @@ protocol TwoWayListViewContollerProtocol: AnyObject {
 }
 
 class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
-    func twoWayDetailDataRecived() {
-        
-    }
-    
     @IBOutlet var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var twoWayListTableView: UITableView!
@@ -57,9 +53,9 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         searchBar.delegate = self
     }
     
-    func twoWayDetailListDataRecived() {
-        
-    }
+    func twoWayDetailListDataRecived() {}
+    
+    func twoWayDetailDataRecived() {}
     
     func twoWayListDataRecived() {
         self.view.HideSpinner()

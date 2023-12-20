@@ -94,15 +94,15 @@
     },
     {
       "title": "Two Way Text",
-      "imageName": "fa-weixin",
+      "imageName": "fa-comments",
       "subMenuList": [
         {
           "title": "Configuration",
-          "imageName": "fa-weixin"
+          "imageName": "fa-confluence"
         },
         {
           "title": "Message Center",
-          "imageName": "fa-weixin"
+          "imageName": "fa-inbox"
         }
       ]
     },

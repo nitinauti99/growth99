@@ -9,10 +9,7 @@ import UIKit
 
 
 class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtocol {
-    func twoWayListDataRecived() {
-        
-    }
-    
+   
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -65,6 +62,10 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         messageTextfield.text = ""
         self.view.ShowSpinner()
         viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
+    }
+    
+    func twoWayListDataRecived() {
+        
     }
     
     func errorReceived(error: String) {
