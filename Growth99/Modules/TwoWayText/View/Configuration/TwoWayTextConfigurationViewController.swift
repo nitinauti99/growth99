@@ -20,7 +20,7 @@ class TwoWayTextConfigurationViewController: UIViewController {
     @IBOutlet weak var twilioNumber: UILabel!
     @IBOutlet weak var topview: UIView!
     @IBOutlet weak var bottomView: UIView!
-
+    
     
     var viewModel: TwoWayTextConfigurationViewModelProtocol?
     
@@ -80,7 +80,7 @@ class TwoWayTextConfigurationViewController: UIViewController {
 }
 
 extension TwoWayTextConfigurationViewController : TwoWayTextConfigurationViewControllerProtocol {
-   
+    
     func twoWayConfigurationDataRecived(){
         self.view.HideSpinner()
         self.dataRecived()

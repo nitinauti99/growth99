@@ -60,7 +60,7 @@ class TwoWayTemplatesViewController: UIViewController, UITableViewDelegate, UITa
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
-    }
+    } 
     
     func twoWayTemplateListDataRecived() {
         self.view.HideSpinner()

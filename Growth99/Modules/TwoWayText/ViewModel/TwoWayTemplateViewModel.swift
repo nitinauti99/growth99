@@ -48,7 +48,7 @@ class TwoWayTemplateListViewModel {
 }
 
 extension TwoWayTemplateListViewModel: TwoWayTemplateViewModelProtocol {
-
+    
     func getTwoWayTemplateFilterData(searchText: String) {
         self.twoWayTemplateFilterData = self.getTwoWayTemplateData.filter { (task: TwoWayTemplateListModel) -> Bool in
             let searchText = searchText.lowercased()

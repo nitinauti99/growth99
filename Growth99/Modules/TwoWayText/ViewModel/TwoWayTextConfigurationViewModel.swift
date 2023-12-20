@@ -12,7 +12,7 @@ protocol TwoWayTextConfigurationViewModelProtocol {
     var getConfigurationData: ConfigurationDataModel { get }
     func getTwoWayConfigurationforSMandEmail(configurationKey: String, status: Bool)
     func getTwoWayConfiguration(status: Bool)
-
+    
 }
 
 class TwoWayTextConfigurationViewModel {
@@ -78,7 +78,7 @@ class TwoWayTextConfigurationViewModel {
 }
 
 extension TwoWayTextConfigurationViewModel: TwoWayTextConfigurationViewModelProtocol {
-
+    
     var getConfigurationData: ConfigurationDataModel {
         return self.configurationData!
     }

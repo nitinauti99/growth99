@@ -9,7 +9,7 @@ import UIKit
 
 
 class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtocol {
-   
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -119,7 +119,7 @@ extension TwoWayTextViewController: UITableViewDataSource {
         guard let filteredArray = filteredArray else {
             return 0
         }
-
+        
         let groupedSections = Dictionary(grouping: filteredArray) { (element) -> String in
             if let logs = element.auditLogs, let firstLog = logs.first, let createdDateTime = firstLog.createdDateTime {
                 return createdDateTime
@@ -130,7 +130,7 @@ extension TwoWayTextViewController: UITableViewDataSource {
         let sortedKeys = groupedSections.keys.sorted()
         return sortedKeys.count
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredArray?[section].auditLogs?.count ?? 0
@@ -176,7 +176,12 @@ extension TwoWayTextViewController: UITextFieldDelegate {
 extension TwoWayTextViewController {
     func scrollToBottom() {
         DispatchQueue.main.async {
-            let indexPath = IndexPath(row: (self.twoWayListData?.count ?? 0) - 1, section: 0)
+            let section = self.filteredArray?.count ?? 0
+            let row = (self.filteredArray?[section - 1].auditLogs?.count ?? 0) - 1
+            guard section > 0, row >= 0 else {
+                return
+            }
+            let indexPath = IndexPath(row: row, section: section - 1)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
