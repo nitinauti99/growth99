@@ -63,7 +63,7 @@ class TwoWayTextConfigurationViewModel {
     
     func getTwoWayConfiguration(status: Bool){
         let parameter: [String : Any] = ["enableTwoWaySMS": status ]
-        let url = "\(ApiUrl.TwoWayConfigurationForSMSandEmail)\(UserRepository.shared.Xtenantid ?? String.blank)/\("notification/sms-forwarding")"
+        let url = "\(ApiUrl.TwoWayConfigurationForEnableTwoWaySMS)\(UserRepository.shared.Xtenantid ?? String.blank)/\("notification/sms-forwarding")"
         self.requestManager.request(forPath: url, method: .PUT, headers: self.requestManager.Headers(),task: .requestParameters(parameters: parameter, encoding: .jsonEncoding)) {  (result: Result< ConfigurationDataModel, GrowthNetworkError>) in
             switch result {
             case .success(let twoWayTemplateListData):

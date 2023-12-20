@@ -191,7 +191,10 @@ struct EndPoints {
     static let smsTwoWay = "/api/v1"
     static let smsTemplate = "/api/smstemplates/by-templateFor/"
     static let TwoWayConfigurationData = "/api/v1/businesses/"
-    static let TwoWayConfigurationForSMSandEmail = "/api/businesses/"
+    static let TwoWayConfigurationForSMSandEmail = "/api/business/"
+    static let TwoWayConfigurationForEnableTwoWaySMS = "/api/businesses/"
+
+    
 
 }
 
@@ -379,6 +382,6 @@ struct ApiUrl {
     static let smsTemplate = EndPoints.baseURL.appending(EndPoints.smsTemplate)
     static let TwoWayConfigurationData = EndPoints.baseURL.appending(EndPoints.TwoWayConfigurationData)
     static let TwoWayConfigurationForSMSandEmail = EndPoints.baseURL.appending(EndPoints.TwoWayConfigurationForSMSandEmail)
+    static let TwoWayConfigurationForEnableTwoWaySMS = EndPoints.baseURL.appending(EndPoints.TwoWayConfigurationForEnableTwoWaySMS)
 
 }
-

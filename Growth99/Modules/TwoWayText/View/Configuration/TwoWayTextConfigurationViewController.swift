@@ -17,7 +17,11 @@ class TwoWayTextConfigurationViewController: UIViewController {
     @IBOutlet weak var enableTwoWaysmsSWitch: UISwitch!
     @IBOutlet weak var smsAutoReplySWitch: UISwitch!
     @IBOutlet weak var emailNotificationForSmsSWitch: UISwitch!
+    @IBOutlet weak var twilioNumber: UILabel!
+    @IBOutlet weak var topview: UIView!
+    @IBOutlet weak var bottomView: UIView!
 
+    
     var viewModel: TwoWayTextConfigurationViewModelProtocol?
     
     override func viewDidLoad() {
@@ -37,9 +41,12 @@ class TwoWayTextConfigurationViewController: UIViewController {
     }
     
     func dataRecived(){
-        enableTwoWaysmsSWitch.isOn = self.viewModel?.getConfigurationData.enableTwoWaySMS ?? false
-        smsAutoReplySWitch.isOn = self.viewModel?.getConfigurationData.enableSmsAutoReply ?? false
-        emailNotificationForSmsSWitch.isOn = self.viewModel?.getConfigurationData.enableEmailNotificationForMessages ?? false
+        self.enableTwoWaysmsSWitch.isOn = self.viewModel?.getConfigurationData.enableTwoWaySMS ?? false
+        self.smsAutoReplySWitch.isOn = self.viewModel?.getConfigurationData.enableSmsAutoReply ?? false
+        self.emailNotificationForSmsSWitch.isOn = self.viewModel?.getConfigurationData.enableEmailNotificationForMessages ?? false
+        self.twilioNumber.text = "Two way Text Configuration (\( self.viewModel?.getConfigurationData.twilioNumber ?? ""))"
+        self.topview.roundCornersView(corners: [.topLeft, .topRight], radius: 10)
+        self.bottomView.roundCornersView(corners: [.bottomLeft, .bottomRight], radius: 10)
     }
     
     @IBAction func contactSupport(){
@@ -58,6 +65,16 @@ class TwoWayTextConfigurationViewController: UIViewController {
     @IBAction func enableTwoWaySMSAction(){
         self.view.ShowSpinner()
         viewModel?.getTwoWayConfiguration(status: enableTwoWaysmsSWitch.isOn)
+    }
+    
+    @IBAction func smsAutoReplySWitchAction(){
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayConfigurationforSMandEmail(configurationKey: "smsAutoReply", status: smsAutoReplySWitch.isOn)
+    }
+    
+    @IBAction func emailNotificationForsmsAction(){
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayConfigurationforSMandEmail(configurationKey: "emailNotificationForSms", status: emailNotificationForSmsSWitch.isOn)
     }
     
 }
