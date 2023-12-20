@@ -176,13 +176,24 @@ extension TwoWayTextViewController: UITextFieldDelegate {
 extension TwoWayTextViewController {
     func scrollToBottom() {
         DispatchQueue.main.async {
-            let section = self.filteredArray?.count ?? 0
-            let row = (self.filteredArray?[section - 1].auditLogs?.count ?? 0) - 1
-            guard section > 0, row >= 0 else {
+            guard let sections = self.filteredArray?.count, sections > 0 else {
                 return
             }
-            let indexPath = IndexPath(row: row, section: section - 1)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            
+            let section = sections - 1
+            let rows = self.filteredArray?[section].auditLogs?.count ?? 0
+            
+            guard rows > 0 else {
+                return
+            }
+            
+            let row = rows - 1
+            let indexPath = IndexPath(row: row, section: section)
+            
+            if section < self.tableView.numberOfSections && row < self.tableView.numberOfRows(inSection: section) {
+                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
         }
     }
 }
+
