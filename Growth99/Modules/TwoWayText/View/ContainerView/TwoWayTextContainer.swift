@@ -21,7 +21,6 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     @IBOutlet weak var twoWayListTableView: UITableView!
     
     var bussinessInfoData: BusinessSubDomainModel?
-    
     var workflowTaskPatientId = Int()
     var selectedindex = 0
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
@@ -83,6 +82,7 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         segmentedControl.underlineHeight = 4
         segmentedControl.underlineSelected = true
         segmentedControl.fixedSegmentWidth = false
+        viewModel?.selectedSegmentName = "Open"
         segmentedControl.selectedSegmentIndex = selectedindex
     }
     
@@ -97,11 +97,13 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     @objc private func selectionDidChange(sender: ScrollableSegmentedControl) {
         viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
+        viewModel?.selectedSegmentName = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? ""
         clearSearchBar()
     }
     
     @IBAction func twoWaySegmentSelection(_ sender: UISegmentedControl) {
         viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
+        viewModel?.selectedSegmentName = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? ""
         clearSearchBar()
     }
 }

@@ -48,11 +48,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     
     func twoWayDetailListDataRecived() {
         self.view.HideSpinner()
-        twoWayListData = viewModel?.getTwoWayData
-            .filter { $0.sourceId == sourceTypeId }
-            .flatMap { $0.auditLogs ?? [] }
-        filteredArray = viewModel?.getTwoWayData
-            .filter { $0.sourceId == sourceTypeId }
+        twoWayListData = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }.flatMap { $0.auditLogs ?? [] }
+        filteredArray = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -99,12 +96,9 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
             self?.sendButton.alpha = 1.0
         }
         twoWayTemplateVC.modalPresentationStyle = .overFullScreen
-        twoWayTemplateVC.sourceTypeTemplate = "Lead"
+        twoWayTemplateVC.sourceTypeTemplate = sourceType
         twoWayTemplateVC.soureFromTemplate = "lead"
-        twoWayTemplateVC.sourceIdTemplate = 379895
-        //        twoWayTemplateVC.sourceTypeTemplate = filteredArray?.first?.source ?? ""
-        //        twoWayTemplateVC.soureFromTemplate = twoWayListData?.first?.sourceType ?? ""
-        //        twoWayTemplateVC.sourceIdTemplate = filteredArray?.first?.sourceId ?? 0
+        twoWayTemplateVC.sourceIdTemplate = sourceTypeId
         self.present(twoWayTemplateVC, animated: true)
     }
     
@@ -179,17 +173,13 @@ extension TwoWayTextViewController {
             guard let sections = self.filteredArray?.count, sections > 0 else {
                 return
             }
-            
             let section = sections - 1
             let rows = self.filteredArray?[section].auditLogs?.count ?? 0
-            
             guard rows > 0 else {
                 return
             }
-            
             let row = rows - 1
             let indexPath = IndexPath(row: row, section: section)
-            
             if section < self.tableView.numberOfSections && row < self.tableView.numberOfRows(inSection: section) {
                 self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
