@@ -97,7 +97,6 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     @objc private func selectionDidChange(sender: ScrollableSegmentedControl) {
         viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
-        viewModel?.selectedSegmentName = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? ""
         clearSearchBar()
     }
     
