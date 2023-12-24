@@ -22,6 +22,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     var sourceTypeId : Int = 0
     var viewModel: TwoWayListViewModelProtocol?
     let user = UserRepository.shared
+    var dateFormater : DateFormaterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         sendButton.isEnabled = false
         sendButton.alpha = 0.5
         messageTextfield.textColor = .black
+        dateFormater = DateFormater()
         tableView.register(UINib(nibName: Constant.K.cellNibName, bundle: nil), forCellReuseIdentifier: Constant.K.cellIdentifier)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -131,9 +133,29 @@ extension TwoWayTextViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = filteredArray?[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
-        cell.label.text = filteredArray?[indexPath.section].auditLogs?[indexPath.row].message ?? ""
-        cell.labelTitle.text = user.bussinessName
+        if message?.auditLogs?[indexPath.row].direction == "outgoing" {
+            cell.label.text = message?.auditLogs?[indexPath.row].message ?? ""
+            cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message?.auditLogs?[indexPath.row].senderNumber ?? ""))"
+            cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
+            cell.leftImageView.isHidden = false
+            cell.rightImageView.isHidden = true
+            cell.messageBubbleLine.isHidden = false
+            cell.dateLabel.textColor = UIColor.white
+            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message?.auditLogs?[indexPath.row].createdDateTime ?? "")
+        } else {
+            cell.leftImageView.isHidden = true
+            cell.rightImageView.isHidden = false
+            cell.messageBubbleLine.isHidden = true
+            cell.labelTitle.text = "\(message?.leadFullName ?? "")  (\(message?.auditLogs?[indexPath.row].senderNumber ?? ""))"
+            cell.label.text = message?.auditLogs?[indexPath.row].message ?? ""
+            cell.messageBubble.backgroundColor = UIColor(hexString: "#dae1e0")
+            cell.label.textColor = UIColor.black
+            cell.labelTitle.textColor = UIColor.black
+            cell.dateLabel.textColor = UIColor.black
+            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message?.auditLogs?[indexPath.row].createdDateTime ?? "")
+        }
         return cell
     }
     
