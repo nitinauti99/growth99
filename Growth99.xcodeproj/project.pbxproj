@@ -29,6 +29,8 @@
 		011255042B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255032B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift */; };
 		011255062B3195720014BF29 /* ConfigurationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255052B3195720014BF29 /* ConfigurationDataModel.swift */; };
 		011255082B31B5FC0014BF29 /* TwoWaySMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011255072B31B5FC0014BF29 /* TwoWaySMSModel.swift */; };
+		0112550B2B3882D60014BF29 /* UpgradeTwoWayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112550A2B3882D60014BF29 /* UpgradeTwoWayTextViewController.swift */; };
+		0112550D2B3882F50014BF29 /* UpgradeTwoWayTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0112550C2B3882F50014BF29 /* UpgradeTwoWayTextViewController.storyboard */; };
 		01152DFA29B31C0300B24627 /* PateintsTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */; };
 		01152DFC29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */; };
 		01152DFE29B31C1A00B24627 /* PateintsTimeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */; };
@@ -1024,6 +1026,8 @@
 		011255032B3194960014BF29 /* TwoWayTextConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextConfigurationViewModel.swift; sourceTree = "<group>"; };
 		011255052B3195720014BF29 /* ConfigurationDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationDataModel.swift; sourceTree = "<group>"; };
 		011255072B31B5FC0014BF29 /* TwoWaySMSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWaySMSModel.swift; sourceTree = "<group>"; };
+		0112550A2B3882D60014BF29 /* UpgradeTwoWayTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeTwoWayTextViewController.swift; sourceTree = "<group>"; };
+		0112550C2B3882F50014BF29 /* UpgradeTwoWayTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpgradeTwoWayTextViewController.storyboard; sourceTree = "<group>"; };
 		01152DF929B31C0300B24627 /* PateintsTimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewController.swift; sourceTree = "<group>"; };
 		01152DFB29B31C0D00B24627 /* PateintsTimeLineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PateintsTimeLineViewController.storyboard; sourceTree = "<group>"; };
 		01152DFD29B31C1A00B24627 /* PateintsTimeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintsTimeLineViewModel.swift; sourceTree = "<group>"; };
@@ -2126,6 +2130,15 @@
 				011254FF2B3181360014BF29 /* TwoWayTextConfigurationViewController.storyboard */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		011255092B3882850014BF29 /* UpgradeConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				0112550A2B3882D60014BF29 /* UpgradeTwoWayTextViewController.swift */,
+				0112550C2B3882F50014BF29 /* UpgradeTwoWayTextViewController.storyboard */,
+			);
+			path = UpgradeConfiguration;
 			sourceTree = "<group>";
 		};
 		01152DF529B31BB700B24627 /* TimeLine */ = {
@@ -4248,6 +4261,7 @@
 		25C0D4FD2B1E1982007F2024 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				011255092B3882850014BF29 /* UpgradeConfiguration */,
 				011254FE2B31810D0014BF29 /* Configuration */,
 				25C0D5042B1E1E56007F2024 /* ContainerView */,
 				25C0D4FE2B1E1982007F2024 /* ListScreen */,
@@ -7585,6 +7599,7 @@
 				01DBA98F29C5660F00CBA51D /* SocialProfilesListTableViewCell.xib in Resources */,
 				84D0623029670677001FE469 /* VacationsCustomTableViewCell.xib in Resources */,
 				842C0CCF298F749E00395061 /* AddNewConsentsViewController.storyboard in Resources */,
+				0112550D2B3882F50014BF29 /* UpgradeTwoWayTextViewController.storyboard in Resources */,
 				3947A8F92996776E000CA2EB /* EventEditViewController.storyboard in Resources */,
 				01FB531429E5B83600C8559F /* CreateQuestionnaireTableViewCell.xib in Resources */,
 				84B75EB12968D85000962F3E /* CategoriesAddViewController.storyboard in Resources */,
@@ -8030,6 +8045,7 @@
 				84D063112967080E001FE469 /* CreateLeadViewController+TableViewExtension.swift in Sources */,
 				01468E3429C0D80B002BDC1F /* PateintCustomSMSTemplateTableViewCell.swift in Sources */,
 				39F2FF132996B2F40089BD4F /* AppointmentsViewController+TableView.swift in Sources */,
+				0112550B2B3882D60014BF29 /* UpgradeTwoWayTextViewController.swift in Sources */,
 				845C39D6292276B000D934C5 /* DrawerViewModel.swift in Sources */,
 				84F61131292A71AB00B1FB69 /* MultipartUpload.swift in Sources */,
 				01DBA98529C5654300CBA51D /* SocialProfilesListViewController+TableView.swift in Sources */,

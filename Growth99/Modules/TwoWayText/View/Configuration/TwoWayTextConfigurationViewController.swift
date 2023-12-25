@@ -20,7 +20,8 @@ class TwoWayTextConfigurationViewController: UIViewController {
     @IBOutlet weak var twilioNumber: UILabel!
     @IBOutlet weak var topview: UIView!
     @IBOutlet weak var bottomView: UIView!
-    
+    @IBOutlet weak var notificationEmail: UILabel!
+
     
     var viewModel: TwoWayTextConfigurationViewModelProtocol?
     
@@ -47,6 +48,20 @@ class TwoWayTextConfigurationViewController: UIViewController {
         self.twilioNumber.text = "Two way Text Configuration (\( self.viewModel?.getConfigurationData.twilioNumber ?? ""))"
         self.topview.roundCornersView(corners: [.topLeft, .topRight], radius: 10)
         self.bottomView.roundCornersView(corners: [.bottomLeft, .bottomRight], radius: 10)
+        
+
+        var boldText  = self.viewModel?.getConfigurationData.notificationEmail ?? ""
+        var normalText = "( You will now receive email notifications for all incoming text messages on "
+        var normalText2 = " Please note that this feature will utilize your subscribed email quota. )"
+
+        var attributedString = NSMutableAttributedString(string: normalText)
+        var attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]
+        var boldString = NSMutableAttributedString(string: boldText, attributes:attrs)
+        attributedString.append(boldString)
+        var attributedString1 = NSMutableAttributedString(string: normalText2)
+        attributedString.append(attributedString1)
+        
+        self.notificationEmail.attributedText = attributedString
     }
     
     @IBAction func contactSupport(){
