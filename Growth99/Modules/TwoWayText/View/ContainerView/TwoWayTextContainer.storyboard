@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,20 +43,9 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="twoWaySegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="KOz-XA-FHt"/>
+                                    <action selector="twoWaySegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="jZR-1A-2MC"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cB5-Ye-2nM" customClass="ScrollableSegmentedControl" customModule="Growth99" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="159" width="393" height="40"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="BMU-RW-DKU"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="underlineSelected" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-0v-rBH">
                                 <rect key="frame" x="0.0" y="199" width="393" height="619"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -64,18 +54,32 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="kXe-h4-d4L"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f43-Nh-zpI">
+                                <rect key="frame" x="0.0" y="159" width="243" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LTX-bv-sdK"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Unread"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" name="BrandBlue"/>
+                                <connections>
+                                    <action selector="twoWayAllUnreadSegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="XMP-Dh-pHX"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="p9H-0v-rBH" firstAttribute="top" secondItem="cB5-Ye-2nM" secondAttribute="bottom" id="2C1-IZ-iA2"/>
-                            <constraint firstItem="cB5-Ye-2nM" firstAttribute="top" secondItem="xrH-YF-kEM" secondAttribute="bottom" id="5iV-Ta-UjE"/>
-                            <constraint firstItem="cB5-Ye-2nM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6vs-N2-cCm"/>
+                            <constraint firstItem="p9H-0v-rBH" firstAttribute="top" secondItem="f43-Nh-zpI" secondAttribute="bottom" id="8VC-Si-64g"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f43-Nh-zpI" secondAttribute="trailing" constant="150" id="8WT-Jl-5dL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="p9H-0v-rBH" secondAttribute="bottom" id="E0D-g0-Do7"/>
                             <constraint firstItem="xrH-YF-kEM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIx-Lu-oTq"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cB5-Ye-2nM" secondAttribute="trailing" id="LBu-5s-SB5"/>
+                            <constraint firstItem="f43-Nh-zpI" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Jlp-jk-O0S"/>
                             <constraint firstAttribute="trailing" secondItem="xrH-YF-kEM" secondAttribute="trailing" id="QRd-Ma-r8J"/>
                             <constraint firstItem="p9H-0v-rBH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RRe-yz-j7d"/>
+                            <constraint firstItem="f43-Nh-zpI" firstAttribute="top" secondItem="xrH-YF-kEM" secondAttribute="bottom" id="RqE-Xp-I7v"/>
                             <constraint firstItem="Ng1-59-Ib8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WHY-Zi-6Gd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p9H-0v-rBH" secondAttribute="trailing" id="csZ-vq-8pM"/>
                             <constraint firstItem="Ng1-59-Ib8" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oi2-UY-AtE"/>
@@ -85,7 +89,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="xrH-YF-kEM" id="heC-IM-S2r"/>
-                        <outlet property="segmentedControl" destination="cB5-Ye-2nM" id="Zra-zM-gYz"/>
+                        <outlet property="segmentedControl" destination="f43-Nh-zpI" id="eGD-GK-bSs"/>
                         <outlet property="twoWayListTableView" destination="p9H-0v-rBH" id="sZA-AS-h0x"/>
                     </connections>
                 </viewController>
@@ -201,6 +205,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="BrandBlue">
+            <color red="0.16500000655651093" green="0.77999997138977051" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

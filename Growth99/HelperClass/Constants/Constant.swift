@@ -253,7 +253,9 @@ struct Constant {
     struct K {
         static let appName = "⚡️SwiftChat"
         static let cellIdentifier = "ReusableCell"
+        static let cellIdentifierReceiver = "ReusableCellReceiver"
         static let cellNibName = "MessageCell"
+        static let cellNibNameReceiver = "MessageCellReceiver"
         static let registerSegue = "RegisterToChat"
         static let loginSegue = "LoginToChat"
         

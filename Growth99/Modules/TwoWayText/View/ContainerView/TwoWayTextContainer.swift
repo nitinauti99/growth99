@@ -16,7 +16,7 @@ protocol TwoWayListViewContollerProtocol: AnyObject {
 }
 
 class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
-    @IBOutlet var segmentedControl: ScrollableSegmentedControl!
+    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var twoWayListTableView: UITableView!
     
@@ -27,20 +27,44 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     var viewModel: TwoWayListViewModelProtocol?
     var isSearch : Bool = false
     var filteredTableData = [AuditLogsList]()
-    
+    var currentPage : Int = 0
+    var isLoadingList : Bool = true
+    var totalCount: Int? = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Message Center"
         self.viewModel = TwoWayListViewModel(delegate: self)
         tableViewCellRegister()
-        self.view.ShowSpinner()
-        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "List")
         addSerchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "selectedIndex") , object: nil)
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayList(pageNo: currentPage, pageSize: 15, fromPage: "List")
+    }
+    
+    
+    func loadMoreItemsForList(){
+        if (viewModel?.twoWayCompleteListData.count ?? 0) == viewModel?.getTotalCount {
+            return
+        }
+        self.currentPage += 1
+        self.view.ShowSpinner()
+        viewModel?.getTwoWayList(pageNo: currentPage, pageSize: 15, fromPage: "List")
+     }
+    
+    func twoWayListDataRecived() {
+        self.view.HideSpinner()
+        self.twoWayListTableView.setContentOffset(.zero, animated: true)
+        clearSearchBar()
+    }
+    
+    func setupSegment() {
+        segmentedControl.setTitle("\(Constant.Profile.all) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == true}).count ?? 0))", forSegmentAt: 0)
+        segmentedControl.setTitle("\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", forSegmentAt: 1)
     }
     
     func addSerchBar() {
@@ -56,13 +80,6 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     func twoWayDetailDataRecived() {}
     
-    func twoWayListDataRecived() {
-        self.view.HideSpinner()
-        self.twoWayListTableView.setContentOffset(.zero, animated: true)
-        setupSegment()
-        clearSearchBar()
-    }
-    
     func errorReceived(error: String) {
         self.view.HideSpinner()
         self.view.showToast(message: error, color: .red)
@@ -71,19 +88,8 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     func clearSearchBar() {
         isSearch = false
         searchBar.text = ""
+        setupSegment()
         twoWayListTableView.reloadData()
-    }
-    
-    func setupSegment() {
-        segmentedControl.segmentStyle = .textOnly
-        segmentedControl.insertSegment(withTitle: "\(Constant.Profile.all) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == true}).count ?? 0))", at: 0)
-        segmentedControl.insertSegment(withTitle: "\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", at: 1)
-        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
-        segmentedControl.underlineHeight = 4
-        segmentedControl.underlineSelected = true
-        segmentedControl.fixedSegmentWidth = false
-        viewModel?.selectedSegmentName = "Open"
-        segmentedControl.selectedSegmentIndex = selectedindex
     }
     
     func tableViewCellRegister() {
@@ -95,14 +101,19 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         segmentedControl.selectedSegmentIndex = segment
     }
     
-    @objc private func selectionDidChange(sender: ScrollableSegmentedControl) {
-        viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
+    @IBAction func twoWaySegmentSelection(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0  {
+            segmentedControl.selectedSegmentIndex = 0
+            viewModel?.selectedSegmentName = "Open"
+        } else { 
+            segmentedControl.selectedSegmentIndex = 0
+            viewModel?.selectedSegmentName = "Closed"
+        }
         clearSearchBar()
     }
     
-    @IBAction func twoWaySegmentSelection(_ sender: UISegmentedControl) {
-        viewModel?.selectedSegmentIndexValue = sender.selectedSegmentIndex
-        viewModel?.selectedSegmentName = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? ""
+    @IBAction func twoWayAllUnreadSegmentSelection(_ sender: UISegmentedControl) {
+        viewModel?.selectedChildSegmentIndexValue = sender.selectedSegmentIndex
         clearSearchBar()
     }
 }

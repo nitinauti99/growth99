@@ -109,3 +109,18 @@ extension TwoWayTextContainer: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 }
+
+extension TwoWayTextContainer:  UIScrollViewDelegate {
+     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.isLoadingList = false
+    }
+        
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if ((twoWayListTableView.contentOffset.y + twoWayListTableView.frame.size.height) >= twoWayListTableView.contentSize.height) {
+            self.loadMoreItemsForList()
+            self.isLoadingList = true
+        }
+    }
+}
+

@@ -461,6 +461,8 @@
 		2596B6E92B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596B6E72B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift */; };
 		2596B6EA2B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2596B6E82B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib */; };
 		2596B6EC2B2F61D9006466AE /* TwoWayTemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596B6EB2B2F61D9006466AE /* TwoWayTemplateViewModel.swift */; };
+		25B4D8052B3957BF003712EC /* MessageCellReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B4D8032B3957BF003712EC /* MessageCellReceiver.swift */; };
+		25B4D8062B3957BF003712EC /* MessageCellReceiver.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B4D8042B3957BF003712EC /* MessageCellReceiver.xib */; };
 		25B7D2742AA3B04600216A7C /* SocialWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */; };
 		25B7D2752AA3B04600216A7C /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */; };
 		25C0D5012B1E19A5007F2024 /* TwoWayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */; };
@@ -1459,6 +1461,8 @@
 		2596B6E72B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTemplatesTableViewCell.swift; sourceTree = "<group>"; };
 		2596B6E82B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayTemplatesTableViewCell.xib; sourceTree = "<group>"; };
 		2596B6EB2B2F61D9006466AE /* TwoWayTemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTemplateViewModel.swift; sourceTree = "<group>"; };
+		25B4D8032B3957BF003712EC /* MessageCellReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellReceiver.swift; sourceTree = "<group>"; };
+		25B4D8042B3957BF003712EC /* MessageCellReceiver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCellReceiver.xib; sourceTree = "<group>"; };
 		25B7D2722AA3B04500216A7C /* SocialWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialWebViewController.storyboard; sourceTree = "<group>"; };
 		25B7D2732AA3B04500216A7C /* SocialWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 		25C0D5002B1E19A5007F2024 /* TwoWayTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayTextViewController.swift; sourceTree = "<group>"; };
@@ -4282,6 +4286,8 @@
 		25C0D4FF2B1E1982007F2024 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				25B4D8032B3957BF003712EC /* MessageCellReceiver.swift */,
+				25B4D8042B3957BF003712EC /* MessageCellReceiver.xib */,
 				2501F9C22B26204E002E4859 /* MessageCell.swift */,
 				2501F9C32B26204E002E4859 /* MessageCell.xib */,
 				251C0C392B1E4A7300CF4768 /* TwoWayListTableViewCell.swift */,
@@ -7503,6 +7509,7 @@
 				8497A04128FF11E200CBA26C /* QA.plist in Resources */,
 				2596B6EA2B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib in Resources */,
 				254D77C72A752C43007941CB /* PostCalendarTableViewCell.xib in Resources */,
+				25B4D8062B3957BF003712EC /* MessageCellReceiver.xib in Resources */,
 				01301E5F2A54908E00A59B52 /* PateintsViewTemplateController.xib in Resources */,
 				842C0CAD298F713B00395061 /* ConsentsListTableViewCell.xib in Resources */,
 				01EBAC7F29B5A92300110DCB /* LeadSourceUrlAddViewController.storyboard in Resources */,
@@ -8287,6 +8294,7 @@
 				84F6113C292A71AB00B1FB69 /* GrowthEndpoint.swift in Sources */,
 				39FC691129B3D26E00FCB7C6 /* AnnouncementsModel.swift in Sources */,
 				01684C1629BAE8C000DE1041 /* ChatSessionListViewModel.swift in Sources */,
+				25B4D8052B3957BF003712EC /* MessageCellReceiver.swift in Sources */,
 				D0D9B1A32A3979930049D7DF /* ContactViewController.swift in Sources */,
 				25C46AA32A4DFA90004129E7 /* TriggerLeadEditActionTableViewCell.swift in Sources */,
 				018C65232A397A6A008F20C3 /* LeadCreateDetailTableViewCell.swift in Sources */,

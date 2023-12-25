@@ -38,6 +38,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         messageTextfield.textColor = .black
         dateFormater = DateFormater()
         tableView.register(UINib(nibName: Constant.K.cellNibName, bundle: nil), forCellReuseIdentifier: Constant.K.cellIdentifier)
+        tableView.register(UINib(nibName: Constant.K.cellNibNameReceiver, bundle: nil), forCellReuseIdentifier: Constant.K.cellIdentifierReceiver)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -98,6 +99,9 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
             self?.sendButton.alpha = 1.0
         }
         twoWayTemplateVC.modalPresentationStyle = .overFullScreen
+        if sourceType == "Patient" {
+            sourceType = "Appointment"
+        }
         twoWayTemplateVC.sourceTypeTemplate = sourceType
         twoWayTemplateVC.soureFromTemplate = "lead"
         twoWayTemplateVC.sourceIdTemplate = sourceTypeId
@@ -127,15 +131,14 @@ extension TwoWayTextViewController: UITableViewDataSource {
         return sortedKeys.count
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredArray?[section].auditLogs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = filteredArray?[indexPath.section]
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
         if message?.auditLogs?[indexPath.row].direction == "outgoing" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
             cell.label.text = message?.auditLogs?[indexPath.row].message ?? ""
             cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message?.auditLogs?[indexPath.row].senderNumber ?? ""))"
             cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
@@ -144,7 +147,9 @@ extension TwoWayTextViewController: UITableViewDataSource {
             cell.messageBubbleLine.isHidden = false
             cell.dateLabel.textColor = UIColor.white
             cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message?.auditLogs?[indexPath.row].createdDateTime ?? "")
+            return cell
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifierReceiver, for: indexPath) as! MessageCellReceiver
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
             cell.messageBubbleLine.isHidden = true
@@ -155,8 +160,8 @@ extension TwoWayTextViewController: UITableViewDataSource {
             cell.labelTitle.textColor = UIColor.black
             cell.dateLabel.textColor = UIColor.black
             cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message?.auditLogs?[indexPath.row].createdDateTime ?? "")
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

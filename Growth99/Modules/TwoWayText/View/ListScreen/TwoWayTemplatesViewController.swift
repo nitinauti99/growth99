@@ -89,14 +89,33 @@ class TwoWayTemplatesViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.getTwoWayTemplateData.count ?? 0
+        if isSearch {
+            if viewModel?.getTwoWayTemplateFilterData.count ?? 0 == 0 {
+                self.tableViewTemplate.setEmptyMessage()
+            } else {
+                self.tableViewTemplate.restore()
+            }
+            return viewModel?.getTwoWayTemplateFilterData.count ?? 0
+        } else {
+            if viewModel?.getTwoWayTemplateData.count ?? 0 == 0 {
+                self.tableViewTemplate.setEmptyMessage()
+            } else {
+                self.tableViewTemplate.restore()
+            }
+            return viewModel?.getTwoWayTemplateData.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = TwoWayTemplatesTableViewCell()
         cell = tableViewTemplate.dequeueReusableCell(withIdentifier: "TwoWayTemplatesTableViewCell") as! TwoWayTemplatesTableViewCell
-        cell.nameLbl.text = viewModel?.getTwoWayTemplateData[indexPath.row].name ?? ""
-        cell.bodyLbl.text = viewModel?.getTwoWayTemplateData[indexPath.row].body ?? ""
+        if isSearch == true {
+            cell.nameLbl.text = viewModel?.getTwoWayTemplateFilterData[indexPath.row].name ?? ""
+            cell.bodyLbl.text = viewModel?.getTwoWayTemplateFilterData[indexPath.row].body ?? ""
+        } else {
+            cell.nameLbl.text = viewModel?.getTwoWayTemplateData[indexPath.row].name ?? ""
+            cell.bodyLbl.text = viewModel?.getTwoWayTemplateData[indexPath.row].body ?? ""
+        }
         cell.selectionStyle = .none
         return cell
     }

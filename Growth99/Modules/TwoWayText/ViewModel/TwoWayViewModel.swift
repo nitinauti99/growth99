@@ -24,6 +24,10 @@ protocol TwoWayListViewModelProtocol {
     var  getTwoWayFilterClosedUnReadData: [AuditLogsList] { get }
 
     var  selectedSegmentIndexValue: Int { get set }
+    var  getTotalCount: Int { get }
+    var  selectedChildSegmentIndexValue: Int { get set }
+
+    var twoWayCompleteListData: [AuditLogsList] { get }
     var  selectedSegmentName: String { get set}
     func sendMessage(msgData: [String: Any], sourceType: String)
 }
@@ -35,8 +39,10 @@ class TwoWayListViewModel {
     var twoWayFilterReadData: [AuditLogsList] = []
     var twoWayFilterUnReadData: [AuditLogsList] = []
     var selectedSegmentIndexValue: Int = 0
+    var  selectedChildSegmentIndexValue: Int = 0
     var selectedSegmentName: String = "Open"
-    
+    var totalCount: Int = 0
+
     var headers: HTTPHeaders {
         return ["x-tenantid": UserRepository.shared.Xtenantid ?? String.blank,
                 "Authorization": "Bearer "+(UserRepository.shared.authToken ?? String.blank)
@@ -53,8 +59,12 @@ class TwoWayListViewModel {
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TwoWayModel, GrowthNetworkError>) in
             switch result {
             case .success(let twoWayListData):
-                self.twoWayListData = twoWayListData.auditLogsList ?? []
-                print( self.twoWayListData)
+                if self.twoWayListData.count == 0 {
+                    self.twoWayListData = twoWayListData.auditLogsList ?? []
+                } else {
+                    self.twoWayListData.append(contentsOf: twoWayListData.auditLogsList ?? [])
+                }
+                self.totalCount = twoWayListData.totalNumberOfElements ?? 0
                 if fromPage == "Detail" {
                     self.delegate?.twoWayDetailListDataRecived()
                 } else {
@@ -88,7 +98,10 @@ class TwoWayListViewModel {
 }
 
 extension TwoWayListViewModel: TwoWayListViewModelProtocol {
-
+    var twoWayCompleteListData: [AuditLogsList] {
+        return twoWayListData
+    }
+    
     func getTwoWayFilterData(searchText: String) {
         self.twoWayFilterData = self.getTwoWayData.filter { (task: AuditLogsList) -> Bool in
             let searchText = searchText.lowercased()
@@ -96,7 +109,6 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
             let idMatch = String(task.sourceId ?? 0).prefix(searchText.count).elementsEqual(searchText)
             return nameMatch || idMatch
         }
-        
     }
     
     func getTwoWayDataAtIndex(index: Int)-> AuditLogsList? {
@@ -110,10 +122,13 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
         return self.twoWayFilterData
     }
     
+    var getTotalCount: Int {
+        return totalCount
+    }
+    
     var getTwoWayData: [AuditLogsList] {
-        print(selectedSegmentName)
         if selectedSegmentName == "Open" {
-            switch selectedSegmentIndexValue {
+            switch selectedChildSegmentIndexValue {
             case 0:
                 return getTwoWayFilterOpenReadData
             case 1:
@@ -122,7 +137,7 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
                 return twoWayListData
             }
         } else {
-            switch selectedSegmentIndexValue {
+            switch selectedChildSegmentIndexValue {
             case 0:
                 return getTwoWayFilterClosedReadData
             case 1:
@@ -147,7 +162,7 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
     
     
     var getTwoWayFilterClosedData: [AuditLogsList] {
-        return twoWayListData.filter { $0.leadChatStatus == "CLOSED" }
+        return twoWayListData.filter { $0.leadChatStatus == "CLOSE" }
     }
     
     var getTwoWayFilterClosedReadData: [AuditLogsList] {

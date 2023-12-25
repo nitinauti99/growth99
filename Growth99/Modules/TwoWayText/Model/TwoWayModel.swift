@@ -50,3 +50,8 @@ struct TwoWayTemplateListModel : Codable {
     let id : Int?
     let body : String?
 }
+
+struct FilterList {
+    var date: String
+    var logs: AuditLogs
+}
