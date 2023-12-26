@@ -2,6 +2,12 @@ ${PODS_ROOT}/Target Support Files/Pods-Growth99-Growth99UITests/Pods-Growth99-Gr
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/StripeApplePay/StripeApplePay.framework
+${BUILT_PRODUCTS_DIR}/StripeCore/StripeCore.framework
+${BUILT_PRODUCTS_DIR}/StripePaymentSheet/StripePaymentSheet.framework
+${BUILT_PRODUCTS_DIR}/StripePayments/StripePayments.framework
+${BUILT_PRODUCTS_DIR}/StripePaymentsUI/StripePaymentsUI.framework
+${BUILT_PRODUCTS_DIR}/StripeUICore/StripeUICore.framework
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics
