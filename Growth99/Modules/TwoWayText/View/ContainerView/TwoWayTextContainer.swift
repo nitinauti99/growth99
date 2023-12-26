@@ -53,7 +53,7 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
         }
         self.currentPage += 1
         self.view.ShowSpinner()
-        viewModel?.getTwoWayList(pageNo: currentPage, pageSize: 15, fromPage: "List")
+        viewModel?.getTwoWayList(pageNo: currentPage, pageSize: 15, fromPage: "Pagination")
      }
     
     func twoWayListDataRecived() {

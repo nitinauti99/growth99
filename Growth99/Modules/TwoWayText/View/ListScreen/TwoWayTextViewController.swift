@@ -16,7 +16,9 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     
     var twoWayListData : [AuditLogs]?
     var filteredArray: [AuditLogsList]?
-    
+    var finalArray : [FilterList] = []
+    var finalArrayList : [FilterListArray] = []
+
     var sourceType : String = ""
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
@@ -51,8 +53,15 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     
     func twoWayDetailListDataRecived() {
         self.view.HideSpinner()
+        finalArrayList = []
         twoWayListData = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }.flatMap { $0.auditLogs ?? [] }
-        filteredArray = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }
+        //filteredArray = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }
+        let finalDict = Dictionary(grouping: twoWayListData ?? [], by: { $0.createdDate })
+       
+        for item in finalDict {
+            finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
+        }
+        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -116,67 +125,44 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
 extension TwoWayTextViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let filteredArray = filteredArray else {
-            return 0
-        }
-        
-        let groupedSections = Dictionary(grouping: filteredArray) { (element) -> String in
-            if let logs = element.auditLogs, let firstLog = logs.first, let createdDateTime = firstLog.createdDateTime {
-                return createdDateTime
-            } else {
-                return ""
-            }
-        }
-        let sortedKeys = groupedSections.keys.sorted()
-        return sortedKeys.count
+        return finalArrayList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredArray?[section].auditLogs?.count ?? 0
+        return finalArrayList[section].logs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = filteredArray?[indexPath.section]
-        if message?.auditLogs?[indexPath.row].direction == "outgoing" {
+        let message = finalArrayList[indexPath.section]
+        if message.logs[indexPath.row].direction == "outgoing" {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
-            cell.label.text = message?.auditLogs?[indexPath.row].message ?? ""
-            cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message?.auditLogs?[indexPath.row].senderNumber ?? ""))"
+            cell.label.text = message.logs[indexPath.row].message ?? ""
+            cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message.logs[indexPath.row].senderNumber ?? ""))"
             cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
             cell.messageBubbleLine.isHidden = false
             cell.dateLabel.textColor = UIColor.white
-            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message?.auditLogs?[indexPath.row].createdDateTime ?? "")
+            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifierReceiver, for: indexPath) as! MessageCellReceiver
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
             cell.messageBubbleLine.isHidden = true
-            cell.labelTitle.text = "\(message?.leadFullName ?? "")  (\(message?.auditLogs?[indexPath.row].senderNumber ?? ""))"
-            cell.label.text = message?.auditLogs?[indexPath.row].message ?? ""
+            cell.labelTitle.text = "\(message.createdDate )  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+            cell.label.text = message.logs[indexPath.row].message ?? ""
             cell.messageBubble.backgroundColor = UIColor(hexString: "#dae1e0")
             cell.label.textColor = UIColor.black
             cell.labelTitle.textColor = UIColor.black
             cell.dateLabel.textColor = UIColor.black
-            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message?.auditLogs?[indexPath.row].createdDateTime ?? "")
+            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let firstLog = filteredArray?[section].auditLogs?.first else {
-            return nil
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        if let date = formatter.date(from: firstLog.createdDateTime ?? "") {
-            let headerFormatter = DateFormatter()
-            headerFormatter.dateFormat = "dd MMM yyyy"
-            return headerFormatter.string(from: date)
-        }
-        return nil
+        return finalArrayList[section].createdDate
     }
 }
 

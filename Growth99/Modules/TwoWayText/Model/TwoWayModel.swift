@@ -26,6 +26,17 @@ struct AuditLogs : Codable {
     let direction : String?
     let message : String?
     let createdDateTime : String?
+    
+    var createdDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date = formatter.date(from: self.createdDateTime ?? "") {
+            let headerFormatter = DateFormatter()
+            headerFormatter.dateFormat = "dd MMM yyyy"
+            return headerFormatter.string(from: date)
+        }
+        return ""
+    }
     let smsRead : Bool?
     let deliverStatus : String?
     let errorMessage : String?
@@ -54,4 +65,9 @@ struct TwoWayTemplateListModel : Codable {
 struct FilterList {
     var date: String
     var logs: AuditLogs
+}
+
+struct FilterListArray {
+    var createdDate: String
+    var logs: [AuditLogs]
 }
