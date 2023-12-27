@@ -27,7 +27,8 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
     let emailMessage = NSLocalizedString("Email is required.", comment: "")
     let user = UserRepository.shared
     var bussinessInfoData: bussinessDetailInfoModel?
-    
+    var viewModelTwoText: TwoWayTextConfigurationViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginView.addBottomShadow(color: .gray,opacity: 0.5)
@@ -103,6 +104,8 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
     
     func LoaginDataRecived() {
         self.view.HideSpinner()
+        viewModelTwoText = TwoWayTextConfigurationViewModel()
+        viewModelTwoText?.getTwoWayConfigurationData()
         self.openHomeView()
     }
     

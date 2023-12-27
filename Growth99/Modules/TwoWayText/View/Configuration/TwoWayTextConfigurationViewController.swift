@@ -36,11 +36,6 @@ class TwoWayTextConfigurationViewController: UIViewController {
         self.viewModel?.getTwoWayConfigurationData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     func dataRecived(){
         self.enableTwoWaysmsSWitch.isOn = self.viewModel?.getConfigurationData.enableTwoWaySMS ?? false
         self.smsAutoReplySWitch.isOn = self.viewModel?.getConfigurationData.enableSmsAutoReply ?? false
@@ -49,18 +44,15 @@ class TwoWayTextConfigurationViewController: UIViewController {
         self.topview.roundCornersView(corners: [.topLeft, .topRight], radius: 10)
         self.bottomView.roundCornersView(corners: [.bottomLeft, .bottomRight], radius: 10)
         
-
-        var boldText  = self.viewModel?.getConfigurationData.notificationEmail ?? ""
-        var normalText = "( You will now receive email notifications for all incoming text messages on "
-        var normalText2 = " Please note that this feature will utilize your subscribed email quota. )"
-
-        var attributedString = NSMutableAttributedString(string: normalText)
-        var attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]
-        var boldString = NSMutableAttributedString(string: boldText, attributes:attrs)
+        let boldText  = self.viewModel?.getConfigurationData.notificationEmail ?? ""
+        let normalText = "( You will now receive email notifications for all incoming text messages on "
+        let normalText2 = " Please note that this feature will utilize your subscribed email quota. )"
+        let attributedString = NSMutableAttributedString(string: normalText)
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]
+        let boldString = NSMutableAttributedString(string: boldText, attributes:attrs)
         attributedString.append(boldString)
-        var attributedString1 = NSMutableAttributedString(string: normalText2)
+        let attributedString1 = NSMutableAttributedString(string: normalText2)
         attributedString.append(attributedString1)
-        
         self.notificationEmail.attributedText = attributedString
     }
     

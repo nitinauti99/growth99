@@ -32,12 +32,12 @@ class TwoWayTextConfigurationViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getTwoWayConfigurationData() {
-        
         let url = "\(ApiUrl.TwoWayConfigurationData)\(UserRepository.shared.Xtenantid ?? String.blank)"
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result< ConfigurationDataModel, GrowthNetworkError>) in
             switch result {
             case .success(let twoWayTemplateListData):
                 self.configurationData = twoWayTemplateListData
+                UserRepository.shared.enableTwoWaySMS = twoWayTemplateListData.enableTwoWaySMS
                 self.delegate?.twoWayConfigurationDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

@@ -31,6 +31,7 @@ class User {
     private static let FormBulderTitle = "FormBulderTitle"
     private static let selectedServiceId = "selectedServiceId"
     private static let leadId = "leadId"
+    private static let enableTwoWaySMS = "enableTwoWaySMS"
     private static let leadFullName = "leadFullName"
     private static let timeZone = "timeZone"
     private static let appointMentUnreedCount = "appointMentUnreedCount"
@@ -264,7 +265,14 @@ class User {
          }
      }
     
-    
+    var enableTwoWaySMS: Bool? {
+        get {
+            UserDefaults.standard.bool(forKey: User.enableTwoWaySMS)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: User.enableTwoWaySMS)
+        }
+    }
     
     func removKeyChainValues() {
         KeychainWrapper.standard.removeObject(forKey: User.authToken)
@@ -288,6 +296,7 @@ class User {
         KeychainWrapper.standard.removeObject(forKey: User.leadId)
         KeychainWrapper.standard.removeObject(forKey: User.leadFullName)
         KeychainWrapper.standard.removeObject(forKey: User.timeZone)
+        KeychainWrapper.standard.removeObject(forKey: User.enableTwoWaySMS)
     }
     
     private func applyNewValueInKeyChain(value: Any?, key: String) {

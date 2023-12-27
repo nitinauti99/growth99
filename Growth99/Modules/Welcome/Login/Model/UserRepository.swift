@@ -238,4 +238,12 @@ public class UserRepository {
         }
     }
     
+    public var enableTwoWaySMS: Bool? {
+        get {
+            user.enableTwoWaySMS
+        }
+        set {
+            user.enableTwoWaySMS = newValue
+        }
+    }
 }
