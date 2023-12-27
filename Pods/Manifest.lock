@@ -12,25 +12,6 @@ PODS:
   - SDWebImage (5.13.5):
     - SDWebImage/Core (= 5.13.5)
   - SDWebImage/Core (5.13.5)
-  - StripeApplePay (23.20.0):
-    - StripeCore (= 23.20.0)
-  - StripeCore (23.20.0)
-  - StripePayments (23.20.0):
-    - StripeCore (= 23.20.0)
-    - StripePayments/Stripe3DS2 (= 23.20.0)
-  - StripePayments/Stripe3DS2 (23.20.0):
-    - StripeCore (= 23.20.0)
-  - StripePaymentSheet (23.20.0):
-    - StripeApplePay (= 23.20.0)
-    - StripeCore (= 23.20.0)
-    - StripePayments (= 23.20.0)
-    - StripePaymentsUI (= 23.20.0)
-  - StripePaymentsUI (23.20.0):
-    - StripeCore (= 23.20.0)
-    - StripePayments (= 23.20.0)
-    - StripeUICore (= 23.20.0)
-  - StripeUICore (23.20.0):
-    - StripeCore (= 23.20.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -38,7 +19,6 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FSCalendar
   - SDWebImage (~> 5.0)
-  - StripePaymentSheet
 
 SPEC REPOS:
   trunk:
@@ -49,12 +29,6 @@ SPEC REPOS:
     - FBSDKLoginKit
     - FSCalendar
     - SDWebImage
-    - StripeApplePay
-    - StripeCore
-    - StripePayments
-    - StripePaymentSheet
-    - StripePaymentsUI
-    - StripeUICore
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
@@ -64,13 +38,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: c395c63a1a6cf4a8a1e6103fd94b8c46329ee81c
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   SDWebImage: 23d714cd599354ee7906dbae26dff89b421c4370
-  StripeApplePay: f62b0a75291b0300ff5a0374ba77e1c8197358a3
-  StripeCore: 5adcafe5191fb85333e89d897d9bf36d05153247
-  StripePayments: b61bc3ed3d31c8f4502a2428a51839925a800c20
-  StripePaymentSheet: a578d194e4e2e2bfa5f53c0ca6eb0f1b07b5f73e
-  StripePaymentsUI: b19c1531fd83112af856b84b27371509267b1c55
-  StripeUICore: a34503a1145cbbdcf1ed95ea45ea54c142af9222
 
-PODFILE CHECKSUM: 82e246353515d77e241138e0520280ef77b2bb9b
+PODFILE CHECKSUM: 99985e4f856f5d63bf402e7729613da160376356
 
 COCOAPODS: 1.12.1

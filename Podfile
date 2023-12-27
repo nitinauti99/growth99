@@ -11,7 +11,6 @@ target 'Growth99' do
   pod 'Alamofire'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
-  pod 'StripePaymentSheet'
   target 'Growth99Tests' do
     inherit! :search_paths
     # Pods for testing
