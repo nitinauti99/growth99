@@ -47,7 +47,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
          */
 //         self.emailTextField.text = "kuldeeppatil011@yahoo.com"
 //         self.passwordTextField.text = "Kuldeep@123"
-        
+
         self.emailTextField.text = "deep011@yopmail.com"
         self.passwordTextField.text = "Kuldeep@123"
     }

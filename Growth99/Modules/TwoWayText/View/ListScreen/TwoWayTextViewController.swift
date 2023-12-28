@@ -20,8 +20,11 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     var finalArrayList : [FilterListArray] = []
 
     var sourceType : String = ""
+    var sourceTemplateType : String = ""
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
+    var selectedSection : Int = 0
+
     var viewModel: TwoWayListViewModelProtocol?
     let user = UserRepository.shared
     var dateFormater : DateFormaterProtocol?
@@ -47,17 +50,28 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.ShowSpinner()
-        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
+        self.setUpData()
+       // self.view.ShowSpinner()
+       // viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
     }
+    
+    func setUpData(){
+        finalArrayList = []
+        let finalDict = Dictionary(grouping: twoWayListData ?? [], by: { $0.createdDate })
+        for item in finalDict {
+            finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
+        }
+        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
+        scrollToBottom()
+        self.tableView.reloadData()
+    }
+    
     
     func twoWayDetailListDataRecived() {
         self.view.HideSpinner()
         finalArrayList = []
-        twoWayListData = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }.flatMap { $0.auditLogs ?? [] }
-        //filteredArray = viewModel?.getTwoWayData.filter { $0.sourceId == sourceTypeId }
+        twoWayListData = viewModel?.twoWayCompleteListData .filter { $0.sourceId == sourceTypeId }.flatMap { $0.auditLogs ?? [] }
         let finalDict = Dictionary(grouping: twoWayListData ?? [], by: { $0.createdDate })
-       
         for item in finalDict {
             finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
         }
@@ -108,10 +122,10 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
             self?.sendButton.alpha = 1.0
         }
         twoWayTemplateVC.modalPresentationStyle = .overFullScreen
-        if sourceType == "Patient" {
-            sourceType = "Appointment"
+        if sourceTemplateType == "Patient" {
+            sourceTemplateType = "Appointment"
         }
-        twoWayTemplateVC.sourceTypeTemplate = sourceType
+        twoWayTemplateVC.sourceTypeTemplate = sourceTemplateType
         twoWayTemplateVC.soureFromTemplate = "lead"
         twoWayTemplateVC.sourceIdTemplate = sourceTypeId
         self.present(twoWayTemplateVC, animated: true)
@@ -183,11 +197,14 @@ extension TwoWayTextViewController: UITextFieldDelegate {
 extension TwoWayTextViewController {
     func scrollToBottom() {
         DispatchQueue.main.async {
-            guard let sections = self.filteredArray?.count, sections > 0 else {
+            var sections = Int()
+             sections = self.finalArrayList.count
+            
+            if sections > 0 {
                 return
             }
             let section = sections - 1
-            let rows = self.filteredArray?[section].auditLogs?.count ?? 0
+            let rows = self.finalArrayList[section].logs.count
             guard rows > 0 else {
                 return
             }

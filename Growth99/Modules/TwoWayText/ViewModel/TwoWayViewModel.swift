@@ -59,12 +59,16 @@ class TwoWayListViewModel {
         self.requestManager.request(forPath: url, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<TwoWayModel, GrowthNetworkError>) in
             switch result {
             case .success(let twoWayListData):
-                if self.twoWayListData.count == 0{
+                if self.twoWayListData.count == 0 {
                     self.twoWayListData = twoWayListData.auditLogsList ?? []
                 } else if(fromPage == "Detail"){
+                    self.twoWayListData = []
                     self.twoWayListData = twoWayListData.auditLogsList ?? []
                 }else if (fromPage == "Pagination") {
                     self.twoWayListData.append(contentsOf: twoWayListData.auditLogsList ?? [])
+                }else if (fromPage == "List") {
+                    self.twoWayListData = []
+                    self.twoWayListData = twoWayListData.auditLogsList ?? []
                 }
                 self.totalCount = twoWayListData.totalNumberOfElements ?? 0
                 if fromPage == "Detail" {
@@ -100,6 +104,7 @@ class TwoWayListViewModel {
 }
 
 extension TwoWayListViewModel: TwoWayListViewModelProtocol {
+ 
     var twoWayCompleteListData: [AuditLogsList] {
         return twoWayListData
     }

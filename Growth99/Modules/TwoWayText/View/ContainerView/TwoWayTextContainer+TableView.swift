@@ -59,14 +59,19 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
         let twoWayTextDetailVC = UIStoryboard(name: "TwoWayTextContainer", bundle: nil).instantiateViewController(withIdentifier: "TwoWayTextViewController") as! TwoWayTextViewController
         if(isSearch) {
             twoWayTextDetailVC.sourceType = viewModel?.getTwoWayFilterData[indexPath.row].source ?? ""
+            twoWayTextDetailVC.sourceTemplateType = viewModel?.getTwoWayFilterData[indexPath.row].source ?? ""
             twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayFilterData[indexPath.row].sourceId ?? 0
             twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayFilterData[indexPath.row].sourcePhoneNumber ?? ""
+            twoWayTextDetailVC.twoWayListData = viewModel?.getTwoWayFilterData[indexPath.row].auditLogs
         } else {
             twoWayTextDetailVC.sourceType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
+            twoWayTextDetailVC.sourceTemplateType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
             twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayData[indexPath.row].sourceId ?? 0
             twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayData[indexPath.row].sourcePhoneNumber ?? ""
+            twoWayTextDetailVC.twoWayListData = viewModel?.getTwoWayData[indexPath.row].auditLogs
         }
         twoWayTextDetailVC.hidesBottomBarWhenPushed = true
+        twoWayTextDetailVC.selectedSection = selectedindex
         self.navigationController?.pushViewController(twoWayTextDetailVC, animated: true)
     }
     
