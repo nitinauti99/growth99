@@ -113,8 +113,9 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
         self.twoWayFilterData = self.getTwoWayData.filter { (task: AuditLogsList) -> Bool in
             let searchText = searchText.lowercased()
             let nameMatch = task.leadFullName?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
+            let numberMatch = task.sourcePhoneNumber?.lowercased().prefix(searchText.count).elementsEqual(searchText) ?? false
             let idMatch = String(task.sourceId ?? 0).prefix(searchText.count).elementsEqual(searchText)
-            return nameMatch || idMatch
+            return nameMatch || numberMatch || idMatch
         }
     }
     

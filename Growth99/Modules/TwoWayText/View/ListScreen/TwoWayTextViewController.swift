@@ -18,13 +18,14 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     var filteredArray: [AuditLogsList]?
     var finalArray : [FilterList] = []
     var finalArrayList : [FilterListArray] = []
-
+    
     var sourceType : String = ""
+    var sourceName : String = ""
     var sourceTemplateType : String = ""
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
     var selectedSection : Int = 0
-
+    
     var viewModel: TwoWayListViewModelProtocol?
     let user = UserRepository.shared
     var dateFormater : DateFormaterProtocol?
@@ -51,8 +52,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpData()
-       // self.view.ShowSpinner()
-       // viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
+        // self.view.ShowSpinner()
+        // viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
     }
     
     func setUpData(){
@@ -164,7 +165,7 @@ extension TwoWayTextViewController: UITableViewDataSource {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
             cell.messageBubbleLine.isHidden = true
-            cell.labelTitle.text = "\(message.createdDate )  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+            cell.labelTitle.text = "\(sourceName)  (\(message.logs[indexPath.row].senderNumber ?? ""))"
             cell.label.text = message.logs[indexPath.row].message ?? ""
             cell.messageBubble.backgroundColor = UIColor(hexString: "#dae1e0")
             cell.label.textColor = UIColor.black
@@ -197,10 +198,9 @@ extension TwoWayTextViewController: UITextFieldDelegate {
 extension TwoWayTextViewController {
     func scrollToBottom() {
         DispatchQueue.main.async {
-            var sections = Int()
-             sections = self.finalArrayList.count
+            let sections = self.finalArrayList.count
             
-            if sections > 0 {
+            guard sections > 0 else {
                 return
             }
             let section = sections - 1

@@ -69,7 +69,7 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     func addSerchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = Constant.Profile.searchList
+        searchBar.placeholder = "Search Name or Number"
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()

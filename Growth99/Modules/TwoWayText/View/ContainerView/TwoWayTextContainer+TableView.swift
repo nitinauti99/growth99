@@ -63,12 +63,14 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
             twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayFilterData[indexPath.row].sourceId ?? 0
             twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayFilterData[indexPath.row].sourcePhoneNumber ?? ""
             twoWayTextDetailVC.twoWayListData = viewModel?.getTwoWayFilterData[indexPath.row].auditLogs
+            twoWayTextDetailVC.sourceName = viewModel?.getTwoWayFilterData[indexPath.row].leadFullName ?? ""
         } else {
             twoWayTextDetailVC.sourceType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
             twoWayTextDetailVC.sourceTemplateType = viewModel?.getTwoWayData[indexPath.row].source ?? ""
             twoWayTextDetailVC.sourceTypeId = viewModel?.getTwoWayData[indexPath.row].sourceId ?? 0
             twoWayTextDetailVC.phoneNumber = viewModel?.getTwoWayData[indexPath.row].sourcePhoneNumber ?? ""
             twoWayTextDetailVC.twoWayListData = viewModel?.getTwoWayData[indexPath.row].auditLogs
+            twoWayTextDetailVC.sourceName = viewModel?.getTwoWayData[indexPath.row].leadFullName ?? ""
         }
         twoWayTextDetailVC.hidesBottomBarWhenPushed = true
         twoWayTextDetailVC.selectedSection = selectedindex
