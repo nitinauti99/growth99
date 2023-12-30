@@ -32,6 +32,7 @@ protocol TwoWayListViewModelProtocol {
     var twoWayCompleteListData: [AuditLogsList] { get }
     var  selectedSegmentName: String { get set}
     func sendMessage(msgData: [String: Any], sourceType: String)
+    func readMessage(msgData: [Int]) 
 }
 
 class TwoWayListViewModel {
@@ -92,6 +93,28 @@ class TwoWayListViewModel {
             case .success(let response):
                 if response.statusCode == 200 {
                     self.delegate?.twoWayDetailDataRecived()
+                } else if (response.statusCode == 500) {
+                    self.delegate?.errorReceived(error: "We are facing issue while sending message")
+                } else {
+                    self.delegate?.errorReceived(error: "response failed")
+                }
+            case .failure(let error):
+                self.delegate?.errorReceived(error: error.localizedDescription)
+                print("Error while performing request \(error)")
+            }
+        }
+    }
+    
+    func readMessage(msgData: [Int]) {
+        
+        let dict: [String: Any] = ["logIds": msgData.map { String($0) }.joined(separator: ",")]
+        
+        self.requestManager.request(forPath: ApiUrl.TwoWayReadMessage, method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: dict, encoding: .jsonEncoding)) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                if response.statusCode == 200 {
+                  ///  self.delegate?.twoWayDetailDataRecived()
                 } else if (response.statusCode == 500) {
                     self.delegate?.errorReceived(error: "We are facing issue while sending message")
                 } else {
@@ -171,13 +194,12 @@ extension TwoWayListViewModel: TwoWayListViewModelProtocol {
     }
     
     var getTwoWayFilterOpenReadData: [AuditLogsList] {
-        return getTwoWayFilterOpenData.filter { $0.lastMessageRead == true }
+        return getTwoWayFilterOpenData.filter { $0.lastMessageRead == true } + getTwoWayFilterOpenData.filter { $0.lastMessageRead == false }
     }
     
     var getTwoWayFilterOpenUnReadData: [AuditLogsList] {
         return getTwoWayFilterOpenData.filter { $0.lastMessageRead == false }
     }
-    
     
     var getTwoWayFilterClosedData: [AuditLogsList] {
         return twoWayListData.filter { $0.leadChatStatus == "CLOSE" }

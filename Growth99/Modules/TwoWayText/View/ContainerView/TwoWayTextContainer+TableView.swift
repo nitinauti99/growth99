@@ -74,6 +74,9 @@ extension TwoWayTextContainer: UITableViewDelegate, UITableViewDataSource {
         }
         twoWayTextDetailVC.hidesBottomBarWhenPushed = true
         twoWayTextDetailVC.selectedSection = selectedindex
+        var listId = [Int]()
+        viewModel?.readMessage(msgData: listId)
+
         self.navigationController?.pushViewController(twoWayTextDetailVC, animated: true)
     }
     
