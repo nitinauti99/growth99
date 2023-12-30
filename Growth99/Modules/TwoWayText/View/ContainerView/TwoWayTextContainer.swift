@@ -63,8 +63,11 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     }
     
     func setupSegment() {
-        segmentedControl.setTitle("\(Constant.Profile.all) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == true}).count ?? 0))", forSegmentAt: 0)
-        segmentedControl.setTitle("\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", forSegmentAt: 1)
+        if  segmentedControl.selectedSegmentIndex == 0 {
+            segmentedControl.setTitle("\(Constant.Profile.all) (\(self.viewModel?.getTotalReadCount ?? 0))", forSegmentAt: 0)
+        }else{
+            segmentedControl.setTitle("\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", forSegmentAt: 1)
+        }
     }
     
     func addSerchBar() {

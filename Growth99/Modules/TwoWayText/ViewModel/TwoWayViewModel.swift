@@ -25,6 +25,8 @@ protocol TwoWayListViewModelProtocol {
 
     var  selectedSegmentIndexValue: Int { get set }
     var  getTotalCount: Int { get }
+    var  getTotalReadCount: Int { get }
+    var  getTotalUnreadCount: Int { get }
     var  selectedChildSegmentIndexValue: Int { get set }
 
     var twoWayCompleteListData: [AuditLogsList] { get }
@@ -104,6 +106,14 @@ class TwoWayListViewModel {
 }
 
 extension TwoWayListViewModel: TwoWayListViewModelProtocol {
+   
+    var getTotalReadCount: Int {
+        return self.getTwoWayData.filter({$0.lastMessageRead == true}).count
+    }
+    
+    var getTotalUnreadCount: Int {
+        return self.getTwoWayData.filter({$0.lastMessageRead == false}).count
+    }
  
     var twoWayCompleteListData: [AuditLogsList] {
         return twoWayListData
