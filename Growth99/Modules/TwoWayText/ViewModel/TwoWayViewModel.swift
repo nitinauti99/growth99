@@ -106,10 +106,10 @@ class TwoWayListViewModel {
     }
     
     func readMessage(msgData: [Int]) {
-        
-        let dict: [String: Any] = ["logIds": msgData.map { String($0) }.joined(separator: ",")]
-        
-        self.requestManager.request(forPath: ApiUrl.TwoWayReadMessage, method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: dict, encoding: .jsonEncoding)) {  [weak self] result in
+        let ids = msgData.map { String($0) }.joined(separator: ",")
+        let dict: [String: Any] = ["logIds": Int(ids) ?? 0]
+        let url = ApiUrl.TwoWayReadMessage.appending(ids)
+        self.requestManager.request(forPath: url, method: .PUT, headers: self.requestManager.Headers(), task: .requestParameters(parameters: dict, encoding: .jsonEncoding)) {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
@@ -131,7 +131,7 @@ class TwoWayListViewModel {
 extension TwoWayListViewModel: TwoWayListViewModelProtocol {
    
     var getTotalReadCount: Int {
-        return self.getTwoWayData.filter({$0.lastMessageRead == true}).count
+        return self.getTwoWayData.filter({$0.lastMessageRead == true}).count + self.getTwoWayData.filter({$0.lastMessageRead == false}).count
     }
     
     var getTotalUnreadCount: Int {

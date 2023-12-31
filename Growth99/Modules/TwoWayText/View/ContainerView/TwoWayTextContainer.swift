@@ -65,6 +65,10 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     func setupSegment() {
         if  segmentedControl.selectedSegmentIndex == 0 {
             segmentedControl.setTitle("\(Constant.Profile.all) (\(self.viewModel?.getTotalReadCount ?? 0))", forSegmentAt: 0)
+           
+            if (self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0) >= 0 {
+                segmentedControl.setTitle("\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", forSegmentAt: 1)
+            }
         }else{
             segmentedControl.setTitle("\(Constant.Profile.unread) (\(self.viewModel?.getTwoWayData.filter({$0.lastMessageRead == false}).count ?? 0))", forSegmentAt: 1)
         }

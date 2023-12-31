@@ -167,7 +167,7 @@ extension TwoWayTextViewController: UITableViewDataSource {
             cell.messageBubbleLine.isHidden = true
             cell.labelTitle.text = "\(sourceName)  (\(message.logs[indexPath.row].senderNumber ?? ""))"
             cell.label.text = message.logs[indexPath.row].message ?? ""
-            cell.messageBubble.backgroundColor = UIColor(hexString: "#dae1e0")
+            cell.messageBubble.backgroundColor = UIColor(hexString: "##dae2f4")
             cell.label.textColor = UIColor.black
             cell.labelTitle.textColor = UIColor.black
             cell.dateLabel.textColor = UIColor.black
