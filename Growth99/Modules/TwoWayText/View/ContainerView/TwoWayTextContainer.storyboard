@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrH-YF-kEM">
-                                <rect key="frame" x="0.0" y="99" width="393" height="60"/>
+                                <rect key="frame" x="15" y="99" width="363" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xCZ-lr-Bsq"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                                 </connections>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-59-Ib8">
-                                <rect key="frame" x="0.0" y="59" width="393" height="41"/>
+                                <rect key="frame" x="15" y="59" width="363" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dBP-Z9-Q2K"/>
                                 </constraints>
@@ -41,21 +41,22 @@
                                     <segment title="Open"/>
                                     <segment title="Closed"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="selectedSegmentTintColor" name="BrandBlue"/>
                                 <connections>
                                     <action selector="twoWaySegmentSelection:" destination="Y6W-OH-hqX" eventType="valueChanged" id="jZR-1A-2MC"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-0v-rBH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-0v-rBH">
                                 <rect key="frame" x="0.0" y="199" width="393" height="619"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="cxe-pA-6zW"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="kXe-h4-d4L"/>
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f43-Nh-zpI">
-                                <rect key="frame" x="0.0" y="159" width="243" height="41"/>
+                                <rect key="frame" x="15" y="159" width="228" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LTX-bv-sdK"/>
                                 </constraints>
@@ -75,16 +76,16 @@
                             <constraint firstItem="p9H-0v-rBH" firstAttribute="top" secondItem="f43-Nh-zpI" secondAttribute="bottom" id="8VC-Si-64g"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f43-Nh-zpI" secondAttribute="trailing" constant="150" id="8WT-Jl-5dL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="p9H-0v-rBH" secondAttribute="bottom" id="E0D-g0-Do7"/>
-                            <constraint firstItem="xrH-YF-kEM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIx-Lu-oTq"/>
-                            <constraint firstItem="f43-Nh-zpI" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Jlp-jk-O0S"/>
-                            <constraint firstAttribute="trailing" secondItem="xrH-YF-kEM" secondAttribute="trailing" id="QRd-Ma-r8J"/>
+                            <constraint firstItem="xrH-YF-kEM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="FIx-Lu-oTq"/>
+                            <constraint firstItem="f43-Nh-zpI" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="15" id="Jlp-jk-O0S"/>
+                            <constraint firstAttribute="trailing" secondItem="xrH-YF-kEM" secondAttribute="trailing" constant="15" id="QRd-Ma-r8J"/>
                             <constraint firstItem="p9H-0v-rBH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RRe-yz-j7d"/>
                             <constraint firstItem="f43-Nh-zpI" firstAttribute="top" secondItem="xrH-YF-kEM" secondAttribute="bottom" id="RqE-Xp-I7v"/>
-                            <constraint firstItem="Ng1-59-Ib8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WHY-Zi-6Gd"/>
+                            <constraint firstItem="Ng1-59-Ib8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="WHY-Zi-6Gd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p9H-0v-rBH" secondAttribute="trailing" id="csZ-vq-8pM"/>
                             <constraint firstItem="Ng1-59-Ib8" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oi2-UY-AtE"/>
                             <constraint firstItem="xrH-YF-kEM" firstAttribute="top" secondItem="Ng1-59-Ib8" secondAttribute="bottom" id="uLZ-Dp-Krl"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ng1-59-Ib8" secondAttribute="trailing" id="x0A-uG-GVz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ng1-59-Ib8" secondAttribute="trailing" constant="15" id="x0A-uG-GVz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -212,7 +213,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
