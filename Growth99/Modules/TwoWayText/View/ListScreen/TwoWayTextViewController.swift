@@ -62,7 +62,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         for item in finalDict {
             finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
         }
-        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
+        finalArrayList.sort(by: {$0.createdDate > $1.createdDate})
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -76,7 +76,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         for item in finalDict {
             finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
         }
-        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
+        finalArrayList.sort(by: {$0.createdDate > $1.createdDate})
         scrollToBottom()
         self.tableView.reloadData()
     }
