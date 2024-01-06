@@ -7,50 +7,29 @@
 
 import Foundation
 import UIKit
-
-protocol UpgradeTwoWayTextViewControllerProtocol{
-    func twoWayConfigurationDataRecived()
-    func errorReceived(error: String)
-}
+import WebKit
 
 class UpgradeTwoWayTextViewController: UIViewController {
     var viewModel: TwoWayTextConfigurationViewModelProtocol?
-    
+    @IBOutlet weak var webView: WKWebView!
+    private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Configuration"
-    }
-  
-    @IBAction func viewDemoAction(){
-        let googleUrlString = "https://support.growth99.com/portal/en/kb/articles/two-way-texting-feature-in-the-g99-application"
-        if let googleUrl = NSURL(string: googleUrlString) {
-            if UIApplication.shared.canOpenURL(googleUrl as URL) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(googleUrl as URL, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(googleUrl as URL)
-                }
-            }
-        }
+        webView.configuration.userContentController.addUserScript(self.getZoomDisableScript())
+        let url = URL(string: "https://devemr.growthemr.com/two-way-text/public/subscribe?bid=\(UserRepository.shared.Xtenantid ?? String.blank)")
+        var request = URLRequest(url: url! as URL)
+        request.setValue("Content-Type", forHTTPHeaderField: "application/json")
+        request.setValue("authorization "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Bearer "+(UserRepository.shared.authToken ?? String.blank))
+        webView.load(request)
     }
     
-    @IBAction func upgradeNowAction(sender: UIButton){
-        let alert = UIAlertController(title: "Upgrade Message", message: "For Upgrade login into web application", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    private func getZoomDisableScript() -> WKUserScript {
+        let source: String = "var meta = document.createElement('meta');" +
+            "meta.name = 'viewport';" +
+            "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
+            "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);"
+        return WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     }
-    
-}
-
-extension UpgradeTwoWayTextViewController : UpgradeTwoWayTextViewControllerProtocol {
-    
-    func twoWayConfigurationDataRecived(){
-        self.view.HideSpinner()
-    }
-    
-    func errorReceived(error: String) {
-        self.view.HideSpinner()
-        self.view.showToast(message: error, color: .red)
-    }
-    
 }

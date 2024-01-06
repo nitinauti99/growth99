@@ -198,6 +198,7 @@
                         <outlet property="messageTextfield" destination="WJJ-z7-f5o" id="v8D-RG-vnn"/>
                         <outlet property="sendButton" destination="1Sg-Qm-oeH" id="qB1-oC-iil"/>
                         <outlet property="tableView" destination="5dR-Eo-Pv2" id="Ss5-ca-PIi"/>
+                        <outlet property="templateButton" destination="Vv3-o4-sxb" id="yy6-sL-hUa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBs-21-19H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

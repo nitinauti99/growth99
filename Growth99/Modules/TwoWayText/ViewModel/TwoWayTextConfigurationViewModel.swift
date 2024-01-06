@@ -37,7 +37,7 @@ class TwoWayTextConfigurationViewModel {
             switch result {
             case .success(let twoWayTemplateListData):
                 self.configurationData = twoWayTemplateListData
-                UserRepository.shared.enableTwoWaySMS = twoWayTemplateListData.enableTwoWaySMS
+                UserRepository.shared.enableTwoWaySMS = twoWayTemplateListData.upgradeToTwoWayText
                 self.delegate?.twoWayConfigurationDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)

@@ -13,7 +13,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    
+    @IBOutlet weak var templateButton: UIButton!
+
     var twoWayListData : [AuditLogs]?
     var filteredArray: [AuditLogsList]?
     var finalArray : [FilterList] = []
@@ -52,8 +53,10 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpData()
-        // self.view.ShowSpinner()
-        // viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
+        templateButton.isEnabled = true
+        if self.sourceTypeId == 0 {
+            templateButton.isEnabled = false
+        }
     }
     
     func setUpData(){

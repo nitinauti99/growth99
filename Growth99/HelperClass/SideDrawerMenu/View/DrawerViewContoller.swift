@@ -275,7 +275,7 @@ extension DrawerViewContoller: UITableViewDelegate, UITableViewDataSource, UIScr
         } else if indexPath.section == 7 {
             switch indexPath.row {
             case 0:
-                if UserRepository.shared.enableTwoWaySMS == true  {
+                if UserRepository.shared.enableTwoWaySMS == false  {
                     pushViewControllerFromDrawerMenu(identifier: "TwoWayTextConfigurationViewController", pusedViewController: "TwoWayTextConfigurationViewController")
                 }else{
                     pushViewControllerFromDrawerMenu(identifier: "UpgradeTwoWayTextViewController", pusedViewController: "UpgradeTwoWayTextViewController")
