@@ -50,7 +50,7 @@ class CreateLeadTasksViewController: UIViewController {
         self.DeadlineTextField.addInputViewDatePicker(target: self, selector: #selector(dateFromButtonPressed), mode: .date)
         self.descriptionTextView.layer.borderColor = UIColor.gray.cgColor;
         self.descriptionTextView.layer.borderWidth = 1.0;
-        self.statusTextField.text = "InComplete"
+        self.statusTextField.text = "In Progress"
     }
     
     @objc func dateFromButtonPressed() {

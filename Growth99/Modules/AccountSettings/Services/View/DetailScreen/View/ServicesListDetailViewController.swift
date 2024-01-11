@@ -175,7 +175,11 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         userConsents = servicesAddViewModel?.getUserSelectedServiceData?.consents ?? []
         serviceConsentTextField.text = userConsents.map({$0.name ?? String.blank}).joined(separator: ", ")
         for item in userConsents {
-            selectedConsent.append(ConsentListModel(createdAt: item.createdAt ?? "", updatedBy: "\(item.updatedBy?.firstName ?? "") \(item.updatedBy?.lastName ?? "")", createdBy: "\(item.createdBy?.firstName ?? "") \(item.createdBy?.lastName ?? "")", name: item.name ?? "", id: item.id ?? 0, updatedAt: item.updatedAt ?? ""))
+            let updatedBy = UpdatedBy(firstName: item.updatedBy?.firstName ?? "", lastName: item.updatedBy?.lastName ?? "", email: item.updatedBy?.email, username: item.updatedBy?.username)
+            
+            let createdBy = CreatedBy(firstName: item.createdBy?.firstName, lastName: item.createdBy?.lastName, email: item.createdBy?.email, username: item.createdBy?.username)
+            
+            selectedConsent.append(ConsentListModel(createdAt: item.createdAt ?? "", updatedBy: updatedBy, createdBy: createdBy, name: item.name ?? "", id: item.id ?? 0, updatedAt: item.updatedAt ?? ""))
             selectedConsentIds.append(item.id ?? 0)
         }
         

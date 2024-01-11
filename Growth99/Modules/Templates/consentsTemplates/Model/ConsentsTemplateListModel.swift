@@ -6,13 +6,13 @@
 //
 
 import Foundation
+
 struct ConsentsTemplateListModel: Codable {
-    let name: String?
-    let id: Int?
-    let createdAt: String?
-    let updatedBy: String?
-    let templateFor: String?
-    let createdBy: String?
-    let emailTemplateName: String?
-    let updatedAt: String?
+    let createdAt : String?
+    let updatedBy : UpdatedBy?
+    let createdBy : CreatedBy?
+    let name : String?
+    let specialization : String?
+    let id : Int?
+    let updatedAt : String?
 }

@@ -36,8 +36,9 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         let consentsTemplateList = consentsTemplateList?.consentsTemplateFilterDataAtIndex(index: index.row)
         self.name.text = consentsTemplateList?.name
         self.id.text = String(consentsTemplateList?.id ?? 0)
-        self.createdBy.text = consentsTemplateList?.createdBy
-        self.updatedBy.text = consentsTemplateList?.updatedBy
+        self.createdBy.text = ("\(consentsTemplateList?.createdBy?.firstName ?? "")"
+                               +  " " + "\(consentsTemplateList?.createdBy?.lastName ?? "")")
+        self.updatedBy.text = ("\(consentsTemplateList?.updatedBy?.firstName ?? "")" + " " + "\(consentsTemplateList?.updatedBy?.lastName ?? "")")
         self.createdAt.text = dateFormater?.serverToLocalDateConverter(date: consentsTemplateList?.createdAt ?? String.blank)
         self.updatedAt.text =  dateFormater?.serverToLocalDateConverter(date: consentsTemplateList?.updatedAt ?? String.blank)
         indexPath = index
@@ -47,8 +48,9 @@ class ConsentsTemplateListTableViewCell: UITableViewCell {
         let consentsTemplateList = consentsTemplateList?.consentsTemplateDataAtIndex(index: index.row)
         self.name.text = consentsTemplateList?.name
         self.id.text = String(consentsTemplateList?.id ?? 0)
-        self.createdBy.text = consentsTemplateList?.createdBy
-        self.updatedBy.text = consentsTemplateList?.updatedBy
+        self.createdBy.text = ("\(consentsTemplateList?.createdBy?.firstName ?? "")"
+                               +  " " + "\(consentsTemplateList?.createdBy?.lastName ?? "")")
+        self.updatedBy.text = ("\(consentsTemplateList?.updatedBy?.firstName ?? "")" + " " + "\(consentsTemplateList?.updatedBy?.lastName ?? "")")
         self.createdAt.text = dateFormater?.serverToLocalDateConverter(date: consentsTemplateList?.createdAt ?? String.blank)
         self.updatedAt.text =  dateFormater?.serverToLocalDateConverter(date: consentsTemplateList?.updatedAt ?? String.blank)
         indexPath = index

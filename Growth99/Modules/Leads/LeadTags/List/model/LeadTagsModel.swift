@@ -8,7 +8,7 @@
 import Foundation
 struct LeadTagListModel: Codable {
     let name: String?
-    let isDefault: Bool?
+    let isDefault: String? // it was bol changed to string
     let id: Int?
 }
 

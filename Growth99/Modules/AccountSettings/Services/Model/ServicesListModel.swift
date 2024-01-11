@@ -27,8 +27,8 @@ struct ServiceList: Codable, Equatable {
 
 struct ConsentListModel: Codable, Equatable {
     let createdAt: String?
-    let updatedBy: String?
-    let createdBy: String?
+    let updatedBy : UpdatedBy?
+    let createdBy : CreatedBy?
     let name: String?
     let id: Int?
     let updatedAt: String?

@@ -80,11 +80,13 @@ extension PostCalendarViewController:  UITableViewDelegate, UITableViewDataSourc
             let section = self.sections[indexPath.section]
             let headline = section.headlines[indexPath.row]
             if eventTypeSelected == Constant.EventTypeSelected.upcoming.rawValue {
-                if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).isEmpty {
-                    return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
-                } else {
-                    return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
-                }
+                return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
+
+//                if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).isEmpty {
+//                    return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
+//                } else {
+//                    return createEventsTableViewCell(for: tableView, indexPath: indexPath, headline: headline)
+//                }
             } else if eventTypeSelected == Constant.EventTypeSelected.past.rawValue {
                 if section.headlines.filter({ $0.scheduledDate?.toDate() ?? Date() < Date() }).isEmpty {
                     return createEmptyEventsTableViewCell(for: tableView, indexPath: indexPath)
