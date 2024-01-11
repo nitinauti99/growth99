@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dfs-la-A2d">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="15" y="59" width="363" height="759"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -29,9 +29,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dfs-la-A2d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5S5-6B-dpw"/>
+                            <constraint firstItem="Dfs-la-A2d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="5S5-6B-dpw"/>
                             <constraint firstItem="Dfs-la-A2d" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="IV4-qS-r1h"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Dfs-la-A2d" secondAttribute="trailing" id="PiG-SQ-pQJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Dfs-la-A2d" secondAttribute="trailing" constant="15" id="PiG-SQ-pQJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Dfs-la-A2d" secondAttribute="bottom" id="l8Z-wx-OgJ"/>
                         </constraints>
                     </view>

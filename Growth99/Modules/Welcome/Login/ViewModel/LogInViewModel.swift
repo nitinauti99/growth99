@@ -43,7 +43,7 @@ class LogInViewModel {
                 if error.response?.statusCode == 404 {
                     self.delegate?.errorReceived(error: "Internal server error")
                 }else{
-                    self.delegate?.errorReceived(error: GrowthNetworkError.errorDomain)
+                    self.delegate?.errorReceived(error: "Internal server error")
                 }
                 print("Error while performing request \(error)")
             }
@@ -62,7 +62,7 @@ class LogInViewModel {
                 self.user.subDomainName = response.subDomainName
                 self.delegate?.businessDetailReceived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
+                self.delegate?.errorReceived(error: "Internal server error")
                 print("Error while performing request \(error)")
             }
         }
@@ -85,7 +85,7 @@ class LogInViewModel {
                 if error.response?.statusCode == 401 {
                     self.delegate?.errorReceived(error: "Entered email or password is incorrect please enter your valid credentials.")
                 } else {
-                    self.delegate?.errorReceived(error: error.localizedDescription)
+                    self.delegate?.errorReceived(error: "Internal server error")
                 }
                 print("Error while performing request \(error)")
             }
@@ -100,7 +100,7 @@ class LogInViewModel {
                 print(response)
                 self.delegate?.LoaginDataRecived()
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription )
+                self.delegate?.errorReceived(error: "Internal server error")
             }
         }
     }
