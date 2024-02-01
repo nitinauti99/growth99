@@ -42,12 +42,12 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     var massSMSDetailListEdit = [MassEmailandSMSDetailModelEdit]()
     var viewModelEdit: MassEmailandSMSEditDetailViewModelProtocol?
     var leadTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
-    var patientTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+    var patientTagsArrayEdit = [MassEmailSMSPTagListModelEdit]()
     
     var selectedLeadTagsEdit = [MassEmailSMSTagListModelEdit]()
     var selectedLeadTagIdsEdit: String = String.blank
     
-    var selectedPatientTagsEdit = [MassEmailSMSTagListModelEdit]()
+    var selectedPatientTagsEdit = [MassEmailSMSPTagListModelEdit]()
     var selectedPatientTagIdsEdit: String = String.blank
     
     var emailTemplatesArrayEdit = [EmailTemplateDTOListEdit]()
@@ -169,7 +169,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.leadTags ?? [] {
             let getLandingData = viewModelEdit?.getMassSMSEditLeadTagsListData?.filter({ $0.id == landingItem})
             for landingChildItem in getLandingData ?? [] {
-                let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? "", id: landingChildItem.id ?? 0)
                 leadTagsArrayEdit.append(landArr)
             }
         }
@@ -181,12 +181,12 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
     
     func massSMSEditInitialLeadCountDataRecived() {
         let patienttatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
-        var patientTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+        var patientTagsArrayEdit = [MassEmailSMSPTagListModelEdit]()
         let patientStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.patientStatus ?? []
         for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.patientTags ?? [] {
             let getLandingData = viewModelEdit?.getMassSMSEditPateintsTagsListData?.filter({ $0.id == landingItem})
             for landingChildItem in getLandingData ?? [] {
-                let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                let landArr = MassEmailSMSPTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
                 patientTagsArrayEdit.append(landArr)
             }
         }

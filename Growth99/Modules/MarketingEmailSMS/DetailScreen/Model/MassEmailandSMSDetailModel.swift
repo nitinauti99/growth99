@@ -47,6 +47,26 @@ struct UserDTOListEmailSMS : Codable {
 
 struct MassEmailSMSTagListModel: Codable, Equatable {
     let name: String?
+    let isDefault: String? //Changed bool to string
+    let id: Int?
+    
+    func toDict() -> [String: Any] {
+        var dictionary = [String:Any]()
+        if isDefault != nil {
+            dictionary["isDefault"] = isDefault
+        }
+        if name != nil {
+            dictionary["name"] = name
+        }
+        if id != nil {
+            dictionary["id"] = id
+        }
+        return dictionary
+    }
+}
+
+struct MassEmailSMSPTagListModel: Codable, Equatable {
+    let name: String?
     let isDefault: Bool?
     let id: Int?
     
@@ -138,7 +158,7 @@ struct MarketingLeadModel : Codable {
     let moduleName : String?
     let triggerConditions : [String]?
     let leadTags : [MassEmailSMSTagListModel]?
-    let patientTags : [MassEmailSMSTagListModel]?
+    let patientTags : [MassEmailSMSPTagListModel]?
     let patientStatus : [String]?
     let triggerData : [MarketingTriggerData]?
     let source : [String]?

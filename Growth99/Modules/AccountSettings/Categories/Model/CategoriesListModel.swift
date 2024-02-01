@@ -134,7 +134,7 @@ struct CategeroryClinic : Codable {
     let currencySymbol : String?
     let isReviewPublished : Bool?
     let disableVirtualAppointment : Bool?
-    let clinicVacationSchedules : [String]?
+    let clinicVacationSchedules : [ClinicVacationSchedules]?
     let priceVaries : Bool?
     let sendPatientWelcomeEmail : Bool?
     let notesLabel : String?

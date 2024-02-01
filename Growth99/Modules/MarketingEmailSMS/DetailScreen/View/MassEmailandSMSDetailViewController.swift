@@ -34,12 +34,12 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     var emailAndSMSDetailList = [MassEmailandSMSDetailModel]()
     var viewModel: MassEmailandSMSDetailViewModelProtocol?
     var leadTagsArray = [MassEmailSMSTagListModel]()
-    var patientTagsArray = [MassEmailSMSTagListModel]()
+    var patientTagsArray = [MassEmailSMSPTagListModel]()
     
     var selectedLeadTags = [MassEmailSMSTagListModel]()
     var selectedLeadTagIds: String = String.blank
     
-    var selectedPatientTags = [MassEmailSMSTagListModel]()
+    var selectedPatientTags = [MassEmailSMSPTagListModel]()
     var selectedPatientTagIds: String = String.blank
     
     var emailTemplatesArray = [EmailTemplateDTOList]()

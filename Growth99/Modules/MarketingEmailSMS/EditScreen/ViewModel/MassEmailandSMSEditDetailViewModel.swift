@@ -23,7 +23,7 @@ protocol MassEmailandSMSEditDetailViewModelProtocol {
     var  getMassSMSEditBusniessEmailSmsQuotaData: MassEmailSMSEQuotaCountModelEdit? { get }
     var  getMassSMSEditAuditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit? { get }
     var  getMassSMSEditLeadTagsListData: [MassEmailSMSTagListModelEdit]? { get }
-    var  getMassSMSEditPateintsTagsListData: [MassEmailSMSTagListModelEdit]? { get }
+    var  getMassSMSEditPateintsTagsListData: [MassEmailSMSPTagListModelEdit]? { get }
     func localToServerWithDateEdit(date: String) -> String
     func localInputToServerInputEdit(date: String) -> String
     func dateFormatterStringEdit(textField: CustomTextField) -> String
@@ -50,7 +50,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     var massSMStriggerEditList: MassSMSEditModel?
     var massSMStriggerEditDetailList: MassEmailSMSDetailListModelEdit?
     var massSMSEditLeadTagsList: [MassEmailSMSTagListModelEdit] = []
-    var massSMSEditPateintsTagsList: [MassEmailSMSTagListModelEdit] = []
+    var massSMSEditPateintsTagsList: [MassEmailSMSPTagListModelEdit] = []
     var massSMSEditBusinessEmailSmsQuota: MassEmailSMSEQuotaCountModelEdit?
     var massSMSEditAuditEmailSmsCount: MassEmailSMSEQuotaCountModelEdit?
     var massSMSEditLeadCount: MassEmailSMSCountModelEdit?
@@ -104,7 +104,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
     }
     
     func getMassSMSEditPateintsTagsList() {
-        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSTagListModelEdit], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSPTagListModelEdit], GrowthNetworkError>) in
             switch result {
             case .success(let editPateintsTagsList):
                 self.massSMSEditPateintsTagsList = editPateintsTagsList
@@ -295,7 +295,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
         return self.massSMSEditLeadTagsList
     }
     
-    var getMassSMSEditPateintsTagsListData: [MassEmailSMSTagListModelEdit]? {
+    var getMassSMSEditPateintsTagsListData: [MassEmailSMSPTagListModelEdit]? {
         return self.massSMSEditPateintsTagsList
     }
     

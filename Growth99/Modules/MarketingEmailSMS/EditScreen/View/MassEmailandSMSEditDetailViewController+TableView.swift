@@ -101,7 +101,7 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
                 for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.leadTags ?? [] {
                     let getLandingData = viewModelEdit?.getMassSMSEditLeadTagsListData?.filter({ $0.id == landingItem})
                     for landingChildItem in getLandingData ?? [] {
-                        let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                        let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? "", id: landingChildItem.id ?? 0)
                         leadTagsArrayEdit.append(landArr)
                     }
                 }
@@ -155,11 +155,11 @@ extension MassEmailandSMSEditDetailViewController: UITableViewDelegate, UITableV
             }
             
             if viewModelEdit?.getMassSMSTriggerEditListData?.patientTags?.count ?? 0 > 0 {
-                var patientTagsArrayEdit = [MassEmailSMSTagListModelEdit]()
+                var patientTagsArrayEdit = [MassEmailSMSPTagListModelEdit]()
                 for landingItem in viewModelEdit?.getMassSMSTriggerEditListData?.patientTags ?? [] {
                     let getLandingData = viewModelEdit?.getMassSMSEditPateintsTagsListData?.filter({ $0.id == landingItem})
                     for landingChildItem in getLandingData ?? [] {
-                        let landArr = MassEmailSMSTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
+                        let landArr = MassEmailSMSPTagListModelEdit(name: landingChildItem.name ?? "", isDefault:  landingChildItem.isDefault ?? false, id: landingChildItem.id ?? 0)
                         patientTagsArrayEdit.append(landArr)
                     }
                 }

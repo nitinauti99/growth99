@@ -18,7 +18,7 @@ protocol MassEmailandSMSDetailViewModelProtocol {
     func getMassEmailPatientStatusAllMethod()
     var  getMassEmailDetailData: MassEmailSMSDetailListModel? { get }
     var  getMassEmailLeadTagsData: [MassEmailSMSTagListModel] { get }
-    var  getMassEmailPateintsTagsData: [MassEmailSMSTagListModel] { get }
+    var  getMassEmailPateintsTagsData: [MassEmailSMSPTagListModel] { get }
     var  getMassEmailSMSPatientCountData: MassEmailSMSCountModel? { get }
     var  getMassEmailSMSLeadCountData: MassEmailSMSCountModel? { get }
     var  getmassEmailSMSBusinessQuotaCountData: MassEmailSMSEQuotaCountModel? { get }
@@ -49,7 +49,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     var delegate: MassEmailandSMSDetailViewControlProtocol?
     var massEmailDeatilList: MassEmailSMSDetailListModel?
     var massEmailLeadTagsList: [MassEmailSMSTagListModel] = []
-    var massEmailPateintsTagsList: [MassEmailSMSTagListModel] = []
+    var massEmailPateintsTagsList: [MassEmailSMSPTagListModel] = []
     var massEmailSMSLeadCount: MassEmailSMSCountModel?
     var massEmailSMSPatientCount: MassEmailSMSCountModel?
     var massEmailSMSBusinessQuotaCount: MassEmailSMSEQuotaCountModel?
@@ -78,7 +78,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
     }
     
     func getMassEmailPateintsTagsList() {
-        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSTagListModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.patientTagList, method: .GET, headers: self.requestManager.Headers()) { (result: Result<[MassEmailSMSPTagListModel], GrowthNetworkError>) in
             switch result {
             case .success(let pateintsTagList):
                 self.massEmailPateintsTagsList = pateintsTagList
@@ -260,7 +260,7 @@ class MassEmailandSMSDetailViewModel: MassEmailandSMSDetailViewModelProtocol {
         return self.massEmailLeadTagsList
     }
     
-    var getMassEmailPateintsTagsData: [MassEmailSMSTagListModel] {
+    var getMassEmailPateintsTagsData: [MassEmailSMSPTagListModel] {
         return self.massEmailPateintsTagsList
     }
     

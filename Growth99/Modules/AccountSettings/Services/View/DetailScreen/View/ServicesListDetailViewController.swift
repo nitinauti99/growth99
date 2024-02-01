@@ -253,9 +253,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             serviceImageViewTop.constant = 0
             contentViewHeight.constant = 1500
             removeImageViewBtn.isHidden = true
-        } else {
-//          self.serviceImageView.sd_setImage(with: URL(string: cleanedString), placeholderImage: UIImage(named: "Logo"), options: [.refreshCached])
-            
+        } else {            
             let url = URL(string: cleanedString)
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url!)
@@ -328,7 +326,7 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
     
     @IBAction func selectClinicButtonAction(sender: UIButton) {
         if selectedClincs.count == 0 {
-            self.selectClinicTextField.text = String.blank
+            self.selectClinicTextField.text = ""
         }
         
         let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
@@ -338,12 +336,10 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
             self?.selectClinicTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
             let selectedId = selectedList.map({$0.id ?? 0})
-            self?.selectedClincs  = selectedList
             self?.selectedClincIds = selectedId
-            if selectedId.count > 0 {
-                self?.view.ShowSpinner()
-                self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedId)
-            }
+            self?.selectedClincs  = selectedList
+            self?.view.ShowSpinner()
+            self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedId)
         }
         selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
