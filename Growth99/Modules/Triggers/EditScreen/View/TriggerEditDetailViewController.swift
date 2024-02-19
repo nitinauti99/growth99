@@ -414,8 +414,7 @@ extension TriggerEditDetailViewController {
             var selectedLeadLandingPagesdict = Array<Any>()
             if let leadCreateCell = leadCreateCell {
                 for item in leadCreateCell.selectedLeadLandingPages {
-                    let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
-                    selectedLeadLandingPagesdict.append(param)
+                    selectedLeadLandingPagesdict.append(item.id ?? 0)
                 }
             }
             
@@ -438,8 +437,7 @@ extension TriggerEditDetailViewController {
             var selectedleadFormsdict = Array<Any>()
             if let leadCreateCell = leadCreateCell {
                 for item in leadCreateCell.selectedleadForms {
-                    let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
-                    selectedleadFormsdict.append(param)
+                    selectedleadFormsdict.append(item.id ?? 0)
                 }
             }
             

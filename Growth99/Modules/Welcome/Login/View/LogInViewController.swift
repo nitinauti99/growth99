@@ -54,7 +54,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol,Bussine
         //production
         
          self.emailTextField.text = "Kuldip.patil@yopmail.com"
-         self.passwordTextField.text = "Deep@123"
+         self.passwordTextField.text = "Kuldeep@37"
     }
     
     private func setupTexFieldValidstion() {

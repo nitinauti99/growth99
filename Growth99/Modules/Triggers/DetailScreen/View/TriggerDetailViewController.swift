@@ -343,8 +343,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
             
             var selectedLeadLandingPagesdict = Array<Any>()
             for item in selectedLeadLandingPages {
-                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
-                selectedLeadLandingPagesdict.append(param)
+                selectedLeadLandingPagesdict.append(item.id ?? 0)
             }
             
             var selectedLeadSourceUrldict = Array<Any>()
@@ -355,8 +354,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
             
             var selectedleadFormsdict = Array<Any>()
             for item in selectedleadForms {
-                let param: [String: Any] = ["name": item.name ?? "", "id": item.id ?? 0]
-                selectedleadFormsdict.append(param)
+                selectedleadFormsdict.append(item.id ?? 0)
             }
             
             var urlParameter: Parameters = [String: Any]()
@@ -369,6 +367,7 @@ class TriggerDetailViewController: UIViewController, TriggerDetailViewControlPro
                 ]
             }
             self.view.ShowSpinner()
+            print(urlParameter)
             viewModel?.createTriggerDataMethod(triggerDataParms: urlParameter)
         } else {
             
