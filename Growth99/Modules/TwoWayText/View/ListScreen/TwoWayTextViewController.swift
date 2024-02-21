@@ -26,6 +26,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
     var selectedSection : Int = 0
+    var receiverNumber : String = ""
+    var isFirstTime: Bool = false
     
     var viewModel: TwoWayListViewModelProtocol?
     let user = UserRepository.shared
@@ -65,7 +67,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         for item in finalDict {
             finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
         }
-        finalArrayList.sort(by: {$0.createdDate > $1.createdDate})
+        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -79,16 +81,15 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         for item in finalDict {
             finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
         }
-        finalArrayList.sort(by: {$0.createdDate > $1.createdDate})
+        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
         scrollToBottom()
         self.tableView.reloadData()
     }
     
     func twoWayDetailDataRecived() {
-        self.view.HideSpinner()
-        messageTextfield.text = ""
+        self.messageTextfield.text = ""
         self.view.ShowSpinner()
-        viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
+        self.viewModel?.getTwoWayList(pageNo: 0, pageSize: 15, fromPage: "Detail")
     }
     
     func twoWayListDataRecived() {
@@ -110,9 +111,10 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         }
         self.view.ShowSpinner()
         var urlParameter: Parameters = [String: Any]()
-        if sourceType == "Lead" {
+      
+         if sourceType == "Lead" {
             urlParameter = ["body": message, "phoneNumber": phoneNumber, "leadId": sourceTypeId]
-        } else {
+        }else {
             urlParameter = ["body": message, "phoneNumber": phoneNumber, "patientId": sourceTypeId]
         }
         viewModel?.sendMessage(msgData: urlParameter, sourceType: sourceType.lowercased())
@@ -152,30 +154,75 @@ extension TwoWayTextViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = finalArrayList[indexPath.section]
-        if message.logs[indexPath.row].direction == "outgoing" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
-            cell.label.text = message.logs[indexPath.row].message ?? ""
-            cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message.logs[indexPath.row].senderNumber ?? ""))"
-            cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
-            cell.leftImageView.isHidden = false
-            cell.rightImageView.isHidden = true
-            cell.messageBubbleLine.isHidden = false
-            cell.dateLabel.textColor = UIColor.white
-            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifierReceiver, for: indexPath) as! MessageCellReceiver
-            cell.leftImageView.isHidden = true
-            cell.rightImageView.isHidden = false
-            cell.messageBubbleLine.isHidden = true
-            cell.labelTitle.text = "\(sourceName)  (\(message.logs[indexPath.row].senderNumber ?? ""))"
-            cell.label.text = message.logs[indexPath.row].message ?? ""
-            cell.messageBubble.backgroundColor = UIColor(hexString: "##dae2f4")
-            cell.label.textColor = UIColor.black
-            cell.labelTitle.textColor = UIColor.black
-            cell.dateLabel.textColor = UIColor.black
-            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
-            return cell
+        if receiverNumber.isEmpty {
+            receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+            isFirstTime = true
+        }
+        if isFirstTime == false && receiverNumber ==  message.logs[indexPath.row].receiverNumber {
+            print("receiverNumber changed")
+            receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+            
+            if message.logs[indexPath.row].direction == "outgoing" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
+                cell.label.text = message.logs[indexPath.row].message ?? ""
+                cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+                cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
+                cell.leftImageView.isHidden = false
+                cell.rightImageView.isHidden = true
+                cell.messageBubbleLine.isHidden = false
+                cell.dateLabel.textColor = UIColor.white
+                cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
+                receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+                isFirstTime = false
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifierReceiver, for: indexPath) as! MessageCellReceiver
+                cell.leftImageView.isHidden = true
+                cell.rightImageView.isHidden = false
+                cell.messageBubbleLine.isHidden = true
+                cell.labelTitle.text = "\(sourceName)  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+                cell.label.text = message.logs[indexPath.row].message ?? ""
+                cell.messageBubble.backgroundColor = UIColor(hexString: "##dae2f4")
+                cell.label.textColor = UIColor.black
+                cell.labelTitle.textColor = UIColor.black
+                cell.dateLabel.textColor = UIColor.black
+                cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
+                receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+                isFirstTime = false
+
+                return cell
+            }
+        }else {
+            if message.logs[indexPath.row].direction == "outgoing" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
+                cell.label.text = message.logs[indexPath.row].message ?? ""
+                cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+                cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
+                cell.leftImageView.isHidden = false
+                cell.rightImageView.isHidden = true
+                cell.messageBubbleLine.isHidden = false
+                cell.dateLabel.textColor = UIColor.white
+                cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
+                receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+                isFirstTime = false
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifierReceiver, for: indexPath) as! MessageCellReceiver
+                cell.leftImageView.isHidden = true
+                cell.rightImageView.isHidden = false
+                cell.messageBubbleLine.isHidden = true
+                cell.labelTitle.text = "\(sourceName)  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+                cell.label.text = message.logs[indexPath.row].message ?? ""
+                cell.messageBubble.backgroundColor = UIColor(hexString: "##dae2f4")
+                cell.label.textColor = UIColor.black
+                cell.labelTitle.textColor = UIColor.black
+                cell.dateLabel.textColor = UIColor.black
+                cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
+                receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+                isFirstTime = false
+
+                return cell
+            }
         }
     }
     

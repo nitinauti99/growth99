@@ -78,7 +78,7 @@ class LogInViewModel {
             switch result {
             case .success(let logInData):
                 if logInData.roles == "Patient" {
-                    self.delegate?.errorReceived(error: "Entered email or password is incorrect please enter your valid credentials.")
+                    self.delegate?.errorReceived(error: "The email or password is incorrect. Please check and try again.")
                 }else {
                     self.LogInData = logInData
                     self.user.isUserLoged = true
@@ -87,7 +87,7 @@ class LogInViewModel {
                 }
             case .failure(let error):
                 if error.response?.statusCode == 401 {
-                    self.delegate?.errorReceived(error: "Entered email or password is incorrect please enter your valid credentials.")
+                    self.delegate?.errorReceived(error: "The email or password is incorrect. Please check and try again.")
                 } else {
                     self.delegate?.errorReceived(error: "Internal server error")
                 }
