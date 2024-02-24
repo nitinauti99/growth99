@@ -12,7 +12,7 @@ struct ConsentsTemplateListModel: Codable {
     let updatedBy : UpdatedBy?
     let createdBy : CreatedBy?
     let name : String?
-    let specialization : String?
+    let specialization : Specialization?
     let id : Int?
     let updatedAt : String?
 }

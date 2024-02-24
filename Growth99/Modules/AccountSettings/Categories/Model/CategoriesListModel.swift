@@ -8,6 +8,10 @@
 import Foundation
 
 struct CategoriesListModel: Codable {
+    let serviceCategoryList: [ServiceCategoryList] // change model from
+}
+
+struct ServiceCategoryList: Codable {
     let createdAt: String?
     let updatedBy: String?
     let createdBy: String?

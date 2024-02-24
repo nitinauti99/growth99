@@ -20,8 +20,8 @@ class HelpAndTrainingViewController: UIViewController, WKNavigationDelegate {
         self.title = "Help Center"
         webView.frame = view.bounds
         webView.navigationDelegate = self
-        
-        let url = URL(string: "https://support.growth99.com/portal/en/kb/growth99-plus")!
+        /// change prodcution url
+        let url = URL(string: "https://support.growth99.com/portal/en/kb/growth99plus-articles-and-video-trainings")!
         let urlRequest = URLRequest(url: url)
         
         webView.load(urlRequest)

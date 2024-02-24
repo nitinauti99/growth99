@@ -12,11 +12,11 @@ protocol CategoriesListViewModelProtocol {
     
     func getCategoriesFilterData(searchText: String)
     
-    func getCategoriesDataAtIndex(index: Int)-> CategoriesListModel?
-    func getCategoriesFilterDataAtIndex(index: Int)-> CategoriesListModel?
+    func getCategoriesDataAtIndex(index: Int)-> ServiceCategoryList?
+    func getCategoriesFilterDataAtIndex(index: Int)-> ServiceCategoryList?
     
-    var  getCategoriesListData: [CategoriesListModel] { get }
-    var  getCategoriesFilterListData: [CategoriesListModel] { get }
+    var  getCategoriesListData: [ServiceCategoryList] { get }
+    var  getCategoriesFilterListData: [ServiceCategoryList] { get }
     func removeSelectedCategorie(categorieId: Int)
     func deleteSelectedCategorie(categorieId: Int)
 }
@@ -25,8 +25,8 @@ class CategoriesListViewModel {
     var delegate: CategoriesListViewContollerProtocol?
     var allClinics: [Clinics]?
     
-    var categoriesList: [CategoriesListModel] = []
-    var categoriesListFilterData: [CategoriesListModel] = []
+    var categoriesList: [ServiceCategoryList] = []
+    var categoriesListFilterData: [ServiceCategoryList] = []
     
     
     init(delegate: CategoriesListViewContollerProtocol? = nil) {
@@ -36,10 +36,10 @@ class CategoriesListViewModel {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getCategoriesList() {
-        self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<CategoriesListModel, GrowthNetworkError>) in
             switch result {
             case .success(let categoriesListData):
-                self.categoriesList = categoriesListData.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
+                self.categoriesList = categoriesListData.serviceCategoryList.sorted(by: { ($0.createdAt ?? String.blank) > ($1.createdAt ?? String.blank)})
                 self.delegate?.CategoriesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -109,19 +109,19 @@ extension CategoriesListViewModel: CategoriesListViewModelProtocol {
         }
     }
     
-    func getCategoriesDataAtIndex(index: Int)-> CategoriesListModel? {
+    func getCategoriesDataAtIndex(index: Int)-> ServiceCategoryList? {
         return self.getCategoriesListData[index]
     }
     
-    func getCategoriesFilterDataAtIndex(index: Int)-> CategoriesListModel? {
+    func getCategoriesFilterDataAtIndex(index: Int)-> ServiceCategoryList? {
         return self.categoriesListFilterData[index]
     }
     
-    var getCategoriesListData: [CategoriesListModel] {
+    var getCategoriesListData: [ServiceCategoryList] {
         return self.categoriesList
     }
     
-    var getCategoriesFilterListData: [CategoriesListModel] {
+    var getCategoriesFilterListData: [ServiceCategoryList] {
         return self.categoriesListFilterData
     }
 }

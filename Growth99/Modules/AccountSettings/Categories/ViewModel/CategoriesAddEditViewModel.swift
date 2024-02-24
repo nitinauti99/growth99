@@ -14,7 +14,7 @@ protocol CategoriesAddEditViewModelProtocol {
     func editCategories(addCategoriesParams: [String: Any], selectedCategorieId: Int)
     func getCategoriesInfo(categoryId: Int)
     var  getAllCategoriesData: ServiceDetailModel? { get }
-    var  getAddCategoriesListData: [CategoriesListModel] { get }
+    var  getAddCategoriesListData: [ServiceCategoryList] { get }
     func getAddCategoriesList()
 }
 
@@ -23,7 +23,7 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     var allClinics: [Clinics]?
     var serviceCategoryList: ServiceDetailModel?
     var addCategoriesResponse: CategoriesAddEditModel?
-    var addCategoriesList: [CategoriesListModel] = []
+    var addCategoriesList: [ServiceCategoryList] = []
     init(delegate: CategoriesAddViewContollerProtocol? = nil) {
         self.delegate = delegate
     }
@@ -31,10 +31,10 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
     private var requestManager = GrowthRequestManager(configuration: URLSessionConfiguration.default)
     
     func getAddCategoriesList() {
-        self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<[CategoriesListModel], GrowthNetworkError>) in
+        self.requestManager.request(forPath: ApiUrl.categoriesList, method: .GET, headers: self.requestManager.Headers()) {  (result: Result<CategoriesListModel, GrowthNetworkError>) in
             switch result {
             case .success(let categoriesListData):
-                self.addCategoriesList = categoriesListData
+                self.addCategoriesList = categoriesListData.serviceCategoryList
                 self.delegate?.addCategoriesDataRecived()
             case .failure(let error):
                 self.delegate?.errorReceived(error: error.localizedDescription)
@@ -104,7 +104,7 @@ class CategoriesAddEditViewModel: CategoriesAddEditViewModelProtocol {
         return self.allClinics ?? []
     }
     
-    var getAddCategoriesListData: [CategoriesListModel] {
+    var getAddCategoriesListData: [ServiceCategoryList] {
         return self.addCategoriesList
     }
 
