@@ -329,35 +329,21 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
             self.selectClinicTextField.text = ""
         }
         
-        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics.name
+        let selectionMenu = RSSelectionMenu(selectionStyle: .multiple, dataSource: allClinics, cellType: .subTitle) { (cell, clinic, indexPath) in
+            cell.textLabel?.text = clinic.name
         }
-        
         selectionMenu.setSelectedItems(items: selectedClincs) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.selectClinicTextField.text = selectedList.map({$0.name ?? String.blank}).joined(separator: ", ")
-            let selectedId = selectedList.map({$0.id ?? 0})
-            self?.selectedClincIds = selectedId
-            self?.selectedClincs  = selectedList
+            self?.selectClinicTextField.text = selectedList.map({$0.name ?? ""}).joined(separator: ", ")
+            let selectedIds = selectedList.compactMap({$0.id})
+            self?.selectedClincIds = selectedIds
+            self?.selectedClincs = selectedList
             self?.view.ShowSpinner()
-            self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedId)
+            self?.servicesAddViewModel?.getallServiceCategories(selectedClinics: selectedIds)
         }
         selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
-    }
-
-    @IBAction func serviceDurationButtonAction(sender: UIButton) {
-        let leadStatusArray = ["5","10", "15", "20", "30", "45", "60", "90", "120", "150", "180"]
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
-            cell.textLabel?.text = allClinics
-        }
-        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.serviceDurationTextField.text = selectedItem
-        }
-        selectionMenu.reloadInputViews()
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allClinics.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func selectConsentButtonAction(sender: UIButton) {
@@ -379,6 +365,19 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         selectionMenu.showEmptyDataLabel(text: "No Result Found")
         selectionMenu.cellSelectionStyle = .checkbox
         selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allConsent.count * 44))), arrowDirection: .up), from: self)
+    }
+
+    @IBAction func serviceDurationButtonAction(sender: UIButton) {
+        let leadStatusArray = ["5","10", "15", "20", "30", "45", "60", "90", "120", "150", "180"]
+        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: leadStatusArray, cellType: .subTitle) { (cell, allClinics, indexPath) in
+            cell.textLabel?.text = allClinics
+        }
+        selectionMenu.setSelectedItems(items: []) { [weak self] (selectedItem, index, selected, selectedList) in
+            self?.serviceDurationTextField.text = selectedItem
+        }
+        selectionMenu.reloadInputViews()
+        selectionMenu.showEmptyDataLabel(text: "No Result Found")
+        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(leadStatusArray.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func selectQuestionButtonAction(sender: UIButton) {

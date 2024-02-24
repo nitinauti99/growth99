@@ -70,14 +70,18 @@ class CategoriesListViewModel {
                 } else if (response.count > 0) {
                     self.delegate?.errorReceived(error: "This category may be deleted only after removing all services under it")
                 } else {
-                    self.delegate?.errorReceived(error: "response failed")
+                    self.delegate?.errorReceived(error: "Unexpected response")
                 }
             case .failure(let error):
-                self.delegate?.errorReceived(error: error.localizedDescription)
-                print("Error while performing request \(error)")
+                // Log the actual error received from the server
+                print("Error received from server: \(error)")
+                
+                // Pass the error message to the delegate
+                self.delegate?.errorReceived(error: "An error occurred while processing your request.")
             }
         }
     }
+
     
     func deleteSelectedCategorie(categorieId: Int) {
         let finaleUrl = ApiUrl.deleteCategories.appending("\(categorieId)")

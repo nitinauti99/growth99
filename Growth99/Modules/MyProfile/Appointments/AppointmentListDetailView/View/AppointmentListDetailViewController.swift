@@ -229,10 +229,6 @@ class AppointmentListDetailViewController: UIViewController, AppointmentListDeta
         allTimesList = eventViewModel?.getAllTimessData ?? []
         if allTimesList.isEmpty {
             if datesClick {
-                timeTextField.text = ""
-                timeTextField.showError(message: "Appointment Time is required.")
-                self.view.showToast(message: "There are no time slots available for the selected date", color: .red)
-                scrollToBottom(of: scrollViewAppointment, animated: true)
                 submitButton.isEnabled = false
                 submitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
             }

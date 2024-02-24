@@ -21,13 +21,14 @@ class HelpAndTrainingViewController: UIViewController, WKNavigationDelegate {
         webView.frame = view.bounds
         webView.navigationDelegate = self
         /// change prodcution url
-        let url = URL(string: "https://support.growth99.com/portal/en/kb/growth99plus-articles-and-video-trainings")!
-        let urlRequest = URLRequest(url: url)
-        
-        webView.load(urlRequest)
-        webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        view.addSubview(webView)
-        
+        if let url = URL(string: "https://support.growth99.com/portal/en/kb/growth99plus-articles-and-video-trainings") {
+            let urlRequest = URLRequest(url: url)
+            webView.load(urlRequest)
+            webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+            view.addSubview(webView)
+        } else {
+            print("Invalid URL")
+        }
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true

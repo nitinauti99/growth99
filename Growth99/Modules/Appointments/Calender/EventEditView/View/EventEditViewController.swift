@@ -217,10 +217,6 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     func timesDataReceived() {
         allTimesList = eventViewModel?.getAllTimessData ?? []
         if allTimesList.count == 0 {
-            timeTextField.text = ""
-            timeTextField.showError(message: "Appointment Time is required.")
-            self.view.showToast(message: "There are no time slots available for the selected date", color: .red)
-            scrollToBottom(of: scrollViewBooking, animated: true)
             submitButton.isEnabled = false
             submitButton.backgroundColor = UIColor.init(hexString: "86BFE5")
         } else {
@@ -381,18 +377,20 @@ class EventEditViewController: UIViewController, EditEventViewControllerProtocol
     }
     
     @IBAction func selectTimesButtonAction(sender: UIButton) {
-        let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
-            cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes)
+        if selectedTimes.count > 0 {
+            let selectionMenu = RSSelectionMenu(selectionStyle: .single, dataSource: allTimesList, cellType: .subTitle) { (cell, allTimes, indexPath) in
+                cell.textLabel?.text = self.eventViewModel?.utcToLocal(dateStr: allTimes)
+            }
+            
+            selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in
+                self?.timeTextField.text = self?.eventViewModel?.utcToLocal(dateStr: selectedList[0])
+                self?.selectedTime = selectedList[0]
+                self?.selectedTimes = selectedList
+            }
+            selectionMenu.reloadInputViews()
+            selectionMenu.showEmptyDataLabel(text: "No Result Found")
+            selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allTimesList.count * 44))), arrowDirection: .up), from: self)
         }
-        
-        selectionMenu.setSelectedItems(items: selectedTimes) { [weak self] (selectedItem, index, selected, selectedList) in
-            self?.timeTextField.text = self?.eventViewModel?.utcToLocal(dateStr: selectedList[0])
-            self?.selectedTime = selectedList[0]
-            self?.selectedTimes = selectedList
-        }
-        selectionMenu.reloadInputViews()
-        selectionMenu.showEmptyDataLabel(text: "No Result Found")
-        selectionMenu.show(style: .popover(sourceView: sender, size: CGSize(width: sender.frame.width, height: (Double(allTimesList.count * 44))), arrowDirection: .up), from: self)
     }
     
     @IBAction func saveButtonAction(sender: UIButton) {

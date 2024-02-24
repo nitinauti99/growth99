@@ -129,7 +129,7 @@ struct CategeroryClinic : Codable {
     let countryCode : String?
     let currency : String?
     let preBookingOnly : Bool?
-    let defaultPreBookingCost : String?
+    let defaultPreBookingCost : Int?
     let isProviderBasedAppointment : Bool?
     let seamlessPatientExperience : Bool?
     let numberOfSlotsAvailable : Int?
@@ -193,7 +193,7 @@ struct CategeroryQuestionnaires : Codable {
     let deleted : Bool?
     let tenantId : Int?
     let id : Int?
-    let defaultQuestionnaireId : String?
+    let defaultQuestionnaireId : Int?
     let name : String?
     let isPublic : Bool?
     let chatQuestionnaire : Bool?

@@ -32,6 +32,7 @@ struct ClinicsDetailListModel: Codable {
     let yelpUrl: String?
     let giftCardDetail: String?
     let giftCardUrl: String?
+    let secondaryUrls: String?
     let website: String?
     let googleMyBusiness: String?
     let googlePlaceId: String?
@@ -108,6 +109,7 @@ struct ClinicParamModel: Codable {
     let paymentLink : String?
     let appointmentUrl : String?
     let currency : String?
+    let secondaryUrls : String?
     let googleMyBusiness : String?
     let googlePlaceId : String?
     let yelpUrl : String?
@@ -160,6 +162,9 @@ struct ClinicParamModel: Codable {
         }
         if currency != nil {
             dictionary["currency"] = currency
+        }
+        if secondaryUrls != nil {
+            dictionary["secondaryUrls"] = secondaryUrls
         }
         if googleMyBusiness != nil {
             dictionary["googleMyBusiness"] = googleMyBusiness
