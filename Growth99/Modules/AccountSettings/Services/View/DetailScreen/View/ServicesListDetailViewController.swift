@@ -151,14 +151,14 @@ class ServicesListDetailViewController: UIViewController, UINavigationController
         userClinics = servicesAddViewModel?.getUserSelectedServiceData?.clinics ?? []
         selectClinicTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
         for item in userClinics {
-            selectedClincs.append(Clinics(isDefault: item.clinic?.isDefault, name: item.clinic?.name, id: item.clinic?.id))
+            selectedClincs.append(Clinics(name: item.clinic?.name, id: item.clinic?.id))
             selectedClincIds.append(item.clinic?.id ?? 0)
         }
         
         serviceDurationTextField.text = "\(servicesAddViewModel?.getUserSelectedServiceData?.durationInMinutes ?? 0)"
         servicecategory = servicesAddViewModel?.getUserSelectedServiceData?.serviceCategory
         serviceCategoryTextField.text = servicecategory.map({$0.name ?? String.blank})
-        selectedServiceCategories.append(Clinics(isDefault: servicecategory?.isDefault, name: servicecategory?.name, id: servicecategory?.id))
+        selectedServiceCategories.append(Clinics(name: servicecategory?.name, id: servicecategory?.id))
         selectedServiceCategoriesId = servicecategory.map({ $0.id ?? 0}) ?? 0
         
         serviceCostTextField.text = forTrailingZero(temp: servicesAddViewModel?.getUserSelectedServiceData?.serviceCost ?? 0.0)

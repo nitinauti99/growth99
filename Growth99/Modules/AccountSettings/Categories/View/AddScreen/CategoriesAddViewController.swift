@@ -82,7 +82,7 @@ class CategoriesAddViewController: UIViewController, CategoriesAddViewContollerP
         clincsTextField.text = userClinics.map({$0.clinic?.name ?? String.blank}).joined(separator: ", ")
 
         for item in userClinics {
-            selectedClincs.append(Clinics(isDefault: item.clinic?.isDefault, name: item.clinic?.name, id: item.clinic?.id))
+            selectedClincs.append(Clinics(name: item.clinic?.name, id: item.clinic?.id))
             selectedClincIds.append(item.clinic?.id ?? 0)
         }
     }

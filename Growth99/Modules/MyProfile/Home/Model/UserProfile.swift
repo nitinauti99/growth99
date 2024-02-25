@@ -24,7 +24,6 @@ struct UserProfile: Codable {
 }
 
 struct Clinics: Codable, Equatable {
-    let isDefault: Bool?
     let name: String?
     let id: Int?
 }
