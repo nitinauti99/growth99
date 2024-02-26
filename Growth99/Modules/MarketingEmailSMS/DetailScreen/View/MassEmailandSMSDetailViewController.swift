@@ -95,36 +95,33 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     func setUpNavigationBar() {
         self.title = Constant.Profile.createMassEmailSMS
     }
-    
+    // 1 API
     @objc func getMassEmailandSMSDetails() {
         self.view.ShowSpinner()
         viewModel?.getMassEmailDetailList()
     }
     
+    // 2 API
     func massEmailDetailDataRecived() {
         viewModel?.getMassEmailLeadTagsList()
     }
     
+    // 3 API
     func massEmailLeadTagsDataRecived() {
         viewModel?.getMassEmailPateintsTagsList()
     }
     
+    // 4 API
     func massEmailPatientTagsDataRecived() {
         viewModel?.getMassEmailBusinessSMSQuotaMethod()
     }
     
-    func massEmailSMSPatientCountDataRecived() {
-        bothInsertDataReceived()
-    }
-    
-    func massEmailSMSLeadCountDataRecived() {
-        bothInsertDataReceived()
-    }
-    
+    // 5 API
     func massEmailSMSBusinessQuotaCountDataReceived() {
         viewModel?.getMassEmailAuditEmailQuotaMethod()
     }
     
+    // 6 API
     func massEmailSMSAuditQuotaCountDataReceived() {
         let isPositive = isResultPositive()
         if isPositive {
@@ -135,13 +132,12 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
         self.view.HideSpinner()
     }
     
-    func isResultPositive() -> Bool {
-        guard let businessEmailCount = viewModel?.getmassEmailSMSBusinessQuotaCountData?.emailLimit,
-              let auditEmailCount = viewModel?.getmassEmailSMSAuditQuotaCountData?.emailCount else {
-            return false
-        }
-        let emailCount = businessEmailCount - auditEmailCount
-        return emailCount > 0
+    func massEmailSMSPatientCountDataRecived() {
+        bothInsertDataReceived()
+    }
+    
+    func massEmailSMSLeadCountDataRecived() {
+        bothInsertDataReceived()
     }
     
     func massEmailSMSLeadStatusAllDataRecived() {
@@ -158,6 +154,15 @@ class MassEmailandSMSDetailViewController: UIViewController, MassEmailandSMSDeta
     
     func marketingMassLeadPatientDataReceived() {
         smsEmailSubmitReponseReceived()
+    }
+    
+    func isResultPositive() -> Bool {
+        guard let businessEmailCount = viewModel?.getmassEmailSMSBusinessQuotaCountData?.emailLimit,
+              let auditEmailCount = viewModel?.getmassEmailSMSAuditQuotaCountData?.emailCount else {
+            return false
+        }
+        let emailCount = businessEmailCount - auditEmailCount
+        return emailCount > 0
     }
     
     func smsEmailSubmitReponseReceived() {

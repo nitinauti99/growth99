@@ -112,56 +112,48 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         self.title = "Edit Mass Email and SMS"
     }
     
+    // 1 API
     @objc func getMassEmailandSMSDetailsEdit() {
         self.view.ShowSpinner()
         viewModelEdit?.getSelectedMassSMSEditList(selectedMassSMSId: massSMStriggerId ?? 0)
     }
     
+    // 2 API
     func massSMStriggerEditSelectedDataRecived() {
         viewModelEdit?.getMassSMSEditDetailList()
     }
     
+    // 3 API
     func massSMSEditDetailDataRecived() {
         viewModelEdit?.getMassSMSEditLeadTagsList()
     }
     
+    // 4 API
     func massSMSEditLeadTagsDataRecived() {
         viewModelEdit?.getMassSMSEditPateintsTagsList()
     }
     
+    // 5 API
     func massSMSEditPatientTagsDataRecived() {
         viewModelEdit?.getMassSMSEditBusinessSMSQuotaMethod()
     }
     
+    // 6 API
     func massSMSEditBusinessEmailSMSQuotaDataRecived() {
         viewModelEdit?.getMassSMSEditAuditEmailQuotaMethod()
     }
     
+    // 7 API
     func massSMSEditAuditEmailSmsCountDataRecived() {
-        self.viewModelEdit?.getMassSMSEditAllLeadMethod()
+        massSMSEditInitialPatientCountDataRecived()
     }
     
-    func isResultPositive() -> Bool {
-        guard let businessEmailCount = viewModelEdit?.getMassSMSEditBusniessEmailSmsQuotaData?.emailLimit,
-              let auditEmailCount = viewModelEdit?.getMassSMSEditAuditEmailSmsCount?.emailCount else {
-            return false
-        }
-        let emailCount = businessEmailCount - auditEmailCount
-        return emailCount > 0
-    }
-    
-    @IBAction func navigateToAuditScreen(sFender: UIButton) {
-        let auditVC = UIStoryboard(name: "AuditListViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListViewController") as! AuditListViewController
-        auditVC.auditIdInfo = modelData?.id ?? 0
-        auditVC.communicationTypeStr = triggerCommunicationType
-        auditVC.triggerModuleStr = modelData?.moduleName ?? ""
-        navigationController?.pushViewController(auditVC, animated: true)
-    }
-    
+    // 8 API
     func massSMSEditAllLeadCountDataRecived() {
         viewModelEdit?.getMassSMSEditAllPatientMethod()
     }
     
+    // 9 API
     func massSMSEditAllPatientCountDataRecived() {
         let leadStatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
         let leadSourceData = viewModelEdit?.getMassSMSTriggerEditListData?.source ?? []
@@ -179,6 +171,7 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
                                                              source: leadSourceData.joined(separator: ","))
     }
     
+    // 10 API
     func massSMSEditInitialLeadCountDataRecived() {
         let patienttatusData = viewModelEdit?.getMassSMSTriggerEditListData?.triggerConditions ?? []
         var patientTagsArrayEdit = [MassEmailSMSPTagListModelEdit]()
@@ -194,7 +187,8 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         viewModelEdit?.getMassSMSEditInitialPatientCountMethod(appointmentStatus: patienttatusData.joined(separator: ","),
                                                                moduleName: "MassPatient", patientTagIds: formattedArray, patientStatus: patientStatusData.joined(separator: ","))
     }
-    
+
+    // 11 response
     func massSMSEditInitialPatientCountDataRecived() {
         self.view.HideSpinner()
         modelData = viewModelEdit?.getMassSMSTriggerEditListData
@@ -235,6 +229,24 @@ class MassEmailandSMSEditDetailViewController: UIViewController, MassEmailandSMS
         }
         emailAndSMSTableViewEdit.reloadData()
     }
+    
+    func isResultPositive() -> Bool {
+        guard let businessEmailCount = viewModelEdit?.getMassSMSEditBusniessEmailSmsQuotaData?.emailLimit,
+              let auditEmailCount = viewModelEdit?.getMassSMSEditAuditEmailSmsCount?.emailCount else {
+            return false
+        }
+        let emailCount = businessEmailCount - auditEmailCount
+        return emailCount > 0
+    }
+    
+    @IBAction func navigateToAuditScreen(sFender: UIButton) {
+        let auditVC = UIStoryboard(name: "AuditListViewController", bundle: nil).instantiateViewController(withIdentifier: "AuditListViewController") as! AuditListViewController
+        auditVC.auditIdInfo = modelData?.id ?? 0
+        auditVC.communicationTypeStr = triggerCommunicationType
+        auditVC.triggerModuleStr = modelData?.moduleName ?? ""
+        navigationController?.pushViewController(auditVC, animated: true)
+    }
+    
     
     func errorReceivedEdit(error: String) {
         self.view.HideSpinner()

@@ -273,7 +273,7 @@ struct MassSMSEditModel : Codable {
     let forms : String?
     let sourceUrls : String?
     let isTriggerForLeadStatus : Bool?
-    let fromLeadStatus : String?
+    let fromLeadStatus : [String]?
     let toLeadStatus : String?
 }
 

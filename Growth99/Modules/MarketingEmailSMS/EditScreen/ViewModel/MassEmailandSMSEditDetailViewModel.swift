@@ -142,6 +142,7 @@ class MassEmailandSMSEditDetailViewModel: MassEmailandSMSEditDetailViewModelProt
         }
     }
     
+    // neeed to check
     func getMassSMSEditAllLeadMethod() {
         let appendParam = "leadStatus=All&moduleName=All"
         let url = ApiUrl.massEmailLeadStatus.appending("\(appendParam)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""

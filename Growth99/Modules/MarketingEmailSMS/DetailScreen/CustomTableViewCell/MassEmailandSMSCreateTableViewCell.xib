@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -97,12 +97,6 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSq-2r-7ah">
                                 <rect key="frame" x="95.666666666666671" y="104.33333333333333" width="34.666666666666671" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SMS Count : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GF-ZZ-ry0">
-                                <rect key="frame" x="138.33333333333334" y="104.33333333333333" width="92.666666666666657" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -221,27 +215,17 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="(No Email Quota!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-XF-BQM">
-                                <rect key="frame" x="236.00000000000003" y="104" width="100.33333333333334" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mxq-Xf-JcD" firstAttribute="top" secondItem="TPi-qT-Luy" secondAttribute="top" id="3CX-NK-WLV"/>
-                            <constraint firstItem="cnV-XF-BQM" firstAttribute="leading" secondItem="4GF-ZZ-ry0" secondAttribute="trailing" constant="5" id="3we-iV-Ccp"/>
                             <constraint firstItem="XP5-O5-TXm" firstAttribute="top" secondItem="Xaa-XE-Nbx" secondAttribute="bottom" constant="20" id="7uL-A5-iE5"/>
                             <constraint firstItem="YPa-6I-DH1" firstAttribute="top" secondItem="EfR-LS-Lw4" secondAttribute="top" id="9ae-WF-j33"/>
                             <constraint firstItem="XP5-O5-TXm" firstAttribute="centerY" secondItem="EfR-LS-Lw4" secondAttribute="centerY" id="A96-sL-uZW"/>
                             <constraint firstAttribute="bottom" secondItem="HIS-ga-GBU" secondAttribute="bottom" constant="20" id="H6y-5c-KzS"/>
                             <constraint firstItem="Xaa-XE-Nbx" firstAttribute="top" secondItem="mxq-Xf-JcD" secondAttribute="bottom" constant="15" id="Joq-am-7GC"/>
-                            <constraint firstItem="4GF-ZZ-ry0" firstAttribute="centerY" secondItem="BSq-2r-7ah" secondAttribute="centerY" id="LO7-Lz-0Fq"/>
                             <constraint firstItem="mxq-Xf-JcD" firstAttribute="leading" secondItem="TPi-qT-Luy" secondAttribute="leading" id="LXY-Dy-E21"/>
-                            <constraint firstItem="4GF-ZZ-ry0" firstAttribute="leading" secondItem="BSq-2r-7ah" secondAttribute="trailing" constant="8" id="M8J-tw-2uv"/>
                             <constraint firstItem="HIS-ga-GBU" firstAttribute="top" secondItem="GBU-iv-KD8" secondAttribute="bottom" constant="20.670000000000002" id="NHL-Sx-fwX"/>
-                            <constraint firstItem="cnV-XF-BQM" firstAttribute="centerY" secondItem="4GF-ZZ-ry0" secondAttribute="centerY" id="NsW-AN-1ia"/>
                             <constraint firstItem="cb6-3I-be8" firstAttribute="trailing" secondItem="Xaa-XE-Nbx" secondAttribute="trailing" id="PwL-0U-OIf"/>
                             <constraint firstItem="XP5-O5-TXm" firstAttribute="leading" secondItem="EfR-LS-Lw4" secondAttribute="trailing" constant="8" id="Tfk-QZ-D0f"/>
                             <constraint firstAttribute="trailing" secondItem="mxq-Xf-JcD" secondAttribute="trailing" id="UiD-Oe-A0p"/>
@@ -285,12 +269,10 @@
                 <outlet property="networkSelectonSMSButton" destination="Yid-u6-Mfj" id="SQd-Oa-QpJ"/>
                 <outlet property="networkViewEmail" destination="1vP-1P-Sf7" id="wQY-bM-PoV"/>
                 <outlet property="networkViewSMS" destination="cb6-3I-be8" id="dgz-6j-pA2"/>
-                <outlet property="noEmailQuotaLabel" destination="cnV-XF-BQM" id="7fZ-sD-AuM"/>
                 <outlet property="selectNetworkEmailTextLabel" destination="ogm-LF-7qa" id="X7V-8Q-SQa"/>
                 <outlet property="selectNetworkEmptyTextLabel" destination="GBU-iv-KD8" id="R3K-cv-aFq"/>
                 <outlet property="selectNetworkSMSTextLabel" destination="3rC-ER-wyV" id="PFu-vK-6Kz"/>
                 <outlet property="smsBtn" destination="EfR-LS-Lw4" id="AyH-p1-YYB"/>
-                <outlet property="smsEmailCountTextLabel" destination="4GF-ZZ-ry0" id="PCE-es-G7I"/>
                 <outlet property="subView" destination="TPi-qT-Luy" id="Bym-cN-YzL"/>
                 <outlet property="subViewInside" destination="TPi-qT-Luy" id="Xb3-Yd-HNK"/>
             </connections>
@@ -305,7 +287,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

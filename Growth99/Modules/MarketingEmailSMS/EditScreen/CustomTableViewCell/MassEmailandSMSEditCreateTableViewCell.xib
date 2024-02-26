@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -136,12 +136,6 @@
                                     <action selector="nextButtonActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oUx-3f-F2H"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS Count : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtV-G7-I6E">
-                                <rect key="frame" x="154.33333333333334" y="99" width="92.666666666666657" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -153,9 +147,7 @@
                             <constraint firstItem="ZIc-Jk-mU4" firstAttribute="top" secondItem="eja-ej-H8I" secondAttribute="bottom" constant="20" id="Nip-dg-JI0"/>
                             <constraint firstItem="eja-ej-H8I" firstAttribute="leading" secondItem="DKR-sf-KbE" secondAttribute="leading" id="O6W-vZ-N3T"/>
                             <constraint firstItem="ggq-XR-EdB" firstAttribute="top" secondItem="ayj-oY-pAe" secondAttribute="top" id="PIN-mu-EwQ"/>
-                            <constraint firstItem="qtV-G7-I6E" firstAttribute="centerY" secondItem="MD3-cs-6Re" secondAttribute="centerY" id="PoV-z8-KLD"/>
                             <constraint firstItem="MD3-cs-6Re" firstAttribute="centerY" secondItem="BGl-Tj-Gpd" secondAttribute="centerY" id="T8V-Aw-GrE"/>
-                            <constraint firstItem="qtV-G7-I6E" firstAttribute="leading" secondItem="MD3-cs-6Re" secondAttribute="trailing" constant="15" id="WgM-wK-QPE"/>
                             <constraint firstItem="BGl-Tj-Gpd" firstAttribute="top" secondItem="eja-ej-H8I" secondAttribute="top" id="XRZ-yv-MeM"/>
                             <constraint firstItem="BGl-Tj-Gpd" firstAttribute="leading" secondItem="ko3-Kq-LGS" secondAttribute="trailing" constant="15" id="ZbM-uB-OKG"/>
                             <constraint firstItem="5cu-97-6Rj" firstAttribute="leading" secondItem="ZIc-Jk-mU4" secondAttribute="leading" id="Zhs-A6-JRP"/>
@@ -188,7 +180,6 @@
                 <outlet property="selectNetworkButton" destination="5cu-97-6Rj" id="Msb-Hv-F1L"/>
                 <outlet property="selectNetworkTextField" destination="ZIc-Jk-mU4" id="45Q-JT-tGj"/>
                 <outlet property="smsBtn" destination="eja-ej-H8I" id="WDi-ud-6U5"/>
-                <outlet property="smsEmailCountLabel" destination="qtV-G7-I6E" id="uON-ft-RFi"/>
                 <outlet property="subView" destination="ayj-oY-pAe" id="8pN-nW-mKy"/>
             </connections>
             <point key="canvasLocation" x="24.427480916030532" y="190.14084507042256"/>

@@ -20,7 +20,6 @@ class MassEmailandSMSEditCreateTableViewCell: UITableViewCell {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet weak var smsBtn: UIButton!
     @IBOutlet weak var emailBtn: UIButton!
-    @IBOutlet weak var smsEmailCountLabel: UILabel!
     @IBOutlet weak var selectNetworkButton: UIButton!
     @IBOutlet weak var selectNetworkTextField: CustomTextField!
     @IBOutlet weak var nextButton: UIButton!
