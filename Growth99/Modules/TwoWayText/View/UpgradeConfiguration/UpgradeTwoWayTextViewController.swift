@@ -18,7 +18,9 @@ class UpgradeTwoWayTextViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Configuration"
         webView.configuration.userContentController.addUserScript(self.getZoomDisableScript())
-        let url = URL(string: "https://devemr.growthemr.com/two-way-text/public/subscribe?bid=\(UserRepository.shared.Xtenantid ?? String.blank)")
+        /// dev url https://devemr.growthemr.com/two-way-text/public/subscribe?bid=
+        /// prod url   https://app.growth99.com/two-way-text/public/subscribe?bid=
+        let url = URL(string: "https://app.growth99.com/two-way-text/public/subscribe?bid=\(UserRepository.shared.Xtenantid ?? String.blank)")
         var request = URLRequest(url: url! as URL)
         request.setValue("Content-Type", forHTTPHeaderField: "application/json")
         request.setValue("authorization "+(UserRepository.shared.authToken ?? String.blank), forHTTPHeaderField: "Bearer "+(UserRepository.shared.authToken ?? String.blank))

@@ -58,5 +58,7 @@ class BaseTabbarViewController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
            UserRepository.shared.userVariableId = UserRepository.shared.userId ?? 0
+           UserRepository.shared.firstNameUser = UserRepository.shared.firstName ?? ""
+           UserRepository.shared.lastNameUser = UserRepository.shared.lastName ?? ""
       }
 }
