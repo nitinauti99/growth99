@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct TowWayTextListModel {
+    var auditLogsList: AuditLogsList?
+    
+}
+
 
 class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtocol {
     
@@ -19,14 +24,14 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     var filteredArray: [AuditLogsList]?
     var finalArray : [FilterList] = []
     var finalArrayList : [FilterListArray] = []
-    
+    var receiverNumber = String()
+
     var sourceType : String = ""
     var sourceName : String = ""
     var sourceTemplateType : String = ""
     var phoneNumber : String = ""
     var sourceTypeId : Int = 0
     var selectedSection : Int = 0
-    var receiverNumber : String = ""
     var isFirstTime: Bool = false
     
     var viewModel: TwoWayListViewModelProtocol?
@@ -37,6 +42,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         super.viewDidLoad()
         self.viewModel = TwoWayListViewModel(delegate: self)
         tableView.dataSource = self
+        tableView.delegate = self
         messageTextfield.delegate = self
         self.title = "Message Detail"
         self.sendButton.layer.cornerRadius = 10
@@ -48,6 +54,8 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
         dateFormater = DateFormater()
         tableView.register(UINib(nibName: Constant.K.cellNibName, bundle: nil), forCellReuseIdentifier: Constant.K.cellIdentifier)
         tableView.register(UINib(nibName: Constant.K.cellNibNameReceiver, bundle: nil), forCellReuseIdentifier: Constant.K.cellIdentifierReceiver)
+        tableView.register(UINib(nibName: "NumberChangeTableViewCell", bundle: nil), forCellReuseIdentifier: "NumberChangeTableViewCell")
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -63,11 +71,47 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     
     func setUpData(){
         finalArrayList = []
-        let finalDict = Dictionary(grouping: twoWayListData ?? [], by: { $0.createdDate })
-        for item in finalDict {
-            finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
+        var changedNumberArray = [AuditLogs]()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+
+        for item in twoWayListData ?? [] {
+            if item.direction == "outgoing" {
+                if receiverNumber.isEmpty {
+                    receiverNumber = item.receiverNumber ?? ""
+                }
+                if receiverNumber == item.receiverNumber {
+                    receiverNumber = item.receiverNumber ?? ""
+                }else{
+                    receiverNumber = item.receiverNumber ?? ""
+                    let auditLogs = AuditLogs(id: item.id, sourceId: item.sourceId, sourceType: item.sourceType, sourceName: item.sourceName, businessId: item.businessId, senderNumber: item.senderNumber, receiverNumber: item.receiverNumber, forwardedNumber: item.forwardedNumber, direction: item.direction, message: item.message, createdDateTime: item.createdDateTime, isNumberChanged: true, smsRead: item.smsRead, deliverStatus: item.deliverStatus, errorMessage: item.errorMessage)
+                    changedNumberArray.append(auditLogs)
+                }
+                changedNumberArray.append(item)
+            }else{
+                changedNumberArray.append(item)
+            }
         }
-        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
+        print("receiverNumber array", changedNumberArray)
+        
+        let sortedListData = changedNumberArray.sorted {
+            $0.createdDateTime ?? "" < $1.createdDateTime ?? ""
+           }
+           
+        let finalDict = Dictionary(grouping: sortedListData , by: { $0.createdDate })
+        
+        for item in finalDict {
+            finalArrayList.append(FilterListArray(createdDate: item.key , logs: item.value))
+        }
+
+        finalArrayList.sort {
+            guard let date1 = dateFormatter.date(from: $0.createdDate),
+                  let date2 = dateFormatter.date(from: $1.createdDate) else {
+                return false
+            }
+            return date1 < date2
+
+        }
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -76,12 +120,48 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     func twoWayDetailListDataRecived() {
         self.view.HideSpinner()
         finalArrayList = []
-        twoWayListData = viewModel?.twoWayCompleteListData .filter { $0.sourceId == sourceTypeId }.flatMap { $0.auditLogs ?? [] }
-        let finalDict = Dictionary(grouping: twoWayListData ?? [], by: { $0.createdDate })
-        for item in finalDict {
-            finalArrayList.append(FilterListArray(createdDate: item.key, logs: item.value))
+        
+        var changedNumberArray = [AuditLogs]()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+     
+        twoWayListData = viewModel?.twoWayCompleteListData.filter { $0.sourceId == sourceTypeId }.flatMap { $0.auditLogs ?? [] }
+        
+        for item in twoWayListData ?? [] {
+            if item.direction == "outgoing" {
+                if receiverNumber.isEmpty {
+                    receiverNumber = item.receiverNumber ?? ""
+                }
+                if receiverNumber == item.receiverNumber {
+                    receiverNumber = item.receiverNumber ?? ""
+                }else{
+                    receiverNumber = item.receiverNumber ?? ""
+                    let auditLogs = AuditLogs(id: item.id, sourceId: item.sourceId, sourceType: item.sourceType, sourceName: item.sourceName, businessId: item.businessId, senderNumber: item.senderNumber, receiverNumber: item.receiverNumber, forwardedNumber: item.forwardedNumber, direction: item.direction, message: item.message, createdDateTime: item.createdDateTime, isNumberChanged: true, smsRead: item.smsRead, deliverStatus: item.deliverStatus, errorMessage: item.errorMessage)
+                    changedNumberArray.append(auditLogs)
+                }
+                changedNumberArray.append(item)
+            }else{
+                changedNumberArray.append(item)
+            }
         }
-        finalArrayList.sort(by: {$0.createdDate < $1.createdDate})
+        print("receiverNumber array", changedNumberArray)
+        
+        let sortedListData = changedNumberArray.sorted {
+            $0.createdDateTime ?? "" < $1.createdDateTime ?? ""
+           }
+      
+        let finalDict = Dictionary(grouping: changedNumberArray, by: { $0.createdDate })
+        for item in finalDict {
+            finalArrayList.append(FilterListArray(createdDate: item.key , logs: item.value))
+        }
+        finalArrayList.sort {
+            guard let date1 = dateFormatter.date(from: $0.createdDate),
+                  let date2 = dateFormatter.date(from: $1.createdDate) else {
+                return false
+            }
+            return date1 < date2
+
+        }
         scrollToBottom()
         self.tableView.reloadData()
     }
@@ -142,7 +222,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     }
 }
 
-extension TwoWayTextViewController: UITableViewDataSource {
+extension TwoWayTextViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return finalArrayList.count
@@ -156,18 +236,26 @@ extension TwoWayTextViewController: UITableViewDataSource {
         let message = finalArrayList[indexPath.section]
         
         if message.logs[indexPath.row].direction == "outgoing" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
-            cell.label.text = message.logs[indexPath.row].message ?? ""
-            cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message.logs[indexPath.row].senderNumber ?? ""))"
-            cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
-            cell.leftImageView.isHidden = false
-            cell.rightImageView.isHidden = true
-            cell.messageBubbleLine.isHidden = false
-            cell.dateLabel.textColor = UIColor.white
-            cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
-            receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
-            isFirstTime = false
-            return cell
+            if message.logs[indexPath.row].isNumberChanged == true {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NumberChangeTableViewCell", for: indexPath) as! NumberChangeTableViewCell
+                cell.label?.text = "Phone number changed from \(receiverNumber) to \(message.logs[indexPath.row].receiverNumber ?? "")"
+
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifier, for: indexPath) as! MessageCell
+                cell.label.text = message.logs[indexPath.row].message ?? ""
+                cell.labelTitle.text = "\(user.bussinessName ?? "")  (\(message.logs[indexPath.row].senderNumber ?? ""))"
+                cell.messageBubble.backgroundColor = UIColor(hexString: "#2656C9")
+                cell.leftImageView.isHidden = false
+                cell.rightImageView.isHidden = true
+                cell.messageBubbleLine.isHidden = false
+                cell.dateLabel.textColor = UIColor.white
+                cell.dateLabel.text = dateFormater?.utcToLocal(timeString:  message.logs[indexPath.row].createdDateTime ?? "")
+                receiverNumber = message.logs[indexPath.row].receiverNumber ?? ""
+                isFirstTime = false
+                receiverNumber =  message.logs[indexPath.row].receiverNumber ?? ""
+                return cell
+            }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.K.cellIdentifierReceiver, for: indexPath) as! MessageCellReceiver
             cell.leftImageView.isHidden = true
@@ -175,7 +263,7 @@ extension TwoWayTextViewController: UITableViewDataSource {
             cell.messageBubbleLine.isHidden = true
             cell.labelTitle.text = "\(sourceName)  (\(message.logs[indexPath.row].senderNumber ?? ""))"
             cell.label.text = message.logs[indexPath.row].message ?? ""
-            cell.messageBubble.backgroundColor = UIColor(hexString: "##dae2f4")
+            cell.messageBubble.backgroundColor = UIColor(hexString: "#dae2f4")
             cell.label.textColor = UIColor.black
             cell.labelTitle.textColor = UIColor.black
             cell.dateLabel.textColor = UIColor.black
@@ -187,9 +275,26 @@ extension TwoWayTextViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return finalArrayList[section].createdDate
+    
+    internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+            
+            let label = UILabel()
+            label.frame = CGRect.init(x: (headerView.frame.width/2) - 40, y: 5, width: 120, height: headerView.frame.height-10)
+             label.layer.cornerRadius = 12
+             label.clipsToBounds = true
+            label.text = "   \(finalArrayList[section].createdDate)"
+            label.backgroundColor = UIColor(hexString: "#dae2f4")
+            label.font = .systemFont(ofSize: 16)
+            label.textColor = UIColor(hexString: "#4b68c9")
+            headerView.addSubview(label)
+            return headerView
     }
+    
+    internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
 }
 
 extension TwoWayTextViewController: UITextFieldDelegate {
@@ -227,4 +332,6 @@ extension TwoWayTextViewController {
         }
     }
 }
+
+
 

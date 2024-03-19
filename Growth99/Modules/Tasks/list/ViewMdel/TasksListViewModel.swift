@@ -21,6 +21,10 @@ protocol TasksListViewModelProtocol {
 }
 
 class TasksListViewModel {
+    @IBOutlet private weak var id: UILabel!
+    @IBOutlet private weak var taskName: UILabel!
+    @IBOutlet private weak var assignedTo: UILabel!
+    @IBOutlet private weak var status: UILabel!
     var delegate: TasksListViewControllerProtocol?
     var taskList: [TaskDTOList] = []
     var taskFilterList: [TaskDTOList] = []
@@ -99,13 +103,7 @@ class TasksListViewModel {
             return nameMatch || idMatch || statusMatch || userNameMatch
         }
     }
-    
-    @IBOutlet private weak var id: UILabel!
-    @IBOutlet private weak var taskName: UILabel!
-    @IBOutlet private weak var assignedTo: UILabel!
-    @IBOutlet private weak var status: UILabel!
-    
-    
+        
     func taskDataAtIndex(index: Int)-> TaskDTOList? {
         return self.taskList[index]
     }

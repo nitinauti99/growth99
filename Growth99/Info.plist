@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Config</key>
-	<string>Production</string>
+	<string>Development</string>
 	<key>FacebookAppID</key>
 	<string>823144572631731</string>
 	<key>FacebookClientToken</key>

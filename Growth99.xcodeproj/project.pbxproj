@@ -209,6 +209,8 @@
 		01A1303429AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */; };
 		01A2007729C746A900A7DD59 /* PostsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */; };
 		01A2007829C746A900A7DD59 /* PostsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */; };
+		01AA024C2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA024A2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.swift */; };
+		01AA024D2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01AA024B2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.xib */; };
 		01B2F63029E1DB700071384E /* EditTasksViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2F62F29E1DB700071384E /* EditTasksViewController+TextField.swift */; };
 		01BBA9D429AB5432006A5DB8 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */; };
 		01BBA9D629AB5442006A5DB8 /* NotificationListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */; };
@@ -1208,6 +1210,8 @@
 		01A1303329AE790D0098DBF8 /* PateintDetailViewController_UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintDetailViewController_UITextField.swift; sourceTree = "<group>"; };
 		01A2007529C746A900A7DD59 /* PostsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostsListTableViewCell.xib; sourceTree = "<group>"; };
 		01A2007629C746A900A7DD59 /* PostsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsListTableViewCell.swift; sourceTree = "<group>"; };
+		01AA024A2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberChangeTableViewCell.swift; sourceTree = "<group>"; };
+		01AA024B2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberChangeTableViewCell.xib; sourceTree = "<group>"; };
 		01B2F62F29E1DB700071384E /* EditTasksViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditTasksViewController+TextField.swift"; sourceTree = "<group>"; };
 		01BBA9D329AB5432006A5DB8 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		01BBA9D529AB5442006A5DB8 /* NotificationListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationListViewController.storyboard; sourceTree = "<group>"; };
@@ -4294,6 +4298,8 @@
 				251C0C3A2B1E4A7300CF4768 /* TwoWayListTableViewCell.xib */,
 				2596B6E72B2F5333006466AE /* TwoWayTemplatesTableViewCell.swift */,
 				2596B6E82B2F5333006466AE /* TwoWayTemplatesTableViewCell.xib */,
+				01AA024A2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.swift */,
+				01AA024B2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.xib */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -7563,6 +7569,7 @@
 				DAEF7499299D4ADB009140AE /* BusinessDetailView.storyboard in Resources */,
 				842C0CCB298F713B00395061 /* QuestionarieTableViewCell.xib in Resources */,
 				84D063022967080E001FE469 /* LeadCustomSMSTemplateTableViewCell.xib in Resources */,
+				01AA024D2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.xib in Resources */,
 				84D0623D29670677001FE469 /* PateintListTableViewCell.xib in Resources */,
 				2596B6E62B2F497E006466AE /* TwoWayTemplatesViewController.xib in Resources */,
 				849004972985A19800A271AA /* PateintsTagsListViewController.storyboard in Resources */,
@@ -7877,6 +7884,7 @@
 				849034FF29953AEC00556D47 /* SMSTemplateViewController+SearchBar.swift in Sources */,
 				84F6112F292A71AB00B1FB69 /* GrowthResponse.swift in Sources */,
 				010EECA529B712AD00351358 /* CreateChatQuestionareViewController+SearchBar.swift in Sources */,
+				01AA024C2BA8A2D500E0FDB2 /* NumberChangeTableViewCell.swift in Sources */,
 				84D0629D2967070D001FE469 /* UserListViewModel.swift in Sources */,
 				1883F12929C7571E0080997B /* Config.swift in Sources */,
 				01D9EBF429B8B83D0099761C /* QuestionnaireSubmissionsViewController+TableView.swift in Sources */,
@@ -8701,7 +8709,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = " 1.0.7";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8748,7 +8756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = " 1.0.7";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmr.growth99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -26,6 +26,8 @@ struct AuditLogs : Codable {
     let direction : String?
     let message : String?
     let createdDateTime : String?
+    let isNumberChanged : Bool?
+
     
     var createdDate: String {
         let formatter = DateFormatter()
