@@ -120,7 +120,7 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
     func twoWayDetailListDataRecived() {
         self.view.HideSpinner()
         finalArrayList = []
-        
+        receiverNumber = ""
         var changedNumberArray = [AuditLogs]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -144,7 +144,6 @@ class TwoWayTextViewController: UIViewController, TwoWayListViewContollerProtoco
                 changedNumberArray.append(item)
             }
         }
-        print("receiverNumber array", changedNumberArray)
         
         let sortedListData = changedNumberArray.sorted {
             $0.createdDateTime ?? "" < $1.createdDateTime ?? ""

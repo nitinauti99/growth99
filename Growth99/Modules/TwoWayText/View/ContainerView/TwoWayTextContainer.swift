@@ -41,6 +41,7 @@ class TwoWayTextContainer: UIViewController, TwoWayListViewContollerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.currentPage = 0
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name(rawValue: "selectedIndex") , object: nil)
         self.view.ShowSpinner()
         viewModel?.getTwoWayList(pageNo: currentPage, pageSize: 15, fromPage: "List")
